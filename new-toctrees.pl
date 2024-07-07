@@ -12,7 +12,7 @@ sub unit_directory {
   return "_sources/$name";
 }
 
-sub just_name {
+sub unit_name {
   my ($unit) = @_;
   $unit =~ s/Unit \d+: //;
   return $unit;
@@ -22,7 +22,7 @@ sub write_toc {
   my ($unit, $files) = @_;
 
   my $dir = unit_directory($unit);
-  my $name = just_name($unit);
+  my $name = unit_name($unit);
   my $under = ":" x length($name);
 
   print "Writing $dir/toctree.rst\n";
@@ -42,10 +42,10 @@ Summary TK
    :maxdepth 3
 
 EOF
-      foreach my $file (@$files) {
-        print $toc "   $file\n";
-      }
-      print $toc "\n";
+  foreach my $file (@$files) {
+    print $toc "   $file\n";
+  }
+  print $toc "\n";
 }
 
 

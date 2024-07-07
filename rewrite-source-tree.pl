@@ -14,10 +14,12 @@ sub unit_directory {
 
 my $newdir;
 
+print "#!/usr/bin/env bash\n\n";
+
 while (<>) {
   if (/^- (.*)/) {
     $newdir = unit_directory($1);
-    print "mkdir -p $newdir\n";
+    print "mkdir -p $newdir/Figures\n";
   }
 
   if (m{^\s+- (_sources/.*?)/(.*)}) {

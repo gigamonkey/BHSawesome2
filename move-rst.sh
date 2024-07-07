@@ -1,4 +1,6 @@
-mkdir -p _sources/Unit-0-Preamble
+#!/usr/bin/env bash
+
+mkdir -p _sources/Unit-0-Preamble/Figures
 git mv _sources/Unit1-Getting-Started/topic-1-1-getting-started.rst _sources/Unit-0-Preamble/topic-1-1-getting-started.rst
 git mv _sources/Unit1-Getting-Started/preface.rst _sources/Unit-0-Preamble/preface.rst
 git mv _sources/Unit1-Getting-Started/aboutcsa.rst _sources/Unit-0-Preamble/aboutcsa.rst
@@ -8,7 +10,7 @@ git mv _sources/Unit1-Getting-Started/growthMindset.rst _sources/Unit-0-Preamble
 git mv _sources/Unit1-Getting-Started/ptest1.rst _sources/Unit-0-Preamble/ptest1.rst
 git mv _sources/Unit1-Getting-Started/survey.rst _sources/Unit-0-Preamble/survey.rst
 git mv _sources/Unit1-Getting-Started/topic-1-2-java-intro.rst _sources/Unit-0-Preamble/topic-1-2-java-intro.rst
-mkdir -p _sources/Unit-1-Expressions
+mkdir -p _sources/Unit-1-Expressions/Figures
 git mv _sources/Unit3-If-Statements/topic-3-1-booleans.rst _sources/Unit-1-Expressions/topic-3-1-booleans.rst
 git mv _sources/Unit1-Getting-Started/topic-1-6-casting.rst _sources/Unit-1-Expressions/topic-1-6-casting.rst
 git mv _sources/Unit1-Getting-Started/topic-1-7-summary.rst _sources/Unit-1-Expressions/topic-1-7-summary.rst
@@ -16,11 +18,11 @@ git mv _sources/Unit1-Getting-Started/topic-1-8-practice-mixed-code.rst _sources
 git mv _sources/Unit1-Getting-Started/topic-1-8-practice-mixed-code-toggle.rst _sources/Unit-1-Expressions/topic-1-8-practice-mixed-code-toggle.rst
 git mv _sources/Unit1-Getting-Started/topic-1-9-practice-coding.rst _sources/Unit-1-Expressions/topic-1-9-practice-coding.rst
 git mv _sources/Unit1-Getting-Started/Exercises.rst _sources/Unit-1-Expressions/Exercises.rst
-mkdir -p _sources/Unit-2-Variables-and-assignment
+mkdir -p _sources/Unit-2-Variables-and-assignment/Figures
 git mv _sources/Unit1-Getting-Started/topic-1-3-variables.rst _sources/Unit-2-Variables-and-assignment/topic-1-3-variables.rst
 git mv _sources/Unit1-Getting-Started/topic-1-4-assignment.rst _sources/Unit-2-Variables-and-assignment/topic-1-4-assignment.rst
 git mv _sources/Unit1-Getting-Started/topic-1-5-shortcutoperators.rst _sources/Unit-2-Variables-and-assignment/topic-1-5-shortcutoperators.rst
-mkdir -p _sources/Unit-3-Arrays
+mkdir -p _sources/Unit-3-Arrays/Figures
 git mv _sources/Unit6-Arrays/topic-6-1-array-basics.rst _sources/Unit-3-Arrays/topic-6-1-array-basics.rst
 git mv _sources/Unit6-Arrays/topic-6-2-traversing-arrays.rst _sources/Unit-3-Arrays/topic-6-2-traversing-arrays.rst
 git mv _sources/Unit6-Arrays/topic-6-3-arrays-with-foreach.rst _sources/Unit-3-Arrays/topic-6-3-arrays-with-foreach.rst
@@ -65,7 +67,7 @@ git mv _sources/Unit8-2DArray/pictureLabA6.rst _sources/Unit-3-Arrays/pictureLab
 git mv _sources/Unit8-2DArray/pictureLabA7.rst _sources/Unit-3-Arrays/pictureLabA7.rst
 git mv _sources/Unit8-2DArray/pictureLabA8.rst _sources/Unit-3-Arrays/pictureLabA8.rst
 git mv _sources/Unit8-2DArray/pictureLabA9.rst _sources/Unit-3-Arrays/pictureLabA9.rst
-mkdir -p _sources/Unit-4-Control-constructs
+mkdir -p _sources/Unit-4-Control-constructs/Figures
 git mv _sources/Unit3-If-Statements/topic-3-2-ifs.rst _sources/Unit-4-Control-constructs/topic-3-2-ifs.rst
 git mv _sources/Unit3-If-Statements/topic-3-3-if-else.rst _sources/Unit-4-Control-constructs/topic-3-3-if-else.rst
 git mv _sources/Unit3-If-Statements/topic-3-4-else-ifs.rst _sources/Unit-4-Control-constructs/topic-3-4-else-ifs.rst
@@ -98,7 +100,7 @@ git mv _sources/Unit4-Iteration/FRQcalendar.rst _sources/Unit-4-Control-construc
 git mv _sources/Unit4-Iteration/FRQselfDivisorA.rst _sources/Unit-4-Control-constructs/FRQselfDivisorA.rst
 git mv _sources/Unit4-Iteration/FRQstringScrambleA.rst _sources/Unit-4-Control-constructs/FRQstringScrambleA.rst
 git mv _sources/Unit4-Iteration/ConsumerReviewLab.rst _sources/Unit-4-Control-constructs/ConsumerReviewLab.rst
-mkdir -p _sources/Unit-5-Methods
+mkdir -p _sources/Unit-5-Methods/Figures
 git mv _sources/Unit-Sqrt2-Methods/topic-sqrt2-1-using-methods.rst _sources/Unit-5-Methods/topic-sqrt2-1-using-methods.rst
 git mv _sources/Unit-Sqrt2-Methods/topic-sqrt2-2-writing-methods.rst _sources/Unit-5-Methods/topic-sqrt2-2-writing-methods.rst
 git mv _sources/Unit2-Using-Objects/topic-2-1-objects-intro-turtles.rst _sources/Unit-5-Methods/topic-2-1-objects-intro-turtles.rst
@@ -113,7 +115,7 @@ git mv _sources/Unit2-Using-Objects/topic-2-12-practice-coding.rst _sources/Unit
 git mv _sources/Unit2-Using-Objects/practice-test-objects.rst _sources/Unit-5-Methods/practice-test-objects.rst
 git mv _sources/Unit2-Using-Objects/Exercises.rst _sources/Unit-5-Methods/Exercises.rst
 git mv _sources/Unit2-Using-Objects/JavaSwingGUIs.rst _sources/Unit-5-Methods/JavaSwingGUIs.rst
-mkdir -p _sources/Unit-6-Writing-Classes
+mkdir -p _sources/Unit-6-Writing-Classes/Figures
 git mv _sources/Unit5-Writing-Classes/topic-5-1-parts-of-class.rst _sources/Unit-6-Writing-Classes/topic-5-1-parts-of-class.rst
 git mv _sources/Unit5-Writing-Classes/topic-5-2-writing-constructors.rst _sources/Unit-6-Writing-Classes/topic-5-2-writing-constructors.rst
 git mv _sources/Unit5-Writing-Classes/topic-5-3-comments-conditions.rst _sources/Unit-6-Writing-Classes/topic-5-3-comments-conditions.rst
@@ -133,7 +135,7 @@ git mv _sources/Unit5-Writing-Classes/timeFRQ.rst _sources/Unit-6-Writing-Classe
 git mv _sources/Unit5-Writing-Classes/APLine.rst _sources/Unit-6-Writing-Classes/APLine.rst
 git mv _sources/Unit5-Writing-Classes/CBLabs.rst _sources/Unit-6-Writing-Classes/CBLabs.rst
 git mv _sources/Unit5-Writing-Classes/community-challenge.rst _sources/Unit-6-Writing-Classes/community-challenge.rst
-mkdir -p _sources/Unit-7-Built-in-classes
+mkdir -p _sources/Unit-7-Built-in-classes/Figures
 git mv _sources/Unit2-Using-Objects/topic-2-6-strings.rst _sources/Unit-7-Built-in-classes/topic-2-6-strings.rst
 git mv _sources/Unit2-Using-Objects/topic-2-7-string-methods.rst _sources/Unit-7-Built-in-classes/topic-2-7-string-methods.rst
 git mv _sources/Unit2-Using-Objects/topic-2-8-IntegerDouble.rst _sources/Unit-7-Built-in-classes/topic-2-8-IntegerDouble.rst
@@ -169,7 +171,7 @@ git mv _sources/Unit7-ArrayList/ssEasyMC.rst _sources/Unit-7-Built-in-classes/ss
 git mv _sources/Unit7-ArrayList/ssMedMC.rst _sources/Unit-7-Built-in-classes/ssMedMC.rst
 git mv _sources/Unit7-ArrayList/ssHardMC.rst _sources/Unit-7-Built-in-classes/ssHardMC.rst
 git mv _sources/Unit7-ArrayList/CBLabs.rst _sources/Unit-7-Built-in-classes/CBLabs.rst
-mkdir -p _sources/Unit-8-Inheritance
+mkdir -p _sources/Unit-8-Inheritance/Figures
 git mv _sources/Unit9-Inheritance/topic-9-1-inheritance.rst _sources/Unit-8-Inheritance/topic-9-1-inheritance.rst
 git mv _sources/Unit9-Inheritance/topic-9-1-inheritance-day1.rst _sources/Unit-8-Inheritance/topic-9-1-inheritance-day1.rst
 git mv _sources/Unit9-Inheritance/topic-9-1-inheritance-day2.rst _sources/Unit-8-Inheritance/topic-9-1-inheritance-day2.rst
@@ -194,8 +196,8 @@ git mv _sources/Unit9-Inheritance/ooMedMC.rst _sources/Unit-8-Inheritance/ooMedM
 git mv _sources/Unit9-Inheritance/ooHardMC.rst _sources/Unit-8-Inheritance/ooHardMC.rst
 git mv _sources/Unit9-Inheritance/ooPractice.rst _sources/Unit-8-Inheritance/ooPractice.rst
 git mv _sources/Unit9-Inheritance/CBLabs.rst _sources/Unit-8-Inheritance/CBLabs.rst
-mkdir -p _sources/Unit-9-OO-design
-mkdir -p _sources/Unit-10-Algorithms
+mkdir -p _sources/Unit-9-OO-design/Figures
+mkdir -p _sources/Unit-10-Algorithms/Figures
 git mv _sources/Unit10-Recursion/topic-10-1-recursion.rst _sources/Unit-10-Algorithms/topic-10-1-recursion.rst
 git mv _sources/Unit10-Recursion/topic-10-1-recursion-day1.rst _sources/Unit-10-Algorithms/topic-10-1-recursion-day1.rst
 git mv _sources/Unit10-Recursion/topic-10-1-recursion-day2.rst _sources/Unit-10-Algorithms/topic-10-1-recursion-day2.rst
@@ -211,9 +213,9 @@ git mv _sources/Unit10-Recursion/rBasePractice.rst _sources/Unit-10-Algorithms/r
 git mv _sources/Unit10-Recursion/rEasyMC.rst _sources/Unit-10-Algorithms/rEasyMC.rst
 git mv _sources/Unit10-Recursion/rMedMC.rst _sources/Unit-10-Algorithms/rMedMC.rst
 git mv _sources/Unit10-Recursion/rHardMC.rst _sources/Unit-10-Algorithms/rHardMC.rst
-mkdir -p _sources/Unit-11-posttest
+mkdir -p _sources/Unit-11-posttest/Figures
 git mv _sources/Unit11-posttest/posttest.rst _sources/Unit-11-posttest/posttest.rst
-mkdir -p _sources/Tests
+mkdir -p _sources/Tests/Figures
 # testPractice.rst doesn't move
 # test1nt.rst doesn't move
 # test2nt.rst doesn't move
@@ -221,19 +223,19 @@ mkdir -p _sources/Tests
 # test4nt.rst doesn't move
 # test5nt.rst doesn't move
 # Exercises.rst doesn't move
-mkdir -p _sources/TimedTests
+mkdir -p _sources/TimedTests/Figures
 # test1.rst doesn't move
 # test3.rst doesn't move
 # test4.rst doesn't move
 # Exercises.rst doesn't move
 # apbowla.rst doesn't move
-mkdir -p _sources/MixedFreeResponse
+mkdir -p _sources/MixedFreeResponse/Figures
 # RandomStringChooserParsonsA.rst doesn't move
 # RandomStringChooserA2.rst doesn't move
 # RandomStringChooserParsonsB.rst doesn't move
 # RandomStringChooserB2.rst doesn't move
 # Exercises.rst doesn't move
-mkdir -p _sources/FreeResponse
+mkdir -p _sources/FreeResponse/Figures
 # RandomStringChooserA.rst doesn't move
 # RandomStringChooserB.rst doesn't move
 # StringCoderA.rst doesn't move
@@ -248,7 +250,7 @@ mkdir -p _sources/FreeResponse
 # NumberGroupB.rst doesn't move
 # NumberGroupC.rst doesn't move
 # Exercises.rst doesn't move
-mkdir -p _sources/Stories
+mkdir -p _sources/Stories/Figures
 # challengesInComputing.rst doesn't move
 # intervieweeIndex.rst doesn't move
 # Interviewees/A_Taylor.rst doesn't move
@@ -265,5 +267,5 @@ mkdir -p _sources/Stories
 # Interviewees/L_Diaz.rst doesn't move
 # Interviewees/M_Rodriguez.rst doesn't move
 # Interviewees/N_Gaskins.rst doesn't move
-mkdir -p _sources/_hidden
+mkdir -p _sources/_hidden/Figures
 # Ex-array-orig.rst doesn't move
