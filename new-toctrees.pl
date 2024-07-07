@@ -12,49 +12,71 @@ sub unit_directory {
   return "_sources/$name";
 }
 
-my $olddir = "";
-my $newdir;
-my @files;
+sub just_name {
+  my ($unit) = @_;
+  $unit =~ s/Unit \d+: //;
+  return $unit;
+}
 
+sub write_toc {
+  my ($unit, $files) = @_;
 
-while (<>) {
-  if (/^- (.*)/) {
-    my $unit = $1;
-    my $under = ":" x length($unit);
-    $newdir = unit_directory($unit);
+  my $dir = unit_directory($unit);
+  my $name = just_name($unit);
+  my $under = ":" x length($name);
 
-    if ($newdir ne $olddir and $#files > 0) {
-      print "Writing $newdir/toctree.rst\n";
-      open(my $toc, ">$newdir/toctree.rst") or die $!;
-      print $toc <<EOF;
+  print "Writing $dir/toctree.rst\n";
+  open(my $toc, ">$dir/toctree.rst") or die $!;
+  print $toc <<EOF;
 .. image:: ../../_static/BHSawesomeLogo.png
     :width: 350
     :align: center
 
-$unit
+$name
 $under
 
 Summary TK
 
 .. toctree::
-   :caption $unit Table of Contents
+   :caption $name Table of Contents
    :maxdepth 3
 
 EOF
-      foreach my $file (@files) {
+      foreach my $file (@$files) {
         print $toc "   $file\n";
       }
       print $toc "\n";
-      $olddir = $newdir;
+}
+
+
+my $oldunit = "";
+my $newunit;
+my @files;
+
+while (<>) {
+  if (/^- (.*)/) {
+    $newunit = $1;
+
+    print STDERR "Saw $newunit; old is $oldunit\n";
+
+    if ($newunit ne $oldunit and scalar @files > 0) {
+      write_toc($oldunit, \@files);
       @files = ();
     }
+    $oldunit = $newunit;
   }
 
   if (m{^\s+- (_sources/.*?)/(.*)}) {
-    my $olddir = $1;
     my $file = $2;
+    print STDERR "Pushing $file\n";
     push @files, $file;
   }
+}
+
+print STDERR "At end of file old is $oldunit; files is @{[scalar @files]}\n";
+
+if (scalar @files > 0) {
+  write_toc($oldunit, \@files);
 }
 
 __END__
