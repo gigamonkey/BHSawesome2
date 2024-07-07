@@ -39,7 +39,7 @@ serving_dir = "./build/BHSawesome"
 
 #new 7/2019 changes
 # Change to False when running localhost
-dynamic_pages = True
+dynamic_pages = False
 
 if dynamic_pages:
     dest = './published'

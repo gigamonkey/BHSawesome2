@@ -5,11 +5,11 @@
 
 // Set this to true to skip renumbering things if they won't actually change.
 // You'll still get the small table of contents built from the actual TOC.
-const skipRenumbering = false;
+const skipRenumbering = true;
 
 const numbers = [
   "1",
-  "√2",
+  //"√2",
   "2",
   "3",
   "4",
@@ -30,7 +30,7 @@ const numbers = [
 ];
 
 // Adjust these two values. They are indices, not the unit numbers.
-const practiceUnitsStart = 11;
+const practiceUnitsStart = 10;
 const practiceUnits = 5;
 const unitsAfterPractice = 1;
 

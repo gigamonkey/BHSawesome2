@@ -12,6 +12,13 @@ sub unit_directory {
   return "_sources/$name";
 }
 
+sub exercises_prefix {
+  my ($olddir) = @_;
+  my ($prefix) = $olddir =~ /Unit\d+-(.*)$/;
+  $prefix =~ s/\W//g;
+  return $prefix;
+}
+
 my $newdir;
 
 print "#!/usr/bin/env bash\n\n";
@@ -26,7 +33,12 @@ while (<>) {
     my $olddir = $1;
     my $file = $2;
     if ($olddir ne $newdir) {
-      print "git mv $olddir/$file $newdir/$file\n";
+      if ($file =~ /Exercises.rst$/) {
+        my $prefix = exercises_prefix($olddir);
+        print "git mv $olddir/$file $newdir/$prefix$file\n";
+      } else {
+        print "git mv $olddir/$file $newdir/$file\n";
+      }
     } else {
       print "# $file doesn't move\n";
     }

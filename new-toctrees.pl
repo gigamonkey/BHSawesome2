@@ -26,7 +26,7 @@ sub write_toc {
   my $under = ":" x length($name);
 
   print "Writing $dir/toctree.rst\n";
-  open(my $toc, ">$dir/toctree.rst") or die $!;
+  open(my $toc, ">$dir/toctree.rst") or die "$!: Can't open $dir/toctree.rst";
   print $toc <<EOF;
 .. image:: ../../_static/BHSawesomeLogo.png
     :width: 350
