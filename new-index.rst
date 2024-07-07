@@ -58,6 +58,7 @@ Table of Contents
    :numbered:
    :maxdepth: 3
 
+   Unit-0-Preamble/toctree.rst
    Unit-1-Expressions/toctree.rst
    Unit-2-Variables-and-assignment/toctree.rst
    Unit-3-Arrays/toctree.rst
