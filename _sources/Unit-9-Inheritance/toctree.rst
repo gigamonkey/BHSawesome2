@@ -5,13 +5,13 @@
 Inheritance
 :::::::::::
 
-Summary TK
+In this lesson, you will learn how to use inheritance to create subclasses that
+extend superclasses.
 
 .. toctree::
    :caption Inheritance Table of Contents
    :maxdepth 3
 
-   topic-9-1-inheritance.rst
    topic-9-1-inheritance-day1.rst
    topic-9-1-inheritance-day2.rst
    topic-9-2-constructors.rst
