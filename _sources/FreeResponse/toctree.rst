@@ -1,8 +1,15 @@
-Free Response Practice
-:::::::::::::::::::::::::::::
+.. image:: ../../_static/BHSawesomeLogo.png
+    :width: 350
+    :align: center
+
+FreeResponse
+::::::::::::
+
+Summary TK
 
 .. toctree::
-   :maxdepth: 3
+   :caption FreeResponse Table of Contents
+   :maxdepth 3
 
    RandomStringChooserA.rst
    RandomStringChooserB.rst

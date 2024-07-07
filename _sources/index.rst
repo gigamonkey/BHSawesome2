@@ -19,7 +19,7 @@ To make sure the site saves your answers on questions, please click on the perso
 
 ATTENTION high school women of color taking AP CSA or CSP: if you identify as female and as Black, Hispanic/Latina, and/or Native American, apply to participate in **Sisters Rise Up**. The goal of Sisters Rise Up is to help you succeed in your AP Computer Science course and on the exam. They offer one-hour help sessions several times a week and once a month special help sessions often with guest speakers from computing.  If you enroll in Sisters Rise Up and send in your AP CS exam score by the end of August, you will be sent a gift card for $100. See the |flyer| and apply at https://tinyurl.com/55z7tyb9.
 
-.. ATTENTION high school women, genderqueer, and non-binary technologists: Apply Sept. 1st until Oct. 20th for the **NCWIT Award for Aspirations in Computing** to be recognized for all that you do (or want to do) in technology. Visit http://www.aspirations.org/AiCHSAward for details. 
+.. ATTENTION high school women, genderqueer, and non-binary technologists: Apply Sept. 1st until Oct. 20th for the **NCWIT Award for Aspirations in Computing** to be recognized for all that you do (or want to do) in technology. Visit http://www.aspirations.org/AiCHSAward for details.
 
 .. ATTENTION high school seniors: apply for the https://www.amazonfutureengineer.com/scholarships until Dec. 15th for college scholarships and Amazon summer internships for students with financial need.
 
@@ -58,18 +58,18 @@ Table of Contents
    :numbered:
    :maxdepth: 3
 
-   Unit1-Getting-Started/toctree.rst
-   Unit-Sqrt2-Methods/toctree.rst
-   Unit2-Using-Objects/toctree.rst
-   Unit3-If-Statements/toctree.rst
-   Unit4-Iteration/toctree.rst
-   Unit5-Writing-Classes/toctree.rst
-   Unit6-Arrays/toctree.rst
-   Unit7-ArrayList/toctree.rst
-   Unit8-2DArray/toctree.rst
-   Unit9-Inheritance/toctree.rst
-   Unit10-Recursion/toctree.rst
-   Unit11-posttest/toctree.rst
+   Unit-1-Welcome/toctree.rst
+   Unit-2-Expressions/toctree.rst
+   Unit-3-Variables-and-assignment/toctree.rst
+   Unit-4-Arrays/toctree.rst
+   Unit-5-Control-constructs/toctree.rst
+   Unit-6-Methods/toctree.rst
+   Unit-7-Writing-Classes/toctree.rst
+   Unit-8-Built-in-classes/toctree.rst
+   Unit-9-Inheritance/toctree.rst
+   Unit-10-OO-design/toctree.rst
+   Unit-11-Algorithms/toctree.rst
+   PostTest/toctree.rst
    Tests/toctree.rst
    TimedTests/toctree.rst
    MixedFreeResponse/toctree.rst

@@ -1,8 +1,15 @@
-Mixed Up Code - Free Response Practice
-:::::::::::::::::::::::::::::::::::::::::
+.. image:: ../../_static/BHSawesomeLogo.png
+    :width: 350
+    :align: center
+
+MixedFreeResponse
+:::::::::::::::::
+
+Summary TK
 
 .. toctree::
-   :maxdepth: 3
+   :caption MixedFreeResponse Table of Contents
+   :maxdepth 3
 
    RandomStringChooserParsonsA.rst
    RandomStringChooserA2.rst

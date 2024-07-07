@@ -1,8 +1,15 @@
-Preparing for the Exam
-:::::::::::::::::::::::::::::::::
+.. image:: ../../_static/BHSawesomeLogo.png
+    :width: 350
+    :align: center
+
+Tests
+:::::
+
+Summary TK
 
 .. toctree::
-   :maxdepth: 3
+   :caption Tests Table of Contents
+   :maxdepth 3
 
    testPractice.rst
    test1nt.rst

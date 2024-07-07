@@ -2,17 +2,14 @@
     :width: 350
     :align: center
 
-Writing Classes
+Writing-Classes
 :::::::::::::::
 
-
-Class Periods: 12-14
-
-AP CSA Exam Weighting: 5-7.5%
-
+Summary TK
 
 .. toctree::
-   :maxdepth: 3
+   :caption Writing-Classes Table of Contents
+   :maxdepth 3
 
    topic-5-1-parts-of-class.rst
    topic-5-2-writing-constructors.rst
@@ -33,3 +30,4 @@ AP CSA Exam Weighting: 5-7.5%
    APLine.rst
    CBLabs.rst
    community-challenge.rst
+
