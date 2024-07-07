@@ -9,6 +9,12 @@
 2D Arrays (Day 1)
 -----------------
 
+We have only worked with one-dimensional arrays so far, which have a single row
+of elements. But in the real world, data is often represented in a
+two-dimensional table with rows and columns. Programming languages can also
+represent arrays this way with multiple dimensions. A two-dimensional (2D) array
+has rows and columns. A 2D array in Java is actually an array of arrays.
+
 .. index::
     single: 2D Arrays
     single: row
@@ -240,5 +246,3 @@ The code below creates a 2D array with 2 rows and 3 columns named ``ticketInfo``
   }
 
 This lesson is continued on the next page.
-
-

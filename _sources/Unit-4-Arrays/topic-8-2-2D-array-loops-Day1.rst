@@ -9,6 +9,7 @@
 Nested Loops for 2D Arrays (Day 1)
 -----------------------------------
 
+Nested loops can be used to traverse 2D arrays row by row and column by column.
 In this lesson, you will learn how to use nested loops to traverse a 2D Array.
 
 Getting the Number of Rows and Columns
@@ -168,7 +169,7 @@ Some key things to notice about this code are:
 
    The following has the correct code to find the largest value in a 2D array. Drag the blocks from the left into the correct order on the right and indent them as well. Check your solution by clicking on the Check button.  You will be told if any of the blocks are in the wrong order or have the wrong indention.
    -----
-   public static int getLargest(int[][] arr)  
+   public static int getLargest(int[][] arr)
    {
    =====
     int largest = arr[0][0];
@@ -287,5 +288,3 @@ AP Practice
 
 
 This lesson is continued on the next page.
-
-
