@@ -21,9 +21,8 @@ Summary TK
    rMixedUpCodePractice.rst
    topic-10-4-toggle-problems.rst
    recursionCodePractice.rst
-   Exercises.rst
+   RecursionExercises.rst
    rBasePractice.rst
    rEasyMC.rst
    rMedMC.rst
    rHardMC.rst
-

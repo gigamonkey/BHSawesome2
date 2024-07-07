@@ -17,5 +17,4 @@ Summary TK
    topic-1-8-practice-mixed-code.rst
    topic-1-8-practice-mixed-code-toggle.rst
    topic-1-9-practice-coding.rst
-   Exercises.rst
-
+   GettingStartedExercises.rst

@@ -21,7 +21,7 @@ Summary TK
    topic-3-9-practice-mixed-code.rst
    topic-3-9-practice-mixed-code-toggle.rst
    topic-3-10-practice-coding.rst
-   Exercises.rst
+   IfStatementsExercises.rst
    magpieindex.rst
    magpie1.rst
    magpie2.rst
@@ -38,9 +38,8 @@ Summary TK
    topic-4-7-practice-mixed-code.rst
    topic-4-7-practice-mixed-code-toggle.rst
    topic-4-8-practice-coding.rst
-   Exercises.rst
+   IterationExercises.rst
    FRQcalendar.rst
    FRQselfDivisorA.rst
    FRQstringScrambleA.rst
    ConsumerReviewLab.rst
-

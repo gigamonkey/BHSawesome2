@@ -23,11 +23,10 @@ Summary TK
    topic-5-11-summary.rst
    topic-parsons-practice.rst
    topic-toggle-problems.rst
-   Exercises.rst
+   WritingClassesExercises.rst
    midterm_unit5.rst
    FRQstepTracker.rst
    timeFRQ.rst
    APLine.rst
    CBLabs.rst
    community-challenge.rst
-

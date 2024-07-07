@@ -26,7 +26,7 @@ Summary TK
    ArrayParsonsPractice.rst
    Arrays-mixed-code-toggle.rst
    ArrayPractice.rst
-   Exercises.rst
+   2DArrayExercises.rst
    arrayExam.rst
    topic-8-1-2D-arrays.rst
    topic-8-1-2D-arrays-Day1.rst
@@ -43,7 +43,7 @@ Summary TK
    grayImageB.rst
    routeCipherA.rst
    routeCipherB.rst
-   Exercises.rst
+   ArraysExercises.rst
    a2dEasyMC.rst
    a2dMedMC.rst
    a2dHardMC.rst
@@ -55,4 +55,3 @@ Summary TK
    pictureLabA7.rst
    pictureLabA8.rst
    pictureLabA9.rst
-

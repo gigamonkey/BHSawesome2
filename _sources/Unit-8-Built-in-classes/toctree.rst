@@ -38,7 +38,7 @@ Summary TK
    ListParsonsPractice.rst
    topic-7-9-toggle-problems.rst
    listPractice.rst
-   Exercises.rst
+   ArrayListExercises.rst
    listEasyMC.rst
    listMedMC.rst
    listHardMC.rst
@@ -46,4 +46,3 @@ Summary TK
    ssMedMC.rst
    ssHardMC.rst
    CBLabs.rst
-

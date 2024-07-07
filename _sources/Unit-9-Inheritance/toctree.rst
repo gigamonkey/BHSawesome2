@@ -29,10 +29,9 @@ Summary TK
    ooParsonsPractice.rst
    topic-9-10-toggle-problems.rst
    ooCodePractice.rst
-   Exercises.rst
+   InheritanceExercises.rst
    ooEasyMC.rst
    ooMedMC.rst
    ooHardMC.rst
    ooPractice.rst
    CBLabs.rst
-
