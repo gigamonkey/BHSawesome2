@@ -2,7 +2,7 @@
    :prefix: 4-6-
    :start: 1
 
-Unit 4 Summary
+Unit Summary
 ==============
 
 In this chapter you learned about **loops**.  **Loops** are used to repeat a statement or block of statements inside a pair of curly braces.

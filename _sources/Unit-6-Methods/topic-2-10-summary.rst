@@ -2,7 +2,7 @@
    :prefix: 2-10-
    :start: 1
 
-Unit 2 Summary
+Unit Summary
 ===============
 
 In this unit, you learned to use objects (variables of a class type)  that have been written for you in Java. You learned to use constructors and methods with and without parameters of objects, and built-in Java classes like String, Integer, Double, and Math.
