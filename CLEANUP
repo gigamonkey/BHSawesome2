@@ -1,0 +1,7 @@
+- Remove the Day1/Day2 divisions that were put in to keep numbers lined up with
+  the College Board.
+
+- Each sub-chapter file should have only one top-level header. Any other
+  sections should be subsections if needed. I.e. clicking on each a top-level
+  TOC element in the Unit TOC should take you to a new URL. That is not the
+  case, for instance, in the inheritance unit.
