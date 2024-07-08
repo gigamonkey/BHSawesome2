@@ -22,16 +22,8 @@ extend superclasses.
    topic-9-7-Object.rst
    ooSummary.rst
    freeResponse.rst
-   TrioA.rst
-   TrioScore1.rst
-   TrioScore2.rst
-   TrioScore3.rst
    ooParsonsPractice.rst
    topic-9-10-toggle-problems.rst
    ooCodePractice.rst
    InheritanceExercises.rst
-   ooEasyMC.rst
-   ooMedMC.rst
-   ooHardMC.rst
-   ooPractice.rst
    CBLabs.rst

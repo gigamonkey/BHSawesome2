@@ -23,11 +23,6 @@ Summary TK
    topic-3-10-practice-coding.rst
    IfStatementsExercises.rst
    magpieindex.rst
-   magpie1.rst
-   magpie2.rst
-   magpie3.rst
-   magpie4.rst
-   magpie-exercises.rst
    topic-4-1-while-loops.rst
    topic-4-2-for-loops.rst
    topic-4-3-strings-loops.rst

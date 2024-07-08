@@ -22,13 +22,6 @@ Summary TK
    topic-8-2-2D-array-loops-Day2.rst
    topic-8-4-toggle-problems.rst
    a2dSummary.rst
-   horseBarnA.rst
-   horseBarnB.rst
-   selfDivisorB.rst
-   soundA.rst
-   soundB.rst
-   numberCubeA.rst
-   numberCubeB.rst
    ArrayParsonsPractice.rst
    Arrays-mixed-code-toggle.rst
    ArrayPractice.rst
