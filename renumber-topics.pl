@@ -34,17 +34,16 @@ if ($dir =~ /Unit-(\d+)-/) {
       if (/^\.\. (.*)/ and not /:$/) {
         $in_toc = 0;
         print;
-      }
-
-      if (/^(\s+)(?!:)(\S+)/) {
+      } elsif (/^(\s+)(?!:)(\S+)/) {
         my $indent = $1;
         my $oldname = $2;
         my ($base) = $oldname =~ /^(?:topic-\d+-\d+-)?(.*)/g;
         if ($base) {
           my $newname = "topic-$unit-$n-$base";
           print "$indent$newname\n";
-          #system("git mv $oldname $newname") == 0 or die $!;
-          system("git mv $dir/$oldname $dir/$newname") == 0 or die $!;
+          if ($newname ne $oldname) {
+            system("git mv $dir/$oldname $dir/$newname") == 0 or die $!;
+          }
         } else {
           print;
         }
