@@ -28,10 +28,12 @@ if ($dir =~ /Unit-(\d+)-/) {
 
   while (<>) {
 
-    /^\.\. toctree\:/ and $in_toc = 1;
-
-    if ($in_toc) {
-      if (/^\.\. (.*)/ and not /:$/) {
+    if (/^\.\. toctree\:/) {
+      $in_toc = 1;
+      print;
+    } elsif ($in_toc) {
+      if (/^\S/) {
+        print STDERR "Leaving TOC on: $_";
         $in_toc = 0;
         print;
       } elsif (/^(\s+)(?!:)(\S+)/) {
