@@ -9,6 +9,14 @@ use warnings;
 use strict;
 use File::Basename;
 
+my $unnumber = 0;
+
+if ($ARGV[0] =~ /--?u/) {
+  print "Unnumbering\n";
+  $unnumber = 1;
+  shift;
+}
+
 my $tocfile = shift || die "Need tocfile.";
 
 my $dir = dirname($tocfile);
@@ -30,33 +38,26 @@ if ($dir =~ /Unit-(\d+)-/) {
 
     if (/^\.\. toctree\:/) {
       $in_toc = 1;
-      print;
     } elsif ($in_toc) {
       if (/^\S/) {
-        print STDERR "Leaving TOC on: $_";
         $in_toc = 0;
-        print;
       } elsif (/^(\s+)(?!:)(\S+)/) {
         my $indent = $1;
         my $oldname = $2;
-        my ($base) = $oldname =~ /^(?:topic-\d+-\d+-)?(.*)/g;
+        my ($base) = $oldname =~ /^(?:topic-(?:\d+-\d+-)?)?(.*)/g;
         if ($base) {
-          my $newname = "topic-$unit-$n-$base";
-          print "$indent$newname\n";
+          my $newname = $unnumber ? "topic-$base" : "topic-$unit-$n-$base";
+          $n++;
+          $_ = "$indent$newname\n";
           if ($newname ne $oldname) {
             system("git mv $dir/$oldname $dir/$newname") == 0 or die $!;
           }
-        } else {
-          print;
         }
-        $n++;
-      } else {
-        print;
       }
-    } else {
-      print;
     }
+    print;
   }
+
 } else {
   die "Can't figure out unit from $dir";
 }
