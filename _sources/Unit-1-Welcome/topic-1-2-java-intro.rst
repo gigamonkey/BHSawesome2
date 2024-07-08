@@ -4,8 +4,6 @@
    :prefix: 1-2-
    :start: 1
 
-|Time45|
-
 Why Programming? Why Java?
 ============================
 
@@ -18,12 +16,15 @@ Why Programming? Why Java?
    pair: Java; source file
    pair: Java; class file
 
+What do Android phones, Minecraft, and Netflix have in common? They're all
+programmed in Java! Many of the apps you use in an Android phone or tablet are
+written in Java. If you've used App Inventor before, those apps are translated
+to Java before they are run on a phone or tablet. Netflix uses Java for some of
+its software too. Java is a **programming language** that is used worldwide to
+create software that we all use.
 
-
-
-What do Android phones, Minecraft, and Netflix have in common? They're all programmed in Java! Many of the apps you use in an Android phone or tablet are written in Java. If you've used App Inventor before, those apps are translated to Java before they are run on a phone or tablet. Netflix uses Java for some of its software too. Java is a **programming language** that is used worldwide to create software that we all use.
-
-The following `video <https://www.youtube.com/watch?v=Fc-BQzPbJmU>`_ introduces this first lesson in CSAwesome.
+The following `video <https://www.youtube.com/watch?v=Fc-BQzPbJmU>`_ introduces
+this first lesson in CSAwesome.
 
 .. youtube:: Fc-BQzPbJmU
     :width: 700
@@ -40,7 +41,6 @@ The following `video <https://www.youtube.com/watch?v=Fc-BQzPbJmU>`_ introduces 
 First Java Program
 -------------------
 
-
 .. index::
    single: class
    single: keyword
@@ -49,7 +49,11 @@ First Java Program
    pair: class; method
    pair: class; main method
 
-Every program in Java is written as a **class**. Java is an **object-oriented language** and we'll learn more about classes and objects in Unit 2. Inside the class, there can be a **main method** that starts the program. When you ask the Java run-time to *run* a class, it will always start execution in the main method. Here is the template for a simple Java program with a main method:
+Every program in Java is written as a **class**. Java is an **object-oriented
+language** and we'll learn more about classes and objects in Unit 2. Inside the
+class, there can be a **main method** that starts the program. When you ask the
+Java run-time to *run* a class, it will always start execution in the main
+method. Here is the template for a simple Java program with a main method:
 
 .. code-block:: java
 
@@ -65,7 +69,12 @@ Every program in Java is written as a **class**. Java is an **object-oriented la
 
    In Java every open curly brace ``{`` must have a matched close curly brace ``}``.  These are used to start and end class definitions and method definitions.
 
-|CodingEx| **Coding Exercise**: Click on the |runbutton| button below to have the computer execute the ``main`` method in the following class. Then, change the code  to print your name.  Be sure to keep the starting ``"`` and ending ``"``.  Click on the |runbutton| button to run the modified code. If you revisit this page later and login, click on Load History and move the bar above it to see your previous code changes.
+|CodingEx| **Coding Exercise**: Click on the |runbutton| button below to have
+the computer execute the ``main`` method in the following class. Then, change
+the code to print your name. Be sure to keep the starting ``"`` and ending
+``"``. Click on the |runbutton| button to run the modified code. If you revisit
+this page later and login, click on Load History and move the bar above it to
+see your previous code changes.
 
 .. activecode:: lcfc1
    :language: java
@@ -102,7 +111,12 @@ Every program in Java is written as a **class**. Java is an **object-oriented la
        }
    }
 
-You can copy the Java source code shown in this book into a file and save it if you want to run it locally in an integrated development environment (IDE) on your local computer (see section 1.1. for different IDEs).  You must name the file the same name as the class name with ".java" as the extension.  All code (programs) in Java must be defined inside a class in a source file, and the name of the class must match the file name.
+You can copy the Java source code shown in this book into a file and save it if
+you want to run it locally in an integrated development environment (IDE) on
+your local computer (see section 1.1. for different IDEs). You must name the
+file the same name as the class name with ".java" as the extension. All code
+(programs) in Java must be defined inside a class in a source file, and the name
+of the class must match the file name.
 
 
 .. hparsons:: mp-main-method-order-1
@@ -169,7 +183,10 @@ Java has two different methods to print output to the screen:
 - **System.out.print(value)** : prints the value without advancing to the next line
 
 
-``System.out.println("Hi there!");`` prints out the characters between the first ``"`` and the second ``"`` followed by a new line.  The ``"Hi there!"`` is called a **string literal**, and it can have zero to many characters enclosed in starting and ending double quotes.
+``System.out.println("Hi there!");`` prints out the characters between the first
+``"`` and the second ``"`` followed by a new line. The ``"Hi there!"`` is called
+a **string literal**, and it can have zero to many characters enclosed in
+starting and ending double quotes.
 
 .. activecode:: printCommands
    :language: java
@@ -286,7 +303,11 @@ one on any line ending with a ``{`` or ``}``.
 Syntax Errors and Debugging
 -----------------------------
 
-Computers don't actually speak Java so we have to **compile** (translate) Java source files that we write into class files which is code that a computer can understand and run. In this e-book, the Java code is actually being sent to a Java server to compile and run, and the output is sent back to show on the same page.
+Computers don't actually speak Java so we have to **compile** (translate) Java
+source files that we write into class files which is code that a computer can
+understand and run. In this e-book, the Java code is actually being sent to a
+Java server to compile and run, and the output is sent back to show on the same
+page.
 
 .. |Grace Hopper| raw:: html
 
@@ -297,7 +318,13 @@ Computers don't actually speak Java so we have to **compile** (translate) Java s
    <a href="https://rubberduckdebugging.com/" target="_blank">Rubber duck debugging</a>
 
 
-**Syntax errors** are reported to you by the compiler if your Java code is not correctly written. Examples of syntax errors are a semicolon ``;`` missing or if the code has a open curly brace ``{`` or open quote ``"``, but no close curly brace ``}`` or close quote ``"``. Informally, a syntax error is called a **bug**, and the process of removing errors is called **debugging**. An early computer science pioneer |Grace Hopper| documented a real bug, a moth that flew into a computer in 1947!
+**Syntax errors** are reported to you by the compiler if your Java code is not
+ correctly written. Examples of syntax errors are a semicolon ``;`` missing or
+ if the code has a open curly brace ``{`` or open quote ``"``, but no close
+ curly brace ``}`` or close quote ``"``. Informally, a syntax error is called a
+ **bug**, and the process of removing errors is called **debugging**. An early
+ computer science pioneer |Grace Hopper| documented a real bug, a moth that flew
+ into a computer in 1947!
 
 .. figure:: Figures/firstbug.jpg
     :width: 300px
@@ -307,9 +334,17 @@ Computers don't actually speak Java so we have to **compile** (translate) Java s
     Figure 2: Grace Hopper's log showing a real bug, 1947.
 
 
-The compiler tries to run your code, but if your code has **syntax errors**, you will see error messages displayed below the code. Compiler error messages will tell the line number that the compiler found the error and the type of error.  The error messages are not always easy to understand and sometimes the actual error is before the line that the compiler says is the problem.
+The compiler tries to run your code, but if your code has **syntax errors**, you
+will see error messages displayed below the code. Compiler error messages will
+tell the line number that the compiler found the error and the type of error.
+The error messages are not always easy to understand and sometimes the actual
+error is before the line that the compiler says is the problem.
 
-Watch the following video to see that all coders get bugs. Debugging is a normal part of coding. It can be frustrating at times, but you will get better at it with practice! Sometimes another pair of eyes really helps, so ask a friend if you get stuck or try explaining your code line by line to someone or even a rubber duck. |Rubber duck debugging| is a lot of fun!
+Watch the following video to see that all coders get bugs. Debugging is a normal
+part of coding. It can be frustrating at times, but you will get better at it
+with practice! Sometimes another pair of eyes really helps, so ask a friend if
+you get stuck or try explaining your code line by line to someone or even a
+rubber duck. |Rubber duck debugging| is a lot of fun!
 
 .. youtube:: auv10y-dN4s
     :width: 700
@@ -589,9 +624,17 @@ working with you. Here are some examples of good commenting:
     :align: left
     :alt: Rubber Duck
 
-In this course, you are encouraged to work together in pairs to complete the programming challenges. Pair programming is a successful software development technique where two programmers work together at one computer. One, the driver, types in code while the other, the navigator, gives ideas and feedback. The two coders switch roles frequently. Another option is buddy programming, where two or three coders work on their own computers but help each other as needed. If you're working alone, you may want to explain the code to a rubber duck or another toy using |Rubber duck debugging|.
+In this course, you are encouraged to work together in pairs to complete the
+programming challenges. Pair programming is a successful software development
+technique where two programmers work together at one computer. One, the driver,
+types in code while the other, the navigator, gives ideas and feedback. The two
+coders switch roles frequently. Another option is buddy programming, where two
+or three coders work on their own computers but help each other as needed. If
+you're working alone, you may want to explain the code to a rubber duck or
+another toy using |Rubber duck debugging|.
 
-Working in pairs, debug the following code. Can you find all the bugs and get the code to run?
+Working in pairs, debug the following code. Can you find all the bugs and get
+the code to run?
 
 
 .. activecode:: challenge1-2
@@ -647,19 +690,29 @@ Summary
        }
    }
 
-- A Java program starts with **public class NameOfClass { }**. If you are using your own files for your code, each class should be in a separate file that matches the class name inside it, for example NameOfClass.java.
+- A Java program starts with **public class NameOfClass { }**. If you are using
+  your own files for your code, each class should be in a separate file that
+  matches the class name inside it, for example NameOfClass.java.
 
-- Most Java classes have a main method that will be run automatically. It looks like this: **public static void main(String[] args) { }**.
+- Most Java classes have a main method that will be run automatically. It looks
+  like this: **public static void main(String[] args) { }**.
 
-- The **System.out.print()** and **System.out.println()** methods display information given inside the parentheses on the computer monitor.
+- The **System.out.print()** and **System.out.println()** methods display
+  information given inside the parentheses on the computer monitor.
 
-- System.out.println moves the cursor to a new line after the information has been displayed, while System.out.print does not.
+- System.out.println moves the cursor to a new line after the information has
+  been displayed, while System.out.print does not.
 
 - A **string literal** is enclosed in double quotes ('' '').
 
-- Java statements end in ``;`` (semicolon). ``{ }`` are used to enclose blocks of code. ``//`` and ``/* */`` are used for comments.
+- Java statements end in ``;`` (semicolon). ``{ }`` are used to enclose blocks
+  of code. ``//`` and ``/* */`` are used for comments.
 
-- A **compiler** translates Java code into a class file that can be run on your computer. **Compiler or syntax errors** are reported to you by the compiler if the Java code is not correctly written. Some things to check for are ``;`` at end of lines containing complete statements and matching ``{ }``, ``()``, and ``""``.
+- A **compiler** translates Java code into a class file that can be run on your
+  computer. **Compiler or syntax errors** are reported to you by the compiler if
+  the Java code is not correctly written. Some things to check for are ``;`` at
+  end of lines containing complete statements and matching ``{ }``, ``()``, and
+  ``""``.
 
 AP Practice
 ------------
