@@ -283,7 +283,7 @@ constructors.
   :language: java
   :autograde: unittest
 
-  1. Make the class ``Square`` below inherit from ``Rectangle``. 
+  1. Make the class ``Square`` below inherit from ``Rectangle``.
   2. Add a ``Square`` constructor with 1 argument for a side that calls ``Rectangle``\ ‘s constructor with 2 arguments using ``super``.
   3. Uncomment the objects in the ``main`` method to test drawing the squares.
   4. Add an ``area`` method to ``Rectangle`` that computes the area of the rectangle. Does it work for ``Square``\ s too? Test it.

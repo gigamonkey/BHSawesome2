@@ -14,13 +14,13 @@ recursive method on the exam.
    :caption Algorithms Table of Contents
    :maxdepth 3
 
-   topic-10-1-recursion-day1.rst
-   topic-10-1-recursion-day2.rst
-   topic-10-1-recursion-challenge.rst
-   topic-10-2-recursive-search-sort.rst
-   summary.rst
-   rParsonsPractice.rst
-   rMixedUpCodePractice.rst
-   topic-10-4-toggle-problems.rst
-   recursionCodePractice.rst
-   RecursionExercises.rst
+   topic-11-1-recursion-day1.rst
+   topic-11-2-recursion-day2.rst
+   topic-11-3-recursion-challenge.rst
+   topic-11-4-recursive-search-sort.rst
+   topic-11-5-summary.rst
+   topic-11-6-rParsonsPractice.rst
+   topic-11-7-rMixedUpCodePractice.rst
+   topic-11-8-toggle-problems.rst
+   topic-11-9-recursionCodePractice.rst
+   topic-11-10-RecursionExercises.rst

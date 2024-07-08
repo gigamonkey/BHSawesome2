@@ -11,7 +11,7 @@ Summary TK
    :caption Variables and assignment Table of Contents
    :maxdepth 3
 
-   topic-1-3-variables.rst
-   topic-1-4-assignment.rst
-   topic-1-5-shortcutoperators.rst
+   topic-3-1-variables.rst
+   topic-3-2-assignment.rst
+   topic-3-3-shortcutoperators.rst
 

@@ -13,17 +13,17 @@ extend superclasses.
    :maxdepth 3
 
    topic-9-1-inheritance-day1.rst
-   topic-9-1-inheritance-day2.rst
-   topic-9-2-constructors.rst
-   topic-9-3-overriding.rst
-   topic-9-4-super.rst
-   topic-9-5-hierarchies.rst
-   topic-9-6-polymorphism.rst
-   topic-9-7-Object.rst
-   ooSummary.rst
-   freeResponse.rst
-   ooParsonsPractice.rst
-   topic-9-10-toggle-problems.rst
-   ooCodePractice.rst
-   InheritanceExercises.rst
-   CBLabs.rst
+   topic-9-2-inheritance-day2.rst
+   topic-9-3-constructors.rst
+   topic-9-4-overriding.rst
+   topic-9-5-super.rst
+   topic-9-6-hierarchies.rst
+   topic-9-7-polymorphism.rst
+   topic-9-8-Object.rst
+   topic-9-9-ooSummary.rst
+   topic-9-10-freeResponse.rst
+   topic-9-11-ooParsonsPractice.rst
+   topic-9-12-toggle-problems.rst
+   topic-9-13-ooCodePractice.rst
+   topic-9-14-InheritanceExercises.rst
+   topic-9-15-CBLabs.rst

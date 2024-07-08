@@ -11,10 +11,10 @@ Summary TK
    :caption Expressions Table of Contents
    :maxdepth 3
 
-   topic-3-1-booleans.rst
-   topic-1-6-casting.rst
-   topic-1-7-summary.rst
-   topic-1-8-practice-mixed-code.rst
-   topic-1-8-practice-mixed-code-toggle.rst
-   topic-1-9-practice-coding.rst
-   GettingStartedExercises.rst
+   topic-2-1-booleans.rst
+   topic-2-2-casting.rst
+   topic-2-3-summary.rst
+   topic-2-4-practice-mixed-code.rst
+   topic-2-5-practice-mixed-code-toggle.rst
+   topic-2-6-practice-coding.rst
+   topic-2-7-GettingStartedExercises.rst
