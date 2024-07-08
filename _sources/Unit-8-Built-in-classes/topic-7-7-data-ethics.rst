@@ -4,7 +4,6 @@
    :prefix: 7-7-
    :start: 1
 
-|Time45|
 
 Ethics of Data Collection and Data Privacy
 ==========================================

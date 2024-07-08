@@ -4,7 +4,6 @@
    :prefix: 6-3-
    :start: 1
 
-|Time45|
 
 Enhanced For-Loop (For-Each) for Arrays
 =======================================

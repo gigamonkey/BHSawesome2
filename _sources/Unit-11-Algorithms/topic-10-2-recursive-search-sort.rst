@@ -5,7 +5,6 @@
    :start: 1
 
 
-|Time90|
 
 Recursive Searching and Sorting
 -------------------------------

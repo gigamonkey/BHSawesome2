@@ -7,7 +7,6 @@
 .. highlight:: java
    :linenothreshold: 4
 
-|Time45|
 
 Activity 3: Better Keyword Detection
 =======================================

@@ -19,7 +19,6 @@
     pair: operators; equality
     pair: operators; inequality
 
-|Time45|
 
 Compound Assignment Operators
 =============================

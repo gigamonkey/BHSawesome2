@@ -8,7 +8,6 @@
 
     <style>    td { text-align: left; } </style>
 
-|Time90|
 
 Equivalent Boolean Expressions (De Morgan's Laws)
 =================================================

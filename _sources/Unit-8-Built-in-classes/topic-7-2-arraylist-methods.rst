@@ -4,7 +4,6 @@
    :prefix: 7-2-
    :start: 1
 
-|Time45|
 
 .. raw:: html
 

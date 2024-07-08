@@ -20,7 +20,6 @@
     :align: top
     :alt: run button
 
-|Time90|
 
 Calling Methods With Parameters
 ===========================================

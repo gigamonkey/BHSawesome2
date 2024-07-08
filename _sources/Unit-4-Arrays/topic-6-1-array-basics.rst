@@ -4,7 +4,6 @@
    :prefix: 6-1-
    :start: 1
 
-|Time90|
 
 Array Creation and Access
 ==========================

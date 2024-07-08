@@ -4,7 +4,6 @@
    :prefix: 6-2-
    :start: 1
 
-|Time90|
 
 Traversing Arrays with For Loops
 ==========================================

@@ -4,7 +4,6 @@
    :prefix: √2-2-
    :start: 1
 
-|Time45|
 
 Writing Methods
 ===============

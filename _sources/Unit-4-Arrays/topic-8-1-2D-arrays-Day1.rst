@@ -4,7 +4,6 @@
    :prefix: 8-1-
    :start: 1
 
-|Time45|
 
 2D Arrays (Day 1)
 -----------------

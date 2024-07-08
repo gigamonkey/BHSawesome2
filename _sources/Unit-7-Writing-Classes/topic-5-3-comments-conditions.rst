@@ -4,7 +4,6 @@
    :prefix: 5-3-
    :start: 1
 
-|Time45|
 
 Comments and Conditions
 =======================

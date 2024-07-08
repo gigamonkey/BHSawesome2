@@ -4,7 +4,6 @@
    :prefix: 5-2-
    :start: 1
 
-|Time45|
 
 Writing Constructors
 ====================

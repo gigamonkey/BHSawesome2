@@ -4,7 +4,6 @@
    :prefix: 7-1-
    :start: 1
 
-|Time45|
 
 Intro to ArrayLists
 =======================

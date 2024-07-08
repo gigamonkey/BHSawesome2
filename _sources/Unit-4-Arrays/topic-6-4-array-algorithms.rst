@@ -4,7 +4,6 @@
    :prefix: 6-4-
    :start: 1
 
-|Time90|
 
 Array Algorithms (FRQs)
 =======================

@@ -10,8 +10,6 @@
    pair: Variable; boolean
    pair: boolean; variable
 
-|Time45|
-
 Boolean Expressions
 ===================
 

@@ -4,7 +4,6 @@
    :prefix: 3-7-
    :start: 1
 
-|Time45|
 
 Comparing Objects
 =================

@@ -9,7 +9,6 @@
 
     <style>    td { text-align: left; } </style>
 
-|Time90|
 
 Compound Boolean Expressions
 ============================

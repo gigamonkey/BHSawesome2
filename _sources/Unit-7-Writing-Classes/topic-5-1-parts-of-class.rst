@@ -4,7 +4,6 @@
    :prefix: 5-1-
    :start: 1
 
-|Time90|
 
 Anatomy of a Java Class
 =======================

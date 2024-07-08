@@ -1,6 +1,5 @@
 .. include:: ../common.rst
 
-|Time90|
 
 Picture Lab A5: Modifying a Picture
 =====================================================

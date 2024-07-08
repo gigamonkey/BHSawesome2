@@ -5,7 +5,6 @@
    :start: 1
 
 
-|Time45|
 
 if Statements and Control Flow
 ===============================

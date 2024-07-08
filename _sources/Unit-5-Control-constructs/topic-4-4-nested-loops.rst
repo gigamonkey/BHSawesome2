@@ -4,7 +4,6 @@
    :prefix: 4-4-
    :start: 1
 
-|Time90|
 
 Nested For Loops
 ================

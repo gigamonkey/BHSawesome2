@@ -4,7 +4,6 @@
    :prefix: 10-1-
    :start: 9
 
-|Time45|
 
 Tracing Recursive Methods (Day 2)
 ===================================

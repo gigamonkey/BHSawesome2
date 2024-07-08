@@ -1,6 +1,5 @@
 .. include:: ../common.rst
 
-|Time90|
 
 .. |Explorer Repl| raw:: html
 

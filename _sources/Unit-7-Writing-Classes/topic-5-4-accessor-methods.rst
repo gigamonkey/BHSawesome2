@@ -4,7 +4,6 @@
    :prefix: 5-4-
    :start: 1
 
-|Time45|
 
 Accessors / Getters
 ===================

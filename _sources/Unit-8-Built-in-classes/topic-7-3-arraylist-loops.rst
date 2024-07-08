@@ -4,7 +4,6 @@
    :prefix: 7-3-
    :start: 1
 
-|Time90|
 
 Traversing ``ArrayList``\ s with Loops
 ================================

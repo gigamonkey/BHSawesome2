@@ -4,7 +4,6 @@
    :prefix: 4-1-
    :start: 1
 
-|Time90|
 
 While Loops
 ============

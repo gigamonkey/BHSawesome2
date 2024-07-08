@@ -4,7 +4,6 @@
    :prefix: 5-10-
    :start: 1
 
-|Time45|
 
 Social Impacts of CS
 ====================

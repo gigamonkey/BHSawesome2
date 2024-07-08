@@ -4,7 +4,6 @@
    :prefix: 7-6-
    :start: 1
 
-|Time45|
 
 Sorting Algorithms
 ==================

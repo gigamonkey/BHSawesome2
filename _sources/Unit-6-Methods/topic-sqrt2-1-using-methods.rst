@@ -4,7 +4,6 @@
    :prefix: √2-1-
    :start: 1
 
-|Time90|
 
 Using Methods
 =============

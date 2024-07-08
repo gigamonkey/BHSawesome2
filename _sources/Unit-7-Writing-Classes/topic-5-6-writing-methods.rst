@@ -14,7 +14,6 @@
     pair: method; argument
     pair: method; return
 
-|Time90|
 
 Writing Methods
 =================

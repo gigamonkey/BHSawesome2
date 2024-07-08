@@ -4,7 +4,6 @@
    :prefix: 4-5-
    :start: 1
 
-|Time45|
 
 Loop Analysis
 ==============

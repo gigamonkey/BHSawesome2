@@ -4,7 +4,6 @@
    :prefix: 1-6-
    :start: 1
 
-|Time45|
 
 Casting and Ranges of Values
 ============================

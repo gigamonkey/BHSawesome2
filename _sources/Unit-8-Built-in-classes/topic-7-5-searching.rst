@@ -8,7 +8,6 @@
 
     <style>    td { text-align: left; } </style>
 
-|Time90|
 
 Searching Algorithms
 ======================

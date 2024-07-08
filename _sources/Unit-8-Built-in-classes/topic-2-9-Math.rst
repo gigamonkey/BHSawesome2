@@ -4,7 +4,6 @@
    :prefix: 2-9-
    :start: 1
 
-|Time45|
 
 Using the Math Class
 ====================

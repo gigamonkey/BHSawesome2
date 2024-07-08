@@ -4,7 +4,6 @@
    :prefix: 5-5-
    :start: 1
 
-|Time45|
 
 Mutators / Setters
 ==================
