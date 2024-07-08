@@ -7,12 +7,12 @@
 
 
 Recursive Searching and Sorting
--------------------------------
+===============================
 
 In Unit 7, we learned about searching and sorting algorithms using iteration (loops) to search or sort arrays and ArrayLists. In this lesson, we will take a look at a **recursive binary search** algorithm and a **recursive merge-sort** algorithm.
 
 Recursive Binary Search
-=========================
+-----------------------
 
 In Unit 7, we learned about two search algorithms, linear search and binary search. Linear search searches for an element in an array or ArrayList by checking each element in order. Binary search is more efficient (faster) because it starts at the middle of a sorted array or ArrayList and eliminates half of the array or ArrayList each pass through the algorithm. Binary search only works on sorted data. It can be written with iteration (using a loop) like below or recursively.
 
@@ -127,7 +127,7 @@ Here is the Java code for a recursive binary search:
 Try the recursive binary search code in this |Java visualizer link|.
 
 Merge Sort
-==========================
+----------
 
 .. index::
    single: merge sort
@@ -282,7 +282,7 @@ You can trace through a merge sort algorithm given an array by using parentheses
    Which sort should be the fastest most of the time?
 
 |Groupwork| Tracing Challenge : Recursive Search and Sort
-==========================================================
+---------------------------------------------------------
 
 
 Working in pairs, practice the recursive binary search and merge sort algorithms with a deck of cards or pieces of paper with numbers or names on them.  Here's a |video3| that shows merge sort with cards.
@@ -305,7 +305,7 @@ Work in pairs to do the following tracing problems.
     Trace through recursiveBinarySearch(sortedArray, 0, 8, 22) looking for the target number 22 where sortedArray = {2, 5, 8, 10, 11, 15, 17, 20, 22}. Write down each middle element that is checked and the start and end index for each recursive call. How many elements did the binary search have to check before finding 22?  How would this compare to a linear search?
 
 Summary
-============
+-------
 
 - The binary search algorithm can be written either iteratively or recursively.
 

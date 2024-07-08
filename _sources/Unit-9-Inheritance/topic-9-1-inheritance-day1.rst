@@ -6,8 +6,8 @@
 
 
 
-Inheritance (Day 1)
--------------------
+Inheritance
+===========
 
 One of the really useful features of Object-Oriented programming is **inheritance**.  You may have heard of someone coming into an inheritance, which often means they were left something from a relative who died.  Or, you might hear someone say that they have inherited musical ability from a parent.  In Java all classes can **inherit** attributes (instance variables) and behaviors (methods) from another class.  The class being inherited from is called the **parent class** or **superclass**.  The class that is inheriting is called the **child class** or **subclass**.
 
@@ -164,4 +164,3 @@ The Student class can also inherit from the class Person just like Employee and 
            assertTrue(passed);
        }
    }
-

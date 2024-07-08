@@ -1,6 +1,5 @@
-
 Code Practice for Recursion
----------------------------------------------
+===========================
 
 .. tabbed:: recursionCode1
 

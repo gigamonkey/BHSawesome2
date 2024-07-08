@@ -3,7 +3,7 @@
    :start: 1
 
 Code Practice with ArrayLists
---------------------------------
+=============================
 
 .. tabbed:: ch8Ex1
 
@@ -753,7 +753,7 @@ Code Practice with ArrayLists
                           {
                               list.remove(count);
                           }
-                          else 
+                          else
                           {
                               count++;
                           }

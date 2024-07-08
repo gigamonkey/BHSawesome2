@@ -1,6 +1,3 @@
-Survey
--------
-
 Sisters Rise Up
 ===============
 
@@ -12,7 +9,7 @@ If you have questions please email Barbara Ericson (barbarer@umich.edu).
 
 
 Survey
-======
+------
 
 .. |Privacy Policy| raw:: html
 
@@ -125,6 +122,3 @@ Please log into Runestone and fill out the following survey.  You do not have to
    :option_6: prefer not to answer
 
    I would like to pursue further study or a career in computing.
-
-
-

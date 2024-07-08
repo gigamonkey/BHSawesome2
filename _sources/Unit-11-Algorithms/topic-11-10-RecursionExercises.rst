@@ -3,7 +3,7 @@
    :start: 1
 
 Exercises
------------
+=========
 
 .. toctree::
    :maxdepth: 3
@@ -12,5 +12,3 @@ Exercises
    rEasyMC.rst
    rMedMC.rst
    rHardMC.rst
-
-

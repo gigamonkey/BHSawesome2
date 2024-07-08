@@ -140,7 +140,7 @@ Once ``strMethod("y")`` returns, the value from each recursive call on the stack
 
 
 Summary
-============
+-------
 
 - A recursive method is a method that calls itself.
 

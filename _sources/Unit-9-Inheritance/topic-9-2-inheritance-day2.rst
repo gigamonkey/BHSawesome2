@@ -6,8 +6,8 @@
 
 
 
-is-a vs. has-a (Day 2)
----------------------------------------
+is-a vs. has-a
+==============
 
 .. index::
     single: has-a
@@ -199,24 +199,24 @@ Working in pairs or groups, design an online store with classes for Store, ItemF
 
   Declare at least 2 instance variables for each of the classes below. Create an inheritance or association relationship for some of them.
   ~~~~
-  class ItemForSale 
+  class ItemForSale
   {
-  
+
   }
 
-  class Movie 
+  class Movie
   {
-  
+
   }
 
-  class Book 
+  class Book
   {
-  
+
   }
 
-  class Author 
+  class Author
   {
-  
+
   }
 
   public class Store
@@ -344,4 +344,3 @@ Summary
 - The keyword **extends** is used to establish an **inheritance** relationship between a **subclass** and a **superclass**.  A class can extend only one superclass.
 
 - Extending a subclass from a superclass creates an **is-a relationship** from the subclass to the superclass.
-

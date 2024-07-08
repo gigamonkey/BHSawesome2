@@ -3,7 +3,7 @@
    :start: 1
 
 Practice Exam for Arrays
--------------------------
+========================
 
 The following problems are *harder* than what you will probably see on the AP CSA exam.  They come from research in computer science education and test your ability to trace and understand complex code with loops, arrays, and conditionals.  They are used with permission from Raymond Lister of the University of Technology, Sydney, Australia.
 

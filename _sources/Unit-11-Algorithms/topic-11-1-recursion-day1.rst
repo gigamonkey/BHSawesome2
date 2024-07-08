@@ -6,8 +6,8 @@
 
 
 
-What is Recursion? (Day 1)
-===============================
+What is Recursion?
+==================
 
 .. index::
     single: recursion
@@ -90,7 +90,7 @@ many times you can recurse.)
 
 
 Why use Recursion?
-==================
+------------------
 
 .. index::
     single: fractal
@@ -146,7 +146,7 @@ navigate a 2D array a pair of nested ``for`` loops is the way to go. But if you
 need to traverse a tree structure, recursion should be your go to.
 
 Factorial Method
-=================
+----------------
 
 The following video is also on YouTube at https://youtu.be/V2S_8E_ubBY.  It introduces the concept of recursion and tracing recursion with the factorial method.
 
@@ -236,7 +236,7 @@ computation at https://gigamonkeys.com/misc/factorial/#java.
    }
 
 Base Case
-==========
+---------
 
 .. index::
     single: base case
@@ -353,6 +353,3 @@ case—that’s the equivalent in recursion to incrementing your loop variable i
          }
          return total;
       }
-
-
-Continue to the next page for Day 2 of the Recursion lesson.

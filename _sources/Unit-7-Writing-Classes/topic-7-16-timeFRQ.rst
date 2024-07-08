@@ -1,5 +1,5 @@
 Free Response Question - Time
--------------------------------
+=============================
 
 .. index::
     single: time
@@ -557,4 +557,3 @@ Use conditionals (if statements) to check for each of these conditions and take 
             assertTrue(passed);
         }
     }
-

@@ -3,7 +3,7 @@
    :start: 1
 
 ArrayList Summary
--------------------------
+=================
 
 .. index::
    single: List
@@ -24,7 +24,7 @@ Lists also differ from arrays in that you can have an array of any of the primit
 
 
 Concept Summary
-=================
+---------------
 
 - **Autoboxing** - Automatically wrapping a primitive type in a wrapper class object.  For instance if you try to add an ``int`` value to a list, it will automatically be converted to an ``Integer`` object.
 - **Abstract Method** - A method that only has a declaration and no method body (no code inside the method).
@@ -42,7 +42,7 @@ Concept Summary
 
 
 Vocabulary Practice
-===================
+-------------------
 
 .. dragndrop:: ch10_17_match_1
     :feedback: Review the summaries above.
@@ -71,7 +71,8 @@ Vocabulary Practice
 For more practice, see this |Quizlet|.
 
 Common Mistakes
-===============
+---------------
+
   -  forgetting that ``set`` replaces the item at the index
   -  forgetting that ``remove`` at an index moves all items that were to the right of that index left one index
   -  forgetting that ``add`` at an index moves everything that was at the index and greater to the right one index

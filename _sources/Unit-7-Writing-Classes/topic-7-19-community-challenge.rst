@@ -2,7 +2,7 @@
 
 
 |Groupwork| Design a Class for your Community Project
-----------------------------------------------------------
+=====================================================
 
 .. |worksheet| raw:: html
 
@@ -30,7 +30,7 @@ You can work in pairs on this project.
 
 
 Code your Class
-=================
+---------------
 
 1. Create your class and its instance variables below.
 
@@ -209,7 +209,7 @@ You will continue this project in Unit 6 in lessons 6.1-6.3 to create an array o
 
 
 Optional Swing GUI
-=====================
+------------------
 
 .. |Java Swing Example| raw:: html
 

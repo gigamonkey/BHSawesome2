@@ -3,7 +3,7 @@
    :start: 1
 
 Midterm Test
---------------
+============
 
 The following 20 questions are similar to what you might see on the AP CSA exam for Units 1 - 5.  You may only take this test once while logged in. There are no time limits, but it will keep track of how much time you take. Click on the finish button after you have answered all the questions, and the number correct and feedback on the answers will be displayed.
 

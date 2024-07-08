@@ -3,7 +3,7 @@
    :start: 1
 
 Code Practice with Object Oriented Concepts
----------------------------------------------
+===========================================
 
 .. tabbed:: ooEx1
 
@@ -1296,4 +1296,3 @@ Code Practice with Object Oriented Concepts
             .. disqus::
                 :shortname: cslearn4u
                 :identifier: javareview_ooex12d
-

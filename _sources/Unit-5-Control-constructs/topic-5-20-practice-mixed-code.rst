@@ -3,7 +3,7 @@
    :start: 1
 
 Mixed Up Code Practice
-------------------------------
+======================
 
 Try to solve each of the following. Click the *Check Me* button to check each solution.  You will be told if your solution is too short, has a block in the wrong order, or you are using the wrong block.  Some of the problems have an extra block or two that aren't needed in the correct solution.  Try to solve these on your phone or other mobile device!
 
@@ -17,7 +17,7 @@ Try to solve each of the following. Click the *Check Me* button to check each so
    -----
    int x = 20;
    =====
-   while (x <= 30) 
+   while (x <= 30)
    {
    =====
        System.out.println(x);
@@ -70,7 +70,7 @@ Try to solve each of the following. Click the *Check Me* button to check each so
    =====
            int x = 0;
    =====
-           while (x <= 50) 
+           while (x <= 50)
    =====
            while (x < 50)  #paired
    =====
@@ -152,16 +152,16 @@ Try to solve each of the following. Click the *Check Me* button to check each so
        public static void main(String[] args)
        {
    =====
-           for (int x = 3; x > 0; x--) 
+           for (int x = 3; x > 0; x--)
            {
    =====
-           for (int x = 0; x <= 3; x++) 
+           for (int x = 0; x <= 3; x++)
            { #paired
    =====
-               for (int y = 6; y > 0; y--) 
+               for (int y = 6; y > 0; y--)
                {
    =====
-               for (int y = 0; y <= 6; y++) 
+               for (int y = 0; y <= 6; y++)
                { #paired
    =====
                     System.out.print("*");
@@ -189,13 +189,13 @@ Try to solve each of the following. Click the *Check Me* button to check each so
        public static void main(String[] args)
        {
    =====
-           for (int x = 1; x <= 3; x++) 
+           for (int x = 1; x <= 3; x++)
            {
    =====
-           for (int x = 0; x < 3; x++) 
+           for (int x = 0; x < 3; x++)
            { #paired
    =====
-               for (int y = 0; y < x; y++) 
+               for (int y = 0; y < x; y++)
                {
    =====
                    System.out.print(x);
@@ -221,13 +221,13 @@ Try to solve each of the following. Click the *Check Me* button to check each so
        public static void main(String[] args)
        {
    =====
-           for (int x = 1; x <= 5; x++) 
+           for (int x = 1; x <= 5; x++)
            {
    =====
-           for (int x = 1; x < 5; x++) 
+           for (int x = 1; x < 5; x++)
            { #paired
    =====
-               for (int y = 0; y < 5; y++) 
+               for (int y = 0; y < 5; y++)
                {
    =====
                    System.out.print(x);
@@ -258,10 +258,10 @@ Try to solve each of the following. Click the *Check Me* button to check each so
        public static void main(String[] args)
        {
    =====
-           for (int x = 0; x < 5; x++) 
+           for (int x = 0; x < 5; x++)
            {
    =====
-               for (int y = 5; y > x; y--) 
+               for (int y = 5; y > x; y--)
                {
    =====
                    System.out.print(x+1);

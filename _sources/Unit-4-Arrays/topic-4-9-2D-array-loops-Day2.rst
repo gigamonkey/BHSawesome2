@@ -6,7 +6,7 @@
 
 
 Enhanced For-Each Loop for 2D Arrays (Day 2)
-----------------------------------------------------
+============================================
 
 .. index::
    pair: 2D Array; for-each loop
@@ -177,7 +177,7 @@ You can loop through just part of a 2D array. You can change the starting value 
    ~~~~
    public class Count
    {
-       public static int countValues(int value, int[][] a, int rowStart, 
+       public static int countValues(int value, int[][] a, int rowStart,
                                   int rowEnd, int colStart, int colEnd)
        {
            int count = 0;
@@ -345,7 +345,7 @@ Photographs and images are made up of a 2D array of **pixels** which are tiny pi
 The color of a pixel is represented using the RGB (Red, Green, Blue) color
 model, which stores values for red, green, and blue, each ranging from 0 to 255. You can make any color by mixing these values! Try the |RGB Color Mixer| to experiment. Can you make black? Can you make white? Can you make purple? You can learn more about pixels in the |Picture Lab A1 to A3|.
 
-In Java, we can write a ``Pixel`` class to represent a pixel in an image at a given x and y coordinate. 
+In Java, we can write a ``Pixel`` class to represent a pixel in an image at a given x and y coordinate.
 
 .. code-block:: java
 
@@ -356,7 +356,7 @@ In Java, we can write a ``Pixel`` class to represent a pixel in an image at a gi
        /** Implementation not shown * */
    }
 
-The |CB Picture Lab| contains a ``Pixel`` class and a ``Picture`` class that loads an image and creates a 2D array of pixels to represent it. For example, the ``Picture`` constructor below loads the image ``beach.jpg``, and the ``getPixels2D`` method returns its 2D array of pixels. You can get and set the red, green, and/or blue value for a Pixel object to change its color.  
+The |CB Picture Lab| contains a ``Pixel`` class and a ``Picture`` class that loads an image and creates a 2D array of pixels to represent it. For example, the ``Picture`` constructor below loads the image ``beach.jpg``, and the ``getPixels2D`` method returns its 2D array of pixels. You can get and set the red, green, and/or blue value for a Pixel object to change its color.
 
 .. code-block:: java
 

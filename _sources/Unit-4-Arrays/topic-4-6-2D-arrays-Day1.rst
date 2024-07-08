@@ -6,7 +6,7 @@
 
 
 2D Arrays (Day 1)
------------------
+=================
 
 We have only worked with one-dimensional arrays so far, which have a single row
 of elements. But in the real world, data is often represented in a

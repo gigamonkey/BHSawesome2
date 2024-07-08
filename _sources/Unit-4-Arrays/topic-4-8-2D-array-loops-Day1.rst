@@ -6,7 +6,7 @@
 
 
 Nested Loops for 2D Arrays (Day 1)
------------------------------------
+==================================
 
 Nested loops can be used to traverse 2D arrays row by row and column by column.
 In this lesson, you will learn how to use nested loops to traverse a 2D Array.

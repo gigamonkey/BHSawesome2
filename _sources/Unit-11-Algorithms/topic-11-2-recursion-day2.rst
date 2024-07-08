@@ -5,8 +5,8 @@
    :start: 9
 
 
-Tracing Recursive Methods (Day 2)
-===================================
+Tracing Recursive Methods
+=========================
 
 .. index::
     single: call stack
@@ -299,11 +299,11 @@ You can step through the code above using the Java Visualizer by clicking on the
         }
         else
         {
-           if (str.substring(0,1).equals("y")) 
+           if (str.substring(0,1).equals("y"))
            {
                return 1 + mystery(str.substring(1));
            }
-           else 
+           else
            {
                return mystery(str.substring(1));
            }
@@ -311,5 +311,3 @@ You can step through the code above using the Java Visualizer by clicking on the
      }
 
 You can step through the code above using the Java Visualizer by clicking on the following link: `Ex-11-3-5 <http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=public+class+Test+%7B%0A+++%0A+++public+static+int+mystery(String+str)+%0A+++%7B%0A++++++++if+(str.length()+%3D%3D+1)+return+0%3B%0A++++++++else%0A++++++++%7B%0A+++++++++++if+(str.substring(0,1).equals(%22y%22))+return+1+%2B+%0A++++++++++++++++++++++++++++++++mystery(str.substring(1))%3B%0A+++++++++++else+return+mystery(str.substring(1))%3B%0A++++++++%7D%0A+++%7D%0A+++%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++System.out.println(mystery(%22xyzxyxy%22))%3B%0A+++%7D%0A%7D&mode=display&curInstr=0>`_
-
-Continue to the next page for the Recursion lesson challenge and summary.

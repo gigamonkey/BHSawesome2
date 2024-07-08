@@ -3,7 +3,7 @@
    :start: 1
 
 Coding Practice with Loops
-------------------------------------
+==========================
 
 .. tabbed:: ch6ex1
 
@@ -666,12 +666,12 @@ Coding Practice with Loops
                   {
                       for (int x = 10; x >= 1; x--)
                       {
-                          if (x % 2 == 0) 
+                          if (x % 2 == 0)
                           {
                               System.out.println(x + " is even");
                           }
-                          else 
-                          { 
+                          else
+                          {
                               System.out.println(x + " is odd");
                           }
                       }
