@@ -53,9 +53,7 @@ didn’t learn about in 3rd grade.
    :caption Expressions Table of Contents
    :maxdepth: 1
 
-   topic-numeric-expressions.rst
-   topic-operators.rst
-   topic-casting.rst
+   topic-numbers.rst
    topic-booleans.rst
    topic-compound-ifs.rst
    topic-DeMorgan.rst
