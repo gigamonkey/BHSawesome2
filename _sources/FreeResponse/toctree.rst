@@ -9,7 +9,7 @@ Summary TK
 
 .. toctree::
    :caption FreeResponse Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
    RandomStringChooserA.rst
    RandomStringChooserB.rst

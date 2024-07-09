@@ -10,7 +10,7 @@ extend superclasses.
 
 .. toctree::
    :caption Inheritance Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
    topic-what-is-inheritance.rst
    topic-constructors-in-inheritance.rst

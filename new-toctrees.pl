@@ -39,7 +39,7 @@ Summary TK
 
 .. toctree::
    :caption $name Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
 EOF
   foreach my $file (@$files) {

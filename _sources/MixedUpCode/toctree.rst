@@ -9,7 +9,7 @@ Summary TK
 
 .. toctree::
    :caption Mixed Up Code Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
    topic-practice-mixed-code-unit-2.rst
    topic-practice-mixed-code-unit-2-toggle.rst

@@ -9,7 +9,7 @@ Summary TK
 
 .. toctree::
    :caption Control constructs Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
    topic-ifs.rst
    topic-if-else.rst

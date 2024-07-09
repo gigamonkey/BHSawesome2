@@ -9,7 +9,7 @@ Summary TK
 
 .. toctree::
    :caption Tests Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
    testPractice.rst
    test1nt.rst

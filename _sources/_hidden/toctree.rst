@@ -9,7 +9,7 @@ Summary TK
 
 .. toctree::
    :caption _hidden Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
    Ex-array-orig.rst
 

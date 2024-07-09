@@ -9,7 +9,7 @@ Summary TK
 
 .. toctree::
    :caption MixedFreeResponse Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
    RandomStringChooserParsonsA.rst
    RandomStringChooserA2.rst

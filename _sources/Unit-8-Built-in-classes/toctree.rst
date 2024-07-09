@@ -9,7 +9,7 @@ Summary TK
 
 .. toctree::
    :caption Built in classes Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
    topic-strings.rst
    topic-string-methods.rst

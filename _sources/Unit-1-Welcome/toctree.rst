@@ -13,7 +13,7 @@ demographic survey. The Java lessons start in 1.2.
 
 .. toctree::
    :caption Welcome Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
    topic-preface.rst
    topic-aboutcsa.rst

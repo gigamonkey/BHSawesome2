@@ -9,7 +9,7 @@ Summary TK
 
 .. toctree::
    :caption TimedTests Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
    test1.rst
    test3.rst

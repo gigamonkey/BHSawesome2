@@ -12,7 +12,7 @@ recursive method on the exam.
 
 .. toctree::
    :caption Algorithms Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
    topic-what-is-recursion.rst
    topic-recursive-search-sort.rst

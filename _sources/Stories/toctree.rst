@@ -9,7 +9,7 @@ Summary TK
 
 .. toctree::
    :caption Stories Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
    challengesInComputing.rst
    intervieweeIndex.rst

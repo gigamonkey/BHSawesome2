@@ -9,6 +9,6 @@ Summary TK
 
 .. toctree::
    :caption Object Oriented Design Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
    topic-oo-design.rst

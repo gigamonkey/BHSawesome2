@@ -9,7 +9,7 @@ Summary TK
 
 .. toctree::
    :caption Methods Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
    topic-topic-sqrt2-1-using-methods.rst
    topic-topic-sqrt2-2-writing-methods.rst

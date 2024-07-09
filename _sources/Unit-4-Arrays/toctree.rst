@@ -9,7 +9,7 @@ Summary TK
 
 .. toctree::
    :caption Arrays Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
    topic-array-basics.rst
    topic-traversing-arrays.rst

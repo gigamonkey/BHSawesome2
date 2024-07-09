@@ -9,7 +9,7 @@ Summary TK
 
 .. toctree::
    :caption Variables and assignment Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
    topic-variables.rst
    topic-assignment.rst

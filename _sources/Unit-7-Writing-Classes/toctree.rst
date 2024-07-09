@@ -9,7 +9,7 @@ Summary TK
 
 .. toctree::
    :caption Writing-Classes Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
    topic-parts-of-class.rst
    topic-writing-constructors.rst

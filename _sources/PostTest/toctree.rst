@@ -9,7 +9,7 @@ Summary TK
 
 .. toctree::
    :caption PostTest Table of Contents
-   :maxdepth 3
+   :maxdepth: 3
 
    posttest.rst
 
