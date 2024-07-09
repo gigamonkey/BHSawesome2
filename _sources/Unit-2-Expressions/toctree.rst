@@ -51,12 +51,10 @@ didn’t learn about in 3rd grade.
 
 .. toctree::
    :caption Expressions Table of Contents
-   :maxdepth: 1
+   :maxdepth: 3
 
    topic-numbers.rst
    topic-booleans.rst
-   topic-compound-ifs.rst
-   topic-DeMorgan.rst
    topic-comparing-objects.rst
    topic-summary.rst
    topic-GettingStartedExercises.rst
