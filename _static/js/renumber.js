@@ -9,11 +9,9 @@ const skipRenumbering = true;
 
 const numbers = [
   "1",
-  //"√2",
   "2",
   "3",
   "4",
-  // "4½",
   "5",
   "6",
   "7",
@@ -27,6 +25,9 @@ const numbers = [
   "15",
   "16",
   "17",
+  "18",
+  "19",
+  "20",
 ];
 
 // Adjust these two values. They are indices, not the unit numbers.
@@ -49,8 +50,6 @@ const selectors = [
 ];
 
 const chapterNum = /^(\d+)(\.| )(.*)$/;
-
-const newNumber = (orig) => numbers[orig - 1];
 
 const renumber = (e) => {
   e.innerText = e.innerText.replace(chapterNum, (match, p1, p2, p3) => `${numbers[p1 - 1]}${p2}${p3}`);
@@ -103,6 +102,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
   }
 
   // Fill the small toc if it's on the page
-  document.getElementById('small_toc')?.replaceWith(buildSmallTOC());
+  //document.getElementById('small_toc')?.replaceWith(buildSmallTOC());
 
 });

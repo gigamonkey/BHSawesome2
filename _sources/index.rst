@@ -25,7 +25,8 @@ ATTENTION high school women of color taking AP CSA or CSP: if you identify as fe
 
 .. Apply for the  ACM Cutler-Bell Scholarship https://csteachers.org/awards/cutlerbell/ until Jan. 19th.
 
-**CSAwesome Units:**
+Units
+=====
 
 .. raw:: html
 
@@ -43,8 +44,32 @@ ATTENTION high school women of color taking AP CSA or CSP: if you identify as fe
    (e.g. "DataStructures/queues.rst").
 
 
-Table of Contents
-:::::::::::::::::
+.. toctree::
+   :numbered:
+   :maxdepth: 1
+
+   Unit-1-Welcome/toctree.rst
+   Unit-2-Expressions/toctree.rst
+   Unit-3-Variables-and-assignment/toctree.rst
+   Unit-4-Arrays/toctree.rst
+   Unit-5-Control-constructs/toctree.rst
+   Unit-6-Methods/toctree.rst
+   Unit-7-Writing-Classes/toctree.rst
+   Unit-8-Built-in-classes/toctree.rst
+   Unit-9-Inheritance/toctree.rst
+   Unit-10-OO-design/toctree.rst
+   Unit-11-Algorithms/toctree.rst
+   PostTest/toctree.rst
+   MixedUpCode/toctree.rst
+   CodingPractice/toctree.rst
+   Tests/toctree.rst
+   TimedTests/toctree.rst
+   MixedFreeResponse/toctree.rst
+   FreeResponse/toctree.rst
+   Stories/toctree.rst
+
+Full table of contents
+======================
 
 
 .. raw:: html
@@ -52,6 +77,7 @@ Table of Contents
    <ul>
    <li><a href="/runestone/assignments/chooseAssignment.html">Assignments</a></li>
    </ul>
+
 
 
 .. toctree::
