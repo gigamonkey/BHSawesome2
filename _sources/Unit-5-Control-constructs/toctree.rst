@@ -18,8 +18,8 @@ Summary TK
    topic-5-5-DeMorgan.rst
    topic-5-6-comparing-objects.rst
    topic-5-7-conditional-summary.rst
-   topic-5-8-conditioal-practice-mixed-code.rst
-   topic-5-9-conditioal-practice-mixed-code-toggle.rst
+   topic-5-8-conditional-practice-mixed-code.rst
+   topic-5-9-conditional-practice-mixed-code-toggle.rst
    topic-5-10-conditioal-practice-coding.rst
    topic-5-11-IfStatementsExercises.rst
    topic-5-12-magpieindex.rst
