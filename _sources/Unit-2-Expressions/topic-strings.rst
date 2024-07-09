@@ -4,9 +4,15 @@
    :prefix: 3-7-
    :start: 1
 
+Strings
+=======
+
+Intro TK
+
+
 
 Comparing Objects
-=================
+-----------------
 
 Comparing objects is a little different than comparing primitive typed values like numbers. Objects can be very complex and have many attribute values or instance variables inside them. For example, the ``Turtle`` objects have many instance variables like ``name``, ``width``, ``height``, ``xPos``, ``yPos``, etc. When comparing two ``Turtle`` objects, we need a specially written **equals** method to compare all of these values. In this lesson, we will take a look at ``String`` objects and the difference between comparing them with ``==`` vs. the ``equals`` method.
 

@@ -55,6 +55,6 @@ didn’t learn about in 3rd grade.
 
    topic-numbers.rst
    topic-booleans.rst
-   topic-comparing-objects.rst
+   topic-strings.rst
    topic-summary.rst
    topic-GettingStartedExercises.rst
