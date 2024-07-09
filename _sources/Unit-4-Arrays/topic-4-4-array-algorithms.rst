@@ -209,7 +209,7 @@ Here are two common array traversal loops that can be used for these algorithms:
 We encourage you to work in pairs or groups to tackle the following challenging FRQ problems and take them one step at a time. These will get easier with practice!
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
 
    horseBarnA.rst
    horseBarnB.rst
