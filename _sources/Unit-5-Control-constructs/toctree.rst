@@ -18,9 +18,9 @@ Summary TK
    topic-5-5-DeMorgan.rst
    topic-5-6-comparing-objects.rst
    topic-5-7-conditional-summary.rst
-   topic-5-8-practice-mixed-code.rst
-   topic-5-9-practice-mixed-code-toggle.rst
-   topic-5-10-practice-coding.rst
+   topic-5-8-conditioal-practice-mixed-code.rst
+   topic-5-9-conditioal-practice-mixed-code-toggle.rst
+   topic-5-10-conditioal-practice-coding.rst
    topic-5-11-IfStatementsExercises.rst
    topic-5-12-magpieindex.rst
    topic-5-13-while-loops.rst
@@ -30,9 +30,9 @@ Summary TK
    topic-5-17-loop-analysis.rst
    topic-5-18-loops-summary.rst
    topic-5-19-group-mod.rst
-   topic-5-20-practice-mixed-code.rst
-   topic-5-21-practice-mixed-code-toggle.rst
-   topic-5-22-practice-coding.rst
+   topic-5-20-loops-practice-mixed-code.rst
+   topic-5-21-loops-practice-mixed-code-toggle.rst
+   topic-5-22-loops-practice-coding.rst
    topic-5-23-IterationExercises.rst
    topic-5-24-FRQcalendar.rst
    topic-5-25-FRQselfDivisorA.rst
