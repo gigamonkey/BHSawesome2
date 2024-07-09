@@ -19,7 +19,5 @@ Summary TK
    topic-DeMorgan.rst
    topic-comparing-objects.rst
    topic-summary.rst
-   topic-practice-mixed-code.rst
-   topic-practice-mixed-code-toggle.rst
-   topic-practice-coding.rst
+   topic-expressions-practice-coding.rst
    topic-GettingStartedExercises.rst

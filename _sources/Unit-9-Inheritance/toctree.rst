@@ -13,14 +13,14 @@ extend superclasses.
    :maxdepth 3
 
    topic-what-is-inheritance.rst
-   topic-constructors.rst
+   topic-constructors-in-inheritance.rst
    topic-overriding.rst
    topic-super.rst
    topic-hierarchies.rst
    topic-polymorphism.rst
    topic-Object.rst
    topic-ooSummary.rst
-   topic-freeResponse.rst
+   topic-inheritance-freeResponse.rst
    topic-ooParsonsPractice.rst
    topic-toggle-problems.rst
    topic-ooCodePractice.rst

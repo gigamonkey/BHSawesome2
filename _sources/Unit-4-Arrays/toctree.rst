@@ -27,6 +27,6 @@ Summary TK
    topic-arrayExam.rst
    topic-Array2dParsonsPractice.rst
    topic-Array2dCodePractice.rst
-   topic-freeResponse.rst
+   topic-arrays-freeResponse.rst
    topic-ArraysExercises.rst
    topic-CBLabs.rst

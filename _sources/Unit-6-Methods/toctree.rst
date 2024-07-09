@@ -19,9 +19,7 @@ Summary TK
    topic-methods-with-params.rst
    topic-methods-return.rst
    topic-summary.rst
-   topic-practice-mixed-code.rst
-   topic-practice-mixed-code-toggle.rst
-   topic-practice-coding.rst
+   topic-methods-practice-coding.rst
    topic-practice-test-objects.rst
    topic-UsingObjectsExercises.rst
    topic-JavaSwingGUIs.rst
