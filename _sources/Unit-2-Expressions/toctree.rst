@@ -61,5 +61,4 @@ didn’t learn about in 3rd grade.
    topic-DeMorgan.rst
    topic-comparing-objects.rst
    topic-summary.rst
-   topic-expressions-practice-coding.rst
    topic-GettingStartedExercises.rst
