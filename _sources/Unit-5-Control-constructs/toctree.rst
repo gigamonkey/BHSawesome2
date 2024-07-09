@@ -17,7 +17,7 @@ Summary TK
    topic-5-4-compound-ifs.rst
    topic-5-5-DeMorgan.rst
    topic-5-6-comparing-objects.rst
-   topic-5-7-summary.rst
+   topic-5-7-conditional-summary.rst
    topic-5-8-practice-mixed-code.rst
    topic-5-9-practice-mixed-code-toggle.rst
    topic-5-10-practice-coding.rst
@@ -28,7 +28,7 @@ Summary TK
    topic-5-15-strings-loops.rst
    topic-5-16-nested-loops.rst
    topic-5-17-loop-analysis.rst
-   topic-5-18-summary.rst
+   topic-5-18-loops-summary.rst
    topic-5-19-group-mod.rst
    topic-5-20-practice-mixed-code.rst
    topic-5-21-practice-mixed-code-toggle.rst
