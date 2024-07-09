@@ -14,12 +14,7 @@ Summary TK
    topic-ifs.rst
    topic-if-else.rst
    topic-else-ifs.rst
-   topic-compound-ifs.rst
-   topic-DeMorgan.rst
-   topic-comparing-objects.rst
    topic-conditional-summary.rst
-   topic-conditional-practice-mixed-code.rst
-   topic-conditional-practice-mixed-code-toggle.rst
    topic-conditional-practice-coding.rst
    topic-IfStatementsExercises.rst
    topic-magpieindex.rst
@@ -30,8 +25,6 @@ Summary TK
    topic-loop-analysis.rst
    topic-loops-summary.rst
    topic-group-mod.rst
-   topic-loops-practice-mixed-code.rst
-   topic-loops-practice-mixed-code-toggle.rst
    topic-loops-practice-coding.rst
    topic-IterationExercises.rst
    topic-FRQcalendar.rst

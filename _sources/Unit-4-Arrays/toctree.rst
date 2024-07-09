@@ -22,8 +22,6 @@ Summary TK
    topic-2D-array-loops-Day2.rst
    topic-toggle-problems.rst
    topic-a2dSummary.rst
-   topic-ArrayParsonsPractice.rst
-   topic-Arrays-mixed-code-toggle.rst
    topic-ArrayPractice.rst
    topic-2DArrayExercises.rst
    topic-arrayExam.rst

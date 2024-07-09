@@ -69,6 +69,7 @@ Table of Contents
    Unit-9-Inheritance/toctree.rst
    Unit-10-OO-design/toctree.rst
    Unit-11-Algorithms/toctree.rst
+   MixedUpCode/toctree.rst
    PostTest/toctree.rst
    Tests/toctree.rst
    TimedTests/toctree.rst
