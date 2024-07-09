@@ -11,4 +11,4 @@ Summary TK
    :caption Object Oriented Design Table of Contents
    :maxdepth 3
 
-   topic-10-1-oo-design.rst
+   topic-oo-design.rst

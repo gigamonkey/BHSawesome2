@@ -12,17 +12,17 @@ extend superclasses.
    :caption Inheritance Table of Contents
    :maxdepth 3
 
-   topic-9-1-what-is-inheritance.rst
-   topic-9-2-constructors.rst
-   topic-9-3-overriding.rst
-   topic-9-4-super.rst
-   topic-9-5-hierarchies.rst
-   topic-9-6-polymorphism.rst
-   topic-9-7-Object.rst
-   topic-9-8-ooSummary.rst
-   topic-9-9-freeResponse.rst
-   topic-9-10-ooParsonsPractice.rst
-   topic-9-11-toggle-problems.rst
-   topic-9-12-ooCodePractice.rst
-   topic-9-13-InheritanceExercises.rst
-   topic-9-14-CBLabs.rst
+   topic-what-is-inheritance.rst
+   topic-constructors.rst
+   topic-overriding.rst
+   topic-super.rst
+   topic-hierarchies.rst
+   topic-polymorphism.rst
+   topic-Object.rst
+   topic-ooSummary.rst
+   topic-freeResponse.rst
+   topic-ooParsonsPractice.rst
+   topic-toggle-problems.rst
+   topic-ooCodePractice.rst
+   topic-InheritanceExercises.rst
+   topic-CBLabs.rst

@@ -15,11 +15,11 @@ demographic survey. The Java lessons start in 1.2.
    :caption Welcome Table of Contents
    :maxdepth 3
 
-   topic-1-1-preface.rst
-   topic-1-2-aboutcsa.rst
-   topic-1-3-csptransition.rst
-   topic-1-4-javaIDEs.rst
-   topic-1-5-growthMindset.rst
-   topic-1-6-ptest1.rst
-   topic-1-7-survey.rst
-   topic-1-8-java-intro.rst
+   topic-preface.rst
+   topic-aboutcsa.rst
+   topic-csptransition.rst
+   topic-javaIDEs.rst
+   topic-growthMindset.rst
+   topic-ptest1.rst
+   topic-survey.rst
+   topic-java-intro.rst
