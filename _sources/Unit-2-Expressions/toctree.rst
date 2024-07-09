@@ -12,8 +12,8 @@ Summary TK
    :maxdepth 3
 
    topic-numeric-expressions.rst
-   topic-booleans.rst
    topic-operators.rst
+   topic-booleans.rst
    topic-casting.rst
    topic-summary.rst
    topic-practice-mixed-code.rst
