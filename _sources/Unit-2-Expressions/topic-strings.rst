@@ -348,6 +348,91 @@ What will the following code print out? Trace through the code by drawing diagra
    Write your tracing table here that keeps track of s1, s2, s3, s4 and the output.
 
 
+Bonus Challenge : Unicode
+-------------------------
+
+If you get done early with the previous challenge, here's something else fun you
+can do in Java, although it's not covered in the AP exam.
+
+Java was one of the first programming languages to use |UNICODE| for its
+characters rather than ASCII. While ASCII could represent 128 characters which
+was plenty for English, Unicode is an international standard that tries to
+assign a number (which they like to call a “codepoint”) to every character in
+every language. Unicode codepoints are traditionally represented in hex code (a
+base 16 code that uses the digits 0-9 and the letters A-F for 10-15), so you
+might see things like ``U+1F600``. But they’re just numbers. That last one is
+the same as ``128512``.
+
+When Java was released in an 1996, Unicode had been around for five years and
+the Unicode people had declared they would only ever need 2\ :sup:`16` or 65,536
+code points to represent all the characters used in the world. So Java included
+a ``char`` data type that can hold exactly 2\ :sup:`16` values. Then, seven
+months later, the Unicode folks, said, “Ooops, that’s not enough”, and extended
+their system to its current size of 1,112,064 possible codepoints. (As of
+September 2022, 149,186 have actually been used.)
+
+That made ``char`` kind of obsolete. But while not every Unicode codepoint can
+be represented in a Java ``char``, you can use an ``int`` to represent a
+codepoint and the method ``Character.toString`` to translate an ``int`` into a
+``String`` containing the character for that codepoint. (You might see older
+Java code that casts numbers to ``char``; for many codepoints that will work but
+not on more recently added codepoints including, critically those for Emoji. 😞
+So better to use ``Character.toString`` and ignore ``char``.)
+
+Try the following program which prints out an English “A”, a
+|Chinese character|, and an |emoji|. Then look up other characters at this
+|Unicode Lookup| site and change the code to print them out. (Use the Dec column in site
+to get the decimal number.) Can you print out letters from 3 different
+languages?
+
+.. activecode:: challenge1-6-unicode
+   :language: java
+   :autograde: unittest
+
+   Can you print out a letter from 3 different languages using this |Unicode
+   Lookup| site?
+
+   ~~~~
+   public class ChallengeUnicode
+   {
+       public static void main(String[] args)
+       {
+           System.out.println(
+                   "'A' in ASCII and Unicode: " + Character.toString(65));
+           System.out.println("Chinese for 'sun': " + Character.toString(11932));
+           System.out.println("A smiley emoji: " + Character.toString(128512));
+
+           // Old style. Doesn't work for all codepoints.
+           System.out.println("This also works: " + (char) 65);
+           System.out.println("But this doesn't: " + (char) 128512);
+       }
+   }
+
+   ====
+   import static org.junit.Assert.*;
+
+   import org.junit.*;
+
+   import java.io.*;
+
+   public class RunestoneTests extends CodeTestHelper
+   {
+       @Test
+       public void testCount()
+       {
+           String code = getCodeWithoutComments();
+           int count = countOccurences(code, "Character.toString");
+           boolean passed = count >= 4;
+           passed =
+                   getResults(
+                           "4+",
+                           "" + count,
+                           "Counting number of Character.toString",
+                           passed);
+           assertTrue(passed);
+       }
+   }
+
 Summary
 -------------------
 

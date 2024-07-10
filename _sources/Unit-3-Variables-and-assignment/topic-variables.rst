@@ -9,7 +9,12 @@
 Variables and Data Types
 ========================
 
-In this lesson, you will learn about variables and primitive data types.
+There are two types of variables in Java: **primitive variables** that hold
+primitive types and **object or reference variables** that hold a reference to
+an object of a class. A reference is a way to find the object (like a UPS
+tracking number helps you find your package). In this lesson, you will learn
+about variables and primitive data types. The primitive types on the Advanced
+Placement Computer Science A exam are:
 
 What is a Variable?
 -------------------
