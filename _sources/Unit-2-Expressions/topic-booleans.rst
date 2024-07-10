@@ -24,8 +24,35 @@ Boolean Expressions
 
 **Boolean** variables or expressions can only have **true** or **false** values.
 
+The ``boolean`` data type can represent only two values: ``true`` and ``false``.
+The data type is named for `George Boole
+<https://en.wikipedia.org/wiki/George_Boole>`_, a 19th century English
+mathematician who invented Boolean algebra, a system for dealing with statements
+made up of only true and false values.
+
+.. note::
+
+   Some languages use 0 to represent false and 1 to represent true, but Java
+   uses the ``boolean`` data type and the two literal values ``true`` and
+   ``false`` which are not interchangable with numbers or any other data type.
+
 Testing Equality (==)
 ----------------------
+
+
+Java uses the operator ``==`` to test if the value on the left is equal to the
+value on the right and ``!=`` to test if two items are not equal. Don't get one
+equal sign ``=`` confused with two equal signs ``==``. They mean very different
+things in Java. One equal sign is used to assign a value to a variable. Two
+equal signs are used to test a variable to see if it is a certain value and that
+returns true or false as you'll see below. Also note that using ``==`` and
+``!=`` with ``double`` values can produce surprising results. Because ``double``
+values are only an approximation of the real numbers even things that should be
+mathematically equivalent might not be represented by the exactly same
+``double`` value and thus will not be ``==``. To see this for yourself, write a
+line of code below to print the value of the expression ``0.3 == 0.1 + 0.2``; it
+will be ``false``!
+
 
 The operators ``==`` and ``!=`` (not equal) can be used to compare values. They return true or false boolean values.
 

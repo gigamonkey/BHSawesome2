@@ -7,9 +7,11 @@
 Strings
 =======
 
-Intro TK
 
-
+``String`` is one of the object types on the exam and is the name of a class in
+Java. A ``String`` is written in a Java program as a sequence of characters
+enclosed in a pair of double quotes - like ``"Hello"``. You will learn more
+about ``String`` objects in Unit 2.
 
 Comparing Objects
 -----------------

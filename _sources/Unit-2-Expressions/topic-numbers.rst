@@ -18,121 +18,62 @@ Numbers
    pair: variable; Boolean
    pair: variable; String
 
-There are two types of variables in Java: **primitive variables** that hold
-primitive types and **object or reference variables** that hold a reference to
-an object of a class. A reference is a way to find the object (like a UPS
-tracking number helps you find your package). The primitive types on the
-Advanced Placement Computer Science A exam are:
+Mathmaticans distinguish between different kinds of numbers such as integers and
+real numbers for purposes of classification. Computer programmers need to
+distinguish between different kinds of numbers because numbers can be
+represented different ways in a computer and can thus support different
+operations or the same operations with slightly different meanings.
 
-- ``int`` which can represent integers, i.e. numbers with no fractional part
-  such as 3, 0, -76, and 20393.
+For the AP exam you only need to know about two of Java's numeric data types:
+``int``\ s and ``double``\ s.
 
-- ``double`` which can represent non-integer numbers like 6.3 -0.9, and
-  60293.93032. Computer people call these “floating point” numbers because the
-  decimal point “floats” relative to the magnitude of the number, similar to the
-  way it does in scientific notation like :math:`6.5 ✕ 10^8`. The name
-  ``double`` comes from the fact that ``double``\s are represented using 64
-  bits, double the 32 bits used for the type ``float`` which used to be the
-  normal size floating point number when most computers did math in units of
-  32-bits. (``float`` is rarely used these days and is not part of the AP
-  curriculum.)
+- The ``int`` data type, which you can probably guess is named for **integer**
+  is used to represent integer values, i.e. positive and negative numbers with
+  no fractional part such as ``3``, ``0``, ``-76``, and ``20393``.
 
-- ``boolean`` which can represent only two values: ``true`` and ``false``. (The
-  data type is named for `George Boole
-  <https://en.wikipedia.org/wiki/George_Boole>`_, a 19th century English
-  mathematician who invented Boolean algebra, a system for dealing with
-  statements made up of only true and false values.)
+- The ``double`` data type is used to represent non-integer numbers like ``6.3``
+  ``-0.9``, and ``60293.93032``. Computer people call these “floating point”
+  numbers because the decimal point “floats” relative to the magnitude of the
+  number, similar to the way it does in scientific notation like :math:`6.5 ✕
+  10^8`. The name ``double`` comes from the fact that ``double``\s are
+  represented using 64 bits, double the 32 bits used for the type ``float``
+  which used to be the normal size floating point number when most computers did
+  math in units of 32-bits. (``float`` is rarely used these days and is not part
+  of the AP curriculum.)
 
-``String`` is one of the object types on the exam and is the name of a class in
-Java. A ``String`` is written in a Java program as a sequence of characters
-enclosed in a pair of double quotes - like ``"Hello"``. You will learn more
-about ``String`` objects in Unit 2.
+Literal numeric values
+----------------------
 
-.. note::
+In order to use ``int`` and ``double`` values in expressions we need to know how
+to write their literal values. Luckily it’s pretty much what you are used to:
 
-   Some languages use 0 to represent false and 1 to represent true, but Java
-   uses the keywords ``true`` and ``false`` in boolean variables.
+- Literal ``int``\ s are made up of just digits e.g. ``1`` or ``23``. Negative
+  integers can be expressed with a ``-`` before a literal ``int``. We can’t use
+  commas to group digits as in, *1,000,000* but we can use ``_``: ``1_000_000``
+  represents the same value as ``1000000`` but is a lot easier to read. (This
+  also points out another important difference between literal values and the
+  actual values they represent: there may be different literals values, such as
+  ``1_000_000`` and ``1000000`` that both represent the same actual value. There
+  is no way once the program is running to know how the value was written. Two
+  other ways to write that same value that are also legal in Java are
+  ``0xf4240`` and ``0b11110100001001000000`` though you do not need to know
+  about those for the AP Exam.)
 
-A type is a set of values (a domain) and a set of operations on them. For
-example, you can do addition operations with ``int``\s and ``double``\s but not
-with ``boolean``\s and ``String``\s.
+- Literal ``double``\ s are written with digits and a decimal point: ``1.0``,
+  ``1.4142``, ``0.5``. They can also be written in a form a “computer scientific
+  notation”: ``1.23e6`` is a way of writing :math:`1.23 × 10^6` or equivalent to
+  ``1_230_000.0``. Also you don’t have to use a leading ``0`` for numbers less
+  than ``1.0`` but it’s often considered a bit more readable to write ``0.5``
+  rather than just ``.5``. A bit of a matter of taste though.
 
-|Exercise| **Check your understanding**
+Note that because ``int`` and ``double`` are different data types their literal
+values produce different values even when they’re mathematically the same. For
+instance ``1`` and ``1.0`` represent different actual values; the first is an
+``int`` and the second is a ``double``. We’ll see in the next section when this
+difference matters.
 
-
-.. mchoice:: q3_1_1
-   :practice: T
-   :answer_a: int
-   :answer_b: double
-   :answer_c: boolean
-   :answer_d: String
-   :correct: b
-   :feedback_a: While you could use an int, this would throw away any digits after the decimal point, so it isn't the best choice.  You might want to round up a grade based on the average (89.5 or above is an A).
-   :feedback_b: An average is calculated by summing all the values and dividing by the number of values.  To keep the most amount of information this should be done with decimal numbers so use a double.
-   :feedback_c: Is an average true or false?
-   :feedback_d: While you can use a string to represent a number, using a number type (int or double) is better for doing calculations.
-
-   What type should you use to represent the average grade for a course?
-
-.. mchoice:: q3_1_2
-   :practice: T
-   :answer_a: int
-   :answer_b: double
-   :answer_c: boolean
-   :answer_d: String
-   :correct: a
-   :feedback_a: The number of people is a whole number so using an integer make sense.
-   :feedback_b: Can you have 2.5 people in a household?
-   :feedback_c: Is the number of people something that is either true or false?
-   :feedback_d: While you can use a string, a number is better for doing calculations with (like finding the average number of people in a household).
-
-   What type should you use to represent the number of people in a household?
-
-.. mchoice:: q3_1_3
-   :practice: T
-   :answer_a: int
-   :answer_b: double
-   :answer_c: boolean
-   :answer_d: String
-   :correct: d
-   :feedback_a: People don't usually have whole numbers like 7 as their first name.
-   :feedback_b: People don't usually have decimal numbers like 3.5 as their first name.
-   :feedback_c: This could only be used if the name was true or false.  People don't usually have those as first names.
-   :feedback_d: Strings hold sequences of characters like you have in a person's name.
-
-   What type should you use to hold the first name of a person?
-
-.. mchoice:: q3_1_4
-   :practice: T
-   :answer_a: int
-   :answer_b: double
-   :answer_c: boolean
-   :answer_d: String
-   :correct: c
-   :feedback_a: While you could use an int and use 0 for false and 1 for true this would waste 31 of the 32 bits an int uses. Java has a special type for things that are either true or false.
-   :feedback_b: Java has a special type for variables that are either true or false.
-   :feedback_c: Java uses boolean for values that are only true or false.
-   :feedback_d: While you can use a string to represent "True" or "False", using a boolean variable would be better for making decisions.
-
-   What type should you use to record if it is raining or not?
-
-.. mchoice:: q3_1_5
-   :practice: T
-   :answer_a: int
-   :answer_b: double
-   :answer_c: boolean
-   :answer_d: String
-   :correct: b
-   :feedback_a: The integer type (int) can't be used to represent decimal numbers so you couldn't use it if you had any cents.
-   :feedback_b: The double type can be used to represent an amount of money.
-   :feedback_c: Java uses boolean for values that are only true or false.
-   :feedback_d: While you can use a string to represent the amount of money you have it is easier to do calculations on the numeric types (int or double).
-
-   What type should you use to represent the amount of money you have?
-
-Operators
----------
-
+Arithmetic expressions
+----------------------
 
 .. index::
     single: operators
@@ -144,39 +85,105 @@ Operators
     pair: operators; equality
     pair: operators; inequality
 
-Java uses the standard mathematical operators for addition (``+``), subtraction
-(``-``), and division (``/``). The multiplication operator is written ``*``, as
-it is in most programming languages, since the character sets used until
-relatively recently didn’t have a character for a real multiplication sign,
-``×``, and keyboards still don’t have a key for it. Likewise no ``÷``.
+The set of operators that operate on ``int``\ s and ``double``\ s are the
+standard arithmetic operations you learned about in elementary school: addition
+(``+``), subtraction (``-``), and division (``/``), and multiplication (``*``).
+Multiplication is written in Java as ``*``, as it is in many programming
+languages, because until recently most computers’ character sets didn’t have a
+character for a real multiplication sign, ``×``, and keyboards still don’t have
+a key for it. Likewise the symbol ``÷`` is not an operator in Java.
 
 .. note::
 
-   You may be used to using ``^`` for exponentiation, either from a graphing
-   calculator or tools like Desmos. Confusingly ``^`` *is* an operator in Java
-   but it has a completely different meaning than exponentiation and isn’t even
-   exactly an arithmetic operator. However you may recall ``Math.pow`` from Unit
-   √2 that lets us do exponentiation.
+   There is no exponentiation operator in Java. You may be used to using ``^``
+   for exponentiation, either from a graphing calculator or tools like Desmos.
+   Confusingly ``^`` *is* an operator in Java but it has a completely different
+   meaning than exponentiation and isn’t even exactly an arithmetic operator.
+   Later we’ll learn about other ways to do more complex mathematical
+   computations than are supported directly via numeric operators.
 
-Arithmetic expressions can be of type ``int`` or ``double``. An arithmetic
-expression consisting only of ``int`` values will evaluate to an ``int`` value.
-An arithmetic expression that uses at least one ``double`` value will evaluate
-to a ``double`` value. (You may have noticed that ``+`` was also used to combine
-``String`` and other values into new ``String``\ s. More on this when we talk
-about ``String``\ s more fully in Unit 2.)
+Each of these operators take two **operands**, the values that the operator uses
+when computing a new value. When our program runs the operator will operate on
+two actual values but in our program we write the operands as expressions that
+produces values of the right types. For instance these are all arithmetic
+expressions:
 
-Java uses the operator ``==`` to test if the value on the left is equal to the
-value on the right and ``!=`` to test if two items are not equal. Don't get one
-equal sign ``=`` confused with two equal signs ``==``. They mean very different
-things in Java. One equal sign is used to assign a value to a variable. Two
-equal signs are used to test a variable to see if it is a certain value and that
-returns true or false as you'll see below. Also note that using ``==`` and
-``!=`` with ``double`` values can produce surprising results. Because ``double``
-values are only an approximation of the real numbers even things that should be
-mathematically equivalent might not be represented by the exactly same
-``double`` value and thus will not be ``==``. To see this for yourself, write a
-line of code below to print the value of the expression ``0.3 == 0.1 + 0.2``; it
-will be ``false``!
+- ``1 + 2``
+
+- ``10 - 20``
+
+-  ``1.23 / 4.56``
+
+- ``100 * 256``
+
+- ``4 * 3 + 10``
+
+In the first four expressions there is just one operator each and the operands
+are all literal values. The last expression is actually a an addition expression
+where the left operands to the ``+`` operator is a multiplication expression,
+``4 * 3``, and the right operand is a literal value ``10``.
+
+The order of operations in Java follows is similar to the PEMDAS order you
+probably learned in middle school: multiplication and division happen before
+addition and subtraction. And we can use parentheses to group expressions to
+change the normal order. Thus ``2 + 3 * 4`` is equivalent to ``2 + (3 * 4)``. If
+we wanted the addition to happen first, we could explicitly write ``(2 + 3) *
+4``. It also doesn't hurt to put in extra parentheses if you are unsure as to
+what will be done first or just to make it more clear.
+
+Division
+--------
+
+Even though the set of arithmetic operators that operate on ``int``\ s and
+``double``\ s are the same, their meanings are subtly different depending on the
+types of values they are operating on. There are a two main rules:
+
+- An arithmetic operator operating on expressions of the same type (i.e. both
+  ``int`` or both ``double`` will produce a value of that same type.
+
+- An arithmetic operator operating on mixed types (i.e. one ``int`` and one
+  ``double``) will produce a ``double``. We sometimes say that ``double``\ s are
+  contagious. When an arithmetic operator is applied to one ``int`` and one
+  ``double`` the ``int`` value is first converted to the equvialent ``double``
+  value, such as ``1`` being converted to ``1.0``.
+
+For all the arithmetic operators except division this is simple: add two
+``int``\ s and you get another ``int``; two ``double``\ s and you get a
+``double``; no big deal. But since ``int`` values have no fractional part what
+happens when we evaluate an expression like ``10 / 4``? Mathematically the
+result is 2.5 but that can’t be represented by an ``int``. So there’s a special
+rule for division: the ``/`` operator does what’s called a **truncating
+division** meaning it just lops off the part of the true value after the decimal
+point. Thus ``10 / 4`` produces the ``int`` value ``2``. Note that this is not
+the same as rounding to the nearest ``int``: ``19 / 10`` evaluates to ``1`` even
+though the mathematical value is much closer to ``2`` than ``1``. But truncating
+1.9 throws away the 0.9 giving us ``1``. It works the same for negative numbers:
+``-19 / 10`` truncates to ``-1``.
+
+For ``double``\ s division works much more like we’d expect from math but not
+exactly. ``10.0 / 4.0`` gives us ``2.5`` as we’d expect. However not all results
+can be represented exactly, . ``1.0 / 3.0`` gives us ``0.3333333333333333``
+which is pretty close but obviously not exactly the same as the mathematically
+correct value. This is because ``double``\ s are very much like scientific
+notation, meant to deal with both very small and very large values to a
+reasonable but not infinite level of precision. In practice ``double``\ s can
+represent value with approximately fifteen decimal places of accuracy.
+
+Because of the differences between ``int`` and ``double`` division we need to be
+careful about “double contagion” in division expressions: ``1 / 4`` gives us
+``0`` but ``1.0 / 4`` or ``1 / 4.0`` give ``0.25``.
+
+Finally division is the only arithmetic operator that isn’t defined for all
+possible values since division by zero has no mathematical meaning. In ``int``
+division, trying to divide by ``0`` will result in an **ArithmeticException**
+which will crash your program and spit out an error message. You can try it in
+one of the active code windows above. With ``double``\ s it produces a special
+value ``Infinity`` which is maybe better than crashing but only by a bit in that
+math breaks down at infinity: Infinity plus or times anything is still Infinity;
+Infinity minus or divided by anything finite is Infinity, and Infinity minus or
+divided by Infinity is an even weirder special value ``NaN`` which stands for
+“Not a Number”. However you don’t need to know about these weird ``double``
+values for the AP Exam.
 
 |CodingEx| **Coding Exercise:**
 
@@ -194,9 +201,6 @@ will be ``false``!
            System.out.println(2 - 3);
            System.out.println(2 * 3);
            System.out.println(2 / 3);
-           // == is to test while = is to assign
-           System.out.println(2 == 3);
-           System.out.println(2 != 3);
        }
    }
 
@@ -223,16 +227,12 @@ will be ``false``!
 
 .. note::
 
-   When Java sees you doing integer division (or any operation with integers) it
-   assumes you want an integer result so it throws away anything after the
-   decimal point in the answer. This is called **truncating division**. If you
-   need a double answer, you should make at least one of the values in the
-   expression a double like 2.0.
-
-
-With division, another thing to watch out for is dividing by 0. An attempt to divide an integer by zero will result in an **ArithmeticException** error message. Try it in one of the active code windows above.
-
-Operators can be used to create compound expressions with more than one operator. You can either use a literal value which is a fixed value like 2, or variables in them.  When compound expressions are evaluated, **operator precedence** rules are used, just like when we do math (remember PEMDAS?), so that ``*``, ``/``, and ``%`` are done before ``+`` and ``-``. However, anything in parentheses is done first. It doesn't hurt to put in extra parentheses if you are unsure as to what will be done first or just to make it more clear.
+Operators can be used to create compound expressions with more than one
+operator. You can either use a literal value which is a fixed value like 2, or
+variables in them. When compound expressions are evaluated, **operator
+precedence** rules are used, just like when we do math (remember PEMDAS?), so
+that ``*``, ``/``, and ``%`` are done before ``+`` and ``-``. However, anything
+in parentheses is done first.
 
 |CodingEx| **Coding Exercise:**
 
@@ -275,15 +275,15 @@ Operators can be used to create compound expressions with more than one operator
        }
    }
 
-The Remainder Operator
-----------------------
+Remainder
+---------
 
-The percent sign (``%``) is also an arithmetic operator, though one you may not
-have learned yet in math. It is the **remainder** operator. Like the other
-arithmetic operators is takes two operands. Mathematically it returns the
-remainder after performing a truncating integer division of the first number by
-the second. For instance, ``5 % 2`` evaluates to 1 since 2 goes into 5 two times
-with a remainder of 1.
+Java supports one last arithmetic operator that you also probably learned about
+in elementary school but not as a separate operator. The percent sign (``%``) is
+the **remainder** operator. Like the other arithmetic operators is takes two
+operands. Mathematically it returns the remainder after performing a truncating
+integer division of the first number by the second. For instance, ``5 % 2``
+evaluates to ``1`` since 2 goes into 5 two times with a remainder of 1.
 
 While you may not have heard of remainder as an operator, think back to
 elementary school math. Remember when you first learned long division, before
@@ -553,39 +553,6 @@ In this programming challenge, you will calculate your age, and your pet's age f
    <a href="https://firewalledreplit.com/@BerylHoffman/Challenge1-4-Dog-Years-Template" target="_blank">repl template</a>
 
 Your teacher may suggest that you use a Java IDE like |repl| for this challenge so that you can use input to get these values using the |Scanner|. Here is a |repl template| that you can use to get started if you want to try the challenge with input.
-
-Summary
--------------------
-
-- Arithmetic expressions include expressions of type ``int`` and ``double``.
-
-- The arithmetic operators consist of ``+``, ``-``, ``*`` , ``/``, and ``%``
-  also known as addition, subtraction, multiplication, division, and remainder.
-
-- An arithmetic operation that uses two ``int`` values will evaluate to an
-  ``int`` value. With integer division, any decimal part in the result will be
-  thrown away.
-
-- An arithmetic operation that uses at least one ``double`` value will evaluate
-  to a ``double`` value.
-
-- Operators can be used to construct compound expressions.
-
-- During evaluation, operands are associated with operators according to
-  **operator precedence** to determine how they are grouped. (``*``, ``/``,
-  ``%`` have precedence over ``+`` and ``-``, unless parentheses are used to
-  group those.)
-
-- An attempt to divide an integer by zero will result in an ``ArithmeticException``.
-
-- The assignment operator (``=``) allows a program to initialize or change the
-  value stored in a variable. The value of the expression on the right is stored
-  in the variable on the left.
-
-- During execution, expressions are evaluated to produce a single value.
-
-- The value of an expression has a type based on the types of the values and
-  operators used in the expression.
 
 
 Casting and Ranges of Values
@@ -1272,7 +1239,37 @@ languages?
    }
 
 Summary
--------------------
+-------
+
+- Arithmetic expressions include expressions of type ``int`` and ``double``.
+
+- The arithmetic operators consist of ``+``, ``-``, ``*`` , ``/``, and ``%``
+  also known as addition, subtraction, multiplication, division, and remainder.
+
+- An arithmetic operation that uses two ``int`` values will evaluate to an
+  ``int`` value. With integer division, any decimal part in the result will be
+  thrown away.
+
+- An arithmetic operation that uses at least one ``double`` value will evaluate
+  to a ``double`` value.
+
+- Operators can be used to construct compound expressions.
+
+- During evaluation, operands are associated with operators according to
+  **operator precedence** to determine how they are grouped. (``*``, ``/``,
+  ``%`` have precedence over ``+`` and ``-``, unless parentheses are used to
+  group those.)
+
+- An attempt to divide an integer by zero will result in an ``ArithmeticException``.
+
+- The assignment operator (``=``) allows a program to initialize or change the
+  value stored in a variable. The value of the expression on the right is stored
+  in the variable on the left.
+
+- During execution, expressions are evaluated to produce a single value.
+
+- The value of an expression has a type based on the types of the values and
+  operators used in the expression.
 
 - **Type casting** is used to convert value from one type to another.
 
