@@ -28,4 +28,3 @@ Summary TK
    topic-toggle-problems.rst
    topic-listPractice.rst
    topic-ArrayListExercises.rst
-   topic-CBLabs.rst

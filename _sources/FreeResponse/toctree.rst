@@ -11,6 +11,8 @@ Summary TK
    :caption FreeResponse Table of Contents
    :maxdepth: 3
 
+   topic-array-algorithms.rst
+   topic-arrays-freeResponse.rst
    RandomStringChooserA.rst
    RandomStringChooserB.rst
    StringCoderA.rst

@@ -28,5 +28,4 @@ Summary TK
    topic-FRQstepTracker.rst
    topic-timeFRQ.rst
    topic-APLine.rst
-   topic-CBLabs.rst
    topic-community-challenge.rst

@@ -1,4 +1,3 @@
-
 College Board Celebrity and Data Labs
 =====================================
 
@@ -12,4 +11,10 @@ College Board Celebrity and Data Labs
    <a href="https://apcentral.collegeboard.org/pdf/ap-computer-science-a-data-lab-student-guide.pdf" target="_blank" style="text-decoration:underline">Data Lab</a>
 
 
-You may have completed Activity 1 and 2 in the |Celebrity Lab| and |Data Lab|, new AP CSA Labs released in 2019, in Unit 5. The next activities in these labs, especially Activity 3, can be completed here for more practice with ArrayLists. The teacher guide and the code files are available in the AP Course Audit Portal. This page will eventually include tips to complete the labs.
+The new AP CSA Labs released in 2019, the |Celebrity Lab| (Activity 1-2) and the
+|Data Lab| (Activity 1-2), are for students to practice writing classes.
+Activity 3 provides more practice with ArrayLists and activities 4 and 5 involve
+inheritance.
+
+The teacher guide and the code files are available in the AP Course
+Audit Portal.

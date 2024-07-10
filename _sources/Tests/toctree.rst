@@ -18,4 +18,4 @@ Summary TK
    test4nt.rst
    test5nt.rst
    Exercises.rst
-
+   topic-arrayExam.rst

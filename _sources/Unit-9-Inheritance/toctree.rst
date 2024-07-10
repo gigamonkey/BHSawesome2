@@ -25,4 +25,3 @@ extend superclasses.
    topic-toggle-problems.rst
    topic-ooCodePractice.rst
    topic-InheritanceExercises.rst
-   topic-CBLabs.rst

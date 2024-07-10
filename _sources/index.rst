@@ -60,12 +60,14 @@ Units
    Unit-10-OO-design/toctree.rst
    Unit-11-Algorithms/toctree.rst
    PostTest/toctree.rst
-   MixedUpCode/toctree.rst
    CodingPractice/toctree.rst
+   MixedFreeResponse/toctree.rst
+   MixedUpCode/toctree.rst
+   MultipleChoice/toctree.rst
+   FreeResponse/toctree.rst
    Tests/toctree.rst
    TimedTests/toctree.rst
-   MixedFreeResponse/toctree.rst
-   FreeResponse/toctree.rst
+   Labs/toctree.rst
    Stories/toctree.rst
 
 Full table of contents
@@ -96,14 +98,15 @@ Full table of contents
    Unit-10-OO-design/toctree.rst
    Unit-11-Algorithms/toctree.rst
    PostTest/toctree.rst
-   MixedUpCode/toctree.rst
    CodingPractice/toctree.rst
+   MixedFreeResponse/toctree.rst
+   MixedUpCode/toctree.rst
+   MultipleChoice/toctree.rst
+   FreeResponse/toctree.rst
    Tests/toctree.rst
    TimedTests/toctree.rst
-   MixedFreeResponse/toctree.rst
-   FreeResponse/toctree.rst
+   Labs/toctree.rst
    Stories/toctree.rst
-   _hidden/toctree.rst
 
 
 Index

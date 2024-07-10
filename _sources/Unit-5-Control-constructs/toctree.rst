@@ -15,7 +15,6 @@ Summary TK
    topic-if-else.rst
    topic-else-ifs.rst
    topic-conditional-summary.rst
-   topic-conditional-practice-coding.rst
    topic-IfStatementsExercises.rst
    topic-magpieindex.rst
    topic-while-loops.rst

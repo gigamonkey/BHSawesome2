@@ -15,6 +15,8 @@ Summary TK
    topic-practice-mixed-code-unit-2-toggle.rst
    topic-Arrays-mixed-code-unit-4.rst
    topic-Arrays-mixed-code-unit-4-toggle.rst
+   topic-Arrays2D-mixed-code-unit-4.rst
+   topic-Arrays2D-mixed-code-unit-4-toggle.rst
    topic-conditional-practice-mixed-code-unit-5.rst
    topic-conditional-practice-mixed-code-unit-5-toggle.rst
    topic-loops-practice-mixed-code-unit-5.rst

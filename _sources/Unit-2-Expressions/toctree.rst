@@ -57,4 +57,3 @@ didn’t learn about in 3rd grade.
    topic-booleans.rst
    topic-strings.rst
    topic-summary.rst
-   topic-GettingStartedExercises.rst
