@@ -6,14 +6,14 @@
 Calling Class Methods (preview 2026 curriculum)
 ================================================
 
-Most of the methods we have used so far are **static methods**, which are also called **class methods**. These methods are associated with the class and include the keyword static in the method header. The main method is always static, which also means that there is only one copy of the method. 
+Most of the methods we have used so far are **static methods**, which are also called **class methods**. These methods are associated with the class and include the keyword static in the method header. The main method is always static, which also means that there is only one copy of the method.
 
 Here is a template for a static method. In the **method header**, the keyword **static** is used before the **return type**. Up until now, we have used the keyword **void** as the return type for methods that do not return a value. We will now look at methods that calculate and return a value of a specific type.
 
 .. code-block:: java
 
     // static method header
-    public static return-type method-name(parameters) 
+    public static return-type method-name(parameters)
     {
         // method body
     }
@@ -48,11 +48,11 @@ In the later lesson, we will look at the Math library in Java, but consider a si
 
     Figure 2: The Square Method
 
-Here is a simple implementation of this method which takes an int number as an argument, squares that number, and returns the result.  Notice that instead of ``static void``, the header includes ``static int`` to indicate that the method returns an integer value. There could be another **overloaded** version of this method that takes a double number and returns a double value; remember methods are overloaded when there are multiple methods with the same name but different signatures with a different number or types of parameters. 
+Here is a simple implementation of this method which takes an int number as an argument, squares that number, and returns the result.  Notice that instead of ``static void``, the header includes ``static int`` to indicate that the method returns an integer value. There could be another **overloaded** version of this method that takes a double number and returns a double value; remember methods are overloaded when there are multiple methods with the same name but different signatures with a different number or types of parameters.
 
 .. code-block:: java
 
-    public static int square(int number) 
+    public static int square(int number)
     {
         int result = number * number;
         return result;
@@ -62,7 +62,7 @@ Here is a simple implementation of this method which takes an int number as an a
 
    <a href="https://pythontutor.com/render.html#code=public%20class%20SquareMethod%0A%7B%0A%20%20%20%20%20%20%20%20%20public%20static%20int%20square%28int%20number%29%20%0A%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20result%20%3D%20number%20*%20number%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20result%3B%0A%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%0A%20%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20x%20%3D%205%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20y%20%3D%20square%28x%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22The%20square%20of%20%22%20%2B%20x%20%2B%20%22%20is%20%22%20%2B%20y%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20x%20%3D%204%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22The%20square%20of%20%22%20%2B%20x%20%2B%20%22%20is%20%22%20%2B%20square%28x%29%29%3B%0A%20%20%20%20%20%20%20%20%20%7D%0A%7D&cumulative=false&curInstr=11&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=java&rawInputLstJSON=%5B%5D&textReferences=false" target="_blank">visualization</a>
 
-The **return** statement is used to return a value from the method back to the calling code. The return value must be the same type as the return type in the method header. The return statement also ends the method execution, so any code after the return statement is not executed. Let's try this below. Click on the next button to step through the code in the |visualization| below and see the variables and the return values. 
+The **return** statement is used to return a value from the method back to the calling code. The return value must be the same type as the return type in the method header. The return statement also ends the method execution, so any code after the return statement is not executed. Let's try this below. Click on the next button to step through the code in the |visualization| below and see the variables and the return values.
 
 .. codelens:: squareviz
       :language: java
@@ -70,12 +70,12 @@ The **return** statement is used to return a value from the method back to the c
 
       public class SquareMethod
       {
-         public static int square(int number) 
+         public static int square(int number)
          {
                int result = number * number;
                return result;
          }
-   
+
          public static void main(String[] args)
          {
                int x = 5;
@@ -108,12 +108,12 @@ When calling the ``square`` method, the return value can be stored in a variable
     ~~~~
     public class SquareMethod
     {
-         public static int square(int number) 
+         public static int square(int number)
          {
              int result = number * number;
              return result;
          }
-    
+
          public static void main(String[] args)
          {
              System.out.println("5 squared is " + square(5));
@@ -125,7 +125,7 @@ When calling the ``square`` method, the return value can be stored in a variable
     import static org.junit.Assert.*;
     import org.junit.*;
     import java.io.*;
-     
+
     public class RunestoneTests extends CodeTestHelper
     {
         @Test
@@ -138,7 +138,7 @@ When calling the ``square`` method, the return value can be stored in a variable
         public void testMain() throws IOException
         {
             String output = getMethodOutput("main");
-            String expect = "36"
+            String expect = "36";
             boolean passed =
                  getResults(expect, output, "Expected output from main");
             assertTrue(passed);
@@ -184,17 +184,17 @@ When calling the ``square`` method, the return value can be stored in a variable
 
           public static void main(String[] args)
           {
-              System.out.println(square(3) + divide(6,2)); 
+              System.out.println(square(3) + divide(6,2));
           }
       }
- 
+
 
 Common Errors with Methods
 ---------------------------
 
-A common error with non-void methods is forgetting to do something with the value returned from a method. When you call a method that returns a value, you should do something with that value like assigning it to a variable or printing it out. To use the return value when calling a non-void method, it must be stored in a variable or used as part of an expression. 
+A common error with non-void methods is forgetting to do something with the value returned from a method. When you call a method that returns a value, you should do something with that value like assigning it to a variable or printing it out. To use the return value when calling a non-void method, it must be stored in a variable or used as part of an expression.
 
-Another common error is a mismatch in types or order for the arguments or return values. For example, if a method returns a double value, you cannot assign it to an int variable. 
+Another common error is a mismatch in types or order for the arguments or return values. For example, if a method returns a double value, you cannot assign it to an int variable.
 
 |CodingEx| **Coding Exercise**
 
@@ -208,7 +208,7 @@ Another common error is a mismatch in types or order for the arguments or return
     ~~~~
     public class MathMethods
     {
-         public static int square(int number) 
+         public static int square(int number)
          {
              return number * number;
          }
@@ -217,14 +217,14 @@ Another common error is a mismatch in types or order for the arguments or return
          {
              return x / y;
          }
-    
+
          public static void main(String[] args)
          {
              // TO DO: Fix the method calls and data types below
              // result1 should be 4 squared
              // result2 should be 10 divided by 2
              double result1 = square(4.0, 2);
-             double result2 = divide(2, 10); 
+             double result2 = divide(2, 10);
              System.out.println("4 squared is " + result1);
              System.out.println("10 divided by 2 is " + result2)
          }
@@ -233,7 +233,7 @@ Another common error is a mismatch in types or order for the arguments or return
     import static org.junit.Assert.*;
     import org.junit.*;
     import java.io.*;
-     
+
     public class RunestoneTests extends CodeTestHelper
     {
         @Test
@@ -268,7 +268,7 @@ Another common error is a mismatch in types or order for the arguments or return
 Methods Outside the Class
 ------------------------------------
 
-In the examples above, we called the methods by using the method name. However, if we call a method from a different class, we need to include its class name. For example, if the ``square`` method is in a class called ``MathFunctions``, we would call it as ``MathFunctions.square(3)``. Class methods are typically called using the class name along with the **dot operator (.)**. When the method call occurs in the defining class, the use of the class name is optional in the call. 
+In the examples above, we called the methods by using the method name. However, if we call a method from a different class, we need to include its class name. For example, if the ``square`` method is in a class called ``MathFunctions``, we would call it as ``MathFunctions.square(3)``. Class methods are typically called using the class name along with the **dot operator (.)**. When the method call occurs in the defining class, the use of the class name is optional in the call.
 
 .. image:: Figures/pow.png
     :width: 100px
@@ -285,9 +285,9 @@ Here is an example of how to use these methods:
 .. code-block:: java
 
    double x = Math.pow(3, 2); // 3^2 is 9.0
-   double y = Math.sqrt(9); // the square root of 9 is 3.0   
+   double y = Math.sqrt(9); // the square root of 9 is 3.0
 
-|Groupwork| Programming Challenge: Ladder on Tower 
+|Groupwork| Programming Challenge: Ladder on Tower
 --------------------------------------------------------
 
 .. image:: Figures/ladder.png
@@ -301,7 +301,7 @@ of the squares of the lengths of the other two sides, also called the “legs”
 Pythagoras who was also the leader of the gang of Greek mathematicians who legend has it allegedly drowned their fellow mathematician for showing that
 :math:`\sqrt{2}` is irrational.) Here's the formula for this theorem:
 
--  :math:`c = \sqrt{a^{2} + b^{2}}` where :math:`a` and :math:`b` are the width and height of the triangle and :math:`c` is the length of the hypotenuse. 
+-  :math:`c = \sqrt{a^{2} + b^{2}}` where :math:`a` and :math:`b` are the width and height of the triangle and :math:`c` is the length of the hypotenuse.
 
 
 One common use for the Pythagorean theorem is to calculate the length of
@@ -362,18 +362,18 @@ to place the base of the ladder on the edge of the moat.
        {
            double ladderSize;
            // TODO: Calculate ladderSize using the Pythagorean theorem
-           // with the Math.sqrt and Math.pow (or just *) methods 
+           // with the Math.sqrt and Math.pow (or just *) methods
            // using the arguments height and width
 
 
 
            return ladderSize;
-       } 
+       }
 
        public static void main(String[] argv)
        {
            double size;
-           // TODO: Call the ladderSizeNeeded method 
+           // TODO: Call the ladderSizeNeeded method
            // with the height of 30 and the width of 40 and save it in size.
 
            System.out.println("Beloved, I need a " + size + " foot ladder!");
@@ -419,11 +419,11 @@ to place the base of the ladder on the edge of the moat.
 Summary
 ----------
 
-- Class methods are associated with the class (not instances of the class which we will see in later lessons). 
+- Class methods are associated with the class (not instances of the class which we will see in later lessons).
 
 - Class methods include the keyword **static** in the header before the method name.
 
-- A **non-void method** returns a value that is the same type as the **return type** in the header. 
+- A **non-void method** returns a value that is the same type as the **return type** in the header.
 
 - To use the return value when calling a non-void method, it must be stored in a variable or used as part of an expression. A void method does not have a return value and is therefore not called as part of an expression.
 
