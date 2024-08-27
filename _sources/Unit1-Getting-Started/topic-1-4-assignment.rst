@@ -53,7 +53,7 @@ variables change. You can run the visualizer on any Active Code in this e-book
 by just clicking on the Show in CodeLens button at the top of each Active Code.
 
 
-.. activecode:: asgn_viz1
+.. codelens:: asgnviz1
     :language: java
     :optional:
 
@@ -199,13 +199,13 @@ Variables are a powerful abstraction in programming because the same algorithm c
    :autograde: unittest
    :stdin: YourName
 
-   The code below will say hello to anyone who types in their name.  Type in your name below the code and then click on run.  Try again with a friend's name.  
+   The code below will say hello to anyone who types in their name.  Type in your name below the code and then click on run.  Try again with a friend's name.
    ~~~~
    import java.util.Scanner;
 
-   public class Main 
+   public class Main
    {
-       public static void main(String[] args) 
+       public static void main(String[] args)
        {
            System.out.println("Please type in a name in the input box below.");
            Scanner scan = new Scanner(System.in);
@@ -234,7 +234,7 @@ Variables are a powerful abstraction in programming because the same algorithm c
    }
 
 
-Although you will not be tested in the AP CSA exam on using the Java input or the ``Scanner`` or ``Console`` classes, learning how to do input in Java is very useful and fun. For more information on using the ``Scanner`` class, go to https://www.w3schools.com/java/java_user_input.asp, and for the newer ``Console`` class, https://howtodoinjava.com/java-examples/console-input-output/. We are limited with the one way communication with the Java server in this Runestone ebook, but in most IDEs like replit, the input/output would be more interactive. Here are some examples in replit for |JavaIOExample| using the ``Scanner`` class and |JavaIOConsole| using the ``Console`` class that you can try out. 
+Although you will not be tested in the AP CSA exam on using the Java input or the ``Scanner`` or ``Console`` classes, learning how to do input in Java is very useful and fun. For more information on using the ``Scanner`` class, go to https://www.w3schools.com/java/java_user_input.asp, and for the newer ``Console`` class, https://howtodoinjava.com/java-examples/console-input-output/. We are limited with the one way communication with the Java server in this Runestone ebook, but in most IDEs like replit, the input/output would be more interactive. Here are some examples in replit for |JavaIOExample| using the ``Scanner`` class and |JavaIOConsole| using the ``Console`` class that you can try out.
 
 
 

@@ -131,7 +131,7 @@ In this simplified version of this FRQ, you will declare 3 ``Level`` objects for
        public void checkCodeContains2()
        {
            boolean passed = checkCodeContains(
-            "3*", "3* to triple the level 3 points");
+              "3* to triple the level 3 points", "3*");
            assertTrue(passed);
        }
        

@@ -82,10 +82,10 @@ The Java |visualization| below shows how a song can be divided up into methods. 
       public static void main(String[] args)
       {
         intro();
-        System.out.print("And on that farm they had a cow.");
+        System.out.println("And on that farm they had a cow.");
         chorus();
-        System.out.print("With a moo moo here and a moo moo there");
-        System.out.print("Here a moo, there a moo, everywhere a moo moo");
+        System.out.println("With a moo moo here and a moo moo there");
+        System.out.println("Here a moo, there a moo, everywhere a moo moo");
         intro();
       }
     }
@@ -119,18 +119,22 @@ Try writing your own method calls below to add another verse to the song.
         public static void main(String[] args)
         {
             intro();
-            System.out.print("And on that farm they had a cow.");
+            System.out.println("And on that farm they had a cow.");
             chorus();
-            System.out.print("With a moo moo here and a moo moo there");
-            System.out.print("Here a moo, there a moo, everywhere a moo moo");
+            System.out.println("With a moo moo here and a moo moo there");
+            System.out.println("Here a moo, there a moo, everywhere a moo moo");
         
             // TODO:
             // 1. Call the method intro()
 
-            // 2. Print out lines of the song about a duck 
-            //    or another animal and their sounds.
+            // 2. Print out the line "And on that farm..." 
+            //    with a duck or another animal
 
-            // 3. Call the method chorus and the method intro again
+            // 3. Call the method chorus
+            
+            // 4. Print out the lines with the appropriate animal sounds
+            
+            // 5. Call the method intro again
 
         }
     }
@@ -144,7 +148,7 @@ Try writing your own method calls below to add another verse to the song.
         public void test1()
         {
             String code = getCode();
-            int num = countOccurences(code, "intro()");
+            int num = countOccurences(code, "intro();");
 
             boolean passed = num >= 3;
 
@@ -155,7 +159,7 @@ Try writing your own method calls below to add another verse to the song.
         public void test2()
         {
             String code = getCode();
-            int num = countOccurences(code, "chorus()");
+            int num = countOccurences(code, "chorus();");
 
             boolean passed = num >= 3;
 
@@ -427,11 +431,11 @@ Let's try adding another verse to the song with a goose that honks.
       public void test1()
       {
           String code = getCode();
-          int num = countOccurences(code, "verse(");
+          int num = countOccurences(code, "intro();");
 
-          boolean passed = num >= 4;
+          boolean passed = num >= 5;
 
-          passed = getResults("4 or more", "" + num, "Calls to verse", passed);
+          passed = getResults("5 or more", "" + num, "Calls to intro", passed);
           assertTrue(passed);
       }
   }
@@ -446,7 +450,7 @@ Here's what that looks like with the two method calls above. The arguments like 
     :alt: Arguments to Parameters
     :figclass: align-center
 
-    Figure 1: Matching Arguments to Parameters
+    Figure 2: Matching Arguments to Parameters
   
 
 The method headers contain data types of the parameters because they are variable declarations that reserve memory for the parameter variables.  However, the method calls never contain the parameter types, only the values that are passed to the method. The argument values can be variables, literals, or expressions that evaluate to the correct data type.
@@ -522,23 +526,25 @@ Here's another song, |The Ants Go Marching|, that is very similar in its repetit
   {
       public static void chorus(String num)
       {
-  	      System.out.println("The ants go marching " + num 
-                 + " by " + num + " hurrah, hurrah");
+          System.out.println("The ants go marching " + num
+                           + " by " + num + " hurrah, hurrah");
+          System.out.println("The ants go marching " + num
+                           + " by " + num + " hurrah, hurrah");
       }
-    
+
       public static void verse(String num, String action)
       {
-       	  System.out.println("The ants go marching " + num + " by " + num);
-  	      System.out.println("The little one stops to " + action);
-  	      System.out.println("And they all go marching down to the ground");
-	      System.out.println("To get out of the rain, BOOM! BOOM! BOOM! BOOM!\n");
+          System.out.println("The ants go marching " + num + " by " + num);
+          System.out.println("The little one stops to " + action);
+          System.out.println("And they all go marching down to the ground");
+          System.out.println("To get out of the rain, BOOM! BOOM! BOOM! BOOM!\n");
       }
 
       public static void main(String args[])
       {
-         // Call the chorus and verse methods 
-         // with the correct arguments 
-         // to print out all three verses above.
+          // Call the chorus and verse methods 
+          // with the correct arguments 
+          // to print out all three verses above.
 
 
 
@@ -556,13 +562,13 @@ Here's another song, |The Ants Go Marching|, that is very similar in its repetit
       {
           String code = getCode();
           int actual = countOccurences(code, "chorus(");
-          String expected = "6";
+          String expected = "3";
 
-          boolean passed = actual >= 6;
+          boolean passed = actual >= 3;
           getResults(
                   expected,
                   "" + actual,
-                  "Checking that code contains 6 calls to verse chorus",
+                  "Checking that code contains 3 calls to  chorus",
                   passed);
           assertTrue(passed);
       }
