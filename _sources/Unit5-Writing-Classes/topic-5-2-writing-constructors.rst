@@ -360,9 +360,9 @@ if some other code changes the object it will change for you too.
 Sometimes that’s exactly what you want. But if you are assuming that the value
 stored in your instance variable is not going to change, or at least not unless
 your code changes it, you might want to protect your code from other code
-unexpectedly change the value stored in your instance variable by making a copy
-of the object passed to the constructor and storing the copy in the instance
-variable instead.
+unexpectedly changing the value stored in your instance variable by making a
+copy of the object passed to the constructor and storing the copy in the
+instance variable instead.
 
 How to make the copy will depend on the class of the object but often you can
 just construct a new object of the appropriate class using values from the
