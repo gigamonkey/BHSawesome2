@@ -12,7 +12,7 @@ super Keyword
 
 Sometimes you want the subclass to do more than what a superclass' method is doing.  You want to still execute the superclass method, but you also want to override the method to do something else.  But, since you have overridden the parent method how can you still call it?  You can use ``super.method()`` to force the parent's method to be called.
 
-We've used super() before to call the superclass' constructor. There are two uses of the keyword super:
+We've used ``super()`` before to call the superclass' constructor. There are two uses of the keyword ``super``:
 
 1. **super();** or **super(arguments);** calls just the super constructor if put in as the first line of a subclass constructor.
 2. **super.method();** calls a superclass' method (not constructors).
@@ -21,7 +21,7 @@ The keyword super is very useful in allowing us to first execute the superclass 
 
 |CodingEx| **Coding Exercise**
 
-In the example below, the ``Student`` class overrides the ``getFood`` method of the ``Person`` class, and it uses ``super.getFood()`` to call the ``Person`` ``getFood`` method before adding on to it. Here, a ``Person`` is associated with the food "Hamburger" and a ``Student`` is associated with "Hamburger" and "Taco".
+In the example below, the ``Student`` class overrides the ``getFood`` method of the ``Person`` class, and it uses ``super.getFood()`` to call the ``Person`` ``getFood`` method before adding on to it. Here, a ``Person`` is associated with the food "Hamburger" and a ``Student`` is associated with "Hamburger" and "Pizza".
 
 .. activecode:: SuperEx
    :language: java
@@ -33,9 +33,9 @@ In the example below, the ``Student`` class overrides the ``getFood`` method of 
    {
        private String name = null;
 
-       public Person(String theName)
+       public Person(String name)
        {
-           name = theName;
+           this.name = name;
        }
 
        public String getFood()
@@ -55,9 +55,9 @@ In the example below, the ``Student`` class overrides the ``getFood`` method of 
        private int id;
        private static int nextId = 0;
 
-       public Student(String theName)
+       public Student(String name)
        {
-           super(theName);
+           super(name);
            id = nextId;
            nextId++;
        }
@@ -73,9 +73,9 @@ In the example below, the ``Student`` class overrides the ``getFood`` method of 
            return this.id;
        }
 
-       public void setId(int theId)
+       public void setId(int id)
        {
-           this.id = theId;
+           this.id = id;
        }
    }
 
@@ -116,7 +116,7 @@ In the example below, the ``Student`` class overrides the ``getFood`` method of 
 
 How does this work?  Remember that an object always keeps a reference to the class that created it and always looks for a method during execution starting in the class that created it.  If it finds the method in the class that created it, it will execute that method.  If it doesn't find it in the class that created it, it will look at the parent of that class.  It will keep looking up the ancestor chain until it finds the method, all the way up to the Object class.  The method has to be there, or else the code would not have compiled.
 
-When the student ``getFood()`` method is executed it will start executing the ``getFood`` method in ``Student``.  When it gets to ``super.getFood()`` it will execute the ``getFood`` method in ``Person``.  This method will return the string ``"Hamburger"``.  Then execution will continue in the ``getFood`` method of ``Student`` and  return the string ``"Hamburger and Taco"``.
+When the student ``getFood()`` method is executed it will start executing the ``getFood`` method in ``Student``.  When it gets to ``super.getFood()`` it will execute the ``getFood`` method in ``Person``.  This method will return the string ``"Hamburger"``.  Then execution will continue in the ``getFood`` method of ``Student`` and  return the string ``"Hamburger and Pizza"``.
 
 |Exercise| **Check your understanding**
 
@@ -206,10 +206,10 @@ The ``Customer`` class below keeps track of the names and addresses of customers
        private String name;
        private String address;
 
-       public Customer(String n, String a)
+       public Customer(String name, String address)
        {
-           name = n;
-           address = a;
+           this.name = name;
+           this.address = address;
        }
 
        public String toString()
@@ -223,7 +223,7 @@ The ``Customer`` class below keeps track of the names and addresses of customers
            System.out.println(c);
 
            // Uncomment these to test OnlineCustomer
-           // OnlineCustomer c2 = new OnlineCustomer("Jasper Smith", 
+           // OnlineCustomer c2 = new OnlineCustomer("Jasper Smith",
            //       "456 High St., Anytown, USA", "jsmith456@gmail.com");
            // System.out.println(c2);
        }
@@ -235,10 +235,10 @@ The ``Customer`` class below keeps track of the names and addresses of customers
    // constructor,
    // and an overridden toString() method that calls the super toString() method
    //  and then prints "\nEmail:" and the email variable.
-   
-   class OnlineCustomer 
+
+   class OnlineCustomer
    {
-   
+
    }
 
    ====
@@ -298,6 +298,6 @@ The ``Customer`` class below keeps track of the names and addresses of customers
 Summary
 --------
 
-- The keyword super can be used to call a superclass’s constructors and methods.
+- The keyword ``super`` can be used to call a superclass’s constructors and methods.
 
-- The superclass method can be called in a subclass by using the keyword super with the method name and passing appropriate parameters.
+- The superclass method can be called in a subclass by using the keyword ``super`` with the method name and passing appropriate parameters.

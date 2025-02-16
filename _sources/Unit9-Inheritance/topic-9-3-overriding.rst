@@ -503,10 +503,10 @@ The following Pet class keeps track of a pet's name and type and has a construct
        private String name;
        private String type;
 
-       public Pet(String n, String t)
+       public Pet(String name, String type)
        {
-           name = n;
-           type = t;
+           this.name = name;
+           this.type = type;
        }
 
        public String getType()
