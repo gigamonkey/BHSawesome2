@@ -42,17 +42,17 @@ subclasses will have to explicitly call ``super`` with the appropriate arguments
 for some constructor that does exist. This ensures that instances of the
 subclass are properly initialized.)
 
-For example the call to ``super(theName)`` in ``Employee`` below runs the code
-in the ``Person`` constructor that takes a ``String`` argument which presumably
+For example the call to ``super(name)`` in ``Employee`` below runs the code in
+the ``Person`` constructor that takes a ``String`` argument which presumably
 initializes an instance variable in the ``Person`` class to hold the name.
 
 .. code-block:: java
 
     public class Employee extends Person
     {
-        public Employee(String theName)
+        public Employee(String name)
         {
-            super(theName); // calls Person(String) constructor
+            super(name); // calls Person(String) constructor
         }
     }
 
@@ -71,9 +71,9 @@ initializes an instance variable in the ``Person`` class to hold the name.
   {
       private String name;
 
-      public Person(String theName)
+      public Person(String name)
       {
-          this.name = theName;
+          this.name = name;
       }
 
       public String getName()
@@ -81,11 +81,11 @@ initializes an instance variable in the ``Person`` class to hold the name.
           return name;
       }
 
-      public boolean setName(String theNewName)
+      public boolean setName(String name)
       {
-          if (theNewName != null)
+          if (name != null)
           {
-              this.name = theNewName;
+              this.name = name;
               return true;
           }
           return false;
@@ -97,9 +97,9 @@ initializes an instance variable in the ``Person`` class to hold the name.
       private int id;
       public static int nextId = 1;
 
-      public Employee(String theName)
+      public Employee(String name)
       {
-          super(theName);
+          super(name);
           id = nextId;
           nextId++;
       }
@@ -284,7 +284,7 @@ constructors.
   :language: java
   :autograde: unittest
 
-  1. Make the class ``Square`` below inherit from ``Rectangle``. 
+  1. Make the class ``Square`` below inherit from ``Rectangle``.
   2. Add a ``Square`` constructor with 1 argument for a side that calls ``Rectangle``\ ‘s constructor with 2 arguments using ``super``.
   3. Uncomment the objects in the ``main`` method to test drawing the squares.
   4. Add an ``area`` method to ``Rectangle`` that computes the area of the rectangle. Does it work for ``Square``\ s too? Test it.

@@ -246,9 +246,9 @@ In the example below the ``greet(String who)`` method overloads the ``greet()`` 
       {
           private String name = null;
 
-          public Person(String theName)
+          public Person(String name)
           {
-              name = theName;
+              this.name = name;
           }
 
           public String getFood()
@@ -262,9 +262,9 @@ In the example below the ``greet(String who)`` method overloads the ``greet()`` 
           private int id;
           private static int nextId = 0;
 
-          public Student(String theName)
+          public Student(String name)
           {
-              super(theName);
+              super(name);
               id = nextId;
               nextId++;
           }
@@ -274,9 +274,9 @@ In the example below the ``greet(String who)`` method overloads the ``greet()`` 
               return id;
           }
 
-          public void setId(int theId)
+          public void setId(int id)
           {
-              this.id = theId;
+              this.id = id;
           }
       }
 
@@ -302,9 +302,9 @@ You can step through an example of this in the Java Visualizer by clicking on th
       {
           private String name = null;
 
-          public Person(String theName)
+          public Person(String name)
           {
-              name = theName;
+              this.name = name;
           }
 
           public String getFood()
@@ -318,9 +318,9 @@ You can step through an example of this in the Java Visualizer by clicking on th
           private int id;
           private static int nextId = 0;
 
-          public Student(String theName)
+          public Student(String name)
           {
-              super(theName);
+              super(name);
               id = nextId;
               nextId++;
           }
@@ -330,9 +330,9 @@ You can step through an example of this in the Java Visualizer by clicking on th
               return id;
           }
 
-          public void setId(int theId)
+          public void setId(int id)
           {
-              this.id = theId;
+              this.id = id;
           }
       }
 
@@ -447,9 +447,9 @@ For example, if a parent class has a private instance variable, ``name``, then t
       {
           private int x;
 
-          public void setX(int theX)
+          public void setX(int x)
           {
-              x = theX;
+              this.x = x;
           }
           // ... other methods not shown
       }
@@ -458,9 +458,9 @@ For example, if a parent class has a private instance variable, ``name``, then t
       {
           private int y;
 
-          public void setY(int theY)
+          public void setY(int y)
           {
-              y = theY;
+              this.y = y;
           }
 
           // ... other methods not shown

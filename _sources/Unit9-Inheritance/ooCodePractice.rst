@@ -678,7 +678,7 @@ Code Practice with Object Oriented Concepts
                       return getName() + " " + getAge() + " " + getDegree();
                   }
 
-                  public Teacher(String name, int age, String theDegree)
+                  public Teacher(String name, int age, String degree)
                   {
                       // ADD CODE HERE
                   }
@@ -773,10 +773,10 @@ Code Practice with Object Oriented Concepts
                       return getName() + " " + getAge() + " " + getDegree();
                   }
 
-                  public Teacher(String name, int age, String theDegree)
+                  public Teacher(String name, int age, String degree)
                   {
                       super(name, age);
-                      this.degree = theDegree;
+                      this.degree = degree;
                   }
               }
 
@@ -801,10 +801,10 @@ Code Practice with Object Oriented Concepts
                   private String name;
                   private String address;
 
-                  public Store(String theName, String theAddress)
+                  public Store(String name, String address)
                   {
-                      this.name = theName;
-                      this.address = theAddress;
+                      this.name = name;
+                      this.address = address;
                   }
 
                   // ADD CODE HERE
@@ -874,10 +874,10 @@ Code Practice with Object Oriented Concepts
                   private String name;
                   private String address;
 
-                  public Store(String theName, String theAddress)
+                  public Store(String name, String address)
                   {
-                      this.name = theName;
-                      this.address = theAddress;
+                      this.name = name;
+                      this.address = address;
                   }
 
                   public String getName()
@@ -890,14 +890,14 @@ Code Practice with Object Oriented Concepts
                       return this.address;
                   }
 
-                  public void setName(String theName)
+                  public void setName(String name)
                   {
-                      this.name = theName;
+                      this.name = name;
                   }
 
-                  public void setAddress(String theAddress)
+                  public void setAddress(String address)
                   {
-                      this.address = theAddress;
+                      this.address = address;
                   }
 
                   public String toString()
@@ -1296,4 +1296,3 @@ Code Practice with Object Oriented Concepts
             .. disqus::
                 :shortname: cslearn4u
                 :identifier: javareview_ooex12d
-

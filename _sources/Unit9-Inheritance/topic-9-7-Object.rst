@@ -172,9 +172,9 @@ object. In other words it is does the same test as ``==``.
    {
        private String name;
 
-       public Person(String theName)
+       public Person(String name)
        {
-           this.name = theName;
+           this.name = name;
        }
 
        public static void main(String[] args)
@@ -524,9 +524,9 @@ the next step:
     * interest rate instance variable and write a constructor and a toString
     * method.
     */
-   class SavingsAccount 
+   class SavingsAccount
    {
-   
+
    }
 
    ====
