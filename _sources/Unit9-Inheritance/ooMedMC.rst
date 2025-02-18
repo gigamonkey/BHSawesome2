@@ -68,9 +68,9 @@ These problems are similar to those you will see on the AP CSA exam.
       {
          private int x;
 
-         public void setX(int theX)
+         public void setX(int x)
          {
-            x = theX;
+            this.x = x;
          }
          // ... other methods not shown
       }
@@ -79,9 +79,9 @@ These problems are similar to those you will see on the AP CSA exam.
       {
          private int y;
 
-         public void setY(int theY)
+         public void setY(int y)
          {
-            y = theY;
+            this.y = y;
          }
 
         // ... other methods not shown
@@ -292,4 +292,3 @@ These problems are similar to those you will see on the AP CSA exam.
             Garfield garfield = new Garfield();
         }
     }
-
