@@ -220,10 +220,10 @@ objects. Notice that the loop works with a variable of type ``Pet`` because a
       private String name;
       private String type;
 
-      public Pet(String n, String t)
+      public Pet(String name, String type)
       {
-          name = n;
-          type = t;
+          this.name = name;
+          this.type = type;
       }
 
       public String toString()
