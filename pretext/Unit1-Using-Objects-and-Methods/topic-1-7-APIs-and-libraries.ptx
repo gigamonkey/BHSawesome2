@@ -12,6 +12,7 @@
     <idx>method</idx>
     <idx>dot operator</idx>
     <idx>behavior</idx>
+
     <p>
       Earlier in this book, we used code like <c>System.out.println("hello,
       world!")</c> to print to the screen. When we include that code in a
@@ -42,6 +43,7 @@
 
   <subsection xml:id="classes-attributes-behaviors">
     <title>The Turtle Library: Classes, Attributes, and Behaviors</title>
+
     <p>
       One of the great things about Java is the number of libraries written by
       other programmers that we can use. One such library is the <c>Turtle</c>
@@ -67,7 +69,7 @@ public class TurtleTest
         // Code to make yertle move forward and turn right
         yertle.forward();
         yertle.turnRight();
-        
+
         habitat.show(true);
     }
 }
@@ -76,30 +78,37 @@ public class TurtleTest
 
     <p>
       The Turtle library is named after its main <term>class</term>,
-      <c>Turtle</c>. A <term>class</term> defines a specific reference type and
-      is the building block of object-oriented programming. You'll write your
-      own classes in Unit 3, but in this unit, we just want to focus on using
-      classes that other programmers have written.
+      <c>Turtle</c>. Classes are the main building blocks of Java programs and
+      libraries. We’ll discuss writing our own classes in Unit 3, but in this unit,
+      we just want to focus on using classes that other programmers have
+      written.
     </p>
 
     <p>
-      Each class defines a new kind of value similar to how each primitive type
-      like <c>int</c> or <c>double</c> define a particular kind of value, such
-      as a 32-bit integer quantity for an <c>int</c> or a 64-bit floating point
-      value for a <c>double</c>. These new kinds of values, defined by classes,
-      are called <term>objects</term> which is where <term>object-oriented
-      programming</term> gets its name. Existing classes like <c>Turtle</c> can
-      be utilized to create Turtle objects like <c>yertle</c> that can move
-      around the screen, drawing lines. We will learn more about classes and
-      objects in lesson 1.12.
+      Each class defines a new kind of value similar to how each <term>primitive
+      type</term>—<c>int</c>, <c>double</c>, and <c>boolean</c>—define a
+      particular kind of value, such as a 32-bit integer quantity for an
+      <c>int</c> or a 64-bit floating point value for a <c>double</c>. These new
+      kinds of values, defined by classes, are called <term>objects</term> which
+      is where <term>object-oriented programming</term> gets its name. The
+      values defined by the <c>Turtle</c> class represent turtles that can move
+      around the screen, drawing lines.
     </p>
 
     <p>
       Classes define the structure of objects in terms of
-      <term>attributes</term> and <term>behaviors</term>.
-      <term>Attributes</term> refer to the data related to the class and are
-      stored in variables. <term>Behaviors</term> refer to what instances of the
-      class can do (or what can be done with them) and are defined by methods.
+      <term>attributes</term> and <term>behaviors</term>. Attributes are the
+      data that makes up the object, each stored in a variable defined by the
+      class. Objects can be more complex than primitive values since they can
+      consist of an arbitrary number of attributes unlike primitive values
+      which are always just one value. And unlike primitive values, which can
+      only be operated on with a fixed set of operators like <c>+</c> and
+      <c>*</c>, objects can have an arbitrary number of behaviors that describe
+      what we can do with those objects. These behaviors are defined in the
+      class as <term>methods</term>.
+    </p>
+
+    <p>
       The following picture of a turtle shows some of the attributes every
       <c>Turtle</c> object has, such as a <c>color</c>, <c>xPos</c>,
       <c>yPos</c>, and <c>heading</c> as well as behaviors implemented as
@@ -113,10 +122,36 @@ public class TurtleTest
     </figure>
 
     <p>
-      The Java program in the exercise above creates a <c>Turtle</c> object and
-      stores a reference to it in the variable <c>yertle</c>. The following two
-      lines of code are used to tell the turtle to move forward and then turn
-      right.
+      While the class <c>Turtle</c> defines what attributes each turtle has,
+      every turtle object has its own value for each attribute. So we can have
+      one blue turtle at position <c>200,100</c> and one red turtle at position
+      <c>50,75</c>, just like we can have one <c>int</c> whose value is <c>2</c>
+      and another whose value is <c>10</c>. The actual <c>Turtle</c> class
+      defines several more attributes than the ones shown in the image but these
+      are the main ones we need to know about to understand drawing with
+      turtles.
+    </p>
+
+    <p>
+      Similarly, the behaviors defined by the <c>Turtle</c> class are shared
+      among all turtle objects, but their exact effects will usually depend on
+      the attributes of the specific turtle object the method is called on.
+      For instance, the <c>forward()</c> method, as you’ll see in the next
+      exercise, causes a turtle to move forward and draw a line. Where the line
+      is drawn will depend on the turtle’s position and heading attributes and
+      the color of the line will be determined by the turtle’s color. Calling
+      <c>forward()</c> on a different turtle value would still draw a line but
+      it would likely be in a different position and might be a different color.
+      Calling a method may also change an object’s attributes—after we called
+      <c>forward()</c> the turtle’s position will have changed but its heading
+      and color will stay the same.
+    </p>
+
+    <p>
+      To see an example of this, look at the the Java program in the exercise
+      below. It creates a <c>Turtle</c> object and stores a reference to it in
+      the variable <c>yertle</c>. The following two lines of code are used to
+      tell the turtle to move forward and then turn right.
     </p>
 
     <program language="java">
@@ -130,23 +165,14 @@ yertle.turnRight();
       The period (<c>.</c>) after <c>yertle</c> in both those lines is called
       the <term>dot operator</term> and it allows us to access the attributes
       and methods of an object. In the first line the dot says get the method
-      named <c>forward()</c> defined in the <c>Turtle</c> class and call it on
-      the turtle object named by the variable <c>yertle</c>. The exact behavior
-      of the method will depend on the current values of <c>yertle</c>’s
-      attributes such as its color, its x and y position, and its heading. For
-      instance, calling <c>forward()</c> will cause the turtle to draw a line
-      from its current x and y position to a new position 100 pixels away in
-      whatever direction the turtle is facing. The color of the line will be
-      determined by the turtle’s color.
-    </p>
-
-    <p>
-      <term>Documentation</term> found in API specifications and libraries is
-      essential to understanding the attributes and behaviors of a class defined
-      by the API. Here’s the API documentation that lists all of the Turtle
-      methods found in <url
-      href="https://cseweb.ucsd.edu/~ricko/CSE11/turtleClassesDocs/index.html?turtleClasses/SimpleTurtle.html">the
-      Turtle Javadocs</url>.
+      named <c>forward()</c> defined in the <c>Turtle</c> class and call it on the
+      turtle object named by the variable <c>yertle</c>. The exact behavior of
+      the method will depend on the current values of <c>yertle</c>’s attributes
+      such as its color, its x and y position, and its heading. For instance,
+      calling <c>forward()</c> will cause the turtle to draw a line from its
+      current x and y position to a new position 100 pixels away in whatever
+      direction the turtle is facing. The color of the line will be determined
+      by the turtle’s color.
     </p>
 
     <activity label="TurtleAPI">
@@ -395,9 +421,9 @@ public class RunestoneTests extends CodeTestHelper
 
           <feedback>
             <p>
-              Yes. A method describes some behavior an object can do like
-              turning right. Code outside the class can cause that behavior to
-              happen by calling the method.
+              Yes. A method describes some behavior an object can do like turning
+              right. Code outside the class can cause that behavior to happen by
+              calling the method.
             </p>
           </feedback>
         </choice>
@@ -588,6 +614,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="packages">
     <title>Packages</title>
+
     <p>
       While classes are the main building blocks of Java programs, most programs
       and libraries are made up of multiple classes that need to be used
@@ -604,9 +631,9 @@ public class RunestoneTests extends CodeTestHelper
       Because related classes are usually collected into the same package, Java
       programmers tend to use the terms <term>library</term>, <term>API</term>,
       and <term>package</term> somewhat interchangeably. But to be precise, a
-      library is a collection of classes written by other programmers that you
-      can use, the library’s API describes how you use it, and the classes in
-      the library are probably organized into one or more Java packages.
+      library is a collection of classes that you can use, the library’s API
+      describes how you use it, and the classes in the library are probably
+      organized into one or more Java packages.
     </p>
 
     <p>
