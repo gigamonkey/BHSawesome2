@@ -580,13 +580,14 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </activity>
   </subsection>
-<subsection xml:id="ap-scoring-rubric-parta">
+
+  <subsection xml:id="ap-scoring-rubric-parta">
     <title>AP Scoring Rubric for Part A</title>
     <p>
-      Here is the AP rubric for Part A. Did your code meet the
-      requirements for all 4 points? Notice that even a partial solution would
-      get some of the points. It is not all or nothing. In class, your teacher
-      may have you grade each others’ code.
+      Here is the AP rubric for Part A. Did your code meet the requirements for
+      all 4 points? Notice that even a partial solution would get some of the
+      points. It is not all or nothing. In class, your teacher may have you
+      grade each others’ code.
     </p>
 
     <figure align="center">
@@ -804,8 +805,6 @@ public class RunestoneTests extends CodeTestHelper
       </choices>
     </activity>
   </subsection>
-
-  
 
   <subsection xml:id="msgbuilder-partb-solve">
     <title>Solve MessageBuilder Part B</title>

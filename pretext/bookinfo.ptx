@@ -4,7 +4,7 @@
   <document-id>BHSawesome2</document-id>
   <rename element="inlineexercise">Activity</rename>
   <rename element="chapter">Unit</rename>
-  <brandlogo url="./index.html" source="_static/BHSawesomeLogo.png" alt="BHSawesome"/>
+  <brandlogo url="./index.html" source="_static/BHSawesomeLogo.png" alt="BHSawesome" />
   <blurb shelf="AP Computer Science">
     BHSawesome2 is based on CSAwesome2, the newest AP CSA Java curriculum
     approved to meet the 2025-2026 College Board standards and an introductory

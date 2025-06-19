@@ -978,9 +978,10 @@ public class RunestoneTests extends CodeTestHelper
 
     <solution>
       <p>
-        Answer: You can use indexOf to find the next x or check every character in the string. 
-        Loop while pos is greater than or equal to 0. 
-        Use substring to reset message beyond the next x or to check every character.
+        Answer: You can use indexOf to find the next x or check every character
+        in the string. Loop while pos is greater than or equal to 0. Use
+        substring to reset message beyond the next x or to check every
+        character.
       </p>
 
       <program language="java">

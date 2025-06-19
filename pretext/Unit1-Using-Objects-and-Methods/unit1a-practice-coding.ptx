@@ -264,8 +264,9 @@ public class Test1
         Use the <c>+</c> operator to append the strings. Be sure to include
         spaces as needed.
       </p>
-       <program language="java">
-      <code>
+
+      <program language="java">
+        <code>
 public class Test1
 {
     public static void main(String[] args)
@@ -277,8 +278,8 @@ public class Test1
 
     }
 }
-      </code>
-    </program>
+        </code>
+      </program>
     </solution>
   </activity>
 

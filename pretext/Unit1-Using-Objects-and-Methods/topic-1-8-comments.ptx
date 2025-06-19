@@ -259,7 +259,8 @@ public class RunestoneTests extends CodeTestHelper
       only works properly if given a positive argument. These are described as
       special cases in the API documentation, for example in <url
       href="https://docs.oracle.com/javase%2F8%2Fdocs%2Fapi%2F%2F/java/lang/Math.html#sqrt-double"
-      visual="https://docs.oracle.com/javase%2F8%2Fdocs%2Fapi%2F%2F/java/lang/Math.html#sqrt-double">https://docs.oracle.com/javase%2F8%2Fdocs%2Fapi%2F%2F/java/lang/Math.html#sqrt-double</url>. Try this out below.
+      visual="https://docs.oracle.com/javase%2F8%2Fdocs%2Fapi%2F%2F/java/lang/Math.html#sqrt-double">https://docs.oracle.com/javase%2F8%2Fdocs%2Fapi%2F%2F/java/lang/Math.html#sqrt-double</url>.
+      Try this out below.
     </p>
 
     <activity label="math-preconditions">
@@ -343,8 +344,8 @@ public class RunestoneTests extends CodeTestHelper
       link</url> (refresh page after forking and if it gets stuck) or download
       the files <url
       href="https://github.com/bhoffman0/csawesome2/tree/main/_sources/Unit1-Using-Objects-and-Methods/TurtleJavaSwingCode.zip"
-      visual="https://github.com/bhoffman0/csawesome2/tree/main/_sources/Unit1-Using-Objects-and-Methods/TurtleJavaSwingCode.zip">here</url> to use in your own
-      IDE.)
+      visual="https://github.com/bhoffman0/csawesome2/tree/main/_sources/Unit1-Using-Objects-and-Methods/TurtleJavaSwingCode.zip">here</url>
+      to use in your own IDE.)
     </p>
 
     <activity label="turtle-preconditions">

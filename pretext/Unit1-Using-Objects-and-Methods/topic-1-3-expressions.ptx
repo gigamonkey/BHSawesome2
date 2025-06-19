@@ -67,7 +67,7 @@
       wanted to store any text, from a person’s name to the contents of a novel,
       in a program, we would represent it as a string. Java provides a
       <c>String</c> data type that we’ll learn more about in <xref
-      ref="topic-1-15-strings"/> but for now we just need to know we can write
+      ref="topic-1-15-strings" /> but for now we just need to know we can write
       string literals by enclosing the text we want in quotation marks:
       <c>""</c>.
     </p>
@@ -145,12 +145,10 @@ public class RunestoneTests extends CodeTestHelper
         </tests>
       </program>
     </activity>
-
   </subsection>
 
   <subsection xml:id="string-escapes">
     <title>String escapes</title>
-
     <p>
       What if you wanted to print out a double quote <c>"</c> character? Since
       <c>"</c> has a special meaning within Java’s string literals, it might
@@ -461,8 +459,8 @@ public class RunestoneTests extends CodeTestHelper
       <p>
         Remember that the value of <c>x % y</c> when <c>x</c> is smaller than
         <c>y</c> is always <c>x</c>. Since <c>y</c> can’t go into <c>x</c> at
-        all (goes in 0 times), the result is just <c>x</c>. So <c>2 %
-        3</c> is <c>2</c> since <c>2 &lt; 3</c>.
+        all (goes in 0 times), the result is just <c>x</c>. So <c>2 % 3</c> is
+        <c>2</c> since <c>2 &lt; 3</c>.
       </p>
     </note>
 
@@ -641,7 +639,7 @@ public class RunestoneTests extends CodeTestHelper
       happens when we divide by zero, something that is not defined in math. In
       an <c>int</c> expression, dividing by 0 will result in an
       <term>ArithmeticException</term> , as we saw in the <xref
-      ref="topic-1-1-intro-algorithms"/>. Try it in one of the active codes to
+      ref="topic-1-1-intro-algorithms" />. Try it in one of the active codes to
       see what happens.
     </p>
 
@@ -681,7 +679,6 @@ public class RunestoneTests extends CodeTestHelper
       expression <c>5 * 3</c> is evaluated first and then becomes one of the
       operands to the <c>+</c> operator.
     </p>
-
 
     <p>
       In Java, multiplication <c>*</c>, division <c>/</c>, and remainder
@@ -736,7 +733,6 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </activity>
   </subsection>
-
 
   <subsection xml:id="coding-challenge-pay-calculator">
     <title>Coding Challenge : Pay Calculator</title>
