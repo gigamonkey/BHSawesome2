@@ -1,63 +1,241 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="topic-1-4-assignment">
-  <title>Assignment and Input</title>
+  <title>Assignment Statements and Input</title>
   <time minutes="45" />
-  <introduction />
+
+  <introduction>
+    <p>
+      In the previous two sections we’ve learned how to declare variables and
+      also how to use them in arithmetic expressions to compute new values. And
+      we’ve seen how to use <c>System.out.print()</c> and
+      <c>System.out.println()</c> to output the results of those computations to
+      make programs that do things that the human running the program can see.
+    </p>
+
+    <p>
+      That’s fine if the thing we want to compute is not too complicated. But if
+      the computation we want to our program to perform is involved enough, it
+      can be useful to break it down into smaller parts and save the results of
+      intermediate expressions in their own variables. And sometimes it’s useful
+      to update the value of an existing variable with a new value. That’s where
+      <term>assignment statements</term> come in.
+    </p>
+
+    <p>
+      Somewhat relatedly, if we want our program to be even more useful, it can
+      be handy to initialize some variables to values provided when we run the
+      program rather than when we write it. This is called taking
+      <term>input</term> and is flip side of emitting output like we saw how to
+      do in the previous section.
+    </p>
+  </introduction>
+
   <subsection>
     <title>Assignment Statements</title>
     <idx>assignment</idx>
     <p>
       <term>Assignment statements</term> initialize or change the value stored
       in a variable using the assignment operator <c>=</c>. An assignment
-      statement always has a single variable on the left hand side. The value of
-      the <term>expression</term> (which can contain math operators and other
-      variables) on the right of the <c>=</c> sign is assigned to and stored in
-      the variable on the left side.
-    </p>
-
-    <figure align="center">
-      <caption>Assignment Statement (variable = expression;)</caption>
-      <image source="Unit1-Using-Objects-and-Methods/Figures/assignment.png" width="63%" />
-    </figure>
-
-    <p>
-      Instead of saying equals for the = in an assignment statement, say “gets”
-      or “is assigned” to remember that the variable gets or is assigned the
-      value on the right. In the figure above score is assigned the value of the
-      expression 10 times points (which is another variable) plus 5.
+      statement always consists of a single variable on the left hand side of
+      the <c>=</c> and a single expression on the right hand side. The
+      expression is evaluated and then the resulting value is stored in the
+      variable, initializing it if this is the first time it has been assigned a
+      value or replacing its old value with a new value.
     </p>
 
     <p>
-      The following <url
-      href="https://www.youtube.com/watch?v=MZwIgM__5C8&amp;ab_channel=colleenlewis"
-      visual="https://www.youtube.com/watch?v=MZwIgM__5C8&amp;ab_channel=colleenlewis">video</url>
-      by Dr. Colleen Lewis shows how variables can change values in memory using
-      assignment statements.
-    </p>
-
-    <video youtube="MZwIgM__5C8" label="video-asgn-trace" />
-    <p>
-      As we saw in the video, we can set one variable’s value to a <em>copy</em>
-      of the value of another variable like <c>y = x;</c>. This won’t change the
-      value of the variable that you are copying from.
+      When we read code out loud, we usually read an assignment statement like
+      <c>x = 10</c> as “x gets 10” or “set x to 10”.
     </p>
 
     <p>
-      Let’s step through the following code in the Java visualizer to see the
-      values in memory (<url
-      href="http://www.pythontutor.com/visualize.html#code=public+class+Test2%0A%7B%0A+++public+static+void+main(String%5B%5D+args%29%0A+++%7B%0A+++++int+x+%3D+3%3B%0A+++++int+y+%3D+2%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++++x+%3D+y%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++++y+%3D+5%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++%7D%0A%7D&amp;mode=display&amp;origin=opt-
-      frontend.js&amp;cumulative=false&amp;heapPrimitives=false&amp;textReferences=false&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;curInstr=0"
-      visual="http://www.pythontutor.com/visualize.html#code=public+class+Test2%0A%7B%0A+++public+static+void+main(String%5B%5D+args%29%0A+++%7B%0A+++++int+x+%3D+3%3B%0A+++++int+y+%3D+2%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++++x+%3D+y%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++++y+%3D+5%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++%7D%0A%7D&amp;mode=display&amp;origin=opt-
-      frontend.js&amp;cumulative=false&amp;heapPrimitives=false&amp;textReferences=false&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;curInstr=0">click
-      here if the code below does not generate</url>). Click on the Next button
-      at the bottom of the code to see how the values of the variables change.
-      You can run the visualizer on any Active Code in this e-book by just
-      clicking on the Code Lens button at the top of each Active Code.
+      To take a simple example of initializing and then reassigning a variable,
+      suppose we are keeping track of the score in a game. We need to decare and
+      initialize the variable with something like this:
     </p>
+
+    <program language="java">
+int score = 0;
+    </program>
+
+    <p>
+      That is an assignment as part of the variable declaration. It initializes
+      the variable <c>score</c> to the value <c>0</c>. Then as the game
+      progresses and the player scores points we need to update the value of
+      <c>score</c> with a line like this:
+    </p>
+
+    <program language="java">
+score = score + 1;
+    </program>
+
+    <p>
+      This <term>increments</term> the variable, setting its value to its
+      current value plus one. As a formula in math class it would look strange
+      since nothing plus one is equal to itself. But it makes sense in coding
+      because the <c>=</c> is an assignment operator. Java just evaluates the
+      expression on the right, <c>score + 1</c>, which produces some number and
+      then that number becomes the new value of the variable <c>score</c>.
+    </p>
+
+    <note>
+      <p>
+        Notice that in the second line, when we are assigning a new value to
+        <c>score</c>, we do not specify its type again. We only need to declare
+        a variable once. If we did write:
+      </p>
+
+      <program language="java">
+int score = score + 1;
+      </program>
+
+      <p>
+        it would be an error because this code would need to evaluate the right
+        hand side of the assignment in order to get <c>score</c>’s initial value
+        but that would require getting the value of <c>score</c> before it was
+        initialized.
+      </p>
+    </note>
+
+    <activity label="incrementScore">
+      <statement>
+        <p>
+          Try the code below to see how score is incremented by 1. Try
+          substituting 2 instead of 1 to see what happens.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+public class Test1
+{
+    public static void main(String[] args)
+    {
+        int score = 0;
+        System.out.println(score);
+        score = score + 1;
+        System.out.println(score);
+    }
+}
+        </code>
+        <tests>
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import java.io.*;
+
+public class RunestoneTests extends CodeTestHelper
+{
+    @Test
+    public void test1()
+    {
+        String output = getMethodOutput("main");
+        String expect = "0\n1\n";
+        boolean passed =
+                getResults(expect, output, "Expected output from main", true);
+        assertTrue(passed);
+    }
+}
+        </tests>
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Data Types in Assignments</title>
+    <p>
+      Whenever we assign a value to a variable, the type of the value produced
+      by the expression must be compatible with the declared type of the
+      variable. Usually this means there are the same type, such as assigning an
+      <c>int</c> value to an <c>int</c> variable or a <c>double</c> value to a
+      <c>double</c> variable. But similar to the way we can use a mix of
+      <c>int</c> and <c>double</c> values in an arithmetic expression and get a
+      <c>double</c> result, we can also assign an <c>int</c> value to a
+      <c>double</c> variable and it will be automatically converted to the
+      equivalent <c>double</c>. In the next lesson, we will see how to explictly
+      convert values to different types.
+    </p>
+
+    <activity label="assignmentTypes">
+      <statement>
+        <p>
+          The code below looks okay at first glance, but if you run it, you will
+          see that there is an error of incompatible types. Change the data type
+          of one of the variables to fix the error.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+public class Asgn
+{
+    public static void main(String[] args)
+    {
+          int x = 1;
+          double y = 2.2;
+          x = 2 * y;
+          System.out.println(x);
+    }
+}
+        </code>
+        <tests>
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import java.io.*;
+
+public class RunestoneTests extends CodeTestHelper
+{
+    @Test
+    public void test1()
+    {
+        String output = getMethodOutput("main");
+        String expect = "4.4\n";
+        boolean passed =
+                getResults(expect, output, "Expected output from main");
+        assertTrue(passed);
+    }
+}
+        </tests>
+      </program>
+    </activity>
+
+
 
     <activity label="codelensAsgn">
       <statement>
+        <p>
+          The following <url
+          href="https://www.youtube.com/watch?v=MZwIgM__5C8&amp;ab_channel=colleenlewis"
+          visual="https://www.youtube.com/watch?v=MZwIgM__5C8&amp;ab_channel=colleenlewis">video</url>
+          by Dr. Colleen Lewis shows how variables can change values in memory using
+          assignment statements.
+        </p>
+
+        <video youtube="MZwIgM__5C8" label="video-asgn-trace" />
+        <p>
+          As we saw in the video, we can set one variable’s value to a <em>copy</em>
+          of the value of another variable like <c>y = x;</c>. This won’t change the
+          value of the variable that you are copying from.
+        </p>
+
+        <p>
+          Let’s step through the following code in the Java visualizer to see
+          the values in memory (<url
+          href="http://www.pythontutor.com/visualize.html#code=public+class+Test2%0A%7B%0A+++public+static+void+main(String%5B%5D+args%29%0A+++%7B%0A+++++int+x+%3D+3%3B%0A+++++int+y+%3D+2%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++++x+%3D+y%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++++y+%3D+5%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++%7D%0A%7D&amp;mode=display&amp;origin=opt-
+          frontend.js&amp;cumulative=false&amp;heapPrimitives=false&amp;textReferences=false&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;curInstr=0"
+          visual="http://www.pythontutor.com/visualize.html#code=public+class+Test2%0A%7B%0A+++public+static+void+main(String%5B%5D+args%29%0A+++%7B%0A+++++int+x+%3D+3%3B%0A+++++int+y+%3D+2%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++++x+%3D+y%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++++y+%3D+5%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++%7D%0A%7D&amp;mode=display&amp;origin=opt-
+          frontend.js&amp;cumulative=false&amp;heapPrimitives=false&amp;textReferences=false&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;curInstr=0">click
+          here if the code below does not generate</url>). Click on the Next
+          button at the bottom of the code to see how the values of the
+          variables change. You can run the visualizer on any Active Code in
+          this e-book by just clicking on the Code Lens button at the top of
+          each Active Code.
+        </p>
+
         <p>
           Keep clicking on the Next button at the bottom of the code to see how
           the values of the variables change as you step through the running
@@ -224,51 +402,6 @@ z = 3;
       or expression from one type to another.
     </p>
 
-    <activity label="assignmentTypes">
-      <statement>
-        <p>
-          The code below looks okay at first glance, but if you run it, you will
-          see that there is an error of incompatible types. Change the data type
-          of one of the variables to fix the error.
-        </p>
-      </statement>
-
-      <program interactive="activecode" language="java">
-        <code>
-public class Asgn
-{
-    public static void main(String[] args)
-    {
-          int x = 1;
-          double y = 2.2;
-          x = 2 * y;
-          System.out.println(x);
-    }
-}
-        </code>
-        <tests>
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-import java.io.*;
-
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "4.4\n";
-        boolean passed =
-                getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
-        </tests>
-      </program>
-    </activity>
-
     <p>
       Reference types like <c>String</c> can be assigned a new object or null if
       there is no object. The literal <term>null</term> is a special value used
@@ -285,63 +418,6 @@ str = "new object";
     </program>
   </subsection>
 
-  <subsection>
-    <title>Adding 1 to a Variable</title>
-    <p>
-      If you use a variable to keep score, you would probably increment it (add
-      one to the current value) whenever score should go up. You can do this by
-      setting the variable to the current value of the variable plus one
-      (<c>score = score + 1</c>) as shown below. The formula would look strange
-      in math class, but it makes sense in coding because it is assigning a new
-      value to the variable on the left that comes from evaluating the
-      arithmetic expression on the right. So, the score variable is set to the
-      previous value of score plus 1.
-    </p>
-
-    <activity label="incrementScore">
-      <statement>
-        <p>
-          Try the code below to see how score is incremented by 1. Try
-          substituting 2 instead of 1 to see what happens.
-        </p>
-      </statement>
-
-      <program interactive="activecode" language="java">
-        <code>
-public class Test1
-{
-    public static void main(String[] args)
-    {
-        int score = 0;
-        System.out.println(score);
-        score = score + 1;
-        System.out.println(score);
-    }
-}
-        </code>
-        <tests>
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-import java.io.*;
-
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "0\n1\n";
-        boolean passed =
-                getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
-        </tests>
-      </program>
-    </activity>
-  </subsection>
 
   <subsection>
     <title>Input with Variables</title>
@@ -443,7 +519,7 @@ public class RunestoneTests extends CodeTestHelper
     <image source="Unit1-Using-Objects-and-Methods/Figures/dog-free.png" width="27%" alt="dog" />
     <p>
       In this coding challenge, you will calculate your age, and your pet’s age
-      from your birthdates, and your pet’s age in dog years. In the code below,
+      from your birth dates, and your pet’s age in dog years. In the code below,
       type in the current year, the year you were born, the year your dog or cat
       was born (if you don’t have one, make one up!) in the variables below.
       Then write formulas in assignment statements to calculate how old you are,
@@ -456,7 +532,7 @@ public class RunestoneTests extends CodeTestHelper
     <project label="challenge1-4">
       <statement>
         <p>
-          Calculate your age and your pet’s age from the birthdates, and then
+          Calculate your age and your pet’s age from the birth dates, and then
           your pet’s age in dog years.
         </p>
       </statement>
