@@ -363,7 +363,6 @@ public class RunestoneTests extends CodeTestHelper
         </tests>
       </program>
     </activity>
-
   </subsection>
 
   <subsection xml:id="the-remainder-operator">
