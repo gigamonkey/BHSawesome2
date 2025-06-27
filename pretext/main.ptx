@@ -27,6 +27,7 @@
       </p>
     </introduction>
 
+    <xi:include href="./frontmatter/toctree.ptx" />
     <xi:include href="./introduction/toctree.ptx" />
     <xi:include href="./primitive-types-and-variables/toctree.ptx" />
     <xi:include href="./procedural-abstraction/toctree.ptx" />

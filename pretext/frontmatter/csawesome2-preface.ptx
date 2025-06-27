@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section xml:id="preface">
-  <title>Preface</title>
+<preface>
+  <title>Preface to CSAwesome2</title>
   <idx>license</idx>
   <p>
     CSAwesome2 is the second edition of CSAwesome, a free AP CSA curriculum that
@@ -455,4 +455,4 @@
     href="http://creativecommons.org/licenses/by/3.0/"
     visual="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</url>.
   </p>
-</section>
+</preface>

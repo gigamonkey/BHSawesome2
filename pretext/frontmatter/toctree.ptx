@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<frontmatter xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="./preface.ptx" />
+  <xi:include href="./csawesome2-preface.ptx" />
+</frontmatter>

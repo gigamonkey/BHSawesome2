@@ -4,7 +4,6 @@
   <title>introduction</title>
   <introduction>
   </introduction>
-  <xi:include href="./preface.ptx" />
   <xi:include href="./aboutcsa.ptx" />
   <xi:include href="./csptransition.ptx" />
   <xi:include href="./javaIDEs.ptx" />
