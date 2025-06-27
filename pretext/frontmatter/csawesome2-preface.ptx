@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<preface>
+<preface xml:id="csawesome2-preface">
   <title>Preface to CSAwesome2</title>
   <idx>license</idx>
   <p>
