@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="text-files" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>text-files</title>
+  <introduction>
+  </introduction>
+
+  <xi:include href="./topic-4-1-data-ethics.ptx" />
+  <xi:include href="./topic-4-2-data-sets.ptx" />
+  <xi:include href="./topic-4-6-input-files.ptx" />
+</chapter>

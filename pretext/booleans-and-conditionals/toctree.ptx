@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="booleans-and-conditionals" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>booleans-and-conditionals</title>
+  <introduction>
+  </introduction>
+
+  <xi:include href="./topic-2-1-algorithms.ptx" />
+  <xi:include href="./topic-2-2-booleans.ptx" />
+  <xi:include href="./topic-2-3-ifs.ptx" />
+  <xi:include href="./topic-2-4-nested-ifs.ptx" />
+  <xi:include href="./topic-2-5-compound-ifs.ptx" />
+  <xi:include href="./topic-2-6-comparing-booleans.ptx" />
+</chapter>

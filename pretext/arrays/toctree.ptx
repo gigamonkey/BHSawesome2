@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="arrays" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>arrays</title>
+  <introduction>
+  </introduction>
+
+  <xi:include href="./topic-4-3-array-basics.ptx" />
+  <xi:include href="./topic-4-4-array-traversal.ptx" />
+  <xi:include href="./topic-4-5-array-algorithms.ptx" />
+  <xi:include href="./topic-2-11-nested-loops.ptx" />
+  <xi:include href="./topic-2-12-loop-analysis.ptx" />
+</chapter>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="procedural-abstraction" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>procedural-abstraction</title>
+  <introduction>
+  </introduction>
+
+  <xi:include href="./topic-1-9-method-signatures.ptx" />
+  <xi:include href="./topic-1-10-calling-class-methods.ptx" />
+  <xi:include href="./topic-1-11-Math.ptx" />
+  <xi:include href="./topic-3-5-methods.ptx" />
+</chapter>

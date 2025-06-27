@@ -27,19 +27,20 @@
       </p>
     </introduction>
 
-    <xi:include href="./Unit0-Getting-Started/toctree.ptx" />
-    <xi:include href="./Unit1-Using-Objects-and-Methods/toctree.ptx" />
-    <xi:include href="./Unit2-Selection-and-Iteration/toctree.ptx" />
-    <xi:include href="./Unit3-Class-Creation/toctree.ptx" />
-    <xi:include href="./Unit4-Data-Collections/toctree.ptx" />
-    <xi:include href="./Unit5-Inheritance/toctree.ptx" />
-    <xi:include href="./posttest/toctree.ptx" />
-    <xi:include href="./Tests/toctree.ptx" />
-    <xi:include href="./TimedTests/toctree.ptx" />
-    <xi:include href="./MixedFreeResponse/toctree.ptx" />
-    <xi:include href="./FreeResponse/toctree.ptx" />
-    <xi:include href="./Stories/toctree.ptx" />
-    <xi:include href="./Exercises.ptx" />
+    <xi:include href="./introduction/toctree.ptx" />
+    <xi:include href="./primitive-types-and-variables/toctree.ptx" />
+    <xi:include href="./procedural-abstraction/toctree.ptx" />
+    <xi:include href="./reference-types/toctree.ptx" />
+    <xi:include href="./objects/toctree.ptx" />
+    <xi:include href="./abstraction-and-program-design/toctree.ptx" />
+    <xi:include href="./booleans-and-conditionals/toctree.ptx" />
+    <xi:include href="./loops/toctree.ptx" />
+    <xi:include href="./arrays/toctree.ptx" />
+    <xi:include href="./text-files/toctree.ptx" />
+    <xi:include href="./array-lists/toctree.ptx" />
+    <xi:include href="./2d-arrays/toctree.ptx" />
+    <xi:include href="./algorithms/toctree.ptx" />
+
     <backmatter>
       <index>
         <index-list />

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="loops" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>loops</title>
+  <introduction>
+  </introduction>
+
+  <xi:include href="./topic-2-7-while-loops.ptx" />
+  <xi:include href="./topic-2-8-for-loops.ptx" />
+  <xi:include href="./topic-2-9-loop-algorithms.ptx" />
+  <xi:include href="./topic-2-10-strings-loops.ptx" />
+</chapter>
