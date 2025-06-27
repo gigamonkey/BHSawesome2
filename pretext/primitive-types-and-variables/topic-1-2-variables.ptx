@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="topic-1-2-variables">
-  <title>Variables and Data Types</title>
-  <time minutes="45" />
+  <title>Variables</title>
   <introduction>
     <p>
       Computers operate on <term>data</term> which is stored as
@@ -26,17 +25,17 @@
       variable is a location in its memory that can store a value. The value
       stored at that location can change, or vary, while the program is running
       which is why we call them variables. To us human programmers, on the other
-      hand, the important aspect of a variable as it’s name that we can use to
-      refer to the data without having to know about the variabel’s exact
+      hand, the important aspect of a variable as its name that we can use to
+      refer to the data without having to know about the variable’s exact
       location in memory.
     </p>
 
     <p>
       For example, in a computer game we might need to keep track of the
-      player’s score, which will start at 0 and increase as they gain points.
-      The score can be stored somewher in memory but in our program we’ll refer
-      to it with the name <c>score</c> since that’s much more convenient than
-      something like “address <c>66a3ffec</c>”.
+      player’s score, which will start at 0 and increase as the player earns
+      points. The score can be stored somewher in memory but in our program
+      we’ll refer to it with the name <c>score</c> since that’s much more
+      convenient than something like “address <c>66a3ffec</c>”.
     </p>
 
     <figure align="center">
@@ -535,16 +534,16 @@ int score = 4;
     </program>
 
     <p>
-      When you are printing out variables, you can use the <term>string
-      concatenation</term> operator <c>+</c> to add them to another string
-      inside System.out.print. Never put variables inside quotes <c>""</c>
+      When you are printing out variables, using <c>System.out.print</c>, you
+      can use the <term>string concatenation</term> operator <c>+</c> to add
+      them to another string. Never put variables inside quotes <c>""</c>
       because that will print out the variable name letter by letter. You do not
       want to print out the variable name, but the value of the variable in
       memory. If you’re not sure what this means, try putting quotes around the
       variable and see what happens. In the print out, if you want spaces
-      between words and variables, you must put the space in the quotes. If you
-      forget to add spaces, you will get smushed output like “HiJose” instead of
-      “Hi Jose”.
+      between words and variables, you must put the space inside the quotes. If
+      you forget to add spaces, you will get smushed output like “HiJose”
+      instead of “Hi Jose”.
     </p>
 
     <activity label="strConcatDemo">
@@ -1128,96 +1127,6 @@ public class RunestoneTests extends CodeTestHelper
     </project>
   </subsection>
 
-  <subsection xml:id="coding-challenge-mad-libs">
-    <title>Coding Challenge : Mad Libs</title>
-    <p>
-      Have you ever played MAD LIBS? In this game, you first choose a bunch of
-      words following clues like give me a color or a plural noun, without
-      looking at the story, and then those words are filled into the story to
-      make it sound very wacky! Fill in the variables below with silly words,
-      and then run to see the wacky story.
-    </p>
-
-    <p>
-      Then, working in pairs, come up with another silly story that uses at
-      least 5 new String variables. When you’re done, try another team’s mad
-      libs code. For more advanced programming, you could create this program in
-      a Java IDE that can do input using the <url
-      href="https://www.w3schools.com/java/java_user_input.asp"
-      visual="https://www.w3schools.com/java/java_user_input.asp">Scanner
-      class</url> to read in input into the variables.
-    </p>
-
-    <project label="challengeMadLibs">
-      <statement>
-        <p>
-          Replace the text “Replace” below with silly words following the
-          description in the variable names (for example, “cats” for a plural
-          noun, “blue” for a color, etc.) to create a silly poem. Run the code
-          to see the poem. Then, create your own silly story using 5 more String
-          variables.
-        </p>
-      </statement>
-
-      <program interactive="activecode" language="java">
-        <code>
-public class MadLibs1
-{
-    public static void main(String[] args)
-    {
-        // fill these in with silly words/strings (don't read the poem yet)
-        String pluralnoun1 = "Replace";
-        String color1 = "Replace";
-        String color2 = "Replace";
-        String food = "Replace";
-        String pluralnoun2 = "Replace";
-
-
-        // Run to see the silly poem!
-        System.out.println("Roses are " + color1);
-        System.out.println(pluralnoun1 + " are " + color2);
-        System.out.println("I like " + food);
-        System.out.println("Do " + pluralnoun2 + " like them too?");
-
-        // Now come up with your own silly poem!
-    }
-}
-        </code>
-        <tests>
-import static org.junit.Assert.*;
-
-import org.junit.*;
-
-import java.io.*;
-
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Roses are *\n* are *\nI like *\nDo * like them too?";
-
-        boolean passed = getResultsRegEx(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-
-    @Test
-    public void testNull() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Replace";
-
-        String actual = countOccurences(output, expect) + " Replace values";
-
-        boolean passed = getResults("0 Replace values", actual, "Change all \"Replace\" values");
-        assertTrue(passed);
-    }
-}
-        </tests>
-      </program>
-    </project>
-  </subsection>
 
   <subsection xml:id="summary-7">
     <title>Summary</title>

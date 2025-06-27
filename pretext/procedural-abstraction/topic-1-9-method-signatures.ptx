@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="topic-1-9-method-signatures">
-  <title>Method Signatures</title>
-  <time minutes="45" />
-  <introduction />
-  <subsection>
-    <title>Methods and Procedural Abstraction</title>
+  <title>Procedural abstraction</title>
+  <introduction>
     <idx>method</idx>
     <idx>procedural abstraction</idx>
     <p>
@@ -36,7 +33,7 @@
       without knowing exactly how it works. We just need to know the method’s
       name to call it and what it needs to do its job.
     </p>
-  </subsection>
+  </introduction>
 
   <subsection>
     <title>Method Calls</title>

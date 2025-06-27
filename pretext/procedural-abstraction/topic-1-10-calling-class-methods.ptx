@@ -2,7 +2,6 @@
 
 <section xml:id="topic-1-10-calling-class-methods">
   <title>Calling Class Methods</title>
-  <time minutes="45" />
   <introduction>
     <p>
       Most of the methods we have used so far are <term>static methods</term>,

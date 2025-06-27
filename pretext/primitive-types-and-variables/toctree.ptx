@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <chapter xml:id="primitive-types-and-variables" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>primitive-types-and-variables</title>
+  <title>Variables, primitive types, and expressions</title>
   <introduction>
+    <p>
+      This unit introduces the lowest level elements of the Java programming
+      language: the two numeric <term>primitive types</term> you need to know
+      for the AP Exam; <term>variables</term>, which allow us to give names to
+      important values in our programs; arithmetic <term>expressions</term> that
+      allow us to write programs that do math, and various <term>assignment
+      operators</term> that allow us to give values to our variables.
+    </p>
   </introduction>
 
   <xi:include href="./topic-1-2-variables.ptx" />
+  <xi:include href="./strings-and-output.ptx" />
   <xi:include href="./topic-1-3-expressions.ptx" />
   <xi:include href="./topic-1-4-assignment.ptx" />
   <xi:include href="./topic-1-5-casting.ptx" />

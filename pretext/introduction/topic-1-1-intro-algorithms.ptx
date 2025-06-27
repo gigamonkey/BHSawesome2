@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="topic-1-1-intro-algorithms">
-  <time minutes="45" />
   <title>Introduction to Algorithms, Programming, and Compilers</title>
   <introduction>
     <p>
@@ -1151,7 +1150,7 @@ Unexpected '}' on line 32.
 
     <datafile label="turtleClasses" filename="turtleClasses.jar" editable="no" hide="yes">
       <pre>
-        import java.awt.Image;
+      import java.awt.Image;
       import java.awt.image.BufferedImage;
 
       /**

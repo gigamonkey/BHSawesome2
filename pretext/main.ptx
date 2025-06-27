@@ -4,7 +4,7 @@
   <xi:include href="./bookinfo.ptx" />
   <book xml:id="csawesome2" permid="csa">
     <title>BHSawesome2</title>
-    <subtitle>AP CSA Java 2025+</subtitle>
+    <subtitle>AP CSA</subtitle>
     <introduction>
       <p>
         Welcome to BHSawesome2! This version of BHSawesome is based on the
