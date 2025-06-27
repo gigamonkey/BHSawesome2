@@ -4,6 +4,10 @@
   <title>introduction</title>
   <introduction>
   </introduction>
-
+  <xi:include href="./preface.ptx" />
+  <xi:include href="./aboutcsa.ptx" />
+  <xi:include href="./csptransition.ptx" />
+  <xi:include href="./javaIDEs.ptx" />
+  <xi:include href="./growthMindset.ptx" />
   <xi:include href="./topic-1-1-intro-algorithms.ptx" />
 </chapter>
