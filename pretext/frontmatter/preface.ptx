@@ -5,9 +5,9 @@
   <p>
     BHSawesome is derived from the excellent CSAwesome, a free AP CSA curriculum
     that is endorsed by the College Board as an official AP CSA curriculum and
-    PD provider for the 2025-2026 AP CSA revision. It was revised by Peter
-    Seibel, computer science teacher at Berkeley High School and a contributor
-    to CSAwesome.
+    PD provider for the 2025-2026 AP CSA revision. BHSawesome was created by
+    Peter Seibel, computer science teacher at Berkeley High School and a
+    contributor to CSAwesome.
   </p>
 
   <p>
@@ -18,7 +18,7 @@
   </p>
 
   <p>
-    For licensing information see <xref ref="csawesome2-preface" text="title"
-    />.
+    For acknowledgements and licensing information see <xref
+    ref="csawesome2-preface" text="title" />.
   </p>
 </preface>
