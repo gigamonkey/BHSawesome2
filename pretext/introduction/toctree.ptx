@@ -3,7 +3,21 @@
 <chapter xml:id="introduction" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Introduction</title>
   <introduction>
-    <p>What is this all about?</p>
+    <p>
+      In this introductory chapter, we will take a quick look at what
+      programming and Java are all about and then write our first simple Java
+      program and run it right within this book. (If you haven't yet, you should
+      probably watch the video explaining the interactive features of this book
+      in the <xref ref="front" text="title"/>.
+    </p>
+
+    <p>
+      After that there are a few notes about the AP course and exam, some things
+      to think about if you happen to be coming to this course after taking the
+      other AP computer science course, AP CSP, and some general things to keep
+      in mind as you work your way through the sometimes daunting task of
+      learning a new langauge.
+    </p>
   </introduction>
 
   <xi:include href="./topic-1-1-intro-algorithms.ptx" />

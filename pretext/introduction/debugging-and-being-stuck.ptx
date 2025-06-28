@@ -2,52 +2,66 @@
 
 <section>
   <title>Debugging and being stuck</title>
-  <introduction />
-  <subsection>
-    <title>Syntax Errors and Debugging</title>
+  <introduction>
+
     <p>
-      <term>Syntax errors</term> are reported to you by the compiler if your
-      Java code is not correctly written. Examples of syntax errors are a
-      semicolon <c>;</c> missing or if the code has a open curly brace <c>{</c>
-      or open quote <c>"</c>, but no close curly brace <c>}</c> or close quote
-      <c>"</c>. Informally, a syntax error is called a <term>bug</term>, and the
-      process of removing errors is called <term>debugging</term>. An early
-      computer science pioneer <url
-      href="https://en.wikipedia.org/wiki/Grace_Hopper"
-      visual="https://en.wikipedia.org/wiki/Grace_Hopper">Grace Hopper</url>
-      documented a real bug, a moth that flew into a computer in 1947!
+      The first and most obvious thing we need to learn about programming are
+      the details of our programming languge, Java in our case. However as
+      programmers have had to discover since the very beginning of programming,
+      even when we know all those details, it can sometimes be frustratingly
+      tricky to get our programs working correctly.
+    </p>
+
+    <p>
+      The informal term for anything that makes a program not work correctly is
+      <term>bug</term> and the process of getting all the bugs out of a program
+      is called <term>debugging</term>. In this section we will look at some of
+      the kinds of bugs you will undoubtedly soon encounter.
     </p>
 
     <figure align="left">
-      <caption>Grace Hopper’s log showing a real bug, 1947.</caption>
+      <caption>Early computer science pioneer <url
+      href="https://en.wikipedia.org/wiki/Grace_Hopper"
+      visual="https://en.wikipedia.org/wiki/Grace_Hopper">Grace Hopper</url>
+      documented a real bug in her log, a moth that flew into a computer in
+      1947!</caption>
       <image source="Unit1-Using-Objects-and-Methods/Figures/firstbug.jpg" width="54%" />
     </figure>
 
-    <br />
+  </introduction>
+
+  <subsection>
+    <title>Syntax errors</title>
     <p>
-      The compiler tries to run your code, but if your code has <term>syntax
-      errors</term>, you will see error messages displayed below the code.
-      Compiler error messages will tell the line number that the compiler found
-      the error and the type of error. The error messages are not always easy to
-      understand and sometimes the actual error is before the line that the
-      compiler says is the problem.
+      The first kind of bug we need to deal with are called <term>syntax
+      errors</term>. These are the programming equivalent of typos in English
+      and usually come from the same cause: misplaced or missing punctuation,
+      misspelled words, and incorrect capitalization. However, unlike in
+      English, where we can still understand text even if it contains a
+      misplaced comma or two, when a program does not exactly follow the rules
+      of Java, it can’t be run at all.
     </p>
 
     <p>
-      Watch the following video to see that all coders get bugs. Debugging is a
-      normal part of coding. It can be frustrating at times, but you will get
-      better at it with practice! Sometimes another pair of eyes really helps,
-      so ask a friend if you get stuck or try explaining your code line by line
-      to someone or even a rubber duck. <url
-      href="https://rubberduckdebugging.com/"
-      visual="https://rubberduckdebugging.com/">Rubber duck debugging</url> is a
-      lot of fun!
+      In Java running a program actually happens in two steps; first we compile
+      it and that produces a set of files that Java can then run. Errors that
+      are detected during compilation mean we don’t get a set of files that we
+      can run so we have to fix them. These are also called <term>compile-time
+      errors</term> because they are detected by the compiler.
     </p>
 
-    <video youtube="auv10y-dN4s" label="video-debugging" />
-    <p>Let’s practice debugging some code!</p>
     <p>
-      <term>Check Your Understanding: Mixed up programs</term>
+      The good news is the Java compiler will tell you if your Java code is not
+      exactly right. Examples of syntax errors are a semicolon <c>;</c> missing
+      or if the code has a open curly brace <c>{</c> or open quote <c>"</c>, but
+      no close curly brace <c>}</c> or close quote <c>"</c>.
+    </p>
+
+    <p>
+      The more code you write and the more syntax errors you create and then
+      remove, the more you will learn which details you really need to pay
+      attention to. To get some practice at creating syntactically correct code
+      try the following two exercises.
     </p>
 
     <exercise label="mixed-hi" numbered="yes" adaptive="yes" indentation="hide" language="java">
@@ -141,19 +155,28 @@
   </subsection>
 
   <subsection>
-    <title>Reading Error Messages</title>
+    <title>Reading error messages</title>
     <p>
-      In the exercise below, you should click on the run button to compile and
-      run the code. Unfortunately you will find there is a syntax error in the
-      code that you need to fix. Before you try to fix it, look for the error
-      message below the code. This is called a <term>compile time error</term>
-      because it is an error detected by the compiler.
+      In this book when you press the Run button on coding exercises, the code
+      is first complied and then run. But if the code has syntax errors or other
+      compile-time errors, you will see error messages displayed below the code.
     </p>
 
     <p>
-      It will be a lot easier to find the problem, and other problems like it,
-      if you understand how to read the error message. So let’s take a closer
-      look. It will look something like this:
+      In the exercises below, you will click the run button to compile and run
+      the code. Unfortunately you will find that the initial code in each
+      exercise contains at least one syntax error that you need to fix.
+    </p>
+
+    <p>
+      It will be a lot easier to find the problems if you understand a few
+      basics about how to read the error messages. They aren’t always easy to
+      understand but knowing how they’re structured can help so let’s take a
+      closer look.
+    </p>
+
+    <p>
+      An error message will look something like this:
     </p>
 
     <program language="text">
@@ -167,22 +190,21 @@ FirstClass.java:5: error: unclosed string literal
 
     <p>
       The first line starts with the name of the file that was being compiled.
-      Because you submitted your code via this web page you didn’t actually name
-      the file but it was named for you to match the name of your class. Then
-      there’s a colon (<c>:</c>) followed by a number. That number tells you the
-      line number in the file where the compiler detected the error, in this
-      case line 5.
+      (When we run code in this book we don’t name the file but it will be named
+      to match the name of the class.) Then there’s a colon (<c>:</c>) followed
+      by a number. That number tells us the line number in the file where the
+      compiler detected the error, in this case line 5.
     </p>
 
     <p>
       Error messages aren’t always 100% accurate about where the error actually
-      is; sometimes you actually need to change something a bit earlier in the
-      program and sometimes a bit later. But the line number is the best place
-      to start looking.
+      is; sometimes we actually need to change something a bit earlier in the
+      program and sometimes a bit later. But the line the compiler is pointing
+      us at is the best place to start looking.
     </p>
 
     <p>
-      After the line number and another colon, you will find the actual error
+      After the line number and another colon, we will find the actual error
       message. These can be kind of cryptic but you should still read it. As you
       learn more Java vocabulary they will become more meaningful but they
       almost always contain some useful clues. For instance take this error
@@ -212,12 +234,36 @@ FirstClass.java:5: error: unclosed string literal
     </p>
 
     <p>
-      <term>Coding Exercise: Compile Time Error 1</term>
+      Another thing that happens sometimes is after we fix one syntax error,
+      we’ll get a <em>new</em> syntax error. This is because sometimes the
+      compiler can’t even detect the second error until the first one is fixed.
+    </p>
+
+    <p>
+      Which is another reason it’s important to read error messages! It’s very
+      tempting when we see that there’s an error to jump immediately to trying
+      to fix it. Arg, an error! Get rid of it! But if we don’t slow down and
+      read the message in a case like this, we might not notice that we’ve
+      actually fixed the first error. And if we don’t notice that we fixed it,
+      we might undo our change and <em>unfix</em> it!
+    </p>
+
+    <p>
+      So read the error messages—they’re there to help you. With that in mind,
+      see if you can fix the errors in the exercises below
+    </p>
+
+    <p>
+      Practice finding and fixing syntax errors with the next three exercises.
     </p>
 
     <exercise label="sc2error1">
+      <title>Compile Time Error 1</title>
       <statement>
-        <p>Fix the code below.</p>
+        <p>
+          Click the run button to try to run the following code. Look for an
+          error message after the code and try to fix the code and run it again.
+        </p>
       </statement>
 
       <program interactive="activecode" language="java">
@@ -253,20 +299,15 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </exercise>
 
-    <p>
-      <term>Coding Exercise: Compile Time Error 2</term>
-    </p>
-
-    <p>
-      Click on the run button below to try and run the following code. Look for
-      an error message after the code. This time the error message will probably
-      point even more exactly at the problem than in the previous exercise. Try
-      to fix the code and run it again.
-    </p>
-
     <exercise label="sc2error2">
+      <title>Compile Time Error 2</title>
       <statement>
-        <p>Fix the code below.</p>
+        <p>
+          Click the run button to try to run the following code. Look for an
+          error message after the code. This time the error message will
+          probably point even more exactly at the problem than in the previous
+          exercise. Try to fix the code and run it again.
+        </p>
       </statement>
 
       <program interactive="activecode" language="java">
@@ -303,37 +344,16 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </exercise>
 
-    <p>
-      <term>Coding Exercise: Compile Time Error 3</term>
-    </p>
-
-    <p>
-      Click on the run button below to try and run the following code. What is
-      wrong this time? The first error message will probably point you directly
-      at the problem. But after you fix that you’ll probably get a
-      <title_reference>new</title_reference> error! That happens sometimes
-      because the compiler can’t even detect the second error until the first
-      one is fixed.
-    </p>
-
-    <p>
-      This is another reason it’s important to read error messages. It’s very
-      tempting when we see that there’s an error to jump immediately to trying
-      to fix it. Arg, an error! Get rid of it! But if we don’t slow down and
-      read the message in a case like this, we might not notice that we’ve
-      actually fixed the first error. If we don’t notice that we fixed it, we
-      might undo our change and <title_reference>unfix</title_reference> it!
-    </p>
-
-    <p>
-      So read the error messages—they’re there to help you. With that in mind,
-      see if you can fix both errors in this code. A hint for the second error:
-      capitalization matters.
-    </p>
-
     <exercise label="sc2error3">
+      <title>Compile Time Error 3</title>
       <statement>
-        <p>Fix the code below.</p>
+        <p>
+          Click on the run button below to try and run the following code. What
+          is wrong this time? The first error message will probably point you
+          directly at the problem. But after you fix that you’ll probably get a
+          <em>new</em> error! A hint for the second error: capitalization
+          matters.
+        </p>
       </statement>
 
       <program interactive="activecode" language="java">
@@ -370,11 +390,6 @@ public class RunestoneTests extends CodeTestHelper
         </tests>
       </program>
     </exercise>
-
-    <p>
-      Did you remember that <c>System</c> is capitalized in
-      <c>System.out.println</c>? Did you find the missing semicolon?
-    </p>
   </subsection>
 
   <subsection>
@@ -451,6 +466,21 @@ public class RunestoneTests extends CodeTestHelper
       specific data to see if it produces the expected outcome. We’ll see an
       example of this after learning about expressions in the next lessons.
     </p>
+  </subsection>
+
+  <subsection>
+    <title>Debugging techniques</title>
+    <p>
+      Watch the following video to see that all coders get bugs. Debugging is a
+      normal part of coding. It can be frustrating at times, but you will get
+      better at it with practice! Sometimes another pair of eyes really helps,
+      so ask a friend if you get stuck or try explaining your code line by line
+      to someone or even a rubber duck. <url
+      href="https://rubberduckdebugging.com/"
+      visual="https://rubberduckdebugging.com/">Rubber duck debugging</url> is a
+      lot of fun!
+    </p>
+    <video youtube="auv10y-dN4s" label="video-debugging" />
   </subsection>
 
   <subsection>
