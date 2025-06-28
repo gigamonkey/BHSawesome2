@@ -2,8 +2,11 @@
 
 <publication>
   <html>
-    <platform host="runestone" /><!-- knowled checkpoints interfere with ActiveCode problems -->
-    <knowl exercise-inline="no" example="no" listing="no" /><!-- for scratch code language -->
+    <platform host="runestone" />
+    <!-- knowled checkpoints interfere with ActiveCode problems -->
+    <knowl exercise-inline="no" example="no" listing="no" />
+
+    <!-- for scratch code language -->
     <calculator activecode="java" />
     <css theme="salem" color-main="#007d9f" />
     <tableofcontents focused="yes" level="4" />
