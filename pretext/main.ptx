@@ -27,20 +27,20 @@
       </p>
     </introduction>
 
-    <xi:include href="./frontmatter/toctree.ptx" />
+    <!-- <xi:include href="./frontmatter/toctree.ptx" /> -->
     <xi:include href="./introduction/toctree.ptx" />
-    <xi:include href="./primitive-types-and-variables/toctree.ptx" />
-    <xi:include href="./procedural-abstraction/toctree.ptx" />
-    <xi:include href="./reference-types/toctree.ptx" />
-    <xi:include href="./objects/toctree.ptx" />
-    <xi:include href="./abstraction-and-program-design/toctree.ptx" />
-    <xi:include href="./booleans-and-conditionals/toctree.ptx" />
-    <xi:include href="./loops/toctree.ptx" />
-    <xi:include href="./arrays/toctree.ptx" />
-    <xi:include href="./text-files/toctree.ptx" />
-    <xi:include href="./array-lists/toctree.ptx" />
-    <xi:include href="./2d-arrays/toctree.ptx" />
-    <xi:include href="./algorithms/toctree.ptx" />
+    <!-- <xi:include href="./primitive-types-and-variables/toctree.ptx" /> -->
+    <!-- <xi:include href="./procedural-abstraction/toctree.ptx" /> -->
+    <!-- <xi:include href="./reference-types/toctree.ptx" /> -->
+    <!-- <xi:include href="./objects/toctree.ptx" /> -->
+    <!-- <xi:include href="./abstraction-and-program-design/toctree.ptx" /> -->
+    <!-- <xi:include href="./booleans-and-conditionals/toctree.ptx" /> -->
+    <!-- <xi:include href="./loops/toctree.ptx" /> -->
+    <!-- <xi:include href="./arrays/toctree.ptx" /> -->
+    <!-- <xi:include href="./text-files/toctree.ptx" /> -->
+    <!-- <xi:include href="./array-lists/toctree.ptx" /> -->
+    <!-- <xi:include href="./2d-arrays/toctree.ptx" /> -->
+    <!-- <xi:include href="./algorithms/toctree.ptx" /> -->
 
     <backmatter>
       <index>
