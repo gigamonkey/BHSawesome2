@@ -3,7 +3,7 @@
 <pretext xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <xi:include href="./bookinfo.ptx" />
   <book xml:id="csawesome2" permid="csa">
-    <title>BHSawesome2</title>
+    <title>BHSawesome</title>
     <subtitle>AP CSA</subtitle>
     <introduction>
       <p>
@@ -41,6 +41,7 @@
     <xi:include href="./array-lists/toctree.ptx" />
     <xi:include href="./2d-arrays/toctree.ptx" />
     <xi:include href="./algorithms/toctree.ptx" />
+
     <backmatter>
       <index>
         <index-list />
