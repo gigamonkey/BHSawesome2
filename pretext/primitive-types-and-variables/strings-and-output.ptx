@@ -22,12 +22,16 @@
   </introduction>
 
   <subsection xml:id="output">
-    <title><c>println</c> and <c>print</c></title>
+    <title>
+      <c>println</c> and <c>print</c>
+    </title>
+
     <idx>output</idx>
     <p>
       Java has two different methods to print output to the screen which we saw
       in passing in the Introduction.
     </p>
+
     <p>
       <ul>
         <li>
@@ -79,14 +83,10 @@
       If we wanted to store any text, from a person’s name to the contents of a
       novel, in a Java program, we would represent it as a <c>String</c>. As
       another data type, like <c>int</c> and <c>double</c>, we can declare
-      <c>String</c> variables.
-
-
-      We’ll
-      learn a lot more about the <c>String</c> data type in <xref
-      ref="topic-1-15-strings" /> but for now we just need to know we can write
-      <term>string literals</term> by enclosing the text we want in quotation
-      marks: <c>""</c>.
+      <c>String</c> variables. We’ll learn a lot more about the <c>String</c>
+      data type in <xref ref="topic-1-15-strings" /> but for now we just need to
+      know we can write <term>string literals</term> by enclosing the text we
+      want in quotation marks: <c>""</c>.
     </p>
 
     <p>
@@ -240,6 +240,7 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </activity>
   </subsection>
+
   <subsection>
     <title>Input with Variables</title>
     <p>
@@ -554,6 +555,5 @@ and cool!
         </choice>
       </choices>
     </activity>
-
   </subsection>
 </section>

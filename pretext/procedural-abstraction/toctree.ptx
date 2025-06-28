@@ -3,8 +3,7 @@
 <chapter xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Procedural abstraction</title>
   <introduction>
-    <p>
-    </p>
+    <p />
   </introduction>
 
   <xi:include href="./topic-1-9-method-signatures.ptx" />

@@ -2,7 +2,6 @@
 
 <section xml:id="topic-1-3-expressions">
   <title>Expressions</title>
-
   <introduction>
     <p>
       In the last section we saw how variables, such as <c>score</c>, can be
@@ -697,9 +696,9 @@ public class RunestoneTests extends CodeTestHelper
       </ul>
     </p>
   </subsection>
+
   <subsection>
     <title>AP Practice</title>
-
     <activity label="apcsa_sample1_exp">
       <statement>
         <p>Consider the following code segment.</p>

@@ -2,9 +2,7 @@
 
 <chapter xml:id="abstraction-and-program-design" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>abstraction-and-program-design</title>
-  <introduction>
-  </introduction>
-
+  <introduction />
   <xi:include href="./topic-3-1-abstraction.ptx" />
   <xi:include href="./topic-1-7-APIs-and-libraries.ptx" />
   <xi:include href="./topic-1-8-comments.ptx" />

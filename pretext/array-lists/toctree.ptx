@@ -2,9 +2,7 @@
 
 <chapter xml:id="array-lists" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>array-lists</title>
-  <introduction>
-  </introduction>
-
+  <introduction />
   <xi:include href="./topic-4-7-wrapper-classes.ptx" />
   <xi:include href="./topic-4-8-arraylists.ptx" />
   <xi:include href="./topic-4-9-arraylist-traversal.ptx" />

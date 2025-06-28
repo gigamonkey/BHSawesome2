@@ -2,9 +2,7 @@
 
 <chapter xml:id="algorithms" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>algorithms</title>
-  <introduction>
-  </introduction>
-
+  <introduction />
   <xi:include href="./topic-4-14-searching.ptx" />
   <xi:include href="./topic-4-15-sorting.ptx" />
   <xi:include href="./topic-4-16-recursion.ptx" />

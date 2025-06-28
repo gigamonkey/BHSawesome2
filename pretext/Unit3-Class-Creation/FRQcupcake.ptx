@@ -381,7 +381,6 @@
         </p>
       </feedback>
 
-
       <areas>
         <p>
           <area correct="no">CupcakeMachine objects</area> are created by calls

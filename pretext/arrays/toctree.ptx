@@ -2,9 +2,7 @@
 
 <chapter xml:id="arrays" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>arrays</title>
-  <introduction>
-  </introduction>
-
+  <introduction />
   <xi:include href="./topic-4-3-array-basics.ptx" />
   <xi:include href="./topic-4-4-array-traversal.ptx" />
   <xi:include href="./topic-4-5-array-algorithms.ptx" />

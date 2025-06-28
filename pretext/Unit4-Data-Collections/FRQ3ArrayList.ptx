@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="FRQ3ArrayList">
-   <title>Free Response Question (FRQ) 3  - ItemInventory </title>
+  <title>Free Response Question (FRQ) 3 - ItemInventory</title>
   <introduction>
     <idx>ArrayList</idx>
     <idx>free response</idx>
     <idx>FRQ</idx>
     <idx>FRQ 3</idx>
-
     <p>
-      The third FRQ on the AP CSA Exam as of 2026 will be on Data Analysis with ArrayList and  
-      worth 5 points. Students will be provided with a scenario and its
-      associated class(es). Students will write one method of a given class
-      based on provided specifications and examples. The method requires
-      students to use, analyze,and manipulate data in an <term>ArrayList</term> structure. 
-      (Arrays will not be tested in an FRQ.)
+      The third FRQ on the AP CSA Exam as of 2026 will be on Data Analysis with
+      ArrayList and worth 5 points. Students will be provided with a scenario
+      and its associated class(es). Students will write one method of a given
+      class based on provided specifications and examples. The method requires
+      students to use, analyze,and manipulate data in an <term>ArrayList</term>
+      structure. (Arrays will not be tested in an FRQ.)
     </p>
 
     <p>
-      Here are two common patterns for <c>ArrayList</c> traversal loops that you will need 
-      to use in this FRQ:
+      Here are two common patterns for <c>ArrayList</c> traversal loops that you
+      will need to use in this FRQ:
     </p>
 
     <program language="java">
@@ -35,23 +34,21 @@ for(int i=0; i &lt; list.size(); i++)
    if (list.get(i) ....)
        ...
 }
-      </code> 
+      </code>
+    </program>
 
-</program>
+    <p>
+      The following problem is a good example FRQ 3 from the <url
+      href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-course-and-exam-description-effective-fall-2025.pdf">
+      2025-2026 AP CSA Course and Exam Description (CED)</url>.
+    </p>
+  </introduction>
 
- <p> 
-      The following problem is a good example FRQ 3 from  the
-       <url
-    href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-course-and-exam-description-effective-fall-2025.pdf">
-    2025-2026 AP CSA Course and Exam Description (CED)</url>.
-  </p>
-
- </introduction>
-
-<subsection xml:id="FRQ3ItemInventory">
+  <subsection xml:id="FRQ3ItemInventory">
     <title>FRQ ItemInventory Description</title>
-    <p>The <c>ItemInfo</c> class is used to store information about an item at a store. 
-    A partial declaration of the <c>ItemInfo</c> class is shown below.
+    <p>
+      The <c>ItemInfo</c> class is used to store information about an item at a
+      store. A partial declaration of the <c>ItemInfo</c> class is shown below.
     </p>
 
     <program language="java">
@@ -85,10 +82,10 @@ public class ItemInfo
     </program>
 
     <p>
-      The <c>ItemInventory</c> class maintains an <c>ArrayList</c> named inventory that
-      contains all items at the store. 
-      A partial declaration of the <c>ItemInventory</c> class is shown below.
-      (Note that it contains an <c>ArrayList</c> of <c>ItemInfo</c> objects.)
+      The <c>ItemInventory</c> class maintains an <c>ArrayList</c> named
+      inventory that contains all items at the store. A partial declaration of
+      the <c>ItemInventory</c> class is shown below. (Note that it contains an
+      <c>ArrayList</c> of <c>ItemInfo</c> objects.)
     </p>
 
     <program language="java">
@@ -113,34 +110,37 @@ public class ItemInventory
     /* There may be instance variables, constructors, and methods
     that are not shown. */
 }
-     </code>
+      </code>
     </program>
 
     <p>
-    Write the <c>ItemInventory</c> method <c>averageWithinRange</c>. The method should
-    return the average cost of the available items in inventory whose cost is between the
-    parameters <c>lower</c> and <c>upper</c>, inclusive.
-    </p>
-    <p>
-    Suppose <c>inventory</c> contains the following seven <c>ItemInfo</c> objects.
-
-    <figure align="center">
-      <caption>ItemInventory with ArrayList of 7 ItemInfo objects</caption>
-      <image source="Unit4-Data-Collections/Figures/itemInventory.png" width="100%" alt="itemInventory" />
-    </figure>
+      Write the <c>ItemInventory</c> method <c>averageWithinRange</c>. The
+      method should return the average cost of the available items in inventory
+      whose cost is between the parameters <c>lower</c> and <c>upper</c>,
+      inclusive.
     </p>
 
     <p>
-    For the inventory shown, <c>averageWithinRange(10.0, 50.0)</c> should return <c>25.0</c>,
-    which is equal to the average cost of the available items within the specified range (a $20 action
-    figure, a $45 frying pan, and a $10 coffee mug). Although the watch is within the specified
-    range, it is not available.
-</p>
-<p>
-   Complete method <c>averageWithinRange</c>.
-</p>
+      Suppose <c>inventory</c> contains the following seven <c>ItemInfo</c>
+      objects. <figure align="center"> <caption>ItemInventory with ArrayList of
+      7 ItemInfo objects</caption> <image
+      source="Unit4-Data-Collections/Figures/itemInventory.png" width="100%"
+      alt="itemInventory" /> </figure>
+    </p>
 
-<program language="java">
+    <p>
+      For the inventory shown, <c>averageWithinRange(10.0, 50.0)</c> should
+      return <c>25.0</c>, which is equal to the average cost of the available
+      items within the specified range (a $20 action figure, a $45 frying pan,
+      and a $10 coffee mug). Although the watch is within the specified range,
+      it is not available.
+    </p>
+
+    <p>
+      Complete method <c>averageWithinRange</c>.
+    </p>
+
+    <program language="java">
       <code>
 /**
  * Returns the average cost of the available items
@@ -152,264 +152,292 @@ public class ItemInventory
  * No elements of inventory are null.
 */
 public double averageWithinRange(double lower, double upper)
-</code>
-</program>
-</subsection>
+      </code>
+    </program>
+  </subsection>
 
- <subsection xml:id="frq-inventory-scaffolding">
+  <subsection xml:id="frq-inventory-scaffolding">
     <title>The Algorithm for averageWithinRange</title>
-   
-    <p>The following exercises will help you to develop the algorithm for the method 
-        <c>averageWithinRange</c>.</p>
+    <p>
+      The following exercises will help you to develop the algorithm for the
+      method <c>averageWithinRange</c>.
+    </p>
 
-<activity label="inventory-loop-mcq">
-    <statement>
+    <activity label="inventory-loop-mcq">
+      <statement>
         <p>
-            Which of the following loops is the most appropriate for iterating through 
-            <c>inventory</c> (an <c>ArrayList</c> of <c>ItemInfo</c> objects) to access each 
-            <c>ItemInfo</c> object when the index is not directly needed?
+          Which of the following loops is the most appropriate for iterating
+          through <c>inventory</c> (an <c>ArrayList</c> of <c>ItemInfo</c>
+          objects) to access each <c>ItemInfo</c> object when the index is not
+          directly needed?
         </p>
-    </statement>
+      </statement>
 
-    <choices>
+      <choices>
         <choice>
-            <statement>
-                <p>for (int i = 0; i &lt; inventory.length; i++) 
-                </p>
-            </statement>
-            <feedback>
-                <p>
-                    This loop is incorrect because <c>ArrayList</c> does not have a <c>length</c> field.        
-                </p>
-            </feedback>
+          <statement>
+            <p>for (int i = 0; i &lt; inventory.length; i++)</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This loop is incorrect because <c>ArrayList</c> does not have a
+              <c>length</c> field.
+            </p>
+          </feedback>
         </choice>
 
         <choice correct="yes">
-            <statement>
-                <p>for (ItemInfo item : inventory) 
-                </p>
-            </statement>
-            <feedback>
-                <p>
-                    Yes, the enhanced for-each loop is the most appropriate and concise way to 
-                    iterate through an <c>ArrayList</c> when you only need to access each element 
-                    and not its index.
-                </p>
-            </feedback>
+          <statement>
+            <p>for (ItemInfo item : inventory)</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Yes, the enhanced for-each loop is the most appropriate and
+              concise way to iterate through an <c>ArrayList</c> when you only
+              need to access each element and not its index.
+            </p>
+          </feedback>
         </choice>
 
         <choice>
-            <statement>
-                <p>while (inventory.hasNext()) 
-                </p>
-            </statement>
-            <feedback>
-                <p>
-                    This loop is incorrect because <c>ArrayList</c> does not have a <c>hasNext()</c> method. 
-                </p>
-            </feedback>
+          <statement>
+            <p>while (inventory.hasNext())</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This loop is incorrect because <c>ArrayList</c> does not have a
+              <c>hasNext()</c> method.
+            </p>
+          </feedback>
         </choice>
 
         <choice>
-            <statement>
-                <p> for (int i = 0; i &lt;= inventory.size(); i++) 
-                </p>
-            </statement>
-            <feedback>
-                <p>
-                    This loop has an off-by-one error. 
-                    It should use <c>i &lt; inventory.size()</c> instead of <c>i &lt;= inventory.size()</c>.
-                    The enhanced for-each loop is still a simpler choice than a for loop with an index. 
-                </p>
-            </feedback>
-        </choice>
-    </choices>
-</activity>
+          <statement>
+            <p>for (int i = 0; i &lt;= inventory.size(); i++)</p>
+          </statement>
 
-<activity label="iteminfo-get-cost">
-    <statement>
+          <feedback>
+            <p>
+              This loop has an off-by-one error. It should use <c>i &lt;
+              inventory.size()</c> instead of <c>i &lt;= inventory.size()</c>.
+              The enhanced for-each loop is still a simpler choice than a for
+              loop with an index.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="iteminfo-get-cost">
+      <statement>
         <p>
-            You are iterating through the <c>inventory</c> <c>ArrayList</c> using an enhanced for-each loop, 
-            and <c>currentItem</c> represents the <c>ItemInfo</c> object in the current iteration:
+          You are iterating through the <c>inventory</c> <c>ArrayList</c> using
+          an enhanced for-each loop, and <c>currentItem</c> represents the
+          <c>ItemInfo</c> object in the current iteration:
         </p>
+
         <program language="java">
-            <code>
+          <code>
 for (ItemInfo currentItem : inventory) 
 {
     // ...
 }
-            </code>
+          </code>
         </program>
-        <p>
-            Inside this loop, how would you get the cost of the <c>currentItem</c>?
-        </p>
-    </statement>
 
-    <choices>
+        <p>
+          Inside this loop, how would you get the cost of the
+          <c>currentItem</c>?
+        </p>
+      </statement>
+
+      <choices>
         <choice>
-            <statement>
-                <p>currentItem.cost
-                </p>
-            </statement>
-            <feedback>
-                <p>
-                    Accessing <c>cost</c> directly like this would only be possible if <c>cost</c> were a public instance variable. 
-                    However, according to the <c>ItemInfo</c> class declaration, the cost is accessed via a method.
-                </p>
-            </feedback>
+          <statement>
+            <p>currentItem.cost</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Accessing <c>cost</c> directly like this would only be possible if
+              <c>cost</c> were a public instance variable. However, according to
+              the <c>ItemInfo</c> class declaration, the cost is accessed via a
+              method.
+            </p>
+          </feedback>
         </choice>
 
         <choice correct="yes">
-            <statement>
-                <p>currentItem.getCost()
-                </p>
-            </statement>
-            <feedback>
-                <p>
-                    Yes, the <c>ItemInfo</c> class provides a <c>public double getCost()</c> method to return the cost of the item.
-                </p>
-            </feedback>
+          <statement>
+            <p>currentItem.getCost()</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Yes, the <c>ItemInfo</c> class provides a <c>public double
+              getCost()</c> method to return the cost of the item.
+            </p>
+          </feedback>
         </choice>
 
         <choice>
-            <statement>
-                <p>getCost(currentItem)
-                </p>
-            </statement>
-            <feedback>
-                <p>
-                    This syntax suggests a static method call, but <c>getCost()</c> is an instance method 
-                    that must be called on an <c>ItemInfo</c> object.
-                </p>
-            </feedback>
+          <statement>
+            <p>getCost(currentItem)</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This syntax suggests a static method call, but <c>getCost()</c> is
+              an instance method that must be called on an <c>ItemInfo</c>
+              object.
+            </p>
+          </feedback>
         </choice>
 
         <choice>
-            <statement>
-                <p>currentItem.getCost
-                </p>
-            </statement>
-            <feedback>
-                <p>
-                    Methods in Java require parentheses after their name to indicate a method call, even if they take no arguments.
-                </p>
-            </feedback>
+          <statement>
+            <p>currentItem.getCost</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Methods in Java require parentheses after their name to indicate a
+              method call, even if they take no arguments.
+            </p>
+          </feedback>
         </choice>
-    </choices>
-</activity>
+      </choices>
+    </activity>
 
-<activity label="iteminventory-conditions">
-    <statement>
-        <p>
-            You are iterating through the <c>inventory</c> <c>ArrayList</c>, and <c>currentItem</c> is the 
-            <c>ItemInfo</c> object in the current iteration. 
-            Which of the following condition correctly checks if <c>currentItem</c> is 
-            <strong>available</strong> AND its cost is <strong>between <c>lower</c> and <c>upper</c>, inclusive</strong>?
-        </p>
-    </statement>
- 
-    <choices>
-        <choice>
-            <statement>
-                <p>
-                    <program language="java">
-                        <code>
-currentItem.isAvailable() &amp;&amp; 
-   currentItem.getCost() &gt; lower &amp;&amp; currentItem.getCost() &lt; upper
-                        </code>
-                    </program>
-                </p>
-            </statement>
-            <feedback>
-                <p>
-                    This condition correctly checks if the item is available, but the cost range 
-                    (<c>&gt; lower</c> and <c>&lt; upper</c>) is <strong>exclusive</strong>. The problem 
-                    requires the range to be <strong>inclusive</strong>, meaning it should include 
-                    <c>lower</c> and <c>upper</c>.
-                </p>
-            </feedback>
-        </choice>
-
-        <choice>
-            <statement>
-                <p>
-                    <program language="java">
-                        <code>
-currentItem.isAvailable() || 
-   (currentItem.getCost() &gt;= lower &amp;&amp; currentItem.getCost() &lt;= upper)
-                        </code>
-                    </program>
-                </p>
-            </statement>
-            <feedback>
-                <p>
-                    This condition uses the logical OR operator (<c>||</c>), which means the code block would 
-                    execute if the item is available OR if its cost is within range, but the problem requires 
-                    <strong>both</strong> conditions to be true.
-                </p>
-            </feedback>
-        </choice>
-
-        <choice correct="yes">
-            <statement>
-                <p>
-                    <program language="java">
-                        <code>
-currentItem.isAvailable() &amp;&amp; 
-   currentItem.getCost() &gt;= lower &amp;&amp; currentItem.getCost() &lt;= upper
-                        </code>
-                    </program>
-                </p>
-            </statement>
-            <feedback>
-                <p>
-                    Yes, this statement correctly uses the logical AND operator (<c>&amp;&amp;</c>) to combine 
-                    the availability check with the cost range check. It also correctly uses 
-                    <c>&gt;=</c> and <c>&lt;=</c> to ensure the range is <strong>inclusive</strong> of 
-                    <c>lower</c> and <c>upper</c>.
-                </p>
-            </feedback>
-        </choice>
-
-        <choice>
-            <statement>
-                <p>
-                    <program language="java">
-                        <code>
-currentItem.isAvailable() &amp;&amp; 
-  (currentItem.getCost() &gt; lower || currentItem.getCost() &lt; upper)
-                        </code>
-                    </program>
-                </p>
-            </statement>
-            <feedback>
-                <p>
-                    This condition uses the logical OR operator (<c>||</c>) for the cost range check, 
-                    which is incorrect. The problem requires both conditions to be true.
-                </p>
-            </feedback> 
-        </choice>
-    </choices>  
-</activity>
-
-    <p>
-      The method <c>averageWithinRange</c> should iterate through the <c>inventory</c> list,
-      checking each <c>ItemInfo</c> object to see if it is available and if its cost is within the
-      specified range. If both conditions are met, the cost of the item should be added to a
-      running total and counted.  Remember that to compute the average, we need to add up the costs of all items that meet the criteria
-      and then divide by the number of such items.
-      </p>
-</subsection>
-<subsection xml:id="frq-inventory-solve">
-    <title>Solve FRQ ItemInventory</title>
-    <p>
-      Write the <c>averageWithinRange</c> method for the <c>ItemInventory</c> class.
-    </p>
-
-   <activity label="frq-average-inventory">
+    <activity label="iteminventory-conditions">
       <statement>
         <p>
-           Write the <c>averageWithinRange</c> method for the <c>ItemInventory</c> class.
+          You are iterating through the <c>inventory</c> <c>ArrayList</c>, and
+          <c>currentItem</c> is the <c>ItemInfo</c> object in the current
+          iteration. Which of the following condition correctly checks if
+          <c>currentItem</c> is <strong>available</strong> AND its cost is
+          <strong> between <c>lower</c> and <c>upper</c>, inclusive </strong> ?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>
+              <program language="java">
+                <code>
+currentItem.isAvailable() &amp;&amp; 
+   currentItem.getCost() &gt; lower &amp;&amp; currentItem.getCost() &lt; upper
+                </code>
+              </program>
+            </p>
+          </statement>
+
+          <feedback>
+            <p>
+              This condition correctly checks if the item is available, but the
+              cost range (<c>&gt; lower</c> and <c>&lt; upper</c>) is
+              <strong>exclusive</strong>. The problem requires the range to be
+              <strong>inclusive</strong>, meaning it should include <c>lower</c>
+              and <c>upper</c>.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>
+              <program language="java">
+                <code>
+currentItem.isAvailable() || 
+   (currentItem.getCost() &gt;= lower &amp;&amp; currentItem.getCost() &lt;= upper)
+                </code>
+              </program>
+            </p>
+          </statement>
+
+          <feedback>
+            <p>
+              This condition uses the logical OR operator (<c>||</c>), which
+              means the code block would execute if the item is available OR if
+              its cost is within range, but the problem requires
+              <strong>both</strong> conditions to be true.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>
+              <program language="java">
+                <code>
+currentItem.isAvailable() &amp;&amp; 
+   currentItem.getCost() &gt;= lower &amp;&amp; currentItem.getCost() &lt;= upper
+                </code>
+              </program>
+            </p>
+          </statement>
+
+          <feedback>
+            <p>
+              Yes, this statement correctly uses the logical AND operator
+              (<c>&amp;&amp;</c>) to combine the availability check with the
+              cost range check. It also correctly uses <c>&gt;=</c> and
+              <c>&lt;=</c> to ensure the range is <strong>inclusive</strong> of
+              <c>lower</c> and <c>upper</c>.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>
+              <program language="java">
+                <code>
+currentItem.isAvailable() &amp;&amp; 
+  (currentItem.getCost() &gt; lower || currentItem.getCost() &lt; upper)
+                </code>
+              </program>
+            </p>
+          </statement>
+
+          <feedback>
+            <p>
+              This condition uses the logical OR operator (<c>||</c>) for the
+              cost range check, which is incorrect. The problem requires both
+              conditions to be true.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <p>
+      The method <c>averageWithinRange</c> should iterate through the
+      <c>inventory</c> list, checking each <c>ItemInfo</c> object to see if it
+      is available and if its cost is within the specified range. If both
+      conditions are met, the cost of the item should be added to a running
+      total and counted. Remember that to compute the average, we need to add up
+      the costs of all items that meet the criteria and then divide by the
+      number of such items.
+    </p>
+  </subsection>
+
+  <subsection xml:id="frq-inventory-solve">
+    <title>Solve FRQ ItemInventory</title>
+    <p>
+      Write the <c>averageWithinRange</c> method for the <c>ItemInventory</c>
+      class.
+    </p>
+
+    <activity label="frq-average-inventory">
+      <statement>
+        <p>
+          Write the <c>averageWithinRange</c> method for the
+          <c>ItemInventory</c> class.
         </p>
       </statement>
 
@@ -547,18 +575,24 @@ public class RunestoneTests extends CodeTestHelper
         </tests>
       </program>
     </activity>
-</subsection>
- <subsection xml:id="frq-inventory-grading">
-  <title>Grading Rubric for FRQ 3</title>
-  <p>
-    The following AP rubric is used to grade the <c>averageWithinRange</c> method in the <c>ItemInventory</c> class.
-    Each item is worth 1 point, for a total of 5 points. Did you receive all of the points? 
-    In class, your teacher may have you grade each others’ code.
+  </subsection>
+
+  <subsection xml:id="frq-inventory-grading">
+    <title>Grading Rubric for FRQ 3</title>
+    <p>
+      The following AP rubric is used to grade the <c>averageWithinRange</c>
+      method in the <c>ItemInventory</c> class. Each item is worth 1 point, for
+      a total of 5 points. Did you receive all of the points? In class, your
+      teacher may have you grade each others’ code.
     </p>
-  <figure align="center">
-      <caption>Rubric for <c>averageWithinRange</c></caption>
+
+    <figure align="center">
+      <caption>
+        Rubric for <c>averageWithinRange</c>
+      </caption>
+
       <image source="Unit4-Data-Collections/Figures/itemInventoryRubric1.png" width="100%" alt="Rubric for averageWithinRange" />
       <image source="Unit4-Data-Collections/Figures/itemInventoryRubric2.png" width="100%" alt="Rubric for averageWithinRange" />
     </figure>
-    </subsection>
+  </subsection>
 </section>
