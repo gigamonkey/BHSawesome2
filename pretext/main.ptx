@@ -2,7 +2,7 @@
 
 <pretext xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <xi:include href="./bookinfo.ptx" />
-  <book xml:id="bhsawesome" permid="csa">
+  <book xml:id="index" permid="csa">
     <title>BHSawesome</title>
     <subtitle>AP CSA</subtitle>
     <introduction>
@@ -24,15 +24,15 @@
     <xi:include href="./primitive-types-and-variables/toctree.ptx" />
     <xi:include href="./procedural-abstraction/toctree.ptx" />
     <xi:include href="./reference-types/toctree.ptx" />
-    <xi:include href="./objects/toctree.ptx" />
-    <xi:include href="./abstraction-and-program-design/toctree.ptx" />
-    <xi:include href="./booleans-and-conditionals/toctree.ptx" />
-    <xi:include href="./loops/toctree.ptx" />
-    <xi:include href="./arrays/toctree.ptx" />
-    <xi:include href="./text-files/toctree.ptx" />
-    <xi:include href="./array-lists/toctree.ptx" />
-    <xi:include href="./2d-arrays/toctree.ptx" />
-    <xi:include href="./algorithms/toctree.ptx" />
+    <!-- <xi:include href="./objects/toctree.ptx" /> -->
+    <!-- <xi:include href="./abstraction-and-program-design/toctree.ptx" /> -->
+    <!-- <xi:include href="./booleans-and-conditionals/toctree.ptx" /> -->
+    <!-- <xi:include href="./loops/toctree.ptx" /> -->
+    <!-- <xi:include href="./arrays/toctree.ptx" /> -->
+    <!-- <xi:include href="./text-files/toctree.ptx" /> -->
+    <!-- <xi:include href="./array-lists/toctree.ptx" /> -->
+    <!-- <xi:include href="./2d-arrays/toctree.ptx" /> -->
+    <!-- <xi:include href="./algorithms/toctree.ptx" /> -->
 
     <backmatter>
       <index>
