@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section xml:id="aboutcsa">
+<preface xml:id="aboutcsa">
   <title>About the AP CSA Exam</title>
 
   <p>
@@ -169,4 +169,4 @@
     Careers</url> that taking CSA can lead to. Learning to code is an
     increasingly important skill that has applications in many careers!
   </p>
-</section>
+</preface>

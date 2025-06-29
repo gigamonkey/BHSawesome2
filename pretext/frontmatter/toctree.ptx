@@ -29,4 +29,5 @@
   </introduction>
   <xi:include href="./preface.ptx" />
   <xi:include href="./csawesome2-preface.ptx" />
+  <xi:include href="./aboutcsa.ptx" />
 </frontmatter>
