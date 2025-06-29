@@ -2,7 +2,7 @@
 
 <pretext xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <xi:include href="./bookinfo.ptx" />
-  <book xml:id="index" permid="csa">
+  <book xml:id="bhsawesome" permid="csa">
     <title>BHSawesome</title>
     <subtitle>AP CSA</subtitle>
     <introduction>
