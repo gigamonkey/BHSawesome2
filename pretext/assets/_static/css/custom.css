@@ -6,6 +6,7 @@
     --codeColor: #641227;
     /* Make this as narrow as we can while still getting side-by-side Parson's problems. */
     --contentWidthWide: calc(var(--contentWidthRegular) + 250px);
+    --content-font-size: 16px;
 }
 
 :root.dark-mode {
@@ -36,6 +37,12 @@ div.time {
     }
 }
 
+.ptx-content cite {
+  display: block;
+  text-align: right;
+  margin-right: 2em;
+}
+
 .ptx-content section.section:has(div.time) {
     padding-top: 1.5em;
 }
@@ -61,6 +68,11 @@ section > .para + .para {
     border-bottom: 2px solid #70d549;
     padding-top: 0.5em;
     margin-bottom: 0.5em;
+}
+
+.ptx-content section section > .heading
+{
+  margin-top: 1em;
 }
 
 .ptx-content .heading h4
@@ -153,7 +165,7 @@ figure.table-like {
    This is a hack to avoid the autopermalink being added to every choice in MCQs
  */
 .ptx-content
-.exercise-interactives 
+.exercise-interactives
 div.autopermalink[data-description="Paragraph"] {
     display: none;
 }
