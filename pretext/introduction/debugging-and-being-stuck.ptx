@@ -15,18 +15,54 @@
     <p>
       The informal term for anything that makes a program not work correctly is
       <term>bug</term> and the process of getting all the bugs out of a program
-      is called <term>debugging</term>. In this section we will look at some of
-      the kinds of bugs you will undoubtedly soon encounter.
+      is called <term>debugging</term>. The term <term>bug</term> predates
+      computers by at over half a century, at least. Thomas Edison wrote about
+      working out the “bugs” in his inventions in 1878. And it made its way into
+      engineering and from there into the world of computers so that when
+      opererators working under Grace Hopper on the Harvard Mark II computer in
+      1947 found an actual bug (a moth) inside the computer they taped it into
+      the logbook with the note “First actual case of bug being found.”
     </p>
 
     <figure align="left">
       <caption>Early computer science pioneer <url
-      href="https://en.wikipedia.org/wiki/Grace_Hopper"
-      visual="https://en.wikipedia.org/wiki/Grace_Hopper">Grace Hopper</url>
-      documented a real bug in her log, a moth that flew into a computer in
+      href="https://en.wikipedia.org/wiki/Grace_Hopper">Grace Hopper’s</url>
+      team documented a real bug, a moth that flew into a computer in
       1947!</caption>
       <image source="Unit1-Using-Objects-and-Methods/Figures/firstbug.jpg" width="54%" />
     </figure>
+
+    <p>
+      But bugs and debugging really came into their own with the invention of
+      software. You might think that with no physical parts to break down or get
+      jammed and no wires to be crossed, it would be simple to make software
+      work. After all the computer just does what we tell it, right? Alas, it
+      was no not to be, as Maurice Wilkes recounts discovering when working on
+      EDSAC, one of the earliest stored-program computers in the world which
+      came online in 1949:
+    </p>
+
+    <blockquote>
+      <p>
+        As soon as we started programming, we found out to our surprise that it
+        wasn't as easy to get programs right as we had thought it would be.
+        Debugging had to be discovered. And I can remember the exact instant
+        where I was—our tape equipment was on one floor, the computer was on the
+        other, and and I was passing down from the computer to make a change in
+        my program tape—and in that instant I realized that a large part of my
+        life from then on was going to be spent in finding mistakes in my own
+        programs.
+      </p>
+      <attribution>
+        Maurice Wilkes [in 1979] talking about his work in the 1940s.
+      </attribution>
+    </blockquote>
+
+    <p>
+      In this section we will look at some of the kinds of bugs you will
+      undoubtedly soon encounter.
+    </p>
+
 
   </introduction>
 
@@ -45,9 +81,10 @@
     <p>
       In Java running a program actually happens in two steps; first we compile
       it and that produces a set of files that Java can then run. Errors that
-      are detected during compilation mean we don’t get a set of files that we
-      can run so we have to fix them. These are also called <term>compile-time
-      errors</term> because they are detected by the compiler.
+      are detected during compilation mean we don’t get the runnable files so we
+      so we have to fix them before we can even run our program. These are also
+      called <term>compile-time errors</term> because they are detected by the
+      compiler.
     </p>
 
     <p>
