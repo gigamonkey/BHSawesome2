@@ -1,59 +1,295 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="topic-1-9-method-signatures">
-  <title>Procedural abstraction</title>
+  <title>Writing methods</title>
   <introduction>
-    <idx>method</idx>
-    <idx>procedural abstraction</idx>
     <p>
-      Up until now, all of our code has been in the main method, but complex
-      programs are made up of many methods. When faced with a large problem, we
-      can break it down into smaller subproblems and solve each subproblem
-      separately. Each of these subproblems can be a method.
-    </p>
-
-    <p>
-      A <term>method</term> is a named block of code that performs a task when
-      it is called. (A <term>block</term> of code is any section of code that is
-      enclosed in curly braces like <c>{ }</c>.) These named blocks of code go
-      by many names in different programming languages: functions, procedures,
-      subroutines, etc. In Java they are called methods, as in a method of doing
-      something. In this unit, you will learn how to use methods written by
-      other programmers. In latter units, you will learn how to write your own
-      methods.
-    </p>
-
-    <p>
-      <term>Procedural abstraction</term> allows a programmer to use a method
-      and not worry about the details of how it exactly works (i.e. abstracting
-      away the details). For example, we don’t need to know how a car exactly
-      works in order to drive. We know that if we hit the brakes, the car will
-      stop; we can still use the brakes even if we don’t really know how they
-      exactly work. Similarly, we can use a method that someone else wrote
-      without knowing exactly how it works. We just need to know the method’s
-      name to call it and what it needs to do its job.
+      To understand how methods work, it’s best to start by looking at how to
+      write our own methods.
     </p>
   </introduction>
 
   <subsection>
-    <title>Method Calls</title>
+    <title>Methods signatures</title>
+    <idx>method signature</idx>
+    <idx>parameter</idx>
+    <idx>argument</idx>
+    <idx>return type</idx>
+    <idx>parameter list</idx>
+    <p>
+      As we learned in the previous chapter, when we declare a variable, we need
+      to specify its type and its name and optionally an initial value. Defining
+      methods is similar but there are more parts we need to specify.
+    </p>
+
+    <p>
+      To start with, every method has a name which we will use to call the
+      method. Additionally a method has a <term>return type</term> which
+      specifies the kind of value (if any) the method returns when called. And a
+      method can take any number of <term>arguments</term>, values it can use in
+      its computation. To specify what number and types of arguments it needs, a
+      method defines <term>parameters</term> which are variables that are
+      declared as part of the method and which hold the argument values when the
+      method is called. Together all these pieces make up the <term>method
+      signature</term> or <term>method header</term>.
+    </p>
+
+    <p>
+      A complete method signature for a method that adds two numbers and returns
+      the result might look something like this:
+    </p>
+
+    <program language="java">
+      public static int add(int a, int b)
+    </program>
+
+    <p>
+      For now don't worry about the <c>public static</c>, just treat that as
+      boiler plate that all your methods will start with. The next word
+      <c>int</c> is the return type. It is the name of some type or the special
+      keyword <c>void</c> which means the method doesn't return any value. Then
+      comes the name of the method, in this case, <c>add</c>. And finally, in
+      parentheses, the method’s <term>parameter list</term>, a comma-delimited
+      list of variables which are the method's parameters. Parameters are
+      declared like other variables with a type and a name. In this method there
+      are two, named <c>a</c> and <c>b</c>, both of type <c>int</c>.
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Method calls</title>
+    <p>
+      The point of a method signature is that it gives us all the information we
+      need to <term>call</term> the method. A <term>method call</term> consists
+      of the method name and a pair of parentheses <c>()</c>. The parentheses
+      enclose an <term>argument list</term>, a list of expressions, separated by
+      commas, whose values provide the arguments the method needs to do its job.
+      The number of expressions in the argument list of a method call has to
+      match the number of parameters in the parameter list in the method
+      signature. If the method takes no arguments, i.e. has an empty parameter
+      list, there will be nothing between the parentheses but the parentheses
+      are still needed so Java knows we are calling a method and not referring
+      to a variable.
+    </p>
+
+    <p>
+      For instance, a call to the <c>add</c> method with the signature above
+      might look like this: <c>add(10, 20)</c>.
+    </p>
+
+    <p>
+      When a method, such as <c>add</c>, has a return type other than
+      <c>void</c> we can use the method call as an expression whose value will
+      be whatever value the method returns. In this case that means we can use a
+      call to <c>add</c> anywhere we need a value of type <c>int</c>. For
+      example, we can use it to provide the initial value in a variable
+      declaration:
+    </p>
+
+    <program language="java">
+      int sum = add(10, 20);
+    </program>
+  </subsection>
+
+  <subsection>
+    <title>Method bodies</title>
+    <p>
+      Of course the signature does not tell us everything about the method. In
+      particular, it does not tell us what computation the method actually
+      performs or how it does it. For that we need to write a method body. The
+      body is enclosed in a pair of curly braces (<c>{}</c>) and contains code
+      that can use the variables from the parameter list. And at an point in the
+      methed body we can use the keyword <c>return</c> followed by an expression
+      to cause the method to return the value of that expression as the value of
+      the method call.
+    </p>
+
+    <p>
+      For intstance, adding the body to our <c>add</c> method to get a complete
+      method definition would look like this:
+    </p>
+
+    <program language="java">
+      public static int add(int a, int b) {
+        return a + b;
+      }
+    </program>
+
+    <p>
+      Seeing the method body, we can actually understand exactly what happens in
+      a line like:
+    </p>
+
+    <program language="java">
+      int sum = add(10, 20);
+    </program>
+
+    <p>
+      When Java hits the call to <c>add</c>, it first creates variables
+      corresponding to the parameters <c>a</c> and <c>b</c> and initializes them
+      with the argument values <c>10</c> and <c>20</c>. Then it executes the
+      body of the method until it hits a <c>return</c> at which point it
+      evaluates the expression after the <c>return</c> and makes that value the
+      value of the method call. In other words, roughly equivalent to this.
+    </p>
+
+    <program language="java">
+      int a = 10;
+      int b = 20;
+      int sum = a + b;
+    </program>
+
+    <activity>
+      <title>Trace call to add</title>
+      <statement>
+        <p>
+          To see how a method call works click on the next button below the code
+          to step through the code and watch the red arrow jump to the method
+          that is being run and watch how the arguments are passed into the
+          parameter variables and how the returned value comes back to where the
+          method was called.
+        </p>
+      </statement>
+
+      <program interactive="codelens" language="java" label="check-add" xml:id="check-add">
+        <code>
+          public class CheckAdd {
+
+            public static int add(int a, int b) {
+              return a + b;
+            }
+
+            public static void main(String[] args) {
+              int sum = add(10, 20);
+              System.out.println(sum);
+            }
+          }
+        </code>
+      </program>
+    </activity>
+
+  </subsection>
+
+  <subsection>
+    <title>Other people’s methods</title>
+
+    <p>
+      We can also use methods that we didn’t write. In fact we already have.
+      <c>System.out.println</c> is a method provided by Java for emitting output
+      to the screen. To use methods we didn’t write we just need to know the
+      method signature and what they do.
+    </p>
+
+    <p>
+      For example, the <url
+      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/io/PrintStream.html"><c>PrintStream</c>
+      class’s Javadocs</url> document the following method signatures for
+      <c>println</c> that we use in <c>System.out.println()</c>:
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <p>
+            <c>void println()</c> which has an empty parameter list with no
+            parameters
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>void println(String x)</c> which will print out a <c>String</c>
+            value
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>void println(int x)</c> which will print out an <c>int</c> value
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The <c>void</c> return type in these method signatures means that these
+      methods don’t return any value. That means we can’t use them in
+      expressions to compute values. Instead they are called purely for their
+      <term>side effects</term>, in this case emitting something to the screen.
+    </p>
+
+    <p>
+      We can call these methods with the appropriate arguments to print out the
+      value we want. The <term>argument</term> is the actual value that is
+      passed to the method when it is called. Here are the method calls that
+      correspond to the method signatures above:
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <p>
+            <c>System.out.println();</c> // prints a newline
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>System.out.println("Hello World");</c> // prints a String
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>System.out.println(42);</c> // prints an int
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Compare the method signature of <c>println(String x)</c> with the method
+      call <c>println("Hello World");</c> below. The method signature contains
+      the method name and the parameter type and variable. The method call
+      contains only the method name and the argument value. The argument must be
+      compatible with the data type of the parameter in the method signature and
+      is saved in the parameter variable when the method is called. Many people
+      use the terms parameter and argument interchangeably.
+    </p>
+
+    <figure align="center">
+      <caption>Method Signature and Method Call</caption>
+      <image source="Unit1-Using-Objects-and-Methods/Figures/method-parts.png" width="89%" alt="Method Signature and Method Call" />
+    </figure>
+  </subsection>
+
+  <subsection>
+    <title>Making smaller methods</title>
     <idx>method call</idx>
     <idx>flow of control</idx>
     <idx>tracing</idx>
     <p>
-      We divide up a program into multiple methods in order to organize the code
-      to reduce its complexity and to avoid repetition of code. For example, the
-      song “Old MacDonald Had a Farm” has a lot of repetition. Instead of
-      writing the same code over and over in order to print the song, we can
-      write methods that contain the repeated code and run them when needed.
-      Click on all the repeated code in the song below and then we will learn
-      how it can be replaced with methods.
+      The main purpose of methods is to break a program up into smaller chunks
+      that are easier to think about. That also often results in removing
+      duplicated code which also helps reduce the overall complexity. All other
+      things being equal, less code is better than more code.
     </p>
 
-    <activity label="repeatedcode-old-mcdonald">
+    <p>
+      For example, the song “Old MacDonald Had a Farm”, like many children’s
+      songs, has a lot of repetition. If we wanted to write a program to print
+      out the song’s lyrics, we could write out a bunch of calls to
+      <c>println</c> as shown below. But then our code would have a lot of
+      duplicate code—the same lines of code occurring in multiple places. See if
+      you can identify the duplicate code in the following implementation of
+      such a program.
+    </p>
+
+    <activity>
+      <title>Finding duplicate code</title>
       <statement>
         <p>
-          Click on all the lines that are completely identical and repeated.
+          Click on all the lines that are exactly the same as another line.
         </p>
       </statement>
 
@@ -82,40 +318,23 @@
     </p>
 
     <p>
-      A <term>method call</term> is when the code “calls out” the method’s name
-      in order to run the code in the method. The method call always includes
-      the method name and parentheses <c>()</c> and sometimes some data inside
-      the parentheses if the method needs that to do its job. For example, when
-      we write <c>System.out.println("Hello World");</c>, we are calling the
-      <c>println()</c> method to print out “Hello World”.
+      The code tracing activity below shows how a song can be divided up into methods.
+      Click on the next button below the code to step through the code and watch
+      the red arrow jump to the method that is being run.
     </p>
-
-    <program language="java">
-      <code>
-// Method call
-methodName();
-      </code>
-    </program>
-
     <p>
-      The Java <url
-      href="https://pythontutor.com/render.html#code=public%20class%20OldMacDonaldSong%0A%7B%0A%20%20%20%20public%20static%20void%20intro%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20System.out.println%28%22Old%20MacDonald%20had%20a%20farm%22%29%3B%0A%20%20%20%20%20%20%20%20chorus%28%29%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20static%20void%20chorus%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20System.out.println%28%22E-I-E-I-O%22%29%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20intro%28%29%3B%0A%20%20%20%20%20%20%20%20System.out.print%28%22And%20on%20that%20farm%20they%20had%20a%20cow.%22%29%3B%0A%20%20%20%20%20%20%20%20chorus%28%29%3B%0A%20%20%20%20%20%20%20%20System.out.print%28%22With%20a%20moo%20moo%20here%20and%20a%20moo%20moo%20there%22%29%3B%0A%20%20%20%20%20%20%20%20System.out.print%28%22Here%20a%20moo,%20there%20a%20moo,%20everywhere%20moo%20moo%22%29%3B%0A%20%20%20%20%20%20%20%20intro%28%29%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
-      below shows how a song can be divided up into methods. Click on the next
-      button below the code to step through the code and watch the red arrow
-      jump to the method that is being run. Execution in Java always begins in
-      the <c>main</c> method in the current class. Then, the <term>flow of
-      control</term> skips from method to method as they are called. Notice that
-      when a method ends, it returns to the line right after the method call.
-      The <c>main()</c> method below calls the <c>intro()</c> method which calls
-      the <c>chorus()</c> method. When you call the chorus() method, it skips to
-      the chorus code, executes and prints out the chorus “E-I-E-I-O”, and then
-      returns back to the method that called it. Just like variable names,
-      method names should be descriptive of what the method does. Methods can be
-      defined in any order, but usually programmers put the main method at the
-      end after all the methods that it uses are defined.
+      Execution in Java always begins in the <c>main</c> method in the current
+      class. Then, the <term>flow of control</term> skips from method to method
+      as they are called. Notice that when a method ends, it returns to where
+      the method was called. The <c>main</c> method below calls the <c>intro</c>
+      method which prints a line and then calls the <c>chorus</c> method. The
+      code in <c>chorus</c> prints one line and then returns back to
+      <c>intro</c> which is then done so it returns to <c>main</c> which then
+      executes the next line.
     </p>
 
-    <activity label="codelensSong1">
+    <activity>
+      <title>Old MacDonald with methods</title>
       <statement>
         <p>
           Click on the next button below the code to step through the code and
@@ -123,50 +342,44 @@ methodName();
         </p>
       </statement>
 
-      <program interactive="codelens" language="java" label="codeLens2" xml:id="codelensid2">
+      <program interactive="codelens" language="java" label="codelensSong1" xml:id="codelensSong1">
         <code>
-public class OldMacDonaldSong
-{
-  public static void intro()
-  {
-    System.out.println("Old MacDonald had a farm");
-    chorus();
-  }
+          public class OldMacDonaldSong {
+            public static void intro() {
+              System.out.println("Old MacDonald had a farm");
+              chorus();
+            }
 
-  public static void chorus()
-  {
-    System.out.println("E-I-E-I-O");
-  }
+            public static void chorus() {
+              System.out.println("E-I-E-I-O");
+            }
 
-  public static void main(String[] args)
-  {
-    intro();
-    System.out.println("And on that farm they had a cow.");
-    chorus();
-    System.out.println("With a moo moo here and a moo moo there");
-    System.out.println("Here a moo, there a moo, everywhere a moo moo");
-    intro();
-  }
-}
+            public static void main(String[] args) {
+              intro();
+              System.out.println("And on that farm they had a cow.");
+              chorus();
+              System.out.println("With a moo moo here and a moo moo there");
+              System.out.println("Here a moo, there a moo, everywhere a moo moo");
+              intro();
+            }
+          }
         </code>
       </program>
     </activity>
 
-    <note>
-      <p>
-        A method call interrupts the sequential execution of statements, causing
-        the program to first execute the statements in the method before
-        continuing. Once the last statement in the method has been executed or a
-        return statement is executed, the flow of control is returned to the
-        point immediately following where the method was called.
-      </p>
-    </note>
+    <p>
+      Just like variable names, method names should be chosen to be meaningful
+      and describe what the method does. Methods can be defined in any order,
+      but usually programmers put the <c>main</c> method at the end the class
+      after all the methods that it uses are defined.
+    </p>
 
     <p>
       Try writing your own method calls below to add another verse to the song.
     </p>
 
     <activity label="song-add-calls">
+      <title>Expand song</title>
       <statement>
         <p>
           Scroll down to the main method below and add lines of code to the main
@@ -178,41 +391,37 @@ public class OldMacDonaldSong
 
       <program interactive="activecode" language="java">
         <code>
-public class OldMacDonaldSong
-{
-    public static void intro()
-    {
-        System.out.println("Old MacDonald had a farm");
-        chorus();
-    }
+          public class OldMacDonaldSong {
+              public static void intro() {
+                  System.out.println("Old MacDonald had a farm");
+                  chorus();
+              }
 
-    public static void chorus()
-    {
-        System.out.println("E-I-E-I-O");
-    }
+              public static void chorus() {
+                  System.out.println("E-I-E-I-O");
+              }
 
-    public static void main(String[] args)
-    {
-        intro();
-        System.out.println("And on that farm they had a cow.");
-        chorus();
-        System.out.println("With a moo moo here and a moo moo there");
-        System.out.println("Here a moo, there a moo, everywhere a moo moo");
+              public static void main(String[] args) {
+                  intro();
+                  System.out.println("And on that farm they had a cow.");
+                  chorus();
+                  System.out.println("With a moo moo here and a moo moo there");
+                  System.out.println("Here a moo, there a moo, everywhere a moo moo");
 
-        // TODO:
-        // 1. Call the method intro()
+                  // TODO:
+                  // 1. Call the method intro()
 
-        // 2. Print out the line "And on that farm..."
-        //    with a duck or another animal
+                  // 2. Print out the line "And on that farm..."
+                  //    with a duck or another animal
 
-        // 3. Call the method chorus
+                  // 3. Call the method chorus
 
-        // 4. Print out the lines with the appropriate animal sounds
+                  // 4. Print out the lines with the appropriate animal sounds
 
-        // 5. Call the method intro again
+                  // 5. Call the method intro again
 
-    }
-}
+              }
+          }
         </code>
         <tests>
 import static org.junit.Assert.*;
@@ -248,6 +457,7 @@ public class RunestoneTests extends CodeTestHelper
     </activity>
 
     <activity label="songMethodsTrace">
+      <title>Mental execution</title>
       <statement>
         <p>What does the following code print out?</p>
         <program language="java">
@@ -349,112 +559,20 @@ public class Song
 
     <p>
       Try this <url
-      href="https://pythontutor.com/render.html#code=public%20class%20Song%20%7B%0A%20%20%0A%20%20%20%20%20%20%20%20public%20static%20void%20print%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.print%28%22I%20like%20to%20%22%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20fruit%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20fruit%28%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22apples%20and%20bananas!%22%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20public%20static%20void%20eat%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20System.out.print%28%22eat%20%22%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20print%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D&amp;cumulative=false&amp;curInstr=15&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"
-      visual="https://pythontutor.com/render.html#code=public%20class%20Song%20%7B%0A%20%20%0A%20%20%20%20%20%20%20%20public%20static%20void%20print%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.print%28%22I%20like%20to%20%22%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20fruit%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20fruit%28%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22apples%20and%20bananas!%22%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20public%20static%20void%20eat%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20System.out.print%28%22eat%20%22%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20print%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D&amp;cumulative=false&amp;curInstr=15&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
+      href="https://pythontutor.com/render.html#code=public%20class%20Song%20%7B%0A%20%20%0A%20%20%20%20%20%20%20%20public%20static%20void%20print%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.print%28%22I%20like%20to%20%22%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20fruit%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20fruit%28%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22apples%20and%20bananas!%22%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20public%20static%20void%20eat%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20System.out.print%28%22eat%20%22%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20print%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D&amp;cumulative=false&amp;curInstr=15&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
       to see this code in action. Figuring out what the code does is called
-      <term>tracing</term> through the code. You can do this by hand or use a
-      tool like the one above to help you see what happens when the code runs.
+      <term>code tracing</term> or <term>mental execution</term>. You can do
+      this by hand or use a tool like the one above to help you see what happens
+      when the code runs.
     </p>
   </subsection>
 
+
+
+
+
   <subsection>
-    <title>Methods Signature, Parameters, Arguments</title>
-    <idx>method signature</idx>
-    <idx>parameter</idx>
-    <idx>argument</idx>
-    <idx>return type</idx>
-    <idx>parameter list</idx>
-    <p>
-      When using methods in a library or API, we can look up the <term>method
-      signature</term> (or <term>method header</term>) in its documentation. A
-      <term>method header</term> is the first line of a method that includes the
-      method name, the return type, and the parameter list of parameters and
-      their data types. The <term>return type</term> is the type of value that
-      the method returns; in this lesson, we’ll just look at <term>void</term>
-      return types which means the method doesn’t return anything. The
-      <term>method signature</term> is the method header without the return
-      type, just the method name and its parameter list. The <term>parameter
-      list</term> is a list of variables and their data types that are passed to
-      the method when it is called. The parameter list is enclosed in
-      parentheses and separated by commas; it can be empty with no parameters
-      although the parentheses must be present.
-    </p>
-
-    <p>
-      For example, the <url
-      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/io/PrintStream.html"><c>PrintStream</c>
-      class’s Javadocs</url> document the following method signatures for
-      <c>println</c> that we use in <c>System.out.println()</c>:
-    </p>
-
-    <p>
-      <ul>
-        <li>
-          <p>
-            <c>void println()</c> which has an empty parameter list with no
-            parameters
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>void println(String x)</c> which will print out a <c>String</c>
-            value
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>void println(int x)</c> which will print out an <c>int</c> value
-          </p>
-        </li>
-      </ul>
-    </p>
-
-    <p>
-      We can call these methods with the appropriate arguments to print out the
-      value we want. The <term>argument</term> is the actual value that is
-      passed to the method when it is called. Here are the method calls that
-      correspond to the method signatures above:
-    </p>
-
-    <p>
-      <ul>
-        <li>
-          <p>
-            <c>System.out.println();</c> // prints a newline
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>System.out.println("Hello World");</c> // prints a String
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>System.out.println(42);</c> // prints an int
-          </p>
-        </li>
-      </ul>
-    </p>
-
-    <p>
-      Compare the method signature of <c>println(String x)</c> with the method
-      call <c>println("Hello World");</c> below. The method signature contains
-      the method name and the parameter type and variable. The method call
-      contains only the method name and the argument value. The argument must be
-      compatible with the data type of the parameter in the method signature and
-      is saved in the parameter variable when the method is called. Many people
-      use the terms parameter and argument interchangeably.
-    </p>
-
-    <figure align="center">
-      <caption>Method Signature and Method Call</caption>
-      <image source="Unit1-Using-Objects-and-Methods/Figures/method-parts.png" width="89%" alt="Method Signature and Method Call" />
-    </figure>
-
+    <title>Removing even more duplication</title>
     <p>
       Let’s take another look at the Old MacDonald Song and see if we can
       replace more repeated code with methods with parameters. Each verse of the
@@ -464,9 +582,11 @@ public class Song
     </p>
 
     <activity label="different-code-old-mcdonald">
+      <title>Duplication with small differences</title>
       <statement>
         <p>
-          Click on the words that are different in the lines that are repeated.
+          Click on the specific words that are different in the lines that are
+          otherwise the same as some other line.
         </p>
       </statement>
 
@@ -478,24 +598,32 @@ public class Song
       </feedback>
 
       <areas>
-        <cline><area correct="no">public static void main(String args[]) {</area></cline>
-        <cline>    <area correct="no">System.out.println("Old MacDonald had a farm.");</area></cline>
-        <cline>    <area correct="no">System.out.println("E-I-E-I-O");</area></cline>
-        <cline>    <area correct="no">System.out.println("And on this farm, they had a </area> <area correct="yes"> cow</area><area correct="no">.");</area></cline>
-        <cline>    <area correct="no">System.out.println("E-I-E-I-O");</area></cline>
-        <cline>    <area correct="no">System.out.println("With a </area> <area correct="yes"> moo moo </area> <area correct="no">here and a </area> <area correct="yes"> moo moo </area> <area correct="no">there");</area></cline>
-        <cline>    <area correct="no">System.out.println("Here a </area> <area correct="yes"> moo</area><area correct="no">, there a </area> <area correct="yes">  moo </area><area correct="no">, everywhere a </area> <area correct="yes"> moo moo</area><area correct="no">");</area></cline>
+        <cline><area correct="no">public class OldMacDonaldSong {</area></cline>
+        <cline>  <area correct="no">public static void intro() {</area></cline>
         <cline>    <area correct="no">System.out.println("Old MacDonald had a farm");</area></cline>
+        <cline>    <area correct="no">chorus();</area></cline>
+        <cline>  <area correct="no">}</area></cline>
+        <cline></cline>
+        <cline>  <area correct="no">public static void chorus() {</area></cline>
         <cline>    <area correct="no">System.out.println("E-I-E-I-O");</area></cline>
-        <cline>    <area correct="no">System.out.println("And on this farm, they had a </area> <area correct="yes"> duck</area><area correct="no">.");</area></cline>
-        <cline>    <area correct="no">System.out.println("E-I-E-I-O");</area></cline>
-        <cline>    <area correct="no">System.out.println("With a</area> <area correct="yes">quack quack</area> <area correct="no">here and a</area> <area correct="yes">quack quack</area> <area correct="no">there");</area></cline>
-        <cline>    <area correct="no">System.out.println("Here a </area> <area correct="yes">quack</area><area correct="no">, there a</area> <area correct="yes">quack</area><area correct="no">, everywhere a</area> <area correct="yes">quack quack</area><area correct="no">");</area></cline>
-        <cline>    <area correct="no">System.out.println("Old MacDonald had a farm");</area></cline>
-        <cline>    <area correct="no">System.out.println("E-I-E-I-O");</area></cline>
+        <cline>  <area correct="no">}</area></cline>
+        <cline></cline>
+        <cline>  <area correct="no">public static void main(String[] args) {</area></cline>
+        <cline>    <area correct="no">intro();</area></cline>
+        <cline>    <area correct="no">System.out.println("And on that farm they had a</area> <area correct="yes">cow</area><area correct="no">.");</area></cline>
+        <cline>    <area correct="no">chorus();</area></cline>
+        <cline>    <area correct="no">System.out.println("With a</area> <area correct="yes">moo moo</area> <area correct="no">here and a</area> <area correct="yes">moo moo</area> <area correct="no"> there");</area></cline>
+        <cline>    <area correct="no">System.out.println("Here a</area> <area correct="yes">moo</area><area correct="no">, there a</area> <area correct="yes">moo</area><area correct="no">, everywhere a</area> <area correct="yes">moo moo</area><area correct="no">");</area></cline>
+        <cline>    <area correct="no">intro();</area></cline>
+        <cline>    <area correct="no">System.out.println("And on that farm they had a</area> <area correct="yes">duck</area><area correct="no">.");</area></cline>
+        <cline>    <area correct="no">chorus();</area></cline>
+        <cline>    <area correct="no">System.out.println("With a</area> <area correct="yes">quack quack</area> <area correct="no">here and a</area> <area correct="yes">quack quack</area> <area correct="no"> there");</area></cline>
+        <cline>    <area correct="no">System.out.println("Here a</area> <area correct="yes">quack</area><area correct="no">, there a</area> <area correct="yes">quack</area><area correct="no">, everywhere a</area> <area correct="yes">quack quack</area><area correct="no">");</area></cline>
+        <cline>    <area correct="no">intro();</area></cline>
+        <cline>  <area correct="no">}</area></cline>
         <cline><area correct="no">}</area></cline>
       </areas>
-    </activity>
+  </activity>
 
     <p>
       Did you notice that there are lines that are identical except for the
@@ -565,7 +693,7 @@ public static void main(String[] args)
       variables with each call to the <c>verse</c> method.
     </p>
 
-    <activity label="codelensSong2">
+    <activity>
       <statement>
         <p>
           Click on the next button below the code to step through the code and
@@ -574,7 +702,7 @@ public static void main(String[] args)
         </p>
       </statement>
 
-      <program interactive="codelens" language="java" label="codeLens3" xml:id="codelensid3">
+      <program interactive="codelens" language="java" label="codelensSong2" xml:id="codelensSong2">
         <code>
 public class OldMacDonaldSong
 {
@@ -755,6 +883,10 @@ verse("cow", "moo");
       method, the original value outside the method is not changed.
     </p>
   </subsection>
+
+
+
+
 
   <subsection>
     <title>Overloading</title>
