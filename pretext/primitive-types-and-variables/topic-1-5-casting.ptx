@@ -1,8 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="topic-1-5-casting">
-  <title>Casting and Ranges of Values</title>
-  <introduction />
+  <title>Getting math right</title>
+  <introduction>
+    <p>
+      Java's two numeric types, <c>int</c> and <c>double</c>, serve different
+      purposes: if we’re counting things <c>int</c>s are great. And
+      <c>double</c>s are great for scientific calculations such as those
+      involving measured quantities. But some computations will require us to
+      work with values of both types which will require us to control when we
+      convert between the two types if we want to get mathematically correct
+      results.
+    </p>
+
+    <p>
+      Also both data types have some limitations that we need to understand in
+      order to avoid mathmatically nonsensical results. (For instance, you’d
+      probably get an F in math class if you said <c>2147483647 + 1</c> was
+      <c>-2147483648</c>. But that’s what you’d get from Java due to the
+      limitation on the range of values that can be represented with an
+      <c>int</c>!
+    </p>
+
+    <p>
+      In this lesson we will look at the <term>cast</term> operator that we can
+      use to convert between types, a recipe for <term>rounding</term>
+      <c>double</c>s to their nearest <c>int</c> equivalent, and those
+      limitations on both <c>int</c> and <c>double</c> values.
+    </p>
+  </introduction>
+
   <subsection xml:id="casting">
     <title>Casting</title>
     <idx>cast</idx>
@@ -29,49 +56,65 @@
       variable, or more complex expression in parentheses) produces a value of
       the given type by converting the value of the original expression to the
       new type. The casting operators <c>(int)</c> and <c>(double)</c> can be
-      used to convert from a double value to an int value (or vice versa). For
-      example, <c>(double) 1 / 3</c> will evaluate to a <c>double</c> value
-      <c>0.33333333</c> instead of an <c>int</c> truncated value <c>0</c>. And
-      <c>(int) 3.6</c> will evaluate to an <c>int</c> value <c>3</c> instead of
-      a <c>double</c>. Casting an <c>int</c> value to a <c>double</c> adds on
-      digits to the right of the decimal point. And casting <c>double</c> value
-      to an <c>int</c> value causes the digits to the right of the decimal point
-      to be truncated.
+      used to convert from a double value to an int value (or vice versa).
     </p>
 
     <p>
-      Run this code to find how Java handles division and what casting can do to
-      the results. Notice what happens when you divide an <c>int</c> by an
-      <c>int</c> or an <c>int</c> by a <c>double</c> or an <c>int</c> cast to a
-      <c>double</c> divided by an <c>int</c>.
+      For example, <c>(double) 1 / 3</c> will evaluate to a <c>double</c> value
+      <c>0.33333333</c> instead of an <c>int</c> truncated value <c>0</c>. And
+      <c>(int) 3.6</c> will evaluate to the <c>int</c> value <c>3</c>, chopping
+      off the digits to the right of the decimal point.
     </p>
 
+    <p>
+      A conversion from <c>int</c> to <c>double</c> is called a <term>widening
+      conversion</term> because a <c>double</c> can represent any <c>int</c>
+      value but not vice versa; thus a <c>double</c> is considered a wider data
+      type than an <c>int</c>.
+    </p>
+
+    <note>
+      <p>
+        <c>int</c>s in Java are always 32-bit signed values which mean they can
+        represent values from <m>-2^{31}</m> to <m>2^{31} - 1</m>, inclusive,
+        while the range of consecutive integer values that can be represented by
+        a double is from <m>-2^{53}</m> to <m>2^{53}</m>, inclusive. (A
+        <c>double</c> can also represent much larger values but with limited
+        precision.) You can refer to the minimum and maximum <c>int</c> values
+        with the constants <c>Integer.MIN_VALUE</c> and
+        <c>Integer.MAX_VALUE</c>.
+      </p>
+    </note>
+
     <activity label="cast-division">
+      <title>Dividing mixed types</title>
       <statement>
         <p>
-          What happens when you divide an int by an int or with a double operand
-          or with the type cast (double) or (int) on one of the operands? Add
-          another line that divides 5 by 2 using a (double) cast. What is the
-          result?
+          Run this code to see how Java handles division and what casting can do
+          to the results. Notice what happens when you divide an <c>int</c> by
+          an <c>int</c> or an <c>int</c> by a <c>double</c> or an <c>int</c>
+          cast to a <c>double</c> divided by an <c>int</c>.
+        </p>
+        <p>
+          Then add another line that divides <c>5</c> by <c>2</c> but casting
+          one of the values to <c>(double)</c>. What is the result?
         </p>
       </statement>
 
       <program interactive="activecode" language="java">
         <code>
-public class Casting
-{
-    public static void main(String[] args)
-    {
-        System.out.println(3 / 4);          // int divided by int
-        System.out.println(3.0 / 4);        // double divided by int
-        System.out.println(3 / 4.0);        // int divided by double
-        System.out.println((double) 3 / 4); // int cast to double, divided by int
-        System.out.println((int) 3.0 / 4);  // double cast to int, divided by int
-        // Add a line of code that prints out the result of dividing 5 by 2
-        //  using a (double) cast.
+          public class Casting {
+              public static void main(String[] args) {
+                  System.out.println(3 / 4);          // int divided by int
+                  System.out.println(3.0 / 4);        // double divided by int
+                  System.out.println(3 / 4.0);        // int divided by double
+                  System.out.println((double) 3 / 4); // int cast to double, divided by int
+                  System.out.println((int) 3.0 / 4);  // double cast to int, divided by int
+                  // Add a line of code that prints out the result of dividing 5 by 2
+                  //  using a (double) cast.
 
-    }
-}
+              }
+          }
         </code>
         <tests>
 import static org.junit.Assert.*;
@@ -102,28 +145,43 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </activity>
 
+  </subsection>
+
+  <subsection>
+    <title>Casting to double</title>
     <p>
-      When Java divides two <c>int</c>s, it produces an <c>int</c> result by
-      truncating the actual mathematical result, removing anything after the
-      decimal point. Thus <c>9 / 10</c> evaluates to <c>0</c>, not <c>0.9</c>.
-      It also does not evaluate to <c>1</c>; truncating is not the same as
-      rounding!
+      As you can see in the exercise above, when Java divides two <c>int</c>s,
+      it produces an <c>int</c> result by truncating the actual mathematical
+      result, removing anything after the decimal point. Thus <c>3 / 4</c>
+      evaluates to <c>0</c>, not <c>0.75</c> as we might expect. It also does
+      not evaluate to <c>1</c> even thoun <c>0.75</c> is closer to <c>1</c> than
+      it is to <c>0</c>; truncating is not the same as rounding!
     </p>
 
     <p>
-      But in any expression involving a <c>double</c>, the <c>double</c> is
-      “contagious” and will cause the value of that expression to also be a
-      <c>double</c>. Thus the expression <c>9.0 / 10</c> is evaluated as if it
-      had been written <c>9.0 / 10.0</c> and produces the <c>double</c> value
-      <c>0.9</c>. This code causes int values like 10 to be automatically cast
-      (widened) to double values like 10.0.
+      But as we learned in <xref ref="topic-1-3-expressions"/>, in any
+      expression involving a <c>double</c>, the <c>double</c> is “contagious”
+      and will cause the other operand to be turned into a <c>double</c> and
+      thus the value of the expression as a whole to be computed using the rules
+      of <c>double</c> math. Thus the expression <c>3.0 / 4</c> is evaluated as
+      if it had been written <c>3.0 / 4.0</c> and produces the <c>double</c>
+      value <c>0.75</c>.
     </p>
 
     <p>
-      Casting an <c>int</c> to <c>double</c>, as shown in the code above,
-      produces a <c>double</c> value which will then causes any expression it is
-      part of to produce a <c>double</c>. This is especially useful when you
-      have <c>int</c> variables that you want to do non-integer division with:
+      If an expressions involves at least one literal value then we can just use
+      a literal <c>double</c> to force Java to use <c>double</c> math. But what
+      if we want to evaluate an expression using <c>int</c> variables but under
+      the rules of <c>double</c> math?
+    </p>
+
+    <p>
+      That’s where casting comes in. Since casting an <c>int</c> to
+      <c>double</c> produces a <c>double</c> value, if that value is the operand
+      in an expression, it will then infect the other operand and cause the
+      expression as a whole to produce a <c>double</c>. This is especially
+      useful when we have <c>int</c> variables that we want to do non-integer
+      division with:
     </p>
 
     <program language="java">
@@ -137,33 +195,40 @@ double average = (double) total / count;
     </program>
 
     <p>
-      A conversion from <c>int</c> to <c>double</c> is called a <term>widening
-      conversion</term> because a <c>double</c> can represent any <c>int</c>
-      value but not vice versa; thus a <c>double</c> is considered a wider data
-      type than an <c>int</c>.
+      Another thing to notice is that cast is an operator, just like <c>+</c>,
+      <c>*</c>, <c>-</c>, <c>/</c>, and <c>%</c>. So it has a precedence just
+      like all the other operators and it is actually quite high. The expression
+      above works because the cast of <c>total</c> to <c>double</c> happens
+      first and then that <c>double</c> value infects <c>count</c> and the whole
+      expression is computed using <c>double</c> math. If instead, we had
+      written:
     </p>
 
-    <note>
-      <p>
-        <c>int</c>s in Java are always 32-bit signed values which mean they can
-        represent values from <m>-2^{31}</m> to <m>2^{31} - 1</m>, inclusive,
-        while the range of consecutive integer values that can be represented by
-        a double is from <m>-2^{53}</m> to <m>2^{53}</m>, inclusive. (A
-        <c>double</c> can also represent much larger values but with limited
-        precision.) You can refer to the minimum and maximum <c>int</c> values
-        with the constants <c>Integer.MIN_VALUE</c> and
-        <c>Integer.MAX_VALUE</c>.
-      </p>
-    </note>
+    <program language="java">
+      <code>
+        double average = (double) (total / count);
+      </code>
+    </program>
+
+    <p>
+      then the division would have happened first, yielding a truncated
+      <c>int</c> value which would then—too late—be converted to the equivalent
+      <c>double</c> value, losing the fractional part of the true mathematical
+      answer.
+    </p>
+
   </subsection>
 
   <subsection xml:id="rounding">
-    <title>Rounding</title>
+    <title>Casting to int</title>
     <idx>rounding</idx>
+
     <p>
-      Values of type <c>double</c> in the range that can be represented by an
-      <c>int</c> can be rounded to the nearest <c>int</c> by adding or
-      subtracting 0.5 and then casting the result with <c>(int)</c>:
+      Since casting a <c>double</c> value to <c>int</c> throws away mathematical
+      precision it might seem that we’d rarely want to do that. But we can use
+      truncation, with a bit of arithmetic, to round <c>double</c> values to the
+      nearest <c>int</c> value by adding or subtracting 0.5 and then casting the
+      result with <c>(int)</c>:
     </p>
 
     <program language="java">
@@ -171,25 +236,40 @@ double average = (double) total / count;
 double number;    // positive value from somewhere
 double negNumber; // negative value from somewhere
 
-int nearestInt = (int)(number + 0.5);
-int nearestNegInt = (int)(negNumber – 0.5);
+int nearestInt = (int) (number + 0.5);
+int nearestNegInt = (int) (negNumber – 0.5);
       </code>
     </program>
 
     <p>
-      For example, if you divide <c>7.0 / 4.0</c> you get <c>1.75</c>. If you
-      cast that to an <c>int</c>, it will be truncated to <c>1</c>. However if
-      we want to round a <c>double</c> rather than truncating it, adding
-      <c>0.5</c> will produce a number that is above the next integer value if
-      the decimal part is greater than <c>0.5</c>, as it is here. Then casting
-      <em>that</em> value to an <c>int</c> will truncate down. So in this case
-      <c>1.75 + 0.5</c> gives us <c>2.25</c> which is then truncated to
-      <c>2</c>. On the other hand adding <c>0.5</c> to the result of evaluating
-      <c>5.0 / 4.2</c>, namely <c>1.25</c>, only gets us to <c>1.75</c> which
-      truncates back to <c>1</c> which is the nearest integer to <c>1.25</c>.
+      For example, if we divide <c>7.0 / 4.0</c> we get <c>1.75</c>. And if we
+      cast that to an <c>int</c>, it would be truncated to <c>1</c>. But if we
+      want to round it to the nearest <c>int</c>, rather than truncating it,
+      adding <c>0.5</c> will produce a number that is greater than <c>2.0</c>
+      and thus will get truncated to <c>2</c>. Assuming we’re okay rounding
+
+      above the next integer
+      value if the decimal part is greater than <c>0.5</c>, as it is here. Then
+      casting <em>that</em> value to an <c>int</c> will truncate down. So in
+      this case <c>1.75 + 0.5</c> gives us <c>2.25</c> which is then truncated
+      to <c>2</c>. On the other hand adding <c>0.5</c> to the result of
+      evaluating <c>5.0 / 4.2</c>, namely <c>1.25</c>, only gets us to
+      <c>1.75</c> which truncates back to <c>1</c> which is the nearest integer
+      to <c>1.25</c>.
+    </p>
+
+    <p>
+      And notice that here we need to parenthesize the expression <c>number +
+      0.5</c> so that it is evaluated first and then the result cast to a
+      <c>double</c>. Without the parentheses, the cast to <c>int</c> would
+      convert <c>number</c> to an <c>int</c> first because of the higher
+      precedence of casting than division, and then that truncated <c>int</c>
+      value would be infected by the <c>0.5</c> giving us a double result with a
+      fractional part of <c>0.5</c>.
     </p>
 
     <activity label="nearestInt">
+      <title>Test rounding</title>
       <statement>
         <p>
           Run the code below to see how the formula of adding or subtracting .5
@@ -248,33 +328,50 @@ public class RunestoneTests extends CodeTestHelper
         </tests>
       </program>
     </activity>
+
   </subsection>
 
   <subsection xml:id="range-of-values">
-    <title>Range of Values</title>
+    <title>Limits of int and doubles</title>
     <idx>
       <h>double</h><h>number of digits</h>
     </idx>
 
     <p>
-      What happens to repeating decimal numbers like 3.333333…? Such numbers
-      can’t be represented exactly in any finite number of digits so computers
-      have to store an approximation. Java’s <c>double</c>s can store about
-      14-15 digits worth of precision which is plenty for most purposes but you
-      should be aware that the accuracy of any calculation on a computer is
-      limited by the fact that computers can only hold a limited number of
-      digits.
+      Both the <c>int</c> and <c>double</c> data types have limitations in the
+      numbers they can represent. These limitations are due to the fact that for
+      efficiency reasons computer hardware represents both types using a fixed
+      number of bits, 32 bits for each <c>int</c> and 64 bits for a
+      <c>double</c>.
     </p>
 
     <p>
-      For example, int values are stored in 4 bytes of memory. The constant
-      <c>Integer.MAX_VALUE</c> holds the value of the largest possible int value
-      in Java which is 2147483647, and <c>Integer.MIN_VALUE</c> holds the
-      smallest int value -2147483648. Values in an <c>int</c> variable must be
-      within the range of <c>Integer.MIN_VALUE</c> and <c>Integer.MAX_VALUE</c>
-      inclusively. If you try to store any number larger or smaller than these
-      numbers in an <c>int</c> variable, it will result in an <term>integer
-      overflow</term> where an incorrect value could be stored. Try it below.
+      For <c>int</c>s, this means there is a biggest number that can be
+      represented, just like there’s a biggest number that can be represented in
+      a fixed number of digits. Because <c>int</c>s can represent both positive
+      and negative numbers, half of the bit patters are used to represent
+      negative numbers and half to represent the non-negative numbers including
+      zero. The maximum <c>int</c> value is <m>2,147,483,647</m> also known as
+      <m>2^{31} - 1</m>. The minimum value (most negative) is
+      <m>-2,147,483,648</m> or <m>-(2^{31})</m>. There are constants in Java,
+      <c>Integer.MAX_VALUE</c> and <c>Integer.MIN_VALUE</c>, that we can use if
+      we need to refer to those values in a program.
+    </p>
+
+    <p>
+      If we try to store value smaller than <c>Integer.MIN_VALUE</c> or bigger
+      than <c>Integer.MAX_VALUE</c> in an <c>int</c> variable or if an
+      expression that is supposed to produce an <c>int</c> value would produce a
+      value outside that range, the result <term>overflows</term> and produces a
+      mathematically incorrect value. Roughly speaking the value will “wrap
+      around” so, for instance, <c>Integer.MAX_VALUE + 1</c> gives us the same
+      value as <c>Integer.MIN_VALUE</c> and <c>Integer.MIN_VALUE - 1</c> brings
+      us back to <c>Integer.MAX_VALUE</c>.
+    </p>
+
+    <p>
+      If we try to write a literal <c>int</c> that it out of range the compiler
+      will give us an error as shown in the exercise below.
     </p>
 
     <activity label="overfl">
@@ -325,35 +422,56 @@ public class RunestoneTests extends CodeTestHelper
     </activity>
 
     <p>
-      Computers allot a specified amount of memory to store data based on the
-      data type. For <c>double</c> values, computers allot twice as much memory
-      than for <c>int</c>s—8 bytes rather than 4. However it’s still possible
-      that an expression would evaluate to a mathematical value that requires
-      more precision than can be stored in even 8 bytes. In that case a round-
-      off error occurs and the result is rounded to the nearest <c>double</c>
-      representable in 8 bytes. For example, repeating decimals like
-      0.333333333333333333 will be cut off after about 15 digits. To avoid
-      round-off errors, you can choose to round the result to a specified number
-      of digits after the decimal point or to an <c>int</c> value.
+      The <c>double</c> type, despite using twice as many bits per number as
+      <c>int</c>s, also has limitations. Doubles work more like scientific
+      notation, storing a signed magnitude, and an exponent. This means they can
+      represent both very small numbers (the smallest positive value is
+      approximately <m>4.9 \times 10^{-324}</m>) and very large (the largest
+      positive <c>double</c> value is approximately <m>1.8 \times 10^{308}</m>.)
+    </p>
+
+    <p>
+      However this means, that like scientific notation, there is a limit to the
+      precision with which <c>double</c>s can represent numbers, about 14-15
+      decimal places. That has a few consequences. One is that irrational
+      numbers like <m>\pi</m> and <m>\sqrt{2}</m> that have an infinite decimal
+      representation can only be approximated. But also simpler numbers like 1/3
+      which have repeating decimal representations can only be approximated. So
+      the value we get if we evaluate <c>1.0 / 3.0</c> is actually roughly
+      <m>1.85 \times 10^{-17}</m> less than 1/3.
+    </p>
+
+    <p>
+      In practice, of course, 14-15 digits of precision is plenty for most
+      purposes. But you should be aware that the accuracy of any calculation on
+      a computer is limited by the fact that computers can only hold a limited
+      number of digits. When these limitations lead to incorrect results it is
+      called a <term>roundoff error</term>. Programmers who write software that
+      does complex scientific calculations do something called <term>numeric
+      analysis</term> to make sure their programs won’t be affected by roundof
+      errors but most of us don’t have to worry about that most of the time.
     </p>
 
     <idx>
       <h>double</h><h>precision format</h>
     </idx>
 
-    <p>
-      Although it’s not on the AP exam, you can format long decimal numbers to
-      just show 2 digits after the decimal point with the following code using
-      <c>printf</c> a formatted print method or <c>format</c> instead of
-      <c>println</c>. It takes a format string like <c>%.02f</c> which tells
-      <c>printf</c> to print a floating point number indicated by the <c>%</c>
-      with 2 digits after the decimal point. See <url
-      href="https://docs.oracle.com/javase/tutorial/java/data/numberformat.html">https://docs.oracle.com/javase/tutorial/java/data/numberformat.html</url>
-      for more information. You can also use escape characters like <c>\n</c> in
-      the format string to do a newline. Try it below.
-    </p>
+    <note>
+      <p>
+        Although it’s not on the AP exam, you can format long decimal numbers to
+        just show 2 digits after the decimal point with the following code using
+        <c>printf</c> a formatted print method or <c>format</c> instead of
+        <c>println</c>. It takes a format string like <c>%.02f</c> which tells
+        <c>printf</c> to print a floating point number indicated by the <c>%</c>
+        with 2 digits after the decimal point. See <url
+        href="https://docs.oracle.com/javase/tutorial/java/data/numberformat.html">https://docs.oracle.com/javase/tutorial/java/data/numberformat.html</url>
+        for more information. You can also use escape characters like <c>\n</c>
+        in the format string to do a newline. Try it below.
+      </p>
+    </note>
 
     <activity label="double_precision">
+      <title>Using printf</title>
       <statement>
         <p>
           Run the code below to see how a decimal number can be formatted to
@@ -405,6 +523,7 @@ public class RunestoneTests extends CodeTestHelper
     </activity>
 
     <activity label="q_round">
+      <title>Integer division</title>
       <statement>
         <p>
           True or false: Java rounds up automatically when you do integer
@@ -439,6 +558,7 @@ public class RunestoneTests extends CodeTestHelper
     </activity>
 
     <activity label="q_cast">
+      <title>Casting</title>
       <statement>
         <p>True or false: casting always results in a double type.</p>
       </statement>
@@ -485,6 +605,7 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <project label="challenge1-5-average">
+      <title>Averaging three numbers</title>
       <statement>
         <p>
           Type in three made up int grades and then sum and average them. Use
@@ -765,7 +886,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="bonus-challenge-unicode">
-    <title>Bonus Challenge : Unicode</title>
+    <title>Bonus Challenge: Unicode</title>
     <p>
       If you get done early with the previous challenge, here’s something else
       fun you can do in Java, although it’s not covered in the AP exam.
@@ -822,6 +943,7 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <project label="challenge1-6-unicode">
+      <title>Unicode challenge</title>
       <statement>
         <p>
           Can you print out a letter from 3 different languages using this <url
@@ -969,8 +1091,9 @@ public class RunestoneTests extends CodeTestHelper
     <activity label="AP_casting">
       <statement>
         <p>
-          Which of the following returns the correct average for a total that is
-          the sum of 3 int values?
+          Which of the following always returns the correct average (to 14-15
+          decimal places) if <c>total</c> is an <c>int</c> variable that is the
+          sum of three values?
         </p>
       </statement>
 
