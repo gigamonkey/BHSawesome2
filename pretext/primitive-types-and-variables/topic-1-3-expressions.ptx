@@ -4,10 +4,10 @@
   <title>Expressions</title>
   <introduction>
     <p>
-      In the last section we saw how variables, such as <c>score</c>, can be
-      used to name a place we store a value. And in this section we’ve seen how
-      we can write literal values like <c>42</c> in our programs. Both variables
-      and literal values are simple kinds of <term>expressions</term>.
+      Earlier in this unit we saw how variables, such as <c>score</c>, can be
+      used to name a place we store a value and also how we can write literal
+      values like <c>42</c> in our programs. Both variables and literal values
+      are simple kinds of <term>expressions</term>.
     </p>
 
     <p>
@@ -20,7 +20,7 @@
   </introduction>
 
   <subsection xml:id="arithmetic-expressions">
-    <title>Arithmetic Expressions</title>
+    <title>Arithmetic expressions</title>
     <p>
       To take a simple example, <c>2 + 3</c> is an expression consisting of the
       two literal values <c>2</c> and <c>3</c> and the operator <c>+</c>. The
@@ -97,6 +97,7 @@
     </p>
 
     <activity label="lcop1">
+      <title>Basic arithmetic operators</title>
       <statement>
         <p>
           Run the code below to see the four basic arithmetic operators in
@@ -110,41 +111,39 @@
 
       <program interactive="activecode" language="java">
         <code>
-public class Test1
-{
-    public static void main(String[] args)
-    {
-        System.out.println(2 + 3);
-        System.out.println(2 - 3);
-        System.out.println(2 * 3);
-        System.out.println(2 / 3);
-    }
-}
+          public class Test1 {
+              public static void main(String[] args) {
+                  System.out.println(2 + 3);
+                  System.out.println(2 - 3);
+                  System.out.println(2 * 3);
+                  System.out.println(2 / 3);
+              }
+          }
         </code>
         <tests>
-import static org.junit.Assert.*;
-import org.junit.Test;
-import java.io.*;
+          import static org.junit.Assert.*;
+          import org.junit.Test;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "5\n-1\n6\n" + 2.0/3;
-        boolean passed =
-                getResults(expect, output, "Expected output from main. Make sure you change 2/3 to 2.0/3.");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "5\n-1\n6\n" + 2.0/3;
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main. Make sure you change 2/3 to 2.0/3.");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
   </subsection>
 
   <subsection xml:id="the-remainder-operator">
-    <title>The Remainder Operator</title>
+    <title>The remainder operator</title>
     <p>
       Java also supports a fifth arithmetic operator, <c>%</c>, called the
       <term>remainder</term> operator. Like the other four basic arithmetic
@@ -172,15 +171,17 @@ public class RunestoneTests extends CodeTestHelper
     <p>
       Sometimes people—including Professor Lewis in the next video—will call
       <c>%</c> the <term>modulo</term>, or <term>mod</term>, operator. That is
-      not actually correct though the difference between remainder and modulo,
-      which uses <url
+      not actually correct though the difference between remainder and modulo
+      only matters when the signs of the operands differ. (The difference has to
+      do with what kind of division is done before finding the remainder; the
+      remainder operator is based on truncating integer division where the
+      quotient is truncated toward zero while modulo is based on <url
       href="https://en.wikipedia.org/wiki/Euclidean_division">Euclidean
-      division</url> instead of truncating integer division, only matters when
-      the signs of the operands differ. With operands of the same sign,
-      remainder and modulo give the same results. Java does have a method
-      <c>Math.floorMod</c> in the <c>Math</c> class if you need to use modulo
-      instead of remainder, but <c>%</c> is all you need in the AP exam and it
-      will only be used with positive operands.
+      division</url> which truncates toward negative infinity.) With operands of
+      the same sign, remainder and modulo give the same results. Java does have
+      a method <c>Math.floorMod</c> in the <c>Math</c> class if you need to use
+      modulo instead of remainder, but <c>%</c> is all you need in the AP exam
+      and it will only be used with positive operands.
     </p>
 
     <p>
@@ -200,37 +201,35 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class Test1
-{
-    public static void main(String[] args)
-    {
-        System.out.println(11 % 10);
-        System.out.println(3 % 4);
-        System.out.println(8 % 2);
-        System.out.println(9 % 2);
-    }
-}
+          public class Test1 {
+              public static void main(String[] args) {
+                  System.out.println(11 % 10);
+                  System.out.println(3 % 4);
+                  System.out.println(8 % 2);
+                  System.out.println(9 % 2);
+              }
+          }
         </code>
         <tests>
-// Test Code for Lesson 1.4 Expressions - lcop2
-import static org.junit.Assert.*;
+          // Test Code for Lesson 1.4 Expressions - lcop2
+          import static org.junit.Assert.*;
 
-import org.junit.Test;
+          import org.junit.Test;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "1\n3\n0\n1";
-        boolean passed =
-                getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "1\n3\n0\n1";
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -342,7 +341,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="math-bugs">
-    <title>Math Bugs</title>
+    <title>Math bugs</title>
     <p>
       While computers are pretty good at math they will only do what we tell
       them. And sometimes what we tell them isn’t exactly what we wanted. For
@@ -353,37 +352,36 @@ public class RunestoneTests extends CodeTestHelper
     <p>
       And sometimes it’s something as silly as using the wrong operator. For
       example, when the Hubble Space Telescope was launched to space in 1990, a
-      <url
-      href="https://scholar.lib.vt.edu/VA-news/ROA-Times/issues/1990/rt9005/900510/05100615.htm">bug
-      where a programmer subtracted when they should have added</url> (or
-      possibly the other way around) caused it to point in the wrong direction!
-      It missed its target stars by about half a degree which is about the width
-      of the moon seen from Earth. Thorough testing is the only way to make sure
-      there are no logic errors that will cause runtime errors in your code. Try
-      the following example that tries to convert centimeters to inches. Can you
-      fix the runtime error?
+      bug where a programmer <url
+      href="https://scholar.lib.vt.edu/VA-news/ROA-Times/issues/1990/rt9005/900510/05100615.htm">subtracted
+      when they should have added</url> (or possibly the other way around)
+      caused it to point in the wrong direction! It missed its target stars by
+      about half a degree which is about the width of the moon seen from Earth.
+      Thorough testing is the only way to make sure there are no logic errors
+      that will cause runtime errors in your code. Try the following example
+      that tries to convert centimeters to inches. Can you fix the runtime
+      error?
     </p>
 
     <activity label="cm2in-runtime-error">
+      <title>Fix the math bug</title>
       <statement>
         <p>
           The following code is trying to convert centimeters to inches, but it
           has a math error. Run the code to see that there are no error
           messages, but it simply does the wrong calculation! Can you fix the
-          logic error in the code? 1 inch = 2.54 cms.
+          logic error in the code? Note that one inch is equivalent to 2.54 cms.
         </p>
       </statement>
 
       <program interactive="activecode" language="java">
         <code>
-public class CmToInches
-{
-    public static void main(String[] args)
-    {
-        System.out.print("100 centimeters in inches is: ");
-        System.out.println(100 * 2.54);
-    }
-}
+          public class CmToInches {
+              public static void main(String[] args) {
+                  System.out.print("100 centimeters in inches is: ");
+                  System.out.println(100 * 2.54);
+              }
+          }
         </code>
         <tests>
 import static org.junit.Assert.*;
@@ -417,10 +415,9 @@ public class RunestoneTests extends CodeTestHelper
       Another kind of math bug is when we ask Java to do something
       mathematically impossible. The main one we need to know about is what
       happens when we divide by zero, something that is not defined in math. In
-      an <c>int</c> expression, dividing by 0 will result in an
-      <term>ArithmeticException</term> , as we saw in the <xref
-      ref="topic-1-1-intro-algorithms" />. Try it in one of the active codes to
-      see what happens.
+      an <c>int</c> expression, dividing by zero will result in an
+      <term>ArithmeticException</term> , as we saw in the <xref ref="debugging"
+      />. Try it in one of the active codes to see what happens.
     </p>
 
     <note>
@@ -434,7 +431,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="compound-expressions">
-    <title>Compound Expressions</title>
+    <title>Compound expressions</title>
     <p>
       Each arithmetic operator operates on just two operands. So what does an
       expression like <c>2 * 3 + 4</c> mean? If we remember our PEMDAS, we know
@@ -469,6 +466,7 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <activity label="compound1">
+      <title>Compound expressions</title>
       <statement>
         <p>
           In the example below, try to guess what it will print out and then run
@@ -479,10 +477,8 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class TestCompound
-{
-    public static void main(String[] args)
-    {
+public class TestCompound {
+    public static void main(String[] args) {
         System.out.println(2 + 3 * 2);
         System.out.println((2 + 3) * 2);
         System.out.println(2 + (3 * 2));
@@ -515,7 +511,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="coding-challenge-pay-calculator">
-    <title>Coding Challenge : Pay Calculator</title>
+    <title>Coding Challenge: Pay calculator</title>
     <image source="Unit1-Using-Objects-and-Methods/Figures/dollarSign.png" width="18%" />
     <p>
       In this coding challenge, you can work in pairs to create a pay calculator
@@ -523,44 +519,43 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <project label="challenge1-3-pay-calculator">
+      <title>Pay calculator</title>
       <statement>
         <p>Complete the following expressions for a pay calculator.</p>
       </statement>
 
       <program interactive="activecode" language="java">
         <code>
-public class Challenge1_3_Pay_Calculator
-{
-   public static void main(String[] args)
-   {
-       // Put in the math operator between 4 and 10 below to compute
-       // the pay for 4 hours of work at 10 dollars per hour.
-       System.out.println("Pay for 4 hours of work at 10 dollars an hour");
-       System.out.println(4  10);
+          public class Challenge1_3_Pay_Calculator {
+             public static void main(String[] args) {
+                 // Put in the math operator between 4 and 10 below to compute
+                 // the pay for 4 hours of work at 10 dollars per hour.
+                 System.out.println("Pay for 4 hours of work at 10 dollars an hour");
+                 System.out.println(4  10);
 
-       // Put in the math operator to compute the number of hours worked
-       // if the pay is 120 dollars and the rate is 15 dollars per hour.
-       System.out.println("Number of hours worked for pay 120 dollars &amp; rate 15 dollars per hour");
-       System.out.println(120  15);
+                 // Put in the math operator to compute the number of hours worked
+                 // if the pay is 120 dollars and the rate is 15 dollars per hour.
+                 System.out.println("Number of hours worked for pay 120 dollars &amp; rate 15 dollars per hour");
+                 System.out.println(120  15);
 
-       // Put in the math expression to compute the pay
-       //  for 12 hours of work at 7.50 dollars per hour.
-       System.out.println("Pay for 12 hours of work at 7.50 dollars an hour");
-       System.out.println(        );
+                 // Put in the math expression to compute the pay
+                 //  for 12 hours of work at 7.50 dollars per hour.
+                 System.out.println("Pay for 12 hours of work at 7.50 dollars an hour");
+                 System.out.println(        );
 
-       // Add another statement to print the math expression to compute the integer number of
-       // hours worked if the pay is 100 dollars and the rate is 9 dollars per hour.
-       System.out.println("Number of int hours worked for pay 100 dollars &amp; rate 9 dollars per hour");
+                 // Add another statement to print the math expression to compute the integer number of
+                 // hours worked if the pay is 100 dollars and the rate is 9 dollars per hour.
+                 System.out.println("Number of int hours worked for pay 100 dollars &amp; rate 9 dollars per hour");
 
 
 
-       // Add another statement to print the math expression to give the remainder when
-       //  100 dollars is divided by 9 dollars per hour.
-       System.out.println("The remainder of 100 dollars divided by 9 dollars per hour");
+                 // Add another statement to print the math expression to give the remainder when
+                 //  100 dollars is divided by 9 dollars per hour.
+                 System.out.println("The remainder of 100 dollars divided by 9 dollars per hour");
 
 
-   }
-}
+             }
+          }
         </code>
         <tests>
 import static org.junit.Assert.*;
@@ -700,6 +695,7 @@ public class RunestoneTests extends CodeTestHelper
   <subsection>
     <title>AP Practice</title>
     <activity label="apcsa_sample1_exp">
+      <title>Compound expression practice</title>
       <statement>
         <p>Consider the following code segment.</p>
         <program language="java">
