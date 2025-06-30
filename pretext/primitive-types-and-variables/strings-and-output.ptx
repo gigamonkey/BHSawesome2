@@ -241,7 +241,7 @@ public class RunestoneTests extends CodeTestHelper
     </activity>
   </subsection>
 
-  <subsection>
+  <subsection xml:id="scanner">
     <title>Input</title>
     <p>
       The flip side of emitting output to the user is getting input from the
