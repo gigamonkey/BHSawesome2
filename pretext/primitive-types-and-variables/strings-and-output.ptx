@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section>
+<section xml:id="text-output">
   <title>Text output</title>
   <introduction>
     <p>
@@ -242,31 +242,40 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection>
-    <title>Input with Variables</title>
+    <title>Input</title>
     <p>
-      Variables are a powerful abstraction in programming because the same
-      algorithm can be used with different input values saved in variables.
-      Input can come in a variety of forms, such as <term>tactile</term> for
-      example by clicking on a button, <term>audio</term> with speech,
-      <term>visual</term> using a webcam, or the most common form,
-      <term>text</term> that the user types in. The <c>Scanner</c> class in Java
-      is one way to obtain text input from the keyboard.
+      The flip side of emitting output to the user is getting input from the
+      user. Just as there are lots of ways for computers to generate output,
+      modern programs can accept all kinds of input: UI gestures such as the
+      user clicking on a button, audio input from the computer’s microphone,
+      visual input from a camera, etc. But as with output the simplest to deal
+      with is textual input. In <xref ref="text-files"/> we’ll look at how to
+      read input from files saved on the computer. But sometimes it’s useful to
+      be able to get input typed by the user as a program runs.
     </p>
 
     <p>
-      The code below using the <c>Scanner</c> class will say hello to anyone who
-      types in their name and will have different results for different name
-      values. First, type in your name below the code and then click on run. Try
-      again with a friend’s name. The code works for any name: behold, the power
-      of variables!
+      The AP curriculum doesn’t require you to know any particular way of
+      dealing with user input but does mention the <c>Scanner</c> class that
+      comes with Java as one way. And knowing how to use <c>Scanner</c> will let
+      us write programs whose behavior can change depending on their input.
+    </p>
+
+    <p>
+      The code below uses the <c>Scanner</c> class to read a name the user types
+      in and then says hello. It will have different results depending no what
+      the user types. Try it by typing in your name in the box below the code
+      before you click “Run”. Try again with a friend’s name. The code works for
+      any name.
     </p>
 
     <activity label="inputName">
+      <title>Program with user input</title>
       <statement>
         <p>
           The code below will say hello to anyone who types in their name. Type
-          in your name below and then click on run. Try again with a friend’s
-          name.
+          in your name in the box below the code and then click on “Run”. Try
+          again with a friend’s name.
         </p>
       </statement>
 
@@ -356,6 +365,7 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <project label="challengeMadLibs">
+      <title>Mad Libs</title>
       <statement>
         <p>
           Replace the text “Replace” below with silly words following the
