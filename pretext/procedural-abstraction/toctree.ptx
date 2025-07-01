@@ -14,13 +14,12 @@
     </p>
 
     <p>
-      In this chapter we're going to look more closely at a new kind of
-      abstraction called <term>procedural abstraction</term> that we can create
-      in Java by writing <term>methods</term>. Methods are named chunks of code
-      that we can <term>call</term> in order to run the code. In other languages
-      they are called lots of things such as functions, procedures, or
-      subroutines. And in block programming languages like Snap! they are called
-      blocks.
+      In this chapter we're going to look more closely at <term>methods</term>,
+      which are Java's way of creating <term>procedural abstractions</term>.
+      Methods are named chunks of code that we can <term>call</term> in order to
+      run the code. In other languages they are called lots of things such as
+      functions, procedures, or subroutines. And in block programming languages
+      like Snap! they are called blocks.
     </p>
 
     <p>
@@ -33,15 +32,13 @@
     </p>
 
     <p>
-      While so far all of our code has been in each class’s <c>main</c> method,
-      real programs are typically made up of many methods. Writing methods lets
-      us break a large program into problem down into smaller more manageable
-      chunks. Additionally, we can also use methods written by other programmers
-      without having to worry about the details of exactly how they work. We
-      just need to know the method’s name and what arguments it expects. Later
-      in this unit well look at several methods from the class <c>Math</c> that
-      comes with Java, which save us from having to know, for instance, how to
-      compute square roots.
+      Writing methods lets us break a large program into problem down into
+      smaller more manageable chunks. Additionally, we can also use methods
+      written by other programmers without having to worry about the details of
+      exactly how they work. We just need to know the method’s name and what
+      arguments it expects. Later in this unit well look at several methods from
+      the class <c>Math</c> that comes with Java, which save us from having to
+      know, for instance, how to compute square roots.
     </p>
   </introduction>
 
