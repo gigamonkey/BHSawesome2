@@ -43,7 +43,6 @@
   </introduction>
 
   <xi:include href="./topic-1-9-method-signatures.ptx" />
-  <xi:include href="./topic-1-10-calling-class-methods.ptx" />
   <xi:include href="./topic-1-11-Math.ptx" />
   <xi:include href="./topic-3-5-methods.ptx" />
 </chapter>

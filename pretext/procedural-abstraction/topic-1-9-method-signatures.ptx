@@ -56,6 +56,16 @@
       declared like other variables with a type and a name. In this method there
       are two, named <c>a</c> and <c>b</c>, both of type <c>int</c>.
     </p>
+
+    <p>
+      The signature of method that doesn’t return a value but which has some
+      side effects such drawing a square on the screen might look like this:
+    </p>
+
+    <program language="java">
+      public static void drawSquare(int x, int y, int width, int height)
+    </program>
+
   </subsection>
 
   <subsection>
@@ -63,15 +73,25 @@
     <p>
       The point of a method signature is that it gives us all the information we
       need to <term>call</term> the method. A <term>method call</term> consists
-      of the method name and a pair of parentheses <c>()</c>. The parentheses
-      enclose an <term>argument list</term>, a list of expressions, separated by
-      commas, whose values provide the arguments the method needs to do its job.
-      The number of expressions in the argument list of a method call has to
-      match the number of parameters in the parameter list in the method
-      signature. If the method takes no arguments, i.e. has an empty parameter
-      list, there will be nothing between the parentheses but the parentheses
-      are still needed so Java knows we are calling a method and not referring
-      to a variable.
+      of the method name followed by an <term>argument list</term>, a list of
+      expressions separated by commas and enclosed in parentheses <c>()</c>.
+    </p>
+
+    <p>
+      The number of expressions in the argument list has to match the number of
+      parameters in the parameter list in the method signature. And each
+      expression must evaluate a value of the correct data type for the
+      corresponding paramete. But the expressions can be anything: variables,
+      literals, or any other expressions that evaluate to the correct types. The
+      values of the expressions in the argument list become the values of the
+      method’s parameters when the method’s code runs.
+    </p>
+
+    <p>
+      If a method takes no arguments, i.e. has an empty parameter list, there
+      will be nothing between the parentheses but the parentheses are still
+      needed so Java knows we are calling a method and not referring to a
+      variable.
     </p>
 
     <p>
@@ -178,98 +198,7 @@
 
   </subsection>
 
-  <subsection>
-    <title>Other people’s methods</title>
 
-    <p>
-      We can also use methods that we didn’t write. In fact we already have.
-      <c>System.out.println</c> is a method provided by Java for emitting output
-      to the screen. To use methods we didn’t write we just need to know the
-      method signature and what they do.
-    </p>
-
-    <p>
-      For example, the <url
-      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/io/PrintStream.html"><c>PrintStream</c>
-      class’s Javadocs</url> document the following method signatures for
-      <c>println</c> that we use in <c>System.out.println()</c>:
-    </p>
-
-    <p>
-      <ul>
-        <li>
-          <p>
-            <c>void println()</c> which has an empty parameter list with no
-            parameters
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>void println(String x)</c> which will print out a <c>String</c>
-            value
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>void println(int x)</c> which will print out an <c>int</c> value
-          </p>
-        </li>
-      </ul>
-    </p>
-
-    <p>
-      The <c>void</c> return type in these method signatures means that these
-      methods don’t return any value. That means we can’t use them in
-      expressions to compute values. Instead they are called purely for their
-      <term>side effects</term>, in this case emitting something to the screen.
-    </p>
-
-    <p>
-      We can call these methods with the appropriate arguments to print out the
-      value we want. The <term>argument</term> is the actual value that is
-      passed to the method when it is called. Here are the method calls that
-      correspond to the method signatures above:
-    </p>
-
-    <p>
-      <ul>
-        <li>
-          <p>
-            <c>System.out.println();</c> // prints a newline
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>System.out.println("Hello World");</c> // prints a String
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>System.out.println(42);</c> // prints an int
-          </p>
-        </li>
-      </ul>
-    </p>
-
-    <p>
-      Compare the method signature of <c>println(String x)</c> with the method
-      call <c>println("Hello World");</c> below. The method signature contains
-      the method name and the parameter type and variable. The method call
-      contains only the method name and the argument value. The argument must be
-      compatible with the data type of the parameter in the method signature and
-      is saved in the parameter variable when the method is called. Many people
-      use the terms parameter and argument interchangeably.
-    </p>
-
-    <figure align="center">
-      <caption>Method Signature and Method Call</caption>
-      <image source="Unit1-Using-Objects-and-Methods/Figures/method-parts.png" width="89%" alt="Method Signature and Method Call" />
-    </figure>
-  </subsection>
 
   <subsection>
     <title>Making smaller methods</title>
@@ -377,7 +306,7 @@
 
     <p>
       Just like variable names, method names should be chosen to be meaningful
-      and describe what the method does. Methods can be defined in any order,
+      and to describe what the method does. Methods can be defined in any order,
       but usually programmers put the <c>main</c> method at the end the class
       after all the methods that it uses are defined.
     </p>
@@ -387,7 +316,7 @@
     </p>
 
     <activity label="song-add-calls">
-      <title>Expand song</title>
+      <title>Add an animal</title>
       <statement>
         <p>
           Scroll down to the main method below and add lines of code to the main
@@ -467,7 +396,16 @@ public class RunestoneTests extends CodeTestHelper
     <activity label="songMethodsTrace">
       <title>Mental execution</title>
       <statement>
-        <p>What does the following code print out?</p>
+        <p>
+          Figuring out what the code does is called <term>code tracing</term> or
+          <term>mental execution</term>. You can use a tool like <url
+          href="https://pythontutor.com/render.html#code=public%20class%20Song%20%7B%0A%20%20%0A%20%20%20%20%20%20%20%20public%20static%20void%20print%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.print%28%22I%20like%20to%20%22%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20fruit%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20fruit%28%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22apples%20and%20bananas!%22%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20public%20static%20void%20eat%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20System.out.print%28%22eat%20%22%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20print%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D&amp;cumulative=false&amp;curInstr=15&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">the
+          visualizer</url> we used above to step through code but it’s important
+          to develop the skill of mentally executing code to determine what it
+          does. Start at the <c>main</c> method and then follow each method call
+          to see what happens.
+        </p>
+
         <program language="java">
           <code>
             public class Song {
@@ -560,32 +498,24 @@ public class RunestoneTests extends CodeTestHelper
       </choices>
     </activity>
 
-    <p>
-      Try this <url
-      href="https://pythontutor.com/render.html#code=public%20class%20Song%20%7B%0A%20%20%0A%20%20%20%20%20%20%20%20public%20static%20void%20print%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.print%28%22I%20like%20to%20%22%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20fruit%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20fruit%28%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22apples%20and%20bananas!%22%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20public%20static%20void%20eat%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20System.out.print%28%22eat%20%22%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20print%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D&amp;cumulative=false&amp;curInstr=15&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
-      to see this code in action. Figuring out what the code does is called
-      <term>code tracing</term> or <term>mental execution</term>. You can do
-      this by hand or use a tool like the one above to help you see what happens
-      when the code runs.
-    </p>
   </subsection>
 
   <subsection>
     <title>Removing even more duplication</title>
     <p>
-      Let’s take another look at the Old MacDonald Song and see if we can
-      replace more repeated code with methods with parameters. Each verse of the
-      song is similar except it is about a different animal and the sound it
-      makes. Click on the words that are different in the lines that are
-      repeated to discover what parameters we need to add to the methods.
+      Let’s take another look at the Old MacDonald Song and see if we can remove
+      even more duplication by writing a with that takes arguments. To start, do
+      this activity to find some lines of code that are not identical but are quite similar.
     </p>
 
     <activity label="different-code-old-mcdonald">
       <title>Duplication with small differences</title>
       <statement>
         <p>
-          Click on the specific words that are different in the lines that are
-          otherwise the same as some other line.
+          Notice that the verses of the song are similar except that each is
+          about a different animal and the sound that animal makes. Find the
+          lines that are similar but not identical to another line and click on
+          the specific words that are different between the similar lines.
         </p>
       </statement>
 
@@ -625,25 +555,24 @@ public class RunestoneTests extends CodeTestHelper
   </activity>
 
     <p>
-      Did you notice that there are lines that are identical except for the
-      animal name and the sound that they make?
+      Did you find the lines that are identical except for the animal name and
+      the sound that they make? It would be nice if we could write a method to
+      print those lines that captures the common pattern but fills in the
+      specifics for each animal. That’s what method arguments are for.
     </p>
 
     <p>
-      We can make methods even more powerful and more abstract by giving them
-      parameters for data that they need to do their job. A
-      <term>parameter</term> (sometimes called a <term>formal parameter</term>)
-      is a variable declared in the header of a method or constructor and can be
-      used inside the body of the method. This allows values or arguments to be
-      passed and used by a method. An <term>argument</term> (sometimes called an
-      <term>actual parameter</term>) is a value that is passed into a method
-      when the method is called and is saved in the parameter variable.
+      Whereas the <c>chorus</c> and <c>eieio</c> methods always print exactly
+      the same thing, if we want to write a method <c>verse</c> that prints one
+      verse, we need to write a method that takes arguments and prints something
+      different based on those arguments. And the differences you identified
+      between the similar lines in the code above can point us to the arguments
+      we need to pass.
     </p>
 
     <p>
-      We can make a method called <c>verse</c> that takes the animal and its
-      sound to print out any verse! The parameter variables <c>animal</c> and
-      <c>sound</c> will hold different values when the method is called.
+      Here’s one way to write a <c>verse</c> method with two parameters,
+      <c>animal</c> and <c>sound</c>.
     </p>
 
     <program language="java">
@@ -664,10 +593,12 @@ public class RunestoneTests extends CodeTestHelper
     </program>
 
     <p>
-      And the <c>main</c> method can now just consist of calls to the
-      <c>chorus</c> and <c>verse</c> methods, showing clearly the structure of
-      the song in terms that might make sense to a musician. Main methods often
-      look like an outline for the program, calling methods to do the work.
+      With this method, the <c>main</c> method can now just consist of calls to
+      the <c>chorus</c> and <c>verse</c> methods, showing clearly the structure
+      of the song in terms that might make sense to a musician. This is a common
+      effect of creating good abstractions: while the details—in this case of
+      what exactly is printed—are hidden, the higher-level structure is much
+      easier to see.
     </p>
 
     <program language="java">
@@ -683,38 +614,56 @@ public class RunestoneTests extends CodeTestHelper
     </program>
 
     <p>
-      Click on the next button below to step through this new version of the
-      code in the <url
-      href="https://pythontutor.com/render.html#code=%20%20%20%20public%20class%20OldMacDonaldSong%0A%20%20%20%20%7B%0A%20%20%20%20%20%20public%20static%20void%20intro%28%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20System.out.println%28%22Old%20MacDonald%20had%20a%20farm%22%29%3B%0A%20%20%20%20%20%20%20%20chorus%28%29%3B%0A%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20public%20static%20void%20chorus%28%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20System.out.println%28%22E-I-E-I-O%22%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20public%20static%20void%20verse%28String%20animal,%20String%20sound%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20System.out.println%28%22And%20on%20this%20farm,%20they%20had%20a%20%22%20%2B%20animal%29%3B%0A%20%20%20%20%20%20%20%20chorus%28%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22With%20a%20%22%20%2B%20sound%20%2B%20%22%20%22%20%2B%20sound%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2B%20%22%20here%20and%20a%20%22%20%2B%20sound%20%2B%20%22%20%22%20%2B%20sound%20%2B%20%22%20there%22%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22Here%20a%20%22%20%2B%20sound%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2B%20%22,%20there%20a%20%22%20%2B%20sound%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2B%20%22,%20everywhere%20a%20%22%20%2B%20sound%20%2B%20%22%20%22%20%2B%20sound%29%3B%0A%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20intro%28%29%3B%0A%20%20%20%20%20%20%20%20verse%28%22cow%22,%20%22moo%22%29%3B%0A%20%20%20%20%20%20%20%20intro%28%29%3B%0A%20%20%20%20%20%20%20%20verse%28%22duck%22,%20%22quack%22%29%3B%0A%20%20%20%20%20%20%20%20intro%28%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D&amp;cumulative=false&amp;curInstr=34&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Java
-      visualizer</url> and watch how the argument are saved in the parameter
-      variables with each call to the <c>verse</c> method.
+      When a method like <c>verse</c> is called, the method definition is found
+      by finding a method whose signature matches the call, meaning the name
+      matches and the number and declared type of the parameters are compatible
+      with the number and types of the argument expressions.
+    </p>
+
+    <p>
+      Here’s what that looks like for two calls to <c>verse</c> above. The
+      arguments <c>"cow"</c> and <c>"moo"</c> or <c>"duck"</c> and
+      <c>"quack"</c> are matched up with the parameters <c>animal</c> and
+      <c>sound</c>.
+    </p>
+
+    <figure align="center">
+      <caption>Matching Arguments to Parameters</caption>
+      <image source="Unit1-Using-Objects-and-Methods/Figures/args2paramsFarm.png" width="89%" alt="Arguments to Parameters" />
+    </figure>
+
+    <p>
+      Java uses <term>call by value</term> when it passes arguments to methods.
+      This means that a copy of the value in the argument is saved in the
+      parameter variable. Call by value initializes the parameters with copies
+      of the arguments. If the parameter variable changes its value inside the
+      method, the original value outside the method is not changed.
     </p>
 
     <activity>
+      <title>Trace verse calls</title>
       <statement>
         <p>
-          Click on the next button below the code to step through the code and
-          watch the red arrow jump to the method that is being run and watch how
-          the arguments are passed into the parameter variables.
+          Click on the “Next” button below the code to step through the code.
+          This time in addition to watch the red arrow jump to the method that
+          is being run, pay attention to how the arguments in the calls to
+          <c>verse</c> become the values of the parameters.
         </p>
       </statement>
 
       <program interactive="codelens" language="java" label="codelensSong2" xml:id="codelensSong2">
         <code>
           public class OldMacDonaldSong {
-            public static void chorus()
-            {
+            public static void chorus() {
               System.out.println("Old MacDonald had a farm");
               eieio();
             }
 
-            public static void eieio()
-            {
+            public static void eieio() {
               System.out.println("E-I-E-I-O");
             }
 
-            public static void verse(String animal, String sound)
-            {
+            public static void verse(String animal, String sound) {
               System.out.println("And on this farm, they had a " + animal);
               eieio();
               System.out.println("With a " + sound + " " + sound +
@@ -723,8 +672,7 @@ public class RunestoneTests extends CodeTestHelper
                                  ", everywhere a " + sound + " " + sound);
             }
 
-            public static void main(String[] args)
-            {
+            public static void main(String[] args) {
               chorus();
               verse("cow", "moo");
               chorus();
@@ -736,19 +684,15 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </activity>
 
-    <p>
-      Let’s try adding another verse to the song with a goose that honks.
-    </p>
-
     <activity label="OldMacDonaldSong2">
+      <title>Add more animals</title>
       <statement>
         <p>
-          Run the following code to see the song Old MacDonald using the verse
-          and chorus methods. You can also see this code run in the visualizer
-          by clicking on the Show Code Lens button below. Scroll down to the
-          main method, and add another verse with the animal goose and the sound
-          honk by calling the verse method with the appropriate arguments. Then
-          call intro again. Repeat with another animal and sound of your choice.
+          Let’s add more animals to the farm! Scroll down to the <c>main</c>
+          method, and add another verse with the animal “goose” and the sound
+          “honk” by calling the <c>verse</c> method with the appropriate
+          arguments. Then call <c>chorus</c> again. Then add another animal and
+          sound of your choice.
         </p>
       </statement>
 
@@ -821,91 +765,21 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </activity>
 
-    <p>
-      When a method is called, the right method definition is found by checking
-      the <term>method signature</term> or <term>header</term> at the top of the
-      method definition to match the method name, the number of arguments, the
-      data types for the arguments and the return type. A method signature for a
-      method with parameters consists of the method name and the ordered list of
-      parameter types. A method signature for a method without parameters
-      consists of the method name and an empty parameter list.
-    </p>
-
-    <p>
-      Here’s what that looks like with the two method calls above. The arguments
-      like “cow” and “moo” are saved into the parameter variables <c>animal</c>
-      and <c>sound</c> with each method call.
-    </p>
-
-    <figure align="center">
-      <caption>Matching Arguments to Parameters</caption>
-      <image source="Unit1-Using-Objects-and-Methods/Figures/args2paramsFarm.png" width="89%" alt="Arguments to Parameters" />
-    </figure>
-
-    <p>
-      The method headers contain data types of the parameters because they are
-      variable declarations that reserve memory for the parameter variables.
-      However, the method calls never contain the parameter types, only the
-      values that are passed to the method. The argument values can be
-      variables, literals, or expressions that evaluate to the correct data
-      type.
-    </p>
-
-    <program language="java">
-      <code>
-// Method headers contain data types for the parameters
-public static void verse(String animal, String sound)
-{   /* Implementation not shown */
-}
-
-// Method calls contain only values for the parameters
-verse("cow", "moo");
-      </code>
-    </program>
-
-    <p>
-      Java uses <term>call by value</term> when it passes arguments to methods.
-      This means that a copy of the value in the argument is saved in the
-      parameter variable. Call by value initializes the parameters with copies
-      of the arguments. If the parameter variable changes its value inside the
-      method, the original value outside the method is not changed.
-    </p>
-  </subsection>
-
-
-
-
-
-  <subsection>
-    <title>Overloading</title>
-    <idx>overloading</idx>
-    <p>
-      Methods are said to be <term>overloaded</term> when there are multiple
-      methods with the same name but different signatures with a different
-      number or types of parameters. For example, the <c>println()</c> method in
-      the <url
-      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/io/PrintStream.html"><c>PrintStream</c>
-      class</url> is overloaded with different parameter types. The method
-      <c>println()</c> with no parameters prints a newline, the method
-      <c>println(String x)</c> prints the given string followed by a newline,
-      the method <c>println(int x)</c> prints the given int number followed by a
-      newline, etc. The compiler determines which method to call based on the
-      number and types of arguments passed to the method.
-    </p>
   </subsection>
 
   <subsection>
     <title>Coding Challenge: Song with Parameters</title>
     <p>
       Here’s another song, <url href="https://youtu.be/QPwEZ8Vv2YQ"
-      visual="https://youtu.be/QPwEZ8Vv2YQ">The Ants Go Marching</url>, that is
-      very similar in its repetitive structure. The verses below have a lot of
-      repeated words and phrases. Click on the words or phrases that are
-      different in each verse. These will be the arguments that you will pass to
-      the methods in your song code.
+      visual="https://youtu.be/QPwEZ8Vv2YQ">The Ants Go Marching</url> with a
+      repetitive structure. The verses below have a lot of repeated words and
+      phrases. Click on the words or phrases that are different in each verse.
+      These will be the arguments that you will pass to the methods in your song
+      code.
     </p>
 
     <activity label="clickDifferentAntSong">
+      <title>The Ants Go Marching</title>
       <statement>
         <p>Click on the phrases that are different in each verse.</p>
       </statement>
@@ -939,6 +813,7 @@ verse("cow", "moo");
     </activity>
 
     <project label="challenge-1-9-song">
+      <title>Implement ants song</title>
       <statement>
         <p>
           Write code in the main method that calls the verse method to print out
@@ -971,9 +846,6 @@ public class AntsSong
         // Call the chorus and verse methods
         // with the correct arguments
         // to print out all three verses above.
-
-
-
     }
 }
         </code>
@@ -1052,47 +924,371 @@ public class RunestoneTests extends CodeTestHelper
     </project>
   </subsection>
 
-  <subsection>
-    <title>Summary</title>
-    <activity label="vocab1_9">
+<subsection>
+    <title>Non-void methods</title>
+    <idx>return value</idx>
+    <idx>void method</idx>
+    <idx>non-void method</idx>
+    <p>
+      Most of the methods we have written so far have been <term>void
+      methods</term>, which do not return a value but are called for their side
+      effects. However, many methods act like mathematical functions that
+      calculate and return a value based on their arguments.
+    </p>
+
+    <p>
+      Since these methods all have some actual return type, not <c>void</c> they
+      are called <term>non-void methods</term>. You can imagine a non-void
+      method as a calculating machine that takes numbers as arguments and
+      returns a calculated result or like a toaster that takes bread as an input
+      and returns toast.
+    </p>
+
+    <figure align="center">
+      <caption>Method that takes arguments and returns a value</caption>
+      <image source="Unit1-Using-Objects-and-Methods/Figures/function.png" width="71%" alt="function" />
+    </figure>
+
+    <p>
+      The <c>add</c> method we used as an example was a non-void method. Here's
+      another one.
+    </p>
+
+    <figure align="center">
+      <caption>The Square Method</caption>
+      <image source="Unit1-Using-Objects-and-Methods/Figures/square-method.png" width="71%" alt="Square Method" />
+    </figure>
+
+    <p>
+      Here is a simple implementation of this method which takes an int number
+      as an argument, squares that number, and returns the result. Notice that
+      instead of <c>static void</c>, the header includes <c>static int</c> to
+      indicate that the method returns an integer value.
+    </p>
+
+    <program language="java">
+      <code>
+        public static int square(int number) {
+            return number * number;
+        }
+      </code>
+    </program>
+
+    <p>
+      The <term>return</term> statement is used to return a value from the
+      method back to the calling code. The return value must be the same type as
+      the return type in the method header. The return statement also ends the
+      method execution, so any code after the return statement is not executed.
+      Let’s try this below. Click on the next button to step through the code in
+      the <url
+      href="https://pythontutor.com/render.html#code=public%20class%20SquareMethod%0A%7B%0A%20%20%20%20%20%20%20%20%20public%20static%20int%20square%28int%20number%29%20%0A%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20result%20%3D%20number%20*%20number%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20result%3B%0A%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%0A%20%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20x%20%3D%205%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20y%20%3D%20square%28x%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22The%20square%20of%20%22%20%2B%20x%20%2B%20%22%20is%20%22%20%2B%20y%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20x%20%3D%204%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22The%20square%20of%20%22%20%2B%20x%20%2B%20%22%20is%20%22%20%2B%20square%28x%29%29%3B%0A%20%20%20%20%20%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=11&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"
+      visual="https://pythontutor.com/render.html#code=public%20class%20SquareMethod%0A%7B%0A%20%20%20%20%20%20%20%20%20public%20static%20int%20square%28int%20number%29%20%0A%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20result%20%3D%20number%20*%20number%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20result%3B%0A%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%0A%20%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20x%20%3D%205%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20y%20%3D%20square%28x%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22The%20square%20of%20%22%20%2B%20x%20%2B%20%22%20is%20%22%20%2B%20y%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20x%20%3D%204%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22The%20square%20of%20%22%20%2B%20x%20%2B%20%22%20is%20%22%20%2B%20square%28x%29%29%3B%0A%20%20%20%20%20%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=11&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
+      below and see the variables and the return values.
+    </p>
+
+    <activity label="codelensSquare">
+      <title>Trace square</title>
       <statement>
         <p>
-          Drag the definition from the left and drop it on the correct concept
-          on the right. Click the "Check Me" button to see if you are correct.
+          Click on the next button below the code to step through the code and
+          watch the red arrow jump to the method that is being run and watch how
+          the argument is passed into the parameter variable and the return
+          value.
         </p>
       </statement>
 
-      <feedback>
-        <p>Review the summary below.</p>
-      </feedback>
+      <program interactive="codelens" language="java" label="codeLenssq" xml:id="codelensidsq">
+        <code>
+          public class SquareMethod {
+             public static int square(int number) {
+                 return number * number;
+             }
 
-      <cardsort>
-        <match>
-          <premise order="1">named block of code to perform a task</premise>
-          <response>method</response>
-        </match>
-
-        <match>
-          <premise order="2">where execution starts</premise>
-          <response>main method</response>
-        </match>
-
-        <match>
-          <premise order="3">method name and parameter list</premise>
-          <response>method signature</response>
-        </match>
-
-        <match>
-          <premise order="4">a variable declared in the header of a method</premise>
-          <response>parameter</response>
-        </match>
-
-        <match>
-          <premise order="5">value passed into a method when it is called</premise>
-          <response>argument</response>
-        </match>
-      </cardsort>
+             public static void main(String[] args) {
+                 int x = 5;
+                 int y = square(x);
+                 System.out.println("The square of " + x + " is " + y);
+                 x = 4;
+                 System.out.println("The square of " + x + " is " + square(x));
+             }
+          }
+        </code>
+      </program>
     </activity>
+
+    <p>
+      When calling the <c>square</c> method, the return value can be stored in a
+      variable or used as part of an expression. In the main method above, the
+      variable <c>y</c> is assigned the return value of the <c>square</c>
+      method. The return value can also be used directly in the print statement
+      without storing it in a variable, for example
+      <c>System.out.println(square(4));</c>.
+    </p>
+
+    <program language="java">
+      <code>
+// Saving the returned value of the square method in a variable
+int y = square(5);
+System.out.println(y); // prints 25
+// Printing the returned value of the square method directly
+System.out.println(square(4)); // prints 16
+      </code>
+    </program>
+
+    <activity label="squareMethod">
+      <statement>
+        <p>
+          Add another call to the square method in the main method that prints
+          out the square of 6.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+public class SquareMethod
+{
+     public static int square(int number)
+     {
+         int result = number * number;
+         return result;
+     }
+
+     public static void main(String[] args)
+     {
+         System.out.println("5 squared is " + square(5));
+         // TO DO: Call the square method to print out the square of 6
+
+     }
+}
+        </code>
+        <tests>
+import static org.junit.Assert.*;
+import org.junit.*;
+import java.io.*;
+
+public class RunestoneTests extends CodeTestHelper
+{
+    @Test
+    public void containsCall()
+    {
+        boolean passed = checkCodeContains("square(6)", "square(6)");
+        assertTrue(passed);
+    }
+    @Test
+    public void testMain() throws IOException
+    {
+        String output = getMethodOutput("main");
+        String expect = "36";
+        boolean passed =
+             getResults(expect, output, "Expected output from main");
+        assertTrue(passed);
+    }
+}
+        </tests>
+      </program>
+    </activity>
+
+    <activity label="traceMethods1">
+      <statement>
+        <p>
+          What does the following code print out? (<url
+          href="https://pythontutor.com/render.html#code=%20%20%20%20%20%20public%20class%20MethodTrace%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20public%20static%20int%20square%28int%20x%29%0A%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20%28x%20*%20x%29%3B%0A%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20public%20static%20int%20divide%28int%20x,%20int%20y%29%0A%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20%28x%20/%20y%29%3B%0A%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28square%283%29%20%2B%20divide%285,2%29%29%3B%20%0A%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"
+          visual="https://pythontutor.com/render.html#code=%20%20%20%20%20%20public%20class%20MethodTrace%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20public%20static%20int%20square%28int%20x%29%0A%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20%28x%20*%20x%29%3B%0A%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20public%20static%20int%20divide%28int%20x,%20int%20y%29%0A%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20%28x%20/%20y%29%3B%0A%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28square%283%29%20%2B%20divide%285,2%29%29%3B%20%0A%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>)
+        </p>
+
+        <program language="java">
+          <code>
+public class MethodTrace
+{
+    public static int square(int x)
+    {
+        return (x * x);
+    }
+
+    public static int divide(int x, int y)
+    {
+        return (x / y);
+    }
+
+    public static void main(String[] args)
+    {
+        System.out.println(square(3) + divide(5,2));
+    }
+}
+          </code>
+        </program>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement>
+            <p>11</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Yes, the square(3) method is called first and returns 9. Then the
+              divide(5,2) method is called and returns 2 because it does int
+              division and leaves off the decimal part. The sum of 9 and 2 is
+              11.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>11.5</p>
+          </statement>
+
+          <feedback>
+            <p>The divide function does integer division.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>92</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The + here will be interpreted as addition since the methods
+              return ints.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>square(3)+divide(5,2)</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The square and divide methods are called and return values that
+              are added together.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>Nothing, it does not compile.</p>
+          </statement>
+
+          <feedback>
+            <p>Try the code in an active code window.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Common errors with non-void methods</title>
+    <p>
+      A common error with non-void methods is forgetting to do something with
+      the value returned from a method. When you call a method that returns a
+      value, you should do something with that value like assigning it to a
+      variable or printing it out. To use the return value when calling a non-
+      void method, it must be stored in a variable or used as part of an
+      expression.
+    </p>
+
+    <p>
+      Another common error is a mismatch in types or order for the arguments or
+      return values. For example, if a method returns a double value, you cannot
+      assign it to an int variable.
+    </p>
+
+    <activity label="fixMethodCalls">
+      <statement>
+        <p>
+          Fix the method calls below in the main method. Make sure the type, how
+          many, and order of the arguments match what the methods expect. Are
+          the returned values saved in the right type of variables? Do not
+          change the methods other than main.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+public class MathMethods
+{
+     /* square method returns the square of a number.
+        Do NOT change */
+     public static int square(int number)
+     {
+         return number * number;
+     }
+
+     /** divide method divides x by y to return a double result .
+        Do NOT change */
+     public static double divide(double x, double y)
+     {
+         return x / y;
+     }
+
+     public static void main(String[] args)
+     {
+         // TO DO: Fix the method calls and data types below
+         // Make sure the type, how many, and order of the
+         // arguments match what the methods expect.
+         // Make sure they are saved in the right type of variables.
+         // result1 should be 4 squared
+         // result2 should be 5 divided by 2
+         int result1 = square(4.0, 2);
+         int result2 = divide(2, 5);
+         System.out.println("4 squared is " + result1);
+         System.out.println("5 divided by 2 is " + result2);
+     }
+}
+        </code>
+        <tests>
+import static org.junit.Assert.*;
+import org.junit.*;
+import java.io.*;
+
+public class RunestoneTests extends CodeTestHelper
+{
+    @Test
+    public void containsType()
+    {
+        boolean passed = checkCodeContains("correct double type for result2", "double result2");
+        assertTrue(passed);
+    }
+    @Test
+    public void containsCall()
+    {
+        boolean passed = checkCodeContains("call to square with int 4", "square(4)");
+        assertTrue(passed);
+    }
+    @Test
+    public void containsCall2()
+    {
+        boolean passed = checkCodeContains("call to divide with the correct argument order", "divide(5,2)");
+        assertTrue(passed);
+    }
+    @Test
+    public void testMain() throws IOException
+    {
+        String output = getMethodOutput("main");
+        String expect = "4 squared is 16\n5 divided by 2 is 2.5";
+        boolean passed =
+             getResults(expect, output, "Expected output from main");
+        assertTrue(passed);
+    }
+}
+        </tests>
+      </program>
+    </activity>
+  </subsection>
+
+
+
+  <subsection>
+    <title>Summary</title>
+
 
     <p>
       <ul>
@@ -1165,6 +1361,51 @@ public class RunestoneTests extends CodeTestHelper
             signatures.
           </p>
         </li>
+        <li>
+          <p>
+            (AP 1.10.A.1) Class methods are associated with the class (not
+            instances of the class which we will see in later lessons).
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.10.A.2) Class methods include the keyword <term>static</term>
+            in the header before the method name.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.9.B.1) A void method does not have a return value and is
+            therefore not called as part of an expression.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.9.B.2) A <term>non-void method</term> returns a value that is
+            the same type as the <term>return type</term> in the header.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.9.B.2) To use the return value when calling a non-void method,
+            it must be stored in a variable or used as part of an expression.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Common errors with methods are mismatches in the order or type of
+            arguments, return values, and forgetting to do something with the
+            value returned from a method. When you call a method that returns a
+            value, you should do something with that value like assigning it to
+            a variable or printing it out.
+          </p>
+        </li>
+
       </ul>
     </p>
   </subsection>
@@ -1172,6 +1413,7 @@ public class RunestoneTests extends CodeTestHelper
   <subsection>
     <title>AP Practice</title>
     <activity label="AP-trace-method-calls">
+      <title>Mental execution</title>
       <statement>
         <p>Consider the following class definition.</p>
         <program language="java">
@@ -1267,6 +1509,177 @@ purr()
               This would cause a syntax error since those are not the names of
               the methods.
             </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="AP1-10-static-method">
+      <title>Calculate pizza boxes</title>
+      <statement>
+        <p>Consider the following method.</p>
+        <program language="java">
+          <code>
+public static double calculatePizzaBoxes(int numOfPeople, double slicesPerBox)
+{ /*implementation not shown */}
+          </code>
+        </program>
+
+        <p>
+          Which of the following lines of code, if located in a method in the
+          same class as calculatePizzaBoxes, will compile without an error?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement id="AP1-10-static-method_opt_a">
+            <p>int result = calculatePizzaBoxes(45, 9.0);</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method_opt_a">
+            <p>
+              The method calculatePizzaBoxes returns a double value that cannot
+              be saved into an int variable.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP1-10-static-method_opt_b">
+            <p>double result = calculatePizzaBoxes(45.0, 9.0);</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method_opt_b">
+            <p>
+              The method calculatePizzaBoxes has an int parameter that cannot
+              hold a double value 45.0.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP1-10-static-method_opt_c">
+            <p>int result = calculatePizzaBoxes(45.0, 9);</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method_opt_c">
+            <p>
+              The method calculatePizzaBoxes has an int parameter that cannot
+              hold a double value 45.0. Note that the int 9 can be passed into a
+              double parameter.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement id="AP1-10-static-method_opt_d">
+            <p>double result = calculatePizzaBoxes(45, 9.0);</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method_opt_d">
+            <p>
+              The method calculatePizzaBoxes has an int and a double parameter
+              and returns a double result.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP1-10-static-method_opt_e">
+            <p>result = calculatePizzaBoxes(45, 9);</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method_opt_e">
+            <p>
+              The variable result has not been declared (with an appropriate
+              data type).
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="AP1-10-static-method2">
+      <title>Inches to centimeters</title>
+      <statement>
+        <p>Consider the following methods:</p>
+        <program language="java">
+          <code>
+public void static inchesToCentimeters(double i)
+{
+    double c = i * 2.54;
+    printInCentimeters(i, c);
+}
+
+public void static printInCentimeters(double inches, double centimeters)
+{
+    System.out.print(inches + "--&gt;" + centimeters);
+}
+          </code>
+        </program>
+
+        <p>
+          Assume that the method call <c>inchesToCentimeters(10)</c> appears in
+          a static method in the same class. What is printed as a result of the
+          method call?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement id="AP1-10-static-method2_opt_a">
+            <p>inches –&gt; centimeters</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method2_opt_a">
+            <p>
+              The values of the variables inches and centimeters should be
+              printed out, not the words.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP1-10-static-method2_opt_b">
+            <p>10 –&gt; 25</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method2_opt_b">
+            <p>
+              Two doubles should be printed, not two ints, and the centimeters
+              should be 25.4
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP1-10-static-method2_opt_c">
+            <p>25.4 –&gt; 10</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method2_opt_c">
+            <p>Inches should be printed before centimeters.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP1-10-static-method2_opt_d">
+            <p>10 –&gt; 12.54</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method2_opt_d">
+            <p>c = 10 * 2.54 = 25.4, not 12.54.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement id="AP1-10-static-method2_opt_e">
+            <p>10.0 –&gt; 25.4</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method2_opt_e">
+            <p>Correct! centimeters = 10 * 2.54 = 25.4.</p>
           </feedback>
         </choice>
       </choices>
