@@ -17,21 +17,23 @@
     <idx>return type</idx>
     <idx>parameter list</idx>
     <p>
-      As we learned in the previous chapter, when we declare a variable, we need
-      to specify its type and its name and optionally an initial value. Defining
-      methods is similar but there are more parts we need to specify.
+      As we learned in the previous unit, to create a variable we need to
+      declare it, specify its name and its type and optionally providing an
+      initial value. Declaring methods is similar but there are more parts we
+      need to specify.
     </p>
 
     <p>
-      To start with, every method has a name which we will use to call the
-      method. Additionally a method has a <term>return type</term> which
-      specifies the kind of value (if any) the method returns when called. And a
-      method can take any number of <term>arguments</term>, values it can use in
-      its computation. To specify what number and types of arguments it needs, a
+      Like a variable, a method has a name which we will use to call it.
+      Additionally a method has a <term>return type</term> which specifies the
+      kind of value (if any) the method returns when called. And a method can
+      take any number of <term>arguments</term>, values it can use in its
+      computation. To specify what number and types of arguments it needs, a
       method defines <term>parameters</term> which are variables that are
       declared as part of the method and which hold the argument values when the
-      method is called. Together all these pieces make up the <term>method
-      signature</term> or <term>method header</term>.
+      method is called. Together all these pieces—the name, the return type and
+      the parameters—make up the <term>method signature</term> or <term>method
+      header</term>.
     </p>
 
     <p>
@@ -138,6 +140,12 @@
       int b = 20;
       int sum = a + b;
     </program>
+
+    <p>
+      The main difference is that when we call <c>add</c>, the variables
+      <c>a</c> and <c>b</c> only exist within the method. Outside of the body of
+      the method we can’t refer to them.
+    </p>
 
     <activity>
       <title>Trace call to add</title>
@@ -271,8 +279,8 @@
     <p>
       The main purpose of methods is to break a program up into smaller chunks
       that are easier to think about. That also often results in removing
-      duplicated code which also helps reduce the overall complexity. All other
-      things being equal, less code is better than more code.
+      duplicated code which also helps reduce the overall complexity of our
+      code. All other things being equal, less code is better than more code.
     </p>
 
     <p>
@@ -313,14 +321,14 @@
 
     <p>
       Did you find some repeated lines? You may have noticed that the first two
-      lines are repeated. When you see repeated code, that is a signal for you
-      to make a new method!
+      lines are repeated. When you see repeated code, that is a signal to make a
+      new method!
     </p>
 
     <p>
-      The code tracing activity below shows how a song can be divided up into methods.
-      Click on the next button below the code to step through the code and watch
-      the red arrow jump to the method that is being run.
+      The code tracing activity below shows how a song can be divided up into
+      methods. Click on the “Next” button below the code to step through the
+      code and watch the red arrow jump to the method that is being run.
     </p>
     <p>
       Execution in Java always begins in the <c>main</c> method in the current
@@ -345,22 +353,22 @@
       <program interactive="codelens" language="java" label="codelensSong1" xml:id="codelensSong1">
         <code>
           public class OldMacDonaldSong {
-            public static void intro() {
+            public static void chorus() {
               System.out.println("Old MacDonald had a farm");
-              chorus();
+              eieio();
             }
 
-            public static void chorus() {
+            public static void eieio() {
               System.out.println("E-I-E-I-O");
             }
 
             public static void main(String[] args) {
-              intro();
-              System.out.println("And on that farm they had a cow.");
               chorus();
+              System.out.println("And on that farm they had a cow.");
+              eieio();
               System.out.println("With a moo moo here and a moo moo there");
               System.out.println("Here a moo, there a moo, everywhere a moo moo");
-              intro();
+              chorus();
             }
           }
         </code>
@@ -392,33 +400,33 @@
       <program interactive="activecode" language="java">
         <code>
           public class OldMacDonaldSong {
-              public static void intro() {
+              public static void chorus() {
                   System.out.println("Old MacDonald had a farm");
                   chorus();
               }
 
-              public static void chorus() {
+              public static void eieio() {
                   System.out.println("E-I-E-I-O");
               }
 
               public static void main(String[] args) {
-                  intro();
-                  System.out.println("And on that farm they had a cow.");
                   chorus();
+                  System.out.println("And on that farm they had a cow.");
+                  eieio();
                   System.out.println("With a moo moo here and a moo moo there");
                   System.out.println("Here a moo, there a moo, everywhere a moo moo");
 
                   // TODO:
-                  // 1. Call the method intro()
+                  // 1. Call the method chorus()
 
                   // 2. Print out the line "And on that farm..."
                   //    with a duck or another animal
 
-                  // 3. Call the method chorus
+                  // 3. Call the method eieio
 
                   // 4. Print out the lines with the appropriate animal sounds
 
-                  // 5. Call the method intro again
+                  // 5. Call the method chorus again
 
               }
           }
@@ -433,22 +441,22 @@ public class RunestoneTests extends CodeTestHelper
     public void test1()
     {
         String code = getCode();
-        int num = countOccurences(code, "intro();");
+        int num = countOccurences(code, "chorus();");
 
         boolean passed = num &gt;= 3;
 
-        passed = getResults("3 or more", "" + num, "Calls to intro()", passed);
+        passed = getResults("3 or more", "" + num, "Calls to chorus()", passed);
         assertTrue(passed);
     }
     @Test
     public void test2()
     {
         String code = getCode();
-        int num = countOccurences(code, "chorus();");
+        int num = countOccurences(code, "eieio();");
 
         boolean passed = num &gt;= 3;
 
-        passed = getResults("3 or more", "" + num, "Calls to chorus()", passed);
+        passed = getResults("3 or more", "" + num, "Calls to eieio()", passed);
         assertTrue(passed);
     }
 }
@@ -462,32 +470,27 @@ public class RunestoneTests extends CodeTestHelper
         <p>What does the following code print out?</p>
         <program language="java">
           <code>
-public class Song
-{
-    public static void print()
-    {
-        System.out.print("I like to ");
-        eat();
-        eat();
-        eat();
-        fruit();
-    }
+            public class Song {
+                public static void print() {
+                    System.out.print("I like to ");
+                    eat();
+                    eat();
+                    eat();
+                    fruit();
+                }
 
-    public static void fruit()
-    {
-        System.out.println("apples and bananas!");
-    }
+                public static void fruit() {
+                    System.out.println("apples and bananas!");
+                }
 
-    public static void eat()
-    {
-        System.out.print("eat ");
-    }
+                public static void eat() {
+                    System.out.print("eat ");
+                }
 
-    public static void main(String[] args)
-    {
-        print();
-    }
-}
+                public static void main(String[] args) {
+                    print();
+                }
+            }
           </code>
         </program>
       </statement>
@@ -567,10 +570,6 @@ public class Song
     </p>
   </subsection>
 
-
-
-
-
   <subsection>
     <title>Removing even more duplication</title>
     <p>
@@ -599,27 +598,27 @@ public class Song
 
       <areas>
         <cline><area correct="no">public class OldMacDonaldSong {</area></cline>
-        <cline>  <area correct="no">public static void intro() {</area></cline>
+        <cline>  <area correct="no">public static void chorus() {</area></cline>
         <cline>    <area correct="no">System.out.println("Old MacDonald had a farm");</area></cline>
-        <cline>    <area correct="no">chorus();</area></cline>
+        <cline>    <area correct="no">eieio();</area></cline>
         <cline>  <area correct="no">}</area></cline>
         <cline></cline>
-        <cline>  <area correct="no">public static void chorus() {</area></cline>
+        <cline>  <area correct="no">public static void eieio() {</area></cline>
         <cline>    <area correct="no">System.out.println("E-I-E-I-O");</area></cline>
         <cline>  <area correct="no">}</area></cline>
         <cline></cline>
         <cline>  <area correct="no">public static void main(String[] args) {</area></cline>
-        <cline>    <area correct="no">intro();</area></cline>
-        <cline>    <area correct="no">System.out.println("And on that farm they had a</area> <area correct="yes">cow</area><area correct="no">.");</area></cline>
         <cline>    <area correct="no">chorus();</area></cline>
+        <cline>    <area correct="no">System.out.println("And on that farm they had a</area> <area correct="yes">cow</area><area correct="no">.");</area></cline>
+        <cline>    <area correct="no">eieio();</area></cline>
         <cline>    <area correct="no">System.out.println("With a</area> <area correct="yes">moo moo</area> <area correct="no">here and a</area> <area correct="yes">moo moo</area> <area correct="no"> there");</area></cline>
         <cline>    <area correct="no">System.out.println("Here a</area> <area correct="yes">moo</area><area correct="no">, there a</area> <area correct="yes">moo</area><area correct="no">, everywhere a</area> <area correct="yes">moo moo</area><area correct="no">");</area></cline>
-        <cline>    <area correct="no">intro();</area></cline>
-        <cline>    <area correct="no">System.out.println("And on that farm they had a</area> <area correct="yes">duck</area><area correct="no">.");</area></cline>
         <cline>    <area correct="no">chorus();</area></cline>
+        <cline>    <area correct="no">System.out.println("And on that farm they had a</area> <area correct="yes">duck</area><area correct="no">.");</area></cline>
+        <cline>    <area correct="no">eieio();</area></cline>
         <cline>    <area correct="no">System.out.println("With a</area> <area correct="yes">quack quack</area> <area correct="no">here and a</area> <area correct="yes">quack quack</area> <area correct="no"> there");</area></cline>
         <cline>    <area correct="no">System.out.println("Here a</area> <area correct="yes">quack</area><area correct="no">, there a</area> <area correct="yes">quack</area><area correct="no">, everywhere a</area> <area correct="yes">quack quack</area><area correct="no">");</area></cline>
-        <cline>    <area correct="no">intro();</area></cline>
+        <cline>    <area correct="no">chorus();</area></cline>
         <cline>  <area correct="no">}</area></cline>
         <cline><area correct="no">}</area></cline>
       </areas>
@@ -649,39 +648,37 @@ public class Song
 
     <program language="java">
       <code>
-/* This method prints out a verse for any given animal and sound.
-   @param animal - the name of the animal
-   @param sound - the sound the animal makes
-*/
-public static void verse(String animal, String sound)
-{
-    System.out.println("And on this farm, they had a " + animal);
-    chorus();
-    System.out.println("With a " + sound + " " + sound
-                   + " here and a " + sound + " " + sound + " there");
-    System.out.println("Here a " + sound
-                   + ", there a " + sound
-                   + ", everywhere a " + sound + " " + sound);
-}
+        /* This method prints out a verse for any given animal and sound.
+           @param animal - the name of the animal
+           @param sound - the sound the animal makes
+        */
+        public static void verse(String animal, String sound) {
+            System.out.println("And on this farm, they had a " + animal);
+            eieio();
+            System.out.println("With a " + sound + " " + sound +
+                               " here and a " + sound + " " + sound + " there");
+            System.out.println("Here a " + sound + ", there a " + sound +
+                               ", everywhere a " + sound + " " + sound);
+        }
       </code>
     </program>
 
     <p>
-      And the main method can now just consist of calls to the intro() and
-      verse() methods. Main methods often look like an outline for the program,
-      calling methods to do the work.
+      And the <c>main</c> method can now just consist of calls to the
+      <c>chorus</c> and <c>verse</c> methods, showing clearly the structure of
+      the song in terms that might make sense to a musician. Main methods often
+      look like an outline for the program, calling methods to do the work.
     </p>
 
     <program language="java">
       <code>
-public static void main(String[] args)
-{
-    intro();
-    verse("cow", "moo");
-    intro();
-    verse("duck", "quack");
-    intro();
-}
+        public static void main(String[] args) {
+            chorus();
+            verse("cow", "moo");
+            chorus();
+            verse("duck", "quack");
+            chorus();
+        }
       </code>
     </program>
 
@@ -704,39 +701,37 @@ public static void main(String[] args)
 
       <program interactive="codelens" language="java" label="codelensSong2" xml:id="codelensSong2">
         <code>
-public class OldMacDonaldSong
-{
-  public static void intro()
-  {
-    System.out.println("Old MacDonald had a farm");
-    chorus();
-  }
+          public class OldMacDonaldSong {
+            public static void chorus()
+            {
+              System.out.println("Old MacDonald had a farm");
+              eieio();
+            }
 
-  public static void chorus()
-  {
-    System.out.println("E-I-E-I-O");
-  }
+            public static void eieio()
+            {
+              System.out.println("E-I-E-I-O");
+            }
 
-  public static void verse(String animal, String sound)
-  {
-    System.out.println("And on this farm, they had a " + animal);
-    chorus();
-    System.out.println("With a " + sound + " " + sound
-                   + " here and a " + sound + " " + sound + " there");
-    System.out.println("Here a " + sound
-                   + ", there a " + sound
-                   + ", everywhere a " + sound + " " + sound);
-  }
+            public static void verse(String animal, String sound)
+            {
+              System.out.println("And on this farm, they had a " + animal);
+              eieio();
+              System.out.println("With a " + sound + " " + sound +
+                                 " here and a " + sound + " " + sound + " there");
+              System.out.println("Here a " + sound + ", there a " + sound +
+                                 ", everywhere a " + sound + " " + sound);
+            }
 
-  public static void main(String[] args)
-  {
-    intro();
-    verse("cow", "moo");
-    intro();
-    verse("duck", "quack");
-    intro();
-  }
-}
+            public static void main(String[] args)
+            {
+              chorus();
+              verse("cow", "moo");
+              chorus();
+              verse("duck", "quack");
+              chorus();
+            }
+          }
         </code>
       </program>
     </activity>
@@ -759,48 +754,41 @@ public class OldMacDonaldSong
 
       <program interactive="activecode" language="java">
         <code>
-public class OldMacDonaldSong
-{
-    public static void intro()
-    {
-        System.out.println("Old MacDonald had a farm");
-        chorus();
-    }
+          public class OldMacDonaldSong {
+              public static void chorus() {
+                  System.out.println("Old MacDonald had a farm");
+                  eieio();
+              }
 
-    public static void chorus()
-    {
-        System.out.println("E-I-E-I-O");
-    }
+              public static void eieio() {
+                  System.out.println("E-I-E-I-O");
+              }
 
-    public static void verse(String animal, String sound)
-    {
-        System.out.println("And on this farm, they had a " + animal);
-        chorus();
-        System.out.println("With a " + sound + " " + sound
-                     + " here and a " + sound + " " + sound + " there");
-        System.out.println("Here a " + sound
-                     + ", there a " + sound
-                     + ", everywhere a " + sound + " " + sound);
-    }
+              public static void verse(String animal, String sound) {
+                  System.out.println("And on this farm, they had a " + animal);
+                  chorus();
+                  System.out.println("With a " + sound + " " + sound +
+                                     " here and a " + sound + " " + sound + " there");
+                  System.out.println("Here a " + sound + ", there a " + sound +
+                                     ", everywhere a " + sound + " " + sound);
+              }
 
-    public static void main(String[] args)
-    {
-        intro();
-        verse("cow","moo");
-        intro();
-        verse("duck","quack");
-        intro();
-        // TODO:
-        // Call verse again with goose and honk
-        //   and then call intro again
+              public static void main(String[] args) {
+                  chorus();
+                  verse("cow","moo");
+                  chorus();
+                  verse("duck","quack");
+                  chorus();
+                  // TODO:
+                  // Call verse again with goose and honk
+                  // and then call chorus again
 
 
-        // Call verse again with another animal and sound
-        //  and then call intro again
+                  // Call verse again with another animal and sound
+                  // and then call chorus again
 
-
-     }
-}
+               }
+          }
         </code>
         <tests>
 import static org.junit.Assert.*;
@@ -821,11 +809,11 @@ public class RunestoneTests extends CodeTestHelper
     public void test1()
     {
         String code = getCode();
-        int num = countOccurences(code, "intro();");
+        int num = countOccurences(code, "chorus();");
 
         boolean passed = num &gt;= 5;
 
-        passed = getResults("5 or more", "" + num, "Calls to intro", passed);
+        passed = getResults("5 or more", "" + num, "Calls to chorus", passed);
         assertTrue(passed);
     }
 }
@@ -1283,14 +1271,5 @@ purr()
         </choice>
       </choices>
     </activity>
-  </subsection>
-
-  <subsection xml:id="progresscheck-u1-part2">
-    <title>AP Classroom Progress Check Unit 1 Part 2</title>
-    <p>
-      This lesson ends the section for the College Board Unit 1 part 2. You can
-      now do the College Board Progress Check for Unit 1 Part 1 in the AP
-      Classroom.
-    </p>
   </subsection>
 </section>
