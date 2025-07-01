@@ -286,3 +286,7 @@ table.random-recipes tbody tr td:first-child {
 table .align-default, td {
   text-align: left;
 }
+
+.ptx-content .sbspanel > img {
+  padding: 1em;
+}
