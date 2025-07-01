@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+#
+# Reorganize book based on my course outline.
+#
+
 set -euo pipefail
 
 rm -f main-toc.txt
