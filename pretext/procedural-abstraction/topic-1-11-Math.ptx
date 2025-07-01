@@ -1,308 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="topic-1-11-Math">
-  <title>Using the Math Class</title>
+  <title>The <c>Math</c> class</title>
+
   <introduction>
-    <idx>Math</idx>
-    <idx>random</idx>
-    <idx>
-      <h>Math</h><h>random</h>
-    </idx>
-
     <p>
-      Games would be boring if the same thing happened each time you played the
-      game. Random numbers can be used in games to generate different outcomes
-      each time the game is played. In Java, the <c>Math.random()</c> method to
-      is used to generate a random number.
+      Luckily we don’t have to write all the methods we might need ourselves.
+      Java comes with a rich library of methods that we can use. (In fact we’ve
+      been using a few of these methods already, <c>print</c> and
+      <c>println</c>. We’ll explain in a later lesson what the <c>System.out</c>
+      part is about.)
     </p>
 
     <p>
-      There are lots of mathematical methods in the <c>Math</c> class that you
-      might want to use in your programs, like <c>Math.pow(2,3)</c> which
-      calculates the 2 to the power of 3 which is 8.
+      In a future lesson we’ll talk about how to explore the library of methods
+      that come with Java. For now we want to look at one particular set of
+      methods that are useful for doing math beyond the basic arithmetic we can
+      do with the arithmetic operators we’ve already learned about.
     </p>
 
     <p>
-      The <c>Math</c> class is part of the <c>java.lang</c> package. Classes in
-      the <c>java.lang</c> package are available by default. The <c>Math</c>
-      methods are <term>class methods</term> (or <term>static</term> methods)
-      which means you can call them by just using <c>ClassName.methodName()</c>.
+      As we learned in the <xref ref="introduction"/>, all code in Java is
+      written within classes. There’s a lot to say about classes and we’ll get
+      to it in later units. But some classes just exist as a place to put a
+      bunch of useful methods. One such class is the <c>Math</c> class in the
+      <c>java.lang</c> package which is part of every Java program. (We’ll also
+      learn more about packages in later units.)
+    </p>
+
+    <p>
+      The <c>Math</c> class contains five methods that are in the AP CSA subset
+      and are listed in the <url
+      href="https://drive.google.com/file/d/1UL4JeQ5hfnO3H6uoZizgOU2XjHkitmFw/view?usp=sharing">AP
+      CSA Java Quick Reference Sheet</url> that you will have access to during
+      the exam.
+    </p>
+    <p>
+      There are more <c>Math</c> methods, outside of what you need on the AP
+      exam, that you can find in the <url
+      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Math.html"><c>Math</c>
+      class Javadocs</url>.
     </p>
   </introduction>
 
   <subsection>
-    <title>Other people’s methods</title>
-
+    <title>The mathematical functions</title>
     <p>
-      We can also use methods that we didn’t write. In fact we already have.
-      <c>System.out.println</c> is a method provided by Java for emitting output
-      to the screen. To use methods we didn’t write we just need to know the
-      method signature and what they do.
+      Of these <c>Math</c> methods, <c>abs</c>, <c>pow</c>, and <c>sqrt</c> are
+      true mathematical functions that compute new values from their arguments.
     </p>
 
     <p>
-      For example, the <url
-      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/io/PrintStream.html"><c>PrintStream</c>
-      class’s Javadocs</url> document the following method signatures for
-      <c>println</c> that we use in <c>System.out.println()</c>:
+      <c>Math.abs</c> is an example of an <term>overloaded</term> method meaning
+      there are two methods with the same name but different signatures: one
+      that takes an <c>int</c> and one that takes a <c>double</c>. They each
+      return the absolute value, i.e. the positive value of the number without
+      its sign, of their argument. But the return type of each method also
+      differs, being the same same as the type of the parameter.
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            <c>void println()</c> which has an empty parameter list with no
-            parameters
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>void println(String x)</c> which will print out a <c>String</c>
-            value
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>void println(int x)</c> which will print out an <c>int</c> value
-          </p>
-        </li>
-      </ul>
-    </p>
-
-    <p>
-      We can see from the <c>void</c> return type in these method signatures
-      that these methods don’t return any value. That means we can’t use them in
-      expressions to compute values. Instead they are called purely for their
-      <term>side effects</term>, in this case printing something to the screen.
-    </p>
-
-    <p>
-      We can call these methods with the appropriate arguments to print out the
-      value we want. The <term>argument</term> is the actual value that is
-      passed to the method when it is called. Here are the method calls that
-      correspond to the method signatures above (We’ll discuss later what the
-      <c>System.out</c> part of the call is for):
-    </p>
-
-    <p>
-      <ul>
-        <li>
-          <p>
-            <c>System.out.println();</c> // prints a newline
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>System.out.println("Hello World");</c> // prints a String
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>System.out.println(42);</c> // prints an int
-          </p>
-        </li>
-      </ul>
-    </p>
-
-    <p>
-      Compare the method signature of <c>println(String x)</c> with the method
-      call <c>println("Hello World");</c> below. The method signature contains
-      the method name and the parameter type and variable. The method call
-      contains only the method name and the argument value. The argument must be
-      compatible with the data type of the parameter in the method signature and
-      is saved in the parameter variable when the method is called. If you want
-      to be very precise the argument is the value and the parameter is the
-      variable but many people use the terms interchangeably.
-    </p>
-
-    <figure align="center">
-      <caption>Method Signature and Method Call</caption>
-      <image source="Unit1-Using-Objects-and-Methods/Figures/method-parts.png" width="89%" alt="Method Signature and Method Call" />
-    </figure>
-
-    <p>
-      The <c>println</c> methods are also an example of something called
-      <term>overloading</term> which is when multiple methods have the same name
-      but different method signatures because their parameter lists are
-      different. Java matches each method call with the complete signature of
-      the method so it can tell which method to call based on the number and
-      types of the argument. A call to <c>println()</c> calls the version with
-      no parameters which just prints a newline; a call to
-      <c>println("hello")</c> calls the version with a <c>String</c> parameter
-      that prints string followed by a newline; and a call to <c>println(42)</c>
-      calls the version that takes an <c>int</c> and prints it, also followed by
-      a newline.
-    </p>
-
-  </subsection>
-
-  <subsection>
-    <title>Methods Outside the Class</title>
-    <p>
-      In the examples above, we called the methods by using the method name.
-      However, if we call a method from a different class, we need to include
-      its class name. For example, if the <c>square</c> method is in a class
-      called <c>MathFunctions</c>, we would call it as
-      <c>MathFunctions.square(3)</c>. Class methods are typically called using
-      the class name along with the <term>dot operator (.)</term>. When the
-      method call occurs in the defining class, the use of the class name is
-      optional in the call.
-    </p>
-
-    <image source="Unit1-Using-Objects-and-Methods/Figures/pow.png" width="18%" alt="Pow!" />
-    <p>
-      In the next lesson, we will learn to use the methods in the <c>Math</c>
-      class in Java and will need to call them with the class name <c>Math</c>.
-      There is a method to compute the square of a number in the <c>Math</c>
-      library, but it is called <c>pow</c> instead of square, and it takes 2
-      arguments to return a number raised to the power of an exponent number.
-      Here’s a quick preview of two of the methods in the Math class:
-    </p>
-
-    <p>
-      <ul>
-        <li>
-          <p>
-            <c>Math.sqrt(double number)</c> : returns the square root of a given
-            number
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>Math.pow(double base, double exponent)</c> : returns
-            <m>base^{exponent}</m>, the value of base, the first argument,
-            raised to the power of exponent, the second argument.
-          </p>
-        </li>
-      </ul>
-    </p>
-
-    <p>Here is an example of how to use these methods:</p>
     <program language="java">
       <code>
-double x = Math.pow(3, 2); // 3^2 is 9.0
-double y = Math.sqrt(9); // the square root of 9 is 3.0
+        Math.abs(45);    // returns 45
+        Math.abs(-45);   // returns 45
+        Math.abs(33.3);  // returns 33.3
+        Math.abs(-33.3); // returns 33.3
       </code>
     </program>
-  </subsection>
-
-  <subsection xml:id="mathematical-functions">
-    <title>Mathematical Functions</title>
-    <p>
-      The <c>Math</c> class contains the following methods that are in the AP
-      CSA subset. There are more <c>Math</c> methods, outside of what you need
-      on the AP exam, that you can find in the <url
-      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Math.html"><c>Math</c>
-      class Javadocs</url>.
-    </p>
 
     <p>
-      <ul>
-        <li>
-          <p>
-            <c>int abs(int)</c> : Returns the absolute value of an int value
-            (which is the value of a number without its sign, for example
-            <c>Math.abs(-4)</c> = 4).
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>double abs(double)</c> : Returns the absolute value of a double
-            value.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>double pow(double, double)</c> : Returns the value of the first
-            parameter raised to the power of the second parameter.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>double sqrt(double)</c> : Returns the positive square root of a
-            double value.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>double random()</c> : Returns a double value greater than or
-            equal to 0.0 and less than 1.0 (not including 1.0!).
-          </p>
-        </li>
-      </ul>
+      <c>Math.pow</c> takes two arguments, both <c>double</c>s and returns a
+      <c>double</c> which is the first argument raised to the power of the
+      second argument. I.e. <c>pow(a, b)</c> is what we would write in math as
+      <m>a^b</m>. But because <c>int</c>s can be silently converted to
+      <c>double</c>s, we can call <c>Math.pow</c> with <c>int</c> arguments and
+      they will automatically be converted to <c>double</c>s. As a result, the
+      return value will always be a <c>double</c> even if it could be
+      represented by an <c>int</c>.
     </p>
+
+
+    <program language="java">
+      <code>
+        Math.pow(2 , 3); // returns 8.0, not 8
+        Math.pow(10, 6); // returns 1000000.0, not 1000000
+        Math.pow(2, -3); // returns 0.125
+      </code>
+    </program>
 
     <note>
       <p>
-        All the <c>Math</c> methods that you may need to use or understand on
-        the AP exam are listed in the <url
-        href="https://drive.google.com/file/d/1UL4JeQ5hfnO3H6uoZizgOU2XjHkitmFw/view?usp=sharing">AP
-        CSA Java Quick Reference Sheet</url> that you can use during the exam.
+        If you are a Desmos or graphical calculator user, note that <c>^</c> is
+        <em>not</em> an exponentiation operator in Java. Worse luck, it is an
+        operator on <c>int</c>s but it does something completely different. So
+        if <c>a</c> and <c>b</c> are <c>int</c>s and you write <c>a ^ b</c>,
+        intending to raise <c>a</c> to the <c>b</c>th power, the compiler won’t
+        complain but your code will do something very different. If you want an
+        <c>int</c> result, use a cast: <c>(int) Math.pow(a, b)</c>. Though watch
+        out for overflow errors since even relatively small exponents can
+        produce values greater than <c>Integer.MAX_VALUE</c>.
       </p>
     </note>
 
     <p>
-      These Math methods are mathematical functions that compute new values from
-      their arguments. You may be able to guess what <c>abs</c>, <c>pow</c>, and
-      <c>sqrt</c> do, from their abbreviations.
-    </p>
-
-    <p>
-      <c>Math.abs</c> takes a single argument, either a <c>double</c> or an
-      <c>int</c> and returns a value of the same type which is the absolute
-      value of the argument. The absolute value is the positive value of the
-      number without its sign or its distance from 0. So:
+      <c>Math.sqrt</c> takes an <c>double</c> argument and returns a
+      <c>double</c> value which is the nearest approximation of the positive
+      square root of the argument. As with <c>Math.pow</c>, we can call it with
+      an <c>int</c> argument but the argument will be converted to a
+      <c>double</c> and the result will always be a <c>double</c> even if it
+      could have been reprenested with an <c>int</c>.
     </p>
 
     <program language="java">
       <code>
-Math.abs(45);    // returns 45
-Math.abs(-45);   // returns 45
-Math.abs(33.3);  // returns 33.3
-Math.abs(-33.3); // returns 33.3
-      </code>
-    </program>
-
-    <image source="Unit1-Using-Objects-and-Methods/Figures/pow.png" width="14%" alt="Pow!" />
-    <p>
-      <c>Math.pow</c> takes two argument, both <c>double</c>s and returns a
-      <c>double</c> which is the first argument raised to the power of the
-      second argument.
-    </p>
-
-    <program language="java">
-      <code>
-Math.pow(2 , 3); // returns 8.0
-Math.pow(10, 6); // returns 1000000.0
-Math.pow(2, -3); // returns 0.125
+        Math.sqrt(2); // returns 1.4142135623730951
+        Math.sqrt(9); // returns 3.0, not 3
       </code>
     </program>
 
     <p>
-      <c>Math.sqrt</c> takes an <c>double</c> argument and returns a positive
-      <c>double</c> value which is the square root of the argument. For example,
-      the square root of 9 is 3 because 3 squared is 9.
-    </p>
-
-    <program language="java">
-      <code>
-Math.sqrt(9); // returns 3.0
-      </code>
-    </program>
-
-    <p>
-      Since these methods calculate and return a value, you need to use that
-      value, for example in an assignment statement or in a print statement to
-      see the result. For example:
+      Since these methods all all non-void methods, calling them only makes
+      sense in a context that will do something with the value they return, such
+      as assigning the value to a variable or printing it out.
     </p>
 
     <program language="java">
@@ -312,29 +131,28 @@ System.out.println("The square root of 9 is " + Math.sqrt(9));
     </program>
 
     <activity label="trymath">
+      <title>Try some math</title>
       <statement>
         <p>
-          Try the Math methods below. Change the code so that it computes the
-          absolute value of -4, the square root of 9, and 3 raised to the power
-          of 2.
+          Try the <c>Math</c> methods below. Change the code so that it computes
+          the absolute value of -4, the square root of 9, and 3 raised to the
+          power of 2.
         </p>
       </statement>
 
       <program interactive="activecode" language="java">
         <code>
-public class TryMath
-{
-    public static void main(String[] args)
-    {
-        // TODO: Change the code below to compute
-        //       the absolute value of -4,
-        //       the square root of 9,
-        //       and 3 raised to the power of 2.
-        System.out.println( Math.abs(-2) );
-        System.out.println( Math.sqrt(4) );
-        System.out.println( Math.pow(2, 3) );
-    }
-}
+          public class TryMath {
+              public static void main(String[] args) {
+                  // TODO: Change the code below to compute
+                  //       the absolute value of -4,
+                  //       the square root of 9,
+                  //       and 3 raised to the power of 2.
+                  System.out.println(Math.abs(-2));
+                  System.out.println(Math.sqrt(4));
+                  System.out.println(Math.pow(2, 3));
+              }
+          }
         </code>
         <tests>
 import static org.junit.Assert.*;
@@ -359,6 +177,7 @@ public class RunestoneTests extends CodeTestHelper
     </activity>
 
     <activity label="call-sqrt-mc">
+      <title>Legal call to <c>sqrt</c></title>
       <statement>
         <p>
           Knowing that <c>Math.sqrt</c> takes a single argument, Which of these
@@ -456,6 +275,7 @@ public class RunestoneTests extends CodeTestHelper
     </activity>
 
     <activity label="distance-mc">
+      <title>Distance</title>
       <statement>
         <p>
           The distance between two numbers on the number line is defined as the
@@ -521,42 +341,30 @@ public class RunestoneTests extends CodeTestHelper
     </activity>
 
     <activity label="distance-abs">
+      <title>Distance method</title>
       <statement>
         <p>
-          The distance between two numbers on a number line, as we discussed in
-          the problem above, is defined as the absolute value of their
-          difference. Their difference is just what you get when you subtract
-          one from the other. For example, the distance from 0 to 3 is 3, the
-          distance from -3 to 0 is 3, and the distance from -3 to 1 is 4.
-        </p>
-
-        <p>
-          Fill in the method <c>distance</c> below so it correctly computes the
-          distance between two numbers <c>a</c> and <c>b</c> using subtraction
-          and Math.abs.
+          Using the definition of distance from the previous problem, fill in
+          the method <c>distance</c> below so it correctly computes the distance
+          between two numbers <c>a</c> and <c>b</c>.
         </p>
       </statement>
 
       <program interactive="activecode" language="java">
         <code>
-public class DistanceCalculator
-{
+          public class DistanceCalculator {
 
-    public static double distance(double a, double b)
-    {
-        // TODO: calculate the distance from a to b using subtraction and Math.abs.
-        double distance = 0.0;
+              public static double distance(double a, double b) {
+                  // TODO: compute the distance from a to b using subtraction
+                  // and Math.abs and return it
+              }
 
-        return distance;
-    }
-
-    public static void main(String[] arg)
-    {
-        System.out.println("distance(13.5, 26.2) = " + distance(13.5, 26.2));
-        System.out.println("distance(26.2, 13.5) = " + distance(26.2, 13.5));
-        System.out.println(distance(13.5, 26.2) == distance(13.5, 26.2));
-    }
-}
+              public static void main(String[] arg) {
+                  System.out.println("distance(13.5, 26.2) = " + distance(13.5, 26.2));
+                  System.out.println("distance(26.2, 13.5) = " + distance(26.2, 13.5));
+                  System.out.println(distance(13.5, 26.2) == distance(13.5, 26.2));
+              }
+          }
         </code>
         <tests>
 import static org.junit.Assert.*;
@@ -592,43 +400,74 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="random-numbers">
-    <title>Random Numbers</title>
-    <image source="Unit1-Using-Objects-and-Methods/Figures/dice.png" width="18%" alt="Dice" />
-    <p>
-      The <c>Math.random()</c> method returns a double number greater than or
-      equal to 0.0, and less than 1.0. When we talk about ranges of numbers
-      sometimes we need to be precise about whether the ends of the range are
-      part of the range. For example, <c>Math.random</c> returns a number
-      between 0 and 1, but does that mean it can return exactly 0? Or exactly 1?
-      As it turns out it can return 0 but never returns 1.
-    </p>
+    <title>random numbers</title>
+    <idx>
+      <h>Math</h><h>random</h>
+    </idx>
+    <idx>random</idx>
+
+    <sidebyside widths="20% 80%">
+      <image source="Unit1-Using-Objects-and-Methods/Figures/dice.png" alt="Dice"/>
+
+      <p>
+        Games would be boring if the same thing happened each time you played
+        the game. And many simulation techniques, including those used to train
+        Large Language Models like ChatGPT, depend on generating random
+        variations. The key to making games interesting and to running useful
+        simulations is the ability to generate random numbers. The
+        <c>Math.random()</c> is the simplest way to get random numbers in Java.
+      </p>
+    </sidebyside>
+
+    <note>
+      <p>
+        Ironically, given the dependence of so many kinds of programs on
+        randomness, computers are actually not capable of generating truly
+        random numbers. This is because computers are fundamentally
+        deterministic so from a given starting state and executing a given
+        algorithm they should always produce exactly the same result. Or as John
+        von Neumann, one of the early giants of computer science said.
+      </p>
+
+      <blockquote>
+        <p>Anyone
+        who considers arithmetical methods of producing random digits is, of
+        course, in a state of sin.</p>
+      </blockquote>
+
+      <p>
+        However there are algorithms that produce <term>pseudorandom</term>
+        numbers which are good enough for most purposes. <c>Math.random</c> is a
+        pseudorandom number generator.
+      </p>
+    </note>
 
     <p>
-      When we need to be precise about this we’d say that it returns a number
-      between 0, <em>inclusive</em>, and 1, <em>exclusive</em>, meaning
-      <em>include</em> 0 but <em>exclude</em> 1. Lots of ranges in Java are
-      expressed this way, as you’ll see later on with an inclusive bottom and
-      exclusive top.
+      <c>Math.random()</c> is not a function in the mathematical sense—it
+      doesn’t return the same value every time it is called with the same
+      arguments. In fact, it doesn’t even take any arguments. But every time we
+      call it we will get a <c>double</c> greater than or equal to 0.0, and less
+      than 1.0. For all practical purposes the number we get each time is random
+      and all numbers that can be represented by a <c>double</c> between zero
+      and one are equally likely.
     </p>
 
     <activity label="random1">
+      <title>Test Math.random</title>
       <statement>
         <p>
-          Try the following code. Run it several times to see what it prints
-          each time.
+          Run the following code several times to see what it prints each time.
         </p>
       </statement>
 
       <program interactive="activecode" language="java">
         <code>
-public class Test3
-{
-    public static void main(String[] args)
-    {
-        System.out.println(Math.random());
-        System.out.println(Math.random());
-    }
-}
+          public class Test3 {
+              public static void main(String[] args) {
+                  System.out.println(Math.random());
+                  System.out.println(Math.random());
+              }
+          }
         </code>
         <tests>
 import static org.junit.Assert.*;
@@ -652,17 +491,36 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </activity>
 
+    <note>
+      <p>
+        When we talk about ranges of numbers sometimes we need to be precise
+        about whether the ends of the range are part of the range. For example,
+        loosely speaking we might say that <c>Math.random</c> returns a number
+        between zero and one. But does that mean it can return exactly
+        <c>0.0</c>? Or exactly <c>1.0</c>? As it turns out it can return
+        <c>0.0</c> but never returns <c>1.0</c>.
+      </p>
+
+      <p>
+        When we need to be precise about this we’d say that it returns a number
+        between zero, <em>inclusive</em>, and one, <em>exclusive</em>, meaning
+        <em>include</em> zero but <em>exclude</em> one. Lots of ranges in Java
+        are expressed this way, as you’ll see later on with an inclusive bottom
+        and exclusive top.
+      </p>
+    </note>
+
     <p>
-      Getting a number between 0, inclusive, and 1, exclusive, may not seem all
-      that useful. But we can expand the range easily enough. To see how,
+      Getting a number in the range from zero to one, may not seem all that
+      useful by itself. But we can expand the range easily enough. To see how,
       imagine you had less than a dollar to your name and you wanted to be
-      richer—you’d want to find a way to <term>multiply</term> your money. If
-      you could invest every penny you had in something that would multiply your
-      money by 1,000 then instead of having somewhere between $0 and $1, then
-      you’d have somewhere between $0 (inclusive—if you started with $0) and
-      $1,000 (exclusive, since if you had even a fraction of a penny less than
-      $1 multiplying by 1,000 would still leave you just a bit shy of $1,000.)
-      If the investment multiplied your original money by a million, you’d have
+      richer—you’d want to find a way to multiply your money. If you could
+      invest every penny you had in something that would multiply your money by
+      1,000 then instead of having somewhere between $0 and $1, then you’d have
+      somewhere between $0 (inclusive—if you started with $0) and $1,000
+      (exclusive, since if you had even a fraction of a penny less than $1
+      multiplying by 1,000 would still leave you just a bit shy of $1,000.) If
+      the investment multiplied your original money by a million, you’d have
       between $0 and $1,000,000! (But never <em>quite</em> $1,000,000.)
     </p>
 
@@ -674,6 +532,7 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <activity label="random-example-stretched">
+      <title>Multiplied random numbers</title>
       <statement>
         <p>
           Try the following code. Run it several times to see what it prints
@@ -683,14 +542,12 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class StretchedRandom
-{
-    public static void main(String[] args)
-    {
-        System.out.println(Math.random() * 10);
-        System.out.println(Math.random() * 10);
-    }
-}
+          public class StretchedRandom {
+              public static void main(String[] args) {
+                  System.out.println(Math.random() * 10);
+                  System.out.println(Math.random() * 10);
+              }
+          }
         </code>
         <tests>
 import static org.junit.Assert.*;
@@ -724,8 +581,8 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-// rnd is an integer in the range 0-9 (from 0 up to 10).
-int rnd = (int)(Math.random()*10);
+        // rnd will be an integer in the range 0-9 (from 0 up to 10).
+        int rnd = (int) (Math.random() * 10);
       </code>
     </program>
 
@@ -740,12 +597,13 @@ int rnd = (int)(Math.random()*10);
 
     <program language="java">
       <code>
-// rnd is an integer in the range 1-10 (including 10).
-int rnd = (int)(Math.random()*10) + 1;
+        // rnd will be an integer in the range 1-10 (including 10).
+        int rnd = (int) (Math.random() * 10) + 1;
       </code>
     </program>
 
     <activity label="randomRange">
+      <title>Random ints</title>
       <statement>
         <p>
           Run the code below several times to see how the value changes each
@@ -760,13 +618,11 @@ int rnd = (int)(Math.random()*10) + 1;
 
       <program interactive="activecode" language="java">
         <code>
-public class Test4
-{
-    public static void main(String[] args)
-    {
-        System.out.println((int) (Math.random() * 10));
-    }
-}
+          public class Test4 {
+              public static void main(String[] args) {
+                  System.out.println((int) (Math.random() * 10));
+              }
+          }
         </code>
         <tests>
 import static org.junit.Assert.*;
@@ -789,49 +645,26 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </activity>
 
-    <note>
-      <p>
-        <ul>
-          <li>
-            <p>Math.random() returns a random number between 0.0-0.99.</p>
-          </li>
-
-          <li>
-            <p>
-              <term>(int)(Math.random() * range) + min</term> moves the random
-              number into a range starting from a minimum number.
-            </p>
-          </li>
-
-          <li>
-            <p>
-              The range is the <term>(max number - min number + 1)</term>.
-            </p>
-          </li>
-        </ul>
-      </p>
-    </note>
-
     <p>
       Here are some examples that move a random number into a specific range.
     </p>
 
     <program language="java">
       <code>
-// Math.random() returns a random number between 0.0-0.99.
-double rnd = Math.random();
+        // Math.random() returns a random number between 0.0 (inclusive) and 1.0 (exclusive)
+        double rnd = Math.random();
 
-// rnd1 is an integer in the range 0-9 (including 9).
-int rnd1 = (int)(Math.random()*10);
+        // rnd1 is an integer in the range 0-9 (including 9).
+        int rnd1 = (int) (Math.random() * 10);
 
-// rnd2 is in the range 1-10 (including 10). The parentheses are necessary!
-int rnd2 = (int)(Math.random()*10) + 1;
+        // rnd2 is in the range 1-10 (including 10).
+        int rnd2 = (int) (Math.random() * 10) + 1;
 
-// rnd3 is in the range 5-10 (including 10). The range is 10-5+1 = 6.
-int rnd3 = (int)(Math.random()*6) + 5;
+        // rnd3 is in the range 5-10 (including 10). The range is 10-5+1 = 6.
+        int rnd3 = (int) (Math.random() * 6) + 5;
 
-// rnd4 is in the range -10 up to 9 (including 9). The range is doubled (9 - -10 + 1 = 20) and the minimum is -10.
-int rnd4 = (int)(Math.random()*20) - 10;
+        // rnd4 is in the range -10 up to 10 (including 10). The range is doubled (10 - -10 + 1 = 20) and the minimum is -10.
+        int rnd4 = (int) (Math.random() * 21) - 10;
       </code>
     </program>
 
@@ -931,6 +764,7 @@ int rnd4 = (int)(Math.random()*20) - 10;
     </table>
 
     <activity label="qrand_1">
+      <title>40% chance</title>
       <statement>
         <p>Which of the following would be true about 40% of the time?</p>
       </statement>
@@ -975,6 +809,7 @@ int rnd4 = (int)(Math.random()*20) - 10;
     </activity>
 
     <activity label="qrand_2">
+      <title>Random number 1-5</title>
       <statement>
         <p>
           Which of the following would return a random number from 1 to 5
@@ -985,7 +820,7 @@ int rnd4 = (int)(Math.random()*20) - 10;
       <choices>
         <choice>
           <statement>
-            <p>((int) (Math.random() * 5))</p>
+            <p>(int) (Math.random() * 5)</p>
           </statement>
 
           <feedback>
@@ -995,7 +830,7 @@ int rnd4 = (int)(Math.random()*20) - 10;
 
         <choice>
           <statement>
-            <p>((int) (Math.random() * 6))</p>
+            <p>(int) (Math.random() * 6)</p>
           </statement>
 
           <feedback>
@@ -1005,13 +840,13 @@ int rnd4 = (int)(Math.random()*20) - 10;
 
         <choice correct="yes">
           <statement>
-            <p>((int) (Math.random() * 5) + 1)</p>
+            <p>(int) (Math.random() * 5) + 1</p>
           </statement>
 
           <feedback>
             <p>
-              The first part would return a number between 0 and 4 and when you
-              add 1 you get a number from 1 to 5 inclusive.
+              The first part would return a number between 0 and 4 and adding 1
+              produces a number from 1 to 5, inclusive.
             </p>
           </feedback>
         </choice>
@@ -1019,6 +854,7 @@ int rnd4 = (int)(Math.random()*20) - 10;
     </activity>
 
     <activity label="qrand_3">
+      <title>Random number 0-10</title>
       <statement>
         <p>
           Which of the following would return a random number from 0 to 10
@@ -1029,7 +865,7 @@ int rnd4 = (int)(Math.random()*20) - 10;
       <choices>
         <choice>
           <statement>
-            <p>((int) (Math.random() * 10))</p>
+            <p>(int) (Math.random() * 10)</p>
           </statement>
 
           <feedback>
@@ -1039,7 +875,7 @@ int rnd4 = (int)(Math.random()*20) - 10;
 
         <choice correct="yes">
           <statement>
-            <p>((int) (Math.random() * 11))</p>
+            <p>(int) (Math.random() * 11)</p>
           </statement>
 
           <feedback>
@@ -1049,13 +885,13 @@ int rnd4 = (int)(Math.random()*20) - 10;
 
         <choice>
           <statement>
-            <p>((int) (Math.random() * 10) + 1)</p>
+            <p>(int) (Math.random() * 10) + 1</p>
           </statement>
 
           <feedback>
             <p>
-              The first part would return a number between 0 and 9 and when you
-              add 1 you get a number from 1 to 10 inclusive.
+              The first part would return a number between 0 and 9 and adding 1
+              produces a number from 1 to 10, inclusive.
             </p>
           </feedback>
         </choice>
@@ -1063,6 +899,7 @@ int rnd4 = (int)(Math.random()*20) - 10;
     </activity>
 
     <activity label="qrand_4">
+      <title>75% chance</title>
       <statement>
         <p>Which of the following would be true about 75% of the time?</p>
       </statement>
@@ -1083,13 +920,16 @@ int rnd4 = (int)(Math.random()*20) - 10;
 
         <choice correct="yes">
           <statement>
-            <p>Math.random() &gt; 0.25</p>
+            <p>Math.random() &gt;= 0.25</p>
           </statement>
 
           <feedback>
             <p>
               This is true about 75% of the time, since it will be a number from
-              0 to not quite 1.
+              0 to not quite 1. Note that if the expression used &gt; rather
+              than &gt;= it would be very slightly off. Generally it's best to
+              write this kind of expression with &lt; and the percent you
+              want to be true so <c>Math.random() &lt; 0.75</c> in this case.
             </p>
           </feedback>
         </choice>
@@ -1110,75 +950,78 @@ int rnd4 = (int)(Math.random()*20) - 10;
     </activity>
 
     <activity label="apcsa_sample3">
+      <title>Random number 25-60</title>
       <statement>
         <p>
-          Which of the following statements assigns a random integer between 25
-          and 60, inclusive, to rn?
+          Which of the following expressions always evaluates to a random
+          integer between 25 and 60, inclusive?
         </p>
       </statement>
 
       <choices>
         <choice>
           <statement>
-            <p>int rn = (int) (Math.random() * 25) + 36;</p>
+            <p>(int) (Math.random() * 25) + 36</p>
           </statement>
 
           <feedback>
             <p>
-              Remember that (int)(Math.random()*range) + min moves the random
-              number into a range starting from a minimum number. We want the
-              minimum number to be 25, but the minimum number here would be 36.
+              Remember that <c>(int) (Math.random() * size) + min</c> takes
+              random numbers in the range 0-<c>size</c> to a new range starting
+              at <c>min</c>. We want the minimum number to be 25, but the
+              minimum number here would be 36.
             </p>
           </feedback>
         </choice>
 
         <choice>
           <statement>
-            <p>int rn = (int) (Math.random() * 25) + 60;</p>
+            <p>i(int) (Math.random() * 25) + 60</p>
           </statement>
 
           <feedback>
             <p>
-              Remember that (int)(Math.random()*range) + min moves the random
-              number into a range starting from a minimum number. We want the
-              minimum number to be 25, but the minimum number here would be 60.
+              Remember that <c>(int) (Math.random() * size) + min</c> takes
+              random numbers in the range 0-<c>size</c> to a new range starting
+              at <c>min</c>. We want the minimum number to be 25, but the
+              minimum number here would be 60.
             </p>
           </feedback>
         </choice>
 
         <choice>
           <statement>
-            <p>int rn = (int) (Math.random() * 26) + 60;</p>
+            <p>(int) (Math.random() * 26) + 60</p>
           </statement>
 
           <feedback>
             <p>
-              Remember that (int)(Math.random()*range) + min moves the random
-              number into a range starting from a minimum number. Here the min
-              is 25. We want the minimum number to be 25, but the minimum number
-              here would be 60.
+              Remember that <c>(int) (Math.random() * size) + min</c> takes
+              random numbers in the range 0-<c>size</c> to a new range starting
+              at <c>min</c>. We want the minimum number to be 25, but the
+              minimum number here would be 60.
             </p>
           </feedback>
         </choice>
 
         <choice correct="yes">
           <statement>
-            <p>int rn = (int) (Math.random() * 36) + 25;</p>
+            <p>(int) (Math.random() * 36) + 25</p>
           </statement>
 
           <feedback>
             <p>
-              Yes, (int)(Math.random()*36) + 25 moves the random number into a
-              range of 36 numbers starting from a minimum number 25 up to 60.
-              The range is (max number - min number + 1) which is (60-25 +1) =
-              36.
+              Yes, <c>(int) (Math.random() * 36) + 25</c> takes random numbers
+              in the range from 0-36, exclusive, into the range 25-60
+              (inclusive). The range is (max number - min number + 1) which is
+              (60 - 25 +1) = 36.
             </p>
           </feedback>
         </choice>
 
         <choice>
           <statement>
-            <p>int rn = (int) (Math.random() * 60) + 25;</p>
+            <p>(int) (Math.random() * 60) + 25</p>
           </statement>
 
           <feedback>
@@ -1193,13 +1036,16 @@ int rnd4 = (int)(Math.random()*20) - 10;
   </subsection>
 
   <subsection xml:id="coding-challenge-random-numbers">
-    <title>Coding Challenge : Random Numbers</title>
-    <image source="Unit1-Using-Objects-and-Methods/Figures/lock.jpg" width="18%" alt="lock" />
-    <p>
-      You may have a combination lock on your locker at school where you have to
-      spin the dial to 3 separate numbers from 0 up to 40. What if you forgot
-      your combination? Would you be able to guess it?
-    </p>
+    <title>Coding Challenge: Combo lock</title>
+
+    <sidebyside widths="15% 90%">
+      <image source="Unit1-Using-Objects-and-Methods/Figures/lock.jpg" alt="lock" />
+      <p>
+        You may have a combination lock on your locker at school where you have
+        to spin the dial to three separate numbers from 0 up to 39, inclusive.
+        What if you forgot your combination? Would you be able to guess it?
+      </p>
+    </sidebyside>
 
     <p>
       <ol marker="1">
@@ -1249,6 +1095,7 @@ int rnd4 = (int)(Math.random()*20) - 10;
     </p>
 
     <project label="challenge1-11-random-math">
+      <title>Combo locks</title>
       <statement>
         <p>Complete the combination lock challenge below.</p>
       </statement>
@@ -1337,6 +1184,10 @@ public class RunestoneTests extends CodeTestHelper {
       </program>
     </project>
 
+  </subsection>
+  <subsection>
+    <title>Coding Challenge: Dancing turtles</title>
+
     <p>
       Here’s another challenge that is a lot of fun! Can you use random numbers
       to make dancing turtles? This idea was suggested by CSA teacher Zac
@@ -1344,6 +1195,7 @@ public class RunestoneTests extends CodeTestHelper {
     </p>
 
     <project label="challenge-random-dancing-turtles">
+      <title>Dancing turtles</title>
       <statement>
         <p>
           Complete the random numbers using Math.random() in the correct ranges
@@ -1434,18 +1286,20 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
     <subsection>
-    <title>Coding Challenge: Ladder on Tower</title>
-    <image source="Unit1-Using-Objects-and-Methods/Figures/ladder.png" width="36%" alt="Ladder on tower" />
-    <p>
-      The Pythagorean theorem states that the length of the hypotenuse (the side
-      opposite the right angle in a right triangle) is the square root of the
-      sum of the squares of the lengths of the other two sides, also called the
-      “legs” or the width and height of the triangle. (Incidentally, the
-      Pythagorean theorem is named for Pythagoras who was also the leader of the
-      gang of Greek mathematicians who legend has it allegedly drowned their
-      fellow mathematician for showing that <m>\sqrt{2}</m> is irrational.)
-      Here’s the formula for this theorem:
-    </p>
+      <title>Coding Challenge: Tower ladder</title>
+      <sidebyside widths="25% 75%">
+        <image source="Unit1-Using-Objects-and-Methods/Figures/ladder.png" width="36%" alt="Ladder on tower" />
+        <p>
+          The Pythagorean theorem states that the length of the hypotenuse (the side
+          opposite the right angle in a right triangle) is the square root of the
+          sum of the squares of the lengths of the other two sides, also called the
+          “legs” or the width and height of the triangle. (Incidentally, the
+          Pythagorean theorem is named for Pythagoras who was also the leader of the
+          gang of Greek mathematicians who legend has it allegedly drowned their
+          fellow mathematician for showing that <m>\sqrt{2}</m> is irrational.)
+          Here’s the formula for this theorem:
+        </p>
+      </sidebyside>
 
     <p>
       <ul>
@@ -1460,12 +1314,13 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <p>
-      One common use for the Pythagorean theorem is to calculate the length of
-      ladder you will need to reach the window of your beloved, given that their
-      cruel parents have locked them in a tower surrounded by a moat. The ladder
-      will be the hypotenuse of a triangle whose legs are the height of the
-      window of your beloved’s room in the tower and the width of the moat since
-      you have to place the base of the ladder on the edge of the moat.
+      This may seems like a bunch of Greek to you but one common, real-world use
+      for the Pythagorean theorem is to calculate the length of ladder you will
+      need to reach the window of your beloved, given that their cruel parents
+      have locked them in a tower surrounded by a moat. The ladder will be the
+      hypotenuse of a triangle whose legs are the height of the window of your
+      beloved’s room in the tower and the width of the moat since you have to
+      place the base of the ladder on the edge of the moat.
     </p>
 
     <activity label="hypotenuse-java-mc">
