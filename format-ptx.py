@@ -13,7 +13,7 @@ WIDTH = 80
 INLINE_TAGS = {"term", "url", "c", "h", "area"}
 PRESERVE_WHITESPACE = {"code", "cline", "tests", "pre", "program"}
 ONE_LINE = {"cline"}
-WRAP = {"p", "caption"}
+WRAP = {"p", "caption", "title"}
 DEFAULT_NS = {"xml": "http://www.w3.org/XML/1998/namespace"}
 
 
@@ -133,11 +133,14 @@ def render_block(elem, ns, level=0):
                 content += " "
 
         if wrappable(elem):
-            filled = fill_with_indent(content, indent(level + 1))
-            return f"{tag}\n{filled}\n{indent(level)}{close_tag(elem, ns)}\n"
+            oneline = f"{tag}{re.sub(r"(?s)\s+", " ", content).strip()}{close_tag(elem, ns)}"
+            if len(indent(level)) * 2 + len(oneline) < WIDTH:
+                return f"{oneline}\n"
+            else:
+                filled = fill_with_indent(content, indent(level + 1))
+                return f"{tag}\n{filled}\n{indent(level)}{close_tag(elem, ns)}\n"
         else:
             return f"{tag}\n{indent(level + 1)}{content.strip()}\n{indent(level)}{close_tag(elem, ns)}\n"
-
 
 def clean_text(s):
     return re.sub(r"\s+", " ", s.strip())
