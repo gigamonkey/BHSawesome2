@@ -2,7 +2,24 @@
 
 <chapter xml:id="booleans-and-conditionals" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>booleans-and-conditionals</title>
-  <introduction />
+  <introduction>
+    <p>
+      Now that we know how to structure our code using methods, we need to learn
+      some more basics about how to write the code that goes <em>in</em> our
+      methods. In this unit and the next we will look at Java's <term>control
+      constructs</term>, the parts of the lanuage that allow us to control what
+      happens when. With just a few basic control constructs we will be able to
+      write code to implement any <term>algorithm</term> that it is possible to
+      run on a computer.
+    </p>
+
+    <p>
+      In this chapter we will introduce the notion of algorithms and then talk
+      about <term>if statements</term> which allow us to write programs that do
+      things only if certain conditions are true.
+    </p>
+  </introduction>
+
   <xi:include href="./topic-2-1-algorithms.ptx" />
   <xi:include href="./topic-2-2-booleans.ptx" />
   <xi:include href="./topic-2-3-ifs.ptx" />

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="topic-2-1-algorithms">
-  <time minutes="45" />
-  <title>Algorithms with Selection and Repetition</title>
+  <title>Algorithms</title>
   <introduction>
     <idx>selection</idx>
     <idx>repetition</idx>
@@ -10,21 +9,25 @@
     <idx>algorithm</idx>
     <idx>pseudocode</idx>
     <p>
-      Every algorithm consists of a sequence of steps. Up until now, we have
-      been writing code one line at a time in sequence which then gets executed
-      by the computer in that sequential order by default. However, we can
-      create more complex algorithms that do not follow the default sequential
-      order. In this unit, we will learn to branch the code into different paths
-      or repeat a block of code.
+      In the <xref ref="introduction"/> we briefly described algorithms as
+      something like a recipe or directions to a friend’s house: a specific set
+      of steps to perform for achieving some result. But the features of Java
+      we’ve learned so far aren’t really sufficient to create algorithms in
+      Java. The most complex code we’ve written so far has only involved code
+      that proceeds in an essentially straight line. We may use methods to break
+      up the code but each method runs from top to bottom and if we wanted we
+      could get rid of all the methods but one and—at the cost of some
+      duplication—put all the code in one sequence in that one method.
     </p>
 
     <p>
-      The building blocks of algorithms are <term>sequencing</term>,
-      <term>selection</term>, and <term>repetition</term>. Algorithms can
-      contain selection, through decision making, and repetition, via looping.
-      In fact, it’s been proven that all algorithms for problems that can be
-      solved on a computer can be constructed by using just these three control
-      structures: sequence, selection, and repetition as seen below.
+      One of the most important, and perhaps surprising facts about computers,
+      discovered in the earliest days of computer science, is that we only need
+      a three pretty simple building blocks to be able to create code that
+      implements any algorithm that can be run on any computer. The three
+      building blocks of algorithms are <term>sequencing</term>,
+      <term>selection</term>, and <term>repetition</term> each of which control
+      how our program executes.
     </p>
 
     <figure align="center">
@@ -33,21 +36,61 @@
     </figure>
   </introduction>
 
+  <subsection>
+    <title>Sequencing</title>
+    <p>
+      Sequencing is the simplest of the three building blocks. In fact we’ve
+      been using all this time without even mentioning it. It just means running
+      one step of an algorithm after after another in the order they are
+      written. That is the default <term>control flow</term> in Java and most
+      other programming languages where a step roughly corresponds to a line of
+      code. It may seem trivial but it is important. Consider this simple bit of
+      code, assuming <c>x</c> and <c>y</c> have already been declared somewhere.
+    </p>
+
+    <program language="java">
+      x = 10;
+      y = x + 20;
+      x = 30;
+      System.out.println("x: " + x + "; y: " + y);
+    </program>
+
+    <p>
+      It's only because of sequencing that we can know that that program will
+      print <c>"x: 30; y: 30"</c>. If we didn’t know that the lines would run in
+      order maybe the assignment to <c>y</c> would happen after <c>x</c> was set
+      to 30 rather than before. Or maybe the <c>println</c> would run before
+      either variable had been given a value! But the default <term>control
+      flow</term> of sequencing one thing after another lets us understand what
+      is going to happen when.
+    </p>
+
+  </subsection>
+
   <subsection xml:id="selection">
     <title>Selection</title>
     <p>
-      Selection is the process of making a choice based on a true or false
-      decision. In programming, selection (also called branching) occurs when a
-      choice of how the execution of an algorithm will proceed is based on a
-      true or false decision. An algorithm may take different paths based on
-      certain conditions, often using true/false logic.
+      Selection—sometimes called <term>branching control flow</term>—is when
+      some code either runs or doesn’t. We “select” whether to run it—based on
+      some other values. For instance, an algorithm for assigning grades might
+      contain a line to set a student’s grade to an A but will only run that
+      line if the student’s average score is greater than 90%.
+    </p>
+
+    <p>
+      As we’ll see there are all kinds of ways to make complicated selections
+      but ultimately they all boil down to some combination of a simple
+      selection based on some condition being either true or false. Either the
+      student’s average score is greater than 90% and they get an A or it’s not
+      and they don’t.
     </p>
 
     <activity label="clickSelection">
+      <title>Morning routine</title>
       <statement>
         <p>
-          Click on all of the selection (decision or branching) phrases in the
-          following algorithm.
+          Practice identifying decision points by clicking on all the phrases in
+          the following human algorithm that describe a choice.
         </p>
       </statement>
 
@@ -76,14 +119,22 @@
   <subsection xml:id="repetition">
     <title>Repetition</title>
     <p>
-      Repetition is when a process repeats itself until a desired outcome is
-      reached. In programming, repetition is achieved through loops. A
-      <term>loop</term> allows an algorithm to repeat certain actions until a
-      specified condition is met. Another term commonly used for repetition is
-      <term>iteration</term>.
+      Finally, the third building block, repetition—also called <term>looping
+      control flow</term> or <term>iteration</term>—is when some code is run
+      repeatedly. Usually it is combined with selection to repeatedly run some
+      code until a desired outcome is reached. In Java repetition is achieved
+      through a couple flavors of <term>loops</term> that build in the
+      selection. We’ll discuss loops in the next unit.
+    </p>
+
+    <p>
+      And thats it! Any algorithm that any computer can execute can be built out
+      of some combination of those three building blocks plus the ability to
+      store and retrieve values (i.e. variables).
     </p>
 
     <activity label="clickRepetition">
+      <title>Another morning routine</title>
       <statement>
         <p>
           Click on all of the repetition phrases in the following algorithm.
@@ -101,29 +152,49 @@
       <areas>
         <cline>Morning routine 2:</cline>
         <cline><area correct="no">1. Wake up.</area></cline>
-        <cline><area correct="yes">2. Snooze for 5 more minutes. Keep waking up and snoozing for the next 15 minutes</area></cline>
-        <cline><area correct="yes">3. If there is a text from your friend, answer it. Do this for all of your texts.</area></cline>
+        <cline><area correct="no">2. Snooze for 5 more minutes.</area> <area correct="yes">Keep waking up and snoozing for the next 15 minutes</area></cline>
+        <cline><area correct="yes">3. Answer all new texts from your friends.</area></cline>
         <cline><area correct="no">4. Brush teeth and shower.</area></cline>
         <cline><area correct="no">5. If it’s cold, wear a sweater.</area></cline>
-        <cline><area correct="no">6. Check if you have homework due. If so, pack it in your bag.</area></cline>
-        <cline><area correct="yes">7. Repeat packing items until your bag is ready. </area></cline>
+        <cline><area correct="yes">6. For each of your classes where you have homework due, pack it in your bag.</area></cline>
         <cline><area correct="no">8. Leave for school or work.</area></cline>
       </areas>
     </activity>
   </subsection>
 
   <subsection xml:id="algorithms-with-pseudocode-and-flowcharts">
-    <title>Algorithms with Pseudocode and Flowcharts</title>
+    <title>Describing algorithms</title>
     <p>
-      For complex problems, it is important to plan your solution before writing
-      code. <term>Pseudocode</term> is a simplified, informal way of describing
-      the steps in an algorithm in a human language like English but following
-      the sequence, selection, and repetition structure of a programming
-      language. <term>Flowcharts</term> are diagrams that represent the steps in
-      an algorithm like below. Selection is usually represented as a triangle in
-      a flowchart, and arrows are used to show repetition. Both pseudocode and
-      flowcharts are tools that help you plan your algorithm before writing
-      code.
+      Although we can build any algorithm with some combination of just three
+      simple building blocks, as is often the case with programming, when we are
+      building complex things out of simple parts it can be hard to keep track
+      of how everything fits together. Indeed, arguably the whole task of
+      learning to program is really about learning to manage that complexity.
+    </p>
+
+    <p>
+      When we are trying to design and implement even slightly complicated
+      algorithms, For complex problems, it can be useful to make a plan before
+      we start writing code. Two common ways of describing algorithms that
+      programmers will use before trying to write actual code are
+      <term>pseudocode</term> and <term>flowcharts</term>.
+    </p>
+    <p>
+      Pseudocode is a simplified, informal way of describing the steps in an
+      algorithm in a language that’s part way between a human language like
+      English and an actual programming language like Java. As long as we have
+      some way of describing sequences, selection, and repetition we can
+      describe an algorithm.
+    </p>
+
+    <p>
+      Flowcharts do the same thing but graphically, representing the steps in an
+      algorithm in a diagram like the one below. Sequences of code are typically
+      represented with a rectangle labeled with a description of what happens
+      inside that box. Decisions points in selections are usually represented as
+      a diamond with a yes/no question in it and arrows coming out labeled “yes”
+      and “no” or “true” and “false”. And repetition is created by arrows that
+      create loops in the diagram.
     </p>
 
     <figure align="center">
@@ -132,19 +203,28 @@
     </figure>
 
     <p>
-      The order in which sequencing, selection, and repetition are used
-      contributes to the outcome of the algorithm. In the following pseudocode,
-      put the steps of the algorithm in order and then decide what the outcome
-      will be based on the order of the steps and the conditions.
+      Once we have an algorithm described in pseudocode or a flowchart, we can
+      then use it as a guide to implementing the algorithm, translating the
+      sequences, selections, and repetitions into actual Java code using the
+      constructs we’ll learn about in the rest of this unit and the next.
     </p>
 
     <activity label="algorithm-gift" numbered="yes" adaptive="yes" indentation="show" language="java">
+      <title>Birthday buying spree</title>
       <statement>
         <p>
-          Put the following pseudocode algorithm steps for buying a birthday
-          gift for your friend in order. Make sure some of the steps are
-          indented to be inside the repetition and that you buy the more
-          expensive gifts first. Click on Check Me to see if you are right.
+          The top box below contains a scrambled pseudocode description of an
+          algorithm for buying a birthday gift for your friend with the goal of
+          buying as the most expensive gifts possible given a certain amount of
+          money.
+        </p>
+        <p>
+          Put the steps into the correct order by dragging them into the lower
+          box. The indented steps are intended to go inside another construct
+          such as the repetition.
+        </p>
+        <p>
+          Click the “Check” button when you’re done to see if you are right.
         </p>
       </statement>
 
@@ -283,7 +363,7 @@
 
         <choice correct="yes">
           <statement>
-            <p>You will give them 2 cakes, a card, and $1.</p>
+            <p>You will give them two cakes, and two cards.</p>
           </statement>
 
           <feedback>
@@ -295,7 +375,7 @@
   </subsection>
 
   <subsection xml:id="coding-challenge-algorithms">
-    <title>Coding Challenge : Algorithms</title>
+    <title>Coding Challenge: Algorithms</title>
     <p>
       In this group activity, you will work together to create an algorithm for
       a common problem: choosing a snack! Create pseudocode for this problem.
@@ -308,6 +388,7 @@
     </p>
 
     <project label="challenge-algorithm-snack">
+      <title>Snack time!</title>
       <statement>
         <p>
           Write your pseudocode for choosing a snack here. Include selection and
