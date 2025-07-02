@@ -98,9 +98,7 @@ public void createCollage()
     </code>
   </program>
 
-  <p>
-    You can test this with the <c>createCollage</c> method below.
-  </p>
+  <p>You can test this with the <c>createCollage</c> method below.</p>
 
   <activity label="picture-lab-A8-createCollage">
     <statement>

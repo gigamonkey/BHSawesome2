@@ -722,9 +722,7 @@ factorial(0) returns 1
       </code>
     </program>
 
-    <p>
-      So <c>factorial(5)</c> returns 120.
-    </p>
+    <p>So <c>factorial(5)</c> returns 120.</p>
 
     <p>
       You can step through this code using the Java Visualizer by clicking on

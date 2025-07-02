@@ -744,9 +744,7 @@ public class RunestoneTests extends CodeTestHelper
       </ul>
     </p>
 
-    <p>
-      Try the <c>%</c> operator below.
-    </p>
+    <p>Try the <c>%</c> operator below.</p>
 
     <activity label="mod">
       <statement>

@@ -557,9 +557,7 @@ class Dog extends Pet
       treats <c>DiscountedItem</c> differently.
     </p>
 
-    <p>
-      In the <c>DiscountedItem</c> subclass,
-    </p>
+    <p>In the <c>DiscountedItem</c> subclass,</p>
 
     <p>
       <ol marker="1">

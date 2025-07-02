@@ -344,9 +344,7 @@ nums[4] = temp;
 
     <exercise label="mt1_10">
       <statement>
-        <p>
-          What does the method <c>mystery</c> do?
-        </p>
+        <p>What does the method <c>mystery</c> do?</p>
 
         <program language="java">
           <code>

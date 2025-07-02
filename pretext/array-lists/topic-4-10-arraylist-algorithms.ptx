@@ -853,9 +853,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="shift-rotate-an-arraylist">
-    <title>
-      Shift/Rotate an <c>ArrayList</c>
-    </title>
+    <title>Shift/Rotate an <c>ArrayList</c></title>
 
     <p>
       We can write code that shifts or rotates elements left or right in an
@@ -1020,9 +1018,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="reversing-an-arraylist">
-    <title>
-      Reversing an <c>ArrayList</c>
-    </title>
+    <title>Reversing an <c>ArrayList</c></title>
 
     <p>
       The following examples reverse the order of the elements in an

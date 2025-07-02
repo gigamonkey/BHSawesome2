@@ -516,9 +516,7 @@ public void numQuest()
   </subsection>
 
   <subsection xml:id="reading-in-files-with-java-nio-file">
-    <title>
-      Reading in Files with <c>java.nio.file</c>
-    </title>
+    <title>Reading in Files with <c>java.nio.file</c></title>
 
     <p>
       Although not covered in the AP CSA exam, the <c>java.nio.file</c> package

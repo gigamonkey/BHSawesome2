@@ -33,9 +33,7 @@
   </introduction>
 
   <subsection xml:id="creating-integer-and-double-objects">
-    <title>
-      Creating <c>Integer</c> and <c>Double</c> Objects
-    </title>
+    <title>Creating <c>Integer</c> and <c>Double</c> Objects</title>
 
     <p>
       Here are some examples of creating <c>Integer</c> and <c>Double</c>

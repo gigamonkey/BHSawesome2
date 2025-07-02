@@ -56,9 +56,7 @@ public void mirrorTemple()
     </code>
   </program>
 
-  <p>
-    You can test this with the <c>mirrorTemple</c> method below.
-  </p>
+  <p>You can test this with the <c>mirrorTemple</c> method below.</p>
 
   <hidden>
     <datafile label="temple" filename="temple.jpg">

@@ -128,9 +128,7 @@ public class Person
   </activity>
 
   <subsection xml:id="this-instancevariable">
-    <title>
-      <c>this</c>.instanceVariable
-    </title>
+    <title><c>this</c>.instanceVariable</title>
 
     <p>
       The keyword this is sometimes used by programmers to distinguish between
@@ -166,9 +164,7 @@ public Person(String name)
   </subsection>
 
   <subsection xml:id="this-as-an-argument">
-    <title>
-      <c>this</c> as an Argument
-    </title>
+    <title><c>this</c> as an Argument</title>
 
     <p>
       The <c>this</c> variable can be used anywhere you would use an object

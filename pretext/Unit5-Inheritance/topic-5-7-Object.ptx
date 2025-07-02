@@ -33,9 +33,7 @@
   </introduction>
 
   <subsection xml:id="tostring-method">
-    <title>
-      <c>toString()</c> method
-    </title>
+    <title><c>toString()</c> method</title>
 
     <p>
       One commonly overridden <c>Object</c> method is <c>toString()</c>, which
@@ -165,9 +163,7 @@ class APStudent extends Student
   </subsection>
 
   <subsection xml:id="equals-method">
-    <title>
-      <c>equals</c> Method
-    </title>
+    <title><c>equals</c> Method</title>
 
     <p>
       One of the important methods inherited from <c>Object</c> is the
@@ -253,9 +249,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="overriding-the-equals-method">
-    <title>
-      Overriding the <c>equals</c> Method
-    </title>
+    <title>Overriding the <c>equals</c> Method</title>
 
     <p>
       The <c>equals</c> method defined in <c>Object</c> and thus inherited by
@@ -532,9 +526,7 @@ public class RunestoneTests extends CodeTestHelper
         </li>
 
         <li>
-          <p>
-            Cast <c>other</c> to the current class.
-          </p>
+          <p>Cast <c>other</c> to the current class.</p>
         </li>
 
         <li>

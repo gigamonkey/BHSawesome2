@@ -139,9 +139,7 @@ public class RunestoneTests extends CodeTestHelper
         </li>
 
         <li>
-          <p>
-            The number of rows is <c>a.length</c>
-          </p>
+          <p>The number of rows is <c>a.length</c></p>
         </li>
 
         <li>

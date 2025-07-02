@@ -183,9 +183,7 @@ public class ModModl1
     <title>More Practice</title>
     <activity label="mod-18-mod-4">
       <statement>
-        <p>
-          What is the number returned from <c>18 % 4</c>?
-        </p>
+        <p>What is the number returned from <c>18 % 4</c>?</p>
 
         <p>
           <fillin answer="2" mode="string" />
@@ -211,9 +209,7 @@ public class ModModl1
 
     <activity label="mod-19-mod-4">
       <statement>
-        <p>
-          What is the number returned from <c>19 % 4</c>?
-        </p>
+        <p>What is the number returned from <c>19 % 4</c>?</p>
 
         <p>
           <fillin answer="3" mode="string" />
@@ -239,9 +235,7 @@ public class ModModl1
 
     <activity label="mod-19-mod-5">
       <statement>
-        <p>
-          What is the number returned from <c>19 % 5</c>?
-        </p>
+        <p>What is the number returned from <c>19 % 5</c>?</p>
 
         <p>
           <fillin answer="4" mode="string" />
@@ -267,9 +261,7 @@ public class ModModl1
 
     <activity label="mod-19-mod-6">
       <statement>
-        <p>
-          What is the number returned from <c>19 % 6</c>?
-        </p>
+        <p>What is the number returned from <c>19 % 6</c>?</p>
 
         <p>
           <fillin answer="1" mode="string" />

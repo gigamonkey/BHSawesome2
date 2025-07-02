@@ -300,9 +300,7 @@ public class MessageBuilder
     <p>
       <ul>
         <li>
-          <p>
-            The parameter <c>startingWord</c>
-          </p>
+          <p>The parameter <c>startingWord</c></p>
         </li>
 
         <li>
@@ -462,9 +460,7 @@ public class MessageBuilder
 
   <subsection xml:id="msgbuilder-solve-part-a">
     <title>Solve MessageBuilder Part A</title>
-    <p>
-      Complete the <c>MessageBuilder</c> constructor below.
-    </p>
+    <p>Complete the <c>MessageBuilder</c> constructor below.</p>
 
     <activity label="FRQmessageBuilderPartA">
       <statement>

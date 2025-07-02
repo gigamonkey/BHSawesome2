@@ -266,9 +266,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="write-the-code">
     <title>Write the Code</title>
-    <p>
-      Write the method <c>scrambleWord</c> below.
-    </p>
+    <p>Write the method <c>scrambleWord</c> below.</p>
 
     <activity label="lcfrssa5">
       <statement>

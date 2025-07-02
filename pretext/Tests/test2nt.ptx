@@ -592,9 +592,7 @@ III. getName()
 
   <activity label="qtnt2_7">
     <statement>
-      <p>
-        Which of these loops will output <c>02468</c>?
-      </p>
+      <p>Which of these loops will output <c>02468</c>?</p>
 
       <program language="java">
         <code>

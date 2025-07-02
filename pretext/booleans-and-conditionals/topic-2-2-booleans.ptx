@@ -188,39 +188,27 @@ public class BoolTestRef
     <p>
       <ul>
         <li>
-          <p>
-            <c>&lt;</c> Less Than
-          </p>
+          <p><c>&lt;</c> Less Than</p>
         </li>
 
         <li>
-          <p>
-            <c>&gt;</c> Greater Than
-          </p>
+          <p><c>&gt;</c> Greater Than</p>
         </li>
 
         <li>
-          <p>
-            <c>&lt;=</c> Less than or equal to
-          </p>
+          <p><c>&lt;=</c> Less than or equal to</p>
         </li>
 
         <li>
-          <p>
-            <c>&gt;=</c> Greater than or equal to
-          </p>
+          <p><c>&gt;=</c> Greater than or equal to</p>
         </li>
 
         <li>
-          <p>
-            <c>==</c> Equals
-          </p>
+          <p><c>==</c> Equals</p>
         </li>
 
         <li>
-          <p>
-            <c>!=</c> Does not equal
-          </p>
+          <p><c>!=</c> Does not equal</p>
         </li>
       </ul>
     </p>

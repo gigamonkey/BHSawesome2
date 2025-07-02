@@ -1141,9 +1141,7 @@ System.out.println(list1);
   </subsection>
 
   <subsection xml:id="get-index-and-set-index-obj">
-    <title>
-      <c>get(index)</c> and <c>set(index, obj)</c>
-    </title>
+    <title><c>get(index)</c> and <c>set(index, obj)</c></title>
 
     <idx>
       <h>arraylist</h><h>getting an item</h>
@@ -1393,9 +1391,7 @@ System.out.println(list1);
   </subsection>
 
   <subsection xml:id="comparing-arrays-and-arraylists">
-    <title>
-      Comparing arrays and <c>ArrayList</c>s
-    </title>
+    <title>Comparing arrays and <c>ArrayList</c>s</title>
 
     <p>
       When do you use arrays and when do you use <c>ArrayList</c>s? Use an array

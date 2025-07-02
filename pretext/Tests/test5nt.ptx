@@ -324,9 +324,7 @@ public int f2(int x)
 
   <activity label="qtnt5_5">
     <statement>
-      <p>
-        Which statement about constructors is <c>false</c>?
-      </p>
+      <p>Which statement about constructors is <c>false</c>?</p>
     </statement>
 
     <choices>
@@ -486,9 +484,7 @@ public int mystery(int n)
         <c>!a &amp;&amp; !b</c>
       </p>
 
-      <p>
-        …will evaluate to <c>false</c> whenever
-      </p>
+      <p>…will evaluate to <c>false</c> whenever</p>
 
       <p>
         <ol marker="I">
@@ -665,9 +661,7 @@ System.out.println(x + " " + y);
 
   <activity label="qtnt5_9">
     <statement>
-      <p>
-        What value is stored in <c>result</c> if:
-      </p>
+      <p>What value is stored in <c>result</c> if:</p>
 
       <program language="Java">
         <code>

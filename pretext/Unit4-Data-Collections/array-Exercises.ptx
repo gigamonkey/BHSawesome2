@@ -557,9 +557,7 @@ b[0] != b[i] for all i from 1 to k-1
 
         <choice>
           <statement>
-            <p>
-              Array <c>b</c> is sorted
-            </p>
+            <p>Array <c>b</c> is sorted</p>
           </statement>
 
           <feedback>
@@ -572,9 +570,7 @@ b[0] != b[i] for all i from 1 to k-1
 
         <choice>
           <statement>
-            <p>
-              Array <c>b</c> is not sorted
-            </p>
+            <p>Array <c>b</c> is not sorted</p>
           </statement>
 
           <feedback>

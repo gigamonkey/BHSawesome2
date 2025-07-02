@@ -460,9 +460,7 @@ public class RouteCipher
 
   <subsection xml:id="solve-part-b-1">
     <title>Solve Part B</title>
-    <p>
-      Complete the method <c>encryptMessage</c> below.
-    </p>
+    <p>Complete the method <c>encryptMessage</c> below.</p>
 
     <activity label="routecipherbCoding">
       <statement>

@@ -61,9 +61,7 @@
       all words in <c>wordList</c> consist of one or more letters.
     </p>
 
-    <p>
-      Complete method <c>totalLetters</c> below.
-    </p>
+    <p>Complete method <c>totalLetters</c> below.</p>
 
     <program language="java">
       <code>

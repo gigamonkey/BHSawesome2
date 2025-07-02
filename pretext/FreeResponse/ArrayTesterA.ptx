@@ -93,9 +93,7 @@ int[] result = ArrayTester.getColumn (arr2D, 1);
     <title>Try and Solve It</title>
     <activity label="isLatin">
       <statement>
-        <p>
-          Complete the method <c>getColumn</c> below.
-        </p>
+        <p>Complete the method <c>getColumn</c> below.</p>
       </statement>
 
       <program interactive="activecode" language="java">

@@ -662,9 +662,7 @@ String[][] seatingChart = new String[3][2];
 
     <activity label="twodaNumElfill">
       <statement>
-        <p>
-          How many elements are in <c>ticketInfo</c>?
-        </p>
+        <p>How many elements are in <c>ticketInfo</c>?</p>
 
         <p>
           <fillin answer="6" mode="string" />

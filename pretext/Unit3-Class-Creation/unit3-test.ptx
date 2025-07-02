@@ -439,9 +439,7 @@ IV.  public void addMinutes(int additionMinutes)
 
     <exercise label="u3_5">
       <statement>
-        <p>
-          What does the method <c>mystery</c> do?
-        </p>
+        <p>What does the method <c>mystery</c> do?</p>
 
         <program language="java">
           <code>

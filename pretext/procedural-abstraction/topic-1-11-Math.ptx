@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="topic-1-11-Math">
-  <title>
-    The <c>Math</c> class
-  </title>
+  <title>The <c>Math</c> class</title>
 
   <introduction>
     <p>
@@ -179,9 +177,7 @@ public class RunestoneTests extends CodeTestHelper
     </activity>
 
     <activity label="call-sqrt-mc">
-      <title>
-        Legal call to <c>sqrt</c>
-      </title>
+      <title>Legal call to <c>sqrt</c></title>
 
       <statement>
         <p>

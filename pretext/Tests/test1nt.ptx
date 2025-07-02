@@ -261,9 +261,7 @@ III. An array that is in random order (not already sorted).
 
   <activity label="qtnt1_4">
     <statement>
-      <p>
-        Which of these loops will output <c>01234</c>?
-      </p>
+      <p>Which of these loops will output <c>01234</c>?</p>
 
       <program language="java">
         <code>

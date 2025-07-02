@@ -49,9 +49,7 @@
     <title>Try and Solve It</title>
     <activity label="isLatinTwo">
       <statement>
-        <p>
-          Complete the method <c>isLatin</c> below.
-        </p>
+        <p>Complete the method <c>isLatin</c> below.</p>
       </statement>
 
       <program interactive="activecode" language="java">

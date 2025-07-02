@@ -114,27 +114,19 @@ public class ClassName
       <p>
         <ul>
           <li>
-            <p>
-              0 for <c>int</c>
-            </p>
+            <p>0 for <c>int</c></p>
           </li>
 
           <li>
-            <p>
-              0.0 for <c>double</c>
-            </p>
+            <p>0.0 for <c>double</c></p>
           </li>
 
           <li>
-            <p>
-              <c>false</c> for <c>boolean</c>
-            </p>
+            <p><c>false</c> for <c>boolean</c></p>
           </li>
 
           <li>
-            <p>
-              <c>null</c> for all reference types
-            </p>
+            <p><c>null</c> for all reference types</p>
           </li>
         </ul>
       </p>

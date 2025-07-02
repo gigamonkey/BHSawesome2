@@ -22,9 +22,7 @@
   </introduction>
 
   <subsection xml:id="output">
-    <title>
-      <c>println</c> and <c>print</c>
-    </title>
+    <title><c>println</c> and <c>print</c></title>
 
     <idx>output</idx>
     <p>

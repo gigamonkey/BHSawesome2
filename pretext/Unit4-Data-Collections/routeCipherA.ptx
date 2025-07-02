@@ -695,9 +695,7 @@ str.substring(k, k + 1)
     <title>Try And Solve It</title>
     <activity label="FRQRouteCipherA">
       <statement>
-        <p>
-          Complete the method <c>fillBlock</c> below.
-        </p>
+        <p>Complete the method <c>fillBlock</c> below.</p>
       </statement>
 
       <program interactive="activecode" language="java">

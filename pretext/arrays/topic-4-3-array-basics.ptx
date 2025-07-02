@@ -267,9 +267,7 @@ public class RunestoneTests extends CodeTestHelper
       <p>
         <ul>
           <li>
-            <p>
-              0 for elements of type <c>int</c>
-            </p>
+            <p>0 for elements of type <c>int</c></p>
           </li>
 
           <li>

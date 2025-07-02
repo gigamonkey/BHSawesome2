@@ -238,9 +238,7 @@ public static void conditionTest(int num1, int num2)
 
     <exercise label="u2_3">
       <statement>
-        <p>
-          Which of these loops will output <c>01234</c>?
-        </p>
+        <p>Which of these loops will output <c>01234</c>?</p>
 
         <program language="java">
           <code>

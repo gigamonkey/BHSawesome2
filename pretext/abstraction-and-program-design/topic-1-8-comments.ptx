@@ -22,9 +22,7 @@
     <p>
       <ol marker="1">
         <li>
-          <p>
-            <c>//</c> Single line comment
-          </p>
+          <p><c>//</c> Single line comment</p>
         </li>
 
         <li>

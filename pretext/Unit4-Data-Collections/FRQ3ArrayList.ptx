@@ -136,9 +136,7 @@ public class ItemInventory
       it is not available.
     </p>
 
-    <p>
-      Complete method <c>averageWithinRange</c>.
-    </p>
+    <p>Complete method <c>averageWithinRange</c>.</p>
 
     <program language="java">
       <code>
@@ -587,9 +585,7 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <figure align="center">
-      <caption>
-        Rubric for <c>averageWithinRange</c>
-      </caption>
+      <caption>Rubric for <c>averageWithinRange</c></caption>
 
       <image source="Unit4-Data-Collections/Figures/itemInventoryRubric1.png" width="100%" alt="Rubric for averageWithinRange" />
       <image source="Unit4-Data-Collections/Figures/itemInventoryRubric2.png" width="100%" alt="Rubric for averageWithinRange" />

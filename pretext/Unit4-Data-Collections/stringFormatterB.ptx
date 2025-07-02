@@ -58,9 +58,7 @@
       receive full credit.
     </p>
 
-    <p>
-      Complete method <c>basicGapWidth</c> below.
-    </p>
+    <p>Complete method <c>basicGapWidth</c> below.</p>
 
     <program language="java">
       <code>

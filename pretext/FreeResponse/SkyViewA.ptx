@@ -145,9 +145,7 @@ public class SkyView
 
   <subsection xml:id="try-and-solve-it-7">
     <title>Try and Solve It</title>
-    <p>
-      Complete the <c>SkyView</c> constructor in the class below.
-    </p>
+    <p>Complete the <c>SkyView</c> constructor in the class below.</p>
 
     <p>
       The code below declares the class, the view, and a constructor for you to

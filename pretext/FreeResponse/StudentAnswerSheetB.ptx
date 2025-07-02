@@ -45,9 +45,7 @@ public class TestResults
 
   <subsection xml:id="try-and-solve-it-12">
     <title>Try and Solve It</title>
-    <p>
-      Complete method <c>highestScoringStudent</c> below.
-    </p>
+    <p>Complete method <c>highestScoringStudent</c> below.</p>
 
     <p>
       The code below has a main method for testing the

@@ -50,9 +50,7 @@ public static return-type method-name(param-type param-var1, param-type param-va
           </li>
 
           <li>
-            <p>
-              Otherwise return <c>"n"</c>.
-            </p>
+            <p>Otherwise return <c>"n"</c>.</p>
           </li>
         </ul>
       </p>
