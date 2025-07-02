@@ -4,8 +4,11 @@
   <title>Writing methods</title>
   <introduction>
     <p>
-      To understand how methods work, it’s best to start by looking at how to
-      write our own methods.
+      Writing Java code consists of about equal parts writing methods and using
+      them but it is probably easier to understand how to use them if we
+      understand what they are so we’le start by looking at how to write our own
+      methods. In the next lesson we’ll look at a bunch of methods that are part
+      of Java that we don’t have to write but which we can use.
     </p>
   </introduction>
 
