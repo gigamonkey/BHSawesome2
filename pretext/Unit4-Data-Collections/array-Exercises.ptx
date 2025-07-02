@@ -21,8 +21,7 @@
         <choice>
           <statement>
             <p>
-              <code>nums.length
-              </code>
+              <c>nums.length</c>
             </p>
           </statement>
 
@@ -37,8 +36,7 @@
         <choice correct="yes">
           <statement>
             <p>
-              <code>nums.length - 1
-              </code>
+              <c>nums.length - 1</c>
             </p>
           </statement>
 
@@ -63,8 +61,7 @@
         <choice>
           <statement>
             <p>
-              <code>int[] scores = null;
-              </code>
+              <c>int[] scores = null;</c>
             </p>
           </statement>
 
@@ -79,8 +76,7 @@
         <choice>
           <statement>
             <p>
-              <code>int[] scoreArray = {50,90,85};
-              </code>
+              <c>int[] scoreArray = {50,90,85};</c>
             </p>
           </statement>
 
@@ -92,15 +88,14 @@
         <choice>
           <statement>
             <p>
-              <code>String[] nameArray = new String[10];
-              </code>
+              <c>String[] nameArray = new String[10];</c>
             </p>
           </statement>
 
           <feedback>
             <p>
-              You can declare and array and create the array using the <code>new
-              </code> operator in the same statement.
+              You can declare and array and create the array using the
+              <c>new</c> operator in the same statement.
             </p>
           </feedback>
         </choice>
@@ -108,8 +103,7 @@
         <choice correct="yes">
           <statement>
             <p>
-              <code>String[] nameArray = {5, 3, 2};
-              </code>
+              <c>String[] nameArray = {5, 3, 2};</c>
             </p>
           </statement>
 
@@ -121,16 +115,15 @@
         <choice>
           <statement>
             <p>
-              <code>int[] scores = new int[5];
-              </code>
+              <c>int[] scores = new int[5];</c>
             </p>
           </statement>
 
           <feedback>
             <p>
               You can declare and array and create it in the same statement. Use
-              the <code>new </code> operator to create the array and specify the
-              size in square brackets.
+              the <c>new</c> operator to create the array and specify the size
+              in square brackets.
             </p>
           </feedback>
         </choice>
@@ -152,7 +145,7 @@
 
           <feedback>
             <p>
-              This would be returned from <code>arr[2] </code>.
+              This would be returned from <c>arr[2]</c>.
             </p>
           </feedback>
         </choice>
@@ -164,8 +157,8 @@
 
           <feedback>
             <p>
-              This returns the value in <code>arr </code> at index 3. Remember
-              that the first item in an array is at index 0.
+              This returns the value in <c>arr</c> at index 3. Remember that the
+              first item in an array is at index 0.
             </p>
           </feedback>
         </choice>
@@ -177,7 +170,7 @@
 
           <feedback>
             <p>
-              This would be returned from <code>arr[1] </code>.
+              This would be returned from <c>arr[1]</c>.
             </p>
           </feedback>
         </choice>
@@ -189,7 +182,7 @@
 
           <feedback>
             <p>
-              This would be returned from <code>arr[0] </code>.
+              This would be returned from <c>arr[0]</c>.
             </p>
           </feedback>
         </choice>
@@ -201,7 +194,7 @@
 
           <feedback>
             <p>
-              This would be returned from <code>arr.length </code>
+              This would be returned from <c>arr.length</c>
             </p>
           </feedback>
         </choice>
@@ -238,8 +231,7 @@ public static double mystery(int[] arr)
 
           <feedback>
             <p>
-              This would be true if the loop stopped at <code>arr.length - 1
-              </code>.
+              This would be true if the loop stopped at <c>arr.length - 1</c>.
             </p>
           </feedback>
         </choice>
@@ -261,8 +253,8 @@ public static double mystery(int[] arr)
 
           <feedback>
             <p>
-              This would be true if it returned <code>output </code> rather than
-              <code>output / arr.length </code>
+              This would be true if it returned <c>output</c> rather than
+              <c>output / arr.length</c>
             </p>
           </feedback>
         </choice>
@@ -274,8 +266,8 @@ public static double mystery(int[] arr)
 
           <feedback>
             <p>
-              This would be true if <code>output </code> was declared to be an
-              int rather than a double.
+              This would be true if <c>output</c> was declared to be an int
+              rather than a double.
             </p>
           </feedback>
         </choice>
@@ -551,14 +543,13 @@ b[0] != b[i] for all i from 1 to k-1
         <choice correct="yes">
           <statement>
             <p>
-              The value in <code>b[0] </code> does not occur anywhere else in
-              the array
+              The value in <c>b[0]</c> does not occur anywhere else in the array
             </p>
           </statement>
 
           <feedback>
             <p>
-              The assertion denotes that <code>b[0] </code> occurs only once,
+              The assertion denotes that <c>b[0]</c> occurs only once,
               regardless of the order or value of the other array values.
             </p>
           </feedback>
@@ -567,7 +558,7 @@ b[0] != b[i] for all i from 1 to k-1
         <choice>
           <statement>
             <p>
-              Array <code>b </code> is sorted
+              Array <c>b</c> is sorted
             </p>
           </statement>
 
@@ -582,7 +573,7 @@ b[0] != b[i] for all i from 1 to k-1
         <choice>
           <statement>
             <p>
-              Array <code>b </code> is not sorted
+              Array <c>b</c> is not sorted
             </p>
           </statement>
 
@@ -594,14 +585,13 @@ b[0] != b[i] for all i from 1 to k-1
         <choice>
           <statement>
             <p>
-              Array <code>b </code> contains no duplicates
+              Array <c>b</c> contains no duplicates
             </p>
           </statement>
 
           <feedback>
             <p>
-              The only value that must not have a duplicate is <code>b[0]
-              </code>
+              The only value that must not have a duplicate is <c>b[0]</c>
             </p>
           </feedback>
         </choice>
@@ -609,14 +599,14 @@ b[0] != b[i] for all i from 1 to k-1
         <choice>
           <statement>
             <p>
-              The value in <code>b[0] </code> is the smallest value in the array
+              The value in <c>b[0]</c> is the smallest value in the array
             </p>
           </statement>
 
           <feedback>
             <p>
-              <code>b[0] </code> can be any value, so long as no other array
-              element is equal to it.
+              <c>b[0]</c> can be any value, so long as no other array element is
+              equal to it.
             </p>
           </feedback>
         </choice>
@@ -646,16 +636,15 @@ return temp;
         <choice>
           <statement>
             <p>
-              whenever the first element in <code>a </code> is equal to
-              <code>val </code>
+              whenever the first element in <c>a</c> is equal to <c>val</c>
             </p>
           </statement>
 
           <feedback>
             <p>
-              It is the last value in <code>a </code> that controls the final
-              state of <code>temp </code>, as the loop is progressing through
-              the array from 0 to the end.
+              It is the last value in <c>a</c> that controls the final state of
+              <c>temp</c>, as the loop is progressing through the array from 0
+              to the end.
             </p>
           </feedback>
         </choice>
@@ -663,16 +652,14 @@ return temp;
         <choice>
           <statement>
             <p>
-              Whenever <code>a </code> contains any element which equals
-              <code>val </code>
+              Whenever <c>a</c> contains any element which equals <c>val</c>
             </p>
           </statement>
 
           <feedback>
             <p>
-              Because <code>temp </code> is reset every time through the loop,
-              only the last element controls whether the final value is true or
-              false.
+              Because <c>temp</c> is reset every time through the loop, only the
+              last element controls whether the final value is true or false.
             </p>
           </feedback>
         </choice>
@@ -680,16 +667,15 @@ return temp;
         <choice correct="yes">
           <statement>
             <p>
-              Whenever the last element in <code>a </code> is equal to <code>val
-              </code>
+              Whenever the last element in <c>a</c> is equal to <c>val</c>
             </p>
           </statement>
 
           <feedback>
             <p>
-              Because each time through the loop <code>temp </code> is reset, it
-              will only be returned as true if the last value in <code>a </code>
-              is equal to <code>val </code>.
+              Because each time through the loop <c>temp</c> is reset, it will
+              only be returned as true if the last value in <c>a</c> is equal to
+              <c>val</c>.
             </p>
           </feedback>
         </choice>
@@ -697,17 +683,15 @@ return temp;
         <choice>
           <statement>
             <p>
-              Whenever more than 1 element in <code>a </code> is equal to
-              <code>val </code>
+              Whenever more than 1 element in <c>a</c> is equal to <c>val</c>
             </p>
           </statement>
 
           <feedback>
             <p>
-              Because <code>temp </code> is reset every time through the loop,
-              only the last element controls whether the final value is true or
-              false, so it is possible for just the last value to be equal to
-              <code>val </code>.
+              Because <c>temp</c> is reset every time through the loop, only the
+              last element controls whether the final value is true or false, so
+              it is possible for just the last value to be equal to <c>val</c>.
             </p>
           </feedback>
         </choice>
@@ -715,17 +699,15 @@ return temp;
         <choice>
           <statement>
             <p>
-              Whenever exactly 1 element in <code>a </code> is equal to
-              <code>val </code>
+              Whenever exactly 1 element in <c>a</c> is equal to <c>val</c>
             </p>
           </statement>
 
           <feedback>
             <p>
-              Because <code>temp </code> is reset every time through the loop,
-              only the last element controls whether the final value is true or
-              false, so it is possible for several elements to be equal to
-              <code>val </code>.
+              Because <c>temp</c> is reset every time through the loop, only the
+              last element controls whether the final value is true or false, so
+              it is possible for several elements to be equal to <c>val</c>.
             </p>
           </feedback>
         </choice>
@@ -785,14 +767,14 @@ public int findLongest(int target)
           <statement>
             <p>
               It is the length of the shortest consecutive block of the value
-              <code>target </code> in <code>nums </code>
+              <c>target</c> in <c>nums</c>
             </p>
           </statement>
 
           <feedback>
             <p>
-              It doesn't reset <code>lenCount </code> ever, so it just counts
-              all the times the <code>target </code> value appears in the array.
+              It doesn't reset <c>lenCount</c> ever, so it just counts all the
+              times the <c>target</c> value appears in the array.
             </p>
           </feedback>
         </choice>
@@ -800,15 +782,15 @@ public int findLongest(int target)
         <choice>
           <statement>
             <p>
-              It is the length of the array <code>nums </code>
+              It is the length of the array <c>nums</c>
             </p>
           </statement>
 
           <feedback>
             <p>
-              The only count happens when <code>lenCount </code> is incremented
-              when <code>nums[k] == target </code>. <code>nums.length </code> is
-              only used to stop the loop.
+              The only count happens when <c>lenCount</c> is incremented when
+              <c>nums[k] == target</c>. <c>nums.length</c> is only used to stop
+              the loop.
             </p>
           </feedback>
         </choice>
@@ -817,14 +799,14 @@ public int findLongest(int target)
           <statement>
             <p>
               It is the length of the first consecutive block of the value
-              <code>target </code> in <code>nums </code>
+              <c>target</c> in <c>nums</c>
             </p>
           </statement>
 
           <feedback>
             <p>
-              It doesn't reset <code>lenCount </code> ever, so it just counts
-              all the times the <code>target </code> value appears in the array.
+              It doesn't reset <c>lenCount</c> ever, so it just counts all the
+              times the <c>target</c> value appears in the array.
             </p>
           </feedback>
         </choice>
@@ -832,20 +814,19 @@ public int findLongest(int target)
         <choice correct="yes">
           <statement>
             <p>
-              It is the number of occurrences of the value <code>target </code>
-              in <code>nums </code>
+              It is the number of occurrences of the value <c>target</c> in
+              <c>nums</c>
             </p>
           </statement>
 
           <feedback>
             <p>
-              The variable <code>lenCount </code> is incremented each time the
-              current array element is the same value as the <code>target
-              </code>. It is never reset so it counts the number of occurrences
-              of the value <code>target </code> in <code>nums </code>. The
-              method returns <code>maxLen </code> which is set to <code>lenCount
-              </code> after the loop finishes if <code>lenCount </code> is
-              greater than <code>maxLen </code>.
+              The variable <c>lenCount</c> is incremented each time the current
+              array element is the same value as the <c>target</c>. It is never
+              reset so it counts the number of occurrences of the value
+              <c>target</c> in <c>nums</c>. The method returns <c>maxLen</c>
+              which is set to <c>lenCount</c> after the loop finishes if
+              <c>lenCount</c> is greater than <c>maxLen</c>.
             </p>
           </feedback>
         </choice>
@@ -854,14 +835,14 @@ public int findLongest(int target)
           <statement>
             <p>
               It is the length of the last consecutive block of the value
-              <code>target </code> in <code>nums </code>
+              <c>target</c> in <c>nums</c>
             </p>
           </statement>
 
           <feedback>
             <p>
-              It doesn't reset <code>lenCount </code> ever, so it just counts
-              all the times the <code>target </code> value appears in the array.
+              It doesn't reset <c>lenCount</c> ever, so it just counts all the
+              times the <c>target</c> value appears in the array.
             </p>
           </feedback>
         </choice>
@@ -912,19 +893,18 @@ int m = mystery(n)
         <choice correct="yes">
           <statement>
             <p>
-              All values in positions <code>m+1 </code> through
-              <code>myStuff.length-1 </code> are greater than or equal to
-              <code>n </code>.
+              All values in positions <c>m+1</c> through <c>myStuff.length-1</c>
+              are greater than or equal to <c>n</c>.
             </p>
           </statement>
 
           <feedback>
             <p>
               Mystery steps backwards through the array until the first value
-              less than the passed <code>num </code> ( <code>n </code>) is found
-              and then it returns the index where this value is found. Nothing
-              is known about the elements of the array prior to the index at
-              which the condition is met.
+              less than the passed <c>num</c> ( <c>n</c>) is found and then it
+              returns the index where this value is found. Nothing is known
+              about the elements of the array prior to the index at which the
+              condition is met.
             </p>
           </feedback>
         </choice>
@@ -932,18 +912,17 @@ int m = mystery(n)
         <choice>
           <statement>
             <p>
-              All values in position 0 through <code>m </code> are less than
-              <code>n </code>.
+              All values in position 0 through <c>m</c> are less than <c>n</c>.
             </p>
           </statement>
 
           <feedback>
             <p>
               Mystery steps backwards through the array and quits the first time
-              the value at the current index is less than the passed <code>num
-              </code> ( <code>n </code>). This would be true if we went forward
-              through the array and returned when it found a value greater than
-              the passed <code>num </code> ( <code>n </code>).
+              the value at the current index is less than the passed <c>num</c>
+              ( <c>n</c>). This would be true if we went forward through the
+              array and returned when it found a value greater than the passed
+              <c>num</c> ( <c>n</c>).
             </p>
           </feedback>
         </choice>
@@ -951,16 +930,15 @@ int m = mystery(n)
         <choice>
           <statement>
             <p>
-              All values in position <code>m+1 </code> through
-              <code>myStuff.length-1 </code> are less than <code>n </code>.
+              All values in position <c>m+1</c> through <c>myStuff.length-1</c>
+              are less than <c>n</c>.
             </p>
           </statement>
 
           <feedback>
             <p>
               This would be true if it returned when it found a value at the
-              current index that was greater than <code>num </code> ( <code>n
-              </code>).
+              current index that was greater than <c>num</c> ( <c>n</c>).
             </p>
           </feedback>
         </choice>
@@ -968,16 +946,16 @@ int m = mystery(n)
         <choice>
           <statement>
             <p>
-              The smallest value is at position <code>m </code>.
+              The smallest value is at position <c>m</c>.
             </p>
           </statement>
 
           <feedback>
             <p>
               The condition compares the value at the current index of the array
-              to the passed <code>num </code>. It returns the first time the
-              condition is met so nothing is known about the values which are
-              unchecked. One of the unchecked values could be smaller.
+              to the passed <c>num</c>. It returns the first time the condition
+              is met so nothing is known about the values which are unchecked.
+              One of the unchecked values could be smaller.
             </p>
           </feedback>
         </choice>
@@ -985,18 +963,17 @@ int m = mystery(n)
         <choice>
           <statement>
             <p>
-              The largest value that is smaller than <code>n </code> is at
-              position <code>m </code>.
+              The largest value that is smaller than <c>n</c> is at position
+              <c>m</c>.
             </p>
           </statement>
 
           <feedback>
             <p>
               The condition checks for any value that is smaller than the passed
-              <code>num </code> and returns from <code>mystery </code> the first
-              time that the condition is encountered. The values are not ordered
-              so we don't know if this is the largest value smaller than <code>n
-              </code>.
+              <c>num</c> and returns from <c>mystery</c> the first time that the
+              condition is encountered. The values are not ordered so we don't
+              know if this is the largest value smaller than <c>n</c>.
             </p>
           </feedback>
         </choice>
@@ -1042,18 +1019,17 @@ public int checkArray()
         <choice correct="yes">
           <statement>
             <p>
-              Returns the index of the largest value in array <code>arr </code>.
+              Returns the index of the largest value in array <c>arr</c>.
             </p>
           </statement>
 
           <feedback>
             <p>
-              This code sets <code>loc </code> to the middle of the array and
-              then loops through all the array elements. If the value at the
-              current index is greater than the value at <code>loc </code> then
-              it changes <code>loc </code> to the current index. It returns
-              <code>loc </code>, which is the index of the largest value in the
-              array.
+              This code sets <c>loc</c> to the middle of the array and then
+              loops through all the array elements. If the value at the current
+              index is greater than the value at <c>loc</c> then it changes
+              <c>loc</c> to the current index. It returns <c>loc</c>, which is
+              the index of the largest value in the array.
             </p>
           </feedback>
         </choice>
@@ -1061,15 +1037,15 @@ public int checkArray()
         <choice>
           <statement>
             <p>
-              Returns the index of the first element in array <code>arr </code>
-              whose value is greater than <code>arr[loc] </code>.
+              Returns the index of the first element in array <c>arr</c> whose
+              value is greater than <c>arr[loc]</c>.
             </p>
           </statement>
 
           <feedback>
             <p>
-              This would be true if there was a <code>return loc </code> after
-              <code>loc = k </code> in the <code>if </code> block.
+              This would be true if there was a <c>return loc</c> after <c>loc =
+              k</c> in the <c>if</c> block.
             </p>
           </feedback>
         </choice>
@@ -1077,16 +1053,16 @@ public int checkArray()
         <choice>
           <statement>
             <p>
-              Returns the index of the last element in array <code>arr </code>
-              whose value is greater than <code>arr[loc] </code>.
+              Returns the index of the last element in array <c>arr</c> whose
+              value is greater than <c>arr[loc]</c>.
             </p>
           </statement>
 
           <feedback>
             <p>
-              This would be true if it returned <code>loc </code> after setting
-              <code>loc = k </code> and if it started at the end of the array
-              and looped toward the beginning of the array.
+              This would be true if it returned <c>loc</c> after setting <c>loc
+              = k</c> and if it started at the end of the array and looped
+              toward the beginning of the array.
             </p>
           </feedback>
         </choice>
@@ -1094,14 +1070,14 @@ public int checkArray()
         <choice>
           <statement>
             <p>
-              Returns the largest value in array <code>arr </code>.
+              Returns the largest value in array <c>arr</c>.
             </p>
           </statement>
 
           <feedback>
             <p>
               It returns the <i>index</i> to the largest value in array
-              <code>arr </code>, not the largest value.
+              <c>arr</c>, not the largest value.
             </p>
           </feedback>
         </choice>
@@ -1110,14 +1086,14 @@ public int checkArray()
           <statement>
             <p>
               Returns the index of the largest value in the second half of array
-              <code>arr </code>.
+              <c>arr</c>.
             </p>
           </statement>
 
           <feedback>
             <p>
-              <code>k </code> loops from 0 to <code>arr.length - 1 </code>. So
-              it checks all of the elements in the array.
+              <c>k</c> loops from 0 to <c>arr.length - 1</c>. So it checks all
+              of the elements in the array.
             </p>
           </feedback>
         </choice>
@@ -1159,8 +1135,8 @@ public static int m1(int[] a)
 
           <feedback>
             <p>
-              This would be true if it was <code>return (a[1] *= 2); </code>,
-              which would change the value at <code>a[1] </code>.
+              This would be true if it was <c>return (a[1] *= 2);</c>, which
+              would change the value at <c>a[1]</c>.
             </p>
           </feedback>
         </choice>
@@ -1172,10 +1148,9 @@ public static int m1(int[] a)
 
           <feedback>
             <p>
-              The statement <code>a[1]--; </code> is the same as <code>a[1] =
-              a[1] - 1; </code> so this will change the 3 to 2. The <code>return
-              (a[1] * 2) </code> does not change the value at <code>a[1]
-              </code>.
+              The statement <c>a[1]--;</c> is the same as <c>a[1] = a[1] -
+              1;</c> so this will change the 3 to 2. The <c>return (a[1] *
+              2)</c> does not change the value at <c>a[1]</c>.
             </p>
           </feedback>
         </choice>
@@ -1211,11 +1186,11 @@ public static int m1(int[] a)
 
           <feedback>
             <p>
-              This can't be true because <code>a[1]--; </code> means the same as
-              <code>a[1] = a[1] - 1; </code> so the 3 changes to 2. Parameters
-              are all pass by value in Java which means that a copy of the value
-              is passed to a method. But, since an array is an object a copy of
-              the value is a copy of the reference to the object. So changes to
+              This can't be true because <c>a[1]--;</c> means the same as
+              <c>a[1] = a[1] - 1;</c> so the 3 changes to 2. Parameters are all
+              pass by value in Java which means that a copy of the value is
+              passed to a method. But, since an array is an object a copy of the
+              value is a copy of the reference to the object. So changes to
               objects in methods are permanent.
             </p>
           </feedback>
@@ -1258,13 +1233,13 @@ for (int i = 1; i &lt; k; i++)
 
           <feedback>
             <p>
-              This loop will start at 1 and continue until <code>k </code> is
-              reached as long as <code>arr[i] &lt; someValue </code> is true.
-              The last time the loop executes, <code>i </code> will equal
-              <code>k-1 </code>, if the condition is always true. The number of
-              times a loop executes is equal to the largest value when the loop
-              executes minus the smallest value plus one. In this case that is
-              <code>(k - 1) - 1 + 1 </code> which equals <code>k - 1 </code>.
+              This loop will start at 1 and continue until <c>k</c> is reached
+              as long as <c>arr[i] &lt; someValue</c> is true. The last time the
+              loop executes, <c>i</c> will equal <c>k-1</c>, if the condition is
+              always true. The number of times a loop executes is equal to the
+              largest value when the loop executes minus the smallest value plus
+              one. In this case that is <c>(k - 1) - 1 + 1</c> which equals <c>k
+              - 1</c>.
             </p>
           </feedback>
         </choice>
@@ -1276,9 +1251,9 @@ for (int i = 1; i &lt; k; i++)
 
           <feedback>
             <p>
-              This would be true if <code>arr[i] &lt; someValue </code> was
-              always true and the loop started at 0 instead of 1 and continued
-              while it was less than or equal to <code>k </code>.
+              This would be true if <c>arr[i] &lt; someValue</c> was always true
+              and the loop started at 0 instead of 1 and continued while it was
+              less than or equal to <c>k</c>.
             </p>
           </feedback>
         </choice>
@@ -1290,8 +1265,8 @@ for (int i = 1; i &lt; k; i++)
 
           <feedback>
             <p>
-              This would be true if <code>arr[i] &lt; someValue </code> was
-              always true and the loop started at 0 instead of 1.
+              This would be true if <c>arr[i] &lt; someValue</c> was always true
+              and the loop started at 0 instead of 1.
             </p>
           </feedback>
         </choice>
@@ -1304,7 +1279,7 @@ for (int i = 1; i &lt; k; i++)
           <feedback>
             <p>
               This would be the case if only one element in the array would
-              fulfill the condition that <code>arr[i] &lt; someValue </code>.
+              fulfill the condition that <c>arr[i] &lt; someValue</c>.
             </p>
           </feedback>
         </choice>
@@ -1316,9 +1291,9 @@ for (int i = 1; i &lt; k; i++)
 
           <feedback>
             <p>
-              This is the minimum number of times that <code>HELLO </code> could
-              be executed. This would be true if <code>k </code> was less than
-              <code>i </code> initially.
+              This is the minimum number of times that <c>HELLO</c> could be
+              executed. This would be true if <c>k</c> was less than <c>i</c>
+              initially.
             </p>
           </feedback>
         </choice>
@@ -1360,9 +1335,9 @@ public static void changeArray(int[] data)
 
           <feedback>
             <p>
-              This would be correct if <code>data[k] </code> was modified in the
-              for-loop. In this for-loop, <code>data[k - 1] </code> is the
-              element that changes.
+              This would be correct if <c>data[k]</c> was modified in the
+              for-loop. In this for-loop, <c>data[k - 1]</c> is the element that
+              changes.
             </p>
           </feedback>
         </choice>
@@ -1374,10 +1349,10 @@ public static void changeArray(int[] data)
 
           <feedback>
             <p>
-              This would be correct if <code>data[k - 1] </code> was subtracted
-              from <code>data[k] </code>. Notice that for every instance of the
-              for-loop, <code>data[k] </code> and <code>data[k - 1] </code> are
-              added together and <code>data[k - 1] </code> is set to that value.
+              This would be correct if <c>data[k - 1]</c> was subtracted from
+              <c>data[k]</c>. Notice that for every instance of the for-loop,
+              <c>data[k]</c> and <c>data[k - 1]</c> are added together and
+              <c>data[k - 1]</c> is set to that value.
             </p>
           </feedback>
         </choice>
@@ -1390,7 +1365,7 @@ public static void changeArray(int[] data)
           <feedback>
             <p>
               This would be correct if the for-loop began at 1 and continued to
-              <code>data.length - 1 </code>. Notice the for-loop indexing.
+              <c>data.length - 1</c>. Notice the for-loop indexing.
             </p>
           </feedback>
         </choice>
@@ -1403,9 +1378,8 @@ public static void changeArray(int[] data)
           <feedback>
             <p>
               The indexing of this method is correct. The for-loop begins at the
-              last valid index and ends when <code>k </code> is equal to 0, and
-              the method does not access any values other than the ones
-              specified.
+              last valid index and ends when <c>k</c> is equal to 0, and the
+              method does not access any values other than the ones specified.
             </p>
           </feedback>
         </choice>
@@ -1418,8 +1392,8 @@ public static void changeArray(int[] data)
           <feedback>
             <p>
               This method starts at the last valid index of the array and adds
-              the value of the previous element to the element at index <code>k
-              - 1 </code>.
+              the value of the previous element to the element at index <c>k -
+              1</c>.
             </p>
           </feedback>
         </choice>
@@ -1462,8 +1436,8 @@ public static void copyArray(int[] arr1, int[] arr2)
 
           <feedback>
             <p>
-              This would be true if <code>i </code> started at 0 instead of
-              <code>arr1.length / 2 </code>.
+              This would be true if <c>i</c> started at 0 instead of
+              <c>arr1.length / 2</c>.
             </p>
           </feedback>
         </choice>
@@ -1475,8 +1449,8 @@ public static void copyArray(int[] arr1, int[] arr2)
 
           <feedback>
             <p>
-              This would be true if <code>i </code> started at 0 and ended when
-              it reached <code>arr1.length / 2 </code>.
+              This would be true if <c>i</c> started at 0 and ended when it
+              reached <c>arr1.length / 2</c>.
             </p>
           </feedback>
         </choice>
@@ -1488,9 +1462,8 @@ public static void copyArray(int[] arr1, int[] arr2)
 
           <feedback>
             <p>
-              This loop starts at <code>arr2.length / 2 </code> which is 2 and
-              loops to the end of the array copying from <code>arr2 </code> to
-              <code>arr1 </code>.
+              This loop starts at <c>arr2.length / 2</c> which is 2 and loops to
+              the end of the array copying from <c>arr2</c> to <c>arr1</c>.
             </p>
           </feedback>
         </choice>
@@ -1502,8 +1475,8 @@ public static void copyArray(int[] arr1, int[] arr2)
 
           <feedback>
             <p>
-              This would be correct if this loop didn't change <code>arr1
-              </code>, but it does.
+              This would be correct if this loop didn't change <c>arr1</c>, but
+              it does.
             </p>
           </feedback>
         </choice>
@@ -1515,8 +1488,8 @@ public static void copyArray(int[] arr1, int[] arr2)
 
           <feedback>
             <p>
-              This would be correct if it set <code>arr1[i] </code> equal to
-              <code>arr[i] + arr[2] </code> instead.
+              This would be correct if it set <c>arr1[i]</c> equal to <c>arr[i]
+              + arr[2]</c> instead.
             </p>
           </feedback>
         </choice>
@@ -1568,17 +1541,17 @@ for ( int k = 0; k &lt; a.length; k++ )
         <choice correct="yes">
           <statement>
             <p>
-              Whenever <code>a </code> includes a value that is less than or
-              equal to zero.
+              Whenever <c>a</c> includes a value that is less than or equal to
+              zero.
             </p>
           </statement>
 
           <feedback>
             <p>
-              When <code>a </code> contains a value that is less than or equal
-              to zero then multiplying that value by 2 will never make the
-              result larger than <code>temp </code> (which was set to some value
-              &gt; 0), so an infinite loop will occur.
+              When <c>a</c> contains a value that is less than or equal to zero
+              then multiplying that value by 2 will never make the result larger
+              than <c>temp</c> (which was set to some value &gt; 0), so an
+              infinite loop will occur.
             </p>
           </feedback>
         </choice>
@@ -1586,15 +1559,13 @@ for ( int k = 0; k &lt; a.length; k++ )
         <choice>
           <statement>
             <p>
-              Whenever <code>a </code> has values larger then <code>temp
-              </code>.
+              Whenever <c>a</c> has values larger then <c>temp</c>.
             </p>
           </statement>
 
           <feedback>
             <p>
-              Values larger then <code>temp </code> will not cause an infinite
-              loop.
+              Values larger then <c>temp</c> will not cause an infinite loop.
             </p>
           </feedback>
         </choice>
@@ -1602,15 +1573,13 @@ for ( int k = 0; k &lt; a.length; k++ )
         <choice>
           <statement>
             <p>
-              When all values in <code>a </code> are larger than <code>temp
-              </code>.
+              When all values in <c>a</c> are larger than <c>temp</c>.
             </p>
           </statement>
 
           <feedback>
             <p>
-              Values larger then <code>temp </code> will not cause an infinite
-              loop.
+              Values larger then <c>temp</c> will not cause an infinite loop.
             </p>
           </feedback>
         </choice>
@@ -1618,15 +1587,13 @@ for ( int k = 0; k &lt; a.length; k++ )
         <choice>
           <statement>
             <p>
-              Whenever <code>a </code> includes a value equal to <code>temp
-              </code>.
+              Whenever <c>a</c> includes a value equal to <c>temp</c>.
             </p>
           </statement>
 
           <feedback>
             <p>
-              Values equal to <code>temp </code> will not cause the infinite
-              loop.
+              Values equal to <c>temp</c> will not cause the infinite loop.
             </p>
           </feedback>
         </choice>
@@ -1751,9 +1718,8 @@ for (int j = 0; j &lt; arr.length; j++)
 
           <feedback>
             <p>
-              When <code>j </code> is 0, <code>sum[j-1] </code> will be
-              <code>sum[-1] </code> which will cause an
-              ArrayIndexOutOfBoundsException.
+              When <c>j</c> is 0, <c>sum[j-1]</c> will be <c>sum[-1]</c> which
+              will cause an ArrayIndexOutOfBoundsException.
             </p>
           </feedback>
         </choice>

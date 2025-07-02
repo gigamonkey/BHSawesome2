@@ -860,8 +860,8 @@ System.out.println(list1);
 
           <feedback>
             <p>
-              This would be true if all the <code>add </code> method calls were
-              <code>add(value) </code>, but at least one is not.
+              This would be true if all the <c>add</c> method calls were
+              <c>add(value)</c>, but at least one is not.
             </p>
           </feedback>
         </choice>
@@ -873,7 +873,7 @@ System.out.println(list1);
 
           <feedback>
             <p>
-              This would be true if it was <code>add(1, 4) </code>
+              This would be true if it was <c>add(1, 4)</c>
             </p>
           </feedback>
         </choice>
@@ -885,8 +885,8 @@ System.out.println(list1);
 
           <feedback>
             <p>
-              The <code>add(2, 4) </code> will put the 4 at index 2, but first
-              move the 3 to index 3.
+              The <c>add(2, 4)</c> will put the 4 at index 2, but first move the
+              3 to index 3.
             </p>
           </feedback>
         </choice>
@@ -898,9 +898,9 @@ System.out.println(list1);
 
           <feedback>
             <p>
-              This would be true if the <code>add(2, 4) </code> replaced what
-              was at index 2, but it actually moves the value currently at index
-              2 to index 3.
+              This would be true if the <c>add(2, 4)</c> replaced what was at
+              index 2, but it actually moves the value currently at index 2 to
+              index 3.
             </p>
           </feedback>
         </choice>
@@ -937,8 +937,8 @@ System.out.println(list1);
 
           <feedback>
             <p>
-              The <code>add(1, "Sarah") </code> will move any current items to
-              the right and then put "Sarah" at index 1.
+              The <c>add(1, "Sarah")</c> will move any current items to the
+              right and then put "Sarah" at index 1.
             </p>
           </feedback>
         </choice>
@@ -950,7 +950,7 @@ System.out.println(list1);
 
           <feedback>
             <p>
-              This would be true if the last one was <code>add("Sarah") </code>
+              This would be true if the last one was <c>add("Sarah")</c>
             </p>
           </feedback>
         </choice>
@@ -962,8 +962,7 @@ System.out.println(list1);
 
           <feedback>
             <p>
-              This would be true if the last one was <code>add(0, "Sarah")
-              </code>
+              This would be true if the last one was <c>add(0, "Sarah")</c>
             </p>
           </feedback>
         </choice>
@@ -975,8 +974,7 @@ System.out.println(list1);
 
           <feedback>
             <p>
-              This would be true if the last one was <code>add(2, "Sarah")
-              </code>
+              This would be true if the last one was <c>add(2, "Sarah")</c>
             </p>
           </feedback>
         </choice>
@@ -1093,7 +1091,7 @@ System.out.println(list1);
 
           <feedback>
             <p>
-              This would be true if it was <code>remove(0) </code>
+              This would be true if it was <c>remove(0)</c>
             </p>
           </feedback>
         </choice>
@@ -1105,8 +1103,8 @@ System.out.println(list1);
 
           <feedback>
             <p>
-              The <code>remove </code> will remove a value from the list, so
-              this can't be correct.
+              The <c>remove</c> will remove a value from the list, so this can't
+              be correct.
             </p>
           </feedback>
         </choice>
@@ -1128,7 +1126,7 @@ System.out.println(list1);
 
           <feedback>
             <p>
-              This would be true if it was <code>remove(1) </code>
+              This would be true if it was <c>remove(1)</c>
             </p>
           </feedback>
         </choice>
@@ -1265,8 +1263,8 @@ System.out.println(list1);
 
           <feedback>
             <p>
-              The <code>set </code> will replace the item at index 2 so this can
-              not be right.
+              The <c>set</c> will replace the item at index 2 so this can not be
+              right.
             </p>
           </feedback>
         </choice>
@@ -1278,8 +1276,8 @@ System.out.println(list1);
 
           <feedback>
             <p>
-              The <code>add </code> with an index of 2 and a value of 5 adds the
-              5 at index 2 not 3. Remember that the first index is 0.
+              The <c>add</c> with an index of 2 and a value of 5 adds the 5 at
+              index 2 not 3. Remember that the first index is 0.
             </p>
           </feedback>
         </choice>
@@ -1291,10 +1289,9 @@ System.out.println(list1);
 
           <feedback>
             <p>
-              The <code>set </code> will change the item at index 2 to 4. The
-              add of 5 at index 2 will move everything else to the right and
-              insert 5. The last <code>add </code> will be at the end of the
-              list.
+              The <c>set</c> will change the item at index 2 to 4. The add of 5
+              at index 2 will move everything else to the right and insert 5.
+              The last <c>add</c> will be at the end of the list.
             </p>
           </feedback>
         </choice>
@@ -1306,8 +1303,8 @@ System.out.println(list1);
 
           <feedback>
             <p>
-              The <code>add </code> with an index of 2 and a value of 5 adds the
-              5 at index 2 not 1. Remember that the first index is 0.
+              The <c>add</c> with an index of 2 and a value of 5 adds the 5 at
+              index 2 not 1. Remember that the first index is 0.
             </p>
           </feedback>
         </choice>
@@ -1354,8 +1351,7 @@ System.out.println(list1);
 
           <feedback>
             <p>
-              <code>set </code> changes the value and the first index is 0 not
-              1.
+              <c>set</c> changes the value and the first index is 0 not 1.
             </p>
           </feedback>
         </choice>
@@ -1367,8 +1363,8 @@ System.out.println(list1);
 
           <feedback>
             <p>
-              <code>add </code> at index 1 adds the new value at that index but
-              moves right any existing values.
+              <c>add</c> at index 1 adds the new value at that index but moves
+              right any existing values.
             </p>
           </feedback>
         </choice>

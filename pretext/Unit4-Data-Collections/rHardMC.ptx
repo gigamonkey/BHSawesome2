@@ -30,16 +30,14 @@ public static boolean check(String s)
       <choice>
         <statement>
           <p>
-            The string <code>s </code> contains two or more of the same
-            characters.
+            The string <c>s</c> contains two or more of the same characters.
           </p>
         </statement>
 
         <feedback>
           <p>
-            It is not enough for <code>s </code> to contain two of the same
-            characters, they must be adjacent to satisfy <code>s.charAt(0) ==
-            s.charAt(1) </code>.
+            It is not enough for <c>s</c> to contain two of the same characters,
+            they must be adjacent to satisfy <c>s.charAt(0) == s.charAt(1)</c>.
           </p>
         </feedback>
       </choice>
@@ -47,8 +45,7 @@ public static boolean check(String s)
       <choice>
         <statement>
           <p>
-            The string <code>s </code> starts with two or more of the same
-            characters.
+            The string <c>s</c> starts with two or more of the same characters.
           </p>
         </statement>
 
@@ -63,16 +60,15 @@ public static boolean check(String s)
       <choice correct="yes">
         <statement>
           <p>
-            The string <code>s </code> contains two or more of the same
-            character that are next to each other.
+            The string <c>s</c> contains two or more of the same character that
+            are next to each other.
           </p>
         </statement>
 
         <feedback>
           <p>
-            This method will return true when <code>s </code> has at least 2
-            characters in it and at least 2 characters are the same and are
-            adjacent.
+            This method will return true when <c>s</c> has at least 2 characters
+            in it and at least 2 characters are the same and are adjacent.
           </p>
         </feedback>
       </choice>
@@ -80,8 +76,7 @@ public static boolean check(String s)
       <choice>
         <statement>
           <p>
-            The string <code>s </code> ends with two or more of the same
-            characters
+            The string <c>s</c> ends with two or more of the same characters
           </p>
         </statement>
 
@@ -133,14 +128,14 @@ public static int redo(int i, int j)
 
         <feedback>
           <p>
-            The first time the method is called, <code>i </code> is not equal to
-            0, so the method makes a recursive call to itself, with the value of
-            82/3 which equals 27 due to integer division. This is still not
-            equal to 0, so the method calls itself with the first parameter
-            equal to 9, then 3, then 1. Finally, the method is called with the
-            first parameter of 1/3 which equals 0 due to integer division which
-            throws away any decimal part. Each method call adds 1 to the result,
-            except for the final call when <code>i </code> is equal to 0.
+            The first time the method is called, <c>i</c> is not equal to 0, so
+            the method makes a recursive call to itself, with the value of 82/3
+            which equals 27 due to integer division. This is still not equal to
+            0, so the method calls itself with the first parameter equal to 9,
+            then 3, then 1. Finally, the method is called with the first
+            parameter of 1/3 which equals 0 due to integer division which throws
+            away any decimal part. Each method call adds 1 to the result, except
+            for the final call when <c>i</c> is equal to 0.
           </p>
         </feedback>
       </choice>
@@ -152,9 +147,9 @@ public static int redo(int i, int j)
 
         <feedback>
           <p>
-            Each time the method is called when <code>i </code> is not equal to
-            0, the return value is incremented. This happens 5 times, with
-            <code>i </code> equal to 81, 27, 9, 3, and 1.
+            Each time the method is called when <c>i</c> is not equal to 0, the
+            return value is incremented. This happens 5 times, with <c>i</c>
+            equal to 81, 27, 9, 3, and 1.
           </p>
         </feedback>
       </choice>
@@ -167,7 +162,7 @@ public static int redo(int i, int j)
         <feedback>
           <p>
             The return value is not incremented the last time the method is
-            called, when <code>i </code> is equal to 0.
+            called, when <c>i</c> is equal to 0.
           </p>
         </feedback>
       </choice>
@@ -180,7 +175,7 @@ public static int redo(int i, int j)
         <feedback>
           <p>
             The method only executes 6 times, with the return value incremented
-            each time <code>i </code> is not equal to zero
+            each time <c>i</c> is not equal to zero
           </p>
         </feedback>
       </choice>
@@ -193,7 +188,7 @@ public static int redo(int i, int j)
         <feedback>
           <p>
             Infinite recursion would happen if the method never reached its base
-            case where <code>i </code> is equal to 0. This would be true if the
+            case where <c>i</c> is equal to 0. This would be true if the
             division could result in a constantly shrinking fraction, but
             integer division truncates the fractional portion of the division.
           </p>

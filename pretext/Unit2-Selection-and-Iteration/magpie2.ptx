@@ -410,7 +410,7 @@ public class MagpieRunner2
     }
 }
       </code>
-      <stdin />
+      <stdin></stdin>
     </program>
 
     <p>Here is the code for Magpie2.java.</p>

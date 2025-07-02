@@ -1313,7 +1313,7 @@ public int m1(int[] a)
 
           <feedback>
             <p>
-              This would be true if it was <code>return(a[1]*= 2); </code>.
+              This would be true if it was <c>return(a[1]*= 2);</c>.
             </p>
           </feedback>
         </choice>
@@ -1325,8 +1325,8 @@ public int m1(int[] a)
 
           <feedback>
             <p>
-              This would be true if the return statement was <code>return
-              (a[0]*=2); </code>.
+              This would be true if the return statement was <c>return
+              (a[0]*=2);</c>.
             </p>
           </feedback>
         </choice>
@@ -1338,8 +1338,8 @@ public int m1(int[] a)
 
           <feedback>
             <p>
-              This would be true if it was <code>a[0]--; </code> Or it would be
-              true if array indices started at 1, but they start with 0.
+              This would be true if it was <c>a[0]--;</c> Or it would be true if
+              array indices started at 1, but they start with 0.
             </p>
           </feedback>
         </choice>
@@ -1351,10 +1351,9 @@ public int m1(int[] a)
 
           <feedback>
             <p>
-              The statement <code>a[1]--; </code> is the same as <code>a[1] =
-              a[1] - 1; </code> so this will change the 3 to a 2. The return
-              <code>(a[1] * 2) </code> does not change the value at <code>a[1]
-              </code>.
+              The statement <c>a[1]--;</c> is the same as <c>a[1] = a[1] -
+              1;</c> so this will change the 3 to a 2. The return <c>(a[1] *
+              2)</c> does not change the value at <c>a[1]</c>.
             </p>
           </feedback>
         </choice>
@@ -1366,12 +1365,12 @@ public int m1(int[] a)
 
           <feedback>
             <p>
-              This can't be true because <code>a[1]--; </code> means the same as
-              <code>a[1] = a[1] - 1; </code> So the 3 will become a 2.
-              Parameters are all pass by value in Java which means that a copy
-              of the value is passed to a method. But, since an array is an
-              object a copy of the value is a copy of the reference to the
-              object. So changes to objects in methods are permanent.
+              This can't be true because <c>a[1]--;</c> means the same as
+              <c>a[1] = a[1] - 1;</c> So the 3 will become a 2. Parameters are
+              all pass by value in Java which means that a copy of the value is
+              passed to a method. But, since an array is an object a copy of the
+              value is a copy of the reference to the object. So changes to
+              objects in methods are permanent.
             </p>
           </feedback>
         </choice>
@@ -1886,10 +1885,10 @@ for ( int k = 0; k &lt; a.length; k++ )
             <p>
               The first test is false since num2 is less than 0 and for a
               complex conditional joined with And (&amp;&amp;) to be true both
-              expressions must be true. Next, <code>else if ((num2&lt;0) ||
-              (num1&lt;0)) </code> is executed and this will be true since num2
-              is less than 0 and for a complex conditional joined with Or (||)
-              only one of the expressions must be true for it to execute.
+              expressions must be true. Next, <c>else if ((num2&lt;0) ||
+              (num1&lt;0))</c> is executed and this will be true since num2 is
+              less than 0 and for a complex conditional joined with Or (||) only
+              one of the expressions must be true for it to execute.
             </p>
           </feedback>
         </choice>
@@ -1902,8 +1901,7 @@ for ( int k = 0; k &lt; a.length; k++ )
           <feedback>
             <p>
               This will not happen since if num2 is less than 0 the previous
-              conditional would be true <code>((num2&lt;0) || (num1&lt;0))
-              </code>).
+              conditional would be true <c>((num2&lt;0) || (num1&lt;0))</c>).
             </p>
           </feedback>
         </choice>
@@ -1916,8 +1914,7 @@ for ( int k = 0; k &lt; a.length; k++ )
           <feedback>
             <p>
               This will not happen since if num2 is less than 0 the previous
-              conditional would be true <code>((num2&lt;0) || (num1&lt;0))
-              </code>).
+              conditional would be true <c>((num2&lt;0) || (num1&lt;0))</c>).
             </p>
           </feedback>
         </choice>

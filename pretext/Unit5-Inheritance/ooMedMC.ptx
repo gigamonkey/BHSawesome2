@@ -43,16 +43,16 @@ public class GradStudent extends Student
       <choice>
         <statement>
           <p>
-            Won't compile since <code>GradStudent </code> doesn't have a
-            <code>getInfo </code> method
+            Won't compile since <c>GradStudent</c> doesn't have a <c>getInfo</c>
+            method
           </p>
         </statement>
 
         <feedback>
           <p>
-            <code>GradStudent </code> will inherit the <code>getInfo </code>
-            method from <code>Student </code>. This would be true if
-            <code>getInfo </code> was a private method.
+            <c>GradStudent</c> will inherit the <c>getInfo</c> method from
+            <c>Student</c>. This would be true if <c>getInfo</c> was a private
+            method.
           </p>
         </feedback>
       </choice>
@@ -67,12 +67,11 @@ public class GradStudent extends Student
             Objects know what class they are created as and all methods are
             resolved starting with that class at run time. If the method isn't
             found in that class the parent class is checked (and so on until it
-            is found). So it will first look for <code>getInfo </code> in
-            <code>GradStudent </code> and when it doesn't find it it will look
-            in <code>Student </code>. In <code>getInfo </code> it calls
-            <code>this.getFood </code>. Again, it will first look for this
-            method in <code>GradStudent </code>. It will find the <code>getFood
-            </code> method there and return "Taco".
+            is found). So it will first look for <c>getInfo</c> in
+            <c>GradStudent</c> and when it doesn't find it it will look in
+            <c>Student</c>. In <c>getInfo</c> it calls <c>this.getFood</c>.
+            Again, it will first look for this method in <c>GradStudent</c>. It
+            will find the <c>getFood</c> method there and return "Taco".
           </p>
         </feedback>
       </choice>
@@ -84,8 +83,7 @@ public class GradStudent extends Student
 
         <feedback>
           <p>
-            This would be true if it was <code>Student s1 = new Student();
-            </code>
+            This would be true if it was <c>Student s1 = new Student();</c>
           </p>
         </feedback>
       </choice>
@@ -93,15 +91,15 @@ public class GradStudent extends Student
       <choice>
         <statement>
           <p>
-            Won't compile since you are creating a <code>GradStudent </code>,
-            not a <code>Student </code>
+            Won't compile since you are creating a <c>GradStudent</c>, not a
+            <c>Student</c>
           </p>
         </statement>
 
         <feedback>
           <p>
             An object of a subclass can be substituted for a parent class
-            object. A <code>GradStudent </code> is a <code>Student </code>.
+            object. A <c>GradStudent</c> is a <c>Student</c>.
           </p>
         </feedback>
       </choice>
@@ -109,16 +107,16 @@ public class GradStudent extends Student
       <choice>
         <statement>
           <p>
-            Won't compile since you use <code>this.getFood() </code>
+            Won't compile since you use <c>this.getFood()</c>
           </p>
         </statement>
 
         <feedback>
           <p>
-            In object methods if you leave off the <code>this. </code> when
-            invoking an object method it will be added for you by the compiler.
-            The keyword <code>this </code> refers to the current object which is
-            implicitly passed to all object methods.
+            In object methods if you leave off the <c>this.</c> when invoking an
+            object method it will be added for you by the compiler. The keyword
+            <c>this</c> refers to the current object which is implicitly passed
+            to all object methods.
           </p>
         </feedback>
       </choice>
@@ -173,8 +171,8 @@ III. enItemObj.setX(52);
 
         <feedback>
           <p>
-            I is wrong because <code>y </code> is a private field and thus can
-            not be directly accessed from code in a client class.
+            I is wrong because <c>y</c> is a private field and thus can not be
+            directly accessed from code in a client class.
           </p>
         </feedback>
       </choice>
@@ -186,12 +184,11 @@ III. enItemObj.setX(52);
 
         <feedback>
           <p>
-            I is wrong because <code>y </code> is a private field and thus can
-            not be directly accessed from code in a client class. II is correct
-            because <code>EnhancedItem </code> has <code>setY </code> as a
-            public method. III is correct because <code>EnhancedItem </code>
-            inherits the public method <code>setX </code> from <code>Item
-            </code>.
+            I is wrong because <c>y</c> is a private field and thus can not be
+            directly accessed from code in a client class. II is correct because
+            <c>EnhancedItem</c> has <c>setY</c> as a public method. III is
+            correct because <c>EnhancedItem</c> inherits the public method
+            <c>setX</c> from <c>Item</c>.
           </p>
         </feedback>
       </choice>
@@ -203,8 +200,8 @@ III. enItemObj.setX(52);
 
         <feedback>
           <p>
-            I is wrong because <code>y </code> is a private field and thus can
-            not be directly accessed from code in a client class.
+            I is wrong because <c>y</c> is a private field and thus can not be
+            directly accessed from code in a client class.
           </p>
         </feedback>
       </choice>
@@ -216,12 +213,11 @@ III. enItemObj.setX(52);
 
         <feedback>
           <p>
-            I is wrong because <code>y </code> is a private field and thus can
-            not be directly accessed from code in a client class. II is correct
-            because <code>EnhancedItem </code> has <code>setY </code> as a
-            public method. III is correct because <code>EnhancedItem </code>
-            inherits the public method <code>setX </code> from <code>Item
-            </code>.
+            I is wrong because <c>y</c> is a private field and thus can not be
+            directly accessed from code in a client class. II is correct because
+            <c>EnhancedItem</c> has <c>setY</c> as a public method. III is
+            correct because <c>EnhancedItem</c> inherits the public method
+            <c>setX</c> from <c>Item</c>.
           </p>
         </feedback>
       </choice>
@@ -233,8 +229,8 @@ III. enItemObj.setX(52);
 
         <feedback>
           <p>
-            I is wrong because <code>y </code> is a private field and thus can
-            not be directly accessed from code in a client class.
+            I is wrong because <c>y</c> is a private field and thus can not be
+            directly accessed from code in a client class.
           </p>
         </feedback>
       </choice>
@@ -282,12 +278,11 @@ Test3 t3 = new Test3();
 
         <feedback>
           <p>
-            You can't pass an object of class <code>Test1 </code> since it is
-            not either an object of type <code>Test2 </code> or an object of
-            type <code>Test3 </code>. You can pass the specified type or an
-            object that is a subclass of the specified type but <code>Test1
-            </code> is not a subclass of <code>Test2 </code> or <code>Test3
-            </code>.
+            You can't pass an object of class <c>Test1</c> since it is not
+            either an object of type <c>Test2</c> or an object of type
+            <c>Test3</c>. You can pass the specified type or an object that is a
+            subclass of the specified type but <c>Test1</c> is not a subclass of
+            <c>Test2</c> or <c>Test3</c>.
           </p>
         </feedback>
       </choice>
@@ -299,10 +294,10 @@ Test3 t3 = new Test3();
 
         <feedback>
           <p>
-            You can't pass an object of class <code>Test2 </code> as a parameter
-            of type <code>Test3 </code>. <code>Test2 </code> is the parent class
-            of <code>Test3 </code> not a subclass. You can pass an object of the
-            specified type or an object of any subclass.
+            You can't pass an object of class <c>Test2</c> as a parameter of
+            type <c>Test3</c>. <c>Test2</c> is the parent class of <c>Test3</c>
+            not a subclass. You can pass an object of the specified type or an
+            object of any subclass.
           </p>
         </feedback>
       </choice>
@@ -314,12 +309,11 @@ Test3 t3 = new Test3();
 
         <feedback>
           <p>
-            You can't pass an object of class <code>Test1 </code> since it is
-            not either an object of type <code>Test2 </code> or an object of
-            type <code>Test3 </code>. You can pass the specified type or an
-            object that is a subclass of the specified type but <code>Test1
-            </code> is not a subclass of <code>Test2 </code> or <code>Test3
-            </code>.
+            You can't pass an object of class <c>Test1</c> since it is not
+            either an object of type <c>Test2</c> or an object of type
+            <c>Test3</c>. You can pass the specified type or an object that is a
+            subclass of the specified type but <c>Test1</c> is not a subclass of
+            <c>Test2</c> or <c>Test3</c>.
           </p>
         </feedback>
       </choice>
@@ -331,11 +325,10 @@ Test3 t3 = new Test3();
 
         <feedback>
           <p>
-            You can't pass <code>t2 </code> as an object of type <code>Test3
-            </code> since it is an object of class <code>Test2 </code> and class
-            <code>Test2 </code> is not either class <code>Test3 </code> or a
-            subclass of class <code>Test3 </code>. Class <code>Test2 </code> is
-            the parent of class <code>Test3 </code>.
+            You can't pass <c>t2</c> as an object of type <c>Test3</c> since it
+            is an object of class <c>Test2</c> and class <c>Test2</c> is not
+            either class <c>Test3</c> or a subclass of class <c>Test3</c>. Class
+            <c>Test2</c> is the parent of class <c>Test3</c>.
           </p>
         </feedback>
       </choice>
@@ -347,18 +340,16 @@ Test3 t3 = new Test3();
 
         <feedback>
           <p>
-            Since <code>method1 </code> is a public method of class <code>Test1
-            </code> objects of any subclasses of <code>Test1 </code> can invoke
-            the method. So, it can be invoked on <code>t3 </code> since it is an
-            object of <code>Test3 </code> and this is a subclass of <code>Test1
-            </code>. And, since <code>method1 </code> takes an object of class
-            <code>Test2 </code> and <code>Test3 </code> as parameters. This
-            actually means it can take an object of <code>Test2 </code> or any
-            subclass of <code>Test2 </code> and an object of <code>Test3 </code>
-            or any subclass of <code>Test3 </code>. So it can take <code>t3
-            </code> which is an object of class <code>Test3 </code> as an object
-            of <code>Test2 </code> since <code>Test3 </code> is a subclass of
-            <code>Test2 </code>.
+            Since <c>method1</c> is a public method of class <c>Test1</c>
+            objects of any subclasses of <c>Test1</c> can invoke the method. So,
+            it can be invoked on <c>t3</c> since it is an object of <c>Test3</c>
+            and this is a subclass of <c>Test1</c>. And, since <c>method1</c>
+            takes an object of class <c>Test2</c> and <c>Test3</c> as
+            parameters. This actually means it can take an object of
+            <c>Test2</c> or any subclass of <c>Test2</c> and an object of
+            <c>Test3</c> or any subclass of <c>Test3</c>. So it can take
+            <c>t3</c> which is an object of class <c>Test3</c> as an object of
+            <c>Test2</c> since <c>Test3</c> is a subclass of <c>Test2</c>.
           </p>
         </feedback>
       </choice>
@@ -393,11 +384,10 @@ Animal[] a = { new Cat(), new Cow(), new Dog(), new Pig(), new Bird() }
         <feedback>
           <p>
             Objects keep a reference to the class that created them. So, even if
-            you put them in an array of <code>Animal </code> objects, they know
-            what they are and all methods are resolved starting with the class
-            of the object. <code>Bird </code> and <code>Pig </code> do not
-            override speak so the <code>speak </code> method in <code>Animal
-            </code> will execute.
+            you put them in an array of <c>Animal</c> objects, they know what
+            they are and all methods are resolved starting with the class of the
+            object. <c>Bird</c> and <c>Pig</c> do not override speak so the
+            <c>speak</c> method in <c>Animal</c> will execute.
           </p>
         </feedback>
       </choice>
@@ -410,9 +400,9 @@ Animal[] a = { new Cat(), new Cow(), new Dog(), new Pig(), new Bird() }
         <feedback>
           <p>
             Methods are always resolved starting with the class of the object,
-            so <code>Cat </code>, <code>Cow </code>, and <code>Dog </code> will
-            all execute their overridden <code>speak </code> methods, so the
-            output will be: Meow Moo Woof Awk Awk.
+            so <c>Cat</c>, <c>Cow</c>, and <c>Dog</c> will all execute their
+            overridden <c>speak</c> methods, so the output will be: Meow Moo
+            Woof Awk Awk.
           </p>
         </feedback>
       </choice>
@@ -424,10 +414,9 @@ Animal[] a = { new Cat(), new Cow(), new Dog(), new Pig(), new Bird() }
 
         <feedback>
           <p>
-            Because <code>Bird </code>, <code>Cow </code>, <code>Cat </code>,
-            <code>Dog </code>, and <code>Pig </code> are subclasses of
-            <code>Animal </code>, they can be stored in an array declared as
-            <code>Animal </code> without any compile time errors.
+            Because <c>Bird</c>, <c>Cow</c>, <c>Cat</c>, <c>Dog</c>, and
+            <c>Pig</c> are subclasses of <c>Animal</c>, they can be stored in an
+            array declared as <c>Animal</c> without any compile time errors.
           </p>
         </feedback>
       </choice>
@@ -439,10 +428,9 @@ Animal[] a = { new Cat(), new Cow(), new Dog(), new Pig(), new Bird() }
 
         <feedback>
           <p>
-            Because <code>Bird </code>, <code>Cow </code>, <code>Cat </code>,
-            <code>Dog </code>, and <code>Pig </code> are subclasses of
-            <code>Animal </code>, they can be stored in an array declared as
-            <code>Animal </code> without any runtime errors.
+            Because <c>Bird</c>, <c>Cow</c>, <c>Cat</c>, <c>Dog</c>, and
+            <c>Pig</c> are subclasses of <c>Animal</c>, they can be stored in an
+            array declared as <c>Animal</c> without any runtime errors.
           </p>
         </feedback>
       </choice>
@@ -454,9 +442,9 @@ Animal[] a = { new Cat(), new Cow(), new Dog(), new Pig(), new Bird() }
 
         <feedback>
           <p>
-            The <code>Pig </code> class did not override the <code>speak </code>
-            method, so it will use the method from <code>Animal </code>, thus
-            the output should be: Meow Moo Woof Awk Awk
+            The <c>Pig</c> class did not override the <c>speak</c> method, so it
+            will use the method from <c>Animal</c>, thus the output should be:
+            Meow Moo Woof Awk Awk
           </p>
         </feedback>
       </choice>
@@ -512,11 +500,10 @@ fastCar.display();
 
         <feedback>
           <p>
-            <code>RaceCar </code>, while it inherits methods from <code>Car
-            </code> via inheritance, has a separate and different constructor
-            that sets the initial fuel amount to <code>2 * g </code>, thus in
-            this case, <code>fuel </code> for <code>fastCar </code> is set to
-            <code>10 </code> initially.
+            <c>RaceCar</c>, while it inherits methods from <c>Car</c> via
+            inheritance, has a separate and different constructor that sets the
+            initial fuel amount to <c>2 * g</c>, thus in this case, <c>fuel</c>
+            for <c>fastCar</c> is set to <c>10</c> initially.
           </p>
         </feedback>
       </choice>
@@ -530,14 +517,13 @@ fastCar.display();
 
         <feedback>
           <p>
-            The code compiles correctly, and because <code>RaceCar </code>
-            extends the <code>Car </code> class, all the public methods of
-            <code>Car </code> can be used by <code>RaceCar </code> objects.
-            Also, a variable <code>Car </code> can refer to a <code>Car </code>
-            object or an object of any subclass of <code>Car </code>. An object
-            always knows the class that created it, so even though <code>fastCar
-            </code> is declared to be a <code>Car </code> the constructor that
-            is executed is the one for <code>RaceCar </code>.
+            The code compiles correctly, and because <c>RaceCar</c> extends the
+            <c>Car</c> class, all the public methods of <c>Car</c> can be used
+            by <c>RaceCar</c> objects. Also, a variable <c>Car</c> can refer to
+            a <c>Car</c> object or an object of any subclass of <c>Car</c>. An
+            object always knows the class that created it, so even though
+            <c>fastCar</c> is declared to be a <c>Car</c> the constructor that
+            is executed is the one for <c>RaceCar</c>.
           </p>
         </feedback>
       </choice>
@@ -551,11 +537,10 @@ fastCar.display();
 
         <feedback>
           <p>
-            The variable <code>car </code> is a <code>Car </code> object, so the
-            constructor used is not the same as the <code>fastCar </code> object
-            which is a <code>RaceCar </code>. The <code>car </code> constructor
-            does not change the passed in parameter, so it is set to <code>5
-            </code> initially.
+            The variable <c>car</c> is a <c>Car</c> object, so the constructor
+            used is not the same as the <c>fastCar</c> object which is a
+            <c>RaceCar</c>. The <c>car</c> constructor does not change the
+            passed in parameter, so it is set to <c>5</c> initially.
           </p>
         </feedback>
       </choice>
@@ -567,9 +552,9 @@ fastCar.display();
 
         <feedback>
           <p>
-            <code>RaceCar </code> inherits from the <code>Car </code> class so
-            all the public methods in <code>Car </code> can be accessed by any
-            object of the <code>RaceCar </code> class.
+            <c>RaceCar</c> inherits from the <c>Car</c> class so all the public
+            methods in <c>Car</c> can be accessed by any object of the
+            <c>RaceCar</c> class.
           </p>
         </feedback>
       </choice>
@@ -577,16 +562,16 @@ fastCar.display();
       <choice>
         <statement>
           <p>
-            You get a runtime error <code>ClassCastException </code>, when
-            <code>fastCar.addFuel() </code> is executed.
+            You get a runtime error <c>ClassCastException</c>, when
+            <c>fastCar.addFuel()</c> is executed.
           </p>
         </statement>
 
         <feedback>
           <p>
-            <code>RaceCar </code> inherits from the <code>Car </code> class so
-            all the public methods in <code>Car </code> can be accessed by any
-            object of the <code>RaceCar </code> class.
+            <c>RaceCar</c> inherits from the <c>Car</c> class so all the public
+            methods in <c>Car</c> can be accessed by any object of the
+            <c>RaceCar</c> class.
           </p>
         </feedback>
       </choice>
@@ -642,17 +627,16 @@ III. ((Dictionary) b).getDefinition("wonderful");
 
         <feedback>
           <p>
-            Both I and III are correct. I is correct because variable <code>b
-            </code> has been declared to be an object of the class <code>Book
-            </code> so you can invoke any public methods that are defined in the
-            <code>Book </code> class or in parents of <code>Book </code>. II is
-            not correct because you can't invoke methods in the <code>Dictionary
-            </code> class directly on <code>b </code> since <code>b </code> is
-            declared to be of type <code>Book </code> not type <code>Dictionary
-            </code> and <code>Dictionary </code> is a subclass of <code>Book
-            </code> not a parent class of <code>Book </code>. III is correct
-            because you can cast <code>b </code> to type <code>Dictionary
-            </code> and then invoke public methods in <code>Dictionary </code>.
+            Both I and III are correct. I is correct because variable <c>b</c>
+            has been declared to be an object of the class <c>Book</c> so you
+            can invoke any public methods that are defined in the <c>Book</c>
+            class or in parents of <c>Book</c>. II is not correct because you
+            can't invoke methods in the <c>Dictionary</c> class directly on
+            <c>b</c> since <c>b</c> is declared to be of type <c>Book</c> not
+            type <c>Dictionary</c> and <c>Dictionary</c> is a subclass of
+            <c>Book</c> not a parent class of <c>Book</c>. III is correct
+            because you can cast <c>b</c> to type <c>Dictionary</c> and then
+            invoke public methods in <c>Dictionary</c>.
           </p>
         </feedback>
       </choice>
@@ -664,13 +648,12 @@ III. ((Dictionary) b).getDefinition("wonderful");
 
         <feedback>
           <p>
-            You can't invoke methods in the <code>Dictionary </code> class
-            directly on <code>b </code> since <code>b </code> is declared to be
-            of type <code>Book </code> not type <code>Dictionary </code> and
-            <code>Dictionary </code> is a subclass of <code>Book </code> not a
-            parent class of <code>Book </code>. The compiler checks that the
-            method exists on the declared class type, not the run-time type of
-            the object.
+            You can't invoke methods in the <c>Dictionary</c> class directly on
+            <c>b</c> since <c>b</c> is declared to be of type <c>Book</c> not
+            type <c>Dictionary</c> and <c>Dictionary</c> is a subclass of
+            <c>Book</c> not a parent class of <c>Book</c>. The compiler checks
+            that the method exists on the declared class type, not the run-time
+            type of the object.
           </p>
         </feedback>
       </choice>
@@ -682,17 +665,16 @@ III. ((Dictionary) b).getDefinition("wonderful");
 
         <feedback>
           <p>
-            I is correct because variable <code>b </code> has been declared to
-            be an object of the class <code>Book </code> so you can invoke any
-            public methods that are defined in the <code>Book </code> class or
-            in parents of <code>Book </code>. II is not correct because you
-            can't invoke methods in the <code>Dictionary </code> class directly
-            on <code>b </code> since <code>b </code> is declared to be of type
-            <code>Book </code> not type <code>Dictionary </code> and
-            <code>Dictionary </code> is a subclass of <code>Book </code> not a
-            parent class of <code>Book </code>. III is correct because you can
-            cast <code>b </code> to type <code>Dictionary </code> and then
-            invoke public methods in <code>Dictionary </code>.
+            I is correct because variable <c>b</c> has been declared to be an
+            object of the class <c>Book</c> so you can invoke any public methods
+            that are defined in the <c>Book</c> class or in parents of
+            <c>Book</c>. II is not correct because you can't invoke methods in
+            the <c>Dictionary</c> class directly on <c>b</c> since <c>b</c> is
+            declared to be of type <c>Book</c> not type <c>Dictionary</c> and
+            <c>Dictionary</c> is a subclass of <c>Book</c> not a parent class of
+            <c>Book</c>. III is correct because you can cast <c>b</c> to type
+            <c>Dictionary</c> and then invoke public methods in
+            <c>Dictionary</c>.
           </p>
         </feedback>
       </choice>
@@ -714,12 +696,12 @@ III. ((Dictionary) b).getDefinition("wonderful");
 
         <feedback>
           <p>
-            You can't invoke methods in the <code>Dictionary </code> class
-            directly on <code>b </code> since <code>b </code> is declared to be
-            of type <code>Book </code> not type <code>Dictionary </code> and
-            <code>Dictionary </code> is a subclass of <code>Book </code> not a
-            parent class of <code>Book </code>. The compiler checks that the
-            method exists on the declared class, not the run-time class.
+            You can't invoke methods in the <c>Dictionary</c> class directly on
+            <c>b</c> since <c>b</c> is declared to be of type <c>Book</c> not
+            type <c>Dictionary</c> and <c>Dictionary</c> is a subclass of
+            <c>Book</c> not a parent class of <c>Book</c>. The compiler checks
+            that the method exists on the declared class, not the run-time
+            class.
           </p>
         </feedback>
       </choice>

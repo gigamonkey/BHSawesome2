@@ -382,7 +382,7 @@ public static int test(int[] a, int v)
           <p>
             This would be true if the sequential search code was okay and v was
             a value that wasn't in the array, but the code is incorrect. The
-            <code>return -1 </code> should be outside of the for loop.
+            <c>return -1</c> should be outside of the for loop.
           </p>
         </feedback>
       </choice>
@@ -435,8 +435,8 @@ public static int test(int[] a, int v)
           <p>
             This method won't compile because it is supposed to return an
             integer and if the for loop doesn't execute it will not return
-            anything. The <code>return -1 </code> should be outside the for loop
-            to make this sequential search work as intended.
+            anything. The <c>return -1</c> should be outside the for loop to
+            make this sequential search work as intended.
           </p>
         </feedback>
       </choice>

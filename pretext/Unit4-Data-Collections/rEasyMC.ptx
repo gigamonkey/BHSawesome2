@@ -212,7 +212,7 @@ public static int fibonacci(int n)
 
         <feedback>
           <p>
-            Line 13 has two calls to <code>fibonacci </code>.
+            Line 13 has two calls to <c>fibonacci</c>.
           </p>
         </feedback>
       </choice>
@@ -224,7 +224,7 @@ public static int fibonacci(int n)
 
         <feedback>
           <p>
-            There are not 3 calls to <code>fibonacci </code>.
+            There are not 3 calls to <c>fibonacci</c>.
           </p>
         </feedback>
       </choice>
@@ -269,7 +269,7 @@ public static int multiplyEvens(int n)
 
         <feedback>
           <p>
-            Line 9 has one call to <code>multiplyEvens </code>.
+            Line 9 has one call to <c>multiplyEvens</c>.
           </p>
         </feedback>
       </choice>
@@ -281,7 +281,7 @@ public static int multiplyEvens(int n)
 
         <feedback>
           <p>
-            Where do you see 2 calls to <code>multiplyEvens </code>?
+            Where do you see 2 calls to <c>multiplyEvens</c>?
           </p>
         </feedback>
       </choice>
@@ -293,7 +293,7 @@ public static int multiplyEvens(int n)
 
         <feedback>
           <p>
-            Where do you see 3 calls to <code>multiplyEvens </code>?
+            Where do you see 3 calls to <c>multiplyEvens</c>?
           </p>
         </feedback>
       </choice>

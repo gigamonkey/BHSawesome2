@@ -197,7 +197,7 @@
 
         <feedback>
           <p>
-            The <code>List </code> doesn't have a <code>first </code> method.
+            The <c>List</c> doesn't have a <c>first</c> method.
           </p>
         </feedback>
       </choice>
@@ -209,8 +209,8 @@
 
         <feedback>
           <p>
-            Use the <code>get </code> method to get a value from a list and the
-            first element in a list is at index 0.
+            Use the <c>get</c> method to get a value from a list and the first
+            element in a list is at index 0.
           </p>
         </feedback>
       </choice>
@@ -366,7 +366,7 @@
         <feedback>
           <p>
             This would add 0 at index 2. Remember that the method is
-            <code>add(index, obj) </code>.
+            <c>add(index, obj)</c>.
           </p>
         </feedback>
       </choice>
@@ -379,7 +379,7 @@
         <feedback>
           <p>
             This would add 1 at index 2. Remember that the method is
-            <code>add(index, obj) </code>
+            <c>add(index, obj)</c>
           </p>
         </feedback>
       </choice>
@@ -391,8 +391,8 @@
 
         <feedback>
           <p>
-            This would add 2 at index 0 which would result in <code>[2, 1, 3, 4]
-            </code>
+            This would add 2 at index 0 which would result in <c>[2, 1, 3,
+            4]</c>
           </p>
         </feedback>
       </choice>
@@ -404,8 +404,8 @@
 
         <feedback>
           <p>
-            This would add 2 at index 1 which would result in <code>[1, 2, 3, 4]
-            </code>
+            This would add 2 at index 1 which would result in <c>[1, 2, 3,
+            4]</c>
           </p>
         </feedback>
       </choice>
@@ -417,8 +417,8 @@
 
         <feedback>
           <p>
-            This would add 2 at index 2 which would result in <code>[1, 3, 2, 4]
-            </code>
+            This would add 2 at index 2 which would result in <c>[1, 3, 2,
+            4]</c>
           </p>
         </feedback>
       </choice>
@@ -448,7 +448,7 @@ System.out.println(list1);
 
         <feedback>
           <p>
-            This would be true if it was <code>remove(0) </code>
+            This would be true if it was <c>remove(0)</c>
           </p>
         </feedback>
       </choice>
@@ -460,8 +460,8 @@ System.out.println(list1);
 
         <feedback>
           <p>
-            The <code>remove </code> will remove a value from the list, so this
-            can't be correct.
+            The <c>remove</c> will remove a value from the list, so this can't
+            be correct.
           </p>
         </feedback>
       </choice>
@@ -473,7 +473,7 @@ System.out.println(list1);
 
         <feedback>
           <p>
-            This would be true if it was <code>remove(2) </code>
+            This would be true if it was <c>remove(2)</c>
           </p>
         </feedback>
       </choice>

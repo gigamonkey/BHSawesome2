@@ -74,7 +74,7 @@
       <statement>
         <p>
           Click on the part of the sentences below with the type of thing passed
-          to the method <code>getDelimitersList </code> and the type it returns.
+          to the method <c>getDelimitersList</c> and the type it returns.
         </p>
       </statement>
 

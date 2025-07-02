@@ -56,26 +56,23 @@ public class Derived extends Base
 
         <feedback>
           <p>
-            Even though b is declared as type <code>Base </code> it is created
-            as an object of the <code>Derived </code> class, so all methods to
-            it will be resolved starting with the <code>Derived </code> class.
-            So the <code>methodOne() </code> in <code>Derived </code> will be
-            called. This method first calls <code>super.methodOne </code> so
-            this will invoke the method in the superclass (which is <code>Base
-            </code>). So next the <code>methodOne </code> in <code>Base </code>
-            will execute. This prints the letter "A" and invokes
-            <code>this.methodTwo() </code>. Since <code>b </code> is really a
-            <code>Derived </code> object, we check there first to see if it has
-            a <code>methodTwo </code>. It does, so execution continues in the
-            <code>Derived </code> class <code>methodTwo </code>. This method
-            invokes <code>super.methodTwo </code>. So this will invoke the
-            method in the super class ( <code>Base </code>) named
-            <code>methodTwo </code>. This method prints the letter "B" and then
+            Even though b is declared as type <c>Base</c> it is created as an
+            object of the <c>Derived</c> class, so all methods to it will be
+            resolved starting with the <c>Derived</c> class. So the
+            <c>methodOne()</c> in <c>Derived</c> will be called. This method
+            first calls <c>super.methodOne</c> so this will invoke the method in
+            the superclass (which is <c>Base</c>). So next the <c>methodOne</c>
+            in <c>Base</c> will execute. This prints the letter "A" and invokes
+            <c>this.methodTwo()</c>. Since <c>b</c> is really a <c>Derived</c>
+            object, we check there first to see if it has a <c>methodTwo</c>. It
+            does, so execution continues in the <c>Derived</c> class
+            <c>methodTwo</c>. This method invokes <c>super.methodTwo</c>. So
+            this will invoke the method in the super class ( <c>Base</c>) named
+            <c>methodTwo</c>. This method prints the letter "B" and then
             returns. Next the execution returns from the call to the
-            <code>super.methodTwo </code> and prints the letter "D". We return
-            to the <code>Base </code> class <code>methodOne </code> and return
-            from that to the <code>Derived </code> class <code>methodOne </code>
-            and print the letter "C".
+            <c>super.methodTwo</c> and prints the letter "D". We return to the
+            <c>Base</c> class <c>methodOne</c> and return from that to the
+            <c>Derived</c> class <c>methodOne</c> and print the letter "C".
           </p>
         </feedback>
       </choice>
@@ -87,10 +84,9 @@ public class Derived extends Base
 
         <feedback>
           <p>
-            This would be true if the object was created of type <code>Base
-            </code>. But the object is really a <code>Derived </code> object. So
-            all methods are looked for starting with the <code>Derived </code>
-            class.
+            This would be true if the object was created of type <c>Base</c>.
+            But the object is really a <c>Derived</c> object. So all methods are
+            looked for starting with the <c>Derived</c> class.
           </p>
         </feedback>
       </choice>
@@ -102,16 +98,15 @@ public class Derived extends Base
 
         <feedback>
           <p>
-            After the call to <code>methodOne </code> in the super class
-            printing "A", the code continues with the implicit
-            <code>this.methodTwo </code> which resolves from the current
-            object's class which is <code>Derived </code>. Next, <code>methodTwo
-            </code> in the <code>Derived </code> class is executed which then
-            calls <code>super.methodTwo </code> which invokes <code>println
-            </code> "B" from <code>methodTwo </code> in the <code>Base </code>
-            class. Then the "D" in the <code>Derived </code> <code>methodTwo
-            </code> is printed. Finally the program returns to <code>methodOne
-            </code> in the <code>Derived </code> class are prints "C".
+            After the call to <c>methodOne</c> in the super class printing "A",
+            the code continues with the implicit <c>this.methodTwo</c> which
+            resolves from the current object's class which is <c>Derived</c>.
+            Next, <c>methodTwo</c> in the <c>Derived</c> class is executed which
+            then calls <c>super.methodTwo</c> which invokes <c>println</c> "B"
+            from <c>methodTwo</c> in the <c>Base</c> class. Then the "D" in the
+            <c>Derived</c> <c>methodTwo</c> is printed. Finally the program
+            returns to <c>methodOne</c> in the <c>Derived</c> class are prints
+            "C".
           </p>
         </feedback>
       </choice>
@@ -123,9 +118,9 @@ public class Derived extends Base
 
         <feedback>
           <p>
-            The call to <code>methodTwo </code> in <code>super.methodOne </code>
-            is to <code>this.methodTwo </code> which is the method from the
-            <code>Derived </code> class. Consequently the "D" is also printed.
+            The call to <c>methodTwo</c> in <c>super.methodOne</c> is to
+            <c>this.methodTwo</c> which is the method from the <c>Derived</c>
+            class. Consequently the "D" is also printed.
           </p>
         </feedback>
       </choice>
@@ -190,10 +185,10 @@ III. public Point3D(int x, int y)
 
         <feedback>
           <p>
-            <code>Point2D </code> does have a constructor that takes an <code>x
-            </code> and <code>y </code> value so this is okay. Also the call to
-            super is the first line of code in the child constructor as
-            required. However, both I and III are okay as well.
+            <c>Point2D</c> does have a constructor that takes an <c>x</c> and
+            <c>y</c> value so this is okay. Also the call to super is the first
+            line of code in the child constructor as required. However, both I
+            and III are okay as well.
           </p>
         </feedback>
       </choice>
@@ -205,11 +200,11 @@ III. public Point3D(int x, int y)
 
         <feedback>
           <p>
-            The <code>x </code> and <code>y </code> values in <code>Point2D
-            </code> are public and so can be directly accessed by all classes
-            including subclasses. Also there is a no-arg constructor in
-            <code>Point2D </code> so the super no-arg constructor will be called
-            before the first line of code in this constructor.
+            The <c>x</c> and <c>y</c> values in <c>Point2D</c> are public and so
+            can be directly accessed by all classes including subclasses. Also
+            there is a no-arg constructor in <c>Point2D</c> so the super no-arg
+            constructor will be called before the first line of code in this
+            constructor.
           </p>
         </feedback>
       </choice>
@@ -221,14 +216,13 @@ III. public Point3D(int x, int y)
 
         <feedback>
           <p>
-            I is true because <code>Point2D </code> does have a no-arg
-            constructor. II is true because <code>Point2D </code> does have a
-            constructor that takes <code>x </code> and <code>y </code>. III is
-            true because <code>Point2D </code> does have a no-arg constructor
-            which will be called before the first line of code is executed in
-            this constructor. The fields <code>x </code> and <code>y </code> are
-            public in <code>Point2D </code> and thus can be directly accessed by
-            all classes.
+            I is true because <c>Point2D</c> does have a no-arg constructor. II
+            is true because <c>Point2D</c> does have a constructor that takes
+            <c>x</c> and <c>y</c>. III is true because <c>Point2D</c> does have
+            a no-arg constructor which will be called before the first line of
+            code is executed in this constructor. The fields <c>x</c> and
+            <c>y</c> are public in <c>Point2D</c> and thus can be directly
+            accessed by all classes.
           </p>
         </feedback>
       </choice>
@@ -240,8 +234,8 @@ III. public Point3D(int x, int y)
 
         <feedback>
           <p>
-            This would be true if <code>x </code> and <code>y </code> were
-            private in <code>Point2D </code>, but they are public.
+            This would be true if <c>x</c> and <c>y</c> were private in
+            <c>Point2D</c>, but they are public.
           </p>
         </feedback>
       </choice>
@@ -253,11 +247,10 @@ III. public Point3D(int x, int y)
 
         <feedback>
           <p>
-            <code>Point2D </code> does have a no-arg constructor and since the
-            constructor in <code>Point3D </code> doesn't have an explicit call
-            to super as the first line of code in the constructor one will be
-            added for the no-arg constructor. However, both II and III are okay
-            as well.
+            <c>Point2D</c> does have a no-arg constructor and since the
+            constructor in <c>Point3D</c> doesn't have an explicit call to super
+            as the first line of code in the constructor one will be added for
+            the no-arg constructor. However, both II and III are okay as well.
           </p>
         </feedback>
       </choice>

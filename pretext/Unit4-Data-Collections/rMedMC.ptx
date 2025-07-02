@@ -38,9 +38,9 @@ public static void mystery (int x)
 
         <feedback>
           <p>
-            The first call to <code>mystery </code> with the integer 1234 will
-            print 1234 % 10. The '%' means remainder. The remainder of 1234
-            divided by 10 is 4 so the first thing printed must be 4.
+            The first call to <c>mystery</c> with the integer 1234 will print
+            1234 % 10. The '%' means remainder. The remainder of 1234 divided by
+            10 is 4 so the first thing printed must be 4.
           </p>
         </feedback>
       </choice>
@@ -57,9 +57,8 @@ public static void mystery (int x)
             is called it prints the remainder of the passed value divided by 10
             and then calls the method again with the result of the integer
             division of the passed number by 10 (which throws away the decimal
-            part). After the recursion stops by <code>(x / 10) == 0 </code> the
-            method will print the remainder of the passed value divided by 10
-            again.
+            part). After the recursion stops by <c>(x / 10) == 0</c> the method
+            will print the remainder of the passed value divided by 10 again.
           </p>
         </feedback>
       </choice>
@@ -71,9 +70,9 @@ public static void mystery (int x)
 
         <feedback>
           <p>
-            The first call to <code>mystery </code> with the integer 1234 will
-            print 1234 % 10. The '%' means remainder. The remainder of 1234
-            divided by 10 is 4 so the first thing printed must be 4.
+            The first call to <c>mystery</c> with the integer 1234 will print
+            1234 % 10. The '%' means remainder. The remainder of 1234 divided by
+            10 is 4 so the first thing printed must be 4.
           </p>
         </feedback>
       </choice>
@@ -85,9 +84,9 @@ public static void mystery (int x)
 
         <feedback>
           <p>
-            The first call to <code>mystery </code> with the integer 1234 will
-            print 1234 % 10. The '%' means remainder. The remainder of 1234
-            divided by 10 is 4 so the first thing printed must be 4.
+            The first call to <c>mystery</c> with the integer 1234 will print
+            1234 % 10. The '%' means remainder. The remainder of 1234 divided by
+            10 is 4 so the first thing printed must be 4.
           </p>
         </feedback>
       </choice>
@@ -99,11 +98,11 @@ public static void mystery (int x)
 
         <feedback>
           <p>
-            When the recursive call to <code>mystery(1) </code> occurs (the 4th
-            call to mystery), the division of x /10 equals .01--this becomes 0
-            because this is integer division and the remainder is thrown away.
-            Therefore the current call will be completed and all of the previous
-            calls to <code>mystery </code> will be completed.
+            When the recursive call to <c>mystery(1)</c> occurs (the 4th call to
+            mystery), the division of x /10 equals .01--this becomes 0 because
+            this is integer division and the remainder is thrown away. Therefore
+            the current call will be completed and all of the previous calls to
+            <c>mystery</c> will be completed.
           </p>
         </feedback>
       </choice>
@@ -149,13 +148,13 @@ public static int mystery(int n)
 
         <feedback>
           <p>
-            For the call <code>mystery(5) </code>, <code>n != 0 </code> so the
-            <code>else </code> statement is executed. This results in the next
-            recursive call of <code>mystery(4) </code>. This will continue until
-            the call <code>mystery(0) </code> is executed. At this point, the
-            value 1 will be returned. Then each call of <code>mystery </code>
-            can return with the 3 * the result of the recursive call. So this
-            method will compute 3 to the given power.
+            For the call <c>mystery(5)</c>, <c>n != 0</c> so the <c>else</c>
+            statement is executed. This results in the next recursive call of
+            <c>mystery(4)</c>. This will continue until the call
+            <c>mystery(0)</c> is executed. At this point, the value 1 will be
+            returned. Then each call of <c>mystery</c> can return with the 3 *
+            the result of the recursive call. So this method will compute 3 to
+            the given power.
           </p>
         </feedback>
       </choice>
@@ -168,7 +167,7 @@ public static int mystery(int n)
         <feedback>
           <p>
             This can never be 0 because the stopping condition returns 1 when
-            you call <code>mystery(0) </code>
+            you call <c>mystery(0)</c>
           </p>
         </feedback>
       </choice>
@@ -180,7 +179,7 @@ public static int mystery(int n)
 
         <feedback>
           <p>
-            This would only be true if you called <code>mystery(1) </code>
+            This would only be true if you called <c>mystery(1)</c>
           </p>
         </feedback>
       </choice>
@@ -192,7 +191,7 @@ public static int mystery(int n)
 
         <feedback>
           <p>
-            This would be true if you called <code>mystery(4) </code>
+            This would be true if you called <c>mystery(4)</c>
           </p>
         </feedback>
       </choice>
@@ -204,7 +203,7 @@ public static int mystery(int n)
 
         <feedback>
           <p>
-            This would be true if you called <code>mystery(3) </code>
+            This would be true if you called <c>mystery(3)</c>
           </p>
         </feedback>
       </choice>
@@ -263,9 +262,9 @@ public static int product(int n)
 
         <feedback>
           <p>
-            If you assume the purpose of the method is to compute <code>n * 2
-            </code>, this is correct, but the product method does not do this.
-            Be sure to trace the code to see what happens.
+            If you assume the purpose of the method is to compute <c>n * 2</c>,
+            this is correct, but the product method does not do this. Be sure to
+            trace the code to see what happens.
           </p>
         </feedback>
       </choice>
@@ -277,9 +276,9 @@ public static int product(int n)
 
         <feedback>
           <p>
-            If you assume the purpose of the method is to compute <code>n * n
-            </code> this is correct, but the product method does not do this. Be
-            sure to trace the code to see what happens.
+            If you assume the purpose of the method is to compute <c>n * n</c>
+            this is correct, but the product method does not do this. Be sure to
+            trace the code to see what happens.
           </p>
         </feedback>
       </choice>
@@ -291,9 +290,9 @@ public static int product(int n)
 
         <feedback>
           <p>
-            If you assume the purpose of the method is to compute <code>n ^ n
-            </code>, this would be correct. But product does not do this. Be
-            sure to trace the code to see what happens.
+            If you assume the purpose of the method is to compute <c>n ^ n</c>,
+            this would be correct. But product does not do this. Be sure to
+            trace the code to see what happens.
           </p>
         </feedback>
       </choice>
@@ -305,9 +304,9 @@ public static int product(int n)
 
         <feedback>
           <p>
-            The result from <code>product(5) </code> is <code>5 * product(3)
-            </code> which is 3 * product(1) which is <code>1 </code> so the
-            answer is <code>1 * 3 * 5 = 15 </code>.
+            The result from <c>product(5)</c> is <c>5 * product(3)</c> which is
+            3 * product(1) which is <c>1</c> so the answer is <c>1 * 3 * 5 =
+            15</c>.
           </p>
         </feedback>
       </choice>
@@ -357,8 +356,7 @@ public static int f(int n)
 
         <feedback>
           <p>
-            This would be true if it was <code>f(6) </code> not <code>f(5)
-            </code>.
+            This would be true if it was <c>f(6)</c> not <c>f(5)</c>.
           </p>
         </feedback>
       </choice>
@@ -370,8 +368,7 @@ public static int f(int n)
 
         <feedback>
           <p>
-            This would be true if it was <code>f(4) </code> not <code>f(5)
-            </code>.
+            This would be true if it was <c>f(4)</c> not <c>f(5)</c>.
           </p>
         </feedback>
       </choice>
@@ -383,8 +380,7 @@ public static int f(int n)
 
         <feedback>
           <p>
-            This method will stop when <code>n </code> equals <code>0 </code> or
-            <code>1 </code>.
+            This method will stop when <c>n</c> equals <c>0</c> or <c>1</c>.
           </p>
         </feedback>
       </choice>
@@ -396,10 +392,9 @@ public static int f(int n)
 
         <feedback>
           <p>
-            This is the Fibonacci method which returns <code>0 </code> for
-            <code>0 </code> and <code>1 </code> for <code>1 </code> and
-            <code>Fibonacci(n-1) + Fibonacci(n-2) </code> for the rest of the
-            numbers.
+            This is the Fibonacci method which returns <c>0</c> for <c>0</c> and
+            <c>1</c> for <c>1</c> and <c>Fibonacci(n-1) + Fibonacci(n-2)</c> for
+            the rest of the numbers.
           </p>
         </feedback>
       </choice>
@@ -411,8 +406,7 @@ public static int f(int n)
 
         <feedback>
           <p>
-            This would be true if it was <code>f(0) </code> not <code>f(5)
-            </code>.
+            This would be true if it was <c>f(0)</c> not <c>f(5)</c>.
           </p>
         </feedback>
       </choice>

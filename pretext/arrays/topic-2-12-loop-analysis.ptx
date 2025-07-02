@@ -477,7 +477,7 @@ for (int i = 3; i &lt; 8; i++)
           <feedback>
             <p>
               This would be true if the outer loop executed 8 times and the
-              inner 5 times, but what is the initial value of <code>i </code>?
+              inner 5 times, but what is the initial value of <c>i</c>?
             </p>
           </feedback>
         </choice>
@@ -503,7 +503,7 @@ for (int i = 3; i &lt; 8; i++)
           <feedback>
             <p>
               This would be true if the outer loop executed 6 times such as if
-              it was <code>i &lt;= 8 </code>.
+              it was <c>i &lt;= 8</c>.
             </p>
           </feedback>
         </choice>
@@ -516,7 +516,7 @@ for (int i = 3; i &lt; 8; i++)
           <feedback>
             <p>
               This would be true if the inner loop executed 5 times such as if
-              it was <code>y &lt;= 5 </code>.
+              it was <c>y &lt;= 5</c>.
             </p>
           </feedback>
         </choice>
@@ -559,7 +559,7 @@ for (int i = 2; i &lt; 8; i++)
           <feedback>
             <p>
               This would be true if i was initialized to 0 and the inner loop
-              continued while <code>y &lt; 5 </code>.
+              continued while <c>y &lt; 5</c>.
             </p>
           </feedback>
         </choice>
@@ -584,8 +584,8 @@ for (int i = 2; i &lt; 8; i++)
 
           <feedback>
             <p>
-              This would be true if the inner loop continued while <code>y &lt;
-              5 </code>.
+              This would be true if the inner loop continued while <c>y &lt;
+              5</c>.
             </p>
           </feedback>
         </choice>
@@ -627,7 +627,7 @@ for (int i = 3; i &lt;= 9; i++)
 
           <feedback>
             <p>
-              It would print 6 rows if it was <code>i &lt; 9 </code>.
+              It would print 6 rows if it was <c>i &lt; 9</c>.
             </p>
           </feedback>
         </choice>
@@ -639,7 +639,7 @@ for (int i = 3; i &lt;= 9; i++)
 
           <feedback>
             <p>
-              It would print 5 stars per row if it was <code>j &gt; 1 </code>.
+              It would print 5 stars per row if it was <c>j &gt; 1</c>.
             </p>
           </feedback>
         </choice>

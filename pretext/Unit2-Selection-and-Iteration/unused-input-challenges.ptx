@@ -180,7 +180,7 @@ public class GuessAnimal
   }
 }
         </code>
-        <stdin />
+        <stdin></stdin>
         <tests>
 import static org.junit.Assert.*;
 
@@ -412,7 +412,7 @@ public class Main
   }
 }
         </code>
-        <stdin />
+        <stdin></stdin>
         <tests>
 import static org.junit.Assert.*;
 

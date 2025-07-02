@@ -418,7 +418,7 @@ public class TwoSum
    }
 }
       </code>
-      <stdin />
+      <stdin></stdin>
       <tests>
 import static org.junit.Assert.*;
 import org.junit.Test;

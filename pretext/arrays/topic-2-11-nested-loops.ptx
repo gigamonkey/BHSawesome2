@@ -127,7 +127,7 @@ for (int i = 1; i &lt; 7; i++)
         <feedback>
           <p>
             This would be true if i was initialized to 0 and the inner loop
-            continued while <code>y &lt; 5 </code>.
+            continued while <c>y &lt; 5</c>.
           </p>
         </feedback>
       </choice>
@@ -153,8 +153,8 @@ for (int i = 1; i &lt; 7; i++)
 
         <feedback>
           <p>
-            This would be true if the inner loop continued while <code>y &lt; 5
-            </code>.
+            This would be true if the inner loop continued while <c>y &lt;
+            5</c>.
           </p>
         </feedback>
       </choice>

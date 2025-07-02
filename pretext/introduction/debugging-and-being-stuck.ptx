@@ -3,7 +3,6 @@
 <section xml:id="debugging">
   <title>Debugging and being stuck</title>
   <introduction>
-
     <p>
       The first and most obvious thing we need to learn about programming are
       the details of our programming languge, Java in our case. However as
@@ -25,10 +24,12 @@
     </p>
 
     <figure align="left">
-      <caption>Early computer science pioneer <url
-      href="https://en.wikipedia.org/wiki/Grace_Hopper">Grace Hopper’s</url>
-      team documented a real bug, a moth that flew into a computer in
-      1947!</caption>
+      <caption>
+        Early computer science pioneer <url
+        href="https://en.wikipedia.org/wiki/Grace_Hopper">Grace Hopper’s</url>
+        team documented a real bug, a moth that flew into a computer in 1947!
+      </caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/firstbug.jpg" width="54%" />
     </figure>
 
@@ -53,17 +54,14 @@
         life from then on was going to be spent in finding mistakes in my own
         programs.
       </p>
-      <attribution>
-        Maurice Wilkes [in 1979] talking about his work in the 1940s.
-      </attribution>
+
+      <attribution>Maurice Wilkes [in 1979] talking about his work in the 1940s.</attribution>
     </blockquote>
 
     <p>
       In this section we will look at some of the kinds of bugs you will
       undoubtedly soon encounter.
     </p>
-
-
   </introduction>
 
   <subsection>
@@ -212,10 +210,7 @@
       closer look.
     </p>
 
-    <p>
-      An error message will look something like this:
-    </p>
-
+    <p>An error message will look something like this:</p>
     <program language="text">
       <code>
 FirstClass.java:5: error: unclosed string literal
@@ -517,6 +512,7 @@ public class RunestoneTests extends CodeTestHelper
       visual="https://rubberduckdebugging.com/">Rubber duck debugging</url> is a
       lot of fun!
     </p>
+
     <video youtube="auv10y-dN4s" label="video-debugging" />
   </subsection>
 
@@ -646,6 +642,7 @@ Roses are red,
 Violets are blue,
 Unexpected '}' on line 32.
         </pre>
+
         <p>
           Which change, if any, can be made so that the code segment produces
           the intended output?

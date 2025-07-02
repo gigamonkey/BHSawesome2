@@ -270,8 +270,8 @@ for (int i = 3; i &lt; 8; i++)
           <feedback>
             <p>
               This would be true if the for loop was missing the change part
-              <code>(int i = 3; i &lt; 8; ) </code> but it does increment i in
-              the change part <code>(int i = 3; i &lt; 8; i++) </code>.
+              <c>(int i = 3; i &lt; 8; )</c> but it does increment i in the
+              change part <c>(int i = 3; i &lt; 8; i++)</c>.
             </p>
           </feedback>
         </choice>

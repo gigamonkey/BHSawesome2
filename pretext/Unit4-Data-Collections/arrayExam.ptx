@@ -676,7 +676,7 @@ while ((sum&lt;limit) &amp;&amp; (i&lt;x.length))
 
           <feedback>
             <p>
-              This would be true if it was <code>sum &lt;= limit </code>.
+              This would be true if it was <c>sum &lt;= limit</c>.
             </p>
           </feedback>
         </choice>
@@ -715,8 +715,7 @@ for (int i=0 ; i &lt; x.length - 1 ; i++)
         <choice>
           <statement>
             <p>
-              <code>for (int j=0 ; j &lt; x.length; j++)
-              </code>
+              <c>for (int j=0 ; j &lt; x.length; j++)</c>
             </p>
           </statement>
 
@@ -731,8 +730,7 @@ for (int i=0 ; i &lt; x.length - 1 ; i++)
         <choice>
           <statement>
             <p>
-              <code>for (int j=0 ; j &lt; x.length - 1; j++)
-              </code>
+              <c>for (int j=0 ; j &lt; x.length - 1; j++)</c>
             </p>
           </statement>
 
@@ -747,8 +745,7 @@ for (int i=0 ; i &lt; x.length - 1 ; i++)
         <choice correct="yes">
           <statement>
             <p>
-              <code>for (int j=i+1; j &lt; x.length; j++)
-              </code>
+              <c>for (int j=i+1; j &lt; x.length; j++)</c>
             </p>
           </statement>
 
@@ -763,15 +760,14 @@ for (int i=0 ; i &lt; x.length - 1 ; i++)
         <choice>
           <statement>
             <p>
-              <code>for (int j=i+1; j &lt; x.length - 1; j++)
-              </code>
+              <c>for (int j=i+1; j &lt; x.length - 1; j++)</c>
             </p>
           </statement>
 
           <feedback>
             <p>
-              This misses checking the last value in the array since it is
-              <code>j &lt; x.length-1 </code>.
+              This misses checking the last value in the array since it is <c>j
+              &lt; x.length-1</c>.
             </p>
           </feedback>
         </choice>

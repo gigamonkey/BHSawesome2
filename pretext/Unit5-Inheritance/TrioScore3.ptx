@@ -130,8 +130,8 @@ public interface MenuItem
 
           <feedback>
             <p>
-              This declares the class correctly as <code>public class Trio
-              implements MenuItem </code>
+              This declares the class correctly as <c>public class Trio
+              implements MenuItem</c>
             </p>
           </feedback>
         </choice>
@@ -195,8 +195,8 @@ public interface MenuItem
 
           <feedback>
             <p>
-              This solution declares the constructor as <code>public
-              Trio(Sandwich sandwich, Salad salad, Drink drink) </code>
+              This solution declares the constructor as <c>public Trio(Sandwich
+              sandwich, Salad salad, Drink drink)</c>
             </p>
           </feedback>
         </choice>
@@ -266,8 +266,8 @@ public interface MenuItem
 
           <feedback>
             <p>
-              To implement an interface the class must have both a <code>getName
-              </code> and <code>getPrice </code> method.
+              To implement an interface the class must have both a
+              <c>getName</c> and <c>getPrice</c> method.
             </p>
           </feedback>
         </choice>
@@ -300,9 +300,8 @@ public interface MenuItem
 
           <feedback>
             <p>
-              While the <code>toString </code> method exists and correctly
-              creates the name string, it is not called by a <code>getName
-              </code> method.
+              While the <c>toString</c> method exists and correctly creates the
+              name string, it is not called by a <c>getName</c> method.
             </p>
           </feedback>
         </choice>
@@ -314,8 +313,8 @@ public interface MenuItem
 
           <feedback>
             <p>
-              Since there is no <code>getName </code> method this point can not
-              be awarded.
+              Since there is no <c>getName</c> method this point can not be
+              awarded.
             </p>
           </feedback>
         </choice>
@@ -338,9 +337,9 @@ public interface MenuItem
 
           <feedback>
             <p>
-              While the <code>toString </code> method exists and correctly
-              creates and returns the name string, it is not called by a
-              <code>getName </code> method.
+              While the <c>toString</c> method exists and correctly creates and
+              returns the name string, it is not called by a <c>getName</c>
+              method.
             </p>
           </feedback>
         </choice>
@@ -352,8 +351,8 @@ public interface MenuItem
 
           <feedback>
             <p>
-              Since there is no <code>getName </code> method this point can not
-              be awarded.
+              Since there is no <c>getName</c> method this point can not be
+              awarded.
             </p>
           </feedback>
         </choice>
@@ -389,8 +388,8 @@ public interface MenuItem
 
           <feedback>
             <p>
-              There is no <code>getPrice </code> method so the student can not
-              earn this point.
+              There is no <c>getPrice</c> method so the student can not earn
+              this point.
             </p>
           </feedback>
         </choice>
@@ -426,8 +425,8 @@ public interface MenuItem
 
           <feedback>
             <p>
-              There is no <code>getPrice </code> method so the student can not
-              earn this point.
+              There is no <c>getPrice</c> method so the student can not earn
+              this point.
             </p>
           </feedback>
         </choice>

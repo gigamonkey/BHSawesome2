@@ -138,8 +138,8 @@ public interface MenuItem
 
           <feedback>
             <p>
-              This declares the class correctly as <code>public class Trio
-              implements MenuItem </code>
+              This declares the class correctly as <c>public class Trio
+              implements MenuItem</c>
             </p>
           </feedback>
         </choice>
@@ -209,8 +209,8 @@ public interface MenuItem
 
           <feedback>
             <p>
-              This solution declares the constructor as <code>public
-              Trio(Sandwich s, Salad sa, Drink d) </code>
+              This solution declares the constructor as <c>public Trio(Sandwich
+              s, Salad sa, Drink d)</c>
             </p>
           </feedback>
         </choice>
@@ -281,9 +281,8 @@ public interface MenuItem
 
           <feedback>
             <p>
-              This solution contains correct declarations for <code>public
-              String getName() </code> and <code>public double getPrice()
-              </code>.
+              This solution contains correct declarations for <c>public String
+              getName()</c> and <c>public double getPrice()</c>.
             </p>
           </feedback>
         </choice>
@@ -319,7 +318,7 @@ public interface MenuItem
 
           <feedback>
             <p>
-              Look at what <code>getName </code> is supposed to return.
+              Look at what <c>getName</c> is supposed to return.
             </p>
           </feedback>
         </choice>

@@ -144,17 +144,16 @@
       <choice>
         <statement>
           <p>
-            Use four unrelated classes: <code>Car </code>, <code>Doors </code>,
-            <code>AirConditioning </code>, and <code>MilesPerGallon </code>.
+            Use four unrelated classes: <c>Car</c>, <c>Doors</c>,
+            <c>AirConditioning</c>, and <c>MilesPerGallon</c>.
           </p>
         </statement>
 
         <feedback>
           <p>
-            Only <code>Car </code> should be a class. The number of doors, flag
-            if it has air conditioning, and the average number of miles per
-            gallon are attributes of a car so they belong in a <code>Car </code>
-            class.
+            Only <c>Car</c> should be a class. The number of doors, flag if it
+            has air conditioning, and the average number of miles per gallon are
+            attributes of a car so they belong in a <c>Car</c> class.
           </p>
         </feedback>
       </choice>
@@ -162,9 +161,8 @@
       <choice>
         <statement>
           <p>
-            Use a class <code>Car </code> with three subclasses: <code>Doors
-            </code>, <code>AirConditioning </code>, and <code>MilesPerGallon
-            </code>.
+            Use a class <c>Car</c> with three subclasses: <c>Doors</c>,
+            <c>AirConditioning</c>, and <c>MilesPerGallon</c>.
           </p>
         </statement>
 
@@ -180,8 +178,8 @@
       <choice correct="yes">
         <statement>
           <p>
-            Use a class <code>Car </code>, with fields: <code>numDoors </code>,
-            <code>hasAir </code>, and <code>milesPerGallon </code>.
+            Use a class <c>Car</c>, with fields: <c>numDoors</c>, <c>hasAir</c>,
+            and <c>milesPerGallon</c>.
           </p>
         </statement>
 
@@ -189,8 +187,8 @@
           <p>
             The number of doors, flag if it has air conditioning, and the
             average number of miles per gallon are attributes of a car. Each of
-            these is a simple value so they can just be fields of a <code>Car
-            </code> class.
+            these is a simple value so they can just be fields of a <c>Car</c>
+            class.
           </p>
         </feedback>
       </choice>
@@ -198,9 +196,8 @@
       <choice>
         <statement>
           <p>
-            Use a class <code>Car </code>, with subclasses of <code>Doors
-            </code>, <code>AirConditioning </code>, and <code>MilesPerGallon
-            </code>.
+            Use a class <c>Car</c>, with subclasses of <c>Doors</c>,
+            <c>AirConditioning</c>, and <c>MilesPerGallon</c>.
           </p>
         </statement>
 
@@ -217,19 +214,17 @@
       <choice>
         <statement>
           <p>
-            Use classes: <code>Doors </code>, <code>AirConditioning </code>, and
-            <code>MilesPerGallon </code>, each with a subclass <code>Car
-            </code>.
+            Use classes: <c>Doors</c>, <c>AirConditioning</c>, and
+            <c>MilesPerGallon</c>, each with a subclass <c>Car</c>.
           </p>
         </statement>
 
         <feedback>
           <p>
-            A class <code>Car </code> can't be a subclass of three different
-            classes. Each class can only have one parent class. Also a car is
-            not a type of door, air conditioning flag, or miles per gallon.
-            Child classes need to be able to be substituted for the parent
-            class.
+            A class <c>Car</c> can't be a subclass of three different classes.
+            Each class can only have one parent class. Also a car is not a type
+            of door, air conditioning flag, or miles per gallon. Child classes
+            need to be able to be substituted for the parent class.
           </p>
         </feedback>
       </choice>
@@ -255,10 +250,10 @@
 
         <feedback>
           <p>
-            Only the programmer of the <code>Employee </code> class must know
-            how the public methods work. The programmer that is using the
-            <code>Employee </code> class can just use the public methods and not
-            worry about how they are implemented.
+            Only the programmer of the <c>Employee</c> class must know how the
+            public methods work. The programmer that is using the
+            <c>Employee</c> class can just use the public methods and not worry
+            about how they are implemented.
           </p>
         </feedback>
       </choice>
@@ -284,8 +279,8 @@
 
         <feedback>
           <p>
-            In order to use the public methods of the <code>Employee </code>
-            class, a programmer must know the method return types.
+            In order to use the public methods of the <c>Employee</c> class, a
+            programmer must know the method return types.
           </p>
         </feedback>
       </choice>
@@ -310,9 +305,9 @@
 
         <feedback>
           <p>
-            In order to use the public methods of the <code>Employee </code>
-            class, a programmer must know the number of parameters and the type
-            for each parameter.
+            In order to use the public methods of the <c>Employee</c> class, a
+            programmer must know the number of parameters and the type for each
+            parameter.
           </p>
         </feedback>
       </choice>
@@ -333,8 +328,8 @@
       <choice>
         <statement>
           <p>
-            Create one class <code>PublishedMaterial </code> with the requested
-            fields plus type.
+            Create one class <c>PublishedMaterial</c> with the requested fields
+            plus type.
           </p>
         </statement>
 
@@ -342,9 +337,8 @@
           <p>
             This will complicate the process of retrieving objects based on
             their type. Also if we need to add information that is specific to
-            <code>Book </code> or <code>Movie </code> or <code>AudioTape </code>
-            it would be best if these were subclasses of <code>PublishedMaterial
-            </code>.
+            <c>Book</c> or <c>Movie</c> or <c>AudioTape</c> it would be best if
+            these were subclasses of <c>PublishedMaterial</c>.
           </p>
         </feedback>
       </choice>
@@ -352,8 +346,8 @@
       <choice>
         <statement>
           <p>
-            Create classes <code>Book </code>, <code>Movie </code>, and
-            <code>AudioTape </code> with the requested fields.
+            Create classes <c>Book</c>, <c>Movie</c>, and <c>AudioTape</c> with
+            the requested fields.
           </p>
         </statement>
 
@@ -362,9 +356,8 @@
             This involves writing more code than is necessary (usually people
             copy and paste the shared code) and makes it harder to fix errors.
             It would be better to put common fields and methods in the
-            superclass <code>PublishedMaterial </code> and have <code>Book
-            </code>, <code>Movie </code>, and <code>AudioTape </code> be
-            subclasses.
+            superclass <c>PublishedMaterial</c> and have <c>Book</c>,
+            <c>Movie</c>, and <c>AudioTape</c> be subclasses.
           </p>
         </feedback>
       </choice>
@@ -372,19 +365,19 @@
       <choice>
         <statement>
           <p>
-            Create one class <code>BookStore </code> with the requested fields
-            plus type.
+            Create one class <c>BookStore</c> with the requested fields plus
+            type.
           </p>
         </statement>
 
         <feedback>
           <p>
-            The class name, <code>BookStore </code>, seems to imply the thing
-            that keeps track of the store. This would be an appropriate class
-            name for an object that handles the items in the <code>Bookstore
-            </code>. However, for the published material, it would be better to
-            use a superclass <code>PublishedMaterial </code> and subclasses for
-            <code>Book </code>, <code>Movie </code> and <code>AudioTape </code>.
+            The class name, <c>BookStore</c>, seems to imply the thing that
+            keeps track of the store. This would be an appropriate class name
+            for an object that handles the items in the <c>Bookstore</c>.
+            However, for the published material, it would be better to use a
+            superclass <c>PublishedMaterial</c> and subclasses for <c>Book</c>,
+            <c>Movie</c> and <c>AudioTape</c>.
           </p>
         </feedback>
       </choice>
@@ -396,13 +389,11 @@
 
         <feedback>
           <p>
-            This is more classes than is necessary. Items such as <code>Title
-            </code>, <code>Price </code>, <code>ID </code>, <code>Author </code>
-            and <code>DatePublished </code> are simple variables that do not
-            need a class of their own but should be fields in a
-            <code>PublishedMaterial </code> superclass, with <code>Movie
-            </code>, <code>AudioTape </code> and <code>Book </code> as
-            subclasses.
+            This is more classes than is necessary. Items such as <c>Title</c>,
+            <c>Price</c>, <c>ID</c>, <c>Author</c> and <c>DatePublished</c> are
+            simple variables that do not need a class of their own but should be
+            fields in a <c>PublishedMaterial</c> superclass, with <c>Movie</c>,
+            <c>AudioTape</c> and <c>Book</c> as subclasses.
           </p>
         </feedback>
       </choice>
@@ -410,18 +401,17 @@
       <choice correct="yes">
         <statement>
           <p>
-            Create the class <code>PublishedMaterial </code> with children
-            classes of <code>Book </code>, <code>Movie </code>, and
-            <code>AudioTape </code>.
+            Create the class <c>PublishedMaterial</c> with children classes of
+            <c>Book</c>, <c>Movie</c>, and <c>AudioTape</c>.
           </p>
         </statement>
 
         <feedback>
           <p>
             We will need to get objects based on their type so we should create
-            classes for <code>Book </code>, <code>Movie </code>, and
-            <code>AudioTape </code>. They have common fields so we should put
-            these in a common superclass <code>PublishedMaterial </code>.
+            classes for <c>Book</c>, <c>Movie</c>, and <c>AudioTape</c>. They
+            have common fields so we should put these in a common superclass
+            <c>PublishedMaterial</c>.
           </p>
         </feedback>
       </choice>

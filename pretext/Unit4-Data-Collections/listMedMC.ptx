@@ -462,7 +462,7 @@ System.out.println(list);
 
         <feedback>
           <p>
-            This would be true if the <code>set </code> was an add.
+            This would be true if the <c>set</c> was an add.
           </p>
         </feedback>
       </choice>
@@ -474,8 +474,8 @@ System.out.println(list);
 
         <feedback>
           <p>
-            This would be true it it was <code>remove(0) </code>. Remember that
-            it removes the object at the given index.
+            This would be true it it was <c>remove(0)</c>. Remember that it
+            removes the object at the given index.
           </p>
         </feedback>
       </choice>
@@ -487,8 +487,8 @@ System.out.println(list);
 
         <feedback>
           <p>
-            This would be true if the <code>set </code> was an add and if it was
-            <code>remove(0) </code>.
+            This would be true if the <c>set</c> was an add and if it was
+            <c>remove(0)</c>.
           </p>
         </feedback>
       </choice>
@@ -564,7 +564,7 @@ What is printed as a result of executing the following code segment?
 
         <feedback>
           <p>
-            This would be true if it was <code>list1.add(2,"e") </code>
+            This would be true if it was <c>list1.add(2,"e")</c>
           </p>
         </feedback>
       </choice>
@@ -706,8 +706,8 @@ What is printed as a result of executing the following code segment?
 
         <feedback>
           <p>
-            This would be true it <code>list1.set(1,"d"); </code> was
-            <code>list1.add(1,"d"); </code>
+            This would be true it <c>list1.set(1,"d");</c> was
+            <c>list1.add(1,"d");</c>
           </p>
         </feedback>
       </choice>
@@ -719,8 +719,8 @@ What is printed as a result of executing the following code segment?
 
         <feedback>
           <p>
-            This would be true it <code>list1.set(1,"d"); </code> was
-            <code>list1.add(1,"d"); </code> and if lists didn't allow duplicate
+            This would be true it <c>list1.set(1,"d");</c> was
+            <c>list1.add(1,"d");</c> and if lists didn't allow duplicate
             objects.
           </p>
         </feedback>
@@ -765,8 +765,8 @@ public void mystery(int n)
 
         <feedback>
           <p>
-            This would be true if it was <code>numList.add(numList.size() - i,
-            obj) </code>
+            This would be true if it was <c>numList.add(numList.size() - i,
+            obj)</c>
           </p>
         </feedback>
       </choice>
@@ -778,7 +778,7 @@ public void mystery(int n)
 
         <feedback>
           <p>
-            This would be true if it was <code>mystery(1) </code>
+            This would be true if it was <c>mystery(1)</c>
           </p>
         </feedback>
       </choice>
@@ -803,7 +803,7 @@ public void mystery(int n)
 
         <feedback>
           <p>
-            This would be true if it was <code>mystery(2) </code>
+            This would be true if it was <c>mystery(2)</c>
           </p>
         </feedback>
       </choice>
@@ -815,7 +815,7 @@ public void mystery(int n)
 
         <feedback>
           <p>
-            This would be true if it was <code>mystery(4) </code>
+            This would be true if it was <c>mystery(4)</c>
           </p>
         </feedback>
       </choice>
@@ -883,7 +883,7 @@ public void mystery(int value)
 
         <feedback>
           <p>
-            This would be true if it was <code>numList.add(0, value) </code>
+            This would be true if it was <c>numList.add(0, value)</c>
           </p>
         </feedback>
       </choice>
@@ -908,7 +908,7 @@ public void mystery(int value)
 
         <feedback>
           <p>
-            This would be true if it was <code>numList.add(i-1, value) </code>
+            This would be true if it was <c>numList.add(i-1, value)</c>
           </p>
         </feedback>
       </choice>

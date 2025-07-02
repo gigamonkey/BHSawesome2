@@ -615,8 +615,8 @@ public class RunestoneTests extends CodeTestHelper
     <activity label="msgbuilder-string-methods">
       <statement>
         <p>
-          Which of the following <code>String </code> method can be used to
-          return the first letter of a word?
+          Which of the following <c>String</c> method can be used to return the
+          first letter of a word?
         </p>
       </statement>
 
@@ -624,8 +624,7 @@ public class RunestoneTests extends CodeTestHelper
         <choice>
           <statement>
             <p>
-              <code>length()
-              </code>
+              <c>length()</c>
             </p>
           </statement>
 
@@ -640,8 +639,7 @@ public class RunestoneTests extends CodeTestHelper
         <choice>
           <statement>
             <p>
-              <code>indexOf(String s)
-              </code>
+              <c>indexOf(String s)</c>
             </p>
           </statement>
 
@@ -653,14 +651,13 @@ public class RunestoneTests extends CodeTestHelper
         <choice correct="yes">
           <statement>
             <p>
-              <code>substring(int start, int end)
-              </code>
+              <c>substring(int start, int end)</c>
             </p>
           </statement>
 
           <feedback>
             <p>
-              <code>substring </code> could be used to get the first letter of a
+              <c>substring</c> could be used to get the first letter of a
               string.
             </p>
           </feedback>
@@ -669,15 +666,14 @@ public class RunestoneTests extends CodeTestHelper
         <choice>
           <statement>
             <p>
-              <code>equals(Object another)
-              </code>
+              <c>equals(Object another)</c>
             </p>
           </statement>
 
           <feedback>
             <p>
-              <code>equals </code> is used for comparisons, which are not needed
-              for this method.
+              <c>equals</c> is used for comparisons, which are not needed for
+              this method.
             </p>
           </feedback>
         </choice>
@@ -687,8 +683,8 @@ public class RunestoneTests extends CodeTestHelper
     <activity label="msgbuilder-string-methods2">
       <statement>
         <p>
-          Which of the following <code>String </code> method can be used to find
-          a space character in the message?
+          Which of the following <c>String</c> method can be used to find a
+          space character in the message?
         </p>
       </statement>
 
@@ -696,8 +692,7 @@ public class RunestoneTests extends CodeTestHelper
         <choice>
           <statement>
             <p>
-              <code>length()
-              </code>
+              <c>length()</c>
             </p>
           </statement>
 
@@ -709,8 +704,7 @@ public class RunestoneTests extends CodeTestHelper
         <choice correct="yes">
           <statement>
             <p>
-              <code>indexOf(String s)
-              </code>
+              <c>indexOf(String s)</c>
             </p>
           </statement>
 
@@ -724,8 +718,7 @@ public class RunestoneTests extends CodeTestHelper
         <choice>
           <statement>
             <p>
-              <code>substring(int start, int end)
-              </code>
+              <c>substring(int start, int end)</c>
             </p>
           </statement>
 
@@ -737,15 +730,13 @@ public class RunestoneTests extends CodeTestHelper
         <choice>
           <statement>
             <p>
-              <code>equals(Object another)
-              </code>
+              <c>equals(Object another)</c>
             </p>
           </statement>
 
           <feedback>
             <p>
-              <code>equals </code> is used for comparisons, which are not needed
-              here.
+              <c>equals</c> is used for comparisons, which are not needed here.
             </p>
           </feedback>
         </choice>

@@ -453,7 +453,7 @@ public class Student extends Person
           <feedback>
             <p>
               How is this different from the current declaration for
-              <code>getFood </code>?
+              <c>getFood</c>?
             </p>
           </feedback>
         </choice>
