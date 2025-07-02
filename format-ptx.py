@@ -11,7 +11,7 @@ from lxml import etree
 INDENT = 2
 WIDTH = 80
 INLINE_TAGS = {"term", "url", "c", "h", "area"}
-PRESERVE_WHITESPACE = {"code", "cline", "tests", "pre"}
+PRESERVE_WHITESPACE = {"code", "cline", "tests", "pre", "program"}
 ONE_LINE = {"cline"}
 WRAP = {"p", "caption"}
 DEFAULT_NS = {"xml": "http://www.w3.org/XML/1998/namespace"}
@@ -168,7 +168,12 @@ def render_with_whitespace(elem, ns, level=0):
     if not is_oneline(elem):
         s += f"\n{indent(level)}"
 
-    return s + close_tag(elem, ns)
+    s += close_tag(elem, ns)
+
+    if not is_oneline(elem):
+        s += "\n"
+
+    return s
 
 
 def render_child_with_whitespace(elem, ns, level=0):
