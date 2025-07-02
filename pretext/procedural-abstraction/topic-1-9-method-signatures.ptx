@@ -65,7 +65,6 @@
     <program language="java">
       public static void drawSquare(int x, int y, int width, int height)
     </program>
-
   </subsection>
 
   <subsection>
@@ -195,10 +194,7 @@
         </code>
       </program>
     </activity>
-
   </subsection>
-
-
 
   <subsection>
     <title>Making smaller methods</title>
@@ -259,6 +255,7 @@
       methods. Click on the “Next” button below the code to step through the
       code and watch the red arrow jump to the method that is being run.
     </p>
+
     <p>
       Execution in Java always begins in the <c>main</c> method in the current
       class. Then, the <term>flow of control</term> skips from method to method
@@ -497,7 +494,6 @@ public class RunestoneTests extends CodeTestHelper
         </choice>
       </choices>
     </activity>
-
   </subsection>
 
   <subsection>
@@ -505,7 +501,8 @@ public class RunestoneTests extends CodeTestHelper
     <p>
       Let’s take another look at the Old MacDonald Song and see if we can remove
       even more duplication by writing a with that takes arguments. To start, do
-      this activity to find some lines of code that are not identical but are quite similar.
+      this activity to find some lines of code that are not identical but are
+      quite similar.
     </p>
 
     <activity label="different-code-old-mcdonald">
@@ -552,7 +549,7 @@ public class RunestoneTests extends CodeTestHelper
         <cline>  <area correct="no">}</area></cline>
         <cline><area correct="no">}</area></cline>
       </areas>
-  </activity>
+    </activity>
 
     <p>
       Did you find the lines that are identical except for the animal name and
@@ -764,7 +761,6 @@ public class RunestoneTests extends CodeTestHelper
         </tests>
       </program>
     </activity>
-
   </subsection>
 
   <subsection>
@@ -924,7 +920,7 @@ public class RunestoneTests extends CodeTestHelper
     </project>
   </subsection>
 
-<subsection>
+  <subsection>
     <title>Non-void methods</title>
     <idx>return value</idx>
     <idx>void method</idx>
@@ -1088,10 +1084,7 @@ public class RunestoneTests extends CodeTestHelper
     <activity label="traceMethods1">
       <title>Mental execution</title>
       <statement>
-        <p>
-          What does the following code print out?
-        </p>
-
+        <p>What does the following code print out?</p>
         <program language="java">
           <code>
             public class MethodTrace {
@@ -1271,12 +1264,8 @@ public class RunestoneTests extends CodeTestHelper
     </activity>
   </subsection>
 
-
-
   <subsection>
     <title>Summary</title>
-
-
     <p>
       <ul>
         <li>
@@ -1348,6 +1337,7 @@ public class RunestoneTests extends CodeTestHelper
             signatures.
           </p>
         </li>
+
         <li>
           <p>
             (AP 1.10.A.1) Class methods are associated with the class (not
@@ -1392,7 +1382,6 @@ public class RunestoneTests extends CodeTestHelper
             a variable or printing it out.
           </p>
         </li>
-
       </ul>
     </p>
   </subsection>

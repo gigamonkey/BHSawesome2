@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="topic-1-11-Math">
-  <title>The <c>Math</c> class</title>
+  <title>
+    The <c>Math</c> class
+  </title>
 
   <introduction>
     <p>
@@ -20,7 +22,7 @@
     </p>
 
     <p>
-      As we learned in the <xref ref="introduction"/>, all code in Java is
+      As we learned in the <xref ref="introduction" />, all code in Java is
       written within classes. There’s a lot to say about classes and we’ll get
       to it in later units. But some classes just exist as a place to put a
       bunch of useful methods. One such class is the <c>Math</c> class in the
@@ -35,6 +37,7 @@
       CSA Java Quick Reference Sheet</url> that you will have access to during
       the exam.
     </p>
+
     <p>
       There are more <c>Math</c> methods, outside of what you need on the AP
       exam, that you can find in the <url
@@ -78,7 +81,6 @@
       return value will always be a <c>double</c> even if it could be
       represented by an <c>int</c>.
     </p>
-
 
     <program language="java">
       <code>
@@ -177,7 +179,10 @@ public class RunestoneTests extends CodeTestHelper
     </activity>
 
     <activity label="call-sqrt-mc">
-      <title>Legal call to <c>sqrt</c></title>
+      <title>
+        Legal call to <c>sqrt</c>
+      </title>
+
       <statement>
         <p>
           Knowing that <c>Math.sqrt</c> takes a single argument, Which of these
@@ -404,11 +409,10 @@ public class RunestoneTests extends CodeTestHelper
     <idx>
       <h>Math</h><h>random</h>
     </idx>
+
     <idx>random</idx>
-
     <sidebyside widths="20% 80%">
-      <image source="Unit1-Using-Objects-and-Methods/Figures/dice.png" alt="Dice"/>
-
+      <image source="Unit1-Using-Objects-and-Methods/Figures/dice.png" alt="Dice" />
       <p>
         Games would be boring if the same thing happened each time you played
         the game. And many simulation techniques, including those used to train
@@ -430,9 +434,10 @@ public class RunestoneTests extends CodeTestHelper
       </p>
 
       <blockquote>
-        <p>Anyone
-        who considers arithmetical methods of producing random digits is, of
-        course, in a state of sin.</p>
+        <p>
+          Anyone who considers arithmetical methods of producing random digits
+          is, of course, in a state of sin.
+        </p>
       </blockquote>
 
       <p>
@@ -928,8 +933,8 @@ public class RunestoneTests extends CodeTestHelper
               This is true about 75% of the time, since it will be a number from
               0 to not quite 1. Note that if the expression used &gt; rather
               than &gt;= it would be very slightly off. Generally it's best to
-              write this kind of expression with &lt; and the percent you
-              want to be true so <c>Math.random() &lt; 0.75</c> in this case.
+              write this kind of expression with &lt; and the percent you want
+              to be true so <c>Math.random() &lt; 0.75</c> in this case.
             </p>
           </feedback>
         </choice>
@@ -1037,7 +1042,6 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-random-numbers">
     <title>Coding Challenge: Combo lock</title>
-
     <sidebyside widths="15% 90%">
       <image source="Unit1-Using-Objects-and-Methods/Figures/lock.jpg" alt="lock" />
       <p>
@@ -1183,11 +1187,10 @@ public class RunestoneTests extends CodeTestHelper {
         </tests>
       </program>
     </project>
-
   </subsection>
+
   <subsection>
     <title>Coding Challenge: Dancing turtles</title>
-
     <p>
       Here’s another challenge that is a lot of fun! Can you use random numbers
       to make dancing turtles? This idea was suggested by CSA teacher Zac
@@ -1285,21 +1288,21 @@ public class RunestoneTests extends CodeTestHelper
     </project>
   </subsection>
 
-    <subsection>
-      <title>Coding Challenge: Tower ladder</title>
-      <sidebyside widths="25% 75%">
-        <image source="Unit1-Using-Objects-and-Methods/Figures/ladder.png" width="36%" alt="Ladder on tower" />
-        <p>
-          The Pythagorean theorem states that the length of the hypotenuse (the side
-          opposite the right angle in a right triangle) is the square root of the
-          sum of the squares of the lengths of the other two sides, also called the
-          “legs” or the width and height of the triangle. (Incidentally, the
-          Pythagorean theorem is named for Pythagoras who was also the leader of the
-          gang of Greek mathematicians who legend has it allegedly drowned their
-          fellow mathematician for showing that <m>\sqrt{2}</m> is irrational.)
-          Here’s the formula for this theorem:
-        </p>
-      </sidebyside>
+  <subsection>
+    <title>Coding Challenge: Tower ladder</title>
+    <sidebyside widths="25% 75%">
+      <image source="Unit1-Using-Objects-and-Methods/Figures/ladder.png" width="36%" alt="Ladder on tower" />
+      <p>
+        The Pythagorean theorem states that the length of the hypotenuse (the
+        side opposite the right angle in a right triangle) is the square root of
+        the sum of the squares of the lengths of the other two sides, also
+        called the “legs” or the width and height of the triangle.
+        (Incidentally, the Pythagorean theorem is named for Pythagoras who was
+        also the leader of the gang of Greek mathematicians who legend has it
+        allegedly drowned their fellow mathematician for showing that
+        <m>\sqrt{2}</m> is irrational.) Here’s the formula for this theorem:
+      </p>
+    </sidebyside>
 
     <p>
       <ul>
@@ -1477,7 +1480,7 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </project>
 
-      <activity label="vocab1_9">
+    <activity label="vocab1_9">
       <title>Vocab check</title>
       <statement>
         <p>
@@ -1530,6 +1533,7 @@ public class RunestoneTests extends CodeTestHelper
             defining class, the use of the class name is optional in the call.
           </p>
         </li>
+
         <li>
           <p>
             (AP 1.11.A.1) The <c>Math</c> class is part of the <c>java.lang</c>
