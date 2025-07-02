@@ -33,7 +33,6 @@
     <xi:include href="./array-lists/toctree.ptx" />
     <xi:include href="./2d-arrays/toctree.ptx" />
     <xi:include href="./algorithms/toctree.ptx" />
-
     <backmatter>
       <index>
         <index-list />

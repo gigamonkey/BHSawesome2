@@ -5,11 +5,10 @@
   <introduction>
     <idx>method</idx>
     <idx>procedural abstraction</idx>
-
     <p>
-      In <xref ref="primitive-types-and-variables"/> we discussed the the lowest
-      level elements of Java: values, variables, and expressions. And in the
-      <xref ref="introduction"/> we wrote bits of code inside a <c>main</c>
+      In <xref ref="primitive-types-and-variables" /> we discussed the the
+      lowest level elements of Java: values, variables, and expressions. And in
+      the <xref ref="introduction" /> we wrote bits of code inside a <c>main</c>
       method without looking too deeply into how that works.
     </p>
 

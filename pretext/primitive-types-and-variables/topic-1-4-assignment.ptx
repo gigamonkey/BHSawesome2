@@ -22,11 +22,11 @@
 
     <p>
       Relatedly, if we want to take input from the user, for instance using the
-      <c>Scanner</c> class we discussed in <xref ref="scanner"/>, we'll often
+      <c>Scanner</c> class we discussed in <xref ref="scanner" />, we'll often
       assign the values we get from the user to variables that we then use in
       our computations.
     </p>
-</introduction>
+  </introduction>
 
   <subsection>
     <title>Assignment Statements</title>

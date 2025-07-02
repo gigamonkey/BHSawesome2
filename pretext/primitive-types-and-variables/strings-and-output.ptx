@@ -249,7 +249,7 @@ public class RunestoneTests extends CodeTestHelper
       modern programs can accept all kinds of input: UI gestures such as the
       user clicking on a button, audio input from the computer’s microphone,
       visual input from a camera, etc. But as with output the simplest to deal
-      with is textual input. In <xref ref="text-files"/> we’ll look at how to
+      with is textual input. In <xref ref="text-files" /> we’ll look at how to
       read input from files saved on the computer. But sometimes it’s useful to
       be able to get input typed by the user as a program runs.
     </p>

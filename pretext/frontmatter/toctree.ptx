@@ -11,9 +11,8 @@
     </p>
 
     <p>
-      To make sure the site saves your answers on questions, please click on
-      the person icon at the top to register or login to your Runestone
-      course.
+      To make sure the site saves your answers on questions, please click on the
+      person icon at the top to register or login to your Runestone course.
     </p>
 
     <p>
@@ -27,6 +26,7 @@
 
     <video youtube="Jn9_HaX3m7s" label="video-intro" />
   </introduction>
+
   <xi:include href="./preface.ptx" />
   <xi:include href="./csawesome2-preface.ptx" />
   <xi:include href="./aboutcsa.ptx" />

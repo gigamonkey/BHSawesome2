@@ -95,6 +95,7 @@
           an <c>int</c> or an <c>int</c> by a <c>double</c> or an <c>int</c>
           cast to a <c>double</c> divided by an <c>int</c>.
         </p>
+
         <p>
           Then add another line that divides <c>5</c> by <c>2</c> but casting
           one of the values to <c>(double)</c>. What is the result?
@@ -144,7 +145,6 @@ public class RunestoneTests extends CodeTestHelper
         </tests>
       </program>
     </activity>
-
   </subsection>
 
   <subsection>
@@ -159,7 +159,7 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <p>
-      But as we learned in <xref ref="topic-1-3-expressions"/>, in any
+      But as we learned in <xref ref="topic-1-3-expressions" />, in any
       expression involving a <c>double</c>, the <c>double</c> is “contagious”
       and will cause the other operand to be turned into a <c>double</c> and
       thus the value of the expression as a whole to be computed using the rules
@@ -216,13 +216,11 @@ double average = (double) total / count;
       <c>double</c> value, losing the fractional part of the true mathematical
       answer.
     </p>
-
   </subsection>
 
   <subsection xml:id="rounding">
     <title>Casting to int</title>
     <idx>rounding</idx>
-
     <p>
       Since casting a <c>double</c> value to <c>int</c> throws away mathematical
       precision it might seem that we’d rarely want to do that. But we can use
@@ -247,15 +245,13 @@ int nearestNegInt = (int) (negNumber – 0.5);
       want to round it to the nearest <c>int</c>, rather than truncating it,
       adding <c>0.5</c> will produce a number that is greater than <c>2.0</c>
       and thus will get truncated to <c>2</c>. Assuming we’re okay rounding
-
-      above the next integer
-      value if the decimal part is greater than <c>0.5</c>, as it is here. Then
-      casting <em>that</em> value to an <c>int</c> will truncate down. So in
-      this case <c>1.75 + 0.5</c> gives us <c>2.25</c> which is then truncated
-      to <c>2</c>. On the other hand adding <c>0.5</c> to the result of
-      evaluating <c>5.0 / 4.2</c>, namely <c>1.25</c>, only gets us to
-      <c>1.75</c> which truncates back to <c>1</c> which is the nearest integer
-      to <c>1.25</c>.
+      above the next integer value if the decimal part is greater than
+      <c>0.5</c>, as it is here. Then casting <em>that</em> value to an
+      <c>int</c> will truncate down. So in this case <c>1.75 + 0.5</c> gives us
+      <c>2.25</c> which is then truncated to <c>2</c>. On the other hand adding
+      <c>0.5</c> to the result of evaluating <c>5.0 / 4.2</c>, namely
+      <c>1.25</c>, only gets us to <c>1.75</c> which truncates back to <c>1</c>
+      which is the nearest integer to <c>1.25</c>.
     </p>
 
     <p>
@@ -328,7 +324,6 @@ public class RunestoneTests extends CodeTestHelper
         </tests>
       </program>
     </activity>
-
   </subsection>
 
   <subsection xml:id="range-of-values">
