@@ -32,7 +32,7 @@ def open_tag(elem, ns, empty=False):
             s += f' xmlns:{prefix}="{url}"'
 
     if empty:
-        s += " /"
+        s += "/"
     s += ">"
     return s
 
