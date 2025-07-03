@@ -1,18 +1,494 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="topic-2-2-booleans">
-  <title>Boolean Expressions</title>
+  <title>Where do booleans come from?</title>
+  <idx>boolean</idx>
+  <idx>boolean expression</idx>
+  <idx>relational operator</idx>
+  <idx>remainder operator</idx>
+  <idx>boolean</idx>
+  <idx>&lt;</idx>
+  <idx>&gt;</idx>
+  <idx>==</idx>
+  <idx>!=</idx>
+
   <introduction>
-    <idx>boolean</idx>
-    <idx>boolean expression</idx>
-    <idx>relational operator</idx>
-    <idx>remainder operator</idx>
-    <idx>boolean</idx>
-    <idx>&lt;</idx>
-    <idx>&gt;</idx>
-    <idx>==</idx>
-    <idx>!=</idx>
   </introduction>
+
+  <subsection xml:id="relational-operators-in-if-statements">
+    <title>Relational Operators in If Statements</title>
+    <p>
+      Most if statements have a boolean condition that uses relational operators
+      like ==, !=, &lt;, &gt;, &lt;=, &gt;=, as we saw in the last lesson.
+    </p>
+
+    <activity label="if-relational">
+      <statement>
+        <p>
+          Run the following active code a couple times until you see all the
+          possible outputs. It prints out whether a random number is positive or
+          equal to 0. Add another if statement that tests if it is a negative
+          number.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+public class TestNumbers
+{
+    public static void main(String[] args)
+    {
+        // Get a random number from -10 up to 10.
+        int number = (int) (Math.random() * 21) - 10;
+        System.out.println("The number is " + number);
+
+        // is it positive?
+        if (number &gt; 0)
+        {
+            System.out.println(number + " is positive!");
+        }
+        // is it 0?
+        if (number == 0)
+        {
+            System.out.println(number + " is zero!");
+        }
+        // is it negative?
+        // Add another if statement
+
+    }
+}
+        </code>
+        <tests>
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import java.io.*;
+import java.util.regex.MatchResult;
+import java.util.regex.Pattern;
+
+public class RunestoneTests extends CodeTestHelper
+{
+
+    @Test
+    public void testPositive()
+    {
+        String output = "";
+        int num = -999, count = 0;
+
+        while (num &lt;= 0 &amp;&amp; count &lt; 50)
+        {
+            output = getMethodOutput("main");
+            num = getNumber(output);
+            count++;
+
+            if (num == 9999999)
+            {
+                getResults(
+                        "The number is ##\n## is positive!",
+                        output,
+                        "Did you forget to print the number?",
+                        false);
+                assertTrue(false);
+                return;
+            }
+        }
+
+        String expect = "The number is " + num + "\n" + num + " is positive!";
+
+        boolean passed = output.contains("positive");
+        getResults(expect, output, "Testing positive numbers", passed);
+        assertTrue(passed);
+    }
+
+    @Test
+    public void testZero()
+    {
+        String output = "";
+        int num = -999, count = 0;
+
+        while (num != 0 &amp;&amp; count &lt; 50)
+        {
+            output = getMethodOutput("main");
+            num = getNumber(output);
+            count++;
+
+            if (num == 9999999)
+            {
+                getResults(
+                        "The number is ##\n## is zero!",
+                        output,
+                        "Did you forget to print the number?",
+                        false);
+                assertTrue(false);
+                return;
+            }
+        }
+
+        String expect = "The number is " + num + "\n" + num + " is zero!";
+
+        boolean passed = output.contains("zero");
+        getResults(expect, output, "Testing zero", passed);
+        assertTrue(passed);
+    }
+
+    @Test
+    public void testNegative()
+    {
+        String output = "";
+        int num = 999, count = 0;
+
+        while (num &gt;= 0 &amp;&amp; count &lt; 50)
+        {
+            output = getMethodOutput("main");
+            num = getNumber(output);
+            count++;
+
+            if (num == 9999999)
+            {
+                getResults(
+                        "The number is ##\n## is negative!",
+                        output,
+                        "Did you forget to print the number?",
+                        false);
+                assertTrue(false);
+                return;
+            }
+        }
+
+        String expect = "The number is " + num + "\n" + num + " is negative!";
+
+        boolean passed = output.contains("negative");
+        getResults(expect, output, "Testing negative numbers", passed);
+        assertTrue(passed);
+    }
+
+    private int getNumber(String output)
+    {
+        String regex = "[0-9]+";
+
+        String[] matches =
+                Pattern.compile(regex)
+                        .matcher(output)
+                        .results()
+                        .map(MatchResult::group)
+                        .toArray(String[]::new);
+
+        int num = 9999999;
+
+        if (matches.length &gt; 0)
+        {
+            num = Integer.parseInt(matches[0]);
+        }
+
+        if (output.contains("-"))
+        {
+            num *= -1;
+        }
+
+        return num;
+    }
+}
+        </tests>
+      </program>
+    </activity>
+
+
+    <activity label="mcq-if-trace">
+      <statement>
+        <p>
+          Consider the following code segment. What is printed as a result of
+          executing the code segment?
+        </p>
+
+        <program language="java">
+          <code>
+int x = 3;
+if (x &gt; 2)
+{
+   x = x * 2;
+}
+if (x &gt; 4)
+{
+   x = 0;
+}
+System.out.print(x);
+          </code>
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>3</p>
+          </statement>
+
+          <feedback>
+            <p>x is changed by the if statements.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>6</p>
+          </statement>
+
+          <feedback>
+            <p>
+              What happens when x is greater than 2 and then greater than 4? Do
+              both if statements.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>0</p>
+          </statement>
+
+          <feedback>
+            <p>
+              If x is greater than 2, it's always doubled, and then that result
+              is always greater than 4, so it's set to 0 in the second if
+              statement.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>4</p>
+          </statement>
+
+          <feedback>
+            <p>x is changed by the if statements.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>The code will not compile</p>
+          </statement>
+
+          <feedback>
+            <p>This code will compile.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <!-- just dropped this here for now. Used to be in topic-2-3 -->
+
+    <p>
+      If/else statements can also be used with relational operators and numbers
+      like below. If your code has an if/else statement, you need to test it
+      with 2 test-cases to make sure that both parts of the code work.
+    </p>
+
+    <activity label="licenseifelse">
+      <statement>
+        <p>
+          Run the following code to see what it prints out when the variable age
+          is set to the value 16. Change the variable age’s value to 15 and then
+          run it again to see the result of the print statement in the else
+          part. Can you change the if-statement to indicate that you can get a
+          license at age 15 instead of 16? Use 2 test cases for the value of age
+          to test your code to see the results of both print statements.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+public class DriversLicenseTest
+{
+    public static void main(String[] args)
+    {
+        int age = 16;
+        if (age &gt;= 16)
+        {
+            System.out.println("You can get a driver's license in most states!");
+        }
+        else
+        {
+            System.out.println(
+                    "Sorry, you need to be older to get a driver's license.");
+        }
+    }
+}
+        </code>
+        <tests>
+import static org.junit.Assert.*;
+
+import org.junit.*;
+
+import java.io.*;
+
+public class RunestoneTests extends CodeTestHelper
+{
+    @Test
+    public void testCodeContains() throws IOException
+    {
+        String target = "age &gt;= 15";
+        boolean passed = checkCodeContains("check age &gt;= 15", target);
+        assertTrue(passed);
+    }
+}
+        </tests>
+      </program>
+    </activity>
+
+    <activity label="ifelseevenOdd" numbered="yes" adaptive="yes" indentation="hide" language="java">
+      <statement>
+        <p>
+          The following program should print out “x is even” if the remainder of
+          x divided by 2 is 0 and “x is odd” otherwise, but the code is mixed
+          up. Drag the blocks from the left and place them in the correct order
+          on the right. Click on Check Me to see if you are right.
+        </p>
+      </statement>
+
+      <blocks>
+        <block order="5">
+          <cline>public class EvenOrOdd {</cline>
+        </block>
+
+        <block order="4">
+          <cline>    public static void main(String[] args) {</cline>
+        </block>
+
+        <block order="6">
+          <cline>        int x = 92;</cline>
+        </block>
+
+        <block order="1">
+          <cline>        if (x % 2 == 0) {</cline>
+        </block>
+
+        <block order="2">
+          <cline>            System.out.println("x is even");</cline>
+        </block>
+
+        <block order="8">
+          <cline>        } else {</cline>
+        </block>
+
+        <block order="7">
+          <cline>            System.out.println("x is odd");</cline>
+        </block>
+
+        <block order="3">
+          <cline>        }</cline>
+          <cline>    }</cline>
+          <cline>}</cline>
+        </block>
+      </blocks>
+    </activity>
+
+    <activity label="scoreifelse">
+      <title>Add an else</title>
+      <statement>
+        <p>
+          Try the following code. Add an else statement to the if statement that
+          prints out “Good job!” if the score is greater than 9. Change the
+          value of score to test it. Can you change the boolean test to only
+          print out “Good job” if the score is greater than 20?
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+public class ScoreTest
+{
+    public static void main(String[] args)
+    {
+        int score = 8;
+        if (score &lt;= 9)
+        {
+            System.out.println("Try for a higher score!");
+        }
+    }
+}
+        </code>
+        <tests>
+import static org.junit.Assert.*;
+
+import org.junit.*;
+
+import java.io.*;
+
+public class RunestoneTests extends CodeTestHelper
+{
+    @Test
+    public void testChangedCode()
+    {
+        String origCode =
+                "public class ScoreTest   {      public static void main(String[] args)      {     "
+                    + "   int score = 8;        if (score &lt;= 9)         {           "
+                    + " System.out.println(\"Try for a higher score!\");        }      }} ";
+
+        boolean changed = codeChanged(origCode);
+        assertTrue(changed);
+    }
+
+    @Test
+    public void testCodeContainsElse()
+    {
+        boolean ifCheck2 = checkCodeContains("else", "else");
+        assertTrue(ifCheck2);
+    }
+
+    @Test
+    public void testCodeContains20()
+    {
+        String target1 = removeSpaces("score &lt;= 20");
+        String target2 = removeSpaces("score &gt; 20");
+
+        String code = removeSpaces(getCode());
+
+        boolean passed = code.contains(target1) || code.contains(target2);
+        getResults("true", "" + passed, "Checking for score &lt;= 20 or score &gt; 20", passed);
+        assertTrue(passed);
+    }
+
+    @Test
+    public void testCodeChange1() throws Exception
+    {
+        String className = "Test1";
+
+        String program = getCode();
+        program = program.replace("ScoreTest", className).replace("public class", "class");
+        program = program.replaceAll("= *[0-9]+;", "= 25;");
+
+        String output = getMethodOutputChangedCode(program, className, "main");
+
+        String expected = "Good job!";
+        boolean passed = output.contains(expected);
+        getResults(expected, output, "Checking output if score is 25", passed);
+        assertTrue(passed);
+    }
+
+    @Test
+    public void testCodeChange2() throws Exception
+    {
+        String className2 = "Test2";
+
+        String program2 = getCode();
+        program2 = program2.replace("ScoreTest", className2).replace("public class", "class");
+        program2 = program2.replaceAll("= *[0-9]+;", "= 5;");
+
+        String output2 = getMethodOutputChangedCode(program2, className2, "main");
+
+        String expected2 = "Try for a higher score!";
+        boolean passed2 = output2.contains(expected2);
+        getResults(expected2, output2, "Checking output if score is 5", passed2);
+        assertTrue(passed2);
+    }
+}
+        </tests>
+      </program>
+    </activity>
+
+  </subsection>
 
   <subsection xml:id="testing-equality-index-0">
     <title>Testing Equality (==)</title>
@@ -29,16 +505,6 @@
       </p>
     </note>
 
-    <p>
-      Watch the following <url
-      href="https://www.youtube.com/watch?v=bO9bejT0jwE&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis"
-      visual="https://www.youtube.com/watch?v=bO9bejT0jwE&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
-      which shows what happens in memory as primitive types like <c>int</c> and
-      reference types like <c>Dog</c> are compared with <c>==</c> in a physical
-      model of Java memory.
-    </p>
-
-    <video youtube="bO9bejT0jwE" label="video-ref-model" />
     <p>
       The following code shows how <c>==</c> is used with primitive types like
       <c>int</c>.
@@ -98,80 +564,6 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </activity>
 
-    <p>
-      We can also use <c>==</c> or <c>!=</c> to test if two reference values,
-      like <c>Turtle</c> and <c>String</c> objects, refer to the same object. In
-      the figure below, we are creating two separate <c>Turtle</c> objects
-      called <c>juan</c> and <c>mia</c>. They do not refer to same object or
-      turtle. Then, we create a reference variable called <c>friend</c> that is
-      set to <c>mia</c>. The turtle <c>mia</c> will have two ways
-      (<term>references</term> or <term>aliases</term>) to name her – she’s both
-      <c>mia</c> and <c>friend</c>, and these variables refer to the same object
-      (same <c>Turtle</c>) in memory. If two reference variables refer to the
-      same object like the turtle on the right in the image below, the test with
-      <c>==</c> will return true which you can see in the code below.
-    </p>
-
-    <figure align="center">
-      <caption>Turtle Reference Equality</caption>
-      <image source="Unit2-Selection-and-Iteration/Figures/turtleEquality.png" width="89%" />
-    </figure>
-
-    <activity label="boolRef">
-      <statement>
-        <p>
-          What will the code below print out? Try to guess before you run it!
-          Then, add another Turtle friend2 and set it to juan. Does friend2 ==
-          juan? Does friend2 == friend? Print out the Boolean expressions for
-          these.
-        </p>
-      </statement>
-
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
-        <code>
-import java.awt.*;
-import java.util.*;
-
-public class BoolTestRef
-{
-    public static void main(String[] args)
-    {
-        World world = new World(300, 300);
-        Turtle juan = new Turtle(world);
-        Turtle mia = new Turtle(world);
-
-        // Will these print true or false?
-        System.out.println(juan == mia);
-        Turtle friend = mia; // set friend to be an alias for mia
-        System.out.println(friend == mia);
-        // Create another Turtle friend2 and set it to juan
-        // Does friend2 == juan?
-        // Does friend2 == friend?
-
-    }
-}
-        </code>
-        <tests>
- import static org.junit.Assert.*;
-
- import org.junit.*;
-
- import java.io.*;
-
- public class RunestoneTests extends CodeTestHelper
- {
-     @Test
-     public void testMain() throws IOException
-     {
-        String output = getMethodOutput("main");
-        String expect = "false\ntrue\ntrue\nfalse\n";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-     }
- }
-        </tests>
-      </program>
-    </activity>
   </subsection>
 
   <subsection xml:id="relational-operators">

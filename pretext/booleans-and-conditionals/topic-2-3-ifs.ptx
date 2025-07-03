@@ -1,89 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="topic-2-3-ifs">
-  <title>if Statements</title>
+  <title>Booleans and <c>if</c> statements</title>
   <introduction>
     <idx>selection</idx>
     <idx>if</idx>
     <idx>else</idx>
     <p>
-      <term>If statements</term> are found in all programming languages as a way
-      to choose between different paths in an algorithm. An if statement is a
-      type of <term>selection</term> statement that changes the sequential
-      execution. It affects the flow of control by executing different segments
-      of code based on the value of a <term>Boolean expression</term>.
+      Since the definition of a selection is a point in the code where the flow
+      of control makes a decision to go down one branch or another based on some
+      value, we need a data type to represent those values. Some older languages
+      just reuse an existing data type, such as their equivalent of <c>int</c>
+      treating <c>0</c> as false and all other numbers as true. And some modern
+      languages, in an attempt to be more lenient will treat any value at all as
+      a true or false value, following some oftentimes complicated rules about
+      what values are “truthy” and what values are “falsey”.
     </p>
 
     <p>
-      If you took an AP CSP course or used a block programming language like
-      Scratch, you’ve probably seen if blocks or statements before. Here’s a
-      comparison of ifs in App Inventor blocks, AP CSP block code and
-      pseudocode, and Java ifs.
+      In Java, however, things are quite tidy with true and false represented by
+      a special data type, the third primitive data type you need to know for
+      the AP exam, <c>boolean</c>.
     </p>
 
-    <figure align="center">
-      <caption>
-        Comparison of App Inventor if block, AP CSP ifs, and Java if statements
-      </caption>
-
-      <image source="Unit2-Selection-and-Iteration/Figures/BlocksIfComparison.png" width="100%" />
-    </figure>
-  </introduction>
-
-  <subsection xml:id="one-way-selection">
-    <title>One-way selection</title>
     <p>
-      A one-way selection (if statement) is used when there is a segment of code
-      (called the <term>body</term> of the if statement) to execute under a
-      certain condition. In this case, the body is executed only when the
-      Boolean expression is true. If the Boolean expression is false, the body
-      of the if statement is skipped and the program continues with the next
-      statement after the if statement.
-    </p>
-
-    <figure align="center">
-      <caption>The order that statements execute in a conditional</caption>
-      <image source="Unit2-Selection-and-Iteration/Figures/Condition.png" width="36%" />
-    </figure>
-
-    <p>
-      The open curly brace <c>{</c> and a close curly brace <c>}</c> are used to
-      group a block of statements together as the body of the if statement. It
-      is recommended to always put in the curly braces even if you have just one
-      statement under the if statement. The questions you will see on the AP
-      exam will use curly braces.
+      A <c>boolean</c> variable or expression can only have one of two values,
+      true or false. There are two literals values we can use in Java to get
+      these values: <c>true</c> and <c>false</c>. So we can declare
+      <c>boolean</c> variables like this:
     </p>
 
     <program language="java">
-      <code>
-// A single if statement
-if (boolean expression)
-    Do statement;
-// Or a single if with {}
-if (boolean expression)
-{
-   Do statement;
-}
-// A block if statement: { } required
-if (boolean expression)
-{
-   Do Statement1;
-   Do Statement2;
-   ...
-   Do StatementN;
-}
-      </code>
+      boolean hungry = true;
+      boolean sleepy = false;
     </program>
 
-    <note>
-      <p>
-        Note that there is no semicolon (;) at the end of the boolean expression
-        in an if statement even if it is the end of that line. The semicolon
-        goes at the end of the whole if statement, often on the next line. Or {
-        } are used to mark the beginning and end of the block of code under the
-        if condition.
-      </p>
-    </note>
+    <p>
+      And that’s kind of it for <c>boolean</c> as a data type. Unlike <c>int</c>
+      and <c>double</c> there aren’t any gotchas about how they differ from
+      idealized numbers in mathematics. And there aren’t complexities about
+      different ways to write the same value.
+    </p>
+
+    <p>
+      However there are a lot we can produce <c>boolean</c> values. There are
+      operators the operate <em>on</em> booleans to produce new <c>boolean</c>s,
+      which allow us to express complex conditions. There are operators that
+      operate on other kinds of values to produce <c>boolean</c> values, like
+      the <c>&gt;</c> operator that compares two numbers, producing <c>true</c>
+      if the first number is greater than the second and <c>false</c> otherwise.
+    </p>
+
+    <p>
+      But before we look at all the different ways of producing <c>boolean</c>
+      values, let look at how they are used in Java’s most basic selection
+      control constructs, <c>if</c> statements.
+    </p>
+
+  </introduction>
+
+  <subsection>
+    <title>One-way selection</title>
+    <p>
+      Almost all programming languages have something like an <term>if
+      statement</term> to choose between different paths in an algorithm. An
+      <c>if</c> statement is one of the simplest forms of the selection
+      construct that we need as one of our three algorithmic building blocks.
+      The simplest form of an <c>if</c> statement in Java looks like:
+    </p>
+
+    <program language="java">
+      if (someBoolean) {
+        someCode();
+        maybeSomeMoreCode();
+      }
+    </program>
+
+    <p>
+      The expression in the parentheses must be a <c>boolean</c> expression: a
+      <c>boolean</c> literal (though that would be silly for reasons we’ll
+      discuss in a bit), a <c>boolean</c> variable, or some other expression
+      that evaluates to a <c>boolean</c>.
+    </p>
+
+    <p>
+      And the code in <c>{}</c>s is called the <term>body</term> of the
+      <c>if</c> statement and contains the code to run if the <c>boolean</c>
+      expression is true. It can contain any number of statements including, as
+      we’ll see other <c>if</c> statements and loops.
+    </p>
+
+    <p>
+      This form of <c>if</c> statement is called a <term>one-way
+      selection</term> because it makes one choice and then either executes the
+      body or does nothing. In either case, the normal flow of control picks up
+      after the <c>if</c> statement, continuing with whatever code comes next.
+    </p>
+
+    <figure align="center">
+      <caption>Flowchart of a one-way selection</caption>
+      <image source="Unit2-Selection-and-Iteration/Figures/Condition.png" width="36%" />
+    </figure>
+
+
 
     <p>
       Imagine that your cell phone wanted to remind you to take an umbrella if
@@ -94,30 +113,28 @@ if (boolean expression)
     </p>
 
     <activity label="if-raining">
+      <title>Take an umbrella?</title>
       <statement>
         <p>
-          The variable <c>isRaining</c> is a boolean variable that is either
-          true or false. If it is true then the message <c>Take an umbrella!</c>
-          will be printed and then execution will continue with the next
-          statement which will print <c>Drive carefully</c>. Run the code below
-          to see this.
+          In the code below, the <c>boolean</c> variable <c>isRaining</c> is
+          used to control whether the message <c>Take an umbrella!</c> will be
+          printed. Regardless of whether <c>isRaining</c> is true or false, then
+          execution will continue with the next statement which will print
+          <c>Drive carefully</c>. Run the code below to see this.
         </p>
       </statement>
 
       <program interactive="activecode" language="java">
         <code>
-public class Test1
-{
-    public static void main(String[] args)
-    {
-        boolean isRaining = true;
-        if (isRaining)
-        {
-            System.out.println("Take an umbrella!");
-        }
-        System.out.println("Drive carefully");
-    }
-}
+          public class Test1 {
+              public static void main(String[] args) {
+                  boolean isRaining = true;
+                  if (isRaining) {
+                      System.out.println("Take an umbrella!");
+                  }
+                  System.out.println("Drive carefully");
+              }
+          }
         </code>
         <tests>
 import static org.junit.Assert.*;
@@ -142,6 +159,7 @@ public class RunestoneTests extends CodeTestHelper
     </activity>
 
     <activity label="iffalseOutput">
+      <title>Change <c>isRaining</c></title>
       <statement>
         <p>
           Try changing the code above to <c>boolean isRaining = false;</c>. What
@@ -160,13 +178,13 @@ public class RunestoneTests extends CodeTestHelper
             <feedback>
               <p>
                 Correct. If the boolean is false, it will skip executing the
-                print statement after the if.
+                <c>println</c> controlled by the <c>if</c> but will still
+                execute the <c>println</c> after the <c>if</c> statement.
               </p>
             </feedback>
           </test>
 
           <test>
-            <!-- else -->
             <feedback>
               <p>
                 Try changing it to false and run it. Type in the output exactly
@@ -177,278 +195,9 @@ public class RunestoneTests extends CodeTestHelper
         </evaluate>
       </evaluation>
     </activity>
-  </subsection>
 
-  <subsection xml:id="relational-operators-in-if-statements">
-    <title>Relational Operators in If Statements</title>
-    <p>
-      Most if statements have a boolean condition that uses relational operators
-      like ==, !=, &lt;, &gt;, &lt;=, &gt;=, as we saw in the last lesson.
-    </p>
 
-    <activity label="if-relational">
-      <statement>
-        <p>
-          Run the following active code a couple times until you see all the
-          possible outputs. It prints out whether a random number is positive or
-          equal to 0. Add another if statement that tests if it is a negative
-          number.
-        </p>
-      </statement>
 
-      <program interactive="activecode" language="java">
-        <code>
-public class TestNumbers
-{
-    public static void main(String[] args)
-    {
-        // Get a random number from -10 up to 10.
-        int number = (int) (Math.random() * 21) - 10;
-        System.out.println("The number is " + number);
-
-        // is it positive?
-        if (number &gt; 0)
-        {
-            System.out.println(number + " is positive!");
-        }
-        // is it 0?
-        if (number == 0)
-        {
-            System.out.println(number + " is zero!");
-        }
-        // is it negative?
-        // Add another if statement
-
-    }
-}
-        </code>
-        <tests>
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-import java.io.*;
-import java.util.regex.MatchResult;
-import java.util.regex.Pattern;
-
-public class RunestoneTests extends CodeTestHelper
-{
-
-    @Test
-    public void testPositive()
-    {
-        String output = "";
-        int num = -999, count = 0;
-
-        while (num &lt;= 0 &amp;&amp; count &lt; 50)
-        {
-            output = getMethodOutput("main");
-            num = getNumber(output);
-            count++;
-
-            if (num == 9999999)
-            {
-                getResults(
-                        "The number is ##\n## is positive!",
-                        output,
-                        "Did you forget to print the number?",
-                        false);
-                assertTrue(false);
-                return;
-            }
-        }
-
-        String expect = "The number is " + num + "\n" + num + " is positive!";
-
-        boolean passed = output.contains("positive");
-        getResults(expect, output, "Testing positive numbers", passed);
-        assertTrue(passed);
-    }
-
-    @Test
-    public void testZero()
-    {
-        String output = "";
-        int num = -999, count = 0;
-
-        while (num != 0 &amp;&amp; count &lt; 50)
-        {
-            output = getMethodOutput("main");
-            num = getNumber(output);
-            count++;
-
-            if (num == 9999999)
-            {
-                getResults(
-                        "The number is ##\n## is zero!",
-                        output,
-                        "Did you forget to print the number?",
-                        false);
-                assertTrue(false);
-                return;
-            }
-        }
-
-        String expect = "The number is " + num + "\n" + num + " is zero!";
-
-        boolean passed = output.contains("zero");
-        getResults(expect, output, "Testing zero", passed);
-        assertTrue(passed);
-    }
-
-    @Test
-    public void testNegative()
-    {
-        String output = "";
-        int num = 999, count = 0;
-
-        while (num &gt;= 0 &amp;&amp; count &lt; 50)
-        {
-            output = getMethodOutput("main");
-            num = getNumber(output);
-            count++;
-
-            if (num == 9999999)
-            {
-                getResults(
-                        "The number is ##\n## is negative!",
-                        output,
-                        "Did you forget to print the number?",
-                        false);
-                assertTrue(false);
-                return;
-            }
-        }
-
-        String expect = "The number is " + num + "\n" + num + " is negative!";
-
-        boolean passed = output.contains("negative");
-        getResults(expect, output, "Testing negative numbers", passed);
-        assertTrue(passed);
-    }
-
-    private int getNumber(String output)
-    {
-        String regex = "[0-9]+";
-
-        String[] matches =
-                Pattern.compile(regex)
-                        .matcher(output)
-                        .results()
-                        .map(MatchResult::group)
-                        .toArray(String[]::new);
-
-        int num = 9999999;
-
-        if (matches.length &gt; 0)
-        {
-            num = Integer.parseInt(matches[0]);
-        }
-
-        if (output.contains("-"))
-        {
-            num *= -1;
-        }
-
-        return num;
-    }
-}
-        </tests>
-      </program>
-    </activity>
-
-    <note>
-      <p>
-        A common mistake in if statements is using = instead of == in the
-        condition by mistake. You should always <term>use ==</term>, not =, in
-        the condition of an if statement to test a variable. One equal sign (=)
-        assigns a value to a variable, and two equal signs (==) test if a
-        variable has a certain value.
-      </p>
-    </note>
-
-    <activity label="mcq-if-trace">
-      <statement>
-        <p>
-          Consider the following code segment. What is printed as a result of
-          executing the code segment?
-        </p>
-
-        <program language="java">
-          <code>
-int x = 3;
-if (x &gt; 2)
-{
-   x = x * 2;
-}
-if (x &gt; 4)
-{
-   x = 0;
-}
-System.out.print(x);
-          </code>
-        </program>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>3</p>
-          </statement>
-
-          <feedback>
-            <p>x is changed by the if statements.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>6</p>
-          </statement>
-
-          <feedback>
-            <p>
-              What happens when x is greater than 2 and then greater than 4? Do
-              both if statements.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>0</p>
-          </statement>
-
-          <feedback>
-            <p>
-              If x is greater than 2, it's always doubled, and then that result
-              is always greater than 4, so it's set to 0 in the second if
-              statement.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>4</p>
-          </statement>
-
-          <feedback>
-            <p>x is changed by the if statements.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>The code will not compile</p>
-          </statement>
-
-          <feedback>
-            <p>This code will compile.</p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
   </subsection>
 
   <subsection xml:id="two-way-selection">
@@ -463,29 +212,22 @@ System.out.print(x);
     </p>
 
     <program language="java">
-      <code>
-// A block if/else statement
-if (boolean expression)
-{
-   statement1;
-   statement2;
-}
-else
-{
-   do other statement;
-   and another one;
-}
-      </code>
+      // A block if/else statement
+      if (boolean expression) {
+         statement1;
+         statement2;
+      } else {
+         do other statement;
+         and another one;
+      }
     </program>
 
     <program language="java">
-      <code>
-// A single if/else statement
-if (boolean expression)
-    Do statement;
-else
-    Do other statement;
-      </code>
+      // A single if/else statement
+      if (boolean expression)
+        Do statement;
+      else
+        Do other statement;
     </program>
 
     <p>
@@ -504,7 +246,7 @@ else
     </p>
 
     <figure align="center">
-      <caption>The order that statements execute in a if/else statement</caption>
+      <caption>Flowchart of a two-way selection</caption>
       <image source="Unit2-Selection-and-Iteration/Figures/Condition-two.png" width="63%" />
     </figure>
 
@@ -518,22 +260,17 @@ else
 
       <program interactive="activecode" language="java">
         <code>
-public class Test2
-{
-    public static void main(String[] args)
-    {
-        boolean isHeads = true;
-        if (isHeads)
-        {
-            System.out.println("Let's go to the game");
-        }
-        else
-        {
-            System.out.println("Let's watch a movie");
-        }
-        System.out.println("after conditional");
-    }
-}
+          public class Test2 {
+              public static void main(String[] args) {
+                  boolean isHeads = true;
+                  if (isHeads) {
+                      System.out.println("Let's go to the game");
+                  } else {
+                      System.out.println("Let's watch a movie");
+                  }
+                  System.out.println("after conditional");
+              }
+          }
         </code>
         <tests>
 import static org.junit.Assert.*;
@@ -592,57 +329,556 @@ public class RunestoneTests extends CodeTestHelper
       </evaluation>
     </activity>
 
+
+  </subsection>
+
+  <subsection xml:id="multiway-selection-else-if">
+    <title>Multiway selection</title>
+    <idx>Nested if statements</idx>
+    <idx>Multiway selection</idx>
+    <idx>else if</idx>
     <p>
-      If/else statements can also be used with relational operators and numbers
-      like below. If your code has an if/else statement, you need to test it
-      with 2 test-cases to make sure that both parts of the code work.
+      Since the body of an <c>if</c> statement or an <c>else</c> can contain any
+      code, we can nested <c>if</c> statements inside other <c>if</c>
+      statements. There’s nothing magical about this: just the natural
+      consequence of building programs out of simple pieces. Consider this code:
     </p>
 
-    <activity label="licenseifelse">
+    <program language="java">
+      if (hungry) {
+        if (sleepy) {
+          eatQuickSnack();
+        } else {
+          makeSomethingFancy();
+        }
+      }
+    </program>
+
+    <p>
+      The outer <c>if</c> is a one-way selection that will run some code if
+      <c>hungry</c> is true. The body of that <c>if</c> statement is another
+      <c>if</c> statement that implements a two-selection based on the value of
+      <c>sleepy</c>. So really this code is choosing between three outcomes, one
+      when <c>hungry</c> and <c>sleepy</c> are both true, one when <c>hungry</c>
+      is true but <c>sleepy</c> is false, and one when <c>hungry</c> is false.
+      In the latter case the code doesn’t do anything.
+    </p>
+
+    <p>
+      Now look at another <c>if</c>, this time with another <c>if</c> nested in
+      the body of the <c>else</c>.
+    </p>
+
+    <program language="java">
+      if (hungry) {
+        eatSnack();
+      } else {
+        if (sleepy) {
+          takeNap();
+        } else {
+          doHomework();
+        }
+      }
+    </program>
+
+    <p>
+      This code also chooses between three outcomes but in each of the outcomes
+      some code runs: <c>eatSnack()</c> if <c>hungry</c> is true,
+      <c>takeNap()</c> if <c>sleepy</c> is true, and <c>doHomework()</c>
+      otherwise.
+    </p>
+
+    <p>
+      To emphasize that the three branches are all kind of at the same level
+      we’d normally format this code slightly differently:
+    </p>
+
+    <program language="java">
+      if (hungry) {
+        eatSnack();
+      } else if (sleepy) {
+        takeNap();
+      } else {
+        doHomework();
+      }
+    </program>
+
+    <p>
+      When we chain together <c>if</c> statements like this, it is called a
+      <term>multiway selection</term> because the code chooses not between
+      running code or not as in a one-way selection, or between two pieces of
+      code as in a two-way selection, but between as many different pieces of
+      code as we want to chain together.
+    </p>
+
+    <activity label="TryElseIf">
       <statement>
         <p>
-          Run the following code to see what it prints out when the variable age
-          is set to the value 16. Change the variable age’s value to 15 and then
-          run it again to see the result of the print statement in the else
-          part. Can you change the if-statement to indicate that you can get a
-          license at age 15 instead of 16? Use 2 test cases for the value of age
-          to test your code to see the results of both print statements.
+          Run the code below and try changing the value of x to get each of the
+          three possible lines in the conditional to print.
         </p>
       </statement>
 
       <program interactive="activecode" language="java">
         <code>
-public class DriversLicenseTest
+          public class TryElseIf {
+              public static void main(String[] args) {
+                  int x = 2;
+                  if (x &lt; 0) {
+                      System.out.println("x is negative");
+                  } else if (x == 0) {
+                      System.out.println("x is zero");
+                  } else {
+                      System.out.println("x is positive");
+                  }
+                  System.out.println("after conditional");
+              }
+          }
+        </code>
+        <tests>
+import static org.junit.Assert.*;
+import org.junit.*;
+import java.io.*;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+public class RunestoneTests extends CodeTestHelper {
+    public RunestoneTests() {
+        super("TryElseIf"); // for Book
+    }
+
+    @Test
+    public void test01() {
+        String code = getCode();
+        String actual = "";
+        int num = 2;
+
+        Pattern pattern = Pattern.compile("x\\s*=\\s*(-?\\d+)");
+        Matcher matcher = pattern.matcher(code);
+        if (matcher.find()) {
+            actual = matcher.group();
+        }
+
+        boolean passed = !stringMatch(code, "x = 2;");
+
+        getResults("x = ?;", actual, "Checking that x has been changed.", passed);
+        assertTrue(passed);
+    }
+
+    @Test
+    public void test02() {
+        String code = getCode();
+        String actual = "";
+        int num = 2;
+
+        Pattern pattern = Pattern.compile("x\\s*=\\s*(-?\\d+)");
+        Matcher matcher = pattern.matcher(code);
+        if (matcher.find()) {
+            actual = matcher.group();
+            //num = Integer.parseInt(matcher.group(1));
+        }
+
+        boolean passed = actual.contains("-") || actual.contains("0");
+
+        getResults("x &lt;= 0", actual, "Checking that x is zero or negative", passed);
+        assertTrue(passed);
+    }
+
+    @Test
+    public void test03() {
+        String output = getMethodOutput("main").split("\n")[0];
+        String expect = "x is negative";
+
+        String code = getCode();
+        String actual = "";
+        int num = 2;
+
+        Pattern pattern = Pattern.compile("x\\s*=\\s*(-?\\d+)");
+        Matcher matcher = pattern.matcher(code);
+        if (matcher.find()) {
+            actual = matcher.group();
+            num = Integer.parseInt(matcher.group(1));
+        }
+
+        if (num == 0) expect = "x is zero";
+
+        boolean passed = getResults(expect, output, "Checking for correct output");
+        assertTrue(passed);
+    }
+
+    private boolean stringMatch(String str1, String str2) {
+        str1 = str1.replaceAll("\\s", "");
+        str2 = str2.replaceAll("\\s", "");
+
+        return str1.contains(str2);
+    }
+}
+        </tests>
+      </program>
+    </activity>
+
+    <p>
+      Here is a flowchart for a conditional with 3 options like in the code
+      above.
+    </p>
+
+    <figure align="center">
+      <caption>Flowchart of a three-way selection</caption>
+      <image source="Unit2-Selection-and-Iteration/Figures/Condition-three.png" width="80%" />
+    </figure>
+
+    <note>
+      <p>
+        Another way to handle 3 or more conditional cases is to use a
+        <c>switch</c> statement but that is outside the AP curriculum. For a
+        tutorial on using switch see <url
+        href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html">The
+        switch Statement</url> tutorial on Oracle’s website.
+      </p>
+    </note>
+
+    <activity label="trace-nested-if">
+      <statement>
+        <p>What does the following code print when x has been set to -5?</p>
+        <program language="java">
+          <code>
+if (x &lt; 0)
+{
+   System.out.println("x is negative");
+}
+else if (x == 0)
+{
+   System.out.println("x is zero");
+}
+else
+{
+   System.out.println("x is positive");
+}
+          </code>
+        </program>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement>
+            <p>x is negative</p>
+          </statement>
+
+          <feedback>
+            <p>When x is equal to -5 the condition of x &lt; 0 is true.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>x is zero</p>
+          </statement>
+
+          <feedback>
+            <p>This will only print if x has been set to 0. Has it?</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>x is positive</p>
+          </statement>
+
+          <feedback>
+            <p>This will only print if x is greater than zero. Is it?</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="trace-nested-ifs2">
+      <statement>
+        <p>What does the following code print when x has been set to 2000?</p>
+        <program language="java">
+          <code>
+if (x &lt; 0)
+{
+   System.out.println("x is negative");
+}
+else if (x == 0)
+{
+   System.out.println("x is zero");
+}
+else
+{
+   System.out.println("x is positive");
+}
+          </code>
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>x is negative</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This will only print if x has been set to a number less than zero.
+              Has it?
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>x is zero</p>
+          </statement>
+
+          <feedback>
+            <p>This will only print if x has been set to 0. Has it?</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>x is positive</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The first condition is false and x is not equal to zero so the
+              else will execute.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="trace-nested-ifs3">
+      <statement>
+        <p>What does the following code print when x has been set to .8?</p>
+        <program language="java">
+          <code>
+if (x &lt; .25)
+{
+    System.out.println("first quartile");
+}
+else if (x &lt; .5)
+{
+    System.out.println("second quartile");
+}
+else if (x &lt; .75)
+{
+    System.out.println("third quartile");
+}
+else
+{
+    System.out.println("fourth quartile");
+}
+          </code>
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>first quartile</p>
+          </statement>
+
+          <feedback>
+            <p>This will only print if x is less than 0.25.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>second quartile</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This will only print if x is greater than or equal to 0.25 and
+              less than 0.5.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>third quartile</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The first only print if x is greater than or equal to 0.5 and less
+              than 0.75.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>fourth quartile</p>
+          </statement>
+
+          <feedback>
+            <p>This will print whenever x is greater than or equal to 0.75.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="ifElseIfDebug">
+      <statement>
+        <p>
+          The else-if connection is necessary if you want to hook up
+          conditionals together. In the following code, there are 4 separate if
+          statements instead of the if-else-if pattern. Will this code print out
+          the correct grade? First, trace through the code to see why it prints
+          out the incorrect grade. Use the Code Lens button. Then, fix the code
+          by adding in 3 else’s to connect the if statements and see if it
+          works.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+import java.util.Scanner;
+
+public class IfDebug
 {
     public static void main(String[] args)
     {
-        int age = 16;
-        if (age &gt;= 16)
+        Scanner scan = new Scanner(System.in);
+        int score = scan.nextInt();
+
+        String grade = "";
+
+        if (score &gt;= 90)
         {
-            System.out.println("You can get a driver's license in most states!");
+            grade = "A";
+        }
+        if (score &gt;= 80)
+        {
+            grade = "B";
+        }
+        if (score &gt;= 70)
+        {
+            grade = "C";
+        }
+        if (score &gt;= 60)
+        {
+            grade = "D";
         }
         else
         {
-            System.out.println(
-                    "Sorry, you need to be older to get a driver's license.");
+            grade = "F";
         }
+
+        System.out.println(score + " = " + grade);
     }
 }
         </code>
+        <stdin>93</stdin>
         <tests>
 import static org.junit.Assert.*;
-
 import org.junit.*;
-
 import java.io.*;
 
 public class RunestoneTests extends CodeTestHelper
 {
-    @Test
-    public void testCodeContains() throws IOException
+
+    public RunestoneTests()
     {
-        String target = "age &gt;= 15";
-        boolean passed = checkCodeContains("check age &gt;= 15", target);
+        super("IfDebug"); // for Book
+    }
+
+    private static String input1 = "93";
+
+    @Test
+    public void test01()
+    {
+        String x = "95";
+        String result = "A";
+        String output = getMethodOutputWithInput("main", x);
+
+        boolean passed = output.contains(result);
+
+        passed =
+        getResults(
+            x + " = " + result,
+            output,
+            "Result for score = " + x,
+            passed);
+        assertTrue(passed);
+    }
+
+    @Test
+    public void test02()
+    {
+        String x = "85";
+        String result = "B";
+        String output = getMethodOutputWithInput("main", x);
+
+        boolean passed = output.contains(result);
+
+        passed =
+        getResults(
+            x + " = " + result,
+            output,
+            "Result for score = " + x,
+            passed);
+        assertTrue(passed);
+    }
+
+    @Test
+    public void test03()
+    {
+        String x = "75";
+        String result = "C";
+        String output = getMethodOutputWithInput("main", x);
+
+        boolean passed = output.contains(result);
+
+        passed =
+        getResults(
+            x + " = " + result,
+            output,
+            "Result for score = " + x,
+            passed);
+        assertTrue(passed);
+    }
+
+    @Test
+    public void test04()
+    {
+        String x = "65";
+        String result = "D";
+        String output = getMethodOutputWithInput("main", x);
+
+        boolean passed = output.contains(result);
+
+        passed =
+        getResults(
+            x + " = " + result,
+            output,
+            "Result for score = " + x,
+            passed);
+        assertTrue(passed);
+    }
+
+    @Test
+    public void test05()
+    {
+        String x = "55";
+        String result = "F";
+        String output = getMethodOutputWithInput("main", x);
+
+        boolean passed = output.contains(result);
+
+        passed =
+        getResults(
+            x + " = " + result,
+            output,
+            "Result for score = " + x,
+            passed);
         assertTrue(passed);
     }
 }
@@ -650,262 +886,99 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </activity>
 
-    <activity label="ifelseevenOdd" numbered="yes" adaptive="yes" indentation="hide" language="java">
+    <activity label="ifelseifBattery">
       <statement>
         <p>
-          The following program should print out “x is even” if the remainder of
-          x divided by 2 is 0 and “x is odd” otherwise, but the code is mixed
-          up. Drag the blocks from the left and place them in the correct order
-          on the right. Click on Check Me to see if you are right.
-        </p>
-      </statement>
-
-      <blocks>
-        <block order="5">
-          <cline>public class EvenOrOdd</cline>
-          <cline>{</cline>
-        </block>
-
-        <block order="4">
-          <cline>    public static void main(String[] args)</cline>
-          <cline>    {</cline>
-          <cline></cline>
-        </block>
-
-        <block order="6">
-          <cline>        int x = 92;</cline>
-          <cline></cline>
-        </block>
-
-        <block order="1">
-          <cline>        if (x % 2 == 0)</cline>
-          <cline></cline>
-        </block>
-
-        <block order="2">
-          <cline>        {</cline>
-          <cline>            System.out.println("x is even");</cline>
-          <cline>        }</cline>
-          <cline></cline>
-        </block>
-
-        <block order="8">
-          <cline>        else</cline>
-          <cline></cline>
-        </block>
-
-        <block order="7">
-          <cline>        {</cline>
-          <cline>            System.out.println("x is odd");</cline>
-          <cline>        }</cline>
-          <cline></cline>
-        </block>
-
-        <block order="3">
-          <cline>    }</cline>
-          <cline>}</cline>
-        </block>
-      </blocks>
-    </activity>
-
-    <activity label="scoreifelse">
-      <statement>
-        <p>
-          Try the following code. Add an else statement to the if statement that
-          prints out “Good job!” if the score is greater than 9. Change the
-          value of score to test it. Can you change the boolean test to only
-          print out “Good job” if the score is greater than 20?
+          Finish the following code so that it prints “Plug in your phone!” if
+          the battery is below 50, “Unplug your phone!” if it is at or above
+          100, and “All okay!” otherwise. Change the battery value to test all 3
+          conditions.
         </p>
       </statement>
 
       <program interactive="activecode" language="java">
         <code>
-public class ScoreTest
+import java.util.Scanner;
+
+public class BatteryTest
 {
     public static void main(String[] args)
     {
-        int score = 8;
-        if (score &lt;= 9)
-        {
-            System.out.println("Try for a higher score!");
-        }
+        Scanner scan = new Scanner(System.in);
+        int battery = scan.nextInt();
+        System.out.println("battery = " + battery);
+
+        System.out.println("All okay!");
     }
 }
         </code>
+        <stdin>75</stdin>
         <tests>
 import static org.junit.Assert.*;
-
 import org.junit.*;
-
 import java.io.*;
 
 public class RunestoneTests extends CodeTestHelper
 {
-    @Test
-    public void testChangedCode()
-    {
-        String origCode =
-                "public class ScoreTest   {      public static void main(String[] args)      {     "
-                    + "   int score = 8;        if (score &lt;= 9)         {           "
-                    + " System.out.println(\"Try for a higher score!\");        }      }} ";
 
-        boolean changed = codeChanged(origCode);
-        assertTrue(changed);
+    public RunestoneTests()
+    {
+        super("BatteryTest"); // for Book
     }
 
-    @Test
-    public void testCodeContainsElse()
-    {
-        boolean ifCheck2 = checkCodeContains("else", "else");
-        assertTrue(ifCheck2);
-    }
+    private static String input1 = "93";
 
     @Test
-    public void testCodeContains20()
+    public void test01()
     {
-        String target1 = removeSpaces("score &lt;= 20");
-        String target2 = removeSpaces("score &gt; 20");
+        String x = "95";
+        String result = "All okay!";
+        String output = getMethodOutputWithInput("main", x);
 
-        String code = removeSpaces(getCode());
+        boolean passed = output.contains(result);
 
-        boolean passed = code.contains(target1) || code.contains(target2);
-        getResults("true", "" + passed, "Checking for score &lt;= 20 or score &gt; 20", passed);
+        passed =
+        getResults(
+            result,
+            output,
+            "Result for battery = " + x,
+            passed);
         assertTrue(passed);
     }
 
     @Test
-    public void testCodeChange1() throws Exception
+    public void test02()
     {
-        String className = "Test1";
+        String x = "100";
+        String result = "Unplug your phone!";
+        String output = getMethodOutputWithInput("main", x);
 
-        String program = getCode();
-        program = program.replace("ScoreTest", className).replace("public class", "class");
-        program = program.replaceAll("= *[0-9]+;", "= 25;");
+        boolean passed = output.contains(result);
 
-        String output = getMethodOutputChangedCode(program, className, "main");
-
-        String expected = "Good job!";
-        boolean passed = output.contains(expected);
-        getResults(expected, output, "Checking output if score is 25", passed);
+        passed =
+        getResults(
+            result,
+            output,
+            "Result for battery = " + x,
+            passed);
         assertTrue(passed);
     }
 
     @Test
-    public void testCodeChange2() throws Exception
+    public void test03()
     {
-        String className2 = "Test2";
+        String x = "45";
+        String result = "Plug in your phone!";
+        String output = getMethodOutputWithInput("main", x);
 
-        String program2 = getCode();
-        program2 = program2.replace("ScoreTest", className2).replace("public class", "class");
-        program2 = program2.replaceAll("= *[0-9]+;", "= 5;");
+        boolean passed = output.contains(result);
 
-        String output2 = getMethodOutputChangedCode(program2, className2, "main");
-
-        String expected2 = "Try for a higher score!";
-        boolean passed2 = output2.contains(expected2);
-        getResults(expected2, output2, "Checking output if score is 5", passed2);
-        assertTrue(passed2);
-    }
-}
-        </tests>
-      </program>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="common-errors-with-if-statements">
-    <title>Common Errors with If Statements</title>
-    <p>
-      Here are some rules to follow with if statements to avoid some common
-      errors:
-    </p>
-
-    <blockquote>
-      <p>
-        <ul>
-          <li>
-            <p>
-              Always use curly braces (<c>{</c> and <c>}</c>) to enclose the
-              block of statements under the if condition. Java doesn’t care if
-              you indent the code—it goes by the <c>{ }</c>.
-            </p>
-          </li>
-
-          <li>
-            <p>
-              Don’t put in a semicolon <c>;</c> after the first line of the if
-              statement, <c>if (test);</c>. The <c>if</c> statement is a
-              multiline block of code that starts with the <c>if</c> condition
-              and then <c>{</c> the body of the if statement <c>}</c>.
-            </p>
-          </li>
-
-          <li>
-            <p>
-              Always use <c>==</c>, not <c>=</c>, in the condition of an if
-              statement to test a variable. One <c>=</c> assigns, two <c>==</c>
-              tests!
-            </p>
-          </li>
-
-          <li>
-            <p>
-              The <c>else</c> statement matches with the closest <c>if</c>
-              statement. If you want to match an <c>else</c> with a different
-              <c>if</c> statement, you need to use curly braces to group the
-              <c>if</c> and <c>else</c> together.
-            </p>
-          </li>
-        </ul>
-      </p>
-    </blockquote>
-
-    <activity label="if-missing-curlies">
-      <statement>
-        <p>
-          The code below doesn’t work as expected. Fix it to only print <c>Wear
-          a coat</c> and <c>Wear gloves</c> when isCold is true.
-        </p>
-      </statement>
-
-      <program interactive="activecode" language="java">
-        <code>
-public class Test1
-{
-    public static void main(String[] args)
-    {
-        boolean isCold = false;
-        if (isCold = true);
-            System.out.println("Wear a coat");
-            System.out.println("Wear gloves");
-    }
-}
-        </code>
-        <tests>
-import static org.junit.Assert.*;
-
-import org.junit.*;
-
-import java.io.*;
-
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "";
-        boolean passed = getResults(expect, output, "Expected output from main if isCold is false");
-        assertTrue(passed);
-    }
-
-    @Test
-    public void testCountCurlies()
-    {
-        String code = getCode();
-        int num = countOccurences(code, "{");
-        boolean passed = num &gt;= 3;
-
-        getResults("3", "" + num, "Number of {", passed);
+        passed =
+        getResults(
+            result,
+            output,
+            "Result for battery = " + x,
+            passed);
         assertTrue(passed);
     }
 }
@@ -1101,6 +1174,31 @@ public class RunestoneTests extends CodeTestHelper
             true, go on to execute the body which is the following statement or
             block of statements surrounded by curly braces (<c>{}</c>) like
             below.
+          </p>
+        </li>
+        <li>
+          <p>
+            (AP 2.4.A.1) Nested if statements consist of if, if-else, or
+            if-else-if statements within if, if-else, or if-else-if statements.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 2.4.A.2) The Boolean expression of the inner nested if statement
+            is evaluated only if the Boolean expression of the outer if
+            statement evaluates to true.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 2.4.A.3) A multi-way selection (if-else-if) is used when there
+            are a series of expressions with different segments of code for each
+            condition. Multi-way selection is performed such that no more than
+            one segment of code is executed based on the first expression that
+            evaluates to true. If no expression evaluates to true and there is a
+            trailing else statement, then the body of the else is executed.
           </p>
         </li>
       </ul>
@@ -1431,6 +1529,115 @@ else
             <p>
               This would print out “Low” which is correct according to this
               problem description.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+
+        <activity label="AP-nested-if-else">
+      <statement>
+        <p>
+          Assume an int variable x has been properly declared and initialized.
+          Which of the following code segments will print out “High” if
+          <em>x</em> is 66 and above, “Medium” is <em>x</em> is between 33-65,
+          and “Low” if <em>x</em> is below 33.
+        </p>
+
+        <program language="java">
+          <code>
+I.   if (x &gt; 66)
+     {
+       System.out.println("High");
+     }
+     else if (x &gt; 33)
+     {
+       System.out.println("Medium");
+     }
+     else {
+       System.out.println("Low");
+     }
+
+II.  if (x &lt; 33)
+     {
+       System.out.println("Low");
+     }
+     else if (x &lt; 66)
+     {
+       System.out.println("Medium");
+     }
+     else {
+       System.out.println("High");
+     }
+
+III. if (x &gt;= 66)
+     {
+       System.out.println("High");
+     }
+     if (x &gt;= 33)
+     {
+       System.out.println("Medium");
+     }
+     if (x &lt; 33)
+     {
+       System.out.println("Low");
+     }
+          </code>
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement id="AP-nested-if-else_opt_a">
+            <p>I only</p>
+          </statement>
+
+          <feedback id="AP-nested-if-else_opt_a">
+            <p>If x = 66, it should print out “High”.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement id="AP-nested-if-else_opt_b">
+            <p>II only</p>
+          </statement>
+
+          <feedback id="AP-nested-if-else_opt_b">
+            <p>Correct!</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-nested-if-else_opt_c">
+            <p>III only</p>
+          </statement>
+
+          <feedback id="AP-nested-if-else_opt_c">
+            <p>
+              If x is 66, the code in III. will print out more than one thing.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-nested-if-else_opt_d">
+            <p>I and II only</p>
+          </statement>
+
+          <feedback id="AP-nested-if-else_opt_d">
+            <p>If x = 66, it should print out “High”.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-nested-if-else_opt_e">
+            <p>II and III only</p>
+          </statement>
+
+          <feedback id="AP-nested-if-else_opt_e">
+            <p>
+              If x is 66, the code in III. will print out more than one thing.
             </p>
           </feedback>
         </choice>
