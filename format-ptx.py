@@ -13,7 +13,7 @@ WIDTH = 80
 INLINE_TAGS = {"term", "url", "c", "h", "area"}
 PRESERVE_WHITESPACE = {"code", "cline", "tests", "pre", "program"}
 ONE_LINE = {"cline"}
-WRAP = {"p", "caption", "title"}
+WRAP = {"p", "caption", "title", "cell"}
 DEFAULT_NS = {"xml": "http://www.w3.org/XML/1998/namespace"}
 
 
