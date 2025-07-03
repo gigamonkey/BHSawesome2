@@ -2,7 +2,8 @@
 
 <section label="booleans-practice">
   <title>Booleans and <c>if</c> practice</title>
-  <introduction/>
+
+  <introduction />
   <subsection>
     <title>Boolean practice</title>
     <activity label="if-relational">

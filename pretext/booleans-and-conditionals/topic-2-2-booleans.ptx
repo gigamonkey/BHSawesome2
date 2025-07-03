@@ -52,10 +52,10 @@
 
     <table>
       <title>Comparison operators</title>
-      <tabular >
-        <col halign="left"/>
-        <col halign="center"/>
-        <col halign="left"/>
+      <tabular>
+        <col halign="left" />
+        <col halign="center" />
+        <col halign="left" />
         <row header="yes">
           <cell bottom="minor" right="minor">Name</cell>
           <cell bottom="minor" right="minor">Written</cell>
@@ -64,33 +64,74 @@
 
         <row>
           <cell bottom="minor" right="minor">Less than</cell>
-          <cell bottom="minor" right="minor"><c>a &lt; b</c></cell>
-          <cell bottom="minor"><c>true</c> if <c>a</c> is less than <c>b</c>, <c>false</c> otherwise</cell>
+          <cell bottom="minor" right="minor">
+            <c>a &lt; b</c>
+          </cell>
+
+          <cell bottom="minor">
+            <c>true</c> if <c>a</c> is less than <c>b</c>, <c>false</c>
+            otherwise
+          </cell>
         </row>
+
         <row>
           <cell bottom="minor" right="minor">Greater than</cell>
-          <cell bottom="minor" right="minor"><c>a &gt; b</c></cell>
-          <cell bottom="minor"><c>true</c> if <c>a</c> is greater than <c>b</c>, <c>false</c> otherwise</cell>
+          <cell bottom="minor" right="minor">
+            <c>a &gt; b</c>
+          </cell>
+
+          <cell bottom="minor">
+            <c>true</c> if <c>a</c> is greater than <c>b</c>, <c>false</c>
+            otherwise
+          </cell>
         </row>
+
         <row>
           <cell bottom="minor" right="minor">Less than or equal</cell>
-          <cell bottom="minor" right="minor"><c>a &lt;= b</c></cell>
-          <cell bottom="minor"><c>true</c> if <c>a</c> is less than or equal to <c>b</c>, <c>false</c> otherwise</cell>
+          <cell bottom="minor" right="minor">
+            <c>a &lt;= b</c>
+          </cell>
+
+          <cell bottom="minor">
+            <c>true</c> if <c>a</c> is less than or equal to <c>b</c>,
+            <c>false</c> otherwise
+          </cell>
         </row>
+
         <row>
           <cell bottom="minor" right="minor">Greater than or equal</cell>
-          <cell bottom="minor" right="minor"><c>a &gt;= b</c></cell>
-          <cell bottom="minor"><c>true</c> if <c>a</c> is greater than or equal to <c>b</c>, <c>false</c> otherwise</cell>
+          <cell bottom="minor" right="minor">
+            <c>a &gt;= b</c>
+          </cell>
+
+          <cell bottom="minor">
+            <c>true</c> if <c>a</c> is greater than or equal to <c>b</c>,
+            <c>false</c> otherwise
+          </cell>
         </row>
+
         <row>
           <cell bottom="minor" right="minor">Equals</cell>
-          <cell bottom="minor" right="minor"><c>a &gt;= b</c></cell>
-          <cell bottom="minor"><c>true</c> if <c>a</c> is the same value as <c>b</c>, <c>false</c> otherwise</cell>
+          <cell bottom="minor" right="minor">
+            <c>a &gt;= b</c>
+          </cell>
+
+          <cell bottom="minor">
+            <c>true</c> if <c>a</c> is the same value as <c>b</c>, <c>false</c>
+            otherwise
+          </cell>
         </row>
+
         <row>
           <cell right="minor">Not equals</cell>
-          <cell right="minor"><c>a != b</c></cell>
-          <cell><c>true</c> if <c>a</c> and <c>b</c> are different values, <c>false</c> otherwise</cell>
+          <cell right="minor">
+            <c>a != b</c>
+          </cell>
+
+          <cell>
+            <c>true</c> if <c>a</c> and <c>b</c> are different values,
+            <c>false</c> otherwise
+          </cell>
         </row>
       </tabular>
     </table>
@@ -136,19 +177,19 @@
       </statement>
 
       <program interactive="activecode" language="java">
-        <code><![CDATA[
+        <code>
           public class BoolTest2 {
               public static void main(String[] args) {
                   int age = 15;
                   int year = 14;
                   // Will these print true or false?
-                  System.out.println(age < year);
-                  System.out.println(age > year);
+                  System.out.println(age &lt; year);
+                  System.out.println(age &gt; year);
                   // 1. Set year to 15
                   // 2. Print whether age is less than or equal to year
               }
           }
-        ]]></code>
+        </code>
         <tests>
 import static org.junit.Assert.*;
 
@@ -375,27 +416,43 @@ public class RunestoneTests extends CodeTestHelper
 
     <table>
       <title>Divisibility recipes</title>
-      <tabular >
-        <col halign="left"/>
-        <col halign="left"/>
+      <tabular>
+        <col halign="left" />
+        <col halign="left" />
         <row header="yes">
           <cell bottom="minor" right="minor">Expression</cell>
           <cell bottom="minor">Tests</cell>
         </row>
 
         <row>
-          <cell bottom="minor" right="minor"><c>number % 2 == 0</c></cell>
-          <cell bottom="minor"><c>number</c> is even </cell>
+          <cell bottom="minor" right="minor">
+            <c>number % 2 == 0</c>
+          </cell>
+
+          <cell bottom="minor">
+            <c>number</c> is even
+          </cell>
         </row>
 
         <row>
-          <cell bottom="minor" right="minor"><c>number % 2 != 0</c></cell>
-          <cell bottom="minor"><c>number</c> is odd.</cell>
+          <cell bottom="minor" right="minor">
+            <c>number % 2 != 0</c>
+          </cell>
+
+          <cell bottom="minor">
+            <c>number</c> is odd.
+          </cell>
         </row>
 
         <row>
-          <cell bottom="minor" right="minor"><c>number % x == 0</c></cell>
-          <cell bottom="minor"><c>number</c> is evenly divisible by <c>x</c>, a.k.a. <c>number</c> is a multiple of <c>x</c></cell>
+          <cell bottom="minor" right="minor">
+            <c>number % x == 0</c>
+          </cell>
+
+          <cell bottom="minor">
+            <c>number</c> is evenly divisible by <c>x</c>, a.k.a. <c>number</c>
+            is a multiple of <c>x</c>
+          </cell>
         </row>
       </tabular>
     </table>
@@ -474,8 +531,6 @@ public class RunestoneTests extends CodeTestHelper
         </tests>
       </program>
     </activity>
-
-
   </subsection>
 
   <subsection xml:id="and-or-and-not-index-0">
@@ -541,38 +596,94 @@ public class RunestoneTests extends CodeTestHelper
 
     <note>
       <sidebyside widths="65% 35%" valign="middle" margins="0% 0%">
-      <p>
-        One place that the way we use “and” and “or” in English that doesn’t
-        completely match with their sense in Boolean logic is when we use “or”
-        to express a choice between two options when we can only pick one: “do
-        you want to be player 1 <em>or</em> player 2?” In Boolean logic and in
-        Java the or operator is called an <term>inclusive or</term> which means
-        that the whole expression is true if either one or the other or
-        <em>both</em> conditions are true. Logically speaking there’s also an
-        <term>exclusive or</term> which is true if either sub-statement is true
-        but false if they both are. There isn’t a separate exclusive or operator
-        in Java but <c>!=</c> applied to <c>boolean</c> values serves as one.
-      </p>
+        <p>
+          One place that the way we use “and” and “or” in English that doesn’t
+          completely match with their sense in Boolean logic is when we use “or”
+          to express a choice between two options when we can only pick one: “do
+          you want to be player 1 <em>or</em> player 2?” In Boolean logic and in
+          Java the or operator is called an <term>inclusive or</term> which
+          means that the whole expression is true if either one or the other or
+          <em>both</em> conditions are true. Logically speaking there’s also an
+          <term>exclusive or</term> which is true if either sub-statement is
+          true but false if they both are. There isn’t a separate exclusive or
+          operator in Java but <c>!=</c> applied to <c>boolean</c> values serves
+          as one.
+        </p>
+
         <table>
-          <title>Truth table of <c>!=</c> with <c>boolean</c> values</title>
+          <title>
+            Truth table of <c>!=</c> with <c>boolean</c> values
+          </title>
+
           <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor">
-            <col header="yes"/>
-            <col/>
-            <col/>
-            <row header="yes" >
-              <cell><c>!=</c></cell>
-              <cell><c>false</c></cell>
-              <cell><c>true</c></cell>
+            <row header="yes">
+              <cell>
+                <c>a</c>
+              </cell>
+
+              <cell>
+                <c>b</c>
+              </cell>
+
+              <cell>
+                <c>a != b</c>
+              </cell>
             </row>
+
             <row>
-              <cell><c>false</c></cell>
-              <cell><c>false</c></cell>
-              <cell><c>true</c></cell>
+              <cell>
+                <c>false</c>
+              </cell>
+
+              <cell>
+                <c>false</c>
+              </cell>
+
+              <cell>
+                <c>false</c>
+              </cell>
             </row>
+
             <row>
-              <cell><c>true</c></cell>
-              <cell><c>true</c></cell>
-              <cell><c>false</c></cell>
+              <cell>
+                <c>false</c>
+              </cell>
+
+              <cell>
+                <c>true</c>
+              </cell>
+
+              <cell>
+                <c>true</c>
+              </cell>
+            </row>
+
+            <row>
+              <cell>
+                <c>true</c>
+              </cell>
+
+              <cell>
+                <c>false</c>
+              </cell>
+
+              <cell>
+                <c>true</c>
+              </cell>
+            </row>
+
+            <row>
+              <cell>
+                <c>true</c>
+              </cell>
+
+              <cell>
+                <c>true</c>
+              </cell>
+
+              <cell>
+                <c>false</c>
+              </cell>
             </row>
           </tabular>
         </table>
@@ -791,10 +902,7 @@ public class RunestoneTests extends CodeTestHelper
       !(0 &lt;= x &amp;&amp; x &lt; 100) // True if x is outside the range from 0 to 100, exclusive.
     </program>
 
-    <p>
-      We could also write that in this logically equivalent way:
-    </p>
-
+    <p>We could also write that in this logically equivalent way:</p>
     <program>
       x &lt; 0 || x &gt;= 100
     </program>
@@ -846,9 +954,6 @@ public class RunestoneTests extends CodeTestHelper
         </tests>
       </program>
     </activity>
-
-
-
   </subsection>
 
   <subsection xml:id="short-circuit-evaluation">
@@ -1018,8 +1123,6 @@ else
       </choices>
     </activity>
   </subsection>
-
-
 
   <subsection xml:id="summary-19">
     <title>Summary</title>

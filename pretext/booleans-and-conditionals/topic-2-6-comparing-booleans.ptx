@@ -39,11 +39,11 @@ b = "at our high school"
 
   <subsection>
     <title>Operator precedence</title>
-      <p>
-        In Java, ! will be executed before &amp;&amp;, and &amp;&amp; will be
-        executed before ||, unless there are parentheses. Anything inside
-        parentheses is executed first.
-      </p>
+    <p>
+      In Java, ! will be executed before &amp;&amp;, and &amp;&amp; will be
+      executed before ||, unless there are parentheses. Anything inside
+      parentheses is executed first.
+    </p>
   </subsection>
 
   <subsection xml:id="de-morgan-s-laws">
@@ -167,42 +167,73 @@ b = "at our high school"
       involving logical operators like <c>P &amp;&amp; Q</c> evaluates to a
       <c>boolean</c> value, <c>true</c> or <c>false</c>. As you can see below
       the result of <c>P &amp;&amp; Q</c> is only <c>true</c> if both <c>P</c>
-      and <c>Q</c> are <c>true</c>.
+      and <c>Q</c> are <c>true</c>. XXX
     </p>
 
     <table>
-      <tabular row-headers="yes">
-        <col top="minor" />
-        <col top="minor" />
-        <col top="minor" />
-        <row header="yes" left="minor">
-          <cell bottom="minor" right="minor">P</cell>
-          <cell bottom="minor" right="minor">Q</cell>
-          <cell bottom="minor" right="minor">P &amp;&amp; Q</cell>
+      <title><c>P &amp;&amp; Q</c> truth table</title>
+
+      <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
+        <row header="yes">
+          <cell>P</cell>
+          <cell>Q</cell>
+          <cell>P &amp;&amp; Q</cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">true</cell>
-          <cell bottom="minor" right="minor">true</cell>
-          <cell bottom="minor" right="minor">true</cell>
+        <row>
+          <cell>
+            <c>false</c>
+          </cell>
+
+          <cell>
+            <c>false</c>
+          </cell>
+
+          <cell>
+            <c>false</c>
+          </cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">false</cell>
-          <cell bottom="minor" right="minor">true</cell>
-          <cell bottom="minor" right="minor">false</cell>
+        <row>
+          <cell>
+            <c>false</c>
+          </cell>
+
+          <cell>
+            <c>true</c>
+          </cell>
+
+          <cell>
+            <c>false</c>
+          </cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">true</cell>
-          <cell bottom="minor" right="minor">false</cell>
-          <cell bottom="minor" right="minor">?</cell>
+        <row>
+          <cell>
+            <c>true</c>
+          </cell>
+
+          <cell>
+            <c>false</c>
+          </cell>
+
+          <cell>
+            <c>?</c>
+          </cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">false</cell>
-          <cell bottom="minor" right="minor">false</cell>
-          <cell bottom="minor" right="minor">false</cell>
+        <row>
+          <cell>
+            <c>true</c>
+          </cell>
+
+          <cell>
+            <c>true</c>
+          </cell>
+
+          <cell>
+            <c>true</c>
+          </cell>
         </row>
       </tabular>
     </table>
@@ -245,38 +276,69 @@ b = "at our high school"
     </p>
 
     <table>
-      <tabular row-headers="yes">
-        <col top="minor" />
-        <col top="minor" />
-        <col top="minor" />
-        <row header="yes" left="minor">
-          <cell bottom="minor" right="minor">P</cell>
-          <cell bottom="minor" right="minor">Q</cell>
-          <cell bottom="minor" right="minor">P || Q</cell>
+      <title><c>P || Q</c> truth table</title>
+
+      <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
+        <row header="yes">
+          <cell>P</cell>
+          <cell>Q</cell>
+          <cell>P || Q</cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">true</cell>
-          <cell bottom="minor" right="minor">true</cell>
-          <cell bottom="minor" right="minor">true</cell>
+        <row>
+          <cell>
+            <c>false</c>
+          </cell>
+
+          <cell>
+            <c>false</c>
+          </cell>
+
+          <cell>
+            <c>false</c>
+          </cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">false</cell>
-          <cell bottom="minor" right="minor">true</cell>
-          <cell bottom="minor" right="minor">?</cell>
+        <row>
+          <cell>
+            <c>false</c>
+          </cell>
+
+          <cell>
+            <c>true</c>
+          </cell>
+
+          <cell>
+            <c>true</c>
+          </cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">true</cell>
-          <cell bottom="minor" right="minor">false</cell>
-          <cell bottom="minor" right="minor">true</cell>
+        <row>
+          <cell>
+            <c>true</c>
+          </cell>
+
+          <cell>
+            <c>false</c>
+          </cell>
+
+          <cell>
+            <c>true</c>
+          </cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">false</cell>
-          <cell bottom="minor" right="minor">false</cell>
-          <cell bottom="minor" right="minor">false</cell>
+        <row>
+          <cell>
+            <c>true</c>
+          </cell>
+
+          <cell>
+            <c>true</c>
+          </cell>
+
+          <cell>
+            <c>true</c>
+          </cell>
         </row>
       </tabular>
     </table>
@@ -474,40 +536,99 @@ else
     </p>
 
     <table>
-      <tabular>
-        <row header="yes" left="minor">
-          <cell bottom="minor" right="minor">a</cell>
-          <cell bottom="minor" right="minor">b</cell>
-          <cell bottom="minor" right="minor">!(a &amp;&amp; b)</cell>
-          <cell bottom="minor" right="minor">!a || !b</cell>
+      <title>
+        Truth table comparing <c>!(a &amp;&amp; b)</c> and <c>!a || !b</c>
+      </title>
+
+      <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor">
+        <row header="yes">
+          <cell>
+            <c>a</c>
+          </cell>
+
+          <cell>
+            <c>b</c>
+          </cell>
+
+          <cell>
+            <c>!(a &amp;&amp; b)</c>
+          </cell>
+
+          <cell>
+            <c>!a || !b</c>
+          </cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">true</cell>
-          <cell bottom="minor" right="minor">true</cell>
-          <cell bottom="minor" right="minor">false</cell>
-          <cell bottom="minor" right="minor">false</cell>
+        <row>
+          <cell>
+            <c>false</c>
+          </cell>
+
+          <cell>
+            <c>false</c>
+          </cell>
+
+          <cell>
+            <c>true</c>
+          </cell>
+
+          <cell>
+            <c>true</c>
+          </cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">false</cell>
-          <cell bottom="minor" right="minor">true</cell>
-          <cell bottom="minor" right="minor">true</cell>
-          <cell bottom="minor" right="minor">true</cell>
+        <row>
+          <cell>
+            <c>false</c>
+          </cell>
+
+          <cell>
+            <c>true</c>
+          </cell>
+
+          <cell>
+            <c>true</c>
+          </cell>
+
+          <cell>
+            <c>true</c>
+          </cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">true</cell>
-          <cell bottom="minor" right="minor">false</cell>
-          <cell bottom="minor" right="minor">true</cell>
-          <cell bottom="minor" right="minor">true</cell>
+        <row>
+          <cell>
+            <c>true</c>
+          </cell>
+
+          <cell>
+            <c>false</c>
+          </cell>
+
+          <cell>
+            <c>true</c>
+          </cell>
+
+          <cell>
+            <c>true</c>
+          </cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">false</cell>
-          <cell bottom="minor" right="minor">false</cell>
-          <cell bottom="minor" right="minor">true</cell>
-          <cell bottom="minor" right="minor">true</cell>
+        <row>
+          <cell>
+            <c>true</c>
+          </cell>
+
+          <cell>
+            <c>true</c>
+          </cell>
+
+          <cell>
+            <c>false</c>
+          </cell>
+
+          <cell>
+            <c>false</c>
+          </cell>
         </row>
       </tabular>
     </table>
