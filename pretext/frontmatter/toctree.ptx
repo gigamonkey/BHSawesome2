@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<frontmatter xml:id="front" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+<frontmatter xml:id="frontmatter" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <introduction>
     <p>
       Welcome to BHSawesome an interactive AP CSA textbook. As you work your way
