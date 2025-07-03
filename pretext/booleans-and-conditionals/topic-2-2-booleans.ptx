@@ -36,73 +36,95 @@
     </p>
   </introduction>
 
-  <subsection xml:id="relational-operators">
-    <title>Relational Operators (&lt;, &gt;)</title>
+  <subsection>
+    <title>Comparison operators</title>
+    <idx>hungry alligator</idx>
     <p>
       In <xref ref="arithmetic-expressions" /> we learned about arithmetic
       operators like <c>+</c> and <c>*</c> that operate on numeric values to
-      produce other numeric values. Now we need to learn about <term>relational
+      produce other numeric values. Now we need to learn about <term>comparison
       operators</term> that operate on numbers but produce <c>boolean</c>
-      values. They are called “relational” because they test various
-      relationships between numbers: is one number bigger than the other. Or
-      smaller.
+      values. Comparison operators can be further divided into four
+      <term>relational operators</term> that test ordering relationships between
+      numbers and two <term>equality operators</term> which simply check whether
+      two numbers are the same or different.
     </p>
 
-    <p>
-      below are used to compare numeric values or arithmetic expressions.
-      Although some programming languages allow using relational operators like
-      <c>&lt;</c> to compare strings, Java only uses these operators for
-      numbers, and uses the methods <c>compareTo</c> and <c>equals</c> for
-      comparing <c>String</c> values.
-    </p>
+    <table>
+      <title>Comparison operators</title>
+      <tabular >
+        <col halign="left"/>
+        <col halign="center"/>
+        <col halign="left"/>
+        <row header="yes">
+          <cell bottom="minor" right="minor">Name</cell>
+          <cell bottom="minor" right="minor">Written</cell>
+          <cell bottom="minor">Value</cell>
+        </row>
+
+        <row>
+          <cell bottom="minor" right="minor">Less than</cell>
+          <cell bottom="minor" right="minor"><c>a &lt; b</c></cell>
+          <cell bottom="minor"><c>true</c> if <c>a</c> is less than <c>b</c>, <c>false</c> otherwise</cell>
+        </row>
+        <row>
+          <cell bottom="minor" right="minor">Greater than</cell>
+          <cell bottom="minor" right="minor"><c>a &gt; b</c></cell>
+          <cell bottom="minor"><c>true</c> if <c>a</c> is greater than <c>b</c>, <c>false</c> otherwise</cell>
+        </row>
+        <row>
+          <cell bottom="minor" right="minor">Less than or equal</cell>
+          <cell bottom="minor" right="minor"><c>a &lt;= b</c></cell>
+          <cell bottom="minor"><c>true</c> if <c>a</c> is less than or equal to <c>b</c>, <c>false</c> otherwise</cell>
+        </row>
+        <row>
+          <cell bottom="minor" right="minor">Greater than or equal</cell>
+          <cell bottom="minor" right="minor"><c>a &gt;= b</c></cell>
+          <cell bottom="minor"><c>true</c> if <c>a</c> is greater than or equal to <c>b</c>, <c>false</c> otherwise</cell>
+        </row>
+        <row>
+          <cell bottom="minor" right="minor">Equals</cell>
+          <cell bottom="minor" right="minor"><c>a &gt;= b</c></cell>
+          <cell bottom="minor"><c>true</c> if <c>a</c> is the same value as <c>b</c>, <c>false</c> otherwise</cell>
+        </row>
+        <row>
+          <cell right="minor">Not equals</cell>
+          <cell right="minor"><c>a != b</c></cell>
+          <cell><c>true</c> if <c>a</c> and <c>b</c> are different values, <c>false</c> otherwise</cell>
+        </row>
+      </tabular>
+    </table>
 
     <p>
-      <ul>
-        <li>
-          <p><c>&lt;</c> Less Than</p>
-        </li>
-
-        <li>
-          <p><c>&gt;</c> Greater Than</p>
-        </li>
-
-        <li>
-          <p><c>&lt;=</c> Less than or equal to</p>
-        </li>
-
-        <li>
-          <p><c>&gt;=</c> Greater than or equal to</p>
-        </li>
-
-        <li>
-          <p><c>==</c> Equals</p>
-        </li>
-
-        <li>
-          <p><c>!=</c> Does not equal</p>
-        </li>
-      </ul>
-    </p>
-
-    <p>
-      If you have trouble telling <c>&lt;</c> and <c>&gt;</c> apart, think of
-      <c>&lt;</c> and <c>&gt;</c> as arrows where the pointy end should point to
-      the smaller value. If <c>&lt;</c> (less than) points towards a smaller
-      number on the left, then it evaluates to <c>true</c>. On the other hand a
-      <c>&gt;</c> (greater than) expression will be <c>true</c> only if the
-      smaller number is on the right hand side. Or maybe you prefer the “hungry
-      alligator” mnemonic beloved by elementary school teachers—think of
-      <c>&lt;</c> and <c>&gt;</c> as the mouths of hungry alligators which
-      always want to eat the bigger number; a <c>&lt;</c> or <c>&gt;</c>
-      expression is only <c>true</c> if the alligator is in fact about to eat
-      the bigger number.
-    </p>
-
-    <p>
-      To remember the correct order of the two characters in <c>&lt;=</c> and
+      The four relational operators (<c>&lt;</c>, <c>&gt;</c>, <c>&lt;=</c>,
+      <c>&gt;=</c>) should be familiar from math class. Note however that due to
+      the limitations of character sets traditionally used in programming
+      languages, we write <c>&lt;=</c> rather than ≤ and <c>&gt;=</c> instead of
+      ≥. To remember the correct order of the two characters in <c>&lt;=</c> and
       <c>&gt;=</c>, just write them in the same order you would say them in
       English: “less than or equal to” not “equal to or less than”.
     </p>
+
+    <p>
+      If you need a refresher on these operators, one way to remember which is
+      which is the <em>hungry alligator</em> mnemonic beloved by elementary
+      school teachers—think of <c>&lt;</c> and <c>&gt;</c> as the mouths of
+      hungry alligators who always want to eat the bigger number; a <c>&lt;</c>
+      or <c>&gt;</c> expression is only <c>true</c> if the open mouth of the
+      alligator is about to chomp the bigger number. (With <c>&lt;=</c> and
+      <c>&gt;=</c> the alligator is also okay if the number it’s going to eat is
+      the same as the other number.)
+    </p>
+
+    <note>
+      <p>
+        In some programming languages comparison operators like <c>&lt;</c> can
+        be used to compare non-numeric values such as strings. But in Java they
+        can only be used with numbers. As we’ll see in <xref
+        ref="reference-types" /> there are other ways to compare <c>String</c>
+        values for both ordering and equality.
+      </p>
+    </note>
 
     <activity label="bool2">
       <statement>
@@ -114,22 +136,19 @@
       </statement>
 
       <program interactive="activecode" language="java">
-        <code>
-public class BoolTest2
-{
-    public static void main(String[] args)
-    {
-        int age = 15;
-        int year = 14;
-        // Will these print true or false?
-        System.out.println(age &lt; year);
-        System.out.println(age &gt; year);
-        // 1. Set year to 15
-        // 2. Print whether age is less than or equal to year
-
-    }
-}
-        </code>
+        <code><![CDATA[
+          public class BoolTest2 {
+              public static void main(String[] args) {
+                  int age = 15;
+                  int year = 14;
+                  // Will these print true or false?
+                  System.out.println(age < year);
+                  System.out.println(age > year);
+                  // 1. Set year to 15
+                  // 2. Print whether age is less than or equal to year
+              }
+          }
+        ]]></code>
         <tests>
 import static org.junit.Assert.*;
 
@@ -160,21 +179,75 @@ public class RunestoneTests extends CodeTestHelper
     </activity>
 
     <p>
-      <term>Boolean</term> variables or expressions have <term>true</term> or
-      <term>false</term> values. Relational operators can be used to compare two
-      variables or compare a variable against a constant value or expression.
-      For example, the following Boolean expressions can be used to see whether
-      a number is positive or negative by seeing if it is greater than 0 or less
-      than 0:
+      The two equality operators (<c>==</c> and <c>!=</c>) are relatively
+      straightforward. A couple things to note however, one is that they are
+      both written with two characters. In particular the equality operator
+      <c>==</c> is different than the assignment operator <c>=</c>. So if
+      <c>a</c> and <c>b</c> are <c>int</c> values, <c>a == b</c> is a
+      <c>boolean</c> expression, i.e. it’s value will be either <c>true</c> or
+      <c>false</c>. But <c>a = b</c> is an <c>int</c> expression whose value
+      will be the original value of <c>b</c> and will also have the side effect
+      of assigning that value to <c>a</c>.
     </p>
 
-    <program language="java">
-      <code>
-// Test if a number is positive
-(number &gt; 0)
-//Test if a number is negative
-(number &lt; 0)
-      </code>
+    <p>
+      Unlike the relational operators, the equality operators can be used with
+      any kinds of values, <c>int</c>, <c>double</c>, <c>boolean</c>,
+      <c>String</c>, and all the other types we’ll learn about later in this
+      book. But there are some subtleties to how they work with different kinds
+      of values.
+    </p>
+
+    <p>
+      For <c>int</c> values, <c>==</c> and <c>!=</c> are quite straightforward.
+      Either two <c>int</c> values are the same or they are not.
+    </p>
+
+    <p>
+      We will rarely use operators with <c>boolean</c> values although it is
+      legal and does what you’d expect: <c>true == true</c> is <c>true</c> and
+      <c>true != true</c> is false. However using <c>==</c> with <c>boolean</c>
+      values can lead to a common mistake which we’ll discuss in <xref
+      ref="if-traps" />.
+    </p>
+
+    <p>
+      While we can use these operators with <c>String</c> values and other
+      reference types, they probably won’t do what you’d expect. We’ll discuss
+      that more in the lesson on <xref ref="equality" />.
+    </p>
+
+    <p>
+      And finally, the equality operators should almost never be used with
+      <c>double</c> values though for slightly different reasons. The problem is
+      that because computers perform <c>double</c> math with limited precision,
+      sometimes expressions that seem like they should produce mathematically
+      equivalent results don’t produce exactly the same <c>double</c> values so
+      even though they should be equal according to math they won’t be according
+      to <c>==</c>. One of the simplest examples is:
+    </p>
+
+    <program>
+      0.1 + 0.2 == 0.3 // evaluates to false!
+    </program>
+
+    <p>
+      You might wonder why these are different if <c>double</c> values can store
+      up to 15 decimal places of precision! Understanding exactly why would
+      involve getting into quite a lot of details about how <c>double</c> values
+      are represented in memory that are well beyond the AP curriculum. But
+      suffice it to say that this is a fact about how modern computers work, not
+      a bug in Java. As a practical matter when doing <c>double</c> math,
+      instead of comparing values for exact equality we should check whether the
+      difference between two values is less than some meaningful threshold. For
+      instance, if we were performing some computation on measurements in meters
+      and wanted to check that the answer we got was “the same” as some expected
+      value, we might use an expression like the following to check that they
+      are the same to a tenth of a millimeter:
+    </p>
+
+    <program>
+      Math.abs(computedMeters - expectedMeters) &lt; 0.0001
     </program>
 
     <activity label="BooleanExps">
@@ -227,27 +300,6 @@ public class RunestoneTests extends CodeTestHelper
         </match>
       </cardsort>
     </activity>
-  </subsection>
-
-  <subsection xml:id="testing-equality-index-0">
-    <title>Testing Equality (==)</title>
-    <p>
-      The relational operators <c>==</c> and <c>!=</c> (not equal) can be used
-      to compare values. They return true or false boolean values.
-    </p>
-
-    <note>
-      <p>
-        One <c>=</c> sign changes the value of a variable. Two <c>==</c> equal
-        signs are used to test if a variable holds a certain value, without
-        changing its value!
-      </p>
-    </note>
-
-    <p>
-      The following code shows how <c>==</c> is used with primitive types like
-      <c>int</c>.
-    </p>
 
     <activity label="bool1">
       <statement>
@@ -304,25 +356,61 @@ public class RunestoneTests extends CodeTestHelper
     </activity>
   </subsection>
 
-  <subsection xml:id="testing-with-remainder">
-    <title>Testing with remainder (%)</title>
+  <subsection>
+    <title>Testing divisibility</title>
     <p>
-      The remainder operator (%) is very useful in coding. The following Boolean
-      expressions can be used to test whether a number is even or odd by seeing
-      if there is a remainder when it is divided by 2 or if it is divisible by
-      another number:
+      A thing that comes up often enough in both real world coding and on the AP
+      exam to be worth calling out is how to use the equality operators in
+      combination with the remainder operator (<c>%</c>) to test whether
+      <c>int</c> values are evenly divisible by other <c>int</c> values.
     </p>
 
-    <program language="java">
-      <code>
-//Test if a number is even by seeing if the remainder is 0 when divided by 2
-(number % 2 == 0)
-//Test if a number is odd by seeing if there is a remainder when divided by 2
-(number % 2 != 0)
-//Test if a number is a multiple of x (or divisible by x with no remainder)
-(number % x == 0)
-      </code>
-    </program>
+    <p>
+      If <c>a</c> is evenly divisible by <c>b</c>, that just means that the
+      remainder if you divide <c>a</c> by <c>b</c> is zero. So to check if
+      <c>a</c> is evenly divisible by <c>b</c> (or is a multiple of <c>b</c>,
+      which is another way to say the same thing) we can just write <c>a % b ==
+      0</c>.
+    </p>
+
+    <table>
+      <title>Divisibility recipes</title>
+      <tabular >
+        <col halign="left"/>
+        <col halign="left"/>
+        <row header="yes">
+          <cell bottom="minor" right="minor">Expression</cell>
+          <cell bottom="minor">Tests</cell>
+        </row>
+
+        <row>
+          <cell bottom="minor" right="minor"><c>number % 2 == 0</c></cell>
+          <cell bottom="minor"><c>number</c> is even </cell>
+        </row>
+
+        <row>
+          <cell bottom="minor" right="minor"><c>number % 2 != 0</c></cell>
+          <cell bottom="minor"><c>number</c> is odd.</cell>
+        </row>
+
+        <row>
+          <cell bottom="minor" right="minor"><c>number % x == 0</c></cell>
+          <cell bottom="minor"><c>number</c> is evenly divisible by <c>x</c>, a.k.a. <c>number</c> is a multiple of <c>x</c></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <note>
+      <p>
+        You might think you could check if a number was odd with the expression
+        <c>number % 2 == 1</c> rather than <c>number % 2 != 0</c>. However,
+        because Java’s <c>%</c> operator is a remainder operator and not a true
+        mathematical modulo operator, this won’t always work: when <c>number</c>
+        is a negative odd number, <c>number % 2</c> is <c>-1</c> not <c>1</c>.
+        Thus you should always use <c>number % 2 != 0</c> to check if
+        <c>number</c> is odd.
+      </p>
+    </note>
 
     <activity label="boolRem">
       <statement>
@@ -387,33 +475,125 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </activity>
 
-    <note>
-      <p>
-        A warning: because Java’s <c>%</c> is a remainder operator and not a
-        true mathematical modulo operator, you can’t check if a number is odd
-        with the expression <c>num % 2 == 1</c>.
-      </p>
 
-      <p>
-        That expression will be <c>true</c> if <c>num</c> is positive and odd
-        and <c>false</c> when <c>num</c> is even, both of which are correct. But
-        if <c>num</c> is negative and odd, its remainder when divided by 2 is
-        -1, not 1 and this expression will evaluate to <c>false</c>. Thus you
-        should always use <c>num % 2 != 0</c> to check if <c>num</c> is odd.
-      </p>
-    </note>
   </subsection>
 
   <subsection xml:id="and-or-and-not-index-0">
-    <title>And (&amp;&amp;), Or (||), and Not (!)</title>
+    <title>Logical operators</title>
     <p>
-      What if you want two things to be true before the body of the conditional
-      is executed? Use <c>&amp;&amp;</c> as a logical <term>and</term> to join
-      two Boolean expressions and the body of the condition will only be
-      executed only if both are true.
+      The other set of operators in Java that produce <c>boolean</c> values are
+      the <term>logical operators</term>. These operate on <c>boolean</c> values
+      to produce new <c>boolean</c> values just like the arithmetic operators
+      operate on numeric values and produce numeric values.
     </p>
 
+    <p>
+      The three logical operators in Java come from <term>Boolean
+      algebra</term>, a system for evaluating logical statements invented by
+      <url href="https://en.wikipedia.org/wiki/George_Boole"
+      visual="https://en.wikipedia.org/wiki/George_Boole">George Boole</url>, a
+      19th century English mathematician most famous for his book <em>The Laws
+      of Thought</em>. These days we call these three operatarors <term>logical
+      and</term>, <term>logical or</term> and <term>logical not</term>. And you
+      are almost certainly already completely familiar with these operators and
+      how they work even if you’ve never heard of George Boole.
+    </p>
+
+    <p>
+      For example, if you were looking for someone to share some chocolate ice
+      cream with, you’d know that you need to find someone who likes ice cream
+      and who also likes chocolate. A friend who likes ice cream but doesn’t
+      like chocolate wouldn’t be interested. And another friend who likes
+      chocolate but hates ice cream would also not be interested. If you
+      understand that, you understand the logic of the situation which is
+      expressed with logical and.
+    </p>
+
+    <p>
+      A logical and combines two statements like “likes ice cream” and “likes
+      chocolate”, each of which is either true or false, into a new statement
+      “likes ice cream and likes chocolate” that is only true if both of the
+      sub-statements are true.
+    </p>
+
+    <p>
+      In Java the logical and operator is written <c>&amp;&amp;</c>. Thus if we
+      have two <c>boolean</c> expressions, such as two variables
+      <c>likesIceCream</c> and <c>likesChocolate</c>, we can write an expression
+      that combines them with <c>&amp;&amp;</c>:
+    </p>
+
+    <program>
+      likesIceCream &amp;&amp; likesChocolate // true if, and only if, both variables are true
+    </program>
+
+    <p>
+      You already understand logical or if you understand that if need to get
+      something off a high shelf that you can’t reach, you either need a tall
+      friend or a step stool. You don’t need <em>both</em> a tall friend and a
+      step stool—one or the other is fine. (Though if you did have both that
+      would also work.) In Java we write logical or as <c>||</c>:
+    </p>
+
+    <program>
+      haveTallFriend || haveStepStool // true if either, or both, variables are true
+    </program>
+
+    <note>
+      <sidebyside widths="65% 35%" valign="middle" margins="0% 0%">
+      <p>
+        One place that the way we use “and” and “or” in English that doesn’t
+        completely match with their sense in Boolean logic is when we use “or”
+        to express a choice between two options when we can only pick one: “do
+        you want to be player 1 <em>or</em> player 2?” In Boolean logic and in
+        Java the or operator is called an <term>inclusive or</term> which means
+        that the whole expression is true if either one or the other or
+        <em>both</em> conditions are true. Logically speaking there’s also an
+        <term>exclusive or</term> which is true if either sub-statement is true
+        but false if they both are. There isn’t a separate exclusive or operator
+        in Java but <c>!=</c> applied to <c>boolean</c> values serves as one.
+      </p>
+        <table>
+          <title>Truth table of <c>!=</c> with <c>boolean</c> values</title>
+          <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor">
+            <col header="yes"/>
+            <col/>
+            <col/>
+            <row header="yes" >
+              <cell><c>!=</c></cell>
+              <cell><c>false</c></cell>
+              <cell><c>true</c></cell>
+            </row>
+            <row>
+              <cell><c>false</c></cell>
+              <cell><c>false</c></cell>
+              <cell><c>true</c></cell>
+            </row>
+            <row>
+              <cell><c>true</c></cell>
+              <cell><c>true</c></cell>
+              <cell><c>false</c></cell>
+            </row>
+          </tabular>
+        </table>
+      </sidebyside>
+    </note>
+
+    <p>
+      The final logical operator, logical not, covers the logic of, “You can go
+      out if you’re not grounded”. If the statement “you’re grounded” is true,
+      then you can’t go out. But if the statement is false, then you can. In
+      other words, logical not just flips the meaning of the statement, true to
+      false and false to true. Logical not is written <c>!</c> in Java and goes
+      before the expression it operates on:
+    </p>
+
+    <program>
+      !grounded // true if grounded is false, false otherwise
+    </program>
+
     <activity label="compoundAnd">
+      <title>Can go out?</title>
       <statement>
         <p>
           What if you want to go out and your parents say you can go out if you
@@ -423,24 +603,19 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class Test1
-{
-    public static void main(String[] args)
-    {
-        boolean cleanedRoom = true;
-        boolean didHomework = false;
-        if (cleanedRoom &amp;&amp; didHomework)
-        {
-            System.out.println("You can go out");
-        }
-        else
-        {
-            System.out.println("No, you can't go out");
-        }
-    }
-}
+          public class Test1 {
+              public static void main(String[] args) {
+                  boolean cleanedRoom = true;
+                  boolean didHomework = false;
+                  if (cleanedRoom &amp;&amp; didHomework) {
+                      System.out.println("You can go out");
+                  } else {
+                      System.out.println("No, you can't go out");
+                  }
+              }
+          }
         </code>
         <tests>
 import static org.junit.Assert.*;
@@ -478,40 +653,29 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </activity>
 
-    <p>
-      What if it is okay if only one of two things is true? Use <c>||</c> as a
-      logical <term>or</term> to join two Boolean expressions and the body of
-      the condition will be executed if one or both are true.
-    </p>
-
     <activity label="compoundOr">
       <statement>
         <p>
-          For example, your parents might say you can go out if you can walk or
-          they don’t need the car. Try different values for <c>walking</c> and
-          <c>carIsAvailable</c> and see what the values have to be to print
-          <c>You can go out</c>.
+          Suppose you want to go somewhere. You can go if you can walk there or
+          if your parents aren’t using the car. Try different values for
+          <c>walking</c> and <c>carIsAvailable</c> and see what the values have
+          to be to print <c>You can go out</c>.
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class Test2
-{
-    public static void main(String[] args)
-    {
-        boolean walking = false;
-        boolean carIsAvailable = false;
-        if (walking || carIsAvailable)
-        {
-            System.out.println("You can go out");
-        }
-        else
-        {
-            System.out.println("No, you can't go out");
-        }
-    }
-}
+          public class Test2 {
+              public static void main(String[] args) {
+                  boolean walking = false;
+                  boolean carIsAvailable = false;
+                  if (walking || carIsAvailable) {
+                      System.out.println("You can go out");
+                  } else {
+                      System.out.println("No, you can't go out");
+                  }
+              }
+          }
         </code>
         <tests>
 import static org.junit.Assert.*;
@@ -549,22 +713,91 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </activity>
 
-    <note>
-      <p>
-        In English, we often use an exclusive-or like in the sentence “do you
-        want to be player 1 <em>or</em> player 2?” where you can’t be both
-        player 1 and player 2. In programming, the or-operator is an
-        inclusive-or which means that the whole expression is true if either one
-        or the other or <em>both</em> conditions are true.
-      </p>
-    </note>
+    <activity label="not-operator">
+      <statement>
+        <p>
+          The code below says if homework is not done, you can’t go out. Try
+          different values for <c>homeworkDone</c>.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          public class TestNot {
+              public static void main(String[] args) {
+                  boolean homeworkDone = false;
+                  if (!homeworkDone) {
+                      System.out.println("Sorry, you can't go out!");
+                  }
+              }
+          }
+        </code>
+        <tests>
+import static org.junit.Assert.*;
+
+import org.junit.*;
+
+import java.io.*;
+
+public class RunestoneTests extends CodeTestHelper
+{
+    @Test
+    public void testChangedCode()
+    {
+        String origCode =
+                "public class TestNot{public static void main(String[] args){ boolean homeworkDone"
+                    + " = false; if (!homeworkDone) { System.out.println(\"Sorry, you can't go"
+                    + " out!\"); } } }";
+
+        boolean changed = codeChanged(origCode);
+        assertTrue(changed);
+    }
+}
+        </tests>
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Testing ranges</title>
+    <p>
+      Just like we can use the <c>==</c> and <c>%</c> operators together to test
+      whether numbers are divisible by other numbers, we can combine relational
+      and logical operators to test whether a number is in a certain range.
+    </p>
 
     <p>
-      With numerical values, the <term>or</term> (||) operator is often used to
-      check for error conditions on different ends of the number line, while the
-      <term>and</term> (&amp;&amp;) operator is often used to see if a number is
-      in an range.
+      In math we can write <m>0 \le x \lt 100</m> to express that <m>x</m> is in
+      the range from zero (inclusive) to one hundred (exclusive). Unfortunately
+      if we translate that directly to Java as <c>0 &lt;= x &lt; 100</c> we will
+      get a compiler error. This is because <c>0 &lt;= x</c> produces a
+      <c>boolean</c> which can’t then be an operand to the <c>&lt;</c> operator.
+      Instead we need to use <c>&amp;&amp;</c> to combine two <c>boolean</c>
+      expressions:
     </p>
+
+    <program>
+      0 &lt;= x &amp;&amp; x &lt; 100 // True if x is in range from 0 to 100, exclusive.
+    </program>
+
+    <p>
+      Less frequently we may want to write an expression that is true if a
+      variable is not in a particular range. That’s as easy as applying a
+      <c>!</c> to the whole range expression. We need to put the range
+      expression in parentheses because <c>!</c> has very high precedence.
+    </p>
+
+    <program>
+      !(0 &lt;= x &amp;&amp; x &lt; 100) // True if x is outside the range from 0 to 100, exclusive.
+    </program>
+
+    <p>
+      We could also write that in this logically equivalent way:
+    </p>
+
+    <program>
+      x &lt; 0 || x &gt;= 100
+    </program>
 
     <activity label="compound-number-range">
       <statement>
@@ -576,21 +809,17 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class TestNum
-{
-    public static void main(String[] args)
-    {
-        int score = 10; // Try -10 and 110
-        if (score &lt; 0 || score &gt; 100)
-        {
-            System.out.println("Score has an illegal value.");
-        }
-        if (score &gt;= 0 &amp;&amp; score &lt;= 100)
-        {
-            System.out.println("Score is in the range 0-100");
-        }
-    }
-}
+          public class TestNum {
+              public static void main(String[] args) {
+                  int score = 10; // Try -10 and 110
+                  if (score &lt; 0 || score &gt; 100) {
+                      System.out.println("Score has an illegal value.");
+                  }
+                  if (0 &lt;= score &amp;&amp; score &lt;= 100) {
+                      System.out.println("Score is in the range 0-100");
+                  }
+              }
+          }
         </code>
         <tests>
 import static org.junit.Assert.*;
@@ -618,68 +847,8 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </activity>
 
-    <p>
-      The <term>not</term> (<c>!</c>) operator can be used to negate a boolean
-      value. We’ve seen <c>!</c> before in <c>!=</c> (not equal). If you use
-      <c>!</c> in expressions with <c>&amp;&amp;</c> and <c>||</c>, be careful
-      because the results are often the opposite of what you think it will be at
-      first. We’ll see examples of this in the next lesson.
-    </p>
 
-    <activity label="not-operator">
-      <statement>
-        <p>
-          The code below says if homework is not done, you can’t go out. Try
-          different values for <c>homeworkDone</c>.
-        </p>
-      </statement>
 
-      <program interactive="activecode" language="java">
-        <code>
-public class TestNot
-{
-    public static void main(String[] args)
-    {
-        boolean homeworkDone = false;
-        if (!homeworkDone)
-        {
-            System.out.println("Sorry, you can't go out!");
-        }
-    }
-}
-        </code>
-        <tests>
-import static org.junit.Assert.*;
-
-import org.junit.*;
-
-import java.io.*;
-
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testChangedCode()
-    {
-        String origCode =
-                "public class TestNot{public static void main(String[] args){ boolean homeworkDone"
-                    + " = false; if (!homeworkDone) { System.out.println(\"Sorry, you can't go"
-                    + " out!\"); } } }";
-
-        boolean changed = codeChanged(origCode);
-        assertTrue(changed);
-    }
-}
-        </tests>
-      </program>
-    </activity>
-
-    <note>
-      <p>
-        In Java, ! will be executed before &amp;&amp;, and &amp;&amp; will be
-        executed before ||, unless there are parentheses. Anything inside
-        parentheses is executed first.
-      </p>
-    </note>
   </subsection>
 
   <subsection xml:id="short-circuit-evaluation">
@@ -850,771 +1019,7 @@ else
     </activity>
   </subsection>
 
-  <subsection>
-    <title>Boolean practice</title>
-    <activity label="if-relational">
-      <statement>
-        <p>
-          Run the following active code a couple times until you see all the
-          possible outputs. It prints out whether a random number is positive or
-          equal to 0. Add another if statement that tests if it is a negative
-          number.
-        </p>
-      </statement>
 
-      <program interactive="activecode" language="java">
-        <code>
-public class TestNumbers
-{
-    public static void main(String[] args)
-    {
-        // Get a random number from -10 up to 10.
-        int number = (int) (Math.random() * 21) - 10;
-        System.out.println("The number is " + number);
-
-        // is it positive?
-        if (number &gt; 0)
-        {
-            System.out.println(number + " is positive!");
-        }
-        // is it 0?
-        if (number == 0)
-        {
-            System.out.println(number + " is zero!");
-        }
-        // is it negative?
-        // Add another if statement
-
-    }
-}
-        </code>
-        <tests>
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-import java.io.*;
-import java.util.regex.MatchResult;
-import java.util.regex.Pattern;
-
-public class RunestoneTests extends CodeTestHelper
-{
-
-    @Test
-    public void testPositive()
-    {
-        String output = "";
-        int num = -999, count = 0;
-
-        while (num &lt;= 0 &amp;&amp; count &lt; 50)
-        {
-            output = getMethodOutput("main");
-            num = getNumber(output);
-            count++;
-
-            if (num == 9999999)
-            {
-                getResults(
-                        "The number is ##\n## is positive!",
-                        output,
-                        "Did you forget to print the number?",
-                        false);
-                assertTrue(false);
-                return;
-            }
-        }
-
-        String expect = "The number is " + num + "\n" + num + " is positive!";
-
-        boolean passed = output.contains("positive");
-        getResults(expect, output, "Testing positive numbers", passed);
-        assertTrue(passed);
-    }
-
-    @Test
-    public void testZero()
-    {
-        String output = "";
-        int num = -999, count = 0;
-
-        while (num != 0 &amp;&amp; count &lt; 50)
-        {
-            output = getMethodOutput("main");
-            num = getNumber(output);
-            count++;
-
-            if (num == 9999999)
-            {
-                getResults(
-                        "The number is ##\n## is zero!",
-                        output,
-                        "Did you forget to print the number?",
-                        false);
-                assertTrue(false);
-                return;
-            }
-        }
-
-        String expect = "The number is " + num + "\n" + num + " is zero!";
-
-        boolean passed = output.contains("zero");
-        getResults(expect, output, "Testing zero", passed);
-        assertTrue(passed);
-    }
-
-    @Test
-    public void testNegative()
-    {
-        String output = "";
-        int num = 999, count = 0;
-
-        while (num &gt;= 0 &amp;&amp; count &lt; 50)
-        {
-            output = getMethodOutput("main");
-            num = getNumber(output);
-            count++;
-
-            if (num == 9999999)
-            {
-                getResults(
-                        "The number is ##\n## is negative!",
-                        output,
-                        "Did you forget to print the number?",
-                        false);
-                assertTrue(false);
-                return;
-            }
-        }
-
-        String expect = "The number is " + num + "\n" + num + " is negative!";
-
-        boolean passed = output.contains("negative");
-        getResults(expect, output, "Testing negative numbers", passed);
-        assertTrue(passed);
-    }
-
-    private int getNumber(String output)
-    {
-        String regex = "[0-9]+";
-
-        String[] matches =
-                Pattern.compile(regex)
-                        .matcher(output)
-                        .results()
-                        .map(MatchResult::group)
-                        .toArray(String[]::new);
-
-        int num = 9999999;
-
-        if (matches.length &gt; 0)
-        {
-            num = Integer.parseInt(matches[0]);
-        }
-
-        if (output.contains("-"))
-        {
-            num *= -1;
-        }
-
-        return num;
-    }
-}
-        </tests>
-      </program>
-    </activity>
-
-    <activity label="mcq-if-trace">
-      <statement>
-        <p>
-          Consider the following code segment. What is printed as a result of
-          executing the code segment?
-        </p>
-
-        <program language="java">
-          <code>
-int x = 3;
-if (x &gt; 2)
-{
-   x = x * 2;
-}
-if (x &gt; 4)
-{
-   x = 0;
-}
-System.out.print(x);
-          </code>
-        </program>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>3</p>
-          </statement>
-
-          <feedback>
-            <p>x is changed by the if statements.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>6</p>
-          </statement>
-
-          <feedback>
-            <p>
-              What happens when x is greater than 2 and then greater than 4? Do
-              both if statements.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>0</p>
-          </statement>
-
-          <feedback>
-            <p>
-              If x is greater than 2, it's always doubled, and then that result
-              is always greater than 4, so it's set to 0 in the second if
-              statement.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>4</p>
-          </statement>
-
-          <feedback>
-            <p>x is changed by the if statements.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>The code will not compile</p>
-          </statement>
-
-          <feedback>
-            <p>This code will compile.</p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-<!-- just dropped this here for now. Used to be in topic-2-3 -->
-    <activity label="licenseifelse">
-      <statement>
-        <p>
-          Run the following code to see what it prints out when the variable age
-          is set to the value 16. Change the variable age’s value to 15 and then
-          run it again to see the result of the print statement in the else
-          part. Can you change the if-statement to indicate that you can get a
-          license at age 15 instead of 16? Use 2 test cases for the value of age
-          to test your code to see the results of both print statements.
-        </p>
-      </statement>
-
-      <program interactive="activecode" language="java">
-        <code>
-public class DriversLicenseTest
-{
-    public static void main(String[] args)
-    {
-        int age = 16;
-        if (age &gt;= 16)
-        {
-            System.out.println("You can get a driver's license in most states!");
-        }
-        else
-        {
-            System.out.println(
-                    "Sorry, you need to be older to get a driver's license.");
-        }
-    }
-}
-        </code>
-        <tests>
-import static org.junit.Assert.*;
-
-import org.junit.*;
-
-import java.io.*;
-
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testCodeContains() throws IOException
-    {
-        String target = "age &gt;= 15";
-        boolean passed = checkCodeContains("check age &gt;= 15", target);
-        assertTrue(passed);
-    }
-}
-        </tests>
-      </program>
-    </activity>
-
-    <activity label="ifelseevenOdd" numbered="yes" adaptive="yes" indentation="hide" language="java">
-      <statement>
-        <p>
-          The following program should print out “x is even” if the remainder of
-          x divided by 2 is 0 and “x is odd” otherwise, but the code is mixed
-          up. Drag the blocks from the left and place them in the correct order
-          on the right. Click on Check Me to see if you are right.
-        </p>
-      </statement>
-
-      <blocks>
-        <block order="5">
-          <cline>public class EvenOrOdd {</cline>
-        </block>
-
-        <block order="4">
-          <cline>    public static void main(String[] args) {</cline>
-        </block>
-
-        <block order="6">
-          <cline>        int x = 92;</cline>
-        </block>
-
-        <block order="1">
-          <cline>        if (x % 2 == 0) {</cline>
-        </block>
-
-        <block order="2">
-          <cline>            System.out.println("x is even");</cline>
-        </block>
-
-        <block order="8">
-          <cline>        } else {</cline>
-        </block>
-
-        <block order="7">
-          <cline>            System.out.println("x is odd");</cline>
-        </block>
-
-        <block order="3">
-          <cline>        }</cline>
-          <cline>    }</cline>
-          <cline>}</cline>
-        </block>
-      </blocks>
-    </activity>
-
-    <activity label="scoreifelse">
-      <title>Add an else</title>
-      <statement>
-        <p>
-          Try the following code. Add an else statement to the if statement that
-          prints out “Good job!” if the score is greater than 9. Change the
-          value of score to test it. Can you change the boolean test to only
-          print out “Good job” if the score is greater than 20?
-        </p>
-      </statement>
-
-      <program interactive="activecode" language="java">
-        <code>
-public class ScoreTest
-{
-    public static void main(String[] args)
-    {
-        int score = 8;
-        if (score &lt;= 9)
-        {
-            System.out.println("Try for a higher score!");
-        }
-    }
-}
-        </code>
-        <tests>
-import static org.junit.Assert.*;
-
-import org.junit.*;
-
-import java.io.*;
-
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testChangedCode()
-    {
-        String origCode =
-                "public class ScoreTest   {      public static void main(String[] args)      {     "
-                    + "   int score = 8;        if (score &lt;= 9)         {           "
-                    + " System.out.println(\"Try for a higher score!\");        }      }} ";
-
-        boolean changed = codeChanged(origCode);
-        assertTrue(changed);
-    }
-
-    @Test
-    public void testCodeContainsElse()
-    {
-        boolean ifCheck2 = checkCodeContains("else", "else");
-        assertTrue(ifCheck2);
-    }
-
-    @Test
-    public void testCodeContains20()
-    {
-        String target1 = removeSpaces("score &lt;= 20");
-        String target2 = removeSpaces("score &gt; 20");
-
-        String code = removeSpaces(getCode());
-
-        boolean passed = code.contains(target1) || code.contains(target2);
-        getResults("true", "" + passed, "Checking for score &lt;= 20 or score &gt; 20", passed);
-        assertTrue(passed);
-    }
-
-    @Test
-    public void testCodeChange1() throws Exception
-    {
-        String className = "Test1";
-
-        String program = getCode();
-        program = program.replace("ScoreTest", className).replace("public class", "class");
-        program = program.replaceAll("= *[0-9]+;", "= 25;");
-
-        String output = getMethodOutputChangedCode(program, className, "main");
-
-        String expected = "Good job!";
-        boolean passed = output.contains(expected);
-        getResults(expected, output, "Checking output if score is 25", passed);
-        assertTrue(passed);
-    }
-
-    @Test
-    public void testCodeChange2() throws Exception
-    {
-        String className2 = "Test2";
-
-        String program2 = getCode();
-        program2 = program2.replace("ScoreTest", className2).replace("public class", "class");
-        program2 = program2.replaceAll("= *[0-9]+;", "= 5;");
-
-        String output2 = getMethodOutputChangedCode(program2, className2, "main");
-
-        String expected2 = "Try for a higher score!";
-        boolean passed2 = output2.contains(expected2);
-        getResults(expected2, output2, "Checking output if score is 5", passed2);
-        assertTrue(passed2);
-    }
-}
-        </tests>
-      </program>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="coding-challenge-prime-numbers-pogil">
-    <title>Coding Challenge : Prime Numbers POGIL</title>
-    <p>
-      We encourage you to do this activity as a <url
-      href="https://pogil.org/about-pogil/what-is-pogil"
-      visual="https://pogil.org/about-pogil/what-is-pogil">POGIL</url> (Process
-      Oriented Guided Inquiry Learning) group activity or using Think-Pair-Share
-      collaboration. POGIL groups are self-managed teams of 4 students where
-      everyone has a <url
-      href="https://docs.google.com/document/d/1_NfNLWJxaG4qZ2Jd2x8UctDS05twn1h6p-o3XaAcRv0/edit?usp=sharing"
-      visual="https://docs.google.com/document/d/1_NfNLWJxaG4qZ2Jd2x8UctDS05twn1h6p-o3XaAcRv0/edit?usp=sharing">POGIL
-      role</url> and works together to solve the problems, making sure that
-      everyone in the team participates and learns.
-    </p>
-
-    <p>
-      In this activity, you will write a Java program that uses boolean
-      expressions to determine if a number is prime. A prime number is an
-      integer number that is only divisible by 1 and itself. For example, 3 is a
-      prime number because it’s only divisible by 1 and 3 and no other numbers,
-      but 4 is not a prime number because it’s divisible by 2 as well as 1 and
-      4. You will write methods that test whether a number is positive,
-      negative, odd, even, and divisible by another number. You will then
-      experiment with these methods to determine if the numbers 5, 6, and 7 are
-      prime. And to ask questions about prime numbers like whether all odd
-      numbers are prime.
-    </p>
-
-    <project label="challenge-primeNumbers">
-      <statement>
-        <p>
-          Complete the methods below to determine if a number is positive,
-          negative, odd, even, or divisible by another number by returning
-          boolean expressions testing the argument number. Then, experiment with
-          these methods to determine if the numbers 5, 6, and 7 are prime.
-        </p>
-      </statement>
-
-      <program interactive="activecode" language="java">
-        <code>
-public class PrimeNumbers
-{
-    // isPositive checks whether number is greater than 0
-    public static boolean isPositive(int number)
-    {
-        return (number &gt; 0);
-    }
-
-    public static boolean isNegative(int number)
-    {
-        // 1. Replace true with an expression that checks
-        //    whether number is negative
-        return true;
-    }
-
-    // isOdd checks whether number divided by 2
-    // has a remainder.
-    public static boolean isOdd(int number)
-    {
-        return (number % 2 != 0);
-    }
-
-    public static boolean isEven(int number)
-    {
-        // 2. Replace true with an expression that checks
-        //    whether number is divisible by 2
-        return true;
-    }
-
-    public static boolean isDivisible(int number, int divisor)
-    {
-        // 3. Replace true with an expression that checks
-        //    whether number is divisible by divisor
-        return true;
-    }
-
-    public static void main(String[] args)
-    {
-        // 4. Change number to experiment
-        int number = 5;
-        System.out.println("A prime number is only divisible by 1 and itself.");
-        System.out.println(number + " is negative? " + isNegative(number));
-        System.out.println(number + " is even? " + isEven(number));
-
-        System.out.println("Divisible by 1? " + isDivisible(number,1) );
-        System.out.println("Divisible by 2? " + isDivisible(number,2) );
-        System.out.println("Divisible by 3? " + isDivisible(number,3) );
-        System.out.println("Divisible by 4? " + isDivisible(number,4) );
-        System.out.println("Divisible by 5? " + isDivisible(number,5) );
-
-        // 5. Add 2 print statements with calls to isDivisible to check
-        //    whether number is divisible by 6 and 7.
-
-    }
-}
-        </code>
-        <tests>
-import static org.junit.Assert.*;
-
-import org.junit.*;
-
-import java.io.*;
-
-public class RunestoneTests extends CodeTestHelper
-{
-     @Test
-     public void testBool1() throws IOException
-     {
-          String target = "number &lt; 0";
-          boolean passed = checkCodeContains("boolean expression for isNegative", target);
-          assertTrue(passed);
-     }
-   @Test
-   public void testBool2() throws IOException
-   {
-       String target = "number % 2 == 0";
-       boolean passed = checkCodeContains("boolean expression for isEven", target);
-       assertTrue(passed);
-   }
-
-   @Test
-   public void testBool3() throws IOException
-   {
-       String target = "number % divisor == 0";
-       boolean passed = checkCodeContains("boolean expression for isDivisible", target);
-       assertTrue(passed);
-   }
-   @Test
-   public void testCall() throws IOException
-   {
-       String target = "isDivisible(number,7)";
-       boolean passed = checkCodeContains("method call in main to isDivisible to see whether number is divisible by 7", target);
-       assertTrue(passed);
-   }
-}
-        </tests>
-      </program>
-    </project>
-
-    <p>
-      With your POGIL group, use the code you completed above to experiment to
-      see if 5, 6, and 7 are prime. Answer the following questions:
-    </p>
-
-    <activity label="prime1">
-      <statement>
-        <p>Is 5 prime?</p>
-      </statement>
-
-      <choices>
-        <choice correct="yes">
-          <statement>
-            <p>Yes, 5 is prime.</p>
-          </statement>
-
-          <feedback>
-            <p>5 is only divisible by 1 and 5, so it is prime.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>No, 5 is not prime.</p>
-          </statement>
-
-          <feedback>
-            <p>5 is only divisible by 1 and 5.</p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="prime2">
-      <statement>
-        <p>Is 6 prime?</p>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>Yes, 6 is prime.</p>
-          </statement>
-
-          <feedback>
-            <p>
-              A prime number is only divisible by 1 and itself. 6 is divisible
-              by 1, 2, 3, and 6.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>No, 6 is not prime.</p>
-          </statement>
-
-          <feedback>
-            <p>6 is divisible by 1, 2, 3, and 6, so it is not prime.</p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="prime3">
-      <statement>
-        <p>Is 7 prime?</p>
-      </statement>
-
-      <choices>
-        <choice correct="yes">
-          <statement>
-            <p>Yes, 7 is prime.</p>
-          </statement>
-
-          <feedback>
-            <p>7 is only divisible by 1 and 7, so it is prime.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>No, 7 is not prime.</p>
-          </statement>
-
-          <feedback>
-            <p>7 is only divisible by 1 and 7.</p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="prime4">
-      <statement>
-        <p>
-          Are all odd numbers prime? Can you find an odd number that is not
-          prime by using your code above? What is the smallest odd number that
-          is not prime and has divisors other than 1 and itself?
-        </p>
-
-        <p>
-          <fillin answer="9" mode="string" />
-        </p>
-      </statement>
-
-      <evaluation>
-        <evaluate>
-          <test>
-            <strcmp use-answer="yes" />
-            <feedback>
-              <p>Yes, 9 is not prime because it is divisible by 3.</p>
-            </feedback>
-          </test>
-
-          <test>
-            <!-- else -->
-            <feedback>
-              <p>Try numbers 3-10 in your code.</p>
-            </feedback>
-          </test>
-        </evaluate>
-      </evaluation>
-    </activity>
-
-    <activity label="prime5">
-      <statement>
-        <p>
-          Are all even numbers not prime? Can you find an even prime number
-          using your code above? What is the smallest even number that is prime?
-        </p>
-
-        <p>
-          <fillin answer="2" mode="string" />
-        </p>
-      </statement>
-
-      <evaluation>
-        <evaluate>
-          <test>
-            <strcmp use-answer="yes" />
-            <feedback>
-              <p>Yes, 2 is prime because it is only divisible by 1 and 2.</p>
-            </feedback>
-          </test>
-
-          <test>
-            <!-- else -->
-            <feedback>
-              <p>Try numbers 2-10 in your code.</p>
-            </feedback>
-          </test>
-        </evaluate>
-      </evaluation>
-    </activity>
-
-    <p>
-      Prime numbers are very useful in encryption algorithms because they can be
-      used as keys for encoding and decoding. If you have the key, you can use
-      it to divide a large number that represents something encrypted to decode
-      it, but if you don’t have the key, it’s very hard to guess the factors of
-      a large number to decode it. If you’re curious about this, watch this <url
-      href="https://www.youtube.com/watch?v=M7kEpw1tn50"
-      visual="https://www.youtube.com/watch?v=M7kEpw1tn50">Numberphile
-      video</url>.
-    </p>
-  </subsection>
 
   <subsection xml:id="summary-19">
     <title>Summary</title>

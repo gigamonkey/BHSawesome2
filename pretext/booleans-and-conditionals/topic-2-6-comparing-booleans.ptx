@@ -37,6 +37,15 @@ b = "at our high school"
     </p>
   </introduction>
 
+  <subsection>
+    <title>Operator precedence</title>
+      <p>
+        In Java, ! will be executed before &amp;&amp;, and &amp;&amp; will be
+        executed before ||, unless there are parentheses. Anything inside
+        parentheses is executed first.
+      </p>
+  </subsection>
+
   <subsection xml:id="de-morgan-s-laws">
     <title>De Morgan’s Laws</title>
     <p>

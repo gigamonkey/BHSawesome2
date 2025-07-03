@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section label="booleans-practice">
+  <title>Booleans and <c>if</c> practice</title>
+  <introduction/>
+  <subsection>
+    <title>Boolean practice</title>
+    <activity label="if-relational">
+      <statement>
+        <p>
+          Run the following active code a couple times until you see all the
+          possible outputs. It prints out whether a random number is positive or
+          equal to 0. Add another if statement that tests if it is a negative
+          number.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+public class TestNumbers
+{
+    public static void main(String[] args)
+    {
+        // Get a random number from -10 up to 10.
+        int number = (int) (Math.random() * 21) - 10;
+        System.out.println("The number is " + number);
+
+        // is it positive?
+        if (number &gt; 0)
+        {
+            System.out.println(number + " is positive!");
+        }
+        // is it 0?
+        if (number == 0)
+        {
+            System.out.println(number + " is zero!");
+        }
+        // is it negative?
+        // Add another if statement
+
+    }
+}
+        </code>
+        <tests>
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import java.io.*;
+import java.util.regex.MatchResult;
+import java.util.regex.Pattern;
+
+public class RunestoneTests extends CodeTestHelper
+{
+
+    @Test
+    public void testPositive()
+    {
+        String output = "";
+        int num = -999, count = 0;
+
+        while (num &lt;= 0 &amp;&amp; count &lt; 50)
+        {
+            output = getMethodOutput("main");
+            num = getNumber(output);
+            count++;
+
+            if (num == 9999999)
+            {
+                getResults(
+                        "The number is ##\n## is positive!",
+                        output,
+                        "Did you forget to print the number?",
+                        false);
+                assertTrue(false);
+                return;
+            }
+        }
+
+        String expect = "The number is " + num + "\n" + num + " is positive!";
+
+        boolean passed = output.contains("positive");
+        getResults(expect, output, "Testing positive numbers", passed);
+        assertTrue(passed);
+    }
+
+    @Test
+    public void testZero()
+    {
+        String output = "";
+        int num = -999, count = 0;
+
+        while (num != 0 &amp;&amp; count &lt; 50)
+        {
+            output = getMethodOutput("main");
+            num = getNumber(output);
+            count++;
+
+            if (num == 9999999)
+            {
+                getResults(
+                        "The number is ##\n## is zero!",
+                        output,
+                        "Did you forget to print the number?",
+                        false);
+                assertTrue(false);
+                return;
+            }
+        }
+
+        String expect = "The number is " + num + "\n" + num + " is zero!";
+
+        boolean passed = output.contains("zero");
+        getResults(expect, output, "Testing zero", passed);
+        assertTrue(passed);
+    }
+
+    @Test
+    public void testNegative()
+    {
+        String output = "";
+        int num = 999, count = 0;
+
+        while (num &gt;= 0 &amp;&amp; count &lt; 50)
+        {
+            output = getMethodOutput("main");
+            num = getNumber(output);
+            count++;
+
+            if (num == 9999999)
+            {
+                getResults(
+                        "The number is ##\n## is negative!",
+                        output,
+                        "Did you forget to print the number?",
+                        false);
+                assertTrue(false);
+                return;
+            }
+        }
+
+        String expect = "The number is " + num + "\n" + num + " is negative!";
+
+        boolean passed = output.contains("negative");
+        getResults(expect, output, "Testing negative numbers", passed);
+        assertTrue(passed);
+    }
+
+    private int getNumber(String output)
+    {
+        String regex = "[0-9]+";
+
+        String[] matches =
+                Pattern.compile(regex)
+                        .matcher(output)
+                        .results()
+                        .map(MatchResult::group)
+                        .toArray(String[]::new);
+
+        int num = 9999999;
+
+        if (matches.length &gt; 0)
+        {
+            num = Integer.parseInt(matches[0]);
+        }
+
+        if (output.contains("-"))
+        {
+            num *= -1;
+        }
+
+        return num;
+    }
+}
+        </tests>
+      </program>
+    </activity>
+
+    <activity label="mcq-if-trace">
+      <statement>
+        <p>
+          Consider the following code segment. What is printed as a result of
+          executing the code segment?
+        </p>
+
+        <program language="java">
+          <code>
+int x = 3;
+if (x &gt; 2)
+{
+   x = x * 2;
+}
+if (x &gt; 4)
+{
+   x = 0;
+}
+System.out.print(x);
+          </code>
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>3</p>
+          </statement>
+
+          <feedback>
+            <p>x is changed by the if statements.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>6</p>
+          </statement>
+
+          <feedback>
+            <p>
+              What happens when x is greater than 2 and then greater than 4? Do
+              both if statements.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>0</p>
+          </statement>
+
+          <feedback>
+            <p>
+              If x is greater than 2, it's always doubled, and then that result
+              is always greater than 4, so it's set to 0 in the second if
+              statement.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>4</p>
+          </statement>
+
+          <feedback>
+            <p>x is changed by the if statements.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>The code will not compile</p>
+          </statement>
+
+          <feedback>
+            <p>This code will compile.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+<!-- just dropped this here for now. Used to be in topic-2-3 -->
+    <activity label="licenseifelse">
+      <statement>
+        <p>
+          Run the following code to see what it prints out when the variable age
+          is set to the value 16. Change the variable age’s value to 15 and then
+          run it again to see the result of the print statement in the else
+          part. Can you change the if-statement to indicate that you can get a
+          license at age 15 instead of 16? Use 2 test cases for the value of age
+          to test your code to see the results of both print statements.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+public class DriversLicenseTest
+{
+    public static void main(String[] args)
+    {
+        int age = 16;
+        if (age &gt;= 16)
+        {
+            System.out.println("You can get a driver's license in most states!");
+        }
+        else
+        {
+            System.out.println(
+                    "Sorry, you need to be older to get a driver's license.");
+        }
+    }
+}
+        </code>
+        <tests>
+import static org.junit.Assert.*;
+
+import org.junit.*;
+
+import java.io.*;
+
+public class RunestoneTests extends CodeTestHelper
+{
+    @Test
+    public void testCodeContains() throws IOException
+    {
+        String target = "age &gt;= 15";
+        boolean passed = checkCodeContains("check age &gt;= 15", target);
+        assertTrue(passed);
+    }
+}
+        </tests>
+      </program>
+    </activity>
+
+    <activity label="ifelseevenOdd" numbered="yes" adaptive="yes" indentation="hide" language="java">
+      <statement>
+        <p>
+          The following program should print out “x is even” if the remainder of
+          x divided by 2 is 0 and “x is odd” otherwise, but the code is mixed
+          up. Drag the blocks from the left and place them in the correct order
+          on the right. Click on Check Me to see if you are right.
+        </p>
+      </statement>
+
+      <blocks>
+        <block order="5">
+          <cline>public class EvenOrOdd {</cline>
+        </block>
+
+        <block order="4">
+          <cline>    public static void main(String[] args) {</cline>
+        </block>
+
+        <block order="6">
+          <cline>        int x = 92;</cline>
+        </block>
+
+        <block order="1">
+          <cline>        if (x % 2 == 0) {</cline>
+        </block>
+
+        <block order="2">
+          <cline>            System.out.println("x is even");</cline>
+        </block>
+
+        <block order="8">
+          <cline>        } else {</cline>
+        </block>
+
+        <block order="7">
+          <cline>            System.out.println("x is odd");</cline>
+        </block>
+
+        <block order="3">
+          <cline>        }</cline>
+          <cline>    }</cline>
+          <cline>}</cline>
+        </block>
+      </blocks>
+    </activity>
+
+    <activity label="scoreifelse">
+      <title>Add an else</title>
+      <statement>
+        <p>
+          Try the following code. Add an else statement to the if statement that
+          prints out “Good job!” if the score is greater than 9. Change the
+          value of score to test it. Can you change the boolean test to only
+          print out “Good job” if the score is greater than 20?
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+public class ScoreTest
+{
+    public static void main(String[] args)
+    {
+        int score = 8;
+        if (score &lt;= 9)
+        {
+            System.out.println("Try for a higher score!");
+        }
+    }
+}
+        </code>
+        <tests>
+import static org.junit.Assert.*;
+
+import org.junit.*;
+
+import java.io.*;
+
+public class RunestoneTests extends CodeTestHelper
+{
+    @Test
+    public void testChangedCode()
+    {
+        String origCode =
+                "public class ScoreTest   {      public static void main(String[] args)      {     "
+                    + "   int score = 8;        if (score &lt;= 9)         {           "
+                    + " System.out.println(\"Try for a higher score!\");        }      }} ";
+
+        boolean changed = codeChanged(origCode);
+        assertTrue(changed);
+    }
+
+    @Test
+    public void testCodeContainsElse()
+    {
+        boolean ifCheck2 = checkCodeContains("else", "else");
+        assertTrue(ifCheck2);
+    }
+
+    @Test
+    public void testCodeContains20()
+    {
+        String target1 = removeSpaces("score &lt;= 20");
+        String target2 = removeSpaces("score &gt; 20");
+
+        String code = removeSpaces(getCode());
+
+        boolean passed = code.contains(target1) || code.contains(target2);
+        getResults("true", "" + passed, "Checking for score &lt;= 20 or score &gt; 20", passed);
+        assertTrue(passed);
+    }
+
+    @Test
+    public void testCodeChange1() throws Exception
+    {
+        String className = "Test1";
+
+        String program = getCode();
+        program = program.replace("ScoreTest", className).replace("public class", "class");
+        program = program.replaceAll("= *[0-9]+;", "= 25;");
+
+        String output = getMethodOutputChangedCode(program, className, "main");
+
+        String expected = "Good job!";
+        boolean passed = output.contains(expected);
+        getResults(expected, output, "Checking output if score is 25", passed);
+        assertTrue(passed);
+    }
+
+    @Test
+    public void testCodeChange2() throws Exception
+    {
+        String className2 = "Test2";
+
+        String program2 = getCode();
+        program2 = program2.replace("ScoreTest", className2).replace("public class", "class");
+        program2 = program2.replaceAll("= *[0-9]+;", "= 5;");
+
+        String output2 = getMethodOutputChangedCode(program2, className2, "main");
+
+        String expected2 = "Try for a higher score!";
+        boolean passed2 = output2.contains(expected2);
+        getResults(expected2, output2, "Checking output if score is 5", passed2);
+        assertTrue(passed2);
+    }
+}
+        </tests>
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="coding-challenge-prime-numbers-pogil">
+    <title>Coding Challenge : Prime Numbers POGIL</title>
+    <p>
+      We encourage you to do this activity as a <url
+      href="https://pogil.org/about-pogil/what-is-pogil"
+      visual="https://pogil.org/about-pogil/what-is-pogil">POGIL</url> (Process
+      Oriented Guided Inquiry Learning) group activity or using Think-Pair-Share
+      collaboration. POGIL groups are self-managed teams of 4 students where
+      everyone has a <url
+      href="https://docs.google.com/document/d/1_NfNLWJxaG4qZ2Jd2x8UctDS05twn1h6p-o3XaAcRv0/edit?usp=sharing"
+      visual="https://docs.google.com/document/d/1_NfNLWJxaG4qZ2Jd2x8UctDS05twn1h6p-o3XaAcRv0/edit?usp=sharing">POGIL
+      role</url> and works together to solve the problems, making sure that
+      everyone in the team participates and learns.
+    </p>
+
+    <p>
+      In this activity, you will write a Java program that uses boolean
+      expressions to determine if a number is prime. A prime number is an
+      integer number that is only divisible by 1 and itself. For example, 3 is a
+      prime number because it’s only divisible by 1 and 3 and no other numbers,
+      but 4 is not a prime number because it’s divisible by 2 as well as 1 and
+      4. You will write methods that test whether a number is positive,
+      negative, odd, even, and divisible by another number. You will then
+      experiment with these methods to determine if the numbers 5, 6, and 7 are
+      prime. And to ask questions about prime numbers like whether all odd
+      numbers are prime.
+    </p>
+
+    <project label="challenge-primeNumbers">
+      <statement>
+        <p>
+          Complete the methods below to determine if a number is positive,
+          negative, odd, even, or divisible by another number by returning
+          boolean expressions testing the argument number. Then, experiment with
+          these methods to determine if the numbers 5, 6, and 7 are prime.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+public class PrimeNumbers
+{
+    // isPositive checks whether number is greater than 0
+    public static boolean isPositive(int number)
+    {
+        return (number &gt; 0);
+    }
+
+    public static boolean isNegative(int number)
+    {
+        // 1. Replace true with an expression that checks
+        //    whether number is negative
+        return true;
+    }
+
+    // isOdd checks whether number divided by 2
+    // has a remainder.
+    public static boolean isOdd(int number)
+    {
+        return (number % 2 != 0);
+    }
+
+    public static boolean isEven(int number)
+    {
+        // 2. Replace true with an expression that checks
+        //    whether number is divisible by 2
+        return true;
+    }
+
+    public static boolean isDivisible(int number, int divisor)
+    {
+        // 3. Replace true with an expression that checks
+        //    whether number is divisible by divisor
+        return true;
+    }
+
+    public static void main(String[] args)
+    {
+        // 4. Change number to experiment
+        int number = 5;
+        System.out.println("A prime number is only divisible by 1 and itself.");
+        System.out.println(number + " is negative? " + isNegative(number));
+        System.out.println(number + " is even? " + isEven(number));
+
+        System.out.println("Divisible by 1? " + isDivisible(number,1) );
+        System.out.println("Divisible by 2? " + isDivisible(number,2) );
+        System.out.println("Divisible by 3? " + isDivisible(number,3) );
+        System.out.println("Divisible by 4? " + isDivisible(number,4) );
+        System.out.println("Divisible by 5? " + isDivisible(number,5) );
+
+        // 5. Add 2 print statements with calls to isDivisible to check
+        //    whether number is divisible by 6 and 7.
+
+    }
+}
+        </code>
+        <tests>
+import static org.junit.Assert.*;
+
+import org.junit.*;
+
+import java.io.*;
+
+public class RunestoneTests extends CodeTestHelper
+{
+     @Test
+     public void testBool1() throws IOException
+     {
+          String target = "number &lt; 0";
+          boolean passed = checkCodeContains("boolean expression for isNegative", target);
+          assertTrue(passed);
+     }
+   @Test
+   public void testBool2() throws IOException
+   {
+       String target = "number % 2 == 0";
+       boolean passed = checkCodeContains("boolean expression for isEven", target);
+       assertTrue(passed);
+   }
+
+   @Test
+   public void testBool3() throws IOException
+   {
+       String target = "number % divisor == 0";
+       boolean passed = checkCodeContains("boolean expression for isDivisible", target);
+       assertTrue(passed);
+   }
+   @Test
+   public void testCall() throws IOException
+   {
+       String target = "isDivisible(number,7)";
+       boolean passed = checkCodeContains("method call in main to isDivisible to see whether number is divisible by 7", target);
+       assertTrue(passed);
+   }
+}
+        </tests>
+      </program>
+    </project>
+
+    <p>
+      With your POGIL group, use the code you completed above to experiment to
+      see if 5, 6, and 7 are prime. Answer the following questions:
+    </p>
+
+    <activity label="prime1">
+      <statement>
+        <p>Is 5 prime?</p>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement>
+            <p>Yes, 5 is prime.</p>
+          </statement>
+
+          <feedback>
+            <p>5 is only divisible by 1 and 5, so it is prime.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>No, 5 is not prime.</p>
+          </statement>
+
+          <feedback>
+            <p>5 is only divisible by 1 and 5.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="prime2">
+      <statement>
+        <p>Is 6 prime?</p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>Yes, 6 is prime.</p>
+          </statement>
+
+          <feedback>
+            <p>
+              A prime number is only divisible by 1 and itself. 6 is divisible
+              by 1, 2, 3, and 6.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>No, 6 is not prime.</p>
+          </statement>
+
+          <feedback>
+            <p>6 is divisible by 1, 2, 3, and 6, so it is not prime.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="prime3">
+      <statement>
+        <p>Is 7 prime?</p>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement>
+            <p>Yes, 7 is prime.</p>
+          </statement>
+
+          <feedback>
+            <p>7 is only divisible by 1 and 7, so it is prime.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>No, 7 is not prime.</p>
+          </statement>
+
+          <feedback>
+            <p>7 is only divisible by 1 and 7.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="prime4">
+      <statement>
+        <p>
+          Are all odd numbers prime? Can you find an odd number that is not
+          prime by using your code above? What is the smallest odd number that
+          is not prime and has divisors other than 1 and itself?
+        </p>
+
+        <p>
+          <fillin answer="9" mode="string" />
+        </p>
+      </statement>
+
+      <evaluation>
+        <evaluate>
+          <test>
+            <strcmp use-answer="yes" />
+            <feedback>
+              <p>Yes, 9 is not prime because it is divisible by 3.</p>
+            </feedback>
+          </test>
+
+          <test>
+            <!-- else -->
+            <feedback>
+              <p>Try numbers 3-10 in your code.</p>
+            </feedback>
+          </test>
+        </evaluate>
+      </evaluation>
+    </activity>
+
+    <activity label="prime5">
+      <statement>
+        <p>
+          Are all even numbers not prime? Can you find an even prime number
+          using your code above? What is the smallest even number that is prime?
+        </p>
+
+        <p>
+          <fillin answer="2" mode="string" />
+        </p>
+      </statement>
+
+      <evaluation>
+        <evaluate>
+          <test>
+            <strcmp use-answer="yes" />
+            <feedback>
+              <p>Yes, 2 is prime because it is only divisible by 1 and 2.</p>
+            </feedback>
+          </test>
+
+          <test>
+            <!-- else -->
+            <feedback>
+              <p>Try numbers 2-10 in your code.</p>
+            </feedback>
+          </test>
+        </evaluate>
+      </evaluation>
+    </activity>
+
+    <p>
+      Prime numbers are very useful in encryption algorithms because they can be
+      used as keys for encoding and decoding. If you have the key, you can use
+      it to divide a large number that represents something encrypted to decode
+      it, but if you don’t have the key, it’s very hard to guess the factors of
+      a large number to decode it. If you’re curious about this, watch this <url
+      href="https://www.youtube.com/watch?v=M7kEpw1tn50"
+      visual="https://www.youtube.com/watch?v=M7kEpw1tn50">Numberphile
+      video</url>.
+    </p>
+  </subsection>
+</section>
