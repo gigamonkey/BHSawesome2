@@ -6,7 +6,7 @@
     <p>
       This unit introduces the lowest level elements of the Java programming
       language: the two numeric <term>primitive types</term> you need to know
-      for the AP Exam; <term>variables</term>, which allow us to give names to
+      for the AP exam; <term>variables</term>, which allow us to give names to
       important values in our programs; arithmetic <term>expressions</term> that
       allow us to write programs that do math, and various <term>assignment
       operators</term> that allow us to give values to our variables.
