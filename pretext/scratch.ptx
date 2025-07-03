@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section>
+  <title>Cut from text elsewhere</title>
+  <introduction>
+    <p>
+      Most of the methods we have used so far are <term>static methods</term>,
+      which are also called <term>class methods</term>. These methods are
+      associated with the class and include the keyword static in the method
+      header. The main method is always static, which also means that there is
+      only one copy of the method.
+    </p>
+
+    <p>
+      Here is a template for a static method. In the <term>method header</term>,
+      the keyword <term>static</term> is used before the <term>return
+      type</term>. Up until now, we have used the keyword <term>void</term> as
+      the return type for methods that do not return a value. We will now look
+      at methods that calculate and return a value of a specific type.
+    </p>
+
+    <program language="java">
+      <code>
+        // static method header
+        public static return-type method-name(parameters)
+        {
+            // method body
+        }
+      </code>
+    </program>
+  </introduction>
+
+  <subsection>
+    <title>Methods Outside the Class</title>
+    <p>
+      In the examples above, we called the methods by using the method name.
+      However, if we call a method from a different class, we need to include
+      its class name. For example, if the <c>square</c> method is in a class
+      called <c>MathFunctions</c>, we would call it as
+      <c>MathFunctions.square(3)</c>. Class methods are typically called using
+      the class name along with the <term>dot operator (.)</term>. When the
+      method call occurs in the defining class, the use of the class name is
+      optional in the call.
+    </p>
+
+    <image source="Unit1-Using-Objects-and-Methods/Figures/pow.png" width="18%" alt="Pow!" />
+    <p>
+      In the next lesson, we will learn to use the methods in the <c>Math</c>
+      class in Java and will need to call them with the class name <c>Math</c>.
+      There is a method to compute the square of a number in the <c>Math</c>
+      library, but it is called <c>pow</c> instead of square, and it takes 2
+      arguments to return a number raised to the power of an exponent number.
+      Here’s a quick preview of two of the methods in the Math class:
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <p>
+            <c>Math.sqrt(double number)</c> : returns the square root of a given
+            number
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>Math.pow(double base, double exponent)</c> : returns
+            <m>base^{exponent}</m>, the value of base, the first argument,
+            raised to the power of exponent, the second argument.
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>Here is an example of how to use these methods:</p>
+    <program language="java">
+      <code>
+double x = Math.pow(3, 2); // 3^2 is 9.0
+double y = Math.sqrt(9); // the square root of 9 is 3.0
+      </code>
+    </program>
+  </subsection>
+
+  <subsection>
+    <p>
+      We can also use methods that we didn’t write. In fact we already have.
+      <c>System.out.println</c> is a method provided by Java for emitting output
+      to the screen. To use methods we didn’t write we just need to know the
+      method signature and what they do.
+    </p>
+
+    <p>
+      For example, the <url
+      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/io/PrintStream.html"><c>PrintStream</c>
+      class’s Javadocs</url> document the following method signatures for
+      <c>println</c> that we use in <c>System.out.println()</c>:
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <p>
+            <c>void println()</c> which has an empty parameter list with no
+            parameters
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>void println(String x)</c> which will print out a <c>String</c>
+            value
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>void println(int x)</c> which will print out an <c>int</c> value
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      We can see from the <c>void</c> return type in these method signatures
+      that these methods don’t return any value. That means we can’t use them in
+      expressions to compute values. Instead they are called purely for their
+      <term>side effects</term>, in this case printing something to the screen.
+    </p>
+
+    <p>
+      We can call these methods with the appropriate arguments to print out the
+      value we want. The <term>argument</term> is the actual value that is
+      passed to the method when it is called. Here are the method calls that
+      correspond to the method signatures above (We’ll discuss later what the
+      <c>System.out</c> part of the call is for):
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <p>
+            <c>System.out.println();</c> // prints a newline
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>System.out.println("Hello World");</c> // prints a String
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>System.out.println(42);</c> // prints an int
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Compare the method signature of <c>println(String x)</c> with the method
+      call <c>println("Hello World");</c> below. The method signature contains
+      the method name and the parameter type and variable. The method call
+      contains only the method name and the argument value. The argument must be
+      compatible with the data type of the parameter in the method signature and
+      is saved in the parameter variable when the method is called. If you want
+      to be very precise the argument is the value and the parameter is the
+      variable but many people use the terms interchangeably.
+    </p>
+
+    <figure align="center">
+      <caption>Method Signature and Method Call</caption>
+      <image source="Unit1-Using-Objects-and-Methods/Figures/method-parts.png" width="89%" alt="Method Signature and Method Call" />
+    </figure>
+
+    <p>
+      The <c>println</c> methods are also an example of something called
+      <term>overloading</term> which is when multiple methods have the same name
+      but different method signatures because their parameter lists are
+      different. Java matches each method call with the complete signature of
+      the method so it can tell which method to call based on the number and
+      types of the argument. A call to <c>println()</c> calls the version with
+      no parameters which just prints a newline; a call to
+      <c>println("hello")</c> calls the version with a <c>String</c> parameter
+      that prints string followed by a newline; and a call to <c>println(42)</c>
+      calls the version that takes an <c>int</c> and prints it, also followed by
+      a newline.
+    </p>
+  </subsection>
+
+  <subsection>
+    <p>
+      If you took AP CSP or that used a block programming language like Snap!,
+      you almost certainly learned about if blocks. Here’s a comparison of ifs
+      in App Inventor blocks, AP CSP’s block code and pseudocode, and Java ifs.
+    </p>
+
+    <figure align="center">
+      <caption>
+        Comparison of App Inventor if block, AP CSP ifs, and Java if statements
+      </caption>
+
+      <image source="Unit2-Selection-and-Iteration/Figures/BlocksIfComparison.png" width="100%" />
+    </figure>
+  </subsection>
+
+  <subsection xml:id="coding-challenge-adventure">
+    <title>Coding Challenge : Adventure</title>
+    <image source="Unit2-Selection-and-Iteration/Figures/adventure.jpg" width="36%" alt="Adventure map" />
+    <p>
+      One of the first games coded for early computers in the 1970s was called
+      <url href="https://en.wikipedia.org/wiki/Colossal_Cave_Adventure"
+      visual="https://en.wikipedia.org/wiki/Colossal_Cave_Adventure">Colossal
+      Cave Adventure</url>. It was a text-based interactive fiction game where
+      you had to make your way through an elaborate cave. The program only
+      understood one word or phrase commands like north, south, enter, take,
+      etc. You can try <url
+      href="http://www.web-adventures.org/cgi-bin/webfrotz?s=Adventure"
+      visual="http://www.web-adventures.org/cgi-bin/webfrotz?s=Adventure">playing
+      adventure</url> recreated online following some of the commands in this
+      <url href="https://adventuregamers.com/walkthrough/full/colossal-cave"
+      visual="https://adventuregamers.com/walkthrough/full/colossal-cave">walkthrough</url>.
+      Part of the challenge is finding the commands that the code will
+      understand.
+    </p>
+
+    <p>
+      In a game like Adventure, else if statements can be used to respond to
+      commands from the user like n, s, e, w. Try the program below (or in an
+      interactive input IDE like <url
+      href="https://play.juicemind.com/dashboard/teams/Mk2wWMTqPkekcxTDWqRn/item/54bfe3f4-f112-4062-8d7d-a033b2bf09b6#079f4341-137a-497f-b874-553ababd627a"
+      visual="https://play.juicemind.com/dashboard/teams/Mk2wWMTqPkekcxTDWqRn/item/54bfe3f4-f112-4062-8d7d-a033b2bf09b6#079f4341-137a-497f-b874-553ababd627a">JuiceMind</url>
+      or <url href="https://replit.com/@BerylHoffman/Adventure#Main.java"
+      visual="https://replit.com/@BerylHoffman/Adventure#Main.java">replit</url>).
+      This current adventure game asks the user whether they want to move n, s,
+      e, or w, but right now only the north direction is coded. It leads to a
+      new method called <c>forest()</c>.
+    </p>
+
+    <p>
+      In the main method, add in <term>else if</term> statements to go in the
+      directions of “s” for south, “e” for east, “w” for west, and an else
+      statement that says “You can’t go in that direction”. Be creative and come
+      up with different locations in each direction. Have each direction call a
+      static method that you will write. The <c>forest()</c> and <c>sea()</c>
+      methods are shown as examples for two of the diretions. You will need to
+      change the input below the code to s or e or w and then run to test these
+      branches. How many test-cases are needed to test all branches of your
+      code? You can also connect locations to one another by calling their
+      methods. If you have time, you can expand this game further with more
+      nested if/else statements and come up with a different adventure location.
+    </p>
+
+    <project label="challenge-ElseIf-Adventure">
+      <statement>
+        <p>
+          This is a text adventure game that lets the user move in 4 different
+          directions. Right now, it only lets the user move north. Add in
+          <term>else if</term> statements to go in the directions of "s" for
+          south, "e" for east, "w" for west, and an else statement that says
+          "You can't go in that direction". Be creative and come up with
+          different locations in static methods below main for each direction.
+          There are 5 TODO steps below.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+  import java.util.Scanner;
+
+  public class Adventure
+  {
+      private static Scanner scan = new Scanner(System.in);
+
+      public static void main(String[] args)
+      {
+          // TODO #1. Change the adventure text below, especially the ?'s.
+          // Be creative!
+          System.out.println("You are on an island surrounded by water.");
+          System.out.println("There is a path to the forest to the north, "
+                           + "the sea to the south, ? to the east, and ? to the west.");
+          System.out.println("Which way do you want to go (n,e,s,w)?");
+          String command = scan.next(); // use nextLine() in your own IDE
+          if (command.equals("n"))
+          {
+              System.out.println("You go north.");
+              forest();
+          }
+          // TODO #2: Add else-ifs for command equals s, e, or w,
+          // calling a method you will write below for each location.
+          // Add an else error message "You can't go in that direction!"
+          // Change the input below the coding area to test these.
+
+
+
+
+          System.out.println("End of adventure!");
+          scan.close();
+     }
+
+    // TODO #3: Complete this method
+    // north from main goes to the forest
+    public static void forest()
+    {
+        System.out.println("You enter a dark forest and see ?");
+        System.out.println("Do you want to walk e or w?");
+
+        // Add more if/else-if statements for the next action
+        //  and call your other methods to move to other locations
+        String command = scan.next(); // use nextLine() in your own IDE
+        if (command.equals("e"))
+        {
+            System.out.println("You move east and reach the sea");
+            sea();
+        }
+    }
+
+    // TODO #4: Complete this method
+    // south from main or east from forest goes to the sea
+    // (feel free to rename to another location of your choice)
+    public static void sea()
+    {
+        // Print a description
+        // Ask for input
+        // Add more if/else-if statements for the next action
+        // Move to different locations
+
+    }
+
+    // TODO #5:  Add at least 2 more static methods for 2 more locations
+
+  }
+        </code>
+        <stdin>n e</stdin>
+        <tests>
+import static org.junit.Assert.*;
+
+import org.junit.*;
+
+import java.io.*;
+
+public class RunestoneTests extends CodeTestHelper
+{
+    public RunestoneTests()
+    {
+        super("Adventure");
+    }
+
+    @Test
+    public void testIf()
+    {
+        String code = getCode();
+        int num = countOccurences(code, "if");
+        boolean passed = num &gt;= 5;
+
+        getResults("5", "" + num, "Number of if statements", passed);
+        assertTrue(passed);
+    }
+
+    @Test
+    public void testElseIf()
+    {
+        String code = getCode();
+        int elseif = countOccurences(code, "else if");
+        boolean passed = elseif &gt;= 3;
+
+        getResults("" + 3, "" + elseif, "Number of else if statements", passed);
+        assertTrue(passed);
+    }
+
+    @Test
+    public void testElse()
+    {
+        String code = getCode();
+        int num = countOccurences(code, "else") - countOccurences(code, "else if");
+        boolean passed = num &gt;= 1;
+
+        getResults("1", "" + num, "Ending else statement", passed);
+        assertTrue(passed);
+    }
+     @Test
+      public void testMoreMethods()
+      {
+          String code = getCode();
+          int num = countOccurences(code, "public static");
+          boolean passed = num &gt;= 5;
+
+          getResults("5", "" + num, "Number of public static methods", passed);
+          assertTrue(passed);
+      }
+}
+        </tests>
+      </program>
+    </project>
+  </subsection>
+
+  <subsection xml:id="relational-operators-practice-game">
+    <title>Relational Operators Practice Game</title>
+    <p>
+      Try the game below to practice. Click on <term>Relationals</term>,
+      evaluate the relational expression and click on None, All, or the numbers
+      that make the expression true. Check on Compound for an added challenge.
+      We encourage you to work in pairs and see how high a score you can get.
+    </p>
+
+    <interactive iframe="iframe/csagames.html" width="95%" aspect="1:1" />
+  </subsection>
+
+  <subsection xml:id="boolean-game">
+    <title>Boolean Game</title>
+    <p>
+      Try the game below written to practice Booleans. Click on
+      <term>Booleans</term>, look at the color and number in the block and
+      evaluate the boolean expression to choose true or false. Then, check on
+      Compound for an added challenge. We encourage you to work in pairs and see
+      how high a score you can get.
+    </p>
+
+    <interactive iframe="iframe/csagames.html" width="95%" aspect="1:1" />
+  </subsection>
+
+  <subsection xml:id="review-practice-for-selection">
+    <title>Review/Practice for Selection</title>
+    <p>
+      This lesson ends the section on selection. You can now do the following
+      review and practice lessons at the end of the unit and College Board
+      Progress Checks in the AP Classroom.
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <url href="selection-summary.html" visual="selection-summary.html">Selection Summary</url>
+        </li>
+
+        <li>
+          <url href="selection-practice-mixed-code.html" visual="selection-practice-mixed-code.html">Selection Practice Mixed Code</url>
+        </li>
+
+        <li>
+          <url href="selection-practice-coding.html" visual="selection-practice-coding.html">Selection Practice Coding</url>
+        </li>
+
+        <li>
+          <url href="Exercises-selection.html" visual="Exercises-selection.html">Exercises Selection</url>
+        </li>
+
+        <li>
+          <url href="frq-game-score.html" visual="frq-game-score.html">FRQ Game Score</url>
+        </li>
+
+        <li>
+          <url href="selection-more-practice-coding.html" visual="selection-more-practice-coding.html">Selection More Practice Coding</url>
+        </li>
+
+        <li>
+          <url href="group-mod-practice.html" visual="group-mod-practice.html">Group Mod Practice</url>
+        </li>
+
+        <li>
+          <url href="magpieindex.html" visual="magpieindex.html">Magpie Lab</url>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+</section>
