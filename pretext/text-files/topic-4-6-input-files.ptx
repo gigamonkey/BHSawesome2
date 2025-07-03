@@ -213,7 +213,7 @@ catch (FileNotFoundException e)
     </program>
   </subsection>
 
-  <subsection xml:id="scanner">
+  <subsection>
     <title>Reading in Data with Scanner</title>
     <p>
       Once the file is opened, the data can be read using <c>Scanner</c>

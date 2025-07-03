@@ -407,7 +407,7 @@ public class RunestoneTests extends CodeTestHelper
     </idx>
 
     <idx>random</idx>
-    <sidebyside widths="20% 80%">
+    <sidebyside widths="20% 80%" margins="0% 0%">
       <image source="Unit1-Using-Objects-and-Methods/Figures/dice.png" alt="Dice" />
       <p>
         Games would be boring if the same thing happened each time you played
@@ -1038,7 +1038,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-random-numbers">
     <title>Coding Challenge: Combo lock</title>
-    <sidebyside widths="15% 90%">
+    <sidebyside widths="15% 85%" margins="0% 0%">
       <image source="Unit1-Using-Objects-and-Methods/Figures/lock.jpg" alt="lock" />
       <p>
         You may have a combination lock on your locker at school where you have
@@ -1286,7 +1286,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Coding Challenge: Tower ladder</title>
-    <sidebyside widths="25% 75%">
+    <sidebyside widths="25% 75%" margin="0% 0%">
       <image source="Unit1-Using-Objects-and-Methods/Figures/ladder.png" width="36%" alt="Ladder on tower" />
       <p>
         The Pythagorean theorem states that the length of the hypotenuse (the

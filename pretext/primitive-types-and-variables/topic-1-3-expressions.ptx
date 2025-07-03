@@ -416,8 +416,9 @@ public class RunestoneTests extends CodeTestHelper
       mathematically impossible. The main one we need to know about is what
       happens when we divide by zero, something that is not defined in math. In
       an <c>int</c> expression, dividing by zero will result in an
-      <term>ArithmeticException</term> , as we saw in the <xref ref="debugging"
-      />. Try it in one of the active codes to see what happens.
+      <term>ArithmeticException</term> , as we saw in the <xref
+      ref="debugging-and-being-stuck" />. Try it in one of the active codes to
+      see what happens.
     </p>
 
     <note>
