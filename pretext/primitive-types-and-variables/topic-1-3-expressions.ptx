@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="topic-1-3-expressions">
-  <title>Expressions</title>
+  <title>Arithmetic expressions</title>
   <introduction>
     <p>
       Earlier in this unit we saw how variables, such as <c>score</c>, can be
@@ -20,7 +20,7 @@
   </introduction>
 
   <subsection xml:id="arithmetic-expressions">
-    <title>Arithmetic expressions</title>
+    <title>Basic arithmetic</title>
     <p>
       To take a simple example, <c>2 + 3</c> is an expression consisting of the
       two literal values <c>2</c> and <c>3</c> and the operator <c>+</c>. The
