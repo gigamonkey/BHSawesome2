@@ -1,1 +1,2 @@
 AP exam
+numbers spelled out: [0, 99], [1, 9] * 10^x
