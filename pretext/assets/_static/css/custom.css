@@ -105,7 +105,8 @@ section > .para + .para {
   font-weight: 600;
 }
 
-.ptx-content .heading .code-inline
+.ptx-content .heading .code-inline,
+.ptx-content span.title .code-inline
 {
   color: inherit;
 }
