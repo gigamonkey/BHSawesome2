@@ -105,6 +105,11 @@ section > .para + .para {
   font-weight: 600;
 }
 
+.ptx-content .heading .code-inline
+{
+  color: inherit;
+}
+
 .ptx-content .code-display {
   color: var(--codeColor);
   overflow-x: auto;
