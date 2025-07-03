@@ -445,11 +445,11 @@ public class RunestoneTests extends CodeTestHelper
         </row>
 
         <row>
-          <cell bottom="minor" right="minor">
+          <cell right="minor">
             <c>number % x == 0</c>
           </cell>
 
-          <cell bottom="minor">
+          <cell>
             <c>number</c> is evenly divisible by <c>x</c>, a.k.a. <c>number</c>
             is a multiple of <c>x</c>
           </cell>

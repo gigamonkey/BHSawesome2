@@ -1,49 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="topic-2-6-comparing-booleans">
-  <title>Comparing boolean Expressions</title>
+  <title>Manipulating boolean expressions</title>
+  <idx>De Morgan's Laws</idx>
+  <idx>negation</idx>
+  <idx>truth table</idx>
   <introduction>
-    <idx>De Morgan's Laws</idx>
-    <idx>negation</idx>
-    <idx>truth table</idx>
     <p>
-      What if you heard a rumor about a senior at your high school? And then you
-      heard that the rumor wasn’t true - it wasn’t a senior at your high school.
-      Which part of “a senior at your high school” wasn’t true? Maybe they
-      weren’t a senior? Or maybe they didn’t go to your high school? You could
-      write this as a logic statement like below using negation (<c>!</c>) and
-      the <term>and</term> (<c>&amp;&amp;</c>) operator since both parts have to
-      be true for the whole statement to be true. (Thank you to Kevin Saxton
-      from Kent School, CT for this example.)
+      Boolean expressions are at the heart of a lot of code controlling what
+      happens when. And sometimes they can get a bit complex. In order to keep
+      from getting overwhelmed, it’s useful to be able to manipulate and
+      simplify boolean expressions.
     </p>
 
-    <program language="java">
-      <code>
-!(a &amp;&amp; b)
-
-a = "senior"
-b = "at our high school"
-
-// This means it is not true that (a) it is a senior
-// and (b) someone at our high school.
-      </code>
-    </program>
+    <p>
+      Also the AP exam almost always includes some questions that depend on your
+      ability to determine whether two boolean expressions are actually
+      equivalent, similar to being able to determine that two mathematical
+      expressions such as <m>a(b + c)</m> and <m>ab + ac</m> are equivalent.
+    </p>
 
     <p>
-      In this lesson, you will learn about De Morgan’s Laws which simplify
-      statements like this. We know that !(a senior at our high school) could
-      mean !(a senior) or !(at our high school). Let’s learn more about De
-      Morgan’s Laws.
+      In this section we will look at two ways of manipulating and analyzing
+      boolean expressions: <term>algebraically</term> and with <term>truth
+      tables</term>.
     </p>
   </introduction>
 
   <subsection>
-    <title>Operator precedence</title>
+    <title>Compound boolean expressions</title>
     <p>
-      In Java, ! will be executed before &amp;&amp;, and &amp;&amp; will be
-      executed before ||, unless there are parentheses. Anything inside
-      parentheses is executed first.
+      As with the arithmetic operators, the two logical operators
+      <c>&amp;&amp;</c> and <c>||</c> each apply to only two operands and
+      <c>!</c> only applies to one. But we can build compound expressions where
+      the operands are other expressions using either other logical operators or
+      comparison operators. We some some examples of this in the previous
+      section.
     </p>
+
+    <p>
+      Once we start writing compound expressions it’s important to know what the
+      precedence of the different operators are and our middle-school PEMDAS is
+      no help. In Java, <c>!</c> has higher precedence than <c>&amp;&amp;</c>,
+      and <c>&amp;&amp;</c> is higher than <c>||</c>. But parentheses are still
+      the highest precedence so we can use them to group things the way we want
+      them to be evaluated. For example <c>!a &amp;&amp; b</c> is equivalent to
+      <c>(!a) &amp;&amp; b</c>. If instead we want to negate the value produced
+      by the and expression we can write: <c>!(a &amp;&amp; b)</c>.
+    </p>
+
+    <p>
+      Also all the logical operators are lower precedence than the comparison
+      operators which is why we can write <c>0 &lt;= x &amp;&amp; x &lt; 100</c>
+      rather than having to write: <c>(0 &lt;= x) &amp;&amp; (x &lt; 100)</c>.
+    </p>
+  </subsection>
+
+  <subsection xml:id="simplifying-boolean-expressions">
+    <title>Simplifying algebraically</title>
+    <p>
+      Once we start writing complex compund boolean expressions things can get
+      out of hand. Sometimes this happens organically as we write code because
+      we add subexpressions to an expression as we realize different cases. “I
+      want to run this code when the score is greater than one-hundred. No wait,
+      greater than one-hundred and bonus points are greater than ten. Well, that
+      but also when the player has at least one power up and more than ten bonus
+      points.” Next thing you know we’ve got this (with parentheses added for
+      clarity):
+    </p>
+
+    <program>
+      (score &gt; 100 &amp;&amp; bonusPoints &gt; 10) || (powerUps &gt; 1 &amp;&amp; bonusPoints &gt; 10)
+    </program>
+
+    <p>
+      That’s maybe not terrible but it’s not trivial either. When we look at
+      that expression how sure are we that it’s capturing exactly the cases we
+      care about? Luckily there are some techniques for simplifying an
+      expression like that into something that might be easier to understand.
+    </p>
+
+    <p>
+      For instance, in this case we can notice that in both sides of the
+      <c>||</c> the condition is something <c>&amp;&amp; bonusPoints &gt;
+      10</c>. Since the whole compound expression can only be true if one side
+      or the other is true but whichever side it is, <c>bonusPoints &gt; 10</c>
+      will have to be true. So that means we can factor it out similar to how we
+      can factor <m>a</m> out of <m>ab + ac</m> to get <m>a(b + c)</m>. That
+      gives us this:
+    </p>
+
+    <program>
+      bonusPoints &gt; 10 &amp;&amp; (score &gt; 100 || powerUps &gt; 1)
+    </program>
+
+    <p>
+      This trick also works when we have two <c>||</c> expressions combined with
+      <c>&amp;&amp;</c>. Consider for instance this expression:
+    </p>
+
+    <program>
+      (score &gt; 100 || bonusPoints &gt; 10) &amp;&amp; (score &lt; 100 || bonusPoints &gt; 10)
+    </program>
+
+    <p>
+      This time in order for the whole expression to be true both of the
+      operands to the &amp;&amp;, i.e. the two <c>||</c> expressions have to be
+      true. Since they both contain <c>bonusPoints &gt; 10</c>, if that
+      subexpression is true they will each be true and therefore the whole thing
+      will be true. So we can factor it out like this:
+    </p>
+
+    <program>
+      bonusPoints &gt; 10 || (score &gt; 100 &amp;&amp; score &lt; 100)
+    </program>
+
+    <p>
+      But now there’s an even bigger payoff. Look carefully at the second
+      expression. It’s true when the score is both greater and less than one
+      hundred. Which can never happen so that subexpression will always be
+      <c>false</c>. So we can simplify the larger expression to:
+    </p>
+
+    <program>
+      bonusPoints &gt; 10 || false
+    </program>
+
+    <p>
+      And since the value of that now depends entirely on the left hand operand
+      of the <c>||</c> we’ve simplified the whole original expression down to
+      just:
+    </p>
+
+    <program>
+      bonusPoints &gt; 10
+    </program>
   </subsection>
 
   <subsection xml:id="de-morgan-s-laws">
@@ -156,6 +247,172 @@ b = "at our high school"
         </ul>
       </p>
     </blockquote>
+
+    <p>
+      Often, you can simplify boolean expressions to create equivalent
+      expressions. For example, applying De Morgan’s Laws to <c>!(x &lt; 3
+      &amp;&amp; y &gt; 2)</c> yields <c>!(x &lt; 3) || !(y &gt; 2)</c> as seen
+      in the figure below. This can then be simplified further by flipping the
+      relational operators to remove the not. So, <c>!(x &lt; 3) || !(y &gt;
+      2)</c> is simplified to <c>(x &gt;= 3 || y &lt;= 2)</c> where the
+      relational operators are flipped and the negation is removed. These two
+      simplification steps are seen below.
+    </p>
+
+    <figure align="center">
+      <caption>An example boolean expression simplified</caption>
+      <image source="Unit2-Selection-and-Iteration/Figures/demorganex.png" width="71%" />
+    </figure>
+
+    <activity label="lcdmtest">
+      <statement>
+        <p>
+          For what values of x and y will the code below print true? Try out
+          different values of x and y to check your answer.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+public class Test1
+{
+    public static void main(String[] args)
+    {
+        int x = 2;
+        int y = 3;
+        System.out.println(!(x &lt; 3 &amp;&amp; y &gt; 2));
+    }
+}
+        </code>
+        <tests>
+import static org.junit.Assert.*;
+
+import org.junit.*;
+
+import java.io.*;
+
+public class RunestoneTests extends CodeTestHelper
+{
+    @Test
+    public void testChangedCode()
+    {
+        String origCode =
+                "public class Test1 {public static void main(String[] args) { int x = 2; int y = 3;"
+                    + " System.out.println(!(x &lt; 3 &amp;&amp; y &gt; 2)); } }";
+
+        boolean changed = codeChanged(origCode);
+        assertTrue(changed);
+    }
+}
+        </tests>
+      </program>
+    </activity>
+
+    <activity label="compareBool1">
+      <statement>
+        <p>
+          What is printed when the following code executes and x equals 4 and y
+          equals 3?
+        </p>
+
+        <program language="java">
+          <code>
+int x = 4, y = 3;
+if (!(x &lt; 3 || y &gt; 2))
+{
+   System.out.println("first case");
+}
+else
+{
+   System.out.println("second case");
+}
+          </code>
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>first case</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This will be printed if x is greater or equal to 3 and y is less
+              than or equal to 2. The first part is true but the second is
+              false. Since the statements are joined by an and the complex
+              expression is false.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>second case</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This will be printed if x is less than 3 or y is greater than 2.
+              In this case the first will be false, but the second true so since
+              the statements are joined with an or the complex expression is
+              true.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="compareBool2">
+      <statement>
+        <p>
+          What is printed when the following code executes and x equals 4 and y
+          equals 3?
+        </p>
+
+        <program language="java">
+          <code>
+int x = 4, y = 3;
+if (!(x &lt; 3 &amp;&amp; y &gt; 2))
+{
+   System.out.println("first case");
+}
+else
+{
+   System.out.println("second case");
+}
+          </code>
+        </program>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement>
+            <p>first case</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This will be printed if x is greater than or equal to 3 or y is
+              less than or equal to 2. In this case x is greater than 3 so the
+              first condition is true.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>second case</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This will be printed if x is less than 3 and y is greater than 2.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
   </subsection>
 
   <subsection xml:id="truth-tables">
@@ -632,750 +889,6 @@ else
         </row>
       </tabular>
     </table>
-  </subsection>
-
-  <subsection xml:id="simplifying-boolean-expressions">
-    <title>Simplifying Boolean Expressions</title>
-    <p>
-      Often, you can simplify boolean expressions to create equivalent
-      expressions. For example, applying De Morgan’s Laws to <c>!(x &lt; 3
-      &amp;&amp; y &gt; 2)</c> yields <c>!(x &lt; 3) || !(y &gt; 2)</c> as seen
-      in the figure below. This can then be simplified further by flipping the
-      relational operators to remove the not. So, <c>!(x &lt; 3) || !(y &gt;
-      2)</c> is simplified to <c>(x &gt;= 3 || y &lt;= 2)</c> where the
-      relational operators are flipped and the negation is removed. These two
-      simplification steps are seen below.
-    </p>
-
-    <figure align="center">
-      <caption>An example boolean expression simplified</caption>
-      <image source="Unit2-Selection-and-Iteration/Figures/demorganex.png" width="71%" />
-    </figure>
-
-    <activity label="lcdmtest">
-      <statement>
-        <p>
-          For what values of x and y will the code below print true? Try out
-          different values of x and y to check your answer.
-        </p>
-      </statement>
-
-      <program interactive="activecode" language="java">
-        <code>
-public class Test1
-{
-    public static void main(String[] args)
-    {
-        int x = 2;
-        int y = 3;
-        System.out.println(!(x &lt; 3 &amp;&amp; y &gt; 2));
-    }
-}
-        </code>
-        <tests>
-import static org.junit.Assert.*;
-
-import org.junit.*;
-
-import java.io.*;
-
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testChangedCode()
-    {
-        String origCode =
-                "public class Test1 {public static void main(String[] args) { int x = 2; int y = 3;"
-                    + " System.out.println(!(x &lt; 3 &amp;&amp; y &gt; 2)); } }";
-
-        boolean changed = codeChanged(origCode);
-        assertTrue(changed);
-    }
-}
-        </tests>
-      </program>
-    </activity>
-
-    <activity label="compareBool1">
-      <statement>
-        <p>
-          What is printed when the following code executes and x equals 4 and y
-          equals 3?
-        </p>
-
-        <program language="java">
-          <code>
-int x = 4, y = 3;
-if (!(x &lt; 3 || y &gt; 2))
-{
-   System.out.println("first case");
-}
-else
-{
-   System.out.println("second case");
-}
-          </code>
-        </program>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>first case</p>
-          </statement>
-
-          <feedback>
-            <p>
-              This will be printed if x is greater or equal to 3 and y is less
-              than or equal to 2. The first part is true but the second is
-              false. Since the statements are joined by an and the complex
-              expression is false.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>second case</p>
-          </statement>
-
-          <feedback>
-            <p>
-              This will be printed if x is less than 3 or y is greater than 2.
-              In this case the first will be false, but the second true so since
-              the statements are joined with an or the complex expression is
-              true.
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="compareBool2">
-      <statement>
-        <p>
-          What is printed when the following code executes and x equals 4 and y
-          equals 3?
-        </p>
-
-        <program language="java">
-          <code>
-int x = 4, y = 3;
-if (!(x &lt; 3 &amp;&amp; y &gt; 2))
-{
-   System.out.println("first case");
-}
-else
-{
-   System.out.println("second case");
-}
-          </code>
-        </program>
-      </statement>
-
-      <choices>
-        <choice correct="yes">
-          <statement>
-            <p>first case</p>
-          </statement>
-
-          <feedback>
-            <p>
-              This will be printed if x is greater than or equal to 3 or y is
-              less than or equal to 2. In this case x is greater than 3 so the
-              first condition is true.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>second case</p>
-          </statement>
-
-          <feedback>
-            <p>
-              This will be printed if x is less than 3 and y is greater than 2.
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="coding-challenge-truth-tables-pogil">
-    <title>Coding Challenge : Truth Tables POGIL</title>
-    <p>
-      We encourage you to do this activity as a <url
-      href="https://pogil.org/about-pogil/what-is-pogil"
-      visual="https://pogil.org/about-pogil/what-is-pogil">POGIL</url> (Process
-      Oriented Guided Inquiry Learning) group activity. POGIL groups are
-      self-managed teams of up to 4 students where everyone has a <url
-      href="https://docs.google.com/document/d/1_NfNLWJxaG4qZ2Jd2x8UctDS05twn1h6p-o3XaAcRv0/edit?usp=sharing"
-      visual="https://docs.google.com/document/d/1_NfNLWJxaG4qZ2Jd2x8UctDS05twn1h6p-o3XaAcRv0/edit?usp=sharing">POGIL
-      role</url> and works together to solve the problems, making sure that
-      everyone in the team participates and learns.
-    </p>
-
-    <p>Explore the following problems with your group:</p>
-    <p>
-      <ol marker="1">
-        <li>
-          <p>
-            Draw or print a <url
-            href="https://docs.google.com/document/d/1lpjk0LS_KdAddRurMayJZmaFzeyEg4FyhviZcSTXvtU/edit?usp=sharing"
-            visual="https://docs.google.com/document/d/1lpjk0LS_KdAddRurMayJZmaFzeyEg4FyhviZcSTXvtU/edit?usp=sharing">Venn
-            diagram</url> of 4 intersecting circles. Put the names of the 4
-            people in your group one in each circle. Write down the age of each
-            person in your group in the circles. If two or more people are the
-            same age, put the age in the intersecting parts of their circles.
-            Write a Boolean expression that compares the age of each person in
-            the group using <c>==</c>, <c>&lt;</c>, <c>&gt;</c>, and
-            <c>&amp;&amp;</c>, for example Ada’s age <c>&gt;</c> Alan’s age
-            <c>&amp;&amp;</c> Alan’s age <c>==</c> Grace’s age. Then, ask each
-            person in your group their favorite movie. If two or more people
-            have the same favorite movie, put the movie in the intersecting
-            parts of their circles. Write a Boolean expression that compares the
-            favorite movies in the group using <c>==</c>, <c>!=</c>, and
-            <c>&amp;&amp;</c>, for example Ada’s movie <c>==</c> Alan’s movie
-            <c>&amp;&amp;</c> Alan’s movie <c>!=</c> Grace’s movie. Think of 1
-            more comparison and write it in the circles and as a Boolean
-            expression. Share the Boolean expressions with the class. (Thank you
-            to Jill Westerlund of Hoover High School and Art Lopez of Sweetwater
-            High School for this activity suggestion).
-          </p>
-        </li>
-
-        <li>
-          <p>
-            Write the sentence “If it’s sunny, OR if the temperature is greater
-            than 80 and it’s not raining, I will go to the beach.” as a Java if
-            statement using an int variable <c>temperature</c> and boolean
-            variables <c>sunny</c> and <c>raining</c>. If the conditional is
-            true, print out “Go to the beach!”. So, you will go to the beach on
-            days that it is sunny in any temperature, or you will go to the
-            beach on days when the temperature is over 80 degrees and it’s not
-            raining.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            Complete a truth table for the if statement that you wrote in #2
-            with columns for sunny, temperature &gt; 80, raining, and go to the
-            beach.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            Write Java code below to test your if statement and try all the
-            values in your truth table to see if you filled it out correctly.
-            You will need test case for each of the 8 rows in your truth table,
-            for example when sunny is true and false, when raining is true or
-            false, and for a value of temperature greater than 80, for example
-            90, and less than 80, for example 60.
-          </p>
-        </li>
-      </ol>
-    </p>
-
-    <project label="challenge-truthtables">
-      <statement>
-        <p>
-          Challenge-truthtables: Test your boolean expression in an if statement
-          below.
-        </p>
-      </statement>
-
-      <program interactive="activecode" language="java">
-        <code>
-public class TruthTable
-{
-    public static void main(String[] args)
-    {
-        // Test multiple values for these variables
-        boolean sunny = false;
-        int temperature = 90;
-        boolean raining = false;
-
-        // Write an if statement for: If it's sunny,
-        //  OR if the temperature is greater than 80
-        //     and it's not raining, "Go to the beach!"
-
-    }
-}
-        </code>
-        <tests>
-import static org.junit.Assert.*;
-
-import org.junit.*;
-
-import java.io.*;
-
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String expect = "Go to the beach!";
-        String output = getMethodOutput("main");
-        String code = getCode();
-        boolean passed;
-        if (getCode().contains("boolean sunny = false"))
-            passed =
-                    getResults(
-                            expect,
-                            output,
-                            "Prints Go to the beach! with initial input (sunny = false; temperature"
-                                + " = 90; raining = false;)");
-        else passed = getResults("sunny = false", "sunny = true", "Set sunny to false to test");
-
-        assertTrue(passed);
-    }
-
-    @Test
-    public void testCodeContains1()
-    {
-        boolean ifStatement = checkCodeContains("conditional: if", "if");
-        assertTrue(ifStatement);
-    }
-
-    @Test
-    public void testCodeContains2()
-    {
-        boolean ifStatement1 =
-                checkCodeContains("conditional: temperature greater than 80", "temperature &gt; 80");
-
-        assertTrue(ifStatement1);
-    }
-
-    @Test
-    public void testCodeContains4()
-    {
-        boolean ifStatement3 = checkCodeContains("and", "&amp;&amp;");
-        assertTrue(ifStatement3);
-    }
-
-    @Test
-    public void testCodeContains5()
-    {
-        boolean ifStatement3 = checkCodeContains("or", "||");
-        assertTrue(ifStatement3);
-    }
-}
-        </tests>
-      </program>
-    </project>
-  </subsection>
-
-  <subsection xml:id="coding-challenge-truth-and-tracing-tables-pogil">
-    <title>Coding Challenge : Truth and Tracing Tables POGIL</title>
-    <p>
-      We encourage you to do this activity as a <url
-      href="https://pogil.org/about-pogil/what-is-pogil"
-      visual="https://pogil.org/about-pogil/what-is-pogil">POGIL</url> (Process
-      Oriented Guided Inquiry Learning) group activity. POGIL groups are
-      self-managed teams of up to 4 students where everyone has a <url
-      href="https://docs.google.com/document/d/1_NfNLWJxaG4qZ2Jd2x8UctDS05twn1h6p-o3XaAcRv0/edit?usp=sharing"
-      visual="https://docs.google.com/document/d/1_NfNLWJxaG4qZ2Jd2x8UctDS05twn1h6p-o3XaAcRv0/edit?usp=sharing">POGIL
-      role</url> and works together to solve the problems, making sure that
-      everyone in the team participates and learns.
-    </p>
-
-    <p>
-      Explore the following problems with your group. You may use <url
-      href="https://docs.google.com/document/d/1Oa_hlzjunYMoRRiMX0A0nFjk7JiTh7EGfIVM9bQ_BIo/edit?usp=sharing"
-      visual="https://docs.google.com/document/d/1Oa_hlzjunYMoRRiMX0A0nFjk7JiTh7EGfIVM9bQ_BIo/edit?usp=sharing">this
-      worksheet</url> to complete your truth tables. Assume that <c>x</c> is an
-      integer value, for example -1, 0, or 1.
-    </p>
-
-    <p>
-      <ol marker="1">
-        <li>
-          <p>
-            Complete a truth table for the boolean expression: <c>!(x == 0 || x
-            &gt;= 1)</c>. Is this the set of positive or negative numbers? Is
-            the expression true when <c>x</c> is positive? Or is it true when
-            <c>x</c> is negative? You can try out the values when <c>x</c> is 1
-            or -1 or 0. Note that 0 is not positive or negative. You can try
-            running the code below to check your answer.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            Complete a truth table for the boolean expression: <c>!(x == 0)
-            &amp;&amp; !(x &gt;= 1)</c>. Is this the set of positive or negative
-            numbers?
-          </p>
-        </li>
-
-        <li>
-          <p>
-            Complete a truth table for the boolean expression: <c>(x != 0)
-            &amp;&amp; (x &lt; 1)</c>. Is this the set of positive or negative
-            numbers?
-          </p>
-        </li>
-
-        <li>
-          <p>Are the 3 boolean expressions equivalent? Why or why not?</p>
-        </li>
-
-        <li>
-          <p>Test your answers using the active code window below.</p>
-        </li>
-
-        <li>
-          <p>
-            Complete the following multiple choice exercises in your POGIL
-            groups. Show the application of DeMorgan’s laws or the truth tables
-            in each question on paper.
-          </p>
-        </li>
-      </ol>
-    </p>
-
-    <project label="challengeBooleanExpr">
-      <statement>
-        <p>
-          Are these 3 boolean expressions equivalent? 1. <c>!(x == 0 || x &gt;=
-          1)</c> , 2. <c>!(x == 0) &amp;&amp; !(x &gt;= 1)</c> , 3. <c>(x != 0)
-          &amp;&amp; (x &lt; 1)</c>
-        </p>
-      </statement>
-
-      <program interactive="activecode" language="java">
-        <code>
-public class EquivalentExpressions
-{
-    public static void main(String[] args)
-    {
-        int x = -1; // try with x = -1, x = 0, and x = 1
-        System.out.println(!(x == 0 || x &gt;= 1));
-        // add print statements for expressions in #2 and #3
-        // to see if they are equivalent when x = -1, 0, and 1.
-
-    }
-}
-        </code>
-        <tests>
-import static org.junit.Assert.*;
-
-import org.junit.*;
-
-import java.io.*;
-
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testChangedCode()
-    {
-        String origCode =
-                "public class EquivalentExpressions { public static void main(String[] args) { int"
-                    + " x = -1;  System.out.println(!(x == 0 || x &gt;= 1));   } }";
-
-        boolean changed = codeChanged(origCode);
-        assertTrue(changed);
-    }
-
-    @Test
-    public void testAddedCode()
-    {
-        boolean output2 = checkCodeContains("(x != 0) &amp;&amp; (x &lt; 1)");
-        assertTrue(output2);
-    }
-
-    @Test
-    public void testAddedCode2()
-    {
-        boolean output3 = checkCodeContains("!(x == 0) &amp;&amp; !(x &gt;= 1)");
-        assertTrue(output3);
-    }
-}
-        </tests>
-      </program>
-    </project>
-
-    <activity label="qcbdm1">
-      <statement>
-        <p>Which of the following is the same as the code below?</p>
-        <program language="java">
-          <code>
-!(x &gt; 2 &amp;&amp; y &lt; 4)
-          </code>
-        </program>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>(x &lt; 2) || (y &gt; 4)</p>
-          </statement>
-
-          <feedback>
-            <p>The negation of x &gt; 2 is x &lt;= 2</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>(x &lt; 2) &amp;&amp; (y &gt; 4)</p>
-          </statement>
-
-          <feedback>
-            <p>Don't forget that the "and" is changed to an "or"</p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>(x &lt;= 2) || (y &gt;= 4)</p>
-          </statement>
-
-          <feedback>
-            <p>
-              The x &gt; 2 becomes x &lt;= 2, the y &lt; 4 becomes y &gt;= 4 and
-              the and changes to or
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>(x &lt;= 2) &amp;&amp; (y &gt;= 4)</p>
-          </statement>
-
-          <feedback>
-            <p>Don't forget that the "and" is changed to an "or"</p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="qcbdm2">
-      <statement>
-        <p>Which of the following is the same as the code below?</p>
-        <program language="java">
-          <code>
-!(x == 2 &amp;&amp; y &gt; 4)
-          </code>
-        </program>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>(x != 2) || (y &lt; 4)</p>
-          </statement>
-
-          <feedback>
-            <p>The negation of y &gt; 4 is y &lt;= 4</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>(x != 2) &amp;&amp; (y &lt; 4)</p>
-          </statement>
-
-          <feedback>
-            <p>Don't forget that the and is changed to an or</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>(x != 2) &amp;&amp; (y &lt;= 4)</p>
-          </statement>
-
-          <feedback>
-            <p>Don't forget that the and is changed to an or</p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>(x != 2) || (y &lt;= 4)</p>
-          </statement>
-
-          <feedback>
-            <p>
-              The and is changed to an or, the (x == 2) becomes (x != 2) and (y
-              &gt; 4) becomes (y &lt;= 4)
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="qcbdm3">
-      <statement>
-        <p>Which of the following is the same as the code below?</p>
-        <program language="java">
-          <code>
-!(x!=5 &amp;&amp; y!=7)
-          </code>
-        </program>
-      </statement>
-
-      <choices>
-        <choice correct="yes">
-          <statement>
-            <p>(x == 5) || (y == 7)</p>
-          </statement>
-
-          <feedback>
-            <p>The negation of &amp;&amp; is || and the negation of != is ==</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>(x == 5) &amp;&amp; (y == 7)</p>
-          </statement>
-
-          <feedback>
-            <p>The negation of &amp;&amp; is ||</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>(x != 5) || (y != 7)</p>
-          </statement>
-
-          <feedback>
-            <p>
-              The negation of x != 5 is x == 5. The negation of y != 7 is y ==
-              7.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>(x &lt; 5) || (x &gt; 5) || (y &gt; 7) || (y &lt; 7)</p>
-          </statement>
-
-          <feedback>
-            <p>
-              The negation of == is != which is the same as &lt; or &gt;. The
-              negation of != is ==.
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="qcbdm4">
-      <statement>
-        <p>Which of the following is the same as the code below?</p>
-        <program language="java">
-          <code>
-!(x&lt;= 5 &amp;&amp; y &gt; 7)
-          </code>
-        </program>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>(x &gt; 5) &amp;&amp; (y &lt; 7)</p>
-          </statement>
-
-          <feedback>
-            <p>The negation of &amp;&amp; is || and the negation of y &gt; 7 is y &lt;= 7.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>(x &gt; 5) || (y &lt; 7)</p>
-          </statement>
-
-          <feedback>
-            <p>The negation of y &gt; 7 is y &lt;= 7.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>(x &gt; 5) &amp;&amp; (y &lt;= 7)</p>
-          </statement>
-
-          <feedback>
-            <p>The negation of &amp;&amp; is ||.</p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>(x &gt; 5) || (y &lt;= 7)</p>
-          </statement>
-
-          <feedback>
-            <p>
-              The negation of (x &lt;= 5) is (x &gt; 5). The negation of
-              &amp;&amp; is ||. The negation of (y &gt; 7) is (y &lt;= 7).
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <p>
-      <term>String Equality</term>: What will the following code print out?
-      Trace through the code by drawing diagrams of what is going on in memory
-      like the figures above, and then show the values of s1, s2, s3, s4 and the
-      output after each line of code. Remember that you can use trace tables to
-      track the values of variables as they change throughout a program. To
-      trace through code, write down a variable in each column in a table and
-      keep track of its value throughout the program as you go through it line
-      by line.
-    </p>
-
-    <program language="java">
-      <code>
-String s1 = null;
-String s2 = new String("hi");
-String s3 = new String("hi");
-String s4 = new String("bye");
-if (s1 == null)
-{
-    s1 = s2;
-}
-if (s1 == s2)
-{
-    System.out.println("s1 and s2 refer to the same object");
-}
-if (s2 == s3)
-{
-    System.out.println("s2 and s3 refer to the same object");
-}
-if (s3 == s4)
-{
-    System.out.println("s3 and s4 refer to the same object");
-}
-if (s1.equals(s2) &amp;&amp; s2.equals(s3))
-{
-    System.out.println("s1, s2, s3 are equal");
-}
-      </code>
-    </program>
-
-    <project label="challengetracingStrings">
-      <statement>
-        <p>
-          Write your tracing table here that keeps track of s1, s2, s3, s4 and
-          the output.
-        </p>
-      </statement>
-
-      <response />
-    </project>
   </subsection>
 
   <subsection xml:id="summary-23">
