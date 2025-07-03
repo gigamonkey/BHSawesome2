@@ -132,7 +132,8 @@
             visual="https://en.wikipedia.org/wiki/George_Boole">George
             Boole</url>, a 19th century English mathematician who invented
             Boolean algebra, a system for dealing with statements made up of
-            only true and false values.)
+            only true and false values.) We’ll return to <c>boolean</c>s in
+            <xref ref="booleans-and-conditionals" />
           </p>
         </li>
       </ul>
