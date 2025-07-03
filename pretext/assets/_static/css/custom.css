@@ -296,3 +296,12 @@ table .align-default, td {
 .ptx-content .sbspanel > img {
   padding: 1em;
 }
+
+.MathJax {
+    font-size: var(--content-font-size) !important;
+}
+
+
+.sidebyside .sbsrow {
+  gap: 1em;
+}
