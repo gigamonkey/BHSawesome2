@@ -487,24 +487,14 @@ int max = 10; // this keeps track of the max score
 
         <li>
           <p>A basic Java program looks like the following:</p>
+          <program language="java">
+            public class MyClass {
+              public static void main(String[] args) {
+                System.out.println("Hi there!");
+              }
+            }
+          </program>
         </li>
-      </ul>
-    </p>
-
-    <program language="java">
-      <code>
-public class MyClass
-{
-    public static void main(String[] args)
-    {
-        System.out.println("Hi there!");
-    }
-}
-      </code>
-    </program>
-
-    <p>
-      <ul>
         <li>
           <p>
             A Java program starts with <term>public class NameOfClass {</term>.
