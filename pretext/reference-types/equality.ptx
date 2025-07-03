@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section xml:id="topic-3-5-methods">
-  <title>Methods: How to Write Them</title>
+<section xml:id="equality">
+  <title>Equality</title>
   <introduction />
   <subsection>
     <title>Reference equality</title>
