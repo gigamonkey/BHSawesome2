@@ -2,121 +2,111 @@
 
 <section xml:id="if-traps">
   <title><c>if</c> statement traps and pitfalls</title>
+
   <introduction>
-    <p>
-      Watch out!
-    </p>
+    <p>Watch out!</p>
   </introduction>
 
   <subsection>
     <title>Some <c>if</c> statement traps</title>
-      <p>
-        Stringly speaking, the curly braces around the body of the <c>if</c> are
-        there to group multiple statements together into a <term>block</term>
-        that then acts as the body of the <c>if</c> statement.
-      </p>
 
-      <p>
-        The actual rule is that the body of an <c>if</c> must be
-        either a block enclosed in curly braces <em>or</em> a single statement.
-        So it is legal to leave out the curly braces if the body of the
-        <c>if</c> is just one statement. However it’s a very bad idea. Here’s
-        why.
-      </p>
+    <p>
+      Stringly speaking, the curly braces around the body of the <c>if</c> are
+      there to group multiple statements together into a <term>block</term> that
+      then acts as the body of the <c>if</c> statement.
+    </p>
 
-      <p>
-        If you write this:
-      </p>
+    <p>
+      The actual rule is that the body of an <c>if</c> must be either a block
+      enclosed in curly braces <em>or</em> a single statement. So it is legal to
+      leave out the curly braces if the body of the <c>if</c> is just one
+      statement. However it’s a very bad idea. Here’s why.
+    </p>
 
-      <program language="java">
+    <p>If you write this:</p>
+    <program language="java">
         if (someBoolean)
           doSomething();
-      </program>
+    </program>
 
-      <p>
-        it’s equivalent to this:
-      </p>
-
-      <program language="java">
+    <p>it’s equivalent to this:</p>
+    <program language="java">
         if (someBoolean) {
           doSomething();
         }
-      </program>
+    </program>
 
-      <p>
-        So far so good. However if you later decide to add something, say maybe
-        a <c>println</c>, and you aren’t careful you might write this:
-      </p>
+    <p>
+      So far so good. However if you later decide to add something, say maybe a
+      <c>println</c>, and you aren’t careful you might write this:
+    </p>
 
-      <program language="java">
+    <program language="java">
         if (someBoolean)
           System.out.println("About to do something.");
           doSomething();
-      </program>
+    </program>
 
-      <p>
-        which, despite the indentation, is actually equivalent to this:
-      </p>
-
-      <program language="java">
+    <p>which, despite the indentation, is actually equivalent to this:</p>
+    <program language="java">
         if (someBoolean) {
           System.out.println("About to do something.");
         }
         doSomething();
-      </program>
+    </program>
 
-      <p>
-        which means now <c>doSomething</c>, which used to be controlled by the
-        <c>if</c>, is now always run and the <c>if</c> only controls the
-        <c>println</c>.
-      </p>
+    <p>
+      which means now <c>doSomething</c>, which used to be controlled by the
+      <c>if</c>, is now always run and the <c>if</c> only controls the
+      <c>println</c>.
+    </p>
 
-      <p>
-        To avoid this kind of mistsake many programmers alway use curly braces,
-        even when they are not technically required. All the code you seen on
-        the AP Exam will be written in that style.
-      </p>
+    <p>
+      To avoid this kind of mistsake many programmers alway use curly braces,
+      even when they are not technically required. All the code you seen on the
+      AP Exam will be written in that style.
+    </p>
 
-      <p>
-        Also be careful not to write:
-      </p>
-
-      <program language="java">
+    <p>Also be careful not to write:</p>
+    <program language="java">
         if (someBoolean); {
           doSomething();
         }
-      </program>
+    </program>
 
-      <p>
-        Note the semicolon (;) after the condition. This unfortunately is legal
-        Java but it is equivalent to:
-      </p>
+    <p>
+      Note the semicolon (;) after the condition. This unfortunately is legal
+      Java but it is equivalent to:
+    </p>
 
-      <program language="java">
+    <program language="java">
         if (someBoolean) {
         }
         doSomething();
-      </program>
+    </program>
 
-      <p>
-        The semicolon is an <term>empty statement</term> that does nothing and
-        that’s the body of the <c>if</c>. And then the block enclosed in curly
-        braces is the next thing that runs after the <c>if</c> statement.
-      </p>
+    <p>
+      The semicolon is an <term>empty statement</term> that does nothing and
+      that’s the body of the <c>if</c>. And then the block enclosed in curly
+      braces is the next thing that runs after the <c>if</c> statement.
+    </p>
   </subsection>
 
   <subsection>
-    <title><c>= != ==</c></title>
-      <p>
-        A common mistake in if statements is using = instead of == in the
-        condition by mistake. You should always <term>use ==</term>, not =, in
-        the condition of an if statement to test a variable. One equal sign (=)
-        assigns a value to a variable, and two equal signs (==) test if a
-        variable has a certain value.
-      </p>
+    <title>
+      <c>= != ==</c>
+    </title>
+
+    <p>
+      A common mistake in if statements is using = instead of == in the
+      condition by mistake. You should always <term>use ==</term>, not =, in the
+      condition of an if statement to test a variable. One equal sign (=)
+      assigns a value to a variable, and two equal signs (==) test if a variable
+      has a certain value.
+    </p>
   </subsection>
 
-    <subsection xml:id="dangling-else-statements">
+  <subsection xml:id="dangling-else-statements">
     <title>Dangling Else Statements</title>
     <p>
       Sometimes with nested ifs we find a <term>dangling else</term> that could
@@ -394,8 +384,7 @@ public class RunestoneTests extends CodeTestHelper
   <subsection xml:id="summary-20">
     <title>Summary</title>
     <p>
-      <ul/>
+      <ul />
     </p>
   </subsection>
-
 </section>

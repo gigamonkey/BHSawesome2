@@ -2,8 +2,7 @@
 
 <section xml:id="topic-3-5-methods">
   <title>Methods: How to Write Them</title>
-  <introduction/>
-
+  <introduction />
   <subsection>
     <title>Reference equality</title>
     <p>
@@ -16,7 +15,6 @@
     </p>
 
     <video youtube="bO9bejT0jwE" label="video-ref-model" />
-
     <p>
       We can also use <c>==</c> or <c>!=</c> to test if two reference values,
       like <c>Turtle</c> and <c>String</c> objects, refer to the same object. In
@@ -93,7 +91,7 @@ public class BoolTestRef
     </activity>
   </subsection>
 
-    <subsection xml:id="comparing-objects">
+  <subsection xml:id="comparing-objects">
     <title>Comparing Objects</title>
     <p>
       Comparing objects is a little different than comparing primitive typed

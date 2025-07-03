@@ -9,7 +9,7 @@
     <idx>algorithm</idx>
     <idx>pseudocode</idx>
     <p>
-      In the <xref ref="introduction"/> we briefly described algorithms as
+      In the <xref ref="introduction" /> we briefly described algorithms as
       something like a recipe or directions to a friend’s house: a specific set
       of steps to perform for achieving some result. But the features of Java
       we’ve learned so far aren’t really sufficient to create algorithms in
@@ -64,7 +64,6 @@
       flow</term> of sequencing one thing after another lets us understand what
       is going to happen when.
     </p>
-
   </subsection>
 
   <subsection xml:id="selection">
@@ -179,6 +178,7 @@
       programmers will use before trying to write actual code are
       <term>pseudocode</term> and <term>flowcharts</term>.
     </p>
+
     <p>
       Pseudocode is a simplified, informal way of describing the steps in an
       algorithm in a language that’s part way between a human language like
@@ -218,11 +218,13 @@
           buying as the most expensive gifts possible given a certain amount of
           money.
         </p>
+
         <p>
           Put the steps into the correct order by dragging them into the lower
           box. The indented steps are intended to go inside another construct
           such as the repetition.
         </p>
+
         <p>
           Click the “Check” button when you’re done to see if you are right.
         </p>

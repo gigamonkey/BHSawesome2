@@ -11,10 +11,7 @@
   <idx>&gt;</idx>
   <idx>==</idx>
   <idx>!=</idx>
-
-  <introduction>
-  </introduction>
-
+  <introduction />
   <subsection xml:id="relational-operators-in-if-statements">
     <title>Relational Operators in If Statements</title>
     <p>
@@ -193,7 +190,6 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </activity>
 
-
     <activity label="mcq-if-trace">
       <statement>
         <p>
@@ -276,9 +272,7 @@ System.out.print(x);
         </choice>
       </choices>
     </activity>
-
-    <!-- just dropped this here for now. Used to be in topic-2-3 -->
-
+<!-- just dropped this here for now. Used to be in topic-2-3 -->
     <p>
       If/else statements can also be used with relational operators and numbers
       like below. If your code has an if/else statement, you need to test it
@@ -487,7 +481,6 @@ public class RunestoneTests extends CodeTestHelper
         </tests>
       </program>
     </activity>
-
   </subsection>
 
   <subsection xml:id="testing-equality-index-0">
@@ -563,7 +556,6 @@ public class RunestoneTests extends CodeTestHelper
         </tests>
       </program>
     </activity>
-
   </subsection>
 
   <subsection xml:id="relational-operators">
