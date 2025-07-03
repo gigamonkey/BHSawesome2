@@ -49,11 +49,11 @@
     </p>
 
     <p>
-      below are used to compare numeric
-      values or arithmetic expressions. Although some programming languages
-      allow using relational operators like <c>&lt;</c> to compare strings, Java
-      only uses these operators for numbers, and uses the methods
-      <c>compareTo</c> and <c>equals</c> for comparing <c>String</c> values.
+      below are used to compare numeric values or arithmetic expressions.
+      Although some programming languages allow using relational operators like
+      <c>&lt;</c> to compare strings, Java only uses these operators for
+      numbers, and uses the methods <c>compareTo</c> and <c>equals</c> for
+      comparing <c>String</c> values.
     </p>
 
     <p>
@@ -228,8 +228,6 @@ public class RunestoneTests extends CodeTestHelper
       </cardsort>
     </activity>
   </subsection>
-
-
 
   <subsection xml:id="testing-equality-index-0">
     <title>Testing Equality (==)</title>
@@ -406,7 +404,7 @@ public class RunestoneTests extends CodeTestHelper
     </note>
   </subsection>
 
-    <subsection xml:id="and-or-and-not-index-0">
+  <subsection xml:id="and-or-and-not-index-0">
     <title>And (&amp;&amp;), Or (||), and Not (!)</title>
     <p>
       What if you want two things to be true before the body of the conditional
@@ -684,7 +682,7 @@ public class RunestoneTests extends CodeTestHelper
     </note>
   </subsection>
 
-    <subsection xml:id="short-circuit-evaluation">
+  <subsection xml:id="short-circuit-evaluation">
     <title>Short Circuit Evaluation</title>
     <idx>short circuit evaluation</idx>
     <idx>
@@ -852,9 +850,8 @@ else
     </activity>
   </subsection>
 
-    <subsection>
+  <subsection>
     <title>Boolean practice</title>
-
     <activity label="if-relational">
       <statement>
         <p>
@@ -1108,9 +1105,7 @@ System.out.print(x);
         </choice>
       </choices>
     </activity>
-
-    <!-- just dropped this here for now. Used to be in topic-2-3 -->
-
+<!-- just dropped this here for now. Used to be in topic-2-3 -->
     <activity label="licenseifelse">
       <statement>
         <p>
@@ -1657,7 +1652,8 @@ public class RunestoneTests extends CodeTestHelper
             a number is even.
           </p>
         </li>
-              <li>
+
+        <li>
           <p>
             (AP 2.5.A.1) Logical operators <c>!</c> (not), <c>&amp;&amp;</c>
             (and), and <c>||</c> (or) are used with Boolean values.
@@ -1717,7 +1713,6 @@ public class RunestoneTests extends CodeTestHelper
             the second expression is not evaluated since the result is false.)
           </p>
         </li>
-
       </ul>
     </p>
   </subsection>

@@ -673,7 +673,6 @@ else
     </activity>
   </subsection>
 
-
   <subsection xml:id="coding-challenge-truth-tables-pogil">
     <title>Coding Challenge : Truth Tables POGIL</title>
     <p>
@@ -1527,6 +1526,4 @@ if (message.equals(note) &amp;&amp; !message.equals("memo"))
       </choices>
     </activity>
   </subsection>
-
-
 </section>
