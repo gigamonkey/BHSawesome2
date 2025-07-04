@@ -11,7 +11,7 @@
     <title>Some <c>if</c> statement traps</title>
 
     <p>
-      Stringly speaking, the curly braces around the body of the <c>if</c> are
+      Strictly speaking, the curly braces around the body of the <c>if</c> are
       there to group multiple statements together into a <term>block</term> that
       then acts as the body of the <c>if</c> statement.
     </p>
