@@ -16,6 +16,7 @@ ONE_LINE = {"cline"}
 COMPACT = {"cell"}
 DEFAULT_NS = {"xml": "http://www.w3.org/XML/1998/namespace"}
 
+
 def indentation(level):
     return " " * (INDENT * level)
 
@@ -63,11 +64,11 @@ def is_all_text(elem):
 
 
 def is_multiline(text):
-    return len(text.split('\n')) > 1
+    return len(text.split("\n")) > 1
 
 
 def to_text(elem):
-    return etree.tostring(elem, encoding='unicode', method='text')
+    return etree.tostring(elem, encoding="unicode", method="text")
 
 
 def is_in_program(elem):
@@ -103,11 +104,12 @@ def singleton_child(elem):
 
 
 def wrappable(elem):
-    return not preserve_whitespace(elem) and (is_inline(elem) or all(is_inline(e) for e in elem))
+    return not preserve_whitespace(elem) and (
+        is_inline(elem) or all(is_inline(e) for e in elem)
+    )
 
 
 def render_inline(elem, ns):
-
     if is_empty(elem):
         return open_tag(elem, ns, empty=True)
 
@@ -130,7 +132,7 @@ def render_program_text(elem, ns, level):
     indent2 = indentation(level + 1)
 
     text = dedent(to_text(elem)).strip()
-    needs_cdata = any(e in text for e in '&<>')
+    needs_cdata = any(e in text for e in "&<>")
     multiline = is_multiline(text)
 
     content = f"\n{indent1}{open_tag(elem, ns)}\n"
@@ -177,16 +179,19 @@ def render_block(elem, ns, level=0):
                 content += " "
 
         if wrappable(elem):
-            oneline = f"{tag}{re.sub(r"(?s)\s+", " ", content).strip()}{close_tag(elem, ns)}"
+            oneline = (
+                f"{tag}{re.sub(r'(?s)\s+', ' ', content).strip()}{close_tag(elem, ns)}"
+            )
 
-            if len(oneline) - 1 <= WIDTH: # -1 for the leading newline.
-                return oneline if elem.tag in COMPACT else f"{oneline}\n";
+            if len(oneline) - 1 <= WIDTH:  # -1 for the leading newline.
+                return oneline if elem.tag in COMPACT else f"{oneline}\n"
 
             if not singleton_child(elem):
                 filled = fill_with_indent(content, indentation(level + 1))
                 return f"{tag}\n{filled}\n{indentation(level)}{close_tag(elem, ns)}\n"
 
         return f"{tag}\n{indentation(level + 1)}{content.strip()}\n{indentation(level)}{close_tag(elem, ns)}\n"
+
 
 def clean_text(s):
     return re.sub(r"\s+", " ", s.strip())
@@ -205,7 +210,11 @@ def fill_with_indent(text, i):
 
 def render_with_whitespace(elem, ns, level=0):
     s = f"\n{indentation(level)}{open_tag(elem, ns)}"
-    if elem.text and len(elem.text) > 0 and (not is_program(elem[0]) if len(elem) > 0 else True):
+    if (
+        elem.text
+        and len(elem.text) > 0
+        and (not is_program(elem[0]) if len(elem) > 0 else True)
+    ):
         s += escape(elem.text)
     for child in elem:
         if is_program(child):
@@ -289,7 +298,8 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "-i", "--inplace", action="store_true", help="Reformat in place")
+        "-i", "--inplace", action="store_true", help="Reformat in place"
+    )
     parser.add_argument(
         "-q", "--quiet", action="store_true", help="Don't emit output about files."
     )
