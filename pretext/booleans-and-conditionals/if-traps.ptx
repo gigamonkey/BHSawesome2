@@ -174,9 +174,9 @@
     </program>
 
     <p>
-      Note the semicolon (;) at the end of the first line. Unfortunately that is
-      legal Java code but almost certainly not what you meant. It is equivalent
-      to:
+      Note the semicolon (<c>;</c>) at the end of the first line. Unfortunately
+      that is legal Java code but almost certainly not what you meant. It is
+      equivalent to:
     </p>
 
     <program language="java">
@@ -223,12 +223,120 @@
     <title><c>= != ==</c></title>
 
     <p>
-      A common mistake in if statements is using = instead of == in the
-      condition by mistake. You should always <term>use ==</term>, not =, in the
-      condition of an if statement to test a variable. One equal sign (=)
-      assigns a value to a variable, and two equal signs (==) test if a variable
-      has a certain value.
+      In languages without a separate <c>boolean</c> type where, for instance,
+      <c>0</c> is false and all other numbers counts as true, a classic bug
+      looks like this:
     </p>
+
+    <program>
+      // Not legal Java code.
+      if (x = 0) {
+        doSomething();
+      }
+    </program>
+
+    <p>
+      In the C programming lanuage this would be perfectly legal code but is
+      almost certainly buggy. Do you see why? This is called the <c>= != ==</c>
+      bug because it hinges on the fact that a single equals sign <c>=</c> and
+      doubled equals signs <c>==</c> are not the same operator. A single
+      <c>=</c> is the assignment operator while <c>==</c> is the equality
+      comparison operator.
+    </p>
+
+    <p>
+      In Java, and many other languages, the assignment operator not only
+      assigns a value to a variable but also evaluates to the assigned value. So
+      in the code above the expression <c>x = 0</c> assigns <c>0</c> to
+      <c>x</c>, clobbering whatever value it had before, and then evaluates to
+      <c>0</c> which in in this hypothetical non-Java language would count as
+      false.
+    </p>
+
+    <p>
+      So if <c>x = 0</c> always evaluates to <c>0</c>, the <c>if</c> condition
+      would always be false so <c>doSomething()</c> would never run.
+      <em>And</em> <c>x</c> would suddenly be zero, which will also probably
+      lead to some confusion down the road.
+    </p>
+
+    <p>
+      And on the other hand, if instead of <c>0</c>, the value had been any
+      other number, <c>x</c> would have been set to that number and the
+      <c>println</c> would always run.
+    </p>
+
+    <p>
+      Luckily in Java the condition of an <c>if</c> has to be a <c>boolean</c>
+      expression, so the code above wouldn’t get past the Java compiler. If
+      <c>x</c> was declared to be an <c>int</c> Java would complain because the
+      type of <c>x = 0</c> would be <c>int</c> which isn’t allowed in the
+      condition. And if <c>x</c> had been declared to be a <c>boolean</c>, Java
+      would complain because 0 isn’t a valid <c>boolean</c> value.
+    </p>
+
+    <p>
+      There are, however, two ways to create this bug in Java:
+    </p>
+
+    <program>
+      if (hungry = true) {
+        eat();
+      }
+
+      if (hungry = false) {
+        study();
+      }
+    </program>
+
+    <p>
+      The first <c>if</c> statement will always call <c>eat()</c>, regardless of
+      what <c>hungry</c> was before the <c>if</c>. And the second will never
+      call <c>study()</c>, regardless of <c>hungry</c>’s prior value. And both
+      of them will clobber the old value of <c>hungry</c>.
+    </p>
+
+    <p>
+      What the programmer who created those bugs probably meant to write was
+      this:
+    </p>
+
+    <program>
+      if (hungry == true) {
+        eat();
+      }
+
+      if (hungry == false) {
+        study();
+      }
+    </program>
+
+    <p>
+      However, there’s an even better way to write these that is simpler and
+      avoids the possibility of the <c>= != ==</c> bug:
+    </p>
+
+    <program>
+      if (hungry) {
+        eat();
+      }
+
+      if (!hungry) {
+        study();
+      }
+    </program>
+
+    <p>
+      The point is, <c>hungry</c> is already a <c>boolean</c>. Comparing it to a
+      literal like <c>true</c> doesn’t make it any more of a <c>boolean</c>.
+      (Think of it this way: if you feel the need to write <c>hungry == true</c>
+      why not write <c>hungry == true == true</c>?) And if you know that
+      <c>!hungry</c> is pronunced “not hungry” then both of these bits of code
+      read almost like English, maybe as spoken by a caveman: “If hungry, eat,”
+      and “If not hungry, study.” Nobody says, “If it’s true that I’m hungry,
+      eat()” or “If it’s false that I’m hungry, study().”
+    </p>
+
   </subsection>
 
   <subsection>
@@ -239,7 +347,16 @@
         <li>
           <p>
             Always use braces (<c>{</c> and <c>}</c>) to enclose the body of an
-            <c>if</c> or <c>else</c>, even if it’s just one statement.
+            <c>if</c> or <c>else</c>, even if it’s just one statement to avoid
+            misleading indentation and errors when you add lines to an existing
+            body.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Consistently using braces also prevents dangling elses that don’t
+            pair up with the right <c>if</c>.
           </p>
         </li>
 
@@ -252,18 +369,8 @@
 
         <li>
           <p>
-            Always use <c>==</c>, not <c>=</c>, in the condition of an if
-            statement to test a variable. One <c>=</c> assigns, two <c>==</c>
-            tests!
-          </p>
-        </li>
-
-        <li>
-          <p>
-            The <c>else</c> statement matches with the closest <c>if</c>
-            statement. If you want to match an <c>else</c> with a different
-            <c>if</c> statement, you need to use curly braces to group the
-            <c>if</c> and <c>else</c> together.
+            Avoid using <c>==</c> in the condition of an <c>if</c> statement
+            since it’s easy to mistakenly use an <c>=</c> instead.
           </p>
         </li>
       </ul>
