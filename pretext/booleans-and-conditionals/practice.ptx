@@ -2,7 +2,6 @@
 
 <section label="booleans-practice">
   <title>Booleans and <c>if</c> practice</title>
-
   <introduction />
   <subsection>
     <title>Boolean practice</title>
@@ -703,7 +702,9 @@ public class RunestoneTests extends CodeTestHelper
           is not prime and has divisors other than 1 and itself?
         </p>
 
-        <p><fillin answer="9" mode="string" /></p>
+        <p>
+          <fillin answer="9" mode="string" />
+        </p>
       </statement>
 
       <evaluation>
@@ -732,7 +733,9 @@ public class RunestoneTests extends CodeTestHelper
           using your code above? What is the smallest even number that is prime?
         </p>
 
-        <p><fillin answer="2" mode="string" /></p>
+        <p>
+          <fillin answer="2" mode="string" />
+        </p>
       </statement>
 
       <evaluation>
@@ -1250,7 +1253,10 @@ public class RunestoneTests extends CodeTestHelper
           </statement>
 
           <feedback>
-            <p>The negation of &amp;&amp; is || and the negation of y &gt; 7 is y &lt;= 7.</p>
+            <p>
+              The negation of &amp;&amp; is || and the negation of y &gt; 7 is y
+              &lt;= 7.
+            </p>
           </feedback>
         </choice>
 

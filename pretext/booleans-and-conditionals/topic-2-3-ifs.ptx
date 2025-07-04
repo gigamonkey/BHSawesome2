@@ -2,7 +2,6 @@
 
 <section xml:id="topic-2-3-ifs">
   <title>Booleans and <c>if</c> statements</title>
-
   <introduction>
     <idx>selection</idx>
     <idx>if</idx>
@@ -158,7 +157,6 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="iffalseOutput">
       <title>Change <c>isRaining</c></title>
-
       <statement>
         <p>
           Try changing the code above to <c>boolean isRaining = false;</c>. What

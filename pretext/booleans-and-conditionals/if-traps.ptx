@@ -2,14 +2,12 @@
 
 <section xml:id="if-traps">
   <title><c>if</c> statement traps and pitfalls</title>
-
   <introduction>
     <p>Watch out!</p>
   </introduction>
 
   <subsection>
     <title>Some <c>if</c> statement traps</title>
-
     <p>
       Strictly speaking, the curly braces around the body of the <c>if</c> are
       there to group multiple statements together into a <term>block</term> that
@@ -93,10 +91,7 @@
   </subsection>
 
   <subsection>
-    <title>
-      <c>= != ==</c>
-    </title>
-
+    <title><c>= != ==</c></title>
     <p>
       A common mistake in if statements is using = instead of == in the
       condition by mistake. You should always <term>use ==</term>, not =, in the

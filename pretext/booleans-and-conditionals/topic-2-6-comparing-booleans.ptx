@@ -159,22 +159,15 @@
       <image source="Unit2-Selection-and-Iteration/Figures/demorgan.png" width="71%" />
     </figure>
 
-    <p>
-      In Java, De Morgan’s Laws are written with the following operators:
-    </p>
-
+    <p>In Java, De Morgan’s Laws are written with the following operators:</p>
     <p>
       <ul>
         <li>
-          <p>
-            <c>!(a &amp;&amp; b)</c> is equivalent to <c>!a || !b</c>
-          </p>
+          <p><c>!(a &amp;&amp; b)</c> is equivalent to <c>!a || !b</c></p>
         </li>
 
         <li>
-          <p>
-            <c>!(a || b)</c> is equivalent to <c>!a &amp;&amp; !b</c>
-          </p>
+          <p><c>!(a || b)</c> is equivalent to <c>!a &amp;&amp; !b</c></p>
         </li>
       </ul>
     </p>
@@ -237,47 +230,37 @@
 
         <row>
           <cell><c>a == b</c></cell>
-
           <cell>-</cell>
           <cell><c>a != b</c></cell>
         </row>
 
         <row>
           <cell><c>a != b</c></cell>
-
           <cell>-</cell>
           <cell><c>a == b</c></cell>
         </row>
 
         <row>
           <cell><c>a &lt; b</c></cell>
-
           <cell><c>b &lt; a</c></cell>
-
           <cell><c>a &gt;= b</c></cell>
         </row>
 
         <row>
           <cell><c>a &lt;= b</c></cell>
-
           <cell><c>b &lt;= a</c></cell>
-
           <cell><c>a &gt; b</c></cell>
         </row>
 
         <row>
           <cell><c>a &gt; b</c></cell>
-
           <cell><c>b &gt; a</c></cell>
-
           <cell><c>a &lt;= b</c></cell>
         </row>
 
         <row>
           <cell><c>a &gt;= b</c></cell>
-
           <cell><c>b &gt;= a</c></cell>
-
           <cell><c>a &gt; b</c></cell>
         </row>
       </tabular>
@@ -303,7 +286,6 @@
     <sidebyside valign="middle">
       <table>
         <title><c>a &amp;&amp; b</c> truth table</title>
-
         <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
           <row header="yes">
             <cell>a</cell>
@@ -313,33 +295,25 @@
 
           <row>
             <cell><c>false</c></cell>
-
             <cell><c>false</c></cell>
-
             <cell><c>false</c></cell>
           </row>
 
           <row>
             <cell><c>false</c></cell>
-
             <cell><c>true</c></cell>
-
             <cell><c>false</c></cell>
           </row>
 
           <row>
             <cell><c>true</c></cell>
-
             <cell><c>false</c></cell>
-
             <cell><c>false</c></cell>
           </row>
 
           <row>
             <cell><c>true</c></cell>
-
             <cell><c>true</c></cell>
-
             <cell><c>true</c></cell>
           </row>
         </tabular>
@@ -347,7 +321,6 @@
 
       <table>
         <title><c>a || b</c> truth table</title>
-
         <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
           <row header="yes">
             <cell>a</cell>
@@ -357,33 +330,25 @@
 
           <row>
             <cell><c>false</c></cell>
-
             <cell><c>false</c></cell>
-
             <cell><c>false</c></cell>
           </row>
 
           <row>
             <cell><c>false</c></cell>
-
             <cell><c>true</c></cell>
-
             <cell><c>true</c></cell>
           </row>
 
           <row>
             <cell><c>true</c></cell>
-
             <cell><c>false</c></cell>
-
             <cell><c>true</c></cell>
           </row>
 
           <row>
             <cell><c>true</c></cell>
-
             <cell><c>true</c></cell>
-
             <cell><c>true</c></cell>
           </row>
         </tabular>
@@ -391,7 +356,6 @@
 
       <table>
         <title><c>!a</c> truth table</title>
-
         <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
           <row header="yes">
             <cell>a</cell>
@@ -400,13 +364,11 @@
 
           <row>
             <cell><c>false</c></cell>
-
             <cell><c>true</c></cell>
           </row>
 
           <row>
             <cell><c>true</c></cell>
-
             <cell><c>false</c></cell>
           </row>
         </tabular>
@@ -443,11 +405,8 @@
     <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
       <row header="yes">
         <cell><c>a</c></cell>
-
         <cell><c>b</c></cell>
-
         <cell><c>a &amp;&amp; b</c></cell>
-
         <cell><c>!(a &amp;&amp; b)</c></cell>
       </row>
     </tabular>
@@ -461,52 +420,37 @@
     <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
       <row header="yes">
         <cell><c>a</c></cell>
-
         <cell><c>b</c></cell>
-
         <cell><c>a &amp;&amp; b</c></cell>
-
         <cell><c>!(a &amp;&amp; b)</c></cell>
       </row>
 
       <row>
         <cell><c>false</c></cell>
-
         <cell><c>false</c></cell>
-
-        <cell><c></c></cell>
-
-        <cell><c></c></cell>
+        <cell><c /></cell>
+        <cell><c /></cell>
       </row>
 
       <row>
         <cell><c>false</c></cell>
-
         <cell><c>true</c></cell>
-
-        <cell><c></c></cell>
-
-        <cell><c></c></cell>
+        <cell><c /></cell>
+        <cell><c /></cell>
       </row>
 
       <row>
         <cell><c>true</c></cell>
-
         <cell><c>false</c></cell>
-
-        <cell><c></c></cell>
-
-        <cell><c></c></cell>
+        <cell><c /></cell>
+        <cell><c /></cell>
       </row>
 
       <row>
         <cell><c>true</c></cell>
-
         <cell><c>true</c></cell>
-
-        <cell><c></c></cell>
-
-        <cell><c></c></cell>
+        <cell><c /></cell>
+        <cell><c /></cell>
       </row>
     </tabular>
 
@@ -519,55 +463,39 @@
 
     <table xml:id="not-a-and-b">
       <title>Truth table for <c>!(a &amp;&amp; b)</c></title>
-
       <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
         <row header="yes">
           <cell><c>a</c></cell>
-
           <cell><c>b</c></cell>
-
           <cell><c>a &amp;&amp; b</c></cell>
-
           <cell><c>!(a &amp;&amp; b)</c></cell>
         </row>
 
         <row>
           <cell><c>false</c></cell>
-
           <cell><c>false</c></cell>
-
           <cell><c>false</c></cell>
-
           <cell><c>true</c></cell>
         </row>
 
         <row>
           <cell><c>false</c></cell>
-
           <cell><c>true</c></cell>
-
           <cell><c>false</c></cell>
-
           <cell><c>true</c></cell>
         </row>
 
         <row>
           <cell><c>true</c></cell>
-
           <cell><c>false</c></cell>
-
           <cell><c>false</c></cell>
-
           <cell><c>true</c></cell>
         </row>
 
         <row>
           <cell><c>true</c></cell>
-
           <cell><c>true</c></cell>
-
           <cell><c>true</c></cell>
-
           <cell><c>false</c></cell>
         </row>
       </tabular>
@@ -583,65 +511,44 @@
 
     <table xml:id="not-a-or-not-b">
       <title>Truth table for <c>!a || !b</c></title>
-
       <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
         <row header="yes">
           <cell><c>a</c></cell>
-
           <cell><c>b</c></cell>
-
           <cell><c>!a</c></cell>
-
           <cell><c>!b</c></cell>
-
           <cell><c>!a || !b</c></cell>
         </row>
 
         <row>
           <cell><c>false</c></cell>
-
           <cell><c>false</c></cell>
-
           <cell><c>true</c></cell>
-
           <cell><c>true</c></cell>
-
           <cell><c>true</c></cell>
         </row>
 
         <row>
           <cell><c>false</c></cell>
-
           <cell><c>true</c></cell>
-
           <cell><c>true</c></cell>
-
           <cell><c>false</c></cell>
-
           <cell><c>true</c></cell>
         </row>
 
         <row>
           <cell><c>true</c></cell>
-
           <cell><c>false</c></cell>
-
           <cell><c>false</c></cell>
-
           <cell><c>true</c></cell>
-
           <cell><c>true</c></cell>
         </row>
 
         <row>
           <cell><c>true</c></cell>
-
           <cell><c>true</c></cell>
-
           <cell><c>false</c></cell>
-
           <cell><c>false</c></cell>
-
           <cell><c>false</c></cell>
         </row>
       </tabular>
@@ -678,15 +585,11 @@
           <p>
             <ul>
               <li>
-                <p>
-                  <c>!(a &amp;&amp; b)</c> is equivalent to <c>!a || !b</c>
-                </p>
+                <p><c>!(a &amp;&amp; b)</c> is equivalent to <c>!a || !b</c></p>
               </li>
 
               <li>
-                <p>
-                  <c>!(a || b)</c> is equivalent to <c>!a &amp;&amp; !b</c>
-                </p>
+                <p><c>!(a || b)</c> is equivalent to <c>!a &amp;&amp; !b</c></p>
               </li>
             </ul>
           </p>
@@ -701,39 +604,27 @@
           <p>
             <ul>
               <li>
-                <p>
-                  <c>!(c == d)</c> is equivalent to <c>c != d</c>
-                </p>
+                <p><c>!(c == d)</c> is equivalent to <c>c != d</c></p>
               </li>
 
               <li>
-                <p>
-                  <c>!(c != d)</c> is equivalent to <c>c == d</c>
-                </p>
+                <p><c>!(c != d)</c> is equivalent to <c>c == d</c></p>
               </li>
 
               <li>
-                <p>
-                  <c>!(c &lt; d)</c> is equivalent to <c>c &gt;= d</c>
-                </p>
+                <p><c>!(c &lt; d)</c> is equivalent to <c>c &gt;= d</c></p>
               </li>
 
               <li>
-                <p>
-                  <c>!(c &gt; d)</c> is equivalent to <c>c &lt;= d</c>
-                </p>
+                <p><c>!(c &gt; d)</c> is equivalent to <c>c &lt;= d</c></p>
               </li>
 
               <li>
-                <p>
-                  <c>!(c &lt;= d)</c> is equivalent to <c>c &gt; d</c>
-                </p>
+                <p><c>!(c &lt;= d)</c> is equivalent to <c>c &gt; d</c></p>
               </li>
 
               <li>
-                <p>
-                  <c>!(c &gt;= d)</c> is equivalent to <c>c &lt; d</c>
-                </p>
+                <p><c>!(c &gt;= d)</c> is equivalent to <c>c &lt; d</c></p>
               </li>
             </ul>
           </p>

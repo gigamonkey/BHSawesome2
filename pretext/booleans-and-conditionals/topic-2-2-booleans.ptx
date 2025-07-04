@@ -64,10 +64,7 @@
 
         <row>
           <cell bottom="minor" right="minor">Less than</cell>
-          <cell bottom="minor" right="minor">
-            <c>a &lt; b</c>
-          </cell>
-
+          <cell bottom="minor" right="minor"><c>a &lt; b</c></cell>
           <cell bottom="minor">
             <c>true</c> if <c>a</c> is less than <c>b</c>, <c>false</c>
             otherwise
@@ -76,10 +73,7 @@
 
         <row>
           <cell bottom="minor" right="minor">Greater than</cell>
-          <cell bottom="minor" right="minor">
-            <c>a &gt; b</c>
-          </cell>
-
+          <cell bottom="minor" right="minor"><c>a &gt; b</c></cell>
           <cell bottom="minor">
             <c>true</c> if <c>a</c> is greater than <c>b</c>, <c>false</c>
             otherwise
@@ -88,10 +82,7 @@
 
         <row>
           <cell bottom="minor" right="minor">Less than or equal</cell>
-          <cell bottom="minor" right="minor">
-            <c>a &lt;= b</c>
-          </cell>
-
+          <cell bottom="minor" right="minor"><c>a &lt;= b</c></cell>
           <cell bottom="minor">
             <c>true</c> if <c>a</c> is less than or equal to <c>b</c>,
             <c>false</c> otherwise
@@ -100,10 +91,7 @@
 
         <row>
           <cell bottom="minor" right="minor">Greater than or equal</cell>
-          <cell bottom="minor" right="minor">
-            <c>a &gt;= b</c>
-          </cell>
-
+          <cell bottom="minor" right="minor"><c>a &gt;= b</c></cell>
           <cell bottom="minor">
             <c>true</c> if <c>a</c> is greater than or equal to <c>b</c>,
             <c>false</c> otherwise
@@ -112,10 +100,7 @@
 
         <row>
           <cell bottom="minor" right="minor">Equals</cell>
-          <cell bottom="minor" right="minor">
-            <c>a &gt;= b</c>
-          </cell>
-
+          <cell bottom="minor" right="minor"><c>a &gt;= b</c></cell>
           <cell bottom="minor">
             <c>true</c> if <c>a</c> is the same value as <c>b</c>, <c>false</c>
             otherwise
@@ -124,10 +109,7 @@
 
         <row>
           <cell right="minor">Not equals</cell>
-          <cell right="minor">
-            <c>a != b</c>
-          </cell>
-
+          <cell right="minor"><c>a != b</c></cell>
           <cell>
             <c>true</c> if <c>a</c> and <c>b</c> are different values,
             <c>false</c> otherwise
@@ -425,30 +407,17 @@ public class RunestoneTests extends CodeTestHelper
         </row>
 
         <row>
-          <cell bottom="minor" right="minor">
-            <c>number % 2 == 0</c>
-          </cell>
-
-          <cell bottom="minor">
-            <c>number</c> is even
-          </cell>
+          <cell bottom="minor" right="minor"><c>number % 2 == 0</c></cell>
+          <cell bottom="minor"><c>number</c> is even</cell>
         </row>
 
         <row>
-          <cell bottom="minor" right="minor">
-            <c>number % 2 != 0</c>
-          </cell>
-
-          <cell bottom="minor">
-            <c>number</c> is odd.
-          </cell>
+          <cell bottom="minor" right="minor"><c>number % 2 != 0</c></cell>
+          <cell bottom="minor"><c>number</c> is odd.</cell>
         </row>
 
         <row>
-          <cell right="minor">
-            <c>number % x == 0</c>
-          </cell>
-
+          <cell right="minor"><c>number % x == 0</c></cell>
           <cell>
             <c>number</c> is evenly divisible by <c>x</c>, a.k.a. <c>number</c>
             is a multiple of <c>x</c>
@@ -611,79 +580,36 @@ public class RunestoneTests extends CodeTestHelper
         </p>
 
         <table>
-          <title>
-            Truth table of <c>!=</c> with <c>boolean</c> values
-          </title>
-
+          <title>Truth table of <c>!=</c> with <c>boolean</c> values</title>
           <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor">
             <row header="yes">
-              <cell>
-                <c>a</c>
-              </cell>
-
-              <cell>
-                <c>b</c>
-              </cell>
-
-              <cell>
-                <c>a != b</c>
-              </cell>
+              <cell><c>a</c></cell>
+              <cell><c>b</c></cell>
+              <cell><c>a != b</c></cell>
             </row>
 
             <row>
-              <cell>
-                <c>false</c>
-              </cell>
-
-              <cell>
-                <c>false</c>
-              </cell>
-
-              <cell>
-                <c>false</c>
-              </cell>
+              <cell><c>false</c></cell>
+              <cell><c>false</c></cell>
+              <cell><c>false</c></cell>
             </row>
 
             <row>
-              <cell>
-                <c>false</c>
-              </cell>
-
-              <cell>
-                <c>true</c>
-              </cell>
-
-              <cell>
-                <c>true</c>
-              </cell>
+              <cell><c>false</c></cell>
+              <cell><c>true</c></cell>
+              <cell><c>true</c></cell>
             </row>
 
             <row>
-              <cell>
-                <c>true</c>
-              </cell>
-
-              <cell>
-                <c>false</c>
-              </cell>
-
-              <cell>
-                <c>true</c>
-              </cell>
+              <cell><c>true</c></cell>
+              <cell><c>false</c></cell>
+              <cell><c>true</c></cell>
             </row>
 
             <row>
-              <cell>
-                <c>true</c>
-              </cell>
-
-              <cell>
-                <c>true</c>
-              </cell>
-
-              <cell>
-                <c>false</c>
-              </cell>
+              <cell><c>true</c></cell>
+              <cell><c>true</c></cell>
+              <cell><c>false</c></cell>
             </row>
           </tabular>
         </table>
@@ -703,8 +629,9 @@ public class RunestoneTests extends CodeTestHelper
       !grounded // true if grounded is false, false otherwise
     </program>
 
-    <p>You can say that <c>!grounded</c> is the <term>logical negation</term> of
-    <c>grounded</c>, similar to how <m>-4</m> is the negation of <m>4</m>.
+    <p>
+      You can say that <c>!grounded</c> is the <term>logical negation</term> of
+      <c>grounded</c>, similar to how <m>-4</m> is the negation of <m>4</m>.
     </p>
 
     <activity label="compoundAnd">
@@ -963,10 +890,7 @@ public class RunestoneTests extends CodeTestHelper
   <subsection xml:id="short-circuit-evaluation">
     <title>Short Circuit Evaluation</title>
     <idx>short circuit evaluation</idx>
-    <idx>
-      <h>conditional</h><h>short circuit evaluation</h>
-    </idx>
-
+    <idx><h>conditional</h><h>short circuit evaluation</h></idx>
     <p>
       Both <c>&amp;&amp;</c> and <c>||</c> use <term>short circuit
       evaluation</term>. That means that the second expression (on the right of
@@ -1189,9 +1113,7 @@ else
                 </li>
 
                 <li>
-                  <p>
-                    <c>!A</c> is <c>true</c> if <c>A</c> is <c>false</c>.
-                  </p>
+                  <p><c>!A</c> is <c>true</c> if <c>A</c> is <c>false</c>.</p>
                 </li>
               </ul>
             </p>
@@ -1439,7 +1361,9 @@ if (x % 2 == 0 &amp;&amp; y % 2 == 0 || x &gt; y)
           </statement>
 
           <feedback id="AP-compound-bools_opt_c">
-            <p>Third cannot be printed out unless First is printed out first.</p>
+            <p>
+              Third cannot be printed out unless First is printed out first.
+            </p>
           </feedback>
         </choice>
 

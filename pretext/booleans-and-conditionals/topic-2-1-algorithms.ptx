@@ -198,7 +198,10 @@
     </p>
 
     <figure align="center">
-      <caption>Flowchart for Selection branching the code into two paths</caption>
+      <caption>
+        Flowchart for Selection branching the code into two paths
+      </caption>
+
       <image source="Unit2-Selection-and-Iteration/Figures/Condition-two.png" width="63%" />
     </figure>
 
@@ -272,7 +275,9 @@
       <choices>
         <choice>
           <statement>
-            <p>You will buy a gift card, a small cake, some candy, and a card.</p>
+            <p>
+              You will buy a gift card, a small cake, some candy, and a card.
+            </p>
           </statement>
 
           <feedback>
