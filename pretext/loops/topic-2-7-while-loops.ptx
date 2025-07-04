@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="topic-2-7-while-loops">
-  <title>While Loops</title>
+  <title>While loops</title>
 
   <idx>loop</idx>
   <idx>looping</idx>
@@ -135,7 +135,7 @@
       There are three steps to writing a counter-controlled <c>while</c> loop.
       They are labeled in <xref ref="three-steps-of-writing-a-loop" text="type-global" />.
 
-      
+
       <ol>
         <li>Initialize the loop variable (before the <c>while</c> loop)</li>
 
@@ -911,7 +911,7 @@
             boolean condition of the loop. Remember the three steps of writing a
             loop:
 
-            
+
             <ol>
               <li>Initialize the loop variable</li>
 
