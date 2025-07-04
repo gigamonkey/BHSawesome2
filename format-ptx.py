@@ -13,7 +13,7 @@ WIDTH = 80
 INLINE_TAGS = {"term", "url", "c", "h", "area", "em", "xref", "m"}
 PRESERVE_WHITESPACE = {"code", "cline", "tests", "pre", "program"}
 ONE_LINE = {"cline"}
-COMPACT = {"cell"}
+COMPACT = {"cell", "idx"}
 DEFAULT_NS = {"xml": "http://www.w3.org/XML/1998/namespace"}
 
 
