@@ -2,32 +2,39 @@
 
 <section xml:id="if-traps">
   <title><c>if</c> statement traps and pitfalls</title>
+
   <introduction>
-    <p>Watch out!</p>
+    <p>
+      While <c>if</c> statements are pretty simple, there are also some common
+      mistakes that programmers make using them. Luckily there are also some
+      practices we can adopt that will make it much less likely that we will
+      make those mistakes. foo
+    </p>
   </introduction>
 
   <subsection>
-    <title>Some <c>if</c> statement traps</title>
+    <title>Always use braces</title>
+
     <p>
       Strictly speaking, the curly braces around the body of the <c>if</c> are
-      there to group multiple statements together into a <term>block</term> that
-      then acts as the body of the <c>if</c> statement.
+      not actually a part of the <c>if</c> syntax. They are a more general
+      feature of Java that in any context where Java expects a single statement,
+      it will also accept a <term>block</term> of statements enclosed in braces.
     </p>
 
     <p>
-      The actual rule is that the body of an <c>if</c> must be either a block
-      enclosed in curly braces <em>or</em> a single statement. So it is legal to
-      leave out the curly braces if the body of the <c>if</c> is just one
-      statement. However it’s a very bad idea. Here’s why.
+      The body of an <c>if</c> is such a place that accepts either a single
+      statement or a block enclosed in braces. So it is legal to leave out the
+      braces if the body of the <c>if</c> is just one statement. Thus this:
     </p>
 
-    <p>If you write this:</p>
     <program language="java">
       if (someBoolean)
         doSomething();
     </program>
 
-    <p>it’s equivalent to this:</p>
+    <p>is equivalent to this:</p>
+
     <program language="java">
       if (someBoolean) {
         doSomething();
@@ -35,8 +42,9 @@
     </program>
 
     <p>
-      So far so good. However if you later decide to add something, say maybe a
-      <c>println</c>, and you aren’t careful you might write this:
+      However you should always write it the second way. Here’s why—if you later
+      decide to add something, say maybe a <c>println</c> before the
+      <c>doSomething()</c>and you aren’t careful you might end up with this:
     </p>
 
     <program language="java">
@@ -45,7 +53,11 @@
         doSomething();
     </program>
 
-    <p>which, despite the indentation, is actually equivalent to this:</p>
+    <p>
+      Despite the structure suggested by the indentation, that is actually
+      equivalent to this:
+    </p>
+
     <program language="java">
       if (someBoolean) {
         System.out.println("About to do something.");
@@ -54,44 +66,162 @@
     </program>
 
     <p>
-      which means now <c>doSomething</c>, which used to be controlled by the
-      <c>if</c>, is now always run and the <c>if</c> only controls the
-      <c>println</c>.
+      Now the <c>doSomething</c>, which used to be controlled by the <c>if</c>,
+      is now always run and the <c>if</c> only controls the <c>println</c>.
     </p>
 
     <p>
-      To avoid this kind of mistsake many programmers alway use curly braces,
-      even when they are not technically required. All the code you seen on the
-      AP exam will be written in that style.
-    </p>
-
-    <p>Also be careful not to write:</p>
-    <program language="java">
-      if (someBoolean); {
-        doSomething();
-      }
-    </program>
-
-    <p>
-      Note the semicolon (;) after the condition. This unfortunately is legal
-      Java but it is equivalent to:
-    </p>
-
-    <program language="java">
-      if (someBoolean) {
-      }
-      doSomething();
-    </program>
-
-    <p>
-      The semicolon is an <term>empty statement</term> that does nothing and
-      that’s the body of the <c>if</c>. And then the block enclosed in curly
-      braces is the next thing that runs after the <c>if</c> statement.
+      The easiest way to avoid this kind of mistake is to always put the bodies
+      of constructs that accept a statement or block in braces, even when they
+      are not technically required. This includes the body of the <c>if</c> and
+      the <c>else</c>, if any. It also applies to the loop constructs we’ll
+      discuss in the next unit. All the code you seen on the AP exam will be
+      written in that style.
     </p>
   </subsection>
 
   <subsection>
+    <title>Dangling elses</title>
+
+    <p>
+      Always using braces also avoids another problem known as a <term>dangling
+      else</term> that occurs when an <c>if</c> is nested inside another
+      <c>if</c> without braces.
+    </p>
+
+    <p>Consider these two bits of code:</p>
+
+    <sidebyside>
+      <listing xml:id="dedented-dangling-else">
+        <program>
+          if (someBoolean)
+              if (anotherBoolean)
+                  doSomething();
+          else
+              doSomethingElse();
+        </program>
+      </listing>
+
+      <listing xml:id="indented-dangling-else">
+        <program>
+          if (someBoolean)
+              if (anotherBoolean)
+                  doSomething();
+              else
+                  doSomethingElse();
+        </program>
+      </listing>
+    </sidebyside>
+
+    <p>
+      Based on the indentation, you might expect those to be equivalent to these
+      two:
+    </p>
+
+    <sidebyside>
+      <listing xml:id="dedented-dangling-else-blocks">
+        <program>
+          if (someBoolean) {
+              if (anotherBoolean) {
+                  doSomething();
+              }
+          } else {
+              doSomethingElse();
+          }
+        </program>
+      </listing>
+
+      <listing xml:id="indented-dangling-else-blocks">
+        <program>
+          if (someBoolean) {
+              if (anotherBoolean) {
+                  doSomething();
+              } else {
+                  doSomethingElse();
+              }
+          }
+        </program>
+      </listing>
+    </sidebyside>
+
+    <p>
+      However, since indentation is not significant in Java, both of the top
+      listings (<xref ref="dedented-dangling-else" text="type-global" /> and
+      <xref ref="indented-dangling-else" text="type-global" />) are equivalent.
+      It’s actually ambiguous how to interpret so Java has a special rule that
+      says in cases like that the <c>else</c> clause always attaches to the
+      closest <c>if</c>. So both are equivalent to <xref
+      ref="indented-dangling-else-blocks" text="type-global" /> regardless of
+      indentation.
+    </p>
+
+    <p>
+      But always using braces means you will be forced to write one or the other
+      and you, and anyone else reading your code, will not have to worry about
+      being mislead by bad indentation and won’t have to remember how Java
+      resolves the ambiguity.
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Watch out for extra semicolons</title>
+
+    <p>Also be careful not to write:</p>
+
+    <program>
+      if (someBoolean);
+          doSomething();
+    </program>
+
+    <p>
+      Note the semicolon (;) at the end of the first line. Unfortunately that is
+      legal Java code but almost certainly not what you meant. It is equivalent
+      to:
+    </p>
+
+    <program language="java">
+      if (someBoolean)
+          ;
+      doSomething();
+    </program>
+
+    <p>
+      A semicolon my itself is actually a statement. It’s called the <term>empty
+      statement</term> and it does nothing. So that code checks if
+      <c>someBoolean</c> is true and if it is does nothing. Then it calls
+      <c>doSomething()</c> regardless.
+    </p>
+
+    <p>
+      You <em>can</em> make this mistake even if you use braces but probably
+      less likely since you’d have to put the semicolon between the closing
+      parentheses and the opening brace rather than at the end of the line:
+    </p>
+
+    <program>
+      if (someBoolean); {
+          doSomething();
+      }
+    </program>
+
+    <p>
+      However, some Java programmers format their code with braces on lines by
+      themselves which would make this mistake easier to make since we’re used
+      to putting semicolons on the ends of lines:
+    </p>
+
+    <program>
+      if (someBoolean);
+      {
+          doSomething();
+      }
+    </program>
+
+  </subsection>
+
+  <subsection>
     <title><c>= != ==</c></title>
+
     <p>
       A common mistake in if statements is using = instead of == in the
       condition by mistake. You should always <term>use ==</term>, not =, in the
@@ -101,248 +231,61 @@
     </p>
   </subsection>
 
-  <subsection xml:id="dangling-else-statements">
-    <title>Dangling Else Statements</title>
-    <p>
-      Sometimes with nested ifs we find a <term>dangling else</term> that could
-      potentially belong to either if statement. The rule is that the else
-      clause will always be a part of the closest unmatched if statement in the
-      same block of code, regardless of indentation.
-    </p>
-
-    <program language="java">
-      <code>
-        // Nested if with dangling else
-        if (boolean expression)
-           if (boolean expression)
-              Do statement;
-           else  // belongs to closest if
-              Do other statement;
-      </code>
-    </program>
-
-    <activity label="danglingelse">
-      <statement>
-        <p>
-          Try the following code with a dangling else. Notice that the
-          indentation does not matter to the compiler (but you should make it
-          your habit to use good indentation just as a best practice). How could
-          you get the else to belong to the first if statement?
-        </p>
-      </statement>
-
-      <program interactive="activecode" language="java">
-        <code>
-          import java.util.Scanner;
-
-          public class DanglingElseTest
-          {
-              public static void main(String[] args)
-              {
-                  Scanner in = new Scanner(System.in);
-
-                  boolean sunny = in.nextBoolean();
-                  boolean hot = in.nextBoolean();
-                  System.out.println("sunny = " + sunny);
-                  System.out.println("hot = " + hot);
-
-                  if (sunny)
-                      if (hot)
-                         System.out.println("Head for the beach!");
-                    else // Which if is else attached to??
-                      System.out.println("Bring your umbrella!");
-              }
-          }
-        </code>
-
-        <stdin>
-          true false
-        </stdin>
-
-        <tests>
-          <![CDATA[
-
-          import static org.junit.Assert.*;
-          import org.junit.*;
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-
-              public RunestoneTests()
-              {
-                  //super("DanglingElseTest", input1); // for Repl.it
-                  super("DanglingElseTest"); // for Book
-              }
-
-              private static String input1 = "true false";
-              private static String output1 = "Head for the beach!";
-              private static String output2 = "Bring your umbrella!";
-
-              @Test
-              public void test02()
-              {
-                  String x = "true false";
-                  String result = "sunny = true\nhot = false\n";
-                  String output = getMethodOutputWithInput("main", x);
-
-                  boolean passed = !output.contains(output1) && !output.contains(output2);
-
-                  passed =
-                  getResults(
-                      result,
-                      output,
-                      "Result for input = " + x,
-                      passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-                  public void test01()
-                  {
-                      String x = "true true";
-                      String result = "sunny = true\nhot = true\nHead for the beach!";
-                      String output = getMethodOutputWithInput("main", x);
-
-                      boolean passed = output.contains(output1) && !output.contains(output2);
-
-                      passed =
-                      getResults(
-                          result,
-                          output,
-                          "Result for input = " + x,
-                          passed);
-                      assertTrue(passed);
-                  }
-
-              @Test
-                  public void test04()
-                  {
-                      String x = "false false";
-                      String result = "sunny = false\nhot = false\nBring your umbrella!";
-                      String output = getMethodOutputWithInput("main", x);
-
-                      boolean passed = output.contains(output2) && !output.contains(output1);
-
-                      passed =
-                      getResults(
-                          result,
-                          output,
-                          "Result for input = " + x,
-                          passed);
-                      assertTrue(passed);
-                  }
-
-              @Test
-                  public void test03()
-                  {
-                      String x = "false true";
-                      String result = "sunny = false\nhot = true\nBring your umbrella!";
-                      String output = getMethodOutputWithInput("main", x);
-
-                      boolean passed = output.contains(output2) && !output.contains(output1);
-
-                      passed =
-                      getResults(
-                          result,
-                          output,
-                          "Result for input = " + x,
-                          passed);
-                      assertTrue(passed);
-                  }
-          }
-
-          ]]>
-        </tests>
-      </program>
-    </activity>
+  <subsection>
+    <title>Summary</title>
 
     <p>
-      You can use curly braces (<c>{}</c>) to enclose a nested if and have the
-      else clause belong to the top level if clause like below:
-    </p>
+      <ul>
+        <li>
+          <p>
+            Always use braces (<c>{</c> and <c>}</c>) to enclose the body of an
+            <c>if</c> or <c>else</c>, even if it’s just one statement.
+          </p>
+        </li>
 
-    <program language="java">
-      <code>
-        // Nested if with dangling else
-        if (boolean expression)
-        {
-           if (boolean expression)
-              Do this statement;
-        }
-        else  // belongs to first if
-          Do that statement;
-      </code>
-    </program>
+        <li>
+          <p>
+            Be careful not to put in a semicolon <c>;</c> immediately after the
+            condition in the <c>if</c> even if it is on a line by itself.
+          </p>
+        </li>
 
-    <p>
-      In fact many experienced Java programmers
-      <title_reference>always</title_reference> use curly braces, even when they
-      are not technically required to avoid this kind of confusion.
+        <li>
+          <p>
+            Always use <c>==</c>, not <c>=</c>, in the condition of an if
+            statement to test a variable. One <c>=</c> assigns, two <c>==</c>
+            tests!
+          </p>
+        </li>
+
+        <li>
+          <p>
+            The <c>else</c> statement matches with the closest <c>if</c>
+            statement. If you want to match an <c>else</c> with a different
+            <c>if</c> statement, you need to use curly braces to group the
+            <c>if</c> and <c>else</c> together.
+          </p>
+        </li>
+      </ul>
     </p>
   </subsection>
 
   <subsection>
-    <title>Common Errors with If Statements</title>
-    <p>
-      Here are some rules to follow with if statements to avoid some common
-      errors:
-    </p>
-
-    <blockquote>
-      <p>
-        <ul>
-          <li>
-            <p>
-              Always use curly braces (<c>{</c> and <c>}</c>) to enclose the
-              block of statements under the if condition. Java doesn’t care if
-              you indent the code—it goes by the <c>{ }</c>.
-            </p>
-          </li>
-
-          <li>
-            <p>
-              Don’t put in a semicolon <c>;</c> after the first line of the if
-              statement, <c>if (test);</c>. The <c>if</c> statement is a
-              multiline block of code that starts with the <c>if</c> condition
-              and then <c>{</c> the body of the if statement <c>}</c>.
-            </p>
-          </li>
-
-          <li>
-            <p>
-              Always use <c>==</c>, not <c>=</c>, in the condition of an if
-              statement to test a variable. One <c>=</c> assigns, two <c>==</c>
-              tests!
-            </p>
-          </li>
-
-          <li>
-            <p>
-              The <c>else</c> statement matches with the closest <c>if</c>
-              statement. If you want to match an <c>else</c> with a different
-              <c>if</c> statement, you need to use curly braces to group the
-              <c>if</c> and <c>else</c> together.
-            </p>
-          </li>
-        </ul>
-      </p>
-    </blockquote>
+    <title>Practice</title>
 
     <activity label="if-missing-curlies">
-      <statement>
-        <p>
-          The code below doesn’t work as expected. Fix it to only print <c>Wear
-          a coat</c> and <c>Wear gloves</c> when isCold is true.
-        </p>
-      </statement>
+      <title>Fix the <c>if</c> bugs</title>
+
+      <p>
+        The code below doesn’t work as the author intended. It was supposed to
+        print both <c>Wear a coat</c> and <c>Wear gloves</c> but only when
+        <c>isCold</c> is <c>true</c>. Fix it so it does what they wanted it to.
+      </p>
 
       <program interactive="activecode" language="java">
         <code>
-          public class Test1
-          {
-              public static void main(String[] args)
-              {
+          public class Test1 {
+              public static void main(String[] args) {
                   boolean isCold = false;
                   if (isCold = true);
                       System.out.println("Wear a coat");
@@ -355,9 +298,7 @@
           <![CDATA[
 
           import static org.junit.Assert.*;
-
           import org.junit.*;
-
           import java.io.*;
 
           public class RunestoneTests extends CodeTestHelper
@@ -387,12 +328,5 @@
         </tests>
       </program>
     </activity>
-  </subsection>
-
-  <subsection>
-    <title>Summary</title>
-    <p>
-      <ul />
-    </p>
   </subsection>
 </section>
