@@ -133,24 +133,25 @@
               }
           }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Take an umbrella! \nDrive carefully";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Take an umbrella! \nDrive carefully";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -266,25 +267,26 @@ public class RunestoneTests extends CodeTestHelper
               }
           }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Let's go to the game\nafter conditional";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Let's go to the game\nafter conditional";
 
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -413,10 +415,12 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
+          <![CDATA[
+
           public class TryElseIf {
               public static void main(String[] args) {
                   int x = 2;
-                  if (x &lt; 0) {
+                  if (x < 0) {
                       System.out.println("x is negative");
                   } else if (x == 0) {
                       System.out.println("x is zero");
@@ -426,85 +430,92 @@ public class RunestoneTests extends CodeTestHelper
                   System.out.println("after conditional");
               }
           }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
-import org.junit.*;
-import java.io.*;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
+          <![CDATA[
 
-public class RunestoneTests extends CodeTestHelper {
-    public RunestoneTests() {
-        super("TryElseIf"); // for Book
-    }
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
+          import java.util.regex.Pattern;
+          import java.util.regex.Matcher;
 
-    @Test
-    public void test01() {
-        String code = getCode();
-        String actual = "";
-        int num = 2;
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("TryElseIf"); // for Book
+              }
 
-        Pattern pattern = Pattern.compile("x\\s*=\\s*(-?\\d+)");
-        Matcher matcher = pattern.matcher(code);
-        if (matcher.find()) {
-            actual = matcher.group();
-        }
+              @Test
+              public void test01() {
+                  String code = getCode();
+                  String actual = "";
+                  int num = 2;
 
-        boolean passed = !stringMatch(code, "x = 2;");
+                  Pattern pattern = Pattern.compile("x\\s*=\\s*(-?\\d+)");
+                  Matcher matcher = pattern.matcher(code);
+                  if (matcher.find()) {
+                      actual = matcher.group();
+                  }
 
-        getResults("x = ?;", actual, "Checking that x has been changed.", passed);
-        assertTrue(passed);
-    }
+                  boolean passed = !stringMatch(code, "x = 2;");
 
-    @Test
-    public void test02() {
-        String code = getCode();
-        String actual = "";
-        int num = 2;
+                  getResults("x = ?;", actual, "Checking that x has been changed.", passed);
+                  assertTrue(passed);
+              }
 
-        Pattern pattern = Pattern.compile("x\\s*=\\s*(-?\\d+)");
-        Matcher matcher = pattern.matcher(code);
-        if (matcher.find()) {
-            actual = matcher.group();
-            //num = Integer.parseInt(matcher.group(1));
-        }
+              @Test
+              public void test02() {
+                  String code = getCode();
+                  String actual = "";
+                  int num = 2;
 
-        boolean passed = actual.contains("-") || actual.contains("0");
+                  Pattern pattern = Pattern.compile("x\\s*=\\s*(-?\\d+)");
+                  Matcher matcher = pattern.matcher(code);
+                  if (matcher.find()) {
+                      actual = matcher.group();
+                      //num = Integer.parseInt(matcher.group(1));
+                  }
 
-        getResults("x &lt;= 0", actual, "Checking that x is zero or negative", passed);
-        assertTrue(passed);
-    }
+                  boolean passed = actual.contains("-") || actual.contains("0");
 
-    @Test
-    public void test03() {
-        String output = getMethodOutput("main").split("\n")[0];
-        String expect = "x is negative";
+                  getResults("x <= 0", actual, "Checking that x is zero or negative", passed);
+                  assertTrue(passed);
+              }
 
-        String code = getCode();
-        String actual = "";
-        int num = 2;
+              @Test
+              public void test03() {
+                  String output = getMethodOutput("main").split("\n")[0];
+                  String expect = "x is negative";
 
-        Pattern pattern = Pattern.compile("x\\s*=\\s*(-?\\d+)");
-        Matcher matcher = pattern.matcher(code);
-        if (matcher.find()) {
-            actual = matcher.group();
-            num = Integer.parseInt(matcher.group(1));
-        }
+                  String code = getCode();
+                  String actual = "";
+                  int num = 2;
 
-        if (num == 0) expect = "x is zero";
+                  Pattern pattern = Pattern.compile("x\\s*=\\s*(-?\\d+)");
+                  Matcher matcher = pattern.matcher(code);
+                  if (matcher.find()) {
+                      actual = matcher.group();
+                      num = Integer.parseInt(matcher.group(1));
+                  }
 
-        boolean passed = getResults(expect, output, "Checking for correct output");
-        assertTrue(passed);
-    }
+                  if (num == 0) expect = "x is zero";
 
-    private boolean stringMatch(String str1, String str2) {
-        str1 = str1.replaceAll("\\s", "");
-        str2 = str2.replaceAll("\\s", "");
+                  boolean passed = getResults(expect, output, "Checking for correct output");
+                  assertTrue(passed);
+              }
 
-        return str1.contains(str2);
-    }
-}
+              private boolean stringMatch(String str1, String str2) {
+                  str1 = str1.replaceAll("\\s", "");
+                  str2 = str2.replaceAll("\\s", "");
+
+                  return str1.contains(str2);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -534,18 +545,22 @@ public class RunestoneTests extends CodeTestHelper {
         <p>What does the following code print when x has been set to -5?</p>
         <program language="java">
           <code>
-if (x &lt; 0)
-{
-   System.out.println("x is negative");
-}
-else if (x == 0)
-{
-   System.out.println("x is zero");
-}
-else
-{
-   System.out.println("x is positive");
-}
+            <![CDATA[
+
+            if (x < 0)
+            {
+               System.out.println("x is negative");
+            }
+            else if (x == 0)
+            {
+               System.out.println("x is zero");
+            }
+            else
+            {
+               System.out.println("x is positive");
+            }
+
+            ]]>
           </code>
         </program>
       </statement>
@@ -588,18 +603,22 @@ else
         <p>What does the following code print when x has been set to 2000?</p>
         <program language="java">
           <code>
-if (x &lt; 0)
-{
-   System.out.println("x is negative");
-}
-else if (x == 0)
-{
-   System.out.println("x is zero");
-}
-else
-{
-   System.out.println("x is positive");
-}
+            <![CDATA[
+
+            if (x < 0)
+            {
+               System.out.println("x is negative");
+            }
+            else if (x == 0)
+            {
+               System.out.println("x is zero");
+            }
+            else
+            {
+               System.out.println("x is positive");
+            }
+
+            ]]>
           </code>
         </program>
       </statement>
@@ -648,22 +667,26 @@ else
         <p>What does the following code print when x has been set to .8?</p>
         <program language="java">
           <code>
-if (x &lt; .25)
-{
-    System.out.println("first quartile");
-}
-else if (x &lt; .5)
-{
-    System.out.println("second quartile");
-}
-else if (x &lt; .75)
-{
-    System.out.println("third quartile");
-}
-else
-{
-    System.out.println("fourth quartile");
-}
+            <![CDATA[
+
+            if (x < .25)
+            {
+                System.out.println("first quartile");
+            }
+            else if (x < .5)
+            {
+                System.out.println("second quartile");
+            }
+            else if (x < .75)
+            {
+                System.out.println("third quartile");
+            }
+            else
+            {
+                System.out.println("fourth quartile");
+            }
+
+            ]]>
           </code>
         </program>
       </statement>
@@ -732,148 +755,156 @@ else
 
       <program interactive="activecode" language="java">
         <code>
-import java.util.Scanner;
+          <![CDATA[
 
-public class IfDebug
-{
-    public static void main(String[] args)
-    {
-        Scanner scan = new Scanner(System.in);
-        int score = scan.nextInt();
+          import java.util.Scanner;
 
-        String grade = "";
+          public class IfDebug
+          {
+              public static void main(String[] args)
+              {
+                  Scanner scan = new Scanner(System.in);
+                  int score = scan.nextInt();
 
-        if (score &gt;= 90)
-        {
-            grade = "A";
-        }
-        if (score &gt;= 80)
-        {
-            grade = "B";
-        }
-        if (score &gt;= 70)
-        {
-            grade = "C";
-        }
-        if (score &gt;= 60)
-        {
-            grade = "D";
-        }
-        else
-        {
-            grade = "F";
-        }
+                  String grade = "";
 
-        System.out.println(score + " = " + grade);
-    }
-}
+                  if (score >= 90)
+                  {
+                      grade = "A";
+                  }
+                  if (score >= 80)
+                  {
+                      grade = "B";
+                  }
+                  if (score >= 70)
+                  {
+                      grade = "C";
+                  }
+                  if (score >= 60)
+                  {
+                      grade = "D";
+                  }
+                  else
+                  {
+                      grade = "F";
+                  }
+
+                  System.out.println(score + " = " + grade);
+              }
+          }
+
+          ]]>
         </code>
-        <stdin>93</stdin>
+
+        <stdin>
+          93
+        </stdin>
+
         <tests>
-import static org.junit.Assert.*;
-import org.junit.*;
-import java.io.*;
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
+          public class RunestoneTests extends CodeTestHelper
+          {
 
-    public RunestoneTests()
-    {
-        super("IfDebug"); // for Book
-    }
+              public RunestoneTests()
+              {
+                  super("IfDebug"); // for Book
+              }
 
-    private static String input1 = "93";
+              private static String input1 = "93";
 
-    @Test
-    public void test01()
-    {
-        String x = "95";
-        String result = "A";
-        String output = getMethodOutputWithInput("main", x);
+              @Test
+              public void test01()
+              {
+                  String x = "95";
+                  String result = "A";
+                  String output = getMethodOutputWithInput("main", x);
 
-        boolean passed = output.contains(result);
+                  boolean passed = output.contains(result);
 
-        passed =
-        getResults(
-            x + " = " + result,
-            output,
-            "Result for score = " + x,
-            passed);
-        assertTrue(passed);
-    }
+                  passed =
+                  getResults(
+                      x + " = " + result,
+                      output,
+                      "Result for score = " + x,
+                      passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test02()
-    {
-        String x = "85";
-        String result = "B";
-        String output = getMethodOutputWithInput("main", x);
+              @Test
+              public void test02()
+              {
+                  String x = "85";
+                  String result = "B";
+                  String output = getMethodOutputWithInput("main", x);
 
-        boolean passed = output.contains(result);
+                  boolean passed = output.contains(result);
 
-        passed =
-        getResults(
-            x + " = " + result,
-            output,
-            "Result for score = " + x,
-            passed);
-        assertTrue(passed);
-    }
+                  passed =
+                  getResults(
+                      x + " = " + result,
+                      output,
+                      "Result for score = " + x,
+                      passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test03()
-    {
-        String x = "75";
-        String result = "C";
-        String output = getMethodOutputWithInput("main", x);
+              @Test
+              public void test03()
+              {
+                  String x = "75";
+                  String result = "C";
+                  String output = getMethodOutputWithInput("main", x);
 
-        boolean passed = output.contains(result);
+                  boolean passed = output.contains(result);
 
-        passed =
-        getResults(
-            x + " = " + result,
-            output,
-            "Result for score = " + x,
-            passed);
-        assertTrue(passed);
-    }
+                  passed =
+                  getResults(
+                      x + " = " + result,
+                      output,
+                      "Result for score = " + x,
+                      passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test04()
-    {
-        String x = "65";
-        String result = "D";
-        String output = getMethodOutputWithInput("main", x);
+              @Test
+              public void test04()
+              {
+                  String x = "65";
+                  String result = "D";
+                  String output = getMethodOutputWithInput("main", x);
 
-        boolean passed = output.contains(result);
+                  boolean passed = output.contains(result);
 
-        passed =
-        getResults(
-            x + " = " + result,
-            output,
-            "Result for score = " + x,
-            passed);
-        assertTrue(passed);
-    }
+                  passed =
+                  getResults(
+                      x + " = " + result,
+                      output,
+                      "Result for score = " + x,
+                      passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test05()
-    {
-        String x = "55";
-        String result = "F";
-        String output = getMethodOutputWithInput("main", x);
+              @Test
+              public void test05()
+              {
+                  String x = "55";
+                  String result = "F";
+                  String output = getMethodOutputWithInput("main", x);
 
-        boolean passed = output.contains(result);
+                  boolean passed = output.contains(result);
 
-        passed =
-        getResults(
-            x + " = " + result,
-            output,
-            "Result for score = " + x,
-            passed);
-        assertTrue(passed);
-    }
-}
+                  passed =
+                  getResults(
+                      x + " = " + result,
+                      output,
+                      "Result for score = " + x,
+                      passed);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -890,90 +921,94 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-import java.util.Scanner;
+          import java.util.Scanner;
 
-public class BatteryTest
-{
-    public static void main(String[] args)
-    {
-        Scanner scan = new Scanner(System.in);
-        int battery = scan.nextInt();
-        System.out.println("battery = " + battery);
+          public class BatteryTest
+          {
+              public static void main(String[] args)
+              {
+                  Scanner scan = new Scanner(System.in);
+                  int battery = scan.nextInt();
+                  System.out.println("battery = " + battery);
 
-        System.out.println("All okay!");
-    }
-}
+                  System.out.println("All okay!");
+              }
+          }
         </code>
-        <stdin>75</stdin>
+
+        <stdin>
+          75
+        </stdin>
+
         <tests>
-import static org.junit.Assert.*;
-import org.junit.*;
-import java.io.*;
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
+          public class RunestoneTests extends CodeTestHelper
+          {
 
-    public RunestoneTests()
-    {
-        super("BatteryTest"); // for Book
-    }
+              public RunestoneTests()
+              {
+                  super("BatteryTest"); // for Book
+              }
 
-    private static String input1 = "93";
+              private static String input1 = "93";
 
-    @Test
-    public void test01()
-    {
-        String x = "95";
-        String result = "All okay!";
-        String output = getMethodOutputWithInput("main", x);
+              @Test
+              public void test01()
+              {
+                  String x = "95";
+                  String result = "All okay!";
+                  String output = getMethodOutputWithInput("main", x);
 
-        boolean passed = output.contains(result);
+                  boolean passed = output.contains(result);
 
-        passed =
-        getResults(
-            result,
-            output,
-            "Result for battery = " + x,
-            passed);
-        assertTrue(passed);
-    }
+                  passed =
+                  getResults(
+                      result,
+                      output,
+                      "Result for battery = " + x,
+                      passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test02()
-    {
-        String x = "100";
-        String result = "Unplug your phone!";
-        String output = getMethodOutputWithInput("main", x);
+              @Test
+              public void test02()
+              {
+                  String x = "100";
+                  String result = "Unplug your phone!";
+                  String output = getMethodOutputWithInput("main", x);
 
-        boolean passed = output.contains(result);
+                  boolean passed = output.contains(result);
 
-        passed =
-        getResults(
-            result,
-            output,
-            "Result for battery = " + x,
-            passed);
-        assertTrue(passed);
-    }
+                  passed =
+                  getResults(
+                      result,
+                      output,
+                      "Result for battery = " + x,
+                      passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test03()
-    {
-        String x = "45";
-        String result = "Plug in your phone!";
-        String output = getMethodOutputWithInput("main", x);
+              @Test
+              public void test03()
+              {
+                  String x = "45";
+                  String result = "Plug in your phone!";
+                  String output = getMethodOutputWithInput("main", x);
 
-        boolean passed = output.contains(result);
+                  boolean passed = output.contains(result);
 
-        passed =
-        getResults(
-            result,
-            output,
-            "Result for battery = " + x,
-            passed);
-        assertTrue(passed);
-    }
-}
+                  passed =
+                  getResults(
+                      result,
+                      output,
+                      "Result for battery = " + x,
+                      passed);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -1010,112 +1045,117 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class Magic8Ball
-{
-    public static void printRandomResponse()
-    {
-        // 1. Get a random number from 1 to 8
+          public class Magic8Ball
+          {
+              public static void printRandomResponse()
+              {
+                  // 1. Get a random number from 1 to 8
 
-        // 2. Use if statements to test the random number
-        //    and print out 1 of 8 random responses
+                  // 2. Use if statements to test the random number
+                  //    and print out 1 of 8 random responses
 
-     }
+               }
 
-     public static void lucky()
-     {
-         // 3. Use Math.random() to toss a coin to choose between 2 choices
-         // 4. Use an if/else statement to test the random number
-         //    and print out "Lucky!" or else "No Luck!"
+               public static void lucky()
+               {
+                   // 3. Use Math.random() to toss a coin to choose between 2 choices
+                   // 4. Use an if/else statement to test the random number
+                   //    and print out "Lucky!" or else "No Luck!"
 
-     }
+               }
 
-     public static void main(String[] args)
-     {
-         String question = "Will it rain tomorrow?";
-         System.out.println(question);
-         printRandomResponse();
-         lucky();
-     }
- }
+               public static void main(String[] args)
+               {
+                   String question = "Will it rain tomorrow?";
+                   System.out.println(question);
+                   printRandomResponse();
+                   lucky();
+               }
+           }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
-import java.util.ArrayList;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("Magic8Ball");
-    }
+          import java.io.*;
+          import java.util.ArrayList;
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("Magic8Ball");
+              }
 
-        boolean passed = output.length() &gt; 0;
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
 
-        passed =
-                getResults(
-                        "Output length &gt; 0",
-                        "Output length of " + output.length(),
-                        "Prints a statement",
-                        passed);
-        assertTrue(passed);
-    }
+                  boolean passed = output.length() > 0;
 
-    @Test
-    public void test2()
-    {
-        String[] output = new String[200];
+                  passed =
+                          getResults(
+                                  "Output length > 0",
+                                  "Output length of " + output.length(),
+                                  "Prints a statement",
+                                  passed);
+                  assertTrue(passed);
+              }
 
-        for (int i = 0; i &lt; output.length; i++)
-        {
-            output[i] = getMethodOutput("main");
-        }
+              @Test
+              public void test2()
+              {
+                  String[] output = new String[200];
 
-        ArrayList&lt;String&gt; lines = new ArrayList&lt;String&gt;();
+                  for (int i = 0; i < output.length; i++)
+                  {
+                      output[i] = getMethodOutput("main");
+                  }
 
-        for (int i = 0; i &lt; output.length; i++)
-        {
-            if (!lines.contains(output[i]))
-            {
-                lines.add(output[i]);
-            }
-        }
+                  ArrayList<String> lines = new ArrayList<String>();
 
-        int responses = lines.size();
-        boolean passed = lines.size() &gt;= 8;
+                  for (int i = 0; i < output.length; i++)
+                  {
+                      if (!lines.contains(output[i]))
+                      {
+                          lines.add(output[i]);
+                      }
+                  }
 
-        passed = getResults("8", "" + responses, "Unique responses", passed);
-        assertTrue(passed);
-    }
+                  int responses = lines.size();
+                  boolean passed = lines.size() >= 8;
 
-    @Test
-    public void test3()
-    {
-        String code = getCodeWithoutComments();
+                  passed = getResults("8", "" + responses, "Unique responses", passed);
+                  assertTrue(passed);
+              }
 
-        int numIfs = countOccurences(code, "if");
+              @Test
+              public void test3()
+              {
+                  String code = getCodeWithoutComments();
 
-        boolean passed = numIfs &gt;= 8;
+                  int numIfs = countOccurences(code, "if");
 
-        passed = getResults("8 or more", "" + numIfs, "Code has at least 8 if statements", passed);
-        assertTrue(passed);
-    }
-    @Test
-    public void testElse()
-    {
-        String target = "else";
-        boolean passed = checkCodeContains("else statement in lucky() method", target);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = numIfs >= 8;
+
+                  passed = getResults("8 or more", "" + numIfs, "Code has at least 8 if statements", passed);
+                  assertTrue(passed);
+              }
+              @Test
+              public void testElse()
+              {
+                  String target = "else";
+                  boolean passed = checkCodeContains("else statement in lucky() method", target);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -1199,17 +1239,17 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-// A single if statement
-if (boolean expression)
-    Do statement;
-// A block if statement
-if (boolean expression)
-{
-   Do Statement1;
-   Do Statement2;
-   ...
-   Do StatementN;
-}
+        // A single if statement
+        if (boolean expression)
+            Do statement;
+        // A block if statement
+        if (boolean expression)
+        {
+           Do Statement1;
+           Do Statement2;
+           ...
+           Do StatementN;
+        }
       </code>
     </program>
 
@@ -1233,14 +1273,14 @@ if (boolean expression)
 
     <program language="java">
       <code>
-if (boolean expression)
-{
-    Do statement;
-}
-else
-{
-    Do other statement;
-}
+        if (boolean expression)
+        {
+            Do statement;
+        }
+        else
+        {
+            Do other statement;
+        }
       </code>
     </program>
 
@@ -1267,25 +1307,29 @@ else
         <p>Consider the following code segment.</p>
         <program language="java">
           <code>
-int speed = 35;
-boolean rain = false;
+            <![CDATA[
 
-if (rain)
-{
-   speed -= 10;
-}
+            int speed = 35;
+            boolean rain = false;
 
-if (rain == false)
-{
-  speed += 5;
-}
+            if (rain)
+            {
+               speed -= 10;
+            }
 
-if (speed &gt; 35)
-{
-   speed = speed - 2;
-}
+            if (rain == false)
+            {
+              speed += 5;
+            }
 
-System.out.println(speed);
+            if (speed > 35)
+            {
+               speed = speed - 2;
+            }
+
+            System.out.println(speed);
+
+            ]]>
           </code>
         </program>
 
@@ -1356,19 +1400,23 @@ System.out.println(speed);
         <p>Consider the following code segment.</p>
         <program language="java">
           <code>
-int x = 5;
+            <![CDATA[
 
-if (x &lt; 5)
-{
-   x = 3 * x;
-}
+            int x = 5;
 
-if (x % 2 == 1)
-{
-   x = x / 2;
-}
+            if (x < 5)
+            {
+               x = 3 * x;
+            }
 
-System.out.print(2*x + 1);
+            if (x % 2 == 1)
+            {
+               x = x / 2;
+            }
+
+            System.out.print(2*x + 1);
+
+            ]]>
           </code>
         </program>
 
@@ -1442,19 +1490,23 @@ System.out.print(2*x + 1);
 
         <program language="java">
           <code>
-if (x &gt;= 80)
-{
-   System.out.println("High");
-}
+            <![CDATA[
 
-if (x &gt;= 50)
-{
-  System.out.println("Middle");
-}
-else
-{
-   System.out.println("Low");
-}
+            if (x >= 80)
+            {
+               System.out.println("High");
+            }
+
+            if (x >= 50)
+            {
+              System.out.println("Middle");
+            }
+            else
+            {
+               System.out.println("Low");
+            }
+
+            ]]>
           </code>
         </program>
 
@@ -1539,42 +1591,46 @@ else
 
         <program language="java">
           <code>
-I.   if (x &gt; 66)
-     {
-       System.out.println("High");
-     }
-     else if (x &gt; 33)
-     {
-       System.out.println("Medium");
-     }
-     else {
-       System.out.println("Low");
-     }
+            <![CDATA[
 
-II.  if (x &lt; 33)
-     {
-       System.out.println("Low");
-     }
-     else if (x &lt; 66)
-     {
-       System.out.println("Medium");
-     }
-     else {
-       System.out.println("High");
-     }
+            I.   if (x > 66)
+                 {
+                   System.out.println("High");
+                 }
+                 else if (x > 33)
+                 {
+                   System.out.println("Medium");
+                 }
+                 else {
+                   System.out.println("Low");
+                 }
 
-III. if (x &gt;= 66)
-     {
-       System.out.println("High");
-     }
-     if (x &gt;= 33)
-     {
-       System.out.println("Medium");
-     }
-     if (x &lt; 33)
-     {
-       System.out.println("Low");
-     }
+            II.  if (x < 33)
+                 {
+                   System.out.println("Low");
+                 }
+                 else if (x < 66)
+                 {
+                   System.out.println("Medium");
+                 }
+                 else {
+                   System.out.println("High");
+                 }
+
+            III. if (x >= 66)
+                 {
+                   System.out.println("High");
+                 }
+                 if (x >= 33)
+                 {
+                   System.out.println("Medium");
+                 }
+                 if (x < 33)
+                 {
+                   System.out.println("Low");
+                 }
+
+            ]]>
           </code>
         </program>
       </statement>

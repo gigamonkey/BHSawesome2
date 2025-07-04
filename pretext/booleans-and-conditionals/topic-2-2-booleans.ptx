@@ -160,43 +160,52 @@
 
       <program interactive="activecode" language="java">
         <code>
+          <![CDATA[
+
           public class BoolTest2 {
               public static void main(String[] args) {
                   int age = 15;
                   int year = 14;
                   // Will these print true or false?
-                  System.out.println(age &lt; year);
-                  System.out.println(age &gt; year);
+                  System.out.println(age < year);
+                  System.out.println(age > year);
                   // 1. Set year to 15
                   // 2. Print whether age is less than or equal to year
               }
           }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "false\ntrue\ntrue\n";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-     @Test
-     public void test1()
-     {
-         String code ="&lt;=";
-         boolean passed = checkCodeContains(code);
-         assertTrue(passed);
-     }
-}
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "false\ntrue\ntrue\n";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+               @Test
+               public void test1()
+               {
+                   String code ="<=";
+                   boolean passed = checkCodeContains(code);
+                   assertTrue(passed);
+               }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -270,7 +279,9 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <program>
-      Math.abs(computedMeters - expectedMeters) &lt; 0.0001
+      <![CDATA[
+      Math.abs(computedMeters - expectedMeters) < 0.0001
+      ]]>
     </program>
 
     <activity label="BooleanExps">
@@ -337,43 +348,44 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class BoolTest1
-{
-    public static void main(String[] args)
-    {
-        int age = 15;
-        int year = 14;
-        // Will this print true or false?
-        System.out.println(age == year);
-        // Will this print true or false?
-        System.out.println(age != year);
+          public class BoolTest1
+          {
+              public static void main(String[] args)
+              {
+                  int age = 15;
+                  int year = 14;
+                  // Will this print true or false?
+                  System.out.println(age == year);
+                  // Will this print true or false?
+                  System.out.println(age != year);
 
-        // 1. Add code that sets year to 15
-        // 2. Print out whether age equals year
-        // 3. Print out whether age does not equal year
+                  // 1. Add code that sets year to 15
+                  // 2. Print out whether age equals year
+                  // 3. Print out whether age does not equal year
 
-    }
-}
+              }
+          }
         </code>
+
         <tests>
-// should pass if/when they run code
-import static org.junit.Assert.*;
+          // should pass if/when they run code
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "false\ntrue\ntrue\nfalse\n";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "false\ntrue\ntrue\nfalse\n";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -450,53 +462,54 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class BoolRem
-{
-    public static void main(String[] args)
-    {
-        int age1 = 15;
-        int age2 = 16;
+          public class BoolRem
+          {
+              public static void main(String[] args)
+              {
+                  int age1 = 15;
+                  int age2 = 16;
 
-        System.out.println("Remainder of " + age1 + "/2 is " + (age1 % 2));
-        System.out.println("Remainder of " + age2 + "/2 is " + (age2 % 2));
-        System.out.println("Is " + age1 + " even? " + (age1 % 2 == 0));
-        System.out.println("Is " + age2 + " even? " + (age2 % 2 == 0));
+                  System.out.println("Remainder of " + age1 + "/2 is " + (age1 % 2));
+                  System.out.println("Remainder of " + age2 + "/2 is " + (age2 % 2));
+                  System.out.println("Is " + age1 + " even? " + (age1 % 2 == 0));
+                  System.out.println("Is " + age2 + " even? " + (age2 % 2 == 0));
 
-        // Add a line that prints out whether age1 is divisible by 3
+                  // Add a line that prints out whether age1 is divisible by 3
 
-    }
-}
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect =
-                "Remainder of 15/2 is 1\n"
-                    + "Remainder of 16/2 is 0\n"
-                    + "Is 15 even? false \n"
-                    + "Is 16 even? true\ntrue\n";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-    @Test
-    public void testBool() throws IOException
-    {
-        String target = "age1 % 3 == 0";
-        boolean passed = checkCodeContains("boolean check for divisibility by 3", target);
-        assertTrue(passed);
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect =
+                          "Remainder of 15/2 is 1\n"
+                              + "Remainder of 16/2 is 0\n"
+                              + "Is 15 even? false \n"
+                              + "Is 16 even? true\ntrue\n";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+              @Test
+              public void testBool() throws IOException
+              {
+                  String target = "age1 % 3 == 0";
+                  boolean passed = checkCodeContains("boolean check for divisibility by 3", target);
+                  assertTrue(passed);
+              }
 
-}
+          }
         </tests>
       </program>
     </activity>
@@ -548,7 +561,9 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <program>
-      likesIceCream &amp;&amp; likesChocolate // true if, and only if, both variables are true
+      <![CDATA[
+      likesIceCream && likesChocolate // true if, and only if, both variables are true
+      ]]>
     </program>
 
     <p>
@@ -647,50 +662,59 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode">
         <code>
+          <![CDATA[
+
           public class Test1 {
               public static void main(String[] args) {
                   boolean cleanedRoom = true;
                   boolean didHomework = false;
-                  if (cleanedRoom &amp;&amp; didHomework) {
+                  if (cleanedRoom && didHomework) {
                       System.out.println("You can go out");
                   } else {
                       System.out.println("No, you can't go out");
                   }
               }
           }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testChangedCode()
-    {
-        String origCode =
-                "public class Test1 { public static void main(String[] args){ boolean cleanedRoom ="
-                    + " true; boolean didHomework = false; if (cleanedRoom &amp;&amp; didHomework){"
-                    + " System.out.println(\"You can go out\");} else { System.out.println(\"No,"
-                    + " you can't go out\");}}}";
+          import java.io.*;
 
-        boolean changed = codeChanged(origCode);
-        assertTrue(changed);
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testChangedCode()
+              {
+                  String origCode =
+                          "public class Test1 { public static void main(String[] args){ boolean cleanedRoom ="
+                              + " true; boolean didHomework = false; if (cleanedRoom && didHomework){"
+                              + " System.out.println(\"You can go out\");} else { System.out.println(\"No,"
+                              + " you can't go out\");}}}";
 
-    @Test
-    public void testMain()
-    {
-        String output = getMethodOutput("main");
-        String expect = "You can go out";
+                  boolean changed = codeChanged(origCode);
+                  assertTrue(changed);
+              }
 
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void testMain()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "You can go out";
+
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -719,38 +743,39 @@ public class RunestoneTests extends CodeTestHelper
               }
           }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testChangedCode()
-    {
-        String origCode =
-                "public class Test2 { public static void main(String[] args){ boolean walking ="
-                    + " false; boolean carIsAvailable = false; if (walking || carIsAvailable) {"
-                    + " System.out.println(\"You can go out\"); } else{System.out.println(\"No, you"
-                    + " can't go out\"); }}}";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testChangedCode()
+              {
+                  String origCode =
+                          "public class Test2 { public static void main(String[] args){ boolean walking ="
+                              + " false; boolean carIsAvailable = false; if (walking || carIsAvailable) {"
+                              + " System.out.println(\"You can go out\"); } else{System.out.println(\"No, you"
+                              + " can't go out\"); }}}";
 
-        boolean changed = codeChanged(origCode);
-        assertTrue(changed);
-    }
+                  boolean changed = codeChanged(origCode);
+                  assertTrue(changed);
+              }
 
-    @Test
-    public void testMain()
-    {
-        String output = getMethodOutput("main");
-        String expect = "You can go out";
+              @Test
+              public void testMain()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "You can go out";
 
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -774,27 +799,28 @@ public class RunestoneTests extends CodeTestHelper
               }
           }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testChangedCode()
-    {
-        String origCode =
-                "public class TestNot{public static void main(String[] args){ boolean homeworkDone"
-                    + " = false; if (!homeworkDone) { System.out.println(\"Sorry, you can't go"
-                    + " out!\"); } } }";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testChangedCode()
+              {
+                  String origCode =
+                          "public class TestNot{public static void main(String[] args){ boolean homeworkDone"
+                              + " = false; if (!homeworkDone) { System.out.println(\"Sorry, you can't go"
+                              + " out!\"); } } }";
 
-        boolean changed = codeChanged(origCode);
-        assertTrue(changed);
-    }
-}
+                  boolean changed = codeChanged(origCode);
+                  assertTrue(changed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -819,7 +845,9 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <program>
-      0 &lt;= x &amp;&amp; x &lt; 100 // True if x is in range from 0 to 100, exclusive.
+      <![CDATA[
+      0 <= x && x < 100 // True if x is in range from 0 to 100, exclusive.
+      ]]>
     </program>
 
     <p>
@@ -830,12 +858,16 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <program>
-      !(0 &lt;= x &amp;&amp; x &lt; 100) // True if x is outside the range from 0 to 100, exclusive.
+      <![CDATA[
+      !(0 <= x && x < 100) // True if x is outside the range from 0 to 100, exclusive.
+      ]]>
     </program>
 
     <p>We could also write that in this logically equivalent way:</p>
     <program>
-      x &lt; 0 || x &gt;= 100
+      <![CDATA[
+      x < 0 || x >= 100
+      ]]>
     </program>
 
     <activity label="compound-number-range">
@@ -848,40 +880,49 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
+          <![CDATA[
+
           public class TestNum {
               public static void main(String[] args) {
                   int score = 10; // Try -10 and 110
-                  if (score &lt; 0 || score &gt; 100) {
+                  if (score < 0 || score > 100) {
                       System.out.println("Score has an illegal value.");
                   }
-                  if (0 &lt;= score &amp;&amp; score &lt;= 100) {
+                  if (0 <= score && score <= 100) {
                       System.out.println("Score is in the range 0-100");
                   }
               }
           }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testChangedCode()
-    {
-        String origCode =
-                "public class TestNum{public static void main(String[] args){int score = 10;  if"
-                    + " (score &lt; 0 || score &gt; 100){ System.out.println(\"Score has an illegal"
-                    + " value.\");}if (score &gt;= 0 &amp;&amp; score &lt;= 100){ System.out.println(\"Score is"
-                    + " in the range 0-100\");}}}";
+          import java.io.*;
 
-        boolean changed = codeChanged(origCode);
-        assertTrue(changed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testChangedCode()
+              {
+                  String origCode =
+                          "public class TestNum{public static void main(String[] args){int score = 10;  if"
+                              + " (score < 0 || score > 100){ System.out.println(\"Score has an illegal"
+                              + " value.\");}if (score >= 0 && score <= 100){ System.out.println(\"Score is"
+                              + " in the range 0-100\");}}}";
+
+                  boolean changed = codeChanged(origCode);
+                  assertTrue(changed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -932,14 +973,18 @@ public class RunestoneTests extends CodeTestHelper
 
         <program language="java">
           <code>
-if (x &gt; 0 &amp;&amp; (y / x) == 3)
-{
-   System.out.println("first case");
-}
-else
-{
-   System.out.println("second case");
-}
+            <![CDATA[
+
+            if (x > 0 && (y / x) == 3)
+            {
+               System.out.println("first case");
+            }
+            else
+            {
+               System.out.println("second case");
+            }
+
+            ]]>
           </code>
         </program>
       </statement>
@@ -994,14 +1039,14 @@ else
 
         <program language="java">
           <code>
-if (x == 0 || (y / x) == 3)
-{
-   System.out.println("first case");
-}
-else
-{
-   System.out.println("second case");
-}
+            if (x == 0 || (y / x) == 3)
+            {
+               System.out.println("first case");
+            }
+            else
+            {
+               System.out.println("second case");
+            }
           </code>
         </program>
       </statement>
@@ -1158,7 +1203,9 @@ else
         <p>Consider the following statement.</p>
         <program language="java">
           <code>
-boolean x = (5 % 3 == 0) == (3 &gt; 5);
+            <![CDATA[
+            boolean x = (5 % 3 == 0) == (3 > 5);
+            ]]>
           </code>
         </program>
 
@@ -1233,7 +1280,9 @@ boolean x = (5 % 3 == 0) == (3 &gt; 5);
 
         <program language="java">
           <code>
-(x &gt;= 10) == (y &lt; 12)
+            <![CDATA[
+            (x >= 10) == (y < 12)
+            ]]>
           </code>
         </program>
 
@@ -1314,22 +1363,26 @@ boolean x = (5 % 3 == 0) == (3 &gt; 5);
 
         <program language="java">
           <code>
-int x = 10;
-int y = 5;
+            <![CDATA[
 
-if (x % 2 == 0 &amp;&amp; y % 2 == 0 || x &gt; y)
-{
-    System.out.print("First ");
+            int x = 10;
+            int y = 5;
 
-    if (y * 2 == x || y &gt; 5 &amp;&amp; x &lt;= 10)
-    {
-       System.out.print("Second ");
-    }
-    else
-    {
-       System.out.print("Third ");
-    }
-}
+            if (x % 2 == 0 && y % 2 == 0 || x > y)
+            {
+                System.out.print("First ");
+
+                if (y * 2 == x || y > 5 && x <= 10)
+                {
+                   System.out.print("Second ");
+                }
+                else
+                {
+                   System.out.print("Third ");
+                }
+            }
+
+            ]]>
           </code>
         </program>
       </statement>

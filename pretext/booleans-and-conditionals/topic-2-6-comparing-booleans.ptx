@@ -71,7 +71,9 @@
     </p>
 
     <program>
-      (score &gt; 100 &amp;&amp; bonusPoints &gt; 10) || (powerUps &gt; 1 &amp;&amp; bonusPoints &gt; 10)
+      <![CDATA[
+      (score > 100 && bonusPoints > 10) || (powerUps > 1 && bonusPoints > 10)
+      ]]>
     </program>
 
     <p>
@@ -92,7 +94,9 @@
     </p>
 
     <program>
-      bonusPoints &gt; 10 &amp;&amp; (score &gt; 100 || powerUps &gt; 1)
+      <![CDATA[
+      bonusPoints > 10 && (score > 100 || powerUps > 1)
+      ]]>
     </program>
 
     <p>
@@ -101,7 +105,9 @@
     </p>
 
     <program>
-      (score &gt; 100 || bonusPoints &gt; 10) &amp;&amp; (score &lt; 100 || bonusPoints &gt; 10)
+      <![CDATA[
+      (score > 100 || bonusPoints > 10) && (score < 100 || bonusPoints > 10)
+      ]]>
     </program>
 
     <p>
@@ -113,7 +119,9 @@
     </p>
 
     <program>
-      bonusPoints &gt; 10 || (score &gt; 100 &amp;&amp; score &lt; 100)
+      <![CDATA[
+      bonusPoints > 10 || (score > 100 && score < 100)
+      ]]>
     </program>
 
     <p>
@@ -124,7 +132,9 @@
     </p>
 
     <program>
-      bonusPoints &gt; 10 || false
+      <![CDATA[
+      bonusPoints > 10 || false
+      ]]>
     </program>
 
     <p>
@@ -134,7 +144,9 @@
     </p>
 
     <program>
-      bonusPoints &gt; 10
+      <![CDATA[
+      bonusPoints > 10
+      ]]>
     </program>
   </subsection>
 

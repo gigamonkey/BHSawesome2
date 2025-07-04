@@ -23,15 +23,15 @@
 
     <p>If you write this:</p>
     <program language="java">
-        if (someBoolean)
-          doSomething();
+      if (someBoolean)
+        doSomething();
     </program>
 
     <p>it’s equivalent to this:</p>
     <program language="java">
-        if (someBoolean) {
-          doSomething();
-        }
+      if (someBoolean) {
+        doSomething();
+      }
     </program>
 
     <p>
@@ -40,17 +40,17 @@
     </p>
 
     <program language="java">
-        if (someBoolean)
-          System.out.println("About to do something.");
-          doSomething();
+      if (someBoolean)
+        System.out.println("About to do something.");
+        doSomething();
     </program>
 
     <p>which, despite the indentation, is actually equivalent to this:</p>
     <program language="java">
-        if (someBoolean) {
-          System.out.println("About to do something.");
-        }
-        doSomething();
+      if (someBoolean) {
+        System.out.println("About to do something.");
+      }
+      doSomething();
     </program>
 
     <p>
@@ -67,9 +67,9 @@
 
     <p>Also be careful not to write:</p>
     <program language="java">
-        if (someBoolean); {
-          doSomething();
-        }
+      if (someBoolean); {
+        doSomething();
+      }
     </program>
 
     <p>
@@ -78,9 +78,9 @@
     </p>
 
     <program language="java">
-        if (someBoolean) {
-        }
-        doSomething();
+      if (someBoolean) {
+      }
+      doSomething();
     </program>
 
     <p>
@@ -112,12 +112,12 @@
 
     <program language="java">
       <code>
-// Nested if with dangling else
-if (boolean expression)
-   if (boolean expression)
-      Do statement;
-   else  // belongs to closest if
-      Do other statement;
+        // Nested if with dangling else
+        if (boolean expression)
+           if (boolean expression)
+              Do statement;
+           else  // belongs to closest if
+              Do other statement;
       </code>
     </program>
 
@@ -133,118 +133,126 @@ if (boolean expression)
 
       <program interactive="activecode" language="java">
         <code>
-import java.util.Scanner;
+          import java.util.Scanner;
 
-public class DanglingElseTest
-{
-    public static void main(String[] args)
-    {
-        Scanner in = new Scanner(System.in);
+          public class DanglingElseTest
+          {
+              public static void main(String[] args)
+              {
+                  Scanner in = new Scanner(System.in);
 
-        boolean sunny = in.nextBoolean();
-        boolean hot = in.nextBoolean();
-        System.out.println("sunny = " + sunny);
-        System.out.println("hot = " + hot);
+                  boolean sunny = in.nextBoolean();
+                  boolean hot = in.nextBoolean();
+                  System.out.println("sunny = " + sunny);
+                  System.out.println("hot = " + hot);
 
-        if (sunny)
-            if (hot)
-               System.out.println("Head for the beach!");
-          else // Which if is else attached to??
-            System.out.println("Bring your umbrella!");
-    }
-}
+                  if (sunny)
+                      if (hot)
+                         System.out.println("Head for the beach!");
+                    else // Which if is else attached to??
+                      System.out.println("Bring your umbrella!");
+              }
+          }
         </code>
-        <stdin>true false</stdin>
+
+        <stdin>
+          true false
+        </stdin>
+
         <tests>
-import static org.junit.Assert.*;
-import org.junit.*;
-import java.io.*;
+          <![CDATA[
 
-public class RunestoneTests extends CodeTestHelper
-{
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
 
-    public RunestoneTests()
-    {
-        //super("DanglingElseTest", input1); // for Repl.it
-        super("DanglingElseTest"); // for Book
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
 
-    private static String input1 = "true false";
-    private static String output1 = "Head for the beach!";
-    private static String output2 = "Bring your umbrella!";
+              public RunestoneTests()
+              {
+                  //super("DanglingElseTest", input1); // for Repl.it
+                  super("DanglingElseTest"); // for Book
+              }
 
-    @Test
-    public void test02()
-    {
-        String x = "true false";
-        String result = "sunny = true\nhot = false\n";
-        String output = getMethodOutputWithInput("main", x);
+              private static String input1 = "true false";
+              private static String output1 = "Head for the beach!";
+              private static String output2 = "Bring your umbrella!";
 
-        boolean passed = !output.contains(output1) &amp;&amp; !output.contains(output2);
+              @Test
+              public void test02()
+              {
+                  String x = "true false";
+                  String result = "sunny = true\nhot = false\n";
+                  String output = getMethodOutputWithInput("main", x);
 
-        passed =
-        getResults(
-            result,
-            output,
-            "Result for input = " + x,
-            passed);
-        assertTrue(passed);
-    }
+                  boolean passed = !output.contains(output1) && !output.contains(output2);
 
-    @Test
-        public void test01()
-        {
-            String x = "true true";
-            String result = "sunny = true\nhot = true\nHead for the beach!";
-            String output = getMethodOutputWithInput("main", x);
+                  passed =
+                  getResults(
+                      result,
+                      output,
+                      "Result for input = " + x,
+                      passed);
+                  assertTrue(passed);
+              }
 
-            boolean passed = output.contains(output1) &amp;&amp; !output.contains(output2);
+              @Test
+                  public void test01()
+                  {
+                      String x = "true true";
+                      String result = "sunny = true\nhot = true\nHead for the beach!";
+                      String output = getMethodOutputWithInput("main", x);
 
-            passed =
-            getResults(
-                result,
-                output,
-                "Result for input = " + x,
-                passed);
-            assertTrue(passed);
-        }
+                      boolean passed = output.contains(output1) && !output.contains(output2);
 
-    @Test
-        public void test04()
-        {
-            String x = "false false";
-            String result = "sunny = false\nhot = false\nBring your umbrella!";
-            String output = getMethodOutputWithInput("main", x);
+                      passed =
+                      getResults(
+                          result,
+                          output,
+                          "Result for input = " + x,
+                          passed);
+                      assertTrue(passed);
+                  }
 
-            boolean passed = output.contains(output2) &amp;&amp; !output.contains(output1);
+              @Test
+                  public void test04()
+                  {
+                      String x = "false false";
+                      String result = "sunny = false\nhot = false\nBring your umbrella!";
+                      String output = getMethodOutputWithInput("main", x);
 
-            passed =
-            getResults(
-                result,
-                output,
-                "Result for input = " + x,
-                passed);
-            assertTrue(passed);
-        }
+                      boolean passed = output.contains(output2) && !output.contains(output1);
 
-    @Test
-        public void test03()
-        {
-            String x = "false true";
-            String result = "sunny = false\nhot = true\nBring your umbrella!";
-            String output = getMethodOutputWithInput("main", x);
+                      passed =
+                      getResults(
+                          result,
+                          output,
+                          "Result for input = " + x,
+                          passed);
+                      assertTrue(passed);
+                  }
 
-            boolean passed = output.contains(output2) &amp;&amp; !output.contains(output1);
+              @Test
+                  public void test03()
+                  {
+                      String x = "false true";
+                      String result = "sunny = false\nhot = true\nBring your umbrella!";
+                      String output = getMethodOutputWithInput("main", x);
 
-            passed =
-            getResults(
-                result,
-                output,
-                "Result for input = " + x,
-                passed);
-            assertTrue(passed);
-        }
-}
+                      boolean passed = output.contains(output2) && !output.contains(output1);
+
+                      passed =
+                      getResults(
+                          result,
+                          output,
+                          "Result for input = " + x,
+                          passed);
+                      assertTrue(passed);
+                  }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -256,14 +264,14 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-// Nested if with dangling else
-if (boolean expression)
-{
-   if (boolean expression)
-      Do this statement;
-}
-else  // belongs to first if
-  Do that statement;
+        // Nested if with dangling else
+        if (boolean expression)
+        {
+           if (boolean expression)
+              Do this statement;
+        }
+        else  // belongs to first if
+          Do that statement;
       </code>
     </program>
 
@@ -331,46 +339,51 @@ else  // belongs to first if
 
       <program interactive="activecode" language="java">
         <code>
-public class Test1
-{
-    public static void main(String[] args)
-    {
-        boolean isCold = false;
-        if (isCold = true);
-            System.out.println("Wear a coat");
-            System.out.println("Wear gloves");
-    }
-}
+          public class Test1
+          {
+              public static void main(String[] args)
+              {
+                  boolean isCold = false;
+                  if (isCold = true);
+                      System.out.println("Wear a coat");
+                      System.out.println("Wear gloves");
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "";
-        boolean passed = getResults(expect, output, "Expected output from main if isCold is false");
-        assertTrue(passed);
-    }
+          import java.io.*;
 
-    @Test
-    public void testCountCurlies()
-    {
-        String code = getCode();
-        int num = countOccurences(code, "{");
-        boolean passed = num &gt;= 3;
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "";
+                  boolean passed = getResults(expect, output, "Expected output from main if isCold is false");
+                  assertTrue(passed);
+              }
 
-        getResults("3", "" + num, "Number of {", passed);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void testCountCurlies()
+              {
+                  String code = getCode();
+                  int num = countOccurences(code, "{");
+                  boolean passed = num >= 3;
+
+                  getResults("3", "" + num, "Number of {", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
