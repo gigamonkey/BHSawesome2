@@ -10,6 +10,12 @@
 
 - [ ] See if there's somewhere early to introduce the notion of statements vs expressions.
 
+- [ ] Redo App Inventor and Snap! comparisons in topic-2-7
+
+- [ ] Make SVGs of flowcharts with fewer arrowheads.
+
+- [ ] Find a place to talk about `return`ing from loops
+
 # Formatting cleanup
 
 - [ ] Write script to check that for each <term>, the first occurrence of the
@@ -18,11 +24,14 @@
 - [ ] Write script to clean up xml:ids and remove ids that are not used either
       by xrefs or needed by pretext for some reason.
 
+- [ ] Add labels attributes to chapter and section elements to set filenames.
+      These should be slug versions of their titles.
+
+- [ ] Check that every activity has a label attribute since Runestone depends on that.
+
 - [x] Enhance formatter to indent code.
 
 - [ ] Enhance formatter to format code.
-
-- [ ] Check that every activity has a label attribute since Runestone depends on that.
 
 - [ ] Remove language="java" attribute from program elements since it's the default
 
