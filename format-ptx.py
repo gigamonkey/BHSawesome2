@@ -194,7 +194,7 @@ def fill_with_indent(text, i):
 
 def render_with_whitespace(elem, ns, level=0):
     s = f"\n{indentation(level)}{open_tag(elem, ns)}"
-    if elem.text and len(elem.text) > 0 and not is_program(elem[0]):
+    if elem.text and len(elem.text) > 0 and (not is_program(elem[0]) if len(elem) > 0 else True):
         s += escape(elem.text)
     for child in elem:
         if is_program(child):
