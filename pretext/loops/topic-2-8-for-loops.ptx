@@ -2,12 +2,10 @@
 
 <section xml:id="topic-2-8-for-loops">
   <title>For Loops</title>
+
   <introduction>
     <idx>for loop</idx>
-    <idx>
-      <h>loop</h><h>for</h>
-    </idx>
-
+    <idx><h>loop</h><h>for</h></idx>
     <p>
       Another type of loop (or iteration) in Java is a <term>for loop</term>. It
       is usually used when you know how many times you want the loop to execute,
@@ -27,12 +25,14 @@
 
     <figure align="center">
       <caption>Comparing App Inventor and Java for loops</caption>
+
       <image source="Unit2-Selection-and-Iteration/Figures/loopAppInv.png" width="100%" />
     </figure>
   </introduction>
 
   <subsection xml:id="three-parts-of-a-for-loop">
     <title>Three Parts of a For Loop</title>
+
     <p>
       A for-loop combines all 3 parts of writing a loop in one line to
       initialize, test, and update the loop control variable. The 3 parts are
@@ -43,10 +43,10 @@
 
     <program language="java">
       <code>
-for (initialize; test; update)
-{
-   loop body
-}
+        for (initialize; test; update)
+        {
+           loop body
+        }
       </code>
     </program>
 
@@ -58,6 +58,7 @@ for (initialize; test; update)
 
     <figure align="center">
       <caption>Showing how a for loop maps to a while loop</caption>
+
       <image source="Unit2-Selection-and-Iteration/Figures/compareForAndWhile.png" width="100%" />
     </figure>
 
@@ -84,6 +85,7 @@ for (initialize; test; update)
 
     <figure align="center">
       <caption>Control flow in a for loop</caption>
+
       <image source="Unit2-Selection-and-Iteration/Figures/ForLoopFlow.png" width="45%" />
     </figure>
 
@@ -97,35 +99,40 @@ for (initialize; test; update)
 
       <program interactive="activecode" language="java">
         <code>
-public class ForLoop
-{
-    public static void main(String[] args)
-    {
-        for (int count = 1; count &lt;= 5; count++)
-        {
-            System.out.println(count);
-        }
-    }
-}
+          <![CDATA[
+
+          public class ForLoop
+          {
+              public static void main(String[] args)
+              {
+                  for (int count = 1; count <= 5; count++)
+                  {
+                      System.out.println(count);
+                  }
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "2\n3\n4\n5\n6\n7\n8\n9\n10\n";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "2\n3\n4\n5\n6\n7\n8\n9\n10\n";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -141,59 +148,64 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class ForLoopFromWhile
-{
-    public static void main(String[] args)
-    {
-        int count = 5;
-        while (count &lt;= 10)
-        {
-            System.out.println(count);
-            count++;
-        }
-    }
-}
+          <![CDATA[
+
+          public class ForLoopFromWhile
+          {
+              public static void main(String[] args)
+              {
+                  int count = 5;
+                  while (count <= 10)
+                  {
+                      System.out.println(count);
+                      count++;
+                  }
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.Test;
+          import org.junit.Test;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("ForLoopFromWhile");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ForLoopFromWhile");
+              }
 
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "5\n6\n7\n8\n9\n10\n";
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "5\n6\n7\n8\n9\n10\n";
 
-        boolean passed = getResults(expect, output, "Running main");
-        assertTrue(passed);
-    }
+                  boolean passed = getResults(expect, output, "Running main");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testWhile() throws IOException
-    {
-        String target = "while (*)";
-        boolean passed = checkCodeNotContainsRegex("while loop", target);
-        assertTrue(passed);
-    }
+              @Test
+              public void testWhile() throws IOException
+              {
+                  String target = "while (*)";
+                  boolean passed = checkCodeNotContainsRegex("while loop", target);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testFor() throws IOException
-    {
-        String target = "for (int * = #; * ? #; *~)";
-        boolean passed = checkCodeContainsRegex("for loop", target);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void testFor() throws IOException
+              {
+                  String target = "for (int * = #; * ? #; *~)";
+                  boolean passed = checkCodeContainsRegex("for loop", target);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -210,17 +222,21 @@ public class RunestoneTests extends CodeTestHelper
 
       <program language="java">
         <code>
-// These loops both run 10 times
-// If you start at 0, use &lt;
-for(int i = 0; i &lt; 10; i++)
-{
-   System.out.println(i);
-}
-// If you start at 1, use &lt;=
-for(int i = 1; i &lt;= 10; i++)
-{
-   System.out.println(i);
-}
+          <![CDATA[
+
+          // These loops both run 10 times
+          // If you start at 0, use <
+          for(int i = 0; i < 10; i++)
+          {
+             System.out.println(i);
+          }
+          // If you start at 1, use <=
+          for(int i = 1; i <= 10; i++)
+          {
+             System.out.println(i);
+          }
+
+          ]]>
         </code>
       </program>
     </note>
@@ -228,12 +244,17 @@ for(int i = 1; i &lt;= 10; i++)
     <activity label="mcq-for-1">
       <statement>
         <p>What does the following code print?</p>
+
         <program language="java">
           <code>
-for (int i = 3; i &lt; 8; i++)
-{
-   System.out.print(i + " ");
-}
+            <![CDATA[
+
+            for (int i = 3; i < 8; i++)
+            {
+               System.out.print(i + " ");
+            }
+
+            ]]>
           </code>
         </program>
       </statement>
@@ -294,12 +315,17 @@ for (int i = 3; i &lt; 8; i++)
     <activity label="mcq-for-2">
       <statement>
         <p>What does the following code print?</p>
+
         <program language="java">
           <code>
-for (int i = 1; i &lt;= 10; i++)
-{
-   System.out.print(i + " ");
-}
+            <![CDATA[
+
+            for (int i = 1; i <= 10; i++)
+            {
+               System.out.print(i + " ");
+            }
+
+            ]]>
           </code>
         </program>
       </statement>
@@ -352,16 +378,18 @@ for (int i = 1; i &lt;= 10; i++)
 
     <activity label="mcq-for-3">
       <statement>
-        <p>
-          How many times does the following method print a <c>*</c>?
-        </p>
+        <p>How many times does the following method print a <c>*</c>?</p>
 
         <program language="java">
           <code>
-for (int i = 3; i &lt;= 9; i++)
-{
-   System.out.print("*");
-}
+            <![CDATA[
+
+            for (int i = 3; i <= 9; i++)
+            {
+               System.out.print("*");
+            }
+
+            ]]>
           </code>
         </program>
       </statement>
@@ -456,6 +484,7 @@ for (int i = 3; i &lt;= 9; i++)
 
   <subsection xml:id="decrementing-loops">
     <title>Decrementing Loops</title>
+
     <p>
       You can also count backwards in a loop starting from the last number and
       decrementing down to 0 or 1. All 3 parts of the loop must change to count
@@ -474,75 +503,80 @@ for (int i = 3; i &lt;= 9; i++)
 
       <program interactive="activecode" language="java">
         <code>
-public class SongTest
-{
+          <![CDATA[
 
-    public static void printPopSong()
-    {
-        String line1 = " bottles of pop on the wall";
-        String line2 = " bottles of pop";
-        String line3 = "Take one down and pass it around";
+          public class SongTest
+          {
 
-        // loop 5 times (5, 4, 3, 2, 1)
-        for (int i = 5; i &gt; 0; i--)
-        {
-            System.out.println(i + line1);
-            System.out.println(i + line2);
-            System.out.println(line3);
-            System.out.println((i - 1) + line1);
-            System.out.println();
-        }
-    }
+              public static void printPopSong()
+              {
+                  String line1 = " bottles of pop on the wall";
+                  String line2 = " bottles of pop";
+                  String line3 = "Take one down and pass it around";
 
-    public static void main(String[] args)
-    {
-        SongTest.printPopSong();
-    }
-}
+                  // loop 5 times (5, 4, 3, 2, 1)
+                  for (int i = 5; i > 0; i--)
+                  {
+                      System.out.println(i + line1);
+                      System.out.println(i + line2);
+                      System.out.println(line3);
+                      System.out.println((i - 1) + line1);
+                      System.out.println();
+                  }
+              }
+
+              public static void main(String[] args)
+              {
+                  SongTest.printPopSong();
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.Test;
+          import org.junit.Test;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("SongTest");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("SongTest");
+              }
 
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "3 bottles of pop on the wall";
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "3 bottles of pop on the wall";
 
-        String expect1 = expect.split("\n")[0];
-        String output1 = output.split("\n")[0];
+                  String expect1 = expect.split("\n")[0];
+                  String output1 = output.split("\n")[0];
 
-        boolean passed = output.contains(expect);
-        passed = getResults(expect1, output1, "Print the song from 3", passed);
-        assertTrue(passed);
-    }
+                  boolean passed = output.contains(expect);
+                  passed = getResults(expect1, output1, "Print the song from 3", passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testMain2() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "5 bottles of pop on the wall";
+              @Test
+              public void testMain2() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "5 bottles of pop on the wall";
 
-        boolean passed = !output.contains(expect);
+                  boolean passed = !output.contains(expect);
 
-        String expect1 = expect.split("\n")[0];
-        String output1 = output.split("\n")[0];
+                  String expect1 = expect.split("\n")[0];
+                  String output1 = output.split("\n")[0];
 
-        passed = getResults(expect1, output1, "Do not start loop from 5", passed);
-        assertTrue(passed);
-    }
-}
+                  passed = getResults(expect1, output1, "Do not start loop from 5", passed);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -565,35 +599,40 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class ForLoop
-{
-    public static void main(String[] args)
-    {
-        for (int count = 1; count &lt;= 5; count++)
-        {
-            System.out.println(count);
-        }
-    }
-}
+          <![CDATA[
+
+          public class ForLoop
+          {
+              public static void main(String[] args)
+              {
+                  for (int count = 1; count <= 5; count++)
+                  {
+                      System.out.println(count);
+                  }
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "5\n3\n1";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "5\n3\n1";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -601,6 +640,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-turtles-drawing-shapes">
     <title>Coding Challenge : Turtles Drawing Shapes</title>
+
     <p>
       Let’s use a <c>for</c> loop to have a Turtle draw different shapes. We
       encourage you to work in pairs.
@@ -677,144 +717,145 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class TurtleDrawShapes
-{
+          public class TurtleDrawShapes
+          {
 
-    public static void drawSquare(Turtle t)
-    {
-        t.setColor(Color.blue);
-        // 1. Complete the following for loop to draw a square with 4 sides
-        for(int i = 0;                )
-        {
-            t.forward(100);
-            t.turn(90);
-        }
-    }
+              public static void drawSquare(Turtle t)
+              {
+                  t.setColor(Color.blue);
+                  // 1. Complete the following for loop to draw a square with 4 sides
+                  for(int i = 0;                )
+                  {
+                      t.forward(100);
+                      t.turn(90);
+                  }
+              }
 
-    public static void drawTriangle(Turtle t)
-    {
-        t.setColor(Color.green);
-        // 2. Use a for loop to draw a triangle
-        // External angles of 3 sides add up to 360.
-
-
-
-    }
-
-    public static void drawPentagon(Turtle t)
-    {
-        t.setColor(Color.red);
-        // 3. Use a for loop to draw a pentagon
-        // External angles of 5 sides add up to 360.
+              public static void drawTriangle(Turtle t)
+              {
+                  t.setColor(Color.green);
+                  // 2. Use a for loop to draw a triangle
+                  // External angles of 3 sides add up to 360.
 
 
 
-    }
+              }
 
-    public static void drawShape(Turtle t, int n, int pixels)
-    {
-        t.setColor(Color.black);
-        // 4. Use a for loop to draw a polygon with n sides.
-        // Use the argument pixels to move forward.
-        // Use 360 and n to determine the angle to turn.
-
-
-
-    }
-
-    public static void main(String[] args)
-    {
-        World world = new World(400, 400);
-        Turtle yertle = new Turtle(world);
-        yertle.penUp();
-        //move a little to the left
-        yertle.moveTo(100, 200);
-        yertle.penDown();
-        yertle.setSpeed(25); // fast 0 - 100 slow
-
-        // Draw a square
-        drawSquare(yertle);
-        // Draw a triangle
-        drawTriangle(yertle);
-        // Draw a pentagon
-        drawPentagon(yertle);
-
-        // Draw shapes of any number of sides and pixels
-        drawShape(yertle, 4, 50);
-
-        // 5. Call drawShapes to draw a hexagon (6 sides) of length 20
+              public static void drawPentagon(Turtle t)
+              {
+                  t.setColor(Color.red);
+                  // 3. Use a for loop to draw a pentagon
+                  // External angles of 5 sides add up to 360.
 
 
 
-        world.show(true);
-    }
-}
+              }
+
+              public static void drawShape(Turtle t, int n, int pixels)
+              {
+                  t.setColor(Color.black);
+                  // 4. Use a for loop to draw a polygon with n sides.
+                  // Use the argument pixels to move forward.
+                  // Use 360 and n to determine the angle to turn.
+
+
+
+              }
+
+              public static void main(String[] args)
+              {
+                  World world = new World(400, 400);
+                  Turtle yertle = new Turtle(world);
+                  yertle.penUp();
+                  //move a little to the left
+                  yertle.moveTo(100, 200);
+                  yertle.penDown();
+                  yertle.setSpeed(25); // fast 0 - 100 slow
+
+                  // Draw a square
+                  drawSquare(yertle);
+                  // Draw a triangle
+                  drawTriangle(yertle);
+                  // Draw a pentagon
+                  drawPentagon(yertle);
+
+                  // Draw shapes of any number of sides and pixels
+                  drawShape(yertle, 4, 50);
+
+                  // 5. Call drawShapes to draw a hexagon (6 sides) of length 20
+
+
+
+                  world.show(true);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleDrawShapes");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TurtleDrawShapes");
+              }
 
-    @Test
-    public void test1()
-    {
-        String code = getCode();
-        String target = "for (int * = #; * ? *; *~)";
+              @Test
+              public void test1()
+              {
+                  String code = getCode();
+                  String target = "for (int * = #; * ? *; *~)";
 
-        int num = countOccurencesRegex(code, target);
+                  int num = countOccurencesRegex(code, target);
 
-        boolean passed = num == 4;
+                  boolean passed = num == 4;
 
-        getResults("4", "" + num, "Each method should have a for loop", passed);
-        assertTrue(passed);
-    }
+                  getResults("4", "" + num, "Each method should have a for loop", passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test2()
-    {
-        boolean passed = checkCodeContains("for-loop in drawSquare counting up to 4;","4;");
-        assertTrue(passed);
-    }
+              @Test
+              public void test2()
+              {
+                  boolean passed = checkCodeContains("for-loop in drawSquare counting up to 4;","4;");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test3()
-    {
-        boolean passed = checkCodeContains("for-loop in drawTriangle counting up to 3;","3;");
-        assertTrue(passed);
-    }
+              @Test
+              public void test3()
+              {
+                  boolean passed = checkCodeContains("for-loop in drawTriangle counting up to 3;","3;");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test4()
-    {
-        boolean passed = checkCodeContains("for-loop in drawPentagon counting up to 5;","5;");
-        assertTrue(passed);
-    }
+              @Test
+              public void test4()
+              {
+                  boolean passed = checkCodeContains("for-loop in drawPentagon counting up to 5;","5;");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test5()
-    {
-        boolean passed = checkCodeContains("formula using 360 and n and a math operation to calculate angle in drawShape","360/n");
-        assertTrue(passed);
-    }
-    @Test
-    public void test6()
-    {
-        boolean passed = checkCodeContains("call drawShape to draw a hexagon (6 sides) of length 20", "drawShape(yertle, 6, 20);");
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test5()
+              {
+                  boolean passed = checkCodeContains("formula using 360 and n and a math operation to calculate angle in drawShape","360/n");
+                  assertTrue(passed);
+              }
+              @Test
+              public void test6()
+              {
+                  boolean passed = checkCodeContains("call drawShape to draw a hexagon (6 sides) of length 20", "drawShape(yertle, 6, 20);");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </project>
@@ -822,6 +863,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-25">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -872,21 +914,27 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="ap-practice-18">
     <title>AP Practice</title>
+
     <activity label="AP-for-loop-1">
       <statement>
         <p>Consider the following code segment.</p>
+
         <program language="java">
           <code>
-int count = 0, sum = 0;
-while (count &lt;= 6)
-{
-    count++;
-    if (count % 2 == 0)
-    {
-        sum += count;
-    }
-}
-System.out.println(sum);
+            <![CDATA[
+
+            int count = 0, sum = 0;
+            while (count <= 6)
+            {
+                count++;
+                if (count % 2 == 0)
+                {
+                    sum += count;
+                }
+            }
+            System.out.println(sum);
+
+            ]]>
           </code>
         </program>
 
@@ -897,33 +945,37 @@ System.out.println(sum);
 
         <program language="java">
           <code>
-I.  int sum = 0;
-    for(int count = 0; count &lt;= 6; count++)
-    {
-        count++;
-        if (count % 2 == 0)
-        {
-             sum += count;
-        }
-    }
-    System.out.println(sum);
+            <![CDATA[
 
-II. int sum = 0;
-    for(int i = 0; i &lt;= 6; i += 2)
-    {
-       sum += i;
-    }
-    System.out.println(sum);
+            I.  int sum = 0;
+                for(int count = 0; count <= 6; count++)
+                {
+                    count++;
+                    if (count % 2 == 0)
+                    {
+                         sum += count;
+                    }
+                }
+                System.out.println(sum);
 
-III. int sum = 0;
-     for(int j = 7; j &gt; 1; j--)
-     {
-        if (j % 2 == 0)
-        {
-             sum += j;
-        }
-     }
-     System.out.println(sum);
+            II. int sum = 0;
+                for(int i = 0; i <= 6; i += 2)
+                {
+                   sum += i;
+                }
+                System.out.println(sum);
+
+            III. int sum = 0;
+                 for(int j = 7; j > 1; j--)
+                 {
+                    if (j % 2 == 0)
+                    {
+                         sum += j;
+                    }
+                 }
+                 System.out.println(sum);
+
+            ]]>
           </code>
         </program>
       </statement>
@@ -997,14 +1049,19 @@ III. int sum = 0;
     <activity label="AP-for-loop-2">
       <statement>
         <p>Consider the following code segment.</p>
+
         <program language="java">
           <code>
-int result = 1;
-for(int i = 3; i &lt; 6; i += 2)
-{
-  result *= i;
-}
-System.out.println(result);
+            <![CDATA[
+
+            int result = 1;
+            for(int i = 3; i < 6; i += 2)
+            {
+              result *= i;
+            }
+            System.out.println(result);
+
+            ]]>
           </code>
         </program>
 

@@ -2,6 +2,7 @@
 
 <section xml:id="topic-2-9-loop-algorithms">
   <title>Implementing Selection and Iteration Algorithms</title>
+
   <introduction>
     <idx>loop algorithms</idx>
     <idx>accumulator</idx>
@@ -55,6 +56,7 @@
 
   <subsection xml:id="accumulator-pattern-for-sum-average">
     <title>Accumulator Pattern for Sum/Average</title>
+
     <p>
       The <term>accumulator pattern</term> is an algorithm that iterates through
       a set of values using a loop and updates an accumulator variable with
@@ -89,12 +91,16 @@
 
     <program language="java">
       <code>
-int sum = 0;
-for (int i = 1; i &lt;= 100; i++)
-{
-    sum += i;
-}
-System.out.println("The sum of 1 through 100 is " + sum);
+        <![CDATA[
+
+        int sum = 0;
+        for (int i = 1; i <= 100; i++)
+        {
+            sum += i;
+        }
+        System.out.println("The sum of 1 through 100 is " + sum);
+
+        ]]>
       </code>
     </program>
 
@@ -107,18 +113,23 @@ System.out.println("The sum of 1 through 100 is " + sum);
 
     <program language="java">
       <code>
-int sum = 0;
-for (int i = 0; i &lt; 10; i++)
-{
-    int num = (int)(Math.random() * 100);
-    sum += num;
-}
-double average = (double)sum / 10;
-System.out.println("The average of 10 random numbers is " + average);
+        <![CDATA[
+
+        int sum = 0;
+        for (int i = 0; i < 10; i++)
+        {
+            int num = (int)(Math.random() * 100);
+            sum += num;
+        }
+        double average = (double)sum / 10;
+        System.out.println("The average of 10 random numbers is " + average);
+
+        ]]>
       </code>
     </program>
 
     <p>Try the accumulator practice below.</p>
+
     <activity label="accumulator-practice">
       <statement>
         <p>
@@ -129,93 +140,94 @@ System.out.println("The average of 10 random numbers is " + average);
 
       <program interactive="activecode" language="java">
         <code>
-public class Accumulator
-{
-    // sum calculates and returns the sum of the numbers 1 to n
-    public static int sum(int n)
-    {
-        int sum = 0;
-        // 1. Add a loop to calculate the sum of 1 to n
+          public class Accumulator
+          {
+              // sum calculates and returns the sum of the numbers 1 to n
+              public static int sum(int n)
+              {
+                  int sum = 0;
+                  // 1. Add a loop to calculate the sum of 1 to n
 
 
-        return sum;
-    }
+                  return sum;
+              }
 
-    // average calculates and returns the average of numbers 1 to n
-    public static double average(int n)
-    {
-        int sum = 0;
-        // 2. Add a loop to calculate the sum of 1 to n
+              // average calculates and returns the average of numbers 1 to n
+              public static double average(int n)
+              {
+                  int sum = 0;
+                  // 2. Add a loop to calculate the sum of 1 to n
 
 
 
-        // 3. Calculate the average using sum and n
-        double average = 0;
+                  // 3. Calculate the average using sum and n
+                  double average = 0;
 
-        return average;
-    }
+                  return average;
+              }
 
-    public static void main(String[] args)
-    {
-        int n = 10;
-        System.out.println("The sum of 1 to " + n + " is " + sum(n));
-        System.out.println("The average of 1 to " + n + " is " + average(n));
-    }
-}
+              public static void main(String[] args)
+              {
+                  int n = 10;
+                  System.out.println("The sum of 1 to " + n + " is " + sum(n));
+                  System.out.println("The average of 1 to " + n + " is " + average(n));
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("Accumulator");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("Accumulator");
+              }
 
-     @Test
-     public void test1() throws IOException
-     {
-         String code = getCode();
-         String target = "for (int * = 1; * ? n; *~)";
+               @Test
+               public void test1() throws IOException
+               {
+                   String code = getCode();
+                   String target = "for (int * = 1; * ? n; *~)";
 
-         int num = countOccurencesRegex(code, target);
+                   int num = countOccurencesRegex(code, target);
 
-         boolean passed = num == 2;
+                   boolean passed = num == 2;
 
-        getResults("2", "" + num, "Each method should have a for loop that counts from 1 to n", passed);
-        assertTrue(passed);
-     }
+                  getResults("2", "" + num, "Each method should have a for loop that counts from 1 to n", passed);
+                  assertTrue(passed);
+               }
 
-    @Test
-    public void testMain() throws IOException
-    {
-        String expected = "The sum of 1 to 10 is 55\nThe average of 1 to 10 is 5.5";
-        String output = getMethodOutput("main");
-        boolean passed = getResults(expected, output, "Checking main output");
-        assertTrue(passed);
-    }
+              @Test
+              public void testMain() throws IOException
+              {
+                  String expected = "The sum of 1 to 10 is 55\nThe average of 1 to 10 is 5.5";
+                  String output = getMethodOutput("main");
+                  boolean passed = getResults(expected, output, "Checking main output");
+                  assertTrue(passed);
+              }
 
-   @Test
-   public void testCall() throws IOException
-   {
-       Object[] args = {5};
-       String output = getMethodOutput("sum", args);
-       String expect = "15";
+             @Test
+             public void testCall() throws IOException
+             {
+                 Object[] args = {5};
+                 String output = getMethodOutput("sum", args);
+                 String expect = "15";
 
-       boolean passed =
-               getResults(
-                       expect,
-                       output,
-                       "sum(5)"
-                       );
-       assertTrue(passed);
-   }
-}
+                 boolean passed =
+                         getResults(
+                                 expect,
+                                 output,
+                                 "sum(5)"
+                                 );
+                 assertTrue(passed);
+             }
+          }
         </tests>
       </program>
     </activity>
@@ -223,6 +235,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="input-controlled-loop">
     <title>Input-Controlled Loop</title>
+
     <p>
       Here’s an example of an <term>input-controlled loop</term> that calculates
       the average of positive numbers using the accumulator pattern with a
@@ -235,23 +248,23 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-// 1. initialize the loop variable (get the first number)
-System.out.print("Please enter a number to average in or -1 to stop: ");
-number = scan.nextInt();
+        // 1. initialize the loop variable (get the first number)
+        System.out.print("Please enter a number to average in or -1 to stop: ");
+        number = scan.nextInt();
 
-// 2. test the loop variable (against sentinel value)
-while (number != -1)
-{
-  sum += number; // add number to sum
-  count++; // count the number
-  // 3. Update the loop variable (get a new number)
-  System.out.print("Please enter a number to average in or -1 to stop: ");
-  number = scan.nextInt();
-}
-System.out.println(count);
-// calculate average
-average = (double) sum/count;
-System.out.println("The average is " + average);
+        // 2. test the loop variable (against sentinel value)
+        while (number != -1)
+        {
+          sum += number; // add number to sum
+          count++; // count the number
+          // 3. Update the loop variable (get a new number)
+          System.out.print("Please enter a number to average in or -1 to stop: ");
+          number = scan.nextInt();
+        }
+        System.out.println(count);
+        // calculate average
+        average = (double) sum/count;
+        System.out.println("The average is " + average);
       </code>
     </program>
 
@@ -275,79 +288,83 @@ System.out.println("The average is " + average);
 
       <program interactive="activecode" language="java">
         <code>
-import java.util.Scanner;
+          import java.util.Scanner;
 
-public class InputLoop
-{
-  public static void main(String[] args)
-  {
-      Scanner scan = new Scanner(System.in);
-      // Initialize the accumulators
-      int sum = 0;
-      int count = 0;
+          public class InputLoop
+          {
+            public static void main(String[] args)
+            {
+                Scanner scan = new Scanner(System.in);
+                // Initialize the accumulators
+                int sum = 0;
+                int count = 0;
 
-      // Initialize the loop variable (get the first number)
-      System.out.print("Please enter a number to average in or -1 to stop: ");
-      int number = scan.nextInt();
+                // Initialize the loop variable (get the first number)
+                System.out.print("Please enter a number to average in or -1 to stop: ");
+                int number = scan.nextInt();
 
-      // Test the loop variable against sentinel value
-      while (number != -1)
-      {
-          // 1. TODO: add number to sum and increment count
+                // Test the loop variable against sentinel value
+                while (number != -1)
+                {
+                    // 1. TODO: add number to sum and increment count
 
 
-          // Update the loop variable (get a new number)
-          System.out.println("You entered " + number);
-          System.out.print("Please enter a number to average in or -1 to stop: ");
-          number = scan.nextInt();
-      }
-      System.out.println("You entered " + count + " numbers.");
-      System.out.println("Their sum is " + sum);
+                    // Update the loop variable (get a new number)
+                    System.out.println("You entered " + number);
+                    System.out.print("Please enter a number to average in or -1 to stop: ");
+                    number = scan.nextInt();
+                }
+                System.out.println("You entered " + count + " numbers.");
+                System.out.println("Their sum is " + sum);
 
-      // 2. TODO: calculate average
-      double average = 0;
+                // 2. TODO: calculate average
+                double average = 0;
 
-      System.out.println("The average is " + average);
-  }
-}
+                System.out.println("The average is " + average);
+            }
+          }
         </code>
-        <stdin>80 90 100 -1</stdin>
+
+        <stdin>
+          80 90 100 -1
+        </stdin>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("InputLoop");
-    }
-    @Test
-    public void test1()
-    {
-        String input = "80 90 100 -1";
-        String output = getMethodOutputWithInput("main", input);
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("InputLoop");
+              }
+              @Test
+              public void test1()
+              {
+                  String input = "80 90 100 -1";
+                  String output = getMethodOutputWithInput("main", input);
 
-        boolean passed = getResults("The average is 90.0", output, "Average calculated correctly");
+                  boolean passed = getResults("The average is 90.0", output, "Average calculated correctly");
 
-        assertTrue(passed);
-    }
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test2()
-    {
+              @Test
+              public void test2()
+              {
 
-        String input = "1 4 -1";
-        String output = getMethodOutputWithInput("main", input);
+                  String input = "1 4 -1";
+                  String output = getMethodOutputWithInput("main", input);
 
-        boolean passed = getResults("The average is 2.5", output, "Trying with input 1 4 -1 (did you typecast to double?)");
+                  boolean passed = getResults("The average is 2.5", output, "Trying with input 1 4 -1 (did you typecast to double?)");
 
-        assertTrue(passed);
-    }
-  }
+                  assertTrue(passed);
+              }
+            }
         </tests>
       </program>
     </activity>
@@ -355,6 +372,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="loop-with-if-and-minimum-maximum">
     <title>Loop with if and Minimum/Maximum</title>
+
     <p>
       A common variation of the accumulator pattern is to have an <c>if</c>
       statement inside the loop that tests each value being considered in the
@@ -372,17 +390,21 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-int min = Integer.MAX_VALUE;
-for (int i = 0; i &lt; 10; i++)
-{
-    int num = (int)(Math.random() * 100);
-    System.out.println(num);
-    if (num &lt; min)
-    {
-        min = num;
-    }
-}
-System.out.println("The minimum value is " + min);
+        <![CDATA[
+
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < 10; i++)
+        {
+            int num = (int)(Math.random() * 100);
+            System.out.println(num);
+            if (num < min)
+            {
+                min = num;
+            }
+        }
+        System.out.println("The minimum value is " + min);
+
+        ]]>
       </code>
     </program>
 
@@ -396,74 +418,83 @@ System.out.println("The minimum value is " + min);
 
       <program interactive="activecode" language="java">
         <code>
-public class MinMax
-{
-    // min calculates and returns the minimum of n random numbers
-    public static int min(int n)
-    {
-        int min = Integer.MAX_VALUE;
-        for (int i = 0; i &lt; n; i++)
-        {
-            int num = (int)(Math.random() * 100);
-            System.out.println(num);
-            if (num &lt; min)
-            {
-                min = num;
-            }
-        }
+          <![CDATA[
 
-        return min;
-    }
+          public class MinMax
+          {
+              // min calculates and returns the minimum of n random numbers
+              public static int min(int n)
+              {
+                  int min = Integer.MAX_VALUE;
+                  for (int i = 0; i < n; i++)
+                  {
+                      int num = (int)(Math.random() * 100);
+                      System.out.println(num);
+                      if (num < min)
+                      {
+                          min = num;
+                      }
+                  }
 
-    // max calculates and returns the maximum of n random numbers
-    public static int max(int n)
-    {
-        int max = Integer.MIN_VALUE;
-        // TODO: write a loop to find the maximum value
-        // of n random numbers from 0 to 100
+                  return min;
+              }
+
+              // max calculates and returns the maximum of n random numbers
+              public static int max(int n)
+              {
+                  int max = Integer.MIN_VALUE;
+                  // TODO: write a loop to find the maximum value
+                  // of n random numbers from 0 to 100
 
 
-        return max;
-    }
+                  return max;
+              }
 
-    public static void main(String[] args)
-    {
-        int n = 10;
-        System.out.println("The minimum value is " + min(n));
-        System.out.println("The maximum value is " + max(n));
-    }
-}
+              public static void main(String[] args)
+              {
+                  int n = 10;
+                  System.out.println("The minimum value is " + min(n));
+                  System.out.println("The maximum value is " + max(n));
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
+          import java.io.*;
 
-     @Test
-     public void test1() throws IOException
-     {
-         String code = getCode();
-         String target = "for (int * = #; * ? n; *~)";
+          public class RunestoneTests extends CodeTestHelper
+          {
 
-         int num = countOccurencesRegex(code, target);
+               @Test
+               public void test1() throws IOException
+               {
+                   String code = getCode();
+                   String target = "for (int * = #; * ? n; *~)";
 
-         boolean passed = num == 2;
+                   int num = countOccurencesRegex(code, target);
 
-        getResults("2", "" + num, "Each method should have a for loop that uses n", passed);
-        assertTrue(passed);
-     }
-     @Test
-    public void containsCall()
-    {
-        boolean passed = checkCodeContains("num &gt; max", "num &gt; max");
-        assertTrue(passed);
-    }
-}
+                   boolean passed = num == 2;
+
+                  getResults("2", "" + num, "Each method should have a for loop that uses n", passed);
+                  assertTrue(passed);
+               }
+               @Test
+              public void containsCall()
+              {
+                  boolean passed = checkCodeContains("num > max", "num > max");
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -471,6 +502,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="divisibility">
     <title>Divisibility</title>
+
     <p>
       To determine if an integer is evenly divisible by another integer, you can
       use the remainder operator <c>%</c>. If you divide two numbers and there
@@ -484,16 +516,16 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-int num1 = 10;
-int num2 = 5;
-if (num1 % num2 == 0)
-{
-    System.out.println(num1 + " is evenly divisible by " + num2);
-}
-else
-{
-    System.out.println(num1 + " is not evenly divisible by " + num2);
-}
+        int num1 = 10;
+        int num2 = 5;
+        if (num1 % num2 == 0)
+        {
+            System.out.println(num1 + " is evenly divisible by " + num2);
+        }
+        else
+        {
+            System.out.println(num1 + " is not evenly divisible by " + num2);
+        }
       </code>
     </program>
 
@@ -518,84 +550,85 @@ else
 
       <program interactive="activecode" language="java">
         <code>
-public class PrimeNumbers
-{
-    // isPrime checks whether n is a prime number
-    public static boolean isPrime(int n)
-    {
-        // Add a loop from 2 to n-1 or Math.sqrt(n)
-        //   if n is divisible by the loop variable i
-        //        return false
+          public class PrimeNumbers
+          {
+              // isPrime checks whether n is a prime number
+              public static boolean isPrime(int n)
+              {
+                  // Add a loop from 2 to n-1 or Math.sqrt(n)
+                  //   if n is divisible by the loop variable i
+                  //        return false
 
 
 
-        // if no divisor found after loop, return true
-        return true;
-    }
+                  // if no divisor found after loop, return true
+                  return true;
+              }
 
 
-    public static void main(String[] args)
-    {
-        System.out.println("Is 4 prime? " + isPrime(4));
-        System.out.println("Is 5 prime? " + isPrime(5));
-    }
-}
+              public static void main(String[] args)
+              {
+                  System.out.println("Is 4 prime? " + isPrime(4));
+                  System.out.println("Is 5 prime? " + isPrime(5));
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("PrimeNumbers");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("PrimeNumbers");
+              }
 
-    @Test
-    public void test1() throws IOException
-    {
-        String target = "for";
-        boolean passed = checkCodeContains("for loop", target);
-        assertTrue(passed);
-    }
+              @Test
+              public void test1() throws IOException
+              {
+                  String target = "for";
+                  boolean passed = checkCodeContains("for loop", target);
+                  assertTrue(passed);
+              }
 
-     @Test
-    public void testMain() throws IOException
-    {
-        String expected = "Is 4 prime? false\nIs 5 prime? true";
-        String output = getMethodOutput("main");
-        boolean passed = getResults(expected, output, "Checking main output");
-        assertTrue(passed);
-    }
+               @Test
+              public void testMain() throws IOException
+              {
+                  String expected = "Is 4 prime? false\nIs 5 prime? true";
+                  String output = getMethodOutput("main");
+                  boolean passed = getResults(expected, output, "Checking main output");
+                  assertTrue(passed);
+              }
 
-   @Test
-   public void testCall() throws IOException
-   {
-       Object[] args = {9};
-       String output = getMethodOutput("isPrime", args);
-       String expect = "false";
+             @Test
+             public void testCall() throws IOException
+             {
+                 Object[] args = {9};
+                 String output = getMethodOutput("isPrime", args);
+                 String expect = "false";
 
-       boolean passed =
-               getResults(
-                       expect,
-                       output,
-                       "isPrime(9)"
-                       );
-       assertTrue(passed);
-   }
+                 boolean passed =
+                         getResults(
+                                 expect,
+                                 output,
+                                 "isPrime(9)"
+                                 );
+                 assertTrue(passed);
+             }
 
-    @Test
-   public void testBool() throws IOException
-   {
-       String target = "n % i == 0";
-       boolean passed = checkCodeContains(target + " test", target);
-       assertTrue(passed);
-   }
-}
+              @Test
+             public void testBool() throws IOException
+             {
+                 String target = "n % i == 0";
+                 boolean passed = checkCodeContains(target + " test", target);
+                 assertTrue(passed);
+             }
+          }
         </tests>
       </program>
     </activity>
@@ -603,6 +636,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="finding-digits-with-and">
     <title>Finding Digits with / and %</title>
+
     <p>
       We can also use division (<c>/</c>) and remainder (<c>%</c>) to find the
       digits of a number by dividing by 10. For example, 1234 divided by 10 is
@@ -624,84 +658,85 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class CheckDigitTest
-{
-      // checkDigit checks whether a number has a given digit in it
-      public static boolean checkDigit(int number, int digit)
-      {
-          // 1. Use a while loop: while number is greater than 0
+          public class CheckDigitTest
+          {
+                // checkDigit checks whether a number has a given digit in it
+                public static boolean checkDigit(int number, int digit)
+                {
+                    // 1. Use a while loop: while number is greater than 0
 
-             // 2. Get the last digit of number with % 10
-             // 3. if it equals the argument digit, return true
-             // 4. remove the last digit of number with / 10
+                       // 2. Get the last digit of number with % 10
+                       // 3. if it equals the argument digit, return true
+                       // 4. remove the last digit of number with / 10
 
-        // if loop finishes, return false
-        return false; // Digit not found
-    }
+                  // if loop finishes, return false
+                  return false; // Digit not found
+              }
 
 
-    public static void main(String[] args)
-    {
-        System.out.println(checkDigit(12345, 3)); // true
-        System.out.println(checkDigit(9876, 2));  // false
-    }
-}
+              public static void main(String[] args)
+              {
+                  System.out.println(checkDigit(12345, 3)); // true
+                  System.out.println(checkDigit(9876, 2));  // false
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("CheckDigitTest");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("CheckDigitTest");
+              }
 
-    @Test
-    public void test1() throws IOException
-    {
-        String target = "while";
-        boolean passed = checkCodeContains("while loop", target);
-        assertTrue(passed);
-    }
+              @Test
+              public void test1() throws IOException
+              {
+                  String target = "while";
+                  boolean passed = checkCodeContains("while loop", target);
+                  assertTrue(passed);
+              }
 
-     @Test
-    public void testMain() throws IOException
-    {
-        String expected = "true\nfalse";
-        String output = getMethodOutput("main");
-        boolean passed = getResults(expected, output, "Checking main output");
-        assertTrue(passed);
-    }
+               @Test
+              public void testMain() throws IOException
+              {
+                  String expected = "true\nfalse";
+                  String output = getMethodOutput("main");
+                  boolean passed = getResults(expected, output, "Checking main output");
+                  assertTrue(passed);
+              }
 
-   @Test
-   public void testCall() throws IOException
-   {
-       Object[] args = {13579, 7};
-       String output = getMethodOutput("checkDigit", args);
-       String expect = "true";
+             @Test
+             public void testCall() throws IOException
+             {
+                 Object[] args = {13579, 7};
+                 String output = getMethodOutput("checkDigit", args);
+                 String expect = "true";
 
-       boolean passed =
-               getResults(
-                       expect,
-                       output,
-                       "checkDigit(13579, 7)"
-                       );
-       assertTrue(passed);
-   }
+                 boolean passed =
+                         getResults(
+                                 expect,
+                                 output,
+                                 "checkDigit(13579, 7)"
+                                 );
+                 assertTrue(passed);
+             }
 
-    @Test
-   public void testBool() throws IOException
-   {
-       String target = "number % 10";
-       boolean passed = checkCodeContains(target, target);
-       assertTrue(passed);
-   }
-}
+              @Test
+             public void testBool() throws IOException
+             {
+                 String target = "number % 10";
+                 boolean passed = checkCodeContains(target, target);
+                 assertTrue(passed);
+             }
+          }
         </tests>
       </program>
     </activity>
@@ -744,9 +779,9 @@ public class RunestoneTests extends CodeTestHelper
 
           <program language="java">
             <code>
-int totalMinutes = 345;
-int hours = totalMinutes / 60;   // Number of whole hours, i.e. 5
-int minutes = totalMinutes % 60; // Number of minutes left over, i.e. 45
+              int totalMinutes = 345;
+              int hours = totalMinutes / 60;   // Number of whole hours, i.e. 5
+              int minutes = totalMinutes % 60; // Number of minutes left over, i.e. 45
             </code>
           </program>
         </li>
@@ -766,6 +801,7 @@ int minutes = totalMinutes % 60; // Number of minutes left over, i.e. 45
 
   <subsection xml:id="math-random-in-if-statements">
     <title>Math.random() in if Statements</title>
+
     <p>
       The <c>Math.random()</c> method returns a random number between 0.0 and
       1.0. You can use this method with <c>if</c> statements to simulate a coin
@@ -778,14 +814,18 @@ int minutes = totalMinutes % 60; // Number of minutes left over, i.e. 45
 
     <program language="java">
       <code>
-if (Math.random() &lt; 0.5)
-{
-    System.out.println("Heads");
-}
-else
-{
-    System.out.println("Tails");
-}
+        <![CDATA[
+
+        if (Math.random() < 0.5)
+        {
+            System.out.println("Heads");
+        }
+        else
+        {
+            System.out.println("Tails");
+        }
+
+        ]]>
       </code>
     </program>
 
@@ -797,16 +837,20 @@ else
 
     <program language="java">
       <code>
-if (Math.random() &lt; 0.9)
-{
-    // 90% of the time
-    System.out.println("Event happened");
-}
-else
-{
-    // 10% of the time
-    System.out.println("Event did not happen");
-}
+        <![CDATA[
+
+        if (Math.random() < 0.9)
+        {
+            // 90% of the time
+            System.out.println("Event happened");
+        }
+        else
+        {
+            // 10% of the time
+            System.out.println("Event did not happen");
+        }
+
+        ]]>
       </code>
     </program>
 
@@ -825,7 +869,9 @@ else
           <statement id="mcq-rnd-ifs_opt_a">
             <program language="java">
               <code>
-if (Math.random() &lt; 0.25) { System.out.println("Rain"); }
+                <![CDATA[
+                if (Math.random() < 0.25) { System.out.println("Rain"); }
+                ]]>
               </code>
             </program>
           </statement>
@@ -839,13 +885,17 @@ if (Math.random() &lt; 0.25) { System.out.println("Rain"); }
           <statement id="mcq-rnd-ifs_opt_b">
             <program language="java">
               <code>
-if (Math.random() &gt; 0.75) { System.out.println("Rain"); }
+                <![CDATA[
+                if (Math.random() > 0.75) { System.out.println("Rain"); }
+                ]]>
               </code>
             </program>
           </statement>
 
           <feedback id="mcq-rnd-ifs_opt_b">
-            <p>Correct. This code will print “Rain” 25% (1 - .75) of the time.</p>
+            <p>
+              Correct. This code will print “Rain” 25% (1 - .75) of the time.
+            </p>
           </feedback>
         </choice>
 
@@ -853,7 +903,9 @@ if (Math.random() &gt; 0.75) { System.out.println("Rain"); }
           <statement id="mcq-rnd-ifs_opt_c">
             <program language="java">
               <code>
-if (Math.random() &gt; 0.25) { System.out.println("Rain"); }
+                <![CDATA[
+                if (Math.random() > 0.25) { System.out.println("Rain"); }
+                ]]>
               </code>
             </program>
           </statement>
@@ -867,7 +919,9 @@ if (Math.random() &gt; 0.25) { System.out.println("Rain"); }
           <statement id="mcq-rnd-ifs_opt_d">
             <program language="java">
               <code>
-if (Math.random() &lt; 0.75) { System.out.println("No Rain"); }
+                <![CDATA[
+                if (Math.random() < 0.75) { System.out.println("No Rain"); }
+                ]]>
               </code>
             </program>
           </statement>
@@ -893,74 +947,79 @@ if (Math.random() &lt; 0.75) { System.out.println("No Rain"); }
 
       <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.util.*;
-import java.awt.*;
+          <![CDATA[
 
-public class RandomTurns
-{
-    public static void main(String[] args)
-    {
-        World world = new World(500,400);
-        Turtle yertle = new Turtle(world);
+          import java.util.*;
+          import java.awt.*;
 
-        // This is a loop that runs 10 times to draw a random shape
-        for(int i = 1; i &lt;= 10; i++)
-        {
-            yertle.forward(20);
+          public class RandomTurns
+          {
+              public static void main(String[] args)
+              {
+                  World world = new World(500,400);
+                  Turtle yertle = new Turtle(world);
 
-            // Write an if/else statement that uses
-            // Math.random() to do a coin flip (50%) to choose
-            // between yertle.turnRight() or turnLeft()
+                  // This is a loop that runs 10 times to draw a random shape
+                  for(int i = 1; i <= 10; i++)
+                  {
+                      yertle.forward(20);
 
-
-
-
+                      // Write an if/else statement that uses
+                      // Math.random() to do a coin flip (50%) to choose
+                      // between yertle.turnRight() or turnLeft()
 
 
-        } // end of loop
-        world.show(true);
-    }
-}
+
+
+
+
+                  } // end of loop
+                  world.show(true);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("RandomTurns");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("RandomTurns");
+              }
 
-   @Test
-   public void testCodeContainsIf()
-   {
-       boolean ifCheck = checkCodeContains("if", "if");
-       assertTrue(ifCheck);
-   }
-   @Test
-   public void testCodeContainsElse()
-   {
-       boolean ifCheck2 = checkCodeContains("else", "else");
-       assertTrue(ifCheck2);
-   }
-   @Test
-   public void testCodeContainsRandom()
-   {
-       boolean ifCheck2 = checkCodeContains("Math.Random()", "Math.random()");
-       assertTrue(ifCheck2);
-   }
-   @Test
-   public void testCodeContains5()
-   {
-       boolean ifCheck2 = checkCodeContains(".5", ".5");
-       assertTrue(ifCheck2);
-   }
-}
+             @Test
+             public void testCodeContainsIf()
+             {
+                 boolean ifCheck = checkCodeContains("if", "if");
+                 assertTrue(ifCheck);
+             }
+             @Test
+             public void testCodeContainsElse()
+             {
+                 boolean ifCheck2 = checkCodeContains("else", "else");
+                 assertTrue(ifCheck2);
+             }
+             @Test
+             public void testCodeContainsRandom()
+             {
+                 boolean ifCheck2 = checkCodeContains("Math.Random()", "Math.random()");
+                 assertTrue(ifCheck2);
+             }
+             @Test
+             public void testCodeContains5()
+             {
+                 boolean ifCheck2 = checkCodeContains(".5", ".5");
+                 assertTrue(ifCheck2);
+             }
+          }
         </tests>
       </program>
     </activity>
@@ -968,6 +1027,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="frequency">
     <title>Frequency</title>
+
     <p>
       You can use a counter variable inside a loop to determine the frequency
       with which a specific criteria is met. For example, you can count the
@@ -977,15 +1037,19 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-int count = 0;
-for (int i = 0; i &lt; 100; i++)
-{
-    if (i % 2 == 0)
-    {
-        count++;
-    }
-}
-System.out.println("There are " + count + " even numbers from 1 to 100.");
+        <![CDATA[
+
+        int count = 0;
+        for (int i = 0; i < 100; i++)
+        {
+            if (i % 2 == 0)
+            {
+                count++;
+            }
+        }
+        System.out.println("There are " + count + " even numbers from 1 to 100.");
+
+        ]]>
       </code>
     </program>
 
@@ -999,6 +1063,7 @@ System.out.println("There are " + count + " even numbers from 1 to 100.");
 
   <subsection xml:id="coding-challenge-prime-number-finder">
     <title>Coding Challenge : Prime Number Finder</title>
+
     <p>
       Prime numbers (numbers that are only divisible by 1 and themselves) are
       used every day in encryption algorithms that safely transmit your username
@@ -1019,6 +1084,7 @@ System.out.println("There are " + count + " even numbers from 1 to 100.");
     </p>
 
     <p>In the challenge below,</p>
+
     <p>
       <ol marker="1">
         <li>
@@ -1050,103 +1116,104 @@ System.out.println("There are " + count + " even numbers from 1 to 100.");
 
       <program interactive="activecode" language="java">
         <code>
-public class FindPrimeNumbers
-{
-    // isPrime checks whether n is a prime number
-    public static boolean isPrime(int n)
-    {
-        // 1. Copy your isPrime method here
-        // It should have a loop from 2 to n-1 or Math.sqrt(n)
-        //   if n is divisible by the loop variable i
-        //        return false
+          public class FindPrimeNumbers
+          {
+              // isPrime checks whether n is a prime number
+              public static boolean isPrime(int n)
+              {
+                  // 1. Copy your isPrime method here
+                  // It should have a loop from 2 to n-1 or Math.sqrt(n)
+                  //   if n is divisible by the loop variable i
+                  //        return false
 
 
 
-        // if no divisor found after loop, return true
-        return true;
-    }
+                  // if no divisor found after loop, return true
+                  return true;
+              }
 
-    // 2. Complete findPrimes to print and return
-    // the number of prime numbers between num1 and num2
-    public static int findPrimes(int num1, int num2)
-    {
-        int count = 0;
-        // Add a loop from num1 to num2 to check
-        // if each number is prime using isPrime
-        // If it is prime, print it and increment count
+              // 2. Complete findPrimes to print and return
+              // the number of prime numbers between num1 and num2
+              public static int findPrimes(int num1, int num2)
+              {
+                  int count = 0;
+                  // Add a loop from num1 to num2 to check
+                  // if each number is prime using isPrime
+                  // If it is prime, print it and increment count
 
 
-        return count;
-    }
+                  return count;
+              }
 
-    public static void main(String[] args)
-    {
-        System.out.println("There are " + findPrimes(2, 100) + " prime numbers between 2 and 100.");
-        // You may see the grader's test runs in the output.
-    }
-}
+              public static void main(String[] args)
+              {
+                  System.out.println("There are " + findPrimes(2, 100) + " prime numbers between 2 and 100.");
+                  // You may see the grader's test runs in the output.
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("FindPrimeNumbers");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("FindPrimeNumbers");
+              }
 
-    @Test
-    public void test1() throws IOException
-    {
-        String code = getCode();
-        String target = "for (int * = #; * ? *; *~)";
+              @Test
+              public void test1() throws IOException
+              {
+                  String code = getCode();
+                  String target = "for (int * = #; * ? *; *~)";
 
-        int num = countOccurencesRegex(code, target);
+                  int num = countOccurencesRegex(code, target);
 
-        boolean passed = num == 2;
+                  boolean passed = num == 2;
 
-        getResults("2", "" + num, "Each method should have a for loop", passed);
-        assertTrue(passed);
-    }
+                  getResults("2", "" + num, "Each method should have a for loop", passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testMain() throws IOException
-    {
-        String expected = "There are 25 prime numbers between 2 and 100.";
-        String output = getMethodOutput("main");
-        boolean passed = getResults(expected, output, "Checking main output");
-        assertTrue(passed);
-    }
+              @Test
+              public void testMain() throws IOException
+              {
+                  String expected = "There are 25 prime numbers between 2 and 100.";
+                  String output = getMethodOutput("main");
+                  boolean passed = getResults(expected, output, "Checking main output");
+                  assertTrue(passed);
+              }
 
-   @Test
-   public void testCall() throws IOException
-   {
-       Object[] args = {10000,10100};
-       String output = getMethodOutput("findPrimes", args);
-       String expect = "11";
+             @Test
+             public void testCall() throws IOException
+             {
+                 Object[] args = {10000,10100};
+                 String output = getMethodOutput("findPrimes", args);
+                 String expect = "11";
 
-       boolean passed =
-               getResults(
-                       expect,
-                       output,
-                       "findPrimes(10000,10100)"
-                       );
-       assertTrue(passed);
-   }
+                 boolean passed =
+                         getResults(
+                                 expect,
+                                 output,
+                                 "findPrimes(10000,10100)"
+                                 );
+                 assertTrue(passed);
+             }
 
-    @Test
-   public void testBool() throws IOException
-   {
-       String target = "(isPrime(";
-       boolean passed = checkCodeContains("call to isPrime", target);
-       assertTrue(passed);
-   }
-}
+              @Test
+             public void testBool() throws IOException
+             {
+                 String target = "(isPrime(";
+                 boolean passed = checkCodeContains("call to isPrime", target);
+                 assertTrue(passed);
+             }
+          }
         </tests>
       </program>
     </project>
@@ -1154,6 +1221,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-26">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -1184,7 +1252,10 @@ public class RunestoneTests extends CodeTestHelper
               </li>
 
               <li>
-                <p>determine the frequency with which a specific criterion is met.</p>
+                <p>
+                  determine the frequency with which a specific criterion is
+                  met.
+                </p>
               </li>
             </ul>
           </p>

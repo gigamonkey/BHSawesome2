@@ -2,16 +2,14 @@
 
 <section xml:id="topic-2-7-while-loops">
   <title>While Loops</title>
+
   <introduction>
     <idx>loop</idx>
     <idx>looping</idx>
     <idx>iteration</idx>
     <idx>repetition</idx>
     <idx>while</idx>
-    <idx>
-      <h>loop</h><h>while</h>
-    </idx>
-
+    <idx><h>loop</h><h>while</h></idx>
     <image source="Unit2-Selection-and-Iteration/Figures/loops.png" width="22%" />
     <p>
       When you play a song, you can set it to loop, which means that when it
@@ -42,19 +40,19 @@
 
     <program language="java">
       <code>
-// The statements in an if run one time if the condition is
-// is true and zero times if it is false.
-if (condition)
-{
-    statements;
-}
+        // The statements in an if run one time if the condition is
+        // is true and zero times if it is false.
+        if (condition)
+        {
+            statements;
+        }
 
-// The statements in a while loop run zero or more times,
-// determined by how many times the condition is true
-while (condition)
-{
-    statements;
-}
+        // The statements in a while loop run zero or more times,
+        // determined by how many times the condition is true
+        while (condition)
+        {
+            statements;
+        }
       </code>
     </program>
 
@@ -68,7 +66,9 @@ while (condition)
 
     <figure align="center">
       <caption>
-        Comparing App Inventor and Java for <literal>while</literal> loops
+        Comparing App Inventor and Java for
+        <literal>while</literal>
+ loops
       </caption>
 
       <image source="Unit2-Selection-and-Iteration/Figures/whileInAppInventor.png" width="100%" />
@@ -87,7 +87,8 @@ while (condition)
     <figure align="center">
       <caption>
         Comparing Snap! or Scratch Repeat Until Loop to Java
-        <literal>while</literal> loop
+        <literal>while</literal>
+ loop
       </caption>
 
       <image source="Unit2-Selection-and-Iteration/Figures/ScratchRepeatUntilLoop.png" width="100%" />
@@ -114,12 +115,14 @@ while (condition)
 
     <figure align="center">
       <caption>Control Flow in a while Loop</caption>
+
       <image source="Unit2-Selection-and-Iteration/Figures/WhileLoopFlow.png" width="45%" />
     </figure>
   </introduction>
 
   <subsection xml:id="three-steps-to-writing-a-loop">
     <title>Three Steps to Writing a Loop</title>
+
     <p>
       The simplest loops are <term>counter-controlled loops</term> like below,
       where the <term>loop control variable</term> is a counter that controls
@@ -130,17 +133,17 @@ while (condition)
 
     <figure align="center">
       <caption>Three Steps of Writing a Loop</caption>
+
       <image source="Unit2-Selection-and-Iteration/Figures/loop3steps.png" width="71%" />
     </figure>
 
     <note>
       <p>Remember these 3 steps to writing a loop:</p>
+
       <p>
         <ol marker="1">
           <li>
-            <p>
-              Initialize the loop variable (before the <c>while</c> loop)
-            </p>
+            <p>Initialize the loop variable (before the <c>while</c> loop)</p>
           </li>
 
           <li>
@@ -164,41 +167,46 @@ while (condition)
 
       <program interactive="activecode" language="java">
         <code>
-public class LoopTest1
-{
-    public static void main(String[] args)
-    {
-        // 1. initialize the loop variable
-        int count = 1;
+          <![CDATA[
 
-        // 2. test the loop variable
-        while (count &lt;= 5)
-        {
-            System.out.println(count);
-            // 3. update the loop variable
-            count++;
-        }
-    }
-}
+          public class LoopTest1
+          {
+              public static void main(String[] args)
+              {
+                  // 1. initialize the loop variable
+                  int count = 1;
+
+                  // 2. test the loop variable
+                  while (count <= 5)
+                  {
+                      System.out.println(count);
+                      // 3. update the loop variable
+                      count++;
+                  }
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "2\n3\n4\n5\n6\n7\n8\n9\n10\n";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "2\n3\n4\n5\n6\n7\n8\n9\n10\n";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -272,12 +280,12 @@ public class RunestoneTests extends CodeTestHelper
 
         <program language="java">
           <code>
-int count = 0;
-/* missing loop header */
-{
-    System.out.print(count + " ");
-    count += 2;
-}
+            int count = 0;
+            /* missing loop header */
+            {
+                System.out.print(count + " ");
+                count += 2;
+            }
           </code>
         </program>
       </statement>
@@ -337,6 +345,7 @@ int count = 0;
 
   <subsection xml:id="tracing-loops-1">
     <title>Tracing Loops</title>
+
     <p>
       A really important skill to develop is the ability to trace the values of
       variables and how they change during each iteration of a loop.
@@ -378,12 +387,16 @@ int count = 0;
 
         <program language="java">
           <code>
-int count = 1;
-while (count &lt;= 10)
-{
-    count *= 2;
-}
-count = count - 10;
+            <![CDATA[
+
+            int count = 1;
+            while (count <= 10)
+            {
+                count *= 2;
+            }
+            count = count - 10;
+
+            ]]>
           </code>
         </program>
       </statement>
@@ -450,12 +463,16 @@ count = count - 10;
 
         <program language="java">
           <code>
-int x = -5;
-while (x &lt; 0)
-{
-   x++;
-   System.out.print(x + " ");
-}
+            <![CDATA[
+
+            int x = -5;
+            while (x < 0)
+            {
+               x++;
+               System.out.print(x + " ");
+            }
+
+            ]]>
           </code>
         </program>
       </statement>
@@ -499,11 +516,9 @@ while (x &lt; 0)
 
   <subsection xml:id="common-errors-with-loops">
     <title>Common Errors with Loops</title>
-    <idx>infinite loop</idx>
-    <idx>
-      <h>loop</h><h>infinite</h>
-    </idx>
 
+    <idx>infinite loop</idx>
+    <idx><h>loop</h><h>infinite</h></idx>
     <p>
       One common error with loops is to accidentally create an <term>infinite
       loop</term>. An infinite loop is one that never stops because the Boolean
@@ -511,12 +526,13 @@ while (x &lt; 0)
     </p>
 
     <p>Sometimes we will write an infinite loop on purpose like this:</p>
+
     <program language="java">
       <code>
-while (true)
-{
-    System.out.println("This is a loop that never ends");
-}
+        while (true)
+        {
+            System.out.println("This is a loop that never ends");
+        }
       </code>
     </program>
 
@@ -527,11 +543,15 @@ while (true)
 
     <program language="java">
       <code>
-int i = 0;
-while (i &lt; 10)
-{
-    System.out.println(i);
-}
+        <![CDATA[
+
+        int i = 0;
+        while (i < 10)
+        {
+            System.out.println(i);
+        }
+
+        ]]>
       </code>
     </program>
 
@@ -552,12 +572,16 @@ while (i &lt; 10)
 
     <program language="java">
       <code>
-int i = 0;
-while (i &lt; 10)
-{
-    System.out.println(i);
-    i++;
-}
+        <![CDATA[
+
+        int i = 0;
+        while (i < 10)
+        {
+            System.out.println(i);
+            i++;
+        }
+
+        ]]>
       </code>
     </program>
 
@@ -581,42 +605,47 @@ while (i &lt; 10)
 
       <program interactive="activecode" language="java">
         <code>
-public class LoopTest2
-{
-    public static void main(String[] args)
-    {
-        int count = 1;
-        while (count &lt; 8)
-        {
-            System.out.println(count);
-        }
-    }
-}
+          <![CDATA[
+
+          public class LoopTest2
+          {
+              public static void main(String[] args)
+              {
+                  int count = 1;
+                  while (count < 8)
+                  {
+                      System.out.println(count);
+                  }
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("LoopTest2");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("LoopTest2");
+              }
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "1\n2\n3\n4\n5\n6\n7\n8";
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "1\n2\n3\n4\n5\n6\n7\n8";
 
-        boolean passed = getResults(expect, output, "Running main");
-        assertTrue(passed);
-    }
-}
+                  boolean passed = getResults(expect, output, "Running main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -631,18 +660,23 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-int i = 10;
-while (i &lt; 10)  // This loop will never run!
-{
-    System.out.println(i);
-    i++;
-}
+        <![CDATA[
+
+        int i = 10;
+        while (i < 10)  // This loop will never run!
+        {
+            System.out.println(i);
+            i++;
+        }
+
+        ]]>
       </code>
     </program>
   </subsection>
 
   <subsection xml:id="input-controlled-loops">
     <title>Input-Controlled Loops</title>
+
     <p>
       You can use a <c>while</c> loop to repeat the body of the loop a certain
       number of times in counter-controlled loop as we saw above. However, a
@@ -660,19 +694,20 @@ while (i &lt; 10)  // This loop will never run!
 
     <program language="java">
       <code>
-Scanner in = new Scanner(System.in);
-String statement = in.nextLine();
-while (!statement.equals("Bye"))
-{
-    System.out.println(getResponse(statement));
-    statement = in.nextLine();
-}
+        Scanner in = new Scanner(System.in);
+        String statement = in.nextLine();
+        while (!statement.equals("Bye"))
+        {
+            System.out.println(getResponse(statement));
+            statement = in.nextLine();
+        }
       </code>
     </program>
   </subsection>
 
   <subsection xml:id="coding-challenge-turtle-squares">
     <title>Coding Challenge : Turtle Squares</title>
+
     <p>
       Do you remember when we used the turtle objects to draw shapes? To create
       a square without loops we had to repeat code to go forward and turn 90
@@ -732,104 +767,109 @@ while (!statement.equals("Bye"))
 
       <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class TurtleDrawSquare
-{
-    public static void main(String[] args)
-    {
-        World world = new World(300, 300);
-        Turtle yertle = new Turtle(world);
+          public class TurtleDrawSquare
+          {
+              public static void main(String[] args)
+              {
+                  World world = new World(300, 300);
+                  Turtle yertle = new Turtle(world);
 
-        // Change the following code to use a while loop to draw the square
-        // Remember to initialize a counter variable, test it, and increment it.
+                  // Change the following code to use a while loop to draw the square
+                  // Remember to initialize a counter variable, test it, and increment it.
 
-        yertle.forward();
-        yertle.turn(90);
-        yertle.forward();
-        yertle.turn(90);
-        yertle.forward();
-        yertle.turn(90);
-        yertle.forward();
-        yertle.turn(90);
+                  yertle.forward();
+                  yertle.turn(90);
+                  yertle.forward();
+                  yertle.turn(90);
+                  yertle.forward();
+                  yertle.turn(90);
+                  yertle.forward();
+                  yertle.turn(90);
 
-        world.show(true);
-    }
-}
+                  world.show(true);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleDrawSquare");
-    }
+          import java.io.*;
 
-    @Test
-    public void test1()
-    {
-        String target = "while (* ? 4)";
-        boolean passed = checkCodeContainsRegex("while loop that counts to 4", target);
-        assertTrue(passed);
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TurtleDrawSquare");
+              }
 
-    @Test
-    public void test2()
-    {
-        String code = getCode();
-        String forwards = ".forward()";
+              @Test
+              public void test1()
+              {
+                  String target = "while (* ? 4)";
+                  boolean passed = checkCodeContainsRegex("while loop that counts to 4", target);
+                  assertTrue(passed);
+              }
 
-        int count = countOccurences(code, forwards);
+              @Test
+              public void test2()
+              {
+                  String code = getCode();
+                  String forwards = ".forward()";
 
-        boolean passed = count == 1;
+                  int count = countOccurences(code, forwards);
 
-        passed =
-                getResults(
-                        "1 forward()",
-                        "" + count + " forward()",
-                        "Should only need forward() once",
-                        passed);
-        assertTrue(passed);
-    }
+                  boolean passed = count == 1;
 
-    @Test
-    public void test3()
-    {
-        String code = getCode();
-        String forwards = ".turn(90)";
+                  passed =
+                          getResults(
+                                  "1 forward()",
+                                  "" + count + " forward()",
+                                  "Should only need forward() once",
+                                  passed);
+                  assertTrue(passed);
+              }
 
-        int count = countOccurences(code, forwards);
+              @Test
+              public void test3()
+              {
+                  String code = getCode();
+                  String forwards = ".turn(90)";
 
-        boolean passed = count == 1;
+                  int count = countOccurences(code, forwards);
 
-        passed =
-                getResults(
-                        "1 turn(90)",
-                        "" + count + " turn(90)",
-                        "Should only need turn(90) once",
-                        passed);
-        assertTrue(passed);
-    }
-    @Test
-    public void test4()
-    {
-        boolean passed = checkCodeContains("increment the counter with ++", "++");
-        assertTrue(passed);
-    }
-    @Test
-    public void test5()
-    {
-        boolean passed = checkCodeContains("test the counter with &lt; or &lt;=", "&lt;");
-        assertTrue(passed);
-    }
-}
+                  boolean passed = count == 1;
+
+                  passed =
+                          getResults(
+                                  "1 turn(90)",
+                                  "" + count + " turn(90)",
+                                  "Should only need turn(90) once",
+                                  passed);
+                  assertTrue(passed);
+              }
+              @Test
+              public void test4()
+              {
+                  boolean passed = checkCodeContains("increment the counter with ++", "++");
+                  assertTrue(passed);
+              }
+              @Test
+              public void test5()
+              {
+                  boolean passed = checkCodeContains("test the counter with < or <=", "<");
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -837,6 +877,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-24">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -863,15 +904,19 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-// The statements in a while loop run zero or more times,
-// determined by how many times the condition is true
-int count = 0; // initialize the loop variable
-while (count &lt; 10)  // test the loop variable
-{
-    // repeat this code
-    // update the loop variable
-    count++;
-}
+        <![CDATA[
+
+        // The statements in a while loop run zero or more times,
+        // determined by how many times the condition is true
+        int count = 0; // initialize the loop variable
+        while (count < 10)  // test the loop variable
+        {
+            // repeat this code
+            // update the loop variable
+            count++;
+        }
+
+        ]]>
       </code>
     </program>
 
@@ -936,20 +981,26 @@ while (count &lt; 10)  // test the loop variable
 
   <subsection xml:id="ap-practice-17">
     <title>AP Practice</title>
+
     <activity label="AP-while-loop1">
       <statement>
         <p>Consider the following code segment.</p>
+
         <program language="java">
           <code>
-int n = 35;
-int result = 1;
-while (n &gt; 0)
-{
-    int d = n % 10;
-    result *= d;
-    n /= 10;
-}
-System.out.println(result);
+            <![CDATA[
+
+            int n = 35;
+            int result = 1;
+            while (n > 0)
+            {
+                int d = n % 10;
+                result *= d;
+                n /= 10;
+            }
+            System.out.println(result);
+
+            ]]>
           </code>
         </program>
 
@@ -1030,15 +1081,15 @@ System.out.println(result);
 
         <program language="java">
           <code>
-int count = 0;
-/* missing loop header */
-{
-    if (count % 2 == 0)
-    {
-        System.out.println(count);
-    }
-    count++;
-}
+            int count = 0;
+            /* missing loop header */
+            {
+                if (count % 2 == 0)
+                {
+                    System.out.println(count);
+                }
+                count++;
+            }
           </code>
         </program>
 

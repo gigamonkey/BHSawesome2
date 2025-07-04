@@ -2,12 +2,10 @@
 
 <section xml:id="topic-2-10-strings-loops">
   <title>Implementing String Algorithms</title>
+
   <introduction>
     <idx>string processing</idx>
-    <idx>
-      <h>string</h><h>loop</h>
-    </idx>
-
+    <idx><h>string</h><h>loop</h></idx>
     <p>
       Loops are often used for <term>String Traversals</term> or <term>String
       Processing</term> algorithms where the code steps through a string
@@ -39,7 +37,10 @@
     </p>
 
     <figure align="center">
-      <caption>A string with the position (index) shown above each character</caption>
+      <caption>
+        A string with the position (index) shown above each character
+      </caption>
+
       <image source="Unit2-Selection-and-Iteration/Figures/stringIndicies.png" width="89%" alt="a string with the position (index) shown above each character" />
     </figure>
 
@@ -94,6 +95,7 @@
 
   <subsection xml:id="while-find-and-replace-loop">
     <title>While Find and Replace Loop</title>
+
     <p>
       A while loop can be used with the <c>String</c> <c>indexOf</c> method to
       find certain characters in a string and process them, usually using the
@@ -102,17 +104,21 @@
 
     <program language="java">
       <code>
-String s = "example";
-int i = 0;
-// while there is an a in s
-while (s.indexOf("a") &gt;= 0)
-{
-  // Find and save the next index for an a
-  i = s.indexOf("a");
-  // Process the string at that index
-  String ithLetter = s.substring(i,i+1);
-  ...
-}
+        <![CDATA[
+
+        String s = "example";
+        int i = 0;
+        // while there is an a in s
+        while (s.indexOf("a") >= 0)
+        {
+          // Find and save the next index for an a
+          i = s.indexOf("a");
+          // Process the string at that index
+          String ithLetter = s.substring(i,i+1);
+          ...
+        }
+
+        ]]>
       </code>
     </program>
 
@@ -209,70 +215,75 @@ while (s.indexOf("a") &gt;= 0)
 
       <program interactive="activecode" language="java">
         <code>
-public class FindAndReplace
-{
-    public static void main(String[] args)
-    {
-        String message = "Have a 1ong and happy 1ife";
-        int index = 0;
+          <![CDATA[
 
-        // while more 1's in the message
-        while (message.indexOf("1") &gt;= 0)
-        {
-            // Find the next index for 1
-            index = message.indexOf("1");
-            System.out.println("Found a 1 at index: " + index);
-            // Replace the 1 with a l at index by concatenating substring up to
-            // index and then the rest of the string.
-            String firstpart = message.substring(0, index);
-            String lastpart = message.substring(index + 1);
-            message = firstpart + "l" + lastpart;
-            System.out.println("Replaced 1 with l at index " + index);
-            System.out.println(
-                    "The message is currently "
-                            + message
-                            + " but we aren't done looping yet!");
-        }
-        System.out.println("Cleaned text: " + message);
-    }
-}
+          public class FindAndReplace
+          {
+              public static void main(String[] args)
+              {
+                  String message = "Have a 1ong and happy 1ife";
+                  int index = 0;
+
+                  // while more 1's in the message
+                  while (message.indexOf("1") >= 0)
+                  {
+                      // Find the next index for 1
+                      index = message.indexOf("1");
+                      System.out.println("Found a 1 at index: " + index);
+                      // Replace the 1 with a l at index by concatenating substring up to
+                      // index and then the rest of the string.
+                      String firstpart = message.substring(0, index);
+                      String lastpart = message.substring(index + 1);
+                      message = firstpart + "l" + lastpart;
+                      System.out.println("Replaced 1 with l at index " + index);
+                      System.out.println(
+                              "The message is currently "
+                                      + message
+                                      + " but we aren't done looping yet!");
+                  }
+                  System.out.println("Cleaned text: " + message);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-// Test for Lesson 4.3.1 - While Loop FindAndReplace lclw1
-import static org.junit.Assert.*;
+          // Test for Lesson 4.3.1 - While Loop FindAndReplace lclw1
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("FindAndReplace");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("FindAndReplace");
+              }
 
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main").trim();
-        String expect =
-                "Found a 1 at index: 7\n"
-                    + "Replaced 1 with l at index 7\n"
-                    + "The message is currently Have a long and happy 1ife but we aren't done"
-                    + " looping yet!\n"
-                    + "Found a 1 at index: 22\n"
-                    + "Replaced 1 with l at index 22\n"
-                    + "The message is currently Have a long and happy life but we aren't done"
-                    + " looping yet!\n"
-                    + "Cleaned text: Have a long and happy life\n";
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main").trim();
+                  String expect =
+                          "Found a 1 at index: 7\n"
+                              + "Replaced 1 with l at index 7\n"
+                              + "The message is currently Have a long and happy 1ife but we aren't done"
+                              + " looping yet!\n"
+                              + "Found a 1 at index: 22\n"
+                              + "Replaced 1 with l at index 22\n"
+                              + "The message is currently Have a long and happy life but we aren't done"
+                              + " looping yet!\n"
+                              + "Cleaned text: Have a long and happy life\n";
 
-        boolean pass = !output.equals(expect.trim());
+                  boolean pass = !output.equals(expect.trim());
 
-        boolean passed = getResults(expect, output, "Output should be different", pass);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = getResults(expect, output, "Output should be different", pass);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -280,6 +291,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="for-loops-reverse-string">
     <title>For Loops: Reverse String</title>
+
     <p>
       <c>for</c> loops can also be used to process strings, especially in
       situations where you know you will visit every character.
@@ -302,14 +314,18 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-String s = "example";
-// loop through the string from 0 to length
-for(int i=0; i &lt; s.length(); i++)
-{
-   String ithLetter = s.substring(i,i+1);
-   // Process the string at that index
-   ...
-}
+        <![CDATA[
+
+        String s = "example";
+        // loop through the string from 0 to length
+        for(int i=0; i < s.length(); i++)
+        {
+           String ithLetter = s.substring(i,i+1);
+           // Process the string at that index
+           ...
+        }
+
+        ]]>
       </code>
     </program>
 
@@ -382,63 +398,72 @@ for(int i=0; i &lt; s.length(); i++)
 
       <program interactive="activecode" language="java">
         <code>
-public class ReverseString
-{
-    public static void main(String[] args)
-    {
-        String s = "Hello";
-        String sReversed = "";
-        String ithLetter;
+          <![CDATA[
 
-        for (int i = 0; i &lt; s.length(); i++)
-        {
-            ithLetter = s.substring(i, i + 1);
-            // add the letter at index i to what's already reversed.
-            sReversed = ithLetter + sReversed;
-        }
-        System.out.println(s + " reversed is " + sReversed);
-    }
-}
+          public class ReverseString
+          {
+              public static void main(String[] args)
+              {
+                  String s = "Hello";
+                  String sReversed = "";
+                  String ithLetter;
+
+                  for (int i = 0; i < s.length(); i++)
+                  {
+                      ithLetter = s.substring(i, i + 1);
+                      // add the letter at index i to what's already reversed.
+                      sReversed = ithLetter + sReversed;
+                  }
+                  System.out.println(s + " reversed is " + sReversed);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
- // Test for Lesson 4.3 - ReverseString
- import static org.junit.Assert.*;
+          <![CDATA[
 
- import org.junit.*;
+          // Test for Lesson 4.3 - ReverseString
+          import static org.junit.Assert.*;
 
- import java.io.*;
+          import org.junit.*;
 
- public class RunestoneTests extends CodeTestHelper
- {
-     public RunestoneTests()
-     {
-         super("ReverseString");
-     }
+          import java.io.*;
 
-     @Test
-     public void testMain() throws IOException
-     {
-         String origCode =
-                 "public class ReverseString\n"
-                     + "{\n"
-                     + "   public static void main(String[] args)\n"
-                     + "   {\n"
-                     + "     String s = \"Hello\";\n"
-                     + "     String sReversed = \"\";\n"
-                     + "     String ithLetter;\n\n"
-                     + "     for(int i=0; i &lt; s.length(); i++) {\n"
-                     + "         ithLetter = s.substring(i,i+1);\n"
-                     + "         // add the letter at index i to what's already reversed.\n"
-                     + "         sReversed = ithLetter + sReversed;\n"
-                     + "     }\n"
-                     + "     System.out.println(s + \" reversed is \" + sReversed);\n"
-                     + "   }\n"
-                     + " }\n\n";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ReverseString");
+              }
 
-         boolean passed = codeChanged(origCode);
-         assertTrue(passed);
-     }
- }
+              @Test
+              public void testMain() throws IOException
+              {
+                  String origCode =
+                          "public class ReverseString\n"
+                              + "{\n"
+                              + "   public static void main(String[] args)\n"
+                              + "   {\n"
+                              + "     String s = \"Hello\";\n"
+                              + "     String sReversed = \"\";\n"
+                              + "     String ithLetter;\n\n"
+                              + "     for(int i=0; i < s.length(); i++) {\n"
+                              + "         ithLetter = s.substring(i,i+1);\n"
+                              + "         // add the letter at index i to what's already reversed.\n"
+                              + "         sReversed = ithLetter + sReversed;\n"
+                              + "     }\n"
+                              + "     System.out.println(s + \" reversed is \" + sReversed);\n"
+                              + "   }\n"
+                              + " }\n\n";
+
+                  boolean passed = codeChanged(origCode);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -446,6 +471,7 @@ public class ReverseString
 
   <subsection xml:id="coding-challenge-string-replacement-cats-and-dogs">
     <title>Coding Challenge : String Replacement Cats and Dogs</title>
+
     <image source="Unit2-Selection-and-Iteration/Figures/catordog.jpg" width="27%" alt="Cat or Dog" />
     <p>
       Are you a cat person or a dog person? The code below prints a nice message
@@ -512,72 +538,73 @@ public class ReverseString
 
       <program interactive="activecode" language="java">
         <code>
-public class ChallengeReplace
-{
-    public static void main(String[] args)
-    {
-        String message =
-                "I love cats! I have a cat named Coco. My cat's very smart!";
+          public class ChallengeReplace
+          {
+              public static void main(String[] args)
+              {
+                  String message =
+                          "I love cats! I have a cat named Coco. My cat's very smart!";
 
-        // Write a loop here that replaces every occurrence of "cat"
-        // in the message with "dog", using indexOf and substring.
+                  // Write a loop here that replaces every occurrence of "cat"
+                  // in the message with "dog", using indexOf and substring.
 
-        System.out.println(message);
-    }
-}
+                  System.out.println(message);
+              }
+          }
         </code>
+
         <tests>
-// Test Code for Lesson 4.3.3 - String Replacement - ChallengeReplace
+          // Test Code for Lesson 4.3.3 - String Replacement - ChallengeReplace
 
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.Test;
+          import org.junit.Test;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("ChallengeReplace");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ChallengeReplace");
+              }
 
-    @Test
-    public void test1() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect =
-                "I love cats! I have a cat named Coco. My cat's very smart!"
-                        .replaceAll("cat", "dog");
+              @Test
+              public void test1() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect =
+                          "I love cats! I have a cat named Coco. My cat's very smart!"
+                                  .replaceAll("cat", "dog");
 
-        boolean passed = getResults(expect, output, "Running main");
-        assertTrue(passed);
-    }
+                  boolean passed = getResults(expect, output, "Running main");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testWhile() throws IOException
-    {
-        String target = "while(";
-        boolean passed = checkCodeContains("while loop", target);
-        assertTrue(passed);
-    }
+              @Test
+              public void testWhile() throws IOException
+              {
+                  String target = "while(";
+                  boolean passed = checkCodeContains("while loop", target);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testSubString()
-    {
-        String target = "substring(";
-        boolean passed = checkCodeContains("substring", target);
-        assertTrue(passed);
-    }
+              @Test
+              public void testSubString()
+              {
+                  String target = "substring(";
+                  boolean passed = checkCodeContains("substring", target);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testReplace() throws IOException
-    {
-        String target = ".replace";
-        boolean passed = checkCodeNotContains("shortcut replace", target);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void testReplace() throws IOException
+              {
+                  String target = ".replace";
+                  boolean passed = checkCodeNotContains("shortcut replace", target);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </project>
@@ -585,6 +612,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-16">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -593,15 +621,21 @@ public class RunestoneTests extends CodeTestHelper
 
         <li>
           <p>(AP 2.10.A.1) There are standard string algorithms to:</p>
+
           <blockquote>
             <p>
               <ul>
                 <li>
-                  <p>Find if one or more substrings has a particular property</p>
+                  <p>
+                    Find if one or more substrings has a particular property
+                  </p>
                 </li>
 
                 <li>
-                  <p>Determine the number of substrings that meet specific criteria</p>
+                  <p>
+                    Determine the number of substrings that meet specific
+                    criteria
+                  </p>
                 </li>
 
                 <li>
