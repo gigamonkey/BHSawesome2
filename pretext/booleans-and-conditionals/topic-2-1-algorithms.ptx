@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="topic-2-1-algorithms">
-  <title>Algorithms</title>
+  <title>Building blocks of algorithms</title>
   <introduction>
     <idx>selection</idx>
     <idx>repetition</idx>
@@ -21,11 +21,10 @@
     </p>
 
     <p>
-      One of the most important, and perhaps surprising facts about computers,
-      discovered in the earliest days of computer science, is that we only need
-      a three pretty simple building blocks to be able to create code that
-      implements any algorithm that can be run on any computer. The three
-      building blocks of algorithms are <term>sequencing</term>,
+      One of the most important, and perhaps surprising, facts about computers
+      is that we only need a three pretty simple building blocks to be able to
+      create code that implements any algorithm that can be run on any computer.
+      The three building blocks of algorithms are <term>sequencing</term>,
       <term>selection</term>, and <term>repetition</term> each of which control
       how our program executes.
     </p>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <chapter xml:id="booleans-and-conditionals" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>booleans-and-conditionals</title>
+  <title>Booleans and conditionals</title>
   <introduction>
     <p>
       Now that we know how to structure our code using methods, we need to learn
