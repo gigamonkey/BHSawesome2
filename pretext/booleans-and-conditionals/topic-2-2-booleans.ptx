@@ -22,7 +22,7 @@
 
     <p>
       But most of the logic that goes into making interesting algorithms comes
-      from how we actually compute those <c>boolean</c> values that we use in
+      from how we actually compute the <c>boolean</c> values that we use in
       <c>if</c> statements.
     </p>
 
