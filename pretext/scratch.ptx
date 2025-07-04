@@ -463,4 +463,57 @@ public class RunestoneTests extends CodeTestHelper
       </ul>
     </p>
   </subsection>
+
+  <introduction>
+    <idx>De Morgan's Laws</idx>
+    <idx>negation</idx>
+    <idx>truth table</idx>
+    <p>
+      What if you heard a rumor about a senior at your high school? And then you
+      heard that the rumor wasn’t true - it wasn’t a senior at your high school.
+      Which part of “a senior at your high school” wasn’t true? Maybe they
+      weren’t a senior? Or maybe they didn’t go to your high school? You could
+      write this as a logic statement like below using negation (<c>!</c>) and
+      the <term>and</term> (<c>&amp;&amp;</c>) operator since both parts have to
+      be true for the whole statement to be true. (Thank you to Kevin Saxton
+      from Kent School, CT for this example.)
+    </p>
+
+    <program language="java">
+      <code>
+!(a &amp;&amp; b)
+
+a = "senior"
+b = "at our high school"
+
+// This means it is not true that (a) it is a senior
+// and (b) someone at our high school.
+      </code>
+    </program>
+
+    <p>
+      In this lesson, you will learn about De Morgan’s Laws which simplify
+      statements like this. We know that !(a senior at our high school) could
+      mean !(a senior) or !(at our high school). Let’s learn more about De
+      Morgan’s Laws.
+    </p>
+  </introduction>
+
+  <subsection>
+    <p>
+      Often, you can simplify boolean expressions to create equivalent
+      expressions. For example, applying De Morgan’s Laws to <c>!(x &lt; 3
+      &amp;&amp; y &gt; 2)</c> yields <c>!(x &lt; 3) || !(y &gt; 2)</c> as seen
+      in the figure below. This can then be simplified further by flipping the
+      relational operators to remove the not. So, <c>!(x &lt; 3) || !(y &gt;
+      2)</c> is simplified to <c>(x &gt;= 3 || y &lt;= 2)</c> where the
+      relational operators are flipped and the negation is removed. These two
+      simplification steps are seen below.
+    </p>
+
+    <figure align="center">
+      <caption>An example boolean expression simplified</caption>
+      <image source="Unit2-Selection-and-Iteration/Figures/demorganex.png" width="71%" />
+    </figure>
+  </subsection>
 </section>

@@ -42,11 +42,12 @@
       Once we start writing compound expressions it’s important to know what the
       precedence of the different operators are and our middle-school PEMDAS is
       no help. In Java, <c>!</c> has higher precedence than <c>&amp;&amp;</c>,
-      and <c>&amp;&amp;</c> is higher than <c>||</c>. But parentheses are still
-      the highest precedence so we can use them to group things the way we want
-      them to be evaluated. For example <c>!a &amp;&amp; b</c> is equivalent to
-      <c>(!a) &amp;&amp; b</c>. If instead we want to negate the value produced
-      by the and expression we can write: <c>!(a &amp;&amp; b)</c>.
+      and <c>&amp;&amp;</c> is higher than <c>||</c>. But parentheses still have
+      the highest precedence of all so we can use them to group things the way
+      we want them to be evaluated. For example <c>!a &amp;&amp; b</c> is
+      equivalent to <c>(!a) &amp;&amp; b</c>. If instead we want to negate the
+      value produced by the and expression we can write: <c>!(a &amp;&amp;
+      b)</c>.
     </p>
 
     <p>
@@ -140,16 +141,17 @@
   <subsection xml:id="de-morgan-s-laws">
     <title>De Morgan’s Laws</title>
     <p>
-      De Morgan’s Laws were developed by Augustus De Morgan in the 1800s. They
-      show how to simplify the negation of a complex boolean expression, which
-      is when there are multiple expressions joined by an <term>and</term>
-      (<c>&amp;&amp;</c>) or <term>or</term> (<c>||</c>), such as <c>(x &lt; 3)
-      &amp;&amp; (y &gt; 2)</c>. When you negate one of these complex
-      expressions, you can simplify it by flipping the operators and end up with
-      an equivalent expression. De Morgan’s Laws state the following
-      equivalencies. Here’s an easy way to remember De Morgan’s Laws: <term>move
-      the NOT inside, AND becomes OR</term> and <term>move the NOT inside, OR
-      becomes AND</term>.
+      One of the most powerful tools for manipulating <c>boolean</c> expressions
+      are De Morgan’s Laws. Developed by Augustus De Morgan in the 1800s, they
+      show how to simplify the negation of <c>&amp;&amp;</c> and <c>||</c>
+      expressions, i.e. anything in either of these two forms: <c>!(a &amp;&amp;
+      b)</c> or <c>!(a || b)</c>
+    </p>
+
+    <p>
+      The rule is pretty simple: apply the <c>!</c> to each of the
+      subexpressions and then switch the other operator with <c>&amp;&amp;</c>
+      changing to <c>||</c> and <c>||</c> changing to <c>&amp;&amp;</c>.
     </p>
 
     <figure align="center">
@@ -161,734 +163,498 @@
       In Java, De Morgan’s Laws are written with the following operators:
     </p>
 
-    <blockquote>
-      <p>
-        <ul>
-          <li>
-            <p>
-              <c>!(a &amp;&amp; b)</c> is equivalent to <c>!a || !b</c>
-            </p>
-          </li>
-
-          <li>
-            <p>
-              <c>!(a || b)</c> is equivalent to <c>!a &amp;&amp; !b</c>
-            </p>
-          </li>
-        </ul>
-      </p>
-    </blockquote>
-
     <p>
-      Going back to our example above, !(a senior &amp;&amp; at our high school)
-      is equivalent to !(a senior) or !(at our high school) using De Morgan’s
-      Laws:
+      <ul>
+        <li>
+          <p>
+            <c>!(a &amp;&amp; b)</c> is equivalent to <c>!a || !b</c>
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>!(a || b)</c> is equivalent to <c>!a &amp;&amp; !b</c>
+          </p>
+        </li>
+      </ul>
     </p>
 
-    <program language="java">
-      <code>
-!(a &amp;&amp; b) is equivalent to !a || !b
-
-a = "senior"
-b = "at our high school"
-      </code>
-    </program>
-
     <p>
-      You can also simplify negated boolean expressions that have relational
-      operators like <c>&lt;</c>, <c>&gt;</c>, <c>==</c>. You can move the
-      negation inside the parentheses by flipping the relational operator to its
-      opposite sign. For example, not (c equals d) is the same as saying c does
-      not equal d. An easy way to remember this is <term>To move the NOT, flip
-      the sign</term>. Notice that <c>==</c> becomes <c>!=</c>, but <c>&lt;</c>
-      becomes <c>&gt;=</c>, <c>&gt;</c> becomes <c>&lt;=</c>, <c>&lt;=</c>
-      becomes <c>&gt;</c>, and <c>&gt;=</c> becomes <c>&lt;</c> where the sign
-      is flipped and an equal sign may also be added or removed.
+      You can probably convince yourself that these are valid with an actual
+      example. Imagine, for instance, that you are trying to express whether you
+      want to go to the movies. You won’t go if you’re broke or if you’re too
+      tired but otherwise you will.
     </p>
 
-    <blockquote>
-      <p>
-        <ul>
-          <li>
-            <p>
-              <c>!(c == d)</c> is equivalent to <c>c != d</c>
-            </p>
-          </li>
-
-          <li>
-            <p>
-              <c>!(c != d)</c> is equivalent to <c>c == d</c>
-            </p>
-          </li>
-
-          <li>
-            <p>
-              <c>!(c &lt; d)</c> is equivalent to <c>c &gt;= d</c>
-            </p>
-          </li>
-
-          <li>
-            <p>
-              <c>!(c &gt; d)</c> is equivalent to <c>c &lt;= d</c>
-            </p>
-          </li>
-
-          <li>
-            <p>
-              <c>!(c &lt;= d)</c> is equivalent to <c>c &gt; d</c>
-            </p>
-          </li>
-
-          <li>
-            <p>
-              <c>!(c &gt;= d)</c> is equivalent to <c>c &lt; d</c>
-            </p>
-          </li>
-        </ul>
-      </p>
-    </blockquote>
-
     <p>
-      Often, you can simplify boolean expressions to create equivalent
-      expressions. For example, applying De Morgan’s Laws to <c>!(x &lt; 3
-      &amp;&amp; y &gt; 2)</c> yields <c>!(x &lt; 3) || !(y &gt; 2)</c> as seen
-      in the figure below. This can then be simplified further by flipping the
-      relational operators to remove the not. So, <c>!(x &lt; 3) || !(y &gt;
-      2)</c> is simplified to <c>(x &gt;= 3 || y &lt;= 2)</c> where the
-      relational operators are flipped and the negation is removed. These two
-      simplification steps are seen below.
+      So one way to say whether you’ll go is to say, you’ll go if you’re not
+      broke or tired. Or in Java: <c>!(broke || tired)</c>. (In English we hear
+      “broke or tired” as grouped together and both affected by the “not”.)
     </p>
 
-    <figure align="center">
-      <caption>An example boolean expression simplified</caption>
-      <image source="Unit2-Selection-and-Iteration/Figures/demorganex.png" width="71%" />
-    </figure>
+    <p>
+      But another way to say it is that you will go to the movies if you are not
+      broke and you’re not tired. Or in Java: <c>!broke &amp;&amp; !tired</c>.
+      Thus <c>!(broke || tired)</c> and <c>!broke &amp;&amp; !tired</c> are two
+      different ways of saying the same thing.
+    </p>
 
-    <activity label="lcdmtest">
-      <statement>
-        <p>
-          For what values of x and y will the code below print true? Try out
-          different values of x and y to check your answer.
-        </p>
-      </statement>
+    <p>
+      By themselves De Morgan’s laws don’t usually lead to big simplifications
+      but by giving us a way to flip <c>&amp;&amp;</c> to <c>||</c> and vice
+      versa, they can be a useful step toward rearranging a complex expression
+      into a form where we can apply other rules to simplify it.
+    </p>
 
-      <program interactive="activecode" language="java">
-        <code>
-public class Test1
-{
-    public static void main(String[] args)
-    {
-        int x = 2;
-        int y = 3;
-        System.out.println(!(x &lt; 3 &amp;&amp; y &gt; 2));
-    }
-}
-        </code>
-        <tests>
-import static org.junit.Assert.*;
+    <p>
+      And they’re really great for answering AP exam questions that give you one
+      <c>boolean</c> expression and ask you to pick out which of several others
+      is equivalent to it.
+    </p>
 
-import org.junit.*;
+    <p>
+      We can also simplify negated <c>boolean</c> expressions involving
+      comparison operators like <c>&lt;</c>, <c>&gt;</c>, and <c>==</c>. And we
+      can negate a comparison expression by flipping the comparison operator.
+      For instance <c>!(a == b)</c> is flipped to <c>a != b</c>. The relational
+      operators can be flipped either by swapping the operands (<c>a &lt; b</c>
+      becomes <c>b &lt; a</c>) or by flipping the operator. But we need to
+      remember which are the actual flipped operators. For <c>&lt;</c> it is not
+      <c>&gt;</c> but <c>&gt;=</c> and likewise for <c>&gt;</c> and
+      <c>&lt;=</c>. In other words, to flip a comparison operator change the
+      <c>&lt;</c> or <c>&gt;</c> to the other symbol and add an <c>=</c> if
+      there isn’t one or remove it if there is.
+    </p>
 
-import java.io.*;
+    <table>
+      <title>Negation of comparison expressions</title>
+      <tabular halign="center">
+        <row header="yes" bottom="minor">
+          <cell>Operator</cell>
+          <cell>Flip operands</cell>
+          <cell>Flip operator</cell>
+        </row>
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testChangedCode()
-    {
-        String origCode =
-                "public class Test1 {public static void main(String[] args) { int x = 2; int y = 3;"
-                    + " System.out.println(!(x &lt; 3 &amp;&amp; y &gt; 2)); } }";
+        <row>
+          <cell><c>a == b</c></cell>
 
-        boolean changed = codeChanged(origCode);
-        assertTrue(changed);
-    }
-}
-        </tests>
-      </program>
-    </activity>
+          <cell>-</cell>
+          <cell><c>a != b</c></cell>
+        </row>
 
-    <activity label="compareBool1">
-      <statement>
-        <p>
-          What is printed when the following code executes and x equals 4 and y
-          equals 3?
-        </p>
+        <row>
+          <cell><c>a != b</c></cell>
 
-        <program language="java">
-          <code>
-int x = 4, y = 3;
-if (!(x &lt; 3 || y &gt; 2))
-{
-   System.out.println("first case");
-}
-else
-{
-   System.out.println("second case");
-}
-          </code>
-        </program>
-      </statement>
+          <cell>-</cell>
+          <cell><c>a == b</c></cell>
+        </row>
 
-      <choices>
-        <choice>
-          <statement>
-            <p>first case</p>
-          </statement>
+        <row>
+          <cell><c>a &lt; b</c></cell>
 
-          <feedback>
-            <p>
-              This will be printed if x is greater or equal to 3 and y is less
-              than or equal to 2. The first part is true but the second is
-              false. Since the statements are joined by an and the complex
-              expression is false.
-            </p>
-          </feedback>
-        </choice>
+          <cell><c>b &lt; a</c></cell>
 
-        <choice correct="yes">
-          <statement>
-            <p>second case</p>
-          </statement>
+          <cell><c>a &gt;= b</c></cell>
+        </row>
 
-          <feedback>
-            <p>
-              This will be printed if x is less than 3 or y is greater than 2.
-              In this case the first will be false, but the second true so since
-              the statements are joined with an or the complex expression is
-              true.
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
+        <row>
+          <cell><c>a &lt;= b</c></cell>
 
-    <activity label="compareBool2">
-      <statement>
-        <p>
-          What is printed when the following code executes and x equals 4 and y
-          equals 3?
-        </p>
+          <cell><c>b &lt;= a</c></cell>
 
-        <program language="java">
-          <code>
-int x = 4, y = 3;
-if (!(x &lt; 3 &amp;&amp; y &gt; 2))
-{
-   System.out.println("first case");
-}
-else
-{
-   System.out.println("second case");
-}
-          </code>
-        </program>
-      </statement>
+          <cell><c>a &gt; b</c></cell>
+        </row>
 
-      <choices>
-        <choice correct="yes">
-          <statement>
-            <p>first case</p>
-          </statement>
+        <row>
+          <cell><c>a &gt; b</c></cell>
 
-          <feedback>
-            <p>
-              This will be printed if x is greater than or equal to 3 or y is
-              less than or equal to 2. In this case x is greater than 3 so the
-              first condition is true.
-            </p>
-          </feedback>
-        </choice>
+          <cell><c>b &gt; a</c></cell>
 
-        <choice>
-          <statement>
-            <p>second case</p>
-          </statement>
+          <cell><c>a &lt;= b</c></cell>
+        </row>
 
-          <feedback>
-            <p>
-              This will be printed if x is less than 3 and y is greater than 2.
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
+        <row>
+          <cell><c>a &gt;= b</c></cell>
+
+          <cell><c>b &gt;= a</c></cell>
+
+          <cell><c>a &gt; b</c></cell>
+        </row>
+      </tabular>
+    </table>
   </subsection>
 
   <subsection xml:id="truth-tables">
-    <title>Truth Tables</title>
+    <title>Truth tables</title>
     <p>
-      The following table (also called a <term>truth table</term>) shows the
-      result for <c>P &amp;&amp; Q</c> when <c>P</c> and <c>Q</c> are both
-      expressions that can be <c>true</c> or <c>false</c>. An expression
-      involving logical operators like <c>P &amp;&amp; Q</c> evaluates to a
-      <c>boolean</c> value, <c>true</c> or <c>false</c>. As you can see below
-      the result of <c>P &amp;&amp; Q</c> is only <c>true</c> if both <c>P</c>
-      and <c>Q</c> are <c>true</c>. XXX
+      The other main technique for analyzing <c>boolean</c> expressions is
+      called a <term>truth table</term>. Truth tables are a systematic way of
+      analyzing the boolean expressions for all possible combinations values for
+      the subexpressions.
     </p>
 
-    <table>
-      <title><c>P &amp;&amp; Q</c> truth table</title>
+    <p>
+      For simple expressions a truth table can be used to spell out exactly what
+      the values of that expression are. For instance, here are truth tables
+      that show, in case you forgot, how <c>&amp;&amp;</c>, <c>||</c>, and
+      <c>!</c> work.
+    </p>
+
+    <sidebyside valign="middle">
+      <table>
+        <title><c>a &amp;&amp; b</c> truth table</title>
+
+        <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
+          <row header="yes">
+            <cell>a</cell>
+            <cell>b</cell>
+            <cell>a &amp;&amp; b</cell>
+          </row>
+
+          <row>
+            <cell><c>false</c></cell>
+
+            <cell><c>false</c></cell>
+
+            <cell><c>false</c></cell>
+          </row>
+
+          <row>
+            <cell><c>false</c></cell>
+
+            <cell><c>true</c></cell>
+
+            <cell><c>false</c></cell>
+          </row>
+
+          <row>
+            <cell><c>true</c></cell>
+
+            <cell><c>false</c></cell>
+
+            <cell><c>false</c></cell>
+          </row>
+
+          <row>
+            <cell><c>true</c></cell>
+
+            <cell><c>true</c></cell>
+
+            <cell><c>true</c></cell>
+          </row>
+        </tabular>
+      </table>
+
+      <table>
+        <title><c>a || b</c> truth table</title>
+
+        <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
+          <row header="yes">
+            <cell>a</cell>
+            <cell>b</cell>
+            <cell>a || b</cell>
+          </row>
+
+          <row>
+            <cell><c>false</c></cell>
+
+            <cell><c>false</c></cell>
+
+            <cell><c>false</c></cell>
+          </row>
+
+          <row>
+            <cell><c>false</c></cell>
+
+            <cell><c>true</c></cell>
+
+            <cell><c>true</c></cell>
+          </row>
+
+          <row>
+            <cell><c>true</c></cell>
+
+            <cell><c>false</c></cell>
+
+            <cell><c>true</c></cell>
+          </row>
+
+          <row>
+            <cell><c>true</c></cell>
+
+            <cell><c>true</c></cell>
+
+            <cell><c>true</c></cell>
+          </row>
+        </tabular>
+      </table>
+
+      <table>
+        <title><c>!a</c> truth table</title>
+
+        <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
+          <row header="yes">
+            <cell>a</cell>
+            <cell>!a</cell>
+          </row>
+
+          <row>
+            <cell><c>false</c></cell>
+
+            <cell><c>true</c></cell>
+          </row>
+
+          <row>
+            <cell><c>true</c></cell>
+
+            <cell><c>false</c></cell>
+          </row>
+        </tabular>
+      </table>
+    </sidebyside>
+
+    <p>
+      But we can also build truth tables for more complex expressions and if we
+      build tables for two different expressions we can then compare the tables
+      to determine whether the expressions are equivalent.
+    </p>
+
+    <p>
+      Building truth tables is a brute force approach which can be more tedious
+      than doing a bit of Boolean algebra but doesn’t rely on any algebraic
+      insight to figure out which rules to apply in order to manipulate one
+      expression into the same form as the other. So if you are comfortable with
+      them, you can always use them to grind out an analysis.
+    </p>
+
+    <p>
+      To build a truth table for an expression make at table with, initially, a
+      column for each variable that occurs in the expression. Then add a column
+      to the right for each subexpression, working back up to the whole
+      expression. Each new column should be an expression that combines the
+      expressions we have already made columns for using just one operator.
+    </p>
+
+    <p>
+      For instance to make a truth table for the expression <c>!(a &amp;&amp;
+      b)</c> we’d make a table with these columns.
+    </p>
+
+    <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
+      <row header="yes">
+        <cell><c>a</c></cell>
+
+        <cell><c>b</c></cell>
+
+        <cell><c>a &amp;&amp; b</c></cell>
+
+        <cell><c>!(a &amp;&amp; b)</c></cell>
+      </row>
+    </tabular>
+
+    <p>
+      Then add as many rows as there are different combinations of values for
+      the variables. With two variables there are <m>2^2</m> or four
+      combinations.
+    </p>
+
+    <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
+      <row header="yes">
+        <cell><c>a</c></cell>
+
+        <cell><c>b</c></cell>
+
+        <cell><c>a &amp;&amp; b</c></cell>
+
+        <cell><c>!(a &amp;&amp; b)</c></cell>
+      </row>
+
+      <row>
+        <cell><c>false</c></cell>
+
+        <cell><c>false</c></cell>
+
+        <cell><c></c></cell>
+
+        <cell><c></c></cell>
+      </row>
+
+      <row>
+        <cell><c>false</c></cell>
+
+        <cell><c>true</c></cell>
+
+        <cell><c></c></cell>
+
+        <cell><c></c></cell>
+      </row>
+
+      <row>
+        <cell><c>true</c></cell>
+
+        <cell><c>false</c></cell>
+
+        <cell><c></c></cell>
+
+        <cell><c></c></cell>
+      </row>
+
+      <row>
+        <cell><c>true</c></cell>
+
+        <cell><c>true</c></cell>
+
+        <cell><c></c></cell>
+
+        <cell><c></c></cell>
+      </row>
+    </tabular>
+
+    <p>
+      After that, it’s just a matter of filling in the columns, moving from left
+      to right. Since each column is an expression in terms of one or two
+      subexpressions whose column has already been filled in that should be
+      easy.
+    </p>
+
+    <table xml:id="not-a-and-b">
+      <title>Truth table for <c>!(a &amp;&amp; b)</c></title>
 
       <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
         <row header="yes">
-          <cell>P</cell>
-          <cell>Q</cell>
-          <cell>P &amp;&amp; Q</cell>
+          <cell><c>a</c></cell>
+
+          <cell><c>b</c></cell>
+
+          <cell><c>a &amp;&amp; b</c></cell>
+
+          <cell><c>!(a &amp;&amp; b)</c></cell>
         </row>
 
         <row>
-          <cell>
-            <c>false</c>
-          </cell>
+          <cell><c>false</c></cell>
 
-          <cell>
-            <c>false</c>
-          </cell>
+          <cell><c>false</c></cell>
 
-          <cell>
-            <c>false</c>
-          </cell>
+          <cell><c>false</c></cell>
+
+          <cell><c>true</c></cell>
         </row>
 
         <row>
-          <cell>
-            <c>false</c>
-          </cell>
+          <cell><c>false</c></cell>
 
-          <cell>
-            <c>true</c>
-          </cell>
+          <cell><c>true</c></cell>
 
-          <cell>
-            <c>false</c>
-          </cell>
+          <cell><c>false</c></cell>
+
+          <cell><c>true</c></cell>
         </row>
 
         <row>
-          <cell>
-            <c>true</c>
-          </cell>
+          <cell><c>true</c></cell>
 
-          <cell>
-            <c>false</c>
-          </cell>
+          <cell><c>false</c></cell>
 
-          <cell>
-            <c>?</c>
-          </cell>
+          <cell><c>false</c></cell>
+
+          <cell><c>true</c></cell>
         </row>
 
         <row>
-          <cell>
-            <c>true</c>
-          </cell>
+          <cell><c>true</c></cell>
 
-          <cell>
-            <c>true</c>
-          </cell>
+          <cell><c>true</c></cell>
 
-          <cell>
-            <c>true</c>
-          </cell>
+          <cell><c>true</c></cell>
+
+          <cell><c>false</c></cell>
         </row>
       </tabular>
     </table>
 
-    <activity label="truthTableFill">
-      <statement>
-        <p>
-          The truth table above is missing one result. What is the result of
-          <c>P &amp;&amp; Q</c> when <c>P=true</c> and <c>Q=false</c>?
-        </p>
-
-        <p>
-          <fillin mode="string" answer="false" />
-        </p>
-      </statement>
-
-      <evaluation>
-        <evaluate>
-          <test>
-            <strcmp use-answer="yes" />
-            <feedback>
-              <p>Correct. Both values must be true for &amp;&amp; to return true.</p>
-            </feedback>
-          </test>
-
-          <test>
-            <!-- else -->
-            <feedback>Both values must be true for &amp;&amp; to return true.</feedback>
-          </test>
-        </evaluate>
-      </evaluation>
-    </activity>
-
     <p>
-      The following table shows the result for <c>P || Q</c> when <c>P</c> and
-      <c>Q</c> are both expressions that can be <c>true</c> or <c>false</c>. As
-      you can see below the result of <c>P || Q</c> is <c>true</c> if either
-      <c>P</c> or <c>Q</c> is <c>true</c>. It is also <c>true</c> when both of
-      them are <c>true</c>.
+      To determine if two expressions are equivalent, we can build truth tables
+      for both expressions and then use the tables to check if for each
+      combination of variable values the two expressions produce the same
+      result. For instance, we can now build a table for <c>!a || !b</c> in
+      order to show that De Morgan’s Law for <c>&amp;&amp;</c> is true.
     </p>
 
-    <table>
-      <title><c>P || Q</c> truth table</title>
+    <table xml:id="not-a-or-not-b">
+      <title>Truth table for <c>!a || !b</c></title>
 
       <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
         <row header="yes">
-          <cell>P</cell>
-          <cell>Q</cell>
-          <cell>P || Q</cell>
+          <cell><c>a</c></cell>
+
+          <cell><c>b</c></cell>
+
+          <cell><c>!a</c></cell>
+
+          <cell><c>!b</c></cell>
+
+          <cell><c>!a || !b</c></cell>
         </row>
 
         <row>
-          <cell>
-            <c>false</c>
-          </cell>
+          <cell><c>false</c></cell>
 
-          <cell>
-            <c>false</c>
-          </cell>
+          <cell><c>false</c></cell>
 
-          <cell>
-            <c>false</c>
-          </cell>
+          <cell><c>true</c></cell>
+
+          <cell><c>true</c></cell>
+
+          <cell><c>true</c></cell>
         </row>
 
         <row>
-          <cell>
-            <c>false</c>
-          </cell>
+          <cell><c>false</c></cell>
 
-          <cell>
-            <c>true</c>
-          </cell>
+          <cell><c>true</c></cell>
 
-          <cell>
-            <c>true</c>
-          </cell>
+          <cell><c>true</c></cell>
+
+          <cell><c>false</c></cell>
+
+          <cell><c>true</c></cell>
         </row>
 
         <row>
-          <cell>
-            <c>true</c>
-          </cell>
+          <cell><c>true</c></cell>
 
-          <cell>
-            <c>false</c>
-          </cell>
+          <cell><c>false</c></cell>
 
-          <cell>
-            <c>true</c>
-          </cell>
+          <cell><c>false</c></cell>
+
+          <cell><c>true</c></cell>
+
+          <cell><c>true</c></cell>
         </row>
 
         <row>
-          <cell>
-            <c>true</c>
-          </cell>
+          <cell><c>true</c></cell>
 
-          <cell>
-            <c>true</c>
-          </cell>
+          <cell><c>true</c></cell>
 
-          <cell>
-            <c>true</c>
-          </cell>
+          <cell><c>false</c></cell>
+
+          <cell><c>false</c></cell>
+
+          <cell><c>false</c></cell>
         </row>
       </tabular>
     </table>
 
-    <activity label="truthTableFill2">
-      <statement>
-        <p>
-          The truth table above is missing one result. What is the result of
-          <c>P || Q</c> when <c>P=false</c> and <c>Q=true</c>?
-        </p>
-
-        <p>
-          <fillin mode="string" answer="true" />
-        </p>
-      </statement>
-
-      <evaluation>
-        <evaluate>
-          <test>
-            <strcmp use-answer="yes" />
-            <feedback>
-              <p>
-                Correct. Only one of the two has to be true with || so this will
-                print true.
-              </p>
-            </feedback>
-          </test>
-
-          <test>
-            <!-- else -->
-            <feedback>If at least 1 value is true, || will return true.</feedback>
-          </test>
-        </evaluate>
-      </evaluation>
-    </activity>
-
-    <activity label="traceCompoundBools">
-      <statement>
-        <p>
-          What is printed when the following code executes and x has been set to
-          3 and y has been set to 9?
-        </p>
-
-        <program language="java">
-          <code>
-if (x &gt; 0 &amp;&amp; (y / x) == 3)
-{
-   System.out.println("first case");
-}
-else
-{
-   System.out.println("second case");
-}
-          </code>
-        </program>
-      </statement>
-
-      <choices>
-        <choice correct="yes">
-          <statement>
-            <p>first case</p>
-          </statement>
-
-          <feedback>
-            <p>
-              first case will print if both of the conditions are true and they
-              are.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>second case</p>
-          </statement>
-
-          <feedback>
-            <p>second case will print either of the conditions are false.</p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="traceCompoundBools2">
-      <statement>
-        <p>
-          What is printed when the following code executes and x has been set to
-          3 and y has been set to 6?
-        </p>
-
-        <program language="java">
-          <code>
-if (x &gt; 0 &amp;&amp; (y / x) == 3)
-{
-   System.out.println("first case");
-}
-else
-{
-   System.out.println("second case");
-}
-          </code>
-        </program>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>first case</p>
-          </statement>
-
-          <feedback>
-            <p>
-              first case will print if both of the conditions are true, but the
-              second is not.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>second case</p>
-          </statement>
-
-          <feedback>
-            <p>
-              second case will print if either of the conditions are false and
-              the second one is (6 / 3 == 2).
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="qcbc_or">
-      <statement>
-        <p>
-          What is printed when the following code executes and x has been set to
-          3 and y has been set to 6? Notice that it is now an <term>or</term>
-          (||) instead of <term>and</term> (&amp;&amp;).
-        </p>
-
-        <program language="java">
-          <code>
-if (x &gt; 0 || (y / x) == 3)
-{
-   System.out.println("first case");
-}
-else
-{
-   System.out.println("second case");
-}
-          </code>
-        </program>
-      </statement>
-
-      <choices>
-        <choice correct="yes">
-          <statement>
-            <p>first case</p>
-          </statement>
-
-          <feedback>
-            <p>
-              first case will print if either of the two conditions are true.
-              The first condition is true, even though the second one isn't.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>second case</p>
-          </statement>
-
-          <feedback>
-            <p>
-              second case will print if both of the conditions are false, but
-              the first condition is true.
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="truth-tables-1">
-    <title>Truth Tables</title>
     <p>
-      Although you do not have to memorize De Morgan’s Laws for the CSA Exam,
-      you should be able to show that two boolean expressions are equivalent.
-      One way to do this is by using truth tables. For example, we can show that
-      <c>!(a &amp;&amp; b)</c> is equivalent to <c>!a || !b</c> by constructing
-      the truth table below and seeing that they give identical results for the
-      2 expressions (the last 2 columns in the table below are identical!).
+      To compare the two tables, just look at the rightmost column of each and
+      check that the values are the same for each now. (This assumes that you
+      filled in the variabel combinations in the same order.) If they are, then
+      the two expressions are equivalent. As you can see in those two tables the
+      last column in both reads <c>true</c>, <c>true</c>, <c>true</c>,
+      <c>false</c> so the expressions are equivalent.
     </p>
-
-    <table>
-      <title>
-        Truth table comparing <c>!(a &amp;&amp; b)</c> and <c>!a || !b</c>
-      </title>
-
-      <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor">
-        <row header="yes">
-          <cell>
-            <c>a</c>
-          </cell>
-
-          <cell>
-            <c>b</c>
-          </cell>
-
-          <cell>
-            <c>!(a &amp;&amp; b)</c>
-          </cell>
-
-          <cell>
-            <c>!a || !b</c>
-          </cell>
-        </row>
-
-        <row>
-          <cell>
-            <c>false</c>
-          </cell>
-
-          <cell>
-            <c>false</c>
-          </cell>
-
-          <cell>
-            <c>true</c>
-          </cell>
-
-          <cell>
-            <c>true</c>
-          </cell>
-        </row>
-
-        <row>
-          <cell>
-            <c>false</c>
-          </cell>
-
-          <cell>
-            <c>true</c>
-          </cell>
-
-          <cell>
-            <c>true</c>
-          </cell>
-
-          <cell>
-            <c>true</c>
-          </cell>
-        </row>
-
-        <row>
-          <cell>
-            <c>true</c>
-          </cell>
-
-          <cell>
-            <c>false</c>
-          </cell>
-
-          <cell>
-            <c>true</c>
-          </cell>
-
-          <cell>
-            <c>true</c>
-          </cell>
-        </row>
-
-        <row>
-          <cell>
-            <c>true</c>
-          </cell>
-
-          <cell>
-            <c>true</c>
-          </cell>
-
-          <cell>
-            <c>false</c>
-          </cell>
-
-          <cell>
-            <c>false</c>
-          </cell>
-        </row>
-      </tabular>
-    </table>
   </subsection>
 
   <subsection xml:id="summary-23">
@@ -1008,7 +774,7 @@ else
       <statement>
         <p>
           Which of the following best describes the value of the Boolean
-          expression: a &amp;&amp; !(b || a)
+          expression: <c>a &amp;&amp; !(b || a)</c>?
         </p>
       </statement>
 
@@ -1033,9 +799,10 @@ else
 
           <feedback>
             <p>
-              Yes, a &amp;&amp; !(b || a) = a &amp;&amp; !b &amp;&amp; !a. Since
-              (a &amp;&amp; !a) can never be true, the result will always be
-              false.
+              Yes, by applying De Morgan’s Law to <c>!(b || a)</c> we get that
+              <c>a &amp;&amp; !(b || a)</c> is equivalent to <c>a &amp;&amp; !b
+              &amp;&amp; !a</c>. Since <c>a &amp;&amp; !a</c> can never be true,
+              the result will always be false.
             </p>
           </feedback>
         </choice>
@@ -1079,91 +846,6 @@ else
 
           <feedback>
             <p>Try the expression with a = true. Is the result true?</p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="AP-string-equality">
-      <statement>
-        <p>Consider the following code segment.</p>
-        <program language="java">
-          <code>
-String message = new String("AP Practice");
-String note = new String("AP Practice");
-String memo = new String("memo");
-int i = 5;
-
-if (message.equals(note) &amp;&amp; !message.equals("memo"))
-{
-    message = note;
-
-    if (message == note &amp;&amp; message.length() &gt; i)
-    {
-       i = 3;
-       memo = message.substring(i);
-    }
-}
-          </code>
-        </program>
-
-        <p>
-          Which of the following expressions evaluate to <c>true</c> after the
-          code segment above executes?
-        </p>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement id="AP-string-equality_opt_a">
-            <p>message == note &amp;&amp; message == memo</p>
-          </statement>
-
-          <feedback id="AP-string-equality_opt_a">
-            <p>Message does not refer to the same object as memo.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement id="AP-string-equality_opt_b">
-            <p>message.equals(note) &amp;&amp; message.equals(memo)</p>
-          </statement>
-
-          <feedback id="AP-string-equality_opt_b">
-            <p>Message is not the same string as in memo.</p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement id="AP-string-equality_opt_c">
-            <p>message == note &amp;&amp; memo.equals(“Practice”)</p>
-          </statement>
-
-          <feedback id="AP-string-equality_opt_c">
-            <p>
-              Yes, both if statements in the code above execute changing message
-              to equal note and memo to equal “Practice”.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement id="AP-string-equality_opt_d">
-            <p>message != note || message == memo</p>
-          </statement>
-
-          <feedback id="AP-string-equality_opt_d">
-            <p>Both of these are false.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement id="AP-string-equality_opt_e">
-            <p>message.equals(memo) || memo.equals(note)</p>
-          </statement>
-
-          <feedback id="AP-string-equality_opt_e">
-            <p>Both of these are false.</p>
           </feedback>
         </choice>
       </choices>

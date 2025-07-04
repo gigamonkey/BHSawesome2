@@ -703,9 +703,7 @@ public class RunestoneTests extends CodeTestHelper
           is not prime and has divisors other than 1 and itself?
         </p>
 
-        <p>
-          <fillin answer="9" mode="string" />
-        </p>
+        <p><fillin answer="9" mode="string" /></p>
       </statement>
 
       <evaluation>
@@ -734,9 +732,7 @@ public class RunestoneTests extends CodeTestHelper
           using your code above? What is the smallest even number that is prime?
         </p>
 
-        <p>
-          <fillin answer="2" mode="string" />
-        </p>
+        <p><fillin answer="2" mode="string" /></p>
       </statement>
 
       <evaluation>
@@ -1343,5 +1339,303 @@ if (s1.equals(s2) &amp;&amp; s2.equals(s3))
 
       <response />
     </project>
+
+    <activity label="lcdmtest">
+      <statement>
+        <p>
+          For what values of x and y will the code below print true? Try out
+          different values of x and y to check your answer.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+public class Test1
+{
+    public static void main(String[] args)
+    {
+        int x = 2;
+        int y = 3;
+        System.out.println(!(x &lt; 3 &amp;&amp; y &gt; 2));
+    }
+}
+        </code>
+        <tests>
+import static org.junit.Assert.*;
+
+import org.junit.*;
+
+import java.io.*;
+
+public class RunestoneTests extends CodeTestHelper
+{
+    @Test
+    public void testChangedCode()
+    {
+        String origCode =
+                "public class Test1 {public static void main(String[] args) { int x = 2; int y = 3;"
+                    + " System.out.println(!(x &lt; 3 &amp;&amp; y &gt; 2)); } }";
+
+        boolean changed = codeChanged(origCode);
+        assertTrue(changed);
+    }
+}
+        </tests>
+      </program>
+    </activity>
+
+    <activity label="compareBool1">
+      <statement>
+        <p>
+          What is printed when the following code executes and x equals 4 and y
+          equals 3?
+        </p>
+
+        <program language="java">
+          <code>
+int x = 4, y = 3;
+if (!(x &lt; 3 || y &gt; 2))
+{
+   System.out.println("first case");
+}
+else
+{
+   System.out.println("second case");
+}
+          </code>
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>first case</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This will be printed if x is greater or equal to 3 and y is less
+              than or equal to 2. The first part is true but the second is
+              false. Since the statements are joined by an and the complex
+              expression is false.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>second case</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This will be printed if x is less than 3 or y is greater than 2.
+              In this case the first will be false, but the second true so since
+              the statements are joined with an or the complex expression is
+              true.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="compareBool2">
+      <statement>
+        <p>
+          What is printed when the following code executes and x equals 4 and y
+          equals 3?
+        </p>
+
+        <program language="java">
+          <code>
+int x = 4, y = 3;
+if (!(x &lt; 3 &amp;&amp; y &gt; 2))
+{
+   System.out.println("first case");
+}
+else
+{
+   System.out.println("second case");
+}
+          </code>
+        </program>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement>
+            <p>first case</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This will be printed if x is greater than or equal to 3 or y is
+              less than or equal to 2. In this case x is greater than 3 so the
+              first condition is true.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>second case</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This will be printed if x is less than 3 and y is greater than 2.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="traceCompoundBools">
+      <statement>
+        <p>
+          What is printed when the following code executes and x has been set to
+          3 and y has been set to 9?
+        </p>
+
+        <program language="java">
+          <code>
+if (x &gt; 0 &amp;&amp; (y / x) == 3)
+{
+   System.out.println("first case");
+}
+else
+{
+   System.out.println("second case");
+}
+          </code>
+        </program>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement>
+            <p>first case</p>
+          </statement>
+
+          <feedback>
+            <p>
+              first case will print if both of the conditions are true and they
+              are.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>second case</p>
+          </statement>
+
+          <feedback>
+            <p>second case will print either of the conditions are false.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="traceCompoundBools2">
+      <statement>
+        <p>
+          What is printed when the following code executes and x has been set to
+          3 and y has been set to 6?
+        </p>
+
+        <program language="java">
+          <code>
+if (x &gt; 0 &amp;&amp; (y / x) == 3)
+{
+   System.out.println("first case");
+}
+else
+{
+   System.out.println("second case");
+}
+          </code>
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>first case</p>
+          </statement>
+
+          <feedback>
+            <p>
+              first case will print if both of the conditions are true, but the
+              second is not.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>second case</p>
+          </statement>
+
+          <feedback>
+            <p>
+              second case will print if either of the conditions are false and
+              the second one is (6 / 3 == 2).
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="qcbc_or">
+      <statement>
+        <p>
+          What is printed when the following code executes and x has been set to
+          3 and y has been set to 6? Notice that it is now an <term>or</term>
+          (||) instead of <term>and</term> (&amp;&amp;).
+        </p>
+
+        <program language="java">
+          <code>
+if (x &gt; 0 || (y / x) == 3)
+{
+   System.out.println("first case");
+}
+else
+{
+   System.out.println("second case");
+}
+          </code>
+        </program>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement>
+            <p>first case</p>
+          </statement>
+
+          <feedback>
+            <p>
+              first case will print if either of the two conditions are true.
+              The first condition is true, even though the second one isn't.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>second case</p>
+          </statement>
+
+          <feedback>
+            <p>
+              second case will print if both of the conditions are false, but
+              the first condition is true.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
   </subsection>
 </section>

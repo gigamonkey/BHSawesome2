@@ -578,4 +578,93 @@ public class RunestoneTests extends CodeTestHelper
 
     <video youtube="GPdoHm1K8HA" label="video-null-string" />
   </subsection>
+
+  <subsection>
+    <title>AP Practice</title>
+    <activity label="AP-string-equality">
+      <statement>
+        <p>Consider the following code segment.</p>
+        <program language="java">
+          <code>
+String message = new String("AP Practice");
+String note = new String("AP Practice");
+String memo = new String("memo");
+int i = 5;
+
+if (message.equals(note) &amp;&amp; !message.equals("memo"))
+{
+    message = note;
+
+    if (message == note &amp;&amp; message.length() &gt; i)
+    {
+       i = 3;
+       memo = message.substring(i);
+    }
+}
+          </code>
+        </program>
+
+        <p>
+          Which of the following expressions evaluate to <c>true</c> after the
+          code segment above executes?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement id="AP-string-equality_opt_a">
+            <p>message == note &amp;&amp; message == memo</p>
+          </statement>
+
+          <feedback id="AP-string-equality_opt_a">
+            <p>Message does not refer to the same object as memo.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-string-equality_opt_b">
+            <p>message.equals(note) &amp;&amp; message.equals(memo)</p>
+          </statement>
+
+          <feedback id="AP-string-equality_opt_b">
+            <p>Message is not the same string as in memo.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement id="AP-string-equality_opt_c">
+            <p>message == note &amp;&amp; memo.equals(“Practice”)</p>
+          </statement>
+
+          <feedback id="AP-string-equality_opt_c">
+            <p>
+              Yes, both if statements in the code above execute changing message
+              to equal note and memo to equal “Practice”.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-string-equality_opt_d">
+            <p>message != note || message == memo</p>
+          </statement>
+
+          <feedback id="AP-string-equality_opt_d">
+            <p>Both of these are false.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-string-equality_opt_e">
+            <p>message.equals(memo) || memo.equals(note)</p>
+          </statement>
+
+          <feedback id="AP-string-equality_opt_e">
+            <p>Both of these are false.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+    </subsection>
+
 </section>

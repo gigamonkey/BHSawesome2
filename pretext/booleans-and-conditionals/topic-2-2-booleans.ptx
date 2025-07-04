@@ -691,7 +691,7 @@ public class RunestoneTests extends CodeTestHelper
     </note>
 
     <p>
-      The final logical operator, logical not, covers the logic of, “You can go
+      The final logical operator, logical not covers the logic of, “You can go
       out if you’re not grounded”. If the statement “you’re grounded” is true,
       then you can’t go out. But if the statement is false, then you can. In
       other words, logical not just flips the meaning of the statement, true to
@@ -702,6 +702,10 @@ public class RunestoneTests extends CodeTestHelper
     <program>
       !grounded // true if grounded is false, false otherwise
     </program>
+
+    <p>You can say that <c>!grounded</c> is the <term>logical negation</term> of
+    <c>grounded</c>, similar to how <m>-4</m> is the negation of <m>4</m>.
+    </p>
 
     <activity label="compoundAnd">
       <title>Can go out?</title>
