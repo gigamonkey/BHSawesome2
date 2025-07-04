@@ -3,58 +3,75 @@
 <section xml:id="topic-2-7-while-loops">
   <title>While Loops</title>
 
+  <idx>loop</idx>
+  <idx>looping</idx>
+  <idx>iteration</idx>
+  <idx>repetition</idx>
+  <idx>while</idx>
+  <idx><h>loop</h><h>while</h></idx>
   <introduction>
-    <idx>loop</idx>
-    <idx>looping</idx>
-    <idx>iteration</idx>
-    <idx>repetition</idx>
-    <idx>while</idx>
-    <idx><h>loop</h><h>while</h></idx>
-    <image source="Unit2-Selection-and-Iteration/Figures/loops.png" width="22%" />
     <p>
-      When you play a song, you can set it to loop, which means that when it
-      reaches the end it starts over at the beginning. A <term>loop</term> in
-      programming, also called <term>iteration</term> or
-      <term>repetition</term>, is a way to repeat one or more statements. If you
-      didn’t have loops to allow you to repeat code, your programs would get
-      very long very quickly! Using a sequence of code, selection (ifs), and
-      repetition (loops), the <term>control structures</term> in programming,
-      you can construct an algorithm to solve almost any programming problem!
+      Java has two flavors of loop, <c>while</c> and <c>for</c>. Of the two the
+      <c>while</c> loop is simpler, with fewer moving parts so we’ll talk about
+      it first. The <c>for</c> loop, which we’ll discuss in the next section is
+      actually the one you’ll use most of the time as it has some amenities to
+      make it easier to express common looping patterns.
     </p>
 
     <p>
-      A <c>while</c> loop executes the body of the loop as long as (or while) a
-      <c>boolean</c> condition is true. When the condition is false, we exit the
-      loop and continue with the statements that are after the body of the
-      <c>while</c> loop. If the condition is false the first time you check it,
-      the body of the loop will not execute.
+      Syntactically, a <c>while</c> statement looks a lot like an <c>if</c>
+      statement, as you can see in the two listings below:
+    </p>
+
+    <sidebyside>
+      <listing>
+        <title><c>if</c> statement</title>
+
+        <program language="java">
+          if (condition) {
+              statements;
+          }
+        </program>
+      </listing>
+
+      <listing>
+        <title><c>while</c> loop</title>
+
+        <program>
+          while (condition) {
+              statements;
+          }
+        </program>
+      </listing>
+    </sidebyside>
+
+    <p>
+      Like with an <c>if</c> statement, when the flow of control reaches a
+      <c>while</c> loop, the first thing that happens is the condition, which
+      must be a <c>boolean</c> expression, is evaluated. If it true, then the
+      body of the loop runs. However, when control reaches the end of the body,
+      it loops back around to the top of the loop and evaluates the condition
+      again, and runs the body again if the condition is true, and so on. When
+      the condition is false, the body is skipped, just like in an <c>if</c>
+      statement when its condition is false.
     </p>
 
     <p>
-      Notice the <c>while</c> statement looks a lot like an <c>if</c> statement,
-      but it runs more than once. The curly braces (<c>{}</c>) are optional when
-      there is just 1 statement following the condition, but required if there
-      are more than 1 statement in the loop. In the AP exam, they will always
-      use curly braces, which is a good practice to follow.
+      So the difference between an <c>if</c> statement and a <c>while</c> loop
+      is that the body of the <c>if</c> statement runs either zero or one times,
+      whereas the body of the <c>while</c> loop runs zero or many times.
     </p>
 
-    <program language="java">
-      <code>
-        // The statements in an if run one time if the condition is
-        // is true and zero times if it is false.
-        if (condition)
-        {
-            statements;
-        }
+    <p>
+      Here’s a flow chart for a <c>while</c> loop. Follow the arrows in this
+      diagram when the condition is checked vs when the body is executed.
+    </p>
 
-        // The statements in a while loop run zero or more times,
-        // determined by how many times the condition is true
-        while (condition)
-        {
-            statements;
-        }
-      </code>
-    </program>
+    <figure align="center">
+      <caption>Control Flow in a while Loop</caption>
+
+      <image source="Unit2-Selection-and-Iteration/Figures/WhileLoopFlow.png" width="45%" />
+    </figure>
 
     <p>
       If you took AP CSP with a block programming language like App Inventor,
@@ -64,31 +81,31 @@
       <c>while</c> loop.
     </p>
 
-    <figure align="center">
+    <figure>
       <caption>
-        Comparing App Inventor and Java for
-        <literal>while</literal>
- loops
+        Comparing App Inventor while block and Java <c>while</c> loops
       </caption>
 
       <image source="Unit2-Selection-and-Iteration/Figures/whileInAppInventor.png" width="100%" />
     </figure>
 
     <p>
-      If you’re used to a language like Snap! or Scratch, you may be familiar
-      with the Repeat Until loop. However, you have to be very careful comparing
-      repeat until to <c>while</c> loops. The <c>while</c> test is the opposite
-      of the repeat until test. For example, if you are repeatedly moving until
-      reaching x position 100, you must create a Java <c>while</c> loop that
-      repeatedly moves while it has <em>not</em> yet reached x position 100 or
-      is less than 100 as below.
+      On the other hand, if you’ve used a language like Snap! or Scratch, you
+      may be familiar with the Repeat Until block. Unfortunately Repeat Until is
+      the opposite of a <c>while</c> loops: it loops until the condition is
+      <em>true</em> where a <c>while</c> loop loops until its condition is
+      <em>false</em>.
     </p>
 
-    <figure align="center">
+    <p>
+      For example, the Snap! block below that loops until <c>x</c> is 100 would
+      need to be written in Java with a <c>while</c> loop that runs as long as
+      <c>x</c> is not yet 100, which can be written as <c>x &lt; 100</c>.
+    </p>
+
+    <figure>
       <caption>
-        Comparing Snap! or Scratch Repeat Until Loop to Java
-        <literal>while</literal>
- loop
+        Comparing Snap! or Scratch Repeat Until Loop to Java <c>while</c> loop
       </caption>
 
       <image source="Unit2-Selection-and-Iteration/Figures/ScratchRepeatUntilLoop.png" width="100%" />
@@ -101,61 +118,41 @@
     </p>
 
     <video youtube="Uw9mv53Jnfs" label="video-while-loop" />
-    <p>
-      Here’s what the flow of control looks like in a Java while loop. Notice
-      that while the condition is true, the loop body is repeated. Iteration
-      statements change the flow of control by repeating a segment of code zero
-      or more times as long as the Boolean expression controlling the loop
-      evaluates to true. In while loops, the Boolean expression is evaluated
-      before each iteration of the loop body, including the first. When the
-      expression evaluates to true, the loop body is executed. This continues
-      until the Boolean expression evaluates to false, whereupon the iteration
-      terminates.
-    </p>
-
-    <figure align="center">
-      <caption>Control Flow in a while Loop</caption>
-
-      <image source="Unit2-Selection-and-Iteration/Figures/WhileLoopFlow.png" width="45%" />
-    </figure>
   </introduction>
 
   <subsection xml:id="three-steps-to-writing-a-loop">
-    <title>Three Steps to Writing a Loop</title>
+    <title>Three steps to writing a loop</title>
 
     <p>
-      The simplest loops are <term>counter-controlled loops</term> like below,
-      where the <term>loop control variable</term> is a counter that controls
-      how many times to repeat the loop. There are 3 steps to writing a loop
-      using this loop control variable as seen below in a loop that counts from
-      1 to 10.
+      The simplest loops are <term>counting loops</term> where the loop’s
+      condition is based on checking a numeric <term>loop variable</term> that
+      counts up each time the body of the loop executes until it reaches some
+      limit. Thus the loop variable is a counter that controls how many times
+      the loop body executes.
     </p>
 
-    <figure align="center">
+    <p>
+      There are three steps to writing a counter-controlled <c>while</c> loop.
+      They are labeled in <xref ref="three-steps-of-writing-a-loop" text="type-global" />.
+
+      
+      <ol>
+        <li>Initialize the loop variable (before the <c>while</c> loop)</li>
+
+        <li>Test the loop variable (in the loop header)</li>
+
+        <li>
+          Update the loop variable (somewhere in the loop body, usually at the
+          end)
+        </li>
+      </ol>
+    </p>
+
+    <figure align="center" xml:id="three-steps-of-writing-a-loop">
       <caption>Three Steps of Writing a Loop</caption>
 
       <image source="Unit2-Selection-and-Iteration/Figures/loop3steps.png" width="71%" />
     </figure>
-
-    <note>
-      <p>Remember these 3 steps to writing a loop:</p>
-
-      <p>
-        <ol marker="1">
-          <li>
-            <p>Initialize the loop variable (before the <c>while</c> loop)</p>
-          </li>
-
-          <li>
-            <p>Test the loop variable (in the loop header)</p>
-          </li>
-
-          <li>
-            <p>Update the loop variable (in the while loop body at the end)</p>
-          </li>
-        </ol>
-      </p>
-    </note>
 
     <activity label="whileloop">
       <statement>
@@ -169,16 +166,13 @@
         <code>
           <![CDATA[
 
-          public class LoopTest1
-          {
-              public static void main(String[] args)
-              {
+          public class LoopTest1 {
+              public static void main(String[] args) {
                   // 1. initialize the loop variable
                   int count = 1;
 
                   // 2. test the loop variable
-                  while (count <= 5)
-                  {
+                  while (count <= 5) {
                       System.out.println(count);
                       // 3. update the loop variable
                       count++;
@@ -211,20 +205,6 @@
       </program>
     </activity>
 
-    <p>
-      Java doesn’t require your code to be correctly indented (code moved to the
-      right a few spaces) to make it clear what statements are part of the body
-      of the loop, but it is standard practice to do so.
-    </p>
-
-    <note>
-      <p>
-        On the free response part of the AP exam, the reader will use the
-        indention when determining the meaning of your code, even if you forget
-        the open or close curly brace.
-      </p>
-    </note>
-
     <activity label="print_odds_while" numbered="yes" adaptive="yes" indentation="show" language="java">
       <statement>
         <p>
@@ -240,8 +220,7 @@
 
       <blocks>
         <block order="4">
-          <cline>public static void printOdds()</cline>
-          <cline>{</cline>
+          <cline>public static void printOdds() {</cline>
         </block>
 
         <block order="6">
@@ -250,8 +229,7 @@
         </block>
 
         <block order="3">
-          <cline>   while (i &lt;= 10)</cline>
-          <cline>   {</cline>
+          <cline>   while (i &lt;= 10) {</cline>
         </block>
 
         <block order="5">
@@ -281,8 +259,7 @@
         <program language="java">
           <code>
             int count = 0;
-            /* missing loop header */
-            {
+            /* missing loop header */ {
                 System.out.print(count + " ");
                 count += 2;
             }
@@ -344,7 +321,7 @@
   </subsection>
 
   <subsection xml:id="tracing-loops-1">
-    <title>Tracing Loops</title>
+    <title>Tracing loops</title>
 
     <p>
       A really important skill to develop is the ability to trace the values of
@@ -358,7 +335,7 @@
       better on code tracing problems on multiple choice exams.
     </p>
 
-    <figure align="center">
+    <figure>
       <caption>
         A trace table showing the values of all of the variables each time
         through the loop. Iteration 0 means before the loop.
@@ -390,8 +367,7 @@
             <![CDATA[
 
             int count = 1;
-            while (count <= 10)
-            {
+            while (count <= 10) {
                 count *= 2;
             }
             count = count - 10;
@@ -466,8 +442,7 @@
             <![CDATA[
 
             int x = -5;
-            while (x < 0)
-            {
+            while (x < 0) {
                x++;
                System.out.print(x + " ");
             }
@@ -515,30 +490,17 @@
   </subsection>
 
   <subsection xml:id="common-errors-with-loops">
-    <title>Common Errors with Loops</title>
+    <title>Infinite loops</title>
 
     <idx>infinite loop</idx>
     <idx><h>loop</h><h>infinite</h></idx>
     <p>
-      One common error with loops is to accidentally create an <term>infinite
-      loop</term>. An infinite loop is one that never stops because the Boolean
-      condition is always true.
-    </p>
-
-    <p>Sometimes we will write an infinite loop on purpose like this:</p>
-
-    <program language="java">
-      <code>
-        while (true)
-        {
-            System.out.println("This is a loop that never ends");
-        }
-      </code>
-    </program>
-
-    <p>
-      But if we create an infinite loop by accident, our program may seem to get
-      stuck. For example look at this loop:
+      One common error with <c>while</c> is to accidentally create an
+      <term>infinite loop</term>. An infinite loop runs forever because
+      condition never becomes false. If we create an infinite loop by accident,
+      our program may seem to get stuck. For an example, look at the following
+      loop. It looks a lot like the loops earlier in this chapter but it is
+      actually an infinite loop. Can you see why?
     </p>
 
     <program language="java">
@@ -546,19 +508,13 @@
         <![CDATA[
 
         int i = 0;
-        while (i < 10)
-        {
+        while (i < 10) {
             System.out.println(i);
         }
 
         ]]>
       </code>
     </program>
-
-    <p>
-      That loop looks a lot like loops earlier in this chapter but it is
-      actually an infinite loop. Can you see why?
-    </p>
 
     <p>
       The problem in this loop—and a common way to accidentally create an
@@ -575,10 +531,9 @@
         <![CDATA[
 
         int i = 0;
-        while (i < 10)
-        {
+        while (i < 10) {
             System.out.println(i);
-            i++;
+            i++; // This fixes it!
         }
 
         ]]>
@@ -586,20 +541,66 @@
     </program>
 
     <p>
+      Sometimes we will write an infinite loop on purpose. For example, here’s a
+      simple loop that might exist in a computer-controlled thermostat. The loop
+      header of <c>while (true)</c> is a clear sign that this was intended to be
+      an infinite loop.
+    </p>
+
+    <program language="java">
+      <code>
+        while (true) {
+            if (tooHot()) {
+                turnOnFurnace();
+            } else {
+                turnOffFurnace();
+            }
+        }
+      </code>
+    </program>
+
+    <p>
+      An error that’s the opposite of creating an infinite loop is writing a
+      loop that never runs. (An infinitely short loop!) This can be a problem
+      either in step one, initializing the loop variable or step two, writing
+      the loop condition. For example, if the loop variable is initialized to 10
+      and test tests that it is less than 10, the loop body will never run.
+    </p>
+
+    <program language="java">
+      <code>
+        <![CDATA[
+
+        int i = 10;
+        while (i < 10){ // This loop will never run!
+            System.out.println(i);
+            i++;
+        }
+
+        ]]>
+      </code>
+    </program>
+  </subsection>
+
+  <subsection>
+    <title>Off-by-one errors</title>
+
+    <p>
       Another common error with loops is an <term>off-by-one error</term> where
       the loop runs one too many or one too few times. This is usually a problem
-      with step 2 the test condition and using the incorrect relational operator
-      <c>&lt;</c> or <c>&lt;=</c>.
+      in step two, writing the test condition caused by using the incorrect
+      relational operator such as <c>&lt;=</c> when it should have been
+      <c>&lt;</c> or vice versa.
     </p>
 
     <activity label="whileloopbugs">
       <statement>
         <p>
-          The while loop should print out the numbers 1 to 8, but it has 2
-          errors that cause an infinite loop and an off-by-one error. Can you
-          fix the errors? If you run an infinite loop, you may need to refresh
-          the page to stop it (so make sure that you clicked Save/Run for all
-          the active code windows that you have changed).
+          The <c>while</c> loop should print out the numbers from 1 to 8, but it
+          has two bugs. One causes an infinite loop. And the other an off-by-one
+          error. Can you fix the bugs? Try to fix the infinite loop bug first
+          since otherwise you’ll just get an error abut the code taking too long
+          to run.
         </p>
       </statement>
 
@@ -607,13 +608,10 @@
         <code>
           <![CDATA[
 
-          public class LoopTest2
-          {
-              public static void main(String[] args)
-              {
+          public class LoopTest2 {
+              public static void main(String[] args) {
                   int count = 1;
-                  while (count < 8)
-                  {
+                  while (count < 8) {
                       System.out.println(count);
                   }
               }
@@ -649,64 +647,55 @@
         </tests>
       </program>
     </activity>
-
-    <p>
-      Another possible error is not realizing that the loop body of an iterative
-      statement will not execute if the Boolean expression initially evaluates
-      to false. This is often a problem with the initial value of the loop
-      control variable. For example, if you initialize the loop variable to 10
-      and test if it is less than 10, the loop body will not execute at all.
-    </p>
-
-    <program language="java">
-      <code>
-        <![CDATA[
-
-        int i = 10;
-        while (i < 10)  // This loop will never run!
-        {
-            System.out.println(i);
-            i++;
-        }
-
-        ]]>
-      </code>
-    </program>
   </subsection>
 
   <subsection xml:id="input-controlled-loops">
-    <title>Input-Controlled Loops</title>
+    <title>Input-controlled loops</title>
 
     <p>
-      You can use a <c>while</c> loop to repeat the body of the loop a certain
-      number of times in counter-controlled loop as we saw above. However, a
-      <c>while</c> loop is typically used when you don’t know how many times the
-      loop will execute. It is often used for a <term>input-controlled
-      loop</term> where the user’s input indicates when to stop. For example, in
-      the Magpie chatbot lab code below, the while loop stops when you type in
-      “Bye”. The stopping value is often called the <term>sentinel value</term>
-      for the loop. Notice that if you type in “Bye” right away, the loop will
-      never run. If the loop condition evaluates to false initially, the loop
-      body is not executed at all. Another way to stop the loop prematurely is
-      to put in a <c>return</c> statement that makes it immediately return from
-      the method.
+      While we can use a <c>while</c> loop as a counting loop to repeat the body
+      of the loop a certain number of times, we’ll see in the next section that
+      that’s more easily done with a <c>for</c> loop. A <c>while</c> loop is
+      more typically used when we don’t know how many times the loop will need
+      to execute—when the condition will eventually become false but it might be
+      after a few iterations or a lot and the only way to find out is to execute
+      the loop.
+    </p>
+
+    <p>
+      On such loop of this kind is an <term>input-controlled loop</term> where
+      code in the body accepts input from the user, and that input indicates
+      whether to stop or to keep looping. For example, in the Magpie chatbot lab
+      code below, the <c>while</c> loop stops when the user types “Bye”.
     </p>
 
     <program language="java">
-      <code>
-        Scanner in = new Scanner(System.in);
-        String statement = in.nextLine();
-        while (!statement.equals("Bye"))
-        {
-            System.out.println(getResponse(statement));
-            statement = in.nextLine();
-        }
-      </code>
+      Scanner in = new Scanner(System.in);
+      String statement = in.nextLine();
+      while (!statement.equals("Bye")) {
+          System.out.println(getResponse(statement));
+          statement = in.nextLine();
+      }
     </program>
+
+    <p>
+      Notice how the loop variable in this loop is a <c>String</c> not a number.
+      And the condition is testing whether that <c>String</c> is a particular
+      value, <c>"Bye"</c>. A special value, like <c>"Bye</c>, that is the sign
+      to stop the loop is called a <term>sentinel value</term> for the loop.
+    </p>
+
+    <p>
+      Also notice how the loop still contains a line at the bottom of the loop
+      to update the loop variable with new input from the user. Without that
+      line the loop would either be an infinite loop, endlessly printing out the
+      first thing the user typed or an infinitely short loop if the typed
+      <c>"Bye"</c> as the very first thing.
+    </p>
   </subsection>
 
   <subsection xml:id="coding-challenge-turtle-squares">
-    <title>Coding Challenge : Turtle Squares</title>
+    <title>Coding Challenge: Turtle Squares</title>
 
     <p>
       Do you remember when we used the turtle objects to draw shapes? To create
@@ -770,10 +759,8 @@
           import java.awt.*;
           import java.util.*;
 
-          public class TurtleDrawSquare
-          {
-              public static void main(String[] args)
-              {
+          public class TurtleDrawSquare {
+              public static void main(String[] args) {
                   World world = new World(300, 300);
                   Turtle yertle = new Turtle(world);
 
@@ -898,50 +885,39 @@
             continues until the Boolean expression evaluates to false, whereupon
             the iteration terminates. Here is the general form of a while loop:
           </p>
+
+          <program language="java">
+            <code>
+              <![CDATA[
+
+              // The statements in a while loop run zero or more times,
+              // determined by how many times the condition is true
+              int count = 0; // initialize the loop variable
+              while (count < 10)  // test the loop variable
+              {
+                  // repeat this code
+                  // update the loop variable
+                  count++;
+              }
+
+              ]]>
+            </code>
+          </program>
         </li>
-      </ul>
-    </p>
 
-    <program language="java">
-      <code>
-        <![CDATA[
-
-        // The statements in a while loop run zero or more times,
-        // determined by how many times the condition is true
-        int count = 0; // initialize the loop variable
-        while (count < 10)  // test the loop variable
-        {
-            // repeat this code
-            // update the loop variable
-            count++;
-        }
-
-        ]]>
-      </code>
-    </program>
-
-    <p>
-      <ul>
         <li>
           <p>
-            Loops often have a <term>loop control variable</term> that is used
-            in the boolean condition of the loop. Remember the 3 steps of
-            writing a loop:
-          </p>
+            Loops often have a <term>loop variable</term> that is used in the
+            boolean condition of the loop. Remember the three steps of writing a
+            loop:
 
-          <p>
-            <ol marker="1">
-              <li>
-                <p>Initialize the loop variable</p>
-              </li>
+            
+            <ol>
+              <li>Initialize the loop variable</li>
 
-              <li>
-                <p>Test the loop variable</p>
-              </li>
+              <li>Test the loop variable</li>
 
-              <li>
-                <p>Update the loop variable</p>
-              </li>
+              <li>Update the loop variable</li>
             </ol>
           </p>
         </li>

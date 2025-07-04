@@ -516,4 +516,36 @@ b = "at our high school"
       <image source="Unit2-Selection-and-Iteration/Figures/demorganex.png" width="71%" />
     </figure>
   </subsection>
+
+  <subsection label="from-loops">
+    <image source="Unit2-Selection-and-Iteration/Figures/loops.png" width="22%" />
+
+    <p>
+      When you play a song, you can set it to loop, which means that when it
+      reaches the end it starts over at the beginning. A <term>loop</term> in
+      programming, also called <term>iteration</term> or
+      <term>repetition</term>, is a way to repeat one or more statements. If you
+      didn’t have loops to allow you to repeat code, your programs would get
+      very long very quickly! Using a sequence of code, selection (ifs), and
+      repetition (loops), the <term>control structures</term> in programming,
+      you can construct an algorithm to solve almost any programming problem!
+    </p>
+
+    <p>
+      Java doesn’t require your code to be correctly indented (code moved to the
+      right a few spaces) to make it clear what statements are part of the body
+      of the loop, but it is standard practice to do so.
+    </p>
+
+    <note>
+      <p>
+        On the free response part of the AP exam, the reader will use the
+        indention when determining the meaning of your code, even if you forget
+        the open or close curly brace.
+      </p>
+    </note>
+
+
+  </subsection>
+
 </section>

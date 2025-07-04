@@ -2,7 +2,25 @@
 
 <chapter xml:id="loops" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>loops</title>
-  <introduction />
+
+  <introduction>
+    <p>
+      As we discussed in <xref ref="topic-2-1-algorithms" />, at the beginning
+      of the previous unit, the basic building blocks of algorithms are
+      sequencing, selection, and repetition. The rest of <xref
+      ref="booleans-and-conditionals" /> covered Java’s main selection
+      construct, the <c>if</c> statement. In this unit we turn to Java’s
+      repetition, or looping, constructs.
+    </p>
+
+    <p>
+      First we will look at the control constructs themselves, <c>while</c> and
+      <c>for</c> loops. Then at how we can use them, in combination with
+      <c>if</c> statements, to implement some simple but important complete
+      algorithms.
+    </p>
+  </introduction>
+
   <xi:include href="./topic-2-7-while-loops.ptx" />
   <xi:include href="./topic-2-8-for-loops.ptx" />
   <xi:include href="./topic-2-9-loop-algorithms.ptx" />
