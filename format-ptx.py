@@ -13,7 +13,7 @@ WIDTH = 80
 INLINE_TAGS = {"term", "url", "c", "h", "area", "em", "xref", "m"}
 PRESERVE_WHITESPACE = {"code", "cline", "tests", "pre", "program"}
 ONE_LINE = {"cline"}
-# WRAP = {"p", "caption", "title", "cell"}
+COMPACT = {"cell"}
 DEFAULT_NS = {"xml": "http://www.w3.org/XML/1998/namespace"}
 
 def indentation(level):
@@ -70,9 +70,12 @@ def to_text(elem):
     return etree.tostring(elem, encoding='unicode', method='text')
 
 
+def is_in_program(elem):
+    return elem.getparent() is not None and elem.getparent().tag == "program"
+
+
 def is_program(elem):
-    e = elem.tag == "program" or (elem.getparent() and elem.getparent().tag == "program")
-    return e and is_all_text(elem)
+    return (elem.tag == "program" or is_in_program(elem)) and is_all_text(elem)
 
 
 def is_inline(elem):
@@ -81,10 +84,6 @@ def is_inline(elem):
 
 def is_empty(elem):
     return (elem.text or "").strip() == "" and not len(elem)
-
-
-# def is_just_short_text(elem):
-#     return len(elem) == 0 and len(re.sub(r"\s+", " ", (elem.text or "").strip())) < 64
 
 
 def preserve_whitespace(elem):
@@ -101,10 +100,6 @@ def empty_text(x):
 
 def singleton_child(elem):
     return len(elem) == 1 and empty_text(elem.text) and empty_text(elem[0].tail)
-
-
-# def wrappableOLD(elem):
-#     return elem.tag in WRAP #and not singleton_child(elem)
 
 
 def wrappable(elem):
@@ -162,8 +157,6 @@ def render_block(elem, ns, level=0):
 
     if is_empty(elem):
         return f"\n{indentation(level)}{open_tag(elem, ns, empty=True)}"
-    # elif is_just_short_text(elem):
-    #     return f"{tag}{escape(clean_text(elem.text or ''))}{close_tag(elem, ns)}"
     else:
         content = ""
 
@@ -187,7 +180,7 @@ def render_block(elem, ns, level=0):
             oneline = f"{tag}{re.sub(r"(?s)\s+", " ", content).strip()}{close_tag(elem, ns)}"
 
             if len(oneline) - 1 <= WIDTH: # -1 for the leading newline.
-                return f"{oneline}"
+                return oneline if elem.tag in COMPACT else f"{oneline}\n";
 
             if not singleton_child(elem):
                 filled = fill_with_indent(content, indentation(level + 1))
