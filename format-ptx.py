@@ -3,7 +3,7 @@
 import re
 from argparse import ArgumentParser
 from sys import stderr, stdout
-from textwrap import fill
+from textwrap import fill, dedent, indent
 from xml.sax.saxutils import escape, quoteattr
 
 from lxml import etree
@@ -16,8 +16,7 @@ ONE_LINE = {"cline"}
 # WRAP = {"p", "caption", "title", "cell"}
 DEFAULT_NS = {"xml": "http://www.w3.org/XML/1998/namespace"}
 
-
-def indent(level):
+def indentation(level):
     return " " * (INDENT * level)
 
 
@@ -59,6 +58,19 @@ def close_tag(elem, ns):
     return f"</{namespaced(elem.tag, ns)}>"
 
 
+def is_all_text(elem):
+    return len(elem) == 0
+
+
+def to_text(elem):
+    return etree.tostring(elem, encoding='unicode', method='text')
+
+
+def is_program(elem):
+    e = elem.tag == "program" or (elem.tag in {"code", "tests"} and elem.getparent().tag == "program")
+    return e and is_all_text(elem)
+
+
 def is_inline(elem):
     return elem.tag in INLINE_TAGS
 
@@ -67,8 +79,8 @@ def is_empty(elem):
     return (elem.text or "").strip() == "" and not len(elem)
 
 
-def is_just_short_text(elem):
-    return len(elem) == 0 and len(re.sub(r"\s+", " ", (elem.text or "").strip())) < 64
+# def is_just_short_text(elem):
+#     return len(elem) == 0 and len(re.sub(r"\s+", " ", (elem.text or "").strip())) < 64
 
 
 def preserve_whitespace(elem):
@@ -114,11 +126,24 @@ def render_inline(elem, ns):
     return s
 
 
+def render_program(elem, ns, level):
+    indent1 = indentation(level)
+    indent2 = indentation(level + 1)
+
+    content = f"\n{indent1}{open_tag(elem, ns)}\n"
+    content += f"{indent2}<![CDATA[\n\n"
+    content += indent(dedent(to_text(elem)).strip(), indent2)
+    content += f"\n\n{indent2}]]>\n"
+    content += f"{indent1}{close_tag(elem, ns)}\n"
+
+    return content
+
+
 def render_block(elem, ns, level=0):
-    tag = f"\n{indent(level)}{open_tag(elem, ns)}"
+    tag = f"\n{indentation(level)}{open_tag(elem, ns)}"
 
     if is_empty(elem):
-        return f"\n{indent(level)}{open_tag(elem, ns, empty=True)}"
+        return f"\n{indentation(level)}{open_tag(elem, ns, empty=True)}"
     # elif is_just_short_text(elem):
     #     return f"{tag}{escape(clean_text(elem.text or ''))}{close_tag(elem, ns)}"
     else:
@@ -147,10 +172,10 @@ def render_block(elem, ns, level=0):
                 return f"{oneline}"
 
             if not singleton_child(elem):
-                filled = fill_with_indent(content, indent(level + 1))
-                return f"{tag}\n{filled}\n{indent(level)}{close_tag(elem, ns)}\n"
+                filled = fill_with_indent(content, indentation(level + 1))
+                return f"{tag}\n{filled}\n{indentation(level)}{close_tag(elem, ns)}\n"
 
-        return f"{tag}\n{indent(level + 1)}{content.strip()}\n{indent(level)}{close_tag(elem, ns)}\n"
+        return f"{tag}\n{indentation(level + 1)}{content.strip()}\n{indentation(level)}{close_tag(elem, ns)}\n"
 
 def clean_text(s):
     return re.sub(r"\s+", " ", s.strip())
@@ -168,18 +193,21 @@ def fill_with_indent(text, i):
 
 
 def render_with_whitespace(elem, ns, level=0):
-    s = f"\n{indent(level)}{open_tag(elem, ns)}"
-    if elem.text and len(elem.text) > 0:
+    s = f"\n{indentation(level)}{open_tag(elem, ns)}"
+    if elem.text and len(elem.text) > 0 and not is_program(elem[0]):
         s += escape(elem.text)
     for child in elem:
-        s += render_child_with_whitespace(child, ns | elem.nsmap)
-        if child.tail and len(child.tail) > 0:
-            s += child.tail
+        if is_program(child):
+            s += render_program(child, ns | elem.nsmap, level + 1)
+        else:
+            s += render_child_with_whitespace(child, ns | elem.nsmap)
+            if child.tail and len(child.tail) > 0:
+                s += child.tail
 
     s = s.rstrip()
 
     if not is_oneline(elem):
-        s += f"\n{indent(level)}"
+        s += f"\n{indentation(level)}"
 
     s += close_tag(elem, ns)
 
@@ -207,6 +235,8 @@ def serialize_element(elem, ns=DEFAULT_NS, level=0):
         return f"{elem}"
     if is_inline(elem):
         return render_inline(elem, ns)
+    elif is_program(elem):
+        return render_program(elem, ns, level)
     elif preserve_whitespace(elem):
         return render_with_whitespace(elem, ns, level)
     else:
