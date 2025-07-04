@@ -331,9 +331,9 @@ public class RunestoneTests extends CodeTestHelper
     <idx>else if</idx>
     <p>
       Since the body of an <c>if</c> statement or an <c>else</c> can contain any
-      code, we can nested <c>if</c> statements inside other <c>if</c>
-      statements. There’s nothing magical about this: just the natural
-      consequence of building programs out of simple pieces. Consider this code:
+      code, we can nest <c>if</c> statements inside other <c>if</c> statements.
+      There’s nothing magical about this: just the natural consequence of
+      building programs out of simple pieces. Consider this code:
     </p>
 
     <program language="java">
