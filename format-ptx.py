@@ -62,12 +62,16 @@ def is_all_text(elem):
     return len(elem) == 0
 
 
+def is_multiline(text):
+    return len(text.split('\n')) > 1
+
+
 def to_text(elem):
     return etree.tostring(elem, encoding='unicode', method='text')
 
 
 def is_program(elem):
-    e = elem.tag == "program" or (elem.tag in {"code", "tests"} and elem.getparent().tag == "program")
+    e = elem.tag == "program" or (elem.getparent() and elem.getparent().tag == "program")
     return e and is_all_text(elem)
 
 
@@ -126,15 +130,29 @@ def render_inline(elem, ns):
     return s
 
 
-def render_program(elem, ns, level):
+def render_program_text(elem, ns, level):
     indent1 = indentation(level)
     indent2 = indentation(level + 1)
 
+    text = dedent(to_text(elem)).strip()
+    needs_cdata = any(e in text for e in '&<>')
+    multiline = is_multiline(text)
+
     content = f"\n{indent1}{open_tag(elem, ns)}\n"
-    content += f"{indent2}<![CDATA[\n\n"
-    content += indent(dedent(to_text(elem)).strip(), indent2)
-    content += f"\n\n{indent2}]]>\n"
-    content += f"{indent1}{close_tag(elem, ns)}\n"
+
+    if needs_cdata:
+        content += f"{indent2}<![CDATA[\n"
+        if multiline:
+            content += "\n"
+
+    content += indent(text, indent2)
+
+    if needs_cdata:
+        if multiline:
+            content += "\n"
+        content += f"\n{indent2}]]>"
+
+    content += f"\n{indent1}{close_tag(elem, ns)}\n"
 
     return content
 
@@ -198,7 +216,7 @@ def render_with_whitespace(elem, ns, level=0):
         s += escape(elem.text)
     for child in elem:
         if is_program(child):
-            s += render_program(child, ns | elem.nsmap, level + 1)
+            s += render_program_text(child, ns | elem.nsmap, level + 1)
         else:
             s += render_child_with_whitespace(child, ns | elem.nsmap)
             if child.tail and len(child.tail) > 0:
@@ -236,7 +254,7 @@ def serialize_element(elem, ns=DEFAULT_NS, level=0):
     if is_inline(elem):
         return render_inline(elem, ns)
     elif is_program(elem):
-        return render_program(elem, ns, level)
+        return render_program_text(elem, ns, level)
     elif preserve_whitespace(elem):
         return render_with_whitespace(elem, ns, level)
     else:
