@@ -10,10 +10,10 @@ from lxml import etree
 
 INDENT = 2
 WIDTH = 80
-INLINE_TAGS = {"term", "url", "c", "h", "area"}
+INLINE_TAGS = {"term", "url", "c", "h", "area", "em", "xref", "m"}
 PRESERVE_WHITESPACE = {"code", "cline", "tests", "pre", "program"}
 ONE_LINE = {"cline"}
-WRAP = {"p", "caption", "title", "cell"}
+# WRAP = {"p", "caption", "title", "cell"}
 DEFAULT_NS = {"xml": "http://www.w3.org/XML/1998/namespace"}
 
 
@@ -87,11 +87,19 @@ def singleton_child(elem):
     return len(elem) == 1 and empty_text(elem.text) and empty_text(elem[0].tail)
 
 
+# def wrappableOLD(elem):
+#     return elem.tag in WRAP #and not singleton_child(elem)
+
+
 def wrappable(elem):
-    return elem.tag in WRAP and not singleton_child(elem)
+    return not preserve_whitespace(elem) and (is_inline(elem) or all(is_inline(e) for e in elem))
 
 
 def render_inline(elem, ns):
+
+    if is_empty(elem):
+        return open_tag(elem, ns, empty=True)
+
     s = open_tag(elem, ns)
 
     if elem.text and elem.text.strip():
@@ -111,8 +119,8 @@ def render_block(elem, ns, level=0):
 
     if is_empty(elem):
         return f"\n{indent(level)}{open_tag(elem, ns, empty=True)}"
-    elif is_just_short_text(elem):
-        return f"{tag}{escape(clean_text(elem.text or ''))}{close_tag(elem, ns)}"
+    # elif is_just_short_text(elem):
+    #     return f"{tag}{escape(clean_text(elem.text or ''))}{close_tag(elem, ns)}"
     else:
         content = ""
 
@@ -134,13 +142,15 @@ def render_block(elem, ns, level=0):
 
         if wrappable(elem):
             oneline = f"{tag}{re.sub(r"(?s)\s+", " ", content).strip()}{close_tag(elem, ns)}"
-            if len(indent(level)) * 2 + len(oneline) < WIDTH:
-                return f"{oneline}\n"
-            else:
+
+            if len(oneline) - 1 <= WIDTH: # -1 for the leading newline.
+                return f"{oneline}"
+
+            if not singleton_child(elem):
                 filled = fill_with_indent(content, indent(level + 1))
                 return f"{tag}\n{filled}\n{indent(level)}{close_tag(elem, ns)}\n"
-        else:
-            return f"{tag}\n{indent(level + 1)}{content.strip()}\n{indent(level)}{close_tag(elem, ns)}\n"
+
+        return f"{tag}\n{indent(level + 1)}{content.strip()}\n{indent(level)}{close_tag(elem, ns)}\n"
 
 def clean_text(s):
     return re.sub(r"\s+", " ", s.strip())
