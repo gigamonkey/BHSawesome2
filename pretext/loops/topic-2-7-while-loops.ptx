@@ -166,7 +166,7 @@
       </ol>
     </p>
 
-    <figure align="center" xml:id="three-steps-of-writing-a-loop">
+    <figure xml:id="three-steps-of-writing-a-loop">
       <caption>Three Steps of Writing a Loop</caption>
 
       <image source="Unit2-Selection-and-Iteration/Figures/loop3steps.png" width="71%" />
@@ -224,6 +224,7 @@
     </activity>
 
     <activity label="print_odds_while" numbered="yes" adaptive="yes" indentation="show" language="java">
+      <title>Printing odds</title>
       <statement>
         <p>
           The following method has the correct code to print out all the odd
