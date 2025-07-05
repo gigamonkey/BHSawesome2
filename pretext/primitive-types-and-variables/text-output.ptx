@@ -2,6 +2,7 @@
 
 <section xml:id="text-output">
   <title>Text output</title>
+
   <introduction>
     <p>
       A lot of what happens when a computer program runs is invisible, happening
@@ -65,6 +66,7 @@
 
   <subsection>
     <title>Strings</title>
+
     <idx>String</idx>
     <idx>String literal</idx>
     <p>
@@ -107,56 +109,61 @@
 
       <program interactive="activecode" language="java">
         <code>
-public class MyClass
-{
-    public static void main(String[] args)
-    {
-        System.out.print("Hi ");
-        System.out.println("there");
-        System.out.print("!");
-    }
-}
+          public class MyClass
+          {
+              public static void main(String[] args)
+              {
+                  System.out.print("Hi ");
+                  System.out.println("there");
+                  System.out.print("!");
+              }
+          }
         </code>
+
         <tests>
-// should pass if/when they run code
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          // should pass if/when they run code
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Hi there!";
-        boolean passed =
-                getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
+          import java.io.*;
 
-    @Test
-    public void testLineCount() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "1 output line";
-        String actual = "  output line";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Hi there!";
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
 
-        if (output.length() &gt; 0)
-        {
-            actual = output.split("\n").length + actual;
-        }
-        else
-        {
-            actual = output.length() + actual;
-        }
-        boolean passed =
-                getResults(expect, actual, "Checking lines of output");
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void testLineCount() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "1 output line";
+                  String actual = "  output line";
+
+                  if (output.length() > 0)
+                  {
+                      actual = output.split("\n").length + actual;
+                  }
+                  else
+                  {
+                      actual = output.length() + actual;
+                  }
+                  boolean passed =
+                          getResults(expect, actual, "Checking lines of output");
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -164,6 +171,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="string-escapes">
     <title>String escapes</title>
+
     <p>
       What if we wanted to print out a double quote <c>"</c> character? Since
       <c>"</c> has a special meaning within Java’s string literals, it might
@@ -199,41 +207,40 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="bhescape">
       <statement>
-        <p>
-          Here are the escape sequences that may be used in the AP course.
-        </p>
+        <p>Here are the escape sequences that may be used in the AP course.</p>
       </statement>
 
       <program interactive="activecode" language="java">
         <code>
-public class TestEscape
-{
-    public static void main(String[] args)
-    {
-        System.out.print("Here is a backslash quote \" ");
-        System.out.print("and a backslashed backslash (\\) ");
-        System.out.println("Backslash n \nprints out a new line.");
-    }
-}
+          public class TestEscape
+          {
+              public static void main(String[] args)
+              {
+                  System.out.print("Here is a backslash quote \" ");
+                  System.out.print("and a backslashed backslash (\\) ");
+                  System.out.println("Backslash n \nprints out a new line.");
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = output;
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = output;
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -241,6 +248,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="scanner">
     <title>Input</title>
+
     <p>
       The flip side of emitting output to the user is getting input from the
       user. Just as there are lots of ways for computers to generate output,
@@ -269,6 +277,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="inputName">
       <title>Program with user input</title>
+
       <statement>
         <p>
           The code below will say hello to anyone who types in their name. Type
@@ -279,39 +288,43 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-import java.util.Scanner;
+          import java.util.Scanner;
 
-public class Main
-{
-    public static void main(String[] args)
-    {
-        System.out.println("Please type in a name in the input box below.");
-        Scanner scan = new Scanner(System.in);
-        String name = scan.nextLine();
-        System.out.println("Hello " + name);
-        scan.close();
-     }
- }
+          public class Main
+          {
+              public static void main(String[] args)
+              {
+                  System.out.println("Please type in a name in the input box below.");
+                  Scanner scan = new Scanner(System.in);
+                  String name = scan.nextLine();
+                  System.out.println("Hello " + name);
+                  scan.close();
+               }
+           }
         </code>
-        <stdin>your name</stdin>
+
+        <stdin>
+          your name
+        </stdin>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.Test;
+          import org.junit.Test;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1()
-    {
-        //String output = getMethodOutput("main");
-        boolean passed =
-                getResults("", "", "Scanner example", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test1()
+              {
+                  //String output = getMethodOutput("main");
+                  boolean passed =
+                          getResults("", "", "Scanner example", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -344,6 +357,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-mad-libs">
     <title>Coding Challenge : Mad Libs</title>
+
     <p>
       Have you ever played MAD LIBS? In this game, you first choose a bunch of
       words following clues like give me a color or a plural noun, without
@@ -364,6 +378,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <project label="challengeMadLibs">
       <title>Mad Libs</title>
+
       <statement>
         <p>
           Replace the text “Replace” below with silly words following the
@@ -376,59 +391,60 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class MadLibs1
-{
-    public static void main(String[] args)
-    {
-        // fill these in with silly words/strings (don't read the poem yet)
-        String pluralnoun1 = "Replace";
-        String color1 = "Replace";
-        String color2 = "Replace";
-        String food = "Replace";
-        String pluralnoun2 = "Replace";
+          public class MadLibs1
+          {
+              public static void main(String[] args)
+              {
+                  // fill these in with silly words/strings (don't read the poem yet)
+                  String pluralnoun1 = "Replace";
+                  String color1 = "Replace";
+                  String color2 = "Replace";
+                  String food = "Replace";
+                  String pluralnoun2 = "Replace";
 
 
-        // Run to see the silly poem!
-        System.out.println("Roses are " + color1);
-        System.out.println(pluralnoun1 + " are " + color2);
-        System.out.println("I like " + food);
-        System.out.println("Do " + pluralnoun2 + " like them too?");
+                  // Run to see the silly poem!
+                  System.out.println("Roses are " + color1);
+                  System.out.println(pluralnoun1 + " are " + color2);
+                  System.out.println("I like " + food);
+                  System.out.println("Do " + pluralnoun2 + " like them too?");
 
-        // Now come up with your own silly poem!
-    }
-}
+                  // Now come up with your own silly poem!
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Roses are *\n* are *\nI like *\nDo * like them too?";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Roses are *\n* are *\nI like *\nDo * like them too?";
 
-        boolean passed = getResultsRegEx(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
+                  boolean passed = getResultsRegEx(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testNull() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Replace";
+              @Test
+              public void testNull() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Replace";
 
-        String actual = countOccurences(output, expect) + " Replace values";
+                  String actual = countOccurences(output, expect) + " Replace values";
 
-        boolean passed = getResults("0 Replace values", actual, "Change all \"Replace\" values");
-        assertTrue(passed);
-    }
-}
+                  boolean passed = getResults("0 Replace values", actual, "Change all \"Replace\" values");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </project>
@@ -436,16 +452,25 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
           <p>
-            (AP 1.3.A.1) <title_reference>System.out.print</title_reference> and
-            <title_reference>System.out.println</title_reference> are Java
+            (AP 1.3.A.1)
+            <title_reference>System.out.print</title_reference>
+ and
+            
+            <title_reference>System.out.println</title_reference>
+ are Java
             output statements that display information on the computer screen.
-            <title_reference>System.out.println</title_reference> moves the
+            
+            <title_reference>System.out.println</title_reference>
+ moves the
             cursor to a new line after the information has been displayed, while
-            <title_reference>System.out.print</title_reference> does not.
+            
+            <title_reference>System.out.print</title_reference>
+ does not.
           </p>
         </li>
 
@@ -467,10 +492,14 @@ public class RunestoneTests extends CodeTestHelper
           <p>
             (AP 1.3.B.3) <term>Escape sequences</term> are special sequences of
             characters that can be included in a string. They start with a
-            <title_reference> ` and have a special meaning in Java. Escape
-            sequences used in this course include double quote `”
-            </title_reference> , backslash <title_reference>`, and newline
-            `n</title_reference>.
+            
+            <title_reference>
+              ` and have a special meaning in Java. Escape sequences used in
+              this course include double quote `”
+            </title_reference>
+ , backslash 
+            <title_reference>`, and newline `n</title_reference>
+.
           </p>
         </li>
 
@@ -488,14 +517,16 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="ap-practice-7">
     <title>AP Practice</title>
+
     <activity label="AP1-3-1">
       <statement>
         <p>Consider the following code segment.</p>
+
         <program language="java">
           <code>
-System.out.print("Java is ");
-System.out.println("fun ");
-System.out.print("and cool!");
+            System.out.print("Java is ");
+            System.out.println("fun ");
+            System.out.print("and cool!");
           </code>
         </program>
 

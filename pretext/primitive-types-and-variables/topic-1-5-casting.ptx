@@ -2,6 +2,7 @@
 
 <section xml:id="topic-1-5-casting">
   <title>Getting math right</title>
+
   <introduction>
     <p>
       Java's two numeric types, <c>int</c> and <c>double</c>, serve different
@@ -32,6 +33,7 @@
 
   <subsection xml:id="casting">
     <title>Casting</title>
+
     <idx>cast</idx>
     <idx>casting</idx>
     <idx>type casting</idx>
@@ -47,6 +49,7 @@
 
     <figure align="center">
       <caption>Bronze casting changes the shape of the metal.</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/bronze-casting.jpg" width="54%" />
     </figure>
 
@@ -88,6 +91,7 @@
 
     <activity label="cast-division">
       <title>Dividing mixed types</title>
+
       <statement>
         <p>
           Run this code to see how Java handles division and what casting can do
@@ -117,31 +121,32 @@
               }
           }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect =
-                "0\n"
-                    + "0.75\n"
-                    + "0.75\n"
-                    + "0.75\n"
-                    + "0\n"
-                    + "2.5\n";
-        boolean passed =
-                getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect =
+                          "0\n"
+                              + "0.75\n"
+                              + "0.75\n"
+                              + "0.75\n"
+                              + "0\n"
+                              + "2.5\n";
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -149,6 +154,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Casting to double</title>
+
     <p>
       As you can see in the exercise above, when Java divides two <c>int</c>s,
       it produces an <c>int</c> result by truncating the actual mathematical
@@ -186,11 +192,11 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-int total; // a variable containing the sum of a bunch of ints
-int count; // the number of ints that went into total
+        int total; // a variable containing the sum of a bunch of ints
+        int count; // the number of ints that went into total
 
-// Compute the average of the bunch of ints summed into total.
-double average = (double) total / count;
+        // Compute the average of the bunch of ints summed into total.
+        double average = (double) total / count;
       </code>
     </program>
 
@@ -220,6 +226,7 @@ double average = (double) total / count;
 
   <subsection xml:id="rounding">
     <title>Casting to int</title>
+
     <idx>rounding</idx>
     <p>
       Since casting a <c>double</c> value to <c>int</c> throws away mathematical
@@ -231,11 +238,11 @@ double average = (double) total / count;
 
     <program language="java">
       <code>
-double number;    // positive value from somewhere
-double negNumber; // negative value from somewhere
+        double number;    // positive value from somewhere
+        double negNumber; // negative value from somewhere
 
-int nearestInt = (int) (number + 0.5);
-int nearestNegInt = (int) (negNumber – 0.5);
+        int nearestInt = (int) (number + 0.5);
+        int nearestNegInt = (int) (negNumber – 0.5);
       </code>
     </program>
 
@@ -266,6 +273,7 @@ int nearestNegInt = (int) (negNumber – 0.5);
 
     <activity label="nearestInt">
       <title>Test rounding</title>
+
       <statement>
         <p>
           Run the code below to see how the formula of adding or subtracting .5
@@ -277,50 +285,51 @@ int nearestNegInt = (int) (negNumber – 0.5);
 
       <program interactive="activecode" language="java">
         <code>
-public class NearestInt
-{
-    public static void main(String[] args)
-    {
-        double number = 5.0 / 3;
-        int nearestInt = (int) (number + 0.5);
-        System.out.println("5.0/3 = " + number);
-        System.out.println("5/3 truncated: " + (int) number);
-        System.out.println("5.0/3 rounded to nearest int: " + nearestInt);
-        double negNumber = -number;
-        int nearestNegInt = (int) (negNumber - 0.5);
-        System.out.println(
-                "-5.0/3 rounded to nearest negative int: " + nearestNegInt);
+          public class NearestInt
+          {
+              public static void main(String[] args)
+              {
+                  double number = 5.0 / 3;
+                  int nearestInt = (int) (number + 0.5);
+                  System.out.println("5.0/3 = " + number);
+                  System.out.println("5/3 truncated: " + (int) number);
+                  System.out.println("5.0/3 rounded to nearest int: " + nearestInt);
+                  double negNumber = -number;
+                  int nearestNegInt = (int) (negNumber - 0.5);
+                  System.out.println(
+                          "-5.0/3 rounded to nearest negative int: " + nearestNegInt);
 
-        // Print the result of rounding (number + 2.3) to the nearest int.
+                  // Print the result of rounding (number + 2.3) to the nearest int.
 
-    }
-}
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect =
-                "5.0/3 = 1.6666666666666667\n"
-                    + "5/3 truncated: 1\n"
-                    + "5.0/3 rounded to nearest int: 2\n"
-                    + "-5.0/3 rounded to nearest negative int: -2\n"
-                    + "4";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect =
+                          "5.0/3 = 1.6666666666666667\n"
+                              + "5/3 truncated: 1\n"
+                              + "5.0/3 rounded to nearest int: 2\n"
+                              + "-5.0/3 rounded to nearest negative int: -2\n"
+                              + "4";
 
-        boolean passed =
-                getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -328,10 +337,8 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="range-of-values">
     <title>Limits of int and doubles</title>
-    <idx>
-      <h>double</h><h>number of digits</h>
-    </idx>
 
+    <idx><h>double</h><h>number of digits</h></idx>
     <p>
       Both the <c>int</c> and <c>double</c> data types have limitations in the
       numbers they can represent. These limitations are due to the fact that for
@@ -380,38 +387,39 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class TestOverflow
-{
-    public static void main(String[] args)
-    {
-        int id = 2147483650; // overflow
-        int negative = -2147483650; // overflow
-        System.out.println(id);
-        System.out.println(negative);
-    }
-}
+          public class TestOverflow
+          {
+              public static void main(String[] args)
+              {
+                  int id = 2147483650; // overflow
+                  int negative = -2147483650; // overflow
+                  System.out.println(id);
+                  System.out.println(negative);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "214748365\n-214748365\n";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "214748365\n-214748365\n";
 
-        boolean passed =
-                getResults(
-                        expect, output, "Fixed Integer Overflow Error");
-        assertTrue(passed);
-    }
-}
+                  boolean passed =
+                          getResults(
+                                  expect, output, "Fixed Integer Overflow Error");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -447,10 +455,7 @@ public class RunestoneTests extends CodeTestHelper
       errors but most of us don’t have to worry about that most of the time.
     </p>
 
-    <idx>
-      <h>double</h><h>precision format</h>
-    </idx>
-
+    <idx><h>double</h><h>precision format</h></idx>
     <note>
       <p>
         Although it’s not on the AP exam, you can format long decimal numbers to
@@ -467,6 +472,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="double_precision">
       <title>Using printf</title>
+
       <statement>
         <p>
           Run the code below to see how a decimal number can be formatted to
@@ -476,49 +482,51 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class TestFormat
-{
-    public static void main(String[] args)
-    {
-        double number = 10.0 / 3;
-        // Note that this gets cut off after 15 digits
-        System.out.println("Number cut off after 15 digits: " + number);
-        // We could turn it into an int with some loss of precision
-        System.out.println("Number as an int: " + (int) number);
-        // Or format it to show 2 digits after .
-        System.out.printf("Formatted number: %.2f", number);
-        // format also with $ and newline
-        System.out.printf("\nFormatted number: $%.2f\n", number);
-        // Print out the result of 2.0/3 formatted to show 2 digits after the decimal point.
+          public class TestFormat
+          {
+              public static void main(String[] args)
+              {
+                  double number = 10.0 / 3;
+                  // Note that this gets cut off after 15 digits
+                  System.out.println("Number cut off after 15 digits: " + number);
+                  // We could turn it into an int with some loss of precision
+                  System.out.println("Number as an int: " + (int) number);
+                  // Or format it to show 2 digits after .
+                  System.out.printf("Formatted number: %.2f", number);
+                  // format also with $ and newline
+                  System.out.printf("\nFormatted number: $%.2f\n", number);
+                  // Print out the result of 2.0/3 formatted to show 2 digits after the decimal point.
 
-    }
-}
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "0.67";
-        boolean passed = output.contains(expect);
-        passed = getResults(expect, output, "Expected output from main", passed);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "0.67";
+                  boolean passed = output.contains(expect);
+                  passed = getResults(expect, output, "Expected output from main", passed);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
 
     <activity label="q_round">
       <title>Integer division</title>
+
       <statement>
         <p>
           True or false: Java rounds up automatically when you do integer
@@ -554,6 +562,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="q_cast">
       <title>Casting</title>
+
       <statement>
         <p>True or false: casting always results in a double type.</p>
       </statement>
@@ -588,6 +597,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-average-3-numbers">
     <title>Coding Challenge : Average 3 Numbers</title>
+
     <p>
       This would be a good project to work together in pairs, and switch drivers
       (who has control of the keyboard in pair programming) after every line of
@@ -601,6 +611,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <project label="challenge1-5-average">
       <title>Averaging three numbers</title>
+
       <statement>
         <p>
           Type in three made up int grades and then sum and average them. Use
@@ -612,254 +623,259 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class Challenge1_6
-{
-    public static void main(String[] args)
-    {
-        // 1. Declare 3 int variables called grade1, grade2, grade3
-        // and initialize them to 3 values
+          public class Challenge1_6
+          {
+              public static void main(String[] args)
+              {
+                  // 1. Declare 3 int variables called grade1, grade2, grade3
+                  // and initialize them to 3 values
 
-        // 2. Declare an int variable called sum for the sum of the grades
+                  // 2. Declare an int variable called sum for the sum of the grades
 
-        // 3. Declare a variable called average for the average of the grades
+                  // 3. Declare a variable called average for the average of the grades
 
-        // 4. Write a formula to calculate the sum of the 3 grades (add them
-        // up).
+                  // 4. Write a formula to calculate the sum of the 3 grades (add them
+                  // up).
 
-        // 5. Write a formula to calculate the average of the 3 grades from
-        // the sum using division and type casting.
+                  // 5. Write a formula to calculate the average of the 3 grades from
+                  // the sum using division and type casting.
 
-        // 6. Print out the average
+                  // 6. Print out the average
 
-    }
-}
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
-import java.util.regex.MatchResult;
-import java.util.regex.Pattern;
+          import org.junit.*;
 
-/* Do NOT change Main or CodeTestHelper.java.
-Put the active code exercise in a file like ForLoop.java.
-Put your Junit test in the file RunestoneTests.java.
-Run. Test by changing ForLoop.java (student code).
-*/
+          import java.io.*;
+          import java.util.regex.MatchResult;
+          import java.util.regex.Pattern;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test4() throws IOException
-    {
-        String actual = getMethodOutput("main");
-        String expect = "double value";
+          /* Do NOT change Main or CodeTestHelper.java.
+          Put the active code exercise in a file like ForLoop.java.
+          Put your Junit test in the file RunestoneTests.java.
+          Run. Test by changing ForLoop.java (student code).
+          */
 
-        boolean passed = actual.matches("[\\s\\S]*[0-9]+.[0-9]+[\\s\\S]*");
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test4() throws IOException
+              {
+                  String actual = getMethodOutput("main");
+                  String expect = "double value";
 
-        if (!passed)
-        {
-            getResults(
-                    expect,
-                    actual,
-                    "Checking that output is a double value",
-                    passed);
-            assertTrue(passed);
-            return;
-        }
+                  boolean passed = actual.matches("[\\s\\S]*[0-9]+.[0-9]+[\\s\\S]*");
 
-        String code = getCode();
-        String regex = "grade[0-9]=[0-9]+";
+                  if (!passed)
+                  {
+                      getResults(
+                              expect,
+                              actual,
+                              "Checking that output is a double value",
+                              passed);
+                      assertTrue(passed);
+                      return;
+                  }
 
-        String[] matches =
-                Pattern.compile(regex)
-                        .matcher(removeSpaces(code))
-                        .results()
-                        .map(MatchResult::group)
-                        .toArray(String[]::new);
+                  String code = getCode();
+                  String regex = "grade[0-9]=[0-9]+";
 
-        int[] grades = new int[3];
+                  String[] matches =
+                          Pattern.compile(regex)
+                                  .matcher(removeSpaces(code))
+                                  .results()
+                                  .map(MatchResult::group)
+                                  .toArray(String[]::new);
 
-        String hint = "";
+                  int[] grades = new int[3];
 
-        if (matches.length &gt; 3)
-        {
-            hint = "\n(Did you declare too many grade variables?)";
-        }
-        else if (matches.length &lt; 3)
-        {
-            hint = "\n(Did you declare too few grade variables?)";
-        }
+                  String hint = "";
 
-        for (int i = 0; i &lt; grades.length &amp;&amp; i &lt; matches.length; i++)
-        {
-            String val = matches[i].substring(matches[i].indexOf("=") + 1);
-            grades[i] = Integer.parseInt(val);
-        }
+                  if (matches.length > 3)
+                  {
+                      hint = "\n(Did you declare too many grade variables?)";
+                  }
+                  else if (matches.length < 3)
+                  {
+                      hint = "\n(Did you declare too few grade variables?)";
+                  }
 
-        double exp =
-                (double) (grades[0] + grades[1] + grades[2]) / matches.length;
+                  for (int i = 0; i < grades.length && i < matches.length; i++)
+                  {
+                      String val = matches[i].substring(matches[i].indexOf("=") + 1);
+                      grades[i] = Integer.parseInt(val);
+                  }
 
-        passed =
-                getResults(
-                        "" + exp,
-                        actual,
-                        "Checking that calculation is correct" + hint);
-        assertTrue(passed);
-    }
+                  double exp =
+                          (double) (grades[0] + grades[1] + grades[2]) / matches.length;
 
-    @Test
-    public void test1() throws IOException
-    {
-        String code = removeSpaces(getCode());
+                  passed =
+                          getResults(
+                                  "" + exp,
+                                  actual,
+                                  "Checking that calculation is correct" + hint);
+                  assertTrue(passed);
+              }
 
-        String expect = "Declared grade1, grade2, grade3, and average";
-        String actual = "";
-        String hint = "";
+              @Test
+              public void test1() throws IOException
+              {
+                  String code = removeSpaces(getCode());
 
-        boolean passed = true;
+                  String expect = "Declared grade1, grade2, grade3, and average";
+                  String actual = "";
+                  String hint = "";
 
-        String regex = "grade[1-3]=[0-9]+";
+                  boolean passed = true;
 
-        String[] matches =
-                Pattern.compile(regex)
-                        .matcher(removeSpaces(code))
-                        .results()
-                        .map(MatchResult::group)
-                        .toArray(String[]::new);
+                  String regex = "grade[1-3]=[0-9]+";
 
-        if (matches.length != 3)
-        {
-            passed = false;
-            actual += "Declared " + matches.length + " grade variables\n";
-        }
+                  String[] matches =
+                          Pattern.compile(regex)
+                                  .matcher(removeSpaces(code))
+                                  .results()
+                                  .map(MatchResult::group)
+                                  .toArray(String[]::new);
 
-        if (!code.contains("doubleaverage"))
-        {
-            passed = false;
-            actual += "Did not declare average as a double";
-        }
+                  if (matches.length != 3)
+                  {
+                      passed = false;
+                      actual += "Declared " + matches.length + " grade variables\n";
+                  }
 
-        if (!passed)
-        {
-            hint = "\n(Check spelling and capitalization)";
-        }
-        else
-        {
-            actual = expect;
-        }
+                  if (!code.contains("doubleaverage"))
+                  {
+                      passed = false;
+                      actual += "Did not declare average as a double";
+                  }
 
-        getResults(
-                expect,
-                actual.trim(),
-                "Checking that variables have been declared properly" + hint,
-                passed);
-        assertTrue(passed);
-    }
+                  if (!passed)
+                  {
+                      hint = "\n(Check spelling and capitalization)";
+                  }
+                  else
+                  {
+                      actual = expect;
+                  }
 
-    @Test
-    public void test3() throws IOException
-    {
-        String code = getCode();
-        String[] lines = code.split("\n");
+                  getResults(
+                          expect,
+                          actual.trim(),
+                          "Checking that variables have been declared properly" + hint,
+                          passed);
+                  assertTrue(passed);
+              }
 
-        String expect = "(double)";
-        String actual = "Cast expression as a double";
+              @Test
+              public void test3() throws IOException
+              {
+                  String code = getCode();
+                  String[] lines = code.split("\n");
 
-        boolean passed = false;
+                  String expect = "(double)";
+                  String actual = "Cast expression as a double";
 
-        if (!code.contains("(double)"))
-        {
-            passed = false;
-            actual = "no (double)";
-        }
+                  boolean passed = false;
 
-        for (int i = 0; i &lt; lines.length; i++)
-        {
-            String line = lines[i];
+                  if (!code.contains("(double)"))
+                  {
+                      passed = false;
+                      actual = "no (double)";
+                  }
 
-            if (line.contains("(double)"))
-            {
-                passed = true;
-                actual = line.trim();
-                break;
-            }
-        }
+                  for (int i = 0; i < lines.length; i++)
+                  {
+                      String line = lines[i];
 
-        getResults(
-                expect,
-                actual,
-                "Checking that expression was cast as a double",
-                passed);
-        assertTrue(passed);
-    }
+                      if (line.contains("(double)"))
+                      {
+                          passed = true;
+                          actual = line.trim();
+                          break;
+                      }
+                  }
 
-    @Test
-    public void test2() throws IOException
-    {
-        String codeAll = getCode();
-        String[] lines = codeAll.split("\n");
+                  getResults(
+                          expect,
+                          actual,
+                          "Checking that expression was cast as a double",
+                          passed);
+                  assertTrue(passed);
+              }
 
-        String expect = "grade1 + grade2 + grade3\nsum / 3";
-        String actual1 = "", actual2 = "";
-        String hint = "";
+              @Test
+              public void test2() throws IOException
+              {
+                  String codeAll = getCode();
+                  String[] lines = codeAll.split("\n");
 
-        boolean passed = false;
+                  String expect = "grade1 + grade2 + grade3\nsum / 3";
+                  String actual1 = "", actual2 = "";
+                  String hint = "";
 
-        String regex = "grade[1-3]+\\+grade[1-3]+\\+grade[1-3]";
+                  boolean passed = false;
 
-        for (int i = 0; i &lt; lines.length; i++)
-        {
-            String code = lines[i];
-            String noSpaces = removeSpaces(code);
+                  String regex = "grade[1-3]+\\+grade[1-3]+\\+grade[1-3]";
 
-            if (noSpaces.matches("[\\s\\S]*" + regex + "[\\s\\S]*"))
-            {
-                passed = true;
-                actual1 = code.trim();
-                break;
-            }
-        }
+                  for (int i = 0; i < lines.length; i++)
+                  {
+                      String code = lines[i];
+                      String noSpaces = removeSpaces(code);
 
-        regex = "/3";
+                      if (noSpaces.matches("[\\s\\S]*" + regex + "[\\s\\S]*"))
+                      {
+                          passed = true;
+                          actual1 = code.trim();
+                          break;
+                      }
+                  }
 
-        for (int i = 0; i &lt; lines.length; i++)
-        {
-            String code = lines[i];
-            String noSpaces = removeSpaces(code);
+                  regex = "/3";
 
-            if (noSpaces.matches("[\\s\\S]*" + regex + "[\\s\\S]*"))
-            {
-                passed = true;
-                actual2 = code.trim();
-                break;
-            }
-        }
+                  for (int i = 0; i < lines.length; i++)
+                  {
+                      String code = lines[i];
+                      String noSpaces = removeSpaces(code);
 
-        String actual = "No such expressions";
+                      if (noSpaces.matches("[\\s\\S]*" + regex + "[\\s\\S]*"))
+                      {
+                          passed = true;
+                          actual2 = code.trim();
+                          break;
+                      }
+                  }
 
-        if (actual1.length() &gt; 0 || actual2.length() &gt; 0)
-        {
-            actual = (actual1 + "\n" + actual2);
-        }
+                  String actual = "No such expressions";
 
-        if (!passed)
-        {
-            hint = "\n(Check spelling and capitalization)";
-        }
+                  if (actual1.length() > 0 || actual2.length() > 0)
+                  {
+                      actual = (actual1 + "\n" + actual2);
+                  }
 
-        getResults(
-                expect,
-                actual,
-                "Checking that grades have been added together and divided by"
-                    + " 3"
-                        + hint,
-                passed);
-        assertTrue(passed);
-    }
-}
+                  if (!passed)
+                  {
+                      hint = "\n(Check spelling and capitalization)";
+                  }
+
+                  getResults(
+                          expect,
+                          actual,
+                          "Checking that grades have been added together and divided by"
+                              + " 3"
+                                  + hint,
+                          passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -882,6 +898,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="bonus-challenge-unicode">
     <title>Bonus Challenge: Unicode</title>
+
     <p>
       If you get done early with the previous challenge, here’s something else
       fun you can do in Java, although it’s not covered in the AP exam.
@@ -939,6 +956,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <project label="challenge1-6-unicode">
       <title>Unicode challenge</title>
+
       <statement>
         <p>
           Can you print out a letter from 3 different languages using this <url
@@ -949,45 +967,50 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class ChallengeUnicode
-{
-    public static void main(String[] args)
-    {
-        System.out.println(
-                "'A' in ASCII and Unicode: " + Character.toString(65));
-        System.out.println("Chinese for 'sun': " + Character.toString(11932));
-        System.out.println("A smiley emoji: " + Character.toString(128512));
+          public class ChallengeUnicode
+          {
+              public static void main(String[] args)
+              {
+                  System.out.println(
+                          "'A' in ASCII and Unicode: " + Character.toString(65));
+                  System.out.println("Chinese for 'sun': " + Character.toString(11932));
+                  System.out.println("A smiley emoji: " + Character.toString(128512));
 
-        // Old style. Doesn't work for all codepoints.
-        System.out.println("This also works: " + (char) 65);
-        System.out.println("But this doesn't: " + (char) 128512);
-    }
-}
+                  // Old style. Doesn't work for all codepoints.
+                  System.out.println("This also works: " + (char) 65);
+                  System.out.println("But this doesn't: " + (char) 128512);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testCount()
-    {
-        String code = getCodeWithoutComments();
-        int count = countOccurences(code, "Character.toString");
-        boolean passed = count &gt;= 4;
-        passed =
-                getResults(
-                        "4+",
-                        "" + count,
-                        "Counting number of Character.toString",
-                        passed);
-        assertTrue(passed);
-    }
-}
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testCount()
+              {
+                  String code = getCodeWithoutComments();
+                  int count = countOccurences(code, "Character.toString");
+                  boolean passed = count >= 4;
+                  passed =
+                          getResults(
+                                  "4+",
+                                  "" + count,
+                                  "Counting number of Character.toString",
+                                  passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -995,6 +1018,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-10">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -1083,6 +1107,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="ap-practice-9">
     <title>AP Practice</title>
+
     <activity label="AP_casting">
       <statement>
         <p>

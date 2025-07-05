@@ -2,6 +2,7 @@
 
 <section xml:id="topic-1-4-assignment">
   <title>Assignment statements</title>
+
   <introduction>
     <p>
       So far we’ve learned how to declare variables and also how to use them in
@@ -30,6 +31,7 @@
 
   <subsection>
     <title>Assignment Statements</title>
+
     <idx>assignment</idx>
     <p>
       <term>Assignment statements</term> initialize or change the value stored
@@ -54,7 +56,7 @@
 
     <program language="java">
       <code>
-int score = 0;
+        int score = 0;
       </code>
     </program>
 
@@ -67,7 +69,7 @@ int score = 0;
 
     <program language="java">
       <code>
-score = score + 1;
+        score = score + 1;
       </code>
     </program>
 
@@ -89,7 +91,7 @@ score = score + 1;
 
       <program language="java">
         <code>
-int score = score + 1;
+          int score = score + 1;
         </code>
       </program>
 
@@ -103,6 +105,7 @@ int score = score + 1;
 
     <activity label="incrementScore">
       <title>Incrementing score</title>
+
       <statement>
         <p>
           Try the code below to see how score is incremented by 1. Try
@@ -121,25 +124,26 @@ int score = score + 1;
               }
           }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.Test;
+          import org.junit.Test;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "0\n1\n";
-        boolean passed =
-                getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "0\n1\n";
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -147,6 +151,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Data types in assignments</title>
+
     <p>
       Whenever we assign a value to a variable, the type of the value produced
       by the expression must be compatible with the declared type of the
@@ -162,6 +167,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="assignmentTypes">
       <title>Type mismatch</title>
+
       <statement>
         <p>
           The code below looks okay at first glance, but if you run it, you will
@@ -181,31 +187,33 @@ public class RunestoneTests extends CodeTestHelper
               }
           }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.Test;
+          import org.junit.Test;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "4.4\n";
-        boolean passed =
-                getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "4.4\n";
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
 
     <activity label="codelensAsgn">
       <title>Variable assignments</title>
+
       <statement>
         <p>
           The following <url
@@ -245,28 +253,29 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="codelens" language="java" label="codeLens1" xml:id="codelensid1">
         <code>
-public class Test2
-{
-  public static void main(String[] args)
-  {
-    int x = 3;
-    int y = 2;
-    System.out.println(x);
-    System.out.println(y);
-    x = y;
-    System.out.println(x);
-    System.out.println(y);
-    y = 5;
-    System.out.println(x);
-    System.out.println(y);
-  }
-}
+          public class Test2
+          {
+            public static void main(String[] args)
+            {
+              int x = 3;
+              int y = 2;
+              System.out.println(x);
+              System.out.println(y);
+              x = y;
+              System.out.println(x);
+              System.out.println(y);
+              y = 5;
+              System.out.println(x);
+              System.out.println(y);
+            }
+          }
         </code>
       </program>
     </activity>
 
     <activity label="qasgn1">
       <title>Trace assignments</title>
+
       <statement>
         <p>
           What are the values of x, y, and z after the following code executes?
@@ -278,12 +287,12 @@ public class Test2
 
         <program language="java">
           <code>
-int x = 0;
-int y = 1;
-int z = 2;
-x = y;
-y = y * 2;
-z = 3;
+            int x = 0;
+            int y = 1;
+            int z = 2;
+            x = y;
+            y = y * 2;
+            z = 3;
           </code>
         </program>
       </statement>
@@ -347,6 +356,7 @@ z = 3;
 
     <activity label="swapParsons" numbered="yes" adaptive="yes" indentation="hide" language="python">
       <title>Swap values</title>
+
       <statement>
         <p>
           The following has the correct code to ‘swap’ the values in x and y (so
@@ -389,6 +399,7 @@ z = 3;
 
   <subsection>
     <title>Coding Challenge: Dog Years</title>
+
     <image source="Unit1-Using-Objects-and-Methods/Figures/dog-free.png" width="27%" alt="dog" />
     <p>
       In this coding challenge, you will calculate your age, and your pet’s age
@@ -404,6 +415,7 @@ z = 3;
 
     <project label="challenge1-4">
       <title>Dog Years</title>
+
       <statement>
         <p>
           Calculate your age and your pet’s age from the birth dates, and then
@@ -413,114 +425,119 @@ z = 3;
 
       <program interactive="activecode" language="java">
         <code>
-public class Challenge1_4
-{
-    public static void main(String[] args)
-    {
-        // Fill in values for these variables
-        int currentYear =
-        int birthYear =
-        int dogBirthYear =
+          public class Challenge1_4
+          {
+              public static void main(String[] args)
+              {
+                  // Fill in values for these variables
+                  int currentYear =
+                  int birthYear =
+                  int dogBirthYear =
 
-        // Write a formula to calculate your age from the currentYear and
-        // your birthYear variables
-        int age =
+                  // Write a formula to calculate your age from the currentYear and
+                  // your birthYear variables
+                  int age =
 
-        // Write a formula to calculate your dog's age from the currentYear
-        // and dogBirthYear variables
-        int dogAge =
+                  // Write a formula to calculate your dog's age from the currentYear
+                  // and dogBirthYear variables
+                  int dogAge =
 
-        // Calculate the age of your dog in dogYears (7 times your dog's age
-        // in human years)
-        int dogYearsAge =
+                  // Calculate the age of your dog in dogYears (7 times your dog's age
+                  // in human years)
+                  int dogYearsAge =
 
-        // Print out your age, your dog's age, and your dog's age in dog
-        // years. Make sure you print out text too so that the user knows what
-        // is being printed out.
+                  // Print out your age, your dog's age, and your dog's age in dog
+                  // years. Make sure you print out text too so that the user knows what
+                  // is being printed out.
 
-   }
-}
+             }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
-import org.junit.*;
-import java.io.*;
+          <![CDATA[
 
-public class RunestoneTests extends CodeTestHelper {
-   @Test
-   public void checkVariables() throws IOException {
-      String code = removeSpaces(getCode());
-      code = code.replaceAll("\\(", "").replaceAll("\\)", "");
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
 
-      boolean passed1 = code.matches(".*intcurrentYear=[0-9]{2,4};.*");
-      boolean passed2 = code.matches(".*intbirthYear=[0-9]{2,4};.*");
-      boolean passed3 = code.matches(".*intbirthYear=[0-9]{1,4};.*");
+          public class RunestoneTests extends CodeTestHelper {
+             @Test
+             public void checkVariables() throws IOException {
+                String code = removeSpaces(getCode());
+                code = code.replaceAll("\\(", "").replaceAll("\\)", "");
 
-      boolean passed = passed1 &amp;&amp; passed2 &amp;&amp; passed3;
+                boolean passed1 = code.matches(".*intcurrentYear=[0-9]{2,4};.*");
+                boolean passed2 = code.matches(".*intbirthYear=[0-9]{2,4};.*");
+                boolean passed3 = code.matches(".*intbirthYear=[0-9]{1,4};.*");
 
-      getResults("true", "" + passed, "Checking that you initialized the three variables");
-      assertTrue(passed);
-   }
+                boolean passed = passed1 && passed2 && passed3;
 
-   @Test
-   public void checkOutput() throws IOException {
-      String output = getMethodOutput("main");
-      int num = output.length();
-      boolean passed = num &gt;= 5;
-      getResults("1+ characters", "" + num, "Checking that you have some output", passed);
-      assertTrue(passed);
-   }
+                getResults("true", "" + passed, "Checking that you initialized the three variables");
+                assertTrue(passed);
+             }
 
-   @Test
-   public void checkPrintlines() throws IOException {
-      String code = removeSpaces(getCode());
-      int num = countOccurences(code, "System.out.print");
+             @Test
+             public void checkOutput() throws IOException {
+                String output = getMethodOutput("main");
+                int num = output.length();
+                boolean passed = num >= 5;
+                getResults("1+ characters", "" + num, "Checking that you have some output", passed);
+                assertTrue(passed);
+             }
 
-      boolean passed = num &gt;= 1;
-      getResults("At least one", "" + num, "Checking that you have at least one print statement", passed);
-      assertTrue(passed);
-   }
+             @Test
+             public void checkPrintlines() throws IOException {
+                String code = removeSpaces(getCode());
+                int num = countOccurences(code, "System.out.print");
 
-   @Test
-   public void testAsgn1() throws IOException {
-      /*
-       * String target = "age = currentYear - birthYear"; boolean passed =
-       * checkCodeContains("formula for age", target); assertTrue(passed);
-       */
-      String target = removeSpaces("age = currentYear - birthYear");
-      String code = removeSpaces(getCode());
-      code = code.replaceAll("\\(", "").replaceAll("\\)", "");
+                boolean passed = num >= 1;
+                getResults("At least one", "" + num, "Checking that you have at least one print statement", passed);
+                assertTrue(passed);
+             }
 
-      boolean passed = code.contains(target);
-      getResults("true", "" + passed, "Checking that code contains formula for age", passed);
-      assertTrue(passed);
-   }
+             @Test
+             public void testAsgn1() throws IOException {
+                /*
+                 * String target = "age = currentYear - birthYear"; boolean passed =
+                 * checkCodeContains("formula for age", target); assertTrue(passed);
+                 */
+                String target = removeSpaces("age = currentYear - birthYear");
+                String code = removeSpaces(getCode());
+                code = code.replaceAll("\\(", "").replaceAll("\\)", "");
 
-   @Test
-   public void testAsgn2() throws IOException {
-      String target = removeSpaces("dogAge = currentYear - dogBirthYear");
-      String code = removeSpaces(getCode());
-      code = code.replaceAll("\\(", "").replaceAll("\\)", "");
+                boolean passed = code.contains(target);
+                getResults("true", "" + passed, "Checking that code contains formula for age", passed);
+                assertTrue(passed);
+             }
 
-      boolean passed = code.contains(target);
-      getResults("true", "" + passed, "Checking that code contains formula for dogAge", passed);
-      assertTrue(passed);
-   }
+             @Test
+             public void testAsgn2() throws IOException {
+                String target = removeSpaces("dogAge = currentYear - dogBirthYear");
+                String code = removeSpaces(getCode());
+                code = code.replaceAll("\\(", "").replaceAll("\\)", "");
 
-   @Test
-   public void testAsgn3() throws IOException {
-      String target1 = removeSpaces("dogYearsAge = dogAge * 7");
-      String target2 = removeSpaces("dogYearsAge = 7 * dogAge");
-      String code = removeSpaces(getCode());
-      code = code.replaceAll("\\(", "").replaceAll("\\)", "");
+                boolean passed = code.contains(target);
+                getResults("true", "" + passed, "Checking that code contains formula for dogAge", passed);
+                assertTrue(passed);
+             }
 
-      boolean passed1 = code.contains(target1);
-      boolean passed2 = code.contains(target2);
-      boolean passed = passed1 || passed2;
-      getResults("true", "" + passed, "Checking that code contains formula for dogYearsAge using dogAge", passed);
-      assertTrue(passed);
-   }
-}
+             @Test
+             public void testAsgn3() throws IOException {
+                String target1 = removeSpaces("dogYearsAge = dogAge * 7");
+                String target2 = removeSpaces("dogYearsAge = 7 * dogAge");
+                String code = removeSpaces(getCode());
+                code = code.replaceAll("\\(", "").replaceAll("\\)", "");
+
+                boolean passed1 = code.contains(target1);
+                boolean passed2 = code.contains(target2);
+                boolean passed = passed1 || passed2;
+                getResults("true", "" + passed, "Checking that code contains formula for dogYearsAge using dogAge", passed);
+                assertTrue(passed);
+             }
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -541,6 +558,7 @@ public class RunestoneTests extends CodeTestHelper {
 
   <subsection>
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -589,10 +607,13 @@ public class RunestoneTests extends CodeTestHelper {
 
   <subsection>
     <title>AP Practice</title>
+
     <activity label="apcsa_sample1">
       <title>Mental execution</title>
+
       <statement>
         <p>Consider the following code segment.</p>
+
         <program language="java">
           <code>
             int a = 5;

@@ -2,6 +2,7 @@
 
 <chapter xml:id="primitive-types-and-variables" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Variables, primitive types, and expressions</title>
+
   <introduction>
     <p>
       This unit introduces the lowest level elements of the Java programming

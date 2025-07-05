@@ -2,6 +2,7 @@
 
 <section xml:id="topic-1-3-expressions">
   <title>Arithmetic expressions</title>
+
   <introduction>
     <p>
       Earlier in this unit we saw how variables, such as <c>score</c>, can be
@@ -21,6 +22,7 @@
 
   <subsection xml:id="arithmetic-expressions">
     <title>Basic arithmetic</title>
+
     <p>
       To take a simple example, <c>2 + 3</c> is an expression consisting of the
       two literal values <c>2</c> and <c>3</c> and the operator <c>+</c>. The
@@ -34,34 +36,13 @@
 
     <idx>expression</idx>
     <idx>operators</idx>
-    <idx>
-      <h>math</h><h>operators</h>
-    </idx>
-
-    <idx>
-      <h>operators</h><h>addition</h>
-    </idx>
-
-    <idx>
-      <h>operators</h><h>subtraction</h>
-    </idx>
-
-    <idx>
-      <h>operators</h><h>multiplication</h>
-    </idx>
-
-    <idx>
-      <h>operators</h><h>division</h>
-    </idx>
-
-    <idx>
-      <h>operators</h><h>equality</h>
-    </idx>
-
-    <idx>
-      <h>operators</h><h>inequality</h>
-    </idx>
-
+    <idx><h>math</h><h>operators</h></idx>
+    <idx><h>operators</h><h>addition</h></idx>
+    <idx><h>operators</h><h>subtraction</h></idx>
+    <idx><h>operators</h><h>multiplication</h></idx>
+    <idx><h>operators</h><h>division</h></idx>
+    <idx><h>operators</h><h>equality</h></idx>
+    <idx><h>operators</h><h>inequality</h></idx>
     <p>
       Java uses the standard mathematical operators for addition (<c>+</c>),
       subtraction (<c>-</c>), and division (<c>/</c>). The multiplication
@@ -98,6 +79,7 @@
 
     <activity label="lcop1">
       <title>Basic arithmetic operators</title>
+
       <statement>
         <p>
           Run the code below to see the four basic arithmetic operators in
@@ -120,6 +102,7 @@
               }
           }
         </code>
+
         <tests>
           import static org.junit.Assert.*;
           import org.junit.Test;
@@ -144,6 +127,7 @@
 
   <subsection xml:id="the-remainder-operator">
     <title>The remainder operator</title>
+
     <p>
       Java also supports a fifth arithmetic operator, <c>%</c>, called the
       <term>remainder</term> operator. Like the other four basic arithmetic
@@ -164,7 +148,10 @@
     </p>
 
     <figure align="center">
-      <caption>Long division showing the integer result and the remainder</caption>
+      <caption>
+        Long division showing the integer result and the remainder
+      </caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/mod-py.png" width="27%" />
     </figure>
 
@@ -210,6 +197,7 @@
               }
           }
         </code>
+
         <tests>
           // Test Code for Lesson 1.4 Expressions - lcop2
           import static org.junit.Assert.*;
@@ -245,14 +233,8 @@
 
     <idx>modulo</idx>
     <idx>remainder</idx>
-    <idx>
-      <h>operators</h><h>modulo</h>
-    </idx>
-
-    <idx>
-      <h>operators</h><h>remainder</h>
-    </idx>
-
+    <idx><h>operators</h><h>modulo</h></idx>
+    <idx><h>operators</h><h>remainder</h></idx>
     <activity label="mcq-rem1">
       <statement>
         <p>What is the result of 158 % 10?</p>
@@ -342,6 +324,7 @@
 
   <subsection xml:id="math-bugs">
     <title>Math bugs</title>
+
     <p>
       While computers are pretty good at math they will only do what we tell
       them. And sometimes what we tell them isn’t exactly what we wanted. For
@@ -365,6 +348,7 @@
 
     <activity label="cm2in-runtime-error">
       <title>Fix the math bug</title>
+
       <statement>
         <p>
           The following code is trying to convert centimeters to inches, but it
@@ -383,30 +367,31 @@
               }
           }
         </code>
-        <tests>
-import static org.junit.Assert.*;
-import org.junit.Test;
-import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "" + 100/2.54;
-        boolean passed =
-                getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-    @Test
-    public void test2()
-    {
-        String target = "/";
-        boolean passed = checkCodeContains("the division operator", target);
-        assertTrue(passed);
-    }
-}
+        <tests>
+          import static org.junit.Assert.*;
+          import org.junit.Test;
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test1() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "" + 100/2.54;
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+              @Test
+              public void test2()
+              {
+                  String target = "/";
+                  boolean passed = checkCodeContains("the division operator", target);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -433,6 +418,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="compound-expressions">
     <title>Compound expressions</title>
+
     <p>
       Each arithmetic operator operates on just two operands. So what does an
       expression like <c>2 * 3 + 4</c> mean? If we remember our PEMDAS, we know
@@ -468,6 +454,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="compound1">
       <title>Compound expressions</title>
+
       <statement>
         <p>
           In the example below, try to guess what it will print out and then run
@@ -478,34 +465,35 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class TestCompound {
-    public static void main(String[] args) {
-        System.out.println(2 + 3 * 2);
-        System.out.println((2 + 3) * 2);
-        System.out.println(2 + (3 * 2));
-    }
-}
+          public class TestCompound {
+              public static void main(String[] args) {
+                  System.out.println(2 + 3 * 2);
+                  System.out.println((2 + 3) * 2);
+                  System.out.println(2 + (3 * 2));
+              }
+          }
         </code>
+
         <tests>
-// Test Code for Lesson 1.4 Expressions - compounds
-import static org.junit.Assert.*;
+          // Test Code for Lesson 1.4 Expressions - compounds
+          import static org.junit.Assert.*;
 
-import org.junit.Test;
+          import org.junit.Test;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "8\n10\n8";
-        boolean passed =
-                getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "8\n10\n8";
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -513,6 +501,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-pay-calculator">
     <title>Coding Challenge: Pay calculator</title>
+
     <image source="Unit1-Using-Objects-and-Methods/Figures/dollarSign.png" width="18%" />
     <p>
       In this coding challenge, you can work in pairs to create a pay calculator
@@ -521,12 +510,15 @@ public class RunestoneTests extends CodeTestHelper
 
     <project label="challenge1-3-pay-calculator">
       <title>Pay calculator</title>
+
       <statement>
         <p>Complete the following expressions for a pay calculator.</p>
       </statement>
 
       <program interactive="activecode" language="java">
         <code>
+          <![CDATA[
+
           public class Challenge1_3_Pay_Calculator {
              public static void main(String[] args) {
                  // Put in the math operator between 4 and 10 below to compute
@@ -536,7 +528,7 @@ public class RunestoneTests extends CodeTestHelper
 
                  // Put in the math operator to compute the number of hours worked
                  // if the pay is 120 dollars and the rate is 15 dollars per hour.
-                 System.out.println("Number of hours worked for pay 120 dollars &amp; rate 15 dollars per hour");
+                 System.out.println("Number of hours worked for pay 120 dollars & rate 15 dollars per hour");
                  System.out.println(120  15);
 
                  // Put in the math expression to compute the pay
@@ -546,7 +538,7 @@ public class RunestoneTests extends CodeTestHelper
 
                  // Add another statement to print the math expression to compute the integer number of
                  // hours worked if the pay is 100 dollars and the rate is 9 dollars per hour.
-                 System.out.println("Number of int hours worked for pay 100 dollars &amp; rate 9 dollars per hour");
+                 System.out.println("Number of int hours worked for pay 100 dollars & rate 9 dollars per hour");
 
 
 
@@ -557,56 +549,59 @@ public class RunestoneTests extends CodeTestHelper
 
              }
           }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "90.0";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "90.0";
 
-        boolean passed = output.contains(expect);
-        passed = getResults(expect, output, "Output contains 90.0 for 12*7.5", passed);
-        assertTrue(passed);
-    }
+                  boolean passed = output.contains(expect);
+                  passed = getResults(expect, output, "Output contains 90.0 for 12*7.5", passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test1() throws IOException
-    {
-        String target = "100/9";
-        boolean passed = checkCodeContains("expression 100/9", target);
-        assertTrue(passed);
-    }
-    @Test
-    public void test2() throws IOException
-    {
-        String target = "100%9";
-        boolean passed = checkCodeContains("expression 100 % 9", target);
-        assertTrue(passed);
-    }
-    @Test
-    public void test0() throws IOException
-    {
-        String target = "4*10";
-        boolean passed = checkCodeContains("expression 4*10", target);
-        assertTrue(passed);
-    }
-    @Test
-    public void testE2() throws IOException
-    {
-        String target = "120/15";
-        boolean passed = checkCodeContains("expression 120/15", target);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test1() throws IOException
+              {
+                  String target = "100/9";
+                  boolean passed = checkCodeContains("expression 100/9", target);
+                  assertTrue(passed);
+              }
+              @Test
+              public void test2() throws IOException
+              {
+                  String target = "100%9";
+                  boolean passed = checkCodeContains("expression 100 % 9", target);
+                  assertTrue(passed);
+              }
+              @Test
+              public void test0() throws IOException
+              {
+                  String target = "4*10";
+                  boolean passed = checkCodeContains("expression 4*10", target);
+                  assertTrue(passed);
+              }
+              @Test
+              public void testE2() throws IOException
+              {
+                  String target = "120/15";
+                  boolean passed = checkCodeContains("expression 120/15", target);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </project>
@@ -614,6 +609,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -695,13 +691,16 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>AP Practice</title>
+
     <activity label="apcsa_sample1_exp">
       <title>Compound expression practice</title>
+
       <statement>
         <p>Consider the following code segment.</p>
+
         <program language="java">
           <code>
-System.out.println(5 + 5 / 2 * 3 - 1);
+            System.out.println(5 + 5 / 2 * 3 - 1);
           </code>
         </program>
 
