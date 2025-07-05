@@ -17,7 +17,6 @@
     <idx>digits</idx>
     <idx>frequency</idx>
     <idx>counter</idx>
-
     <p>
       Now that we have the basics of <c>if</c> statements and <c>for</c> and
       <c>while</c> loops under our belts, we’re ready to implement some actual
@@ -36,7 +35,6 @@
       within a sequence of numbers. And finally we’ll take apart an <c>int</c>
       value, using a loop to extract the individual digits.
     </p>
-
   </introduction>
 
   <subsection xml:id="accumulator-pattern-for-sum-average">
@@ -52,9 +50,7 @@
       algorithms.
     </p>
 
-    <p>
-      The accumulator pattern has three parts:
-    </p>
+    <p>The accumulator pattern has three parts:</p>
 
     <p>
       <ol>
@@ -78,9 +74,9 @@
     </p>
 
     <p>
-       Note, the accumulator variable is different than the loop variable that
-       controls the loop itself; this is a variable that is going to hold the
-       eventual answer we are trying to compute such as a count or a sum.
+      Note, the accumulator variable is different than the loop variable that
+      controls the loop itself; this is a variable that is going to hold the
+      eventual answer we are trying to compute such as a count or a sum.
     </p>
 
     <p>
@@ -202,8 +198,6 @@
         ]]>
       </code>
     </program>
-
-
   </subsection>
 
   <subsection>
@@ -605,8 +599,6 @@
     </activity>
   </subsection>
 
-
-
   <subsection xml:id="finding-digits-with-and">
     <title>Exctacting digits with % and /</title>
 
@@ -636,11 +628,15 @@
     </p>
 
     <program>
+      <![CDATA[
+
       while (n > 0) { // i.e. n still has at least one non-0 digit
           int d = n % 10;
           n /= 10;
           // Do something with d
       }
+
+      ]]>
     </program>
 
     <p>
@@ -651,6 +647,7 @@
 
     <activity label="checkDigit">
       <title>Check for specific digit</title>
+
       <statement>
         <p>
           Complete the <c>checkDigit</c> method below to determine if a positive
@@ -735,8 +732,6 @@
         </tests>
       </program>
     </activity>
-
-
   </subsection>
 
   <subsection xml:id="summary-26">
@@ -748,10 +743,19 @@
           <p>
             (AP 2.9.1) There are standard algorithms to:
             <ol>
-              <li>Identify if an integer is or is not evenly divisible by another integer</li>
+              <li>
+                Identify if an integer is or is not evenly divisible by another
+                integer
+              </li>
+
               <li>Identify the individual digits in an integer</li>
-              <li>Determine the frequency with which a specific criterion is met</li>
+
+              <li>
+                Determine the frequency with which a specific criterion is met
+              </li>
+
               <li>Determine a minimum or maximum value</li>
+
               <li>Compute a sum or average</li>
             </ol>
           </p>

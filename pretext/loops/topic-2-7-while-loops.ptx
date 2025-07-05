@@ -117,21 +117,20 @@
 
     <p>
       There are three steps to writing a counter-controlled <c>while</c> loop.
-      They are labeled in <xref ref="three-steps-of-writing-a-loop" text="type-global" />.
-
-
-
-      <ol>
-        <li>Initialize the loop variable (before the <c>while</c> loop)</li>
-
-        <li>Test the loop variable (in the loop header)</li>
-
-        <li>
-          Update the loop variable (somewhere in the loop body, usually at the
-          end)
-        </li>
-      </ol>
+      They are labeled in <xref ref="three-steps-of-writing-a-loop"
+      text="type-global" />.
     </p>
+
+    <ol>
+      <li>Initialize the loop variable (before the <c>while</c> loop)</li>
+
+      <li>Test the loop variable (in the loop header)</li>
+
+      <li>
+        Update the loop variable (somewhere in the loop body, usually at the
+        end)
+      </li>
+    </ol>
 
     <figure xml:id="three-steps-of-writing-a-loop">
       <caption>Three Steps of Writing a Loop</caption>
@@ -897,17 +896,15 @@
             Loops often have a <term>loop variable</term> that is used in the
             boolean condition of the loop. Remember the three steps of writing a
             loop:
-
-
-
-            <ol>
-              <li>Initialize the loop variable</li>
-
-              <li>Test the loop variable</li>
-
-              <li>Update the loop variable</li>
-            </ol>
           </p>
+
+          <ol>
+            <li>Initialize the loop variable</li>
+
+            <li>Test the loop variable</li>
+
+            <li>Update the loop variable</li>
+          </ol>
         </li>
 
         <li>

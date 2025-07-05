@@ -27,13 +27,10 @@
     </p>
 
     <figure>
-      <caption>
-        Comparing Snap! and Java <c>for</c> loops.
-      </caption>
+      <caption>Comparing Snap! and Java <c>for</c> loops.</caption>
 
       <image source="_static/img/snap-for-vs-java.png" width="100%" />
     </figure>
-
   </introduction>
 
   <subsection xml:id="three-parts-of-a-for-loop">
@@ -42,15 +39,15 @@
     <p>
       Remember the three step process we went through in the previous section
       for building a counting <c>while</c> loop?
-
-      <ol>
-        <li>Initialize the loop variable</li>
-
-        <li>Test the loop variable</li>
-
-        <li>Update the loop variable</li>
-      </ol>
     </p>
+
+    <ol>
+      <li>Initialize the loop variable</li>
+
+      <li>Test the loop variable</li>
+
+      <li>Update the loop variable</li>
+    </ol>
 
     <p>
       The purpose of a <c>for</c> loop is to provide a structure that gives us
@@ -726,63 +723,61 @@
     </p>
 
     <p>
-      The following code has 4 methods to draw shapes using a Turtle t passed in
-      as an argument.
+      The following code has four methods to draw shapes using a Turtle t passed
+      in as an argument.
     </p>
 
-    <p>
-      <ol>
-        <li>
-          <p>
-            Complete the <c>drawSquare</c> method to use a <c>for</c> loop to
-            have the Turtle t draw a square.
-          </p>
-        </li>
+    <ol>
+      <li>
+        <p>
+          Complete the <c>drawSquare</c> method to use a <c>for</c> loop to have
+          the Turtle t draw a square.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Complete the <c>drawTriangle</c> method to use a <c>for</c> loop to
-            draw an equilateral triangle. How many times should the loop run? It
-            ran 4 times for a square, so how many for a triangle? What angle
-            should you use for the turns? One way to figure this out is to
-            notice that to complete a shape, all the exterior angles should add
-            up to 360 degrees. So, for a square 4x90 = 360. What angle times 3
-            will give you 360?
-          </p>
-        </li>
+      <li>
+        <p>
+          Complete the <c>drawTriangle</c> method to use a <c>for</c> loop to
+          draw an equilateral triangle. How many times should the loop run? It
+          ran 4 times for a square, so how many for a triangle? What angle
+          should you use for the turns? One way to figure this out is to notice
+          that to complete a shape, all the exterior angles should add up to 360
+          degrees. So, for a square 4x90 = 360. What angle times 3 will give you
+          360?
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Complete the <c>drawPentagon</c> method to use a <c>for</c> loop to
-            draw a pentagon (which has 5 sides and looks like a stop sign). What
-            external angle should you use for the turns? Remember they have to
-            add up to 360 degrees after 5 turns.
-          </p>
-        </li>
+      <li>
+        <p>
+          Complete the <c>drawPentagon</c> method to use a <c>for</c> loop to
+          draw a pentagon (which has 5 sides and looks like a stop sign). What
+          external angle should you use for the turns? Remember they have to add
+          up to 360 degrees after 5 turns.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Complete the <c>drawPolygon</c> method to use a <c>for</c> loop to
-            draw any polygong with <c>n</c> sides of length <c>pixels</c> given
-            as arguments. Use <c>n</c> in your loop for the number of sides (or
-            the number of iterations). Use <c>pixels</c> for the amount to move
-            forward. Calculate the angle to turn by using a formula that uses n
-            and 360, so that n turns add up to 360 degrees.
-          </p>
-        </li>
+      <li>
+        <p>
+          Complete the <c>drawPolygon</c> method to use a <c>for</c> loop to
+          draw any polygong with <c>n</c> sides of length <c>pixels</c> given as
+          arguments. Use <c>n</c> in your loop for the number of sides (or the
+          number of iterations). Use <c>pixels</c> for the amount to move
+          forward. Calculate the angle to turn by using a formula that uses n
+          and 360, so that n turns add up to 360 degrees.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            In the main method, call the <c>drawPolygon</c> method to draw a
-            hexagon (6 sides). This method can draw a variety of shapes by just
-            changing the value of the argument n. The power of abstraction! Try
-            drawing other shapes with it. Note that if the turtle runs into
-            walls, it stays there and will mess up the shape, so you may have to
-            move the turtle or go forward smaller amounts.
-          </p>
-        </li>
-      </ol>
-    </p>
+      <li>
+        <p>
+          In the main method, call the <c>drawPolygon</c> method to draw a
+          hexagon (6 sides). This method can draw a variety of shapes by just
+          changing the value of the argument n. The power of abstraction! Try
+          drawing other shapes with it. Note that if the turtle runs into walls,
+          it stays there and will mess up the shape, so you may have to move the
+          turtle or go forward smaller amounts.
+        </p>
+      </li>
+    </ol>
 
     <project label="challenge-TurtleLoopShapes">
       <statement>
