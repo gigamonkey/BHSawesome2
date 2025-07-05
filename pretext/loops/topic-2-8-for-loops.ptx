@@ -26,27 +26,14 @@
       the right below, they are essentially the same.
     </p>
 
-    <sidebyside widths="50% 50%" margins="0% 0%" valign="top">
-      <stack>
-        <p>Snap!</p>
+    <figure>
+      <caption>
+        Comparing Snap! and Java <c>for</c> loops.
+      </caption>
 
-        <image source="_static/img/snap-for-block.png" />
-      </stack>
+      <image source="_static/img/snap-for-vs-java.png" width="100%" />
+    </figure>
 
-      <stack>
-        <p>Java</p>
-
-        <program>
-          <![CDATA[
-
-          for (let i = 0; i < 10; i++) {
-
-          }
-
-          ]]>
-        </program>
-      </stack>
-    </sidebyside>
   </introduction>
 
   <subsection xml:id="three-parts-of-a-for-loop">

@@ -16,6 +16,9 @@
 
 - [ ] Find a place to talk about `return`ing from loops
 
+- [x] Make new images for Snap!/Java comparisons since it seems too hard to do
+      it with <sidebyside>
+
 # Formatting cleanup
 
 - [ ] Write script to check that for each <term>, the first occurrence of the

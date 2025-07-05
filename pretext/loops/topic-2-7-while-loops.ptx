@@ -75,27 +75,10 @@
     </figure>
 
     <p>
-      If you took AP CSP with a block programming language like App Inventor,
-      you may have used a loop block like below that looks very similar to Java
-      <c>while</c> loops (or you may have used a <c>for</c> loop which will be
-      covered in the next lesson). Almost every programming language has a
-      <c>while</c> loop.
-    </p>
-
-    <figure>
-      <caption>
-        Comparing App Inventor while block and Java <c>while</c> loops
-      </caption>
-
-      <image source="Unit2-Selection-and-Iteration/Figures/whileInAppInventor.png" width="100%" />
-    </figure>
-
-    <p>
-      On the other hand, if you’ve used a language like Snap! or Scratch, you
-      may be familiar with the Repeat Until block. Unfortunately Repeat Until is
-      the opposite of a <c>while</c> loops: it loops until the condition is
-      <em>true</em> where a <c>while</c> loop loops until its condition is
-      <em>false</em>.
+      If you took AP CSP using a block program like Snap!, you may be familiar
+      with the Repeat Until block. Unfortunately Repeat Until is the opposite of
+      a <c>while</c> loops: it loops until the condition is <em>true</em> where
+      a <c>while</c> loop loops until its condition is <em>false</em>.
     </p>
 
     <p>
@@ -104,30 +87,12 @@
       <c>x</c> is not yet 100, which can be written as <c>x &lt; 100</c>.
     </p>
 
-    <sidebyside widths="50% 50%" margins="0% 0%" valign="top">
-      <stack>
-        <p>Snap!</p>
-
-        <image source="_static/img/snap-repeat-until-block.png" />
-      </stack>
-
-      <stack>
-        <p>Java</p>
-
-        <program>
-          while (xPosition != 100) {
-              moveSteps(10);
-          }
-        </program>
-      </stack>
-    </sidebyside>
-
     <figure>
       <caption>
-        Comparing Snap! or Scratch Repeat Until Loop to Java <c>while</c> loop
+        Comparing Snap! <c>repeat until</c> loop to Java <c>while</c> loop
       </caption>
 
-      <image source="Unit2-Selection-and-Iteration/Figures/ScratchRepeatUntilLoop.png" width="100%" />
+      <image source="_static/img/snap-repeat-until-vs-java.png" width="100%" />
     </figure>
 
     <p>
@@ -155,7 +120,7 @@
       They are labeled in <xref ref="three-steps-of-writing-a-loop" text="type-global" />.
 
 
-      
+
       <ol>
         <li>Initialize the loop variable (before the <c>while</c> loop)</li>
 
@@ -934,7 +899,7 @@
             loop:
 
 
-            
+
             <ol>
               <li>Initialize the loop variable</li>
 
