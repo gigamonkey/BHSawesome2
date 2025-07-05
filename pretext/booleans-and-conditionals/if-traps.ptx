@@ -223,7 +223,6 @@
           doSomething();
       }
     </program>
-
   </subsection>
 
   <subsection>
@@ -253,8 +252,8 @@
 
     <p>
       So this bug is called the <c>= != ==</c> bug since the two operators are
-      not the same and using one when we should have used the other is a
-      bug. Here’s how the bug looks in Java.
+      not the same and using one when we should have used the other is a bug.
+      Here’s how the bug looks in Java.
     </p>
 
     <program>
@@ -317,7 +316,6 @@
       and “If not hungry, study.” Nobody says, “If it’s true that I’m hungry,
       eat()” or “If it’s false that I’m hungry, study().”
     </p>
-
   </subsection>
 
   <subsection>

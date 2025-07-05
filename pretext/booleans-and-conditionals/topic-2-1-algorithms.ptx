@@ -2,6 +2,7 @@
 
 <section xml:id="topic-2-1-algorithms">
   <title>Building blocks of algorithms</title>
+
   <introduction>
     <idx>selection</idx>
     <idx>repetition</idx>
@@ -31,12 +32,14 @@
 
     <figure align="center">
       <caption>Sequence, Selection, and Repetition</caption>
+
       <image source="Unit2-Selection-and-Iteration/Figures/algorithms.png" width="63%" />
     </figure>
   </introduction>
 
   <subsection>
     <title>Sequencing</title>
+
     <p>
       Sequencing is the simplest of the three building blocks. In fact we’ve
       been using all this time without even mentioning it. It just means running
@@ -67,6 +70,7 @@
 
   <subsection xml:id="selection">
     <title>Selection</title>
+
     <p>
       Selection—sometimes called <term>branching control flow</term>—is when
       some code either runs or doesn’t. We “select” whether to run it—based on
@@ -85,6 +89,7 @@
 
     <activity label="clickSelection">
       <title>Morning routine</title>
+
       <statement>
         <p>
           Practice identifying decision points by clicking on all the phrases in
@@ -116,6 +121,7 @@
 
   <subsection xml:id="repetition">
     <title>Repetition</title>
+
     <p>
       Finally, the third building block, repetition—also called <term>looping
       control flow</term> or <term>iteration</term>—is when some code is run
@@ -133,6 +139,7 @@
 
     <activity label="clickRepetition">
       <title>Another morning routine</title>
+
       <statement>
         <p>
           Click on all of the repetition phrases in the following algorithm.
@@ -162,6 +169,7 @@
 
   <subsection xml:id="algorithms-with-pseudocode-and-flowcharts">
     <title>Describing algorithms</title>
+
     <p>
       Although we can build any algorithm with some combination of just three
       simple building blocks, as is often the case with programming, when we are
@@ -213,6 +221,7 @@
 
     <activity label="algorithm-gift" numbered="yes" adaptive="yes" indentation="show" language="java">
       <title>Birthday buying spree</title>
+
       <statement>
         <p>
           The top box below contains a scrambled pseudocode description of an
@@ -382,6 +391,7 @@
 
   <subsection xml:id="coding-challenge-algorithms">
     <title>Coding Challenge: Algorithms</title>
+
     <p>
       In this group activity, you will work together to create an algorithm for
       a common problem: choosing a snack! Create pseudocode for this problem.
@@ -395,6 +405,7 @@
 
     <project label="challenge-algorithm-snack">
       <title>Snack time!</title>
+
       <statement>
         <p>
           Write your pseudocode for choosing a snack here. Include selection and
@@ -408,6 +419,7 @@
 
   <subsection xml:id="summary-15">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>

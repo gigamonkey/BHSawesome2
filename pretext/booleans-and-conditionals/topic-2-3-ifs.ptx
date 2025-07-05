@@ -2,6 +2,7 @@
 
 <section xml:id="topic-2-3-ifs">
   <title>Booleans and <c>if</c> statements</title>
+
   <introduction>
     <idx>selection</idx>
     <idx>if</idx>
@@ -60,6 +61,7 @@
 
   <subsection>
     <title>One-way selection</title>
+
     <p>
       Almost all programming languages have something like an <term>if
       statement</term> to choose between different paths in an algorithm. An
@@ -98,6 +100,7 @@
 
     <figure align="center">
       <caption>Flowchart of a one-way selection</caption>
+
       <image source="Unit2-Selection-and-Iteration/Figures/Condition.png" width="36%" />
     </figure>
 
@@ -111,6 +114,7 @@
 
     <activity label="if-raining">
       <title>Take an umbrella?</title>
+
       <statement>
         <p>
           In the code below, the <c>boolean</c> variable <c>isRaining</c> is
@@ -158,6 +162,7 @@
 
     <activity label="iffalseOutput">
       <title>Change <c>isRaining</c></title>
+
       <statement>
         <p>
           Try changing the code above to <c>boolean isRaining = false;</c>. What
@@ -197,6 +202,7 @@
 
   <subsection xml:id="two-way-selection">
     <title>Two-way selection</title>
+
     <p>
       What if you want to pick between two possibilities? If you are trying to
       decide between a couple of things to do, you might flip a coin and do one
@@ -242,6 +248,7 @@
 
     <figure align="center">
       <caption>Flowchart of a two-way selection</caption>
+
       <image source="Unit2-Selection-and-Iteration/Figures/Condition-two.png" width="63%" />
     </figure>
 
@@ -328,6 +335,7 @@
 
   <subsection xml:id="multiway-selection-else-if">
     <title>Multiway selection</title>
+
     <idx>Nested if statements</idx>
     <idx>Multiway selection</idx>
     <idx>else if</idx>
@@ -527,6 +535,7 @@
 
     <figure align="center">
       <caption>Flowchart of a three-way selection</caption>
+
       <image source="Unit2-Selection-and-Iteration/Figures/Condition-three.png" width="80%" />
     </figure>
 
@@ -543,6 +552,7 @@
     <activity label="trace-nested-if">
       <statement>
         <p>What does the following code print when x has been set to -5?</p>
+
         <program language="java">
           <code>
             <![CDATA[
@@ -601,6 +611,7 @@
     <activity label="trace-nested-ifs2">
       <statement>
         <p>What does the following code print when x has been set to 2000?</p>
+
         <program language="java">
           <code>
             <![CDATA[
@@ -665,6 +676,7 @@
     <activity label="trace-nested-ifs3">
       <statement>
         <p>What does the following code print when x has been set to .8?</p>
+
         <program language="java">
           <code>
             <![CDATA[
@@ -1016,6 +1028,7 @@
 
   <subsection xml:id="coding-challenge-magic-8-ball">
     <title>Coding Challenge: Magic 8 Ball</title>
+
     <image source="Unit2-Selection-and-Iteration/Figures/Magic_eight_ball.png" width="18%" alt="Magic 8 Ball" />
     <p>
       Have you ever seen a Magic 8 ball? You ask it a yes-no question and then
@@ -1175,6 +1188,7 @@
 
   <subsection>
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -1302,9 +1316,11 @@
 
   <subsection xml:id="ap-practice-13">
     <title>AP Practice</title>
+
     <activity label="AP2-3-1">
       <statement>
         <p>Consider the following code segment.</p>
+
         <program language="java">
           <code>
             <![CDATA[
@@ -1398,6 +1414,7 @@
     <activity label="AP2-3-2">
       <statement>
         <p>Consider the following code segment.</p>
+
         <program language="java">
           <code>
             <![CDATA[

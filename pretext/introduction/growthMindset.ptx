@@ -2,12 +2,14 @@
 
 <section label="growth-mindset">
   <title>Growth Mindset and Pair Programming</title>
+
   <introduction>
     <idx>growth mindset</idx>
   </introduction>
 
   <subsection>
     <title>Growth Mindset</title>
+
     <p>
       Learning to code can be hard at times and sometimes frustrating. However,
       the feeling you get when your code works is incredible! And your brain
@@ -48,12 +50,16 @@
 
         <row left="minor">
           <cell bottom="minor" right="minor">I give up.</cell>
-          <cell bottom="minor" right="minor">I’ll use a different learning strategy.</cell>
+          <cell bottom="minor" right="minor">
+            I’ll use a different learning strategy.
+          </cell>
         </row>
 
         <row left="minor">
           <cell bottom="minor" right="minor">This is too hard.</cell>
-          <cell bottom="minor" right="minor">This may take some time and effort.</cell>
+          <cell bottom="minor" right="minor">
+            This may take some time and effort.
+          </cell>
         </row>
 
         <row left="minor">
@@ -63,7 +69,9 @@
 
         <row left="minor">
           <cell bottom="minor" right="minor">I just can’t do programming.</cell>
-          <cell bottom="minor" right="minor">I’m going to train my brain to do this.</cell>
+          <cell bottom="minor" right="minor">
+            I’m going to train my brain to do this.
+          </cell>
         </row>
 
         <row left="minor">
@@ -83,6 +91,7 @@
 
   <subsection>
     <title>Pair Programming</title>
+
     <p>
       In this curriculum, you are encouraged to work together in pairs to
       complete the coding challenges. <term>Pair programming</term> is a

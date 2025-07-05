@@ -107,16 +107,17 @@
     <sidebyside widths="50% 50%" margins="0% 0%" valign="top">
       <stack>
         <p>Snap!</p>
+
         <image source="_static/img/snap-repeat-until-block.png" />
       </stack>
+
       <stack>
         <p>Java</p>
+
         <program>
-          <![CDATA[
           while (xPosition != 100) {
               moveSteps(10);
           }
-          ]]>
         </program>
       </stack>
     </sidebyside>
@@ -154,6 +155,7 @@
       They are labeled in <xref ref="three-steps-of-writing-a-loop" text="type-global" />.
 
 
+      
       <ol>
         <li>Initialize the loop variable (before the <c>while</c> loop)</li>
 
@@ -225,6 +227,7 @@
 
     <activity label="print_odds_while" numbered="yes" adaptive="yes" indentation="show" language="java">
       <title>Printing odds</title>
+
       <statement>
         <p>
           The following method has the correct code to print out all the odd
@@ -931,6 +934,7 @@
             loop:
 
 
+            
             <ol>
               <li>Initialize the loop variable</li>
 

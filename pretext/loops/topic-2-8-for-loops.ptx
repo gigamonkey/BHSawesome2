@@ -29,20 +29,24 @@
     <sidebyside widths="50% 50%" margins="0% 0%" valign="top">
       <stack>
         <p>Snap!</p>
+
         <image source="_static/img/snap-for-block.png" />
       </stack>
+
       <stack>
         <p>Java</p>
+
         <program>
           <![CDATA[
+
           for (let i = 0; i < 10; i++) {
 
           }
+
           ]]>
         </program>
       </stack>
     </sidebyside>
-
   </introduction>
 
   <subsection xml:id="three-parts-of-a-for-loop">
@@ -69,21 +73,18 @@
       we have to do in a <c>while</c> loop.
     </p>
 
-    <p>
-      The basic structure looks like this:
-    </p>
+    <p>The basic structure looks like this:</p>
 
     <program>
-        for (initializer; condition; updater) {
-           body
-        }
+      for (initializer; condition; updater) {
+         body
+      }
     </program>
 
     <p>
       So instead of a single <c>boolean</c> condition as we have in a while
       loop, the stuff in parentheses is a bit more complicated: three parts
       separated by semicolons (<c>;</c>).
-
     </p>
 
     <p>
@@ -178,7 +179,6 @@
     </p>
 
     <video youtube="SEDnzXeb2hU" label="video-for-loop" />
-
     <p>
       So why have both kinds of loops? And which should we use when? Since
       anything we can write with one, we can write with the other, it really
@@ -205,8 +205,6 @@
       to get to complicated. In that case a <c>while</c> loop is a better
       choice.
     </p>
-
-
 
     <activity label="forloop">
       <statement>
@@ -328,13 +326,13 @@
         <p>What does the following code print?</p>
 
         <program>
-            <![CDATA[
+          <![CDATA[
 
-            for (int i = 3; i < 8; i++) {
-               System.out.print(i + " ");
-            }
+          for (int i = 3; i < 8; i++) {
+             System.out.print(i + " ");
+          }
 
-            ]]>
+          ]]>
         </program>
       </statement>
 
@@ -396,13 +394,13 @@
         <p>What does the following code print?</p>
 
         <program language="java">
-            <![CDATA[
+          <![CDATA[
 
-            for (int i = 1; i <= 10; i++) {
-               System.out.print(i + " ");
-            }
+          for (int i = 1; i <= 10; i++) {
+             System.out.print(i + " ");
+          }
 
-            ]]>
+          ]]>
         </program>
       </statement>
 
@@ -457,13 +455,13 @@
         <p>How many times does the following method print a <c>*</c>?</p>
 
         <program>
-            <![CDATA[
+          <![CDATA[
 
-            for (int i = 3; i <= 9; i++) {
-               System.out.print("*");
-            }
+          for (int i = 3; i <= 9; i++) {
+             System.out.print("*");
+          }
 
-            ]]>
+          ]]>
         </program>
       </statement>
 
@@ -570,22 +568,28 @@
     <sidebyside>
       <listing>
         <title>Forwards loop</title>
-      <program>
-        <![CDATA[
-        for (int i = 1; i <= 5; i++) {
-        }
-        ]]>
-      </program>
+
+        <program>
+          <![CDATA[
+
+          for (int i = 1; i <= 5; i++) {
+          }
+
+          ]]>
+        </program>
       </listing>
 
       <listing>
         <title>Backwads loop</title>
-      <program>
-        <![CDATA[
-        for (int i = 5; i > 0; i--) {
-        }
-        ]]>
-      </program>
+
+        <program>
+          <![CDATA[
+
+          for (int i = 5; i > 0; i--) {
+          }
+
+          ]]>
+        </program>
       </listing>
     </sidebyside>
 

@@ -2,6 +2,7 @@
 
 <section xml:id="debugging-and-being-stuck">
   <title>Debugging and being stuck</title>
+
   <introduction>
     <p>
       The first and most obvious thing we need to learn about programming are
@@ -55,7 +56,9 @@
         programs.
       </p>
 
-      <attribution>Maurice Wilkes [in 1979] talking about his work in the 1940s.</attribution>
+      <attribution>
+        Maurice Wilkes [in 1979] talking about his work in the 1940s.
+      </attribution>
     </blockquote>
 
     <p>
@@ -66,6 +69,7 @@
 
   <subsection>
     <title>Syntax errors</title>
+
     <p>
       The first kind of bug we need to deal with are called <term>syntax
       errors</term>. These are the programming equivalent of typos in English
@@ -191,6 +195,7 @@
 
   <subsection>
     <title>Reading error messages</title>
+
     <p>
       In this book when you press the Run button on coding exercises, the code
       is first complied and then run. But if the code has syntax errors or other
@@ -211,12 +216,13 @@
     </p>
 
     <p>An error message will look something like this:</p>
+
     <program language="text">
       <code>
-FirstClass.java:5: error: unclosed string literal
-       System.out.println("Hi there!);
-                          ^
-1 error
+        FirstClass.java:5: error: unclosed string literal
+               System.out.println("Hi there!);
+                                  ^
+        1 error
       </code>
     </program>
 
@@ -291,6 +297,7 @@ FirstClass.java:5: error: unclosed string literal
 
     <exercise label="sc2error1">
       <title>Compile Time Error 1</title>
+
       <statement>
         <p>
           Click the run button to try to run the following code. Look for an
@@ -300,39 +307,41 @@ FirstClass.java:5: error: unclosed string literal
 
       <program interactive="activecode" language="java">
         <code>
-public class FirstClass
-{
-    public static void main(String[] args)
-    {
-        System.out.println("Hi there!);
-    }
-}
+          public class FirstClass
+          {
+              public static void main(String[] args)
+              {
+                  System.out.println("Hi there!);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Hi there!";
-        boolean passed =
-                getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Hi there!";
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </exercise>
 
     <exercise label="sc2error2">
       <title>Compile Time Error 2</title>
+
       <statement>
         <p>
           Click the run button to try to run the following code. Look for an
@@ -344,40 +353,42 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class SecondClass
-{
-    public static void main(String[] args)
-    {
-        System.out.println("Hi there!";
-    }
-}
+          public class SecondClass
+          {
+              public static void main(String[] args)
+              {
+                  System.out.println("Hi there!";
+              }
+          }
         </code>
+
         <tests>
-// should pass if/when they run code
-import static org.junit.Assert.*;
+          // should pass if/when they run code
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Hi there!";
-        boolean passed =
-                getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Hi there!";
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </exercise>
 
     <exercise label="sc2error3">
       <title>Compile Time Error 3</title>
+
       <statement>
         <p>
           Click on the run button below to try and run the following code. What
@@ -390,35 +401,36 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class ThirdClass
-{
-    public static void main(String[] args)
-    {
-        system.out.println("Hi there!")
-    }
-}
+          public class ThirdClass
+          {
+              public static void main(String[] args)
+              {
+                  system.out.println("Hi there!")
+              }
+          }
         </code>
+
         <tests>
-// should pass if/when they run code
-// This doesn't really work because it filters out the \n
-import static org.junit.Assert.*;
+          // should pass if/when they run code
+          // This doesn't really work because it filters out the \n
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Hi there!";
-        boolean passed =
-                getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Hi there!";
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </exercise>
@@ -426,6 +438,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Run-time Errors</title>
+
     <p>
       Some errors cannot be detected by the compiler. These are called
       <term>run-time errors</term>. These errors occur when the program is
@@ -457,32 +470,33 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class DivideByZero
-{
-   public static void main(String[] args)
-   {
-       // It makes no sense to divide a number by zero!
-       System.out.println(3/0);
-   }
-}
+          public class DivideByZero
+          {
+             public static void main(String[] args)
+             {
+                 // It makes no sense to divide a number by zero!
+                 System.out.println(3/0);
+             }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String target = "DivideByZero";
-        boolean passed = checkCodeContains("DivideByZero", target);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String target = "DivideByZero";
+                  boolean passed = checkCodeContains("DivideByZero", target);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </exercise>
@@ -502,6 +516,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Debugging techniques</title>
+
     <p>
       Watch the following video to see that all coders get bugs. Debugging is a
       normal part of coding. It can be frustrating at times, but you will get
@@ -518,6 +533,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Debugging Challenge</title>
+
     <image source="Unit1-Using-Objects-and-Methods/Figures/rubberduck.jpg" width="18%" alt="Rubber Duck" />
     <p>
       In this course, you are encouraged to work together in pairs to complete
@@ -544,36 +560,37 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class Challenge1_1
-{
-   public static void main(String[] args)
-   {
-       System.out.println("Good morning! ")
-       system.out.printline("Good afternoon!);
-       System.PrintLn " And good evening!";
+          public class Challenge1_1
+          {
+             public static void main(String[] args)
+             {
+                 System.out.println("Good morning! ")
+                 system.out.printline("Good afternoon!);
+                 System.PrintLn " And good evening!";
 
-}
+          }
         </code>
+
         <tests>
-// should pass if/when they run code
-import static org.junit.Assert.*;
+          // should pass if/when they run code
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Good morning! Good afternoon! And good evening";
-        boolean passed =
-                getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Good morning! Good afternoon! And good evening";
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </exercise>
@@ -581,6 +598,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -621,14 +639,16 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>AP Practice</title>
+
     <exercise label="AP1-1-print">
       <statement>
         <p>Consider the following code segment.</p>
+
         <program language="java">
           <code>
-System.out.println("Roses are red, ")              // Line 1;
-System.out.println("Violets are blue, ")           // Line 2;
-System.out.println("Unexpected '}' on line 32. ")  // Line 3;
+            System.out.println("Roses are red, ")              // Line 1;
+            System.out.println("Violets are blue, ")           // Line 2;
+            System.out.println("Unexpected '}' on line 32. ")  // Line 3;
           </code>
         </program>
 
@@ -652,10 +672,7 @@ Unexpected '}' on line 32.
       <choices>
         <choice>
           <statement id="AP1-1-print_opt_a">
-            <p>
-              Replacing <title_reference>System</title_reference> with
-              <title_reference>system</title_reference> on all lines.
-            </p>
+            <p>Replacing <c>System</c> with <c>system</c> on all lines.</p>
           </statement>
 
           <feedback id="AP1-1-print_opt_a">

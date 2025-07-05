@@ -2,6 +2,7 @@
 
 <section xml:id="topic-2-6-comparing-booleans">
   <title>Manipulating boolean expressions</title>
+
   <idx>De Morgan's Laws</idx>
   <idx>negation</idx>
   <idx>truth table</idx>
@@ -29,6 +30,7 @@
 
   <subsection>
     <title>Compound boolean expressions</title>
+
     <p>
       As with the arithmetic operators, the two logical operators
       <c>&amp;&amp;</c> and <c>||</c> each apply to only two operands and
@@ -59,6 +61,7 @@
 
   <subsection xml:id="simplifying-boolean-expressions">
     <title>Simplifying algebraically</title>
+
     <p>
       Once we start writing complex compund boolean expressions things can get
       out of hand. Sometimes this happens organically as we write code because
@@ -152,6 +155,7 @@
 
   <subsection xml:id="de-morgan-s-laws">
     <title>De Morgan’s Laws</title>
+
     <p>
       One of the most powerful tools for manipulating <c>boolean</c> expressions
       are De Morgan’s Laws. Developed by Augustus De Morgan in the 1800s, they
@@ -168,10 +172,12 @@
 
     <figure align="center">
       <caption>De Morgan’s Laws to simplify complex expressions</caption>
+
       <image source="Unit2-Selection-and-Iteration/Figures/demorgan.png" width="71%" />
     </figure>
 
     <p>In Java, De Morgan’s Laws are written with the following operators:</p>
+
     <p>
       <ul>
         <li>
@@ -233,6 +239,7 @@
 
     <table>
       <title>Negation of comparison expressions</title>
+
       <tabular halign="center">
         <row header="yes" bottom="minor">
           <cell>Operator</cell>
@@ -281,6 +288,7 @@
 
   <subsection xml:id="truth-tables">
     <title>Truth tables</title>
+
     <p>
       The other main technique for analyzing <c>boolean</c> expressions is
       called a <term>truth table</term>. Truth tables are a systematic way of
@@ -298,6 +306,7 @@
     <sidebyside valign="middle">
       <table>
         <title><c>a &amp;&amp; b</c> truth table</title>
+
         <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
           <row header="yes">
             <cell>a</cell>
@@ -333,6 +342,7 @@
 
       <table>
         <title><c>a || b</c> truth table</title>
+
         <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
           <row header="yes">
             <cell>a</cell>
@@ -368,6 +378,7 @@
 
       <table>
         <title><c>!a</c> truth table</title>
+
         <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
           <row header="yes">
             <cell>a</cell>
@@ -475,6 +486,7 @@
 
     <table xml:id="not-a-and-b">
       <title>Truth table for <c>!(a &amp;&amp; b)</c></title>
+
       <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
         <row header="yes">
           <cell><c>a</c></cell>
@@ -523,6 +535,7 @@
 
     <table xml:id="not-a-or-not-b">
       <title>Truth table for <c>!a || !b</c></title>
+
       <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
         <row header="yes">
           <cell><c>a</c></cell>
@@ -578,6 +591,7 @@
 
   <subsection xml:id="summary-23">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -673,6 +687,7 @@
 
   <subsection xml:id="ap-practice-16">
     <title>AP Practice</title>
+
     <activity label="apcsa-sample5">
       <statement>
         <p>

@@ -2,6 +2,7 @@
 
 <section xml:id="javaIDEs">
   <title>Java Development Environments</title>
+
   <introduction>
     <idx>IDE</idx>
     <idx>Integrated Development Environment</idx>
@@ -41,6 +42,7 @@
 
   <subsection>
     <title>Cloud IDEs</title>
+
     <p>
       There are a lot of online cloud IDEs where you can code online in many
       programming languages. Most are free to start, but offer different
@@ -52,6 +54,7 @@
     </p>
 
     <p>Here are some popular online IDEs:</p>
+
     <p>
       <ul>
         <li>
@@ -91,6 +94,7 @@
 
   <subsection>
     <title>Github Classroom and Codespaces</title>
+
     <p>
       Github provides many free opportunities for students and teachers (<url
       href="https://docs.github.com/en/education/quickstart"
@@ -124,6 +128,7 @@
 
   <subsection>
     <title>VSCode</title>
+
     <p>
       VSCode (<url href="https://code.visualstudio.com"
       visual="https://code.visualstudio.com">https://code.visualstudio.com</url>)
@@ -139,6 +144,7 @@
 
   <subsection>
     <title>Dr. Java</title>
+
     <p>
       DrJava (from <url href="http://DrJava.org"
       visual="http://DrJava.org">http://DrJava.org</url>) is a free, simple,
@@ -150,6 +156,7 @@
 
   <subsection>
     <title>BlueJ</title>
+
     <p>
       BlueJ (<url href="https://www.bluej.org/"
       visual="https://www.bluej.org/">https://www.bluej.org/</url>) is a free
@@ -164,6 +171,7 @@
 
   <subsection>
     <title>jGRASP</title>
+
     <p>
       jGRASP (<url href="https://www.jgrasp.org/"
       visual="https://www.jgrasp.org/">https://www.jgrasp.org/</url>) is a free
@@ -181,6 +189,7 @@
 
   <subsection>
     <title>IntelliJ</title>
+
     <p>
       IntelliJ (<url href="https://www.jetbrains.com/idea/"
       visual="https://www.jetbrains.com/idea/">https://www.jetbrains.com/idea/</url>)
@@ -194,6 +203,7 @@
 
   <subsection>
     <title>Netbeans</title>
+
     <p>
       Netbeans (<url href="https://netbeans.org/"
       visual="https://netbeans.org/">https://netbeans.org/</url>) is one of the
@@ -205,6 +215,7 @@
 
   <subsection>
     <title>Eclipse</title>
+
     <p>
       Eclipse (<url href="https://www.eclipse.org/downloads/packages/installer"
       visual="https://www.eclipse.org/downloads/packages/installer">https://www.eclipse.org/downloads/packages/installer</url>)

@@ -2,6 +2,7 @@
 
 <preface xml:id="csawesome2-preface">
   <title>Preface to CSAwesome2</title>
+
   <idx>license</idx>
   <p>
     CSAwesome2 is the second edition of CSAwesome, a free AP CSA curriculum that
@@ -59,9 +60,7 @@
     visual="https://forms.gle/4gMBsv4W71vG5mNe8">form</url>.
   </p>
 
-  <p>
-    <term>Acknowledgements</term>
-  </p>
+  <p><term>Acknowledgements</term></p>
 
   <p>
     We gratefully acknowledge the use of the Runestone platform and Jobe servers
@@ -131,12 +130,12 @@
     of Google.
   </p>
 
-  <p>
-    <term>Contributors</term>
-  </p>
+  <p><term>Contributors</term></p>
 
   <p>The following people have contributed to this ebook:</p>
+
   <p>Several students at Georgia Tech have helped review the eBook:</p>
+
   <p>
     <ul>
       <li>
@@ -270,9 +269,7 @@
       </li>
 
       <li>
-        <p>
-          Nicole Guobadia - created videos explaining concepts (recursion)
-        </p>
+        <p>Nicole Guobadia - created videos explaining concepts (recursion)</p>
       </li>
 
       <li>
@@ -369,9 +366,7 @@
     </ul>
   </p>
 
-  <p>
-    <term>License</term>
-  </p>
+  <p><term>License</term></p>
 
   <image source="Unit0-Getting-Started/Figures/by-nc-sa.png" width="50%" />
   <p>

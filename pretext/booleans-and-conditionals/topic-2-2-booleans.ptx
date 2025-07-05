@@ -2,6 +2,7 @@
 
 <section xml:id="topic-2-2-booleans">
   <title>Where do booleans come from?</title>
+
   <idx>boolean</idx>
   <idx>boolean expression</idx>
   <idx>relational operator</idx>
@@ -38,6 +39,7 @@
 
   <subsection>
     <title>Comparison operators</title>
+
     <idx>hungry alligator</idx>
     <p>
       In <xref ref="arithmetic-expressions" /> we learned about arithmetic
@@ -52,6 +54,7 @@
 
     <table>
       <title>Comparison operators</title>
+
       <tabular>
         <col halign="left" />
         <col halign="center" />
@@ -393,6 +396,7 @@
 
   <subsection>
     <title>Testing divisibility</title>
+
     <p>
       A thing that comes up often enough in both real world coding and on the AP
       exam to be worth calling out is how to use the equality operators in
@@ -410,6 +414,7 @@
 
     <table>
       <title>Divisibility recipes</title>
+
       <tabular>
         <col halign="left" />
         <col halign="left" />
@@ -578,6 +583,7 @@
 
     <activity label="qrand_1">
       <title>40% chance</title>
+
       <statement>
         <p>Which of the following would be true about 40% of the time?</p>
       </statement>
@@ -623,6 +629,7 @@
 
     <activity label="qrand_4">
       <title>75% chance</title>
+
       <statement>
         <p>Which of the following would be true about 75% of the time?</p>
       </statement>
@@ -845,6 +852,7 @@
 
   <subsection xml:id="and-or-and-not-index-0">
     <title>Logical operators</title>
+
     <p>
       The other set of operators in Java that produce <c>boolean</c> values are
       the <term>logical operators</term>. These operate on <c>boolean</c> values
@@ -924,6 +932,7 @@
 
         <table>
           <title>Truth table of <c>!=</c> with <c>boolean</c> values</title>
+
           <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor">
             <row header="yes">
               <cell><c>a</c></cell>
@@ -979,6 +988,7 @@
 
     <activity label="compoundAnd">
       <title>Can go out?</title>
+
       <statement>
         <p>
           What if you want to go out and your parents say you can go out if you
@@ -1156,6 +1166,7 @@
 
   <subsection>
     <title>Testing ranges</title>
+
     <p>
       Just like we can use the <c>==</c> and <c>%</c> operators together to test
       whether numbers are divisible by other numbers, we can combine relational
@@ -1192,6 +1203,7 @@
     </program>
 
     <p>We could also write that in this logically equivalent way:</p>
+
     <program>
       <![CDATA[
       x < 0 || x >= 100
@@ -1258,6 +1270,7 @@
 
   <subsection xml:id="short-circuit-evaluation">
     <title>Short Circuit Evaluation</title>
+
     <idx>short circuit evaluation</idx>
     <idx><h>conditional</h><h>short circuit evaluation</h></idx>
     <p>
@@ -1427,6 +1440,7 @@
 
   <subsection xml:id="summary-19">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -1526,9 +1540,11 @@
 
   <subsection xml:id="ap-practice-12">
     <title>AP Practice</title>
+
     <activity label="AP2-2-1">
       <statement>
         <p>Consider the following statement.</p>
+
         <program language="java">
           <code>
             <![CDATA[

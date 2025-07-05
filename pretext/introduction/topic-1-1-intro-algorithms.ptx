@@ -2,6 +2,7 @@
 
 <section xml:id="topic-1-1-intro-algorithms">
   <title>What is programming? What is Java?</title>
+
   <introduction>
     <p>
       What do Android phones, Minecraft, and Netflix have in common? They’re all
@@ -15,6 +16,7 @@
 
   <subsection>
     <title>Telling the computer what to do</title>
+
     <p>
       So Java is a programming language, but what does that mean? A programming
       language is a language that we can use to tell a computer what to do.
@@ -62,6 +64,7 @@
 
   <subsection>
     <title>Our first Java program</title>
+
     <p>
       Different programming languages have different ways of structuring code.
       Java is an <term>object-oriented language</term> in which all code is
@@ -93,13 +96,13 @@
 
     <program language="java">
       <code>
-public class MyClass
-{
-    public static void main(String[] args)
-    {
-        // Put your code here!
-    }
-}
+        public class MyClass
+        {
+            public static void main(String[] args)
+            {
+                // Put your code here!
+            }
+        }
       </code>
     </program>
 
@@ -118,6 +121,7 @@ public class MyClass
 
     <exercise label="printName">
       <title>First Java program</title>
+
       <statement>
         <p>
           Run this code to see the output below it. Then change the code to
@@ -127,34 +131,35 @@ public class MyClass
 
       <program interactive="activecode" language="java">
         <code>
-public class MyClass
-{
-    public static void main(String[] args)
-    {
-        System.out.println("Hi there!");
-    }
-}
+          public class MyClass
+          {
+              public static void main(String[] args)
+              {
+                  System.out.println("Hi there!");
+              }
+          }
         </code>
+
         <tests>
-// should pass if/when they run code
-import static org.junit.Assert.*;
+          // should pass if/when they run code
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Hi there!";
-        boolean passed =
-                getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Hi there!";
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </exercise>
@@ -162,6 +167,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Compiling and Running Java Programs</title>
+
     <p>
       Code can be written in any text editor, including the small text editor
       built into the Active Code exercises in this e-book. However, an
@@ -189,6 +195,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Java Keywords</title>
+
     <p>
       <term>Keywords</term> are reserved words that have special meaning in
       Java. Keywords such as <c>public</c>, <c>class</c>, and <c>void</c> must
@@ -206,25 +213,15 @@ public class RunestoneTests extends CodeTestHelper
       </statement>
 
       <blocks layout="horizontal">
-        <block>
-          <c>public static</c>
-        </block>
+        <block><c>public static</c></block>
 
-        <block>
-          <c>void main(</c>
-        </block>
+        <block><c>void main(</c></block>
 
-        <block>
-          <c>String[]</c>
-        </block>
+        <block><c>String[]</c></block>
 
-        <block>
-          <c>args)</c>
-        </block>
+        <block><c>args)</c></block>
 
-        <block correct="no">
-          <c>public Static</c>
-        </block>
+        <block correct="no"><c>public Static</c></block>
       </blocks>
     </exercise>
 
@@ -238,37 +235,21 @@ public class RunestoneTests extends CodeTestHelper
       </statement>
 
       <blocks layout="horizontal">
-        <block>
-          <c>public</c>
-        </block>
+        <block><c>public</c></block>
 
-        <block>
-          <c>static</c>
-        </block>
+        <block><c>static</c></block>
 
-        <block>
-          <c>void</c>
-        </block>
+        <block><c>void</c></block>
 
-        <block>
-          <c>main(</c>
-        </block>
+        <block><c>main(</c></block>
 
-        <block>
-          <c>String[]</c>
-        </block>
+        <block><c>String[]</c></block>
 
-        <block>
-          <c>args)</c>
-        </block>
+        <block><c>args)</c></block>
 
-        <block correct="no">
-          <c>Public</c>
-        </block>
+        <block correct="no"><c>Public</c></block>
 
-        <block correct="no">
-          <c>Static</c>
-        </block>
+        <block correct="no"><c>Static</c></block>
       </blocks>
     </exercise>
 
@@ -282,45 +263,25 @@ public class RunestoneTests extends CodeTestHelper
       </statement>
 
       <blocks layout="horizontal">
-        <block>
-          <c>public</c>
-        </block>
+        <block><c>public</c></block>
 
-        <block>
-          <c>static</c>
-        </block>
+        <block><c>static</c></block>
 
-        <block>
-          <c>void</c>
-        </block>
+        <block><c>void</c></block>
 
-        <block>
-          <c>main</c>
-        </block>
+        <block><c>main</c></block>
 
-        <block>
-          <c>(</c>
-        </block>
+        <block><c>(</c></block>
 
-        <block>
-          <c>String</c>
-        </block>
+        <block><c>String</c></block>
 
-        <block>
-          <c>[] </c>
-        </block>
+        <block><c>[] </c></block>
 
-        <block>
-          <c>args</c>
-        </block>
+        <block><c>args</c></block>
 
-        <block>
-          <c>)</c>
-        </block>
+        <block><c>)</c></block>
 
-        <block correct="no">
-          <c>()</c>
-        </block>
+        <block correct="no"><c>()</c></block>
       </blocks>
     </exercise>
 
@@ -333,9 +294,8 @@ public class RunestoneTests extends CodeTestHelper
       will not be penalized on the exam if you forget a needed semicolon, but
       the Java compiler is not so lenient; your program won’t compile without
       it. Note also that not <em>every</em> line ends with a semicolon; if the
-      line starts a construct like an <title_reference>if</title_reference>
-      statement, there is no semicolon before the opening <c>{</c> nor one after
-      the closing <c>}</c>.
+      line starts a construct like an <c>if</c> statement, there is no semicolon
+      before the opening <c>{</c> nor one after the closing <c>}</c>.
     </p>
 
     <exercise label="mp-print-order-1" adaptive="yes">
@@ -348,41 +308,23 @@ public class RunestoneTests extends CodeTestHelper
       </statement>
 
       <blocks layout="horizontal">
-        <block>
-          <c>System.</c>
-        </block>
+        <block><c>System.</c></block>
 
-        <block>
-          <c>out</c>
-        </block>
+        <block><c>out</c></block>
 
-        <block>
-          <c>.</c>
-        </block>
+        <block><c>.</c></block>
 
-        <block>
-          <c>println</c>
-        </block>
+        <block><c>println</c></block>
 
-        <block>
-          <c>(</c>
-        </block>
+        <block><c>(</c></block>
 
-        <block>
-          <c>"Hi!"</c>
-        </block>
+        <block><c>"Hi!"</c></block>
 
-        <block>
-          <c>)</c>
-        </block>
+        <block><c>)</c></block>
 
-        <block>
-          <c>;</c>
-        </block>
+        <block><c>;</c></block>
 
-        <block correct="no">
-          <c>system</c>
-        </block>
+        <block correct="no"><c>system</c></block>
       </blocks>
     </exercise>
 
@@ -396,47 +338,30 @@ public class RunestoneTests extends CodeTestHelper
       </statement>
 
       <blocks layout="horizontal">
-        <block>
-          <c>System.</c>
-        </block>
+        <block><c>System.</c></block>
 
-        <block>
-          <c>out</c>
-        </block>
+        <block><c>out</c></block>
 
-        <block>
-          <c>.</c>
-        </block>
+        <block><c>.</c></block>
 
-        <block>
-          <c>println</c>
-        </block>
+        <block><c>println</c></block>
 
-        <block>
-          <c>(</c>
-        </block>
+        <block><c>(</c></block>
 
-        <block>
-          <c>"Bye!"</c>
-        </block>
+        <block><c>"Bye!"</c></block>
 
-        <block>
-          <c>)</c>
-        </block>
+        <block><c>)</c></block>
 
-        <block>
-          <c>;</c>
-        </block>
+        <block><c>;</c></block>
 
-        <block correct="no">
-          <c>Out</c>
-        </block>
+        <block correct="no"><c>Out</c></block>
       </blocks>
     </exercise>
   </subsection>
 
   <subsection>
     <title>Comments</title>
+
     <p>
       In Java and many text-based coding languages, <c>//</c> is used to mark
       the beginning of a comment. For multi-line comments, use <c>/*</c> to
@@ -448,18 +373,19 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-/* MyClass.java
-   Programmer: My Name
-   Date:
-*/
+        /* MyClass.java
+           Programmer: My Name
+           Date:
+        */
 
-int max = 10; // this keeps track of the max score
+        int max = 10; // this keeps track of the max score
       </code>
     </program>
   </subsection>
 
   <subsection>
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -487,6 +413,7 @@ int max = 10; // this keeps track of the max score
 
         <li>
           <p>A basic Java program looks like the following:</p>
+
           <program language="java">
             public class MyClass {
               public static void main(String[] args) {
@@ -495,6 +422,7 @@ int max = 10; // this keeps track of the max score
             }
           </program>
         </li>
+
         <li>
           <p>
             A Java program starts with <term>public class NameOfClass {</term>.

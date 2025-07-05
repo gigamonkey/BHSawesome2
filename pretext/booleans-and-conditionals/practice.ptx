@@ -2,9 +2,11 @@
 
 <section label="booleans-practice">
   <title>Booleans and <c>if</c> practice</title>
+
   <introduction />
   <subsection>
     <title>Boolean practice</title>
+
     <activity label="if-relational">
       <statement>
         <p>
@@ -382,6 +384,7 @@
 
     <activity label="scoreifelse">
       <title>Add an else</title>
+
       <statement>
         <p>
           Try the following code. Add an else statement to the if statement that
@@ -496,6 +499,7 @@
 
   <subsection xml:id="coding-challenge-prime-numbers-pogil">
     <title>Coding Challenge : Prime Numbers POGIL</title>
+
     <p>
       We encourage you to do this activity as a <url
       href="https://pogil.org/about-pogil/what-is-pogil"
@@ -811,6 +815,7 @@
 
   <subsection xml:id="coding-challenge-truth-tables-pogil">
     <title>Coding Challenge : Truth Tables POGIL</title>
+
     <p>
       We encourage you to do this activity as a <url
       href="https://pogil.org/about-pogil/what-is-pogil"
@@ -824,6 +829,7 @@
     </p>
 
     <p>Explore the following problems with your group:</p>
+
     <p>
       <ol marker="1">
         <li>
@@ -982,6 +988,7 @@
 
   <subsection xml:id="coding-challenge-truth-and-tracing-tables-pogil">
     <title>Coding Challenge : Truth and Tracing Tables POGIL</title>
+
     <p>
       We encourage you to do this activity as a <url
       href="https://pogil.org/about-pogil/what-is-pogil"
@@ -1122,6 +1129,7 @@
     <activity label="qcbdm1">
       <statement>
         <p>Which of the following is the same as the code below?</p>
+
         <program language="java">
           <code>
             <![CDATA[
@@ -1180,6 +1188,7 @@
     <activity label="qcbdm2">
       <statement>
         <p>Which of the following is the same as the code below?</p>
+
         <program language="java">
           <code>
             <![CDATA[
@@ -1238,6 +1247,7 @@
     <activity label="qcbdm3">
       <statement>
         <p>Which of the following is the same as the code below?</p>
+
         <program language="java">
           <code>
             <![CDATA[
@@ -1299,6 +1309,7 @@
     <activity label="qcbdm4">
       <statement>
         <p>Which of the following is the same as the code below?</p>
+
         <program language="java">
           <code>
             <![CDATA[
