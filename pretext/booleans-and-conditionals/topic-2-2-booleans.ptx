@@ -515,6 +515,334 @@
     </activity>
   </subsection>
 
+  <subsection xml:id="math-random-in-if-statements">
+    <title>Random probabilities</title>
+
+    <p>
+      Another common way to want to produce <c>boolean</c> values is at random
+      with some probability. This is quite easy since <c>Math.random()</c>,
+      which we first saw in <xref ref="topic-1-11-Math" />, returns a random
+      number between 0.0 and 1.0 which is exactly how probabilities are usually
+      expressed. (Zero probability means something definitely won’t happen;
+      probability one means it definitely will.)
+    </p>
+
+    <p>
+      So we use <c>Math.random()</c> in combination with the <c>&lt;</c>
+      operator to write an expression that will be <c>true</c> with a given
+      probability. For example, to simulate a coin flip, we can use the
+      expression <c>Math.random() &lt; 0.5</c> which will be true with
+      probability 0.5 or 50% of the time.
+    </p>
+
+    <program language="java">
+      <code>
+        <![CDATA[
+
+        if (Math.random() < 0.5) {
+            System.out.println("Heads");
+        } else {
+            System.out.println("Tails");
+        }
+
+        ]]>
+      </code>
+    </program>
+
+    <p>
+      More generally, for any probability <c>p</c> between zero and one,
+      <c>Math.random() &lt; p</c> will be true with that probability.
+    </p>
+
+    <program language="java">
+      <code>
+        <![CDATA[
+
+        if (Math.random() < p) {
+            System.out.println("Event happened");
+        } else {
+            System.out.println("Event did not happen");
+        }
+
+        ]]>
+      </code>
+    </program>
+
+    <p>
+      The easy way to remember that it should be <c>&lt;</c> and not <c>&gt;</c>
+      or <c>&lt;=</c> is to remember that <c>Math.random()</c> returns a number
+      greater than or equal to <c>0.0</c> and less than <c>1.0</c>. So
+      <c>Math.random() &lt; 0.0</c> is never true <c>Math.random() &lt; 1.0</c>
+      always is.
+    </p>
+
+    <activity label="qrand_1">
+      <title>40% chance</title>
+      <statement>
+        <p>Which of the following would be true about 40% of the time?</p>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement>
+            <p>Math.random() &lt; 0.4</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This is true about 40% of the time since Math.random returns a
+              value from 0 to not quite 1.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>Math.random() &gt; 0.4</p>
+          </statement>
+
+          <feedback>
+            <p>This will be true about 60% of the time.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>Math.random() == 0.4</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Do not use == with double values! Remember that Math.random can
+              return any number between 0 and not quite 1 (about .99999999).
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="qrand_4">
+      <title>75% chance</title>
+      <statement>
+        <p>Which of the following would be true about 75% of the time?</p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>Math.random() &lt; 0.25</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This is true about 25% of the time, since it will be a number from
+              0 to not quite 1.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>Math.random() &gt;= 0.25</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This is true about 75% of the time, since it will be a number from
+              0 to not quite 1. Note that if the expression used &gt; rather
+              than &gt;= it would be very slightly off. Generally it's best to
+              write this kind of expression with &lt; and the probability of a
+              true value so <c>Math.random() &lt; 0.75</c> in this case.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>Math.random() == 0.25</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Do not use == with double values! Remember that Math.random can
+              return any number between 0 and not quite 1 (about .99999999).
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="mcq-rnd-ifs">
+      <statement>
+        <p>
+          The weather report says there is approximately 25% chance of rain
+          today. Which of the following if statements would print Rain or No
+          Rain to simulate a day with the correct percentages following the
+          weather report?
+        </p>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement id="mcq-rnd-ifs_opt_a">
+            <program language="java">
+              <code>
+                <![CDATA[
+                if (Math.random() < 0.25) { System.out.println("Rain"); }
+                ]]>
+              </code>
+            </program>
+          </statement>
+
+          <feedback id="mcq-rnd-ifs_opt_a">
+            <p>Correct! This code will print “Rain” 25% of the time.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement id="mcq-rnd-ifs_opt_b">
+            <program language="java">
+              <code>
+                <![CDATA[
+                if (Math.random() > 0.75) { System.out.println("Rain"); }
+                ]]>
+              </code>
+            </program>
+          </statement>
+
+          <feedback id="mcq-rnd-ifs_opt_b">
+            <p>
+              Correct. This code will print “Rain” 25% (1 - .75) of the time.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="mcq-rnd-ifs_opt_c">
+            <program language="java">
+              <code>
+                <![CDATA[
+                if (Math.random() > 0.25) { System.out.println("Rain"); }
+                ]]>
+              </code>
+            </program>
+          </statement>
+
+          <feedback id="mcq-rnd-ifs_opt_c">
+            <p>Incorrect. This code will print “Rain” 75% of the time.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement id="mcq-rnd-ifs_opt_d">
+            <program language="java">
+              <code>
+                <![CDATA[
+                if (Math.random() < 0.75) { System.out.println("No Rain"); }
+                ]]>
+              </code>
+            </program>
+          </statement>
+
+          <feedback id="mcq-rnd-ifs_opt_d">
+            <p>
+              Correct! This code will print “No Rain” 75% of the time, so it
+              will rain 25% of the time.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="randomShapes">
+      <statement>
+        <p>
+          Add an if/else statement that uses Math.random() to do a coin flip to
+          decide whether to call yertle.turnRight() or yertle.turnLeft. Run the
+          code to see the turtle draw a random shape.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+        <code>
+          <![CDATA[
+
+          import java.util.*;
+          import java.awt.*;
+
+          public class RandomTurns
+          {
+              public static void main(String[] args)
+              {
+                  World world = new World(500,400);
+                  Turtle yertle = new Turtle(world);
+
+                  // This is a loop that runs 10 times to draw a random shape
+                  for(int i = 1; i <= 10; i++)
+                  {
+                      yertle.forward(20);
+
+                      // Write an if/else statement that uses
+                      // Math.random() to do a coin flip (50%) to choose
+                      // between yertle.turnRight() or turnLeft()
+
+
+
+
+
+
+                  } // end of loop
+                  world.show(true);
+              }
+          }
+
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("RandomTurns");
+              }
+
+             @Test
+             public void testCodeContainsIf()
+             {
+                 boolean ifCheck = checkCodeContains("if", "if");
+                 assertTrue(ifCheck);
+             }
+             @Test
+             public void testCodeContainsElse()
+             {
+                 boolean ifCheck2 = checkCodeContains("else", "else");
+                 assertTrue(ifCheck2);
+             }
+             @Test
+             public void testCodeContainsRandom()
+             {
+                 boolean ifCheck2 = checkCodeContains("Math.Random()", "Math.random()");
+                 assertTrue(ifCheck2);
+             }
+             @Test
+             public void testCodeContains5()
+             {
+                 boolean ifCheck2 = checkCodeContains(".5", ".5");
+                 assertTrue(ifCheck2);
+             }
+          }
+        </tests>
+      </program>
+    </activity>
+  </subsection>
+
   <subsection xml:id="and-or-and-not-index-0">
     <title>Logical operators</title>
     <p>

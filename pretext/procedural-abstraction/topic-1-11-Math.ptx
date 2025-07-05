@@ -401,13 +401,13 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="random-numbers">
-    <title>random numbers</title>
+    <title>Random numbers</title>
     <idx>
       <h>Math</h><h>random</h>
     </idx>
 
     <idx>random</idx>
-    <sidebyside widths="20% 80%" margins="0% 0%">
+    <sidebyside widths="20% 75%" margins="0% 0%" valign="middle">
       <image source="Unit1-Using-Objects-and-Methods/Figures/dice.png" alt="Dice" />
       <p>
         Games would be boring if the same thing happened each time you played
@@ -671,143 +671,100 @@ public class RunestoneTests extends CodeTestHelper
 
     <p>
       So the general recipe for generating a random is to first stretch the
-      value from <c>Math.random()</c> until it’s in the right size range by
-      multiplying by the size of the range. Then if you want an integer value,
+      value from <c>Math.random()</c> until it’s in a range of the right size by
+      multiplying by the size of the range. Then if we want an integer value,
       cast to <c>int</c> to discard the part after the decimal point. Then shift
       the value up by adding the minimum value. The table below shows some
       applications of that general recipe.
     </p>
 
     <table>
-      <tabular row-headers="yes">
-        <col top="minor" />
-        <col top="minor" />
-        <col top="minor" />
-        <col top="minor" />
+      <tabular>
+        <col halign="left" right="minor" />
+        <col halign="center" right="minor" />
+        <col halign="center" right="minor" />
+        <col halign="center" />
         <title>Random recipes</title>
-        <row header="yes" left="minor">
-          <cell bottom="minor" right="minor">Expression</cell>
-          <cell bottom="minor" right="minor">Minimum (inclusive)</cell>
-          <cell bottom="minor" right="minor">Maximum (exclusive)</cell>
-          <cell bottom="minor" right="minor">Possible values</cell>
+        <row header="yes" bottom="minor">
+          <cell>Expression</cell>
+          <cell>Minimum (inclusive)</cell>
+          <cell>Maximum (exclusive)</cell>
+          <cell>Possible values</cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">
+        <row bottom="minor">
+          <cell>
             <c>Math.random()</c>
           </cell>
 
-          <cell bottom="minor" right="minor">0.0</cell>
-          <cell bottom="minor" right="minor">1.0</cell>
-          <cell bottom="minor" right="minor">Over 9 quadrillion</cell>
+          <cell>0.0</cell>
+          <cell>1.0</cell>
+          <cell>Over 9 quadrillion</cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">
+        <row bottom="minor">
+          <cell>
             <c>Math.random() * 100</c>
           </cell>
 
-          <cell bottom="minor" right="minor">0.0</cell>
-          <cell bottom="minor" right="minor">100.0</cell>
-          <cell bottom="minor" right="minor">Over 9 quadrillion</cell>
+          <cell>0.0</cell>
+          <cell>100.0</cell>
+          <cell>Over 9 quadrillion</cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">
-            <c>(int)(Math.random() * 100)</c>
+        <row bottom="minor">
+          <cell>
+            <c>(int) (Math.random() * 100)</c>
           </cell>
 
-          <cell bottom="minor" right="minor">0</cell>
-          <cell bottom="minor" right="minor">100</cell>
-          <cell bottom="minor" right="minor">100</cell>
+          <cell>0</cell>
+          <cell>100</cell>
+          <cell>100</cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">
-            <c>(int)(Math.random() * 50) + 25</c>
+        <row bottom="minor">
+          <cell>
+            <c>(int) (Math.random() * 50) + 25</c>
           </cell>
 
-          <cell bottom="minor" right="minor">25</cell>
-          <cell bottom="minor" right="minor">75</cell>
-          <cell bottom="minor" right="minor">50</cell>
+          <cell>25</cell>
+          <cell>75</cell>
+          <cell>50</cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">
-            <c>(int)(Math.random() * max)</c>
+        <row bottom="minor">
+          <cell>
+            <c>(int) (Math.random() * max)</c>
           </cell>
 
-          <cell bottom="minor" right="minor">0</cell>
-          <cell bottom="minor" right="minor">max</cell>
-          <cell bottom="minor" right="minor">max</cell>
+          <cell>0</cell>
+          <cell>max</cell>
+          <cell>max</cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">
-            <c>(int)(Math.random() * range) + min</c>
+        <row bottom="minor">
+          <cell>
+            <c>(int) (Math.random() * range) + min</c>
           </cell>
 
-          <cell bottom="minor" right="minor">min</cell>
-          <cell bottom="minor" right="minor">min + range</cell>
-          <cell bottom="minor" right="minor">range</cell>
+          <cell>min</cell>
+          <cell>min + range</cell>
+          <cell>range</cell>
         </row>
 
-        <row left="minor">
-          <cell bottom="minor" right="minor">
-            <c>(int)(Math.random() * (max - min)) + min</c>
+        <row>
+          <cell>
+            <c>(int) (Math.random() * (max - min)) + min</c>
           </cell>
 
-          <cell bottom="minor" right="minor">min</cell>
-          <cell bottom="minor" right="minor">max</cell>
-          <cell bottom="minor" right="minor">max - min</cell>
+          <cell>min</cell>
+          <cell>max</cell>
+          <cell>max - min</cell>
         </row>
       </tabular>
     </table>
 
-    <activity label="qrand_1">
-      <title>40% chance</title>
-      <statement>
-        <p>Which of the following would be true about 40% of the time?</p>
-      </statement>
 
-      <choices>
-        <choice correct="yes">
-          <statement>
-            <p>Math.random() &lt; 0.4</p>
-          </statement>
-
-          <feedback>
-            <p>
-              This is true about 40% of the time since Math.random returns a
-              value from 0 to not quite 1.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>Math.random() &gt; 0.4</p>
-          </statement>
-
-          <feedback>
-            <p>This will be true about 60% of the time.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>Math.random() == 0.4</p>
-          </statement>
-
-          <feedback>
-            <p>
-              Do not use == with double values! Remember that Math.random can
-              return any number between 0 and not quite 1 (about .99999999).
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
 
     <activity label="qrand_2">
       <title>Random number 1-5</title>
@@ -893,57 +850,6 @@ public class RunestoneTests extends CodeTestHelper
             <p>
               The first part would return a number between 0 and 9 and adding 1
               produces a number from 1 to 10, inclusive.
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="qrand_4">
-      <title>75% chance</title>
-      <statement>
-        <p>Which of the following would be true about 75% of the time?</p>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>Math.random() &lt; 0.25</p>
-          </statement>
-
-          <feedback>
-            <p>
-              This is true about 25% of the time, since it will be a number from
-              0 to not quite 1.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>Math.random() &gt;= 0.25</p>
-          </statement>
-
-          <feedback>
-            <p>
-              This is true about 75% of the time, since it will be a number from
-              0 to not quite 1. Note that if the expression used &gt; rather
-              than &gt;= it would be very slightly off. Generally it's best to
-              write this kind of expression with &lt; and the percent you want
-              to be true so <c>Math.random() &lt; 0.75</c> in this case.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>Math.random() == 0.25</p>
-          </statement>
-
-          <feedback>
-            <p>
-              Do not use == with double values! Remember that Math.random can
-              return any number between 0 and not quite 1 (about .99999999).
             </p>
           </feedback>
         </choice>
@@ -1037,8 +943,8 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="coding-challenge-random-numbers">
-    <title>Coding Challenge: Combo lock</title>
-    <sidebyside widths="15% 85%" margins="0% 0%">
+    <title>Coding challenge: combo lock</title>
+    <sidebyside widths="10% 88%" margins="0% 0%" valign="middle">
       <image source="Unit1-Using-Objects-and-Methods/Figures/lock.jpg" alt="lock" />
       <p>
         You may have a combination lock on your locker at school where you have
@@ -1048,7 +954,7 @@ public class RunestoneTests extends CodeTestHelper
     </sidebyside>
 
     <p>
-      <ol marker="1">
+      <ol>
         <li>
           <p>
             Write code that will generate 3 random integers from 0 up to 40 (but
@@ -1063,35 +969,36 @@ public class RunestoneTests extends CodeTestHelper
             How many times would you need to run it to guess your combination
             correctly? Let’s have the code compute the number of permutations
             possible in your combination lock using
-            <term>Math.pow(number,exponent)</term>. For example, if you had to
+            <term>Math.pow(number, exponent)</term>. For example, if you had to
             spin the dial twice on your combination lock where each spin can
             choose a digit from 0-9 (10 digits), there are <m>10^{2}</m>
             possible permutations. In Java, this would be written as
-            <term>Math.pow(10,2)</term> which means 10 to the power of 2. If you
+            <term>Math.pow(10, 2)</term> which means 10 to the power of 2. If you
             start listing all the permutations possible, you can tell that there
             are <m>10^{2}</m> or 100 possible permutations for a 2 spins on a
             dial lock from 0-9.
+          </p>
+          <p>
+            <pre>
+              00, 01, 02, 03, 04, 05, 06, 07, 08, 09
+              10, 11, 12, 13, 14, 15, 16, 17, 18, 19
+              ...
+              90, 91, 92, 93, 94, 95, 96, 97, 98, 99
+            </pre>
           </p>
         </li>
       </ol>
     </p>
 
-    <p>
-      <pre>
-00, 01, 02, 03, 04, 05, 06, 07, 08, 09
-10, 11, 12, 13, 14, 15, 16, 17, 18, 19
-...
-90, 91, 92, 93, 94, 95, 96, 97, 98, 99
-      </pre>
-    </p>
 
     <p>
       Now what about the combination lock for this challenge? You will need to
       spin the dial 3 times: once to the right, once to the left, and once to
-      the right to 3 different numbers from 0 up to 40 (not including 40). In
-      general, the formula to use is <m>NumbersPerDial^{numberOfSpins}</m>.
-      Write this using the <term>Math.pow()</term> method in your code and save
-      it into a variable and print out.
+      the right to three different numbers from 0 up to 40 (not including 40).
+      In general, the formula to use is <m>n^{s}</m> where <m>n</m> is the
+      number of numbers on the dial and <m>s</m> is the number of spins. Write
+      this using the <term>Math.pow()</term> method in your code and save it
+      into a variable and print out.
     </p>
 
     <project label="challenge1-11-random-math">
@@ -1102,10 +1009,8 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class MathChallenge
-{
-    public static void main(String[] args)
-    {
+public class MathChallenge {
+    public static void main(String[] args) {
         // 1. Use Math.random() to generate 3 integers from 0-40 (not
         // including 40) and print them out.
 
@@ -1113,7 +1018,6 @@ public class MathChallenge
         // 0-40 (not including 40) using Math.pow() and print it out.
         // For example, Math.pow(10,2) is 10^2 and the number of permutations
         // to choose 2 numbers between 0-9.
-
     }
 }
         </code>
