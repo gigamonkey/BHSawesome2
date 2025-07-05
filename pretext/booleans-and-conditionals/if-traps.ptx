@@ -5,10 +5,10 @@
 
   <introduction>
     <p>
-      While <c>if</c> statements are pretty simple, there are also some common
-      mistakes that programmers make using them. Luckily there are also some
-      practices we can adopt that will make it much less likely that we will
-      make those mistakes. foo
+      While <c>if</c> statements are pretty simple, they do present some traps
+      for the unwary. Luckily there are also some practices we can adopt that
+      will make it much less likely that we will fall into those traps. In this
+      section we discuss some of those.
     </p>
   </introduction>
 
@@ -18,8 +18,8 @@
     <p>
       Strictly speaking, the curly braces around the body of the <c>if</c> are
       not actually a part of the <c>if</c> syntax. They are a more general
-      feature of Java that in any context where Java expects a single statement,
-      it will also accept a <term>block</term> of statements enclosed in braces.
+      feature of Java: in any context where Java expects a single statement, it
+      will also accept a <term>block</term> of statements enclosed in braces.
     </p>
 
     <p>
@@ -44,7 +44,7 @@
     <p>
       However you should always write it the second way. Here’s why—if you later
       decide to add something, say maybe a <c>println</c> before the
-      <c>doSomething()</c>and you aren’t careful you might end up with this:
+      <c>doSomething()</c> and you aren’t careful you might end up with this:
     </p>
 
     <program language="java">
@@ -67,7 +67,7 @@
 
     <p>
       Now the <c>doSomething</c>, which used to be controlled by the <c>if</c>,
-      is now always run and the <c>if</c> only controls the <c>println</c>.
+      is always run and the <c>if</c> only controls the <c>println</c>.
     </p>
 
     <p>
@@ -148,9 +148,16 @@
       However, since indentation is not significant in Java, both of the top
       listings (<xref ref="dedented-dangling-else" text="type-global" /> and
       <xref ref="indented-dangling-else" text="type-global" />) are equivalent.
-      It’s actually ambiguous how to interpret so Java has a special rule that
-      says in cases like that the <c>else</c> clause always attaches to the
-      closest <c>if</c>. So both are equivalent to <xref
+      It’s actually ambiguous how to interpret the top versions similar to how
+      in English there are two ways to interpret a sentence like, “I saw the man
+      with a telescope”. Does that mean I used a telescope to see the man, or I
+      saw a man who had a telescope?
+    </p>
+
+    <p>
+      Since Java can’t ask us what we meant, it uses a rule that in cases like
+      that, the <c>else</c> clause always attaches to the closest <c>if</c>. So
+      both versions without braces are equivalent to <xref
       ref="indented-dangling-else-blocks" text="type-global" /> regardless of
       indentation.
     </p>
@@ -186,15 +193,15 @@
     </program>
 
     <p>
-      A semicolon my itself is actually a statement. It’s called the <term>empty
+      A semicolon by itself is actually a statement. It’s called the <term>empty
       statement</term> and it does nothing. So that code checks if
       <c>someBoolean</c> is true and if it is does nothing. Then it calls
       <c>doSomething()</c> regardless.
     </p>
 
     <p>
-      You <em>can</em> make this mistake even if you use braces but probably
-      less likely since you’d have to put the semicolon between the closing
+      You can still this mistake even if you use braces but it’s probably less
+      likely since you’d have to put the semicolon between the closing
       parentheses and the opening brace rather than at the end of the line:
     </p>
 
@@ -223,60 +230,31 @@
     <title><c>= != ==</c></title>
 
     <p>
-      In languages without a separate <c>boolean</c> type where, for instance,
-      <c>0</c> is false and all other numbers counts as true, a classic bug
-      looks like this:
-    </p>
-
-    <program>
-      // Not legal Java code.
-      if (x = 0) {
-        doSomething();
-      }
-    </program>
-
-    <p>
-      In the C programming lanuage this would be perfectly legal code but is
-      almost certainly buggy. Do you see why? This is called the <c>= != ==</c>
-      bug because it hinges on the fact that a single equals sign <c>=</c> and
-      doubled equals signs <c>==</c> are not the same operator. A single
-      <c>=</c> is the assignment operator while <c>==</c> is the equality
-      comparison operator.
+      Another classic bug arises when we use a single equals sign <c>=</c> when
+      we should have used two equals signs <c>==</c>. In Java (and in many other
+      languages) both are operators meaning they operate on some operands and
+      produce a value.
     </p>
 
     <p>
-      In Java, and many other languages, the assignment operator not only
-      assigns a value to a variable but also evaluates to the assigned value. So
-      in the code above the expression <c>x = 0</c> assigns <c>0</c> to
-      <c>x</c>, clobbering whatever value it had before, and then evaluates to
-      <c>0</c> which in in this hypothetical non-Java language would count as
-      false.
+      The single <c>=</c> is the assignment operator, which assigns a value to a
+      variable but it also produces a value, namely the value that was just
+      assigned. So an expression like <c>hungry = true</c> has the side effect
+      of setting <c>hungry</c> to <c>true</c> but also evaluates to <c>true</c>.
     </p>
 
     <p>
-      So if <c>x = 0</c> always evaluates to <c>0</c>, the <c>if</c> condition
-      would always be false so <c>doSomething()</c> would never run.
-      <em>And</em> <c>x</c> would suddenly be zero, which will also probably
-      lead to some confusion down the road.
+      The double <c>==</c>, on the other hand, is the equality comparison
+      operator, which evaluates to <c>true</c> if both its operands are the same
+      value and <c>false</c> otherwise. The expression <c>hungry == true</c>
+      doesn’t change the value of hungry but evaluates to either <c>true</c> or
+      <c>false</c> depending on <c>hungry</c>’s current value.
     </p>
 
     <p>
-      And on the other hand, if instead of <c>0</c>, the value had been any
-      other number, <c>x</c> would have been set to that number and the
-      <c>println</c> would always run.
-    </p>
-
-    <p>
-      Luckily in Java the condition of an <c>if</c> has to be a <c>boolean</c>
-      expression, so the code above wouldn’t get past the Java compiler. If
-      <c>x</c> was declared to be an <c>int</c> Java would complain because the
-      type of <c>x = 0</c> would be <c>int</c> which isn’t allowed in the
-      condition. And if <c>x</c> had been declared to be a <c>boolean</c>, Java
-      would complain because 0 isn’t a valid <c>boolean</c> value.
-    </p>
-
-    <p>
-      There are, however, two ways to create this bug in Java:
+      So this bug is called the <c>= != ==</c> bug since the two operators are
+      not the same and using one when we should have used the other is a
+      bug. Here’s how the bug looks in Java.
     </p>
 
     <program>
@@ -293,7 +271,8 @@
       The first <c>if</c> statement will always call <c>eat()</c>, regardless of
       what <c>hungry</c> was before the <c>if</c>. And the second will never
       call <c>study()</c>, regardless of <c>hungry</c>’s prior value. And both
-      of them will clobber the old value of <c>hungry</c>.
+      of them will clobber the old value of <c>hungry</c> which will probably
+      cause some confusion down the road.
     </p>
 
     <p>
@@ -312,8 +291,10 @@
     </program>
 
     <p>
-      However, there’s an even better way to write these that is simpler and
-      avoids the possibility of the <c>= != ==</c> bug:
+      By changing the <c>=</c> operators to <c>==</c>, the code calls
+      <c>eat()</c> and <c>study()</c> at the correct timess. However, there’s an
+      even better way to write these that is both simpler and avoids the
+      possibility of falling into the <c>= != ==</c> trap:
     </p>
 
     <program>
@@ -386,7 +367,9 @@
       <p>
         The code below doesn’t work as the author intended. It was supposed to
         print both <c>Wear a coat</c> and <c>Wear gloves</c> but only when
-        <c>isCold</c> is <c>true</c>. Fix it so it does what they wanted it to.
+        <c>isCold</c> is <c>true</c>. But somehow the author has fallen into all
+        the traps mentioned in this chapter! Fix it so it does what they wanted
+        it to.
       </p>
 
       <program interactive="activecode" language="java">
