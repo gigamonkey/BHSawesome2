@@ -1,59 +1,166 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="topic-2-8-for-loops">
-  <title>For Loops</title>
+  <title>For loops</title>
 
   <introduction>
     <idx>for loop</idx>
     <idx><h>loop</h><h>for</h></idx>
     <p>
-      Another type of loop (or iteration) in Java is a <term>for loop</term>. It
-      is usually used when you know how many times you want the loop to execute,
-      as a simple <term>counter-controlled loop</term> to do the loop body a set
-      number of times.
+      While the <c>while</c> loop is all we need to be able to provide the
+      repetition component required by any algorithm, it’s a little bit
+      primitive. It has it’s uses but the real workhorse loop in Java is the
+      <c>for</c> loop.
     </p>
 
     <p>
-      If you took AP CSP with a block programming language like App Inventor,
-      you probably used a for loop block like below that looks very similar to
-      Java for loops. If you have used a language like Scratch or Snap!, you may
-      remember the repeat(n) block where you type in a number of times you want
-      the code to be repeated, just like the AP pseudocode REPEAT block. In
-      fact, almost every programming language has a <c>for</c> or <c>repeat</c>
-      loop.
+      The <c>for</c> loop really shines when writing counting loops, those loops
+      where we know before the loop starts exactly how many times the body will
+      run.
     </p>
 
-    <figure align="center">
-      <caption>Comparing App Inventor and Java for loops</caption>
+    <p>
+      If you took AP CSP with a block programming language like Snap! you almost
+      certainly used a for loop block like the one shown below. It is a bit more
+      limited than a Java <c>for</c> loop but in simple cases, such as shown on
+      the right below, they are essentially the same.
+    </p>
 
-      <image source="Unit2-Selection-and-Iteration/Figures/loopAppInv.png" width="100%" />
-    </figure>
+    <sidebyside widths="50% 50%" margins="0% 0%" valign="top">
+      <stack>
+        <p>Snap!</p>
+        <image source="_static/img/snap-for-block.png" />
+      </stack>
+      <stack>
+        <p>Java</p>
+        <program>
+          <![CDATA[
+          for (let i = 0; i < 10; i++) {
+
+          }
+          ]]>
+        </program>
+      </stack>
+    </sidebyside>
+
   </introduction>
 
   <subsection xml:id="three-parts-of-a-for-loop">
-    <title>Three Parts of a For Loop</title>
+    <title>Capturing the counting loop pattern</title>
 
     <p>
-      A for-loop combines all 3 parts of writing a loop in one line to
-      initialize, test, and update the loop control variable. The 3 parts are
-      separated by semicolons (<c>;</c>). Each of the three parts of a
-      <c>for</c> loop declaration is optional (initialization; Boolean
-      expression; update), but the semicolons are not optional.
+      Remember the three step process we went through in the previous section
+      for building a counting <c>while</c> loop?
+
+      <ol>
+        <li>Initialize the loop variable</li>
+
+        <li>Test the loop variable</li>
+
+        <li>Update the loop variable</li>
+      </ol>
     </p>
 
-    <program language="java">
-      <code>
-        for (initialize; test; update)
-        {
-           loop body
+    <p>
+      The purpose of a <c>for</c> loop is to provide a structure that gives us
+      an easy way to put all three of those parts into the loop header instead
+      of having to remember to initialize the loop variable before the loop and
+      to remember to update the loop variable before the end of the body the way
+      we have to do in a <c>while</c> loop.
+    </p>
+
+    <p>
+      The basic structure looks like this:
+    </p>
+
+    <program>
+        for (initializer; condition; updater) {
+           body
         }
-      </code>
     </program>
 
     <p>
-      The for-loop is almost a shortcut way to write a while loop with all three
-      steps that you need in one line. A <c>for</c> loop can be rewritten into
-      an equivalent <c>while</c> loop (and vice versa).
+      So instead of a single <c>boolean</c> condition as we have in a while
+      loop, the stuff in parentheses is a bit more complicated: three parts
+      separated by semicolons (<c>;</c>).
+
+    </p>
+
+    <p>
+      Here is a control flow diagram for a for loop. If you compare this to the
+      flow chart for of a <c>while</c> loop from in the previous section, you’ll
+      see that the main difference is that some parts that weren’t explicitly
+      part of the <c>while</c> loop now get their own nodes in the chart.
+    </p>
+
+    <figure align="center">
+      <caption>Control flow in a for loop</caption>
+
+      <image source="_static/img/for-loop-flowchart.svg" width="30%" />
+    </figure>
+
+    <p>
+      The first item in the parentheses of the <c>for</c> loop header is, the
+      <term>initializer</term> is a single statement that initializes the loop
+      variable. Usually it also declares the variable, like <c>int i = 0</c>. As
+      you can see from the flow chart, the initializer runs just once at the
+      beginning of the loop.
+    </p>
+
+    <p>
+      After the initializer comes the <term>condition</term>, a <c>boolean</c>
+      expression that acts just like the condition in a <c>while</c> loop; as
+      long as it is true the loop body executes. When it is true the program
+      proceeds to the body. When the condition is false we leave the loop and go
+      to whatever comes after it in the program.
+    </p>
+
+    <p>
+      The final item in parentheses, the <term>updater</term>, is a statement
+      that, as the flow chart shows, runs immediately after the body. Its job is
+      to update the loop variable before control loops back to the condition.
+    </p>
+
+    <note>
+      <p>
+        Two of the most common ways to use a <c>for</c> loops is to count from 0
+        up to an number (using &lt;) or count from 1 to the number including the
+        number (using &lt;=). Remember that if you start at 0 use &lt;, and if
+        you start at 1, use &lt;=. The two loops below using these two patterns
+        both run 10 times. The variable i (for index) is often used as a counter
+        in for-loops.
+      </p>
+
+      <program>
+        <code>
+          <![CDATA[
+
+          // These loops both run 10 times
+
+          // If you start at 0, use <
+          for (int i = 0; i < 10; i++) {
+             System.out.println(i);
+          }
+
+          // If you start at 1, use <=
+          for (int i = 1; i <= 10; i++) {
+             System.out.println(i);
+          }
+
+          ]]>
+        </code>
+      </program>
+    </note>
+  </subsection>
+
+  <subsection>
+    <title>Equivalence of <c>for</c> and <c>while</c> loops.</title>
+
+    <p>
+      You may be thinking that there doesn’t seem to be anything you can do with
+      a <c>for</c> loop that you can’t do with a <c>while</c> loop. And you’d be
+      right. In fact it is completely straight forward to translate between the
+      two.
     </p>
 
     <figure align="center">
@@ -63,37 +170,49 @@
     </figure>
 
     <p>
-      Watch the following <url
+      For a very good walkthrough of how <c>for</c> and <c>while</c> loops are
+      equivalent, watch the following <url
       href="https://www.youtube.com/watch?v=SEDnzXeb2hU&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;index=9&amp;ab_channel=colleenlewis"
       visual="https://www.youtube.com/watch?v=SEDnzXeb2hU&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;index=9&amp;ab_channel=colleenlewis">video</url>
-      which compares a while loop and for loop line by line.
+      which compares a <c>while</c> loop and <c>for</c> loop line by line.
     </p>
 
     <video youtube="SEDnzXeb2hU" label="video-for-loop" />
+
     <p>
-      Here is a control flow diagram for a for loop. In a <c>for</c> loop, the
-      initialization statement is only executed once before the first Boolean
-      expression evaluation. The variable being initialized is referred to as a
-      <term>loop control variable</term>. The Boolean expression is evaluated
-      immediately after the loop control variable is initialized and then
-      followed by each execution of the increment statement until it is false.
-      In each iteration, the update is executed after the entire loop body is
-      executed and before the Boolean expression is evaluated again. When the
-      loop condition is finally false, we jump out of the loop and continue at
-      the next statement after the body of the loop.
+      So why have both kinds of loops? And which should we use when? Since
+      anything we can write with one, we can write with the other, it really
+      comes down to convenience and expressing our intent.
     </p>
 
-    <figure align="center">
-      <caption>Control flow in a for loop</caption>
+    <p>
+      The advantage of the <c>for</c> loop is that we can see at a glance, by
+      looking at the loop header the overall structure of the loop: where the
+      loop variable starts, what the loop’s condition is, and how the loop
+      variable changes on each iteration of the loop. So when a loop is simple
+      and fits into the pattern of a basic counting loop it makes sense to use a
+      <c>for</c> loop. It’s easy to read once you get used to it and it’s a
+      signal that this is just a regular loop.
+    </p>
 
-      <image source="Unit2-Selection-and-Iteration/Figures/ForLoopFlow.png" width="45%" />
-    </figure>
+    <p>
+      The <c>while</c> loop, on the other hand, is infinitely flexible. It’s
+      great, as we saw in the last chapter, for loops where we don’t know how
+      many times the loop is going to execute until we’ve run it. And in even
+      more complex loops where maybe there’s some complicated code to decide how
+      to update the loop variable, or maybe when there are multiple loop
+      variables, trying to fit all that into a <c>for</c> loop header is going
+      to get to complicated. In that case a <c>while</c> loop is a better
+      choice.
+    </p>
+
+
 
     <activity label="forloop">
       <statement>
         <p>
-          Here is a for loop that counts from 1 to 5. Can you change it to count
-          from 2 to 10?
+          Here is a <c>for</c> loop that counts from <c>1</c> to <c>5</c>. Can
+          you change it to count from <c>2</c> to <c>10</c>?
         </p>
       </statement>
 
@@ -101,12 +220,9 @@
         <code>
           <![CDATA[
 
-          public class ForLoop
-          {
-              public static void main(String[] args)
-              {
-                  for (int count = 1; count <= 5; count++)
-                  {
+          public class ForLoop {
+              public static void main(String[] args) {
+                  for (int count = 1; count <= 5; count++) {
                       System.out.println(count);
                   }
               }
@@ -140,9 +256,9 @@
     <activity label="forloopfromwhile">
       <statement>
         <p>
-          Here is a while loop that counts from 5 to 10. Run it and see what it
-          does. Can you change it to a for-loop? Run your for-loop. Does it do
-          the same thing?
+          Here is a while loop that counts from <c>5</c> to <c>10</c>. Run it
+          and see what it does. Can you change it to a <c>for</c> loop? Run your
+          <c>for</c> loop. Does it do the same thing?
         </p>
       </statement>
 
@@ -150,13 +266,10 @@
         <code>
           <![CDATA[
 
-          public class ForLoopFromWhile
-          {
-              public static void main(String[] args)
-              {
+          public class ForLoopFromWhile {
+              public static void main(String[] args) {
                   int count = 5;
-                  while (count <= 10)
-                  {
+                  while (count <= 10) {
                       System.out.println(count);
                       count++;
                   }
@@ -210,52 +323,18 @@
       </program>
     </activity>
 
-    <note>
-      <p>
-        Two common patterns in for-loops are to count from 0 up to an number
-        (using &lt;) or count from 1 to the number including the number (using
-        &lt;=). Remember that if you start at 0 use &lt;, and if you start at 1,
-        use &lt;=. The two loops below using these two patterns both run 10
-        times. The variable i (for index) is often used as a counter in
-        for-loops.
-      </p>
-
-      <program language="java">
-        <code>
-          <![CDATA[
-
-          // These loops both run 10 times
-          // If you start at 0, use <
-          for(int i = 0; i < 10; i++)
-          {
-             System.out.println(i);
-          }
-          // If you start at 1, use <=
-          for(int i = 1; i <= 10; i++)
-          {
-             System.out.println(i);
-          }
-
-          ]]>
-        </code>
-      </program>
-    </note>
-
     <activity label="mcq-for-1">
       <statement>
         <p>What does the following code print?</p>
 
-        <program language="java">
-          <code>
+        <program>
             <![CDATA[
 
-            for (int i = 3; i < 8; i++)
-            {
+            for (int i = 3; i < 8; i++) {
                System.out.print(i + " ");
             }
 
             ]]>
-          </code>
         </program>
       </statement>
 
@@ -317,16 +396,13 @@
         <p>What does the following code print?</p>
 
         <program language="java">
-          <code>
             <![CDATA[
 
-            for (int i = 1; i <= 10; i++)
-            {
+            for (int i = 1; i <= 10; i++) {
                System.out.print(i + " ");
             }
 
             ]]>
-          </code>
         </program>
       </statement>
 
@@ -380,17 +456,14 @@
       <statement>
         <p>How many times does the following method print a <c>*</c>?</p>
 
-        <program language="java">
-          <code>
+        <program>
             <![CDATA[
 
-            for (int i = 3; i <= 9; i++)
-            {
+            for (int i = 3; i <= 9; i++) {
                System.out.print("*");
             }
 
             ]]>
-          </code>
         </program>
       </statement>
 
@@ -411,10 +484,7 @@
           </statement>
 
           <feedback>
-            <p>
-              Since i starts at 3 and the last time through the loop it is 9 the
-              loop executes 7 times (9 - 3 + 1 = 7)
-            </p>
+            <p>How many numbers are between 3 and 9 (including 3 and 9)?</p>
           </feedback>
         </choice>
 
@@ -424,7 +494,10 @@
           </statement>
 
           <feedback>
-            <p>How many numbers are between 3 and 9 (including 3 and 9)?</p>
+            <p>
+              Since i starts at 3 and the last time through the loop it is 9 the
+              loop executes 7 times (9 - 3 + 1 = 7)
+            </p>
           </feedback>
         </choice>
 
@@ -458,13 +531,11 @@
 
       <blocks>
         <block order="1">
-          <cline>public static void printEvens()</cline>
-          <cline>{</cline>
+          <cline>public static void printEvens() {</cline>
         </block>
 
         <block order="4">
-          <cline>   for (int i = 0; i &lt;= 10; i+=2)</cline>
-          <cline>   {</cline>
+          <cline>   for (int i = 0; i &lt;= 10; i+=2) {</cline>
         </block>
 
         <block order="5">
@@ -483,21 +554,48 @@
   </subsection>
 
   <subsection xml:id="decrementing-loops">
-    <title>Decrementing Loops</title>
+    <title>Counting backwards</title>
 
     <p>
-      You can also count backwards in a loop starting from the last number and
-      decrementing down to 0 or 1. All 3 parts of the loop must change to count
-      backwards including the test of when to stop. For example, <c>for (int
-      i=5; i &gt; 0; i--)</c> counts from 5 down to 1.
+      You can also write <c>for</c>loops that count backwards starting at a big
+      number and decrementing the loop variable until it is some small number,
+      usually 0 or 1. If you want to change a forwards loop into a backwards
+      loop that runs with the same values of the loop variable, just counting
+      down instead of up, all three parts of the loop header must change. For
+      example, the forwards loop on the left which starts at <c>1</c> and goes
+      up to <c>5</c> has to change to the backwards loop on the right to count
+      down from <c>5</c> down to <c>1</c>.
     </p>
+
+    <sidebyside>
+      <listing>
+        <title>Forwards loop</title>
+      <program>
+        <![CDATA[
+        for (int i = 1; i <= 5; i++) {
+        }
+        ]]>
+      </program>
+      </listing>
+
+      <listing>
+        <title>Backwads loop</title>
+      <program>
+        <![CDATA[
+        for (int i = 5; i > 0; i--) {
+        }
+        ]]>
+      </program>
+      </listing>
+    </sidebyside>
 
     <activity label="for-bottles-backwards">
       <statement>
         <p>
           What do you think will happen when you run the code below? How would
-          it change if you changed line 11 to initialize i’s value to 3? Try the
-          Code Lens button to visualize and trace through this code.
+          it change if you changed the initializer to start <c>i</c>’s value at
+          <c>3</c>? Try the Code Lens button to visualize and trace through this
+          code.
         </p>
       </statement>
 
@@ -505,29 +603,21 @@
         <code>
           <![CDATA[
 
-          public class SongTest
-          {
+          public class SongTest {
 
-              public static void printPopSong()
-              {
+              public static void main(String[] args) {
                   String line1 = " bottles of pop on the wall";
                   String line2 = " bottles of pop";
                   String line3 = "Take one down and pass it around";
 
                   // loop 5 times (5, 4, 3, 2, 1)
-                  for (int i = 5; i > 0; i--)
-                  {
+                  for (int i = 5; i > 0; i--) {
                       System.out.println(i + line1);
                       System.out.println(i + line2);
                       System.out.println(line3);
                       System.out.println((i - 1) + line1);
                       System.out.println();
                   }
-              }
-
-              public static void main(String[] args)
-              {
-                  SongTest.printPopSong();
               }
           }
 
@@ -582,11 +672,12 @@
     </activity>
 
     <p>
-      The method <term>printPopSong</term> prints the words to a song. It
-      initializes the value of the variable i equal to 5 and then checks if i is
-      greater than 0. Since 5 is greater than 0, the body of the loop executes.
-      Before the condition is checked again, i is decreased by 1. When the value
-      in i is equal to 0 the loop stops executing.
+      The program above prints the words to a song. It initializes the value of
+      the variable <c>i</c> to <c>5</c> and then checks if <c>i</c> is greater
+      than <c>0</c>. Since <c>5</c> is greater than <c>0</c>, the body of the
+      loop executes. Before the condition is checked again, <c>i</c> is
+      decreased by <c>1</c>. When the value of <c>i</c> is <c>0</c> it is no
+      longer greater than <c>0</c> and the loop stops executing.
     </p>
 
     <activity label="forloop-backwards">
@@ -601,12 +692,9 @@
         <code>
           <![CDATA[
 
-          public class ForLoop
-          {
-              public static void main(String[] args)
-              {
-                  for (int count = 1; count <= 5; count++)
-                  {
+          public class ForLoop {
+              public static void main(String[] args) {
+                  for (int count = 1; count <= 5; count++) {
                       System.out.println(count);
                   }
               }
@@ -639,7 +727,7 @@
   </subsection>
 
   <subsection xml:id="coding-challenge-turtles-drawing-shapes">
-    <title>Coding Challenge : Turtles Drawing Shapes</title>
+    <title>Coding Challenge: Turtles Drawing Shapes</title>
 
     <p>
       Let’s use a <c>for</c> loop to have a Turtle draw different shapes. We
@@ -652,7 +740,7 @@
     </p>
 
     <p>
-      <ol marker="1">
+      <ol>
         <li>
           <p>
             Complete the <c>drawSquare</c> method to use a <c>for</c> loop to
@@ -720,53 +808,37 @@
           import java.awt.*;
           import java.util.*;
 
-          public class TurtleDrawShapes
-          {
+          public class TurtleDrawShapes {
 
-              public static void drawSquare(Turtle t)
-              {
+              public static void drawSquare(Turtle t) {
                   t.setColor(Color.blue);
                   // 1. Complete the following for loop to draw a square with 4 sides
-                  for(int i = 0;                )
-                  {
+                  for(int i = 0;       ;        ) {
                       t.forward(100);
                       t.turn(90);
                   }
               }
 
-              public static void drawTriangle(Turtle t)
-              {
+              public static void drawTriangle(Turtle t) {
                   t.setColor(Color.green);
                   // 2. Use a for loop to draw a triangle
                   // External angles of 3 sides add up to 360.
-
-
-
               }
 
-              public static void drawPentagon(Turtle t)
-              {
+              public static void drawPentagon(Turtle t) {
                   t.setColor(Color.red);
                   // 3. Use a for loop to draw a pentagon
                   // External angles of 5 sides add up to 360.
-
-
-
               }
 
-              public static void drawShape(Turtle t, int n, int pixels)
-              {
+              public static void drawShape(Turtle t, int n, int pixels) {
                   t.setColor(Color.black);
                   // 4. Use a for loop to draw a polygon with n sides.
                   // Use the argument pixels to move forward.
                   // Use 360 and n to determine the angle to turn.
-
-
-
               }
 
-              public static void main(String[] args)
-              {
+              public static void main(String[] args) {
                   World world = new World(400, 400);
                   Turtle yertle = new Turtle(world);
                   yertle.penUp();
@@ -787,8 +859,7 @@
 
                   // 5. Call drawShapes to draw a hexagon (6 sides) of length 20
 
-
-
+                  // Leave this call here to draw everything.
                   world.show(true);
               }
           }
@@ -948,28 +1019,23 @@
             <![CDATA[
 
             I.  int sum = 0;
-                for(int count = 0; count <= 6; count++)
-                {
+                for (int count = 0; count <= 6; count++) {
                     count++;
-                    if (count % 2 == 0)
-                    {
+                    if (count % 2 == 0) {
                          sum += count;
                     }
                 }
                 System.out.println(sum);
 
             II. int sum = 0;
-                for(int i = 0; i <= 6; i += 2)
-                {
+                for (int i = 0; i <= 6; i += 2) {
                    sum += i;
                 }
                 System.out.println(sum);
 
             III. int sum = 0;
-                 for(int j = 7; j > 1; j--)
-                 {
-                    if (j % 2 == 0)
-                    {
+                 for (int j = 7; j > 1; j--) {
+                    if (j % 2 == 0) {
                          sum += j;
                     }
                  }
@@ -1055,8 +1121,7 @@
             <![CDATA[
 
             int result = 1;
-            for(int i = 3; i < 6; i += 2)
-            {
+            for (int i = 3; i < 6; i += 2) {
               result *= i;
             }
             System.out.println(result);

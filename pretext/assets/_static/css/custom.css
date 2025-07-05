@@ -293,15 +293,26 @@ table .align-default, td {
   text-align: left;
 }
 
-.ptx-content .sbspanel > img {
-  padding: 1em;
-}
+/* .ptx-content .sbspanel > img { */
+/*   padding: 1em; */
+/* } */
 
 .MathJax {
     font-size: var(--content-font-size) !important;
 }
 
 
-.sidebyside .sbsrow {
-  gap: 1em;
+/* .sidebyside .sbsrow { */
+/*   gap: 1em; */
+/* } */
+
+.sbspanel.top > div {
+  background: black;
+  color: white;
+  padding: 0.5em;
+  text-align: center;
+}
+
+.sbspanel.top > :nth-child(2) {
+  padding: 1em;
 }
