@@ -306,13 +306,13 @@ table .align-default, td {
 /*   gap: 1em; */
 /* } */
 
-.sbspanel.top > div {
-  background: black;
-  color: white;
-  padding: 0.5em;
-  text-align: center;
-}
+/* .sbspanel.top > div { */
+/*   background: black; */
+/*   color: white; */
+/*   padding: 0.5em; */
+/*   text-align: center; */
+/* } */
 
-.sbspanel.top > :nth-child(2) {
-  padding: 1em;
-}
+/* .sbspanel.top > :nth-child(2) { */
+/*   padding: 1em; */
+/* } */
