@@ -2,6 +2,7 @@
 
 <section xml:id="topic-1-2-variables">
   <title>Variables</title>
+
   <introduction>
     <p>
       Computers operate on <term>data</term> which is stored as
@@ -19,6 +20,7 @@
 
   <subsection xml:id="what-is-a-variable">
     <title>What is a variable?</title>
+
     <idx>variable</idx>
     <p>
       There are two aspects to a <term>variable</term>. To the computer a
@@ -40,9 +42,12 @@
 
     <figure align="center">
       <caption>
-        A pong game in <reference name="Scratch"
-        refuri="http://scratch.mit.edu">Scratch</reference> <target
-        ids="scratch" names="scratch" refuri="http://scratch.mit.edu" /> with a
+        A pong game in
+        <reference name="Scratch" refuri="http://scratch.mit.edu">
+          Scratch
+        </reference>
+
+        <target ids="scratch" names="scratch" refuri="http://scratch.mit.edu" /> with a
         score shown in the upper left.
       </caption>
 
@@ -52,39 +57,19 @@
 
   <subsection xml:id="data-types">
     <title>Data types</title>
+
     <idx>integer</idx>
     <idx>int</idx>
     <idx>double</idx>
     <idx>boolean</idx>
     <idx>String</idx>
-    <idx>
-      <h>variable</h><h>types</h>
-    </idx>
-
-    <idx>
-      <h>variable</h><h>primitive type</h>
-    </idx>
-
-    <idx>
-      <h>variable</h><h>object type</h>
-    </idx>
-
-    <idx>
-      <h>variable</h><h>integer</h>
-    </idx>
-
-    <idx>
-      <h>variable</h><h>floating point</h>
-    </idx>
-
-    <idx>
-      <h>variable</h><h>Boolean</h>
-    </idx>
-
-    <idx>
-      <h>variable</h><h>String</h>
-    </idx>
-
+    <idx><h>variable</h><h>types</h></idx>
+    <idx><h>variable</h><h>primitive type</h></idx>
+    <idx><h>variable</h><h>object type</h></idx>
+    <idx><h>variable</h><h>integer</h></idx>
+    <idx><h>variable</h><h>floating point</h></idx>
+    <idx><h>variable</h><h>Boolean</h></idx>
+    <idx><h>variable</h><h>String</h></idx>
     <p>
       In Java, in addition to a name, every variable has a <term>data
       type</term> that determines what kind of data it can hold. There are two
@@ -255,7 +240,9 @@
           </statement>
 
           <feedback>
-            <p>Is the number of people something that is either true or false?</p>
+            <p>
+              Is the number of people something that is either true or false?
+            </p>
           </feedback>
         </choice>
 
@@ -458,13 +445,11 @@
 
   <subsection xml:id="declaring-variables-in-java">
     <title>Declaring variables in Java</title>
+
     <idx>bit</idx>
     <idx>binary digit</idx>
     <idx>declare</idx>
-    <idx>
-      <h>variable</h><h>declare</h>
-    </idx>
-
+    <idx><h>variable</h><h>declare</h></idx>
     <p>
       To create a variable, you must tell Java its data type and its name.
       Creating a variable is also called <term>declaring a variable</term>. The
@@ -504,9 +489,10 @@
     </p>
 
     <p>Here is an example declaration of a variable called score.</p>
+
     <program language="java">
       <code>
-int score;
+        int score;
       </code>
     </program>
 
@@ -517,8 +503,8 @@ int score;
 
     <program language="java">
       <code>
-int score;
-score = 4;
+        int score;
+        score = 4;
       </code>
     </program>
 
@@ -530,7 +516,7 @@ score = 4;
 
     <program language="java">
       <code>
-int score = 4;
+        int score = 4;
       </code>
     </program>
 
@@ -565,49 +551,50 @@ int score = 4;
 
       <program interactive="activecode" language="java">
         <code>
-public class Test2
-{
-    public static void main(String[] args)
-    {
-        int score;
-        score = 0;
-        System.out.print("The score is ");
-        System.out.println(score);
+          public class Test2
+          {
+              public static void main(String[] args)
+              {
+                  int score;
+                  score = 0;
+                  System.out.print("The score is ");
+                  System.out.println(score);
 
-        double price = 23.25;
-        System.out.println("The price is " + price);
+                  double price = 23.25;
+                  System.out.println("The price is " + price);
 
-        boolean won = false;
-        System.out.println(won);
-        won = true;
-        System.out.println(won);
+                  boolean won = false;
+                  System.out.println(won);
+                  won = true;
+                  System.out.println(won);
 
-        String name = "Jose";
-        System.out.println("Hi " + name);
-    }
-}
+                  String name = "Jose";
+                  System.out.println("Hi " + name);
+              }
+          }
         </code>
+
         <tests>
-// should pass if/when they run code
-import static org.junit.Assert.*;
+          // should pass if/when they run code
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect =
-                "The score is 0\nThe price is 23.25\nfalse\ntrue\nHi Jose";
-        boolean passed =
-                getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect =
+                          "The score is 0\nThe price is 23.25\nfalse\ntrue\nHi Jose";
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -622,9 +609,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="var_declare">
       <statement>
-        <p>
-          Click on all of the variable declarations in the following code.
-        </p>
+        <p>Click on all of the variable declarations in the following code.</p>
       </statement>
 
       <feedback>
@@ -699,36 +684,37 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class Test3
-{
-    public static void main(String[] args)
-    {
-        int score;
-        4 = score;
-        System.out.println(score);
-    }
-}
+          public class Test3
+          {
+              public static void main(String[] args)
+              {
+                  int score;
+                  4 = score;
+                  System.out.println(score);
+              }
+          }
         </code>
+
         <tests>
-// should pass if/when they run code
-import static org.junit.Assert.*;
+          // should pass if/when they run code
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "4";
-        boolean passed =
-                getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "4";
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -741,8 +727,8 @@ public class RunestoneTests extends CodeTestHelper
         </p>
 
         <p>
-          <fillin answer="int" mode="string" /><c>age =</c> <fillin
-          mode="number" answer="5" /><!-- this will use a number input
+          <fillin answer="int" mode="string" /><c>age =</c> 
+          <fillin mode="number" answer="5" /><!-- this will use a number input
           --><c>;</c>
         </p>
       </statement>
@@ -751,12 +737,17 @@ public class RunestoneTests extends CodeTestHelper
         <evaluate>
           <test>
             <strcmp use-answer="yes" />
-            <feedback>Correct! You typically use whole numbers for ages after age 1.</feedback>
+            <feedback>
+              Correct! You typically use whole numbers for ages after age 1.
+            </feedback>
           </test>
 
           <test>
             <strcmp>int.+</strcmp>
-            <feedback>Remember that Java uses just the first 3 letters of integer</feedback>
+
+            <feedback>
+              Remember that Java uses just the first 3 letters of integer
+            </feedback>
           </test>
 
           <test>
@@ -781,6 +772,7 @@ public class RunestoneTests extends CodeTestHelper
     <activity label="fillDecVar2">
       <statement>
         <p>What type should you use for a shoe size like 8.5?</p>
+
         <p>
           <fillin answer="double" mode="string" />
         </p>
@@ -791,7 +783,8 @@ public class RunestoneTests extends CodeTestHelper
           <test>
             <strcmp use-answer="yes" />
             <feedback>
-              Correct.  Any variable that needs to values after the decimal point should be declared as a double.
+              Correct. Any variable that needs to values after the decimal point
+              should be declared as a double.
             </feedback>
           </test>
 
@@ -806,6 +799,7 @@ public class RunestoneTests extends CodeTestHelper
     <activity label="fillDecVar3">
       <statement>
         <p>What type should you use for a number of tickets?</p>
+
         <p>
           <fillin answer="int" mode="string" />
         </p>
@@ -831,9 +825,7 @@ public class RunestoneTests extends CodeTestHelper
       </evaluation>
     </activity>
 
-    <p>
-      <term>Mixed up Code Problems</term>
-    </p>
+    <p><term>Mixed up Code Problems</term></p>
 
     <activity label="declareVars1" numbered="yes" adaptive="yes" indentation="hide" language="java">
       <statement>
@@ -884,10 +876,8 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="naming-variables">
     <title>Naming Variables</title>
-    <idx>
-      <h>variable</h><h>names</h>
-    </idx>
 
+    <idx><h>variable</h><h>names</h></idx>
     <p>
       While you can name your variable almost anything, there are some rules. A
       variable name should start with an alphabetic character (like a, b, c,
@@ -934,19 +924,14 @@ public class RunestoneTests extends CodeTestHelper
           </li>
 
           <li>
-            <p>
-              Never put variables inside quotes (<c>""</c>).
-            </p>
+            <p>Never put variables inside quotes (<c>""</c>).</p>
           </li>
         </ul>
       </p>
     </note>
 
     <idx>camel case</idx>
-    <idx>
-      <h>variable</h><h>naming convention</h>
-    </idx>
-
+    <idx><h>variable</h><h>naming convention</h></idx>
     <p>
       The convention in Java and many programming languages is to always start a
       variable name with a lower case letter and then uppercase the first letter
@@ -969,35 +954,36 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class CaseSensitiveClass
-{
-    public static void main(String[] args)
-    {
-        int gameScore = 0; // variable name using camel case
-        // this is using a different variable without camel case!
-        System.out.println("gameScore is " + gamescore);
-    }
-}
+          public class CaseSensitiveClass
+          {
+              public static void main(String[] args)
+              {
+                  int gameScore = 0; // variable name using camel case
+                  // this is using a different variable without camel case!
+                  System.out.println("gameScore is " + gamescore);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "gameScore is 0\n";
-        boolean passed =
-                getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "gameScore is 0\n";
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -1074,6 +1060,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="debugging-challenge-weather-report">
     <title>Debugging Challenge : Weather Report</title>
+
     <p>
       Debug the following code that reads out a weather report. Make sure the
       data types match the values put into the variables. Can you find all the
@@ -1091,45 +1078,46 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class Challenge1_2_weather
-{
-   public static void main(String[] args)
-   {
-       int temperature = 70.5;
-       double tvChannel = 101;
-       boolean sunny = 1
+          public class Challenge1_2_weather
+          {
+             public static void main(String[] args)
+             {
+                 int temperature = 70.5;
+                 double tvChannel = 101;
+                 boolean sunny = 1
 
-       System.out.print("Welcome to the weather report on Channel ")
-       System.out.println(TVchannel);
-       System.out.print("The temperature today is );
-       System.out.println(tempurature);
-       System.out.print("Is it sunny today? ");
-       System.out.println(sunny);
-   }
-}
+                 System.out.print("Welcome to the weather report on Channel ")
+                 System.out.println(TVchannel);
+                 System.out.print("The temperature today is );
+                 System.out.println(tempurature);
+                 System.out.print("Is it sunny today? ");
+                 System.out.println(sunny);
+             }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect =
-                "Welcome to the weather report on Channel 101 \n"
-                    + "The temperature today is 70.5\n"
-                    + "Is it sunny today? true";
-        boolean passed =
-                getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect =
+                          "Welcome to the weather report on Channel 101 \n"
+                              + "The temperature today is 70.5\n"
+                              + "Is it sunny today? true";
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </project>
@@ -1137,6 +1125,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-7">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -1158,19 +1147,15 @@ public class RunestoneTests extends CodeTestHelper
           <p>
             A variable can be declared and initialized with the following code:
           </p>
+
+          <program language="java">
+            <code>
+              int score;
+              double gpa = 3.5;
+            </code>
+          </program>
         </li>
-      </ul>
-    </p>
 
-    <program language="java">
-      <code>
-int score;
-double gpa = 3.5;
-      </code>
-    </program>
-
-    <p>
-      <ul>
         <li>
           <p>
             (AP 1.2.A.1) A <term>data type</term> is a set of values and a
@@ -1214,6 +1199,7 @@ double gpa = 3.5;
 
   <subsection xml:id="ap-practice-6">
     <title>AP Practice</title>
+
     <activity label="AP1-2-types">
       <statement>
         <p>
