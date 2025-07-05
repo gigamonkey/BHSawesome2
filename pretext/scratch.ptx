@@ -545,6 +545,11 @@ b = "at our high school"
       </p>
     </note>
 
+    <figure align="center">
+      <caption>Comparing App Inventor and Java for loops</caption>
+
+      <image source="Unit2-Selection-and-Iteration/Figures/loopAppInv.png" width="100%" />
+    </figure>
 
   </subsection>
 
