@@ -5,6 +5,7 @@
   <introduction />
   <xi:include href="./topic-1-15-strings.ptx" />
   <xi:include href="./topic-1-14-calling-instance-methods.ptx" />
+  <xi:include href="./topic-2-10-strings-loops.ptx" />
   <xi:include href="./topic-3-3-anatomy-of-class.ptx" />
   <xi:include href="./topic-3-4-constructors.ptx" />
   <xi:include href="./topic-3-5-methods.ptx" />

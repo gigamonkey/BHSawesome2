@@ -550,7 +550,348 @@ b = "at our high school"
 
       <image source="Unit2-Selection-and-Iteration/Figures/loopAppInv.png" width="100%" />
     </figure>
+    <p>
+      If you took AP CSP with a block programming language like App Inventor,
+      you may have used a loop block like below that looks very similar to Java
+      <c>while</c> loops (or you may have used a <c>for</c> loop which will be
+      covered in the next lesson). Almost every programming language has a
+      <c>while</c> loop.
+    </p>
+
+    <figure>
+      <caption>
+        Comparing App Inventor while block and Java <c>while</c> loops
+      </caption>
+
+      <image source="Unit2-Selection-and-Iteration/Figures/whileInAppInventor.png" width="100%" />
+    </figure>
+
 
   </subsection>
+
+  <!-- moved out because I have the whole set of primes bootups. -->
+
+  <subsection xml:id="divisibility">
+    <title>Divisibility</title>
+
+    <p>
+      To determine if an integer is evenly divisible by another integer, you can
+      use the remainder operator <c>%</c>. If you divide two numbers and there
+      is no remainder, then the first number is evenly divisible by the second
+      number. The remainder operator is often used to check if a number is even
+      or odd: if <c>num % 2 == 0</c> is true, then <c>num</c> is even. But it
+      can be used to check if any number is divisible by another. For example,
+      10 is evenly divisible by 5 because 10 divided by 5 is 2 with no (0)
+      remainder.
+    </p>
+
+    <program language="java">
+      <code>
+        int num1 = 10;
+        int num2 = 5;
+        if (num1 % num2 == 0)
+        {
+            System.out.println(num1 + " is evenly divisible by " + num2);
+        }
+        else
+        {
+            System.out.println(num1 + " is not evenly divisible by " + num2);
+        }
+      </code>
+    </program>
+
+    <p>
+      The selection statement above can be put in a loop to determine if a
+      number is divisible by a range of numbers. For example, you can determine
+      if a number is prime by checking if it is divisible by any number between
+      2 and n-1 (or even the square root of the number since multiples of
+      numbers repeat after the square root). Remember that a prime number is a
+      number that is only divisible by 1 and itself, so if you find any other
+      divisor, the number is not prime.
+    </p>
+
+    <activity label="isPrimeLoop">
+      <statement>
+        <p>
+          Complete the isPrime method below to determine if a number n is prime
+          by checking if it is evenly divisible by any number between 2 and n-1
+          or the square root of n.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+          public class PrimeNumbers
+          {
+              // isPrime checks whether n is a prime number
+              public static boolean isPrime(int n)
+              {
+                  // Add a loop from 2 to n-1 or Math.sqrt(n)
+                  //   if n is divisible by the loop variable i
+                  //        return false
+
+
+
+                  // if no divisor found after loop, return true
+                  return true;
+              }
+
+
+              public static void main(String[] args)
+              {
+                  System.out.println("Is 4 prime? " + isPrime(4));
+                  System.out.println("Is 5 prime? " + isPrime(5));
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("PrimeNumbers");
+              }
+
+              @Test
+              public void test1() throws IOException
+              {
+                  String target = "for";
+                  boolean passed = checkCodeContains("for loop", target);
+                  assertTrue(passed);
+              }
+
+               @Test
+              public void testMain() throws IOException
+              {
+                  String expected = "Is 4 prime? false\nIs 5 prime? true";
+                  String output = getMethodOutput("main");
+                  boolean passed = getResults(expected, output, "Checking main output");
+                  assertTrue(passed);
+              }
+
+             @Test
+             public void testCall() throws IOException
+             {
+                 Object[] args = {9};
+                 String output = getMethodOutput("isPrime", args);
+                 String expect = "false";
+
+                 boolean passed =
+                         getResults(
+                                 expect,
+                                 output,
+                                 "isPrime(9)"
+                                 );
+                 assertTrue(passed);
+             }
+
+              @Test
+             public void testBool() throws IOException
+             {
+                 String target = "n % i == 0";
+                 boolean passed = checkCodeContains(target + " test", target);
+                 assertTrue(passed);
+             }
+          }
+        </tests>
+      </program>
+    </activity>
+  </subsection>
+
+    <subsection xml:id="coding-challenge-prime-number-finder">
+    <title>Coding Challenge : Prime Number Finder</title>
+
+    <p>
+      Prime numbers (numbers that are only divisible by 1 and themselves) are
+      used every day in encryption algorithms that safely transmit your username
+      and password whenever you login on the internet. Two large prime numbers
+      are multiplied together to generate partial keys for encoding and decoding
+      in encryption algorithms. If you have the key, you can use it to divide a
+      large number that represents something encrypted to decode it, but if you
+      don’t have the key, it’s very hard to guess the prime factors of a large
+      number to decode it. Small prime numbers can be easily guessed, so
+      encryption only uses very large prime numbers with hundreds of digits.
+      Finding these large prime numbers is a very hard problem. As numbers grow,
+      primes become less frequent, due to the increasing likelihood of
+      divisibility by smaller primes. If you’re curious about the use of prime
+      numbers in encryption, watch this <url
+      href="https://www.youtube.com/watch?v=M7kEpw1tn50"
+      visual="https://www.youtube.com/watch?v=M7kEpw1tn50">Numberphile
+      video</url>.
+    </p>
+
+    <p>In the challenge below,</p>
+
+    <p>
+      <ol marker="1">
+        <li>
+          <p>
+            First, copy your <c>isPrime</c> method from the exercise above to
+            check if a number is prime.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Then, write a method <c>findPrimes</c> that takes two integers as
+            arguments and prints the prime numbers between them. It should
+            return a count of the prime numbers found.
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <project label="challenge-find-primes">
+      <statement>
+        <p>
+          Copy your isPrime method from the previous exercise and write a method
+          findPrimes that takes two integers as arguments and prints the prime
+          numbers between them. It should return a count of the prime numbers
+          found.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+          public class FindPrimeNumbers
+          {
+              // isPrime checks whether n is a prime number
+              public static boolean isPrime(int n)
+              {
+                  // 1. Copy your isPrime method here
+                  // It should have a loop from 2 to n-1 or Math.sqrt(n)
+                  //   if n is divisible by the loop variable i
+                  //        return false
+
+
+
+                  // if no divisor found after loop, return true
+                  return true;
+              }
+
+              // 2. Complete findPrimes to print and return
+              // the number of prime numbers between num1 and num2
+              public static int findPrimes(int num1, int num2)
+              {
+                  int count = 0;
+                  // Add a loop from num1 to num2 to check
+                  // if each number is prime using isPrime
+                  // If it is prime, print it and increment count
+
+
+                  return count;
+              }
+
+              public static void main(String[] args)
+              {
+                  System.out.println("There are " + findPrimes(2, 100) + " prime numbers between 2 and 100.");
+                  // You may see the grader's test runs in the output.
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("FindPrimeNumbers");
+              }
+
+              @Test
+              public void test1() throws IOException
+              {
+                  String code = getCode();
+                  String target = "for (int * = #; * ? *; *~)";
+
+                  int num = countOccurencesRegex(code, target);
+
+                  boolean passed = num == 2;
+
+                  getResults("2", "" + num, "Each method should have a for loop", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testMain() throws IOException
+              {
+                  String expected = "There are 25 prime numbers between 2 and 100.";
+                  String output = getMethodOutput("main");
+                  boolean passed = getResults(expected, output, "Checking main output");
+                  assertTrue(passed);
+              }
+
+             @Test
+             public void testCall() throws IOException
+             {
+                 Object[] args = {10000,10100};
+                 String output = getMethodOutput("findPrimes", args);
+                 String expect = "11";
+
+                 boolean passed =
+                         getResults(
+                                 expect,
+                                 output,
+                                 "findPrimes(10000,10100)"
+                                 );
+                 assertTrue(passed);
+             }
+
+              @Test
+             public void testBool() throws IOException
+             {
+                 String target = "(isPrime(";
+                 boolean passed = checkCodeContains("call to isPrime", target);
+                 assertTrue(passed);
+             }
+          }
+        </tests>
+      </program>
+    </project>
+  </subsection>
+
+    <subsection xml:id="frequency">
+    <title>Frequency</title>
+
+    <p>
+      You can use a counter variable inside a loop to determine the frequency
+      with which a specific criteria is met. For example, you can count the
+      number of even numbers in a sequence of numbers. You can use a loop and
+      increment the counter each time an even number is found like below:
+    </p>
+
+    <program language="java">
+      <code>
+        <![CDATA[
+
+        int count = 0;
+        for (int i = 0; i < 100; i++)
+        {
+            if (i % 2 == 0)
+            {
+                count++;
+            }
+        }
+        System.out.println("There are " + count + " even numbers from 1 to 100.");
+
+        ]]>
+      </code>
+    </program>
+
+  </subsection>
+
 
 </section>
