@@ -286,7 +286,7 @@ def reformat(filename, inplace):
 
     f = open(filename, mode="w") if inplace else stdout
 
-    print('<?xml version="1.0" encoding="UTF-8"?>', file=f)
+    print('<?xml version="1.0" encoding="utf-8"?>', file=f)
     for e in document_elements(root):
         print(serialize_element(e).rstrip(), file=f)
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="equality">
   <title>Equality</title>
@@ -307,15 +307,7 @@
 
     <figure align="center">
       <caption>
-        Two strings that are equal with
-        <literal>equals</literal>
-
- but not with
-        
-        
-        <literal>==</literal>
-
-.
+        Two strings that are equal with <c>equals</c> but not with <c>==</c>.
       </caption>
 
       <image source="Unit2-Selection-and-Iteration/Figures/s1ands2.jpg" width="63%" />
