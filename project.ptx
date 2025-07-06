@@ -3,26 +3,26 @@
 <project ptx-version="2" source="pretext" xsl="pretext">
   <targets>
     <target
-      name="web"
-      format="html"
-      publication="html.xml"
-      source="main.ptx"
-      output-dir="build/html"
-      xsl="csawesome-pretext-style.xsl">
-    <stringparams author.tools="yes" html.css.extra="external/_static/css/custom.css" />
-   </target>
+        name="web"
+        format="html"
+        publication="html.xml"
+        source="main.ptx"
+        output-dir="build/html"
+        xsl="csawesome-pretext-style.xsl">
+      <stringparams author.tools="yes" html.css.extra="external/_static/css/custom.css" />
+    </target>
     <target
-      name="runestone"
-      format="html"
-      source="main.ptx"
-      platform="runestone"
-      publication="runestone.xml"
-      xsl="csawesome-pretext-style.xsl">
-    <stringparams author.tools="yes" html.css.extra="external/_static/css/custom.css" />
-   </target>
-   <target
-       name="print"
-       format="pdf"
-       output-filename="csawesome2.pdf" />
+        name="runestone"
+        format="html"
+        publication="runestone.xml"
+        source="main.ptx"
+        platform="runestone"
+        xsl="csawesome-pretext-style.xsl">
+      <stringparams author.tools="yes" html.css.extra="external/_static/css/custom.css" />
+    </target>
+    <target
+        name="print"
+        format="pdf"
+        output-filename="bhsawesome.pdf" />
   </targets>
 </project>

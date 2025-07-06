@@ -1,7 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <pretext xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <xi:include href="./bookinfo.ptx" />
+
+  <docinfo>
+    <document-id>BHSawesome2</document-id>
+
+    <blurb shelf="AP Computer Science">
+      BHSawesome2 is a AP CSA textbook adapted from CSAwesome2 for use at
+      Berkeley High School in Berkeley, California. CSAwesome2 is a College
+      Board approved curriculum for the AP Computer Science A Course and Exam
+      Description, effective Fall 2025.
+    </blurb>
+
+    <rename element="inlineexercise">Activity</rename>
+    <rename element="chapter">Unit</rename>
+    <brandlogo url="./" source="_static/BHSawesomeLogo.png" alt="BHSawesome" />
+    <cross-references text="title" />
+    <programs language="java" />
+    <parsons language="java" />
+  </docinfo>
+
   <book xml:id="bhsawesome" permid="csa">
     <title>BHSawesome</title>
     <subtitle>AP CSA</subtitle>
