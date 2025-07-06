@@ -2,6 +2,7 @@
 
 <section>
   <title>Cut from text elsewhere</title>
+
   <introduction>
     <p>
       Most of the methods we have used so far are <term>static methods</term>,
@@ -891,7 +892,69 @@ b = "at our high school"
       </code>
     </program>
 
-  </subsection>
+    </subsection>
+
+    <subsection>
+          <activity label="chooseType3">
+      <statement>
+        <p>What type should you use to hold the first name of a person?</p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>int</p>
+          </statement>
+
+          <feedback>
+            <p>
+              People don't usually have whole numbers like 7 as their first
+              name.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>double</p>
+          </statement>
+
+          <feedback>
+            <p>
+              People don't usually have decimal numbers like 3.5 as their first
+              name.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>boolean</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This could only be used if the name was true or false. People
+              don't usually have those as first names.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>String</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Strings hold sequences of characters like you have in a person's
+              name.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+          </activity>
+    </subsection>
 
 
 </section>

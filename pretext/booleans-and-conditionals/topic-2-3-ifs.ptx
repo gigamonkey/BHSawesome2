@@ -21,7 +21,11 @@
     <p>
       In Java, however, things are quite tidy with true and false represented by
       a special data type, the third primitive data type you need to know for
-      the AP exam, <c>boolean</c>.
+      the AP exam, <c>boolean</c>. The data type is named for <url
+      href="https://en.wikipedia.org/wiki/George_Boole"
+      visual="https://en.wikipedia.org/wiki/George_Boole">George Boole</url>, a
+      19th century English mathematician who invented Boolean algebra, a system
+      for dealing with statements made up of only true and false values.
     </p>
 
     <p>

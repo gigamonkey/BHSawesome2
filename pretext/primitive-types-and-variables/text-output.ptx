@@ -71,12 +71,12 @@
     <idx>String literal</idx>
     <p>
       In order to print out a value Java has to convert it to text. In Java,
-      text is represented with a data type called a <c>String</c>. (Why are they
-      called "strings"? Java didn’t make it up; computer scientists have been
-      using “string” to refer to sequences of items since at least the 1940s.
-      Think “string of pearls” or “string of ponies” but in this case a “string
-      of characters”, where “character” is what computer scientists call
-      letters, numbers, punctuation, spaces, etc.)
+      text is represented with a data type called a <c>String</c>. Why are they
+      called "strings"? Who knows? Java didn’t make it up; computer scientists
+      have been using “string” to refer to sequences of items since at least the
+      1940s. Think “string of pearls” or “string of ponies” but in this case a
+      “string of characters”, where “character” is what computer scientists call
+      letters, numbers, punctuation, spaces, etc.
     </p>
 
     <p>
@@ -169,6 +169,114 @@
     </activity>
   </subsection>
 
+  <subsection>
+    <title>String concatenation</title>
+
+    <p>
+      Another handy <c>String</c> feature for printing output is the
+      <term>string concatenation</term> operator, written with <c>+</c>, the
+      same as arithmetic addition. When we write a <c>+</c> expression where one
+      of the operands is a <c>String</c>, it produces a new <c>String</c> by
+      smooshing together the <c>String</c> with the <c>String</c> representation
+      of the other value. For instance if <c>name</c> and <c>age</c> were
+      variables containing someone’s name and age we could write:
+    </p>
+
+    <program>
+      System.out.println("Name: " + name + "; Age: " + age);
+    </program>
+
+    <p>
+      to get output like:
+    </p>
+
+    <program language="">
+      Name: Sally Sue; Age: 17
+    </program>
+
+    <p>
+      Note that there’s an important difference between a variable in a string
+      concatenation expression and the name of the variable in quotes <c>""</c>.
+      The latter is just a <c>String</c> whose text happens to be the same as
+      the name of the variable while the former will produce the <c>String</c>
+      representation of the variable’s value. A common mistake is to write
+      something like <c>System.out.println("x")</c> when we meant to write
+      <c>System.out.println(x)</c> On the other hand, a really good way to write
+      that would be: <c>System.out.println("x: " + x)</c> which would emit the
+      value of <c>x</c> labeled with the name of the variable.
+    </p>
+
+    <p>
+      Also if we want to make readable output with spaces between the
+      concatenated pieces variables, we need to the spaces inside the quotes of
+      some <c>String</c> literal. Without spaces, we will get output like
+      <c>HiJose</c> instead of <c>Hi Jose</c>.
+    </p>
+
+    <activity label="strConcatDemo">
+      <statement>
+        <p>
+          Run the following code to see what is printed. Then, change the values
+          and run it again. Try adding quotes to variables and removing spaces
+          in the print statements to see what happens.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+          public class Test2
+          {
+              public static void main(String[] args)
+              {
+                  int score;
+                  score = 0;
+                  System.out.print("The score is ");
+                  System.out.println(score);
+
+                  double price = 23.25;
+                  System.out.println("The price is " + price);
+
+                  boolean won = false;
+                  System.out.println(won);
+                  won = true;
+                  System.out.println(won);
+
+                  String name = "Jose";
+                  System.out.println("Hi " + name);
+              }
+          }
+        </code>
+
+        <tests>
+          // should pass if/when they run code
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect =
+                          "The score is 0\nThe price is 23.25\nfalse\ntrue\nHi Jose";
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
+
+
+
+
+  </subsection>
+
   <subsection xml:id="string-escapes">
     <title>String escapes</title>
 
@@ -181,14 +289,17 @@
       string literal, where a quotation mark would indicate the end of the
       string, we put a backslash (<c>\</c>) in front of the quotation mark which
       tells Java to include the following quotation mark in the string value
-      rather than treating it as the end of the literal. This is called a
-      <term>backslash escape sequence</term>. Since backslash is used this way,
-      that also makes <em>it</em> a special character, so if we want to include
-      a backslash in a string literal, we need to escape it with another
-      backslash! There are a handful of other backslash escape sequences. The
-      only other one the College Board wants you to know about is <c>\n</c>
-      which will be translated to a newline character, which will break the text
-      across lines.
+      rather than treating it as the end of the literal.
+    </p>
+
+    <p>
+      This is called a <term>backslash escape sequence</term>. Since backslash
+      is used this way, that also makes <em>it</em> a special character, so if
+      we want to include a backslash in a string literal, we need to escape it
+      with another backslash! There are a handful of other backslash escape
+      sequences. The only other one the College Board wants you to know about is
+      <c>\n</c> which will be translated to a newline character, which will
+      break the text across lines.
     </p>
 
     <note>
@@ -356,7 +467,7 @@
   </subsection>
 
   <subsection xml:id="coding-challenge-mad-libs">
-    <title>Coding Challenge : Mad Libs</title>
+    <title>Coding Challenge: Mad Libs</title>
 
     <p>
       Have you ever played MAD LIBS? In this game, you first choose a bunch of
