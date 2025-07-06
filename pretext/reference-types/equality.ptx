@@ -309,9 +309,12 @@
       <caption>
         Two strings that are equal with
         <literal>equals</literal>
+
  but not with
         
+        
         <literal>==</literal>
+
 .
       </caption>
 

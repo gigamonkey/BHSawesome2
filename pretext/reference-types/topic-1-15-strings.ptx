@@ -258,7 +258,7 @@
     <idx><h>String</h><h>append</h></idx>
     <p>
       <c>String</c>s can be added to each other to create a new string using the
-      <c>+</c> or <c>+=</c> operator . This is also called
+      <c>+</c> or <c>+=</c> operator. This is also called
       <term>concatenation</term>. You can also add any other kind of value to a
       <c>String</c> with <c>+</c> or <c>+=</c> and the other value will be
       converted to a <c>String</c> automatically.
@@ -269,22 +269,8 @@
       created, its attributes cannot be changed. So when we add two
       <c>String</c>s (or a <c>String</c> and another value converted to a
       <c>String</c>) we get a new <c>String</c> without making any change to the
-      values being added together just like when we add the ints
-      
-      
-      <title_reference>1 + 2</title_reference>
-
- the original
-      
-      
-      <title_reference>1</title_reference>
-
- and
-      
-      
-      <title_reference>2</title_reference>
-
- aren’t changed. When we use <c>+=</c>
+      values being added together just like when we add the ints <c>1 + 2</c>
+      the original <c>1</c> and <c>2</c> aren’t changed. When we use <c>+=</c>
       we are making a new <c>String</c> by adding something to the current value
       of a variable and then assigning that new value back into the variable,
       again just like with numbers.
