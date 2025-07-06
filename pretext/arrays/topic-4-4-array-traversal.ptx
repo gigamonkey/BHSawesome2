@@ -1634,7 +1634,7 @@ class Student
   </subsection>
 
   <subsection>
-    <title>Coding Challenge : SpellChecker</title>
+    <title>Coding Challenge: SpellChecker</title>
     <image source="Unit4-Data-Collections/Figures/spellcheck.png" width="18%" alt="Spell Checker" />
     <p>
       In this challenge, you will use an array of English words from a

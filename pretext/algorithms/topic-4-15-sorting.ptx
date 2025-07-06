@@ -633,7 +633,7 @@ public static void insertionSort(int[] elements)
   </subsection>
 
   <subsection xml:id="coding-challenge-sort-runtimes">
-    <title>Coding Challenge : Sort Runtimes</title>
+    <title>Coding Challenge: Sort Runtimes</title>
     <p>
       Selection sort and Insertion sort have similar runtimes. They both have
       nested loops that run through the data of size n approximately n squared

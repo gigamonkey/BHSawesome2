@@ -586,7 +586,7 @@ public class Dictionary extends Book
   </activity>
 
   <subsection xml:id="coding-challenge-shopping-cart-2">
-    <title>Coding Challenge : Shopping Cart 2</title>
+    <title>Coding Challenge: Shopping Cart 2</title>
     <image source="Unit5-Inheritance/Figures/shoppingcart.png" width="18%" alt="Shopping" />
     <p>
       In the last lesson, you created a class called <c>DiscountedItem</c> as

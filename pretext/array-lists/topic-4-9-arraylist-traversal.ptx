@@ -757,7 +757,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="coding-challenge-frq-word-pairs">
-    <title>Coding Challenge : FRQ Word Pairs</title>
+    <title>Coding Challenge: FRQ Word Pairs</title>
     <p>
       This challenge is based on the <url
       href="https://secure-media.collegeboard.org/ap/pdf/ap18-frq-computer-science-a.pdf#page=7"

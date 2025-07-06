@@ -1115,7 +1115,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="coding-challenge-class-pet">
-    <title>Coding Challenge : Class Pet</title>
+    <title>Coding Challenge: Class Pet</title>
     <image source="Unit3-Class-Creation/Figures/animalclinic.png" width="27%" alt="Animal Clinic" />
     <p>
       You’ve been hired to create a software system for the Awesome Animal

@@ -864,7 +864,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="coding-challenge-draw-letters">
-    <title>Coding Challenge : Draw Letters</title>
+    <title>Coding Challenge: Draw Letters</title>
     <p>
       Working in pairs, use the area below to have your turtle draw simple
       block-style letters for your first or last name initials using just

@@ -565,7 +565,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="coding-challenge-savings-account">
-    <title>Coding Challenge : Savings Account</title>
+    <title>Coding Challenge: Savings Account</title>
     <p>
       The following code contains the beginning of a class for representing a
       bank account containing the account holder’s name and the money balance in

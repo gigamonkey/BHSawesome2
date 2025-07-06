@@ -332,7 +332,7 @@ III. public NamedPoint(int d1, int d2, String name)
   </subsection>
 
   <subsection xml:id="coding-challenge-square-is-a-rectangle">
-    <title>Coding Challenge : Square is-a Rectangle</title>
+    <title>Coding Challenge: Square is-a Rectangle</title>
     <p>
       In this challenge, you are giving a class called <c>Rectangle</c> that has
       two instance variables, <c>length</c> and <c>width</c>, a constructor that

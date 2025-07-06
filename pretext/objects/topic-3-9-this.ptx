@@ -380,7 +380,7 @@ System.out.println(one.getPay());
   </subsection>
 
   <subsection xml:id="coding-challenge-bank-account">
-    <title>Coding Challenge : Bank Account</title>
+    <title>Coding Challenge: Bank Account</title>
     <figure align="left">
       <image source="Unit3-Class-Creation/Figures/dollarSign.png" width="18%" />
     </figure>

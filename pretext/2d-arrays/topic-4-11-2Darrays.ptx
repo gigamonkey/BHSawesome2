@@ -1367,7 +1367,7 @@ ticketInfo[0].length // returns the number of columns
   </subsection>
 
   <subsection xml:id="coding-challenge-ascii-art">
-    <title>Coding Challenge : ASCII Art</title>
+    <title>Coding Challenge: ASCII Art</title>
     <p>
       ASCII is a commonly used character encoding standard where each key you
       press on the keyboard is translated to an ASCII number to be stored in the

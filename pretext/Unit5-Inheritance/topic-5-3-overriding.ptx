@@ -680,7 +680,7 @@ public class EnhancedItem extends Item
   </subsection>
 
   <subsection xml:id="coding-challenge-pet-sounds">
-    <title>Coding Challenge : Pet Sounds</title>
+    <title>Coding Challenge: Pet Sounds</title>
     <image source="Unit5-Inheritance/Figures/animalclinic.png" width="27%" alt="Pets" />
     <p>
       The following Pet class keeps track of a pet’s name and type and has a

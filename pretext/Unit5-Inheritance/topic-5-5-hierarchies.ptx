@@ -533,7 +533,7 @@ class Dog extends Pet
   </subsection>
 
   <subsection xml:id="coding-challenge-shopping-cart">
-    <title>Coding Challenge : Shopping Cart</title>
+    <title>Coding Challenge: Shopping Cart</title>
     <image source="Unit5-Inheritance/Figures/shoppingcart.png" width="18%" alt="Shopping" />
     <p>
       The following code contains a class called ShoppingCart that simulates a

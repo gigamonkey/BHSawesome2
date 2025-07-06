@@ -1085,7 +1085,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="coding-challenge-friends-and-birthdays">
-    <title>Coding Challenge : Friends and Birthdays</title>
+    <title>Coding Challenge: Friends and Birthdays</title>
     <image source="Unit3-Class-Creation/Figures/cake.jpg" width="23%" alt="Birthday cake" />
     <p>
       In this challenge, you will create a class <c>Friend</c> which keeps track

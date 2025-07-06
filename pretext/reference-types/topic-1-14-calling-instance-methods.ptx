@@ -1291,7 +1291,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="coding-challenge-turtle-house">
-    <title>Coding Challenge : Turtle House</title>
+    <title>Coding Challenge: Turtle House</title>
     <image source="Unit1-Using-Objects-and-Methods/Figures/houseWithWindows.png" width="36%" alt="simple house" />
     <p>
       This creative challenge is fun to do collaboratively in pairs. Design a

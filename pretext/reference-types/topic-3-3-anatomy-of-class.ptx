@@ -647,7 +647,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="coding-challenge-virtual-pet-class">
-    <title>Coding Challenge : Virtual Pet Class</title>
+    <title>Coding Challenge: Virtual Pet Class</title>
     <image source="Unit3-Class-Creation/Figures/virtualpet.jpg" width="23%" alt="Virtual Pet" />
     <p>
       In the late 1990s and early 2000s, digital pets like in the photo were a

@@ -706,7 +706,7 @@ public class APcourse extends Course
   </subsection>
 
   <subsection xml:id="coding-challenge-online-store">
-    <title>Coding Challenge : Online Store</title>
+    <title>Coding Challenge: Online Store</title>
     <p>
       Working in pairs or groups, design an online store with classes for Store,
       ItemForSale, Book, Movie, and Author.

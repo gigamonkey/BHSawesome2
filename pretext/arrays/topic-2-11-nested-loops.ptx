@@ -401,7 +401,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="coding-challenge-turtle-snowflakes">
-    <title>Coding Challenge : Turtle Snowflakes</title>
+    <title>Coding Challenge: Turtle Snowflakes</title>
     <p>
       In the last exercise, you used nested for-loops to have the turtle draw a
       square repeatedly to make a snowflake. Use the Active Code window below or

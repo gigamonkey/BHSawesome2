@@ -876,7 +876,7 @@
   </subsection>
 
   <subsection xml:id="debugging-challenge-weather-report">
-    <title>Debugging Challenge : Weather Report</title>
+    <title>Debugging Challenge: Weather Report</title>
 
     <p>
       Debug the following code that reads out a weather report. Make sure the

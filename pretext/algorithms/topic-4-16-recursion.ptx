@@ -1242,7 +1242,7 @@ public static int mystery(String str)
   </subsection>
 
   <subsection xml:id="tracing-challenge-recursion">
-    <title>Tracing Challenge : Recursion</title>
+    <title>Tracing Challenge: Recursion</title>
     <p>
       Working in pairs, trace through the following recursion problems.
     </p>

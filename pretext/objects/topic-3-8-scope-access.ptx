@@ -292,7 +292,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="coding-challenge-debugging">
-    <title>Coding Challenge : Debugging</title>
+    <title>Coding Challenge: Debugging</title>
     <project label="challenge-scope-debug">
       <statement>
         <p>

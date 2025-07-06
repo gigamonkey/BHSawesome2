@@ -488,7 +488,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="coding-challenge-student-class">
-    <title>Coding Challenge : Student Class</title>
+    <title>Coding Challenge: Student Class</title>
     <p>
       We encourage you to work in pairs for this challenge to create a Student
       class with constructors.

@@ -1077,7 +1077,7 @@ III. The array must not contain duplicate values.
   </subsection>
 
   <subsection xml:id="coding-challenge-search-runtimes">
-    <title>Coding Challenge : Search Runtimes</title>
+    <title>Coding Challenge: Search Runtimes</title>
     <p>
       Let’s go back to the spellchecker that we created with arrays. Here is a
       version of the spellchecker below that reads the dictionary file into an

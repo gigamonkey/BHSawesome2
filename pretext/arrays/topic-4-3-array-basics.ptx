@@ -829,7 +829,7 @@ public class ImageEx
   </subsection>
 
   <subsection xml:id="coding-challenge-countries-array">
-    <title>Coding Challenge : Countries Array</title>
+    <title>Coding Challenge: Countries Array</title>
     <image source="Unit4-Data-Collections/array-images/US.jpg" width="36%" />
     <p>
       In this challenge, you will create a guide to different countries using

@@ -206,7 +206,7 @@ double y = Math.sqrt(9); // the square root of 9 is 3.0
   </subsection>
 
   <subsection xml:id="coding-challenge-adventure">
-    <title>Coding Challenge : Adventure</title>
+    <title>Coding Challenge: Adventure</title>
     <image source="Unit2-Selection-and-Iteration/Figures/adventure.jpg" width="36%" alt="Adventure map" />
     <p>
       One of the first games coded for early computers in the 1970s was called
@@ -707,7 +707,7 @@ b = "at our high school"
   </subsection>
 
     <subsection xml:id="coding-challenge-prime-number-finder">
-    <title>Coding Challenge : Prime Number Finder</title>
+    <title>Coding Challenge: Prime Number Finder</title>
 
     <p>
       Prime numbers (numbers that are only divisible by 1 and themselves) are

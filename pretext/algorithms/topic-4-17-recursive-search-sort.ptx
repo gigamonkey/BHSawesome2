@@ -491,7 +491,7 @@ public class SortTest
   </subsection>
 
   <subsection xml:id="tracing-challenge-recursive-search-and-sort">
-    <title>Tracing Challenge : Recursive Search and Sort</title>
+    <title>Tracing Challenge: Recursive Search and Sort</title>
     <p>
       Working in pairs, practice the recursive binary search and merge sort
       algorithms with a deck of cards or pieces of paper with numbers or names

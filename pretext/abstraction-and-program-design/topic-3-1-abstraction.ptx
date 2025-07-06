@@ -319,7 +319,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="group-challenge-game-design">
-    <title>Group Challenge : Game Design</title>
+    <title>Group Challenge: Game Design</title>
     <p>
       Working in groups, let’s explore making a computer game that is an
       adaptation of a board game that you know. Think about what objects are in

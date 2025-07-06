@@ -90,7 +90,7 @@
   </subsection>
 
   <subsection xml:id="activity-1-sentiment-value">
-    <title>Activity 1 : Sentiment Value</title>
+    <title>Activity 1: Sentiment Value</title>
     <p>
       Let’s try some code from this lab! Working in pairs, open the <url
       href="https://replit.com/@BerylHoffman/AP-CSA-Consumer-Review-Lab-Student-Files"
@@ -318,7 +318,7 @@ public static double sentimentVal( String word )
   </subsection>
 
   <subsection xml:id="activity-3-autogenerate-a-fake-review">
-    <title>Activity 3 : Autogenerate a Fake Review</title>
+    <title>Activity 3: Autogenerate a Fake Review</title>
     <p>
       If your class has time, continue on with Activity 3 where you write code
       that will create a fake review by replacing adjectives marked with * in
@@ -343,7 +343,7 @@ public static double sentimentVal( String word )
   </subsection>
 
   <subsection xml:id="activity-4-create-a-more-positive-or-negative-review">
-    <title>Activity 4 : Create a More Positive or Negative Review</title>
+    <title>Activity 4: Create a More Positive or Negative Review</title>
     <p>
       If your class has time continue on with Activity 4 which changes the fake
       review by replacing negative words with positive words or the opposite to
@@ -354,7 +354,7 @@ public static double sentimentVal( String word )
   </subsection>
 
   <subsection xml:id="activity-5-open-ended-activity">
-    <title>Activity 5 : Open-ended Activity</title>
+    <title>Activity 5: Open-ended Activity</title>
     <p>
       If your class has time continue on with Activity 5 which is an open ended
       activity of your own design.

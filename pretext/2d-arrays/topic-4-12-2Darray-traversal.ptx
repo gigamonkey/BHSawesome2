@@ -507,7 +507,7 @@ public void zeroBlue()
   </subsection>
 
   <subsection xml:id="coding-challenge-picture-lab">
-    <title>Coding Challenge : Picture Lab</title>
+    <title>Coding Challenge: Picture Lab</title>
     <figure align="left">
       <image source="_static/arch.jpg" width="36%" />
     </figure>

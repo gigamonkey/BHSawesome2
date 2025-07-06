@@ -550,7 +550,7 @@ public class RunestoneTests extends CodeTestHelper
   </subsection>
 
   <subsection xml:id="coding-challenge-static-song-and-counter">
-    <title>Coding Challenge : Static Song and counter</title>
+    <title>Coding Challenge: Static Song and counter</title>
     <p>
       In Unit 1, we wrote a class with methods to print out the song <url
       href="https://www.youtube.com/watch?v=QPwEZ8Vv2YQ"
