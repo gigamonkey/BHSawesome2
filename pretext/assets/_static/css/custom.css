@@ -146,9 +146,12 @@ section > .para + .para {
   display: none;
 }
 
-.ptx-content .para a
+.ptx-content .para a:link,
+.ptx-content .para a:hover,
+.ptx-content .para a:visited
 {
-  text-decoration: underline !important;
+  text-decoration: underline dotted;
+  font-weight: inherit;
 }
 
 .ptx-content blockquote
