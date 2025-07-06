@@ -57,7 +57,7 @@
       <term>reference types</term> hold a reference to a more complex value
       called an object. For now we’ll focus on three of the main primitive data
       types in Java. We’ll come back to reference types in <xref
-      ref="reference-types"/>.
+      ref="reference-types" />.
     </p>
 
     <p>
@@ -91,8 +91,8 @@
         <li>
           <p>
             <c>boolean</c> which can represent only two values: <c>true</c> and
-            <c>false</c>. We’ll return to <c>boolean</c>s in
-            <xref ref="booleans-and-conditionals" />
+            <c>false</c>. We’ll return to <c>boolean</c>s in <xref
+            ref="booleans-and-conditionals" />
           </p>
         </li>
       </ul>
@@ -106,7 +106,6 @@
       operations like addition, subtraction, multiplication, and division as
       well as a few that you probably didn’t learn about in elementary school.
     </p>
-
 
     <activity label="chooseType1">
       <statement>
@@ -339,10 +338,7 @@
     </p>
 
     <video youtube="pHgYlVjagmA" label="video-variables" />
-
   </subsection>
-
-
 
   <subsection xml:id="declaring-variables-in-java">
     <title>Declaring variables in Java</title>
@@ -548,7 +544,7 @@
         </p>
 
         <p>
-          <fillin answer="int" mode="string" /><c>age =</c>
+          <fillin answer="int" mode="string" /><c>age =</c> 
           <fillin mode="number" answer="5" /><!-- this will use a number input
           --><c>;</c>
         </p>

@@ -186,9 +186,7 @@
       System.out.println("Name: " + name + "; Age: " + age);
     </program>
 
-    <p>
-      to get output like:
-    </p>
+    <p>to get output like:</p>
 
     <program language="">
       Name: Sally Sue; Age: 17
@@ -271,10 +269,6 @@
         </tests>
       </program>
     </activity>
-
-
-
-
   </subsection>
 
   <subsection xml:id="string-escapes">

@@ -502,11 +502,13 @@
   <subsection xml:id="coding-challenge-pay-calculator">
     <title>Coding Challenge: Pay calculator</title>
 
-    <image source="Unit1-Using-Objects-and-Methods/Figures/dollarSign.png" width="18%" />
-    <p>
-      In this coding challenge, you can work in pairs to create a pay calculator
-      using math expressions and operators.
-    </p>
+    <sidebyside widths="10% 88%">
+      <image source="Unit1-Using-Objects-and-Methods/Figures/dollarSign.png" width="18%" />
+      <p>
+        In this coding challenge, you can work in pairs to create a pay
+        calculator using math expressions and operators.
+      </p>
+    </sidebyside>
 
     <project label="challenge1-3-pay-calculator">
       <title>Pay calculator</title>

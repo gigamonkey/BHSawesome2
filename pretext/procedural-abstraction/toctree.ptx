@@ -2,6 +2,7 @@
 
 <chapter xml:id="methods" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Methods</title>
+
   <introduction>
     <idx>method</idx>
     <idx>procedural abstraction</idx>

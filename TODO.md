@@ -19,6 +19,8 @@
 - [x] Make new images for Snap!/Java comparisons since it seems too hard to do
       it with <sidebyside>
 
+- [ ] Move Bonus unicode challenge to Strings section.
+
 # Formatting cleanup
 
 - [ ] Write script to check that for each <term>, the first occurrence of the

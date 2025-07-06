@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="topic-1-6-compound-operators">
-  <title>Compound Assignment Operators</title>
+  <title>Compound assignment operators</title>
 
   <introduction>
     <idx>compound operators</idx>
@@ -54,55 +54,50 @@
     </p>
 
     <table>
-      <title>Arithmetic operators</title>
+      <title>Arithmetic compound assignment operators</title>
 
-      <tabular row-headers="yes">
-        <col top="minor" />
-        <col top="minor" />
-        <col top="minor" />
-        <col top="minor" />
-        <col top="minor" />
-        <col top="minor" />
-        <row header="yes" left="minor">
-          <cell bottom="minor" right="minor">Operator</cell>
-          <cell bottom="minor" right="minor"><c>+</c></cell>
-          <cell bottom="minor" right="minor"><c>-</c></cell>
-          <cell bottom="minor" right="minor"><c>*</c></cell>
-          <cell bottom="minor" right="minor"><c>/</c></cell>
-          <cell bottom="minor" right="minor"><c>%</c></cell>
+      <tabular row-headers="yes" halign="center">
+        <col right="minor" />
+        <col right="minor" />
+        <col right="minor" />
+        <col right="minor" />
+        <col right="minor" />
+        <col />
+        <row header="yes" bottom="minor">
+          <cell>Operator</cell>
+          <cell><c>+</c></cell>
+          <cell><c>-</c></cell>
+          <cell><c>*</c></cell>
+          <cell><c>/</c></cell>
+          <cell><c>%</c></cell>
         </row>
 
-        <row header="yes" left="minor" />
-        <row left="minor">
-          <cell bottom="minor" right="minor">Written out</cell>
-          <cell bottom="minor" right="minor"><c>x = x + 1</c></cell>
-          <cell bottom="minor" right="minor"><c>x = x - 1</c></cell>
-          <cell bottom="minor" right="minor"><c>x = x * 2</c></cell>
-          <cell bottom="minor" right="minor"><c>x = x / 2</c></cell>
-          <cell bottom="minor" right="minor"><c>x = x % 2</c></cell>
+        <row bottom="minor">
+          <cell>Written out</cell>
+          <cell><c>x = x + 1</c></cell>
+          <cell><c>x = x - 1</c></cell>
+          <cell><c>x = x * 2</c></cell>
+          <cell><c>x = x / 2</c></cell>
+          <cell><c>x = x % 2</c></cell>
         </row>
 
-        <row left="minor" />
-        <row left="minor">
-          <cell bottom="minor" right="minor">Compound</cell>
-          <cell bottom="minor" right="minor"><c>x += 1</c></cell>
-          <cell bottom="minor" right="minor"><c>x -= 1</c></cell>
-          <cell bottom="minor" right="minor"><c>x *= 2</c></cell>
-          <cell bottom="minor" right="minor"><c>x /= 2</c></cell>
-          <cell bottom="minor" right="minor"><c>x %= 2</c></cell>
+        <row bottom="minor">
+          <cell>Compound</cell>
+          <cell><c>x += 1</c></cell>
+          <cell><c>x -= 1</c></cell>
+          <cell><c>x *= 2</c></cell>
+          <cell><c>x /= 2</c></cell>
+          <cell><c>x %= 2</c></cell>
         </row>
 
-        <row left="minor" />
-        <row left="minor">
-          <cell bottom="minor" right="minor">Extra concise</cell>
-          <cell bottom="minor" right="minor"><c>x++</c></cell>
-          <cell bottom="minor" right="minor"><c>x--</c></cell>
-          <cell bottom="minor" right="minor" />
-          <cell bottom="minor" right="minor" />
-          <cell bottom="minor" right="minor" />
+        <row>
+          <cell>Extra concise</cell>
+          <cell><c>x++</c></cell>
+          <cell><c>x--</c></cell>
+          <cell><em>none</em></cell>
+          <cell><em>none</em></cell>
+          <cell><em>none</em></cell>
         </row>
-
-        <row left="minor" />
       </tabular>
     </table>
 

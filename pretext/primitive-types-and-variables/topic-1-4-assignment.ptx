@@ -400,18 +400,20 @@
   <subsection>
     <title>Coding Challenge: Dog Years</title>
 
-    <image source="Unit1-Using-Objects-and-Methods/Figures/dog-free.png" width="27%" alt="dog" />
-    <p>
-      In this coding challenge, you will calculate your age, and your pet’s age
-      from your birth dates, and your pet’s age in dog years. In the code below,
-      type in the current year, the year you were born, the year your dog or cat
-      was born (if you don’t have one, make one up!) in the variables below.
-      Then write formulas in assignment statements to calculate how old you are,
-      how old your dog or cat is, and how old they are in dog years which is 7
-      times a human year. Finally, print it all out. If you are pair
-      programming, switch drivers (who has control of the keyboard in pair
-      programming) after every line of code.
-    </p>
+    <sidebyside widths="15% 80%">
+      <image source="Unit1-Using-Objects-and-Methods/Figures/dog-free.png" width="27%" alt="dog" />
+      <p>
+        In this coding challenge, you will calculate your age, and your pet’s
+        age from your birth dates, and your pet’s age in dog years. In the code
+        below, type in the current year, the year you were born, the year your
+        dog or cat was born (if you don’t have one, make one up!) in the
+        variables below. Then write formulas in assignment statements to
+        calculate how old you are, how old your dog or cat is, and how old they
+        are in dog years which is 7 times a human year. Finally, print it all
+        out. If you are pair programming, switch drivers (who has control of the
+        keyboard in pair programming) after every line of code.
+      </p>
+    </sidebyside>
 
     <project label="challenge1-4">
       <title>Dog Years</title>

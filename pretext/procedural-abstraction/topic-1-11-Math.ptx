@@ -46,6 +46,7 @@
 
   <subsection>
     <title>The mathematical functions</title>
+
     <p>
       Of these <c>Math</c> methods, <c>abs</c>, <c>pow</c>, and <c>sqrt</c> are
       true mathematical functions that compute new values from their arguments.
@@ -126,12 +127,13 @@
 
     <program language="java">
       <code>
-System.out.println("The square root of 9 is " + Math.sqrt(9));
+        System.out.println("The square root of 9 is " + Math.sqrt(9));
       </code>
     </program>
 
     <activity label="trymath">
       <title>Try some math</title>
+
       <statement>
         <p>
           Try the <c>Math</c> methods below. Change the code so that it computes
@@ -154,24 +156,25 @@ System.out.println("The square root of 9 is " + Math.sqrt(9));
               }
           }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "4\n3.0\n9.0\n";
-        boolean passed = getResults(expect, output, "Expected output from main after changing code");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "4\n3.0\n9.0\n";
+                  boolean passed = getResults(expect, output, "Expected output from main after changing code");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -189,9 +192,7 @@ public class RunestoneTests extends CodeTestHelper
       <choices>
         <choice correct="yes">
           <statement id="call-sqrt-mc_opt_a">
-            <p>
-              <c>Math.sqrt(2)</c>
-            </p>
+            <p><c>Math.sqrt(2)</c></p>
           </statement>
 
           <feedback id="call-sqrt-mc_opt_a">
@@ -203,9 +204,7 @@ public class RunestoneTests extends CodeTestHelper
 
         <choice>
           <statement id="call-sqrt-mc_opt_b">
-            <p>
-              <c>Math.sqrt()</c>
-            </p>
+            <p><c>Math.sqrt()</c></p>
           </statement>
 
           <feedback id="call-sqrt-mc_opt_b">
@@ -218,9 +217,7 @@ public class RunestoneTests extends CodeTestHelper
 
         <choice>
           <statement id="call-sqrt-mc_opt_c">
-            <p>
-              <c>Math.sqrt(2, 4)</c>
-            </p>
+            <p><c>Math.sqrt(2, 4)</c></p>
           </statement>
 
           <feedback id="call-sqrt-mc_opt_c">
@@ -233,9 +230,7 @@ public class RunestoneTests extends CodeTestHelper
 
         <choice correct="yes">
           <statement id="call-sqrt-mc_opt_d">
-            <p>
-              <c>Math.sqrt(2 + 3)</c>
-            </p>
+            <p><c>Math.sqrt(2 + 3)</c></p>
           </statement>
 
           <feedback id="call-sqrt-mc_opt_d">
@@ -248,9 +243,7 @@ public class RunestoneTests extends CodeTestHelper
 
         <choice>
           <statement id="call-sqrt-mc_opt_e">
-            <p>
-              <c>Math.sqrt 2</c>
-            </p>
+            <p><c>Math.sqrt 2</c></p>
           </statement>
 
           <feedback id="call-sqrt-mc_opt_e">
@@ -260,9 +253,7 @@ public class RunestoneTests extends CodeTestHelper
 
         <choice correct="yes">
           <statement id="call-sqrt-mc_opt_f">
-            <p>
-              <c>Math.sqrt(Math.sqrt(2))</c>
-            </p>
+            <p><c>Math.sqrt(Math.sqrt(2))</c></p>
           </statement>
 
           <feedback id="call-sqrt-mc_opt_f">
@@ -277,6 +268,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="distance-mc">
       <title>Distance</title>
+
       <statement>
         <p>
           The distance between two numbers on the number line is defined as the
@@ -296,9 +288,7 @@ public class RunestoneTests extends CodeTestHelper
       <choices>
         <choice correct="yes">
           <statement id="distance-mc_opt_a">
-            <p>
-              <c>Math.abs(a - b)</c>
-            </p>
+            <p><c>Math.abs(a - b)</c></p>
           </statement>
 
           <feedback id="distance-mc_opt_a">
@@ -311,9 +301,7 @@ public class RunestoneTests extends CodeTestHelper
 
         <choice>
           <statement id="distance-mc_opt_b">
-            <p>
-              <c>Math.abs(a) - Math.abs(b)</c>
-            </p>
+            <p><c>Math.abs(a) - Math.abs(b)</c></p>
           </statement>
 
           <feedback id="distance-mc_opt_b">
@@ -326,9 +314,7 @@ public class RunestoneTests extends CodeTestHelper
 
         <choice>
           <statement id="distance-mc_opt_c">
-            <p>
-              <c>Math.abs(a + b)</c>
-            </p>
+            <p><c>Math.abs(a + b)</c></p>
           </statement>
 
           <feedback id="distance-mc_opt_c">
@@ -343,6 +329,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="distance-abs">
       <title>Distance method</title>
+
       <statement>
         <p>
           Using the definition of distance from the previous problem, fill in
@@ -367,34 +354,35 @@ public class RunestoneTests extends CodeTestHelper
               }
           }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1()
-    {
-         Object[] args = {10.5, 20.6};
-         String output = getMethodOutput("distance", args);
-         String expect = "10.1";
-         boolean passed = getResults(expect, output, "distance(10.5, 20.6)");
-         assertTrue(passed);
-    }
-    @Test
-    public void test2()
-    {
-         Object[] args = { -5.0, 2.4 };
-         String output = getMethodOutput("distance", args);
-         String expect = "7.4";
-         boolean passed = getResults(expect, output, "distance(-5.0, 2.4)");
-         assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test1()
+              {
+                   Object[] args = {10.5, 20.6};
+                   String output = getMethodOutput("distance", args);
+                   String expect = "10.1";
+                   boolean passed = getResults(expect, output, "distance(10.5, 20.6)");
+                   assertTrue(passed);
+              }
+              @Test
+              public void test2()
+              {
+                   Object[] args = { -5.0, 2.4 };
+                   String output = getMethodOutput("distance", args);
+                   String expect = "7.4";
+                   boolean passed = getResults(expect, output, "distance(-5.0, 2.4)");
+                   assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -402,10 +390,8 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="random-numbers">
     <title>Random numbers</title>
-    <idx>
-      <h>Math</h><h>random</h>
-    </idx>
 
+    <idx><h>Math</h><h>random</h></idx>
     <idx>random</idx>
     <sidebyside widths="20% 75%" margins="0% 0%" valign="middle">
       <image source="Unit1-Using-Objects-and-Methods/Figures/dice.png" alt="Dice" />
@@ -455,6 +441,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="random1">
       <title>Test Math.random</title>
+
       <statement>
         <p>
           Run the following code several times to see what it prints each time.
@@ -470,24 +457,25 @@ public class RunestoneTests extends CodeTestHelper
               }
           }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = output;
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = output;
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -534,6 +522,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="random-example-stretched">
       <title>Multiplied random numbers</title>
+
       <statement>
         <p>
           Try the following code. Run it several times to see what it prints
@@ -550,24 +539,25 @@ public class RunestoneTests extends CodeTestHelper
               }
           }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = output;
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = output;
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -605,6 +595,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="randomRange">
       <title>Random ints</title>
+
       <statement>
         <p>
           Run the code below several times to see how the value changes each
@@ -625,23 +616,24 @@ public class RunestoneTests extends CodeTestHelper
               }
           }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testContainsRange() throws IOException
-    {
-        String target = "+ 1";
-        boolean passed = checkCodeContains("Math.random in range 1 to 10", target);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testContainsRange() throws IOException
+              {
+                  String target = "+ 1";
+                  boolean passed = checkCodeContains("Math.random in range 1 to 10", target);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -685,6 +677,7 @@ public class RunestoneTests extends CodeTestHelper
         <col halign="center" right="minor" />
         <col halign="center" />
         <title>Random recipes</title>
+
         <row header="yes" bottom="minor">
           <cell>Expression</cell>
           <cell>Minimum (inclusive)</cell>
@@ -693,70 +686,49 @@ public class RunestoneTests extends CodeTestHelper
         </row>
 
         <row bottom="minor">
-          <cell>
-            <c>Math.random()</c>
-          </cell>
-
+          <cell><c>Math.random()</c></cell>
           <cell>0.0</cell>
           <cell>1.0</cell>
           <cell>Over 9 quadrillion</cell>
         </row>
 
         <row bottom="minor">
-          <cell>
-            <c>Math.random() * 100</c>
-          </cell>
-
+          <cell><c>Math.random() * 100</c></cell>
           <cell>0.0</cell>
           <cell>100.0</cell>
           <cell>Over 9 quadrillion</cell>
         </row>
 
         <row bottom="minor">
-          <cell>
-            <c>(int) (Math.random() * 100)</c>
-          </cell>
-
+          <cell><c>(int) (Math.random() * 100)</c></cell>
           <cell>0</cell>
           <cell>100</cell>
           <cell>100</cell>
         </row>
 
         <row bottom="minor">
-          <cell>
-            <c>(int) (Math.random() * 50) + 25</c>
-          </cell>
-
+          <cell><c>(int) (Math.random() * 50) + 25</c></cell>
           <cell>25</cell>
           <cell>75</cell>
           <cell>50</cell>
         </row>
 
         <row bottom="minor">
-          <cell>
-            <c>(int) (Math.random() * max)</c>
-          </cell>
-
+          <cell><c>(int) (Math.random() * max)</c></cell>
           <cell>0</cell>
           <cell>max</cell>
           <cell>max</cell>
         </row>
 
         <row bottom="minor">
-          <cell>
-            <c>(int) (Math.random() * range) + min</c>
-          </cell>
-
+          <cell><c>(int) (Math.random() * range) + min</c></cell>
           <cell>min</cell>
           <cell>min + range</cell>
           <cell>range</cell>
         </row>
 
         <row>
-          <cell>
-            <c>(int) (Math.random() * (max - min)) + min</c>
-          </cell>
-
+          <cell><c>(int) (Math.random() * (max - min)) + min</c></cell>
           <cell>min</cell>
           <cell>max</cell>
           <cell>max - min</cell>
@@ -764,10 +736,9 @@ public class RunestoneTests extends CodeTestHelper
       </tabular>
     </table>
 
-
-
     <activity label="qrand_2">
       <title>Random number 1-5</title>
+
       <statement>
         <p>
           Which of the following would return a random number from 1 to 5
@@ -813,6 +784,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="qrand_3">
       <title>Random number 0-10</title>
+
       <statement>
         <p>
           Which of the following would return a random number from 0 to 10
@@ -858,6 +830,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="apcsa_sample3">
       <title>Random number 25-60</title>
+
       <statement>
         <p>
           Which of the following expressions always evaluates to a random
@@ -944,6 +917,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-random-numbers">
     <title>Coding challenge: combo lock</title>
+
     <sidebyside widths="10% 88%" margins="0% 0%" valign="middle">
       <image source="Unit1-Using-Objects-and-Methods/Figures/lock.jpg" alt="lock" />
       <p>
@@ -968,16 +942,16 @@ public class RunestoneTests extends CodeTestHelper
           <p>
             How many times would you need to run it to guess your combination
             correctly? Let’s have the code compute the number of permutations
-            possible in your combination lock using
-            <term>Math.pow(number, exponent)</term>. For example, if you had to
-            spin the dial twice on your combination lock where each spin can
-            choose a digit from 0-9 (10 digits), there are <m>10^{2}</m>
-            possible permutations. In Java, this would be written as
-            <term>Math.pow(10, 2)</term> which means 10 to the power of 2. If you
-            start listing all the permutations possible, you can tell that there
-            are <m>10^{2}</m> or 100 possible permutations for a 2 spins on a
-            dial lock from 0-9.
+            possible in your combination lock using <term>Math.pow(number,
+            exponent)</term>. For example, if you had to spin the dial twice on
+            your combination lock where each spin can choose a digit from 0-9
+            (10 digits), there are <m>10^{2}</m> possible permutations. In Java,
+            this would be written as <term>Math.pow(10, 2)</term> which means 10
+            to the power of 2. If you start listing all the permutations
+            possible, you can tell that there are <m>10^{2}</m> or 100 possible
+            permutations for a 2 spins on a dial lock from 0-9.
           </p>
+
           <p>
             <pre>
               00, 01, 02, 03, 04, 05, 06, 07, 08, 09
@@ -989,7 +963,6 @@ public class RunestoneTests extends CodeTestHelper
         </li>
       </ol>
     </p>
-
 
     <p>
       Now what about the combination lock for this challenge? You will need to
@@ -1003,87 +976,93 @@ public class RunestoneTests extends CodeTestHelper
 
     <project label="challenge1-11-random-math">
       <title>Combo locks</title>
+
       <statement>
         <p>Complete the combination lock challenge below.</p>
       </statement>
 
       <program interactive="activecode" language="java">
         <code>
-public class MathChallenge {
-    public static void main(String[] args) {
-        // 1. Use Math.random() to generate 3 integers from 0-40 (not
-        // including 40) and print them out.
+          public class MathChallenge {
+              public static void main(String[] args) {
+                  // 1. Use Math.random() to generate 3 integers from 0-40 (not
+                  // including 40) and print them out.
 
-        // 2. Calculate the number of combinations to choose 3 numbers between
-        // 0-40 (not including 40) using Math.pow() and print it out.
-        // For example, Math.pow(10,2) is 10^2 and the number of permutations
-        // to choose 2 numbers between 0-9.
-    }
-}
+                  // 2. Calculate the number of combinations to choose 3 numbers between
+                  // 0-40 (not including 40) using Math.pow() and print it out.
+                  // For example, Math.pow(10,2) is 10^2 and the number of permutations
+                  // to choose 2 numbers between 0-9.
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
-import org.junit.*;
-import java.io.*;
+          <![CDATA[
 
-public class RunestoneTests extends CodeTestHelper {
-    @Test
-    public void test1() {
-        String output = getMethodOutput("main");
-        String[] lines = output.split("\\s+");
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
 
-        boolean passed = lines.length &gt;= 2;
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void test1() {
+                  String output = getMethodOutput("main");
+                  String[] lines = output.split("\\s+");
 
-        passed = getResults(
-                "2+ lines of output",
-                lines.length + " lines of output",
-                "Expected output",
-                passed);
-        assertTrue(passed);
-    }
+                  boolean passed = lines.length >= 2;
 
-    @Test
-    public void test2() {
-        String output = getMethodOutput("main");
-        boolean passed = output.contains("64000");
-        passed = getResults("true", "" + passed, "Prints result of 40^3", passed);
-        assertTrue(passed);
-    }
+                  passed = getResults(
+                          "2+ lines of output",
+                          lines.length + " lines of output",
+                          "Expected output",
+                          passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test3() {
-        String[] code = getCode().split("\n");
-        String expected = "Possible answers:\n(int) (Math.random() * 40)\n(int) (40 * Math.random())";
-        String actual = "";
-        int num = 0;
+              @Test
+              public void test2() {
+                  String output = getMethodOutput("main");
+                  boolean passed = output.contains("64000");
+                  passed = getResults("true", "" + passed, "Prints result of 40^3", passed);
+                  assertTrue(passed);
+              }
 
-        for (int i = 0; i &lt; code.length; i++) {
-            if (code[i].contains("Math.random()") &amp;&amp; code[i].contains("40")) {
-                actual += code[i].trim() + "\n";
-                if (code[i].contains("(int)"))
-                    num++;
-            }
-        }
+              @Test
+              public void test3() {
+                  String[] code = getCode().split("\n");
+                  String expected = "Possible answers:\n(int) (Math.random() * 40)\n(int) (40 * Math.random())";
+                  String actual = "";
+                  int num = 0;
 
-        boolean passed = num &gt;= 3;
-        passed = getResults(
-                expected,
-                actual,
-                "Creates 3 random numbers from 0 to 40 (not inclusive)",
-                passed);
-        assertTrue(passed);
-    }
+                  for (int i = 0; i < code.length; i++) {
+                      if (code[i].contains("Math.random()") && code[i].contains("40")) {
+                          actual += code[i].trim() + "\n";
+                          if (code[i].contains("(int)"))
+                              num++;
+                      }
+                  }
 
-    @Test
-    public void test4() {
-        String code = getCode();
-        int num = countOccurences(code, "Math.pow(");
+                  boolean passed = num >= 3;
+                  passed = getResults(
+                          expected,
+                          actual,
+                          "Creates 3 random numbers from 0 to 40 (not inclusive)",
+                          passed);
+                  assertTrue(passed);
+              }
 
-        boolean passed = num &gt;= 1;
-        passed = getResults("1 or more", "" + num, "Calls to Math.pow(...)", passed);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test4() {
+                  String code = getCode();
+                  int num = countOccurences(code, "Math.pow(");
+
+                  boolean passed = num >= 1;
+                  passed = getResults("1 or more", "" + num, "Calls to Math.pow(...)", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -1091,6 +1070,7 @@ public class RunestoneTests extends CodeTestHelper {
 
   <subsection>
     <title>Coding Challenge: Dancing turtles</title>
+
     <p>
       Here’s another challenge that is a lot of fun! Can you use random numbers
       to make dancing turtles? This idea was suggested by CSA teacher Zac
@@ -1099,6 +1079,7 @@ public class RunestoneTests extends CodeTestHelper {
 
     <project label="challenge-random-dancing-turtles">
       <title>Dancing turtles</title>
+
       <statement>
         <p>
           Complete the random numbers using Math.random() in the correct ranges
@@ -1109,80 +1090,89 @@ public class RunestoneTests extends CodeTestHelper {
 
       <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.util.*;
-import java.awt.*;
+          <![CDATA[
 
-public class DancingTurtles
-{
-  public static void main(String[] args)
-  {
+          import java.util.*;
+          import java.awt.*;
 
-      World world = new World(500,400);
-      Turtle yertle = new Turtle(world);
+          public class DancingTurtles
+          {
+            public static void main(String[] args)
+            {
 
-      // This is a loop that runs 10 times (you will learn to write loops in
-      // Unit 2)
-      for(int i = 1; i &lt;= 10; i++)
-      {
-       // Can you choose a randomX between 0-500?
-       // Can you adjust for the 20 pixel width of the turtle,
-       // so it doesn't get cut off at the edges?
-       // Move the range from 20 to 480.
-       int randomX = 0;
-       // Can you choose a randomY between 0-400?
-       // Can you adjust for the 20 pixel height of the turtle,
-       // so it doesn't get cut off at the edges?
-       int randomY = 0;
+                World world = new World(500,400);
+                Turtle yertle = new Turtle(world);
 
-       yertle.moveTo(randomX, randomY);
-       yertle.turnRight();
+                // This is a loop that runs 10 times (you will learn to write loops in
+                // Unit 2)
+                for(int i = 1; i <= 10; i++)
+                {
+                 // Can you choose a randomX between 0-500?
+                 // Can you adjust for the 20 pixel width of the turtle,
+                 // so it doesn't get cut off at the edges?
+                 // Move the range from 20 to 480.
+                 int randomX = 0;
+                 // Can you choose a randomY between 0-400?
+                 // Can you adjust for the 20 pixel height of the turtle,
+                 // so it doesn't get cut off at the edges?
+                 int randomY = 0;
 
-       // Can you choose a random red, green, and blue value between 0-255?
-       int randomR = 0;
-       int randomG = 0;
-       int randomB = 0;
+                 yertle.moveTo(randomX, randomY);
+                 yertle.turnRight();
 
-       yertle.setColor(new Color(randomR, randomG, randomB));
+                 // Can you choose a random red, green, and blue value between 0-255?
+                 int randomR = 0;
+                 int randomG = 0;
+                 int randomB = 0;
 
-      } // end of loop
-      world.show(true);
-  }
-}
+                 yertle.setColor(new Color(randomR, randomG, randomB));
+
+                } // end of loop
+                world.show(true);
+            }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("DancingTurtles");
-    }
+          import java.io.*;
 
-    @Test
-    public void test1()
-    {
-        String code = getCode();
-        int numRandom = countOccurences(code, "Math.random()");
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("DancingTurtles");
+              }
 
-        boolean passed = numRandom &gt;= 5;
-        passed = getResults("5+", "" + numRandom, "5+ calls to Math.random()", passed);
-        assertTrue(passed);
-    }
+              @Test
+              public void test1()
+              {
+                  String code = getCode();
+                  int numRandom = countOccurences(code, "Math.random()");
 
-    @Test
-    public void test2()
-    {
-        boolean passed =
-                checkCodeContainsNoRegex(
-                        "Random numbers for 0-255 colors (256 values)", "Math.random() * 256");
-        assertTrue(passed);
-    }
-}
+                  boolean passed = numRandom >= 5;
+                  passed = getResults("5+", "" + numRandom, "5+ calls to Math.random()", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2()
+              {
+                  boolean passed =
+                          checkCodeContainsNoRegex(
+                                  "Random numbers for 0-255 colors (256 values)", "Math.random() * 256");
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -1190,31 +1180,19 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Coding Challenge: Tower ladder</title>
-    <sidebyside widths="25% 75%" margin="0% 0%">
+
+    <sidebyside widths="25% 70%" margin="0% 0%">
       <image source="Unit1-Using-Objects-and-Methods/Figures/ladder.png" width="36%" alt="Ladder on tower" />
       <p>
         The Pythagorean theorem states that the length of the hypotenuse (the
         side opposite the right angle in a right triangle) is the square root of
         the sum of the squares of the lengths of the other two sides, also
-        called the “legs” or the width and height of the triangle.
-        (Incidentally, the Pythagorean theorem is named for Pythagoras who was
-        also the leader of the gang of Greek mathematicians who legend has it
-        allegedly drowned their fellow mathematician for showing that
-        <m>\sqrt{2}</m> is irrational.) Here’s the formula for this theorem:
+        called the “legs” or the width and height of the triangle. Here’s the
+        formula for this theorem: <m>c = \sqrt{a^{2} + b^{2}}</m> where <m>a</m>
+        and <m>b</m> are the width and height of the triangle and <m>c</m> is
+        the length of the hypotenuse.
       </p>
     </sidebyside>
-
-    <p>
-      <ul>
-        <li>
-          <p>
-            <m>c = \sqrt{a^{2} + b^{2}}</m> where <m>a</m> and <m>b</m> are the
-            width and height of the triangle and <m>c</m> is the length of the
-            hypotenuse.
-          </p>
-        </li>
-      </ul>
-    </p>
 
     <p>
       This may seems like a bunch of Greek to you but one common, real-world use
@@ -1228,6 +1206,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="hypotenuse-java-mc">
       <title>Find correct hypotenuse</title>
+
       <statement>
         <p>
           Which of the following are correct Java expressions to compute the
@@ -1241,9 +1220,7 @@ public class RunestoneTests extends CodeTestHelper
       <choices>
         <choice correct="yes">
           <statement id="hypotenuse-java-mc_opt_a">
-            <p>
-              <c>Math.sqrt(a * a + b * b)</c>
-            </p>
+            <p><c>Math.sqrt(a * a + b * b)</c></p>
           </statement>
 
           <feedback id="hypotenuse-java-mc_opt_a">
@@ -1257,9 +1234,7 @@ public class RunestoneTests extends CodeTestHelper
 
         <choice correct="yes">
           <statement id="hypotenuse-java-mc_opt_b">
-            <p>
-              <c>Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2))</c>
-            </p>
+            <p><c>Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2))</c></p>
           </statement>
 
           <feedback id="hypotenuse-java-mc_opt_b">
@@ -1273,9 +1248,7 @@ public class RunestoneTests extends CodeTestHelper
 
         <choice>
           <statement id="hypotenuse-java-mc_opt_c">
-            <p>
-              <c>Math.sqrt(a + b)</c>
-            </p>
+            <p><c>Math.sqrt(a + b)</c></p>
           </statement>
 
           <feedback id="hypotenuse-java-mc_opt_c">
@@ -1285,9 +1258,7 @@ public class RunestoneTests extends CodeTestHelper
 
         <choice>
           <statement id="hypotenuse-java-mc_opt_d">
-            <p>
-              <c>a * a + b * b</c>
-            </p>
+            <p><c>a * a + b * b</c></p>
           </statement>
 
           <feedback id="hypotenuse-java-mc_opt_d">
@@ -1303,6 +1274,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <project label="challenge-1-10-pythagorean">
       <title>Ladder size</title>
+
       <statement>
         <p>
           Complete the <c>ladderSizeNeeded</c> method below using the
@@ -1341,47 +1313,49 @@ public class RunestoneTests extends CodeTestHelper
               }
           }
         </code>
+
         <tests>
-import org.junit.Test;
-import java.io.IOException;
+          import org.junit.Test;
+          import java.io.IOException;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    private void check(double height, double width)
-    {
-        double expected = Math.sqrt(Math.pow(height, 2) + Math.pow(width, 2));
-        double got = LadderHelper.ladderSizeNeeded(height, width);
-        String label = "ladderSizeNeeded(" + height + ", " + width + ")";
-        expectExact(expected, got, label);
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              private void check(double height, double width)
+              {
+                  double expected = Math.sqrt(Math.pow(height, 2) + Math.pow(width, 2));
+                  double got = LadderHelper.ladderSizeNeeded(height, width);
+                  String label = "ladderSizeNeeded(" + height + ", " + width + ")";
+                  expectExact(expected, got, label);
+              }
 
-    @Test
-    public void testMain() throws IOException
-    {
-        String expected = "Beloved, I need a 50.0 foot ladder!";
-        expect(expected, getMethodOutput("main"), "Expected output from main");
-    }
+              @Test
+              public void testMain() throws IOException
+              {
+                  String expected = "Beloved, I need a 50.0 foot ladder!";
+                  expect(expected, getMethodOutput("main"), "Expected output from main");
+              }
 
-    @Test
-    public void testShort() {
-      check(3, 4);
-    }
-    @Test
-    public void testTall() {
-      check(30, 40);
-    }
+              @Test
+              public void testShort() {
+                check(3, 4);
+              }
+              @Test
+              public void testTall() {
+                check(30, 40);
+              }
 
-    @Test
-    public void testRandom() {
-      check(Math.random() * 100, Math.random() * 50);
-    }
-}
+              @Test
+              public void testRandom() {
+                check(Math.random() * 100, Math.random() * 50);
+              }
+          }
         </tests>
       </program>
     </project>
 
     <activity label="vocab1_9">
       <title>Vocab check</title>
+
       <statement>
         <p>
           Drag the definition from the left and drop it on the correct concept
@@ -1410,12 +1384,18 @@ public class RunestoneTests extends CodeTestHelper
         </match>
 
         <match>
-          <premise order="4">a variable declared in the header of a method</premise>
+          <premise order="4">
+            a variable declared in the header of a method
+          </premise>
+
           <response>parameter</response>
         </match>
 
         <match>
-          <premise order="5">value passed into a method when it is called</premise>
+          <premise order="5">
+            value passed into a method when it is called
+          </premise>
+
           <response>argument</response>
         </match>
       </cardsort>
@@ -1424,6 +1404,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-2">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>

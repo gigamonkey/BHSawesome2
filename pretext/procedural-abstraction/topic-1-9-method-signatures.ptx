@@ -2,6 +2,7 @@
 
 <section xml:id="topic-1-9-method-signatures">
   <title>Writing methods</title>
+
   <introduction>
     <p>
       Writing Java code consists of about equal parts writing methods and using
@@ -14,6 +15,7 @@
 
   <subsection>
     <title>Methods signatures</title>
+
     <idx>method signature</idx>
     <idx>parameter</idx>
     <idx>argument</idx>
@@ -72,6 +74,7 @@
 
   <subsection>
     <title>Method calls</title>
+
     <p>
       The point of a method signature is that it gives us all the information we
       need to <term>call</term> the method. A <term>method call</term> consists
@@ -117,6 +120,7 @@
 
   <subsection>
     <title>Method bodies</title>
+
     <p>
       Of course the signature does not tell us everything about the method. In
       particular, it does not tell us what computation the method actually
@@ -171,6 +175,7 @@
 
     <activity>
       <title>Trace call to add</title>
+
       <statement>
         <p>
           To see how a method call works click on the next button below the code
@@ -201,6 +206,7 @@
 
   <subsection>
     <title>Making smaller methods</title>
+
     <idx>method call</idx>
     <idx>flow of control</idx>
     <idx>tracing</idx>
@@ -223,10 +229,9 @@
 
     <activity>
       <title>Finding duplicate code</title>
+
       <statement>
-        <p>
-          Click on all the lines that are exactly the same as another line.
-        </p>
+        <p>Click on all the lines that are exactly the same as another line.</p>
       </statement>
 
       <feedback>
@@ -272,6 +277,7 @@
 
     <activity>
       <title>Old MacDonald with methods</title>
+
       <statement>
         <p>
           Click on the next button below the code to step through the code and
@@ -317,6 +323,7 @@
 
     <activity label="song-add-calls">
       <title>Add an animal</title>
+
       <statement>
         <p>
           Scroll down to the main method below and add lines of code to the main
@@ -360,41 +367,47 @@
               }
           }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
-import org.junit.*;
-import java.io.*;
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1()
-    {
-        String code = getCode();
-        int num = countOccurences(code, "chorus();");
+          <![CDATA[
 
-        boolean passed = num &gt;= 3;
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test1()
+              {
+                  String code = getCode();
+                  int num = countOccurences(code, "chorus();");
 
-        passed = getResults("3 or more", "" + num, "Calls to chorus()", passed);
-        assertTrue(passed);
-    }
-    @Test
-    public void test2()
-    {
-        String code = getCode();
-        int num = countOccurences(code, "eieio();");
+                  boolean passed = num >= 3;
 
-        boolean passed = num &gt;= 3;
+                  passed = getResults("3 or more", "" + num, "Calls to chorus()", passed);
+                  assertTrue(passed);
+              }
+              @Test
+              public void test2()
+              {
+                  String code = getCode();
+                  int num = countOccurences(code, "eieio();");
 
-        passed = getResults("3 or more", "" + num, "Calls to eieio()", passed);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = num >= 3;
+
+                  passed = getResults("3 or more", "" + num, "Calls to eieio()", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
 
     <activity label="songMethodsTrace">
       <title>Mental execution</title>
+
       <statement>
         <p>
           Figuring out what the code does is called <term>code tracing</term> or
@@ -492,7 +505,9 @@ public class RunestoneTests extends CodeTestHelper
           </statement>
 
           <feedback>
-            <p>Try the code in an active code window to see that it does work.</p>
+            <p>
+              Try the code in an active code window to see that it does work.
+            </p>
           </feedback>
         </choice>
       </choices>
@@ -501,6 +516,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Removing even more duplication</title>
+
     <p>
       Let’s take another look at the Old MacDonald Song and see if we can remove
       even more duplication by writing a with that takes arguments. To start, do
@@ -510,6 +526,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="different-code-old-mcdonald">
       <title>Duplication with small differences</title>
+
       <statement>
         <p>
           Notice that the verses of the song are similar except that each is
@@ -629,6 +646,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <figure align="center">
       <caption>Matching Arguments to Parameters</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/args2paramsFarm.png" width="89%" alt="Arguments to Parameters" />
     </figure>
 
@@ -642,6 +660,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity>
       <title>Trace verse calls</title>
+
       <statement>
         <p>
           Click on the “Next” button below the code to step through the code.
@@ -686,6 +705,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="OldMacDonaldSong2">
       <title>Add more animals</title>
+
       <statement>
         <p>
           Let’s add more animals to the farm! Scroll down to the <c>main</c>
@@ -734,33 +754,38 @@ public class RunestoneTests extends CodeTestHelper
                }
           }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testThree()
-    {
-        boolean passed = checkCodeContains("verse with goose and honk", "verse(\"goose\", \"honk\");");
-        assertTrue(passed);
-    }
-    @Test
-    public void test1()
-    {
-        String code = getCode();
-        int num = countOccurences(code, "chorus();");
+          import java.io.*;
 
-        boolean passed = num &gt;= 5;
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testThree()
+              {
+                  boolean passed = checkCodeContains("verse with goose and honk", "verse(\"goose\", \"honk\");");
+                  assertTrue(passed);
+              }
+              @Test
+              public void test1()
+              {
+                  String code = getCode();
+                  int num = countOccurences(code, "chorus();");
 
-        passed = getResults("5 or more", "" + num, "Calls to chorus", passed);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = num >= 5;
+
+                  passed = getResults("5 or more", "" + num, "Calls to chorus", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -768,6 +793,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Coding Challenge: Song with Parameters</title>
+
     <p>
       Here’s another song, <url href="https://youtu.be/QPwEZ8Vv2YQ"
       visual="https://youtu.be/QPwEZ8Vv2YQ">The Ants Go Marching</url> with a
@@ -779,6 +805,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="clickDifferentAntSong">
       <title>The Ants Go Marching</title>
+
       <statement>
         <p>Click on the phrases that are different in each verse.</p>
       </statement>
@@ -813,6 +840,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <project label="challenge-1-9-song">
       <title>Implement ants song</title>
+
       <statement>
         <p>
           Write code in the main method that calls the verse method to print out
@@ -822,102 +850,107 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class AntsSong
-{
-    public static void chorus(String num)
-    {
-        System.out.println("The ants go marching " + num
-                         + " by " + num + " hurrah, hurrah");
-        System.out.println("The ants go marching " + num
-                         + " by " + num + " hurrah, hurrah");
-    }
+          public class AntsSong
+          {
+              public static void chorus(String num)
+              {
+                  System.out.println("The ants go marching " + num
+                                   + " by " + num + " hurrah, hurrah");
+                  System.out.println("The ants go marching " + num
+                                   + " by " + num + " hurrah, hurrah");
+              }
 
-    public static void verse(String num, String action)
-    {
-        System.out.println("The ants go marching " + num + " by " + num);
-        System.out.println("The little one stops to " + action);
-        System.out.println("And they all go marching down to the ground");
-        System.out.println("To get out of the rain, BOOM! BOOM! BOOM! BOOM!\n");
-    }
+              public static void verse(String num, String action)
+              {
+                  System.out.println("The ants go marching " + num + " by " + num);
+                  System.out.println("The little one stops to " + action);
+                  System.out.println("And they all go marching down to the ground");
+                  System.out.println("To get out of the rain, BOOM! BOOM! BOOM! BOOM!\n");
+              }
 
-    public static void main(String args[])
-    {
-        // Call the chorus and verse methods
-        // with the correct arguments
-        // to print out all three verses above.
-    }
-}
+              public static void main(String args[])
+              {
+                  // Call the chorus and verse methods
+                  // with the correct arguments
+                  // to print out all three verses above.
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
-import org.junit.*;
-import java.io.*;
+          <![CDATA[
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void checkCodeContains1()
-    {
-        String code = getCode();
-        int actual = countOccurences(code, "chorus(");
-        String expected = "3";
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
 
-        boolean passed = actual &gt;= 3;
-        getResults(
-                expected,
-                "" + actual,
-                "Checking that code contains 3 calls to  chorus",
-                passed);
-        assertTrue(passed);
-    }
-    @Test
-    public void checkCodeContains2()
-    {
-        String code = getCode();
-        int actual = countOccurences(code, "verse(");
-        String expected = "3";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void checkCodeContains1()
+              {
+                  String code = getCode();
+                  int actual = countOccurences(code, "chorus(");
+                  String expected = "3";
 
-        boolean passed = actual &gt;= 3;
-        getResults(
-                expected,
-                "" + actual,
-                "Checking that code contains three calls to verse method",
-                passed);
-        assertTrue(passed);
-    }
-    @Test
-     public void testMain() throws IOException
-     {
-         String output = getMethodOutput("main");
+                  boolean passed = actual >= 3;
+                  getResults(
+                          expected,
+                          "" + actual,
+                          "Checking that code contains 3 calls to  chorus",
+                          passed);
+                  assertTrue(passed);
+              }
+              @Test
+              public void checkCodeContains2()
+              {
+                  String code = getCode();
+                  int actual = countOccurences(code, "verse(");
+                  String expected = "3";
 
-         String expect =
-            "The ants go marching one by one, hurrah, hurrah\n"
-                    + "The ants go marching one by one, hurrah, hurrah\n"
-                    + "The ants go marching one by one\n"
-                    + "The little one stops to suck a thumb\n"
-                    + "And they all go marching down to the ground\n"
-                    + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!\n"
-                    + "\n"
-                    + "The ants go marching two by two, hurrah, hurrah\n"
-                    + "The ants go marching two by two, hurrah, hurrah\n"
-                    + "The ants go marching two by two\n"
-                    + "The little one stops to tie a shoe\n"
-                    + "And they all go marching down to the ground\n"
-                    + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!\n"
-                    + "\n"
-                    + "The ants go marching three by three, hurrah, hurrah\n"
-                    + "The ants go marching three by three, hurrah, hurrah\n"
-                    + "The ants go marching three by three\n"
-                    + "The little one stops to climb a tree\n"
-                    + "And they all go marching down to the ground\n"
-                    + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!";
+                  boolean passed = actual >= 3;
+                  getResults(
+                          expected,
+                          "" + actual,
+                          "Checking that code contains three calls to verse method",
+                          passed);
+                  assertTrue(passed);
+              }
+              @Test
+               public void testMain() throws IOException
+               {
+                   String output = getMethodOutput("main");
 
-               boolean passed =
-               getResults(expect, output, "Expected output from main");
-               assertTrue(passed);
-         }
+                   String expect =
+                      "The ants go marching one by one, hurrah, hurrah\n"
+                              + "The ants go marching one by one, hurrah, hurrah\n"
+                              + "The ants go marching one by one\n"
+                              + "The little one stops to suck a thumb\n"
+                              + "And they all go marching down to the ground\n"
+                              + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!\n"
+                              + "\n"
+                              + "The ants go marching two by two, hurrah, hurrah\n"
+                              + "The ants go marching two by two, hurrah, hurrah\n"
+                              + "The ants go marching two by two\n"
+                              + "The little one stops to tie a shoe\n"
+                              + "And they all go marching down to the ground\n"
+                              + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!\n"
+                              + "\n"
+                              + "The ants go marching three by three, hurrah, hurrah\n"
+                              + "The ants go marching three by three, hurrah, hurrah\n"
+                              + "The ants go marching three by three\n"
+                              + "The little one stops to climb a tree\n"
+                              + "And they all go marching down to the ground\n"
+                              + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!";
 
-}
+                         boolean passed =
+                         getResults(expect, output, "Expected output from main");
+                         assertTrue(passed);
+                   }
+
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -925,6 +958,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Non-void methods</title>
+
     <idx>return value</idx>
     <idx>void method</idx>
     <idx>non-void method</idx>
@@ -945,6 +979,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <figure align="center">
       <caption>Method that takes arguments and returns a value</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/function.png" width="71%" alt="function" />
     </figure>
 
@@ -955,6 +990,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <figure align="center">
       <caption>The Square Method</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/square-method.png" width="71%" alt="Square Method" />
     </figure>
 
@@ -987,6 +1023,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="codelensSquare">
       <title>Trace square</title>
+
       <statement>
         <p>
           Click on the next button below the code to step through the code and
@@ -1036,6 +1073,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="squareMethod">
       <title>Call square</title>
+
       <statement>
         <p>
           Add another call to the square method in the main method that prints
@@ -1057,37 +1095,40 @@ public class RunestoneTests extends CodeTestHelper
                }
           }
         </code>
-        <tests>
-import static org.junit.Assert.*;
-import org.junit.*;
-import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void containsCall()
-    {
-        boolean passed = checkCodeContains("square(6)", "square(6)");
-        assertTrue(passed);
-    }
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "36";
-        boolean passed =
-             getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+        <tests>
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void containsCall()
+              {
+                  boolean passed = checkCodeContains("square(6)", "square(6)");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "36";
+                  boolean passed =
+                       getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
 
     <activity label="traceMethods1">
       <title>Mental execution</title>
+
       <statement>
         <p>What does the following code print out?</p>
+
         <program language="java">
           <code>
             public class MethodTrace {
@@ -1174,6 +1215,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Common errors with non-void methods</title>
+
     <p>
       A common error with non-void methods is forgetting to do something with
       the value returned from a method. When you call a method that returns a
@@ -1191,6 +1233,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="fixMethodCalls">
       <title>Fix type errors</title>
+
       <statement>
         <p>
           Fix the method calls below in the main method. Make sure the number
@@ -1227,41 +1270,42 @@ public class RunestoneTests extends CodeTestHelper
                }
           }
         </code>
-        <tests>
-import static org.junit.Assert.*;
-import org.junit.*;
-import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void containsType()
-    {
-        boolean passed = checkCodeContains("correct double type for result2", "double result2");
-        assertTrue(passed);
-    }
-    @Test
-    public void containsCall()
-    {
-        boolean passed = checkCodeContains("call to square with int 4", "square(4)");
-        assertTrue(passed);
-    }
-    @Test
-    public void containsCall2()
-    {
-        boolean passed = checkCodeContains("call to divide with the correct argument order", "divide(5,2)");
-        assertTrue(passed);
-    }
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "4 squared is 16\n5 divided by 2 is 2.5";
-        boolean passed =
-             getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+        <tests>
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void containsType()
+              {
+                  boolean passed = checkCodeContains("correct double type for result2", "double result2");
+                  assertTrue(passed);
+              }
+              @Test
+              public void containsCall()
+              {
+                  boolean passed = checkCodeContains("call to square with int 4", "square(4)");
+                  assertTrue(passed);
+              }
+              @Test
+              public void containsCall2()
+              {
+                  boolean passed = checkCodeContains("call to divide with the correct argument order", "divide(5,2)");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "4 squared is 16\n5 divided by 2 is 2.5";
+                  boolean passed =
+                       getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -1269,6 +1313,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -1391,30 +1436,33 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>AP Practice</title>
+
     <activity label="AP-trace-method-calls">
       <title>Mental execution</title>
+
       <statement>
         <p>Consider the following class definition.</p>
+
         <program language="java">
           <code>
-public class Cat
-{
-    public static void sound1()
-    {
-        System.out.print("meow ");
-    }
+            public class Cat
+            {
+                public static void sound1()
+                {
+                    System.out.print("meow ");
+                }
 
-    public static void sound2()
-    {
-        System.out.print("purr ");
-    }
+                public static void sound2()
+                {
+                    System.out.print("purr ");
+                }
 
-    public static void hello()
-    {
-        sound2();
-        sound1();
-    }
-}
+                public static void hello()
+                {
+                    sound2();
+                    sound1();
+                }
+            }
           </code>
         </program>
 
@@ -1429,7 +1477,7 @@ public class Cat
           <statement id="AP-trace-method-calls_opt_a">
             <program language="java">
               <code>
-hello();
+                hello();
               </code>
             </program>
           </statement>
@@ -1443,8 +1491,8 @@ hello();
           <statement id="AP-trace-method-calls_opt_b">
             <program language="java">
               <code>
-hello();
-sound2();
+                hello();
+                sound2();
               </code>
             </program>
           </statement>
@@ -1458,9 +1506,9 @@ sound2();
           <statement id="AP-trace-method-calls_opt_c">
             <program language="java">
               <code>
-sound1()
-sound2();
-sound1();
+                sound1()
+                sound2();
+                sound1();
               </code>
             </program>
           </statement>
@@ -1476,9 +1524,9 @@ sound1();
           <statement id="AP-trace-method-calls_opt_d">
             <program language="java">
               <code>
-purr();
-meow();
-purr()
+                purr();
+                meow();
+                purr()
               </code>
             </program>
           </statement>
@@ -1495,12 +1543,14 @@ purr()
 
     <activity label="AP1-10-static-method">
       <title>Calculate pizza boxes</title>
+
       <statement>
         <p>Consider the following method.</p>
+
         <program language="java">
           <code>
-public static double calculatePizzaBoxes(int numOfPeople, double slicesPerBox)
-{ /*implementation not shown */}
+            public static double calculatePizzaBoxes(int numOfPeople, double slicesPerBox)
+            { /*implementation not shown */}
           </code>
         </program>
 
@@ -1581,20 +1631,26 @@ public static double calculatePizzaBoxes(int numOfPeople, double slicesPerBox)
 
     <activity label="AP1-10-static-method2">
       <title>Inches to centimeters</title>
+
       <statement>
         <p>Consider the following methods:</p>
+
         <program language="java">
           <code>
-public void static inchesToCentimeters(double i)
-{
-    double c = i * 2.54;
-    printInCentimeters(i, c);
-}
+            <![CDATA[
 
-public void static printInCentimeters(double inches, double centimeters)
-{
-    System.out.print(inches + "--&gt;" + centimeters);
-}
+            public void static inchesToCentimeters(double i)
+            {
+                double c = i * 2.54;
+                printInCentimeters(i, c);
+            }
+
+            public void static printInCentimeters(double inches, double centimeters)
+            {
+                System.out.print(inches + "-->" + centimeters);
+            }
+
+            ]]>
           </code>
         </program>
 
