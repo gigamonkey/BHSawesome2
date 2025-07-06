@@ -8,290 +8,81 @@
     <idx>object reference</idx>
     <idx>reference</idx>
     <idx><h>String</h><h>definition</h></idx>
-    <p>
-      <term>Strings</term> in Java are objects of the <c>String</c> class.
-      Strings represent sequences of characters and are used to store text like
-      names, addresses, or messages. The <c>String</c> class is part of the
-      <c>java.lang package</c> which is available by default in all Java
-      programs.
-    </p>
 
-    <note>
-      <p>
-        Class names in Java, like <c>String</c>, begin with a capital letter.
-        All primitive types: <c>int</c>, <c>double</c>, and <c>boolean</c>,
-        begin with a lowercase letter. This is one easy way to tell the
-        difference between primitive types and class types.
-      </p>
-    </note>
+    <p>
+      <c>String</c>, like most reference types in Java, is defined by a
+      <term>class</term>. We’ll look at the structure of classes and how to
+      write our own later in this unit in <xref ref="topic-3-3-anatomy-of-class"
+      />. But <c>String</c> gets a bit of extra love from Java compared to
+      pretty much all other classes. For one thing it’s one of the handful of
+      classes in the <c>java.lang</c> package which means its available by
+      default in all Java programs. But it is also special in that it is the
+      only class in Java that supports an operator other than <c>==</c> and
+      <c>!=</c>, namely the <c>+</c> string concatenation operator. And it’s the
+      only class in Java with a literal value syntax that lets us write
+      <c>String</c> values in our programs like <c>"hello, world!</c>.
+    </p>
   </introduction>
 
-  <subsection>
-    <title>String References</title>
-
-    <activity label="lcsb1">
-      <statement>
-        <p>Run the following code. What does it print?</p>
-      </statement>
-
-      <program interactive="activecode" language="java">
-        <code>
-          public class Test1
-          {
-              public static void main(String[] args)
-              {
-                  String greeting = null;
-                  System.out.println(greeting);
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "null";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-      </program>
-    </activity>
-
-    <p>
-      The code above declares an object variable named <c>greeting</c> and sets
-      the value of greeting to the Java keyword <c>null</c> to show that it
-      doesn’t refer to any object yet. So <c>System.out.println(greeting);</c>
-      will print <c>null</c>.
-    </p>
-
-    <p>
-      Object variables <term>refer</term> to objects in memory. A reference is a
-      way to find the actual object, like adding a contact to your phone lets
-      you reach someone without knowing exactly where they are. The value of
-      greeting is null since the string object has not been created yet.
-    </p>
-
-    <figure align="center">
-      <caption>Initial value for an object reference</caption>
-
-      <image source="Unit1-Using-Objects-and-Methods/Figures/greeting.png" width="9%" />
-    </figure>
-
-    <idx><h>String</h><h>creation</h></idx>
-    <p>
-      In Java there are two ways to create an object of the <c>String</c> class.
-      You can use the <c>new</c> keyword followed by a space and then the class
-      constructor and then in parentheses you can include values used to
-      initialize the fields of the object. This is the standard way to create a
-      new object of a class in Java.
-    </p>
-
-    <program language="java">
-      <code>
-        String greeting = new String("Hello");
-      </code>
-    </program>
-
-    <idx>String literal</idx>
-    <idx><h>String</h><h>literal</h></idx>
-    <p>
-      In Java you can also use just a <term>string literal</term>, which is a
-      set of characters enclosed in double quotes (<c>"</c>), to create a
-      <c>String</c> object.
-    </p>
-
-    <program language="java">
-      <code>
-        String greeting = "Hello";
-      </code>
-    </program>
-
-    <p>
-      In both cases an object of the <c>String</c> class will be created in
-      memory and the value of the variable greeting will be set to an object
-      reference, a way to find that object.
-    </p>
-
-    <activity label="lcsbnew">
-      <statement>
-        <p>
-          The code below creates two greeting strings: one using a string
-          literal and the other using new and the String constructor. Change the
-          code to add 2 new strings called firstName and lastName, one using a
-          string literal and the other using new, and print them out with the
-          greetings.
-        </p>
-      </statement>
-
-      <program interactive="activecode" language="java">
-        <code>
-          public class StringTest
-          {
-              public static void main(String[] args)
-              {
-                  String greeting1 = "Hello!";
-                  String greeting2 = new String("Welcome!");
-                  System.out.println(greeting1);
-                  System.out.println(greeting2);
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testChangedCode()
-              {
-                  String origCode =
-                          "public class StringTest {      public static void main(String[] args)      {"
-                                  + " String greeting1 = \"Hello!\";        String greeting2 = new"
-                                  + " String(\"Welcome!\"); System.out.println(greeting1);"
-                                  + " System.out.println(greeting2); }    }";
-                  boolean changed = codeChanged(origCode);
-                  assertTrue(changed);
-              }
-          }
-        </tests>
-      </program>
-    </activity>
-
-    <activity label="lcsb2">
-      <statement>
-        <p>
-          Now that greeting refers to an actual object we can ask the object
-          what class created it. Try the following. What does it print?
-        </p>
-      </statement>
-
-      <program interactive="activecode" language="java">
-        <code>
-          public class Test2
-          {
-              public static void main(String[] args)
-              {
-                  String greeting = "Hello";
-                  Class currClass = greeting.getClass();
-                  System.out.println(currClass);
-                  Class parentClass = currClass.getSuperclass();
-                  System.out.println(parentClass);
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "class java.lang.String\nclass java.lang.Object";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-      </program>
-    </activity>
-
-    <idx>parent class</idx>
-    <idx>superclass</idx>
-    <idx>inheritance</idx>
-    <idx>package</idx>
-    <idx>java.lang</idx>
-    <idx><h>package</h><h>java.lang</h></idx>
-    <p>
-      The code above will first print class <c>java.lang.String</c> since
-      <c>greeting</c> was created by the <c>String</c> class. The full name for
-      the <c>String</c> class is <c>java.lang.String</c>. The <c>java.lang</c>
-      part is the <term>package</term> name. Every class in the Java language is
-      in a package and the standard classes like <c>String</c> are in the
-      <c>java.lang</c> package. Every object in Java knows the class that
-      created it. Also, every class knows its <term>parent</term> class. Yes, a
-      class can have a parent class, just as people have parents. But, in Java a
-      class can only have one parent. A class can <c>inherit</c> object fields
-      and methods from a parent class, just like you might inherit musical
-      ability from a parent. The last print statement will print <c>class
-      java.lang.Object</c> because the parent class (<term>superclass</term>) of
-      the String class is the Object class. All classes in Java inherit from the
-      Object class at some point in their ancestry.
-    </p>
-
-    <figure align="center">
-      <caption>
-        Object variable of type String with a reference to a String object which
-        has a reference to the String class which has a reference to the Object
-        class.
-      </caption>
-
-      <image source="Unit1-Using-Objects-and-Methods/Figures/stringObject.png" width="89%" />
-    </figure>
-  </subsection>
 
   <subsection>
-    <title>String Operators - Concatenation</title>
+    <title>More string concatenation</title>
 
     <idx><h>String</h><h>append</h></idx>
+
     <p>
-      <c>String</c>s can be added to each other to create a new string using the
-      <c>+</c> or <c>+=</c> operator. This is also called
-      <term>concatenation</term>. You can also add any other kind of value to a
-      <c>String</c> with <c>+</c> or <c>+=</c> and the other value will be
-      converted to a <c>String</c> automatically.
+      We first used string concatention in <xref ref="text-output" /> to
+      generate formatted strings to be printed out. As we saw then a <c>+</c>
+      expression where one of the values is a <c>String</c> results in a new
+      <c>String</c> formed by concatenating (smooshing together) the string
+      representation of both values.
     </p>
 
     <p>
-      A String object is <term>immutable</term>, meaning once a String object is
-      created, its attributes cannot be changed. So when we add two
+      Like the arithmetic <c>+</c> operator, there’s also a compound assignment
+      version, <c>+=</c> that updates <c>String</c> variable to a new
+      <c>String</c> consisting of its old value plus the string representation
+      of the value being added.
+    </p>
+
+    <program>
+      String s = "hello";
+      s += ", world!";
+      System.out.println(s); // prints "hello, world!"
+    </program>
+
+    <p>
+      It’s important to note that like the arithmetic <c>+=</c> <c>String</c>
+      <c>+=</c> is changing the variable, not the <c>String</c> itself. In fact
+      <c>String</c> values are <term>immutable</term>, meaning once a
+      <c>String</c> is created, its text cannot be changed. When we add two
       <c>String</c>s (or a <c>String</c> and another value converted to a
       <c>String</c>) we get a new <c>String</c> without making any change to the
-      values being added together just like when we add the ints <c>1 + 2</c>
-      the original <c>1</c> and <c>2</c> aren’t changed. When we use <c>+=</c>
-      we are making a new <c>String</c> by adding something to the current value
-      of a variable and then assigning that new value back into the variable,
-      again just like with numbers.
+      values being added together just like when we add the <c>int</c> values
+      <c>1 + 2</c> the original <c>1</c> and <c>2</c> aren’t changed. When we
+      use <c>+=</c> we are making a new <c>String</c> by adding something to the
+      current value of a variable and then assigning that new value back into
+      the variable, again just like with numbers.
     </p>
 
     <activity label="lcso1">
+      <title>Happy birthday greeting</title>
       <statement>
         <p>
-          Try the following code. Add another variable for a lastname that is
-          “Hernandez”. Use += or + to add the lastname variable after name to
-          the result. Use += or + to add 2 more exclamation points (!) to the
-          end of the happy birthday greeting in result.
+          Try the following code. Add another variable, <c>lastname</c>, with
+          the value <c>"Hernandez"</c>. Use <c>+=</c> or <c>+</c> to add the
+          <c>lastname</c> variable after <c>name</c> to <c>result</c>. Then use
+          <c>+=</c> or <c>+</c> to add two more exclamation points (!) to the
+          end of the happy birthday greeting in <c>result</c>. Note that you
+          will need to add a space between <c>name</c> and <c>lastname</c> to
+          get the correct output.
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-          public class Test1
-          {
-              public static void main(String[] args)
-              {
+          public class Test1 {
+              public static void main(String[] args) {
                   String start = "Happy Birthday";
                   String name = "Jose";
                   String result = start + " " + name; // add together strings
@@ -322,17 +113,6 @@
         </tests>
       </program>
     </activity>
-
-    <note>
-      <p>
-        Note that spaces are not added between strings automatically. If you
-        want a space between two strings then add one using + ” ” +. If you
-        forget to add spaces, you will get smushed output like “HiJose” instead
-        of “Hi Jose”. And remember that variables are never put inside the
-        quotes (“”) since this would print the variable name out letter by
-        letter instead of its value.
-      </p>
-    </note>
 
     <activity label="qse_1">
       <statement>
@@ -408,23 +188,6 @@
       </choices>
     </activity>
 
-    <idx>toString</idx>
-    <idx><h>Object</h><h>toString</h></idx>
-    <p>
-      You can even add other items to a <c>String</c> using the <c>+</c>
-      operator. Primitive values like <c>int</c> and <c>boolean</c> will be
-      converted to a <c>String</c> automatically when concatenated with a
-      <c>String</c>. Any other objects concatenated with a <c>String</c> will be
-      converted to <c>String</c> using their <c>toString</c> method. All objects
-      inherit a <c>toString</c> method from the <c>Object</c> class that returns
-      a <c>String</c> representation of the object and many classes
-      <term>override</term> it to produce a useful human-readable value. Method
-      overriding occurs when a public method in a subclass has the same method
-      signature as a public method in the superclass, but the behavior of the
-      method is specific to the subclass (overriding toString is no longer
-      covered on the AP CSA exam).
-    </p>
-
     <activity label="lcso2">
       <statement>
         <p>
@@ -481,13 +244,6 @@
       </program>
     </activity>
 
-    <note>
-      <p>
-        If you are appending a number to a string it will be converted to a
-        string first before being appended.
-      </p>
-    </note>
-
     <p>
       Since the same operators are processed from left to right this will print
       <c>1243</c>. First 4 will be turned into a string and appended to 12 and
@@ -497,7 +253,7 @@
   </subsection>
 
   <subsection>
-    <title>String Index and Length</title>
+    <title>String length and character indices</title>
 
     <idx><h>String</h><h>length</h></idx>
     <idx><h>String</h><h>substring</h></idx>
@@ -505,29 +261,48 @@
     <idx><h>String</h><h>compareTo</h></idx>
     <idx><h>String</h><h>equals</h></idx>
     <idx><h>String</h><h>methods</h></idx>
+
     <p>
-      A string holds characters in a sequence. Each character is at a position
-      or <term>index</term> which starts with 0 as shown below. An
-      <term>index</term> is a number associated with a position in a string. The
-      length of a string is the number of characters in it including any spaces
-      or special characters. The string below has a length of 14.
+      So far we’ve been using as <c>String</c> values as atomic values that we
+      can print or concatenate with other strings to produce bigger strings. But
+      it’s also possible to treat a <c>String</c> as a sequence of individual
+      characters.
     </p>
 
-    <figure align="center">
+    <p>
+      For instance, thinking about a string in terms of a sequence of characters
+      raises questions like, how long is it? The answer in Java is the length of
+      a string is the number of characters in it, including any spaces or other
+      special characters. The string shown below is fourteen characters long.
+    </p>
+
+    <p>
+      Then we can think about the position of each character in a <c>String</c>.
+      The position of each character is called its <term>index</term> which is a
+      number that says how many positions away from the front of the
+      <c>String</c> it is. That means that unlike in English, but like many
+      other programming languages (but not Snap!), indices start at zero, rather
+      than one, since the first character is zero positions from the front of
+      the <c>String</c>. (Sometimes programmers will refer to the first
+      character as the “zeroth” character to be super clear. And because
+      “zeroth” is kind of fun to say.)
+    </p>
+
+    <p>
+      Note that because the first character is at index <c>0</c>, the last
+      character’s index is one less than the length of the string. So in a
+      fourteen-character string like the one diagramed below, the last index is
+      <c>13</c>.
+    </p>
+
+    <figure>
       <caption>
-        A string with the position (index) shown above each character
+        A string with the index of each character shown above it.
       </caption>
 
       <image source="Unit1-Using-Objects-and-Methods/Figures/stringIndicies.png" width="89%" alt="a string with the position (index) shown above each character" />
     </figure>
 
-    <note>
-      <p>
-        The first character in a string is at index 0 and the last characters is
-        at <term>length</term> -1. Attempting to access indices outside this
-        range will result in an <term>IndexOutOfBoundsException</term>.
-      </p>
-    </note>
   </subsection>
 
   <subsection xml:id="string-methods-subsection">
@@ -1218,6 +993,232 @@
   </subsection>
 
   <subsection>
+    <title>String References</title>
+
+    <activity label="lcsb1">
+      <statement>
+        <p>Run the following code. What does it print?</p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+          public class Test1
+          {
+              public static void main(String[] args)
+              {
+                  String greeting = null;
+                  System.out.println(greeting);
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "null";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
+
+    <p>
+      The code above declares an object variable named <c>greeting</c> and sets
+      the value of greeting to the Java keyword <c>null</c> to show that it
+      doesn’t refer to any object yet. So <c>System.out.println(greeting);</c>
+      will print <c>null</c>.
+    </p>
+
+    <p>
+      Object variables <term>refer</term> to objects in memory. A reference is a
+      way to find the actual object, like adding a contact to your phone lets
+      you reach someone without knowing exactly where they are. The value of
+      greeting is null since the string object has not been created yet.
+    </p>
+
+    <figure align="center">
+      <caption>Initial value for an object reference</caption>
+
+      <image source="Unit1-Using-Objects-and-Methods/Figures/greeting.png" width="9%" />
+    </figure>
+
+    <idx><h>String</h><h>creation</h></idx>
+    <p>
+      In Java there are two ways to create an object of the <c>String</c> class.
+      You can use the <c>new</c> keyword followed by a space and then the class
+      constructor and then in parentheses you can include values used to
+      initialize the fields of the object. This is the standard way to create a
+      new object of a class in Java.
+    </p>
+
+    <program language="java">
+      <code>
+        String greeting = new String("Hello");
+      </code>
+    </program>
+
+    <idx>String literal</idx>
+    <idx><h>String</h><h>literal</h></idx>
+    <p>
+      In Java you can also use just a <term>string literal</term>, which is a
+      set of characters enclosed in double quotes (<c>"</c>), to create a
+      <c>String</c> object.
+    </p>
+
+    <program language="java">
+      <code>
+        String greeting = "Hello";
+      </code>
+    </program>
+
+    <p>
+      In both cases an object of the <c>String</c> class will be created in
+      memory and the value of the variable greeting will be set to an object
+      reference, a way to find that object.
+    </p>
+
+    <activity label="lcsbnew">
+      <statement>
+        <p>
+          The code below creates two greeting strings: one using a string
+          literal and the other using new and the String constructor. Change the
+          code to add 2 new strings called firstName and lastName, one using a
+          string literal and the other using new, and print them out with the
+          greetings.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+          public class StringTest
+          {
+              public static void main(String[] args)
+              {
+                  String greeting1 = "Hello!";
+                  String greeting2 = new String("Welcome!");
+                  System.out.println(greeting1);
+                  System.out.println(greeting2);
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testChangedCode()
+              {
+                  String origCode =
+                          "public class StringTest {      public static void main(String[] args)      {"
+                                  + " String greeting1 = \"Hello!\";        String greeting2 = new"
+                                  + " String(\"Welcome!\"); System.out.println(greeting1);"
+                                  + " System.out.println(greeting2); }    }";
+                  boolean changed = codeChanged(origCode);
+                  assertTrue(changed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
+
+    <activity label="lcsb2">
+      <statement>
+        <p>
+          Now that greeting refers to an actual object we can ask the object
+          what class created it. Try the following. What does it print?
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+          public class Test2
+          {
+              public static void main(String[] args)
+              {
+                  String greeting = "Hello";
+                  Class currClass = greeting.getClass();
+                  System.out.println(currClass);
+                  Class parentClass = currClass.getSuperclass();
+                  System.out.println(parentClass);
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "class java.lang.String\nclass java.lang.Object";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
+
+    <idx>parent class</idx>
+    <idx>superclass</idx>
+    <idx>inheritance</idx>
+    <idx>package</idx>
+    <idx>java.lang</idx>
+    <idx><h>package</h><h>java.lang</h></idx>
+    <p>
+      The code above will first print class <c>java.lang.String</c> since
+      <c>greeting</c> was created by the <c>String</c> class. The full name for
+      the <c>String</c> class is <c>java.lang.String</c>. The <c>java.lang</c>
+      part is the <term>package</term> name. Every class in the Java language is
+      in a package and the standard classes like <c>String</c> are in the
+      <c>java.lang</c> package. Every object in Java knows the class that
+      created it. Also, every class knows its <term>parent</term> class. Yes, a
+      class can have a parent class, just as people have parents. But, in Java a
+      class can only have one parent. A class can <c>inherit</c> object fields
+      and methods from a parent class, just like you might inherit musical
+      ability from a parent. The last print statement will print <c>class
+      java.lang.Object</c> because the parent class (<term>superclass</term>) of
+      the String class is the Object class. All classes in Java inherit from the
+      Object class at some point in their ancestry.
+    </p>
+
+    <figure align="center">
+      <caption>
+        Object variable of type String with a reference to a String object which
+        has a reference to the String class which has a reference to the Object
+        class.
+      </caption>
+
+      <image source="Unit1-Using-Objects-and-Methods/Figures/stringObject.png" width="89%" />
+    </figure>
+  </subsection>
+
+  <subsection>
     <title>Common Mistakes with Strings</title>
 
     <p>The following code shows some common mistakes with strings.</p>
@@ -1232,19 +1233,17 @@
 
       <program interactive="activecode" language="java">
         <code>
-          public class StringMistakes
-          {
-              public static void main(String[] args)
-              {
+          public class StringMistakes {
+              public static void main(String[] args) {
                   String str1 = "Hello!";
 
                   // Print out the first letter?
                   System.out.println(
-                          "The first letter in " + str1 + ":" + str1.substring(1, 1));
+                      "The first letter in " + str1 + ":" + str1.substring(1, 1));
 
                   // Print out the last character?
                   System.out.println(
-                          "The last char. in " + str1 + ":" + str1.substring(8));
+                      "The last char. in " + str1 + ":" + str1.substring(8));
 
                   // Print str1 in lower case? Will str1 change?
                   str1.toLowerCase();
@@ -1336,11 +1335,15 @@
   <subsection>
     <title>Coding Challenge: Pig Latin</title>
 
-    <p>
-      <image source="Unit1-Using-Objects-and-Methods/Figures/pig.png" width="18%" alt="pig latin" /> Can you speak Pig Latin? In Pig Latin, you
-      take the first letter and put it at the end of the word and add the
-      letters “ay” to the end. For example, “pig” becomes “igpay”.
-    </p>
+    <sidebyside widths="15% 80%">
+      <image source="Unit1-Using-Objects-and-Methods/Figures/pig.png" width="18%" alt="pig latin" />
+
+      <p>
+        Can you speak Pig Latin? In Pig Latin, you take the first letter and put
+        it at the end of the word and add the letters “ay” to the end. For
+        example, “pig” becomes “igpay”.
+      </p>
+    </sidebyside>
 
     <p>
       Create a program that takes a word and transforms it to Pig Latin using
@@ -1881,71 +1884,5 @@
         </choice>
       </choices>
     </activity>
-
-    <note>
-      <p>
-        Strings are <term>immutable</term> which means that they can’t change.
-        Anything that you do to modify a string (like creating a substring or
-        appending strings) returns a new string. The original string is not
-        changed.
-      </p>
-    </note>
-  </subsection>
-
-  <subsection>
-    <title>String Methods Game</title>
-
-    <p>
-      Try the game below written by AP CSA teacher Chandan Sarkar. Click on
-      <term>Strings</term> and then on the letters that would be the result of
-      the string method calls. We encourage you to work in pairs and see how
-      high a score you can get.
-    </p>
-
-    <interactive iframe="iframe/csagames.html" width="95%" aspect="1:1" />
-  </subsection>
-
-  <subsection xml:id="progresscheck-u1-part3">
-    <title>Review/Practice for Unit 1 Part 3 on Using Objects</title>
-
-    <p>
-      This lesson ends the section on Unit 1 part 3 on Using Objects. You can
-      now do the following review and practice lessons at the end of the unit
-      and College Board Progress Check for Unit 1 Part 3 in the AP Classroom.
-      Please do the practice test on objects and the FRQ practice below before
-      you do the AP Classroom Progress Check for part 3.
-    </p>
-
-    <p>
-      <ul>
-        <li>
-          <url href="unit1b-summary.html" visual="unit1b-summary.html">Unit 1b Summary</url>
-        </li>
-
-        <li>
-          <url href="unit1b-practice-mixed-code.html" visual="unit1b-practice-mixed-code.html">Unit 1b Practice Mixed Code</url>
-        </li>
-
-        <li>
-          <url href="unit1b-practice-coding.html" visual="unit1b-practice-coding.html">Unit 1b Practice Coding</url>
-        </li>
-
-        <li>
-          <url href="Exercises-objects.html" visual="Exercises-objects.html">Exercises on Objects</url>
-        </li>
-
-        <li>
-          <url href="practice-test-objects.html" visual="practice-test-objects.html">Practice Test on Objects</url>
-        </li>
-
-        <li>
-          <url href="JavaSwingGUIs.html" visual="JavaSwingGUIs.html">Optional Java Swing GUIs</url>
-        </li>
-
-        <li>
-          <url href="frq-practice.html" visual="frq-practice.html">Unit 1 FRQ Practice</url>
-        </li>
-      </ul>
-    </p>
   </subsection>
 </section>

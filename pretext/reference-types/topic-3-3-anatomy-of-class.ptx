@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-3-3-anatomy-of-class">
-  <title>Anatomy of a Java Class</title>
+  <title>Anatomy of a class</title>
 
   <introduction>
     <p>
@@ -50,6 +50,15 @@
       the keyword <c>class</c>. Here is the basic skeleton of a <c>Person</c>
       class:
     </p>
+
+    <note>
+      <p>
+        Class names in Java, like <c>String</c>, begin with a capital letter.
+        All primitive types: <c>int</c>, <c>double</c>, and <c>boolean</c>,
+        begin with a lowercase letter. This is one easy way to tell the
+        difference between primitive types and class types.
+      </p>
+    </note>
 
     <program language="java">
       <code>

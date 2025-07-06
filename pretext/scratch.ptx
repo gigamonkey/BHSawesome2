@@ -956,5 +956,82 @@ b = "at our high school"
           </activity>
     </subsection>
 
+    <subsection>
+      <title>String stuff</title>
+      <idx>toString</idx>
+      <idx><h>Object</h><h>toString</h></idx>
+      <p>
+        You can even add other items to a <c>String</c> using the <c>+</c>
+        operator. Primitive values like <c>int</c> and <c>boolean</c> will be
+        converted to a <c>String</c> automatically when concatenated with a
+        <c>String</c>. Any other objects concatenated with a <c>String</c> will
+        be converted to <c>String</c> using their <c>toString</c> method. All
+        objects inherit a <c>toString</c> method from the <c>Object</c> class
+        that returns a <c>String</c> representation of the object and many
+        classes <term>override</term> it to produce a useful human-readable
+        value. Method overriding occurs when a public method in a subclass has
+        the same method signature as a public method in the superclass, but the
+        behavior of the method is specific to the subclass (overriding toString
+        is no longer covered on the AP CSA exam).
+      </p>
+    </subsection>
+
+  <subsection>
+    <title>String Methods Game</title>
+
+    <p>
+      Try the game below written by AP CSA teacher Chandan Sarkar. Click on
+      <term>Strings</term> and then on the letters that would be the result of
+      the string method calls. We encourage you to work in pairs and see how
+      high a score you can get.
+    </p>
+
+    <interactive iframe="iframe/csagames.html" width="95%" aspect="1:1" />
+  </subsection>
+
+  <subsection xml:id="progresscheck-u1-part3">
+    <title>Review/Practice for Unit 1 Part 3 on Using Objects</title>
+
+    <p>
+      This lesson ends the section on Unit 1 part 3 on Using Objects. You can
+      now do the following review and practice lessons at the end of the unit
+      and College Board Progress Check for Unit 1 Part 3 in the AP Classroom.
+      Please do the practice test on objects and the FRQ practice below before
+      you do the AP Classroom Progress Check for part 3.
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <url href="unit1b-summary.html" visual="unit1b-summary.html">Unit 1b Summary</url>
+        </li>
+
+        <li>
+          <url href="unit1b-practice-mixed-code.html" visual="unit1b-practice-mixed-code.html">Unit 1b Practice Mixed Code</url>
+        </li>
+
+        <li>
+          <url href="unit1b-practice-coding.html" visual="unit1b-practice-coding.html">Unit 1b Practice Coding</url>
+        </li>
+
+        <li>
+          <url href="Exercises-objects.html" visual="Exercises-objects.html">Exercises on Objects</url>
+        </li>
+
+        <li>
+          <url href="practice-test-objects.html" visual="practice-test-objects.html">Practice Test on Objects</url>
+        </li>
+
+        <li>
+          <url href="JavaSwingGUIs.html" visual="JavaSwingGUIs.html">Optional Java Swing GUIs</url>
+        </li>
+
+        <li>
+          <url href="frq-practice.html" visual="frq-practice.html">Unit 1 FRQ Practice</url>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+
 
 </section>
