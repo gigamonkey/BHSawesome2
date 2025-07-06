@@ -26,7 +26,8 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 ]>
 
 <!-- Identify as a stylesheet -->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+<xsl:stylesheet
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
     xmlns:pi="http://pretextbook.org/2020/pretext/internal"
     xmlns:date="http://exslt.org/dates-and-times"
@@ -66,23 +67,28 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <xsl:variable name="b-has-baseurl" select="not($baseurl = '')"/>
 
 <xsl:template name="brand-logo">
-    <a id="logo-link" class="logo-link" target="_blank" >
-        <xsl:attribute name="href">
-            <xsl:choose>
-                <xsl:when test="$docinfo/brandlogo/@url != ''"><xsl:value-of select="$docinfo/brandlogo/@url"/></xsl:when>
-                <xsl:when test="$b-has-baseurl"><xsl:value-of select="$baseurl"/></xsl:when>
-                <xsl:otherwise></xsl:otherwise>
-            </xsl:choose>
-        </xsl:attribute>
-        <xsl:if test="$docinfo/brandlogo/@source">
-            <xsl:variable name="location">
-                <!-- empty when not using managed directories -->
-                <xsl:value-of select="$external-directory"/>
-                <xsl:value-of select="$docinfo/brandlogo/@source"/>
-            </xsl:variable>
-            <img src="{$location}" alt="Logo image"/>
-        </xsl:if>
-    </a>
+  <a id="logo-link" class="logo-link">
+    <xsl:attribute name="href">
+      <xsl:choose>
+        <xsl:when test="$docinfo/brandlogo/@url != ''">
+          <xsl:value-of select="$docinfo/brandlogo/@url"/>
+        </xsl:when>
+        <xsl:when test="$b-has-baseurl">
+          <xsl:value-of select="$baseurl"/>
+        </xsl:when>
+        <xsl:otherwise>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:attribute>
+    <xsl:if test="$docinfo/brandlogo/@source">
+      <xsl:variable name="location">
+        <!-- empty when not using managed directories -->
+        <xsl:value-of select="$external-directory"/>
+        <xsl:value-of select="$docinfo/brandlogo/@source"/>
+      </xsl:variable>
+      <img src="{$location}" alt="Logo image"/>
+    </xsl:if>
+  </a>
 </xsl:template>
 
 <xsl:template match="setup/var/condition/feedback" mode="serialize-feedback">
