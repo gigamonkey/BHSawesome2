@@ -7,8 +7,9 @@
     <p>
       Computers operate on <term>data</term> which is stored as
       <term>bits</term>, usually described as “zeros and ones”, in the
-      computer's memory. Even that’s a bit of a fairy tale: in the computer each
-      bit is actually represented by the state of a tiny electrical circuit.
+      computer's memory. Though even that’s a bit of a fairy tale: in the
+      computer each bit is actually represented by the state of a tiny
+      electrical circuit.
     </p>
 
     <p>
@@ -22,15 +23,18 @@
     </p>
 
     <p>
-      In our program there are three ways we can deal with values. First, we can
-      write <term>literal values</term> in our program, text that will be turned
-      into the appropriate bits in memory when our program runs. These are
-      things like <c>123</c> and <c>3.14</c>. Second, we can create names in our
-      program, called <term>variables</term> that represent a place in the
-      computer’s memory where a value can be stored which we can then refer to
-      by the variable’s name. And third, we can write <term>expressions</term>
-      using <term>operators</term> that turn into instructions to the computer
-      to perform computations using existing values to produce new values.
+      In a program the bit of code that produce values are called
+      <term>expressions</term>. Every expression <term>evaluates to</term> a
+      value. In this section we’ll deal with two of the most basic kinds of
+      expressions. First, <term>literal values</term> are the way we write
+      specific values in our program, that will be turned into the appropriate
+      bits in memory when the program runs. These are things like <c>123</c> and
+      <c>3.14</c>. Second, we can create names in our program, called
+      <term>variables</term> that represent a place in the computer’s memory
+      where a value can be stored which we can then refer to by the variable’s
+      name. In a later unit we’ll talk about expressions that use
+      <term>operators</term> that cause the computer to perform computations
+      using existing values to produce new values.
     </p>
   </introduction>
 
@@ -60,9 +64,7 @@
       ref="reference-types" />.
     </p>
 
-    <p>
-      The primitive types on the Advanced Placement Computer Science A exam are:
-    </p>
+    <p>The primitive types you need to know about for the AP exam are:</p>
 
     <p>
       <ul>
@@ -80,18 +82,18 @@
             because the decimal point “floats” relative to the magnitude of the
             number, similar to the way it does in scientific notation like
             <m>6.5 ✕ 10^8</m>. The name <c>double</c> comes from the fact that
-            <c>double</c>s are represented using 64 bits, double the 32 bits
-            used for the type <c>float</c> which used to be the normal size
-            floating point number when most computers did math in units of
-            32-bits. (<c>float</c> is rarely used these days and is not part of
-            the AP curriculum.)
+            <c>double</c> values are represented using sixty-four bits, double
+            the thirty-two bits used for the type <c>float</c> which used to be
+            the normal size floating point number when most computers did math
+            in units of 32-bits. (<c>float</c> is rarely used these days and is
+            not part of the AP curriculum.)
           </p>
         </li>
 
         <li>
           <p>
             <c>boolean</c> which can represent only two values: <c>true</c> and
-            <c>false</c>. We’ll return to <c>boolean</c>s in <xref
+            <c>false</c>. We’ll discuss the <c>boolean</c> type in <xref
             ref="booleans-and-conditionals" />
           </p>
         </li>
@@ -399,10 +401,8 @@
     </p>
 
     <program language="java">
-      <code>
-        int score;
-        score = 4;
-      </code>
+      int score;
+      score = 4;
     </program>
 
     <p>
@@ -412,19 +412,22 @@
     </p>
 
     <program language="java">
-      <code>
-        int score = 4;
-      </code>
+      int score = 4;
     </program>
 
     <p>
-      While we can declare a variable without giving it an initial value, a
-      variable must be <term>initialized</term> before it can be used in an
-      expression. A variable is initialized the first time it is assigned a
-      value.
+      The equal sign here <c>=</c> doesn’t mean the same thing as it does in a
+      mathematical equation where it is an assertion that the two sides
+      <em>are</em> equal. In programming it means <em>make</em> them equal by
+      setting the variable named on the left to the value of the expression on
+      the right. The line above sets the value of the variable <c>score</c> to
+      the literal value <c>4</c>. The variable always has to be on the left side
+      of the <c>=</c> and the value expression on the right.
     </p>
 
     <activity label="var_declare">
+      <title>Variable declarations</title>
+
       <statement>
         <p>Click on all of the variable declarations in the following code.</p>
       </statement>
@@ -434,10 +437,8 @@
       </feedback>
 
       <areas>
-        <cline><area correct="no">public class Test2</area></cline>
-        <cline><area correct="no">{</area></cline>
-        <cline>    <area correct="no">public static void main(String[] args)</area></cline>
-        <cline>    <area correct="no">{</area></cline>
+        <cline><area correct="no">public class Test2 {</area></cline>
+        <cline>    <area correct="no">public static void main(String[] args) {</area></cline>
         <cline>        <area correct="yes">int numLives;</area></cline>
         <cline>        <area correct="no">numLives = 0;</area></cline>
         <cline>        <area correct="no">System.out.println(numLives);</area></cline>
@@ -452,7 +453,16 @@
       </areas>
     </activity>
 
+    <p>
+      While we can declare a variable without giving it an initial value, a
+      variable must be <term>initialized</term> before it can be used in an
+      expression. A variable is initialized the first time it is assigned a
+      value.
+    </p>
+
     <activity label="var_init">
+      <title>Variable initializations</title>
+
       <statement>
         <p>
           Click on all of the variable initializations (first time the variable
@@ -481,16 +491,6 @@
       </areas>
     </activity>
 
-    <p>
-      The equal sign here <c>=</c> doesn’t mean the same as it does in a
-      mathematical equation where it implies that the two sides are equal. Here
-      it means set the value in the memory location associated with the variable
-      name on the left to a <em>copy</em> of the value on the right. The first
-      line above sets the value in the box called score to 4. A variable always
-      has to be on the left side of the <c>=</c> and a value or expression on
-      the right.
-    </p>
-
     <activity label="asgn_order">
       <statement>
         <p>
@@ -501,10 +501,8 @@
 
       <program interactive="activecode" language="java">
         <code>
-          public class Test3
-          {
-              public static void main(String[] args)
-              {
+          public class Test3 {
+              public static void main(String[] args) {
                   int score;
                   4 = score;
                   System.out.println(score);
@@ -1001,13 +999,6 @@
             (AP 1.2.B.1) The three primitive data types used in this course are
             <term>int</term> (integer numbers), <term>double</term> (decimal
             numbers), and <term>boolean</term> (true or false).
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>String</c> is a reference data type representing a sequence of
-            characters.
           </p>
         </li>
       </ul>

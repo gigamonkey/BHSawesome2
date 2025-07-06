@@ -1437,6 +1437,126 @@ public class RunestoneTests extends CodeTestHelper
     </project>
   </subsection>
 
+  <subsection xml:id="bonus-challenge-unicode">
+    <title>Bonus Challenge: Unicode</title>
+
+    <p>
+      If you get done early with the previous challenge, here’s something else
+      fun you can do in Java, although it’s not covered in the AP exam.
+    </p>
+
+    <p>
+      Java was one of the first programming languages to use <url
+      href="https://en.wikipedia.org/wiki/List_of_Unicode_characters"
+      visual="https://en.wikipedia.org/wiki/List_of_Unicode_characters">UNICODE</url>
+      for its characters rather than ASCII. While ASCII could represent 128
+      characters which was plenty for English, Unicode is an international
+      standard that tries to assign a number (which they like to call a
+      “codepoint”) to every character in every language. Unicode codepoints are
+      traditionally represented in hex code (a base 16 code that uses the digits
+      0-9 and the letters A-F for 10-15), so you might see things like
+      <c>U+1F600</c>. But they’re just numbers. That last one is the same as
+      <c>128512</c>.
+    </p>
+
+    <p>
+      When Java was released in an 1996, Unicode had been around for five years
+      and the Unicode people had declared they would only ever need
+      <m>2^{16}</m> or 65,536 code points to represent all the characters used
+      in the world. So Java included a <c>char</c> data type that can hold
+      exactly <m>2^{16}</m> values. Then, seven months later, the Unicode folks,
+      said, “Ooops, that’s not enough”, and extended their system to its current
+      size of 1,112,064 possible codepoints. (As of September 2024, 154,998
+      codepoints have actually been assigned characters.)
+    </p>
+
+    <p>
+      That made <c>char</c> kind of obsolete. But while not every Unicode
+      codepoint can be represented in a Java <c>char</c>, you can use an
+      <c>int</c> to represent a codepoint and the method
+      <c>Character.toString</c> to translate an <c>int</c> into a <c>String</c>
+      containing the character for that codepoint. (You might see older Java
+      code that casts numbers to <c>char</c>; for many codepoints that will work
+      but not on more recently added codepoints including, critically those for
+      Emoji. 😞 So better to use <c>Character.toString</c> and ignore
+      <c>char</c>.)
+    </p>
+
+    <p>
+      Try the following program which prints out an English “A”, a <url
+      href="https://unicodelookup.com/#cjk/1"
+      visual="https://unicodelookup.com/#cjk/1">Chinese character</url>, and an
+      <url href="http://unicode.org/emoji/charts/full-emoji-list.html"
+      visual="http://unicode.org/emoji/charts/full-emoji-list.html">emoji</url>.
+      Then look up other characters at this <url
+      href="https://unicodelookup.com/"
+      visual="https://unicodelookup.com/">Unicode Lookup</url> site and change
+      the code to print them out. (Use the Dec column in site to get the decimal
+      number.) Can you print out letters from 3 different languages?
+    </p>
+
+    <project label="challenge1-6-unicode">
+      <title>Unicode challenge</title>
+
+      <statement>
+        <p>
+          Can you print out a letter from 3 different languages using this <url
+          href="https://unicodelookup.com/"
+          visual="https://unicodelookup.com/">Unicode Lookup</url> site?
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+          public class ChallengeUnicode
+          {
+              public static void main(String[] args)
+              {
+                  System.out.println(
+                          "'A' in ASCII and Unicode: " + Character.toString(65));
+                  System.out.println("Chinese for 'sun': " + Character.toString(11932));
+                  System.out.println("A smiley emoji: " + Character.toString(128512));
+
+                  // Old style. Doesn't work for all codepoints.
+                  System.out.println("This also works: " + (char) 65);
+                  System.out.println("But this doesn't: " + (char) 128512);
+              }
+          }
+        </code>
+
+        <tests>
+          <![CDATA[
+
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testCount()
+              {
+                  String code = getCodeWithoutComments();
+                  int count = countOccurences(code, "Character.toString");
+                  boolean passed = count >= 4;
+                  passed =
+                          getResults(
+                                  "4+",
+                                  "" + count,
+                                  "Counting number of Character.toString",
+                                  passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
+        </tests>
+      </program>
+    </project>
+  </subsection>
+
   <subsection>
     <title>Summary</title>
     <p>

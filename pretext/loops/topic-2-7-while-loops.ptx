@@ -666,9 +666,11 @@
 
     <p>
       Notice how the loop variable in this loop is a <c>String</c> not a number.
-      And the condition is testing whether that <c>String</c> is a particular
-      value, <c>"Bye"</c>. A special value, like <c>"Bye</c>, that is the sign
-      to stop the loop is called a <term>sentinel value</term> for the loop.
+      And the condition, <c>statement.equals("Bye")</c> is how we test whether
+      that <c>String</c> is a particular value, <c>"Bye"</c>. (More on this in
+      the unit <xref ref="reference-types" />). A special value, like
+      <c>"Bye</c>, that is the sign to stop the loop is called a <term>sentinel
+      value</term> for the loop.
     </p>
 
     <p>

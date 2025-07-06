@@ -1,6 +1,6 @@
 # Text cleanup
 
-- [ ] Add Values section to chapter 1 and rename chapter, "Values, variables, and expressions"
+- [x] Add Values section to chapter 1 and rename chapter, "Values, variables, and expressions"
 
 - [ ] Remove String references from chapter 1
 
@@ -19,7 +19,7 @@
 - [x] Make new images for Snap!/Java comparisons since it seems too hard to do
       it with <sidebyside>
 
-- [ ] Move Bonus unicode challenge to Strings section.
+- [x] Move Bonus unicode challenge to Strings section.
 
 # Formatting cleanup
 

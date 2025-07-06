@@ -227,35 +227,32 @@
 
     <p>
       Unlike the relational operators, the equality operators can be used with
-      any kinds of values, <c>int</c>, <c>double</c>, <c>boolean</c>,
-      <c>String</c>, and all the other types we’ll learn about later in this
-      book. But there are some subtleties to how they work with different kinds
+      any kinds of values, <c>int</c>, <c>double</c>, <c>boolean</c> as well as
+      reference types like <c>String</c> and other types we’ll learn about
+      later. But there are some subtleties to how they work with different kinds
       of values.
     </p>
 
     <p>
-      For <c>int</c> values, <c>==</c> and <c>!=</c> are quite straightforward.
-      Either two <c>int</c> values are the same or they are not.
+      For <c>int</c> and <c>boolean</c> values, <c>==</c> and <c>!=</c> are
+      quite straightforward. Either two <c>int</c> values are the same or they
+      are not. However, we will rarely use these operators with <c>boolean</c>
+      values as doing so is usually unecessary and lead to a common mistake
+      which we’ll discuss in <xref ref="if-traps" />.
     </p>
 
     <p>
-      We will rarely use operators with <c>boolean</c> values although it is
-      legal and does what you’d expect: <c>true == true</c> is <c>true</c> and
-      <c>true != true</c> is false. However using <c>==</c> with <c>boolean</c>
-      values can lead to a common mistake which we’ll discuss in <xref
-      ref="if-traps" />.
-    </p>
-
-    <p>
-      While we can use these operators with <c>String</c> values and other
-      reference types, they probably won’t do what you’d expect. We’ll discuss
-      that more in the lesson on <xref ref="equality" />.
+      For <c>String</c> and other reference types we’ll discuss later, they
+      “work” but maybe not in the way you’d expect. We’ll discuss that in detail
+      in the section on <xref ref="equality" /> in the <xref
+      ref="reference-types" /> unit.
     </p>
 
     <p>
       And finally, the equality operators should almost never be used with
-      <c>double</c> values though for slightly different reasons. The problem is
-      that because computers perform <c>double</c> math with limited precision,
+      <c>double</c> values. They do work in the sense that if two <c>double</c>
+      values are exactly the same, they will be <c>==</c>. The problem is that
+      because computers perform <c>double</c> math with limited precision,
       sometimes expressions that seem like they should produce mathematically
       equivalent results don’t produce exactly the same <c>double</c> values so
       even though they should be equal according to math they won’t be according
