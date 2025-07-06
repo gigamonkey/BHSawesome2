@@ -2,6 +2,7 @@
 
 <section xml:id="topic-1-14-calling-instance-methods">
   <title>Calling Instance Methods</title>
+
   <introduction>
     <idx>instance methods</idx>
     <idx>object methods</idx>
@@ -22,6 +23,7 @@
 
   <subsection xml:id="class-methods-vs-instance-methods">
     <title>Class Methods vs. Instance Methods</title>
+
     <p>
       In lessons 1.9 and 1.10, we learned how to call <term>class methods</term>
       (also called <term>static methods</term>). Class methods are called using
@@ -51,12 +53,14 @@
 
     <figure align="center">
       <caption>Calling static vs. instance methods</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/calling-static-vs-instance-methods.png" width="63%" alt="Calling static vs. instance methods" />
     </figure>
   </subsection>
 
   <subsection xml:id="method-signatures">
     <title>Method Signatures</title>
+
     <p>
       The <term>method signature</term> defines the method’s name and the number
       and types of parameters it takes. In a class definition or in
@@ -118,6 +122,7 @@
 
   <subsection xml:id="method-calls">
     <title>Method Calls</title>
+
     <p>
       To use an object’s method, you must use the object name and the dot (.)
       operator followed by the method name, for example,
@@ -172,40 +177,41 @@
 
       <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class NullPointerTest
-{
-    public static void main(String[] args)
-    {
-        World habitat = new World(300, 300);
-        Turtle yertle = null;
+          public class NullPointerTest
+          {
+              public static void main(String[] args)
+              {
+                  World habitat = new World(300, 300);
+                  Turtle yertle = null;
 
-        // yertle is null!
-        yertle.forward();
+                  // yertle is null!
+                  yertle.forward();
 
-        habitat.show(true);
-    }
-}
+                  habitat.show(true);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1()
-    {
-        String code = "new Turtle(habitat)";
-        boolean passed = checkCodeContains(code);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test1()
+              {
+                  String code = "new Turtle(habitat)";
+                  boolean passed = checkCodeContains(code);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -223,12 +229,14 @@ public class RunestoneTests extends CodeTestHelper
 
     <figure align="center">
       <caption>Comparing Method Calls to Static and Instance Methods</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/FlowChartCallingMethods.png" width="98%" alt="Comparing method calls to static and instance methods" />
     </figure>
   </subsection>
 
   <subsection xml:id="methods-calls-with-arguments">
     <title>Methods Calls with Arguments</title>
+
     <p>
       In the last lessons, we used simple <term>methods</term> like
       <c>forward</c> and <c>turnRight</c> to make the turtle draw lines. You may
@@ -267,7 +275,10 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <figure align="center">
-      <caption>Method signatures with parameters and method calls arguments</caption>
+      <caption>
+        Method signatures with parameters and method calls arguments
+      </caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/method-param-arg.png" width="98%" alt="Method parameters and arguments" />
     </figure>
 
@@ -286,19 +297,26 @@ public class RunestoneTests extends CodeTestHelper
       <cardsort>
         <match>
           <premise order="1">
-            an object's behaviors or functions that can be used or called to do its job
+            an object's behaviors or functions that can be used or called to do
+            its job
           </premise>
 
           <response>methods</response>
         </match>
 
         <match>
-          <premise order="2">the values or data passed to an object's method</premise>
+          <premise order="2">
+            the values or data passed to an object's method
+          </premise>
+
           <response>arguments</response>
         </match>
 
         <match>
-          <premise order="3">the variables in a method's definition that hold the arguments</premise>
+          <premise order="3">
+            the variables in a method's definition that hold the arguments
+          </premise>
+
           <response>parameters</response>
         </match>
 
@@ -317,6 +335,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <figure align="center">
       <caption>Turtle Class Diagram</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/turtleUMLClassDiagram.png" width="71%" alt="Turtle class diagram" />
     </figure>
 
@@ -362,107 +381,112 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class TurtleTestMethods1
-{
-    public static void main(String[] args)
-    {
-        World world = new World(300, 300);
-        Turtle yertle = new Turtle(world);
+          public class TurtleTestMethods1
+          {
+              public static void main(String[] args)
+              {
+                  World world = new World(300, 300);
+                  Turtle yertle = new Turtle(world);
 
-        yertle.forward(100);
-        yertle.turnLeft();
-        yertle.forward(75);
+                  yertle.forward(100);
+                  yertle.turnLeft();
+                  yertle.forward(75);
 
-        world.show(true);
-    }
-}
+                  world.show(true);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleTestMethods1");
-    }
+          import java.io.*;
 
-    @Test
-    public void test1()
-    {
-        boolean passed = codeChanged(
-            "import java.awt.*;\n" +
-            "import java.util.*;\n" +
-            "\n" +
-            "public class TurtleTestMethods1\n" +
-            "{\n" +
-            "    public static void main(String[] args)\n" +
-            "    {\n" +
-            "        World world = new World(300, 300);\n" +
-            "        Turtle yertle = new Turtle(world);\n" +
-            "\n" +
-            "        yertle.forward(100);\n" +
-            "        yertle.turnLeft();\n" +
-            "        yertle.forward(75);\n" +
-            "\n" +
-            "        world.show(true);\n" +
-            "    }\n" +
-            "}\n"
-        );
-        assertTrue(passed);
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TurtleTestMethods1");
+              }
 
-    @Test
-    public void test2()
-    {
-        String code = getCode();
-        int numColors = countOccurences(code, "Color(");
+              @Test
+              public void test1()
+              {
+                  boolean passed = codeChanged(
+                      "import java.awt.*;\n" +
+                      "import java.util.*;\n" +
+                      "\n" +
+                      "public class TurtleTestMethods1\n" +
+                      "{\n" +
+                      "    public static void main(String[] args)\n" +
+                      "    {\n" +
+                      "        World world = new World(300, 300);\n" +
+                      "        Turtle yertle = new Turtle(world);\n" +
+                      "\n" +
+                      "        yertle.forward(100);\n" +
+                      "        yertle.turnLeft();\n" +
+                      "        yertle.forward(75);\n" +
+                      "\n" +
+                      "        world.show(true);\n" +
+                      "    }\n" +
+                      "}\n"
+                  );
+                  assertTrue(passed);
+              }
 
-        boolean passed = numColors &gt;= 3;
-        passed = getResults("3 or more", "" + numColors, "Changes color at least 3 times", passed);
-        assertTrue(passed);
-    }
+              @Test
+              public void test2()
+              {
+                  String code = getCode();
+                  int numColors = countOccurences(code, "Color(");
 
-    @Test
-    public void test3()
-    {
-        String code = getCode();
-        int numTurns = countOccurences(code, ".turn");
+                  boolean passed = numColors >= 3;
+                  passed = getResults("3 or more", "" + numColors, "Changes color at least 3 times", passed);
+                  assertTrue(passed);
+              }
 
-        boolean passed = numTurns &gt;= 3;
-        passed = getResults("3 or more", "" + numTurns, "Turns at least 3 times", passed);
-        assertTrue(passed);
-    }
+              @Test
+              public void test3()
+              {
+                  String code = getCode();
+                  int numTurns = countOccurences(code, ".turn");
 
-    @Test
-    public void test4()
-    {
-        String code = getCode();
-        int numTurns = countOccurences(code, ".turn(");
+                  boolean passed = numTurns >= 3;
+                  passed = getResults("3 or more", "" + numTurns, "Turns at least 3 times", passed);
+                  assertTrue(passed);
+              }
 
-        boolean passed = numTurns &gt;= 1;
-        passed = getResults("1 or more", "" + numTurns, "Calls to turn(...)", passed);
-        assertTrue(passed);
-    }
+              @Test
+              public void test4()
+              {
+                  String code = getCode();
+                  int numTurns = countOccurences(code, ".turn(");
 
-    @Test
-    public void test5()
-    {
-        String code = getCode();
-        int numForward = countOccurences(code, ".forward(");
+                  boolean passed = numTurns >= 1;
+                  passed = getResults("1 or more", "" + numTurns, "Calls to turn(...)", passed);
+                  assertTrue(passed);
+              }
 
-        boolean passed = numForward &gt;= 4;
-        passed = getResults("4 or more", "" + numForward, "Calls to forward()", passed);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test5()
+              {
+                  String code = getCode();
+                  int numForward = countOccurences(code, ".forward(");
+
+                  boolean passed = numForward >= 4;
+                  passed = getResults("4 or more", "" + numForward, "Calls to forward()", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -555,6 +579,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="methods-that-return-values">
     <title>Methods that Return Values</title>
+
     <p>
       All the methods on <c>Turtle</c> that we’ve discussed so far are
       <term>void methods</term> with <c>void</c> return type. This means they
@@ -567,15 +592,18 @@ public class RunestoneTests extends CodeTestHelper
 
     <p>
       In contrast, methods with a return type of anything
-      <title_reference>other</title_reference> than <c>void</c> are called
+      <title_reference>other</title_reference>
+ than <c>void</c> are called
       <term>non-void</term> methods. These methods <term>return</term> a value
       that the code calling the method can use. And because methods are called
       on an object, these methods can be used to return values that tell us
       things about an object’s internal state. In well-designed programs, non-
       void methods typically don’t have effects; they just compute and return a
-      value. To put it another way, void methods <title_reference>do
-      things</title_reference> while non-void methods <title_reference>produce
-      values</title_reference>.
+      value. To put it another way, void methods 
+      <title_reference>do things</title_reference>
+ while non-void methods 
+      <title_reference>produce values</title_reference>
+.
     </p>
 
     <p>
@@ -606,13 +634,13 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-Turtle yertle = new Turtle(world);
-int width = yertle.getWidth();
-int height = yertle.getHeight();
-System.out.println("Yertle's width is: " + width);
-System.out.println("Yertle's height is: " + height);
-System.out.println("Yertle's x position is: " + yertle.getXPos() );
-System.out.println("Yertle's y position is: " + yertle.getYPos() );
+        Turtle yertle = new Turtle(world);
+        int width = yertle.getWidth();
+        int height = yertle.getHeight();
+        System.out.println("Yertle's width is: " + width);
+        System.out.println("Yertle's height is: " + height);
+        System.out.println("Yertle's x position is: " + yertle.getXPos() );
+        System.out.println("Yertle's y position is: " + yertle.getYPos() );
       </code>
     </program>
 
@@ -636,72 +664,73 @@ System.out.println("Yertle's y position is: " + yertle.getYPos() );
 
       <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class TurtleTestGetSet
-{
-    public static void main(String[] args)
-    {
-        World world = new World(300, 300);
-        Turtle yertle = new Turtle(world);
-        System.out.println(
-                "Yertle is starting at: "
-                        + yertle.getXPos()
-                        + ", "
-                        + yertle.getYPos());
-        yertle.forward(100);
-        yertle.turn(90);
-        yertle.forward(50);
-        System.out.println(
-                "Yertle has ended up at: "
-                        + yertle.getXPos()
-                        + ", "
-                        + yertle.getYPos());
-        world.show(true);
-    }
-}
+          public class TurtleTestGetSet
+          {
+              public static void main(String[] args)
+              {
+                  World world = new World(300, 300);
+                  Turtle yertle = new Turtle(world);
+                  System.out.println(
+                          "Yertle is starting at: "
+                                  + yertle.getXPos()
+                                  + ", "
+                                  + yertle.getYPos());
+                  yertle.forward(100);
+                  yertle.turn(90);
+                  yertle.forward(50);
+                  System.out.println(
+                          "Yertle has ended up at: "
+                                  + yertle.getXPos()
+                                  + ", "
+                                  + yertle.getYPos());
+                  world.show(true);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleTestGetSet");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TurtleTestGetSet");
+              }
 
-    @Test
-    public void test1()
-    {
-        String orig =
-                "import java.awt.*;\n"
-                    + "import java.util.*;\n\n"
-                    + "public class TurtleTestGetSet\n"
-                    + "{\n"
-                    + "public static void main(String[] args)\n"
-                    + "{\n"
-                    + "World world = new World(300,300);\n"
-                    + "Turtle yertle = new Turtle(world);\n"
-                    + "System.out.println(\"Yertle is starting at: \" + yertle.getXPos() + \", \" +"
-                    + " yertle.getYPos());\n"
-                    + "yertle.forward(100);\n"
-                    + "yertle.turn(90);\n"
-                    + "yertle.forward(50);\n"
-                    + "System.out.println(\"Yertle has ended up at: \" + yertle.getXPos() + \", \" +"
-                    + " yertle.getYPos());\n"
-                    + "world.show(true);\n"
-                    + "}\n"
-                    + "}\n";
-        boolean passed = codeChanged(orig);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test1()
+              {
+                  String orig =
+                          "import java.awt.*;\n"
+                              + "import java.util.*;\n\n"
+                              + "public class TurtleTestGetSet\n"
+                              + "{\n"
+                              + "public static void main(String[] args)\n"
+                              + "{\n"
+                              + "World world = new World(300,300);\n"
+                              + "Turtle yertle = new Turtle(world);\n"
+                              + "System.out.println(\"Yertle is starting at: \" + yertle.getXPos() + \", \" +"
+                              + " yertle.getYPos());\n"
+                              + "yertle.forward(100);\n"
+                              + "yertle.turn(90);\n"
+                              + "yertle.forward(50);\n"
+                              + "System.out.println(\"Yertle has ended up at: \" + yertle.getXPos() + \", \" +"
+                              + " yertle.getYPos());\n"
+                              + "world.show(true);\n"
+                              + "}\n"
+                              + "}\n";
+                  boolean passed = codeChanged(orig);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -718,74 +747,79 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.lang.Math;
-import java.util.*;
+          import java.awt.*;
+          import java.lang.Math;
+          import java.util.*;
 
-public class TurtleArea
-{
-    public static void main(String[] args)
-    {
-        World world = new World(300,300);
-        Turtle yertle = new Turtle(world);
+          public class TurtleArea
+          {
+              public static void main(String[] args)
+              {
+                  World world = new World(300,300);
+                  Turtle yertle = new Turtle(world);
 
-        int area;
-        yertle.getWidth() * getHeight;
-        System.out.println("Yertle's area is: ");
-    }
-}
+                  int area;
+                  yertle.getWidth() * getHeight;
+                  System.out.println("Yertle's area is: ");
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleArea");
-    }
+          import java.io.*;
 
-    @Test
-    public void test1()
-    {
-        String actual = getMethodOutput("main");
-        String expected = "Yertle's area is: 270";
-        boolean passed = getResults(expected, actual, "Prints correct answer");
-        assertTrue(passed);
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TurtleArea");
+              }
 
-    @Test
-    public void test2()
-    {
-        String code = getCode();
-        String target = ".getHeight()";
+              @Test
+              public void test1()
+              {
+                  String actual = getMethodOutput("main");
+                  String expected = "Yertle's area is: 270";
+                  boolean passed = getResults(expected, actual, "Prints correct answer");
+                  assertTrue(passed);
+              }
 
-        int num = countOccurences(code, target);
+              @Test
+              public void test2()
+              {
+                  String code = getCode();
+                  String target = ".getHeight()";
 
-        boolean passed = num &gt;= 1;
+                  int num = countOccurences(code, target);
 
-        getResults("1+", "" + num, "Calls to " + target, passed);
-        assertTrue(passed);
-    }
+                  boolean passed = num >= 1;
 
-    @Test
-    public void test3()
-    {
-        String code = getCode();
-        String target = ".getWidth()";
+                  getResults("1+", "" + num, "Calls to " + target, passed);
+                  assertTrue(passed);
+              }
 
-        int num = countOccurences(code, target);
+              @Test
+              public void test3()
+              {
+                  String code = getCode();
+                  String target = ".getWidth()";
 
-        boolean passed = num &gt;= 1;
+                  int num = countOccurences(code, target);
 
-        getResults("1+", "" + num, "Calls to " + target, passed);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = num >= 1;
+
+                  getResults("1+", "" + num, "Calls to " + target, passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -802,33 +836,32 @@ public class RunestoneTests extends CodeTestHelper
     <activity label="traceCircleArea">
       <statement>
         <p>Consider the following class definition.</p>
+
         <program language="java">
           <code>
-public class Circle
-{
-    private double radius;
+            public class Circle
+            {
+                private double radius;
 
-    public Circle(double r)
-    {
-        radius = r;
-    }
+                public Circle(double r)
+                {
+                    radius = r;
+                }
 
-    public double getArea()
-    {
-        return 3.14159 * radius * radius;
-    }
-}
+                public double getArea()
+                {
+                    return 3.14159 * radius * radius;
+                }
+            }
           </code>
         </program>
 
-        <p>
-          Assume that the following code segment appears in a main method.
-        </p>
+        <p>Assume that the following code segment appears in a main method.</p>
 
         <program language="java">
           <code>
-Circle c = new Circle(10);
-System.out.println(c.getArea());
+            Circle c = new Circle(10);
+            System.out.println(c.getArea());
           </code>
         </program>
 
@@ -900,41 +933,40 @@ System.out.println(c.getArea());
     <activity label="traceRectangleArea">
       <statement>
         <p>Consider the following class definition.</p>
+
         <program language="java">
           <code>
-public class Rectangle
-{
-    private int width;
-    private int height;
+            public class Rectangle
+            {
+                private int width;
+                private int height;
 
-    public Rectangle(int w, int h)
-    {
-        width = w;
-        height = h;
-    }
+                public Rectangle(int w, int h)
+                {
+                    width = w;
+                    height = h;
+                }
 
-    public void resize(int amt)
-    {
-        width += amt;
-    }
+                public void resize(int amt)
+                {
+                    width += amt;
+                }
 
-    public int getArea()
-    {
-        return width * height;
-    }
-}
+                public int getArea()
+                {
+                    return width * height;
+                }
+            }
           </code>
         </program>
 
-        <p>
-          Assume that the following code segment appears in a main method.
-        </p>
+        <p>Assume that the following code segment appears in a main method.</p>
 
         <program language="java">
           <code>
-Rectangle r = new Rectangle(10, 15);
-r.resize(5);
-System.out.println(r.getArea());
+            Rectangle r = new Rectangle(10, 15);
+            r.resize(5);
+            System.out.println(r.getArea());
           </code>
         </program>
 
@@ -1019,75 +1051,76 @@ System.out.println(r.getArea());
 
       <program interactive="activecode" language="java">
         <code>
-public class Rectangle
-{
-    private int width;
-    private int height;
+          public class Rectangle
+          {
+              private int width;
+              private int height;
 
-    public Rectangle(int w, int h)
-    {
-        width = w;
-        height = h;
-    }
+              public Rectangle(int w, int h)
+              {
+                  width = w;
+                  height = h;
+              }
 
-    public void resize(int amt)
-    {
-        width += amt;
-    }
+              public void resize(int amt)
+              {
+                  width += amt;
+              }
 
-    public int getArea()
-    {
-        return width * height;
-    }
+              public int getArea()
+              {
+                  return width * height;
+              }
 
-    public static void main(String[] args)
-    {
-        // 1. Create a rectangle with width 5 and height 10
+              public static void main(String[] args)
+              {
+                  // 1. Create a rectangle with width 5 and height 10
 
-        // 2. Call the resize method to add 10 to its width
+                  // 2. Call the resize method to add 10 to its width
 
-        // 3. Print out its area using its getArea method
+                  // 3. Print out its area using its getArea method
 
-    }
-}
+              }
+          }
         </code>
-        <tests>
-import static org.junit.Assert.*;
-import org.junit.*;
-import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "150";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-    @Test
-    public void test1()
-    {
-        String code = "new Rectangle(5,10)";
-        boolean passed = checkCodeContains(code);
-        assertTrue(passed);
-    }
-    @Test
-    public void test2()
-    {
-        String code = ".resize(10)";
-        boolean passed = checkCodeContains(code);
-        assertTrue(passed);
-    }
-    @Test
-    public void test3()
-    {
-        String code = ".getArea()";
-        boolean passed = checkCodeContains(code);
-        assertTrue(passed);
-    }
-}
+        <tests>
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "150";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+              @Test
+              public void test1()
+              {
+                  String code = "new Rectangle(5,10)";
+                  boolean passed = checkCodeContains(code);
+                  assertTrue(passed);
+              }
+              @Test
+              public void test2()
+              {
+                  String code = ".resize(10)";
+                  boolean passed = checkCodeContains(code);
+                  assertTrue(passed);
+              }
+              @Test
+              public void test3()
+              {
+                  String code = ".getArea()";
+                  boolean passed = checkCodeContains(code);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -1104,24 +1137,24 @@ public class RunestoneTests extends CodeTestHelper
 
         <program language="java">
           <code>
-public class MethodTrace
-{
-    public int square(int x)
-    {
-        return x * x;
-    }
+            public class MethodTrace
+            {
+                public int square(int x)
+                {
+                    return x * x;
+                }
 
-    public int divide(int x, int y)
-    {
-        return x / y;
-    }
+                public int divide(int x, int y)
+                {
+                    return x / y;
+                }
 
-    public static void main(String[] args)
-    {
-        MethodTrace traceObj = new MethodTrace();
-        System.out.println(traceObj.square(2) + traceObj.divide(6, 2));
-    }
-}
+                public static void main(String[] args)
+                {
+                    MethodTrace traceObj = new MethodTrace();
+                    System.out.println(traceObj.square(2) + traceObj.divide(6, 2));
+                }
+            }
           </code>
         </program>
       </statement>
@@ -1209,82 +1242,87 @@ public class MethodTrace
 
       <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class TurtleTestDistance
-{
-    public static void main(String[] args)
-    {
-        World world = new World(300, 300);
-        Turtle yertle = new Turtle(world);
+          public class TurtleTestDistance
+          {
+              public static void main(String[] args)
+              {
+                  World world = new World(300, 300);
+                  Turtle yertle = new Turtle(world);
 
-        // Can you find yertle's distance from the point (0,0)?
+                  // Can you find yertle's distance from the point (0,0)?
 
-        // Can you find the distance between 2 turtles?
+                  // Can you find the distance between 2 turtles?
 
-        world.show(true);
-    }
-}
+                  world.show(true);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleTestDistance");
-    }
+          import java.io.*;
 
-    @Test
-    public void test2()
-    {
-        String code = getCode();
-        int num = countOccurences(code, ".getXPos()");
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TurtleTestDistance");
+              }
 
-        boolean passed = num &gt; 0;
-        getResults("&gt;=1", "" + num, "Calls to getXPos()", passed);
-        assertTrue(passed);
-    }
+              @Test
+              public void test2()
+              {
+                  String code = getCode();
+                  int num = countOccurences(code, ".getXPos()");
 
-    @Test
-    public void test3()
-    {
-        String code = getCode();
-        int num = countOccurences(code, ".getYPos()");
+                  boolean passed = num > 0;
+                  getResults(">=1", "" + num, "Calls to getXPos()", passed);
+                  assertTrue(passed);
+              }
 
-        boolean passed = num &gt; 0;
-        getResults("&gt;=1", "" + num, "Calls to getYPos()", passed);
-        assertTrue(passed);
-    }
+              @Test
+              public void test3()
+              {
+                  String code = getCode();
+                  int num = countOccurences(code, ".getYPos()");
 
-    @Test
-    public void test4()
-    {
-        String code = getCode();
-        int num = countOccurences(code, ".getDistance(");
+                  boolean passed = num > 0;
+                  getResults(">=1", "" + num, "Calls to getYPos()", passed);
+                  assertTrue(passed);
+              }
 
-        boolean passed = num &gt;= 2;
-        getResults("&gt;=2", "" + num, "Calls to getDistance(...)", passed);
-        assertTrue(passed);
-    }
+              @Test
+              public void test4()
+              {
+                  String code = getCode();
+                  int num = countOccurences(code, ".getDistance(");
 
-    @Test
-    public void test1()
-    {
-        String code = getCode();
-        int num = countOccurences(code, ".getDistance(0,0)");
+                  boolean passed = num >= 2;
+                  getResults(">=2", "" + num, "Calls to getDistance(...)", passed);
+                  assertTrue(passed);
+              }
 
-        boolean passed = num &gt;= 1;
-        getResults("&gt;=1", "" + num, "Calls getDistance(0,0)", passed);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test1()
+              {
+                  String code = getCode();
+                  int num = countOccurences(code, ".getDistance(0,0)");
+
+                  boolean passed = num >= 1;
+                  getResults(">=1", "" + num, "Calls getDistance(0,0)", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -1292,6 +1330,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-turtle-house">
     <title>Coding Challenge: Turtle House</title>
+
     <image source="Unit1-Using-Objects-and-Methods/Figures/houseWithWindows.png" width="36%" alt="simple house" />
     <p>
       This creative challenge is fun to do collaboratively in pairs. Design a
@@ -1306,9 +1345,9 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-t.penUp();
-t.moveTo(120,200);
-t.penDown();
+        t.penUp();
+        t.moveTo(120,200);
+        t.penDown();
       </code>
     </program>
 
@@ -1330,93 +1369,98 @@ t.penDown();
 
       <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class TurtleHouse
-{
-    public static void main(String[] args)
-    {
-        World world = new World(300, 300);
-        Turtle t = new Turtle(world);
-        // Use t to draw a house
+          public class TurtleHouse
+          {
+              public static void main(String[] args)
+              {
+                  World world = new World(300, 300);
+                  Turtle t = new Turtle(world);
+                  // Use t to draw a house
 
 
 
-        // keep this line at the end of your code to show the drawing
-        world.show(true);
-    }
-}
+                  // keep this line at the end of your code to show the drawing
+                  world.show(true);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleHouse");
-    }
+          import java.io.*;
 
-    @Test
-    public void test2()
-    {
-        String code = getCode();
-        int num = countOccurences(code, "moveTo(");
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TurtleHouse");
+              }
 
-        boolean passed = num &gt;= 1;
-        passed = getResults("1 or more", "" + num, "Calls moveTo(...)", passed);
-        assertTrue(passed);
-    }
+              @Test
+              public void test2()
+              {
+                  String code = getCode();
+                  int num = countOccurences(code, "moveTo(");
 
-    @Test
-    public void test3()
-    {
-        String code = getCode();
-        int num = countOccurences(code, ".penUp()");
+                  boolean passed = num >= 1;
+                  passed = getResults("1 or more", "" + num, "Calls moveTo(...)", passed);
+                  assertTrue(passed);
+              }
 
-        boolean passed = num &gt;= 1;
-        passed = getResults("1 or more", "" + num, "Calls penUp()", passed);
-        assertTrue(passed);
-    }
+              @Test
+              public void test3()
+              {
+                  String code = getCode();
+                  int num = countOccurences(code, ".penUp()");
 
-    @Test
-    public void test4()
-    {
-        String code = getCode();
-        int num = countOccurences(code, ".penDown(");
+                  boolean passed = num >= 1;
+                  passed = getResults("1 or more", "" + num, "Calls penUp()", passed);
+                  assertTrue(passed);
+              }
 
-        boolean passed = num &gt;= 1;
-        passed = getResults("1 or more", "" + num, "Calls penDown()", passed);
-        assertTrue(passed);
-    }
+              @Test
+              public void test4()
+              {
+                  String code = getCode();
+                  int num = countOccurences(code, ".penDown(");
 
-    @Test
-    public void test5()
-    {
-        String code = getCode();
-        int numTurns = countOccurences(code, ".turn");
+                  boolean passed = num >= 1;
+                  passed = getResults("1 or more", "" + num, "Calls penDown()", passed);
+                  assertTrue(passed);
+              }
 
-        boolean passed = numTurns &gt;= 6;
-        passed = getResults("6 or more", "" + numTurns, "turns", passed);
-        assertTrue(passed);
-    }
+              @Test
+              public void test5()
+              {
+                  String code = getCode();
+                  int numTurns = countOccurences(code, ".turn");
 
-    @Test
-    public void test6()
-    {
-        String code = getCode();
-        int numForward = countOccurences(code, ".forward(");
+                  boolean passed = numTurns >= 6;
+                  passed = getResults("6 or more", "" + numTurns, "turns", passed);
+                  assertTrue(passed);
+              }
 
-        boolean passed = numForward &gt;= 6;
-        passed = getResults("6 or more", "" + numForward, "Calls to forward()", passed);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test6()
+              {
+                  String code = getCode();
+                  int numForward = countOccurences(code, ".forward(");
+
+                  boolean passed = numForward >= 6;
+                  passed = getResults("6 or more", "" + numForward, "Calls to forward()", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -1424,6 +1468,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-5">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -1502,32 +1547,34 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="ap-practice-4">
     <title>AP Practice</title>
+
     <activity label="AP-Party-Methods">
       <statement>
         <p>Consider the following class definition.</p>
+
         <program language="java">
           <code>
-public class Party
-{
-    private int numInvited;
-    private boolean partyCancelled;
+            public class Party
+            {
+                private int numInvited;
+                private boolean partyCancelled;
 
-    public Party()
-    {
-        numInvited = 1;
-        partyCancelled = false;
-    }
+                public Party()
+                {
+                    numInvited = 1;
+                    partyCancelled = false;
+                }
 
-    public void inviteFriend()
-    {
-        numInvited++;
-    }
+                public void inviteFriend()
+                {
+                    numInvited++;
+                }
 
-    public void cancelParty()
-    {
-        partyCancelled = true;
-    }
-}
+                public void cancelParty()
+                {
+                    partyCancelled = true;
+                }
+            }
           </code>
         </program>
 
@@ -1600,27 +1647,28 @@ public class Party
     <activity label="AP-Cat-trace">
       <statement>
         <p>Consider the following class definition.</p>
+
         <program language="java">
           <code>
-public class Cat
-{
-    public void meow()
-    {
-        System.out.print("Meow ");
-    }
+            public class Cat
+            {
+                public void meow()
+                {
+                    System.out.print("Meow ");
+                }
 
-    public void purr()
-    {
-        System.out.print("purr");
-    }
+                public void purr()
+                {
+                    System.out.print("purr");
+                }
 
-    public void welcomeHome()
-    {
-        purr();
-        meow();
-    }
-    /* Constructors not shown */
-}
+                public void welcomeHome()
+                {
+                    purr();
+                    meow();
+                }
+                /* Constructors not shown */
+            }
           </code>
         </program>
 
@@ -1636,9 +1684,9 @@ public class Cat
           <statement id="AP-Cat-trace_opt_a">
             <program language="java">
               <code>
-Cat a = new Cat();
-Cat.meow();
-Cat.purr();
+                Cat a = new Cat();
+                Cat.meow();
+                Cat.purr();
               </code>
             </program>
           </statement>
@@ -1655,8 +1703,8 @@ Cat.purr();
           <statement id="AP-Cat-trace_opt_b">
             <program language="java">
               <code>
-Cat a = new Cat();
-a.welcomeHome();
+                Cat a = new Cat();
+                a.welcomeHome();
               </code>
             </program>
           </statement>
@@ -1670,9 +1718,9 @@ a.welcomeHome();
           <statement id="AP-Cat-trace_opt_c">
             <program language="java">
               <code>
-Cat a = new Cat();
-a.meow();
-a.purr();
+                Cat a = new Cat();
+                a.meow();
+                a.purr();
               </code>
             </program>
           </statement>
@@ -1686,7 +1734,7 @@ a.purr();
           <statement id="AP-Cat-trace_opt_d">
             <program language="java">
               <code>
-Cat a = new Cat().welcomeHome();
+                Cat a = new Cat().welcomeHome();
               </code>
             </program>
           </statement>
@@ -1700,8 +1748,8 @@ Cat a = new Cat().welcomeHome();
           <statement id="AP-Cat-trace_opt_e">
             <program language="java">
               <code>
-Cat a = new Cat();
-a.meow();
+                Cat a = new Cat();
+                a.meow();
               </code>
             </program>
           </statement>
@@ -1716,29 +1764,30 @@ a.meow();
     <activity label="AP-Liquid-return">
       <statement>
         <p>Consider the following class definition.</p>
+
         <program language="java">
           <code>
-public class Liquid
-{
-    private double boilingPoint;
-    private double freezingPoint;
-    private double currentTemp;
+            public class Liquid
+            {
+                private double boilingPoint;
+                private double freezingPoint;
+                private double currentTemp;
 
-    public Liquid()
-    {
-        currentTemp = 50;
-    }
+                public Liquid()
+                {
+                    currentTemp = 50;
+                }
 
-    public void lowerTemp()
-    {
-        currentTemp -= 10;
-    }
+                public void lowerTemp()
+                {
+                    currentTemp -= 10;
+                }
 
-    public double getTemp()
-    {
-        return currentTemp;
-    }
-}
+                public double getTemp()
+                {
+                    return currentTemp;
+                }
+            }
           </code>
         </program>
 
@@ -1749,9 +1798,9 @@ public class Liquid
 
         <program language="java">
           <code>
-Liquid water = new Liquid();
-water.lowerTemp();
-System.out.println(water.getTemp());
+            Liquid water = new Liquid();
+            water.lowerTemp();
+            System.out.println(water.getTemp());
           </code>
         </program>
 
@@ -1833,18 +1882,19 @@ System.out.println(water.getTemp());
     <activity label="AP-Pizza-trace-args">
       <statement>
         <p>Consider the following methods, which appear in the same class.</p>
+
         <program language="java">
           <code>
-public void splitPizza(int numOfPeople)
-{
-    int slicesPerPerson = 8/numOfPeople;
-    /* INSERT CODE HERE */
-}
+            public void splitPizza(int numOfPeople)
+            {
+                int slicesPerPerson = 8/numOfPeople;
+                /* INSERT CODE HERE */
+            }
 
-public void printSlices(int slices)
-{
-    System.out.println("Each person gets " + slices + " slices each");
-}
+            public void printSlices(int slices)
+            {
+                System.out.println("Each person gets " + slices + " slices each");
+            }
           </code>
         </program>
 

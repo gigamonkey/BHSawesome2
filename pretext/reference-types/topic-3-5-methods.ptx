@@ -2,33 +2,23 @@
 
 <section xml:id="topic-3-5-methods">
   <title>Methods: How to Write Them</title>
+
   <introduction>
     <idx>method</idx>
     <idx>return</idx>
     <idx>parameter</idx>
     <idx>argument</idx>
     <idx>abstraction</idx>
-    <idx>
-      <h>method</h><h>parameter</h>
-    </idx>
-
-    <idx>
-      <h>method</h><h>argument</h>
-    </idx>
-
-    <idx>
-      <h>method</h><h>return</h>
-    </idx>
-
+    <idx><h>method</h><h>parameter</h></idx>
+    <idx><h>method</h><h>argument</h></idx>
+    <idx><h>method</h><h>return</h></idx>
     <idx>void method</idx>
     <idx>non-void method</idx>
     <idx>accessor method</idx>
     <idx>getter</idx>
     <idx>mutator method</idx>
     <idx>setter</idx>
-    <p>
-      In object-oriented programming, the three main parts of a class are:
-    </p>
+    <p>In object-oriented programming, the three main parts of a class are:</p>
 
     <p>
       <ul>
@@ -67,6 +57,7 @@
 
   <subsection xml:id="defining-and-calling-methods">
     <title>Defining and Calling Methods</title>
+
     <p>
       A <term>method</term> is a block of code that performs a specific task.
       Methods are defined inside a class and can access the instance variables
@@ -76,29 +67,30 @@
 
     <program language="java">
       <code>
-public class Person
-{
-    // instance variables
-    private String name;
-    private String email;
+        public class Person
+        {
+            // instance variables
+            private String name;
+            private String email;
 
-    // Method definition: uses instance variables name and email
-    public void print()
-    {
-        System.out.println("Name: " + name);
-        System.out.println("Email: " + email);
-    }
+            // Method definition: uses instance variables name and email
+            public void print()
+            {
+                System.out.println("Name: " + name);
+                System.out.println("Email: " + email);
+            }
 
-    public static void main(String[] args)
-    {
-        Person p = new Person();
-        p.print();  // Method call
-    }
-}
+            public static void main(String[] args)
+            {
+                Person p = new Person();
+                p.print();  // Method call
+            }
+        }
       </code>
     </program>
 
     <p>There are three steps to creating and calling a method:</p>
+
     <p>
       <ol marker="1">
         <li>
@@ -110,8 +102,8 @@ public class Person
           <blockquote>
             <program language="java">
               <code>
-// Step 1: declare an object in main or from outside the class
-Classname objectName = new Classname();
+                // Step 1: declare an object in main or from outside the class
+                Classname objectName = new Classname();
               </code>
             </program>
           </blockquote>
@@ -126,8 +118,8 @@ Classname objectName = new Classname();
           <blockquote>
             <program language="java">
               <code>
-// Step 2: call the object's method
-objectName.methodName(); //Step 2
+                // Step 2: call the object's method
+                objectName.methodName(); //Step 2
               </code>
             </program>
           </blockquote>
@@ -142,12 +134,12 @@ objectName.methodName(); //Step 2
           <blockquote>
             <program language="java">
               <code>
-// Step 3: Define the method in the class
-// method header
-public void methodName()
-{
-      // method body for the code
-}
+                // Step 3: Define the method in the class
+                // method header
+                public void methodName()
+                {
+                      // method body for the code
+                }
               </code>
             </program>
           </blockquote>
@@ -168,6 +160,7 @@ public void methodName()
 
     <figure align="center">
       <caption>Comparing Method Calls to Static and Instance Methods</caption>
+
       <image source="Unit3-Class-Creation/Figures/FlowChartCallingMethods.png" width="98%" alt="Comparing method calls to static and instance methods" />
     </figure>
 
@@ -182,48 +175,49 @@ public void methodName()
 
       <program interactive="activecode" language="java">
         <code>
-public class Person
-{
-    // instance variables
-    private String name;
-    private String email;
-    private String phonenumber;
+          public class Person
+          {
+              // instance variables
+              private String name;
+              private String email;
+              private String phonenumber;
 
-    // Constructor
-    public Person(String n, String e, String p)
-    {
-        name = n;
-        email = e;
-        phonenumber = p;
-    }
+              // Constructor
+              public Person(String n, String e, String p)
+              {
+                  name = n;
+                  email = e;
+                  phonenumber = p;
+              }
 
-    // TODO: Add a print() method that prints out all the attributes (name, email, phonenumber)
+              // TODO: Add a print() method that prints out all the attributes (name, email, phonenumber)
 
 
-    public static void main(String[] args)
-    {
-        Person p1 = new Person("Taylor", "swift@gmail.com", "123-456-7890");
-        p1.print();
-    }
-}
+              public static void main(String[] args)
+              {
+                  Person p1 = new Person("Taylor", "swift@gmail.com", "123-456-7890");
+                  p1.print();
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1()
-    {
-        String target = "public void print()";
-        boolean passed = checkCodeContains("public void print() method", target);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test1()
+              {
+                  String target = "public void print()";
+                  boolean passed = checkCodeContains("public void print() method", target);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -231,6 +225,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="void-methods">
     <title>void Methods</title>
+
     <p>
       A <term>void method</term> is a method that does not return a value. It is
       used when you want to perform an action but do not need to return a value.
@@ -239,10 +234,10 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-public void methodName()
-{
-    // method body
-}
+        public void methodName()
+        {
+            // method body
+        }
       </code>
     </program>
 
@@ -256,6 +251,7 @@ public void methodName()
 
   <subsection xml:id="non-void-methods-1">
     <title>Non-void Methods</title>
+
     <p>
       A <term>non-void method</term> is a method that returns a single value.
       Its body must have a <term>return</term> statement, usually at the end,
@@ -267,11 +263,11 @@ public void methodName()
 
     <program language="java">
       <code>
-public returnType methodName()
-{
-    // method body
-    return value;
-}
+        public returnType methodName()
+        {
+            // method body
+            return value;
+        }
       </code>
     </program>
 
@@ -297,6 +293,7 @@ public returnType methodName()
 
     <note>
       <p>Some common errors when writing and using non-void methods are:</p>
+
       <p>
         <ul>
           <li>
@@ -333,6 +330,7 @@ public returnType methodName()
 
   <subsection xml:id="accessors-getters">
     <title>Accessors / Getters</title>
+
     <p>
       Since the instance variables in a class are usually marked as
       <c>private</c> to the class, if you want code outside the class to be able
@@ -353,6 +351,7 @@ public returnType methodName()
 
     <figure align="center">
       <caption>App Inventor Set and Get blocks for object Button1</caption>
+
       <image source="Unit3-Class-Creation/Figures/AppInvSetGet.png" width="54%" />
     </figure>
 
@@ -365,18 +364,18 @@ public returnType methodName()
 
     <program language="java">
       <code>
-class ExampleTemplate
-{
+        class ExampleTemplate
+        {
 
-    // Instance variable declaration
-    private typeOfVar varName;
+            // Instance variable declaration
+            private typeOfVar varName;
 
-    // Accessor (getter) method template
-    public typeOfVar getVarName()
-    {
-        return varName;
-    }
-}
+            // Accessor (getter) method template
+            public typeOfVar getVarName()
+            {
+                return varName;
+            }
+        }
       </code>
     </program>
 
@@ -399,31 +398,29 @@ class ExampleTemplate
 
     <program language="java">
       <code>
-class Student
-{
+        class Student
+        {
 
-  //Instance variable name
-  private String name;
+          //Instance variable name
+          private String name;
 
-  /** getName() example
-   *  @return name */
-  public String getName()
-  {
-     return name;
-  }
+          /** getName() example
+           *  @return name */
+          public String getName()
+          {
+             return name;
+          }
 
-  public static void main(String[] args)
-  {
-     // To call a get method, use objectName.getVarName()
-     Student s = new Student();
-     System.out.println("Name: " + s.getName() );
-  }
+          public static void main(String[] args)
+          {
+             // To call a get method, use objectName.getVarName()
+             Student s = new Student();
+             System.out.println("Name: " + s.getName() );
+          }
       </code>
     </program>
 
-    <p>
-      Note, that getters only return the <em>value</em> of the variable.
-    </p>
+    <p>Note, that getters only return the <em>value</em> of the variable.</p>
 
     <p>
       Try the following code. Note that this active code window has 2 classes!
@@ -452,88 +449,87 @@ class Student
 
       <program interactive="activecode" language="java">
         <code>
-public class TesterClass
-{
-    // main method for testing
-    public static void main(String[] args)
-    {
-        Student s1 = new Student("Skyler", "skyler@sky.com", 123456);
-        System.out.println("Name:" + s1.getName());
-        // Fix the bug here!
-        System.out.println("Email:" + s1.email);
-        System.out.println("ID: " + s1.getId());
-    }
-}
+          public class TesterClass
+          {
+              // main method for testing
+              public static void main(String[] args)
+              {
+                  Student s1 = new Student("Skyler", "skyler@sky.com", 123456);
+                  System.out.println("Name:" + s1.getName());
+                  // Fix the bug here!
+                  System.out.println("Email:" + s1.email);
+                  System.out.println("ID: " + s1.getId());
+              }
+          }
 
-/** Class Student keeps track of name, email, and id of a Student. */
-class Student
-{
-    private String name;
-    private String email;
-    private int id;
+          /** Class Student keeps track of name, email, and id of a Student. */
+          class Student
+          {
+              private String name;
+              private String email;
+              private int id;
 
-    public Student(String initName, String initEmail, int initId)
-    {
-        name = initName;
-        email = initEmail;
-        id = initId;
-    }
+              public Student(String initName, String initEmail, int initId)
+              {
+                  name = initName;
+                  email = initEmail;
+                  id = initId;
+              }
 
-    // accessor methods - getters
-    /** getName() @return name */
-    public String getName()
-    {
-        return name;
-    }
+              // accessor methods - getters
+              /** getName() @return name */
+              public String getName()
+              {
+                  return name;
+              }
 
-    /** getEmail() @return email */
-    public String getEmail()
-    {
-        return email;
-    }
+              /** getEmail() @return email */
+              public String getEmail()
+              {
+                  return email;
+              }
 
-    /** getName() @return id */
-    public int getId()
-    {
-        return id;
-    }
-}
+              /** getName() @return id */
+              public int getId()
+              {
+                  return id;
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Name:Skyler\nEmail:skyler@sky.com\nID: 123456";
-        boolean passed = getResults(expect, output, "Checking for expected output");
-        assertTrue(passed);
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Name:Skyler\nEmail:skyler@sky.com\nID: 123456";
+                  boolean passed = getResults(expect, output, "Checking for expected output");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testMethodCall() throws IOException
-    {
-        String target = "s1.getEmail()";
-        boolean passed = checkCodeContains("call to accessor method for email", target);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void testMethodCall() throws IOException
+              {
+                  String target = "s1.getEmail()";
+                  boolean passed = checkCodeContains("call to accessor method for email", target);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
   </subsection>
 
   <subsection xml:id="tostring">
-    <title>
-      <c>toString</c>
-    </title>
+    <title><c>toString</c></title>
 
     <p>
       While not strictly speaking a getter, another important method that
@@ -567,56 +563,57 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class TesterClass
-{
-    // main method for testing
-    public static void main(String[] args)
-    {
-        Student s1 = new Student("Skyler", "skyler@sky.com", 123456);
-        System.out.println(s1);
-        // TODO: add another student s2 and print it out
+          public class TesterClass
+          {
+              // main method for testing
+              public static void main(String[] args)
+              {
+                  Student s1 = new Student("Skyler", "skyler@sky.com", 123456);
+                  System.out.println(s1);
+                  // TODO: add another student s2 and print it out
 
 
-    }
-}
+              }
+          }
 
-class Student
-{
-    private String name;
-    private String email;
-    private int id;
+          class Student
+          {
+              private String name;
+              private String email;
+              private int id;
 
-    public Student(String initName, String initEmail, int initId)
-    {
-        name = initName;
-        email = initEmail;
-        id = initId;
-    }
+              public Student(String initName, String initEmail, int initId)
+              {
+                  name = initName;
+                  email = initEmail;
+                  id = initId;
+              }
 
-    // toString() method
-    public String toString()
-    {
-        return id + ": " + name + ", " + email;
-    }
-}
+              // toString() method
+              public String toString()
+              {
+                  return id + ": " + name + ", " + email;
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1() throws IOException
-    {
-        String target = "System.out.println(s2)";
-        boolean passed = checkCodeContains("System.out.println(s2)", target);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test1() throws IOException
+              {
+                  String target = "System.out.println(s2)";
+                  boolean passed = checkCodeContains("System.out.println(s2)", target);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -624,9 +621,12 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="mutators-setters">
     <title>Mutators / Setters</title>
+
     <p>
       In complement to the accessor/getter methods, if we want to allow code
-      outside the class to <title_reference>change</title_reference> the value
+      outside the class to
+      <title_reference>change</title_reference>
+ the value
       of an instance variable we have to provide what is formally called a
       <term>mutator method</term> but which everyone actually calls a
       <term>setter</term>. A setter is a void method with a name that starts
@@ -661,17 +661,17 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-class ExampleTemplate
-{
-    // Instance variable declaration
-    private typeOfVar varName;
+        class ExampleTemplate
+        {
+            // Instance variable declaration
+            private typeOfVar varName;
 
-    // Setter method template
-    public void setVarName(typeOfVar newValue)
-    {
-        varName = newValue;
-    }
-}
+            // Setter method template
+            public void setVarName(typeOfVar newValue)
+            {
+                varName = newValue;
+            }
+        }
       </code>
     </program>
 
@@ -682,28 +682,28 @@ class ExampleTemplate
 
     <program language="java">
       <code>
-class Student
-{
-    // Instance variable name
-    private String name;
+        class Student
+        {
+            // Instance variable name
+            private String name;
 
-    /**
-     * setName sets name to newName
-     *
-     * @param newName
-     */
-    public void setName(String newName)
-    {
-        name = newName;
-    }
+            /**
+             * setName sets name to newName
+             *
+             * @param newName
+             */
+            public void setName(String newName)
+            {
+                name = newName;
+            }
 
-    public static void main(String[] args)
-    {
-        // To call a set method, use objectName.setVar(newValue)
-        Student s = new Student();
-        s.setName("Ayanna");
-    }
-}
+            public static void main(String[] args)
+            {
+                // To call a set method, use objectName.setVar(newValue)
+                Student s = new Student();
+                s.setName("Ayanna");
+            }
+        }
       </code>
     </program>
 
@@ -717,6 +717,7 @@ class Student
 
     <figure align="center">
       <caption>Comparison of setters and getters</caption>
+
       <image source="Unit3-Class-Creation/Figures/get-set-comparison.png" width="100%" />
     </figure>
 
@@ -744,101 +745,102 @@ class Student
 
       <program interactive="activecode" language="java">
         <code>
-public class TesterClass
-{
-    // main method for testing
-    public static void main(String[] args)
-    {
-        Student s1 = new Student("Skyler", "skyler@sky.com", 123456);
-        System.out.println(s1);
-        s1.setName("Skyler 2");
-        // Main doesn't have access to email, use set method!
-        s1.email = "skyler2@gmail.com";
-        System.out.println(s1);
-    }
-}
+          public class TesterClass
+          {
+              // main method for testing
+              public static void main(String[] args)
+              {
+                  Student s1 = new Student("Skyler", "skyler@sky.com", 123456);
+                  System.out.println(s1);
+                  s1.setName("Skyler 2");
+                  // Main doesn't have access to email, use set method!
+                  s1.email = "skyler2@gmail.com";
+                  System.out.println(s1);
+              }
+          }
 
-class Student
-{
-    private String name;
-    private String email;
-    private int id;
+          class Student
+          {
+              private String name;
+              private String email;
+              private int id;
 
-    public Student(String initName, String initEmail, int initId)
-    {
-        name = initName;
-        email = initEmail;
-        id = initId;
-    }
+              public Student(String initName, String initEmail, int initId)
+              {
+                  name = initName;
+                  email = initEmail;
+                  id = initId;
+              }
 
-    // Setters
+              // Setters
 
-    public void setName(String newName)
-    {
-        name = newName;
-    }
+              public void setName(String newName)
+              {
+                  name = newName;
+              }
 
-    public void setEmail(String newEmail)
-    {
-        email = newEmail;
-    }
+              public void setEmail(String newEmail)
+              {
+                  email = newEmail;
+              }
 
-    // Getters
+              // Getters
 
-    public String getName()
-    {
-        return name;
-    }
+              public String getName()
+              {
+                  return name;
+              }
 
-    public String getEmail()
-    {
-        return email;
-    }
+              public String getEmail()
+              {
+                  return email;
+              }
 
-    public int getId()
-    {
-        return id;
-    }
+              public int getId()
+              {
+                  return id;
+              }
 
-    public String toString()
-    {
-        return id + ": " + name + ", " + email;
-    }
-}
+              public String toString()
+              {
+                  return id + ": " + name + ", " + email;
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-// activeCode StudentObjExample2
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TesterClass");
-    }
+          // activeCode StudentObjExample2
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TesterClass");
+              }
 
-    @Test
-    public void test1()
-    {
-        String target = "s1.setEmail(\"skyler2@gmail.com\");";
-        boolean passed = checkCodeContains("call to setEmail()", target);
-        assertTrue(passed);
-    }
+              @Test
+              public void test1()
+              {
+                  String target = "s1.setEmail(\"skyler2@gmail.com\");";
+                  boolean passed = checkCodeContains("call to setEmail()", target);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testMain()
-    {
-        String output = getMethodOutput("main");
-        String expect = "123456: Skyler, skyler@sky.com\n123456: Skyler 2, skyler2@gmail.com";
+              @Test
+              public void testMain()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "123456: Skyler, skyler@sky.com\n123456: Skyler 2, skyler2@gmail.com";
 
-        boolean passed = getResults(expect, output, "Checking main()", true);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = getResults(expect, output, "Checking main()", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -852,16 +854,16 @@ public class RunestoneTests extends CodeTestHelper
 
         <program language="java">
           <code>
-public class Party
-{
-    // number of people at the party
-    private int numOfPeople;
+            public class Party
+            {
+                // number of people at the party
+                private int numOfPeople;
 
-    /* Missing header of set method */
-    {
-        numOfPeople = people;
-    }
-}
+                /* Missing header of set method */
+                {
+                    numOfPeople = people;
+                }
+            }
           </code>
         </program>
 
@@ -949,6 +951,7 @@ public class Party
 
   <subsection xml:id="parameters">
     <title>Parameters</title>
+
     <p>
       The setter methods above contained parameters. A <term>parameter</term> is
       a variable in a method’s header that is used to pass in data that the
@@ -971,13 +974,17 @@ public class Party
     </p>
 
     <figure align="center">
-      <caption>Method signatures with parameters and method calls arguments</caption>
+      <caption>
+        Method signatures with parameters and method calls arguments
+      </caption>
+
       <image source="Unit3-Class-Creation/Figures/method-param-arg.png" width="98%" alt="Method parameters and arguments" />
     </figure>
   </subsection>
 
   <subsection xml:id="methods-with-parameters-that-return-calculated-values">
     <title>Methods with Parameters that Return Calculated values</title>
+
     <p>
       Not all methods that return values are accessor/get methods. Some methods
       have parameters and return values that are found or calculated in a more
@@ -1003,112 +1010,117 @@ public class Party
 
       <program interactive="activecode" language="java">
         <code>
-public class StringFind
-{
-    /**
-     * findLetter looks for a letter in a String
-     *
-     * @param String letter to look for
-     * @param String text to look in
-     * @return boolean true if letter is in text
-     * After running the code, change this method
-     * to return an int count of how many times letter is in
-     * the text.
-     */
-    public boolean findLetter(String letter, String text)
-    {
-        boolean flag = false;
-        for (int i = 0; i &lt; text.length(); i++)
-        {
-            if (text.substring(i, i + 1).equalsIgnoreCase(letter))
-            {
-                flag = true;
-            }
-        }
-        return flag;
-    }
+          <![CDATA[
 
-    public static void main(String args[])
-    {
-        StringFind test = new StringFind();
-        String message = "Apples and Oranges";
-        String letter = "p";
-        System.out.println("Does " + message + " contain a " + letter + "?");
-        System.out.println(test.findLetter(letter, message));
-    }
-}
+          public class StringFind
+          {
+              /**
+               * findLetter looks for a letter in a String
+               *
+               * @param String letter to look for
+               * @param String text to look in
+               * @return boolean true if letter is in text
+               * After running the code, change this method
+               * to return an int count of how many times letter is in
+               * the text.
+               */
+              public boolean findLetter(String letter, String text)
+              {
+                  boolean flag = false;
+                  for (int i = 0; i < text.length(); i++)
+                  {
+                      if (text.substring(i, i + 1).equalsIgnoreCase(letter))
+                      {
+                          flag = true;
+                      }
+                  }
+                  return flag;
+              }
+
+              public static void main(String args[])
+              {
+                  StringFind test = new StringFind();
+                  String message = "Apples and Oranges";
+                  String letter = "p";
+                  System.out.println("Does " + message + " contain a " + letter + "?");
+                  System.out.println(test.findLetter(letter, message));
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void tryfindLetter() throws IOException
-    {
-        String message = "Apples and Oranges";
-        String letter = "p";
-        Object[] args = {letter, message};
-        String output = getMethodOutput("findLetter", args);
-        String expect = "2";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void tryfindLetter() throws IOException
+              {
+                  String message = "Apples and Oranges";
+                  String letter = "p";
+                  Object[] args = {letter, message};
+                  String output = getMethodOutput("findLetter", args);
+                  String expect = "2";
 
-        boolean passed = getResults(expect, output, "findLetter(\"p\",\"Apples and Oranges\")");
-        assertTrue(passed);
-    }
+                  boolean passed = getResults(expect, output, "findLetter(\"p\",\"Apples and Oranges\")");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void tryfindLetter2() throws IOException
-    {
-        String message = "Test strings";
-        String letter = "s";
-        Object[] args = {letter, message};
-        String output = getMethodOutput("findLetter", args);
-        String expect = "3";
+              @Test
+              public void tryfindLetter2() throws IOException
+              {
+                  String message = "Test strings";
+                  String letter = "s";
+                  Object[] args = {letter, message};
+                  String output = getMethodOutput("findLetter", args);
+                  String expect = "3";
 
-        boolean passed = getResults(expect, output, "findLetter(\"s\",\"Test strings\")");
-        assertTrue(passed);
-    }
+                  boolean passed = getResults(expect, output, "findLetter(\"s\",\"Test strings\")");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test2()
-    {
-        boolean passed =
-                checkCodeContains(
-                        "changed return type of findLetter",
-                        "public int findLetter(String letter, String text)");
-        assertTrue(passed);
-    }
+              @Test
+              public void test2()
+              {
+                  boolean passed =
+                          checkCodeContains(
+                                  "changed return type of findLetter",
+                                  "public int findLetter(String letter, String text)");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test1()
-    {
-        boolean passed = checkCodeContains("variable count set to 0", "int count = 0;");
-        assertTrue(passed);
-    }
+              @Test
+              public void test1()
+              {
+                  boolean passed = checkCodeContains("variable count set to 0", "int count = 0;");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test3()
-    {
-        String code = removeSpaces(getCode());
-        boolean passed =
-                code.contains("count++;")
-                        || code.contains("count=count+1;")
-                        || code.contains("count=1+count;")
-                        || code.contains("count+=1;")
-                        || code.contains("++count;");
-        passed =
-                getResults(
-                        "count incremented",
-                        Boolean.toString(passed),
-                        "Count incremented?",
-                        passed);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test3()
+              {
+                  String code = removeSpaces(getCode());
+                  boolean passed =
+                          code.contains("count++;")
+                                  || code.contains("count=count+1;")
+                                  || code.contains("count=1+count;")
+                                  || code.contains("count+=1;")
+                                  || code.contains("++count;");
+                  passed =
+                          getResults(
+                                  "count incremented",
+                                  Boolean.toString(passed),
+                                  "Count incremented?",
+                                  passed);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -1116,6 +1128,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-class-pet">
     <title>Coding Challenge: Class Pet</title>
+
     <image source="Unit3-Class-Creation/Figures/animalclinic.png" width="27%" alt="Animal Clinic" />
     <p>
       You’ve been hired to create a software system for the Awesome Animal
@@ -1207,148 +1220,153 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-/**
- * Pet class (complete comments)
- *
- * @author
- * @since
- */
-class Pet
-{
-    // Instance Variables for the name, age, weight, type of animal, and breed of the pet
+          /**
+           * Pet class (complete comments)
+           *
+           * @author
+           * @since
+           */
+          class Pet
+          {
+              // Instance Variables for the name, age, weight, type of animal, and breed of the pet
 
-    // Write a constructor, accessor (get) methods, mutator (set) methods)
-    // and a toString method. Use good commenting.
+              // Write a constructor, accessor (get) methods, mutator (set) methods)
+              // and a toString method. Use good commenting.
 
-    // Don't forget to complete the main method in the TesterClass below!
-}
+              // Don't forget to complete the main method in the TesterClass below!
+          }
 
-public class TesterClass
-{
-    // main method for testing
-    public static void main(String[] args)
-    {
-        // Create 2 Pet objects and test all your methods
+          public class TesterClass
+          {
+              // main method for testing
+              public static void main(String[] args)
+              {
+                  // Create 2 Pet objects and test all your methods
 
-    }
-}
+              }
+          }
         </code>
+
         <tests>
- import static org.junit.Assert.*;
+          <![CDATA[
 
- import org.junit.*;
+          import static org.junit.Assert.*;
 
- import java.io.*;
+          import org.junit.*;
 
- public class RunestoneTests extends CodeTestHelper
- {
-     public RunestoneTests()
-     {
-         super("TesterClass");
-     }
+          import java.io.*;
 
-     @Test
-     public void testConstructors()
-     {
-         changeClass("Pet");
-         int count = 0;
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TesterClass");
+              }
 
-         for (int i = 0; i &lt; 6; i++)
-         {
-             if (checkConstructor(i).equals("pass")) count++;
-         }
+              @Test
+              public void testConstructors()
+              {
+                  changeClass("Pet");
+                  int count = 0;
 
-         boolean passed = count &gt;= 1;
+                  for (int i = 0; i < 6; i++)
+                  {
+                      if (checkConstructor(i).equals("pass")) count++;
+                  }
 
-         getResults("2+", "" + count, "Checking for constructor", passed);
-         assertTrue(passed);
-     }
+                  boolean passed = count >= 1;
 
-     @Test
-     public void testPrivateVariables()
-     {
-         changeClass("Pet");
-         String expect = "5 Private";
-         String output = testPrivateInstanceVariables();
+                  getResults("2+", "" + count, "Checking for constructor", passed);
+                  assertTrue(passed);
+              }
 
-         boolean passed = getResults(expect, output, "Checking Private Instance Variables");
-         assertTrue(passed);
-     }
+              @Test
+              public void testPrivateVariables()
+              {
+                  changeClass("Pet");
+                  String expect = "5 Private";
+                  String output = testPrivateInstanceVariables();
 
-     @Test
-     public void test1()
-     {
-         String code = getCode();
-         String target = "public * get*()";
+                  boolean passed = getResults(expect, output, "Checking Private Instance Variables");
+                  assertTrue(passed);
+              }
 
-         int num = countOccurencesRegex(code, target);
+              @Test
+              public void test1()
+              {
+                  String code = getCode();
+                  String target = "public * get*()";
 
-         boolean passed = num &gt;= 5;
+                  int num = countOccurencesRegex(code, target);
 
-         getResults("5", "" + num, "Checking accessor (get) methods for each variable", passed);
-         assertTrue(passed);
-     }
+                  boolean passed = num >= 5;
 
-     @Test
-     public void test3()
-     {
-         String target = "public String toString()";
-         boolean passed = checkCodeContains("toString() method", target);
-         assertTrue(passed);
-     }
+                  getResults("5", "" + num, "Checking accessor (get) methods for each variable", passed);
+                  assertTrue(passed);
+              }
 
-     @Test
-     public void testSet()
-     {
-         String code = getCode();
-         String target = "public void set*(*)";
+              @Test
+              public void test3()
+              {
+                  String target = "public String toString()";
+                  boolean passed = checkCodeContains("toString() method", target);
+                  assertTrue(passed);
+              }
 
-         int num = countOccurencesRegex(code, target);
+              @Test
+              public void testSet()
+              {
+                  String code = getCode();
+                  String target = "public void set*(*)";
 
-         boolean passed = num &gt;= 5;
+                  int num = countOccurencesRegex(code, target);
 
-         getResults("5", "" + num, "Checking mutator (set) methods for each variable", passed);
-         assertTrue(passed);
-     }
+                  boolean passed = num >= 5;
 
-     @Test
-     public void test4()
-     {
-         String code = getCode();
-         String target = "Pet * = new Pet(";
+                  getResults("5", "" + num, "Checking mutator (set) methods for each variable", passed);
+                  assertTrue(passed);
+              }
 
-         int num = countOccurencesRegex(code, target);
+              @Test
+              public void test4()
+              {
+                  String code = getCode();
+                  String target = "Pet * = new Pet(";
 
-         boolean passed = num &gt;= 2;
+                  int num = countOccurencesRegex(code, target);
 
-         getResults("2", "" + num, "Checking main method creates 2 Pet objects", passed);
-         assertTrue(passed);
-     }
+                  boolean passed = num >= 2;
 
-     @Test
-     public void testMain()
-     {
-         String output = getMethodOutput("main");
+                  getResults("2", "" + num, "Checking main method creates 2 Pet objects", passed);
+                  assertTrue(passed);
+              }
 
-         String expect = "2+ line(s) of text";
-         String actual = " line(s) of text";
+              @Test
+              public void testMain()
+              {
+                  String output = getMethodOutput("main");
 
-         int len = output.split("\n").length;
+                  String expect = "2+ line(s) of text";
+                  String actual = " line(s) of text";
 
-         if (output.length() &gt; 0)
-         {
-             actual = len + actual;
-         }
-         else
-         {
-             actual = output.length() + actual;
-         }
-         boolean passed = len &gt;= 2;
+                  int len = output.split("\n").length;
 
-         getResults(expect, actual, "Checking main method prints info for 2 Pet objects", passed);
-         assertTrue(passed);
-     }
- }
+                  if (output.length() > 0)
+                  {
+                      actual = len + actual;
+                  }
+                  else
+                  {
+                      actual = output.length() + actual;
+                  }
+                  boolean passed = len >= 2;
+
+                  getResults(expect, actual, "Checking main method prints info for 2 Pet objects", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -1356,6 +1374,7 @@ public class TesterClass
 
   <subsection xml:id="design-a-class-for-your-community-2">
     <title>Design a Class for your Community</title>
+
     <p>
       In last lessons, you came up with a class of your own choice relevant to
       your community.
@@ -1423,154 +1442,159 @@ public class TesterClass
 
       <program interactive="activecode" language="java">
         <code>
-public class          // Add your class name here!
-{
-    // 1. Copy your class instance variables, constructor, and print()
+          public class          // Add your class name here!
+          {
+              // 1. Copy your class instance variables, constructor, and print()
 
-    // 2. Create accessor (get) and mutator (set) methods for each of the instance variables.
+              // 2. Create accessor (get) and mutator (set) methods for each of the instance variables.
 
-    // 3. Create a toString() method that returns all the information in the instance variables.
-    // 4.  Add a method for your class that takes a parameter.
-    // For example, there could be a print method with arguments that indicate
-    // how you want to print out the information, print(format) where format is "plain" or "table".
+              // 3. Create a toString() method that returns all the information in the instance variables.
+              // 4.  Add a method for your class that takes a parameter.
+              // For example, there could be a print method with arguments that indicate
+              // how you want to print out the information, print(format) where format is "plain" or "table".
 
-    // 5. Test all the methods in the main method.
-    public static void main(String[] args)
-    {
-       // Construct an object of your class
+              // 5. Test all the methods in the main method.
+              public static void main(String[] args)
+              {
+                 // Construct an object of your class
 
 
-       // call the object's methods
+                 // call the object's methods
 
-    }
-}
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testPrivateVariables()
-    {
-        String expect = "3 Private";
-        String output = testPrivateInstanceVariables();
-        boolean passed = false;
-        if (Integer.parseInt(expect.substring(0, 1)) &lt;= Integer.parseInt(output.substring(0, 1)))
-            passed = true;
-        passed = getResults(expect, output, "Checking private instance variable(s)", passed);
-        assertTrue(passed);
-    }
+          import java.io.*;
 
-    /* @Test
-    public void testDefaultConstructor()
-    {
-        String output = checkDefaultConstructor();
-        String expect = "pass";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testPrivateVariables()
+              {
+                  String expect = "3 Private";
+                  String output = testPrivateInstanceVariables();
+                  boolean passed = false;
+                  if (Integer.parseInt(expect.substring(0, 1)) <= Integer.parseInt(output.substring(0, 1)))
+                      passed = true;
+                  passed = getResults(expect, output, "Checking private instance variable(s)", passed);
+                  assertTrue(passed);
+              }
 
-        boolean passed = getResults(expect, output, "Checking default constructor");
-        assertTrue(passed);
-    } */
+              /* @Test
+              public void testDefaultConstructor()
+              {
+                  String output = checkDefaultConstructor();
+                  String expect = "pass";
 
-    @Test
-    public void testConstructor3()
-    {
-        String output = checkConstructor(3);
-        String expect = "pass";
+                  boolean passed = getResults(expect, output, "Checking default constructor");
+                  assertTrue(passed);
+              } */
 
-        boolean passed = getResults(expect, output, "Checking constructor with 3 parameters");
-        assertTrue(passed);
-    }
+              @Test
+              public void testConstructor3()
+              {
+                  String output = checkConstructor(3);
+                  String expect = "pass";
 
-    @Test
-    public void testPrint()
-    {
-        String output = getMethodOutput("print");
-        String expect = "More than 15 characters";
-        String actual = " than 15 characters";
+                  boolean passed = getResults(expect, output, "Checking constructor with 3 parameters");
+                  assertTrue(passed);
+              }
 
-        if (output.length() &lt; 15)
-        {
-            actual = "Less" + actual;
-        }
-        else
-        {
-            actual = "More" + actual;
-        }
-        boolean passed = getResults(expect, actual, "Checking print method");
-        assertTrue(passed);
-    }
+              @Test
+              public void testPrint()
+              {
+                  String output = getMethodOutput("print");
+                  String expect = "More than 15 characters";
+                  String actual = " than 15 characters";
 
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main"); // .split("\n");
-        String expect = "3+ line(s) of text";
-        String actual = " line(s) of text";
-        int len = output.split("\n").length;
+                  if (output.length() < 15)
+                  {
+                      actual = "Less" + actual;
+                  }
+                  else
+                  {
+                      actual = "More" + actual;
+                  }
+                  boolean passed = getResults(expect, actual, "Checking print method");
+                  assertTrue(passed);
+              }
 
-        if (output.length() &gt; 0)
-        {
-            actual = len + actual;
-        }
-        else
-        {
-            actual = output.length() + actual;
-        }
-        boolean passed = len &gt;= 3;
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main"); // .split("\n");
+                  String expect = "3+ line(s) of text";
+                  String actual = " line(s) of text";
+                  int len = output.split("\n").length;
 
-        getResults(expect, actual, "Checking output", passed);
-        assertTrue(passed);
-    }
+                  if (output.length() > 0)
+                  {
+                      actual = len + actual;
+                  }
+                  else
+                  {
+                      actual = output.length() + actual;
+                  }
+                  boolean passed = len >= 3;
 
-    @Test
-    public void test1()
-    {
-        String code = getCode();
-        String target = "public * get*()";
+                  getResults(expect, actual, "Checking output", passed);
+                  assertTrue(passed);
+              }
 
-        int num = countOccurencesRegex(code, target);
+              @Test
+              public void test1()
+              {
+                  String code = getCode();
+                  String target = "public * get*()";
 
-        boolean passed = num &gt;= 3;
+                  int num = countOccurencesRegex(code, target);
 
-        getResults("3", "" + num, "Checking accessor (get) methods for each variable", passed);
-        assertTrue(passed);
-    }
+                  boolean passed = num >= 3;
 
-    @Test
-    public void test2()
-    {
-        String code = getCode();
-        String target = "public void set*(*)";
+                  getResults("3", "" + num, "Checking accessor (get) methods for each variable", passed);
+                  assertTrue(passed);
+              }
 
-        int num = countOccurencesRegex(code, target);
+              @Test
+              public void test2()
+              {
+                  String code = getCode();
+                  String target = "public void set*(*)";
 
-        boolean passed = num &gt;= 3;
+                  int num = countOccurencesRegex(code, target);
 
-        getResults("3", "" + num, "Checking mutator (set) methods for each variable", passed);
-        assertTrue(passed);
-    }
+                  boolean passed = num >= 3;
 
-    @Test
-    public void test3()
-    {
-        String target = "public String toString()";
-        boolean passed = checkCodeContains("toString() method", target);
-        assertTrue(passed);
-    }
+                  getResults("3", "" + num, "Checking mutator (set) methods for each variable", passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testPrintFormat()
-    {
-        String target = "public void print(String";
-        boolean passed = checkCodeContains("print method with String argument", target);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test3()
+              {
+                  String target = "public String toString()";
+                  boolean passed = checkCodeContains("toString() method", target);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testPrintFormat()
+              {
+                  String target = "public void print(String";
+                  boolean passed = checkCodeContains("print method with String argument", target);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -1578,6 +1602,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-31">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -1687,17 +1712,26 @@ public class RunestoneTests extends CodeTestHelper
 
       <cardsort>
         <match>
-          <premise order="1">gets and returns the value of an instance variable</premise>
+          <premise order="1">
+            gets and returns the value of an instance variable
+          </premise>
+
           <response>accessor method</response>
         </match>
 
         <match>
-          <premise order="2">sets the instance variable to a value in its parameter</premise>
+          <premise order="2">
+            sets the instance variable to a value in its parameter
+          </premise>
+
           <response>mutator method</response>
         </match>
 
         <match>
-          <premise order="3">initializes the instance variables to values</premise>
+          <premise order="3">
+            initializes the instance variables to values
+          </premise>
+
           <response>constructor</response>
         </match>
 
@@ -1716,6 +1750,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="ap-practice-21">
     <title>AP Practice</title>
+
     <activity label="AP-get1">
       <statement>
         <p>
@@ -1729,20 +1764,20 @@ public class RunestoneTests extends CodeTestHelper
         <blockquote>
           <program language="java">
             <code>
-public class Party
-{
-    private int numOfPeople;
+              public class Party
+              {
+                  private int numOfPeople;
 
-    public Party(int num)
-    {
-        numOfPeople = num;
-    }
+                  public Party(int num)
+                  {
+                      numOfPeople = num;
+                  }
 
-    private int getNumOfPeople()
-    {
-        return numOfPeople;
-    }
-}
+                  private int getNumOfPeople()
+                  {
+                      return numOfPeople;
+                  }
+              }
             </code>
           </program>
         </blockquote>
@@ -1818,16 +1853,16 @@ public class Party
 
         <program language="java">
           <code>
-public class Student
-{
-    private int id;
+            public class Student
+            {
+                private int id;
 
-    public getId()
-    {
-        return id;
-    }
-    // Constructor not shown
-}
+                public getId()
+                {
+                    return id;
+                }
+                // Constructor not shown
+            }
           </code>
         </program>
 
@@ -1883,7 +1918,9 @@ public class Student
 
         <choice correct="yes">
           <statement id="AP-get2_opt_e">
-            <p>The return type of the getId method needs to be defined as int.</p>
+            <p>
+              The return type of the getId method needs to be defined as int.
+            </p>
           </statement>
 
           <feedback id="AP-get2_opt_e">
@@ -1899,22 +1936,23 @@ public class Student
     <activity label="AP-mutator1">
       <statement>
         <p>Consider the following class definition.</p>
+
         <program language="java">
           <code>
-public class Liquid
-{
-    private int currentTemp;
+            public class Liquid
+            {
+                private int currentTemp;
 
-    public Liquid(int temp)
-    {
-        currentTemp = temp;
-    }
+                public Liquid(int temp)
+                {
+                    currentTemp = temp;
+                }
 
-    public void resetTemp()
-    {
-        currentTemp = newTemp;
-    }
-}
+                public void resetTemp()
+                {
+                    currentTemp = newTemp;
+                }
+            }
           </code>
         </program>
 
@@ -1994,20 +2032,20 @@ public class Liquid
 
         <program language="java">
           <code>
-public class Party
-{
-    private int numOfPeople;
+            public class Party
+            {
+                private int numOfPeople;
 
-    public Party(int n)
-    {
-        numOfPeople = n;
-    }
+                public Party(int n)
+                {
+                    numOfPeople = n;
+                }
 
-    public int addPeople(int additionalPeople) // Line 10
-    {
-        numOfPeople += additionalPeople; // Line 12
-    }
-}
+                public int addPeople(int additionalPeople) // Line 10
+                {
+                    numOfPeople += additionalPeople; // Line 12
+                }
+            }
           </code>
         </program>
 

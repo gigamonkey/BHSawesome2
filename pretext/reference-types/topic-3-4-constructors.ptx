@@ -2,11 +2,9 @@
 
 <section xml:id="topic-3-4-constructors">
   <title>Writing Constructors</title>
-  <introduction>
-    <idx>
-      <h>class</h><h>constructor</h>
-    </idx>
 
+  <introduction>
+    <idx><h>class</h><h>constructor</h></idx>
     <p>
       In Unit 1, we learned how to create objects by calling
       <term>constructors</term>. To review, a call to a constructor consists of
@@ -17,11 +15,11 @@
 
     <program language="java">
       <code>
-// To create a new object, write:
-// ClassName variableName = new ConstructorName(arguments);
-World world = new World();
-Turtle t = new Turtle(world);
-Person p = new Person("Pat", "pat@gmail.com", "123-456-7890");
+        // To create a new object, write:
+        // ClassName variableName = new ConstructorName(arguments);
+        World world = new World();
+        Turtle t = new Turtle(world);
+        Person p = new Person("Pat", "pat@gmail.com", "123-456-7890");
       </code>
     </program>
 
@@ -30,6 +28,7 @@ Person p = new Person("Pat", "pat@gmail.com", "123-456-7890");
 
   <subsection xml:id="constructor-signature">
     <title>Constructor Signature</title>
+
     <p>
       In the source code for a class, constructors are usually written after the
       instance variables and before any methods.
@@ -47,18 +46,18 @@ Person p = new Person("Pat", "pat@gmail.com", "123-456-7890");
 
     <program language="java">
       <code>
-public class ClassName
-{
-    /* Instance variable declarations go here, before constructors */
+        public class ClassName
+        {
+            /* Instance variable declarations go here, before constructors */
 
-    /* Constructor - same name as Class, no return type */
-    public ClassName()
-    {
-        /* Implementation not shown */
-    }
+            /* Constructor - same name as Class, no return type */
+            public ClassName()
+            {
+                /* Implementation not shown */
+            }
 
-    /* Method definitions go here, after constructors */
-}
+            /* Method definitions go here, after constructors */
+        }
       </code>
     </program>
 
@@ -72,6 +71,7 @@ public class ClassName
 
   <subsection xml:id="the-job-of-a-constructor">
     <title>The Job of a Constructor</title>
+
     <p>
       The job of a constructor is to set the initial values for the object’s
       instance variables to useful values. But what does “useful” mean?
@@ -150,12 +150,12 @@ public class ClassName
 
     <program language="java">
       <code>
-public Person(String initName, String initEmail, String initPhone)
-{
-    name = initName;
-    email = initEmail;
-    phoneNumber = initPhone;
-}
+        public Person(String initName, String initEmail, String initPhone)
+        {
+            name = initName;
+            email = initEmail;
+            phoneNumber = initPhone;
+        }
       </code>
     </program>
 
@@ -192,12 +192,12 @@ public Person(String initName, String initEmail, String initPhone)
 
     <program language="java">
       <code>
-public Person()
-{
-    name = "Anonymous";
-    email = "unknown";
-    phoneNumber = "unknown";
-}
+        public Person()
+        {
+            name = "Anonymous";
+            email = "unknown";
+            phoneNumber = "unknown";
+        }
       </code>
     </program>
 
@@ -319,94 +319,95 @@ public Person()
 
       <program interactive="activecode" language="java">
         <code>
-public class Fraction
-{
-    //  instance variables
-    private int numerator;
-    private int denominator;
+          public class Fraction
+          {
+              //  instance variables
+              private int numerator;
+              private int denominator;
 
-    // no-arg constructor: set instance variables to default values of 1
-    public Fraction()
-    {
-        // 1. set numerator to 1
+              // no-arg constructor: set instance variables to default values of 1
+              public Fraction()
+              {
+                  // 1. set numerator to 1
 
-        // 2. set denominator to 1
-    }
+                  // 2. set denominator to 1
+              }
 
-    // constructor w/args: set instance variables to init parameters
-    public Fraction(int initNumerator, int initDenominator)
-    {
-        // 3. set numerator to initNumerator
+              // constructor w/args: set instance variables to init parameters
+              public Fraction(int initNumerator, int initDenominator)
+              {
+                  // 3. set numerator to initNumerator
 
-        // 4. set denominator to initDenominator
+                  // 4. set denominator to initDenominator
 
-    }
+              }
 
-    // Print fraction
-    public void print()
-    {
-        System.out.println(numerator + "/" + denominator);
-    }
+              // Print fraction
+              public void print()
+              {
+                  System.out.println(numerator + "/" + denominator);
+              }
 
-    // main method for testing
-    public static void main(String[] args)
-    {
-        Fraction f1 = new Fraction();
-        Fraction f2 = new Fraction(1, 2);
-        // What will these print out?
-        f1.print();
-        f2.print();
-    }
-}
+              // main method for testing
+              public static void main(String[] args)
+              {
+                  Fraction f1 = new Fraction();
+                  Fraction f2 = new Fraction(1, 2);
+                  // What will these print out?
+                  f1.print();
+                  f2.print();
+              }
+          }
         </code>
+
         <tests>
-// Test Code for Lesson 5.2.0.1 - Fraction
-import static org.junit.Assert.*;
+          // Test Code for Lesson 5.2.0.1 - Fraction
+          import static org.junit.Assert.*;
 
-import org.junit.Test;
+          import org.junit.Test;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "1/1\n1/2";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "1/1\n1/2";
 
-        boolean passed = getResults(expect, output, "Running main");
-        assertTrue(passed);
-    }
-    @Test
-   public void testCodeContains1()
-   {
-       boolean check1 =
-               checkCodeContains("numerator = 1 in Fraction()", "numerator = 1");
-       assertTrue(check1);
-   }
-   @Test
-   public void testCodeContains2()
-   {
-       boolean check1 =
-               checkCodeContains("denominator = 1 in Fraction()", "denominator = 1");
-       assertTrue(check1);
-   }
-   @Test
-   public void testCodeContains3()
-   {
-       boolean check1 =
-               checkCodeContains("numerator = initNumerator in 2nd constructor", "numerator = initNumerator");
-       assertTrue(check1);
-   }
-   @Test
-   public void testCodeContains4()
-   {
-       boolean check1 =
-               checkCodeContains("denominator = initDenominator in 2nd constructor", "denominator = initDenominator");
-       assertTrue(check1);
-   }
-}
+                  boolean passed = getResults(expect, output, "Running main");
+                  assertTrue(passed);
+              }
+              @Test
+             public void testCodeContains1()
+             {
+                 boolean check1 =
+                         checkCodeContains("numerator = 1 in Fraction()", "numerator = 1");
+                 assertTrue(check1);
+             }
+             @Test
+             public void testCodeContains2()
+             {
+                 boolean check1 =
+                         checkCodeContains("denominator = 1 in Fraction()", "denominator = 1");
+                 assertTrue(check1);
+             }
+             @Test
+             public void testCodeContains3()
+             {
+                 boolean check1 =
+                         checkCodeContains("numerator = initNumerator in 2nd constructor", "numerator = initNumerator");
+                 assertTrue(check1);
+             }
+             @Test
+             public void testCodeContains4()
+             {
+                 boolean check1 =
+                         checkCodeContains("denominator = initDenominator in 2nd constructor", "denominator = initDenominator");
+                 assertTrue(check1);
+             }
+          }
         </tests>
       </program>
     </activity>
@@ -426,62 +427,63 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class Car
-{
-   //  instance variables
-   private String model;
-   private int year;
+          public class Car
+          {
+             //  instance variables
+             private String model;
+             private int year;
 
-   // constructor: set instance variables to init parameters
-   public Car(String initModel, int initYear)
-   {
-       // 1. set the instance variables to the init parameter variables
+             // constructor: set instance variables to init parameters
+             public Car(String initModel, int initYear)
+             {
+                 // 1. set the instance variables to the init parameter variables
 
 
-   }
+             }
 
-   // Print Car info
-   public void print()
-   {
-     System.out.println("Car model: " + model);
-     System.out.println("Car year: " + year);
-   }
+             // Print Car info
+             public void print()
+             {
+               System.out.println("Car model: " + model);
+               System.out.println("Car year: " + year);
+             }
 
-   // main method for testing
-   public static void main(String[] args)
-   {
-       // 2. Call the constructor to create 2 new Car objects with different
-       // values The first car should be a 2023 Ford and the second car
-       // should be a 2010 Honda.
+             // main method for testing
+             public static void main(String[] args)
+             {
+                 // 2. Call the constructor to create 2 new Car objects with different
+                 // values The first car should be a 2023 Ford and the second car
+                 // should be a 2010 Honda.
 
-       Car car1 =
-       Car car2 =
+                 Car car1 =
+                 Car car2 =
 
-       car1.print();
-       car2.print();
-   }
-}
+                 car1.print();
+                 car2.print();
+             }
+          }
         </code>
+
         <tests>
-// Test Code for Lesson 5.2.0 - Car
-import static org.junit.Assert.*;
+          // Test Code for Lesson 5.2.0 - Car
+          import static org.junit.Assert.*;
 
-import org.junit.Test;
+          import org.junit.Test;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Car model: Ford\nCar year: 2023\nCar model: Honda\nCar year: 2010";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Car model: Ford\nCar year: 2023\nCar model: Honda\nCar year: 2010";
 
-        boolean passed = getResults(expect, output, "Running main");
-        assertTrue(passed);
-    }
-}
+                  boolean passed = getResults(expect, output, "Running main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -489,6 +491,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-student-class">
     <title>Coding Challenge: Student Class</title>
+
     <p>
       We encourage you to work in pairs for this challenge to create a Student
       class with constructors.
@@ -541,106 +544,107 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-/**
- * class Student with 4 instance variables, a constructor, a print method, and a
- * main method to test them.
- */
-public class Student
-{
-    // Write 4 instance variables
+          /**
+           * class Student with 4 instance variables, a constructor, a print method, and a
+           * main method to test them.
+           */
+          public class Student
+          {
+              // Write 4 instance variables
 
-    // Write a constructor with 4 parameters to initialize all of the instance
-    // variables
+              // Write a constructor with 4 parameters to initialize all of the instance
+              // variables
 
-    // Write a print method that prints all the instance variables
-    public void print()
-    {
+              // Write a print method that prints all the instance variables
+              public void print()
+              {
 
-    }
+              }
 
-    // main method
-    public static void main(String[] args)
-    {
-        // Construct 2 Student objects using the constructor with different values
+              // main method
+              public static void main(String[] args)
+              {
+                  // Construct 2 Student objects using the constructor with different values
 
-        // call their print() methods
+                  // call their print() methods
 
-    }
-}
+              }
+          }
         </code>
+
         <tests>
-  // Test Code for Lesson 5.2.1 - Challenge - Student
-  import static org.junit.Assert.*;
+          // Test Code for Lesson 5.2.1 - Challenge - Student
+          import static org.junit.Assert.*;
 
-  import org.junit.Test;
+          import org.junit.Test;
 
-  import java.io.*;
+          import java.io.*;
 
-  public class RunestoneTests extends CodeTestHelper
-  {
-      public RunestoneTests()
-      {
-          super("Student");
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("Student");
 
-          Object[] values = new Object[] {"Name", 0};
-          setDefaultValues(values);
-      }
+                  Object[] values = new Object[] {"Name", 0};
+                  setDefaultValues(values);
+              }
 
-      @Test
-      public void testCallConstructors()
-      {
-          String code = getCodeWithoutComments();
-          String search = "= new Student(";
+              @Test
+              public void testCallConstructors()
+              {
+                  String code = getCodeWithoutComments();
+                  String search = "= new Student(";
 
-          int num = countOccurences(code, search);
+                  int num = countOccurences(code, search);
 
-          String expect = search + "...) x 2";
-          String actual = search + "...) x " + num;
+                  String expect = search + "...) x 2";
+                  String actual = search + "...) x " + num;
 
-          boolean passed = getResults(expect, actual, "Checking that you made 2 Student objects");
-          assertTrue(passed);
-      }
+                  boolean passed = getResults(expect, actual, "Checking that you made 2 Student objects");
+                  assertTrue(passed);
+              }
 
-      @Test
-      public void testConstructors()
-      {
-          String code = getCodeWithoutComments();
-          String search = "public Student(";
+              @Test
+              public void testConstructors()
+              {
+                  String code = getCodeWithoutComments();
+                  String search = "public Student(";
 
-          int num = countOccurences(code, search);
+                  int num = countOccurences(code, search);
 
-          String expect = search + "...) x 1";
-          String actual = search + "...) x " + num;
+                  String expect = search + "...) x 1";
+                  String actual = search + "...) x " + num;
 
-          boolean passed = getResults(expect, actual, "Checking that you made a constructor");
-          assertTrue(passed);
-      }
+                  boolean passed = getResults(expect, actual, "Checking that you made a constructor");
+                  assertTrue(passed);
+              }
 
-      @Test
-      public void testPrint()
-      {
-          String code = getCodeWithoutComments();
-          String search = ".print()";
+              @Test
+              public void testPrint()
+              {
+                  String code = getCodeWithoutComments();
+                  String search = ".print()";
 
-          int num = countOccurences(code, search);
+                  int num = countOccurences(code, search);
 
-          String expect = search + " x 2";
-          String actual = search + " x " + num;
+                  String expect = search + " x 2";
+                  String actual = search + " x " + num;
 
-          boolean passed = getResults(expect, actual, "Checking that you called print 2 times");
-          assertTrue(passed);
-      }
+                  boolean passed = getResults(expect, actual, "Checking that you called print 2 times");
+                  assertTrue(passed);
+              }
 
-      @Test
-      public void testPrivateVariables()
-      {
-          String expect = "4 Private";
-          String output = testPrivateInstanceVariables();
+              @Test
+              public void testPrivateVariables()
+              {
+                  String expect = "4 Private";
+                  String output = testPrivateInstanceVariables();
 
-          boolean passed = getResults(expect, output, "Checking for 4 Private Instance Variable(s)");
-          assertTrue(passed);
-      }
-  }
+                  boolean passed = getResults(expect, output, "Checking for 4 Private Instance Variable(s)");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </project>
@@ -648,6 +652,7 @@ public class Student
 
   <subsection xml:id="design-a-class-for-your-community-1">
     <title>Design a Class for your Community</title>
+
     <p>
       In the last lesson, you came up with a class of your own choice relevant
       to you or your community. In this lesson, you will add a constructor to
@@ -707,111 +712,116 @@ public class Student
 
       <program interactive="activecode" language="java">
         <code>
-public class          // Add your class name here!
-{
-    // 1. copy in your instance variables for class from the last lesson
+          public class          // Add your class name here!
+          {
+              // 1. copy in your instance variables for class from the last lesson
 
-    // 2. Add a constructor with 3 parameters to set all of the instance variables to the given parameters.
-
-
-    // 3. Write a print() method that uses System.out.println to print out all the instance variables.
-
-    // 4. Write a main method that constructs at least 2 objects of your class
-    // using the constructor and then calls their print() methods.
-    public static void main(String[] args)
-    {
-       // Construct 2 objects of your class to test the constructors
+              // 2. Add a constructor with 3 parameters to set all of the instance variables to the given parameters.
 
 
-       // call the objects print() methods
+              // 3. Write a print() method that uses System.out.println to print out all the instance variables.
 
-    }
-}
+              // 4. Write a main method that constructs at least 2 objects of your class
+              // using the constructor and then calls their print() methods.
+              public static void main(String[] args)
+              {
+                 // Construct 2 objects of your class to test the constructors
+
+
+                 // call the objects print() methods
+
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testPrivateVariables()
-    {
-        String expect = "3 Private";
-        String output = testPrivateInstanceVariables();
-        boolean passed = false;
-        if (Integer.parseInt(expect.substring(0, 1)) &lt;= Integer.parseInt(output.substring(0, 1)))
-            passed = true;
-        passed = getResults(expect, output, "Checking private instance variable(s)", passed);
-        assertTrue(passed);
-    }
+          import java.io.*;
 
-    /* No longer required
-    @Test
-    public void testDefaultConstructor()
-    {
-        String output = checkDefaultConstructor();
-        String expect = "pass";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testPrivateVariables()
+              {
+                  String expect = "3 Private";
+                  String output = testPrivateInstanceVariables();
+                  boolean passed = false;
+                  if (Integer.parseInt(expect.substring(0, 1)) <= Integer.parseInt(output.substring(0, 1)))
+                      passed = true;
+                  passed = getResults(expect, output, "Checking private instance variable(s)", passed);
+                  assertTrue(passed);
+              }
 
-        boolean passed = getResults(expect, output, "Checking default constructor");
-        assertTrue(passed);
-    }
-    */
+              /* No longer required
+              @Test
+              public void testDefaultConstructor()
+              {
+                  String output = checkDefaultConstructor();
+                  String expect = "pass";
 
-    @Test
-    public void testConstructor3()
-    {
-        String output = checkConstructor(3);
-        String expect = "pass";
+                  boolean passed = getResults(expect, output, "Checking default constructor");
+                  assertTrue(passed);
+              }
+              */
 
-        boolean passed = getResults(expect, output, "Checking constructor with 3 parameters");
-        assertTrue(passed);
-    }
+              @Test
+              public void testConstructor3()
+              {
+                  String output = checkConstructor(3);
+                  String expect = "pass";
 
-    @Test
-    public void testPrint()
-    {
-        String output = getMethodOutput("print");
-        String expect = "More than 15 characters";
-        String actual = " than 15 characters";
+                  boolean passed = getResults(expect, output, "Checking constructor with 3 parameters");
+                  assertTrue(passed);
+              }
 
-        if (output.length() &lt; 15)
-        {
-            actual = "Less" + actual;
-        }
-        else
-        {
-            actual = "More" + actual;
-        }
-        boolean passed = getResults(expect, actual, "Checking print method");
-        assertTrue(passed);
-    }
+              @Test
+              public void testPrint()
+              {
+                  String output = getMethodOutput("print");
+                  String expect = "More than 15 characters";
+                  String actual = " than 15 characters";
 
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main"); // .split("\n");
-        String expect = "3+ line(s) of text";
-        String actual = " line(s) of text";
-        int len = output.split("\n").length;
+                  if (output.length() < 15)
+                  {
+                      actual = "Less" + actual;
+                  }
+                  else
+                  {
+                      actual = "More" + actual;
+                  }
+                  boolean passed = getResults(expect, actual, "Checking print method");
+                  assertTrue(passed);
+              }
 
-        if (output.length() &gt; 0)
-        {
-            actual = len + actual;
-        }
-        else
-        {
-            actual = output.length() + actual;
-        }
-        boolean passed = len &gt;= 3;
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main"); // .split("\n");
+                  String expect = "3+ line(s) of text";
+                  String actual = " line(s) of text";
+                  int len = output.split("\n").length;
 
-        getResults(expect, actual, "Checking output", passed);
-        assertTrue(passed);
-    }
-}
+                  if (output.length() > 0)
+                  {
+                      actual = len + actual;
+                  }
+                  else
+                  {
+                      actual = output.length() + actual;
+                  }
+                  boolean passed = len >= 3;
+
+                  getResults(expect, actual, "Checking output", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -819,6 +829,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-30">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -860,37 +871,48 @@ public class RunestoneTests extends CodeTestHelper
 
         <li>
           <p>(3.4.A.5) Default values used by the default constructor:</p>
+
           <blockquote>
             <p>
               <ul>
                 <li>
                   <p>
                     The default value for an attribute of type
-                    <title_reference>int</title_reference> is
-                    <title_reference>0</title_reference>.
+                    <title_reference>int</title_reference>
+ is
+                    
+                    <title_reference>0</title_reference>
+.
                   </p>
                 </li>
 
                 <li>
                   <p>
                     The default value of an attribute of type
-                    <title_reference>double</title_reference> is
-                    <title_reference>0.0</title_reference>.
+                    <title_reference>double</title_reference>
+ is
+                    
+                    <title_reference>0.0</title_reference>
+.
                   </p>
                 </li>
 
                 <li>
                   <p>
                     The default value of an attribute of type
-                    <title_reference>boolean</title_reference> is
-                    <title_reference>false</title_reference>.
+                    <title_reference>boolean</title_reference>
+ is
+                    
+                    <title_reference>false</title_reference>
+.
                   </p>
                 </li>
 
                 <li>
                   <p>
                     The default value of a reference type is
-                    <title_reference>null</title_reference>.
+                    <title_reference>null</title_reference>
+.
                   </p>
                 </li>
               </ul>
@@ -903,6 +925,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="ap-practice-20">
     <title>AP Practice</title>
+
     <activity label="AP-constructor1">
       <statement>
         <p>
@@ -913,26 +936,30 @@ public class RunestoneTests extends CodeTestHelper
 
         <program language="java">
           <code>
-public class Cat
-{
-    private String name;
-    private int age;
-    private boolean isSenior;
+            <![CDATA[
 
-    public Cat(String n, int a)
-    {
-        name = n;
-        age = a;
-        if (age &gt;= 10)
-        {
-            isSenior = true;
-        }
-        else
-        {
-            isSenior = false;
-        }
-    }
-}
+            public class Cat
+            {
+                private String name;
+                private int age;
+                private boolean isSenior;
+
+                public Cat(String n, int a)
+                {
+                    name = n;
+                    age = a;
+                    if (age >= 10)
+                    {
+                        isSenior = true;
+                    }
+                    else
+                    {
+                        isSenior = false;
+                    }
+                }
+            }
+
+            ]]>
           </code>
         </program>
 
@@ -1019,30 +1046,30 @@ public class Cat
 
         <program language="java">
           <code>
-public class Cat
-{
-    private String name;
-    private int age;
-    private int kittens;
+            public class Cat
+            {
+                private String name;
+                private int age;
+                private int kittens;
 
-    public Cat(String n, int a, int k)
-    {
-        name = n;
-        age = a;
-        kittens = k;
-    }
-    public Cat(String n, int a)
-    {
-        name = n;
-        age = a;
-        kittens = 0;
-    }
-    /* Other methods not shown */
-}
+                public Cat(String n, int a, int k)
+                {
+                    name = n;
+                    age = a;
+                    kittens = k;
+                }
+                public Cat(String n, int a)
+                {
+                    name = n;
+                    age = a;
+                    kittens = 0;
+                }
+                /* Other methods not shown */
+            }
 
-I.   Cat c = new Cat("Sprinkles", 5, 0);
-II.  Cat c = new Cat("Lucy", 0, 5);
-III. Cat c = new Cat("Luna", 5);
+            I.   Cat c = new Cat("Sprinkles", 5, 0);
+            II.  Cat c = new Cat("Lucy", 0, 5);
+            III. Cat c = new Cat("Luna", 5);
           </code>
         </program>
       </statement>
@@ -1064,7 +1091,9 @@ III. Cat c = new Cat("Luna", 5);
           </statement>
 
           <feedback>
-            <p>Option II will create a cat that is 0 years old with 5 kittens.</p>
+            <p>
+              Option II will create a cat that is 0 years old with 5 kittens.
+            </p>
           </feedback>
         </choice>
 
@@ -1094,7 +1123,9 @@ III. Cat c = new Cat("Luna", 5);
           </statement>
 
           <feedback>
-            <p>Option II will create a cat that is 0 years old with 5 kittens.</p>
+            <p>
+              Option II will create a cat that is 0 years old with 5 kittens.
+            </p>
           </feedback>
         </choice>
       </choices>
@@ -1103,14 +1134,15 @@ III. Cat c = new Cat("Luna", 5);
     <activity label="AP-constructor3">
       <statement>
         <p>Consider the following class definition.</p>
+
         <program language="java">
           <code>
-public class Cat
-{
-    private String color;
-    private boolean isHungry;
-    /* missing constructor */
-}
+            public class Cat
+            {
+                private String color;
+                private boolean isHungry;
+                /* missing constructor */
+            }
           </code>
         </program>
 
@@ -1124,7 +1156,7 @@ public class Cat
 
         <program language="java">
           <code>
-Cat c = new Cat("black", true);
+            Cat c = new Cat("black", true);
           </code>
         </program>
       </statement>
@@ -1134,11 +1166,11 @@ Cat c = new Cat("black", true);
           <statement id="AP-constructor3_opt_a">
             <program language="java">
               <code>
-public Cat(String c, boolean h)
-{
-    c = "black";
-    h = true;
-}
+                public Cat(String c, boolean h)
+                {
+                    c = "black";
+                    h = true;
+                }
               </code>
             </program>
           </statement>
@@ -1155,11 +1187,11 @@ public Cat(String c, boolean h)
           <statement id="AP-constructor3_opt_b">
             <program language="java">
               <code>
-public Cat(String c, boolean h)
-{
-    c = "black";
-    h = "true";
-}
+                public Cat(String c, boolean h)
+                {
+                    c = "black";
+                    h = "true";
+                }
               </code>
             </program>
           </statement>
@@ -1176,11 +1208,11 @@ public Cat(String c, boolean h)
           <statement id="AP-constructor3_opt_c">
             <program language="java">
               <code>
-public Cat(String c, boolean h)
-{
-    c = color;
-    h = isHungry;
-}
+                public Cat(String c, boolean h)
+                {
+                    c = color;
+                    h = isHungry;
+                }
               </code>
             </program>
           </statement>
@@ -1197,11 +1229,11 @@ public Cat(String c, boolean h)
           <statement id="AP-constructor3_opt_d">
             <program language="java">
               <code>
-public Cat(String c, boolean h)
-{
-    color = black;
-    isHungry = true;
-}
+                public Cat(String c, boolean h)
+                {
+                    color = black;
+                    isHungry = true;
+                }
               </code>
             </program>
           </statement>
@@ -1218,11 +1250,11 @@ public Cat(String c, boolean h)
           <statement id="AP-constructor3_opt_e">
             <program language="java">
               <code>
-public Cat(String c, boolean h)
-{
-    color = c;
-    isHungry = h;
-}
+                public Cat(String c, boolean h)
+                {
+                    color = c;
+                    isHungry = h;
+                }
               </code>
             </program>
           </statement>
@@ -1237,6 +1269,7 @@ public Cat(String c, boolean h)
 
   <subsection xml:id="progresscheck-u3-part1">
     <title>AP Classroom Progress Check Unit 3 Part 1</title>
+
     <p>
       This lesson ends the section for the College Board Unit 3 part 1. You can
       now do the College Board Progress Check for Unit 3 Part 1 in the AP

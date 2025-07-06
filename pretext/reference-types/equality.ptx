@@ -2,9 +2,11 @@
 
 <section xml:id="equality">
   <title>Equality</title>
+
   <introduction />
   <subsection>
     <title>Reference equality</title>
+
     <p>
       Watch the following <url
       href="https://www.youtube.com/watch?v=bO9bejT0jwE&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis"
@@ -31,6 +33,7 @@
 
     <figure align="center">
       <caption>Turtle Reference Equality</caption>
+
       <image source="Unit2-Selection-and-Iteration/Figures/turtleEquality.png" width="89%" />
     </figure>
 
@@ -46,46 +49,47 @@
 
       <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class BoolTestRef
-{
-    public static void main(String[] args)
-    {
-        World world = new World(300, 300);
-        Turtle juan = new Turtle(world);
-        Turtle mia = new Turtle(world);
+          public class BoolTestRef
+          {
+              public static void main(String[] args)
+              {
+                  World world = new World(300, 300);
+                  Turtle juan = new Turtle(world);
+                  Turtle mia = new Turtle(world);
 
-        // Will these print true or false?
-        System.out.println(juan == mia);
-        Turtle friend = mia; // set friend to be an alias for mia
-        System.out.println(friend == mia);
-        // Create another Turtle friend2 and set it to juan
-        // Does friend2 == juan?
-        // Does friend2 == friend?
+                  // Will these print true or false?
+                  System.out.println(juan == mia);
+                  Turtle friend = mia; // set friend to be an alias for mia
+                  System.out.println(friend == mia);
+                  // Create another Turtle friend2 and set it to juan
+                  // Does friend2 == juan?
+                  // Does friend2 == friend?
 
-    }
-}
+              }
+          }
         </code>
+
         <tests>
- import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
- import org.junit.*;
+          import org.junit.*;
 
- import java.io.*;
+          import java.io.*;
 
- public class RunestoneTests extends CodeTestHelper
- {
-     @Test
-     public void testMain() throws IOException
-     {
-        String output = getMethodOutput("main");
-        String expect = "false\ntrue\ntrue\nfalse\n";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-     }
- }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                 String output = getMethodOutput("main");
+                 String expect = "false\ntrue\ntrue\nfalse\n";
+                 boolean passed = getResults(expect, output, "Expected output from main", true);
+                 assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -93,6 +97,7 @@ public class BoolTestRef
 
   <subsection xml:id="comparing-objects">
     <title>Comparing Objects</title>
+
     <p>
       Comparing objects is a little different than comparing primitive typed
       values like numbers. Objects can be very complex and have many attribute
@@ -108,14 +113,9 @@ public class BoolTestRef
 
   <subsection xml:id="string-equality">
     <title>String Equality</title>
-    <idx>
-      <h>String</h><h>equality</h>
-    </idx>
 
-    <idx>
-      <h>String</h><h>equals</h>
-    </idx>
-
+    <idx><h>String</h><h>equality</h></idx>
+    <idx><h>String</h><h>equals</h></idx>
     <p>
       The <term>equals</term> method for Strings compares two strings letter by
       letter. <c>s1.equals(s2)</c> is true if <c>s1</c> and <c>s2</c> have all
@@ -134,6 +134,7 @@ public class BoolTestRef
 
     <figure align="center">
       <caption>String aliases</caption>
+
       <image source="Unit2-Selection-and-Iteration/Figures/stringEquality.png" width="54%" />
     </figure>
 
@@ -144,37 +145,38 @@ public class BoolTestRef
 
       <program interactive="activecode" language="java">
         <code>
-public class Test1
-{
-    public static void main(String[] args)
-    {
-        String s1 = new String("Hello");
-        String s2 = new String("Bye");
-        String s3 = s2; // s3 is now an alias for s2
-        System.out.println(s3);
-        System.out.println(s2 == s3);
-        System.out.println(s2.equals(s3));
-    }
-}
+          public class Test1
+          {
+              public static void main(String[] args)
+              {
+                  String s1 = new String("Hello");
+                  String s2 = new String("Bye");
+                  String s3 = s2; // s3 is now an alias for s2
+                  System.out.println(s3);
+                  System.out.println(s2 == s3);
+                  System.out.println(s2.equals(s3));
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Bye\ntrue\ntrue\n";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Bye\ntrue\ntrue\n";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -193,13 +195,17 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <figure align="center">
-      <caption>s2 and s3 are aliases referring to the same String object</caption>
+      <caption>
+        s2 and s3 are aliases referring to the same String object
+      </caption>
+
       <image source="Unit2-Selection-and-Iteration/Figures/s2ands3.jpg" width="63%" />
     </figure>
   </subsection>
 
   <subsection xml:id="equality-with-new-strings">
     <title>Equality with New Strings</title>
+
     <p>
       If you use the <c>new</c> keyword to create a string, it will always
       create a new string object. So, even if we create two string objects with
@@ -219,63 +225,68 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class Test2
-{
-    public static void main(String[] args)
-    {
-        String s1 = new String("Hello");
-        String s2 = new String("Hello");
-        System.out.println(s1 == s2);
-        System.out.println(s1.equals(s2));
+          public class Test2
+          {
+              public static void main(String[] args)
+              {
+                  String s1 = new String("Hello");
+                  String s2 = new String("Hello");
+                  System.out.println(s1 == s2);
+                  System.out.println(s1.equals(s2));
 
-        String s3 = new String("hello");
-        // Write an if statement to test if
-        //  s1 and s2 are equal with equals
-        // If they are, print "Equals"
+                  String s3 = new String("hello");
+                  // Write an if statement to test if
+                  //  s1 and s2 are equal with equals
+                  // If they are, print "Equals"
 
-        // Write an if/else statement to test if
-        //   s1 and s3 are equal with equals
-        // If they are, print "Equals"
-        // else print "Not Equals".
-        // Note that case matters with equals unless you use equalsIgnoreCase
+                  // Write an if/else statement to test if
+                  //   s1 and s3 are equal with equals
+                  // If they are, print "Equals"
+                  // else print "Not Equals".
+                  // Note that case matters with equals unless you use equalsIgnoreCase
 
-    }
-}
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "false\ntrue\nEquals\nNot Equals\n";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-    @Test
-    public void testCodeContains1()
-    {
-        boolean ifStatement = checkCodeContains("if", "if");
-        assertTrue(ifStatement);
-    }
-     @Test
-    public void testCount()
-    {
-        String code = getCode();
-        int num = countOccurences(code, ".equals");
-        boolean passed = num &gt;= 3;
+          import java.io.*;
 
-        getResults("3", "" + num, "Number of equals used", passed);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "false\ntrue\nEquals\nNot Equals\n";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testCodeContains1()
+              {
+                  boolean ifStatement = checkCodeContains("if", "if");
+                  assertTrue(ifStatement);
+              }
+               @Test
+              public void testCount()
+              {
+                  String code = getCode();
+                  int num = countOccurences(code, ".equals");
+                  boolean passed = num >= 3;
+
+                  getResults("3", "" + num, "Number of equals used", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -293,10 +304,15 @@ public class RunestoneTests extends CodeTestHelper
 
     <video youtube="xZroaSGhgxA" label="video-equals" />
     <p>Here is the representation of these String objects in memory.</p>
+
     <figure align="center">
       <caption>
-        Two strings that are equal with <literal>equals</literal> but not with
-        <literal>==</literal>.
+        Two strings that are equal with
+        <literal>equals</literal>
+ but not with
+        
+        <literal>==</literal>
+.
       </caption>
 
       <image source="Unit2-Selection-and-Iteration/Figures/s1ands2.jpg" width="63%" />
@@ -323,12 +339,13 @@ public class RunestoneTests extends CodeTestHelper
     <activity label="qsbeq_1">
       <statement>
         <p>Which of the following is true after the code executes?</p>
+
         <program language="java">
           <code>
-String s1 = new String("hi");
-String s2 = new String("bye");
-String s3 = new String("hi");
-s2 = s1;
+            String s1 = new String("hi");
+            String s2 = new String("bye");
+            String s3 = new String("hi");
+            s2 = s1;
           </code>
         </program>
       </statement>
@@ -363,7 +380,9 @@ s2 = s1;
           </statement>
 
           <feedback>
-            <p>Did you miss that s2 was set to refer to the same object as s1?</p>
+            <p>
+              Did you miss that s2 was set to refer to the same object as s1?
+            </p>
           </feedback>
         </choice>
       </choices>
@@ -372,11 +391,12 @@ s2 = s1;
     <activity label="qsbeq_2">
       <statement>
         <p>Which of the following is true after the code executes?</p>
+
         <program language="java">
           <code>
-String s1 = new String("hi");
-String s2 = new String("bye");
-String s3 = new String("hi");
+            String s1 = new String("hi");
+            String s2 = new String("bye");
+            String s3 = new String("hi");
           </code>
         </program>
       </statement>
@@ -420,11 +440,12 @@ String s3 = new String("hi");
     <activity label="qsbeq_3">
       <statement>
         <p>Which of the following is true after the code executes?</p>
+
         <program language="java">
           <code>
-String s1 = new String("hi");
-String s2 = new String("bye");
-String s3 = new String("hi");
+            String s1 = new String("hi");
+            String s2 = new String("bye");
+            String s3 = new String("hi");
           </code>
         </program>
       </statement>
@@ -472,6 +493,7 @@ String s3 = new String("hi");
 
   <subsection xml:id="comparing-with-null">
     <title>Comparing with null</title>
+
     <p>
       One common place to use <c>==</c> or <c>!=</c> with objects is to compare
       them to <term>null</term> to see if they really exist. Sometimes
@@ -501,71 +523,80 @@ String s3 = new String("hi");
 
       <program interactive="activecode" language="java">
         <code>
-public class NullTest
-{
-    public static void main(String[] args)
-    {
-        String s = null;
-        if (s.indexOf("a") &gt;= 0)
-        {
-            System.out.println(s + " contains an a");
-        }
-        if (s != null &amp;&amp; s.indexOf("a") &gt;= 0)
-        {
-            System.out.println(s + " contains an a");
-        }
-    }
-}
+          <![CDATA[
+
+          public class NullTest
+          {
+              public static void main(String[] args)
+              {
+                  String s = null;
+                  if (s.indexOf("a") >= 0)
+                  {
+                      System.out.println(s + " contains an a");
+                  }
+                  if (s != null && s.indexOf("a") >= 0)
+                  {
+                      System.out.println(s + " contains an a");
+                  }
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("NullTest");
-    }
+          import java.io.*;
 
-    @Test
-    public void testMain()
-    {
-        String output = getMethodOutput("main");
-        String expect = "apple contains an a\napple contains an a";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("NullTest");
+              }
 
-        boolean passed = getResults(expect, output, "Checking main() gives correct results");
-    }
+              @Test
+              public void testMain()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "apple contains an a\napple contains an a";
 
-    @Test
-    public void testChangedCode()
-    {
-        String origCode =
-                "public class NullTest { public static void main(String[] args) { String s = null;"
-                    + " if (s.indexOf(\"a\") &gt;= 0) {  System.out.println(s + \" contains an a\"); }"
-                    + " if (s != null &amp;&amp; s.indexOf(\"a\") &gt;= 0) { System.out.println(s + \""
-                    + " contains an a\"); } } }";
+                  boolean passed = getResults(expect, output, "Checking main() gives correct results");
+              }
 
-        boolean changed = codeChanged(origCode);
+              @Test
+              public void testChangedCode()
+              {
+                  String origCode =
+                          "public class NullTest { public static void main(String[] args) { String s = null;"
+                              + " if (s.indexOf(\"a\") >= 0) {  System.out.println(s + \" contains an a\"); }"
+                              + " if (s != null && s.indexOf(\"a\") >= 0) { System.out.println(s + \""
+                              + " contains an a\"); } } }";
 
-        assertTrue(changed);
-    }
+                  boolean changed = codeChanged(origCode);
 
-    @Test
-    public void testCodeContains()
-    {
-        String code = getCode();
-        String target1 = "String s = ";
-        String target2 = "System.out.println(s + \" contains an a\");";
+                  assertTrue(changed);
+              }
 
-        boolean passed = code.contains(target1) &amp;&amp; code.contains(target2);
-        getResults("true", "" + passed, "Checking that code has not been removed", passed);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void testCodeContains()
+              {
+                  String code = getCode();
+                  String target1 = "String s = ";
+                  String target2 = "System.out.println(s + \" contains an a\");";
+
+                  boolean passed = code.contains(target1) && code.contains(target2);
+                  getResults("true", "" + passed, "Checking that code has not been removed", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -581,26 +612,32 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>AP Practice</title>
+
     <activity label="AP-string-equality">
       <statement>
         <p>Consider the following code segment.</p>
+
         <program language="java">
           <code>
-String message = new String("AP Practice");
-String note = new String("AP Practice");
-String memo = new String("memo");
-int i = 5;
+            <![CDATA[
 
-if (message.equals(note) &amp;&amp; !message.equals("memo"))
-{
-    message = note;
+            String message = new String("AP Practice");
+            String note = new String("AP Practice");
+            String memo = new String("memo");
+            int i = 5;
 
-    if (message == note &amp;&amp; message.length() &gt; i)
-    {
-       i = 3;
-       memo = message.substring(i);
-    }
-}
+            if (message.equals(note) && !message.equals("memo"))
+            {
+                message = note;
+
+                if (message == note && message.length() > i)
+                {
+                   i = 3;
+                   memo = message.substring(i);
+                }
+            }
+
+            ]]>
           </code>
         </program>
 
@@ -665,6 +702,5 @@ if (message.equals(note) &amp;&amp; !message.equals("memo"))
         </choice>
       </choices>
     </activity>
-    </subsection>
-
+  </subsection>
 </section>

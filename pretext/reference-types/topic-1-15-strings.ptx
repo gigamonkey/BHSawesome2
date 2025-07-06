@@ -2,14 +2,12 @@
 
 <section xml:id="topic-1-15-strings">
   <title>Strings</title>
+
   <introduction>
     <idx>String</idx>
     <idx>object reference</idx>
     <idx>reference</idx>
-    <idx>
-      <h>String</h><h>definition</h>
-    </idx>
-
+    <idx><h>String</h><h>definition</h></idx>
     <p>
       <term>Strings</term> in Java are objects of the <c>String</c> class.
       Strings represent sequences of characters and are used to store text like
@@ -30,6 +28,7 @@
 
   <subsection>
     <title>String References</title>
+
     <activity label="lcsb1">
       <statement>
         <p>Run the following code. What does it print?</p>
@@ -37,33 +36,34 @@
 
       <program interactive="activecode" language="java">
         <code>
-public class Test1
-{
-    public static void main(String[] args)
-    {
-        String greeting = null;
-        System.out.println(greeting);
-    }
-}
+          public class Test1
+          {
+              public static void main(String[] args)
+              {
+                  String greeting = null;
+                  System.out.println(greeting);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "null";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "null";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -84,13 +84,11 @@ public class RunestoneTests extends CodeTestHelper
 
     <figure align="center">
       <caption>Initial value for an object reference</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/greeting.png" width="9%" />
     </figure>
 
-    <idx>
-      <h>String</h><h>creation</h>
-    </idx>
-
+    <idx><h>String</h><h>creation</h></idx>
     <p>
       In Java there are two ways to create an object of the <c>String</c> class.
       You can use the <c>new</c> keyword followed by a space and then the class
@@ -101,15 +99,12 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-String greeting = new String("Hello");
+        String greeting = new String("Hello");
       </code>
     </program>
 
     <idx>String literal</idx>
-    <idx>
-      <h>String</h><h>literal</h>
-    </idx>
-
+    <idx><h>String</h><h>literal</h></idx>
     <p>
       In Java you can also use just a <term>string literal</term>, which is a
       set of characters enclosed in double quotes (<c>"</c>), to create a
@@ -118,7 +113,7 @@ String greeting = new String("Hello");
 
     <program language="java">
       <code>
-String greeting = "Hello";
+        String greeting = "Hello";
       </code>
     </program>
 
@@ -141,38 +136,39 @@ String greeting = "Hello";
 
       <program interactive="activecode" language="java">
         <code>
-public class StringTest
-{
-    public static void main(String[] args)
-    {
-        String greeting1 = "Hello!";
-        String greeting2 = new String("Welcome!");
-        System.out.println(greeting1);
-        System.out.println(greeting2);
-    }
-}
+          public class StringTest
+          {
+              public static void main(String[] args)
+              {
+                  String greeting1 = "Hello!";
+                  String greeting2 = new String("Welcome!");
+                  System.out.println(greeting1);
+                  System.out.println(greeting2);
+              }
+          }
         </code>
+
         <tests>
- import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
- import org.junit.*;
+          import org.junit.*;
 
- import java.io.*;
+          import java.io.*;
 
- public class RunestoneTests extends CodeTestHelper
- {
-     @Test
-     public void testChangedCode()
-     {
-         String origCode =
-                 "public class StringTest {      public static void main(String[] args)      {"
-                         + " String greeting1 = \"Hello!\";        String greeting2 = new"
-                         + " String(\"Welcome!\"); System.out.println(greeting1);"
-                         + " System.out.println(greeting2); }    }";
-         boolean changed = codeChanged(origCode);
-         assertTrue(changed);
-     }
- }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testChangedCode()
+              {
+                  String origCode =
+                          "public class StringTest {      public static void main(String[] args)      {"
+                                  + " String greeting1 = \"Hello!\";        String greeting2 = new"
+                                  + " String(\"Welcome!\"); System.out.println(greeting1);"
+                                  + " System.out.println(greeting2); }    }";
+                  boolean changed = codeChanged(origCode);
+                  assertTrue(changed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -187,36 +183,37 @@ public class StringTest
 
       <program interactive="activecode" language="java">
         <code>
-public class Test2
-{
-    public static void main(String[] args)
-    {
-        String greeting = "Hello";
-        Class currClass = greeting.getClass();
-        System.out.println(currClass);
-        Class parentClass = currClass.getSuperclass();
-        System.out.println(parentClass);
-    }
-}
+          public class Test2
+          {
+              public static void main(String[] args)
+              {
+                  String greeting = "Hello";
+                  Class currClass = greeting.getClass();
+                  System.out.println(currClass);
+                  Class parentClass = currClass.getSuperclass();
+                  System.out.println(parentClass);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "class java.lang.String\nclass java.lang.Object";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "class java.lang.String\nclass java.lang.Object";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -226,10 +223,7 @@ public class RunestoneTests extends CodeTestHelper
     <idx>inheritance</idx>
     <idx>package</idx>
     <idx>java.lang</idx>
-    <idx>
-      <h>package</h><h>java.lang</h>
-    </idx>
-
+    <idx><h>package</h><h>java.lang</h></idx>
     <p>
       The code above will first print class <c>java.lang.String</c> since
       <c>greeting</c> was created by the <c>String</c> class. The full name for
@@ -260,10 +254,8 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>String Operators - Concatenation</title>
-    <idx>
-      <h>String</h><h>append</h>
-    </idx>
 
+    <idx><h>String</h><h>append</h></idx>
     <p>
       <c>String</c>s can be added to each other to create a new string using the
       <c>+</c> or <c>+=</c> operator . This is also called
@@ -278,9 +270,21 @@ public class RunestoneTests extends CodeTestHelper
       <c>String</c>s (or a <c>String</c> and another value converted to a
       <c>String</c>) we get a new <c>String</c> without making any change to the
       values being added together just like when we add the ints
-      <title_reference>1 + 2</title_reference> the original
-      <title_reference>1</title_reference> and
-      <title_reference>2</title_reference> aren’t changed. When we use <c>+=</c>
+      
+      
+      <title_reference>1 + 2</title_reference>
+
+ the original
+      
+      
+      <title_reference>1</title_reference>
+
+ and
+      
+      
+      <title_reference>2</title_reference>
+
+ aren’t changed. When we use <c>+=</c>
       we are making a new <c>String</c> by adding something to the current value
       of a variable and then assigning that new value back into the variable,
       again just like with numbers.
@@ -298,36 +302,37 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class Test1
-{
-    public static void main(String[] args)
-    {
-        String start = "Happy Birthday";
-        String name = "Jose";
-        String result = start + " " + name; // add together strings
-        result += "!"; // add on to the same string
-        System.out.println(result);
-    }
-}
+          public class Test1
+          {
+              public static void main(String[] args)
+              {
+                  String start = "Happy Birthday";
+                  String name = "Jose";
+                  String result = start + " " + name; // add together strings
+                  result += "!"; // add on to the same string
+                  System.out.println(result);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Happy Birthday Jose Hernandez!!!";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Happy Birthday Jose Hernandez!!!";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -352,9 +357,9 @@ public class RunestoneTests extends CodeTestHelper
 
         <program language="java">
           <code>
-String s1 = "xy";
-String s2 = s1;
-s1 = s1 + s2 + "z";
+            String s1 = "xy";
+            String s2 = s1;
+            s1 = s1 + s2 + "z";
           </code>
         </program>
       </statement>
@@ -418,10 +423,7 @@ s1 = s1 + s2 + "z";
     </activity>
 
     <idx>toString</idx>
-    <idx>
-      <h>Object</h><h>toString</h>
-    </idx>
-
+    <idx><h>Object</h><h>toString</h></idx>
     <p>
       You can even add other items to a <c>String</c> using the <c>+</c>
       operator. Primitive values like <c>int</c> and <c>boolean</c> will be
@@ -450,44 +452,45 @@ s1 = s1 + s2 + "z";
 
       <program interactive="activecode" language="java">
         <code>
-public class Test2
-{
-    public static void main(String[] args)
-    {
-        String message = "12" + 4 + 3;
-        System.out.println(message);
-    }
-}
+          public class Test2
+          {
+              public static void main(String[] args)
+              {
+                  String message = "12" + 4 + 3;
+                  System.out.println(message);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "127";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "127";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testParen() throws IOException
-    {
-        String code = removeSpaces(getCodeWithoutComments());
-        String expect = "(4+3)";
-        boolean passed = code.contains(expect);
+              @Test
+              public void testParen() throws IOException
+              {
+                  String code = removeSpaces(getCodeWithoutComments());
+                  String expect = "(4+3)";
+                  boolean passed = code.contains(expect);
 
-        passed = getResults("" + true, "" + passed, "Checking code for added parentheses");
-        assertTrue(passed);
-    }
-}
+                  passed = getResults("" + true, "" + passed, "Checking code for added parentheses");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -509,30 +512,13 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>String Index and Length</title>
-    <idx>
-      <h>String</h><h>length</h>
-    </idx>
 
-    <idx>
-      <h>String</h><h>substring</h>
-    </idx>
-
-    <idx>
-      <h>String</h><h>indexOf</h>
-    </idx>
-
-    <idx>
-      <h>String</h><h>compareTo</h>
-    </idx>
-
-    <idx>
-      <h>String</h><h>equals</h>
-    </idx>
-
-    <idx>
-      <h>String</h><h>methods</h>
-    </idx>
-
+    <idx><h>String</h><h>length</h></idx>
+    <idx><h>String</h><h>substring</h></idx>
+    <idx><h>String</h><h>indexOf</h></idx>
+    <idx><h>String</h><h>compareTo</h></idx>
+    <idx><h>String</h><h>equals</h></idx>
+    <idx><h>String</h><h>methods</h></idx>
     <p>
       A string holds characters in a sequence. Each character is at a position
       or <term>index</term> which starts with 0 as shown below. An
@@ -542,7 +528,10 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <figure align="center">
-      <caption>A string with the position (index) shown above each character</caption>
+      <caption>
+        A string with the position (index) shown above each character
+      </caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/stringIndicies.png" width="89%" alt="a string with the position (index) shown above each character" />
     </figure>
 
@@ -557,6 +546,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="string-methods-subsection">
     <title>String Methods</title>
+
     <p>
       The <c>String</c> class includes many methods to process strings. For the
       AP CSA exam, you only need to know how to use the following String
@@ -623,6 +613,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>String Methods: length, substring, indexOf</title>
+
     <p>
       Run the code below to see the output from the String methods
       <c>length</c>, <c>substring</c>, and <c>indexOf</c>. The length method
@@ -645,49 +636,50 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class Test1
-{
-    public static void main(String[] args)
-    {
-        String message1 = "This is a test";
-        String message2 = "Hello Class";
+          public class Test1
+          {
+              public static void main(String[] args)
+              {
+                  String message1 = "This is a test";
+                  String message2 = "Hello Class";
 
-        System.out.println(message1.length());
-        System.out.println(message2.length());
+                  System.out.println(message1.length());
+                  System.out.println(message2.length());
 
-        System.out.println(message1.substring(0, 3));
-        System.out.println(message1.substring(2, 3));
-        System.out.println(message1.substring(5));
+                  System.out.println(message1.substring(0, 3));
+                  System.out.println(message1.substring(2, 3));
+                  System.out.println(message1.substring(5));
 
 
-        System.out.println(
-                message1.indexOf("is")); // This will match the is in "This"!
-        System.out.println(message1.indexOf("Hello"));
-        System.out.println(message2.indexOf("Hello"));
+                  System.out.println(
+                          message1.indexOf("is")); // This will match the is in "This"!
+                  System.out.println(message1.indexOf("Hello"));
+                  System.out.println(message2.indexOf("Hello"));
 
-        // lowercase and uppercase are not on the AP exam, but still useful
-        System.out.println(message2.toLowerCase());
-        System.out.println(message2.toUpperCase());
-    }
-}
+                  // lowercase and uppercase are not on the AP exam, but still useful
+                  System.out.println(message2.toLowerCase());
+                  System.out.println(message2.toUpperCase());
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main").trim();
-        boolean passed = getResults(output, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main").trim();
+                  boolean passed = getResults(output, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -712,38 +704,39 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class SubstringPreconditions
-{
-    public static void main(String[] args)
-    {
-        String str = "hello";
-        System.out.println(str.substring(-1, 10));
-    }
-}
+          public class SubstringPreconditions
+          {
+              public static void main(String[] args)
+              {
+                  String str = "hello";
+                  System.out.println(str.substring(-1, 10));
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("SubstringPreconditions");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("SubstringPreconditions");
+              }
 
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "o";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "o";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -751,10 +744,11 @@ public class RunestoneTests extends CodeTestHelper
     <activity label="qsb_3">
       <statement>
         <p>What is the value of pos after the following code executes?</p>
+
         <program language="java">
           <code>
-String s1 = "abccba";
-int pos = s1.indexOf("b");
+            String s1 = "abccba";
+            int pos = s1.indexOf("b");
           </code>
         </program>
       </statement>
@@ -808,10 +802,11 @@ int pos = s1.indexOf("b");
     <activity label="qsb_3b">
       <statement>
         <p>What is the value of len after the following code executes?</p>
+
         <program language="java">
           <code>
-String s1 = "baby";
-int len = s1.length();
+            String s1 = "baby";
+            int len = s1.length();
           </code>
         </program>
       </statement>
@@ -865,10 +860,11 @@ int len = s1.length();
     <activity label="qsb_3c">
       <statement>
         <p>What is the value of s2 after the following code executes?</p>
+
         <program language="java">
           <code>
-String s1 = "baby";
-String s2 = s1.substring(0,3);
+            String s1 = "baby";
+            String s2 = s1.substring(0,3);
           </code>
         </program>
       </statement>
@@ -926,10 +922,11 @@ String s2 = s1.substring(0,3);
     <activity label="qsb_4b">
       <statement>
         <p>What is the value of s2 after the following code executes?</p>
+
         <program language="java">
           <code>
-String s1 = "baby";
-String s2 = s1.substring(2);
+            String s1 = "baby";
+            String s2 = s1.substring(2);
           </code>
         </program>
       </statement>
@@ -993,6 +990,7 @@ String s2 = s1.substring(2);
 
   <subsection>
     <title>CompareTo and Equals</title>
+
     <p>
       We can compare primitive types like int and double using operators like
       <c>==</c> and <c>&lt;</c> or <c>&gt;</c>, which you will learn about in
@@ -1049,39 +1047,40 @@ String s2 = s1.substring(2);
 
       <program interactive="activecode" language="java">
         <code>
-public class Test2
-{
-    public static void main(String[] args)
-    {
-        String message = "Hello!";
+          public class Test2
+          {
+              public static void main(String[] args)
+              {
+                  String message = "Hello!";
 
-        System.out.println(message.compareTo("Hello!"));
-        System.out.println(message.compareTo("And"));
-        System.out.println(message.compareTo("Zoo"));
+                  System.out.println(message.compareTo("Hello!"));
+                  System.out.println(message.compareTo("And"));
+                  System.out.println(message.compareTo("Zoo"));
 
-        System.out.println(message.equals("Hello!"));
-        System.out.println(message.equals("hello!"));
-    }
-}
+                  System.out.println(message.equals("Hello!"));
+                  System.out.println(message.equals("hello!"));
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "0\n7\n-18\ntrue\nfalse";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "0\n7\n-18\ntrue\nfalse";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -1114,7 +1113,8 @@ public class RunestoneTests extends CodeTestHelper
 
         <match>
           <premise order="2">
-            a new string that is a part of another string with 0 to all characters copied from the original string
+            a new string that is a part of another string with 0 to all
+            characters copied from the original string
           </premise>
 
           <response>substring</response>
@@ -1146,18 +1146,25 @@ public class RunestoneTests extends CodeTestHelper
 
       <cardsort>
         <match>
-          <premise order="1">Returns true if the characters in two strings are the same</premise>
+          <premise order="1">
+            Returns true if the characters in two strings are the same
+          </premise>
+
           <response>equals</response>
         </match>
 
         <match>
-          <premise order="2">Returns the position of one string in another or -1</premise>
+          <premise order="2">
+            Returns the position of one string in another or -1
+          </premise>
+
           <response>indexOf</response>
         </match>
 
         <match>
           <premise order="3">
-            Returns a number to indicate if one string is less than, equal to, or greater than another
+            Returns a number to indicate if one string is less than, equal to,
+            or greater than another
           </premise>
 
           <response>compareTo</response>
@@ -1165,7 +1172,8 @@ public class RunestoneTests extends CodeTestHelper
 
         <match>
           <premise order="4">
-            Returns a string representing the object that is passed to this method
+            Returns a string representing the object that is passed to this
+            method
           </premise>
 
           <response>toString</response>
@@ -1176,11 +1184,12 @@ public class RunestoneTests extends CodeTestHelper
     <activity label="qsb_8-new">
       <statement>
         <p>What is the value of answer after the following code executes?</p>
+
         <program language="java">
           <code>
-String s1 = "Hi";
-String s2 = "Bye";
-int answer = s1.compareTo(s2);
+            String s1 = "Hi";
+            String s2 = "Bye";
+            int answer = s1.compareTo(s2);
           </code>
         </program>
       </statement>
@@ -1224,7 +1233,9 @@ int answer = s1.compareTo(s2);
 
   <subsection>
     <title>Common Mistakes with Strings</title>
+
     <p>The following code shows some common mistakes with strings.</p>
+
     <activity label="stringMistakes">
       <statement>
         <p>
@@ -1235,52 +1246,54 @@ int answer = s1.compareTo(s2);
 
       <program interactive="activecode" language="java">
         <code>
-public class StringMistakes
-{
-    public static void main(String[] args)
-    {
-        String str1 = "Hello!";
+          public class StringMistakes
+          {
+              public static void main(String[] args)
+              {
+                  String str1 = "Hello!";
 
-        // Print out the first letter?
-        System.out.println(
-                "The first letter in " + str1 + ":" + str1.substring(1, 1));
+                  // Print out the first letter?
+                  System.out.println(
+                          "The first letter in " + str1 + ":" + str1.substring(1, 1));
 
-        // Print out the last character?
-        System.out.println(
-                "The last char. in " + str1 + ":" + str1.substring(8));
+                  // Print out the last character?
+                  System.out.println(
+                          "The last char. in " + str1 + ":" + str1.substring(8));
 
-        // Print str1 in lower case? Will str1 change?
-        str1.toLowerCase();
-        System.out.println("In lowercase: " + str1);
-    }
-}
+                  // Print str1 in lower case? Will str1 change?
+                  str1.toLowerCase();
+                  System.out.println("In lowercase: " + str1);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main").trim();
-        String expect =
-                "The first letter in Hello!:H\nThe last char. in Hello!:!\nIn lowercase: hello!";
-        boolean passed = output.contains(expect);
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main").trim();
+                  String expect =
+                          "The first letter in Hello!:H\nThe last char. in Hello!:!\nIn lowercase: hello!";
+                  boolean passed = output.contains(expect);
 
-        getResults(expect, output, "Expected output from main", passed);
-        assertTrue(passed);
-    }
-}
+                  getResults(expect, output, "Expected output from main", passed);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
 
     <p>Here is a list of common mistakes made with Strings.</p>
+
     <blockquote>
       <p>
         <ul>
@@ -1336,9 +1349,9 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Coding Challenge: Pig Latin</title>
+
     <p>
-      <image source="Unit1-Using-Objects-and-Methods/Figures/pig.png"
-      width="18%" alt="pig latin" /> Can you speak Pig Latin? In Pig Latin, you
+      <image source="Unit1-Using-Objects-and-Methods/Figures/pig.png" width="18%" alt="pig latin" /> Can you speak Pig Latin? In Pig Latin, you
       take the first letter and put it at the end of the word and add the
       letters “ay” to the end. For example, “pig” becomes “igpay”.
     </p>
@@ -1363,75 +1376,83 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-import java.util.Scanner;
+          import java.util.Scanner;
 
-public class PigLatin
-{
-   public static String pigLatin(String word)
-   {
-       // Change this to use word.substring to construct
-       // the pig latin version of word
-       String pigLatin = word;
+          public class PigLatin
+          {
+             public static String pigLatin(String word)
+             {
+                 // Change this to use word.substring to construct
+                 // the pig latin version of word
+                 String pigLatin = word;
 
-       return pigLatin;
-   }
+                 return pigLatin;
+             }
 
-   public static void main(String[] args)
-   {
-       // Do not change main!
-       // Write your code in the pigLatin method above.
-       Scanner scan = new Scanner(System.in);
-       String word = scan.nextLine();
-       System.out.println(word + " in Pig Latin is " + pigLatin(word) );
-       scan.close();
-   }
-}
+             public static void main(String[] args)
+             {
+                 // Do not change main!
+                 // Write your code in the pigLatin method above.
+                 Scanner scan = new Scanner(System.in);
+                 String word = scan.nextLine();
+                 System.out.println(word + " in Pig Latin is " + pigLatin(word) );
+                 scan.close();
+             }
+          }
         </code>
-        <stdin>pig</stdin>
+
+        <stdin>
+          pig
+        </stdin>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMethod() throws IOException
-    {
-        Object[] args = {"java"};
-        String output = getMethodOutput("pigLatin", args);
-        String expect = "avajay";
-        boolean passed = getResults(expect, output,
-                             "pigLatin(\"java\") should return \"avajay\"");
-        assertTrue(passed);
-    }
-    @Test
-    public void testMethod2() throws IOException
-    {
-        Object[] args = {"pig"};
-        String output = getMethodOutput("pigLatin", args);
-        String expect = "igpay";
-        boolean passed = getResults(expect, output,
-                             "pigLatin(\"pig\") should return \"igpay\"");
-        assertTrue(passed);
-    }
-    @Test
-    public void testContainsSubstring()
-    {
-        String target = "word.substring(";
-        int count = countOccurences(getCode(), target);
-        boolean passed = count &gt;= 2;
-        passed =
-                getResults(
-                        "2 substring calls",
-                        count + " substring call(s)",
-                        "Code contains calls to substring method",
-                        passed);
-        assertTrue(passed);
-    }
-}
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMethod() throws IOException
+              {
+                  Object[] args = {"java"};
+                  String output = getMethodOutput("pigLatin", args);
+                  String expect = "avajay";
+                  boolean passed = getResults(expect, output,
+                                       "pigLatin(\"java\") should return \"avajay\"");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testMethod2() throws IOException
+              {
+                  Object[] args = {"pig"};
+                  String output = getMethodOutput("pigLatin", args);
+                  String expect = "igpay";
+                  boolean passed = getResults(expect, output,
+                                       "pigLatin(\"pig\") should return \"igpay\"");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testContainsSubstring()
+              {
+                  String target = "word.substring(";
+                  int count = countOccurences(getCode(), target);
+                  boolean passed = count >= 2;
+                  passed =
+                          getResults(
+                                  "2 substring calls",
+                                  count + " substring call(s)",
+                                  "Code contains calls to substring method",
+                                  passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -1559,6 +1580,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -1635,9 +1657,7 @@ public class RunestoneTests extends CodeTestHelper
         </li>
 
         <li>
-          <p>
-            <term>length</term> - The number of characters in a string.
-          </p>
+          <p><term>length</term> - The number of characters in a string.</p>
         </li>
 
         <li>
@@ -1736,14 +1756,16 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>AP Practice</title>
+
     <activity label="AP-substring">
       <statement>
         <p>What is the value of s2 after the following code executes?</p>
+
         <program language="java">
           <code>
-String s1 = new String("hi there");
-int pos = s1.indexOf("e");
-String s2 = s1.substring(0,pos);
+            String s1 = new String("hi there");
+            int pos = s1.indexOf("e");
+            String s2 = s1.substring(0,pos);
           </code>
         </program>
       </statement>
@@ -1809,11 +1831,12 @@ String s2 = s1.substring(0,pos);
     <activity label="AP-immutable">
       <statement>
         <p>What is the value of s1 after the following code executes?</p>
+
         <program language="java">
           <code>
-String s1 = "Hi";
-String s2 = s1.substring(0,1);
-String s3 = s2.toLowerCase();
+            String s1 = "Hi";
+            String s2 = s1.substring(0,1);
+            String s3 = s2.toLowerCase();
           </code>
         </program>
       </statement>
@@ -1885,6 +1908,7 @@ String s3 = s2.toLowerCase();
 
   <subsection>
     <title>String Methods Game</title>
+
     <p>
       Try the game below written by AP CSA teacher Chandan Sarkar. Click on
       <term>Strings</term> and then on the letters that would be the result of
@@ -1897,6 +1921,7 @@ String s3 = s2.toLowerCase();
 
   <subsection xml:id="progresscheck-u1-part3">
     <title>Review/Practice for Unit 1 Part 3 on Using Objects</title>
+
     <p>
       This lesson ends the section on Unit 1 part 3 on Using Objects. You can
       now do the following review and practice lessons at the end of the unit
