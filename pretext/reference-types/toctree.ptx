@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <chapter xml:id="reference-types" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>reference-types</title>
-  <idx>reference type</idx>
+  <title>Reference types</title>
 
+  <idx>reference type</idx>
   <introduction>
     <p>
       So far the data types we’ve focused on have been the three primitive data
@@ -15,7 +15,7 @@
     <p>
       But what is the difference between primitive and reference types? One way
       to describe the distinction is that primitive types are the things the
-      computer actually knows about and referenece types are defined by Java.
+      computer actually knows about and reference types are defined by Java.
     </p>
 
     <p>
@@ -42,17 +42,26 @@
     </p>
 
     <p>
-      Reference types are called that because the actual data that we think of
-      as making up the value—the sequence of characters that make up the text of
-      a <c>String</c> for example—is stored somewhere in the computer’s memory
-      that we don’t really know abut but the values that we assign to variables
-      and pass as arguments to methods are just special numbers that “reference”
-      the location in memory. We’ll discuss the consequences of this throughout
-      this unit, starting with a look at how the ways we deal with <c>String</c>
-      values are different from the way we dealt with primitive types. Then
-      we’ll look at writing classes to define own own reference types. Finally
-      we’ll close out with a discussion of what equality means when dealing with
-      reference types.
+      To represent such arbitrarily large values we need to split the value into
+      two parts which together make up an <term>object</term>. The actual
+      data—the text of <pubtitle>War and Peace</pubtitle>—is called the
+      <term>object data</term> and it lives somewhere in the computers memory.
+      To get at the object data we need a special number, called a
+      <term>reference</term>, that tells the CPU where in memory the object data
+      lives. References fit into the thirty-two or sixty-four bit quantities the
+      CPU can deal with and so they are what are assigned to variables and
+      passed as arguments to methods.
+    </p>
+
+    <p>
+      Most of the time we don’t have to distinguish between the “actual” object
+      that lives in memory and the reference to it since in Java there’s no way
+      to get at the object data except through the object’s reference. But there
+      are some consequences of this split that we’ll explore in this unit. We’ll
+      start with a deeper dive into the one reference type we’ve already used:
+      <c>String</c>. Then Then we’ll look at writing classes to define own own
+      reference types. And finally we’ll close out the unit with a discussion of
+      what equality means when dealing with reference types.
     </p>
   </introduction>
 
