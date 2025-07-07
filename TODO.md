@@ -45,3 +45,7 @@
 - [ ] Remove language="java" attribute from program elements since it's the default
 
 - [ ] Strip unneeded <code> elements that are the only child of a <program> element.
+
+# Maybe someday
+
+- [ ] Custom theme? (See https://groups.google.com/g/pretext-dev/c/DIeALnDbl-g/m/1amcMgwQBQAJ)
