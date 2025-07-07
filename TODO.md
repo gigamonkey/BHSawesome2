@@ -21,6 +21,10 @@
 
 - [x] Move Bonus unicode challenge to Strings section.
 
+# Functionality
+
+- [ ] Make sure Turtle graphics work.
+
 # Formatting cleanup
 
 - [ ] Write script to check that for each <term>, the first occurrence of the
