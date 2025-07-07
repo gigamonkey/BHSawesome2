@@ -7,15 +7,19 @@
     <idx>nested for loop</idx>
     <idx><h>loop</h><h>nested</h></idx>
     <p>
-      <term>Nested iteration statements</term> (or <term>nested loops</term>)
-      are iteration statements that appear in the body of another iteration
-      statement. Or in simpler terms, a loop inside of another loop. Nested
-      loops are typically used for working with two dimensions, for example
-      printing a rectangle of stars in rows and columns as shown below. When a
-      loop is nested inside another loop, the inner loop runs many times inside
-      the outer loop. In each iteration of the outer loop, the inner loop will
-      be re-started. The inner loop must finish all of its iterations before the
-      outer loop can continue to its next iteration.
+      <term>Nested loops</term> are simply loops placed in the body of another
+      loop. If we understand how loops work, there’s nothing magic about nested
+      loops: the outer loop runs its body in the normal way for a loop and if
+      that body contains a loop, that loop also runs in the normal way. The
+      whole inner loop, like any other statement in the body of the outer loop,
+      will run as many times as the outer loop’s body runs. And each time it
+      runs, the inner loop must complete all of its iterations before it ends
+      and outer loop can continue to its next iteration.
+    </p>
+
+    <p>
+      Nested loops are typically used for working with two dimensions, for
+      example printing a rectangle of stars in rows and columns as shown below.
     </p>
 
     <figure align="center">
@@ -24,23 +28,21 @@
       <image source="Unit2-Selection-and-Iteration/Figures/nestedloops.png" width="63%" />
     </figure>
 
-    <p>
-      What does the following code print out? Watch the code run in the <url
-      href="http://www.pythontutor.com/visualize.html#code=public%20class%20NestedLoops%0A%7B%0A%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%7B%0A%20%20%20%20%20%20%20for%20%28int%20row%20%3D%201%3B%20row%20%3C%3D%203%3B%20row%2B%2B%29%0A%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20for%20%28int%20col%20%3D%201%3B%20col%20%3C%3D%205%3B%20col%2B%2B%29%0A%20%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20System.out.print%28%22*%22%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%29%3B%0A%20%20%20%20%20%20%20%7D%0A%20%20%20%7D%0A%7D&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false&amp;curInstr=0"
-      visual="http://www.pythontutor.com/visualize.html#code=public%20class%20NestedLoops%0A%7B%0A%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%7B%0A%20%20%20%20%20%20%20for%20%28int%20row%20%3D%201%3B%20row%20%3C%3D%203%3B%20row%2B%2B%29%0A%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20for%20%28int%20col%20%3D%201%3B%20col%20%3C%3D%205%3B%20col%2B%2B%29%0A%20%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20System.out.print%28%22*%22%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%29%3B%0A%20%20%20%20%20%20%20%7D%0A%20%20%20%7D%0A%7D&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false&amp;curInstr=0">Java
-      visualizer</url> by clicking the CodeLens button and then forward. Notice
-      how the inner loop is started over for each row. Can you predict how many
-      rows and columns of stars there will be?
-    </p>
   </introduction>
 
   <activity label="lcfcnl1">
     <statement>
       <p>
-        Can you change the code to print a rectangle with 10 rows and 8 columns
-        of stars? You can also try replacing line 10 with this print statement
-        to see the rows and columns: <c>System.out.print(row + "-" + col + "
-        ");</c>
+        What does the following code print out? Click the CodeLens button to
+        trace the code step by step. Notice how the inner loop is started over
+        for each row. Can you predict how many rows and columns of stars there
+        will be?
+      </p>
+      <p>
+        Can you change the code to print a rectangle with ten rows and eight
+        columns of stars? You can also try replacing the inner <c>print</c>
+        statement with this to see the rows and columns:
+        <c>System.out.println(row + "-" + col + " ");</c>
       </p>
     </statement>
 
@@ -48,15 +50,10 @@
       <code>
         <![CDATA[
 
-        public class NestedLoops
-        {
-
-            public static void main(String[] args)
-            {
-                for (int row = 1; row <= 3; row++)
-                {
-                    for (int col = 1; col <= 5; col++)
-                    {
+        public class NestedLoops {
+            public static void main(String[] args) {
+                for (int row = 1; row <= 3; row++) {
+                    for (int col = 1; col <= 5; col++) {
                         System.out.print("*");
                     }
                     System.out.println();
@@ -106,10 +103,8 @@
         <code>
           <![CDATA[
 
-          for (int i = 1; i < 7; i++)
-          {
-              for (int y = 1; y <= 5; y++)
-              {
+          for (int i = 1; i < 7; i++) {
+              for (int y = 1; y <= 5; y++) {
                   System.out.print("*");
               }
               System.out.println();
@@ -181,10 +176,8 @@
         <code>
           <![CDATA[
 
-          for (int i = 0; i < 5; i++)
-          {
-              for (int j = 3; j >= 1; j--)
-              {
+          for (int i = 0; i < 5; i++) {
+              for (int j = 3; j >= 1; j--) {
                   System.out.print("*");
               }
               System.out.println();
@@ -260,26 +253,21 @@
 
     <blocks>
       <block order="9">
-        <cline>public class Test1</cline>
-        <cline>{</cline>
-        <cline>    public static void main(String[] args)</cline>
-        <cline>    {</cline>
+        <cline>public class Test1 {</cline>
+        <cline>    public static void main(String[] args) {</cline>
       </block>
 
       <block order="8">
-        <cline>        for (int x = 0; x &lt; 10; x++)</cline>
-        <cline>        {</cline>
+        <cline>        for (int x = 0; x &lt; 10; x++) {</cline>
       </block>
 
       <block order="7">
         <choice correct="yes">
-          <cline>            for (int y = 0; y &lt; 5; y++)</cline>
-          <cline>            {</cline>
+          <cline>            for (int y = 0; y &lt; 5; y++) {</cline>
         </choice>
 
         <choice>
-          <cline>            for (int y = 0; y &lt;= 5; y++)</cline>
-          <cline>            {</cline>
+          <cline>            for (int y = 0; y &lt;= 5; y++) {</cline>
         </choice>
       </block>
 
@@ -343,10 +331,8 @@
           import java.awt.*;
           import java.util.*;
 
-          public class TurtleDrawSnowflake
-          {
-              public static void main(String[] args)
-              {
+          public class TurtleDrawSnowflake {
+              public static void main(String[] args) {
                   World world = new World(300, 300);
                   Turtle yertle = new Turtle(world);
                   yertle.setSpeed(25); // fast 0 - 100 slow
@@ -356,12 +342,10 @@
                   // and then turn a little each time
                   // How many times should the outer loop run to complete the pattern? Try
                   // some numbers between 5 and 15.
-                  for (int i = 1; i <= 5; i++)
-                  {
+                  for (int i = 1; i <= 5; i++) {
 
                       // inner loop draws a square
-                      for (int sides = 1; sides <= 4; sides++)
-                      {
+                      for (int sides = 1; sides <= 4; sides++) {
                           yertle.forward();
                           yertle.turn(90);
                       }
@@ -521,10 +505,8 @@
           import java.awt.*;
           import java.util.*;
 
-          public class TurtleSnowflakes
-          {
-              public static void main(String[] args)
-              {
+          public class TurtleSnowflakes {
+              public static void main(String[] args) {
                   World world = new World(300, 300);
                   Turtle yertle = new Turtle(world);
                   yertle.setSpeed(25); // fast 0 - 100 slow
@@ -646,8 +628,7 @@
       <ul>
         <li>
           <p>
-            Nested iteration statements are iteration statements that appear in
-            the body of another iteration statement.
+            Nested loops are just loops that appear in the body of another loop.
           </p>
         </li>
 
