@@ -304,3 +304,8 @@ table .align-default, td {
 .ptx-content .booktitle {
     font-style: oblique;
 }
+
+/* Kludge to completely hide datafiles, not just the source code. */
+.ptx-content div.runestone.datafile:has(pre[style="display: none"]) {
+    display: none;
+}

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <pretext xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
-
   <docinfo>
     <document-id>BHSawesome2</document-id>
 
@@ -13,16 +12,20 @@
     </blurb>
 
     <rename element="inlineexercise">Activity</rename>
+
     <rename element="chapter">Unit</rename>
-    <brandlogo url="./" source="_static/BHSawesomeLogo.png" alt="BHSawesome" />
-    <cross-references text="type-global-title"/>
+
+    <brandlogo url="./bhsawesome.html" source="_static/BHSawesomeLogo.png" alt="BHSawesome" />
+    <cross-references text="type-global-title" />
     <programs language="java" />
     <parsons language="java" />
   </docinfo>
 
   <book xml:id="bhsawesome" permid="csa">
     <title>BHSawesome</title>
+
     <subtitle>AP CSA</subtitle>
+
     <introduction>
       <p>
         Welcome to BHSawesome! This version of BHSawesome is based on the latest
@@ -35,7 +38,6 @@
         the person icon at the top to register or login to your Runestone
         course.
       </p>
-      <xi:include href="./turtle-classes.ptx" />
     </introduction>
 
     <xi:include href="./frontmatter/toctree.ptx" />
@@ -53,6 +55,7 @@
     <xi:include href="./2d-arrays/toctree.ptx" />
     <xi:include href="./algorithms/toctree.ptx" />
     <backmatter>
+      <xi:include href="./turtle-classes.ptx" />
       <index>
         <index-list />
       </index>
@@ -63,6 +66,7 @@
         If you see errors or bugs, please email <url
         href="mailto:peterseibel@berkeley.net">peterseibel@berkeley.net</url>.
       </p>
+
     </conclusion>
   </book>
 </pretext>
