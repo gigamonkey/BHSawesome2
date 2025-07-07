@@ -10,7 +10,7 @@ from lxml import etree
 
 INDENT = 2
 WIDTH = 80
-INLINE_TAGS = {"term", "url", "c", "h", "area", "em", "xref", "m"}
+INLINE_TAGS = {"term", "url", "c", "h", "area", "em", "xref", "m", "pubtitle"}
 PRESERVE_WHITESPACE = {"code", "cline", "tests", "pre", "program"}
 ONE_LINE = {"cline"}
 COMPACT = {"cell", "idx", "premise"}
