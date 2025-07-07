@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- version 2 assumes there is a publication folder -->
+
 <project ptx-version="2" source="pretext" xsl="pretext">
   <targets>
     <target
@@ -7,8 +7,8 @@
         format="html"
         publication="html.xml"
         source="main.ptx"
-        output-dir="build/html"
-        xsl="csawesome-pretext-style.xsl">
+        output-dir="build/html">
+
       <stringparams author.tools="yes" html.css.extra="external/_static/css/custom.css" />
     </target>
     <target
@@ -16,13 +16,9 @@
         format="html"
         publication="runestone.xml"
         source="main.ptx"
-        platform="runestone"
-        xsl="csawesome-pretext-style.xsl">
+        platform="runestone">
       <stringparams author.tools="yes" html.css.extra="external/_static/css/custom.css" />
     </target>
-    <target
-        name="print"
-        format="pdf"
-        output-filename="bhsawesome.pdf" />
+    <target name="print" format="pdf" output-filename="bhsawesome.pdf" />
   </targets>
 </project>
