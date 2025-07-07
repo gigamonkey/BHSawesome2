@@ -6,6 +6,4 @@
   <xi:include href="./topic-4-3-array-basics.ptx" />
   <xi:include href="./topic-4-4-array-traversal.ptx" />
   <xi:include href="./topic-4-5-array-algorithms.ptx" />
-  <xi:include href="./topic-2-11-nested-loops.ptx" />
-  <xi:include href="./topic-2-12-loop-analysis.ptx" />
 </chapter>

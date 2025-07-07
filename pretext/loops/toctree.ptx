@@ -24,4 +24,6 @@
   <xi:include href="./topic-2-7-while-loops.ptx" />
   <xi:include href="./topic-2-8-for-loops.ptx" />
   <xi:include href="./topic-2-9-loop-algorithms.ptx" />
+  <xi:include href="./topic-2-11-nested-loops.ptx" />
+  <xi:include href="./topic-2-12-loop-analysis.ptx" />
 </chapter>
