@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-2-12-loop-analysis">
   <title>Informal Runtime Analysis of Loops</title>
+
   <introduction>
     <p>
       In this lesson, you will practice tracing through code with loops and
@@ -11,6 +12,7 @@
 
   <subsection>
     <title>Tracing Loops</title>
+
     <p>
       Let’s practice tracing through loops with many variables. Remember to make
       a tracing table to keep track of all the variables, the iterations, and
@@ -38,44 +40,50 @@
 
       <program interactive="activecode" language="java">
         <code>
-public class Trace
-{
-    public static void main(String[] args)
-    {
-        int var1 = 3;
-        int var2 = 2;
+          <![CDATA[
 
-        while ((var2 != 0) &amp;&amp; ((var1 / var2) &gt;= 0))
-        {
-            var1 = var1 + 1;
-            var2 = var2 - 1;
-        }
-    }
-}
+          public class Trace
+          {
+              public static void main(String[] args)
+              {
+                  int var1 = 3;
+                  int var2 = 2;
+
+                  while ((var2 != 0) && ((var1 / var2) >= 0))
+                  {
+                      var1 = var1 + 1;
+                      var2 = var2 - 1;
+                  }
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "var1: 3 var2: 2\nvar1: 4 var2: 1\nvar1: 5 var2: 0\n";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "var1: 3 var2: 2\nvar1: 4 var2: 1\nvar1: 5 var2: 0\n";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
 
     <p>Did your trace table look like the following?</p>
+
     <figure align="center">
       <caption>
         A table showing the values of all of the variables each time through the
@@ -93,14 +101,18 @@ public class RunestoneTests extends CodeTestHelper
 
         <program language="java">
           <code>
-int var1 = 0;
-int var2 = 2;
+            <![CDATA[
 
-while ((var2 != 0) &amp;&amp; ((var1 / var2) &gt;= 0))
-{
-   var1 = var1 + 1;
-   var2 = var2 -1;
-}
+            int var1 = 0;
+            int var2 = 2;
+
+            while ((var2 != 0) && ((var1 / var2) >= 0))
+            {
+               var1 = var1 + 1;
+               var2 = var2 -1;
+            }
+
+            ]]>
           </code>
         </program>
       </statement>
@@ -178,20 +190,22 @@ while ((var2 != 0) &amp;&amp; ((var1 / var2) &gt;= 0))
 
     <activity label="loop-trace-count2">
       <statement>
-        <p>
-          What are the values of x and y when the code finishes executing?
-        </p>
+        <p>What are the values of x and y when the code finishes executing?</p>
 
         <program language="java">
           <code>
-int x = 2;
-int y = 5;
+            <![CDATA[
 
-while (y &gt; 2 &amp;&amp; x &lt; y)
-{
-   x = x + 1;
-   y = y - 1;
-}
+            int x = 2;
+            int y = 5;
+
+            while (y > 2 && x < y)
+            {
+               x = x + 1;
+               y = y - 1;
+            }
+
+            ]]>
           </code>
         </program>
       </statement>
@@ -268,6 +282,7 @@ while (y &gt; 2 &amp;&amp; x &lt; y)
 
   <subsection>
     <title>Counting Loop Iterations</title>
+
     <p>
       Loops can be also analyzed to determine how many times they run. This is
       called <term>run-time analysis</term> or a <term>statement execution
@@ -287,36 +302,41 @@ while (y &gt; 2 &amp;&amp; x &lt; y)
 
       <program interactive="activecode" language="java">
         <code>
-public class CountLoop
-{
+          <![CDATA[
 
-    public static void main(String[] args)
-    {
-        for (int i = 3; i &lt; 7; i++)
-        {
-            System.out.print("*");
-        }
-    }
-}
+          public class CountLoop
+          {
+
+              public static void main(String[] args)
+              {
+                  for (int i = 3; i < 7; i++)
+                  {
+                      System.out.print("*");
+                  }
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "****\n";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "****\n";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -337,7 +357,9 @@ public class RunestoneTests extends CodeTestHelper
       <p>
         <ul>
           <li>
-            <p>If the loop uses counter &lt;= limit, limit is the largest value.</p>
+            <p>
+              If the loop uses counter &lt;= limit, limit is the largest value.
+            </p>
           </li>
 
           <li>
@@ -373,40 +395,45 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class NestedLoops
-{
+          <![CDATA[
 
-    public static void main(String[] args)
-    {
-        for (int row = 0; row &lt; 5; row++)
-        {
-            for (int col = 0; col &lt; 10; col++)
-            {
-                System.out.print("*");
-            }
-            System.out.println();
-        }
-    }
-}
+          public class NestedLoops
+          {
+
+              public static void main(String[] args)
+              {
+                  for (int row = 0; row < 5; row++)
+                  {
+                      for (int col = 0; col < 10; col++)
+                      {
+                          System.out.print("*");
+                      }
+                      System.out.println();
+                  }
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "**********\n**********\n**********\n**********\n**********\n";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "**********\n**********\n**********\n**********\n**********\n";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -427,6 +454,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Coding Challenge: POGIL Analyzing Loops</title>
+
     <p>
       We encourage you to do this activity as a <url
       href="https://pogil.org/about-pogil/what-is-pogil"
@@ -449,20 +477,22 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="qln1">
       <statement>
-        <p>
-          How many times does the following code print a <c>*</c>?
-        </p>
+        <p>How many times does the following code print a <c>*</c>?</p>
 
         <program language="java">
           <code>
-for (int i = 3; i &lt; 8; i++)
-{
-    for (int y = 1; y &lt; 5; y++)
-    {
-        System.out.print("*");
-    }
-    System.out.println();
-}
+            <![CDATA[
+
+            for (int i = 3; i < 8; i++)
+            {
+                for (int y = 1; y < 5; y++)
+                {
+                    System.out.print("*");
+                }
+                System.out.println();
+            }
+
+            ]]>
           </code>
         </program>
       </statement>
@@ -525,16 +555,21 @@ for (int i = 3; i &lt; 8; i++)
     <activity label="qln2">
       <statement>
         <p>What does the following code print?</p>
+
         <program language="java">
           <code>
-for (int i = 2; i &lt; 8; i++)
-{
-    for (int y = 1; y &lt;= 5; y++)
-    {
-        System.out.print("*");
-    }
-    System.out.println();
-}
+            <![CDATA[
+
+            for (int i = 2; i < 8; i++)
+            {
+                for (int y = 1; y <= 5; y++)
+                {
+                    System.out.print("*");
+                }
+                System.out.println();
+            }
+
+            ]]>
           </code>
         </program>
       </statement>
@@ -594,16 +629,21 @@ for (int i = 2; i &lt; 8; i++)
     <activity label="qln3">
       <statement>
         <p>What does the following print?</p>
+
         <program language="java">
           <code>
-for (int i = 3; i &lt;= 9; i++)
-{
-   for (int j = 6; j &gt; 0; j--)
-   {
-       System.out.print("*");
-   }
-   System.out.println();
-}
+            <![CDATA[
+
+            for (int i = 3; i <= 9; i++)
+            {
+               for (int j = 6; j > 0; j--)
+               {
+                   System.out.print("*");
+               }
+               System.out.println();
+            }
+
+            ]]>
           </code>
         </program>
       </statement>
@@ -625,9 +665,7 @@ for (int i = 3; i &lt;= 9; i++)
           </statement>
 
           <feedback>
-            <p>
-              It would print 6 rows if it was <c>i &lt; 9</c>.
-            </p>
+            <p>It would print 6 rows if it was <c>i &lt; 9</c>.</p>
           </feedback>
         </choice>
 
@@ -637,9 +675,7 @@ for (int i = 3; i &lt;= 9; i++)
           </statement>
 
           <feedback>
-            <p>
-              It would print 5 stars per row if it was <c>j &gt; 1</c>.
-            </p>
+            <p>It would print 5 stars per row if it was <c>j &gt; 1</c>.</p>
           </feedback>
         </choice>
 
@@ -667,15 +703,19 @@ for (int i = 3; i &lt;= 9; i++)
 
         <program language="java">
           <code>
-int i = 0;
-while (i &lt;= 4)
-{
-  for (int j = 0; j &lt; 3; j++)
-  {
-    System.out.println("Hi!");
-  }
-  i++;
-}
+            <![CDATA[
+
+            int i = 0;
+            while (i <= 4)
+            {
+              for (int j = 0; j < 3; j++)
+              {
+                System.out.println("Hi!");
+              }
+              i++;
+            }
+
+            ]]>
           </code>
         </program>
       </statement>
@@ -729,6 +769,7 @@ while (i &lt;= 4)
 
   <subsection>
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -778,6 +819,7 @@ while (i &lt;= 4)
 
   <subsection>
     <title>Loop Analysis Game</title>
+
     <p>
       Try the game below to practice loop analysis. Click on <term>Loops</term>
       and click on the number of times the loop runs. For an added challenge,
@@ -790,6 +832,7 @@ while (i &lt;= 4)
 
   <subsection xml:id="review-practice-for-loops">
     <title>Review/Practice for Loops</title>
+
     <p>
       This lesson ends the section on loops. You can now do the following review
       and practice lessons at the end of the unit and College Board Progress

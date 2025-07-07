@@ -1,13 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-2-11-nested-loops">
-  <title>Nested Iteration</title>
+  <title>Nested loops</title>
+
   <introduction>
     <idx>nested for loop</idx>
-    <idx>
-      <h>loop</h><h>nested</h>
-    </idx>
-
+    <idx><h>loop</h><h>nested</h></idx>
     <p>
       <term>Nested iteration statements</term> (or <term>nested loops</term>)
       are iteration statements that appear in the body of another iteration
@@ -22,6 +20,7 @@
 
     <figure align="center">
       <caption>Nested Loops</caption>
+
       <image source="Unit2-Selection-and-Iteration/Figures/nestedloops.png" width="63%" />
     </figure>
 
@@ -47,45 +46,54 @@
 
     <program interactive="activecode" language="java">
       <code>
-public class NestedLoops
-{
+        <![CDATA[
 
-    public static void main(String[] args)
-    {
-        for (int row = 1; row &lt;= 3; row++)
+        public class NestedLoops
         {
-            for (int col = 1; col &lt;= 5; col++)
+
+            public static void main(String[] args)
             {
-                System.out.print("*");
+                for (int row = 1; row <= 3; row++)
+                {
+                    for (int col = 1; col <= 5; col++)
+                    {
+                        System.out.print("*");
+                    }
+                    System.out.println();
+                }
             }
-            System.out.println();
         }
-    }
-}
+
+        ]]>
       </code>
+
       <tests>
-import static org.junit.Assert.*;
+        <![CDATA[
 
-import org.junit.*;
+        import static org.junit.Assert.*;
 
-import java.io.*;
+        import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("NestedLoops");
-    }
+        import java.io.*;
 
-    @Test
-    public void test2()
-    {
-        boolean passed =
-                checkCodeContains("10 rows", "row &lt;= 10")
-                        &amp;&amp; checkCodeContains("8 columns", "col &lt;= 8");
-        assertTrue(passed);
-    }
-}
+        public class RunestoneTests extends CodeTestHelper
+        {
+            public RunestoneTests()
+            {
+                super("NestedLoops");
+            }
+
+            @Test
+            public void test2()
+            {
+                boolean passed =
+                        checkCodeContains("10 rows", "row <= 10")
+                                && checkCodeContains("8 columns", "col <= 8");
+                assertTrue(passed);
+            }
+        }
+
+        ]]>
       </tests>
     </program>
   </activity>
@@ -93,16 +101,21 @@ public class RunestoneTests extends CodeTestHelper
   <activity label="nested1">
     <statement>
       <p>What does the following code print?</p>
+
       <program language="java">
         <code>
-for (int i = 1; i &lt; 7; i++)
-{
-    for (int y = 1; y &lt;= 5; y++)
-    {
-        System.out.print("*");
-    }
-    System.out.println();
-}
+          <![CDATA[
+
+          for (int i = 1; i < 7; i++)
+          {
+              for (int y = 1; y <= 5; y++)
+              {
+                  System.out.print("*");
+              }
+              System.out.println();
+          }
+
+          ]]>
         </code>
       </program>
     </statement>
@@ -163,16 +176,21 @@ for (int i = 1; i &lt; 7; i++)
   <activity label="nested2">
     <statement>
       <p>What does the following code print?</p>
+
       <program language="java">
         <code>
-for (int i = 0; i &lt; 5; i++)
-{
-    for (int j = 3; j &gt;= 1; j--)
-    {
-        System.out.print("*");
-    }
-    System.out.println();
-}
+          <![CDATA[
+
+          for (int i = 0; i < 5; i++)
+          {
+              for (int j = 3; j >= 1; j--)
+              {
+                  System.out.print("*");
+              }
+              System.out.println();
+          }
+
+          ]]>
         </code>
       </program>
     </statement>
@@ -290,6 +308,7 @@ for (int i = 0; i &lt; 5; i++)
 
   <subsection xml:id="nested-loops-with-turtles">
     <title>Nested Loops with Turtles</title>
+
     <p>
       Try nested loops with turtles to create a snowflake design! If the code
       below does not work in your browser, you can copy the code into this <url
@@ -319,82 +338,91 @@ for (int i = 0; i &lt; 5; i++)
 
       <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          <![CDATA[
 
-public class TurtleDrawSnowflake
-{
-    public static void main(String[] args)
-    {
-        World world = new World(300, 300);
-        Turtle yertle = new Turtle(world);
-        yertle.setSpeed(25); // fast 0 - 100 slow
-        yertle.setColor(Color.blue);
+          import java.awt.*;
+          import java.util.*;
 
-        // Outer loop will do inner loop to draw a square,
-        // and then turn a little each time
-        // How many times should the outer loop run to complete the pattern? Try
-        // some numbers between 5 and 15.
-        for (int i = 1; i &lt;= 5; i++)
-        {
+          public class TurtleDrawSnowflake
+          {
+              public static void main(String[] args)
+              {
+                  World world = new World(300, 300);
+                  Turtle yertle = new Turtle(world);
+                  yertle.setSpeed(25); // fast 0 - 100 slow
+                  yertle.setColor(Color.blue);
 
-            // inner loop draws a square
-            for (int sides = 1; sides &lt;= 4; sides++)
-            {
-                yertle.forward();
-                yertle.turn(90);
-            }
-            // turn a little before drawing square again
-            yertle.turn(30);
-        }
-        world.show(true);
-    }
-}
+                  // Outer loop will do inner loop to draw a square,
+                  // and then turn a little each time
+                  // How many times should the outer loop run to complete the pattern? Try
+                  // some numbers between 5 and 15.
+                  for (int i = 1; i <= 5; i++)
+                  {
+
+                      // inner loop draws a square
+                      for (int sides = 1; sides <= 4; sides++)
+                      {
+                          yertle.forward();
+                          yertle.turn(90);
+                      }
+                      // turn a little before drawing square again
+                      yertle.turn(30);
+                  }
+                  world.show(true);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleDrawSnowflake");
-    }
+          import java.io.*;
 
-    @Test
-    public void test2()
-    {
-        boolean passed = false;
-        String code = getCode();
-        int find = code.indexOf("i &lt;=");
-        if (find != -1)
-        {
-            int end = code.indexOf(";", find);
-            String s = code.substring(find + 5, end);
-            int max = 0;
-            try
-            {
-                max = Integer.parseInt(s);
-            }
-            catch (NumberFormatException e)
-            {
-                System.out.println("Couldn't parse int");
-            }
-            passed = max &gt;= 12;
-            getResults("i &lt;= ?;", "i &lt;= " + max + ";", "Iterations complete drawing", passed);
-        } else
-            getResults(
-                    "i &lt;= ?;",
-                    "i &lt;= ",
-                    "Could not find number of iterations - check spacing",
-                    passed);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TurtleDrawSnowflake");
+              }
+
+              @Test
+              public void test2()
+              {
+                  boolean passed = false;
+                  String code = getCode();
+                  int find = code.indexOf("i <=");
+                  if (find != -1)
+                  {
+                      int end = code.indexOf(";", find);
+                      String s = code.substring(find + 5, end);
+                      int max = 0;
+                      try
+                      {
+                          max = Integer.parseInt(s);
+                      }
+                      catch (NumberFormatException e)
+                      {
+                          System.out.println("Couldn't parse int");
+                      }
+                      passed = max >= 12;
+                      getResults("i <= ?;", "i <= " + max + ";", "Iterations complete drawing", passed);
+                  } else
+                      getResults(
+                              "i <= ?;",
+                              "i <= ",
+                              "Could not find number of iterations - check spacing",
+                              passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -402,6 +430,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-turtle-snowflakes">
     <title>Coding Challenge: Turtle Snowflakes</title>
+
     <p>
       In the last exercise, you used nested for-loops to have the turtle draw a
       square repeatedly to make a snowflake. Use the Active Code window below or
@@ -487,119 +516,124 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          <![CDATA[
 
-public class TurtleSnowflakes
-{
-    public static void main(String[] args)
-    {
-        World world = new World(300, 300);
-        Turtle yertle = new Turtle(world);
-        yertle.setSpeed(25); // fast 0 - 100 slow
-        yertle.setColor(Color.blue);
+          import java.awt.*;
+          import java.util.*;
 
-        // Use this variable in the loops
-        int turnAmount = 30;
+          public class TurtleSnowflakes
+          {
+              public static void main(String[] args)
+              {
+                  World world = new World(300, 300);
+                  Turtle yertle = new Turtle(world);
+                  yertle.setSpeed(25); // fast 0 - 100 slow
+                  yertle.setColor(Color.blue);
 
-        // 1. Write a for loop that runs many times
-        // 2. Change it to use turnAmount to figure out how many times to run
+                  // Use this variable in the loops
+                  int turnAmount = 30;
 
-        // 1 &amp; 2. Write an inner loop that draws a triangle (3 sides, 120 degree
-        // turns)
-        // 3. Then change it to be any polygon with a variable n
+                  // 1. Write a for loop that runs many times
+                  // 2. Change it to use turnAmount to figure out how many times to run
 
-        // turn turnAmount degrees before drawing the polygon again
+                  // 1 & 2. Write an inner loop that draws a triangle (3 sides, 120 degree
+                  // turns)
+                  // 3. Then change it to be any polygon with a variable n
 
-        // 4. Add an if statement that changes the colors depending on the loop
-        // variables
+                  // turn turnAmount degrees before drawing the polygon again
 
-        world.show(true);
-    }
-}
+                  // 4. Add an if statement that changes the colors depending on the loop
+                  // variables
+
+                  world.show(true);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleSnowflakes");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TurtleSnowflakes");
+              }
 
-    @Test
-    public void test2()
-    {
-        String code = getCode();
-        String target = "for (int * = #; * ? *; *~)";
+              @Test
+              public void test2()
+              {
+                  String code = getCode();
+                  String target = "for (int * = #; * ? *; *~)";
 
-        int num = countOccurencesRegex(code, target);
+                  int num = countOccurencesRegex(code, target);
 
-        boolean passed = num == 2;
+                  boolean passed = num == 2;
 
-        getResults("2", "" + num, "2 For loops (nested)", passed);
-        assertTrue(passed);
-    }
+                  getResults("2", "" + num, "2 For loops (nested)", passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test3()
-    {
-        boolean passed = checkCodeContains("if statement to change colors", "if");
-        assertTrue(passed);
-    }
+              @Test
+              public void test3()
+              {
+                  boolean passed = checkCodeContains("if statement to change colors", "if");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test4()
-    {
-        String code = getCode();
-        String forwards = ".forward(";
+              @Test
+              public void test4()
+              {
+                  String code = getCode();
+                  String forwards = ".forward(";
 
-        int count = countOccurences(code, forwards);
+                  int count = countOccurences(code, forwards);
 
-        boolean passed = count == 1;
+                  boolean passed = count == 1;
 
-        passed =
-                getResults(
-                        "1 forward(...)",
-                        "" + count + " forward(...)",
-                        "Should only need forward() once",
-                        passed);
-        assertTrue(passed);
-    }
+                  passed =
+                          getResults(
+                                  "1 forward(...)",
+                                  "" + count + " forward(...)",
+                                  "Should only need forward() once",
+                                  passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test5()
-    {
-        String code = getCode();
-        String forwards = ".turn(";
+              @Test
+              public void test5()
+              {
+                  String code = getCode();
+                  String forwards = ".turn(";
 
-        int count = countOccurences(code, forwards);
+                  int count = countOccurences(code, forwards);
 
-        boolean passed = count == 2;
+                  boolean passed = count == 2;
 
-        passed =
-                getResults(
-                        "2 turn(...)",
-                        "" + count + " turn(...)",
-                        "Should only need turn(...) twice",
-                        passed);
-        assertTrue(passed);
-    }
+                  passed =
+                          getResults(
+                                  "2 turn(...)",
+                                  "" + count + " turn(...)",
+                                  "Should only need turn(...) twice",
+                                  passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test6()
-    {
-        boolean passed =
-                checkCodeContains(
-                        "Calculates number of iterations using turnAmount", "360/turnAmount");
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test6()
+              {
+                  boolean passed =
+                          checkCodeContains(
+                                  "Calculates number of iterations using turnAmount", "360/turnAmount");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </project>
@@ -607,6 +641,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-17">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
