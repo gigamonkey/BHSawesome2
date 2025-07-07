@@ -35,6 +35,7 @@
         the person icon at the top to register or login to your Runestone
         course.
       </p>
+      <xi:include href="./turtle-classes.ptx" />
     </introduction>
 
     <xi:include href="./frontmatter/toctree.ptx" />
