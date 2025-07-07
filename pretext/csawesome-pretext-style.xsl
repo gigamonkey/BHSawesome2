@@ -57,12 +57,10 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 
 <!-- Generate items that are hidden on the page -->
 <xsl:template match="hidden">
-  <!-- <xsl:message>=========================hidden========================</xsl:message> -->
   <div class="hidden">
     <xsl:apply-templates select="*" />
   </div>
 </xsl:template>
-
 
 <xsl:variable name="b-has-baseurl" select="not($baseurl = '')"/>
 
