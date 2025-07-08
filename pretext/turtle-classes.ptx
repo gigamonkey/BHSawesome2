@@ -4,6 +4,7 @@
   <title>Turtle classes</title>
   <datafile label="turtleClasses" filename="turtleClasses.jar" editable="no" hide="yes">
     <pre>
+      <![CDATA[
       import java.awt.Image;
       import java.awt.image.BufferedImage;
 
@@ -159,8 +160,8 @@
         private int width = 1;
 
         /** list of path segment objects to draw */
-        private List&lt;PathSegment&gt; pathSegmentList =
-          new ArrayList&lt;PathSegment&gt;();
+        private List<PathSegment> pathSegmentList =
+          new ArrayList<PathSegment>();
 
         //////////////// constructors ///////////////////
 
@@ -464,7 +465,7 @@
           // get the alpha value (starts at 25 so shift right 24)
           // then and it with all 1's for the first 8 bits to keep
           // end up with from 0 to 255
-          int alpha = (value &gt;&gt; 24) &amp; 0xff;
+          int alpha = (value >> 24) & 0xff;
 
           return alpha;
         }
@@ -485,7 +486,7 @@
           // get the red value (starts at 17 so shift right 16)
           // then AND it with all 1's for the first 8 bits to
           // end up with a resulting value from 0 to 255
-          int red = (value &gt;&gt; 16) &amp; 0xff;
+          int red = (value >> 16) & 0xff;
 
           return red;
         }
@@ -497,7 +498,7 @@
          */
         public static int getRed(int value)
         {
-          int red = (value &gt;&gt; 16) &amp; 0xff;
+          int red = (value >> 16) & 0xff;
           return red;
         }
 
@@ -515,7 +516,7 @@
           int value = picture.getBasicPixel(x,y);
 
           // get the green value (starts at 9 so shift right 8)
-          int green = (value &gt;&gt;  8) &amp; 0xff;
+          int green = (value >>  8) & 0xff;
 
           return green;
         }
@@ -527,7 +528,7 @@
          */
         public static int getGreen(int value)
         {
-          int green = (value &gt;&gt; 8) &amp; 0xff;
+          int green = (value >> 8) & 0xff;
           return green;
         }
 
@@ -545,7 +546,7 @@
           int value = picture.getBasicPixel(x,y);
 
           // get the blue value (starts at 0 so no shift required)
-          int blue = value &amp; 0xff;
+          int blue = value & 0xff;
 
           return blue;
         }
@@ -557,7 +558,7 @@
          */
         public static int getBlue(int value)
         {
-          int blue = value &amp; 0xff;
+          int blue = value & 0xff;
           return blue;
         }
 
@@ -575,13 +576,13 @@
           // get the red value (starts at 17 so shift right 16)
           // then AND it with all 1's for the first 8 bits to
           // end up with a resulting value from 0 to 255
-          int red = (value &gt;&gt; 16) &amp; 0xff;
+          int red = (value >> 16) & 0xff;
 
           // get the green value (starts at 9 so shift right 8)
-          int green = (value &gt;&gt;  8) &amp; 0xff;
+          int green = (value >>  8) & 0xff;
 
           // get the blue value (starts at 0 so no shift required)
-          int blue = value &amp; 0xff;
+          int blue = value & 0xff;
 
           return new Color(red,green,blue);
         }
@@ -612,7 +613,7 @@
         public void updatePicture(int alpha, int red, int green, int blue)
         {
           // create a 32 bit int with alpha, red, green blue from left to right
-          int value = (alpha &lt;&lt; 24) + (red &lt;&lt; 16) + (green &lt;&lt; 8) + blue;
+          int value = (alpha << 24) + (red << 16) + (green << 8) + blue;
 
           // update the picture with the int value
           picture.setBasicPixel(x,y,value);
@@ -625,9 +626,9 @@
          */
         private static int correctValue(int value)
         {
-          if (value &lt; 0)
+          if (value < 0)
             value = 0;
-          if (value &gt; 255)
+          if (value > 255)
             value = 255;
           return value;
         }
@@ -904,14 +905,14 @@
 
          // loop through the columns
          for (int sourceX = 0, targetX = 0;
-              sourceX &lt; sourcePicture.getWidth() &amp;&amp;
-              targetX &lt; this.getWidth();
+              sourceX < sourcePicture.getWidth() &&
+              targetX < this.getWidth();
               sourceX++, targetX++)
          {
            // loop through the rows
            for (int sourceY = 0, targetY = 0;
-                sourceY &lt; sourcePicture.getHeight() &amp;&amp;
-                targetY &lt; this.getHeight();
+                sourceY < sourcePicture.getHeight() &&
+                targetY < this.getHeight();
                 sourceY++, targetY++)
            {
              sourcePixel = sourcePicture.getPixel(sourceX,sourceY);
@@ -929,10 +930,10 @@
        public void setAllPixelsToAColor(Color color)
        {
          // loop through all x
-         for (int x = 0; x &lt; this.getWidth(); x++)
+         for (int x = 0; x < this.getWidth(); x++)
          {
            // loop through all y
-           for (int y = 0; y &lt; this.getHeight(); y++)
+           for (int y = 0; y < this.getHeight(); y++)
            {
              getPixel(x,y).setColor(color);
            }
@@ -1065,8 +1066,8 @@
          Pixel[] pixelArray = new Pixel[width * height];
 
          // loop through height rows from top to bottom
-         for (int row = 0; row &lt; height; row++)
-           for (int col = 0; col &lt; width; col++)
+         for (int row = 0; row < height; row++)
+           for (int col = 0; col < width; col++)
              pixelArray[row * width + col] = new Pixel(this,col,row);
 
          return pixelArray;
@@ -1083,8 +1084,8 @@
          Pixel[][] pixelArray = new Pixel[height][width];
 
          // loop through height rows from top to bottom
-         for (int row = 0; row &lt; height; row++)
-           for (int col = 0; col &lt; width; col++)
+         for (int row = 0; row < height; row++)
+           for (int col = 0; col < width; col++)
              pixelArray[row][col] = new Pixel(this,col,row);
 
          return pixelArray;
@@ -1118,7 +1119,7 @@
                // DatatypeConverter.printBase64Binary(output.toByteArray());
                // using java.util.Base64 instead of java.xml.bind.DataTypeConverter
                Base64.getEncoder().encodeToString(output.toByteArray());
-               System.out.println("&amp;lt;img src=\'data:image/" + this.extension + ";base64," + result + "\'/&gt;");
+               System.out.println("&lt;img src=\'data:image/" + this.extension + ";base64," + result + "\'/>");
            } catch (IOException e) {
                System.out.println("Errors occured in image conversion");
            }
@@ -1136,14 +1137,14 @@
 
          // set the extension
          int posDot = fileName.lastIndexOf('.');
-         if (posDot &gt;= 0)
+         if (posDot >= 0)
            this.extension = fileName.substring(posDot + 1);
 
           //get file location
           String[] paths = fileName.split("/");
           this.pathName = "";
           if(paths.length != 1) {
-              for(int i = 0; i &lt; paths.length - 1; i++) {
+              for(int i = 0; i < paths.length - 1; i++) {
                   this.pathName = this.pathName + paths[i] + "/";
               }
           }
@@ -1319,7 +1320,7 @@
 
          // get the extension
          int posDot = fileName.indexOf('.');
-         if (posDot &gt;= 0)
+         if (posDot >= 0)
              extension = fileName.substring(posDot + 1);
 
          // write the contents of the buffered image to the file
@@ -1414,11 +1415,13 @@
        }
 
       } // end of SimplePicture class
+      ]]>
     </pre>
   </datafile>
 
   <datafile label="turtleClasses2" filename="turtleClasses2.jar" editable="no" hide="yes">
     <pre>
+      <![CDATA[
       import javax.swing.*;
       import java.awt.*;
       import java.awt.font.*;
@@ -1606,18 +1609,18 @@
           if (dx == 0)
           {
             // if below the current turtle
-            if (dy &gt; 0)
+            if (dy > 0)
               heading = 180;
 
             // if above the current turtle
-            else if (dy &lt; 0)
+            else if (dy < 0)
               heading = 0;
           }
           // dx isn't 0 so can divide by it
           else
           {
             arcTan = Math.toDegrees(Math.atan(dy / dx));
-            if (dx &lt; 0)
+            if (dx < 0)
               heading = arcTan - 90;
             else
               heading = arcTan + 90;
@@ -1680,7 +1683,7 @@
         public Color getShellColor()
         {
           Color color = null;
-          if (this.shellColor == null &amp;&amp; this.bodyColor != null)
+          if (this.shellColor == null && this.bodyColor != null)
             color = bodyColor.darker();
           else color = this.shellColor;
           return color;
@@ -1886,7 +1889,7 @@
         public void setVisible(boolean value)
         {
           // if the turtle wasn't visible and now is
-          if (visible == false &amp;&amp; value == true)
+          if (visible == false && value == true)
           {
             // update the display
             this.updateDisplay();
@@ -1903,26 +1906,26 @@
         public synchronized void updateDisplay()
         {
           // check that x and y are at least 0
-          if (xPos &lt; 0)
+          if (xPos < 0)
             xPos = 0;
-          if (yPos &lt; 0)
+          if (yPos < 0)
             yPos = 0;
 
           // if picture
           if (picture != null)
           {
-            if (xPos &gt;= picture.getWidth())
+            if (xPos >= picture.getWidth())
               xPos = picture.getWidth() - 1;
-            if (yPos &gt;= picture.getHeight())
+            if (yPos >= picture.getHeight())
               yPos = picture.getHeight() - 1;
             Graphics g = picture.getGraphics();
             paintComponent(g);
           }
           else if (modelDisplay != null)
           {
-            if (xPos &gt;= modelDisplay.getWidth())
+            if (xPos >= modelDisplay.getWidth())
               xPos = modelDisplay.getWidth() - 1;
-            if (yPos &gt;= modelDisplay.getHeight())
+            if (yPos >= modelDisplay.getHeight())
               yPos = modelDisplay.getHeight() - 1;
             modelDisplay.modelChanged();
           }
@@ -2238,7 +2241,7 @@
               int length = filenames.length;
               BufferedImage[] img_list = new BufferedImage[length];
 
-              for (int i = 0; i &lt; length; i++)
+              for (int i = 0; i < length; i++)
               {
                   BufferedImage img = ImageIO.read(new File(filenames[i]));
                   img_list[i] = img;
@@ -2263,10 +2266,10 @@
               //Get bigger Width and Height
               for (BufferedImage img: images)
               {
-                  if(img.getHeight() &gt; maxHeight){
+                  if(img.getHeight() > maxHeight){
                       maxHeight = img.getHeight();
                   }
-                  if(img.getWidth() &gt; maxWidth){
+                  if(img.getWidth() > maxWidth){
                       maxWidth = img.getWidth();
                   }
               }
@@ -2292,7 +2295,7 @@
           // Retrieve gif writer
           private static ImageWriter getWriter() throws IIOException
           {
-              Iterator&lt;ImageWriter&gt; itr = ImageIO.getImageWritersByFormatName("gif");
+              Iterator<ImageWriter> itr = ImageIO.getImageWritersByFormatName("gif");
               if(itr.hasNext())
                   return (ImageWriter)itr.next();
 
@@ -2343,7 +2346,7 @@
 
               app_node.setAttribute("applicationID", "NETSCAPE");
               app_node.setAttribute("authenticationCode", "2.0");
-              app_node.setUserObject(new byte[]{ 0x1, (byte) (0 &amp; 0xFF), (byte) ((0 &gt;&gt; 8) &amp; 0xFF)});
+              app_node.setUserObject(new byte[]{ 0x1, (byte) (0 & 0xFF), (byte) ((0 >> 8) & 0xFF)});
 
               app_extensions.appendChild(app_node);
               root.appendChild(app_extensions);
@@ -2355,7 +2358,7 @@
           {
               IIOMetadataNode node = null;
 
-              for (int i = 0; i &lt; root.getLength(); i++)
+              for (int i = 0; i < root.getLength(); i++)
               {
                   if(root.item(i).getNodeName().compareToIgnoreCase(node_name) == 0)
                   {
@@ -2416,13 +2419,13 @@
         private int delay = 50;
 
         /** the list of turtles in the world */
-        private List&lt;Turtle&gt; turtleList = new ArrayList&lt;Turtle&gt;();
+        private List<Turtle> turtleList = new ArrayList<Turtle>();
 
         /** background picture */
         private Picture picture = null;
 
         /* All world changes*/
-        private List&lt;Picture&gt; worldHistory = new ArrayList&lt;Picture&gt;();
+        private List<Picture> worldHistory = new ArrayList<Picture>();
 
 
         ////////////////// the constructors ///////////////
@@ -2576,7 +2579,7 @@
          * @param speed
          */
         public void setSpeed(int d) {
-           if (d &gt;= 0 &amp;&amp; d &lt;= 100)
+           if (d >= 0 && d <= 100)
                delay = d;
         }
 
@@ -2609,7 +2612,7 @@
             if(showHistory) {
                 try {
                     BufferedImage[] images = new BufferedImage[this.worldHistory.size()];
-                    for(int i = 0; i &lt; this.worldHistory.size(); i++) {
+                    for(int i = 0; i < this.worldHistory.size(); i++) {
                         images[i] = ((Picture) this.worldHistory.get(i)).getBufferedImage();
                     }
                     Giffer.generateFromBI(images, "history.gif", delay, false);
@@ -2627,7 +2630,7 @@
                     System.gc();
                     history.delete();
                     double rand = Math.random();
-                    System.out.println("&amp;lt;img src=\'data:image/gif;base64," + result + "\'/&gt;");
+                    System.out.println("&lt;img src=\'data:image/gif;base64," + result + "\'/>");
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -2646,7 +2649,7 @@
               int bytesRead;
               InputStream stream = toDownload.openStream();
 
-              while ((bytesRead = stream.read(chunk)) &gt; 0) {
+              while ((bytesRead = stream.read(chunk)) > 0) {
                   outputStream.write(chunk, 0, bytesRead);
               }
               //toDownload.close();
@@ -2685,6 +2688,7 @@
         }
 
       } // end of World class
+      ]]>
     </pre>
   </datafile>
 </appendix>
