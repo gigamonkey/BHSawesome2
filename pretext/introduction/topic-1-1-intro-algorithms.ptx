@@ -94,16 +94,14 @@
       Here is the template for a simple Java program with a <c>main</c> method:
     </p>
 
-    <program language="java">
-      <code>
-        public class MyClass
-        {
-            public static void main(String[] args)
-            {
-                // Put your code here!
-            }
-        }
-      </code>
+    <program>
+      public class MyClass
+      {
+          public static void main(String[] args)
+          {
+              // Put your code here!
+          }
+      }
     </program>
 
     <p>
@@ -129,7 +127,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class MyClass
           {
@@ -371,15 +369,13 @@
       good commenting:
     </p>
 
-    <program language="java">
-      <code>
-        /* MyClass.java
-           Programmer: My Name
-           Date:
-        */
+    <program>
+      /* MyClass.java
+         Programmer: My Name
+         Date:
+      */
 
-        int max = 10; // this keeps track of the max score
-      </code>
+      int max = 10; // this keeps track of the max score
     </program>
   </subsection>
 
@@ -414,7 +410,7 @@
         <li>
           <p>A basic Java program looks like the following:</p>
 
-          <program language="java">
+          <program>
             public class MyClass {
               public static void main(String[] args) {
                 System.out.println("Hi there!");

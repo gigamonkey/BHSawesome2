@@ -41,13 +41,15 @@
       for building a counting <c>while</c> loop?
     </p>
 
-    <ol>
-      <li>Initialize the loop variable</li>
+    <p>
+      <ol>
+        <li>Initialize the loop variable</li>
 
-      <li>Test the loop variable</li>
+        <li>Test the loop variable</li>
 
-      <li>Update the loop variable</li>
-    </ol>
+        <li>Update the loop variable</li>
+      </ol>
+    </p>
 
     <p>
       The purpose of a <c>for</c> loop is to provide a structure that gives us
@@ -117,23 +119,21 @@
       </p>
 
       <program>
-        <code>
-          <![CDATA[
+        <![CDATA[
 
-          // These loops both run 10 times
+        // These loops both run 10 times
 
-          // If you start at 0, use <
-          for (int i = 0; i < 10; i++) {
-             System.out.println(i);
-          }
+        // If you start at 0, use <
+        for (int i = 0; i < 10; i++) {
+           System.out.println(i);
+        }
 
-          // If you start at 1, use <=
-          for (int i = 1; i <= 10; i++) {
-             System.out.println(i);
-          }
+        // If you start at 1, use <=
+        for (int i = 1; i <= 10; i++) {
+           System.out.println(i);
+        }
 
-          ]]>
-        </code>
+        ]]>
       </program>
     </note>
   </subsection>
@@ -198,7 +198,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           <![CDATA[
 
@@ -244,7 +244,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           <![CDATA[
 
@@ -377,7 +377,7 @@
       <statement>
         <p>What does the following code print?</p>
 
-        <program language="java">
+        <program>
           <![CDATA[
 
           for (int i = 1; i <= 10; i++) {
@@ -587,7 +587,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           <![CDATA[
 
@@ -676,7 +676,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           <![CDATA[
 
@@ -727,57 +727,59 @@
       in as an argument.
     </p>
 
-    <ol>
-      <li>
-        <p>
-          Complete the <c>drawSquare</c> method to use a <c>for</c> loop to have
-          the Turtle t draw a square.
-        </p>
-      </li>
+    <p>
+      <ol>
+        <li>
+          <p>
+            Complete the <c>drawSquare</c> method to use a <c>for</c> loop to
+            have the Turtle t draw a square.
+          </p>
+        </li>
 
-      <li>
-        <p>
-          Complete the <c>drawTriangle</c> method to use a <c>for</c> loop to
-          draw an equilateral triangle. How many times should the loop run? It
-          ran 4 times for a square, so how many for a triangle? What angle
-          should you use for the turns? One way to figure this out is to notice
-          that to complete a shape, all the exterior angles should add up to 360
-          degrees. So, for a square 4x90 = 360. What angle times 3 will give you
-          360?
-        </p>
-      </li>
+        <li>
+          <p>
+            Complete the <c>drawTriangle</c> method to use a <c>for</c> loop to
+            draw an equilateral triangle. How many times should the loop run? It
+            ran 4 times for a square, so how many for a triangle? What angle
+            should you use for the turns? One way to figure this out is to
+            notice that to complete a shape, all the exterior angles should add
+            up to 360 degrees. So, for a square 4x90 = 360. What angle times 3
+            will give you 360?
+          </p>
+        </li>
 
-      <li>
-        <p>
-          Complete the <c>drawPentagon</c> method to use a <c>for</c> loop to
-          draw a pentagon (which has 5 sides and looks like a stop sign). What
-          external angle should you use for the turns? Remember they have to add
-          up to 360 degrees after 5 turns.
-        </p>
-      </li>
+        <li>
+          <p>
+            Complete the <c>drawPentagon</c> method to use a <c>for</c> loop to
+            draw a pentagon (which has 5 sides and looks like a stop sign). What
+            external angle should you use for the turns? Remember they have to
+            add up to 360 degrees after 5 turns.
+          </p>
+        </li>
 
-      <li>
-        <p>
-          Complete the <c>drawPolygon</c> method to use a <c>for</c> loop to
-          draw any polygong with <c>n</c> sides of length <c>pixels</c> given as
-          arguments. Use <c>n</c> in your loop for the number of sides (or the
-          number of iterations). Use <c>pixels</c> for the amount to move
-          forward. Calculate the angle to turn by using a formula that uses n
-          and 360, so that n turns add up to 360 degrees.
-        </p>
-      </li>
+        <li>
+          <p>
+            Complete the <c>drawPolygon</c> method to use a <c>for</c> loop to
+            draw any polygong with <c>n</c> sides of length <c>pixels</c> given
+            as arguments. Use <c>n</c> in your loop for the number of sides (or
+            the number of iterations). Use <c>pixels</c> for the amount to move
+            forward. Calculate the angle to turn by using a formula that uses n
+            and 360, so that n turns add up to 360 degrees.
+          </p>
+        </li>
 
-      <li>
-        <p>
-          In the main method, call the <c>drawPolygon</c> method to draw a
-          hexagon (6 sides). This method can draw a variety of shapes by just
-          changing the value of the argument n. The power of abstraction! Try
-          drawing other shapes with it. Note that if the turtle runs into walls,
-          it stays there and will mess up the shape, so you may have to move the
-          turtle or go forward smaller amounts.
-        </p>
-      </li>
-    </ol>
+        <li>
+          <p>
+            In the main method, call the <c>drawPolygon</c> method to draw a
+            hexagon (6 sides). This method can draw a variety of shapes by just
+            changing the value of the argument n. The power of abstraction! Try
+            drawing other shapes with it. Note that if the turtle runs into
+            walls, it stays there and will mess up the shape, so you may have to
+            move the turtle or go forward smaller amounts.
+          </p>
+        </li>
+      </ol>
+    </p>
 
     <project label="challenge-TurtleLoopShapes">
       <statement>
@@ -789,7 +791,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
           import java.awt.*;
           import java.util.*;
@@ -976,23 +978,21 @@
       <statement>
         <p>Consider the following code segment.</p>
 
-        <program language="java">
-          <code>
-            <![CDATA[
+        <program>
+          <![CDATA[
 
-            int count = 0, sum = 0;
-            while (count <= 6)
-            {
-                count++;
-                if (count % 2 == 0)
-                {
-                    sum += count;
-                }
-            }
-            System.out.println(sum);
+          int count = 0, sum = 0;
+          while (count <= 6)
+          {
+              count++;
+              if (count % 2 == 0)
+              {
+                  sum += count;
+              }
+          }
+          System.out.println(sum);
 
-            ]]>
-          </code>
+          ]]>
         </program>
 
         <p>
@@ -1000,35 +1000,33 @@
           the code segment above?
         </p>
 
-        <program language="java">
-          <code>
-            <![CDATA[
+        <program>
+          <![CDATA[
 
-            I.  int sum = 0;
-                for (int count = 0; count <= 6; count++) {
-                    count++;
-                    if (count % 2 == 0) {
-                         sum += count;
-                    }
-                }
-                System.out.println(sum);
+          I.  int sum = 0;
+              for (int count = 0; count <= 6; count++) {
+                  count++;
+                  if (count % 2 == 0) {
+                       sum += count;
+                  }
+              }
+              System.out.println(sum);
 
-            II. int sum = 0;
-                for (int i = 0; i <= 6; i += 2) {
-                   sum += i;
-                }
-                System.out.println(sum);
+          II. int sum = 0;
+              for (int i = 0; i <= 6; i += 2) {
+                 sum += i;
+              }
+              System.out.println(sum);
 
-            III. int sum = 0;
-                 for (int j = 7; j > 1; j--) {
-                    if (j % 2 == 0) {
-                         sum += j;
-                    }
-                 }
-                 System.out.println(sum);
+          III. int sum = 0;
+               for (int j = 7; j > 1; j--) {
+                  if (j % 2 == 0) {
+                       sum += j;
+                  }
+               }
+               System.out.println(sum);
 
-            ]]>
-          </code>
+          ]]>
         </program>
       </statement>
 
@@ -1102,18 +1100,16 @@
       <statement>
         <p>Consider the following code segment.</p>
 
-        <program language="java">
-          <code>
-            <![CDATA[
+        <program>
+          <![CDATA[
 
-            int result = 1;
-            for (int i = 3; i < 6; i += 2) {
-              result *= i;
-            }
-            System.out.println(result);
+          int result = 1;
+          for (int i = 3; i < 6; i += 2) {
+            result *= i;
+          }
+          System.out.println(result);
 
-            ]]>
-          </code>
+          ]]>
         </program>
 
         <p>

@@ -46,7 +46,7 @@
       the result might look something like this:
     </p>
 
-    <program language="java">
+    <program>
       public static int add(int a, int b)
     </program>
 
@@ -67,7 +67,7 @@
       side effects such drawing a square on the screen might look like this:
     </p>
 
-    <program language="java">
+    <program>
       public static void drawSquare(int x, int y, int width, int height)
     </program>
   </subsection>
@@ -113,7 +113,7 @@
       declaration:
     </p>
 
-    <program language="java">
+    <program>
       int sum = add(10, 20);
     </program>
   </subsection>
@@ -137,7 +137,7 @@
       method definition would look like this:
     </p>
 
-    <program language="java">
+    <program>
       public static int add(int a, int b) {
         return a + b;
       }
@@ -148,7 +148,7 @@
       a line like:
     </p>
 
-    <program language="java">
+    <program>
       int sum = add(10, 20);
     </program>
 
@@ -161,7 +161,7 @@
       value of the method call. In other words, roughly equivalent to this.
     </p>
 
-    <program language="java">
+    <program>
       int a = 10;
       int b = 20;
       int sum = a + b;
@@ -186,20 +186,18 @@
         </p>
       </statement>
 
-      <program interactive="codelens" language="java" label="check-add" xml:id="check-add">
-        <code>
-          public class CheckAdd {
+      <program interactive="codelens" label="check-add" xml:id="check-add">
+        public class CheckAdd {
 
-            public static int add(int a, int b) {
-              return a + b;
-            }
-
-            public static void main(String[] args) {
-              int sum = add(10, 20);
-              System.out.println(sum);
-            }
+          public static int add(int a, int b) {
+            return a + b;
           }
-        </code>
+
+          public static void main(String[] args) {
+            int sum = add(10, 20);
+            System.out.println(sum);
+          }
+        }
       </program>
     </activity>
   </subsection>
@@ -285,28 +283,26 @@
         </p>
       </statement>
 
-      <program interactive="codelens" language="java" label="codelensSong1" xml:id="codelensSong1">
-        <code>
-          public class OldMacDonaldSong {
-            public static void chorus() {
-              System.out.println("Old MacDonald had a farm");
-              eieio();
-            }
-
-            public static void eieio() {
-              System.out.println("E-I-E-I-O");
-            }
-
-            public static void main(String[] args) {
-              chorus();
-              System.out.println("And on that farm they had a cow.");
-              eieio();
-              System.out.println("With a moo moo here and a moo moo there");
-              System.out.println("Here a moo, there a moo, everywhere a moo moo");
-              chorus();
-            }
+      <program interactive="codelens" label="codelensSong1" xml:id="codelensSong1">
+        public class OldMacDonaldSong {
+          public static void chorus() {
+            System.out.println("Old MacDonald had a farm");
+            eieio();
           }
-        </code>
+
+          public static void eieio() {
+            System.out.println("E-I-E-I-O");
+          }
+
+          public static void main(String[] args) {
+            chorus();
+            System.out.println("And on that farm they had a cow.");
+            eieio();
+            System.out.println("With a moo moo here and a moo moo there");
+            System.out.println("Here a moo, there a moo, everywhere a moo moo");
+            chorus();
+          }
+        }
       </program>
     </activity>
 
@@ -333,7 +329,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class OldMacDonaldSong {
               public static void chorus() {
@@ -419,30 +415,28 @@
           to see what happens.
         </p>
 
-        <program language="java">
-          <code>
-            public class Song {
-                public static void print() {
-                    System.out.print("I like to ");
-                    eat();
-                    eat();
-                    eat();
-                    fruit();
-                }
+        <program>
+          public class Song {
+              public static void print() {
+                  System.out.print("I like to ");
+                  eat();
+                  eat();
+                  eat();
+                  fruit();
+              }
 
-                public static void fruit() {
-                    System.out.println("apples and bananas!");
-                }
+              public static void fruit() {
+                  System.out.println("apples and bananas!");
+              }
 
-                public static void eat() {
-                    System.out.print("eat ");
-                }
+              public static void eat() {
+                  System.out.print("eat ");
+              }
 
-                public static void main(String[] args) {
-                    print();
-                }
-            }
-          </code>
+              public static void main(String[] args) {
+                  print();
+              }
+          }
         </program>
       </statement>
 
@@ -592,21 +586,19 @@
       <c>animal</c> and <c>sound</c>.
     </p>
 
-    <program language="java">
-      <code>
-        /* This method prints out a verse for any given animal and sound.
-           @param animal - the name of the animal
-           @param sound - the sound the animal makes
-        */
-        public static void verse(String animal, String sound) {
-            System.out.println("And on this farm, they had a " + animal);
-            eieio();
-            System.out.println("With a " + sound + " " + sound +
-                               " here and a " + sound + " " + sound + " there");
-            System.out.println("Here a " + sound + ", there a " + sound +
-                               ", everywhere a " + sound + " " + sound);
-        }
-      </code>
+    <program>
+      /* This method prints out a verse for any given animal and sound.
+         @param animal - the name of the animal
+         @param sound - the sound the animal makes
+      */
+      public static void verse(String animal, String sound) {
+          System.out.println("And on this farm, they had a " + animal);
+          eieio();
+          System.out.println("With a " + sound + " " + sound +
+                             " here and a " + sound + " " + sound + " there");
+          System.out.println("Here a " + sound + ", there a " + sound +
+                             ", everywhere a " + sound + " " + sound);
+      }
     </program>
 
     <p>
@@ -618,16 +610,14 @@
       easier to see.
     </p>
 
-    <program language="java">
-      <code>
-        public static void main(String[] args) {
-            chorus();
-            verse("cow", "moo");
-            chorus();
-            verse("duck", "quack");
-            chorus();
-        }
-      </code>
+    <program>
+      public static void main(String[] args) {
+          chorus();
+          verse("cow", "moo");
+          chorus();
+          verse("duck", "quack");
+          chorus();
+      }
     </program>
 
     <p>
@@ -670,36 +660,34 @@
         </p>
       </statement>
 
-      <program interactive="codelens" language="java" label="codelensSong2" xml:id="codelensSong2">
-        <code>
-          public class OldMacDonaldSong {
-            public static void chorus() {
-              System.out.println("Old MacDonald had a farm");
-              eieio();
-            }
-
-            public static void eieio() {
-              System.out.println("E-I-E-I-O");
-            }
-
-            public static void verse(String animal, String sound) {
-              System.out.println("And on this farm, they had a " + animal);
-              eieio();
-              System.out.println("With a " + sound + " " + sound +
-                                 " here and a " + sound + " " + sound + " there");
-              System.out.println("Here a " + sound + ", there a " + sound +
-                                 ", everywhere a " + sound + " " + sound);
-            }
-
-            public static void main(String[] args) {
-              chorus();
-              verse("cow", "moo");
-              chorus();
-              verse("duck", "quack");
-              chorus();
-            }
+      <program interactive="codelens" label="codelensSong2" xml:id="codelensSong2">
+        public class OldMacDonaldSong {
+          public static void chorus() {
+            System.out.println("Old MacDonald had a farm");
+            eieio();
           }
-        </code>
+
+          public static void eieio() {
+            System.out.println("E-I-E-I-O");
+          }
+
+          public static void verse(String animal, String sound) {
+            System.out.println("And on this farm, they had a " + animal);
+            eieio();
+            System.out.println("With a " + sound + " " + sound +
+                               " here and a " + sound + " " + sound + " there");
+            System.out.println("Here a " + sound + ", there a " + sound +
+                               ", everywhere a " + sound + " " + sound);
+          }
+
+          public static void main(String[] args) {
+            chorus();
+            verse("cow", "moo");
+            chorus();
+            verse("duck", "quack");
+            chorus();
+          }
+        }
       </program>
     </activity>
 
@@ -716,7 +704,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class OldMacDonaldSong {
               public static void chorus() {
@@ -848,7 +836,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class AntsSong
           {
@@ -1001,12 +989,10 @@
       indicate that the method returns an integer value.
     </p>
 
-    <program language="java">
-      <code>
-        public static int square(int number) {
-            return number * number;
-        }
-      </code>
+    <program>
+      public static int square(int number) {
+          return number * number;
+      }
     </program>
 
     <p>
@@ -1033,22 +1019,20 @@
         </p>
       </statement>
 
-      <program interactive="codelens" language="java" label="codeLenssq" xml:id="codelensidsq">
-        <code>
-          public class SquareMethod {
-             public static int square(int number) {
-                 return number * number;
-             }
+      <program interactive="codelens" label="codeLenssq" xml:id="codelensidsq">
+        public class SquareMethod {
+           public static int square(int number) {
+               return number * number;
+           }
 
-             public static void main(String[] args) {
-                 int x = 5;
-                 int y = square(x);
-                 System.out.println("The square of " + x + " is " + y);
-                 x = 4;
-                 System.out.println("The square of " + x + " is " + square(x));
-             }
-          }
-        </code>
+           public static void main(String[] args) {
+               int x = 5;
+               int y = square(x);
+               System.out.println("The square of " + x + " is " + y);
+               x = 4;
+               System.out.println("The square of " + x + " is " + square(x));
+           }
+        }
       </program>
     </activity>
 
@@ -1061,14 +1045,12 @@
       value becomes the argument to the method being called.
     </p>
 
-    <program language="java">
-      <code>
-        // Saving the returned value of the square method in a variable
-        int y = square(5);
-        System.out.println(y); // prints 25
-        // Printing the returned value of the square method directly
-        System.out.println(square(4)); // prints 16
-      </code>
+    <program>
+      // Saving the returned value of the square method in a variable
+      int y = square(5);
+      System.out.println(y); // prints 25
+      // Printing the returned value of the square method directly
+      System.out.println(square(4)); // prints 16
     </program>
 
     <activity label="squareMethod">
@@ -1081,7 +1063,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class SquareMethod {
                public static int square(int number) {
@@ -1129,22 +1111,20 @@
       <statement>
         <p>What does the following code print out?</p>
 
-        <program language="java">
-          <code>
-            public class MethodTrace {
-                public static int square(int x) {
-                    return x * x;
-                }
+        <program>
+          public class MethodTrace {
+              public static int square(int x) {
+                  return x * x;
+              }
 
-                public static int divide(int x, int y) {
-                    return x / y;
-                }
+              public static int divide(int x, int y) {
+                  return x / y;
+              }
 
-                public static void main(String[] args) {
-                    System.out.println(square(3) + divide(5,2));
-                }
-            }
-          </code>
+              public static void main(String[] args) {
+                  System.out.println(square(3) + divide(5,2));
+              }
+          }
         </program>
       </statement>
 
@@ -1243,7 +1223,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class MathMethods {
                /** Returns the square of a number. Do NOT change */
@@ -1443,27 +1423,25 @@
       <statement>
         <p>Consider the following class definition.</p>
 
-        <program language="java">
-          <code>
-            public class Cat
-            {
-                public static void sound1()
-                {
-                    System.out.print("meow ");
-                }
+        <program>
+          public class Cat
+          {
+              public static void sound1()
+              {
+                  System.out.print("meow ");
+              }
 
-                public static void sound2()
-                {
-                    System.out.print("purr ");
-                }
+              public static void sound2()
+              {
+                  System.out.print("purr ");
+              }
 
-                public static void hello()
-                {
-                    sound2();
-                    sound1();
-                }
-            }
-          </code>
+              public static void hello()
+              {
+                  sound2();
+                  sound1();
+              }
+          }
         </program>
 
         <p>
@@ -1475,10 +1453,8 @@
       <choices>
         <choice>
           <statement id="AP-trace-method-calls_opt_a">
-            <program language="java">
-              <code>
-                hello();
-              </code>
+            <program>
+              hello();
             </program>
           </statement>
 
@@ -1489,11 +1465,9 @@
 
         <choice correct="yes">
           <statement id="AP-trace-method-calls_opt_b">
-            <program language="java">
-              <code>
-                hello();
-                sound2();
-              </code>
+            <program>
+              hello();
+              sound2();
             </program>
           </statement>
 
@@ -1504,12 +1478,10 @@
 
         <choice>
           <statement id="AP-trace-method-calls_opt_c">
-            <program language="java">
-              <code>
-                sound1()
-                sound2();
-                sound1();
-              </code>
+            <program>
+              sound1()
+              sound2();
+              sound1();
             </program>
           </statement>
 
@@ -1522,12 +1494,10 @@
 
         <choice>
           <statement id="AP-trace-method-calls_opt_d">
-            <program language="java">
-              <code>
-                purr();
-                meow();
-                purr()
-              </code>
+            <program>
+              purr();
+              meow();
+              purr()
             </program>
           </statement>
 
@@ -1547,11 +1517,9 @@
       <statement>
         <p>Consider the following method.</p>
 
-        <program language="java">
-          <code>
-            public static double calculatePizzaBoxes(int numOfPeople, double slicesPerBox)
-            { /*implementation not shown */}
-          </code>
+        <program>
+          public static double calculatePizzaBoxes(int numOfPeople, double slicesPerBox)
+          { /*implementation not shown */}
         </program>
 
         <p>
@@ -1635,23 +1603,21 @@
       <statement>
         <p>Consider the following methods:</p>
 
-        <program language="java">
-          <code>
-            <![CDATA[
+        <program>
+          <![CDATA[
 
-            public void static inchesToCentimeters(double i)
-            {
-                double c = i * 2.54;
-                printInCentimeters(i, c);
-            }
+          public void static inchesToCentimeters(double i)
+          {
+              double c = i * 2.54;
+              printInCentimeters(i, c);
+          }
 
-            public void static printInCentimeters(double inches, double centimeters)
-            {
-                System.out.print(inches + "-->" + centimeters);
-            }
+          public void static printInCentimeters(double inches, double centimeters)
+          {
+              System.out.print(inches + "-->" + centimeters);
+          }
 
-            ]]>
-          </code>
+          ]]>
         </program>
 
         <p>

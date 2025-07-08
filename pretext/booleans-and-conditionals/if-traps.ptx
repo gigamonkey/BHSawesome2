@@ -28,14 +28,14 @@
       braces if the body of the <c>if</c> is just one statement. Thus this:
     </p>
 
-    <program language="java">
+    <program>
       if (someBoolean)
         doSomething();
     </program>
 
     <p>is equivalent to this:</p>
 
-    <program language="java">
+    <program>
       if (someBoolean) {
         doSomething();
       }
@@ -47,7 +47,7 @@
       <c>doSomething()</c> and you aren’t careful you might end up with this:
     </p>
 
-    <program language="java">
+    <program>
       if (someBoolean)
         System.out.println("About to do something.");
         doSomething();
@@ -58,7 +58,7 @@
       equivalent to this:
     </p>
 
-    <program language="java">
+    <program>
       if (someBoolean) {
         System.out.println("About to do something.");
       }
@@ -186,7 +186,7 @@
       equivalent to:
     </p>
 
-    <program language="java">
+    <program>
       if (someBoolean)
           ;
       doSomething();
@@ -370,7 +370,7 @@
         it to.
       </p>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Test1 {
               public static void main(String[] args) {

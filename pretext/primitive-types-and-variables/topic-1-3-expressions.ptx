@@ -91,7 +91,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Test1 {
               public static void main(String[] args) {
@@ -186,7 +186,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Test1 {
               public static void main(String[] args) {
@@ -358,7 +358,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class CmToInches {
               public static void main(String[] args) {
@@ -463,7 +463,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class TestCompound {
               public static void main(String[] args) {
@@ -517,7 +517,7 @@
         <p>Complete the following expressions for a pay calculator.</p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           <![CDATA[
 
@@ -700,10 +700,8 @@
       <statement>
         <p>Consider the following code segment.</p>
 
-        <program language="java">
-          <code>
-            System.out.println(5 + 5 / 2 * 3 - 1);
-          </code>
+        <program>
+          System.out.println(5 + 5 / 2 * 3 - 1);
         </program>
 
         <p>What is printed when the code segment is executed?</p>

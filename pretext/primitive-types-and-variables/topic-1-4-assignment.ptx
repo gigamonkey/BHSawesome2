@@ -54,10 +54,8 @@
       initialize the variable with something like this:
     </p>
 
-    <program language="java">
-      <code>
-        int score = 0;
-      </code>
+    <program>
+      int score = 0;
     </program>
 
     <p>
@@ -67,10 +65,8 @@
       <c>score</c> with a line like this:
     </p>
 
-    <program language="java">
-      <code>
-        score = score + 1;
-      </code>
+    <program>
+      score = score + 1;
     </program>
 
     <p>
@@ -89,10 +85,8 @@
         a variable once. If we did write:
       </p>
 
-      <program language="java">
-        <code>
-          int score = score + 1;
-        </code>
+      <program>
+        int score = score + 1;
       </program>
 
       <p>
@@ -113,7 +107,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Test1 {
               public static void main(String[] args) {
@@ -176,7 +170,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Asgn {
               public static void main(String[] args) {
@@ -251,25 +245,23 @@
         </p>
       </statement>
 
-      <program interactive="codelens" language="java" label="codeLens1" xml:id="codelensid1">
-        <code>
-          public class Test2
+      <program interactive="codelens" label="codeLens1" xml:id="codelensid1">
+        public class Test2
+        {
+          public static void main(String[] args)
           {
-            public static void main(String[] args)
-            {
-              int x = 3;
-              int y = 2;
-              System.out.println(x);
-              System.out.println(y);
-              x = y;
-              System.out.println(x);
-              System.out.println(y);
-              y = 5;
-              System.out.println(x);
-              System.out.println(y);
-            }
+            int x = 3;
+            int y = 2;
+            System.out.println(x);
+            System.out.println(y);
+            x = y;
+            System.out.println(x);
+            System.out.println(y);
+            y = 5;
+            System.out.println(x);
+            System.out.println(y);
           }
-        </code>
+        }
       </program>
     </activity>
 
@@ -285,15 +277,13 @@
           visualizer</url> link.
         </p>
 
-        <program language="java">
-          <code>
-            int x = 0;
-            int y = 1;
-            int z = 2;
-            x = y;
-            y = y * 2;
-            z = 3;
-          </code>
+        <program>
+          int x = 0;
+          int y = 1;
+          int z = 2;
+          x = y;
+          y = y * 2;
+          z = 3;
         </program>
       </statement>
 
@@ -425,7 +415,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Challenge1_4
           {
@@ -616,14 +606,12 @@
       <statement>
         <p>Consider the following code segment.</p>
 
-        <program language="java">
-          <code>
-            int a = 5;
-            int b = a / 2;
-            double c = a / 2.0;
-            double d = 5 + a / b * c - 2;
-            System.out.println(d);
-          </code>
+        <program>
+          int a = 5;
+          int b = a / 2;
+          double c = a / 2.0;
+          double d = 5 + a / b * c - 2;
+          System.out.println(d);
         </program>
 
         <p>What is printed when the code segment is executed?</p>

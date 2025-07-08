@@ -61,13 +61,11 @@
       differs, being the same same as the type of the parameter.
     </p>
 
-    <program language="java">
-      <code>
-        Math.abs(45);    // returns 45
-        Math.abs(-45);   // returns 45
-        Math.abs(33.3);  // returns 33.3
-        Math.abs(-33.3); // returns 33.3
-      </code>
+    <program>
+      Math.abs(45);    // returns 45
+      Math.abs(-45);   // returns 45
+      Math.abs(33.3);  // returns 33.3
+      Math.abs(-33.3); // returns 33.3
     </program>
 
     <p>
@@ -81,12 +79,10 @@
       represented by an <c>int</c>.
     </p>
 
-    <program language="java">
-      <code>
-        Math.pow(2 , 3); // returns 8.0, not 8
-        Math.pow(10, 6); // returns 1000000.0, not 1000000
-        Math.pow(2, -3); // returns 0.125
-      </code>
+    <program>
+      Math.pow(2 , 3); // returns 8.0, not 8
+      Math.pow(10, 6); // returns 1000000.0, not 1000000
+      Math.pow(2, -3); // returns 0.125
     </program>
 
     <note>
@@ -112,11 +108,9 @@
       could have been reprenested with an <c>int</c>.
     </p>
 
-    <program language="java">
-      <code>
-        Math.sqrt(2); // returns 1.4142135623730951
-        Math.sqrt(9); // returns 3.0, not 3
-      </code>
+    <program>
+      Math.sqrt(2); // returns 1.4142135623730951
+      Math.sqrt(9); // returns 3.0, not 3
     </program>
 
     <p>
@@ -125,10 +119,8 @@
       as assigning the value to a variable or printing it out.
     </p>
 
-    <program language="java">
-      <code>
-        System.out.println("The square root of 9 is " + Math.sqrt(9));
-      </code>
+    <program>
+      System.out.println("The square root of 9 is " + Math.sqrt(9));
     </program>
 
     <activity label="trymath">
@@ -142,7 +134,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class TryMath {
               public static void main(String[] args) {
@@ -338,7 +330,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class DistanceCalculator {
 
@@ -448,7 +440,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Test3 {
               public static void main(String[] args) {
@@ -530,7 +522,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class StretchedRandom {
               public static void main(String[] args) {
@@ -570,11 +562,9 @@
       throw away any values after the decimal point. For example,
     </p>
 
-    <program language="java">
-      <code>
-        // rnd will be an integer in the range 0-9 (from 0 up to 10).
-        int rnd = (int) (Math.random() * 10);
-      </code>
+    <program>
+      // rnd will be an integer in the range 0-9 (from 0 up to 10).
+      int rnd = (int) (Math.random() * 10);
     </program>
 
     <p>
@@ -586,11 +576,9 @@
       1 in this case.
     </p>
 
-    <program language="java">
-      <code>
-        // rnd will be an integer in the range 1-10 (including 10).
-        int rnd = (int) (Math.random() * 10) + 1;
-      </code>
+    <program>
+      // rnd will be an integer in the range 1-10 (including 10).
+      int rnd = (int) (Math.random() * 10) + 1;
     </program>
 
     <activity label="randomRange">
@@ -608,7 +596,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Test4 {
               public static void main(String[] args) {
@@ -642,23 +630,21 @@
       Here are some examples that move a random number into a specific range.
     </p>
 
-    <program language="java">
-      <code>
-        // Math.random() returns a random number between 0.0 (inclusive) and 1.0 (exclusive)
-        double rnd = Math.random();
+    <program>
+      // Math.random() returns a random number between 0.0 (inclusive) and 1.0 (exclusive)
+      double rnd = Math.random();
 
-        // rnd1 is an integer in the range 0-9 (including 9).
-        int rnd1 = (int) (Math.random() * 10);
+      // rnd1 is an integer in the range 0-9 (including 9).
+      int rnd1 = (int) (Math.random() * 10);
 
-        // rnd2 is in the range 1-10 (including 10).
-        int rnd2 = (int) (Math.random() * 10) + 1;
+      // rnd2 is in the range 1-10 (including 10).
+      int rnd2 = (int) (Math.random() * 10) + 1;
 
-        // rnd3 is in the range 5-10 (including 10). The range is 10-5+1 = 6.
-        int rnd3 = (int) (Math.random() * 6) + 5;
+      // rnd3 is in the range 5-10 (including 10). The range is 10-5+1 = 6.
+      int rnd3 = (int) (Math.random() * 6) + 5;
 
-        // rnd4 is in the range -10 up to 10 (including 10). The range is doubled (10 - -10 + 1 = 20) and the minimum is -10.
-        int rnd4 = (int) (Math.random() * 21) - 10;
-      </code>
+      // rnd4 is in the range -10 up to 10 (including 10). The range is doubled (10 - -10 + 1 = 20) and the minimum is -10.
+      int rnd4 = (int) (Math.random() * 21) - 10;
     </program>
 
     <p>
@@ -981,7 +967,7 @@
         <p>Complete the combination lock challenge below.</p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class MathChallenge {
               public static void main(String[] args) {
@@ -1088,7 +1074,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
           <![CDATA[
 
@@ -1286,7 +1272,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class LadderHelper {
               /* ladderSizeNeeded computes the hypotenuse of a right triangle

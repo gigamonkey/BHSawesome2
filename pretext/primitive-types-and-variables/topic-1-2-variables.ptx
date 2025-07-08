@@ -389,10 +389,8 @@
 
     <p>Here is an example declaration of a variable called score.</p>
 
-    <program language="java">
-      <code>
-        int score;
-      </code>
+    <program>
+      int score;
     </program>
 
     <p>
@@ -400,7 +398,7 @@
       equals sign <c>=</c> followed by the value.
     </p>
 
-    <program language="java">
+    <program>
       int score;
       score = 4;
     </program>
@@ -411,7 +409,7 @@
       initializing it all in a single statement.
     </p>
 
-    <program language="java">
+    <program>
       int score = 4;
     </program>
 
@@ -499,7 +497,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Test3 {
               public static void main(String[] args) {
@@ -767,7 +765,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class CaseSensitiveClass
           {
@@ -891,7 +889,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Challenge1_2_weather
           {
@@ -963,11 +961,9 @@
             A variable can be declared and initialized with the following code:
           </p>
 
-          <program language="java">
-            <code>
-              int score;
-              double gpa = 3.5;
-            </code>
+          <program>
+            int score;
+            double gpa = 3.5;
           </program>
         </li>
 

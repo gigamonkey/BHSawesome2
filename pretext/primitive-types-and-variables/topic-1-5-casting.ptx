@@ -106,7 +106,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Casting {
               public static void main(String[] args) {
@@ -190,14 +190,12 @@
       division with:
     </p>
 
-    <program language="java">
-      <code>
-        int total; // a variable containing the sum of a bunch of ints
-        int count; // the number of ints that went into total
+    <program>
+      int total; // a variable containing the sum of a bunch of ints
+      int count; // the number of ints that went into total
 
-        // Compute the average of the bunch of ints summed into total.
-        double average = (double) total / count;
-      </code>
+      // Compute the average of the bunch of ints summed into total.
+      double average = (double) total / count;
     </program>
 
     <p>
@@ -210,10 +208,8 @@
       written:
     </p>
 
-    <program language="java">
-      <code>
-        double average = (double) (total / count);
-      </code>
+    <program>
+      double average = (double) (total / count);
     </program>
 
     <p>
@@ -236,14 +232,12 @@
       result with <c>(int)</c>:
     </p>
 
-    <program language="java">
-      <code>
-        double number;    // positive value from somewhere
-        double negNumber; // negative value from somewhere
+    <program>
+      double number;    // positive value from somewhere
+      double negNumber; // negative value from somewhere
 
-        int nearestInt = (int) (number + 0.5);
-        int nearestNegInt = (int) (negNumber – 0.5);
-      </code>
+      int nearestInt = (int) (number + 0.5);
+      int nearestNegInt = (int) (negNumber – 0.5);
     </program>
 
     <p>
@@ -283,7 +277,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class NearestInt
           {
@@ -385,7 +379,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class TestOverflow
           {
@@ -480,7 +474,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class TestFormat
           {
@@ -621,7 +615,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Challenge1_6
           {

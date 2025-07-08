@@ -47,7 +47,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
           import java.awt.*;
           import java.util.*;
@@ -143,7 +143,7 @@
         <p>If you run the following, what will be printed?</p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Test1
           {
@@ -223,7 +223,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Test2
           {
@@ -335,13 +335,11 @@
       <statement>
         <p>Which of the following is true after the code executes?</p>
 
-        <program language="java">
-          <code>
-            String s1 = new String("hi");
-            String s2 = new String("bye");
-            String s3 = new String("hi");
-            s2 = s1;
-          </code>
+        <program>
+          String s1 = new String("hi");
+          String s2 = new String("bye");
+          String s3 = new String("hi");
+          s2 = s1;
         </program>
       </statement>
 
@@ -387,12 +385,10 @@
       <statement>
         <p>Which of the following is true after the code executes?</p>
 
-        <program language="java">
-          <code>
-            String s1 = new String("hi");
-            String s2 = new String("bye");
-            String s3 = new String("hi");
-          </code>
+        <program>
+          String s1 = new String("hi");
+          String s2 = new String("bye");
+          String s3 = new String("hi");
         </program>
       </statement>
 
@@ -436,12 +432,10 @@
       <statement>
         <p>Which of the following is true after the code executes?</p>
 
-        <program language="java">
-          <code>
-            String s1 = new String("hi");
-            String s2 = new String("bye");
-            String s3 = new String("hi");
-          </code>
+        <program>
+          String s1 = new String("hi");
+          String s2 = new String("bye");
+          String s3 = new String("hi");
         </program>
       </statement>
 
@@ -516,7 +510,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           <![CDATA[
 
@@ -612,28 +606,26 @@
       <statement>
         <p>Consider the following code segment.</p>
 
-        <program language="java">
-          <code>
-            <![CDATA[
+        <program>
+          <![CDATA[
 
-            String message = new String("AP Practice");
-            String note = new String("AP Practice");
-            String memo = new String("memo");
-            int i = 5;
+          String message = new String("AP Practice");
+          String note = new String("AP Practice");
+          String memo = new String("memo");
+          int i = 5;
 
-            if (message.equals(note) && !message.equals("memo"))
-            {
-                message = note;
+          if (message.equals(note) && !message.equals("memo"))
+          {
+              message = note;
 
-                if (message == note && message.length() > i)
-                {
-                   i = 3;
-                   memo = message.substring(i);
-                }
-            }
+              if (message == note && message.length() > i)
+              {
+                 i = 3;
+                 memo = message.substring(i);
+              }
+          }
 
-            ]]>
-          </code>
+          ]]>
         </program>
 
         <p>

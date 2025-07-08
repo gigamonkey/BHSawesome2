@@ -60,14 +60,12 @@
       </p>
     </note>
 
-    <program language="java">
-      <code>
-        public class Person
-        {
-            // define class here - also called the “body” of the class
+    <program>
+      public class Person
+      {
+          // define class here - also called the “body” of the class
 
-        }
-      </code>
+      }
     </program>
 
     <p>
@@ -78,11 +76,9 @@
       reference to a new <c>Person</c> as shown here.
     </p>
 
-    <program language="java">
-      <code>
-        Person ada = new Person();
-        Person charles = new Person();
-      </code>
+    <program>
+      Person ada = new Person();
+      Person charles = new Person();
     </program>
 
     <p>
@@ -131,18 +127,16 @@
       defined in the class.
     </p>
 
-    <program language="java">
-      <code>
-        public class Person
-        {
-            // instance variables
+    <program>
+      public class Person
+      {
+          // instance variables
 
-            // constructors
+          // constructors
 
-            // methods
+          // methods
 
-        }
-      </code>
+      }
     </program>
 
     <p>
@@ -197,7 +191,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Person
           {
@@ -405,7 +399,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Person
           {
@@ -515,15 +509,13 @@
       the values specific to the object we called <c>print</c> on.
     </p>
 
-    <program language="java">
-      <code>
-        public void print()
-        {
-          System.out.println("Name: " + name);
-          System.out.println("Email: " + email);
-          System.out.println("Phone Number: " + phoneNumber);
-        }
-      </code>
+    <program>
+      public void print()
+      {
+        System.out.println("Name: " + name);
+        System.out.println("Email: " + email);
+        System.out.println("Phone Number: " + phoneNumber);
+      }
     </program>
 
     <p>
@@ -533,13 +525,11 @@
       means call the <c>print</c> method on the object <c>p1</c>.
     </p>
 
-    <program language="java">
-      <code>
-        // call the constructor to create a new person
-        Person p1 = new Person("Sana", "sana@gmail.com", "123-456-7890");
-        // call p1's print method
-        p1.print();
-      </code>
+    <program>
+      // call the constructor to create a new person
+      Person p1 = new Person("Sana", "sana@gmail.com", "123-456-7890");
+      // call p1's print method
+      p1.print();
     </program>
 
     <activity label="name_methods">
@@ -593,7 +583,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Name
           {
@@ -670,7 +660,7 @@
     </p>
 
     <p>
-      <ol marker="1">
+      <ol>
         <li>
           <p>
             <term>Design:</term> In pairs, brainstorm about the
@@ -735,7 +725,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class VirtualPet
           {
@@ -911,7 +901,7 @@
     </p>
 
     <p>
-      <ol marker="1">
+      <ol>
         <li>
           <p>
             Make your own copy of this <url
@@ -971,7 +961,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class          // Add your class name here!
           {
@@ -1093,13 +1083,11 @@
           attribute for a cat’s name and age and a constructor.
         </p>
 
-        <program language="java">
-          <code>
-            public class Cat
-            {
-                /* missing code */
-            }
-          </code>
+        <program>
+          public class Cat
+          {
+              /* missing code */
+          }
         </program>
 
         <p>
@@ -1111,13 +1099,11 @@
       <choices>
         <choice>
           <statement id="APclass1_opt_a">
-            <program language="java">
-              <code>
-                public String name;
-                public int age;
-                private Cat(String name, int age)
-                { /* implementation not shown */ }
-              </code>
+            <program>
+              public String name;
+              public int age;
+              private Cat(String name, int age)
+              { /* implementation not shown */ }
             </program>
           </statement>
 
@@ -1128,13 +1114,11 @@
 
         <choice>
           <statement id="APclass1_opt_b">
-            <program language="java">
-              <code>
-                public String name;
-                private int age;
-                private Cat(String name, int age)
-                { /* implementation not shown */ }
-              </code>
+            <program>
+              public String name;
+              private int age;
+              private Cat(String name, int age)
+              { /* implementation not shown */ }
             </program>
           </statement>
 
@@ -1145,13 +1129,11 @@
 
         <choice correct="yes">
           <statement id="APclass1_opt_c">
-            <program language="java">
-              <code>
-                private String name;
-                private int age;
-                public Cat(String name, int age)
-                { /* implementation not shown */ }
-              </code>
+            <program>
+              private String name;
+              private int age;
+              public Cat(String name, int age)
+              { /* implementation not shown */ }
             </program>
           </statement>
 
@@ -1165,13 +1147,11 @@
 
         <choice>
           <statement id="APclass1_opt_d">
-            <program language="java">
-              <code>
-                public String name;
-                public int age;
-                public Cat(String name, int age)
-                { /* implementation not shown */ }
-              </code>
+            <program>
+              public String name;
+              public int age;
+              public Cat(String name, int age)
+              { /* implementation not shown */ }
             </program>
           </statement>
 
@@ -1182,13 +1162,11 @@
 
         <choice>
           <statement id="APclass1_opt_e">
-            <program language="java">
-              <code>
-                private String name;
-                private int age;
-                private Cat(String name, int age)
-                { /* implementation not shown */ }
-              </code>
+            <program>
+              private String name;
+              private int age;
+              private Cat(String name, int age)
+              { /* implementation not shown */ }
             </program>
           </statement>
 
@@ -1208,13 +1186,11 @@
           accessed outside the class.
         </p>
 
-        <program language="java">
-          <code>
-            public class Party
-            {
-                /* missing code */
-            }
-          </code>
+        <program>
+          public class Party
+          {
+              /* missing code */
+          }
         </program>
 
         <p>
@@ -1226,16 +1202,14 @@
       <choices>
         <choice>
           <statement id="APclass2_opt_a">
-            <program language="java">
-              <code>
-                private int numOfPeople;
-                private int volumeOfMusic;
-                private int numOfBoxesOfPizza;
-                public Party()
-                { /* implementation not shown */ }
-                private void startParty()
-                { /* implementation not shown */ }
-              </code>
+            <program>
+              private int numOfPeople;
+              private int volumeOfMusic;
+              private int numOfBoxesOfPizza;
+              public Party()
+              { /* implementation not shown */ }
+              private void startParty()
+              { /* implementation not shown */ }
             </program>
           </statement>
 
@@ -1246,16 +1220,14 @@
 
         <choice correct="yes">
           <statement id="APclass2_opt_b">
-            <program language="java">
-              <code>
-                private int numOfPeople;
-                private int volumeOfMusic;
-                private int numOfBoxesOfPizza;
-                public Party()
-                { /* implementation not shown */ }
-                public void startParty()
-                { /* implementation not shown */ }
-              </code>
+            <program>
+              private int numOfPeople;
+              private int volumeOfMusic;
+              private int numOfBoxesOfPizza;
+              public Party()
+              { /* implementation not shown */ }
+              public void startParty()
+              { /* implementation not shown */ }
             </program>
           </statement>
 
@@ -1269,16 +1241,14 @@
 
         <choice>
           <statement id="APclass2_opt_c">
-            <program language="java">
-              <code>
-                public int numOfPeople;
-                public int volumeOfMusic;
-                public int numOfBoxesOfPizza;
-                public Party()
-                { /* implementation not shown */ }
-                public void startParty()
-                { /* implementation not shown */ }
-              </code>
+            <program>
+              public int numOfPeople;
+              public int volumeOfMusic;
+              public int numOfBoxesOfPizza;
+              public Party()
+              { /* implementation not shown */ }
+              public void startParty()
+              { /* implementation not shown */ }
             </program>
           </statement>
 
@@ -1289,16 +1259,14 @@
 
         <choice>
           <statement id="APclass2_opt_d">
-            <program language="java">
-              <code>
-                private int numOfPeople;
-                private int volumeOfMusic;
-                private int numOfBoxesOfPizza;
-                private Party()
-                { /* implementation not shown */ }
-                private void startParty()
-                { /* implementation not shown */ }
-              </code>
+            <program>
+              private int numOfPeople;
+              private int volumeOfMusic;
+              private int numOfBoxesOfPizza;
+              private Party()
+              { /* implementation not shown */ }
+              private void startParty()
+              { /* implementation not shown */ }
             </program>
           </statement>
 

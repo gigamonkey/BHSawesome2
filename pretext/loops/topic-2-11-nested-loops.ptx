@@ -28,7 +28,6 @@
 
       <image source="Unit2-Selection-and-Iteration/Figures/nestedloops.png" width="63%" />
     </figure>
-
   </introduction>
 
   <activity label="lcfcnl1">
@@ -39,6 +38,7 @@
         for each row. Can you predict how many rows and columns of stars there
         will be?
       </p>
+
       <p>
         Can you change the code to print a rectangle with ten rows and eight
         columns of stars? You can also try replacing the inner <c>print</c>
@@ -47,7 +47,7 @@
       </p>
     </statement>
 
-    <program interactive="activecode" language="java">
+    <program interactive="activecode">
       <code>
         <![CDATA[
 
@@ -100,19 +100,17 @@
     <statement>
       <p>What does the following code print?</p>
 
-      <program language="java">
-        <code>
-          <![CDATA[
+      <program>
+        <![CDATA[
 
-          for (int i = 1; i < 7; i++) {
-              for (int y = 1; y <= 5; y++) {
-                  System.out.print("*");
-              }
-              System.out.println();
-          }
+        for (int i = 1; i < 7; i++) {
+            for (int y = 1; y <= 5; y++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
 
-          ]]>
-        </code>
+        ]]>
       </program>
     </statement>
 
@@ -173,19 +171,17 @@
     <statement>
       <p>What does the following code print?</p>
 
-      <program language="java">
-        <code>
-          <![CDATA[
+      <program>
+        <![CDATA[
 
-          for (int i = 0; i < 5; i++) {
-              for (int j = 3; j >= 1; j--) {
-                  System.out.print("*");
-              }
-              System.out.println();
-          }
+        for (int i = 0; i < 5; i++) {
+            for (int j = 3; j >= 1; j--) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
 
-          ]]>
-        </code>
+        ]]>
       </program>
     </statement>
 
@@ -325,7 +321,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
           <![CDATA[
 
@@ -497,7 +493,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
           <![CDATA[
 

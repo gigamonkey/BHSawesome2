@@ -27,7 +27,7 @@
       <listing>
         <title><c>if</c> statement</title>
 
-        <program language="java">
+        <program>
           if (condition) {
               statements;
           }
@@ -121,16 +121,18 @@
       text="type-global" />.
     </p>
 
-    <ol>
-      <li>Initialize the loop variable (before the <c>while</c> loop)</li>
+    <p>
+      <ol>
+        <li>Initialize the loop variable (before the <c>while</c> loop)</li>
 
-      <li>Test the loop variable (in the loop header)</li>
+        <li>Test the loop variable (in the loop header)</li>
 
-      <li>
-        Update the loop variable (somewhere in the loop body, usually at the
-        end)
-      </li>
-    </ol>
+        <li>
+          Update the loop variable (somewhere in the loop body, usually at the
+          end)
+        </li>
+      </ol>
+    </p>
 
     <figure xml:id="three-steps-of-writing-a-loop">
       <caption>Three Steps of Writing a Loop</caption>
@@ -146,7 +148,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           <![CDATA[
 
@@ -242,14 +244,12 @@
           prints out “0 2 4 6 8 10”?
         </p>
 
-        <program language="java">
-          <code>
-            int count = 0;
-            /* missing loop header */ {
-                System.out.print(count + " ");
-                count += 2;
-            }
-          </code>
+        <program>
+          int count = 0;
+          /* missing loop header */ {
+              System.out.print(count + " ");
+              count += 2;
+          }
         </program>
       </statement>
 
@@ -348,18 +348,16 @@
           the variable count and its value through each iteration of the loop.)
         </p>
 
-        <program language="java">
-          <code>
-            <![CDATA[
+        <program>
+          <![CDATA[
 
-            int count = 1;
-            while (count <= 10) {
-                count *= 2;
-            }
-            count = count - 10;
+          int count = 1;
+          while (count <= 10) {
+              count *= 2;
+          }
+          count = count - 10;
 
-            ]]>
-          </code>
+          ]]>
         </program>
       </statement>
 
@@ -423,18 +421,16 @@
           the output every time through the loop.)
         </p>
 
-        <program language="java">
-          <code>
-            <![CDATA[
+        <program>
+          <![CDATA[
 
-            int x = -5;
-            while (x < 0) {
-               x++;
-               System.out.print(x + " ");
-            }
+          int x = -5;
+          while (x < 0) {
+             x++;
+             System.out.print(x + " ");
+          }
 
-            ]]>
-          </code>
+          ]]>
         </program>
       </statement>
 
@@ -489,17 +485,15 @@
       actually an infinite loop. Can you see why?
     </p>
 
-    <program language="java">
-      <code>
-        <![CDATA[
+    <program>
+      <![CDATA[
 
-        int i = 0;
-        while (i < 10) {
-            System.out.println(i);
-        }
+      int i = 0;
+      while (i < 10) {
+          System.out.println(i);
+      }
 
-        ]]>
-      </code>
+      ]]>
     </program>
 
     <p>
@@ -512,18 +506,16 @@
       is to add a line that increments <c>i</c>:
     </p>
 
-    <program language="java">
-      <code>
-        <![CDATA[
+    <program>
+      <![CDATA[
 
-        int i = 0;
-        while (i < 10) {
-            System.out.println(i);
-            i++; // This fixes it!
-        }
+      int i = 0;
+      while (i < 10) {
+          System.out.println(i);
+          i++; // This fixes it!
+      }
 
-        ]]>
-      </code>
+      ]]>
     </program>
 
     <p>
@@ -533,16 +525,14 @@
       an infinite loop.
     </p>
 
-    <program language="java">
-      <code>
-        while (true) {
-            if (tooHot()) {
-                turnOnFurnace();
-            } else {
-                turnOffFurnace();
-            }
-        }
-      </code>
+    <program>
+      while (true) {
+          if (tooHot()) {
+              turnOnFurnace();
+          } else {
+              turnOffFurnace();
+          }
+      }
     </program>
 
     <p>
@@ -553,18 +543,16 @@
       and test tests that it is less than 10, the loop body will never run.
     </p>
 
-    <program language="java">
-      <code>
-        <![CDATA[
+    <program>
+      <![CDATA[
 
-        int i = 10;
-        while (i < 10){ // This loop will never run!
-            System.out.println(i);
-            i++;
-        }
+      int i = 10;
+      while (i < 10){ // This loop will never run!
+          System.out.println(i);
+          i++;
+      }
 
-        ]]>
-      </code>
+      ]]>
     </program>
   </subsection>
 
@@ -590,7 +578,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           <![CDATA[
 
@@ -655,7 +643,7 @@
       code below, the <c>while</c> loop stops when the user types “Bye”.
     </p>
 
-    <program language="java">
+    <program>
       Scanner in = new Scanner(System.in);
       String statement = in.nextLine();
       while (!statement.equals("Bye")) {
@@ -742,7 +730,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
           import java.awt.*;
           import java.util.*;
@@ -874,22 +862,20 @@
             the iteration terminates. Here is the general form of a while loop:
           </p>
 
-          <program language="java">
-            <code>
-              <![CDATA[
+          <program>
+            <![CDATA[
 
-              // The statements in a while loop run zero or more times,
-              // determined by how many times the condition is true
-              int count = 0; // initialize the loop variable
-              while (count < 10)  // test the loop variable
-              {
-                  // repeat this code
-                  // update the loop variable
-                  count++;
-              }
+            // The statements in a while loop run zero or more times,
+            // determined by how many times the condition is true
+            int count = 0; // initialize the loop variable
+            while (count < 10)  // test the loop variable
+            {
+                // repeat this code
+                // update the loop variable
+                count++;
+            }
 
-              ]]>
-            </code>
+            ]]>
           </program>
         </li>
 
@@ -900,13 +886,15 @@
             loop:
           </p>
 
-          <ol>
-            <li>Initialize the loop variable</li>
+          <p>
+            <ol>
+              <li>Initialize the loop variable</li>
 
-            <li>Test the loop variable</li>
+              <li>Test the loop variable</li>
 
-            <li>Update the loop variable</li>
-          </ol>
+              <li>Update the loop variable</li>
+            </ol>
+          </p>
         </li>
 
         <li>
@@ -949,22 +937,20 @@
       <statement>
         <p>Consider the following code segment.</p>
 
-        <program language="java">
-          <code>
-            <![CDATA[
+        <program>
+          <![CDATA[
 
-            int n = 35;
-            int result = 1;
-            while (n > 0)
-            {
-                int d = n % 10;
-                result *= d;
-                n /= 10;
-            }
-            System.out.println(result);
+          int n = 35;
+          int result = 1;
+          while (n > 0)
+          {
+              int d = n % 10;
+              result *= d;
+              n /= 10;
+          }
+          System.out.println(result);
 
-            ]]>
-          </code>
+          ]]>
         </program>
 
         <p>What is the output after the code has been executed?</p>
@@ -1042,18 +1028,16 @@
           even numbers from 0 to 8 (including 8).
         </p>
 
-        <program language="java">
-          <code>
-            int count = 0;
-            /* missing loop header */
-            {
-                if (count % 2 == 0)
-                {
-                    System.out.println(count);
-                }
-                count++;
-            }
-          </code>
+        <program>
+          int count = 0;
+          /* missing loop header */
+          {
+              if (count % 2 == 0)
+              {
+                  System.out.println(count);
+              }
+              count++;
+          }
         </program>
 
         <p>

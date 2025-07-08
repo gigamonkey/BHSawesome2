@@ -86,17 +86,15 @@
     </p>
 
     <program>
-      <code>
-        <![CDATA[
+      <![CDATA[
 
-        int sum = 0;
-        for (int i = 1; i <= 100; i++) {
-            sum += i;
-        }
-        System.out.println("The sum of 1 through 100 is " + sum);
+      int sum = 0;
+      for (int i = 1; i <= 100; i++) {
+          sum += i;
+      }
+      System.out.println("The sum of 1 through 100 is " + sum);
 
-        ]]>
-      </code>
+      ]]>
     </program>
 
     <p>
@@ -126,17 +124,15 @@
     </p>
 
     <program>
-      <code>
-        <![CDATA[
+      <![CDATA[
 
-        double total = 0;
-        for (int i = 0; i < 24; i++) {
-            total += nextMeasurement();
-        }
-        System.out.println(total + " cm of total rainfall.");
+      double total = 0;
+      for (int i = 0; i < 24; i++) {
+          total += nextMeasurement();
+      }
+      System.out.println(total + " cm of total rainfall.");
 
-        ]]>
-      </code>
+      ]]>
     </program>
 
     <p>
@@ -147,19 +143,17 @@
     </p>
 
     <program>
-      <code>
-        <![CDATA[
+      <![CDATA[
 
-        int count = 0;
-        for (int i = 0; i < 24; i++) {
-            if (nextMeasurement() > 12.0) {
-                count++;
-            }
-        }
-        System.out.println(total + " hours with over 12.0 cm of rainfall.");
+      int count = 0;
+      for (int i = 0; i < 24; i++) {
+          if (nextMeasurement() > 12.0) {
+              count++;
+          }
+      }
+      System.out.println(total + " hours with over 12.0 cm of rainfall.");
 
-        ]]>
-      </code>
+      ]]>
     </program>
 
     <p>
@@ -184,19 +178,17 @@
     </p>
 
     <program>
-      <code>
-        <![CDATA[
+      <![CDATA[
 
-        int count = 0;
-        for (int i = 0; i < 24; i++) {
-            if (extraRainy(nextMeasurement())) { // change the condition to use the provided method
-                count++;
-            }
-        }
-        System.out.println(total + " extra rainy hours.");
+      int count = 0;
+      for (int i = 0; i < 24; i++) {
+          if (extraRainy(nextMeasurement())) { // change the condition to use the provided method
+              count++;
+          }
+      }
+      System.out.println(total + " extra rainy hours.");
 
-        ]]>
-      </code>
+      ]]>
     </program>
   </subsection>
 
@@ -212,18 +204,16 @@
       a day:
     </p>
 
-    <program language="java">
-      <code>
-        <![CDATA[
+    <program>
+      <![CDATA[
 
-        double total = 0;
-        for (int i = 0; i < 24; i++) {
-            total += nextMeasurement();
-        }
-        System.out.println("Average rainfall: " + total / 24);
+      double total = 0;
+      for (int i = 0; i < 24; i++) {
+          total += nextMeasurement();
+      }
+      System.out.println("Average rainfall: " + total / 24);
 
-        ]]>
-      </code>
+      ]]>
     </program>
 
     <p>
@@ -232,23 +222,21 @@
       combine the summing and counting patterns:
     </p>
 
-    <program language="java">
-      <code>
-        <![CDATA[
+    <program>
+      <![CDATA[
 
-        double total = 0;
-        int count = 0;
-        for (int i = 0; i < 24; i++) {
-            double m = nextMeasurement();
-            if (m > 12.0) {
-                total += nextMeasurement();
-                count++;
-            }
-        }
-        System.out.println("Average rainfall in rainy hours: " + total / count);
+      double total = 0;
+      int count = 0;
+      for (int i = 0; i < 24; i++) {
+          double m = nextMeasurement();
+          if (m > 12.0) {
+              total += nextMeasurement();
+              count++;
+          }
+      }
+      System.out.println("Average rainfall in rainy hours: " + total / count);
 
-        ]]>
-      </code>
+      ]]>
     </program>
 
     <p>Try the accumulator practice below.</p>
@@ -261,7 +249,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Accumulator {
               // sum calculates and returns the sum of the numbers 1 to n
@@ -355,26 +343,24 @@
       provided by the user is not -1.
     </p>
 
-    <program language="java">
-      <code>
-        // 1. initialize the loop variable (get the first number)
+    <program>
+      // 1. initialize the loop variable (get the first number)
+      System.out.print("Please enter a number to average in or -1 to stop: ");
+      number = scan.nextInt();
+
+      // 2. test the loop variable (against sentinel value)
+      while (number != -1)
+      {
+        sum += number; // add number to sum
+        count++; // count the number
+        // 3. Update the loop variable (get a new number)
         System.out.print("Please enter a number to average in or -1 to stop: ");
         number = scan.nextInt();
-
-        // 2. test the loop variable (against sentinel value)
-        while (number != -1)
-        {
-          sum += number; // add number to sum
-          count++; // count the number
-          // 3. Update the loop variable (get a new number)
-          System.out.print("Please enter a number to average in or -1 to stop: ");
-          number = scan.nextInt();
-        }
-        System.out.println(count);
-        // calculate average
-        average = (double) sum/count;
-        System.out.println("The average is " + average);
-      </code>
+      }
+      System.out.println(count);
+      // calculate average
+      average = (double) sum/count;
+      System.out.println("The average is " + average);
     </program>
 
     <p>
@@ -395,7 +381,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           import java.util.Scanner;
 
@@ -499,19 +485,17 @@
       chooses ten random numbers and finds the minimum value among them.
     </p>
 
-    <program language="java">
-      <code>
-        <![CDATA[
+    <program>
+      <![CDATA[
 
-        int min = Integer.MAX_VALUE;
-        for (int i = 0; i < 10; i++) {
-            int num = (int) (Math.random() * 100);
-            min = Math.min(min, num);
-        }
-        System.out.println("The minimum value is " + min);
+      int min = Integer.MAX_VALUE;
+      for (int i = 0; i < 10; i++) {
+          int num = (int) (Math.random() * 100);
+          min = Math.min(min, num);
+      }
+      System.out.println("The minimum value is " + min);
 
-        ]]>
-      </code>
+      ]]>
     </program>
 
     <activity label="min-max-practice">
@@ -525,7 +509,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           <![CDATA[
 

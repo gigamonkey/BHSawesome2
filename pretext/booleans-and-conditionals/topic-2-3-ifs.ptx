@@ -35,7 +35,7 @@
       <c>boolean</c> variables like this:
     </p>
 
-    <program language="java">
+    <program>
       boolean hungry = true;
       boolean sleepy = false;
     </program>
@@ -74,7 +74,7 @@
       The simplest form of an <c>if</c> statement in Java looks like:
     </p>
 
-    <program language="java">
+    <program>
       if (someBoolean) {
         someCode();
         maybeSomeMoreCode();
@@ -129,7 +129,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Test1 {
               public static void main(String[] args) {
@@ -216,7 +216,7 @@
       statement or block of statements.
     </p>
 
-    <program language="java">
+    <program>
       // A block if/else statement
       if (boolean expression) {
          statement1;
@@ -227,7 +227,7 @@
       }
     </program>
 
-    <program language="java">
+    <program>
       // A single if/else statement
       if (boolean expression)
         Do statement;
@@ -264,7 +264,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Test2 {
               public static void main(String[] args) {
@@ -350,7 +350,7 @@
       building programs out of simple pieces. Consider this code:
     </p>
 
-    <program language="java">
+    <program>
       if (hungry) {
         if (sleepy) {
           eatQuickSnack();
@@ -375,7 +375,7 @@
       the body of the <c>else</c>.
     </p>
 
-    <program language="java">
+    <program>
       if (hungry) {
         eatSnack();
       } else {
@@ -399,7 +399,7 @@
       we’d normally format this code slightly differently:
     </p>
 
-    <program language="java">
+    <program>
       if (hungry) {
         eatSnack();
       } else if (sleepy) {
@@ -425,7 +425,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           <![CDATA[
 
@@ -557,25 +557,23 @@
       <statement>
         <p>What does the following code print when x has been set to -5?</p>
 
-        <program language="java">
-          <code>
-            <![CDATA[
+        <program>
+          <![CDATA[
 
-            if (x < 0)
-            {
-               System.out.println("x is negative");
-            }
-            else if (x == 0)
-            {
-               System.out.println("x is zero");
-            }
-            else
-            {
-               System.out.println("x is positive");
-            }
+          if (x < 0)
+          {
+             System.out.println("x is negative");
+          }
+          else if (x == 0)
+          {
+             System.out.println("x is zero");
+          }
+          else
+          {
+             System.out.println("x is positive");
+          }
 
-            ]]>
-          </code>
+          ]]>
         </program>
       </statement>
 
@@ -616,25 +614,23 @@
       <statement>
         <p>What does the following code print when x has been set to 2000?</p>
 
-        <program language="java">
-          <code>
-            <![CDATA[
+        <program>
+          <![CDATA[
 
-            if (x < 0)
-            {
-               System.out.println("x is negative");
-            }
-            else if (x == 0)
-            {
-               System.out.println("x is zero");
-            }
-            else
-            {
-               System.out.println("x is positive");
-            }
+          if (x < 0)
+          {
+             System.out.println("x is negative");
+          }
+          else if (x == 0)
+          {
+             System.out.println("x is zero");
+          }
+          else
+          {
+             System.out.println("x is positive");
+          }
 
-            ]]>
-          </code>
+          ]]>
         </program>
       </statement>
 
@@ -681,29 +677,27 @@
       <statement>
         <p>What does the following code print when x has been set to .8?</p>
 
-        <program language="java">
-          <code>
-            <![CDATA[
+        <program>
+          <![CDATA[
 
-            if (x < .25)
-            {
-                System.out.println("first quartile");
-            }
-            else if (x < .5)
-            {
-                System.out.println("second quartile");
-            }
-            else if (x < .75)
-            {
-                System.out.println("third quartile");
-            }
-            else
-            {
-                System.out.println("fourth quartile");
-            }
+          if (x < .25)
+          {
+              System.out.println("first quartile");
+          }
+          else if (x < .5)
+          {
+              System.out.println("second quartile");
+          }
+          else if (x < .75)
+          {
+              System.out.println("third quartile");
+          }
+          else
+          {
+              System.out.println("fourth quartile");
+          }
 
-            ]]>
-          </code>
+          ]]>
         </program>
       </statement>
 
@@ -769,7 +763,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           <![CDATA[
 
@@ -935,7 +929,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           import java.util.Scanner;
 
@@ -1062,7 +1056,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Magic8Ball
           {
@@ -1257,20 +1251,18 @@
       </ul>
     </p>
 
-    <program language="java">
-      <code>
-        // A single if statement
-        if (boolean expression)
-            Do statement;
-        // A block if statement
-        if (boolean expression)
-        {
-           Do Statement1;
-           Do Statement2;
-           ...
-           Do StatementN;
-        }
-      </code>
+    <program>
+      // A single if statement
+      if (boolean expression)
+          Do statement;
+      // A block if statement
+      if (boolean expression)
+      {
+         Do Statement1;
+         Do Statement2;
+         ...
+         Do StatementN;
+      }
     </program>
 
     <p>
@@ -1291,17 +1283,15 @@
       </ul>
     </p>
 
-    <program language="java">
-      <code>
-        if (boolean expression)
-        {
-            Do statement;
-        }
-        else
-        {
-            Do other statement;
-        }
-      </code>
+    <program>
+      if (boolean expression)
+      {
+          Do statement;
+      }
+      else
+      {
+          Do other statement;
+      }
     </program>
 
     <p>
@@ -1327,32 +1317,30 @@
       <statement>
         <p>Consider the following code segment.</p>
 
-        <program language="java">
-          <code>
-            <![CDATA[
+        <program>
+          <![CDATA[
 
-            int speed = 35;
-            boolean rain = false;
+          int speed = 35;
+          boolean rain = false;
 
-            if (rain)
-            {
-               speed -= 10;
-            }
+          if (rain)
+          {
+             speed -= 10;
+          }
 
-            if (rain == false)
-            {
-              speed += 5;
-            }
+          if (rain == false)
+          {
+            speed += 5;
+          }
 
-            if (speed > 35)
-            {
-               speed = speed - 2;
-            }
+          if (speed > 35)
+          {
+             speed = speed - 2;
+          }
 
-            System.out.println(speed);
+          System.out.println(speed);
 
-            ]]>
-          </code>
+          ]]>
         </program>
 
         <p>What is printed as a result of executing the code segment?</p>
@@ -1421,26 +1409,24 @@
       <statement>
         <p>Consider the following code segment.</p>
 
-        <program language="java">
-          <code>
-            <![CDATA[
+        <program>
+          <![CDATA[
 
-            int x = 5;
+          int x = 5;
 
-            if (x < 5)
-            {
-               x = 3 * x;
-            }
+          if (x < 5)
+          {
+             x = 3 * x;
+          }
 
-            if (x % 2 == 1)
-            {
-               x = x / 2;
-            }
+          if (x % 2 == 1)
+          {
+             x = x / 2;
+          }
 
-            System.out.print(2*x + 1);
+          System.out.print(2*x + 1);
 
-            ]]>
-          </code>
+          ]]>
         </program>
 
         <p>What is printed as a result of executing the code segment?</p>
@@ -1511,26 +1497,24 @@
           above, a “Middle” is between 50 - 79, and “Low” is below 50.
         </p>
 
-        <program language="java">
-          <code>
-            <![CDATA[
+        <program>
+          <![CDATA[
 
-            if (x >= 80)
-            {
-               System.out.println("High");
-            }
+          if (x >= 80)
+          {
+             System.out.println("High");
+          }
 
-            if (x >= 50)
-            {
-              System.out.println("Middle");
-            }
-            else
-            {
-               System.out.println("Low");
-            }
+          if (x >= 50)
+          {
+            System.out.println("Middle");
+          }
+          else
+          {
+             System.out.println("Low");
+          }
 
-            ]]>
-          </code>
+          ]]>
         </program>
 
         <p>
@@ -1612,49 +1596,47 @@
           and “Low” if <em>x</em> is below 33.
         </p>
 
-        <program language="java">
-          <code>
-            <![CDATA[
+        <program>
+          <![CDATA[
 
-            I.   if (x > 66)
-                 {
-                   System.out.println("High");
-                 }
-                 else if (x > 33)
-                 {
-                   System.out.println("Medium");
-                 }
-                 else {
-                   System.out.println("Low");
-                 }
+          I.   if (x > 66)
+               {
+                 System.out.println("High");
+               }
+               else if (x > 33)
+               {
+                 System.out.println("Medium");
+               }
+               else {
+                 System.out.println("Low");
+               }
 
-            II.  if (x < 33)
-                 {
-                   System.out.println("Low");
-                 }
-                 else if (x < 66)
-                 {
-                   System.out.println("Medium");
-                 }
-                 else {
-                   System.out.println("High");
-                 }
+          II.  if (x < 33)
+               {
+                 System.out.println("Low");
+               }
+               else if (x < 66)
+               {
+                 System.out.println("Medium");
+               }
+               else {
+                 System.out.println("High");
+               }
 
-            III. if (x >= 66)
-                 {
-                   System.out.println("High");
-                 }
-                 if (x >= 33)
-                 {
-                   System.out.println("Medium");
-                 }
-                 if (x < 33)
-                 {
-                   System.out.println("Low");
-                 }
+          III. if (x >= 66)
+               {
+                 System.out.println("High");
+               }
+               if (x >= 33)
+               {
+                 System.out.println("Medium");
+               }
+               if (x < 33)
+               {
+                 System.out.println("Low");
+               }
 
-            ]]>
-          </code>
+          ]]>
         </program>
       </statement>
 

@@ -142,7 +142,7 @@
       </p>
     </statement>
 
-    <program interactive="activecode" language="java">
+    <program interactive="activecode">
       <code>
         public class Test2
         {
@@ -206,15 +206,13 @@
         What are the values of x, y, and z after the following code executes?
       </p>
 
-      <program language="java">
-        <code>
-          int x = 0;
-          int y = 1;
-          int z = 2;
-          x--;
-          y++;
-          z+=y;
-        </code>
+      <program>
+        int x = 0;
+        int y = 1;
+        int z = 2;
+        x--;
+        y++;
+        z+=y;
       </program>
     </statement>
 
@@ -292,15 +290,13 @@
         What are the values of x, y, and z after the following code executes?
       </p>
 
-      <program language="java">
-        <code>
-          int x = 3;
-          int y = 5;
-          int z = 2;
-          x = z * 2;
-          y = y / 2;
-          z++;
-        </code>
+      <program>
+        int x = 3;
+        int y = 5;
+        int z = 2;
+        x = z * 2;
+        y = y / 2;
+        z++;
       </program>
     </statement>
 
@@ -408,18 +404,16 @@
 
     <p>Trace through the following code:</p>
 
-    <program language="java">
-      <code>
-        int x = 0;
-        int y = 5;
-        int z = 1;
-        x++;
-        y -= 3;
-        z = x + z;
-        x = y * z;
-        y %= 2;
-        z--;
-      </code>
+    <program>
+      int x = 0;
+      int y = 5;
+      int z = 1;
+      x++;
+      y -= 3;
+      z = x + z;
+      x = y * z;
+      y %= 2;
+      z--;
     </program>
 
     <project label="challenge1-6">

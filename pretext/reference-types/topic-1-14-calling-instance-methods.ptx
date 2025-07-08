@@ -175,7 +175,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
           import java.awt.*;
           import java.util.*;
@@ -352,7 +352,7 @@
     <activity label="TurtleTestMethods1">
       <statement>
         <p>
-          <ol marker="1">
+          <ol>
             <li>
               <p>
                 Can you make yertle draw a square and change the pen color for
@@ -379,7 +379,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
           import java.awt.*;
           import java.util.*;
@@ -627,16 +627,14 @@
       <c>yertle</c>.
     </p>
 
-    <program language="java">
-      <code>
-        Turtle yertle = new Turtle(world);
-        int width = yertle.getWidth();
-        int height = yertle.getHeight();
-        System.out.println("Yertle's width is: " + width);
-        System.out.println("Yertle's height is: " + height);
-        System.out.println("Yertle's x position is: " + yertle.getXPos() );
-        System.out.println("Yertle's y position is: " + yertle.getYPos() );
-      </code>
+    <program>
+      Turtle yertle = new Turtle(world);
+      int width = yertle.getWidth();
+      int height = yertle.getHeight();
+      System.out.println("Yertle's width is: " + width);
+      System.out.println("Yertle's height is: " + height);
+      System.out.println("Yertle's x position is: " + yertle.getXPos() );
+      System.out.println("Yertle's y position is: " + yertle.getYPos() );
     </program>
 
     <note>
@@ -657,7 +655,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
           import java.awt.*;
           import java.util.*;
@@ -740,7 +738,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
           import java.awt.*;
           import java.lang.Math;
@@ -832,32 +830,28 @@
       <statement>
         <p>Consider the following class definition.</p>
 
-        <program language="java">
-          <code>
-            public class Circle
-            {
-                private double radius;
+        <program>
+          public class Circle
+          {
+              private double radius;
 
-                public Circle(double r)
-                {
-                    radius = r;
-                }
+              public Circle(double r)
+              {
+                  radius = r;
+              }
 
-                public double getArea()
-                {
-                    return 3.14159 * radius * radius;
-                }
-            }
-          </code>
+              public double getArea()
+              {
+                  return 3.14159 * radius * radius;
+              }
+          }
         </program>
 
         <p>Assume that the following code segment appears in a main method.</p>
 
-        <program language="java">
-          <code>
-            Circle c = new Circle(10);
-            System.out.println(c.getArea());
-          </code>
+        <program>
+          Circle c = new Circle(10);
+          System.out.println(c.getArea());
         </program>
 
         <p>
@@ -929,40 +923,36 @@
       <statement>
         <p>Consider the following class definition.</p>
 
-        <program language="java">
-          <code>
-            public class Rectangle
-            {
-                private int width;
-                private int height;
+        <program>
+          public class Rectangle
+          {
+              private int width;
+              private int height;
 
-                public Rectangle(int w, int h)
-                {
-                    width = w;
-                    height = h;
-                }
+              public Rectangle(int w, int h)
+              {
+                  width = w;
+                  height = h;
+              }
 
-                public void resize(int amt)
-                {
-                    width += amt;
-                }
+              public void resize(int amt)
+              {
+                  width += amt;
+              }
 
-                public int getArea()
-                {
-                    return width * height;
-                }
-            }
-          </code>
+              public int getArea()
+              {
+                  return width * height;
+              }
+          }
         </program>
 
         <p>Assume that the following code segment appears in a main method.</p>
 
-        <program language="java">
-          <code>
-            Rectangle r = new Rectangle(10, 15);
-            r.resize(5);
-            System.out.println(r.getArea());
-          </code>
+        <program>
+          Rectangle r = new Rectangle(10, 15);
+          r.resize(5);
+          System.out.println(r.getArea());
         </program>
 
         <p>
@@ -1044,7 +1034,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Rectangle
           {
@@ -1130,27 +1120,25 @@
           to see this code in action.)
         </p>
 
-        <program language="java">
-          <code>
-            public class MethodTrace
-            {
-                public int square(int x)
-                {
-                    return x * x;
-                }
+        <program>
+          public class MethodTrace
+          {
+              public int square(int x)
+              {
+                  return x * x;
+              }
 
-                public int divide(int x, int y)
-                {
-                    return x / y;
-                }
+              public int divide(int x, int y)
+              {
+                  return x / y;
+              }
 
-                public static void main(String[] args)
-                {
-                    MethodTrace traceObj = new MethodTrace();
-                    System.out.println(traceObj.square(2) + traceObj.divide(6, 2));
-                }
-            }
-          </code>
+              public static void main(String[] args)
+              {
+                  MethodTrace traceObj = new MethodTrace();
+                  System.out.println(traceObj.square(2) + traceObj.divide(6, 2));
+              }
+          }
         </program>
       </statement>
 
@@ -1235,7 +1223,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
           import java.awt.*;
           import java.util.*;
@@ -1338,12 +1326,10 @@
       walk the turtle into position without drawing, for example:
     </p>
 
-    <program language="java">
-      <code>
-        t.penUp();
-        t.moveTo(120,200);
-        t.penDown();
-      </code>
+    <program>
+      t.penUp();
+      t.moveTo(120,200);
+      t.penDown();
     </program>
 
     <p>
@@ -1362,7 +1348,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
           import java.awt.*;
           import java.util.*;
@@ -1547,30 +1533,28 @@
       <statement>
         <p>Consider the following class definition.</p>
 
-        <program language="java">
-          <code>
-            public class Party
-            {
-                private int numInvited;
-                private boolean partyCancelled;
+        <program>
+          public class Party
+          {
+              private int numInvited;
+              private boolean partyCancelled;
 
-                public Party()
-                {
-                    numInvited = 1;
-                    partyCancelled = false;
-                }
+              public Party()
+              {
+                  numInvited = 1;
+                  partyCancelled = false;
+              }
 
-                public void inviteFriend()
-                {
-                    numInvited++;
-                }
+              public void inviteFriend()
+              {
+                  numInvited++;
+              }
 
-                public void cancelParty()
-                {
-                    partyCancelled = true;
-                }
-            }
-          </code>
+              public void cancelParty()
+              {
+                  partyCancelled = true;
+              }
+          }
         </program>
 
         <p>
@@ -1643,28 +1627,26 @@
       <statement>
         <p>Consider the following class definition.</p>
 
-        <program language="java">
-          <code>
-            public class Cat
-            {
-                public void meow()
-                {
-                    System.out.print("Meow ");
-                }
+        <program>
+          public class Cat
+          {
+              public void meow()
+              {
+                  System.out.print("Meow ");
+              }
 
-                public void purr()
-                {
-                    System.out.print("purr");
-                }
+              public void purr()
+              {
+                  System.out.print("purr");
+              }
 
-                public void welcomeHome()
-                {
-                    purr();
-                    meow();
-                }
-                /* Constructors not shown */
-            }
-          </code>
+              public void welcomeHome()
+              {
+                  purr();
+                  meow();
+              }
+              /* Constructors not shown */
+          }
         </program>
 
         <p>
@@ -1677,12 +1659,10 @@
       <choices>
         <choice>
           <statement id="AP-Cat-trace_opt_a">
-            <program language="java">
-              <code>
-                Cat a = new Cat();
-                Cat.meow();
-                Cat.purr();
-              </code>
+            <program>
+              Cat a = new Cat();
+              Cat.meow();
+              Cat.purr();
             </program>
           </statement>
 
@@ -1696,11 +1676,9 @@
 
         <choice>
           <statement id="AP-Cat-trace_opt_b">
-            <program language="java">
-              <code>
-                Cat a = new Cat();
-                a.welcomeHome();
-              </code>
+            <program>
+              Cat a = new Cat();
+              a.welcomeHome();
             </program>
           </statement>
 
@@ -1711,12 +1689,10 @@
 
         <choice correct="yes">
           <statement id="AP-Cat-trace_opt_c">
-            <program language="java">
-              <code>
-                Cat a = new Cat();
-                a.meow();
-                a.purr();
-              </code>
+            <program>
+              Cat a = new Cat();
+              a.meow();
+              a.purr();
             </program>
           </statement>
 
@@ -1727,10 +1703,8 @@
 
         <choice>
           <statement id="AP-Cat-trace_opt_d">
-            <program language="java">
-              <code>
-                Cat a = new Cat().welcomeHome();
-              </code>
+            <program>
+              Cat a = new Cat().welcomeHome();
             </program>
           </statement>
 
@@ -1741,11 +1715,9 @@
 
         <choice>
           <statement id="AP-Cat-trace_opt_e">
-            <program language="java">
-              <code>
-                Cat a = new Cat();
-                a.meow();
-              </code>
+            <program>
+              Cat a = new Cat();
+              a.meow();
             </program>
           </statement>
 
@@ -1760,30 +1732,28 @@
       <statement>
         <p>Consider the following class definition.</p>
 
-        <program language="java">
-          <code>
-            public class Liquid
-            {
-                private double boilingPoint;
-                private double freezingPoint;
-                private double currentTemp;
+        <program>
+          public class Liquid
+          {
+              private double boilingPoint;
+              private double freezingPoint;
+              private double currentTemp;
 
-                public Liquid()
-                {
-                    currentTemp = 50;
-                }
+              public Liquid()
+              {
+                  currentTemp = 50;
+              }
 
-                public void lowerTemp()
-                {
-                    currentTemp -= 10;
-                }
+              public void lowerTemp()
+              {
+                  currentTemp -= 10;
+              }
 
-                public double getTemp()
-                {
-                    return currentTemp;
-                }
-            }
-          </code>
+              public double getTemp()
+              {
+                  return currentTemp;
+              }
+          }
         </program>
 
         <p>
@@ -1791,12 +1761,10 @@
           Liquid.
         </p>
 
-        <program language="java">
-          <code>
-            Liquid water = new Liquid();
-            water.lowerTemp();
-            System.out.println(water.getTemp());
-          </code>
+        <program>
+          Liquid water = new Liquid();
+          water.lowerTemp();
+          System.out.println(water.getTemp());
         </program>
 
         <p>
@@ -1878,19 +1846,17 @@
       <statement>
         <p>Consider the following methods, which appear in the same class.</p>
 
-        <program language="java">
-          <code>
-            public void splitPizza(int numOfPeople)
-            {
-                int slicesPerPerson = 8/numOfPeople;
-                /* INSERT CODE HERE */
-            }
+        <program>
+          public void splitPizza(int numOfPeople)
+          {
+              int slicesPerPerson = 8/numOfPeople;
+              /* INSERT CODE HERE */
+          }
 
-            public void printSlices(int slices)
-            {
-                System.out.println("Each person gets " + slices + " slices each");
-            }
-          </code>
+          public void printSlices(int slices)
+          {
+              System.out.println("Each person gets " + slices + " slices each");
+          }
         </program>
 
         <p>

@@ -218,12 +218,10 @@
     <p>An error message will look something like this:</p>
 
     <program language="text">
-      <code>
-        FirstClass.java:5: error: unclosed string literal
-               System.out.println("Hi there!);
-                                  ^
-        1 error
-      </code>
+      FirstClass.java:5: error: unclosed string literal
+             System.out.println("Hi there!);
+                                ^
+      1 error
     </program>
 
     <p>
@@ -305,7 +303,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class FirstClass
           {
@@ -351,7 +349,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class SecondClass
           {
@@ -399,7 +397,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class ThirdClass
           {
@@ -468,7 +466,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class DivideByZero
           {
@@ -558,7 +556,7 @@
         <p>Fix the code below.</p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Challenge1_1
           {
@@ -644,12 +642,10 @@
       <statement>
         <p>Consider the following code segment.</p>
 
-        <program language="java">
-          <code>
-            System.out.println("Roses are red, ")              // Line 1;
-            System.out.println("Violets are blue, ")           // Line 2;
-            System.out.println("Unexpected '}' on line 32. ")  // Line 3;
-          </code>
+        <program>
+          System.out.println("Roses are red, ")              // Line 1;
+          System.out.println("Violets are blue, ")           // Line 2;
+          System.out.println("Unexpected '}' on line 32. ")  // Line 3;
         </program>
 
         <p>

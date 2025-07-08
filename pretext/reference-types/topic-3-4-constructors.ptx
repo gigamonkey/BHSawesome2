@@ -13,14 +13,12 @@
       create <c>World</c>, <c>Turtle</c>, and <c>Person</c> objects.
     </p>
 
-    <program language="java">
-      <code>
-        // To create a new object, write:
-        // ClassName variableName = new ConstructorName(arguments);
-        World world = new World();
-        Turtle t = new Turtle(world);
-        Person p = new Person("Pat", "pat@gmail.com", "123-456-7890");
-      </code>
+    <program>
+      // To create a new object, write:
+      // ClassName variableName = new ConstructorName(arguments);
+      World world = new World();
+      Turtle t = new Turtle(world);
+      Person p = new Person("Pat", "pat@gmail.com", "123-456-7890");
     </program>
 
     <p>Now it’s time to learn to write our own constructors.</p>
@@ -44,21 +42,19 @@
       arguments passed when the constructor is called.
     </p>
 
-    <program language="java">
-      <code>
-        public class ClassName
-        {
-            /* Instance variable declarations go here, before constructors */
+    <program>
+      public class ClassName
+      {
+          /* Instance variable declarations go here, before constructors */
 
-            /* Constructor - same name as Class, no return type */
-            public ClassName()
-            {
-                /* Implementation not shown */
-            }
+          /* Constructor - same name as Class, no return type */
+          public ClassName()
+          {
+              /* Implementation not shown */
+          }
 
-            /* Method definitions go here, after constructors */
-        }
-      </code>
+          /* Method definitions go here, after constructors */
+      }
     </program>
 
     <note>
@@ -116,7 +112,7 @@
         </li>
 
         <li>
-        <p>0.0 for <c>double</c></p>
+          <p>0.0 for <c>double</c></p>
         </li>
 
         <li>
@@ -146,15 +142,13 @@
       the last lesson.
     </p>
 
-    <program language="java">
-      <code>
-        public Person(String initName, String initEmail, String initPhone)
-        {
-            name = initName;
-            email = initEmail;
-            phoneNumber = initPhone;
-        }
-      </code>
+    <program>
+      public Person(String initName, String initEmail, String initPhone)
+      {
+          name = initName;
+          email = initEmail;
+          phoneNumber = initPhone;
+      }
     </program>
 
     <p>
@@ -188,15 +182,13 @@
       themselves using the constructor with arguments.
     </p>
 
-    <program language="java">
-      <code>
-        public Person()
-        {
-            name = "Anonymous";
-            email = "unknown";
-            phoneNumber = "unknown";
-        }
-      </code>
+    <program>
+      public Person()
+      {
+          name = "Anonymous";
+          email = "unknown";
+          phoneNumber = "unknown";
+      }
     </program>
 
     <activity label="name_constructor">
@@ -315,7 +307,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Fraction
           {
@@ -423,7 +415,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Car
           {
@@ -496,7 +488,7 @@
     </p>
 
     <p>
-      <ol marker="1">
+      <ol>
         <li>
           <p>
             First, brainstorm in pairs to do the <term>Object-Oriented
@@ -540,7 +532,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           /**
            * class Student with 4 instance variables, a constructor, a print method, and a
@@ -658,7 +650,7 @@
     </p>
 
     <p>
-      <ol marker="1">
+      <ol>
         <li>
           <p>
             Consult your completed worksheet or your code in <url
@@ -708,7 +700,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class          // Add your class name here!
           {
@@ -914,33 +906,31 @@
           be considered a senior cat or not.
         </p>
 
-        <program language="java">
-          <code>
-            <![CDATA[
+        <program>
+          <![CDATA[
 
-            public class Cat
-            {
-                private String name;
-                private int age;
-                private boolean isSenior;
+          public class Cat
+          {
+              private String name;
+              private int age;
+              private boolean isSenior;
 
-                public Cat(String n, int a)
-                {
-                    name = n;
-                    age = a;
-                    if (age >= 10)
-                    {
-                        isSenior = true;
-                    }
-                    else
-                    {
-                        isSenior = false;
-                    }
-                }
-            }
+              public Cat(String n, int a)
+              {
+                  name = n;
+                  age = a;
+                  if (age >= 10)
+                  {
+                      isSenior = true;
+                  }
+                  else
+                  {
+                      isSenior = false;
+                  }
+              }
+          }
 
-            ]]>
-          </code>
+          ]]>
         </program>
 
         <p>
@@ -1024,33 +1014,31 @@
           that is 5 years old with no kittens?
         </p>
 
-        <program language="java">
-          <code>
-            public class Cat
-            {
-                private String name;
-                private int age;
-                private int kittens;
+        <program>
+          public class Cat
+          {
+              private String name;
+              private int age;
+              private int kittens;
 
-                public Cat(String n, int a, int k)
-                {
-                    name = n;
-                    age = a;
-                    kittens = k;
-                }
-                public Cat(String n, int a)
-                {
-                    name = n;
-                    age = a;
-                    kittens = 0;
-                }
-                /* Other methods not shown */
-            }
+              public Cat(String n, int a, int k)
+              {
+                  name = n;
+                  age = a;
+                  kittens = k;
+              }
+              public Cat(String n, int a)
+              {
+                  name = n;
+                  age = a;
+                  kittens = 0;
+              }
+              /* Other methods not shown */
+          }
 
-            I.   Cat c = new Cat("Sprinkles", 5, 0);
-            II.  Cat c = new Cat("Lucy", 0, 5);
-            III. Cat c = new Cat("Luna", 5);
-          </code>
+          I.   Cat c = new Cat("Sprinkles", 5, 0);
+          II.  Cat c = new Cat("Lucy", 0, 5);
+          III. Cat c = new Cat("Luna", 5);
         </program>
       </statement>
 
@@ -1115,15 +1103,13 @@
       <statement>
         <p>Consider the following class definition.</p>
 
-        <program language="java">
-          <code>
-            public class Cat
-            {
-                private String color;
-                private boolean isHungry;
-                /* missing constructor */
-            }
-          </code>
+        <program>
+          public class Cat
+          {
+              private String color;
+              private boolean isHungry;
+              /* missing constructor */
+          }
         </program>
 
         <p>
@@ -1134,24 +1120,20 @@
           the object c below is correctly created?
         </p>
 
-        <program language="java">
-          <code>
-            Cat c = new Cat("black", true);
-          </code>
+        <program>
+          Cat c = new Cat("black", true);
         </program>
       </statement>
 
       <choices>
         <choice>
           <statement id="AP-constructor3_opt_a">
-            <program language="java">
-              <code>
-                public Cat(String c, boolean h)
-                {
-                    c = "black";
-                    h = true;
-                }
-              </code>
+            <program>
+              public Cat(String c, boolean h)
+              {
+                  c = "black";
+                  h = true;
+              }
             </program>
           </statement>
 
@@ -1165,14 +1147,12 @@
 
         <choice>
           <statement id="AP-constructor3_opt_b">
-            <program language="java">
-              <code>
-                public Cat(String c, boolean h)
-                {
-                    c = "black";
-                    h = "true";
-                }
-              </code>
+            <program>
+              public Cat(String c, boolean h)
+              {
+                  c = "black";
+                  h = "true";
+              }
             </program>
           </statement>
 
@@ -1186,14 +1166,12 @@
 
         <choice>
           <statement id="AP-constructor3_opt_c">
-            <program language="java">
-              <code>
-                public Cat(String c, boolean h)
-                {
-                    c = color;
-                    h = isHungry;
-                }
-              </code>
+            <program>
+              public Cat(String c, boolean h)
+              {
+                  c = color;
+                  h = isHungry;
+              }
             </program>
           </statement>
 
@@ -1207,14 +1185,12 @@
 
         <choice>
           <statement id="AP-constructor3_opt_d">
-            <program language="java">
-              <code>
-                public Cat(String c, boolean h)
-                {
-                    color = black;
-                    isHungry = true;
-                }
-              </code>
+            <program>
+              public Cat(String c, boolean h)
+              {
+                  color = black;
+                  isHungry = true;
+              }
             </program>
           </statement>
 
@@ -1228,14 +1204,12 @@
 
         <choice correct="yes">
           <statement id="AP-constructor3_opt_e">
-            <program language="java">
-              <code>
-                public Cat(String c, boolean h)
-                {
-                    color = c;
-                    isHungry = h;
-                }
-              </code>
+            <program>
+              public Cat(String c, boolean h)
+              {
+                  color = c;
+                  isHungry = h;
+              }
             </program>
           </statement>
 

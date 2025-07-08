@@ -119,12 +119,10 @@
           s1?
         </p>
 
-        <program language="java">
-          <code>
-            String s1 = "xy";
-            String s2 = s1;
-            s1 = s1 + s2 + "z";
-          </code>
+        <program>
+          String s1 = "xy";
+          String s2 = s1;
+          s1 = s1 + s2 + "z";
         </program>
       </statement>
 
@@ -197,7 +195,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Test2
           {
@@ -514,7 +512,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Test1
           {
@@ -570,11 +568,9 @@
           What is the value of <c>pos</c> after the following code executes?
         </p>
 
-        <program language="java">
-          <code>
-            String s1 = "abccba";
-            int pos = s1.indexOf("b");
-          </code>
+        <program>
+          String s1 = "abccba";
+          int pos = s1.indexOf("b");
         </program>
       </statement>
 
@@ -630,11 +626,9 @@
           What is the value of <c>len</c> after the following code executes?
         </p>
 
-        <program language="java">
-          <code>
-            String s1 = "baby";
-            int len = s1.length();
-          </code>
+        <program>
+          String s1 = "baby";
+          int len = s1.length();
         </program>
       </statement>
 
@@ -688,11 +682,9 @@
       <statement>
         <p>What is the value of <c>s2</c> after the following code executes?</p>
 
-        <program language="java">
-          <code>
-            String s1 = "baby";
-            String s2 = s1.substring(0,3);
-          </code>
+        <program>
+          String s1 = "baby";
+          String s2 = s1.substring(0,3);
         </program>
       </statement>
 
@@ -750,11 +742,9 @@
       <statement>
         <p>What is the value of <c>s2</c> after the following code executes?</p>
 
-        <program language="java">
-          <code>
-            String s1 = "baby";
-            String s2 = s1.substring(2);
-          </code>
+        <program>
+          String s1 = "baby";
+          String s2 = s1.substring(2);
         </program>
       </statement>
 
@@ -931,7 +921,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Test2
           {
@@ -1071,12 +1061,10 @@
       <statement>
         <p>What is the value of answer after the following code executes?</p>
 
-        <program language="java">
-          <code>
-            String s1 = "Hi";
-            String s2 = "Bye";
-            int answer = s1.compareTo(s2);
-          </code>
+        <program>
+          String s1 = "Hi";
+          String s2 = "Bye";
+          int answer = s1.compareTo(s2);
         </program>
       </statement>
 
@@ -1147,7 +1135,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           import java.util.Scanner;
 
@@ -1297,7 +1285,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class ChallengeUnicode {
               public static void main(String[] args) {
@@ -1528,12 +1516,10 @@
       <statement>
         <p>What is the value of s2 after the following code executes?</p>
 
-        <program language="java">
-          <code>
-            String s1 = new String("hi there");
-            int pos = s1.indexOf("e");
-            String s2 = s1.substring(0,pos);
-          </code>
+        <program>
+          String s1 = new String("hi there");
+          int pos = s1.indexOf("e");
+          String s2 = s1.substring(0,pos);
         </program>
       </statement>
 
@@ -1599,12 +1585,10 @@
       <statement>
         <p>What is the value of s1 after the following code executes?</p>
 
-        <program language="java">
-          <code>
-            String s1 = "Hi";
-            String s2 = s1.substring(0,1);
-            String s3 = s2.toLowerCase();
-          </code>
+        <program>
+          String s1 = "Hi";
+          String s2 = s1.substring(0,1);
+          String s3 = s2.toLowerCase();
         </program>
       </statement>
 

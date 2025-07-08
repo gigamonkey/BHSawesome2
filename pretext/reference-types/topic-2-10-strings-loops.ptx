@@ -102,24 +102,22 @@
       <c>substring</c> method.
     </p>
 
-    <program language="java">
-      <code>
-        <![CDATA[
+    <program>
+      <![CDATA[
 
-        String s = "example";
-        int i = 0;
-        // while there is an a in s
-        while (s.indexOf("a") >= 0)
-        {
-          // Find and save the next index for an a
-          i = s.indexOf("a");
-          // Process the string at that index
-          String ithLetter = s.substring(i,i+1);
-          ...
-        }
+      String s = "example";
+      int i = 0;
+      // while there is an a in s
+      while (s.indexOf("a") >= 0)
+      {
+        // Find and save the next index for an a
+        i = s.indexOf("a");
+        // Process the string at that index
+        String ithLetter = s.substring(i,i+1);
+        ...
+      }
 
-        ]]>
-      </code>
+      ]]>
     </program>
 
     <p>
@@ -213,7 +211,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           <![CDATA[
 
@@ -312,21 +310,19 @@
       character.
     </p>
 
-    <program language="java">
-      <code>
-        <![CDATA[
+    <program>
+      <![CDATA[
 
-        String s = "example";
-        // loop through the string from 0 to length
-        for(int i=0; i < s.length(); i++)
-        {
-           String ithLetter = s.substring(i,i+1);
-           // Process the string at that index
-           ...
-        }
+      String s = "example";
+      // loop through the string from 0 to length
+      for(int i=0; i < s.length(); i++)
+      {
+         String ithLetter = s.substring(i,i+1);
+         // Process the string at that index
+         ...
+      }
 
-        ]]>
-      </code>
+      ]]>
     </program>
 
     <activity label="countEs" numbered="yes" adaptive="yes" indentation="hide" language="java">
@@ -396,7 +392,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           <![CDATA[
 
@@ -479,7 +475,7 @@
     </p>
 
     <p>
-      <ol marker="1">
+      <ol>
         <li>
           <p>
             Write some code below that changes every occurrence of “cat” to
@@ -536,7 +532,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class ChallengeReplace
           {
@@ -625,15 +621,12 @@
           <p>
             <ul>
               <li>
-                <p>
-                  Find if one or more substrings has a particular property
-                </p>
+                <p>Find if one or more substrings has a particular property</p>
               </li>
 
               <li>
                 <p>
-                  Determine the number of substrings that meet specific
-                  criteria
+                  Determine the number of substrings that meet specific criteria
                 </p>
               </li>
 
