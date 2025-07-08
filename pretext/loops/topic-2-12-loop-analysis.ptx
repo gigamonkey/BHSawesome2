@@ -1,14 +1,384 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-2-12-loop-analysis">
-  <title>Informal Runtime Analysis of Loops</title>
+  <title>Analyzing loops</title>
+<!--
 
+      Start with simple loop counting starting from the canonical for loop.
+
+      Then talk about translating slightly more complicated loops into the
+      canonical form.
+
+      Nested loops: product of outer and inner.
+
+      Talk about analyzing beginning and ends of loops. Are the first and last
+      values of the loop variable what you want?
+
+      Finally talk about tracing tables as a last resort for complicated loops.
+
+  -->
   <introduction>
     <p>
-      In this lesson, you will practice tracing through code with loops and
-      analyzing loops to determine how many times they run.
+      While conceptually simple, loops actually turn out to be a bit tricky to
+      get right. Unfortunately stepping through the execution of a loop line by
+      line can be tedious due to the repetition—imagine if you had a loop that
+      ran a million times; you wouldn’t want to step through that! So it’s
+      useful to have a few techniques for analyzing loops a bit more abstractly.
+    </p>
+
+    <p>
+      Sometimes the main question we have about a loop is simply how many times
+      will the body run? Sometimes the answer is a specific number but more
+      often it’s some other relevant value in the program, such as a loop that
+      is going to run it’s body as many times as there are characters in some
+      <c>String</c>.
+    </p>
+
+    <p>
+      Other times we care less about the particular number than whether a loop
+      starts and stops at the right place. A common bug that occurs in loops is
+      called a <term>fencepost error</term> or an <term>off-by-one error</term>
+      which occurs when a loop repeats one fewer times (or occasionally one
+      more) than it should. The name comes from the natural mistake that occurs
+      when people are asked how many fenceposts—the uprights in a fence—you need
+      to build a hundred foot fence with fenceposts every ten feet. If you think
+      the answer is ten you have a fencepost error because the correct answer is
+      eleven.
+    </p>
+
+    <p>
+      If all else fails, sometimes it is necessary to trace through some or all
+      the iterations of loop. If so we’ll want to use a techniue called a
+      <term>tracing table</term> to keep track of things.
+    </p>
+
+    <p>
+      In this lesson, we’ll look at all three of these ways of analyzing loops.
     </p>
   </introduction>
+
+  <subsection>
+    <title>Counting loop iterations</title>
+
+    <p>
+      The simplest way to know how many times the body of a loop is going to run
+      is to write the loop simply. Here’s is the “canonical” <c>for</c> loop:
+    </p>
+
+    <program>
+      <![CDATA[
+
+      for (int i = 0; i < n; i++) {
+        // whatever
+      }
+
+      ]]>
+    </program>
+
+    <p>
+      There are a few features of this loop that make it the canonical loop:
+    </p>
+
+    <ol>
+      <li>The loop variable, <c>i</c> starts at <c>0</c>.</li>
+
+      <li>The loop variable is incremented by one in the updater.</li>
+
+      <li>
+        The comparison uses &lt; so the maximum value of <c>i</c> is one less
+        than <c>n</c>.
+      </li>
+    </ol>
+
+    <p>
+      After ensuring those features are present, any Java programmer should be
+      able to look at this loop and almost instantly answer the question, “How
+      many times will the body run?” with the answer, “<c>n</c> times.” In this
+      case <c>n</c> is a variable. If it was a literal number like <c>10</c> the
+      answer would be “ten times”. And if it was some other expression like
+      <c>s.length()</c> where <c>s</c> was a <c>String</c>, the loop body would
+      run as many times as there are characters in <c>s</c>.
+    </p>
+
+    <p>
+      There are things that could happen in the body of the loop that would
+      cause the loop to complete early. For instance, if the body of the loop
+      contains a <c>return</c> statement, that could break us out of the loop
+      early. But for purposes of analyzing the loop, we are assuming nothing
+      like that happens in the body.
+    </p>
+
+    <activity label="canonical-loop-1">
+      <title>A canonical loop</title>
+
+      <statement>
+        <p>How many times does this loop run? (Assume the body doesn’t contain
+        any code to cause the loop to complete early.)</p>
+
+        <program language="java">
+          <code>
+            <![CDATA[
+
+            for (int i = 0; i < 100; i++) {
+              // whatever
+            }
+
+            ]]>
+          </code>
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>100</p>
+          </statement>
+
+          <feedback>
+            <p>Yes.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>101</p>
+          </statement>
+
+          <feedback>
+            <p>
+              That would be correct if the condition used &lt;= rather than
+              &lt;.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>99</p>
+          </statement>
+
+          <feedback>
+            <p>
+              You may have a fencepost error. While the largest value <c>i</c>
+              will take on in the body of the loop is 99, there are one hundred
+              numbers between 0-99, inclusive.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>It’s an infinite loop</p>
+          </statement>
+
+          <feedback>
+            <p>Not sure why you’d think that. Check again.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <p>
+      Often the easiest way to analyze a non-canonical loop is to turn into into
+      a canonical loop by accounting for whatever things make it non-canonical.
+      For instance if a loop uses <c>&lt;=</c> rather than <c>&lt;</c> we can
+      change the <c>&lt;=</c> to a <c>&lt;</c> if we add one to the limit. And
+      assuming we’re only trying to figure out how many times the loop body will
+      run we’re can add or subtract the same amount from both the initial value
+      of the limit to get a canonical loop that will the same number of times.
+    </p>
+
+    <table>
+      <tabular>
+        <col right="minor"/>
+        <col/>
+        <row header="yes" bottom="minor">
+          <cell>Non-canonical loop</cell>
+          <cell>Canonical loop with same number of iterations</cell>
+        </row>
+        <row>
+          <cell><c>for (int i = 0; i &lt;= 10; i++)</c></cell>
+          <cell><c>for (int i = 0; i &lt; 11; i++)</c></cell>
+        </row>
+        <row>
+          <cell><c>for (int i = 1; i &lt; 10; i++)</c></cell>
+          <cell><c>for (int i = 0; i &lt; 9; i++)</c></cell>
+        </row>
+        <row>
+          <cell><c>for (int i = 10; i &lt; 20; i++)</c></cell>
+          <cell><c>for (int i = 0; i &lt; 10; i++)</c></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>
+      Loops can be also analyzed to determine how many times they run. This is
+      called <term>run-time analysis</term> or a <term>statement execution
+      count</term>. A <term>statement execution count</term> indicates the
+      number of times a statement is executed by the program. Statement
+      execution counts are often calculated informally through tracing and
+      analysis of the iterative statements.
+    </p>
+
+    <activity label="countstars1">
+      <statement>
+        <p>
+          How many stars are printed out in this loop? How many times does the
+          loop run? Figure it out on paper before you run the code.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+          <![CDATA[
+
+          public class CountLoop
+          {
+
+              public static void main(String[] args)
+              {
+                  for (int i = 3; i < 7; i++)
+                  {
+                      System.out.print("*");
+                  }
+              }
+          }
+
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "****\n";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
+
+    <p>
+      If you made a trace table, you would know that the loop runs when i = 3,
+      4, 5, 6 but finishes as soon as i becomes 7 since that is not less than 7.
+      So, the loop runs 4 times. Or you can use the shortcut formula in the note
+      below.
+    </p>
+
+    <note>
+      <p>
+        The number of times a loop executes can be calculated by
+        <em>(largestValue - smallestValue + 1)</em>.
+      </p>
+
+      <p>
+        <ul>
+          <li>
+            <p>
+              If the loop uses counter &lt;= limit, limit is the largest value.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              If the loop uses counter &lt; limit, limit-1 is the largest value
+              that allows the loop to run.
+            </p>
+          </li>
+        </ul>
+      </p>
+    </note>
+
+    <p>
+      In the code above the largest value that allows the loop to run is 6
+      (which is the largest value &lt; 7) and the smallest value that allows the
+      loop to execute is 3 so this loop executes (6 - 3 + 1 = 4 times).
+    </p>
+
+    <p>
+      Nested loops are loops within loops. The number of times a nested loop
+      runs is the number of times the outer loop runs <term>times</term> the
+      number of times the inner loop runs. Here is an example of a nested loop
+      that prints a rectangle of stars:
+    </p>
+
+    <activity label="countstars">
+      <statement>
+        <p>
+          How many stars are printed out by the following loops? How many times
+          do the loops run? Calculate on paper before you run the code.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+        <code>
+          <![CDATA[
+
+          public class NestedLoops
+          {
+
+              public static void main(String[] args)
+              {
+                  for (int row = 0; row < 5; row++)
+                  {
+                      for (int col = 0; col < 10; col++)
+                      {
+                          System.out.print("*");
+                      }
+                      System.out.println();
+                  }
+              }
+          }
+
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "**********\n**********\n**********\n**********\n**********\n";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
+
+    <note>
+      <p>
+        The number of times a nested for loop body is executed is the number of
+        times the outer loop runs multiplied by the number of times the inner
+        loop runs (outer loop runs * inner loop runs).
+      </p>
+    </note>
+
+    <p>
+      For the example above, the outer loop executes 4 - 0 + 1 = 5 times and the
+      inner 9 - 0 + 1 = 10 times so the total is 5 * 10 = 50.
+    </p>
+  </subsection>
 
   <subsection>
     <title>Tracing Loops</title>
@@ -278,178 +648,6 @@
         </choice>
       </choices>
     </activity>
-  </subsection>
-
-  <subsection>
-    <title>Counting Loop Iterations</title>
-
-    <p>
-      Loops can be also analyzed to determine how many times they run. This is
-      called <term>run-time analysis</term> or a <term>statement execution
-      count</term>. A <term>statement execution count</term> indicates the
-      number of times a statement is executed by the program. Statement
-      execution counts are often calculated informally through tracing and
-      analysis of the iterative statements.
-    </p>
-
-    <activity label="countstars1">
-      <statement>
-        <p>
-          How many stars are printed out in this loop? How many times does the
-          loop run? Figure it out on paper before you run the code.
-        </p>
-      </statement>
-
-      <program interactive="activecode" language="java">
-        <code>
-          <![CDATA[
-
-          public class CountLoop
-          {
-
-              public static void main(String[] args)
-              {
-                  for (int i = 3; i < 7; i++)
-                  {
-                      System.out.print("*");
-                  }
-              }
-          }
-
-          ]]>
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "****\n";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-      </program>
-    </activity>
-
-    <p>
-      If you made a trace table, you would know that the loop runs when i = 3,
-      4, 5, 6 but finishes as soon as i becomes 7 since that is not less than 7.
-      So, the loop runs 4 times. Or you can use the shortcut formula in the note
-      below.
-    </p>
-
-    <note>
-      <p>
-        The number of times a loop executes can be calculated by
-        <em>(largestValue - smallestValue + 1)</em>.
-      </p>
-
-      <p>
-        <ul>
-          <li>
-            <p>
-              If the loop uses counter &lt;= limit, limit is the largest value.
-            </p>
-          </li>
-
-          <li>
-            <p>
-              If the loop uses counter &lt; limit, limit-1 is the largest value
-              that allows the loop to run.
-            </p>
-          </li>
-        </ul>
-      </p>
-    </note>
-
-    <p>
-      In the code above the largest value that allows the loop to run is 6
-      (which is the largest value &lt; 7) and the smallest value that allows the
-      loop to execute is 3 so this loop executes (6 - 3 + 1 = 4 times).
-    </p>
-
-    <p>
-      Nested loops are loops within loops. The number of times a nested loop
-      runs is the number of times the outer loop runs <term>times</term> the
-      number of times the inner loop runs. Here is an example of a nested loop
-      that prints a rectangle of stars:
-    </p>
-
-    <activity label="countstars">
-      <statement>
-        <p>
-          How many stars are printed out by the following loops? How many times
-          do the loops run? Calculate on paper before you run the code.
-        </p>
-      </statement>
-
-      <program interactive="activecode" language="java">
-        <code>
-          <![CDATA[
-
-          public class NestedLoops
-          {
-
-              public static void main(String[] args)
-              {
-                  for (int row = 0; row < 5; row++)
-                  {
-                      for (int col = 0; col < 10; col++)
-                      {
-                          System.out.print("*");
-                      }
-                      System.out.println();
-                  }
-              }
-          }
-
-          ]]>
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "**********\n**********\n**********\n**********\n**********\n";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-      </program>
-    </activity>
-
-    <note>
-      <p>
-        The number of times a nested for loop body is executed is the number of
-        times the outer loop runs multiplied by the number of times the inner
-        loop runs (outer loop runs * inner loop runs).
-      </p>
-    </note>
-
-    <p>
-      For the example above, the outer loop executes 4 - 0 + 1 = 5 times and the
-      inner 9 - 0 + 1 = 10 times so the total is 5 * 10 = 50.
-    </p>
   </subsection>
 
   <subsection>
@@ -815,74 +1013,5 @@
         </li>
       </ul>
     </p>
-  </subsection>
-
-  <subsection>
-    <title>Loop Analysis Game</title>
-
-    <p>
-      Try the game below to practice loop analysis. Click on <term>Loops</term>
-      and click on the number of times the loop runs. For an added challenge,
-      try the check boxes for Backwards, Do While, and Nested. We encourage you
-      to work in pairs and see how high a score you can get.
-    </p>
-
-    <interactive iframe="iframe/csagames.html" width="95%" aspect="1:1" />
-  </subsection>
-
-  <subsection xml:id="review-practice-for-loops">
-    <title>Review/Practice for Loops</title>
-
-    <p>
-      This lesson ends the section on loops. You can now do the following review
-      and practice lessons at the end of the unit and College Board Progress
-      Checks in the AP Classroom.
-    </p>
-
-    <ul>
-      <li>
-        <url href="loops-summary.html" visual="loops-summary.html">Loops Summary</url>
-      </li>
-
-      <li>
-        <url href="loops-practice-mixed-code.html" visual="loops-practice-mixed-code.html">Loops Practice Mixed Code</url>
-      </li>
-
-      <li>
-        <url href="loops-practice-mixed-code-toggle.html" visual="loops-practice-mixed-code-toggle.html">Loops Practice Mixed Code Toggle</url>
-      </li>
-
-      <li>
-        <url href="loops-practice-coding.html" visual="loops-practice-coding.html">Loops Practice Coding</url>
-      </li>
-
-      <li>
-        <url href="Exercises-loops.html" visual="Exercises-loops.html">Multiple-Choice Exercises for Loops</url>
-      </li>
-
-      <li>
-        <url href="unit2-test.html" visual="unit2-test.html">Unit 2 Test</url>
-      </li>
-
-      <li>
-        <url href="FRQmessagebuilder.html" visual="FRQmessagebuilder.html">FRQ Calendar</url>
-      </li>
-
-      <li>
-        <url href="FRQcalendar.html" visual="FRQcalendar.html">FRQ Calendar</url>
-      </li>
-
-      <li>
-        <url href="FRQselfDivisorA.html" visual="FRQselfDivisorA.html">FRQ Self Divisor</url>
-      </li>
-
-      <li>
-        <url href="FRQstringScrambleA.html" visual="FRQstringScrambleA.html">FRQ String Scramble</url>
-      </li>
-
-      <li>
-        <url href="ConsumerReviewLab.html" visual="ConsumerReviewLab.html">Consumer Review Lab</url>
-      </li>
-    </ul>
   </subsection>
 </section>
