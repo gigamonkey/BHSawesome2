@@ -16,6 +16,8 @@
 
 - [ ] Find a place to talk about `return`ing from loops
 
+- [ ] Remove the mentions of POGIL groups
+
 - [x] Make new images for Snap!/Java comparisons since it seems too hard to do
       it with <sidebyside>
 
