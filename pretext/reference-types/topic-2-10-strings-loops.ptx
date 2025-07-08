@@ -622,28 +622,26 @@
         <li>
           <p>(AP 2.10.A.1) There are standard string algorithms to:</p>
 
-          <blockquote>
-            <p>
-              <ul>
-                <li>
-                  <p>
-                    Find if one or more substrings has a particular property
-                  </p>
-                </li>
+          <p>
+            <ul>
+              <li>
+                <p>
+                  Find if one or more substrings has a particular property
+                </p>
+              </li>
 
-                <li>
-                  <p>
-                    Determine the number of substrings that meet specific
-                    criteria
-                  </p>
-                </li>
+              <li>
+                <p>
+                  Determine the number of substrings that meet specific
+                  criteria
+                </p>
+              </li>
 
-                <li>
-                  <p>Create a new string with the characters reversed</p>
-                </li>
-              </ul>
-            </p>
-          </blockquote>
+              <li>
+                <p>Create a new string with the characters reversed</p>
+              </li>
+            </ul>
+          </p>
         </li>
       </ul>
     </p>

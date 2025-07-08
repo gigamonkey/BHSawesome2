@@ -1,20 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-7-wrapper-classes">
   <title>Wrapper Classes - Integer and Double</title>
+
   <introduction>
     <idx>wrapper classes</idx>
     <idx>Integer</idx>
     <idx>Double</idx>
     <idx>wrapper</idx>
-    <idx>
-      <h>integer</h><h>minimum</h>
-    </idx>
-
-    <idx>
-      <h>integer</h><h>maximum</h>
-    </idx>
-
+    <idx><h>integer</h><h>minimum</h></idx>
+    <idx><h>integer</h><h>maximum</h></idx>
     <p>
       A <term>wrapper class</term> is a class that wraps (encloses) around a
       primitive data type and gives it an object appearance. The wrapper classes
@@ -44,16 +39,14 @@
       values) cannot be changed.
     </p>
 
-    <program language="java">
-      <code>
-// in older versions of Java
-Integer i = new Integer(2); // create an object with 2 in it
-Double d = new Double(3.5); // create an object with 3.5 in it
+    <program>
+      // in older versions of Java
+      Integer i = new Integer(2); // create an object with 2 in it
+      Double d = new Double(3.5); // create an object with 3.5 in it
 
-// in newer versions of Java (9+)
-Integer i = 2;
-Double d = 3.5;
-      </code>
+      // in newer versions of Java (9+)
+      Integer i = 2;
+      Double d = 3.5;
     </program>
 
     <p>
@@ -71,37 +64,38 @@ Double d = 3.5;
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class Test1
-{
-    public static void main(String[] args)
-    {
-        System.out.println(Integer.MIN_VALUE);
-        System.out.println(Integer.MAX_VALUE);
-        System.out.println(Integer.MIN_VALUE - 1);
-        System.out.println(Integer.MAX_VALUE + 1);
-    }
-}
+          public class Test1
+          {
+              public static void main(String[] args)
+              {
+                  System.out.println(Integer.MIN_VALUE);
+                  System.out.println(Integer.MAX_VALUE);
+                  System.out.println(Integer.MIN_VALUE - 1);
+                  System.out.println(Integer.MAX_VALUE + 1);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "-2147483648\n2147483647\n2147483647\n-2147483648";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "-2147483648\n2147483647\n2147483647\n-2147483648";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -138,6 +132,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="autoboxing-and-unboxing">
     <title>Autoboxing and Unboxing</title>
+
     <p>
       <term>Autoboxing</term> is the automatic conversion that the Java compiler
       makes between primitive types and their corresponding object wrapper
@@ -148,11 +143,9 @@ public class RunestoneTests extends CodeTestHelper
       the corresponding wrapper class. Here’s an example of autoboxing.
     </p>
 
-    <program language="java">
-      <code>
-Integer i = 2;
-Double d = 3.5;
-      </code>
+    <program>
+      Integer i = 2;
+      Double d = 3.5;
     </program>
 
     <p>
@@ -165,11 +158,9 @@ Double d = 3.5;
       an example of unboxing:
     </p>
 
-    <program language="java">
-      <code>
-Integer i = 2;  // autoboxing - wrap 2
-int number = i; // unboxing - back to primitive type
-      </code>
+    <program>
+      Integer i = 2;  // autoboxing - wrap 2
+      int number = i; // unboxing - back to primitive type
     </program>
 
     <activity label="WrapperClasses">
@@ -226,6 +217,7 @@ int number = i; // unboxing - back to primitive type
 
   <subsection xml:id="parsing-strings-to-numbers">
     <title>Parsing Strings to Numbers</title>
+
     <p>
       The <c>Integer</c> and <c>Double</c> classes have methods called
       <c>Integer.parseInt</c> and <c>Double.parseDouble</c> that can be used to
@@ -257,6 +249,7 @@ int number = i; // unboxing - back to primitive type
     </p>
 
     <p>Here’s an example of using these methods:</p>
+
     <activity label="parseMethods">
       <statement>
         <p>
@@ -265,49 +258,50 @@ int number = i; // unboxing - back to primitive type
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class Test2
-{
-    public static void main(String[] args)
-    {
-        Integer i = 2;
-        Double d = 3.5;
-        System.out.println(
-                i.intValue()); // intValue() returns the primitive value
-        System.out.println(d.doubleValue());
+          public class Test2
+          {
+              public static void main(String[] args)
+              {
+                  Integer i = 2;
+                  Double d = 3.5;
+                  System.out.println(
+                          i.intValue()); // intValue() returns the primitive value
+                  System.out.println(d.doubleValue());
 
-        String ageStr = "16";
-        // Integer.parseInt and Double.parseDouble are often used to
-        // convert an input string to a number so you can do math on it.
-        System.out.println(
-                "Age "
-                        + ageStr
-                        + " in 10 years is "
-                        + (Integer.parseInt(ageStr) + 10));
+                  String ageStr = "16";
+                  // Integer.parseInt and Double.parseDouble are often used to
+                  // convert an input string to a number so you can do math on it.
+                  System.out.println(
+                          "Age "
+                                  + ageStr
+                                  + " in 10 years is "
+                                  + (Integer.parseInt(ageStr) + 10));
 
-    }
-}
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-           String output = getMethodOutput("main");
-           String expect = "2\n3.5\nAge 16 in 10 years is 26";
-           boolean passed = getResults(expect, output, "Expected output from main", true);
-           assertTrue(passed);
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                     String output = getMethodOutput("main");
+                     String expect = "2\n3.5\nAge 16 in 10 years is 26";
+                     boolean passed = getResults(expect, output, "Expected output from main", true);
+                     assertTrue(passed);
 
-    }
-}
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -320,57 +314,58 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class Debug
-{
-    public static void main(String[] args)
-    {
-        integer i = 2.3;
-        Double d = 5;
-        System.out.println( i.intValue );
-        System.out.println( doubleValue() );
-        // Print out the min and max values possible for integers
-        System.out.println(Integer.min_value);
-        System.out.println( int.MAX_VALUE() );
-        // parse strings to numbers
-        String numStr = "2.5";
-        System.out.println( Int.parseInt(numStr) * 2 );
-    }
-}
+          public class Debug
+          {
+              public static void main(String[] args)
+              {
+                  integer i = 2.3;
+                  Double d = 5;
+                  System.out.println( i.intValue );
+                  System.out.println( doubleValue() );
+                  // Print out the min and max values possible for integers
+                  System.out.println(Integer.min_value);
+                  System.out.println( int.MAX_VALUE() );
+                  // parse strings to numbers
+                  String numStr = "2.5";
+                  System.out.println( Int.parseInt(numStr) * 2 );
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "2\n5.0\n-2147483648\n2147483647\n5.0";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "2\n5.0\n-2147483648\n2147483647\n5.0";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testCode() throws IOException
-    {
-        String target = "Integer.MAX_VALUE";
-        boolean passed = checkCodeContains("MAX_VALUE", target);
-        assertTrue(passed);
-    }
-    @Test
-    public void testDouble() throws IOException
-    {
-        boolean passed = checkCodeContains("Double.parseDouble");
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void testCode() throws IOException
+              {
+                  String target = "Integer.MAX_VALUE";
+                  boolean passed = checkCodeContains("MAX_VALUE", target);
+                  assertTrue(passed);
+              }
+              @Test
+              public void testDouble() throws IOException
+              {
+                  boolean passed = checkCodeContains("Double.parseDouble");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -378,6 +373,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-pokemon-speed">
     <title>Coding Challenge: Pokemon Speed</title>
+
     <p>
       In the last lesson, we read in a file of Pokemon data. In this exercise,
       we will read in the file and calculate the average Pokemon speed and find
@@ -397,128 +393,129 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="pokemon.csv">
+      <program interactive="activecode" datafile="pokemon.csv">
         <code>
-import java.io.*;
-import java.util.*;
+          import java.io.*;
+          import java.util.*;
 
-public class PokeSpeed
-{
-    private String filename = "pokemon.csv";
-    private String[] pokemonLines = new String[152];
+          public class PokeSpeed
+          {
+              private String filename = "pokemon.csv";
+              private String[] pokemonLines = new String[152];
 
-    public PokeSpeed() throws IOException
-    {
-        readFile(); // read in the file
-    }
+              public PokeSpeed() throws IOException
+              {
+                  readFile(); // read in the file
+              }
 
-    /* This method reads in filename into the pokemonLines array */
-    public int readFile() throws IOException
-    {
-        File myFile = new File(filename);
-        Scanner scan = new Scanner(myFile);
-        int i = 0;
-        while (scan.hasNext())
-        {
-            pokemonLines[i] = scan.nextLine();
-            i++;
-        }
-        System.out.println("Read in " + i + " lines.");
-        scan.close();
-        return i;
-    }
+              /* This method reads in filename into the pokemonLines array */
+              public int readFile() throws IOException
+              {
+                  File myFile = new File(filename);
+                  Scanner scan = new Scanner(myFile);
+                  int i = 0;
+                  while (scan.hasNext())
+                  {
+                      pokemonLines[i] = scan.nextLine();
+                      i++;
+                  }
+                  System.out.println("Read in " + i + " lines.");
+                  scan.close();
+                  return i;
+              }
 
-    /* Write a function findMaxSpeed that loops through the pokemonLines array,
-      splits it on commas to get the speed in the 7th index, and parses it to compare to a maxSpeed, and returns the maxSpeed.  */
-    public int findMaxSpeed()
-    {
-        int maxSpeed = 0;
-        String maxPokemonName = "";
+              /* Write a function findMaxSpeed that loops through the pokemonLines array,
+                splits it on commas to get the speed in the 7th index, and parses it to compare to a maxSpeed, and returns the maxSpeed.  */
+              public int findMaxSpeed()
+              {
+                  int maxSpeed = 0;
+                  String maxPokemonName = "";
 
-        // 1. Loop through the pokemonLines array starting at index 1
-        //     (0 is the column headers)
-            // 2. Split the line on commas into a data array
-            // 3. Use parseInt on the 7th indexed element of the data array to get the speed
-            // 4. If speed is larger than maxSpeed, update maxSpeed and maxPokemonName
+                  // 1. Loop through the pokemonLines array starting at index 1
+                  //     (0 is the column headers)
+                      // 2. Split the line on commas into a data array
+                      // 3. Use parseInt on the 7th indexed element of the data array to get the speed
+                      // 4. If speed is larger than maxSpeed, update maxSpeed and maxPokemonName
 
-        // 5. Print out the maxPokemonName and return the maxSpeed
-        return maxSpeed;
-    }
+                  // 5. Print out the maxPokemonName and return the maxSpeed
+                  return maxSpeed;
+              }
 
-    /* Write a function findAverageSpeed that loops through the pokemonLines array,
-      splits it on commas to get the speed in the 7th index, and parses it to add it to the total, and returns the average speed.  */
-    public double findAverageSpeed()
-    {
-        double averageSpeed = 0;
-        double totalSpeed = 0;
+              /* Write a function findAverageSpeed that loops through the pokemonLines array,
+                splits it on commas to get the speed in the 7th index, and parses it to add it to the total, and returns the average speed.  */
+              public double findAverageSpeed()
+              {
+                  double averageSpeed = 0;
+                  double totalSpeed = 0;
 
-        // Loop through the pokemonLines array, split, parse, and add up the speeds
+                  // Loop through the pokemonLines array, split, parse, and add up the speeds
 
-        return averageSpeed;
-    }
+                  return averageSpeed;
+              }
 
-    public static void main(String[] args) throws IOException
-    {
-        PokeSpeed p = new PokeSpeed();
-        System.out.println("Max speed: " + p.findMaxSpeed());
-        System.out.println("Average speed: " + p.findAverageSpeed());
-    }
-}
+              public static void main(String[] args) throws IOException
+              {
+                  PokeSpeed p = new PokeSpeed();
+                  System.out.println("Max speed: " + p.findMaxSpeed());
+                  System.out.println("Average speed: " + p.findAverageSpeed());
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-   public RunestoneTests() throws IOException
-   {
-       super("PokeSpeed");
-   }
+          public class RunestoneTests extends CodeTestHelper
+          {
+             public RunestoneTests() throws IOException
+             {
+                 super("PokeSpeed");
+             }
 
-   @Test
-   public void parseTest()
-   {
-       boolean passed = checkCodeContains("Integer.parseInt");
-       assertTrue(passed);
-   }
+             @Test
+             public void parseTest()
+             {
+                 boolean passed = checkCodeContains("Integer.parseInt");
+                 assertTrue(passed);
+             }
 
-   @Test
-   public void callFindMax() throws IOException
-   {
-        String output = getMethodOutput("findMaxSpeed");
-        String expect = "140";
-        boolean passed = getResults(expect, output, "Expected output from findMaxSpeed");
-        assertTrue(passed);
-    }
+             @Test
+             public void callFindMax() throws IOException
+             {
+                  String output = getMethodOutput("findMaxSpeed");
+                  String expect = "140";
+                  boolean passed = getResults(expect, output, "Expected output from findMaxSpeed");
+                  assertTrue(passed);
+              }
 
-    @Test
-     public void callAvgSpeed() throws IOException
-     {
-            String output = getMethodOutput("findAverageSpeed");
-            String expect = "68";
-            boolean passed = output.startsWith(expect);
-            passed = getResults(expect, output, "Expected output from findAverageSpeed", passed);
-            assertTrue(passed);
-     }
+              @Test
+               public void callAvgSpeed() throws IOException
+               {
+                      String output = getMethodOutput("findAverageSpeed");
+                      String expect = "68";
+                      boolean passed = output.startsWith(expect);
+                      passed = getResults(expect, output, "Expected output from findAverageSpeed", passed);
+                      assertTrue(passed);
+               }
 
-   @Test
-   public void splitCode()
-   {
-       boolean passed = checkCodeContains("call to split method", ".split");
-       assertTrue(passed);
-   }
+             @Test
+             public void splitCode()
+             {
+                 boolean passed = checkCodeContains("call to split method", ".split");
+                 assertTrue(passed);
+             }
 
-   @Test
-   public void speedIndexCode()
-   {
-       boolean passed = checkCodeContains("the correct index for the speed (7)", "[7]");
-       assertTrue(passed);
-   }
-}
+             @Test
+             public void speedIndexCode()
+             {
+                 boolean passed = checkCodeContains("the correct index for the speed (7)", "[7]");
+                 assertTrue(passed);
+             }
+          }
         </tests>
       </program>
     </project>
@@ -526,6 +523,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-48">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -561,22 +559,20 @@ public class RunestoneTests extends CodeTestHelper
             value is:
           </p>
 
-          <blockquote>
-            <p>
-              <ul>
-                <li>
-                  <p>
-                    passed as a parameter to a method that expects an object of
-                    the corresponding wrapper class
-                  </p>
-                </li>
+          <p>
+            <ul>
+              <li>
+                <p>
+                  passed as a parameter to a method that expects an object of
+                  the corresponding wrapper class
+                </p>
+              </li>
 
-                <li>
-                  <p>assigned to a variable of the corresponding wrapper class</p>
-                </li>
-              </ul>
-            </p>
-          </blockquote>
+              <li>
+                <p>assigned to a variable of the corresponding wrapper class</p>
+              </li>
+            </ul>
+          </p>
         </li>
 
         <li>
@@ -588,22 +584,22 @@ public class RunestoneTests extends CodeTestHelper
             unboxing when a wrapper class object is:
           </p>
 
-          <blockquote>
-            <p>
-              <ul>
-                <li>
-                  <p>
-                    passed as a parameter to a method that expects a value of
-                    the corresponding primitive type
-                  </p>
-                </li>
+          <p>
+            <ul>
+              <li>
+                <p>
+                  passed as a parameter to a method that expects a value of the
+                  corresponding primitive type
+                </p>
+              </li>
 
-                <li>
-                  <p>assigned to a variable of the corresponding primitive type</p>
-                </li>
-              </ul>
-            </p>
-          </blockquote>
+              <li>
+                <p>
+                  assigned to a variable of the corresponding primitive type
+                </p>
+              </li>
+            </ul>
+          </p>
         </li>
 
         <li>

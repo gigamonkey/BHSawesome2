@@ -1521,29 +1521,27 @@
             (and), and <c>||</c> (or) are used with Boolean values.
           </p>
 
-          <blockquote>
-            <p>
-              <ul>
-                <li>
-                  <p>
-                    <c>A &amp;&amp; B</c> is <c>true</c> if both <c>A</c> and
-                    <c>B</c> are <c>true</c>.
-                  </p>
-                </li>
+          <p>
+            <ul>
+              <li>
+                <p>
+                  <c>A &amp;&amp; B</c> is <c>true</c> if both <c>A</c> and
+                  <c>B</c> are <c>true</c>.
+                </p>
+              </li>
 
-                <li>
-                  <p>
-                    <c>A || B</c> is <c>true</c> if either <c>A</c> or <c>B</c>
-                    (or both) are <c>true</c>.
-                  </p>
-                </li>
+              <li>
+                <p>
+                  <c>A || B</c> is <c>true</c> if either <c>A</c> or <c>B</c>
+                  (or both) are <c>true</c>.
+                </p>
+              </li>
 
-                <li>
-                  <p><c>!A</c> is <c>true</c> if <c>A</c> is <c>false</c>.</p>
-                </li>
-              </ul>
-            </p>
-          </blockquote>
+              <li>
+                <p><c>!A</c> is <c>true</c> if <c>A</c> is <c>false</c>.</p>
+              </li>
+            </ul>
+          </p>
         </li>
 
         <li>

@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-1-13-constructors">
   <title>Creating and Initializing Objects: Constructors</title>
-  <introduction>
-    <idx>
-      <h>class</h><h>constructor</h>
-    </idx>
 
+  <introduction>
+    <idx><h>class</h><h>constructor</h></idx>
     <idx>constructors</idx>
     <idx>new</idx>
     <p>
@@ -26,18 +24,17 @@
       reference or <c>null</c> if there is no object.
     </p>
 
-    <program language="java">
-      <code>
-// To create a new object and call a constructor write:
-// ClassName variableName = new ClassName(arguments);
-World habitat = new World();    // create a new World object
-Turtle t = new Turtle(habitat); // create a new Turtle object
-      </code>
+    <program>
+      // To create a new object and call a constructor write:
+      // ClassName variableName = new ClassName(arguments);
+      World habitat = new World();    // create a new World object
+      Turtle t = new Turtle(habitat); // create a new Turtle object
     </program>
   </introduction>
 
   <subsection xml:id="the-world-class-constructors">
     <title>The World Class Constructors</title>
+
     <p>
       There can be more than one constructor defined in a class. This is called
       <term>overloading</term> the constructor. The <c>World</c> class has the 2
@@ -50,6 +47,7 @@ Turtle t = new Turtle(habitat); // create a new Turtle object
 
     <figure align="center">
       <caption>Two World constructors</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/worldConstructors.png" width="63%" alt="Two World constructors" />
     </figure>
 
@@ -64,11 +62,9 @@ Turtle t = new Turtle(habitat); // create a new Turtle object
       pixel world.
     </p>
 
-    <program language="java">
-      <code>
-World world1 = new World(); // creates a default size 640x480 world
-World world2 = new World(300,400); // creates a 300x400 world
-      </code>
+    <program>
+      World world1 = new World(); // creates a default size 640x480 world
+      World world2 = new World(300,400); // creates a 300x400 world
     </program>
 
     <activity label="mcq_world_constructor">
@@ -205,6 +201,7 @@ World world2 = new World(300,400); // creates a 300x400 world
 
   <subsection xml:id="the-turtle-class-constructors">
     <title>The Turtle Class Constructors</title>
+
     <p>
       The <c>Turtle</c> class also has multiple constructors, although it always
       requires a world as an argument in order to have a place to draw the
@@ -218,11 +215,9 @@ World world2 = new World(300,400); // creates a 300x400 world
       100) below.
     </p>
 
-    <program language="java">
-      <code>
-Turtle t1 = new Turtle(world1);
-Turtle t2 = new Turtle(50, 100, world1);
-      </code>
+    <program>
+      Turtle t1 = new Turtle(world1);
+      Turtle t2 = new Turtle(50, 100, world1);
     </program>
 
     <note>
@@ -303,64 +298,65 @@ Turtle t2 = new Turtle(50, 100, world1);
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class TurtleConstructorTest
-{
-    public static void main(String[] args)
-    {
-        // Change the World constructor to 300x400
-        World world1 = new World(300, 300);
+          public class TurtleConstructorTest
+          {
+              public static void main(String[] args)
+              {
+                  // Change the World constructor to 300x400
+                  World world1 = new World(300, 300);
 
-        // Change the Turtle constructor to put the turtle in the top right
-        // corner
-        Turtle t1 = new Turtle(world1);
+                  // Change the Turtle constructor to put the turtle in the top right
+                  // corner
+                  Turtle t1 = new Turtle(world1);
 
-        t1.turnLeft();
-        world1.show(true);
-    }
-}
+                  t1.turnLeft();
+                  world1.show(true);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleConstructorTest");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TurtleConstructorTest");
+              }
 
-    @Test
-    public void test1()
-    {
-        String orig =
-                "import java.awt.*;\n"
-                    + "import java.util.*;\n\n"
-                    + "public class TurtleConstructorTest\n"
-                    + "{\n"
-                    + "  public static void main(String[] args)\n"
-                    + "  {\n"
-                    + "      // Change the World constructor to 300x400\n"
-                    + "      World world1 = new World(300,300);\n\n"
-                    + "      // Change the Turtle constructor to put the turtle in the top right"
-                    + " corner\n"
-                    + "      Turtle t1 = new Turtle(world1);\n\n"
-                    + "      t1.turnLeft();\n"
-                    + "      world1.show(true);\n"
-                    + "  }\n"
-                    + "}\n";
-        boolean passed = codeChanged(orig);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test1()
+              {
+                  String orig =
+                          "import java.awt.*;\n"
+                              + "import java.util.*;\n\n"
+                              + "public class TurtleConstructorTest\n"
+                              + "{\n"
+                              + "  public static void main(String[] args)\n"
+                              + "  {\n"
+                              + "      // Change the World constructor to 300x400\n"
+                              + "      World world1 = new World(300,300);\n\n"
+                              + "      // Change the Turtle constructor to put the turtle in the top right"
+                              + " corner\n"
+                              + "      Turtle t1 = new Turtle(world1);\n\n"
+                              + "      t1.turnLeft();\n"
+                              + "      world1.show(true);\n"
+                              + "  }\n"
+                              + "}\n";
+                  boolean passed = codeChanged(orig);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -368,6 +364,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="object-variables-and-references">
     <title>Object Variables and References</title>
+
     <idx>reference</idx>
     <idx>null</idx>
     <p>
@@ -401,19 +398,18 @@ public class RunestoneTests extends CodeTestHelper
       same line of code (<c>Turtle t2 = new Turtle(world1);</c>).
     </p>
 
-    <program language="java">
-      <code>
-World world1 = new World();
-Turtle t1 = null;
-t1 = new Turtle(world1);
-// declare and initialize t2
-Turtle t2 = new Turtle(world1);
-      </code>
+    <program>
+      World world1 = new World();
+      Turtle t1 = null;
+      t1 = new Turtle(world1);
+      // declare and initialize t2
+      Turtle t2 = new Turtle(world1);
     </program>
   </subsection>
 
   <subsection xml:id="constructor-signatures">
     <title>Constructor Signatures</title>
+
     <idx>signature</idx>
     <idx>parameters</idx>
     <idx>arguments</idx>
@@ -442,6 +438,7 @@ Turtle t2 = new Turtle(world1);
 
     <figure align="center">
       <caption>Turtle Class Constructor Signatures and Parameters</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/TurtleClassDefn.png" width="100%" alt="Turtle Class Constructor Signatures and Parameters" />
     </figure>
 
@@ -531,6 +528,7 @@ Turtle t2 = new Turtle(world1);
 
     <figure align="center">
       <caption>A Date class showing attributes and constructors</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/DateClass.png" width="89%" alt="A Date class showing attributes and constructors" />
     </figure>
 
@@ -649,6 +647,7 @@ Turtle t2 = new Turtle(world1);
 
   <subsection xml:id="arguments-parameters-and-call-by-value">
     <title>Arguments, Parameters, and Call by Value</title>
+
     <p>
       When a constructor like <c>Date(2005,9,1)</c> is called, the
       <term>parameters</term>, (<c>year</c>, <c>month</c>, and <c>day</c>), are
@@ -664,6 +663,7 @@ Turtle t2 = new Turtle(world1);
 
     <figure align="center">
       <caption>Parameter Mapping</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/parameterMappingDate.png" width="80%" alt="Parameter Mapping" />
     </figure>
 
@@ -732,9 +732,7 @@ Turtle t2 = new Turtle(world1);
 
     <activity label="mcq_arguments">
       <statement>
-        <p>
-          In <c>new World(150, 200)</c> what are <c>150</c> and <c>200</c>?
-        </p>
+        <p>In <c>new World(150, 200)</c> what are <c>150</c> and <c>200</c>?</p>
       </statement>
 
       <choices>
@@ -788,64 +786,65 @@ Turtle t2 = new Turtle(world1);
         <p>Debug the following code.</p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class TurtleConstructorDebug
-{
-    public static void main(String[] args)
-    {
-        World w = new World(300,0);
-        turtle t0;
-        Turtle t1 = new Turtle();
-        Turtle t2 = new Turtle(world, 100, 50)
-        t0.forward();
-        t1.turnRight();
-        t2.turnLeft();
-        world.show(true);
-    }
-}
+          public class TurtleConstructorDebug
+          {
+              public static void main(String[] args)
+              {
+                  World w = new World(300,0);
+                  turtle t0;
+                  Turtle t1 = new Turtle();
+                  Turtle t2 = new Turtle(world, 100, 50)
+                  t0.forward();
+                  t1.turnRight();
+                  t2.turnLeft();
+                  world.show(true);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleConstructorDebug");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TurtleConstructorDebug");
+              }
 
-    @Test
-    public void test1()
-    {
-        String orig =
-                "import java.awt.*;\n"
-                        + "import java.util.*;\n\n"
-                        + "public class TurtleConstructorDebug\n"
-                        + "{\n"
-                        + "  public static void main(String[] args)\n"
-                        + "  {\n"
-                        + "      World w = new World(300,0);\n"
-                        + "      turtle t0;\n"
-                        + "      Turtle t1 = new Turtle();\n"
-                        + "      Turtle t2 = new Turtle(world, 100, 50)\n"
-                        + "      t0.forward();\n"
-                        + "      t1.turnRight();\n"
-                        + "      t2.turnLeft();\n"
-                        + "      world.show(true);\n"
-                        + "  }\n"
-                        + "}\n";
-        boolean passed = codeChanged(orig);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test1()
+              {
+                  String orig =
+                          "import java.awt.*;\n"
+                                  + "import java.util.*;\n\n"
+                                  + "public class TurtleConstructorDebug\n"
+                                  + "{\n"
+                                  + "  public static void main(String[] args)\n"
+                                  + "  {\n"
+                                  + "      World w = new World(300,0);\n"
+                                  + "      turtle t0;\n"
+                                  + "      Turtle t1 = new Turtle();\n"
+                                  + "      Turtle t2 = new Turtle(world, 100, 50)\n"
+                                  + "      t0.forward();\n"
+                                  + "      t1.turnRight();\n"
+                                  + "      t2.turnLeft();\n"
+                                  + "      world.show(true);\n"
+                                  + "  }\n"
+                                  + "}\n";
+                  boolean passed = codeChanged(orig);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -863,6 +862,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-custom-turtles">
     <title>Coding Challenge: Custom Turtles</title>
+
     <p>
       Working in pairs, you will now look at a new class called CustomTurtle and
       design some colorful turtles with its constructors. The CustomTurtle class
@@ -872,19 +872,17 @@ public class RunestoneTests extends CodeTestHelper
       and height. CustomTurtle has 3 constructors:
     </p>
 
-    <program language="java">
-      <code>
-/** Constructs a CustomTurtle in the middle of the world */
-public CustomTurtle(World w)
+    <program>
+      /** Constructs a CustomTurtle in the middle of the world */
+      public CustomTurtle(World w)
 
-/** Constructs a CustomTurtle with a specific body color,
-    shell color, and width and height in the middle of the world */
-public CustomTurtle(World w, Color body, Color shell, int w, int h)
+      /** Constructs a CustomTurtle with a specific body color,
+          shell color, and width and height in the middle of the world */
+      public CustomTurtle(World w, Color body, Color shell, int w, int h)
 
-/** Constructs a CustomTurtle with a specific body color,
-    shell color, and width and height at position (x,y) in the world */
-public CustomTurtle(int x, int y, World w, Color body, Color shell, int w, int h)
-      </code>
+      /** Constructs a CustomTurtle with a specific body color,
+          shell color, and width and height at position (x,y) in the world */
+      public CustomTurtle(int x, int y, World w, Color body, Color shell, int w, int h)
     </program>
 
     <p>
@@ -895,7 +893,7 @@ public CustomTurtle(int x, int y, World w, Color body, Color shell, int w, int h
     </p>
 
     <p>
-      <ol marker="1">
+      <ol>
         <li>
           <p>
             Create a large 150x200 (width 150 and height 200) CustomTurtle with
@@ -925,168 +923,167 @@ public CustomTurtle(int x, int y, World w, Color body, Color shell, int w, int h
           the program.
         </p>
 
-        <program language="java">
-          <code>
-/** Constructs a CustomTurtle in the middle of the world */
-public CustomTurtle(World w)
+        <program>
+          /** Constructs a CustomTurtle in the middle of the world */
+          public CustomTurtle(World w)
 
-/** Constructs a CustomTurtle with a specific body color,
-    shell color, and width and height in the middle of the world */
-public CustomTurtle(World w, Color body, Color shell, int w, int h)
+          /** Constructs a CustomTurtle with a specific body color,
+              shell color, and width and height in the middle of the world */
+          public CustomTurtle(World w, Color body, Color shell, int w, int h)
 
-/** Constructs a CustomTurtle with a specific body color, shell color,
-    and width and height at position (x,y) in the world */
-public CustomTurtle(int x, int y, World w, Color body, Color shell, int w, int h)
-          </code>
+          /** Constructs a CustomTurtle with a specific body color, shell color,
+              and width and height at position (x,y) in the world */
+          public CustomTurtle(int x, int y, World w, Color body, Color shell, int w, int h)
         </program>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class CustomTurtleRunner
-{
-    public static void main(String[] args)
-    {
-        World world1 = new World(400, 400);
+          public class CustomTurtleRunner
+          {
+              public static void main(String[] args)
+              {
+                  World world1 = new World(400, 400);
 
-        // 1. Change the constructor call below to create a large
-        // 150x200 CustomTurtle with a green body (Color.green)
-        // and a blue shell (Color.blue) at position (150,300).
-        // Move it forward to see it.
-        CustomTurtle turtle1 = new CustomTurtle(world1);
-        turtle1.forward();
+                  // 1. Change the constructor call below to create a large
+                  // 150x200 CustomTurtle with a green body (Color.green)
+                  // and a blue shell (Color.blue) at position (150,300).
+                  // Move it forward to see it.
+                  CustomTurtle turtle1 = new CustomTurtle(world1);
+                  turtle1.forward();
 
-        // 2. Create a small 25x50 CustomTurtle with a red body
-        // and a yellow shell at position (350,200)
-        // Move it forward to see it.
+                  // 2. Create a small 25x50 CustomTurtle with a red body
+                  // and a yellow shell at position (350,200)
+                  // Move it forward to see it.
 
-        // 3. Create a CustomTurtle of your own design
+                  // 3. Create a CustomTurtle of your own design
 
-        world1.show(true);
-    }
-}
+                  world1.show(true);
+              }
+          }
 
-class CustomTurtle extends Turtle
-{
-    private int x;
-    private int y;
-    private World w;
-    private Color bodycolor;
-    private Color shellcolor;
-    private int width;
-    private int height;
+          class CustomTurtle extends Turtle
+          {
+              private int x;
+              private int y;
+              private World w;
+              private Color bodycolor;
+              private Color shellcolor;
+              private int width;
+              private int height;
 
-    /**
-     * Constructor that takes the model display
-     *
-     * @param modelDisplay the thing that displays the model or world
-     */
-    public CustomTurtle(ModelDisplay modelDisplay)
-    {
-        // let the parent constructor handle it
-        super(modelDisplay);
-    }
+              /**
+               * Constructor that takes the model display
+               *
+               * @param modelDisplay the thing that displays the model or world
+               */
+              public CustomTurtle(ModelDisplay modelDisplay)
+              {
+                  // let the parent constructor handle it
+                  super(modelDisplay);
+              }
 
-    /**
-     * Constructor that takes the model display to draw it on and custom
-     * colors and size
-     *
-     * @param m the world
-     * @param body : the body color
-     * @param shell : the shell color
-     * @param w: width
-     * @param h: height
-     */
-    public CustomTurtle(
-            ModelDisplay m, Color body, Color shell, int w, int h)
-            {
-        // let the parent constructor handle it
-        super(m);
-        bodycolor = body;
-        setBodyColor(body);
-        shellcolor = shell;
-        setShellColor(shell);
-        height = h;
-        width = w;
-        setHeight(h);
-        setWidth(w);
-    }
+              /**
+               * Constructor that takes the model display to draw it on and custom
+               * colors and size
+               *
+               * @param m the world
+               * @param body : the body color
+               * @param shell : the shell color
+               * @param w: width
+               * @param h: height
+               */
+              public CustomTurtle(
+                      ModelDisplay m, Color body, Color shell, int w, int h)
+                      {
+                  // let the parent constructor handle it
+                  super(m);
+                  bodycolor = body;
+                  setBodyColor(body);
+                  shellcolor = shell;
+                  setShellColor(shell);
+                  height = h;
+                  width = w;
+                  setHeight(h);
+                  setWidth(w);
+              }
 
-    /**
-     * Constructor that takes the x and y and a model display to draw it on
-     * and custom colors and size
-     *
-     * @param x the starting x position
-     * @param y the starting y position
-     * @param m the world
-     * @param body : the body color
-     * @param shell : the shell color
-     * @param w: width
-     * @param h: height
-     */
-    public CustomTurtle(
-            int x,
-            int y,
-            ModelDisplay m,
-            Color body,
-            Color shell,
-            int w,
-            int h)
-            {
-        // let the parent constructor handle it
-        super(x, y, m);
-        bodycolor = body;
-        setBodyColor(body);
-        shellcolor = shell;
-        setShellColor(shell);
-        height = h;
-        width = w;
-        setHeight(h);
-        setWidth(w);
-    }
-}
+              /**
+               * Constructor that takes the x and y and a model display to draw it on
+               * and custom colors and size
+               *
+               * @param x the starting x position
+               * @param y the starting y position
+               * @param m the world
+               * @param body : the body color
+               * @param shell : the shell color
+               * @param w: width
+               * @param h: height
+               */
+              public CustomTurtle(
+                      int x,
+                      int y,
+                      ModelDisplay m,
+                      Color body,
+                      Color shell,
+                      int w,
+                      int h)
+                      {
+                  // let the parent constructor handle it
+                  super(x, y, m);
+                  bodycolor = body;
+                  setBodyColor(body);
+                  shellcolor = shell;
+                  setShellColor(shell);
+                  height = h;
+                  width = w;
+                  setHeight(h);
+                  setWidth(w);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("CustomTurtleRunner");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("CustomTurtleRunner");
+              }
 
-    @Test
-    public void test1()
-    {
-        String target = "new CustomTurtle(150,300,world1, Color.green, Color.blue, 150, 200)";
-        boolean passed =
-                checkCodeContains(
-                        "constructor for a large 150x200 CustomTurtle with a green body and a blue"
-                                + " shell at position (150,300) in world1",
-                        target);
-        assertTrue(passed);
-    }
+              @Test
+              public void test1()
+              {
+                  String target = "new CustomTurtle(150,300,world1, Color.green, Color.blue, 150, 200)";
+                  boolean passed =
+                          checkCodeContains(
+                                  "constructor for a large 150x200 CustomTurtle with a green body and a blue"
+                                          + " shell at position (150,300) in world1",
+                                  target);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test2()
-    {
-        String target = "new CustomTurtle(350,200,world1, Color.red, Color.yellow, 25, 50)";
-        boolean passed =
-                checkCodeContains(
-                        "constructor for a small 25x50 CustomTurtle with a red body and a yellow"
-                                + " shell at position (350,200) in world1",
-                        target);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test2()
+              {
+                  String target = "new CustomTurtle(350,200,world1, Color.red, Color.yellow, 25, 50)";
+                  boolean passed =
+                          checkCodeContains(
+                                  "constructor for a small 25x50 CustomTurtle with a red body and a yellow"
+                                          + " shell at position (350,200) in world1",
+                                  target);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </project>
@@ -1094,6 +1091,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-4">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -1200,6 +1198,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="ap-practice-3">
     <title>AP Practice</title>
+
     <activity label="AP-constructors">
       <statement>
         <p>
@@ -1207,38 +1206,34 @@ public class RunestoneTests extends CodeTestHelper
           creates a new Cat object?
         </p>
 
-        <blockquote>
-          <program language="java">
-            <code>
-public class Cat
-{
-    private String color;
-    private String breed;
-    private boolean isHungry;
+        <program>
+          public class Cat
+          {
+              private String color;
+              private String breed;
+              private boolean isHungry;
 
-    public Cat()
-    {
-        color = "unknown";
-        breed = "unknown";
-        isHungry = false;
-    }
+              public Cat()
+              {
+                  color = "unknown";
+                  breed = "unknown";
+                  isHungry = false;
+              }
 
-    public Cat(String c, String b, boolean h)
-    {
-        color = c;
-        breed = b;
-        isHungry = h;
-    }
-}
+              public Cat(String c, String b, boolean h)
+              {
+                  color = c;
+                  breed = b;
+                  isHungry = h;
+              }
+          }
 
-I.   Cat a = new Cat();
-II.  Cat b = new Cat("Shorthair", true);
-III. String color = "orange";
-     boolean hungry = false;
-     Cat c = new Cat(color, "Tabby", hungry);
-            </code>
-          </program>
-        </blockquote>
+          I.   Cat a = new Cat();
+          II.  Cat b = new Cat("Shorthair", true);
+          III. String color = "orange";
+               boolean hungry = false;
+               Cat c = new Cat(color, "Tabby", hungry);
+        </program>
       </statement>
 
       <choices>
@@ -1314,32 +1309,30 @@ III. String color = "orange";
           of 8.0?
         </p>
 
-        <program language="java">
-          <code>
-public class Movie
-{
-    private String title;
-    private String director;
-    private double rating;
-    private boolean inTheaters;
+        <program>
+          public class Movie
+          {
+              private String title;
+              private String director;
+              private double rating;
+              private boolean inTheaters;
 
-    public Movie(String t, String d, double r)
-    {
-        title = t;
-        director = d;
-        rating = r;
-        inTheaters = false;
-    }
+              public Movie(String t, String d, double r)
+              {
+                  title = t;
+                  director = d;
+                  rating = r;
+                  inTheaters = false;
+              }
 
-    public Movie(String t)
-    {
-        title = t;
-        director = "unknown";
-        rating = 0.0;
-        inTheaters = false;
-    }
-}
-          </code>
+              public Movie(String t)
+              {
+                  title = t;
+                  director = "unknown";
+                  rating = 0.0;
+                  inTheaters = false;
+              }
+          }
         </program>
       </statement>
 
@@ -1383,7 +1376,9 @@ public class Movie
           </statement>
 
           <feedback>
-            <p>This creates a Movie object with the correct title and rating.</p>
+            <p>
+              This creates a Movie object with the correct title and rating.
+            </p>
           </feedback>
         </choice>
 

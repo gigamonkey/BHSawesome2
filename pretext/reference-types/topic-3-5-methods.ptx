@@ -65,48 +65,42 @@
       variables of the Person class. Methods are usually public.
     </p>
 
-    <program language="java">
-      <code>
-        public class Person
-        {
-            // instance variables
-            private String name;
-            private String email;
+    <program>
+      public class Person
+      {
+          // instance variables
+          private String name;
+          private String email;
 
-            // Method definition: uses instance variables name and email
-            public void print()
-            {
-                System.out.println("Name: " + name);
-                System.out.println("Email: " + email);
-            }
+          // Method definition: uses instance variables name and email
+          public void print()
+          {
+              System.out.println("Name: " + name);
+              System.out.println("Email: " + email);
+          }
 
-            public static void main(String[] args)
-            {
-                Person p = new Person();
-                p.print();  // Method call
-            }
-        }
-      </code>
+          public static void main(String[] args)
+          {
+              Person p = new Person();
+              p.print();  // Method call
+          }
+      }
     </program>
 
     <p>There are three steps to creating and calling a method:</p>
 
     <p>
-      <ol marker="1">
+      <ol>
         <li>
           <p>
             <term>Object of the Class</term>: Declare an object of your class in
             the main method or from outside the class.
           </p>
 
-          <blockquote>
-            <program language="java">
-              <code>
-                // Step 1: declare an object in main or from outside the class
-                Classname objectName = new Classname();
-              </code>
-            </program>
-          </blockquote>
+          <program>
+            // Step 1: declare an object in main or from outside the class
+            Classname objectName = new Classname();
+          </program>
         </li>
 
         <li>
@@ -115,14 +109,10 @@
             objectName.methodName();
           </p>
 
-          <blockquote>
-            <program language="java">
-              <code>
-                // Step 2: call the object's method
-                objectName.methodName(); //Step 2
-              </code>
-            </program>
-          </blockquote>
+          <program>
+            // Step 2: call the object's method
+            objectName.methodName(); //Step 2
+          </program>
         </li>
 
         <li>
@@ -131,18 +121,14 @@
             <term>header</term> and <term>body</term> code like below:
           </p>
 
-          <blockquote>
-            <program language="java">
-              <code>
-                // Step 3: Define the method in the class
-                // method header
-                public void methodName()
-                {
-                      // method body for the code
-                }
-              </code>
-            </program>
-          </blockquote>
+          <program>
+            // Step 3: Define the method in the class
+            // method header
+            public void methodName()
+            {
+                  // method body for the code
+            }
+          </program>
         </li>
       </ol>
     </p>
@@ -173,7 +159,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Person
           {
@@ -232,13 +218,11 @@
       The method header for a void method looks like this:
     </p>
 
-    <program language="java">
-      <code>
-        public void methodName()
-        {
-            // method body
-        }
-      </code>
+    <program>
+      public void methodName()
+      {
+          // method body
+      }
     </program>
 
     <p>
@@ -261,14 +245,12 @@
       method looks like this:
     </p>
 
-    <program language="java">
-      <code>
-        public returnType methodName()
-        {
-            // method body
-            return value;
-        }
-      </code>
+    <program>
+      public returnType methodName()
+      {
+          // method body
+          return value;
+      }
     </program>
 
     <p>
@@ -362,21 +344,19 @@
       the following.
     </p>
 
-    <program language="java">
-      <code>
-        class ExampleTemplate
-        {
+    <program>
+      class ExampleTemplate
+      {
 
-            // Instance variable declaration
-            private typeOfVar varName;
+          // Instance variable declaration
+          private typeOfVar varName;
 
-            // Accessor (getter) method template
-            public typeOfVar getVarName()
-            {
-                return varName;
-            }
-        }
-      </code>
+          // Accessor (getter) method template
+          public typeOfVar getVarName()
+          {
+              return varName;
+          }
+      }
     </program>
 
     <p>
@@ -396,28 +376,26 @@
       using a <c>Student</c> object:
     </p>
 
-    <program language="java">
-      <code>
-        class Student
+    <program>
+      class Student
+      {
+
+        //Instance variable name
+        private String name;
+
+        /** getName() example
+         *  @return name */
+        public String getName()
         {
+           return name;
+        }
 
-          //Instance variable name
-          private String name;
-
-          /** getName() example
-           *  @return name */
-          public String getName()
-          {
-             return name;
-          }
-
-          public static void main(String[] args)
-          {
-             // To call a get method, use objectName.getVarName()
-             Student s = new Student();
-             System.out.println("Name: " + s.getName() );
-          }
-      </code>
+        public static void main(String[] args)
+        {
+           // To call a get method, use objectName.getVarName()
+           Student s = new Student();
+           System.out.println("Name: " + s.getName() );
+        }
     </program>
 
     <p>Note, that getters only return the <em>value</em> of the variable.</p>
@@ -447,7 +425,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class TesterClass
           {
@@ -561,7 +539,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class TesterClass
           {
@@ -657,20 +635,18 @@
       Here are some examples of how to write a setter for an instance variable:
     </p>
 
-    <program language="java">
-      <code>
-        class ExampleTemplate
-        {
-            // Instance variable declaration
-            private typeOfVar varName;
+    <program>
+      class ExampleTemplate
+      {
+          // Instance variable declaration
+          private typeOfVar varName;
 
-            // Setter method template
-            public void setVarName(typeOfVar newValue)
-            {
-                varName = newValue;
-            }
-        }
-      </code>
+          // Setter method template
+          public void setVarName(typeOfVar newValue)
+          {
+              varName = newValue;
+          }
+      }
     </program>
 
     <p>
@@ -678,31 +654,29 @@
       <c>name</c> variable:
     </p>
 
-    <program language="java">
-      <code>
-        class Student
-        {
-            // Instance variable name
-            private String name;
+    <program>
+      class Student
+      {
+          // Instance variable name
+          private String name;
 
-            /**
-             * setName sets name to newName
-             *
-             * @param newName
-             */
-            public void setName(String newName)
-            {
-                name = newName;
-            }
+          /**
+           * setName sets name to newName
+           *
+           * @param newName
+           */
+          public void setName(String newName)
+          {
+              name = newName;
+          }
 
-            public static void main(String[] args)
-            {
-                // To call a set method, use objectName.setVar(newValue)
-                Student s = new Student();
-                s.setName("Ayanna");
-            }
-        }
-      </code>
+          public static void main(String[] args)
+          {
+              // To call a set method, use objectName.setVar(newValue)
+              Student s = new Student();
+              s.setName("Ayanna");
+          }
+      }
     </program>
 
     <p>
@@ -741,7 +715,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class TesterClass
           {
@@ -850,19 +824,17 @@
           the party.
         </p>
 
-        <program language="java">
-          <code>
-            public class Party
-            {
-                // number of people at the party
-                private int numOfPeople;
+        <program>
+          public class Party
+          {
+              // number of people at the party
+              private int numOfPeople;
 
-                /* Missing header of set method */
-                {
-                    numOfPeople = people;
-                }
-            }
-          </code>
+              /* Missing header of set method */
+              {
+                  numOfPeople = people;
+              }
+          }
         </program>
 
         <p>
@@ -1006,7 +978,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           <![CDATA[
 
@@ -1159,7 +1131,7 @@
     </p>
 
     <p>
-      <ol marker="1">
+      <ol>
         <li>
           <p>
             Create a class that keeps track of the attributes above for pet
@@ -1216,7 +1188,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           /**
            * Pet class (complete comments)
@@ -1379,7 +1351,7 @@
     </p>
 
     <p>
-      <ol marker="1">
+      <ol>
         <li>
           <p>
             Copy your class with its 3 instance variables, constructor, and its
@@ -1438,7 +1410,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class          // Add your class name here!
           {
@@ -1759,26 +1731,22 @@
           method does NOT work as intended?
         </p>
 
-        <blockquote>
-          <program language="java">
-            <code>
-              public class Party
+        <program>
+          public class Party
+          {
+              private int numOfPeople;
+
+              public Party(int num)
               {
-                  private int numOfPeople;
-
-                  public Party(int num)
-                  {
-                      numOfPeople = num;
-                  }
-
-                  private int getNumOfPeople()
-                  {
-                      return numOfPeople;
-                  }
+                  numOfPeople = num;
               }
-            </code>
-          </program>
-        </blockquote>
+
+              private int getNumOfPeople()
+              {
+                  return numOfPeople;
+              }
+          }
+        </program>
       </statement>
 
       <choices>
@@ -1849,19 +1817,17 @@
           Consider the following class definition. The class does not compile.
         </p>
 
-        <program language="java">
-          <code>
-            public class Student
-            {
-                private int id;
+        <program>
+          public class Student
+          {
+              private int id;
 
-                public getId()
-                {
-                    return id;
-                }
-                // Constructor not shown
-            }
-          </code>
+              public getId()
+              {
+                  return id;
+              }
+              // Constructor not shown
+          }
         </program>
 
         <p>
@@ -1935,23 +1901,21 @@
       <statement>
         <p>Consider the following class definition.</p>
 
-        <program language="java">
-          <code>
-            public class Liquid
-            {
-                private int currentTemp;
+        <program>
+          public class Liquid
+          {
+              private int currentTemp;
 
-                public Liquid(int temp)
-                {
-                    currentTemp = temp;
-                }
+              public Liquid(int temp)
+              {
+                  currentTemp = temp;
+              }
 
-                public void resetTemp()
-                {
-                    currentTemp = newTemp;
-                }
-            }
-          </code>
+              public void resetTemp()
+              {
+                  currentTemp = newTemp;
+              }
+          }
         </program>
 
         <p>
@@ -2028,23 +1992,21 @@
           <c>additionalPeople</c>. The method does not work as intended.
         </p>
 
-        <program language="java">
-          <code>
-            public class Party
-            {
-                private int numOfPeople;
+        <program>
+          public class Party
+          {
+              private int numOfPeople;
 
-                public Party(int n)
-                {
-                    numOfPeople = n;
-                }
+              public Party(int n)
+              {
+                  numOfPeople = n;
+              }
 
-                public int addPeople(int additionalPeople) // Line 10
-                {
-                    numOfPeople += additionalPeople; // Line 12
-                }
-            }
-          </code>
+              public int addPeople(int additionalPeople) // Line 10
+              {
+                  numOfPeople += additionalPeople; // Line 12
+              }
+          }
         </program>
 
         <p>

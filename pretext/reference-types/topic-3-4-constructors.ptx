@@ -109,27 +109,25 @@
       value for their type:
     </p>
 
-    <blockquote>
-      <p>
-        <ul>
-          <li>
-            <p>0 for <c>int</c></p>
-          </li>
+    <p>
+      <ul>
+        <li>
+          <p>0 for <c>int</c></p>
+        </li>
 
-          <li>
-            <p>0.0 for <c>double</c></p>
-          </li>
+        <li>
+        <p>0.0 for <c>double</c></p>
+        </li>
 
-          <li>
-            <p><c>false</c> for <c>boolean</c></p>
-          </li>
+        <li>
+          <p><c>false</c> for <c>boolean</c></p>
+        </li>
 
-          <li>
-            <p><c>null</c> for all reference types</p>
-          </li>
-        </ul>
-      </p>
-    </blockquote>
+        <li>
+          <p><c>null</c> for all reference types</p>
+        </li>
+      </ul>
+    </p>
 
     <p>
       If those default values are sufficient to put your object into a valid
@@ -872,36 +870,34 @@
         <li>
           <p>(3.4.A.5) Default values used by the default constructor:</p>
 
-          <blockquote>
-            <p>
-              <ul>
-                <li>
-                  <p>
-                    The default value for an attribute of type <c>int</c> is
-                    <c>0</c>.
-                  </p>
-                </li>
+          <p>
+            <ul>
+              <li>
+                <p>
+                  The default value for an attribute of type <c>int</c> is
+                  <c>0</c>.
+                </p>
+              </li>
 
-                <li>
-                  <p>
-                    The default value of an attribute of type <c>double</c> is
-                    <c>0.0</c>.
-                  </p>
-                </li>
+              <li>
+                <p>
+                  The default value of an attribute of type <c>double</c> is
+                  <c>0.0</c>.
+                </p>
+              </li>
 
-                <li>
-                  <p>
-                    The default value of an attribute of type <c>boolean</c> is
-                    <c>false</c>.
-                  </p>
-                </li>
+              <li>
+                <p>
+                  The default value of an attribute of type <c>boolean</c> is
+                  <c>false</c>.
+                </p>
+              </li>
 
-                <li>
-                  <p>The default value of a reference type is <c>null</c>.</p>
-                </li>
-              </ul>
-            </p>
-          </blockquote>
+              <li>
+                <p>The default value of a reference type is <c>null</c>.</p>
+              </li>
+            </ul>
+          </p>
         </li>
       </ul>
     </p>

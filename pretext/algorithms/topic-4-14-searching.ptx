@@ -1,19 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-14-searching">
   <title>Searching Algorithms</title>
+
   <introduction>
     <idx>sequential search</idx>
     <idx>binary search</idx>
     <idx>recursion</idx>
-    <idx>
-      <h>search</h><h>sequential</h>
-    </idx>
-
-    <idx>
-      <h>search</h><h>binary</h>
-    </idx>
-
+    <idx><h>search</h><h>sequential</h></idx>
+    <idx><h>search</h><h>binary</h></idx>
     <p>
       Computers store vast amounts of data. One of the strengths of computers is
       their ability to find things quickly. This ability is called
@@ -64,16 +59,11 @@
 
   <subsection xml:id="linear-search">
     <title>Linear Search</title>
+
     <idx>sequential search</idx>
     <idx>linear search</idx>
-    <idx>
-      <h>search</h><h>sequential</h>
-    </idx>
-
-    <idx>
-      <h>search</h><h>linear</h>
-    </idx>
-
+    <idx><h>search</h><h>sequential</h></idx>
+    <idx><h>search</h><h>linear</h></idx>
     <p>
       Linear or Sequential search can be used to find a value in
       <em>unsorted</em> data. It usually starts at the first element and walks
@@ -93,59 +83,64 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class ArraySearcher
-{
+          <![CDATA[
 
-    /**
-     * Finds the index of a value in an array of integers.
-     *
-     * @param elements an array containing the items to be searched.
-     * @param target the item to be found in elements.
-     * @return an index of target in elements if found; -1 otherwise.
-     */
-    public static int sequentialSearch(int[] elements, int target)
-    {
-        for (int j = 0; j &lt; elements.length; j++)
-        {
-            if (elements[j] == target)
-            {
-                return j;
-            }
-        }
-        return -1;
-    }
+          public class ArraySearcher
+          {
 
-    public static void main(String[] args)
-    {
-        int[] numArray = {3, -2, 9, 38, -23};
-        System.out.println("Tests of sequentialSearch");
-        System.out.println(sequentialSearch(numArray, 3));
-        System.out.println(sequentialSearch(numArray, 9));
-        System.out.println(sequentialSearch(numArray, -23));
-        System.out.println(sequentialSearch(numArray, 99));
-    }
-}
+              /**
+               * Finds the index of a value in an array of integers.
+               *
+               * @param elements an array containing the items to be searched.
+               * @param target the item to be found in elements.
+               * @return an index of target in elements if found; -1 otherwise.
+               */
+              public static int sequentialSearch(int[] elements, int target)
+              {
+                  for (int j = 0; j < elements.length; j++)
+                  {
+                      if (elements[j] == target)
+                      {
+                          return j;
+                      }
+                  }
+                  return -1;
+              }
+
+              public static void main(String[] args)
+              {
+                  int[] numArray = {3, -2, 9, 38, -23};
+                  System.out.println("Tests of sequentialSearch");
+                  System.out.println(sequentialSearch(numArray, 3));
+                  System.out.println(sequentialSearch(numArray, 9));
+                  System.out.println(sequentialSearch(numArray, -23));
+                  System.out.println(sequentialSearch(numArray, 99));
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Tests of sequentialSearch\n0\n2\n4\n-1";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Tests of sequentialSearch\n0\n2\n4\n-1";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -171,66 +166,71 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*;
+          <![CDATA[
 
-public class ArrayListSearcher
-{
+          import java.util.*;
 
-    /**
-     * Finds the index of a value in an ArrayList of integers.
-     *
-     * @param elements an array containing the items to be searched.
-     * @param target the item to be found in elements.
-     * @return an index of target in elements if found; -1 otherwise.
-     */
-    public static int sequentialSearch(ArrayList&lt;Integer&gt; elements, int target)
-    {
-        for (int j = 0; j &lt; elements.size(); j++)
-        {
-            if (elements.get(j) == target)
-            {
-                return j;
-            }
-        }
-        return -1;
-    }
+          public class ArrayListSearcher
+          {
 
-    public static void main(String[] args)
-    {
-        ArrayList&lt;Integer&gt; numList = new ArrayList&lt;Integer&gt;();
-        numList.add(3);
-        numList.add(-2);
-        numList.add(9);
-        numList.add(38);
-        numList.add(-23);
-        System.out.println("Tests of sequentialSearch");
-        System.out.println(sequentialSearch(numList, 3));
-        System.out.println(sequentialSearch(numList, 9));
-        System.out.println(sequentialSearch(numList, -23));
-        System.out.println(sequentialSearch(numList, 99));
-    }
-}
+              /**
+               * Finds the index of a value in an ArrayList of integers.
+               *
+               * @param elements an array containing the items to be searched.
+               * @param target the item to be found in elements.
+               * @return an index of target in elements if found; -1 otherwise.
+               */
+              public static int sequentialSearch(ArrayList<Integer> elements, int target)
+              {
+                  for (int j = 0; j < elements.size(); j++)
+                  {
+                      if (elements.get(j) == target)
+                      {
+                          return j;
+                      }
+                  }
+                  return -1;
+              }
+
+              public static void main(String[] args)
+              {
+                  ArrayList<Integer> numList = new ArrayList<Integer>();
+                  numList.add(3);
+                  numList.add(-2);
+                  numList.add(9);
+                  numList.add(38);
+                  numList.add(-23);
+                  System.out.println("Tests of sequentialSearch");
+                  System.out.println(sequentialSearch(numList, 3));
+                  System.out.println(sequentialSearch(numList, 9));
+                  System.out.println(sequentialSearch(numList, -23));
+                  System.out.println(sequentialSearch(numList, 99));
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Tests of sequentialSearch\n0\n2\n4\n-1";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Tests of sequentialSearch\n0\n2\n4\n-1";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -369,55 +369,60 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class SearchTest
-{
+          <![CDATA[
 
-    public static int sequentialSearch(String[] elements, String target)
-    {
-        for (int j = 0; j &lt; elements.length; j++)
-        {
-            if (elements[j].equals(target))
-            {
-                return j;
-            }
-        }
-        return -1;
-    }
+          public class SearchTest
+          {
 
-    public static void main(String[] args)
-    {
-        String[] arr1 = {"blue", "red", "purple", "green"};
+              public static int sequentialSearch(String[] elements, String target)
+              {
+                  for (int j = 0; j < elements.length; j++)
+                  {
+                      if (elements[j].equals(target))
+                      {
+                          return j;
+                      }
+                  }
+                  return -1;
+              }
 
-        // test when the target is in the array
-        int index = sequentialSearch(arr1, "red");
-        System.out.println(index);
+              public static void main(String[] args)
+              {
+                  String[] arr1 = {"blue", "red", "purple", "green"};
 
-        // test when the target is not in the array
-        index = sequentialSearch(arr1, "pink");
-        System.out.println(index);
-    }
-}
+                  // test when the target is in the array
+                  int index = sequentialSearch(arr1, "red");
+                  System.out.println(index);
+
+                  // test when the target is not in the array
+                  index = sequentialSearch(arr1, "pink");
+                  System.out.println(index);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "1\n-1";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "1\n-1";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -425,6 +430,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="linear-search-with-2d-arrays">
     <title>Linear Search with 2D Arrays</title>
+
     <p>
       We can also apply the linear search algorithm to data in a 2D array. We
       can loop through each row of the 2D array and then apply the linear search
@@ -445,73 +451,78 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class Search
-{
-    public static boolean search(int[][] array, int value)
-    {
-        boolean found = false;
-        for (int row = 0; row &lt; array.length; row++)
-        {
-            for (int col = 0; col &lt; array[0].length; col++)
-            {
-                if (array[row][col] == value)
-                {
-                     found = true;
-                }
-            }
-        }
-        return found;
-    }
+          <![CDATA[
 
-    public static void main(String[] args)
-    {
-        int[][] matrix = { {3, 2, 3}, {4, 3, 6}, {8, 9, 3}, {10, 3, 3}};
-        System.out.println(search(matrix, 10));
-        System.out.println(search(matrix, 11));
+          public class Search
+          {
+              public static boolean search(int[][] array, int value)
+              {
+                  boolean found = false;
+                  for (int row = 0; row < array.length; row++)
+                  {
+                      for (int col = 0; col < array[0].length; col++)
+                      {
+                          if (array[row][col] == value)
+                          {
+                               found = true;
+                          }
+                      }
+                  }
+                  return found;
+              }
 
-        // Comment out the code above, and try these:
-        // String[][] matrix2 = { {"a","b","c"},{"d","e","f"} };
-        // System.out.println(search(matrix2, "b"));
+              public static void main(String[] args)
+              {
+                  int[][] matrix = { {3, 2, 3}, {4, 3, 6}, {8, 9, 3}, {10, 3, 3}};
+                  System.out.println(search(matrix, 10));
+                  System.out.println(search(matrix, 11));
 
-    }
-}
+                  // Comment out the code above, and try these:
+                  // String[][] matrix2 = { {"a","b","c"},{"d","e","f"} };
+                  // System.out.println(search(matrix2, "b"));
+
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("Search");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("Search");
+              }
 
-    @Test
-    public void test2()
-    {
-        String[][] array = { {"a", "b", "c"}, {"d", "e", "f"}, {"g", "h", "i"}, {"j", "k", "l"}};
-        String value = "b";
-        Object[] args = {array, value};
+              @Test
+              public void test2()
+              {
+                  String[][] array = { {"a", "b", "c"}, {"d", "e", "f"}, {"g", "h", "i"}, {"j", "k", "l"}};
+                  String value = "b";
+                  Object[] args = {array, value};
 
-        String output = getMethodOutput("search", args);
-        String expect = "true";
+                  String output = getMethodOutput("search", args);
+                  String expect = "true";
 
-        boolean passed =
-                getResults(
-                        expect,
-                        output,
-                        "Testing search({"
-                            + " {\"a\",\"b\",\"c\"},{\"d\",\"e\",\"f\"},{\"g\",\"h\",\"i\"},{\"j\",\"k\",\"l\""
-                            + " } }, \"b\")");
-        assertTrue(passed);
-    }
-}
+                  boolean passed =
+                          getResults(
+                                  expect,
+                                  output,
+                                  "Testing search({"
+                                      + " {\"a\",\"b\",\"c\"},{\"d\",\"e\",\"f\"},{\"g\",\"h\",\"i\"},{\"j\",\"k\",\"l\""
+                                      + " } }, \"b\")");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -519,11 +530,9 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="binary-search">
     <title>Binary Search</title>
-    <idx>binary search</idx>
-    <idx>
-      <h>search</h><h>binary</h>
-    </idx>
 
+    <idx>binary search</idx>
+    <idx><h>search</h><h>binary</h></idx>
     <p>
       How do you search for something in a phone book or dictionary that is in
       alphabetical or numerical order? If you’re looking for something beginning
@@ -581,73 +590,78 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class SearchTest
-{
-    public static int binarySearch(int[] elements, int target)
-    {
-        int left = 0;
-        int right = elements.length - 1;
-        while (left &lt;= right)
-        {
-            int middle = (left + right) / 2;
-            if (target &lt; elements[middle])
-            {
-                right = middle - 1;
-            }
-            else if (target &gt; elements[middle])
-            {
-                left = middle + 1;
-            }
-            else
-            {
-                return middle;
-            }
-        }
-        return -1;
-    }
+          <![CDATA[
 
-    public static void main(String[] args)
-    {
-        int[] arr1 = {-20, 3, 15, 81, 432};
+          public class SearchTest
+          {
+              public static int binarySearch(int[] elements, int target)
+              {
+                  int left = 0;
+                  int right = elements.length - 1;
+                  while (left <= right)
+                  {
+                      int middle = (left + right) / 2;
+                      if (target < elements[middle])
+                      {
+                          right = middle - 1;
+                      }
+                      else if (target > elements[middle])
+                      {
+                          left = middle + 1;
+                      }
+                      else
+                      {
+                          return middle;
+                      }
+                  }
+                  return -1;
+              }
 
-        // test when the target is in the middle
-        int index = binarySearch(arr1, 15);
-        System.out.println(index);
+              public static void main(String[] args)
+              {
+                  int[] arr1 = {-20, 3, 15, 81, 432};
 
-        // test when the target is the first item in the array
-        index = binarySearch(arr1, -20);
-        System.out.println(index);
+                  // test when the target is in the middle
+                  int index = binarySearch(arr1, 15);
+                  System.out.println(index);
 
-        // test when the target is in the array - last
-        index = binarySearch(arr1, 432);
-        System.out.println(index);
+                  // test when the target is the first item in the array
+                  index = binarySearch(arr1, -20);
+                  System.out.println(index);
 
-        // test when the target is not in the array
-        index = binarySearch(arr1, 53);
-        System.out.println(index);
-    }
-}
+                  // test when the target is in the array - last
+                  index = binarySearch(arr1, 432);
+                  System.out.println(index);
+
+                  // test when the target is not in the array
+                  index = binarySearch(arr1, 53);
+                  System.out.println(index);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "2\n0\n4\n-1";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "2\n0\n4\n-1";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -659,21 +673,18 @@ public class RunestoneTests extends CodeTestHelper
       types. Remember how the <c>String</c> method <c>compareTo</c> works:
     </p>
 
-    <blockquote>
-      <p>
-        <ul>
-          <li>
-            <p>
-              <term>int compareTo(String other)</term> returns a negative value
-              if the current string is less than the <c>other</c> string, 0 if
-              they have the same characters in the same order, and a positive
-              value if the current string is greater than the <c>other</c>
-              string.
-            </p>
-          </li>
-        </ul>
-      </p>
-    </blockquote>
+    <p>
+      <ul>
+        <li>
+          <p>
+            <term>int compareTo(String other)</term> returns a negative value if
+            the current string is less than the <c>other</c> string, 0 if they
+            have the same characters in the same order, and a positive value if
+            the current string is greater than the <c>other</c> string.
+          </p>
+        </li>
+      </ul>
+    </p>
 
     <activity label="binSearchStrings">
       <statement>
@@ -683,73 +694,78 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class BinSearchStrings
-{
-    public static int binarySearch(String[] elements, String target)
-    {
-        int left = 0;
-        int right = elements.length - 1;
-        while (left &lt;= right)
-        {
-            int middle = (left + right) / 2;
-            if (target.compareTo(elements[middle]) &lt; 0)
-            {
-                right = middle - 1;
-            }
-            else if (target.compareTo(elements[middle]) &gt; 0)
-            {
-                left = middle + 1;
-            }
-            else
-            {
-                return middle;
-            }
-        }
-        return -1;
-    }
+          <![CDATA[
 
-    public static void main(String[] args)
-    {
-        String[] arr1 = {"apple", "banana", "cherry", "kiwi", "melon"};
+          public class BinSearchStrings
+          {
+              public static int binarySearch(String[] elements, String target)
+              {
+                  int left = 0;
+                  int right = elements.length - 1;
+                  while (left <= right)
+                  {
+                      int middle = (left + right) / 2;
+                      if (target.compareTo(elements[middle]) < 0)
+                      {
+                          right = middle - 1;
+                      }
+                      else if (target.compareTo(elements[middle]) > 0)
+                      {
+                          left = middle + 1;
+                      }
+                      else
+                      {
+                          return middle;
+                      }
+                  }
+                  return -1;
+              }
 
-        // test when the target is in the middle
-        int index = binarySearch(arr1, "cherry");
-        System.out.println(index);
+              public static void main(String[] args)
+              {
+                  String[] arr1 = {"apple", "banana", "cherry", "kiwi", "melon"};
 
-        // test when the target is the first item in the array
-        index = binarySearch(arr1, "apple");
-        System.out.println(index);
+                  // test when the target is in the middle
+                  int index = binarySearch(arr1, "cherry");
+                  System.out.println(index);
 
-        // test when the target is in the array - last
-        index = binarySearch(arr1, "melon");
-        System.out.println(index);
+                  // test when the target is the first item in the array
+                  index = binarySearch(arr1, "apple");
+                  System.out.println(index);
 
-        // test when the target is not in the array
-        index = binarySearch(arr1, "pear");
-        System.out.println(index);
-    }
-}
+                  // test when the target is in the array - last
+                  index = binarySearch(arr1, "melon");
+                  System.out.println(index);
+
+                  // test when the target is not in the array
+                  index = binarySearch(arr1, "pear");
+                  System.out.println(index);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "2\n0\n4\n-1";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "2\n0\n4\n-1";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -757,6 +773,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="runtimes">
     <title>Runtimes</title>
+
     <p>
       How do we choose between two algorithms that solve the same problem? They
       usually have different characteristics and <term>runtimes</term> which
@@ -842,7 +859,8 @@ public class RunestoneTests extends CodeTestHelper
       runtime is a function of log base 2 of n (or log n + 1 comparisons). This
       is called the big-O runtime function in computer science, for example
       O(log n) vs. O(n). You can compare the growth of functions like n and log
-      <subscript>2</subscript>n as n, the data size, grows and see that binary
+      <subscript>2</subscript>
+n as n, the data size, grows and see that binary
       search runs much faster for any n. You don’t need to know the log n
       runtime growth function for the AP exam, but you should be able to
       calculate how many steps binary search takes for a given n by counting how
@@ -916,12 +934,10 @@ public class RunestoneTests extends CodeTestHelper
           a value using binary search?
         </p>
 
-        <program language="java">
-          <code>
-I. The values in the array must be integers.
-II. The values in the array must be in sorted order.
-III. The array must not contain duplicate values.
-          </code>
+        <program>
+          I. The values in the array must be integers.
+          II. The values in the array must be in sorted order.
+          III. The array must not contain duplicate values.
         </program>
       </statement>
 
@@ -1078,6 +1094,7 @@ III. The array must not contain duplicate values.
 
   <subsection xml:id="coding-challenge-search-runtimes">
     <title>Coding Challenge: Search Runtimes</title>
+
     <p>
       Let’s go back to the spellchecker that we created with arrays. Here is a
       version of the spellchecker below that reads the dictionary file into an
@@ -1113,105 +1130,110 @@ III. The array must not contain duplicate values.
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="dictionary.txt">
+      <program interactive="activecode" datafile="dictionary.txt">
         <code>
-import java.io.*;
-import java.nio.file.*;
-import java.util.*;
+          <![CDATA[
 
-public class SpellChecker
-{
-    private ArrayList&lt;String&gt; dictionary;
+          import java.io.*;
+          import java.nio.file.*;
+          import java.util.*;
 
-    /* Constructor populates the dictionary ArrayList from the file dictionary.txt*/
-    public SpellChecker() throws IOException
-    {
-        List&lt;String&gt; lines = Files.readAllLines(Paths.get("dictionary.txt"));
-        dictionary = new ArrayList&lt;String&gt;(lines);
-    }
+          public class SpellChecker
+          {
+              private ArrayList<String> dictionary;
 
-    /**
-     * Write a linearSearch(word) method that finds a word
-     * in the ArrayList dictionary. It should also keep
-     * a count of the number of words checked.
-     *
-     * @param String word to be found in elements.
-     * @return a count of how many words checked before returning.
-     */
-    public int linearSearch(String word)
-    {
+              /* Constructor populates the dictionary ArrayList from the file dictionary.txt*/
+              public SpellChecker() throws IOException
+              {
+                  List<String> lines = Files.readAllLines(Paths.get("dictionary.txt"));
+                  dictionary = new ArrayList<String>(lines);
+              }
 
-    }
+              /**
+               * Write a linearSearch(word) method that finds a word
+               * in the ArrayList dictionary. It should also keep
+               * a count of the number of words checked.
+               *
+               * @param String word to be found in elements.
+               * @return a count of how many words checked before returning.
+               */
+              public int linearSearch(String word)
+              {
 
-    /**
-     * Write a binarySearch(word) method that finds the word
-     * in the ArrayList dictionary. It should also keep
-     * a count of the number of words checked.
-     *
-     * @param String word to be found in elements.
-     * @return a count of how many words checked before returning.
-     */
-    public int binarySearch(String word)
-    {
+              }
 
-    }
+              /**
+               * Write a binarySearch(word) method that finds the word
+               * in the ArrayList dictionary. It should also keep
+               * a count of the number of words checked.
+               *
+               * @param String word to be found in elements.
+               * @return a count of how many words checked before returning.
+               */
+              public int binarySearch(String word)
+              {
 
-    public static void main(String[] args) throws IOException
-    {
-        SpellChecker checker = new SpellChecker();
-        String word = "catz";
-        int i = checker.linearSearch(word);
-        System.out.println("Linear search steps for " + word + " = " + i);
-        int count = checker.binarySearch(word);
-        System.out.println("Binary search steps for " + word + " = " + count);
-    }
-}
+              }
+
+              public static void main(String[] args) throws IOException
+              {
+                  SpellChecker checker = new SpellChecker();
+                  String word = "catz";
+                  int i = checker.linearSearch(word);
+                  System.out.println("Linear search steps for " + word + " = " + i);
+                  int count = checker.binarySearch(word);
+                  System.out.println("Binary search steps for " + word + " = " + count);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
-import org.junit.*;
-import java.io.*;
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-       super("SpellChecker");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                 super("SpellChecker");
+              }
 
 
-   @Test
-   public void test1()
-   {
-       Object[] args = {"medium"};
-       String output = getMethodOutput("linearSearch", args);
-       String expect = "5550";
+             @Test
+             public void test1()
+             {
+                 Object[] args = {"medium"};
+                 String output = getMethodOutput("linearSearch", args);
+                 String expect = "5550";
 
-       boolean passed =
-               getResults(
-                       expect,
-                       output,
-                       "linearSearch(\"medium\")"
-                       );
-       assertTrue(passed);
-   }
+                 boolean passed =
+                         getResults(
+                                 expect,
+                                 output,
+                                 "linearSearch(\"medium\")"
+                                 );
+                 assertTrue(passed);
+             }
 
-   @Test
-   public void test2()
-   {
-       Object[] args = {"medium"};
-       String output = getMethodOutput("binarySearch", args);
-       String expect = "13";
+             @Test
+             public void test2()
+             {
+                 Object[] args = {"medium"};
+                 String output = getMethodOutput("binarySearch", args);
+                 String expect = "13";
 
-       boolean passed =
-               getResults(
-                       expect,
-                       output,
-                       "binarySearch(\"medium\")"
-                       );
-       assertTrue(passed);
-   }
-}
+                 boolean passed =
+                         getResults(
+                                 expect,
+                                 output,
+                                 "binarySearch(\"medium\")"
+                                 );
+                 assertTrue(passed);
+             }
+          }
         </tests>
       </program>
     </project>
@@ -1248,6 +1270,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-40">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>

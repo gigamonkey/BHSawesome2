@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-10-arraylist-algorithms">
   <title>Implementing ArrayList Algorithms</title>
+
   <introduction>
     <idx>ArrayList algorithms</idx>
     <idx>minimum</idx>
@@ -16,80 +17,81 @@
       There are standard <c>ArrayList</c> algorithms that utilize traversals to:
     </p>
 
-    <blockquote>
-      <p>
-        <ul>
-          <li>
-            <p>insert elements</p>
-          </li>
+    <p>
+      <ul>
+        <li>
+          <p>insert elements</p>
+        </li>
 
-          <li>
-            <p>delete elements-</p>
-          </li>
+        <li>
+          <p>delete elements-</p>
+        </li>
 
-          <li>
-            <p>determine a minimum or maximum value</p>
-          </li>
+        <li>
+          <p>determine a minimum or maximum value</p>
+        </li>
 
-          <li>
-            <p>compute a sum or average</p>
-          </li>
+        <li>
+          <p>compute a sum or average</p>
+        </li>
 
-          <li>
-            <p>determine if at least one element has a particular property</p>
-          </li>
+        <li>
+          <p>determine if at least one element has a particular property</p>
+        </li>
 
-          <li>
-            <p>determine if all elements have a particular property</p>
-          </li>
+        <li>
+          <p>determine if all elements have a particular property</p>
+        </li>
 
-          <li>
-            <p>determine the number of elements having a particular property</p>
-          </li>
+        <li>
+          <p>determine the number of elements having a particular property</p>
+        </li>
 
-          <li>
-            <p>access all consecutive pairs of elements</p>
-          </li>
+        <li>
+          <p>access all consecutive pairs of elements</p>
+        </li>
 
-          <li>
-            <p>determine the presence or absence of duplicate elements</p>
-          </li>
+        <li>
+          <p>determine the presence or absence of duplicate elements</p>
+        </li>
 
-          <li>
-            <p>shift or rotate elements left or right</p>
-          </li>
+        <li>
+          <p>shift or rotate elements left or right</p>
+        </li>
 
-          <li>
-            <p>reverse the order of the elements</p>
-          </li>
-        </ul>
-      </p>
-    </blockquote>
+        <li>
+          <p>reverse the order of the elements</p>
+        </li>
+      </ul>
+    </p>
 
     <p>
       Here are two common <c>ArrayList</c> traversal loops that can be used for
       these algorithms:
     </p>
 
-    <program language="java">
-      <code>
-for (Type obj : list)
-{
-    if (obj ....)
-        ...
-}
+    <program>
+      <![CDATA[
 
-for(int i=0; i &lt; list.size(); i++)
-{
-   if (list.get(i) ....)
-       ...
-}
-      </code>
+      for (Type obj : list)
+      {
+          if (obj ....)
+              ...
+      }
+
+      for(int i=0; i < list.size(); i++)
+      {
+         if (list.get(i) ....)
+             ...
+      }
+
+      ]]>
     </program>
   </introduction>
 
   <subsection xml:id="add-remove-elements">
     <title>Add/Remove Elements</title>
+
     <p>
       You should be able to trace through code that uses all the basic ArrayList
       methods like the following.
@@ -98,17 +100,20 @@ for(int i=0; i &lt; list.size(); i++)
     <activity label="qListRem3">
       <statement>
         <p>What will print when the following code executes?</p>
-        <program language="java">
-          <code>
-List&lt;Integer&gt; numList = new ArrayList&lt;Integer&gt;();
-numList.add(new Integer(1));
-numList.add(new Integer(2));
-numList.add(new Integer(3));
-numList.set(2,new Integer(4));
-numList.add(1, new Integer(5));
-numList.add(new Integer(6));
-System.out.println(numList);
-          </code>
+
+        <program>
+          <![CDATA[
+
+          List<Integer> numList = new ArrayList<Integer>();
+          numList.add(new Integer(1));
+          numList.add(new Integer(2));
+          numList.add(new Integer(3));
+          numList.set(2,new Integer(4));
+          numList.add(1, new Integer(5));
+          numList.add(new Integer(6));
+          System.out.println(numList);
+
+          ]]>
         </program>
       </statement>
 
@@ -178,15 +183,18 @@ System.out.println(numList);
     <activity label="qListRem4">
       <statement>
         <p>What will print when the following code executes?</p>
-        <program language="java">
-          <code>
-List&lt;Integer&gt; list1 = new ArrayList&lt;Integer&gt;();
-list1.add(new Integer(1));
-list1.add(new Integer(2));
-list1.add(new Integer(3));
-list1.remove(1);
-System.out.println(list1);
-          </code>
+
+        <program>
+          <![CDATA[
+
+          List<Integer> list1 = new ArrayList<Integer>();
+          list1.add(new Integer(1));
+          list1.add(new Integer(2));
+          list1.add(new Integer(3));
+          list1.remove(1);
+          System.out.println(list1);
+
+          ]]>
         </program>
       </statement>
 
@@ -197,9 +205,7 @@ System.out.println(list1);
           </statement>
 
           <feedback>
-            <p>
-              The <c>remove</c> will remove the item at the given index.
-            </p>
+            <p>The <c>remove</c> will remove the item at the given index.</p>
           </feedback>
         </choice>
 
@@ -255,49 +261,54 @@ System.out.println(list1);
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*;
+          <![CDATA[
 
-public class ArrayListLoop
-{
-    public static void main(String[] args)
-    {
-        ArrayList&lt;Integer&gt; arr = new ArrayList&lt;Integer&gt;();
-        for (int i = 0; i &lt; 5; i++)
-        {
-            arr.add(i);
-        }
-        for (int i = 0; i &lt; arr.size(); i++)
-        {
-            if (i % 2 == 0)
-            {
-                System.out.println("Removing element " + i + " : " + arr.get(i));
-                arr.remove(i);
-            }
-        }
-        System.out.println(arr);
-    }
-}
+          import java.util.*;
+
+          public class ArrayListLoop
+          {
+              public static void main(String[] args)
+              {
+                  ArrayList<Integer> arr = new ArrayList<Integer>();
+                  for (int i = 0; i < 5; i++)
+                  {
+                      arr.add(i);
+                  }
+                  for (int i = 0; i < arr.size(); i++)
+                  {
+                      if (i % 2 == 0)
+                      {
+                          System.out.println("Removing element " + i + " : " + arr.get(i));
+                          arr.remove(i);
+                      }
+                  }
+                  System.out.println(arr);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Removing element 0: 0\nRemoving element 2: 3\n[1, 2, 4]";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Removing element 0: 0\nRemoving element 2: 3\n[1, 2, 4]";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -314,6 +325,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="min-max-sum-average">
     <title>Min, Max, Sum, Average</title>
+
     <p>
       You should be able to write code that finds the minimum, maximum, sum, and
       average of the elements in an <c>ArrayList</c>.
@@ -439,71 +451,80 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.ArrayList;
+          <![CDATA[
 
-public class ListMax
-{
-    public static int findMax(ArrayList&lt;Integer&gt; nums)
-    {
-        // YOUR CODE HERE //
+          import java.util.ArrayList;
 
-        return 0;
-    }
+          public class ListMax
+          {
+              public static int findMax(ArrayList<Integer> nums)
+              {
+                  // YOUR CODE HERE //
 
-    public static void main(String[] args)
-    {
-        ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
-        list.add(1);
-        list.add(3);
-        list.add(12);
-        list.add(0);
-        list.add(9);
+                  return 0;
+              }
 
-        System.out.println("Max: " + findMax(list));
-    }
-}
+              public static void main(String[] args)
+              {
+                  ArrayList<Integer> list = new ArrayList<Integer>();
+                  list.add(1);
+                  list.add(3);
+                  list.add(12);
+                  list.add(0);
+                  list.add(9);
+
+                  System.out.println("Max: " + findMax(list));
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-import java.util.ArrayList;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("ListMax");
-    }
+          import java.util.ArrayList;
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "Max: 12";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ListMax");
+              }
 
-        boolean passed = getResults(expect, output, "Main outpu");
-        assertTrue(passed);
-    }
-    @Test
-    public void test2()
-    {
-        ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
-        list.add(2);
-        list.add(4);
-        list.add(0);
-        String expect = "4";
-        String output = "" + ListMax.findMax(list);
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Max: 12";
 
-        boolean passed = getResults(expect, output, "findMax with list 2,4,0");
-        assertTrue(passed);
-    }
-}
+                  boolean passed = getResults(expect, output, "Main outpu");
+                  assertTrue(passed);
+              }
+              @Test
+              public void test2()
+              {
+                  ArrayList<Integer> list = new ArrayList<Integer>();
+                  list.add(2);
+                  list.add(4);
+                  list.add(0);
+                  String expect = "4";
+                  String output = "" + ListMax.findMax(list);
+
+                  boolean passed = getResults(expect, output, "findMax with list 2,4,0");
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -511,6 +532,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="finding-a-property">
     <title>Finding a property</title>
+
     <p>
       You should be able to write code that determines if at least one element
       has a particular property, if all elements have a particular property, or
@@ -598,70 +620,79 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*;
+          <![CDATA[
 
-public class TestCountOdd
-{
-     public static int countOdd(ArrayList&lt;Integer&gt; nums)
-     {
-          // Add code here
-          return 0;
-     }
+          import java.util.*;
 
-     public static void main(String[] args)
-     {
-          // instantiate ArrayList and fill with Integers
-          ArrayList&lt;Integer&gt; values = new ArrayList&lt;Integer&gt;();
-          int[] nums = {1, 5, 7, 9, -2, 3, 2};
-          for (int i = 0; i &lt; nums.length; i++)
+          public class TestCountOdd
           {
-            values.add(nums[i]);
+               public static int countOdd(ArrayList<Integer> nums)
+               {
+                    // Add code here
+                    return 0;
+               }
+
+               public static void main(String[] args)
+               {
+                    // instantiate ArrayList and fill with Integers
+                    ArrayList<Integer> values = new ArrayList<Integer>();
+                    int[] nums = {1, 5, 7, 9, -2, 3, 2};
+                    for (int i = 0; i < nums.length; i++)
+                    {
+                      values.add(nums[i]);
+                    }
+                    int result = countOdd(values);
+                    System.out.println("Expected Result:\t 5");
+                    System.out.println("Your Result:\t\t " + result);
+               }
           }
-          int result = countOdd(values);
-          System.out.println("Expected Result:\t 5");
-          System.out.println("Your Result:\t\t " + result);
-     }
-}
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
-import java.util.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-     public RunestoneTests()
-     {
-          super("TestCountOdd");
-     }
-     @Test
-     public void testMain() throws IOException
-     {
-          String output = getMethodOutput("main");
-          String expect = "Expected Result: 5\nYour Result:     5\n";
-          boolean passed = getResults(expect, output, "Expected output from main");
-          assertTrue(passed);
-     }
+          import java.io.*;
+          import java.util.*;
 
-     @Test
-     public void testCall()
-     {
-            ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
-            list.add(2);
-            list.add(-2);
-            list.add(1);
-            list.add(11);
-            String expect = "2";
-            String output = "" + TestCountOdd.countOdd(list);
-            boolean passed = getResults(expect, output, "countOdd with list 2,-2,1,11");
-            assertTrue(passed);
-     }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+               public RunestoneTests()
+               {
+                    super("TestCountOdd");
+               }
+               @Test
+               public void testMain() throws IOException
+               {
+                    String output = getMethodOutput("main");
+                    String expect = "Expected Result: 5\nYour Result:     5\n";
+                    boolean passed = getResults(expect, output, "Expected output from main");
+                    assertTrue(passed);
+               }
+
+               @Test
+               public void testCall()
+               {
+                      ArrayList<Integer> list = new ArrayList<Integer>();
+                      list.add(2);
+                      list.add(-2);
+                      list.add(1);
+                      list.add(11);
+                      String expect = "2";
+                      String output = "" + TestCountOdd.countOdd(list);
+                      boolean passed = getResults(expect, output, "countOdd with list 2,-2,1,11");
+                      assertTrue(passed);
+               }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -669,6 +700,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="pairs-and-duplicates">
     <title>Pairs and Duplicates</title>
+
     <p>
       In the last lesson, the coding challenge involved finding pairs. You
       should be able to write code that accesses all consecutive pairs of
@@ -757,95 +789,104 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*;
+          <![CDATA[
 
-public class TestDuplicates
-{
-    public static boolean hasDuplicates(ArrayList&lt;Integer&gt; nums)
-    {
-        // Add code here
-        return false;
-    }
+          import java.util.*;
 
-    public static void main(String[] args)
-    {
-        // instantiate ArrayList and fill with Integers
-        ArrayList&lt;Integer&gt; values1 = new ArrayList&lt;Integer&gt;();
-        ArrayList&lt;Integer&gt; values2 = new ArrayList&lt;Integer&gt;();
+          public class TestDuplicates
+          {
+              public static boolean hasDuplicates(ArrayList<Integer> nums)
+              {
+                  // Add code here
+                  return false;
+              }
 
-        for (int i = 0; i &lt; 5; i++)
-        {
-            values1.add(i);
-            values2.add(i);
-            values2.add(i); // add duplicates to values2
-        }
-        boolean result1 = hasDuplicates(values1);
-        boolean result2 = hasDuplicates(values2);
-        System.out.println("Expected Result: false, true");
-        System.out.println("Your Result: " + result1 + ", " + result2);
-    }
-}
+              public static void main(String[] args)
+              {
+                  // instantiate ArrayList and fill with Integers
+                  ArrayList<Integer> values1 = new ArrayList<Integer>();
+                  ArrayList<Integer> values2 = new ArrayList<Integer>();
+
+                  for (int i = 0; i < 5; i++)
+                  {
+                      values1.add(i);
+                      values2.add(i);
+                      values2.add(i); // add duplicates to values2
+                  }
+                  boolean result1 = hasDuplicates(values1);
+                  boolean result2 = hasDuplicates(values2);
+                  System.out.println("Expected Result: false, true");
+                  System.out.println("Your Result: " + result1 + ", " + result2);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
-import java.util.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TestDuplicates");
-    }
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Expected Result: false, true\nYour Result: false, true\n";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
+          import java.io.*;
+          import java.util.*;
 
-    @Test
-        public void testFor()
-        {
-            String code = getCodeWithoutComments();
-            int count = countOccurences(code, "for");
-            boolean passed = count &gt;= 2;
-            getResults("2 loop(s)", count + " loop(s)", "Counting number of for loops", passed);
-            assertTrue(passed);
-        }
-    @Test
-        public void test2()
-        {
-            ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
-            list.add(2);
-            list.add(4);
-            list.add(0);
-            String expect = "false";
-            String output = "" + TestDuplicates.hasDuplicates(list);
-            boolean passed = getResults(expect, output, "hasDuplicates with list 2,4,0");
-            assertTrue(passed);
-        }
-        @Test
-        public void test3()
-        {
-            ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
-            list.add(2);
-            list.add(4);
-            list.add(0);
-            list.add(4);
-            String expect = "true";
-            String output = "" + TestDuplicates.hasDuplicates(list);
-            boolean passed = getResults(expect, output, "hasDuplicates with list 2,4,0,4");
-            assertTrue(passed);
-        }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TestDuplicates");
+              }
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Expected Result: false, true\nYour Result: false, true\n";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+
+              @Test
+                  public void testFor()
+                  {
+                      String code = getCodeWithoutComments();
+                      int count = countOccurences(code, "for");
+                      boolean passed = count >= 2;
+                      getResults("2 loop(s)", count + " loop(s)", "Counting number of for loops", passed);
+                      assertTrue(passed);
+                  }
+              @Test
+                  public void test2()
+                  {
+                      ArrayList<Integer> list = new ArrayList<Integer>();
+                      list.add(2);
+                      list.add(4);
+                      list.add(0);
+                      String expect = "false";
+                      String output = "" + TestDuplicates.hasDuplicates(list);
+                      boolean passed = getResults(expect, output, "hasDuplicates with list 2,4,0");
+                      assertTrue(passed);
+                  }
+                  @Test
+                  public void test3()
+                  {
+                      ArrayList<Integer> list = new ArrayList<Integer>();
+                      list.add(2);
+                      list.add(4);
+                      list.add(0);
+                      list.add(4);
+                      String expect = "true";
+                      String output = "" + TestDuplicates.hasDuplicates(list);
+                      boolean passed = getResults(expect, output, "hasDuplicates with list 2,4,0,4");
+                      assertTrue(passed);
+                  }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -938,79 +979,88 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*;
+          <![CDATA[
 
-public class TestRotate
-{
-    public static void rotateLeft(ArrayList&lt;Integer&gt; nums)
-    {
-        // Add code here
-    }
+          import java.util.*;
 
-    public static void main(String[] args)
-    {
-        // instantiate ArrayList and fill with Integers
-        ArrayList&lt;Integer&gt; values = new ArrayList&lt;Integer&gt;();
-        int[] arrnums = {1, 5, 7};
-        for (int i = 0; i &lt; arrnums.length; i++)
-        {
-            values.add(arrnums[i]);
-        }
-        rotateLeft(values);
-        System.out.println("Expected Result: [5, 7, 1]");
-        System.out.println("Your Result: " + values);
-    }
-}
+          public class TestRotate
+          {
+              public static void rotateLeft(ArrayList<Integer> nums)
+              {
+                  // Add code here
+              }
+
+              public static void main(String[] args)
+              {
+                  // instantiate ArrayList and fill with Integers
+                  ArrayList<Integer> values = new ArrayList<Integer>();
+                  int[] arrnums = {1, 5, 7};
+                  for (int i = 0; i < arrnums.length; i++)
+                  {
+                      values.add(arrnums[i]);
+                  }
+                  rotateLeft(values);
+                  System.out.println("Expected Result: [5, 7, 1]");
+                  System.out.println("Your Result: " + values);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
-import java.util.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TestRotate");
-    }
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Expected Result: [5, 7, 1]\nYour Result: [5, 7, 1]\n";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-    @Test
-    public void testSet()
-    {
-        String target = "set";
-        boolean passed =
-                checkCodeContains(
-                        "set method",
-                        target);
-        assertTrue(passed);
-    }
-    @Test
-        public void test2()
-        {
-            ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
-            list.add(2);
-            list.add(4);
-            list.add(0);
-            list.add(-2);
-            String expect = "[4, 0, -2, 2]";
-            TestRotate.rotateLeft(list);
-            String output = "" + list;
-            boolean passed = getResults(expect, output, "rotateLeft with list 2,4,0,-2");
-            assertTrue(passed);
-        }
-    }
+          import java.io.*;
+          import java.util.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TestRotate");
+              }
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Expected Result: [5, 7, 1]\nYour Result: [5, 7, 1]\n";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testSet()
+              {
+                  String target = "set";
+                  boolean passed =
+                          checkCodeContains(
+                                  "set method",
+                                  target);
+                  assertTrue(passed);
+              }
+              @Test
+                  public void test2()
+                  {
+                      ArrayList<Integer> list = new ArrayList<Integer>();
+                      list.add(2);
+                      list.add(4);
+                      list.add(0);
+                      list.add(-2);
+                      String expect = "[4, 0, -2, 2]";
+                      TestRotate.rotateLeft(list);
+                      String output = "" + list;
+                      boolean passed = getResults(expect, output, "rotateLeft with list 2,4,0,-2");
+                      assertTrue(passed);
+                  }
+              }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -1086,79 +1136,88 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*;
+          <![CDATA[
 
-public class TestReverse
-{
-    public static ArrayList&lt;Integer&gt; reverse(ArrayList&lt;Integer&gt; list)
-    {
-        ArrayList&lt;Integer&gt; reversed = new ArrayList&lt;Integer&gt;();
-        // Use an enhanced for loop here
+          import java.util.*;
 
-        return reversed;
-    }
+          public class TestReverse
+          {
+              public static ArrayList<Integer> reverse(ArrayList<Integer> list)
+              {
+                  ArrayList<Integer> reversed = new ArrayList<Integer>();
+                  // Use an enhanced for loop here
 
-    public static void main(String[] args)
-    {
-        // instantiate ArrayList and fill with Integers
-        ArrayList&lt;Integer&gt; values = new ArrayList&lt;Integer&gt;();
-        for (int i = 0; i &lt; 4; i++)
-        {
-            values.add(i);
-        }
-        ArrayList&lt;Integer&gt; result = reverse(values);
-        System.out.println("Expected Result:\t [3, 2, 1, 0]");
-        System.out.println("Your Result:\t\t " + result);
-    }
-}
+                  return reversed;
+              }
+
+              public static void main(String[] args)
+              {
+                  // instantiate ArrayList and fill with Integers
+                  ArrayList<Integer> values = new ArrayList<Integer>();
+                  for (int i = 0; i < 4; i++)
+                  {
+                      values.add(i);
+                  }
+                  ArrayList<Integer> result = reverse(values);
+                  System.out.println("Expected Result:\t [3, 2, 1, 0]");
+                  System.out.println("Your Result:\t\t " + result);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
-import java.util.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect =
-                "Expected Result: [3, 2, 1, 0]\n"
-                        + "Your Result:     [3, 2, 1, 0]\n";
+          import java.io.*;
+          import java.util.*;
 
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect =
+                          "Expected Result: [3, 2, 1, 0]\n"
+                                  + "Your Result:     [3, 2, 1, 0]\n";
 
-    @Test
-    public void testAdd()
-    {
-        String target = "reversed.add(0";
-        boolean passed =
-                checkCodeContains(
-                        "add method called to add to the beginning of reversed",
-                        target);
-        assertTrue(passed);
-    }
-  @Test
-  public void test2()
-  {
-      ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
-      list.add(2);
-      list.add(4);
-      list.add(6);
-      String expect = "[6, 4, 2]";
-      String output = "" + TestReverse.reverse(list);
-      boolean passed = getResults(expect, output, "reverse with list 2,4,6");
-      assertTrue(passed);
-  }
-}
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testAdd()
+              {
+                  String target = "reversed.add(0";
+                  boolean passed =
+                          checkCodeContains(
+                                  "add method called to add to the beginning of reversed",
+                                  target);
+                  assertTrue(passed);
+              }
+            @Test
+            public void test2()
+            {
+                ArrayList<Integer> list = new ArrayList<Integer>();
+                list.add(2);
+                list.add(4);
+                list.add(6);
+                String expect = "[6, 4, 2]";
+                String output = "" + TestReverse.reverse(list);
+                boolean passed = getResults(expect, output, "reverse with list 2,4,6");
+                assertTrue(passed);
+            }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -1166,6 +1225,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="multiple-or-parallel-data-structures">
     <title>Multiple or Parallel Data Structures</title>
+
     <p>
       Some algorithms require multiple <c>String</c>, array, or <c>ArrayList</c>
       objects to be traversed simultaneously. For example, the following code
@@ -1181,60 +1241,65 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*;
+          <![CDATA[
 
-public class ParallelTests
-{
-    public static void main(String[] args)
-    {
-        ArrayList&lt;Integer&gt; test1Grades = new ArrayList&lt;Integer&gt;();
-        ArrayList&lt;Integer&gt; test2Grades = new ArrayList&lt;Integer&gt;();
-        test1Grades.add(100);
-        test2Grades.add(100);
-        test1Grades.add(80);
-        test2Grades.add(70);
-        test1Grades.add(70);
-        test2Grades.add(90);
-        double total = 0;
-        // Write 1 indexed for loop that adds
-        // test1Grades and test2Grades at index i to total
+          import java.util.*;
+
+          public class ParallelTests
+          {
+              public static void main(String[] args)
+              {
+                  ArrayList<Integer> test1Grades = new ArrayList<Integer>();
+                  ArrayList<Integer> test2Grades = new ArrayList<Integer>();
+                  test1Grades.add(100);
+                  test2Grades.add(100);
+                  test1Grades.add(80);
+                  test2Grades.add(70);
+                  test1Grades.add(70);
+                  test2Grades.add(90);
+                  double total = 0;
+                  // Write 1 indexed for loop that adds
+                  // test1Grades and test2Grades at index i to total
 
 
 
-        int numberOfGrades = test1Grades.size() * 2;
-        System.out.println("Average over two tests: " + total / numberOfGrades);
-    }
-}
+                  int numberOfGrades = test1Grades.size() * 2;
+                  System.out.println("Average over two tests: " + total / numberOfGrades);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
- import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
- import org.junit.*;
+          import org.junit.*;
 
- import java.io.*;
+          import java.io.*;
 
- public class RunestoneTests extends CodeTestHelper
- {
-     @Test
-     public void testMain() throws IOException
-     {
-         String output = getMethodOutput("main");
-         String expect = "Average over two tests: 85.0";
-         boolean passed = getResults(expect, output, "Expected output from main");
-         assertTrue(passed);
-     }
-       @Test
-         public void test2()
-         {
-             String code = getCodeWithoutComments();
-             int count = countOccurences(code, "for");
-             boolean passed = count == 1;
-             passed = getResults("1 loop", count + " loop", "use only 1 for loop");
-             assertTrue(passed);
-         }
- }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Average over two tests: 85.0";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+                @Test
+                  public void test2()
+                  {
+                      String code = getCodeWithoutComments();
+                      int count = countOccurences(code, "for");
+                      boolean passed = count == 1;
+                      passed = getResults("1 loop", count + " loop", "use only 1 for loop");
+                      assertTrue(passed);
+                  }
+          }
         </tests>
       </program>
     </activity>
@@ -1242,6 +1307,7 @@ public class ParallelTests
 
   <subsection xml:id="summary-37">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -1250,55 +1316,57 @@ public class ParallelTests
             utilize traversals to:
           </p>
 
-          <blockquote>
-            <p>
-              <ul>
-                <li>
-                  <p>determine a minimum or maximum value</p>
-                </li>
+          <p>
+            <ul>
+              <li>
+                <p>determine a minimum or maximum value</p>
+              </li>
 
-                <li>
-                  <p>compute a sum or average</p>
-                </li>
+              <li>
+                <p>compute a sum or average</p>
+              </li>
 
-                <li>
-                  <p>determine if at least one element has a particular property</p>
-                </li>
+              <li>
+                <p>
+                  determine if at least one element has a particular property
+                </p>
+              </li>
 
-                <li>
-                  <p>determine if all elements have a particular property</p>
-                </li>
+              <li>
+                <p>determine if all elements have a particular property</p>
+              </li>
 
-                <li>
-                  <p>determine the number of elements having a particular property</p>
-                </li>
+              <li>
+                <p>
+                  determine the number of elements having a particular property
+                </p>
+              </li>
 
-                <li>
-                  <p>access all consecutive pairs of elements</p>
-                </li>
+              <li>
+                <p>access all consecutive pairs of elements</p>
+              </li>
 
-                <li>
-                  <p>determine the presence or absence of duplicate elements</p>
-                </li>
+              <li>
+                <p>determine the presence or absence of duplicate elements</p>
+              </li>
 
-                <li>
-                  <p>shift or rotate elements left or right</p>
-                </li>
+              <li>
+                <p>shift or rotate elements left or right</p>
+              </li>
 
-                <li>
-                  <p>reverse the order of the elements</p>
-                </li>
+              <li>
+                <p>reverse the order of the elements</p>
+              </li>
 
-                <li>
-                  <p>insert elements</p>
-                </li>
+              <li>
+                <p>insert elements</p>
+              </li>
 
-                <li>
-                  <p>delete elements</p>
-                </li>
-              </ul>
-            </p>
-          </blockquote>
+              <li>
+                <p>delete elements</p>
+              </li>
+            </ul>
+          </p>
         </li>
 
         <li>
@@ -1313,6 +1381,7 @@ public class ParallelTests
 
   <subsection xml:id="review-and-frq-practice-with-arraylists">
     <title>Review and FRQ Practice with ArrayLists</title>
+
     <p>
       This lesson ends the <c>ArrayList</c> section of this unit. You can now do
       the following review lessons and FRQs at the end of the unit and College

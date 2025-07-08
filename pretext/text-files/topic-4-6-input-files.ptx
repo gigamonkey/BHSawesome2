@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-6-input-files">
   <title>Using Text Files</title>
+
   <idx>files</idx>
   <idx>Scanner</idx>
   <idx>IOException</idx>
@@ -44,7 +45,9 @@
       <c>Scanner</c> classes. These classes must be imported in from libraries;
       the <c>Scanner</c> class is in the <c>java.util</c> package and
       <c>File</c> is in the <c>java.io</c> package (
-      <title_reference>io</title_reference> stands for
+      
+      <title_reference>io</title_reference>
+ stands for
       <term>input/output</term>).
     </p>
 
@@ -55,12 +58,10 @@
       “data.txt” in <c>new File(String str)</c>.
     </p>
 
-    <program language="java">
-      <code>
-import java.io.*;
-...
-File myFile = new File("data.txt");
-      </code>
+    <program>
+      import java.io.*;
+      ...
+      File myFile = new File("data.txt");
     </program>
 
     <p>
@@ -96,24 +97,22 @@ File myFile = new File("data.txt");
       method and throws an exception.
     </p>
 
-    <program language="java">
-      <code>
-import java.io.*;
-import java.util.*;
+    <program>
+      import java.io.*;
+      import java.util.*;
 
-public class FileIO
-{
-                                          // Notice throws IOException here
-   public static void main(String[] args) throws IOException
-   {
-      File myFile = new File("data.txt");
-      Scanner scan = new Scanner(myFile);
-      ...
+      public class FileIO
+      {
+                                                // Notice throws IOException here
+         public static void main(String[] args) throws IOException
+         {
+            File myFile = new File("data.txt");
+            Scanner scan = new Scanner(myFile);
+            ...
 
-      scan.close();
-   }
-}
-      </code>
+            scan.close();
+         }
+      }
     </program>
 
     <p>
@@ -132,53 +131,54 @@ public class FileIO
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="dictionary.txt">
+      <program interactive="activecode" datafile="dictionary.txt">
         <code>
-import java.io.*;
-import java.util.*;
+          import java.io.*;
+          import java.util.*;
 
-public class FileIO
-{
-    public static void main(String[] args)
-    {
-        File myFile = new File("dictionary.txt");
-        Scanner scan = new Scanner(myFile);
-        System.out.println(
-                "The first word in the dictionary file is: " + scan.nextLine());
-        scan.close();
-    }
-}
+          public class FileIO
+          {
+              public static void main(String[] args)
+              {
+                  File myFile = new File("dictionary.txt");
+                  Scanner scan = new Scanner(myFile);
+                  System.out.println(
+                          "The first word in the dictionary file is: " + scan.nextLine());
+                  scan.close();
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("FileIO");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("FileIO");
+              }
 
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "The first word in the dictionary file is: a";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "The first word in the dictionary file is: a";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void fixedCode()
-    {
-        boolean passed = checkCodeContains("throws IOException", "throws IOException");
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void fixedCode()
+              {
+                  boolean passed = checkCodeContains("throws IOException", "throws IOException");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -199,22 +199,21 @@ public class RunestoneTests extends CodeTestHelper
       message or do something else to handle the exception.
     </p>
 
-    <program language="java">
-      <code>
-try
-{
-    Scanner scan = new Scanner(myFile);
-}
-catch (FileNotFoundException e)
-{
-    System.out.println("File not found!");
-}
-      </code>
+    <program>
+      try
+      {
+          Scanner scan = new Scanner(myFile);
+      }
+      catch (FileNotFoundException e)
+      {
+          System.out.println("File not found!");
+      }
     </program>
   </subsection>
 
   <subsection>
     <title>Reading in Data with Scanner</title>
+
     <p>
       Once the file is opened, the data can be read using <c>Scanner</c>
       methods. For example, the method, <c>nextLine</c> will read the next line
@@ -282,9 +281,7 @@ catch (FileNotFoundException e)
         </li>
 
         <li>
-          <p>
-            <c>void close()</c> closes the input stream.
-          </p>
+          <p><c>void close()</c> closes the input stream.</p>
         </li>
       </ul>
     </p>
@@ -306,48 +303,52 @@ catch (FileNotFoundException e)
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.Scanner;
+          import java.util.Scanner;
 
-public class Multiply
-{
-     public static void main(String[] args)
-     {
-          Scanner scan = new Scanner(System.in);
-          int num1 = scan.nextInt();
-          int num2 = scan.nextInt();
+          public class Multiply
+          {
+               public static void main(String[] args)
+               {
+                    Scanner scan = new Scanner(System.in);
+                    int num1 = scan.nextInt();
+                    int num2 = scan.nextInt();
 
-          int result = num1 * num2;
+                    int result = num1 * num2;
 
-          System.out.println(num1 + " x " + num2 + " = " + result);
-          scan.close();
-      }
- }
+                    System.out.println(num1 + " x " + num2 + " = " + result);
+                    scan.close();
+                }
+           }
         </code>
-        <stdin>2 3</stdin>
+
+        <stdin>
+          2 3
+        </stdin>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.Test;
+          import org.junit.Test;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-     @Test
-     public void containsnextDouble()
-     {
-         boolean passed = checkCodeContains("nextDouble()");
-         assertTrue(passed);
-     }
-     @Test
-     public void containsdouble()
-     {
-         boolean passed = checkCodeContains("double");
-         assertTrue(passed);
-     }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+               @Test
+               public void containsnextDouble()
+               {
+                   boolean passed = checkCodeContains("nextDouble()");
+                   assertTrue(passed);
+               }
+               @Test
+               public void containsdouble()
+               {
+                   boolean passed = checkCodeContains("double");
+                   assertTrue(passed);
+               }
+          }
         </tests>
       </program>
     </activity>
@@ -366,6 +367,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="loop-read-file">
     <title>Loop to Read in a File</title>
+
     <p>
       A <c>while</c> loop is usually used to read in a file with multiple lines.
       The loop can use the method <c>hasNext</c> as the loop condition to detect
@@ -375,15 +377,13 @@ public class RunestoneTests extends CodeTestHelper
       should be called to close the file.
     </p>
 
-    <program language="java">
-      <code>
-while (scan.hasNext())
-{
-   String line = scan.nextLine();
-   ...
-}
-scan.close();
-      </code>
+    <program>
+      while (scan.hasNext())
+      {
+         String line = scan.nextLine();
+         ...
+      }
+      scan.close();
     </program>
 
     <activity label="loop-read-file">
@@ -395,70 +395,71 @@ scan.close();
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="dictionary.txt">
+      <program interactive="activecode" datafile="dictionary.txt">
         <code>
-import java.io.*;
-import java.util.*;
+          import java.io.*;
+          import java.util.*;
 
-public class FileIOLoop
-{
-    public static void main(String[] args) throws IOException
-    {
-        File myFile = new File("dictionary.txt");
-        Scanner scan = new Scanner(myFile);
-        int i = 0; // line count
+          public class FileIOLoop
+          {
+              public static void main(String[] args) throws IOException
+              {
+                  File myFile = new File("dictionary.txt");
+                  Scanner scan = new Scanner(myFile);
+                  int i = 0; // line count
 
-        // 1. Add in the loop condition that checks if scan has another line of input
-        while (         )
-        {
-            // 2. Read in the next line of the file
-            String line;
+                  // 1. Add in the loop condition that checks if scan has another line of input
+                  while (         )
+                  {
+                      // 2. Read in the next line of the file
+                      String line;
 
-            i++; // line count
-         }
+                      i++; // line count
+                   }
 
-        System.out.println("This file has " + i + " lines.");
+                  System.out.println("This file has " + i + " lines.");
 
-        scan.close();
-    }
-}
+                  scan.close();
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("FileIOLoop");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("FileIOLoop");
+              }
 
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "This file has 10002 lines.";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-    @Test
-    public void testNextLine()
-    {
-        boolean passed = checkCodeContains("nextLine()");
-        assertTrue(passed);
-    }
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "This file has 10002 lines.";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testNextLine()
+              {
+                  boolean passed = checkCodeContains("nextLine()");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testHasNext()
-    {
-        boolean passed = checkCodeContains("hasNext()");
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void testHasNext()
+              {
+                  boolean passed = checkCodeContains("hasNext()");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -466,6 +467,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="file-data-array">
     <title>Save File Data into an Array</title>
+
     <p>
       We can save a file line by line into an array. In the <c>SpellChecker</c>
       class, we read the data file of words into a dictionary array with the
@@ -475,17 +477,15 @@ public class RunestoneTests extends CodeTestHelper
       need to know the size of the data in advance.
     </p>
 
-    <program language="java">
-      <code>
-String[] dictionary = new String[10000];
-int i = 0;
-while(scan.hasNext())
-{
-     String line = scan.nextLine();
-     dictionary[i] = line;
-     i++;
- }
-      </code>
+    <program>
+      String[] dictionary = new String[10000];
+      int i = 0;
+      while(scan.hasNext())
+      {
+           String line = scan.nextLine();
+           dictionary[i] = line;
+           i++;
+       }
     </program>
 
     <p>
@@ -667,85 +667,90 @@ while(scan.hasNext())
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="pokemon.csv">
+      <program interactive="activecode" datafile="pokemon.csv">
         <code>
-import java.io.*;
-import java.util.*;
+          import java.io.*;
+          import java.util.*;
 
-public class ReadData
-{
-    public static void main(String[] args) throws IOException
-    {
-        File myFile = new File("pokemon.csv");
-        Scanner scan = new Scanner(myFile);
-        String[] pokemonLines = new String[10];
+          public class ReadData
+          {
+              public static void main(String[] args) throws IOException
+              {
+                  File myFile = new File("pokemon.csv");
+                  Scanner scan = new Scanner(myFile);
+                  String[] pokemonLines = new String[10];
 
-        int i = 0;
-        // 1. Add in the loop condition that checks if scan has another line of input
-        //    and that i is less than 10.
-        while (         )
-        {
-            // 2. Read in the next line of the file
+                  int i = 0;
+                  // 1. Add in the loop condition that checks if scan has another line of input
+                  //    and that i is less than 10.
+                  while (         )
+                  {
+                      // 2. Read in the next line of the file
 
-            // 3. Assign the line to the ith element of the pokemonLines array
+                      // 3. Assign the line to the ith element of the pokemonLines array
 
-            // 4. Print out the line
+                      // 4. Print out the line
 
-            i++; // line count
-         }
-         scan.close();
-   }
-}
+                      i++; // line count
+                   }
+                   scan.close();
+             }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("ReadData");
-    }
+          import java.io.*;
 
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String[] lines = output.split("\\n");
-        boolean passed = lines.length &gt;= 10;
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ReadData");
+              }
 
-        passed =
-                getResults(
-                        "10+ lines of output",
-                        lines.length + " lines of output",
-                        "Expected output",
-                        passed);
-        assertTrue(passed);
-    }
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String[] lines = output.split("\\n");
+                  boolean passed = lines.length >= 10;
 
-    @Test
-    public void arrayCode()
-    {
-        boolean passed = checkCodeContains("assignment to pokemonLines[i]", "pokemonLines[i]");
-        assertTrue(passed);
-    }
-    @Test
-    public void testHasNext()
-    {
-        boolean passed = checkCodeContains("hasNext()");
-        assertTrue(passed);
-    }
-    @Test
-    public void testHasLess10()
-    {
-        boolean passed = checkCodeContains("i &lt; 10");
-        assertTrue(passed);
-    }
-}
+                  passed =
+                          getResults(
+                                  "10+ lines of output",
+                                  lines.length + " lines of output",
+                                  "Expected output",
+                                  passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void arrayCode()
+              {
+                  boolean passed = checkCodeContains("assignment to pokemonLines[i]", "pokemonLines[i]");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testHasNext()
+              {
+                  boolean passed = checkCodeContains("hasNext()");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testHasLess10()
+              {
+                  boolean passed = checkCodeContains("i < 10");
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -753,6 +758,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="split">
     <title>Split Strings</title>
+
     <idx>split</idx>
     <p>
       If you take a look at the Pokemon CSV file, you’ll notice that each line
@@ -763,10 +769,8 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <program language="text">
-      <code>
-// The first line of the Pokemon CSV file
-Number, Pokemon, Type 1, Type 2, HP, Attack, Defense, Speed, PNG, Description
-      </code>
+      // The first line of the Pokemon CSV file
+      Number, Pokemon, Type 1, Type 2, HP, Attack, Defense, Speed, PNG, Description
     </program>
 
     <p>
@@ -778,13 +782,11 @@ Number, Pokemon, Type 1, Type 2, HP, Attack, Defense, Speed, PNG, Description
       represents a field of data from the line.
     </p>
 
-    <program language="java">
-      <code>
-String sentence = "A quick brown fox jumps";
-// Split the sentence into words along spaces to create:
-//  words = {"A", "quick", "brown", "fox", "jumps"}
-String[] words = sentence.split(" ");
-      </code>
+    <program>
+      String sentence = "A quick brown fox jumps";
+      // Split the sentence into words along spaces to create:
+      //  words = {"A", "quick", "brown", "fox", "jumps"}
+      String[] words = sentence.split(" ");
     </program>
 
     <p>
@@ -799,18 +801,16 @@ String[] words = sentence.split(" ");
       the next lesson.
     </p>
 
-    <program language="java">
-      <code>
-// Split the line of data into an array of Strings
-String[] data = line.split(",");
-// Identify the data
-// data: Number,Name,Type1,Type2,HP,Attack,Defense,Speed,PNG,Description
-String name = data[1];
-String type1 = data[2];
-...
-String speed = data[7];
-String imageFile = data[8];
-      </code>
+    <program>
+      // Split the line of data into an array of Strings
+      String[] data = line.split(",");
+      // Identify the data
+      // data: Number,Name,Type1,Type2,HP,Attack,Defense,Speed,PNG,Description
+      String name = data[1];
+      String type1 = data[2];
+      ...
+      String speed = data[7];
+      String imageFile = data[8];
     </program>
 
     <p>
@@ -829,123 +829,128 @@ String imageFile = data[8];
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="pokemon.csv">
+      <program interactive="activecode" datafile="pokemon.csv">
         <code>
-import java.io.*;
-import java.util.*;
+          <![CDATA[
 
-public class PokeImages
-{
-    private String filename = "pokemon.csv";
-    private String[] pokemonLines = new String[152];
+          import java.io.*;
+          import java.util.*;
 
-    /* This method reads in filename into the pokemonLines array */
-    public int readFile() throws IOException
-    {
-        File myFile = new File(filename);
-        Scanner scan = new Scanner(myFile);
-        int i = 0;
-        while (scan.hasNext())
-        {
-            pokemonLines[i] = scan.nextLine();
-            i++;
-        }
-        System.out.println("Read in " + i + " lines.");
-        scan.close();
-        return i;
-    }
+          public class PokeImages
+          {
+              private String filename = "pokemon.csv";
+              private String[] pokemonLines = new String[152];
 
-    /* Write a function randomPokemon that prints out a random Pokemon name and image */
-    public void randomPokemon(int length)
-    {
-        // 1. pick a random number from 1 to length
-        //    (the 0th row is the headers)
+              /* This method reads in filename into the pokemonLines array */
+              public int readFile() throws IOException
+              {
+                  File myFile = new File(filename);
+                  Scanner scan = new Scanner(myFile);
+                  int i = 0;
+                  while (scan.hasNext())
+                  {
+                      pokemonLines[i] = scan.nextLine();
+                      i++;
+                  }
+                  System.out.println("Read in " + i + " lines.");
+                  scan.close();
+                  return i;
+              }
+
+              /* Write a function randomPokemon that prints out a random Pokemon name and image */
+              public void randomPokemon(int length)
+              {
+                  // 1. pick a random number from 1 to length
+                  //    (the 0th row is the headers)
 
 
-        // 2. get the line at that random index from the array pokemonLines
+                  // 2. get the line at that random index from the array pokemonLines
 
-        // 3. Use the split method to split the line into a String array data
+                  // 3. Use the split method to split the line into a String array data
 
-        // 4. Print out the name using the correct index in the split data
-        //   (Check above for the correct index for the name)
+                  // 4. Print out the name using the correct index in the split data
+                  //   (Check above for the correct index for the name)
 
-        // 5. Call the printHTMLimage method below
-        //    with an element of the data array to print out the image.
-        //    (Check above for the correct index for the image url)
+                  // 5. Call the printHTMLimage method below
+                  //    with an element of the data array to print out the image.
+                  //    (Check above for the correct index for the image url)
 
-    }
+              }
 
-    public static void main(String[] args) throws IOException
-    {
-        PokeImages obj = new PokeImages();
-        // call readFile() to read file into the array pokemonLines
-        int length = obj.readFile();
-        obj.randomPokemon(length);
-    }
+              public static void main(String[] args) throws IOException
+              {
+                  PokeImages obj = new PokeImages();
+                  // call readFile() to read file into the array pokemonLines
+                  int length = obj.readFile();
+                  obj.randomPokemon(length);
+              }
 
-    // This method will just work on Runestone to print out images
-    public static void printHTMLimage(String url)
-    {
-        System.out.print("&lt;img src=" + url + " width=300px /&gt;");
-    }
-}
+              // This method will just work on Runestone to print out images
+              public static void printHTMLimage(String url)
+              {
+                  System.out.print("<img src=" + url + " width=300px />");
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-   public RunestoneTests()
-   {
-       super("PokeImages");
-   }
+          public class RunestoneTests extends CodeTestHelper
+          {
+             public RunestoneTests()
+             {
+                 super("PokeImages");
+             }
 
-   @Test
-   public void randomTest()
-   {
-       boolean passed = checkCodeContains("(int)(Math.random()*length");
-       assertTrue(passed);
-   }
-   @Test
-   public void randomTest2()
-   {
-       boolean passed = checkCodeContains("+ 1 in Math.random() line", "+ 1");
-       assertTrue(passed);
-   }
+             @Test
+             public void randomTest()
+             {
+                 boolean passed = checkCodeContains("(int)(Math.random()*length");
+                 assertTrue(passed);
+             }
+             @Test
+             public void randomTest2()
+             {
+                 boolean passed = checkCodeContains("+ 1 in Math.random() line", "+ 1");
+                 assertTrue(passed);
+             }
 
-   @Test
-   public void splitCode()
-   {
-       boolean passed = checkCodeContains("call to split method", ".split");
-       assertTrue(passed);
-   }
+             @Test
+             public void splitCode()
+             {
+                 boolean passed = checkCodeContains("call to split method", ".split");
+                 assertTrue(passed);
+             }
 
-   @Test
-   public void imageCode()
-   {
-       boolean passed =
-               checkCodeContains("call to printHTMLimage", "printHTMLimage(");
-       assertTrue(passed);
-   }
+             @Test
+             public void imageCode()
+             {
+                 boolean passed =
+                         checkCodeContains("call to printHTMLimage", "printHTMLimage(");
+                 assertTrue(passed);
+             }
 
-   @Test
-   public void nameIndexCode()
-   {
-       boolean passed = checkCodeContains("the correct index for the name (1)", "[1]");
-       assertTrue(passed);
-   }
+             @Test
+             public void nameIndexCode()
+             {
+                 boolean passed = checkCodeContains("the correct index for the name (1)", "[1]");
+                 assertTrue(passed);
+             }
 
-   @Test
-   public void imageIndexCode()
-   {
-       boolean passed = checkCodeContains("the correct index for the image url (8)", "[8]");
-       assertTrue(passed);
-   }
-}
+             @Test
+             public void imageIndexCode()
+             {
+                 boolean passed = checkCodeContains("the correct index for the image url (8)", "[8]");
+                 assertTrue(passed);
+             }
+          }
         </tests>
       </program>
     </activity>
@@ -953,6 +958,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="oop-data">
     <title>Object-Oriented Design with CSV Files</title>
+
     <p>
       To better organize and work with this data, we can create a <c>Pokemon</c>
       class that corresponds to these attributes using object-oriented design. A
@@ -972,31 +978,29 @@ public class RunestoneTests extends CodeTestHelper
       saves it into an array of <c>Pokemon</c> objects.
     </p>
 
-    <program language="java">
-      <code>
-// Create an array of Pokemon objects
-Pokemon[] pokemonArray = new Pokemon[152];
+    <program>
+      // Create an array of Pokemon objects
+      Pokemon[] pokemonArray = new Pokemon[152];
 
-int i = 0;
-while (scan.hasNext())
-{
-    String line = scan.nextLine();
-    // Split each line into its attributes name, type1, etc.
-    String[] data = line.split(",");
-    String name = data[1];
-    String type1 = data[2];
-    ...
-    String speed = data[7];
-    String imageFile = data[8];
+      int i = 0;
+      while (scan.hasNext())
+      {
+          String line = scan.nextLine();
+          // Split each line into its attributes name, type1, etc.
+          String[] data = line.split(",");
+          String name = data[1];
+          String type1 = data[2];
+          ...
+          String speed = data[7];
+          String imageFile = data[8];
 
-    // Create a Pokemon object from the split data
-    Pokemon p = new Pokemon(name, type1, speed, imageFile);
-    // Save p in the array
-    pokemonArray[i] = p;
+          // Create a Pokemon object from the split data
+          Pokemon p = new Pokemon(name, type1, speed, imageFile);
+          // Save p in the array
+          pokemonArray[i] = p;
 
-    i++;
-}
-      </code>
+          i++;
+      }
     </program>
 
     <p>
@@ -1014,6 +1018,7 @@ while (scan.hasNext())
 
   <subsection xml:id="challenge-pokemon">
     <title>Coding Challenge: Array of Pokemon from Input File</title>
+
     <p>
       Let’s end with a challenge that combines all the skills you have learned
       so far. You could work in pairs for this challenge. Create a class Pokemon
@@ -1042,131 +1047,140 @@ while (scan.hasNext())
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="pokemon.csv">
+      <program interactive="activecode" datafile="pokemon.csv">
         <code>
-import java.io.*;
-import java.util.*;
+          <![CDATA[
 
-class Pokemon
-{
-    // 1. Add at least 3 String attributes of a Pokemon
-    //   including name, type1, and imagefile
+          import java.io.*;
+          import java.util.*;
 
-    // 2. Add a constructor that initializes the attributes of a Pokemon
-    //  to the values given as arguments
+          class Pokemon
+          {
+              // 1. Add at least 3 String attributes of a Pokemon
+              //   including name, type1, and imagefile
 
-    // 3. Add getters for the attributes
+              // 2. Add a constructor that initializes the attributes of a Pokemon
+              //  to the values given as arguments
 
-}
+              // 3. Add getters for the attributes
 
-public class PokemonArray
-{
-    // An array of 152 Pokemon objects
-    private Pokemon[] pokemonArray = new Pokemon[152];
-    private String filename = "pokemon.csv";
+          }
 
-    public PokemonArray() throws IOException
-    {
-         readFile(); // read in the data file into pokemonArray
-    }
+          public class PokemonArray
+          {
+              // An array of 152 Pokemon objects
+              private Pokemon[] pokemonArray = new Pokemon[152];
+              private String filename = "pokemon.csv";
 
-    // 4. Write a method to read in the data file (it may throw an exception).
-    // Loop through each row to split it into attributes.
-    //     Create a new Pokemon object from the attributes.
-    //     and save it into the pokemonArray
-    public void readFile()
-    {
+              public PokemonArray() throws IOException
+              {
+                   readFile(); // read in the data file into pokemonArray
+              }
 
-    }
+              // 4. Write a method to read in the data file (it may throw an exception).
+              // Loop through each row to split it into attributes.
+              //     Create a new Pokemon object from the attributes.
+              //     and save it into the pokemonArray
+              public void readFile()
+              {
 
-    // 5. Write a findType method that prints out the type of a Pokemon
-    // given its name as an argument.
-    // It should loop through the array to find the Pokemon object with the correct name.
-    // It should print and return the type and print the image.
-    // This method can call printHTMLimage(url) defined below.
-    public String findType(String name)
-    {
-        // Loop through the array to find the Pokemon with the given name
-        // Call the getType method to get the type of the Pokemon
-        // Call the printHTMLimage method to print out the image
-        // return the type
+              }
+
+              // 5. Write a findType method that prints out the type of a Pokemon
+              // given its name as an argument.
+              // It should loop through the array to find the Pokemon object with the correct name.
+              // It should print and return the type and print the image.
+              // This method can call printHTMLimage(url) defined below.
+              public String findType(String name)
+              {
+                  // Loop through the array to find the Pokemon with the given name
+                  // Call the getType method to get the type of the Pokemon
+                  // Call the printHTMLimage method to print out the image
+                  // return the type
 
 
-        return "Type";
-    }
+                  return "Type";
+              }
 
-    // This method will just work on Runestone to print out images
-    public static void printHTMLimage(String url)
-    {
-        System.out.print("&lt;img src=" + url + " width=300px /&gt;");
-    }
+              // This method will just work on Runestone to print out images
+              public static void printHTMLimage(String url)
+              {
+                  System.out.print("<img src=" + url + " width=300px />");
+              }
 
-    public static void main(String[] args) throws IOException
-    {
-        PokemonArray obj = new PokemonArray();
-        // Call your method to find the type of a Pokemon and display its image
-        System.out.println("Pikachu's type is " + obj.findType("Pikachu"));
+              public static void main(String[] args) throws IOException
+              {
+                  PokemonArray obj = new PokemonArray();
+                  // Call your method to find the type of a Pokemon and display its image
+                  System.out.println("Pikachu's type is " + obj.findType("Pikachu"));
 
-    }
-}
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests() throws IOException
-    {
-        super("PokemonArray");
-    }
+          import java.io.*;
 
-    @Test
-    public void testPrivateVariables()
-    {
-        String code = getCode();
-        int count = countOccurences(code, "private");
-        boolean passed = count &gt;= 3;
-        getResults("3", count + "", "Number of private instance variables", passed);
-        assertTrue(passed);
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests() throws IOException
+              {
+                  super("PokemonArray");
+              }
 
-    @Test
-    public void testConstructor()
-    {
-        boolean passed = checkCodeContains("Pokemon constructor", "public Pokemon(");
-        assertTrue(passed);
-    }
+              @Test
+              public void testPrivateVariables()
+              {
+                  String code = getCode();
+                  int count = countOccurences(code, "private");
+                  boolean passed = count >= 3;
+                  getResults("3", count + "", "Number of private instance variables", passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void splitCode()
-    {
-        boolean passed = checkCodeContains("call to split method", ".split");
-        assertTrue(passed);
-    }
+              @Test
+              public void testConstructor()
+              {
+                  boolean passed = checkCodeContains("Pokemon constructor", "public Pokemon(");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void callFindType1() throws IOException
-    {
-         Object[] args = {"Pikachu"};
-         String output = getMethodOutput("findType", args);
-         String expect = "Electric";
-         boolean passed = getResults(expect, output, "Expected output from findType(\"Pikachu\")");
-         assertTrue(passed);
-     }
-     @Test
-    public void callFindType2() throws IOException
-    {
-         Object[] args = {"Bulbasaur"};
-         String output = getMethodOutput("findType", args);
-         String expect = "Grass";
-         boolean passed = getResults(expect, output, "Expected output from findType(\"Bulbasaur\")");
-         assertTrue(passed);
-     }
-}
+              @Test
+              public void splitCode()
+              {
+                  boolean passed = checkCodeContains("call to split method", ".split");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void callFindType1() throws IOException
+              {
+                   Object[] args = {"Pikachu"};
+                   String output = getMethodOutput("findType", args);
+                   String expect = "Electric";
+                   boolean passed = getResults(expect, output, "Expected output from findType(\"Pikachu\")");
+                   assertTrue(passed);
+               }
+               @Test
+              public void callFindType2() throws IOException
+              {
+                   Object[] args = {"Bulbasaur"};
+                   String output = getMethodOutput("findType", args);
+                   String expect = "Grass";
+                   boolean passed = getResults(expect, output, "Expected output from findType(\"Bulbasaur\")");
+                   assertTrue(passed);
+               }
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -1174,6 +1188,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="challenge-dataset">
     <title>Optional Challenge with a Dataset</title>
+
     <p>
       If your class has time, you can try the following open-ended challenge
       that uses a dataset of your choice. You could work in pairs for this
@@ -1200,7 +1215,7 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <p>
-      <ol marker="1">
+      <ol>
         <li>
           <p>
             Design a class for the input file that you have chosen. Choose at
@@ -1251,85 +1266,90 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="pokemon.csv, WorldIndicators2000.csv, StateData2020-CDC-Census.csv">
+      <program interactive="activecode" datafile="pokemon.csv, WorldIndicators2000.csv, StateData2020-CDC-Census.csv">
         <code>
-import java.io.*;
-import java.util.*;
+          import java.io.*;
+          import java.util.*;
 
-/* Change this class name to a meaningful name for one record from the dataset. */
-class OneItem
-{
-    // Add at least 3 attributes found in the data file
+          /* Change this class name to a meaningful name for one record from the dataset. */
+          class OneItem
+          {
+              // Add at least 3 attributes found in the data file
 
-    // Add a constructor that initializes the attributes
+              // Add a constructor that initializes the attributes
 
-    // Add any getters and toString methods that you need
+              // Add any getters and toString methods that you need
 
-}
+          }
 
-/* Change this class name to a meaningful name for the whole dataset. */
-public class Data
-{
-    // Declare an array of your class type
+          /* Change this class name to a meaningful name for the whole dataset. */
+          public class Data
+          {
+              // Declare an array of your class type
 
-    // Write a method to read in the data (it may throw an exception).
-    // Use a while loop to split each row into attributes.
-    //     Create a new  object from the attributes.
-    //     and save it into the array.
+              // Write a method to read in the data (it may throw an exception).
+              // Use a while loop to split each row into attributes.
+              //     Create a new  object from the attributes.
+              //     and save it into the array.
 
-    // Write a method that does something with the data
-    // with a for loop, for example
-    // find the object with a min or max attribute value
-    // or print out all the objects of a certain attribute value.
+              // Write a method that does something with the data
+              // with a for loop, for example
+              // find the object with a min or max attribute value
+              // or print out all the objects of a certain attribute value.
 
-    public static void main(String[] args) throws IOException
-    {
-        Data obj = new Data(); // change to your class name
-        // Call your method to read in the data
+              public static void main(String[] args) throws IOException
+              {
+                  Data obj = new Data(); // change to your class name
+                  // Call your method to read in the data
 
-        // Call your method to do something with the data
+                  // Call your method to do something with the data
 
-    }
-}
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testPrivateVariables()
-    {
-        String code = getCode();
-        int count = countOccurences(code, "private");
-        boolean passed = count &gt;= 3;
-        getResults("3", count + "", "Number of private instance variables", passed);
-        assertTrue(passed);
-    }
+          import java.io.*;
 
-    @Test
-    public void splitCode()
-    {
-        boolean passed = checkCodeContains("call to split method", ".split");
-        assertTrue(passed);
-    }
-    @Test
-    public void whileCode()
-    {
-        boolean passed = checkCodeContains("while loop", "while");
-        assertTrue(passed);
-    }
-    @Test
-    public void forCode()
-    {
-        boolean passed = checkCodeContains("for loop", "for");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testPrivateVariables()
+              {
+                  String code = getCode();
+                  int count = countOccurences(code, "private");
+                  boolean passed = count >= 3;
+                  getResults("3", count + "", "Number of private instance variables", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void splitCode()
+              {
+                  boolean passed = checkCodeContains("call to split method", ".split");
+                  assertTrue(passed);
+              }
+              @Test
+              public void whileCode()
+              {
+                  boolean passed = checkCodeContains("while loop", "while");
+                  assertTrue(passed);
+              }
+              @Test
+              public void forCode()
+              {
+                  boolean passed = checkCodeContains("for loop", "for");
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -1337,6 +1357,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -1391,77 +1412,72 @@ public class RunestoneTests extends CodeTestHelper
             Quick Reference</url> (p. 2) provided during the AP CSA exam:
           </p>
 
-          <blockquote>
-            <p>
-              <ul>
-                <li>
-                  <p>
-                    <c>Scanner(File f)</c> the Scanner constructor that accepts
-                    a File for reading.
-                  </p>
-                </li>
+          <p>
+            <ul>
+              <li>
+                <p>
+                  <c>Scanner(File f)</c> the Scanner constructor that accepts a
+                  File for reading.
+                </p>
+              </li>
 
-                <li>
-                  <p>
-                    <c>int nextInt()</c> returns the next int read from the file
-                    or input source. If the next <c>int</c> does not exist, it
-                    will result in an <c>InputMismatchException</c>. Note that
-                    this method does not read the end of the line, so the next
-                    call to <c>nextLine()</c> will return the rest of the line
-                    which will be empty.
-                  </p>
-                </li>
+              <li>
+                <p>
+                  <c>int nextInt()</c> returns the next int read from the file
+                  or input source. If the next <c>int</c> does not exist, it
+                  will result in an <c>InputMismatchException</c>. Note that
+                  this method does not read the end of the line, so the next
+                  call to <c>nextLine()</c> will return the rest of the line
+                  which will be empty.
+                </p>
+              </li>
 
-                <li>
-                  <p>
-                    <c>double nextDouble()</c> returns the next double read from
-                    the file or input source. If the next <c>double</c> does not
-                    exist, it will result in an <c>InputMismatchException</c>.
-                  </p>
-                </li>
+              <li>
+                <p>
+                  <c>double nextDouble()</c> returns the next double read from
+                  the file or input source. If the next <c>double</c> does not
+                  exist, it will result in an <c>InputMismatchException</c>.
+                </p>
+              </li>
 
-                <li>
-                  <p>
-                    <c>boolean nextBoolean()</c> returns the next Boolean read
-                    from the file or input source. If the next <c>boolean</c>
-                    does not exist, it will result in an
-                    <c>InputMismatchException</c>.
-                  </p>
-                </li>
+              <li>
+                <p>
+                  <c>boolean nextBoolean()</c> returns the next Boolean read
+                  from the file or input source. If the next <c>boolean</c> does
+                  not exist, it will result in an <c>InputMismatchException</c>.
+                </p>
+              </li>
 
-                <li>
-                  <p>
-                    <c>String nextLine()</c> returns the next line of text up
-                    until the end of the line as a <c>String</c> read from the
-                    file or input source; returns the empty string if called
-                    immediately after another <c>Scanner</c> method like
-                    <c>nextInt</c> that is reading from the file or input
-                    source;returns null if there is no next line.
-                  </p>
-                </li>
+              <li>
+                <p>
+                  <c>String nextLine()</c> returns the next line of text up
+                  until the end of the line as a <c>String</c> read from the
+                  file or input source; returns the empty string if called
+                  immediately after another <c>Scanner</c> method like
+                  <c>nextInt</c> that is reading from the file or input
+                  source;returns null if there is no next line.
+                </p>
+              </li>
 
-                <li>
-                  <p>
-                    <c>String next()</c> returns the next String up until a
-                    white space read from the file or input source.
-                  </p>
-                </li>
+              <li>
+                <p>
+                  <c>String next()</c> returns the next String up until a white
+                  space read from the file or input source.
+                </p>
+              </li>
 
-                <li>
-                  <p>
-                    <c>boolean hasNext()</c> returns true if there is a next
-                    item to read in the file or input source; false otherwise.
-                  </p>
-                </li>
+              <li>
+                <p>
+                  <c>boolean hasNext()</c> returns true if there is a next item
+                  to read in the file or input source; false otherwise.
+                </p>
+              </li>
 
-                <li>
-                  <p>
-                    <c>void close()</c> closes the input stream.
-                  </p>
-                </li>
-              </ul>
-            </p>
-          </blockquote>
+              <li>
+                <p><c>void close()</c> closes the input stream.</p>
+              </li>
+            </ul>
+          </p>
         </li>
 
         <li>
@@ -1480,28 +1496,26 @@ public class RunestoneTests extends CodeTestHelper
             Quick Reference</url> provided during the AP CSA Exam:
           </p>
 
-          <blockquote>
-            <p>
-              <ul>
-                <li>
-                  <p>
-                    <c>String[] split(String del)</c> returns a <c>String</c>
-                    array where each element is a substring of <c>this
-                    String</c>, which has been split around matches of the given
-                    expression <c>del</c>.
-                  </p>
-                </li>
+          <p>
+            <ul>
+              <li>
+                <p>
+                  <c>String[] split(String del)</c> returns a <c>String</c>
+                  array where each element is a substring of <c>this String</c>,
+                  which has been split around matches of the given expression
+                  <c>del</c>.
+                </p>
+              </li>
 
-                <li>
-                  <p>
-                    For example, <c>String[] data = line.split(",");</c> splits
-                    a line from a csv file along the commas and saves the
-                    substrings into the array <c>data</c>.
-                  </p>
-                </li>
-              </ul>
-            </p>
-          </blockquote>
+              <li>
+                <p>
+                  For example, <c>String[] data = line.split(",");</c> splits a
+                  line from a csv file along the commas and saves the substrings
+                  into the array <c>data</c>.
+                </p>
+              </li>
+            </ul>
+          </p>
         </li>
 
         <li>
