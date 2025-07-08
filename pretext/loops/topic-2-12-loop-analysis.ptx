@@ -27,29 +27,29 @@
     </p>
 
     <p>
-      Sometimes the main question we have about a loop is simply how many times
-      will the body run? Sometimes the answer is a specific number but more
-      often it’s some other relevant value in the program, such as a loop that
-      is going to run it’s body as many times as there are characters in some
-      <c>String</c>.
+      Often the main question we have about a loop is simply how many times will
+      the body run? Sometimes this is in order to do <term>run-time
+      analysis</term> in order to get an estimate of how long a program will
+      take. (A loop that runs a billion times is going to take a lot longer than
+      one that runs ten times even though, textually, the code of the two loops
+      might be identical.) More often we know how many times the loop is
+      supposed to run and we want to make sure we’ve written the loop correctly.
     </p>
 
     <p>
-      Other times we care less about the particular number than whether a loop
-      starts and stops at the right place. A common bug that occurs in loops is
-      called a <term>fencepost error</term> or an <term>off-by-one error</term>
-      which occurs when a loop repeats one fewer times (or occasionally one
-      more) than it should. The name comes from the natural mistake that occurs
-      when people are asked how many fenceposts—the uprights in a fence—you need
-      to build a hundred foot fence with fenceposts every ten feet. If you think
-      the answer is ten you have a fencepost error because the correct answer is
-      eleven.
+      In particular, a common bug that occurs in loops is called a
+      <term>fencepost error</term> or an <term>off-by-one error</term> which is
+      when a loop iterates one fewer times (or occasionally one more) than it
+      should. The name comes from the mistake that many people make when asked
+      how many fenceposts—the uprights in a fence—you need to build a hundred
+      foot fence with fenceposts every ten feet. If you think the answer is ten
+      you have a fencepost error because the correct answer is eleven.
     </p>
 
     <p>
       If all else fails, sometimes it is necessary to trace through some or all
       the iterations of loop. If so we’ll want to use a techniue called a
-      <term>tracing table</term> to keep track of things.
+      <term>trace table</term> to keep track of things.
     </p>
 
     <p>
@@ -62,7 +62,8 @@
 
     <p>
       The simplest way to know how many times the body of a loop is going to run
-      is to write the loop simply. Here’s is the “canonical” <c>for</c> loop:
+      is to write the loop simply. Here’s is the <term>canonical</term>
+      <c>for</c> loop:
     </p>
 
     <program>
@@ -76,7 +77,8 @@
     </program>
 
     <p>
-      There are a few features of this loop that make it the canonical loop:
+      Whenever you can, we should write our loops in this form. There are a few
+      features that make it the canonical loop:
     </p>
 
     <p>
@@ -86,28 +88,32 @@
         <li>The loop variable is incremented by one in the updater.</li>
 
         <li>
-          The comparison uses &lt; so the maximum value of <c>i</c> is one less
-          than <c>n</c>.
+          The comparison uses <c>&lt;</c> so the maximum value of <c>i</c> is
+          one less than <c>n</c>.
         </li>
       </ol>
     </p>
 
     <p>
       After ensuring those features are present, any Java programmer should be
-      able to look at this loop and almost instantly answer the question, “How
-      many times will the body run?” with the answer, “<c>n</c> times.” In this
-      case <c>n</c> is a variable. If it was a literal number like <c>10</c> the
-      answer would be “ten times”. And if it was some other expression like
-      <c>s.length()</c> where <c>s</c> was a <c>String</c>, the loop body would
-      run as many times as there are characters in <c>s</c>.
+      able to look at this loop and almost instantly respond to the question,
+      “How many times will the body run?” with the answer, “<c>n</c> times.” In
+      this case <c>n</c> is a variable but it could be any expression.
     </p>
 
     <p>
-      There are things that could happen in the body of the loop that would
-      cause the loop to complete early. For instance, if the body of the loop
-      contains a <c>return</c> statement, that could break us out of the loop
-      early. But for purposes of analyzing the loop, we are assuming nothing
-      like that happens in the body.
+      If it was a literal number like <c>10</c> the answer would be “ten times”.
+      And if it was some other expression like <c>s.length()</c> where <c>s</c>
+      was a <c>String</c>, the answer would be “once for every character in
+      <c>s</c>”.
+    </p>
+
+    <p>
+      Note that it <em>is</em> possible for code in the loop body to cause the
+      loop to complete early. For instance, a <c>return</c> statement causes an
+      immediate return from the method, breaking out of the loop early. But for
+      purposes of analyzing loops, we typically assume nothing like that happens
+      in the body.
     </p>
 
     <activity label="canonical-loop-1">
@@ -130,8 +136,8 @@
         </program>
       </statement>
 
-      <choices>
-        <choice>
+      <choices randomize="yes">
+        <choice correct="yes">
           <statement>
             <p>100</p>
           </statement>
@@ -141,7 +147,7 @@
           </feedback>
         </choice>
 
-        <choice correct="yes">
+        <choice>
           <statement>
             <p>101</p>
           </statement>
@@ -183,30 +189,38 @@
     <p>
       Often the easiest way to analyze a non-canonical loop is to turn into into
       a canonical loop by accounting for whatever things make it non-canonical.
+    </p>
+
+    <p>
       For instance if a loop uses <c>&lt;=</c> rather than <c>&lt;</c> we can
       change the <c>&lt;=</c> to a <c>&lt;</c> if we add one to the limit. And
       assuming we’re only trying to figure out how many times the loop body will
       run we’re can add or subtract the same amount from both the initial value
-      of the limit to get a canonical loop that will the same number of times.
+      and the limit to get a canonical loop that will run the same number of
+      times (though obviously with different values for the loop variable).
     </p>
 
     <table>
+      <title>
+        Non-canonical and canonical loops with same number of iterations
+      </title>
+
       <tabular>
         <col right="minor" />
         <col />
         <row header="yes" bottom="minor">
           <cell>Non-canonical loop</cell>
-          <cell>Canonical loop with same number of iterations</cell>
+          <cell>Canonical loop</cell>
         </row>
 
         <row>
-          <cell><c>for (int i = 0; i &lt;= 10; i++)</c></cell>
-          <cell><c>for (int i = 0; i &lt; 11; i++)</c></cell>
+          <cell><c>for (int i = 0; i &lt;= 9; i++)</c></cell>
+          <cell><c>for (int i = 0; i &lt; 10; i++)</c></cell>
         </row>
 
         <row>
-          <cell><c>for (int i = 1; i &lt; 10; i++)</c></cell>
-          <cell><c>for (int i = 0; i &lt; 9; i++)</c></cell>
+          <cell><c>for (int i = 1; i &lt; 11; i++)</c></cell>
+          <cell><c>for (int i = 0; i &lt; 10; i++)</c></cell>
         </row>
 
         <row>
@@ -217,19 +231,135 @@
     </table>
 
     <p>
-      Loops can be also analyzed to determine how many times they run. This is
-      called <term>run-time analysis</term> or a <term>statement execution
-      count</term>. A <term>statement execution count</term> indicates the
-      number of times a statement is executed by the program. Statement
-      execution counts are often calculated informally through tracing and
-      analysis of the iterative statements.
+      We can also use this trick to analyze loops that run backwards. To convert
+      a backwards loop to a canonical forwards loop we first convert it to an
+      equivalent (except for the order, obviously) forward loop and put that
+      forward loop into canonical form.
     </p>
 
-    <activity label="countstars1">
+    <p>
+      To turn around a backwards loop, write a forwards loop where the initial
+      value of the loop variable is value of the limit in the originial loop if
+      it is written with &gt;= and one greater than the limit if it is written
+      with &gt;. And the limit in the forwards loop is one greater than the
+      initial value in the backwards loop.
+    </p>
+
+    <table>
+      <title>
+        Backwards loops to canonical loops with same number of iterations
+      </title>
+
+      <tabular>
+        <col right="minor" />
+        <col right="minor" />
+        <col />
+        <row header="yes" bottom="minor">
+          <cell>Backwards loop</cell>
+          <cell>Forwards loop</cell>
+          <cell>Canonical loop</cell>
+        </row>
+
+        <row>
+          <cell><c>for (int i = 9; i &gt;= 0; i--)</c></cell>
+          <cell><c>for (int i = 0; i &lt; 10; i++)</c></cell>
+          <cell><c>for (int i = 0; i &lt; 10; i++)</c></cell>
+        </row>
+
+        <row>
+          <cell><c>for (int i = 10; i &gt; 0; i--)</c></cell>
+          <cell><c>for (int i = 1; i &lt; 11; i++)</c></cell>
+          <cell><c>for (int i = 0; i &lt; 10; i++)</c></cell>
+        </row>
+
+        <row>
+          <cell><c>for (int i = 19; i &gt;= 10 i--)</c></cell>
+          <cell><c>for (int i = 10; i &lt; 20; i++)</c></cell>
+          <cell><c>for (int i = 0; i &lt; 10; i++)</c></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <activity label="backwards-loop-1">
+      <title>A backwards loop</title>
+
       <statement>
         <p>
-          How many stars are printed out in this loop? How many times does the
-          loop run? Figure it out on paper before you run the code.
+          How many times does this loop run? (Assume the body doesn’t contain
+          any code to cause the loop to complete early.)
+        </p>
+
+        <program>
+          <![CDATA[
+
+          for (int i = 20; i > 10; i--) {
+            // whatever
+          }
+
+          ]]>
+        </program>
+      </statement>
+
+      <choices randomize="yes">
+        <choice correct="yes">
+          <statement>
+            <p>10</p>
+          </statement>
+
+          <feedback>
+            <p>Yes.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>11</p>
+          </statement>
+
+          <feedback>
+            <p>
+              That would be correct if the condition used &gt;= rather than
+              &lt;.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>9</p>
+          </statement>
+
+          <feedback>
+            <p>
+              You may have a fencepost error. While the largest value <c>i</c>
+              will take on in the body of the loop is 20 and the smallest is 11,
+              there are ten numbers between 11-20, counting 11 and 20
+              themselves.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>It’s an infinite loop</p>
+          </statement>
+
+          <feedback>
+            <p>Not sure why you’d think that. Check again.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="countstars1">
+      <title>Line of stars</title>
+
+      <statement>
+        <p>
+          How many stars are printed out in this loop? Depends how many
+          iterations the loop runs. See if you can convert the loop to a
+          canonical loop in your head or on a piece of paper to predecict how
+          many iterations it will run before you run the code.
         </p>
       </statement>
 
@@ -237,13 +367,10 @@
         <code>
           <![CDATA[
 
-          public class CountLoop
-          {
+          public class CountLoop {
 
-              public static void main(String[] args)
-              {
-                  for (int i = 3; i < 7; i++)
-                  {
+              public static void main(String[] args) {
+                  for (int i = 3; i < 7; i++) {
                       System.out.print("*");
                   }
               }
@@ -275,54 +402,111 @@
     </activity>
 
     <p>
-      If you made a trace table, you would know that the loop runs when i = 3,
-      4, 5, 6 but finishes as soon as i becomes 7 since that is not less than 7.
-      So, the loop runs 4 times. Or you can use the shortcut formula in the note
-      below.
-    </p>
-
-    <note>
-      <p>
-        The number of times a loop executes can be calculated by
-        <em>(largestValue - smallestValue + 1)</em>.
-      </p>
-
-      <p>
-        <ul>
-          <li>
-            <p>
-              If the loop uses counter &lt;= limit, limit is the largest value.
-            </p>
-          </li>
-
-          <li>
-            <p>
-              If the loop uses counter &lt; limit, limit-1 is the largest value
-              that allows the loop to run.
-            </p>
-          </li>
-        </ul>
-      </p>
-    </note>
-
-    <p>
-      In the code above the largest value that allows the loop to run is 6
-      (which is the largest value &lt; 7) and the smallest value that allows the
-      loop to execute is 3 so this loop executes (6 - 3 + 1 = 4 times).
+      Translating between non-canonical and canonical loops is a good skill to
+      have. In general we should write loops in canonical form whenever we can
+      so that people reading our code (including ourselves!) can see at a glance
+      what is going on. That will also make the times when we have to write a
+      non-canonical loop because something tricky is going on stand out so we
+      know to pay extra careful attention to that code.
     </p>
 
     <p>
-      Nested loops are loops within loops. The number of times a nested loop
-      runs is the number of times the outer loop runs <term>times</term> the
-      number of times the inner loop runs. Here is an example of a nested loop
-      that prints a rectangle of stars:
+      But we can further distill the process of converting to a canonical loop
+      if all we care about is how many times the loop body will run. For any
+      loop all we really need to know is the smallest value the loop variable
+      will take on and the limit, which is one greater than the largest value.
+      I.e. these are the initial value and the value to the right of the &lt; in
+      the condition of a canonical loop. Then the number of times the loop will
+      run is just <m>limit - smallestValue</m>.
+    </p>
+
+    <table>
+      <title>Using <m>limit - smallestValue</m> formula</title>
+
+      <tabular halign="center">
+        <col halign="left" right="minor" />
+        <col right="minor" />
+        <col right="minor" />
+        <col />
+        <row header="yes" bottom="minor">
+          <cell>Loop</cell>
+          <cell>Smallest</cell>
+          <cell>Limit</cell>
+          <cell>Iterations</cell>
+        </row>
+
+        <row>
+          <cell><c>for (int i = 0; i &lt; 10; i++)</c></cell>
+          <cell>0</cell>
+          <cell>10</cell>
+          <cell>10</cell>
+        </row>
+
+        <row>
+          <cell><c>for (int i = 0; i &lt;= 9; i++)</c></cell>
+          <cell>0</cell>
+          <cell>10</cell>
+          <cell>10</cell>
+        </row>
+
+        <row>
+          <cell><c>for (int i = 1; i &lt; 11; i++)</c></cell>
+          <cell>1</cell>
+          <cell>11</cell>
+          <cell>10</cell>
+        </row>
+
+        <row>
+          <cell><c>for (int i = 10; i &lt; 20; i++)</c></cell>
+          <cell>10</cell>
+          <cell>20</cell>
+          <cell>10</cell>
+        </row>
+
+        <row>
+          <cell><c>for (int i = 9; i &gt;= 0; i--)</c></cell>
+          <cell>0</cell>
+          <cell>10</cell>
+          <cell>10</cell>
+        </row>
+
+        <row>
+          <cell><c>for (int i = 10; i &gt; 0; i--)</c></cell>
+          <cell>1</cell>
+          <cell>11</cell>
+          <cell>10</cell>
+        </row>
+
+        <row>
+          <cell><c>for (int i = 19; i &gt;= 10 i--)</c></cell>
+          <cell>10</cell>
+          <cell>20</cell>
+          <cell>10</cell>
+        </row>
+      </tabular>
+    </table>
+  </subsection>
+
+  <subsection>
+    <title>Analyzing nested loops</title>
+
+    <p>
+      Recall that nested loops are just loops within the body of another loop.
+      Since the whole inner loop runs all of its iterations every time the outer
+      loop’s body runs once, the total number of times the body of a nested loop
+      runs is the number of times the outer loop runs multiplied by the number
+      of times the inner loop runs. Here is an example of a nested loop that
+      prints a rectangle of stars:
     </p>
 
     <activity label="countstars">
+      <title>Grid of stars</title>
+
       <statement>
         <p>
           How many stars are printed out by the following loops? How many times
-          do the loops run? Calculate on paper before you run the code.
+          do the loops run? Figure it out in our head or on paper before you run
+          the code.
         </p>
       </statement>
 
@@ -330,15 +514,11 @@
         <code>
           <![CDATA[
 
-          public class NestedLoops
-          {
+          public class NestedLoops {
 
-              public static void main(String[] args)
-              {
-                  for (int row = 0; row < 5; row++)
-                  {
-                      for (int col = 0; col < 10; col++)
-                      {
+              public static void main(String[] args) {
+                  for (int row = 0; row < 5; row++) {
+                      for (int col = 0; col < 10; col++) {
                           System.out.print("*");
                       }
                       System.out.println();
@@ -371,45 +551,242 @@
       </program>
     </activity>
 
-    <note>
-      <p>
-        The number of times a nested for loop body is executed is the number of
-        times the outer loop runs multiplied by the number of times the inner
-        loop runs (outer loop runs * inner loop runs).
-      </p>
-    </note>
-
     <p>
-      For the example above, the outer loop executes 4 - 0 + 1 = 5 times and the
-      inner 9 - 0 + 1 = 10 times so the total is 5 * 10 = 50.
+      Analyzing the nested loops using the formula from above, we see that the
+      outer loop has a smallest value of <c>0</c> and a limit of <c>5</c> so it
+      runs <m>5 - 0 = 5</m> times. And the inner loop has a smallest value of
+      <c>0</c> and a limit of <c>10</c> so it runs <m>10 - 0 = 10</m> times. And
+      five times ten gives us fifty total stars.
     </p>
+
+    <activity label="swap-rows-cols">
+      <title>Swap rows and columns</title>
+
+      <statement>
+        <p>
+          The code in the previous problem printed a grid of five rows and ten
+          columns. Which of the following print a grid of ten rows and five
+          columns?
+        </p>
+      </statement>
+
+      <choices randomize="yes">
+        <choice correct="yes">
+          <statement>
+            <program>
+              <![CDATA[
+
+              for (int row = 0; row < 10; row++) {
+                  for (int col = 0; col < 5; col++) {
+                      System.out.print("*");
+                  }
+                  System.out.println();
+              }
+
+              ]]>
+            </program>
+          </statement>
+
+          <feedback>
+            <p>Yes.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <program>
+              <![CDATA[
+
+              for (int row = 0; row <= 5; row++) {
+                  for (int col = 0; col <= 10; col++) {
+                      System.out.print("*");
+                  }
+                  System.out.println();
+              }
+
+              ]]>
+            </program>
+          </statement>
+
+          <feedback>
+            <p>Yes.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <program>
+              <![CDATA[
+
+              for (int row = 0; row < 5; row++) {
+                  for (int col = 0; col < 10; col++) {
+                      System.out.print("*");
+                      System.out.println();
+                  }
+              }
+
+              ]]>
+            </program>
+          </statement>
+
+          <feedback>
+            <p>Yes.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
   </subsection>
 
   <subsection>
-    <title>Tracing Loops</title>
+    <title>Trace tables</title>
 
     <p>
-      Let’s practice tracing through loops with many variables. Remember to make
-      a tracing table to keep track of all the variables, the iterations, and
-      the output.
+      Because they are hard enough to get right even when they’re simple, it’s a
+      good idea to keep loops as simple as possible. But sometimes we come
+      across loop that contain multiple variables that all change in the body of
+      the loop and which may all be involved in the loop’s condition which makes
+      all our simpler loop analysis techniques less useful. In those situations
+      it may be time to pull out a piece of scratch paper and create a
+      <term>trace table</term>.
     </p>
 
     <p>
-      Here is a complex loop. See if you can trace the code on paper by making a
-      tracing table to predict what the code will do when you run it. Click on
-      the this <url href="https://goo.gl/qEHnpg"
-      visual="https://goo.gl/qEHnpg">Java visualizer</url> link or the Code Lens
-      button to help you step through the code.
+      A trace table is a table that we use to track the values of the variables
+      in a loop at each iteration of the loop. Each row of the table represents
+      one iteration of the loop and each column holds the value for one
+      variable. To see how to build a trace table we’ll use this example loop.
+    </p>
+
+    <program>
+      <![CDATA[
+
+      int var1 = 3;
+      int var2 = 2;
+
+      while ((var2 != 0) && ((var1 / var2) >= 0)) {
+          var1 = var1 + 1;
+          var2 = var2 - 1;
+      }
+
+      ]]>
+    </program>
+
+    <p>
+      This is not absurdly complicated but it’s definitely not a simple counting
+      loop.
+    </p>
+
+    <p>
+      To make a trace table, the first step is to count the variables that are
+      assigned values in the body of the loop Make a table with as many columns
+      as variables plus one. Label the first column “iteration”. Then label the
+      remaining columns with variable names in the order that they are assigned
+      new values in the loop body. The header row for a trace table for this
+      loop would look like this:
+    </p>
+
+    <tabular halign="center">
+      <col right="minor" />
+      <col right="minor" />
+      <col />
+      <row header="yes" bottom="minor">
+        <cell>Iteration</cell>
+        <cell><c>var1</c></cell>
+        <cell><c>var2</c></cell>
+      </row>
+    </tabular>
+
+    <p>
+      Now to fill out the table add row for iteration <c>0</c>, i.e. before the
+      loop body has run and fill in the initial value of each variable in the
+      appropriate column.
+    </p>
+
+    <tabular halign="center">
+      <col right="minor" />
+      <col right="minor" />
+      <col />
+      <row header="yes" bottom="minor">
+        <cell>Iteration</cell>
+        <cell><c>var1</c></cell>
+        <cell><c>var2</c></cell>
+      </row>
+
+      <row>
+        <cell>0</cell>
+        <cell>3</cell>
+        <cell>2</cell>
+      </row>
+    </tabular>
+
+    <p>
+      Then add rows to the table, Before you add a new row, check whether the
+      loop condition given the values of the variables recorded in the current
+      row. If it is <c>false</c> the loop ends and the table is complete. But if
+      it’s <c>true</c>, add a row, increasing the number in the iteration
+      column, and then mentally executing the code in the loop to determine the
+      new value of each variable.
+    </p>
+
+    <p>
+      If one variable depends on a variable to its left in the table, use the
+      value in the current row; otherwise—including if the variable depends on
+      itself—use the value from the previous row. (This is why it’s important to
+      put the variables into columns in the right order.)
+    </p>
+
+    <p>The completed table for the loop above should look like this</p>
+
+    <tabular halign="center">
+      <col right="minor" />
+      <col right="minor" />
+      <col />
+      <row header="yes" bottom="minor">
+        <cell>Iteration</cell>
+        <cell><c>var1</c></cell>
+        <cell><c>var2</c></cell>
+      </row>
+
+      <row>
+        <cell>0</cell>
+        <cell>3</cell>
+        <cell>2</cell>
+      </row>
+
+      <row>
+        <cell>1</cell>
+        <cell>4</cell>
+        <cell>1</cell>
+      </row>
+
+      <row>
+        <cell>2</cell>
+        <cell>5</cell>
+        <cell>0</cell>
+      </row>
+    </tabular>
+
+    <p>
+      From the last row of a completed trace table we can read off how many
+      times the body was executed from the iteration column and the final values
+      of all the variables. Note it even works if if the loop’s condition is
+      never true and the body never executes. In that case the last row will be
+      for iteration <c>0</c> and the final values of all the variables will be
+      whatever they were initialized to.
     </p>
 
     <activity label="example_trace_loop">
+      <title>Check the trace table</title>
+
       <statement>
         <p>
-          Can you trace through this code? Add in output statements
-          <c>System.out.println("var1: " + var1 + " var2: " + var2);</c> before
-          the loop and inside the loop at the end to keep track of the variables
-          and run. Click on the Code Lens button to visualize the code step by
-          step.
+          Make sure you understand how the table was filled out. You may want to
+          get a piece of paper and try to make your own table and see if you get
+          the same answer as above. Or you can click the Code Lens button to
+          trace the code below or add print statements like
+          <c>System.out.println("var1: " + var1 + " var2: " + var2);</c> before,
+          inside, and after the loop and Run the code to see how the variables
+          change.
         </p>
       </statement>
 
@@ -417,15 +794,13 @@
         <code>
           <![CDATA[
 
-          public class Trace
-          {
-              public static void main(String[] args)
-              {
+          public class Trace {
+
+              public static void main(String[] args) {
                   int var1 = 3;
                   int var2 = 2;
 
-                  while ((var2 != 0) && ((var1 / var2) >= 0))
-                  {
+                  while ((var2 != 0) && ((var1 / var2) >= 0)) {
                       var1 = var1 + 1;
                       var2 = var2 - 1;
                   }
@@ -456,17 +831,6 @@
         </tests>
       </program>
     </activity>
-
-    <p>Did your trace table look like the following?</p>
-
-    <figure align="center">
-      <caption>
-        A table showing the values of all of the variables each time through the
-        loop. The 0 means before the first loop.
-      </caption>
-
-      <image source="Unit2-Selection-and-Iteration/Figures/whileLoopTrace.png" width="27%" />
-    </figure>
 
     <activity label="loop-trace-count">
       <statement>
@@ -649,6 +1013,124 @@
         </choice>
       </choices>
     </activity>
+
+    <activity xml:id="complex-loop-trace-table">
+      <title>Tracing a hairy loop</title>
+
+      <statement>
+        <p>
+          Here is a particularly hairy loop. Get a piece of scratch paper and
+          make a trace table. When you are done, click “Answer” and compare to
+          see if you got it right.
+        </p>
+
+        <program>
+          <![CDATA[
+
+          int x = 0;
+            int y = 4;
+            int z = 2;
+
+            while (x < 3 && y >= 0) {
+              x = y - z;
+              y--;
+              z *= 2;
+            }
+          }
+
+          ]]>
+        </program>
+      </statement>
+
+      <answer>
+        <tabular halign="center">
+          <col right="minor" />
+          <col right="minor" />
+          <col right="minor" />
+          <col />
+          <row header="yes" bottom="minor">
+            <cell>Iteration</cell>
+            <cell><c>x</c></cell>
+            <cell><c>y</c></cell>
+            <cell><c>z</c></cell>
+          </row>
+
+          <row>
+            <cell>0</cell>
+            <cell>0</cell>
+            <cell>4</cell>
+            <cell>2</cell>
+          </row>
+
+          <row>
+            <cell>1</cell>
+            <cell>2</cell>
+            <cell>3</cell>
+            <cell>4</cell>
+          </row>
+
+          <row>
+            <cell>2</cell>
+            <cell>-1</cell>
+            <cell>2</cell>
+            <cell>8</cell>
+          </row>
+
+          <row>
+            <cell>3</cell>
+            <cell>-6</cell>
+            <cell>1</cell>
+            <cell>16</cell>
+          </row>
+
+          <row>
+            <cell>4</cell>
+            <cell>-15</cell>
+            <cell>0</cell>
+            <cell>32</cell>
+          </row>
+
+          <row>
+            <cell>5</cell>
+            <cell>-32</cell>
+            <cell>-1</cell>
+            <cell>64</cell>
+          </row>
+        </tabular>
+      </answer>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Limits of trace tables</title>
+
+    <p>
+      It’s useful to know how to build trace tables and actually making them is
+      good practice for following a mechanical procedure precisely which is good
+      practice for thinking about how code works.
+    </p>
+
+    <p>
+      In actual programming practice, trace tables are of limited use. They have
+      the virtue that, similar to boolean truth tables, once you master the
+      mechanics you can reliably crank them out without having to think too
+      hard. On the other hand, code tracing is only possible if we know the
+      initial values. And if we knew the initial values we could just run the
+      program to find out what it does. Or write a program to print out the
+      trace table! To actually understand a loop via tracing you might need to
+      trace it multiple times with different initial values. Which is even more
+      tedious than making just one.
+    </p>
+
+    <p>
+      However there are times (particularly on the AP exam) when a trace table
+      can quickly and reliably answer certain questions about a piece of code.
+      If you ever find yourself confronting as hairy a loop as the one in <xref
+      ref="complex-loop-trace-table" />, you way want to make a trace table to
+      help yourself understand what’s going on so you can rewrite it to be
+      simpler. Unless the loop is on the AP exam in which case just shake your
+      fist at the AP exam writers and then answer the question.
+    </p>
   </subsection>
 
   <subsection>
