@@ -309,3 +309,12 @@ table .align-default, td {
 .ptx-content div.runestone.datafile:has(pre[style="display: none"]) {
     display: none;
 }
+
+.ptx-content figure.table {
+  border: 1px dotted grey;
+  padding: 1em;
+}
+
+.ptx-content .project-like {
+  margin-top: 2em;
+}
