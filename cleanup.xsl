@@ -33,4 +33,6 @@
     </p>
   </xsl:template>
 
+  <xsl:template match="url/@visual[. = ../@href]" />
+
 </xsl:stylesheet>
