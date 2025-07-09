@@ -33,3 +33,6 @@ _sources copy/Appendix/DrJava.rst
 pavement.py
 sphinx_settings.json
 .vscode/settings.json
+
+pretext/files.txt
+pretext/full-main.ptx
