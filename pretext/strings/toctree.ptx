@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<chapter label="strings" xml:id="strings" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Strings</title>
+  <idx>String</idx>
+
+  <introduction/>
+
+  <xi:include href="./topic-1-15-strings.ptx" />
+  <xi:include href="./topic-2-10-strings-loops.ptx" />
+</chapter>
