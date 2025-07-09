@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-4-array-traversal">
   <title>Array Traversals</title>
+
   <introduction>
     <p>
       In this lesson, we will learn how to traverse an array using a loop.
@@ -13,24 +14,23 @@
 
   <subsection>
     <title>Index Variables</title>
+
     <p>
       In the last lesson, we mentioned that you can use a variable for the index
       of an array. You can even do math with that index and have an arithmetic
       expression inside the [], like below.
     </p>
 
-    <program language="java">
-      <code>
-// highScores array declaration
-int[] highScores = { 10, 9, 8, 8};
-// use a variable for the index
-int index = 3;
-// modify array value at index
-highScores[index] = 11;
-// print array value at index
-System.out.println(  highScores[index] );
-System.out.println(  highScores[index - 1] );
-      </code>
+    <program>
+      // highScores array declaration
+      int[] highScores = { 10, 9, 8, 8};
+      // use a variable for the index
+      int index = 3;
+      // modify array value at index
+      highScores[index] = 11;
+      // print array value at index
+      System.out.println(  highScores[index] );
+      System.out.println(  highScores[index - 1] );
     </program>
 
     <p>
@@ -42,12 +42,14 @@ System.out.println(  highScores[index - 1] );
 
     <figure align="center">
       <caption>Array with index variable</caption>
+
       <image source="Unit4-Data-Collections/Figures/arraywithindex.png" width="63%" />
     </figure>
   </subsection>
 
   <subsection>
     <title>Loops to Traverse Arrays</title>
+
     <p>
       <term>Traversing an array</term> or <term>iteration</term> is when
       repetition statements are used to access all or an ordered sequence of
@@ -63,6 +65,7 @@ System.out.println(  highScores[index - 1] );
 
     <figure align="center">
       <caption>For Loop Traversing Array</caption>
+
       <image source="Unit4-Data-Collections/Figures/arrayForLoop.png" width="89%" />
     </figure>
 
@@ -74,21 +77,23 @@ System.out.println(  highScores[index - 1] );
       visual="http://www.pythontutor.com/visualize.html#code=public%20class%20ArrayLoop%0A%7B%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%0A%20%20%20%20%7B%0A%0A%20%20%20%20%20%20%20%20int%5B%5D%20highScores%20%3D%20%7B%2010,%209,%208,%208%7D%3B%0A%20%20%20%20%20%20%20%20for%20%28int%20i%20%3D%200%3B%20i%20%3C%20highScores.length%3B%20i%2B%2B%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%20%20highScores%5Bi%5D%20%29%3B%0A%20%20%20%20%20%20%20%20%7D%20%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualizer</url>.
     </p>
 
-    <program language="java">
-      <code>
-int[] highScores = { 10, 9, 8, 11};
-for (int i = 0; i &lt; highScores.length; i++)
-{
-    System.out.println(  highScores[i] );
-}
-// Or with a while loop
-int i = 0;
-while (i &lt; highScores.length)
-{
-    System.out.println(  highScores[i] );
-    i++;
-}
-      </code>
+    <program>
+      <![CDATA[
+
+      int[] highScores = { 10, 9, 8, 11};
+      for (int i = 0; i < highScores.length; i++)
+      {
+          System.out.println(  highScores[i] );
+      }
+      // Or with a while loop
+      int i = 0;
+      while (i < highScores.length)
+      {
+          System.out.println(  highScores[i] );
+          i++;
+      }
+
+      ]]>
     </program>
 
     <note>
@@ -111,60 +116,69 @@ while (i &lt; highScores.length)
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class Test2
-{
-    public static void main(String[] args)
-    {
-        String[] names = {"Jamal", "Emily", "Destiny", "Mateo", "Sofia"};
+          <![CDATA[
 
-        for (int i = 0; i &lt; names.length; i++)
-        {
-            System.out.println(names[i]);
-        }
-    }
-}
+          public class Test2
+          {
+              public static void main(String[] args)
+              {
+                  String[] names = {"Jamal", "Emily", "Destiny", "Mateo", "Sofia"};
+
+                  for (int i = 0; i < names.length; i++)
+                  {
+                      System.out.println(names[i]);
+                  }
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("Test2");
-    }
+          import java.io.*;
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "Jamal\nEmily\nDestiny\nMateo\nSofia";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("Test2");
+              }
 
-        boolean passed = output.contains(expect);
-        passed = getResults(expect, output, "Did you run the code?", passed);
-        assertTrue(passed);
-    }
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Jamal\nEmily\nDestiny\nMateo\nSofia";
 
-    @Test
-    public void test2()
-    {
-        String output = getMethodOutput("main");
-        String expect = "Jamal\nEmily\nDestiny\nMateo\nSofia\nYour name\nFriend's name";
+                  boolean passed = output.contains(expect);
+                  passed = getResults(expect, output, "Did you run the code?", passed);
+                  assertTrue(passed);
+              }
 
-        int len = output.split("\n").length;
+              @Test
+              public void test2()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Jamal\nEmily\nDestiny\nMateo\nSofia\nYour name\nFriend's name";
 
-        boolean passed = len &gt;= 6;
+                  int len = output.split("\n").length;
 
-        passed = getResults(expect, output, "Did you add two more names?", passed);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = len >= 6;
+
+                  passed = getResults(expect, output, "Did you add two more names?", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -172,6 +186,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Arrays as Objects and Parameters</title>
+
     <p>
       The following code demonstrates a loop that changes the values in an
       array. In this code, the array is passed as an argument to the static
@@ -199,61 +214,66 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class ArrayLoop
-{
+          <![CDATA[
 
-    // What does this method do?
-    public static void multAll(int[] values, int amt)
-    {
-        for (int i = 0; i &lt; values.length; i++)
-        {
-            values[i] = values[i] * amt;
-        }
-    }
+          public class ArrayLoop
+          {
 
-    // What does this method do?
-    public static void printValues(int[] values)
-    {
-        for (int i = 0; i &lt; values.length; i++)
-        {
-            System.out.println(values[i]);
-        }
-    }
+              // What does this method do?
+              public static void multAll(int[] values, int amt)
+              {
+                  for (int i = 0; i < values.length; i++)
+                  {
+                      values[i] = values[i] * amt;
+                  }
+              }
 
-    public static void main(String[] args)
-    {
-        int[] numArray = {2, 6, 7, 12, 5};
-        multAll(numArray, 2);
-        printValues(numArray);
-    }
-}
+              // What does this method do?
+              public static void printValues(int[] values)
+              {
+                  for (int i = 0; i < values.length; i++)
+                  {
+                      System.out.println(values[i]);
+                  }
+              }
+
+              public static void main(String[] args)
+              {
+                  int[] numArray = {2, 6, 7, 12, 5};
+                  multAll(numArray, 2);
+                  printValues(numArray);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("ArrayLoop");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ArrayLoop");
+              }
 
-    @Test
-    public void test1() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "4 12 14 24 10";
+              @Test
+              public void test1() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "4 12 14 24 10";
 
-        boolean passed = getResults(expect, output, "Did you run the code?", true);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = getResults(expect, output, "Did you run the code?", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -316,6 +336,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Looping through Part of an Array</title>
+
     <p>
       You don’t have to loop through all of the elements of an array. You can
       loop through just some of the elements of an array using a for loop. The
@@ -337,105 +358,110 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class ArrayWorker
-{
-    private int[] values;
+          <![CDATA[
 
-    public ArrayWorker(int[] theValues)
-    {
-        values = theValues;
-    }
+          public class ArrayWorker
+          {
+              private int[] values;
 
-    /** Doubles the first 5 elements of the array */
-    public void doubleFirstFive()
-    {
-        // Notice: &amp;&amp; i &lt; 5
-        for (int i = 0; i &lt; values.length &amp;&amp; i &lt; 5; i++)
-        {
-            values[i] = values[i] * 2;
-        }
-    }
+              public ArrayWorker(int[] theValues)
+              {
+                  values = theValues;
+              }
 
-    /**
-     * Write a method called tripleFirstFour() that triples
-     * the first 4 elements of the array *
-     */
-    public void tripleFirstFour()
-    {
+              /** Doubles the first 5 elements of the array */
+              public void doubleFirstFive()
+              {
+                  // Notice: && i < 5
+                  for (int i = 0; i < values.length && i < 5; i++)
+                  {
+                      values[i] = values[i] * 2;
+                  }
+              }
+
+              /**
+               * Write a method called tripleFirstFour() that triples
+               * the first 4 elements of the array *
+               */
+              public void tripleFirstFour()
+              {
 
 
-    }
+              }
 
-    /** Prints the array */
-    public void printArray()
-    {
-        for (int i = 0; i &lt; values.length; i++)
-        {
-            System.out.println(values[i]);
-        }
-    }
+              /** Prints the array */
+              public void printArray()
+              {
+                  for (int i = 0; i < values.length; i++)
+                  {
+                      System.out.println(values[i]);
+                  }
+              }
 
-    public static void main(String[] args)
-    {
-        int[] numArray = {3, 8, -3, 2, 20, 5, 33, 1};
-        ArrayWorker worker = new ArrayWorker(numArray);
-        worker.doubleFirstFive();
-        worker.printArray();
-        // uncomment these to test
-        // worker.tripleFirstFour();
-        // worker.printArray();
-    }
-}
+              public static void main(String[] args)
+              {
+                  int[] numArray = {3, 8, -3, 2, 20, 5, 33, 1};
+                  ArrayWorker worker = new ArrayWorker(numArray);
+                  worker.doubleFirstFive();
+                  worker.printArray();
+                  // uncomment these to test
+                  // worker.tripleFirstFour();
+                  // worker.printArray();
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("ArrayWorker");
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ArrayWorker");
 
-        int[] numArray = {0, 1, 2, 3, 4, 5};
-        setDefaultValues(new Object[] {numArray});
-    }
+                  int[] numArray = {0, 1, 2, 3, 4, 5};
+                  setDefaultValues(new Object[] {numArray});
+              }
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "6 16 -6 4 40 5 33 1".replaceAll(" ", "\n");
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "6 16 -6 4 40 5 33 1".replaceAll(" ", "\n");
 
-        boolean passed = output.contains(expect);
+                  boolean passed = output.contains(expect);
 
-        passed = getResults(expect, output, "Did you run the doubleFirstFiveMethod?", passed);
-        assertTrue(passed);
-    }
+                  passed = getResults(expect, output, "Did you run the doubleFirstFiveMethod?", passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test2()
-    {
-        String output = getMethodOutput("tripleFirstFour");
-        output = getMethodOutput("printArray");
-        String expect = "0 3 6 9 4 5".replaceAll(" ", "\n");
+              @Test
+              public void test2()
+              {
+                  String output = getMethodOutput("tripleFirstFour");
+                  output = getMethodOutput("printArray");
+                  String expect = "0 3 6 9 4 5".replaceAll(" ", "\n");
 
-        boolean passed = output.contains(expect);
+                  boolean passed = output.contains(expect);
 
-        passed =
-                getResults(
-                        expect,
-                        output,
-                        "Testing tripleFirstFour() method on array [0, 1, 2, 3, 4, 5]",
-                        passed);
-        assertTrue(passed);
-    }
-}
+                  passed =
+                          getResults(
+                                  expect,
+                                  output,
+                                  "Testing tripleFirstFour() method on array [0, 1, 2, 3, 4, 5]",
+                                  passed);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -447,19 +473,21 @@ public class RunestoneTests extends CodeTestHelper
           the values of a be after you execute: doubleLast()?
         </p>
 
-        <program language="java">
-          <code>
-private int[ ] a = {-20, -15, 2, 8, 16, 33};
+        <program>
+          <![CDATA[
 
-public void doubleLast()
-{
+          private int[ ] a = {-20, -15, 2, 8, 16, 33};
 
-   for (int i = a.length / 2; i &lt; a.length; i++)
-   {
-      a[i] = a[i] * 2;
-   }
-}
-          </code>
+          public void doubleLast()
+          {
+
+             for (int i = a.length / 2; i < a.length; i++)
+             {
+                a[i] = a[i] * 2;
+             }
+          }
+
+          ]]>
         </program>
       </statement>
 
@@ -470,7 +498,9 @@ public void doubleLast()
           </statement>
 
           <feedback>
-            <p>This would true if it looped through the whole array. Does it?</p>
+            <p>
+              This would true if it looped through the whole array. Does it?
+            </p>
           </feedback>
         </choice>
 
@@ -521,19 +551,21 @@ public void doubleLast()
           values of a be after you execute: mystery()?
         </p>
 
-        <program language="java">
-          <code>
-private int[ ] a = {-20, -15, 2, 8, 16, 33};
+        <program>
+          <![CDATA[
 
-public void mystery()
-{
+          private int[ ] a = {-20, -15, 2, 8, 16, 33};
 
-   for (int i = 0; i &lt; a.length/2; i+=2)
-   {
-      a[i] = a[i] * 2;
-   }
-}
-          </code>
+          public void mystery()
+          {
+
+             for (int i = 0; i < a.length/2; i+=2)
+             {
+                a[i] = a[i] * 2;
+             }
+          }
+
+          ]]>
         </program>
       </statement>
 
@@ -608,6 +640,7 @@ public void mystery()
 
   <subsection>
     <title>Common Errors When Looping Through an Array</title>
+
     <p>
       When processing all array elements, be careful to start at the first index
       which is <c>0</c> and end at the last index. Usually loops are written so
@@ -705,64 +738,73 @@ public void mystery()
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class OffByone
-{
-    public static void main(String[] args)
-    {
-        int[] scores = {10, 9, 8, 7};
-        // Make this loop print out all the scores!
-        for (int i = 1; i &lt;= scores.length; i++)
-        {
-            System.out.println(scores[i]);
-        }
-    }
-}
+          <![CDATA[
+
+          public class OffByone
+          {
+              public static void main(String[] args)
+              {
+                  int[] scores = {10, 9, 8, 7};
+                  // Make this loop print out all the scores!
+                  for (int i = 1; i <= scores.length; i++)
+                  {
+                      System.out.println(scores[i]);
+                  }
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
- import org.junit.*;
+          import static org.junit.Assert.*;
 
- import java.io.*;
+           import org.junit.*;
 
- public class RunestoneTests extends CodeTestHelper
- {
-     public RunestoneTests()
-     {
-         super("OffByone");
-     }
+           import java.io.*;
 
-     @Test
-     public void test1()
-     {
-         String output = getMethodOutput("main");
-         String expect = "9\n8\n7".replaceAll(" ", "\n");
+           public class RunestoneTests extends CodeTestHelper
+           {
+               public RunestoneTests()
+               {
+                   super("OffByone");
+               }
 
-         boolean passed = output.contains(expect);
-         getResults(expect, output, "Testing right off-by-one error", passed);
-         assertTrue(passed);
-     }
+               @Test
+               public void test1()
+               {
+                   String output = getMethodOutput("main");
+                   String expect = "9\n8\n7".replaceAll(" ", "\n");
 
-     @Test
-     public void test2()
-     {
-         String output = getMethodOutput("main");
-         String expect = "10\n9\n8".replaceAll(" ", "\n");
+                   boolean passed = output.contains(expect);
+                   getResults(expect, output, "Testing right off-by-one error", passed);
+                   assertTrue(passed);
+               }
 
-         boolean passed = output.contains(expect);
-         getResults(expect, output, "Testing left off-by-one error", passed);
-         assertTrue(passed);
-     }
+               @Test
+               public void test2()
+               {
+                   String output = getMethodOutput("main");
+                   String expect = "10\n9\n8".replaceAll(" ", "\n");
 
-     @Test
-     public void checkCodeContains1()
-     {
-         boolean passed = checkCodeContains("fixes to for loop", "for (int i = 0; i &lt;");
-         assertTrue(passed);
-     }
- }
+                   boolean passed = output.contains(expect);
+                   getResults(expect, output, "Testing left off-by-one error", passed);
+                   assertTrue(passed);
+               }
+
+               @Test
+               public void checkCodeContains1()
+               {
+                   boolean passed = checkCodeContains("fixes to for loop", "for (int i = 0; i <");
+                   assertTrue(passed);
+               }
+           }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -788,85 +830,90 @@ import static org.junit.Assert.*;
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class StringWorker
-{
-    private String[] arr = {"Hello", "Hey", "Good morning!"};
+          <![CDATA[
 
-    public int findString(String target)
-    {
-        String word = null;
-        for (int index = 0; index &lt; arr.length; index++)
-        {
-            word = arr[index];
+          public class StringWorker
+          {
+              private String[] arr = {"Hello", "Hey", "Good morning!"};
 
-            if (word.equals(target))
-            {
-                return index;
-            }
-            else
-            {
-                return -1;
-            }
-        }
-        return -1;
-    }
+              public int findString(String target)
+              {
+                  String word = null;
+                  for (int index = 0; index < arr.length; index++)
+                  {
+                      word = arr[index];
 
-    public static void main(String[] args)
-    {
-        StringWorker sWorker = new StringWorker();
-        System.out.println(sWorker.findString("Hey"));
-    }
-}
+                      if (word.equals(target))
+                      {
+                          return index;
+                      }
+                      else
+                      {
+                          return -1;
+                      }
+                  }
+                  return -1;
+              }
+
+              public static void main(String[] args)
+              {
+                  StringWorker sWorker = new StringWorker();
+                  System.out.println(sWorker.findString("Hey"));
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("StringWorker");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("StringWorker");
+              }
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "1".replaceAll(" ", "\n");
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "1".replaceAll(" ", "\n");
 
-        boolean passed = (output.equals(expect));
-        getResults(expect, output, "Testing main() output", passed);
-        assertTrue(passed);
-    }
+                  boolean passed = (output.equals(expect));
+                  getResults(expect, output, "Testing main() output", passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test2()
-    {
-        StringWorker sWorker = new StringWorker();
-        String output = "" + sWorker.findString("Good morning!");
-        String expect = "2";
+              @Test
+              public void test2()
+              {
+                  StringWorker sWorker = new StringWorker();
+                  String output = "" + sWorker.findString("Good morning!");
+                  String expect = "2";
 
-        boolean passed = getResults(expect, output, "Testing findString(\"Good morning!\")");
-        assertTrue(passed);
-    }
+                  boolean passed = getResults(expect, output, "Testing findString(\"Good morning!\")");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test3()
-    {
-        StringWorker sWorker = new StringWorker();
-        String output = "" + sWorker.findString("Hello!");
-        String expect = "-1";
+              @Test
+              public void test3()
+              {
+                  StringWorker sWorker = new StringWorker();
+                  String output = "" + sWorker.findString("Hello!");
+                  String expect = "-1";
 
-        boolean passed = getResults(expect, output, "Testing findString(\"Hello!\")");
-        assertTrue(passed);
-    }
-}
+                  boolean passed = getResults(expect, output, "Testing findString(\"Hello!\")");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -879,16 +926,18 @@ public class RunestoneTests extends CodeTestHelper
           to be greater than zero and that <c>a</c> is an array of integers.
         </p>
 
-        <program language="java">
-          <code>
-for ( int k = 0; k &lt; a.length; k++ )
-{
-   while ( a[ k ] &lt; temp )
-   {
-      a[ k ] *= 2;
-   }
-}
-          </code>
+        <program>
+          <![CDATA[
+
+          for ( int k = 0; k < a.length; k++ )
+          {
+             while ( a[ k ] < temp )
+             {
+                a[ k ] *= 2;
+             }
+          }
+
+          ]]>
         </program>
       </statement>
 
@@ -908,16 +957,16 @@ for ( int k = 0; k &lt; a.length; k++ )
         <choice correct="yes">
           <statement>
             <p>
-              Whenever <i>a</i> includes a value that is less than or equal to
+              Whenever <c>a</c> includes a value that is less than or equal to
               zero.
             </p>
           </statement>
 
           <feedback>
             <p>
-              When <i>a</i> contains a value that is less than or equal to zero
+              When <c>a</c> contains a value that is less than or equal to zero
               then multiplying that value by 2 will never make the result larger
-              than the <i>temp</i> value (which was set to some value &gt; 0),
+              than the <c>temp</c> value (which was set to some value &gt; 0),
               so an infinite loop will occur.
             </p>
           </feedback>
@@ -925,43 +974,35 @@ for ( int k = 0; k &lt; a.length; k++ )
 
         <choice>
           <statement>
-            <p>
-              Whenever <i>a</i> has values larger then <i>temp</i>.
-            </p>
+            <p>Whenever <c>a</c> has values larger then <c>temp</c>.</p>
           </statement>
 
           <feedback>
             <p>
-              Values larger then <i>temp</i> will not cause an infinite loop.
+              Values larger then <c>temp</c> will not cause an infinite loop.
             </p>
           </feedback>
         </choice>
 
         <choice>
           <statement>
-            <p>
-              When all values in <i>a</i> are larger than <i>temp</i>.
-            </p>
+            <p>When all values in <c>a</c> are larger than <c>temp</c>.</p>
           </statement>
 
           <feedback>
             <p>
-              Values larger then <i>temp</i> will not cause an infinite loop.
+              Values larger then <c>temp</c> will not cause an infinite loop.
             </p>
           </feedback>
         </choice>
 
         <choice>
           <statement>
-            <p>
-              Whenever <i>a</i> includes a value equal to <i>temp</i>.
-            </p>
+            <p>Whenever <c>a</c> includes a value equal to <c>temp</c>.</p>
           </statement>
 
           <feedback>
-            <p>
-              Values equal to <i>temp</i> will not cause the infinite loop.
-            </p>
+            <p>Values equal to <c>temp</c> will not cause the infinite loop.</p>
           </feedback>
         </choice>
       </choices>
@@ -970,6 +1011,7 @@ for ( int k = 0; k &lt; a.length; k++ )
 
   <subsection>
     <title>Enhanced For-Loop (For-Each) for Arrays</title>
+
     <p>
       There is a special kind of loop that can be used with arrays that is
       called an <term>enhanced for loop</term> or a <term>for each loop</term>.
@@ -987,6 +1029,7 @@ for ( int k = 0; k &lt; a.length; k++ )
 
     <figure align="center">
       <caption>Comparing App Inventor, AP CSP, and Java for each</caption>
+
       <image source="Unit4-Data-Collections/Figures/appinvForEachComparison.png" width="100%" />
     </figure>
 
@@ -995,24 +1038,22 @@ for ( int k = 0; k &lt; a.length; k++ )
       array. Notice the type of the loop variable is the type of the array.
     </p>
 
-    <program language="java">
-      <code>
-int[] highScores = { 10, 9, 8, 8};
-String[] names = {"Jamal", "Emily", "Destiny", "Mateo"};
-// for each loop: for each value in highScores
-// for (type variable : arrayname)
-for (int value : highScores)
-{
-    // Notice no index or [ ], just the variable value!
-    System.out.println( value );
-}
-// for each loop with a String array to print each name
-// the type for variable name is String!
-for (String name : names)
-{
-    System.out.println(name);
-}
-      </code>
+    <program>
+      int[] highScores = { 10, 9, 8, 8};
+      String[] names = {"Jamal", "Emily", "Destiny", "Mateo"};
+      // for each loop: for each value in highScores
+      // for (type variable : arrayname)
+      for (int value : highScores)
+      {
+          // Notice no index or [ ], just the variable value!
+          System.out.println( value );
+      }
+      // for each loop with a String array to print each name
+      // the type for variable name is String!
+      for (String name : names)
+      {
+          System.out.println(name);
+      }
     </program>
 
     <p>
@@ -1034,66 +1075,71 @@ for (String name : names)
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class ForEachDemo
-{
-    public static void main(String[] args)
-    {
-        int[] highScores = {10, 9, 8, 8};
-        String[] names = {"Jamal", "Emily", "Destiny", "Mateo"};
-        // for each loop with an int array
-        for (int value : highScores)
-        {
-            System.out.println(value);
-        }
-        // for each loop with a String array
-        for (String value : names)
-        {
-            System.out.println(value); // this time it's a name!
-        }
-    }
-}
+          public class ForEachDemo
+          {
+              public static void main(String[] args)
+              {
+                  int[] highScores = {10, 9, 8, 8};
+                  String[] names = {"Jamal", "Emily", "Destiny", "Mateo"};
+                  // for each loop with an int array
+                  for (int value : highScores)
+                  {
+                      System.out.println(value);
+                  }
+                  // for each loop with a String array
+                  for (String value : names)
+                  {
+                      System.out.println(value); // this time it's a name!
+                  }
+              }
+          }
         </code>
+
         <tests>
- import static org.junit.Assert.*;
+          <![CDATA[
 
- import org.junit.*;
+          import static org.junit.Assert.*;
 
- import java.io.*;
+          import org.junit.*;
 
- public class RunestoneTests extends CodeTestHelper
- {
-     public RunestoneTests()
-     {
-         super("ForEachDemo");
-     }
+          import java.io.*;
 
-     @Test
-     public void test1()
-     {
-         String output = getMethodOutput("main");
-         String expect1 = "10\n9\n8\n8";
-         String expect2 = "Jamal\nEmily\nDestiny\nMateo";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ForEachDemo");
+              }
 
-         boolean passed = output.contains(expect1) &amp;&amp; output.contains(expect2);
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect1 = "10\n9\n8\n8";
+                  String expect2 = "Jamal\nEmily\nDestiny\nMateo";
 
-         passed = getResults(expect1 + " " + expect2, output, "Original main()", passed);
-         assertTrue(passed);
-     }
+                  boolean passed = output.contains(expect1) && output.contains(expect2);
 
-     @Test
-     public void test2()
-     {
-         String output = getMethodOutput("main");
-         String expect = "10 9 8 8 Jamal Emily Destiny Mateo".replaceAll(" ", "\n");
+                  passed = getResults(expect1 + " " + expect2, output, "Original main()", passed);
+                  assertTrue(passed);
+              }
 
-         boolean passed = !output.equals(expect) &amp;&amp; output.length() &gt; expect.length();
+              @Test
+              public void test2()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "10 9 8 8 Jamal Emily Destiny Mateo".replaceAll(" ", "\n");
 
-         passed = getResults(expect, output, "Added another high score and name", passed);
-         assertTrue(passed);
-     }
- }
+                  boolean passed = !output.equals(expect) && output.length() > expect.length();
+
+                  passed = getResults(expect, output, "Added another high score and name", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -1113,55 +1159,60 @@ public class ForEachDemo
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class EvenLoop
-{
-    public static void main(String[] args)
-    {
-        int[] values = {6, 2, 1, 7, 12, 5};
-        // Rewrite this loop as a for each loop and run
-        for (int i = 0; i &lt; values.length; i++)
-        {
-            if (values[i] % 2 == 0)
-            {
-                System.out.println(values[i] + " is even!");
-            }
-        }
-    }
-}
+          <![CDATA[
+
+          public class EvenLoop
+          {
+              public static void main(String[] args)
+              {
+                  int[] values = {6, 2, 1, 7, 12, 5};
+                  // Rewrite this loop as a for each loop and run
+                  for (int i = 0; i < values.length; i++)
+                  {
+                      if (values[i] % 2 == 0)
+                      {
+                          System.out.println(values[i] + " is even!");
+                      }
+                  }
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("EvenLoop");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("EvenLoop");
+              }
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "6 is even!\n2 is even!\n12 is even!";
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "6 is even!\n2 is even!\n12 is even!";
 
-        boolean passed = getResults(expect, output, "main()");
-        assertTrue(passed);
-    }
+                  boolean passed = getResults(expect, output, "main()");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test2()
-    {
-        boolean passed = checkCodeContains("for each loop", "for(int * : values)");
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test2()
+              {
+                  boolean passed = checkCodeContains("for each loop", "for(int * : values)");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -1169,6 +1220,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Enhanced For Loop Limitations</title>
+
     <p>
       What if we had a loop that incremented all the elements in the array.
       Would that work with an enhanced for-each loop? Unfortunately not! Because
@@ -1192,68 +1244,69 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class IncrementLoop
-{
-    public static void main(String[] args)
-    {
-        int[] values = {6, 2, 1, 7, 12, 5};
-        // Can this loop increment the values?
-        for (int val : values)
-        {
-            val++;
-            System.out.println("New val: " + val);
-        }
-        // Print out array to see if they really changed
-        System.out.println("Array after the loop: ");
-        for (int v : values)
-        {
-            System.out.print(v + " ");
-        }
-    }
-}
+          public class IncrementLoop
+          {
+              public static void main(String[] args)
+              {
+                  int[] values = {6, 2, 1, 7, 12, 5};
+                  // Can this loop increment the values?
+                  for (int val : values)
+                  {
+                      val++;
+                      System.out.println("New val: " + val);
+                  }
+                  // Print out array to see if they really changed
+                  System.out.println("Array after the loop: ");
+                  for (int v : values)
+                  {
+                      System.out.print(v + " ");
+                  }
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("IncrementLoop");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("IncrementLoop");
+              }
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect =
-                "New val: 7\n"
-                    + "New val: 3\n"
-                    + "New val: 2\n"
-                    + "New val: 8\n"
-                    + "New val: 13\n"
-                    + "New val: 6\n"
-                    + "Array after the loop:\n"
-                    + "7 3 2 8 13 6";
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect =
+                          "New val: 7\n"
+                              + "New val: 3\n"
+                              + "New val: 2\n"
+                              + "New val: 8\n"
+                              + "New val: 13\n"
+                              + "New val: 6\n"
+                              + "Array after the loop:\n"
+                              + "7 3 2 8 13 6";
 
-        boolean passed = getResults(expect, output, "main()");
-        assertTrue(passed);
-    }
+                  boolean passed = getResults(expect, output, "main()");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test2()
-    {
-        String target = "for (int * = #; * ? *.length; *~)";
-        boolean passed = checkCodeContains("for loop", target);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test2()
+              {
+                  String target = "for (int * = #; * ? *.length; *~)";
+                  boolean passed = checkCodeContains("for loop", target);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -1295,12 +1348,10 @@ public class RunestoneTests extends CodeTestHelper
           instead of a for loop?
         </p>
 
-        <program language="java">
-          <code>
-I: If you wish to access every element of an array.
-II: If you wish to modify elements of the array.
-III: If you wish to refer to elements through a variable name instead of an array index.
-          </code>
+        <program>
+          I: If you wish to access every element of an array.
+          II: If you wish to modify elements of the array.
+          III: If you wish to refer to elements through a variable name instead of an array index.
         </program>
       </statement>
 
@@ -1366,18 +1417,17 @@ III: If you wish to refer to elements through a variable name instead of an arra
     <activity label="mcqfor-each2">
       <statement>
         <p>What is the output of the following code segment?</p>
-        <program language="java">
-          <code>
-int[ ] numbers = {44, 33, 22, 11};
-for (int num : numbers)
-{
-    num *= 2;
-}
-for (int num : numbers)
-{
-    System.out.print(num + " ");
-}
-          </code>
+
+        <program>
+          int[ ] numbers = {44, 33, 22, 11};
+          for (int num : numbers)
+          {
+              num *= 2;
+          }
+          for (int num : numbers)
+          {
+              System.out.print(num + " ");
+          }
         </program>
       </statement>
 
@@ -1437,6 +1487,7 @@ for (int num : numbers)
 
   <subsection>
     <title>Traversing Arrays of Objects</title>
+
     <p>
       Both indexed for loops and enhanced for (for each) loops can be used to
       traverse an array of objects. Here is an example of a Student class and a
@@ -1462,161 +1513,166 @@ for (int num : numbers)
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class StudentArray
-{
-    private Student[] array;
-    private int size = 3;
-
-    // Creates an array of the default size
-    public StudentArray()
-    {
-        array = new Student[size];
-    }
-
-    // Creates an array of the given size
-    public StudentArray(int size)
-    {
-        array = new Student[size];
-    }
-
-    // Adds Student s to the array at index i
-    public void add(int i, Student s)
-    {
-        array[i] = s;
-    }
-
-    // prints the array of students
-    public void print()
-    {
-        for (Student s : array)
-        {
-            // this will call Student's toString() method
-            System.out.println(s);
-        }
-    }
-
-    /* Write a findAndPrint(name) method */
-
-    public static void main(String[] args)
-    {
-        // Create an object of this class and pass in size 3
-        StudentArray roster = new StudentArray(3);
-        // Add new Student objects at indices 0-2
-        roster.add(0, new Student("Skyler", "skyler@sky.com", 123456));
-        roster.add(1, new Student("Ayanna", "ayanna@gmail.com", 789012));
-        roster.add(2, new Student("Dakota", "dak@gmail.com", 112233));
-        roster.print();
-        System.out.println("Finding student Ayanna: ");
-        // uncomment to test
-        // roster.findAndPrint("Ayanna");
-    }
-}
-
-class Student
-{
-    private String name;
-    private String email;
-    private int id;
-
-    public Student(String initName, String initEmail, int initId)
-    {
-        name = initName;
-        email = initEmail;
-        id = initId;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public String getEmail()
-    {
-        return email;
-    }
-
-    public int getId()
-    {
-        return id;
-    }
-
-    // toString() method
-    public String toString()
-    {
-        return id + ": " + name + ", " + email;
-    }
-}
-        </code>
-        <tests>
-  import static org.junit.Assert.*;
-
-  import org.junit.*;
-
-  import java.io.*;
-
-  public class RunestoneTests extends CodeTestHelper
-  {
-      public RunestoneTests()
-      {
-          super("StudentArray");
-      }
-
-      @Test
-      public void test1()
-      {
-          String target = "findAndPrint(String";
-          boolean passed =
-                  checkCodeContains("findAndPrint method header with String paramenter", target);
-          assertTrue(passed);
-      }
-
-      @Test
-      public void test2()
-      {
-          String target = "roster.findAndPrint(";
-          boolean passed =
-                  checkCodeContains(
-                          "call to roster.findAndPrint method (uncommented in main)", target);
-          assertTrue(passed);
-      }
-
-      @Test
-      public void testForEach()
-      {
-          String target = "for(Student";
-          String code = getCode().replaceAll("\\s", "");
-          int index = code.indexOf("findAndPrint(String");
-          boolean passed = false;
-          if (index &gt; 0)
+          public class StudentArray
           {
-              code = code.substring(index, index + 200);
-              int num = countOccurences(code, target);
-              passed = num == 1;
+              private Student[] array;
+              private int size = 3;
+
+              // Creates an array of the default size
+              public StudentArray()
+              {
+                  array = new Student[size];
+              }
+
+              // Creates an array of the given size
+              public StudentArray(int size)
+              {
+                  array = new Student[size];
+              }
+
+              // Adds Student s to the array at index i
+              public void add(int i, Student s)
+              {
+                  array[i] = s;
+              }
+
+              // prints the array of students
+              public void print()
+              {
+                  for (Student s : array)
+                  {
+                      // this will call Student's toString() method
+                      System.out.println(s);
+                  }
+              }
+
+              /* Write a findAndPrint(name) method */
+
+              public static void main(String[] args)
+              {
+                  // Create an object of this class and pass in size 3
+                  StudentArray roster = new StudentArray(3);
+                  // Add new Student objects at indices 0-2
+                  roster.add(0, new Student("Skyler", "skyler@sky.com", 123456));
+                  roster.add(1, new Student("Ayanna", "ayanna@gmail.com", 789012));
+                  roster.add(2, new Student("Dakota", "dak@gmail.com", 112233));
+                  roster.print();
+                  System.out.println("Finding student Ayanna: ");
+                  // uncomment to test
+                  // roster.findAndPrint("Ayanna");
+              }
           }
-          getResults(
-                  "true",
-                  "" + passed,
-                  "Checking that findAndPrint() contains an enhanced for loop for Student in array",
-                  passed);
-          assertTrue(passed);
-      }
 
-      @Test
-      public void testEquals()
-      {
-          boolean passed = checkCodeContains("use of equals method", ".equals(");
-          assertTrue(passed);
-      }
+          class Student
+          {
+              private String name;
+              private String email;
+              private int id;
 
-      @Test
-      public void testGetName()
-      {
-          boolean passed = checkCodeContains("use of getName() method", ".getName()");
-          assertTrue(passed);
-      }
-  }
+              public Student(String initName, String initEmail, int initId)
+              {
+                  name = initName;
+                  email = initEmail;
+                  id = initId;
+              }
+
+              public String getName()
+              {
+                  return name;
+              }
+
+              public String getEmail()
+              {
+                  return email;
+              }
+
+              public int getId()
+              {
+                  return id;
+              }
+
+              // toString() method
+              public String toString()
+              {
+                  return id + ": " + name + ", " + email;
+              }
+          }
+        </code>
+
+        <tests>
+          <![CDATA[
+
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("StudentArray");
+              }
+
+              @Test
+              public void test1()
+              {
+                  String target = "findAndPrint(String";
+                  boolean passed =
+                          checkCodeContains("findAndPrint method header with String paramenter", target);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2()
+              {
+                  String target = "roster.findAndPrint(";
+                  boolean passed =
+                          checkCodeContains(
+                                  "call to roster.findAndPrint method (uncommented in main)", target);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testForEach()
+              {
+                  String target = "for(Student";
+                  String code = getCode().replaceAll("\\s", "");
+                  int index = code.indexOf("findAndPrint(String");
+                  boolean passed = false;
+                  if (index > 0)
+                  {
+                      code = code.substring(index, index + 200);
+                      int num = countOccurences(code, target);
+                      passed = num == 1;
+                  }
+                  getResults(
+                          "true",
+                          "" + passed,
+                          "Checking that findAndPrint() contains an enhanced for loop for Student in array",
+                          passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testEquals()
+              {
+                  boolean passed = checkCodeContains("use of equals method", ".equals(");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testGetName()
+              {
+                  boolean passed = checkCodeContains("use of getName() method", ".getName()");
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -1635,6 +1691,7 @@ class Student
 
   <subsection>
     <title>Coding Challenge: SpellChecker</title>
+
     <image source="Unit4-Data-Collections/Figures/spellcheck.png" width="18%" alt="Spell Checker" />
     <p>
       In this challenge, you will use an array of English words from a
@@ -1653,7 +1710,7 @@ class Student
     </p>
 
     <p>
-      <ol marker="1">
+      <ol>
         <li>
           <p>
             Write a <c>print10</c> method that prints out the first 10 words of
@@ -1693,7 +1750,7 @@ class Student
     </p>
 
     <datafile label="dictionary" filename="dictionary.txt" editable="no" hide="yes">
-      <pre>        
+      <pre>
 a
 aa
 aaa
@@ -11708,152 +11765,157 @@ zus
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="dictionary.txt">
+      <program interactive="activecode" datafile="dictionary.txt">
         <code>
-import java.io.*;
-import java.nio.file.*;
-import java.util.*;
+          <![CDATA[
 
-public class SpellChecker
-{
-    // This dictionary has 10,000 English words read in from a dictionary file in
-    // the constructor
-    private String[] dictionary = new String[10000];
+          import java.io.*;
+          import java.nio.file.*;
+          import java.util.*;
 
-    /* 1. Write a print10() method that prints out the first
-     * 10 words of the dictionary array. Do not print out the whole array!
-     */
+          public class SpellChecker
+          {
+              // This dictionary has 10,000 English words read in from a dictionary file in
+              // the constructor
+              private String[] dictionary = new String[10000];
 
-    /* 2. Write a spellcheck() method that takes a word as a
-     * parameter and returns true if it is in the dictionary array.
-     * Return false if it is not found.
-     */
+              /* 1. Write a print10() method that prints out the first
+               * 10 words of the dictionary array. Do not print out the whole array!
+               */
 
-    // Do not change "throws IOException" which is needed for reading in the input
-    // file
-    public static void main(String[] args) throws IOException
-    {
-        SpellChecker checker = new SpellChecker();
-        // Uncomment to test Part 1
-        // checker.print10();
+              /* 2. Write a spellcheck() method that takes a word as a
+               * parameter and returns true if it is in the dictionary array.
+               * Return false if it is not found.
+               */
 
-        /* // Uncomment to test Part 2
-        String word = "catz";
+              // Do not change "throws IOException" which is needed for reading in the input
+              // file
+              public static void main(String[] args) throws IOException
+              {
+                  SpellChecker checker = new SpellChecker();
+                  // Uncomment to test Part 1
+                  // checker.print10();
+
+                  /* // Uncomment to test Part 2
+                  String word = "catz";
 
 
-        if (checker.spellcheck(word) == true)
-        {
-            System.out.println(word + " is spelled correctly!");
-        }
-        else
-        {
-            System.out.println(word + " is misspelled!");
-        }
+                  if (checker.spellcheck(word) == true)
+                  {
+                      System.out.println(word + " is spelled correctly!");
+                  }
+                  else
+                  {
+                      System.out.println(word + " is misspelled!");
+                  }
 
-        word = "cat";
-        System.out.println(word + " is spelled correctly? " + checker.spellcheck(word));
-        */
+                  word = "cat";
+                  System.out.println(word + " is spelled correctly? " + checker.spellcheck(word));
+                  */
 
-        // 3. optional and not autograded
-        // checker.printStartsWith("b");
-    }
+                  // 3. optional and not autograded
+                  // checker.printStartsWith("b");
+              }
 
-    // The constructor reads in the dictionary from a file
-    public SpellChecker() throws IOException
-    {
-        // Let's use java.nio method readAllLines and convert to an array!
-        List&lt;String&gt; lines = Files.readAllLines(Paths.get("dictionary.txt"));
-        dictionary = lines.toArray(dictionary);
+              // The constructor reads in the dictionary from a file
+              public SpellChecker() throws IOException
+              {
+                  // Let's use java.nio method readAllLines and convert to an array!
+                  List<String> lines = Files.readAllLines(Paths.get("dictionary.txt"));
+                  dictionary = lines.toArray(dictionary);
 
-        /* The old java.io.* Scan/File method of reading in files, replaced by java.nio above
-        // create File object
-        File dictionaryFile = new File("dictionary.txt");
+                  /* The old java.io.* Scan/File method of reading in files, replaced by java.nio above
+                  // create File object
+                  File dictionaryFile = new File("dictionary.txt");
 
-        //Create Scanner object to read File
-        Scanner scan = new Scanner(dictionaryFile);
+                  //Create Scanner object to read File
+                  Scanner scan = new Scanner(dictionaryFile);
 
-        // Reading each line of the file
-        // and saving it in the array
-        int i = 0;
-        while(scan.hasNextLine())
-        {
-            String line = scan.nextLine();
-            dictionary[i] = line;
-            i++;
-        }
-        scan.close();
-        */
-    }
-}
+                  // Reading each line of the file
+                  // and saving it in the array
+                  int i = 0;
+                  while(scan.hasNextLine())
+                  {
+                      String line = scan.nextLine();
+                      dictionary[i] = line;
+                      i++;
+                  }
+                  scan.close();
+                  */
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("SpellChecker");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("SpellChecker");
+              }
 
-    @Test
-    public void testMain()
-    {
-        boolean passed =
-                checkCodeContains(
-                        "checker.print10() - Did you uncomment the main method?",
-                        "checker.print10();");
-        assertTrue(passed);
-    }
+              @Test
+              public void testMain()
+              {
+                  boolean passed =
+                          checkCodeContains(
+                                  "checker.print10() - Did you uncomment the main method?",
+                                  "checker.print10();");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test2()
-    {
-        String output = getMethodOutput("print10");
-        String expect =
-                "a aa aaa aaron ab abandoned abc aberdeen abilities ability".replaceAll(" ", "\n");
-        boolean passed = getResults(expect, output, "print10()");
-        assertTrue(passed);
-    }
+              @Test
+              public void test2()
+              {
+                  String output = getMethodOutput("print10");
+                  String expect =
+                          "a aa aaa aaron ab abandoned abc aberdeen abilities ability".replaceAll(" ", "\n");
+                  boolean passed = getResults(expect, output, "print10()");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test3()
-    {
-        Object[] args = {"dogz"};
-        String output = getMethodOutput("spellcheck", args);
-        String expect = "false";
+              @Test
+              public void test3()
+              {
+                  Object[] args = {"dogz"};
+                  String output = getMethodOutput("spellcheck", args);
+                  String expect = "false";
 
-        boolean passed = getResults(expect, output, "spellcheck(\"dogz\")");
-        assertTrue(passed);
-    }
+                  boolean passed = getResults(expect, output, "spellcheck(\"dogz\")");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test4()
-    {
-        Object[] args = {"dog"};
-        String output = getMethodOutput("spellcheck", args);
-        String expect = "true";
+              @Test
+              public void test4()
+              {
+                  Object[] args = {"dog"};
+                  String output = getMethodOutput("spellcheck", args);
+                  String expect = "true";
 
-        boolean passed =
-                getResults(
-                        expect,
-                        output,
-                        "spellcheck(\"dog\") (If false, spellcheck may be returning false too"
-                            + " soon!)");
-        assertTrue(passed);
-    }
+                  boolean passed =
+                          getResults(
+                                  expect,
+                                  output,
+                                  "spellcheck(\"dog\") (If false, spellcheck may be returning false too"
+                                      + " soon!)");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testEquals()
-    {
-        boolean passed = checkCodeContains("use of equals method", ".equals(");
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void testEquals()
+              {
+                  boolean passed = checkCodeContains("use of equals method", ".equals(");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </project>
@@ -11861,6 +11923,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Design an Array of Objects for your Community</title>
+
     <p>
       In the last unit, you came up with a class of your own choice relevant to
       you or your community. In the <url
@@ -11888,82 +11951,87 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class          // Add your class name here!
-{
-    // Copy your class from lesson 4.3 below.
+          public class          // Add your class name here!
+          {
+              // Copy your class from lesson 4.3 below.
 
 
 
-    public static void main(String[] args)
-    {
-       // Create an array of 3 objects of your class.
+              public static void main(String[] args)
+              {
+                 // Create an array of 3 objects of your class.
 
-       // Initialize array elements 0-2 to new objects of your class.
-
-
-       // Write a for loop that traverses the array and calls
-       // the print method of each object in the array
+                 // Initialize array elements 0-2 to new objects of your class.
 
 
-    }
-}
+                 // Write a for loop that traverses the array and calls
+                 // the print method of each object in the array
+
+
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testArrayDeclaration() throws IOException
-    {
-        boolean passed = checkCodeContains("an array declaration of size 3", "[3]");
-        assertTrue(passed);
-    }
+          import java.io.*;
 
-    @Test
-    public void testLoop()
-    {
-        String target = "for";
-        boolean passed = checkCodeContains("for loop", target);
-        assertTrue(passed);
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testArrayDeclaration() throws IOException
+              {
+                  boolean passed = checkCodeContains("an array declaration of size 3", "[3]");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testprint()
-    {
-        boolean passed =
-                checkCodeContains("call to print in the loop", ".print");
-        assertTrue(passed);
-    }
+              @Test
+              public void testLoop()
+              {
+                  String target = "for";
+                  boolean passed = checkCodeContains("for loop", target);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main"); // .split("\n");
-        String expect = "3+ line(s) of text";
-        String actual = " line(s) of text";
-        int len = output.split("\n").length;
+              @Test
+              public void testprint()
+              {
+                  boolean passed =
+                          checkCodeContains("call to print in the loop", ".print");
+                  assertTrue(passed);
+              }
 
-        if (output.length() &gt; 0)
-        {
-            actual = len + actual;
-        }
-        else
-        {
-            actual = output.length() + actual;
-        }
-        boolean passed = len &gt;= 3;
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main"); // .split("\n");
+                  String expect = "3+ line(s) of text";
+                  String actual = " line(s) of text";
+                  int len = output.split("\n").length;
 
-        getResults(expect, actual, "Checking output", passed);
-        assertTrue(passed);
-    }
-}
+                  if (output.length() > 0)
+                  {
+                      actual = len + actual;
+                  }
+                  else
+                  {
+                      actual = output.length() + actual;
+                  }
+                  boolean passed = len >= 3;
+
+                  getResults(expect, actual, "Checking output", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -11971,6 +12039,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -12056,6 +12125,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection>
     <title>Arrays Game</title>
+
     <p>
       Try the game below to practice loops with arrays. Click on
       <term>Arrays</term> and then check on <term>Loops</term> and click on the

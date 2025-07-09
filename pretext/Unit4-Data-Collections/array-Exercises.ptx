@@ -1072,7 +1072,7 @@ public int checkArray()
 
           <feedback>
             <p>
-              It returns the <i>index</i> to the largest value in array
+              It returns the <em>index</em> to the largest value in array
               <c>arr</c>, not the largest value.
             </p>
           </feedback>
