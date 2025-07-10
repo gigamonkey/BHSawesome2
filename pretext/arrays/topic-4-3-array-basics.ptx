@@ -876,6 +876,164 @@
     </activity>
   </subsection>
 
+  <subsection>
+    <title>Array references as arguments</title>
+
+    <p>
+      In <xref ref="topic-1-9-method-signatures" /> we mentioned that Java uses
+      <term>call by value</term> when it passes arguments to methods. What that
+      means is that when we call a method and pass arguments, the argument
+      values are stored in the parameters defined in the method. For primitive
+      types that means a copy of the actual value. But for reference types, like
+      arrays, that means a copy of the reference—the number that allows access
+      to the actual object data of the array. And through a reference it’s
+      possible to change the actual data in the array so the change is visible
+      after the method returns.
+    </p>
+
+    <p>To see why this difference matters, consider these three listings.</p>
+
+    <listing>
+      <title>
+        Method that (uselessly) changes the value of its <c>int</c> parameter
+      </title>
+
+      <program>
+        public void changeIntParameter(int n) {
+          // changes the variable n
+          n = 20
+        }
+
+        int num = 10;
+        changeIntParameter(num); // pass copy of the value 10
+        System.out.println(num); // prints 10
+      </program>
+    </listing>
+
+    <p>
+      In this listing the method <c>changeIntParameter</c> accepts an <c>int</c>
+      argument which is stored in the parameter <c>n</c>. That parameter is a
+      variable that only exists until <c>changeIntParameter</c> returns. In this
+      method, <c>n</c> is assigned a new value but the code has no effect
+      because immediately after that the method returns and the variable
+      <c>n</c> doesn’t exist any more. The assignment to <c>n</c> has no effect
+      on wherever its argument value came from. In this case because the
+      argument came from the variable <c>num</c> some people expect the change
+      to <c>n</c> to also change <c>num</c>. But it’s the <em>value</em> of
+      <c>num</c> that was passed to <c>changeIntParameter</c>. This would
+      perhaps be more obvious if we had instead called
+      <c>changeIntParameter(10)</c>. Few people would expect the value of
+      <c>10</c> to suddenly by <c>20</c>!
+    </p>
+
+    <listing>
+      <title>
+        Method that (uselessly) changes the value of its <c>int[]</c> parameter
+      </title>
+
+      <program>
+        public void changeArrayParameter(int[] ns) {
+          // changes the variable ns
+          ns = new int[] { 20 };
+        }
+
+        int[] nums = new int[] { 10 };
+        changeArrayParameter(nums); // pass copy of reference to nums
+        System.out.println(nums[0]);  // prints 10
+      </program>
+    </listing>
+
+    <p>
+      This code works almost exactly like the previous one. The variable
+      <c>nums</c> is a reference to a newly created <c>int[]</c> rather than
+      just an <c>int</c>. But when <c>changeArrayParameter</c> is called, a copy
+      of that reference is passed as the argument and stored in the method’s
+      parameter <c>ns</c>. Then, like the code in <c>changeIntParameter</c>,
+      <c>changeArrayParameter</c> immediately assigns a completely new value to
+      its parameter, clobbering the one that was there just like
+      <c>changeIntParameter</c> clobbered the value <c>10</c> with the new value
+      <c>20</c>. Then the method returns and the change to <c>ns</c> no longer
+      matters because <c>ns</c> no longer exists.
+    </p>
+
+    <listing>
+      <title>
+        Method that changes the value of its an array element via argument
+        reference
+      </title>
+
+      <program>
+        public void changeArrayElement(int[] ns) {
+          // changes the referenced array
+          ns[0] += 10;
+        }
+
+        int[] nums = new int[] { 10 };
+        changeArrayElement(nums); // pass copy of reference to nums
+        System.out.println(nums[0]);  // prints 20
+      </program>
+    </listing>
+
+    <p>
+      This method, on the other hand, works different than the previous two. As
+      in the previous listing the variable <c>nums</c> is a reference to a newly
+      created array and a copy of that reference is passed to
+      <c>changeArrayElement</c> where it is stored in the parameter <c>ns</c>.
+      But <c>changeArrayElement</c> doesn’t assign a new value to <c>ns</c>.
+      Instead it uses an array access expression to assign a new value to the
+      zeroth element of the referenced array. Since <c>nums</c> and <c>ns</c>
+      are both references to the same underlying object data, this assignment
+      actually changes the array so the change is visible after
+      <c>changeArrayElement</c> returns.
+    </p>
+
+    <activity label="patdonsArraySubtract" numbered="yes" adaptive="yes" indentation="hide" language="python">
+      <statement>
+        <p>
+          The following method has the correct code to subtract amt from all the
+          values in the array values, but the code is mixed up. Drag the blocks
+          from the left into the correct order on the right. You will be told if
+          any of the blocks are in the wrong order.
+        </p>
+      </statement>
+
+      <blocks>
+        <block order="2">
+          <cline>public void subAll(int[] values, int amt)</cline>
+          <cline>{</cline>
+        </block>
+
+        <block order="1">
+          <cline>     for (int i = 0;</cline>
+        </block>
+
+        <block order="8">
+          <cline>        i &lt; values.length;</cline>
+        </block>
+
+        <block order="7">
+          <cline>        i++)</cline>
+        </block>
+
+        <block order="6">
+          <cline>     {</cline>
+        </block>
+
+        <block order="4">
+          <cline>        values[i] = values[i] - amt;</cline>
+        </block>
+
+        <block order="5">
+          <cline>     } // end for loop</cline>
+        </block>
+
+        <block order="3">
+          <cline>} // end method</cline>
+        </block>
+      </blocks>
+    </activity>
+  </subsection>
+
   <subsection xml:id="coding-challenge-countries-array">
     <title>Coding Challenge: Countries Array</title>
 

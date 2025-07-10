@@ -300,6 +300,7 @@
           <title_reference>vals</title_reference>
 
 
+
  (an
           instance variable of the current object), but the code is mixed up.
           Drag the blocks from the left into the correct order on the right and
@@ -1792,6 +1793,4 @@
       </program>
     </activity>
   </subsection>
-
-
 </section>

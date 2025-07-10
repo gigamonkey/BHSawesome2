@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-4-array-traversal">
-  <title>Array Traversals</title>
+  <title>Looping over arrays</title>
 
   <introduction>
     <p>
-      In this lesson, we will learn how to traverse an array using a loop.
-      <term>Traversing</term> an array means visiting each element of the array.
-      We can use a loop to visit each element of an array and perform some
-      operation on it. This is a common operation when working with arrays.
+      In this lesson, we will learn how to combine loops with arrays. We can use
+      a loop to visit each element of an array and perform some operation on it.
+      This is a common operation when working with arrays.
     </p>
   </introduction>
 
   <subsection>
-    <title>Index Variables</title>
+    <title>Index variables</title>
 
     <p>
       In the last lesson, we mentioned that you can use a variable for the index
@@ -179,154 +178,6 @@
           ]]>
         </tests>
       </program>
-    </activity>
-  </subsection>
-
-  <subsection>
-    <title>Arrays as Objects and Parameters</title>
-
-    <p>
-      The following code demonstrates a loop that changes the values in an
-      array. In this code, the array is passed as an argument to the static
-      methods in the class. Arrays in Java are objects. The array variables are
-      references to an address in memory. Since arrays can be very large, we do
-      not want to copy them when we pass them into methods. When an array is
-      passed as an argument to a method, the name of the array refers to its
-      address in memory. Therefore, any changes to the array in the method will
-      affect the original array. You can also try the code in the <url
-      href="http://www.pythontutor.com/visualize.html#code=public%20class%20ArrayLoop%0A%20%20%20%7B%0A%0A%20%20%20%20%20//%20What%20does%20this%20method%20do%3F%0A%20%20%20%20%20%20public%20static%20void%20multAll%28int%5B%5D%20values,%20int%20amt%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20for%20%28int%20i%20%3D%200%3B%20i%20%3C%20values.length%3B%20i%2B%2B%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20values%5Bi%5D%20%3D%20values%5Bi%5D%20*%20amt%3B%0A%20%20%20%20%20%20%20%20%7D%20%0A%20%20%20%20%20%20%7D%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20What%20does%20this%20method%20do%3F%0A%20%20%20%20%20%20public%20static%20void%20printValues%28int%5B%5D%20values%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20for%20%28int%20i%20%3D%200%3B%20i%20%3C%20values.length%3B%20i%2B%2B%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%20%20values%5Bi%5D%20%29%3B%0A%20%20%20%20%20%20%20%20%7D%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20int%5B%5D%20numArray%20%3D%20%20%7B2,%206,%207,%2012,%205%7D%3B%0A%20%20%20%20%20%20%20%20multAll%28numArray,%202%29%3B%0A%20%20%20%20%20%20%20%20printValues%28numArray%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%7D%0A%20%20%20%20%20%20&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Java
-      visualizer</url>.
-    </p>
-
-    <activity label="arrayMethodTrace">
-      <statement>
-        <p>
-          What does the following code print out? Trace through it keeping track
-          of the array values and the output. Then run it to see if you’re
-          right. Notice that in this code, the array is passed as an argument to
-          the methods. You can also try the code in the <url
-          href="http://www.pythontutor.com/visualize.html#code=public%20class%20ArrayLoop%0A%20%20%20%7B%0A%0A%20%20%20%20%20//%20What%20does%20this%20method%20do%3F%0A%20%20%20%20%20%20public%20static%20void%20multAll%28int%5B%5D%20values,%20int%20amt%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20for%20%28int%20i%20%3D%200%3B%20i%20%3C%20values.length%3B%20i%2B%2B%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20values%5Bi%5D%20%3D%20values%5Bi%5D%20*%20amt%3B%0A%20%20%20%20%20%20%20%20%7D%20%0A%20%20%20%20%20%20%7D%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20What%20does%20this%20method%20do%3F%0A%20%20%20%20%20%20public%20static%20void%20printValues%28int%5B%5D%20values%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20for%20%28int%20i%20%3D%200%3B%20i%20%3C%20values.length%3B%20i%2B%2B%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%20%20values%5Bi%5D%20%29%3B%0A%20%20%20%20%20%20%20%20%7D%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20int%5B%5D%20numArray%20%3D%20%20%7B2,%206,%207,%2012,%205%7D%3B%0A%20%20%20%20%20%20%20%20multAll%28numArray,%202%29%3B%0A%20%20%20%20%20%20%20%20printValues%28numArray%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%7D%0A%20%20%20%20%20%20&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Java
-          visualizer</url> with the Code Lens button.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-        <code>
-          <![CDATA[
-
-          public class ArrayLoop
-          {
-
-              // What does this method do?
-              public static void multAll(int[] values, int amt)
-              {
-                  for (int i = 0; i < values.length; i++)
-                  {
-                      values[i] = values[i] * amt;
-                  }
-              }
-
-              // What does this method do?
-              public static void printValues(int[] values)
-              {
-                  for (int i = 0; i < values.length; i++)
-                  {
-                      System.out.println(values[i]);
-                  }
-              }
-
-              public static void main(String[] args)
-              {
-                  int[] numArray = {2, 6, 7, 12, 5};
-                  multAll(numArray, 2);
-                  printValues(numArray);
-              }
-          }
-
-          ]]>
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("ArrayLoop");
-              }
-
-              @Test
-              public void test1() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "4 12 14 24 10";
-
-                  boolean passed = getResults(expect, output, "Did you run the code?", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-      </program>
-    </activity>
-
-    <note>
-      <p>
-        Arrays in Java are objects. When arrays are passed in as arguments to
-        methods, any changes to the array in the method will affect the original
-        array, since the array name is a reference value refering to the address
-        of the array in memory.
-      </p>
-    </note>
-
-    <activity label="patdonsArraySubtract" numbered="yes" adaptive="yes" indentation="hide" language="python">
-      <statement>
-        <p>
-          The following method has the correct code to subtract amt from all the
-          values in the array values, but the code is mixed up. Drag the blocks
-          from the left into the correct order on the right. You will be told if
-          any of the blocks are in the wrong order.
-        </p>
-      </statement>
-
-      <blocks>
-        <block order="2">
-          <cline>public void subAll(int[] values, int amt)</cline>
-          <cline>{</cline>
-        </block>
-
-        <block order="1">
-          <cline>     for (int i = 0;</cline>
-        </block>
-
-        <block order="8">
-          <cline>        i &lt; values.length;</cline>
-        </block>
-
-        <block order="7">
-          <cline>        i++)</cline>
-        </block>
-
-        <block order="6">
-          <cline>     {</cline>
-        </block>
-
-        <block order="4">
-          <cline>        values[i] = values[i] - amt;</cline>
-        </block>
-
-        <block order="5">
-          <cline>     } // end for loop</cline>
-        </block>
-
-        <block order="3">
-          <cline>} // end method</cline>
-        </block>
-      </blocks>
     </activity>
   </subsection>
 
@@ -11913,8 +11764,6 @@ zus
       </program>
     </project>
   </subsection>
-
-
 
   <subsection>
     <title>Summary</title>
