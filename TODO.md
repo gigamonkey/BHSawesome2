@@ -23,6 +23,9 @@
 
 - [x] Move Bonus unicode challenge to Strings section.
 
+- [ ] Write something about the three kinds of "empty" arrays: null,
+      zero-length, and all zero elements.
+
 # Functionality
 
 - [ ] Make sure Turtle graphics work.

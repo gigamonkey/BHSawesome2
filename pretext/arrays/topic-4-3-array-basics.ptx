@@ -132,10 +132,7 @@
 
     <p>
       So before we can use the array variable we need to actually create an
-      array. There are two ways to do that: with an <term>array creation
-      expression</term> using the keyword <c>new</c> or as part of the variable
-      declaration with an <term>array initializer</term> sometimes called an
-      <term>initializer list</term>.
+      array.
     </p>
   </subsection>
 
@@ -143,11 +140,11 @@
     <title>Creating arrays</title>
 
     <p>
-      The main way to create an actual array object is with an array creation
-      expression. There are two flavors: one that makes an array of a given size
-      where all the elements are <c>0</c>, <c>0.0</c>, <c>false</c>, or
-      <c>null</c> depending on the element type and another that lets us specify
-      specific values that will be put into the new array.
+      The main way to create an actual array object is with an <term>array
+      creation expression</term>. There are two flavors: one that makes an array
+      of a given size where all the elements are <c>0</c>, <c>0.0</c>,
+      <c>false</c>, or <c>null</c> depending on the element type and another
+      that lets us specify specific values that will be put into the new array.
     </p>
 
     <p>
@@ -220,8 +217,9 @@
     </figure>
 
     <p>
-      The other way to make an array, is with specific values using an array
-      initializer. We still use <c>new</c> but instead of specifying the size of
+      The other way to make an array, is with specific values using an
+      <term>array initializer</term> sometimes called an <term>initializer
+      list</term>. We still use <c>new</c> but instead of specifying the size of
       the array inside the square brackets, we place a list of initial values in
       curly braces (<c>{}</c>) after the square brackets:
     </p>
@@ -410,13 +408,20 @@
     <title>Array length</title>
 
     <p>
-      Arrays know their <term>length</term> (how many elements they can store).
-      The length (or size) of an array is established at the time of creation
-      and cannot be changed. The length of an array can be accessed through the
-      <c>length</c> attribute, which is a public final instance variable that
-      cannot be changed after the array is created. You can use
-      <term>dot-notation</term> to access the instance variable, for example
-      <c>arrayName.length</c>. Try the following.
+      The good news about Java arrays is that they know how many elements they
+      can store. The slightly bad news is that there is no way to change that
+      size after the array is created.
+    </p>
+
+    <p>
+      The size of each array is stored as part of its object data and is
+      accessible via an <term>instance variable</term> <c>length</c>. We’ll
+      learn more about instance variables in <xref ref="reference-types" /> but
+      for now all we need to know is that we can access the size of any array
+      with the <term>dot operator</term>, a dot <c>.</c> followed by the word
+      <c>length</c> immediately after any expression whose value is an array
+      reference. For example, <c>arrayName.length</c> accesses the length of the
+      array referenced by the variable <c>arrayName</c>.
     </p>
 
     <activity label="arrayex2">
@@ -430,11 +435,9 @@
 
       <program interactive="activecode">
         <code>
-          public class Test2
-          {
-              public static void main(String[] args)
-              {
-                  int[] highScores = {99, 98, 98, 88, 68};
+          public class Test2 {
+              public static void main(String[] args) {
+                  int[] highScores = { 99, 98, 98, 88, 68 };
                   System.out.println(highScores.length);
               }
           }
@@ -481,7 +484,55 @@
         </tests>
       </program>
     </activity>
+  </subsection>
 
+  <subsection xml:id="access-and-modify-array-values">
+    <title>Accessing and assigning array values</title>
+
+    <p>
+      To access the items in an array, we use an <term>array access
+      expression</term> which is a reference to an array (such as the name of an
+      array variable) followed by a pair of square brackets containing an
+      <c>int</c> expression that gives us the index of the element we want to
+      access. Remember that an <term>index</term> is a number that indicates the
+      position of an item in a list, starting at 0.
+    </p>
+
+    <p>
+      An array access expression like <c>arrayname[index]</c> can be used
+      anywhere a regular variable can be used. That is, we can use it in an
+      expression to get the value of an element of the array. But we can also
+      use it on the left side of an assignment operator to change the value
+      stored at that position in the array.
+    </p>
+
+    <program>
+      System.out.println(highScores[0]); // Print the zeroth element of the array
+      highScores[0] = 99;                // Assign a new value to the zeroth element of the array
+      System.out.println(highScores[0]); // Print the zeroth element of the array, now 99
+      highScores[0] += 5;                // Add five to the value, raising it to 104
+      highScores[0]++;                   // Increment the value so it's now 105
+    </program>
+
+    <p>
+      When accessing array elements, either to get their value or to assign to
+      them, the index must be valid given the size of the array. If not Java
+      will crash your program with an <c>ArrayIndexOutOfBoundsException</c>.
+    </p>
+
+    <p>
+      Since the first element is at index 0 that means the last valid index is
+      one less than the length of the array. (An egg carton contains twelve eggs
+      but if you numbered the eggs, starting at 0 the last one would be number
+      11.)
+    </p>
+
+    <p>
+      Watch the following <url href="https://youtu.be/uagEJw6bTM4">video</url>
+      which shows a physical model of Java memory setting array values.
+    </p>
+
+    <video youtube="uagEJw6bTM4" label="video-array-values-memory" />
     <activity label="qarrayLength">
       <statement>
         <p>
@@ -519,46 +570,7 @@
         </choice>
       </choices>
     </activity>
-  </subsection>
 
-  <subsection xml:id="access-and-modify-array-values">
-    <title>Access and modify array values</title>
-
-    <p>
-      To access the items in an array, we use an <term>array access
-      expression</term> which is the array name and the index inside of square
-      bracket <c>[]</c>. Remember that an <term>index</term> is a number that
-      indicates the position of an item in a list, starting at 0.
-    </p>
-
-    <p>
-      An array access expression like <c>arrayname[index]</c> can be used
-      anywhere a regular variable can be used, for example to assign a new value
-      or to get a value from the array like below.
-    </p>
-
-    <program>
-      // assign a new value 99 to the first element in the array
-      highScores[0] = 99;
-      // print the first element of the array
-      System.out.println( highScores[0] );
-    </program>
-
-    <note>
-      <p>
-        The first value in an array is stored at index 0 and the index of the
-        last value is the length of the array minus one (since the first index
-        is 0). Square brackets <c>[]</c> are used to access and modify an
-        element in a 1D array using an index, for example <c>array[index]</c>.
-      </p>
-    </note>
-
-    <p>
-      Watch the following <url href="https://youtu.be/uagEJw6bTM4">video</url>
-      which shows a physical model of Java memory setting array values.
-    </p>
-
-    <video youtube="uagEJw6bTM4" label="video-array-values-memory" />
     <activity label="array-access-mcq1">
       <statement>
         <p>
