@@ -11,7 +11,7 @@
       Since the definition of a selection is a point in the code where the flow
       of control makes a decision to go down one branch or another based on some
       value, we need a data type to represent those values. Some older languages
-      just reuse an existing data type, such as their equivalent of <c>int</c>
+      just reuse an existing data type, such as their equivalent of <c>int</c>,
       treating <c>0</c> as false and all other numbers as true. And some modern
       languages, in an attempt to be more lenient will treat any value at all as
       a true or false value, following some oftentimes complicated rules about
@@ -48,12 +48,13 @@
     </p>
 
     <p>
-      However there are a lot we can produce <c>boolean</c> values. There are
-      operators the operate <em>on</em> booleans to produce new <c>boolean</c>s,
-      which allow us to express complex conditions. There are operators that
-      operate on other kinds of values to produce <c>boolean</c> values, like
-      the <c>&gt;</c> operator that compares two numbers, producing <c>true</c>
-      if the first number is greater than the second and <c>false</c> otherwise.
+      However there are a lot of ways we can produce <c>boolean</c> values.
+      There are operators the operate <em>on</em> booleans to produce new
+      <c>boolean</c> values, which allow us to express complex conditions. There are
+      operators that operate on other kinds of values to produce <c>boolean</c>
+      values, like the <c>&gt;</c> operator that compares two numbers, producing
+      <c>true</c> if the first number is greater than the second and
+      <c>false</c> otherwise.
     </p>
 
     <p>
