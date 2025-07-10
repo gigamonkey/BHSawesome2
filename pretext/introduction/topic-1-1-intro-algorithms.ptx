@@ -164,7 +164,7 @@
   </subsection>
 
   <subsection>
-    <title>Compiling and Running Java Programs</title>
+    <title>Compiling and running Java programs</title>
 
     <p>
       Code can be written in any text editor, including the small text editor
@@ -192,7 +192,7 @@
   </subsection>
 
   <subsection>
-    <title>Java Keywords</title>
+    <title>Java keywords</title>
 
     <p>
       <term>Keywords</term> are reserved words that have special meaning in
