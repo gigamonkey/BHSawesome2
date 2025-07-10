@@ -150,7 +150,7 @@
     <p>
       To create an array of a specific size we use the keyword <c>new</c>
       followed by what looks like an array type but with an <c>int</c>
-      expression (usually a literal <c>int</c>) inside the square brackets that
+      expression (often a literal <c>int</c>) inside the square brackets that
       says how big the array should be. The whole expression causes a new
       array’s to be created and space allocated for it’s object data and then
       evaluates to a reference to that new array. We then need to do something
@@ -190,19 +190,19 @@
     <p>
       <ul>
         <li>
-          <p><c>0</c> for elements of type <c>int</c></p>
+          <c>0</c> for elements of type <c>int</c>
         </li>
 
         <li>
-          <p><c>0.0</c> for elements of type <c>double</c></p>
+          <c>0.0</c> for elements of type <c>double</c>
         </li>
 
         <li>
-          <p><c>false</c> for elements of type <c>boolean</c></p>
+          <c>false</c> for elements of type <c>boolean</c>
         </li>
 
         <li>
-          <p><c>null</c> for all reference types</p>
+          <c>null</c> for all reference types
         </li>
       </ul>
     </p>
@@ -783,36 +783,40 @@
     </p>
 
     <p>
-      One powerful feature in the array <term>data abstraction</term> is that we
-      can use variables for the index! As long as the variable holds an integer,
-      we can use it as an index.
+      Note also that the index can be any expression, not just a literal
+      <c>int</c>. In fact, it is somewhat unusual to use a literal index. More
+      likely we will use at least a variable or even a more complex arithmetic
+      expression. For instance given an array like <c>highScores</c>, the
+      expression <c>highScores.length - 1</c> gives us the index of the last
+      element of the array. Here are some examples, assuming <c>i</c> is an
+      <c>int</c> variable that is a legal index into <c>highScores</c>:
     </p>
 
     <program>
-      // use a variable for the index
-      int index = 3;
-      System.out.println(  highScores[index] );
+      highScores[i];                                         // Score at index i
+      highScores[i + 1];                                     // Next score
+      highScores[highScores.length - 1];                     // Last score
+      highScores[(int (Math.random() * highScores.length)]); // Random score
     </program>
 
-    <image source="Unit4-Data-Collections/array-images/cow.jpg" width="27%" />
-    <p>
-      Here’s a fun String array of image filenames. The following code displays
-      an online image using an HTML tag. (Note that this just works in this
-      Active Code window which interprets HTML. In other Java IDEs you would
-      need to use Java Swing graphics instead). Run the code and see that it
-      displays images[0] which is “cow.jpg”. The images array holds 5 images.
-    </p>
 
     <activity label="imageArray">
+      <title>Random images</title>
       <statement>
-        <p>
-          Can you change the index variable’s value so that it prints out the
-          puppy image? Can you print out the reindeer? Try all of them! What
-          indices did you need to use? Then try using a random number for the
-          index instead. Remember that <c>(int) (Math.random() * max)</c> will
-          return a number from <c>0</c> up to <c>max</c>. What’s the maximum
-          number it can be for this array?
-        </p>
+        <sidebyside widths="20% 75%">
+          <image source="Unit4-Data-Collections/array-images/cow.jpg" width="27%" />
+          <p>
+            This code contains an array of image filenames. Run the code and see
+            that it displays images[0] which is “cow.jpg”.
+            Can you change the index variable’s value so that it prints out the
+            puppy image? Can you print out the reindeer? Try all of them! What
+            indices did you need to use? Then try using a random number for the
+            index instead. Remember that <c>(int) (Math.random() * max)</c> will
+            return a number from <c>0</c> up to <c>max</c>. What’s the maximum
+            number it can be for this array?
+          </p>
+        </sidebyside>
+
       </statement>
 
       <program interactive="activecode">
@@ -881,14 +885,14 @@
 
     <p>
       In <xref ref="topic-1-9-method-signatures" /> we mentioned that Java uses
-      <term>call by value</term> when it passes arguments to methods. What that
-      means is that when we call a method and pass arguments, the argument
-      values are stored in the parameters defined in the method. For primitive
-      types that means a copy of the actual value. But for reference types, like
-      arrays, that means a copy of the reference—the number that allows access
-      to the actual object data of the array. And through a reference it’s
-      possible to change the actual data in the array so the change is visible
-      after the method returns.
+      <term>call by value</term> when it passes arguments to methods. That means
+      that when pass arguments in a method call, the argument values are stored
+      in the parameters defined in the method. For primitive types that means a
+      copy of the actual value. But for reference types, like arrays, that means
+      a copy of the reference—the number that allows access to the actual object
+      data of the array. And through a reference it’s possible to change the
+      actual data in the array so the change is visible after the method
+      returns.
     </p>
 
     <p>To see why this difference matters, consider these three listings.</p>
@@ -923,7 +927,12 @@
       <c>num</c> that was passed to <c>changeIntParameter</c>. This would
       perhaps be more obvious if we had instead called
       <c>changeIntParameter(10)</c>. Few people would expect the value of
-      <c>10</c> to suddenly by <c>20</c>!
+      <c>10</c> to suddenly be <c>20</c>!
+    </p>
+
+    <p>
+      Now consider this listing where the code works almost exactly like the
+      previous one:
     </p>
 
     <listing>
@@ -944,16 +953,21 @@
     </listing>
 
     <p>
-      This code works almost exactly like the previous one. The variable
-      <c>nums</c> is a reference to a newly created <c>int[]</c> rather than
-      just an <c>int</c>. But when <c>changeArrayParameter</c> is called, a copy
-      of that reference is passed as the argument and stored in the method’s
-      parameter <c>ns</c>. Then, like the code in <c>changeIntParameter</c>,
-      <c>changeArrayParameter</c> immediately assigns a completely new value to
-      its parameter, clobbering the one that was there just like
-      <c>changeIntParameter</c> clobbered the value <c>10</c> with the new value
-      <c>20</c>. Then the method returns and the change to <c>ns</c> no longer
-      matters because <c>ns</c> no longer exists.
+      In this code the variable <c>nums</c> is a reference to a newly created
+      <c>int[]</c> rather than just an <c>int</c>. But when
+      <c>changeArrayParameter</c> is called, a copy of that reference is passed
+      as the argument and stored in the method’s parameter <c>ns</c>. Then, like
+      the code in <c>changeIntParameter</c>, <c>changeArrayParameter</c>
+      immediately assigns a completely new value to its parameter, clobbering
+      the one that was there just like <c>changeIntParameter</c> clobbered the
+      value <c>10</c> with the new value <c>20</c>. Then the method returns and
+      the change to <c>ns</c> no longer matters because <c>ns</c> no longer
+      exists.
+    </p>
+
+    <p>
+      Now consider this final listing which works quite differently than the
+      first two:
     </p>
 
     <listing>
@@ -975,9 +989,8 @@
     </listing>
 
     <p>
-      This method, on the other hand, works different than the previous two. As
-      in the previous listing the variable <c>nums</c> is a reference to a newly
-      created array and a copy of that reference is passed to
+      As in the previous listing the variable <c>nums</c> is a reference to a
+      newly created array and a copy of that reference is passed to
       <c>changeArrayElement</c> where it is stored in the parameter <c>ns</c>.
       But <c>changeArrayElement</c> doesn’t assign a new value to <c>ns</c>.
       Instead it uses an array access expression to assign a new value to the
@@ -1155,7 +1168,7 @@
                   // Example of showing image files using an array called images (your array
                   // name above may be different)
                   // (this will only work in Active Code)
-                  // printHtmlImage( images[index] );
+                  // printHtmlImage(images[index]);
 
               }
 

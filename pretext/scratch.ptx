@@ -1598,6 +1598,75 @@
         of the array in memory.
       </p>
     </note>
+
+    <note>
+      <p>
+        Using a variable as the index is a powerful <term>data
+        abstraction</term> feature because it allows us to use loops with arrays
+        where the loop counter variable is the index of the array! This allows
+        our code to generalize to work for the whole array.
+      </p>
+    </note>
+
+    <p>
+      To set up a for-each loop, use <term>for (type variable :
+      arrayname)</term> where the type is the type for elements in the array,
+      and read it as “for each variable value in arrayname”. You may have used a
+      similar loop in AP CSP Pseudocode or App Inventor with lists like below.
+    </p>
+
+    <figure align="center">
+      <caption>Comparing App Inventor, AP CSP, and Java for each</caption>
+
+      <image source="Unit4-Data-Collections/Figures/appinvForEachComparison.png" width="100%" />
+    </figure>
+
+
+
+    <note>
+      <p>
+        Enhanced for each loops cannot be used in all situations. Only use
+        for-each loops when you want to loop through <term>all</term> the values
+        in an array without changing their values.
+      </p>
+
+      <p>
+        <ul>
+          <li>
+            <p>Do not use for each loops if you need the index.</p>
+          </li>
+
+          <li>
+            <p>
+              Do not use for each loops if you need to change the values in the
+              array.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Do not use for each loops if you want to loop through only part of
+              an array or in a different order.
+            </p>
+          </li>
+        </ul>
+      </p>
+    </note>
+
+  </subsection>
+
+  <subsection>
+    <title>Arrays Game</title>
+
+    <p>
+      Try the game below to practice loops with arrays. Click on
+      <term>Arrays</term> and then check on <term>Loops</term> and click on the
+      elements of the * array that would be printed out by the given code. If
+      you’re stuck, check on Labels to see the indices. We encourage you to work
+      in pairs and see how high a score you can get.
+    </p>
+
+    <interactive iframe="iframe/csagames.html" width="95%" aspect="1:1" />
   </subsection>
 
   <subsection xml:id="design-an-array-of-objects-for-your-community">
@@ -2004,6 +2073,210 @@
 
         <li><url href="numberCubeB.html">Number Cube B FRQ</url></li>
       </ul>
+    </p>
+  </subsection>
+
+    <subsection>
+    <title>Traversing Arrays of Objects</title>
+
+    <p>
+      Both indexed for loops and enhanced for (for each) loops can be used to
+      traverse an array of objects. Here is an example of a Student class and a
+      StudentArray class that searches for a student with a specific name. In
+      Java, when you are working with multiple classes on your own computer,
+      each class is usually in its own file that matches the class name. On
+      Runestone, when you are working with multiple classes, only the class that
+      has the main method should be public, and the other classes should start
+      with <c>class</c> instead of <c>public class</c>.
+    </p>
+
+    <activity label="student-array">
+      <statement>
+        <p>
+          Run the StudentArray class below. Note that it uses the class Student
+          below it and creates an array of Students. Using the StudentArray
+          print() method as a guide, write a StudentArray method called
+          findAndPrint() which takes a String name as an argument, and uses an
+          enhanced for-loop to traverse the array to find a Student in the array
+          with the same name. If the argument equals the Student object’s name
+          (using its getName() method), then print out that student’s info. Call
+          it from the main method to test it.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          public class StudentArray
+          {
+              private Student[] array;
+              private int size = 3;
+
+              // Creates an array of the default size
+              public StudentArray()
+              {
+                  array = new Student[size];
+              }
+
+              // Creates an array of the given size
+              public StudentArray(int size)
+              {
+                  array = new Student[size];
+              }
+
+              // Adds Student s to the array at index i
+              public void add(int i, Student s)
+              {
+                  array[i] = s;
+              }
+
+              // prints the array of students
+              public void print()
+              {
+                  for (Student s : array)
+                  {
+                      // this will call Student's toString() method
+                      System.out.println(s);
+                  }
+              }
+
+              /* Write a findAndPrint(name) method */
+
+              public static void main(String[] args)
+              {
+                  // Create an object of this class and pass in size 3
+                  StudentArray roster = new StudentArray(3);
+                  // Add new Student objects at indices 0-2
+                  roster.add(0, new Student("Skyler", "skyler@sky.com", 123456));
+                  roster.add(1, new Student("Ayanna", "ayanna@gmail.com", 789012));
+                  roster.add(2, new Student("Dakota", "dak@gmail.com", 112233));
+                  roster.print();
+                  System.out.println("Finding student Ayanna: ");
+                  // uncomment to test
+                  // roster.findAndPrint("Ayanna");
+              }
+          }
+
+          class Student
+          {
+              private String name;
+              private String email;
+              private int id;
+
+              public Student(String initName, String initEmail, int initId)
+              {
+                  name = initName;
+                  email = initEmail;
+                  id = initId;
+              }
+
+              public String getName()
+              {
+                  return name;
+              }
+
+              public String getEmail()
+              {
+                  return email;
+              }
+
+              public int getId()
+              {
+                  return id;
+              }
+
+              // toString() method
+              public String toString()
+              {
+                  return id + ": " + name + ", " + email;
+              }
+          }
+        </code>
+
+        <tests>
+          <![CDATA[
+
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("StudentArray");
+              }
+
+              @Test
+              public void test1()
+              {
+                  String target = "findAndPrint(String";
+                  boolean passed =
+                          checkCodeContains("findAndPrint method header with String paramenter", target);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2()
+              {
+                  String target = "roster.findAndPrint(";
+                  boolean passed =
+                          checkCodeContains(
+                                  "call to roster.findAndPrint method (uncommented in main)", target);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testForEach()
+              {
+                  String target = "for(Student";
+                  String code = getCode().replaceAll("\\s", "");
+                  int index = code.indexOf("findAndPrint(String");
+                  boolean passed = false;
+                  if (index > 0)
+                  {
+                      code = code.substring(index, index + 200);
+                      int num = countOccurences(code, target);
+                      passed = num == 1;
+                  }
+                  getResults(
+                          "true",
+                          "" + passed,
+                          "Checking that findAndPrint() contains an enhanced for loop for Student in array",
+                          passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testEquals()
+              {
+                  boolean passed = checkCodeContains("use of equals method", ".equals(");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testGetName()
+              {
+                  boolean passed = checkCodeContains("use of getName() method", ".getName()");
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
+        </tests>
+      </program>
+    </activity>
+
+    <p>
+      Remember that normally an enhanced for loop cannot be used to modify
+      primitive values in an array because the loop variable does not refer to
+      the real object in the array. However, when an array stores object
+      references, the attributes can be modified by calling methods on the
+      enhanced <c>for</c> loop variable. The references stored in the array are
+      unchanged, but since loop variable is another reference to the same
+      objects, you can change the attributes of an object in an array using the
+      enhanced for loop using its public mutator methods.
     </p>
   </subsection>
 </section>

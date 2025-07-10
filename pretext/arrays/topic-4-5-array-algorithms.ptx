@@ -1220,6 +1220,115 @@
         </tests>
       </program>
     </activity>
+
+    <p>
+      Be careful not to jump out of loop too early when you are looking for a
+      value in an array. The method below uses <term>return</term> statements to
+      stop the execution of the method and return a value to the method that
+      called this method. However, you must be careful not to stop the loop too
+      soon.
+    </p>
+
+    <activity label="find_loop_early_return_error">
+      <statement>
+        <p>
+          What is wrong with the code below? The first time through the loop it
+          will start with the element at index 0 and check if the item at the
+          array index equals the passed target string. If they have the same
+          characters in the same order it will return 0, otherwise it will
+          return -1. But, it has only processed one element of the array. How
+          would you fix the code to work correctly (process all array elements
+          before returning)?
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          <![CDATA[
+
+          public class StringWorker
+          {
+              private String[] arr = {"Hello", "Hey", "Good morning!"};
+
+              public int findString(String target)
+              {
+                  String word = null;
+                  for (int index = 0; index < arr.length; index++)
+                  {
+                      word = arr[index];
+
+                      if (word.equals(target))
+                      {
+                          return index;
+                      }
+                      else
+                      {
+                          return -1;
+                      }
+                  }
+                  return -1;
+              }
+
+              public static void main(String[] args)
+              {
+                  StringWorker sWorker = new StringWorker();
+                  System.out.println(sWorker.findString("Hey"));
+              }
+          }
+
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("StringWorker");
+              }
+
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "1".replaceAll(" ", "\n");
+
+                  boolean passed = (output.equals(expect));
+                  getResults(expect, output, "Testing main() output", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2()
+              {
+                  StringWorker sWorker = new StringWorker();
+                  String output = "" + sWorker.findString("Good morning!");
+                  String expect = "2";
+
+                  boolean passed = getResults(expect, output, "Testing findString(\"Good morning!\")");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test3()
+              {
+                  StringWorker sWorker = new StringWorker();
+                  String output = "" + sWorker.findString("Hello!");
+                  String expect = "-1";
+
+                  boolean passed = getResults(expect, output, "Testing findString(\"Hello!\")");
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
   </subsection>
 
   <subsection xml:id="pairs-and-duplicates-in-array">
@@ -1791,6 +1900,95 @@
           }
         </tests>
       </program>
+    </activity>
+
+
+    <activity label="mcq_array_infinite">
+      <statement>
+        <p>
+          Given the following code segment, which of the following will cause an
+          infinite loop? Assume that <c>temp</c> is an int variable initialized
+          to be greater than zero and that <c>a</c> is an array of integers.
+        </p>
+
+        <program>
+          <![CDATA[
+
+          for (int k = 0; k < a.length; k++) {
+             while (a[k] < temp) {
+                a[k] *= 2;
+             }
+          }
+
+          ]]>
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>
+              The values don't matter this will always cause an infinite loop.
+            </p>
+          </statement>
+
+          <feedback>
+            <p>An infinite loop will not always occur in this code segment.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>
+              Whenever <c>a</c> includes a value that is less than or equal to
+              zero.
+            </p>
+          </statement>
+
+          <feedback>
+            <p>
+              When <c>a</c> contains a value that is less than or equal to zero
+              then multiplying that value by 2 will never make the result larger
+              than the <c>temp</c> value (which was set to some value &gt; 0),
+              so an infinite loop will occur.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>Whenever <c>a</c> has values larger then <c>temp</c>.</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Values larger then <c>temp</c> will not cause an infinite loop.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>When all values in <c>a</c> are larger than <c>temp</c>.</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Values larger then <c>temp</c> will not cause an infinite loop.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>Whenever <c>a</c> includes a value equal to <c>temp</c>.</p>
+          </statement>
+
+          <feedback>
+            <p>Values equal to <c>temp</c> will not cause the infinite loop.</p>
+          </feedback>
+        </choice>
+      </choices>
     </activity>
   </subsection>
 </section>

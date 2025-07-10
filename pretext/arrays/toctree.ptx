@@ -8,12 +8,17 @@
       So far the data types we’ve focused on have been the three primitive data
       types <c>int</c>, <c>double</c>, and <c>boolean</c>. We’ve made a little
       bit of use of <c>String</c> for generating output and mentioned that it is
-      <em>not</em> a primitive type but rather a <term>reference type</term>. In
-      this unit we are going to look at <term>arrays</term> which as our first
-      real dive into a reference type. Arrays sit a bit between the primitive
-      types and classes, which we’ll learn about in <xref ref="reference-types"
-      />, but they give us a good way to start to understand the difference
-      between primitive and reference types.
+      <em>not</em> a primitive type but rather a <term>reference type</term>.
+    </p>
+
+    <p>
+      In this unit we are going to look at <term>arrays</term> which as our
+      first real dive into a reference type. Arrays sit a bit between the
+      primitive types and classes, which we’ll learn about in <xref
+      ref="reference-types" />, but they give us a good way to start to
+      understand the difference between primitive and reference types. So we’ll
+      start with a quick overview here before getting into arrays themselves in
+      the next section.
     </p>
 
     <p>
@@ -27,48 +32,49 @@
       numbers, i.e. <c>doubles</c>. That is, completely independent of Java or
       any other programming language, they have circuitry devoted to
       interpreting sets of thirty-two or sixty-four bits in a certain way so we
-      can do math with them. (They also know about sixty-four-bit integers and
-      thirty-two-bit floating point numbers. Java has types for those,
-      <c>long</c> and <c>float</c>, but they are used less frequently than
-      <c>int</c> and <c>double</c> and they aren’t on the AP exam.) Similarly,
-      the CPU has circuitry for doing Boolean logic that map very directly to
-      what we can do in Java with <c>boolean</c> values.
+      can do math with them. Similarly, the CPU has circuitry for doing Boolean
+      logic that map very directly to what we can do in Java with <c>boolean</c>
+      values. But anything beyond the handful of primitive types the computer
+      inherently understands are represented in Java by reference types.
     </p>
 
     <p>
-      But anything beyond the handful of primitive types the computer inherently
-      understands are represented in Java by reference types. Typically
-      reference types represent more data than can fit in thirty-two or
-      sixty-four bits; many can require an arbitrary amount of memory. For
+      Typically reference types represent more data than can fit in thirty-two
+      or sixty-four bits; many can require an arbitrary amount of memory. For
       instance, a <c>String</c> can be short like <c>"foo"</c> but it can also
       be millions characters long, such as the complete text of <pubtitle>War
-      and Peace</pubtitle>. Arrays, likewise, represent essentially arbitrary
-      amount of data from a handful of values to millions or even billions.
+      and Peace</pubtitle>. Arrays, likewise, can represent essentially
+      arbitrary amount of data from a handful of values to millions or even
+      billions.
     </p>
 
     <p>
-      To represent such arbitrarily large values Java splits the value into two
-      parts which together make up an <term>object</term>. The actual data—the
-      text of <pubtitle>War and Peace</pubtitle> in a <c>String</c> for
-      instance—is called the <term>object data</term> and it lives somewhere in
-      the computer’s memory. To get at the object data we need a special number,
-      called a <term>reference</term>, that the CPU knows how to deal with. The
-      reference is a single value that tells the CPU where in memory the object
-      data lives. References, not the object data they refer to, are what are
-      assigned to variables and passed as arguments to methods.
+      To represent arbitrarily large values Java splits the value into two parts
+      which together make up an <term>object</term>. The actual data—the text of
+      <pubtitle>War and Peace</pubtitle> in a <c>String</c> or the millions of
+      numbers in an array—is called the <term>object data</term> and it lives
+      somewhere in the computer’s memory. But to get at the object data we need
+      a special number, called a <term>reference</term>, that the CPU knows how
+      to deal with. A reference is a single value that tells the CPU where in
+      memory the object data lives. References, not the object data they refer
+      to, are assigned to variables and passed as arguments to methods when
+      dealing with objects.
     </p>
 
     <p>
-      Most of the time we don’t have to distinguish between the “actual” object
-      that lives in memory and the reference to it since in Java there’s no way
-      to get at the object data except through the object’s reference. But when
-      we say the value of some variable is a particular object we mean that the
-      variable holds a reference that points to that object’s data. But when we
-      say an object contains a particular value, that means that that value is
-      somewhere in the object data.
+      Most of the time we don’t have to distinguish between the object data and
+      the reference to it since in Java there’s no way to get at the object data
+      except through the reference. But when we say the value of some variable
+      is a particular object what we really mean is that the variable holds a
+      reference to that object’s data. And when we say an object contains a
+      particular value, we means that that value is somewhere in the object
+      data.
     </p>
 
-    <p>We’ll explore the consequences of this split in the next few units.</p>
+    <p>
+      With that preamble out of the way, we’re ready to actually look at arrays
+      and how to use them.
+    </p>
   </introduction>
 
   <xi:include href="./topic-4-3-array-basics.ptx" />
