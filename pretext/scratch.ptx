@@ -580,8 +580,6 @@
 
       <image source="Unit2-Selection-and-Iteration/Figures/whileInAppInventor.png" width="100%" />
     </figure>
-
-
   </subsection>
 
   <subsection>
@@ -652,8 +650,7 @@
       </li>
     </ul>
   </subsection>
-
-  <!-- moved out because I have the whole set of primes bootups. -->
+<!-- moved out because I have the whole set of primes bootups. -->
   <subsection xml:id="divisibility">
     <title>Divisibility</title>
 
@@ -805,8 +802,7 @@
       primes become less frequent, due to the increasing likelihood of
       divisibility by smaller primes. If you’re curious about the use of prime
       numbers in encryption, watch this <url
-      href="https://www.youtube.com/watch?v=M7kEpw1tn50"
-      visual="https://www.youtube.com/watch?v=M7kEpw1tn50">Numberphile
+      href="https://www.youtube.com/watch?v=M7kEpw1tn50">Numberphile
       video</url>.
     </p>
 
@@ -1460,6 +1456,455 @@
         <li>
           <url href="frq-practice.html" visual="frq-practice.html">Unit 1 FRQ Practice</url>
         </li>
+      </ul>
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>From arrays</title>
+
+    <figure align="center">
+      <caption>Comparing App Inventor lists and Java arrays</caption>
+
+      <image source="Unit4-Data-Collections/Figures/appinvListComparison.png" width="100%" />
+    </figure>
+
+    <figure align="center">
+      <caption>Comparing Access to App Inventor lists and Java arrays</caption>
+
+      <image source="Unit4-Data-Collections/Figures/appinvSelectComparison.png" width="100%" />
+    </figure>
+
+    <note>
+      <p>
+        Note that length is an instance variable and not a method, unlike the
+        String <c>length()</c> method, so you don’t add parentheses after
+        length. However, if you use parentheses after length during the AP exam,
+        you won’t lose any points. The length instance variable is declared as a
+        <c>public final int</c>. <c>public</c> means you can access it and
+        <c>final</c> means the value can’t change.
+      </p>
+    </note>
+
+    <subsection xml:id="arrays-game">
+      <title>Arrays Game</title>
+
+      <p>
+        Try the game below to practice arrays. Click on <term>Arrays</term> and
+        click on the element of the * array that would be printed out by the
+        given code. If you’re stuck, check on Labels to see the indices. We
+        encourage you to work in pairs and see how high a score you can get.
+      </p>
+
+      <p>
+        <interactive iframe="iframe/csagames.html" width="95%" aspect="1:1" />
+      </p>
+    </subsection>
+  </subsection>
+
+  <subsection xml:id="design-an-array-of-objects-for-your-community">
+    <title>Design an Array of Objects for your Community</title>
+
+    <p>
+      So far, we have seen arrays of ints and Strings, but we can create an
+      array of any type. For example, the following program creates an array of
+      Turtle objects. Notice that for an array of objects, we must call the
+      constructor of each object to initialize the array elements, for example
+      <c>array[index] = new ClassName();</c>. And we can use
+      <c>array[index].method()</c> to call a method of an object in the array.
+    </p>
+
+    <program>
+      // Declaring an array of objects type ClassName
+      ClassName[] array = new ClassName[size];
+      // initialize array element by calling ClassName constructor
+      array[index] = new ClassName();
+      // call a method of the object in the array at index
+      array[index].method();
+    </program>
+
+    <activity label="TurtleArray">
+      <statement>
+        <p>
+          Run the code below to see the 2 turtles in the array. Can you change
+          the array size to 3 and create and add 1 more Turtle object to the
+          array? Make this new turtle turnRight and go forward using its indexed
+          array variable.
+        </p>
+      </statement>
+
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+        <code>
+          import java.awt.*;
+          import java.util.*;
+
+          public class TurtleArray
+          {
+              public static void main(String[] args)
+              {
+                  World world = new World(300, 300);
+                  // Declare an array for 2 Turtle objects
+                  Turtle[] turtarray = new Turtle[2];
+                  // Initialize the array elements by constructing each turtle object
+                  turtarray[0] = new Turtle(world);
+                  turtarray[1] = new Turtle(world);
+                  // Call each turtle's methods
+                  turtarray[0].forward();
+                  turtarray[1].turnLeft();
+                  turtarray[1].forward();
+
+                  world.show(true);
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testArrayDeclaration() throws IOException
+              {
+                  boolean passed = checkCodeContains("an array declaration of size 3", "Turtle[3]");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testInit()
+              {
+                  boolean passed =
+                          checkCodeContains("initialization for array element 2", "[2] = new Turtle");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testprint()
+              {
+                  boolean passed = checkCodeContains("call forward() of array element 2", "[2].forward();");
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
+
+    <p>
+      In the last unit, you came up with a class of your own choice relevant to
+      you or your community. In this unit, you will create an array to hold
+      objects of your class.
+    </p>
+
+    <p>
+      <ol>
+        <li>
+          <p>
+            Copy your class from <url
+            href="../Unit3-Class-Creation/topic-3-5-methods.html#groupwork-design-a-class-for-your-community">lesson
+            3.5</url> below.
+          </p>
+        </li>
+
+        <li>
+          <p>In the main method, create an array of 3 objects of your class.</p>
+        </li>
+
+        <li>
+          <p>
+            Initialize array elements indexed 0 to 2 to new objects of your
+            class using its constructor.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Call the print method of each object in the array using the array
+            index.
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <project label="community-challenge-6-1">
+      <statement>
+        <p>
+          Community Challenge: Copy your class from <url
+          href="../Unit3-Class-Creation/topic-3-5-methods.html#groupwork-design-a-class-for-your-community">lesson
+          3.5</url> below. Create an array of 3 objects of your class,
+          initialize them to new objects and call their print methods.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          public class          // Add your class name here!
+          {
+              // 1. Copy your class from lesson 3.5 below.
+
+
+
+              public static void main(String[] args)
+              {
+                 // 2. Create an array of 3 objects of your class.
+
+                 // 3. Initialize array elements 0-2 to new objects of your class.
+
+
+                 // 4. Call the print method of each object in the array using the array index.
+
+
+              }
+          }
+        </code>
+
+        <tests>
+          <![CDATA[
+
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testArrayDeclaration() throws IOException
+              {
+                  boolean passed = checkCodeContains("an array declaration of size 3", "[3]");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testObjs() throws IOException
+              {
+                  String code = getCode();
+                  String target = "new";
+                  int count = countOccurences(code, target);
+                  boolean passed = (count >= 4);
+                  getResults(
+                          "4+ " + target,
+                          count + "+ " + target,
+                          "Did you declare 3 objects of your class using new and your constructor?",
+                          passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testInit()
+              {
+                  boolean passed = checkCodeContains("initialization for array element 0", "[0]=");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testprint()
+              {
+                  boolean passed = checkCodeContains("call to print of array element 0", "[0].print");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main"); // .split("\n");
+                  String expect = "3+ line(s) of text";
+                  String actual = " line(s) of text";
+                  int len = output.split("\n").length;
+
+                  if (output.length() > 0)
+                  {
+                      actual = len + actual;
+                  }
+                  else
+                  {
+                      actual = output.length() + actual;
+                  }
+                  boolean passed = len >= 3;
+
+                  getResults(expect, actual, "Checking output", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
+        </tests>
+      </program>
+    </project>
+  </subsection>
+
+  <subsection>
+    <title>Design an Array of Objects for your Community</title>
+
+    <p>
+      In the last unit, you came up with a class of your own choice relevant to
+      you or your community. In the <url
+      href="../Unit4-Data-Collections/topic-4-3-array-basics.html#groupwork-design-an-array-of-objects-for-your-community">last
+      lesson</url>, you created an array to hold objects of your class. Copy
+      your array of objects code from the <url
+      href="../Unit4-Data-Collections/topic-4-3-array-basics.html#groupwork-design-an-array-of-objects-for-your-community">last
+      lesson</url>. In this challenge, add a loop to traverse your array to
+      print out each object.
+    </p>
+
+    <project label="community-challenge-array-loop">
+      <statement>
+        <p>
+          Copy your class from the <url
+          href="../Unit4-Data-Collections/topic-4-3-array-basics.html#groupwork-design-an-array-of-objects-for-your-community">last
+          lesson</url> below. It should create an array of 3 objects of your
+          class and initialize them to new objects. Instead of calling their
+          print() methods individually, write a <c>for</c> (indexed or enhanced)
+          loop that traverses your array to print out each object using the
+          index i.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          public class          // Add your class name here!
+          {
+              // Copy your class from lesson 4.3 below.
+
+
+
+              public static void main(String[] args)
+              {
+                 // Create an array of 3 objects of your class.
+
+                 // Initialize array elements 0-2 to new objects of your class.
+
+
+                 // Write a for loop that traverses the array and calls
+                 // the print method of each object in the array
+
+
+              }
+          }
+        </code>
+
+        <tests>
+          <![CDATA[
+
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testArrayDeclaration() throws IOException
+              {
+                  boolean passed = checkCodeContains("an array declaration of size 3", "[3]");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testLoop()
+              {
+                  String target = "for";
+                  boolean passed = checkCodeContains("for loop", target);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testprint()
+              {
+                  boolean passed =
+                          checkCodeContains("call to print in the loop", ".print");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main"); // .split("\n");
+                  String expect = "3+ line(s) of text";
+                  String actual = " line(s) of text";
+                  int len = output.split("\n").length;
+
+                  if (output.length() > 0)
+                  {
+                      actual = len + actual;
+                  }
+                  else
+                  {
+                      actual = output.length() + actual;
+                  }
+                  boolean passed = len >= 3;
+
+                  getResults(expect, actual, "Checking output", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
+        </tests>
+      </program>
+    </project>
+  </subsection>
+
+  <subsection xml:id="review-and-frq-practice-for-arrays">
+    <title>Review and FRQ Practice for Arrays</title>
+
+    <p>
+      This lesson ends the section on 1-dimensional arrays. You can now do the
+      following review lessons and FRQs at the end of the unit and College Board
+      Progress Check for Unit 4 Part 1 in the AP Classroom.
+    </p>
+
+    <p>
+      <ul>
+        <li><url href="array-summary.html">Arrays Summary</url></li>
+
+        <li>
+          <url href="ArrayParsonsPractice.html">Arrays Mixed-up Code Practice</url>
+        </li>
+
+        <li><url href="ArrayPractice.html">Arrays Coding Practice</url></li>
+
+        <li>
+          <url href="MoreArrayPractice.html">More Arrays Coding Practice</url>
+        </li>
+
+        <li>
+          <url href="array-Exercises.html">Arrays Multiple-Choice Exercises</url>
+        </li>
+
+        <li><url href="arrayExam.html">Arrays Exam</url></li>
+      </ul>
+    </p>
+
+    <p>
+      We encourage you to work in pairs or groups to tackle the following
+      challenging FRQ problems and take them one step at a time. These will get
+      easier with practice! Note that the third FRQ now uses ArrayLists instead
+      of arrays, but these FRQ practice probelms will still help you to practice
+      iterating over a data structure and can be converted to work with
+      ArrayLists.
+    </p>
+
+    <p>
+      <ul>
+        <li><url href="horseBarnA.html">Horse Barn A FRQ</url></li>
+
+        <li><url href="horseBarnB.html">Horse Barn B FRQ</url></li>
+
+        <li><url href="selfDivisorB.html">Self Divisor B FRQ</url></li>
+
+        <li><url href="soundA.html">Sound A FRQ</url></li>
+
+        <li><url href="soundB.html">Sound B FRQ</url></li>
+
+        <li><url href="numberCubeA.html">Number Cube A FRQ</url></li>
+
+        <li><url href="numberCubeB.html">Number Cube B FRQ</url></li>
       </ul>
     </p>
   </subsection>
