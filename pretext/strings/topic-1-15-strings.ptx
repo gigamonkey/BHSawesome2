@@ -278,9 +278,7 @@
       <c>String</c> it is. That means that unlike in English, but like many
       other programming languages (but not Snap!), indices start at zero, rather
       than one, since the first character is zero positions from the front of
-      the <c>String</c>. (Sometimes programmers will refer to the first
-      character as the “zeroth” character to be super clear. And because
-      “zeroth” is kind of fun to say.)
+      the <c>String</c>.
     </p>
 
     <p>
