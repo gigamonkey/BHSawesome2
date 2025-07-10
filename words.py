@@ -24,7 +24,7 @@ def count_level(c, subs, level, parent_count):
 def emit(title, count, parent_count, level):
     indent = " " * (level * 2)
     percent = 100 * count / parent_count
-    print(f"{indent}- {title} ({count:,} - {percent:.2f}%)\n")
+    print(f"{indent}- {title} ({count:,} - {percent:.1f}%)\n")
 
 
 def title(elem):
