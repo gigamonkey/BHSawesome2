@@ -349,7 +349,7 @@
       The <c>String</c> class includes a ton of methods but for the AP exam, you
       only need to know how to use the methods we look at below. They are all
       also decribed in the <url
-      href="https://drive.google.com/file/d/1UL4JeQ5hfnO3H6uoZizgOU2XjHkitmFw/view?usp=sharing">AP
+      href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf">AP
       CSA Java Quick Reference Sheet</url> that you have access to during the
       exam.
     </p>
@@ -1432,7 +1432,7 @@
           <p>
             (AP 1.15.B.2) The following String methods and constructors,
             including what they do and when they are used, are part of the <url
-            href="https://drive.google.com/file/d/1UL4JeQ5hfnO3H6uoZizgOU2XjHkitmFw/view?usp=sharing">AP
+            href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf">AP
             CSA Java Quick Reference Sheet</url> that you can use during the
             exam:
           </p>
