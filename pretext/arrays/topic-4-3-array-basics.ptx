@@ -189,21 +189,13 @@
 
     <p>
       <ul>
-        <li>
-          <c>0</c> for elements of type <c>int</c>
-        </li>
+        <li><c>0</c> for elements of type <c>int</c></li>
 
-        <li>
-          <c>0.0</c> for elements of type <c>double</c>
-        </li>
+        <li><c>0.0</c> for elements of type <c>double</c></li>
 
-        <li>
-          <c>false</c> for elements of type <c>boolean</c>
-        </li>
+        <li><c>false</c> for elements of type <c>boolean</c></li>
 
-        <li>
-          <c>null</c> for all reference types
-        </li>
+        <li><c>null</c> for all reference types</li>
       </ul>
     </p>
 
@@ -799,24 +791,23 @@
       highScores[(int (Math.random() * highScores.length)]); // Random score
     </program>
 
-
     <activity label="imageArray">
       <title>Random images</title>
+
       <statement>
         <sidebyside widths="20% 75%">
           <image source="Unit4-Data-Collections/array-images/cow.jpg" width="27%" />
           <p>
             This code contains an array of image filenames. Run the code and see
-            that it displays images[0] which is “cow.jpg”.
-            Can you change the index variable’s value so that it prints out the
-            puppy image? Can you print out the reindeer? Try all of them! What
-            indices did you need to use? Then try using a random number for the
-            index instead. Remember that <c>(int) (Math.random() * max)</c> will
-            return a number from <c>0</c> up to <c>max</c>. What’s the maximum
-            number it can be for this array?
+            that it displays images[0] which is “cow.jpg”. Can you change the
+            index variable’s value so that it prints out the puppy image? Can
+            you print out the reindeer? Try all of them! What indices did you
+            need to use? Then try using a random number for the index instead.
+            Remember that <c>(int) (Math.random() * max)</c> will return a
+            number from <c>0</c> up to <c>max</c>. What’s the maximum number it
+            can be for this array?
           </p>
         </sidebyside>
-
       </statement>
 
       <program interactive="activecode">

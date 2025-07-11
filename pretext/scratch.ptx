@@ -1621,8 +1621,6 @@
       <image source="Unit4-Data-Collections/Figures/appinvForEachComparison.png" width="100%" />
     </figure>
 
-
-
     <note>
       <p>
         Enhanced for each loops cannot be used in all situations. Only use
@@ -1652,7 +1650,6 @@
         </ul>
       </p>
     </note>
-
   </subsection>
 
   <subsection>
@@ -2076,7 +2073,7 @@
     </p>
   </subsection>
 
-    <subsection>
+  <subsection>
     <title>Traversing Arrays of Objects</title>
 
     <p>
@@ -2278,5 +2275,102 @@
       objects, you can change the attributes of an object in an array using the
       enhanced for loop using its public mutator methods.
     </p>
+  </subsection>
+
+  <subsection>
+    <title>From topic-4-5</title>
+
+    <p>
+      Here is an object-oriented example that has the array as a private
+      instance variable in the class and provides public methods sum and average
+      that use enhanced for loops. You can use the Code Lens button to step
+      through this code.
+    </p>
+
+    <activity label="enhanced-for-loop-avg">
+      <statement>
+        <p>
+          Try the code below that computes the average of the elements in the
+          array. Can you add another method to compute the sum of the elements?
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          public class ArrayWorker
+          {
+              private int[] values;
+
+              public ArrayWorker(int[] theValues)
+              {
+                  values = theValues;
+              }
+
+              public double getSum()
+              {
+                   // TODO: Write a loop that computes and returns
+                   // the sum of the elements in the array
+
+
+              }
+              public double getAverage()
+              {
+                  double total = 0;
+                  for (int val : values)
+                  {
+                      total = total + val;
+                  }
+                  return total / values.length;
+              }
+
+              public static void main(String[] args)
+              {
+                  int[] numArray = {2, 6, 7, 12, 5};
+                  ArrayWorker aWorker = new ArrayWorker(numArray);
+                  System.out.println(aWorker.getAverage());
+                  System.out.println(aWorker.getSum());
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ArrayWorker");
+              }
+
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "6.4\n32.0\n";
+
+                  boolean passed = getResults(expect, output, "Output from main");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testFor()
+               {
+                    String code = getCode();
+
+                    int fors = countOccurences(code, "for");
+
+                    boolean passed =
+                            getResults(
+                                    "2 for loops", fors + " for loops", "for loop used in getSum");
+                    assertTrue(passed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
   </subsection>
 </section>

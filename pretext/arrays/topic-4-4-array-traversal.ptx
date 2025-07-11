@@ -92,9 +92,9 @@
       <c>highScores</c>”.
     </p>
 
-
     <activity label="arraytrace2">
       <title>Code reading</title>
+
       <statement>
         <p>
           What do you think the following code will print out? If you need to,
@@ -184,6 +184,7 @@
 
     <activity label="qIndexOutOfBounds">
       <title>Pick the right loop</title>
+
       <statement>
         <p>
           Which of the following loop headers will cause an
@@ -259,6 +260,7 @@
 
     <activity label="offbyone">
       <title>Fix the off-by-ones</title>
+
       <statement>
         <p>
           The following code has an ArrayIndexOutOfBoundsException. It has 2
@@ -337,22 +339,500 @@
         </tests>
       </program>
     </activity>
-
   </subsection>
 
   <subsection>
-    <title>Looping through Part of an Array</title>
+    <title>Enhanced <c>for</c> loop</title>
 
     <p>
-      You don’t have to loop through all of the elements of an array. You can
-      loop through just some of the elements of an array using a for loop. The
-      following code doubles the first five elements in an array. Notice that it
-      uses a complex conditional (<c>&amp;&amp;</c>) on line 14 to make sure
-      that the loop doesn’t go beyond the length of the array, because if you
-      had an array that had less than 5 elements, you wouldn’t want the code to
-      try to double the 5th element which doesn’t exist! Notice that in this
-      code, the array is a private instance variable of the class ArrayWorker.
-      It is created in the constructor and changed or accessed by the methods.
+      There is a special kind of loop that can be used with arrays (and some
+      other data structures) called the <term>enhanced <c>for</c> loop</term> or
+      a <term>for each loop</term>. This loop is designed for the common case
+      where we just want to do something with each element of an array and don’t
+      actually care about the index.
+    </p>
+
+    <p>
+      The basic structure looks like the loop on the left which is equivalent to
+      the normal <c>for</c> loop on the right, both looping over a <c>String</c>
+      array, <c>names</c>. The only difference is that in the enhanced
+      <c>for</c> loop the code doesn’t have to worry about the index variable
+      <c>i</c>.
+    </p>
+
+    <sidebyside>
+      <listing>
+        <title>Enhanced <c>for</c> loop</title>
+
+        <program>
+          for (String s : names) {
+
+            // use s
+          }
+        </program>
+      </listing>
+
+      <listing>
+        <title>Regular <c>for</c> loop</title>
+
+        <program>
+          <![CDATA[
+
+          for (int i = 0; i < names.length; i++) {
+            String s = names[i];
+            // use s
+          }
+
+          ]]>
+        </program>
+      </listing>
+    </sidebyside>
+
+    <p>
+      In an enhanced <c>for</c> loop the loop variable before the <c>:</c> holds
+      the value of each element of the array in turn without us having to use a
+      separate index variable to get at it. This means the type of the variable
+      has to be the same as the element type of the array. We can read this loop
+      as “for each <c>s</c> in <c>names</c>” which is why this kind of loop is
+      called a for-each loop.
+    </p>
+
+    <p>
+      See the examples below in Java that loop through an int and a String
+      array. Notice the type of the loop variable is the type of the array.
+    </p>
+
+    <program>
+      int[] highScores = { 10, 9, 8, 8 };
+      String[] names = { "Jamal", "Emily", "Destiny", "Mateo" };
+
+      // for each score in highScores print it
+      for (int score : highScores) {
+          System.out.println(score); // Notice no index or [], just the variable score!
+      }
+
+      // for each name in names print it
+      for (String name : names) {
+          System.out.println(name);
+      }
+    </program>
+
+    <p>
+      We should use the enhanced <c>for</c> loop whenever we can, because it’s
+      more concise and cuts down on errors. However it isn’t always applicable.
+      The main limitation is that we don’t have access to the underlying index
+      variable. So we can’t, for instance, easily compare adjacent elements of
+      an array or modify the value at whatever position we are in, in the array.
+      For instance, there’s no way to use an enhanced <c>for</c> loop to write
+      something like this regular <c>for</c> loop which adds one to each element
+      of an array of <c>int</c>:
+    </p>
+
+    <program>
+      <![CDATA[
+
+      for (int i = 0; i < numbers.length; i++) {
+        numbers[i]++; // Need the index to be able to change the array element
+      }
+
+      ]]>
+    </program>
+
+    <p>
+      Similarly, since we have no control over the order we access the elements
+      of the array we can’t use the enhanced <c>for</c> loop if we want to loop
+      backwards through an array or over only part of an array. And to use the
+      enhanced loop we need something to loop over. That can be an array or a
+      few other data types, such as <c>ArrayList</c> which we’ll learn about in
+      <xref ref="array-lists" />. But we need <em>something</em> to loop over
+      whereas with a regular <c>for</c> loop we can loop using whatever
+      initializer, condition, and updater we want.
+    </p>
+
+    <p>
+      Because a regular <c>for</c> loop is more flexible than the enhanced
+      <c>for</c> loop, we can always rewrite an enhanced loop using a regular
+      loop but not always the other way around.
+    </p>
+
+    <activity label="foreach1">
+      <statement>
+        <p>
+          Try the following code. Notice the for each loop with an <c>int</c>
+          array and a <c>String</c> array. Add another high score and another
+          name to the arrays and run again.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          public class ForEachDemo {
+              public static void main(String[] args) {
+                  int[] highScores = {10, 9, 8, 8};
+                  String[] names = {"Jamal", "Emily", "Destiny", "Mateo"};
+                  // for each loop with an int array
+                  for (int value : highScores) {
+                      System.out.println(value);
+                  }
+                  // for each loop with a String array
+                  for (String value : names) {
+                      System.out.println(value); // this time it's a name!
+                  }
+              }
+          }
+        </code>
+
+        <tests>
+          <![CDATA[
+
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ForEachDemo");
+              }
+
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect1 = "10\n9\n8\n8";
+                  String expect2 = "Jamal\nEmily\nDestiny\nMateo";
+
+                  boolean passed = output.contains(expect1) && output.contains(expect2);
+
+                  passed = getResults(expect1 + " " + expect2, output, "Original main()", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "10 9 8 8 Jamal Emily Destiny Mateo".replaceAll(" ", "\n");
+
+                  boolean passed = !output.equals(expect) && output.length() > expect.length();
+
+                  passed = getResults(expect, output, "Added another high score and name", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
+        </tests>
+      </program>
+    </activity>
+
+    <activity label="evenLoop">
+      <title>Rewrite as enhanced <c>for</c> loop</title>
+
+      <statement>
+        <p>
+          Rewrite the following for loop which prints out the even numbers in
+          the array as an enhanced <c>for</c> loop. Make sure it works!
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          <![CDATA[
+
+          public class EvenLoop {
+              public static void main(String[] args) {
+                  int[] values = {6, 2, 1, 7, 12, 5};
+                  // Rewrite this loop as a for each loop and run
+                  for (int i = 0; i < values.length; i++) {
+                      if (values[i] % 2 == 0) {
+                          System.out.println(values[i] + " is even!");
+                      }
+                  }
+              }
+          }
+
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("EvenLoop");
+              }
+
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "6 is even!\n2 is even!\n12 is even!";
+
+                  boolean passed = getResults(expect, output, "main()");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2()
+              {
+                  boolean passed = checkCodeContains("for each loop", "for(int * : values)");
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
+
+    <activity label="incrementLoop">
+      <statement>
+        <p>
+          The for-each loop below cannot change the values in the array because
+          only the loop variable value will change. Run it with the CodeLens
+          button to see why this is. Then, change the loop to an indexed for
+          loop to make it change the array values.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          public class IncrementLoop
+          {
+              public static void main(String[] args)
+              {
+                  int[] values = {6, 2, 1, 7, 12, 5};
+                  // Can this loop increment the values?
+                  for (int val : values)
+                  {
+                      val++;
+                      System.out.println("New val: " + val);
+                  }
+                  // Print out array to see if they really changed
+                  System.out.println("Array after the loop: ");
+                  for (int v : values)
+                  {
+                      System.out.print(v + " ");
+                  }
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("IncrementLoop");
+              }
+
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect =
+                          "New val: 7\n"
+                              + "New val: 3\n"
+                              + "New val: 2\n"
+                              + "New val: 8\n"
+                              + "New val: 13\n"
+                              + "New val: 6\n"
+                              + "Array after the loop:\n"
+                              + "7 3 2 8 13 6";
+
+                  boolean passed = getResults(expect, output, "main()");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2()
+              {
+                  String target = "for (int * = #; * ? *.length; *~)";
+                  boolean passed = checkCodeContains("for loop", target);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
+
+    <activity label="mcq_for_each1">
+      <statement>
+        <p>
+          Which of the following are reasons you would use an enhanced
+          <c>for</c> loop instead of a regular <c>for</c> loop?
+        </p>
+
+        <pre>
+            I: If you wish to access every element of an array.
+           II: If you wish to modify elements of the array.
+          III: If you wish to refer to elements through a variable name instead of an array index.
+        </pre>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>Only I.</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This style of loop does access every element of the array, but
+              using a for-each loop also means the user can access elements
+              through the variable name.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>I and III only.</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Correct! For-each loops access all elements and enable users to
+              use a variable name to refer to array elements, but do not allow
+              users to modify elements directly.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>II and III only.</p>
+          </statement>
+
+          <feedback>
+            <p>
+              For-each loops, as well as allowing users to refer to array
+              elements, run through every element. For-each loops also do not
+              allow users to modify elements directly.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>All of the Above.</p>
+          </statement>
+
+          <feedback>
+            <p>
+              For-each loops access all of an array's elements and allow users
+              to refer to elements through a variable, but do not allow users to
+              modify elements directly.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="mcqfor-each2">
+      <statement>
+        <p>What is the output of the following code segment?</p>
+
+        <program>
+          int[] numbers = { 44, 33, 22, 11 };
+
+          for (int num : numbers) {
+              num *= 2;
+          }
+
+          for (int num : numbers) {
+              System.out.print(num + " ");
+          }
+        </program>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement id="mcqfor-each2_opt_a">
+            <p>44 33 22 11</p>
+          </statement>
+
+          <feedback id="mcqfor-each2_opt_a">
+            <p>
+              The array is unchanged because the foreach loop cannot modify the
+              array elements.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="mcqfor-each2_opt_b">
+            <p>46 35 24 13</p>
+          </statement>
+
+          <feedback id="mcqfor-each2_opt_b">
+            <p>
+              Remember that the foreach loop cannot modify the array elements,
+              but it also uses multiplication, not addition.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="mcqfor-each2_opt_c">
+            <p>88 66 44 22</p>
+          </statement>
+
+          <feedback id="mcqfor-each2_opt_c">
+            <p>
+              Remember that the foreach loop cannot modify the array elements.
+              Only the variable num will be doubled, not the original array
+              values.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="mcqfor-each2_opt_d">
+            <p>The code will not compile.</p>
+          </statement>
+
+          <feedback id="mcqfor-each2_opt_d">
+            <p>This code will compile.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>More complex loops</title>
+
+    <p>
+      So we should us the enhanced <c>for</c> loop when we can which covers a
+      lot of cases where we would use a canonical regular <c>for</c> loop. But
+      there are cases where we will need the flexibility of a regular loop such
+      as if we want to loop over a specific range in the array or to process the
+      array in reverse order.
+    </p>
+
+    <p>
+      For example, the following code doubles the first five elements in an
+      array. Notice that it uses <c>Math.min</c> to compute the limit because we
+      want the loop to run five times or the whole length of the array if it has
+      fewer than five elements. Another way to write this would be with a more
+      complex boolean expression such as <c>i &lt; values.length &amp;&amp; i
+      &lt; 5</c>. Which is clearer is a matter of taste but using
+      <c>Math.min</c> is arguably more to the point.
     </p>
 
     <activity label="tripleFirstFour">
@@ -380,10 +860,10 @@
               /** Doubles the first 5 elements of the array */
               public void doubleFirstFive()
               {
-                  // Notice: && i < 5
-                  for (int i = 0; i < values.length && i < 5; i++)
+                  // Notice: Math.min to limit the number of iterations.
+                  for (int i = 0; i < Math.min(5, values.length); i++)
                   {
-                      values[i] = values[i] * 2;
+                      values[i] *= 2;
                   }
               }
 
@@ -644,206 +1124,89 @@
     </activity>
   </subsection>
 
-  <subsection>
-    <title>Enhanced <c>for</c> loop</title>
+  <subsection xml:id="looping-from-back-to-front">
+    <title>Looping From Back to Front</title>
 
+    <idx><h>loop</h><h>from back to front</h></idx>
     <p>
-      There is a special kind of loop that can be used with arrays (and some
-      other data structures) called the <term>enhanced <c>for</c> loop</term> or
-      a <term>for each loop</term>. This loop is designed for the common case
-      where we just want to do something with each element of an array and don’t
-      actually care about the index.
+      You don’t have to loop through an array from the front to the back. You
+      can loop by starting at the back of the array and move toward the front
+      during each time through the loop. In the example below, the method
+      <c>getIndexOfLastElementSmallerThanTarget</c> returns the index of the
+      last element in the array that is smaller than the given argument. The
+      <term>return</term> statement inside the loop stops the execution of the
+      loop and the method and returns the index that is found immediately back
+      to the main method. It returns -1 if there is no number in the array that
+      is smaller than the given number.
     </p>
 
-    <p>
-      The basic structure looks like the loop on the left which is equivalent to
-      the normal <c>for</c> loop on the right, both looping over a <c>String</c>
-      array, <c>names</c>. The only difference is that in the enhanced
-      <c>for</c> loop the code doesn’t have to worry about the index variable
-      <c>i</c>.
-    </p>
-
-    <sidebyside>
-      <listing>
-        <title>Enhanced <c>for</c> loop</title>
-        <program>
-          for (String s : names) {
-
-            // use s
-          }
-
-        </program>
-      </listing>
-      <listing>
-        <title>Regular <c>for</c> loop</title>
-        <program>
-          for (int i = 0; i &lt; names.length; i++) {
-            String s = names[i];
-            // use s
-          }
-        </program>
-      </listing>
-    </sidebyside>
-
-    <p>
-      In an enhanced <c>for</c> loop the loop variable before the <c>:</c> holds
-      the value of each element of the array in turn without us having to use a
-      separate index variable to get at it. This means the type of the variable
-      has to be the same as the element type of the array. We can read this loop
-      as “for each <c>s</c> in <c>names</c>” which is why this kind of loop is
-      called a for-each loop.
-    </p>
-
-    <p>
-      See the examples below in Java that loop through an int and a String
-      array. Notice the type of the loop variable is the type of the array.
-    </p>
-
-    <program>
-      int[] highScores = { 10, 9, 8, 8 };
-      String[] names = { "Jamal", "Emily", "Destiny", "Mateo" };
-
-      // for each score in highScores print it
-      for (int score : highScores) {
-          System.out.println(score); // Notice no index or [], just the variable score!
-      }
-
-      // for each name in names print it
-      for (String name : names) {
-          System.out.println(name);
-      }
-    </program>
-
-    <p>
-      We should use the enhanced <c>for</c> loop whenever we can, because it’s
-      more concise and cuts down on errors. However it isn’t always applicable.
-      The main limitation is that we don’t have access to the underlying index
-      variable. So we can’t, for instance, easily compare adjacent elements of
-      an array or modify the value at whatever position we are in, in the array.
-      For instance, there’s no way to use an enhanced <c>for</c> loop to write
-      something like this regular <c>for</c> loop which adds one to each element
-      of an array of <c>int</c>:
-    </p>
-
-    <program>
-      for (int i = 0; i &lt; numbers.length; i++) {
-        numbers[i]++; // Need the index to be able to change the array element
-      }
-    </program>
-
-    <p>
-      Similarly, since we have no control over the order we access the elements
-      of the array we can’t use the enhanced <c>for</c> loop if we want to loop
-      backwards through an array or over only part of an array. And to use the
-      enhanced loop we need something to loop over. That can be an array or a
-      few other data types, such as <c>ArrayList</c> which we’ll learn about in
-      <xref ref="array-lists" />. But we need <em>something</em> to loop over
-      whereas with a regular <c>for</c> loop we can loop using whatever
-      initializer, condition, and updater we want.
-    </p>
-
-    <p>
-      Because a regular <c>for</c> loop is more flexible than the enhanced
-      <c>for</c> loop, we can always rewrite an enhanced loop using a regular
-      loop but not always the other way around.
-    </p>
-
-    <activity label="foreach1">
+    <activity label="arrayFindSmaller">
       <statement>
         <p>
-          Try the following code. Notice the for each loop with an <c>int</c> array and
-          a <c>String</c> array. Add another high score and another name to the arrays
-          and run again.
+          What does the following code print out? Notice that the array and the
+          target are passed in as arguments to the
+          getIndexOfLastElementSmallerThanTarget method. Trace through it
+          keeping track of the array values and the output. Then run it to see
+          if you’re right. You can also try the code in the <url
+          href="http://www.pythontutor.com/java.html#code=%20%20%20public%20class%20ArrayFindSmallest%0A%20%20%20%7B%0A%0A%20%20%20%20%20%20/**%20%40return%20index%20of%20the%20last%20number%20smaller%20than%20target%20*/%20%20%20%20%20%0A%20%20%20%20%20%20public%20static%20int%20getIndexOfLastElementSmallerThanTarget%28int%5B%20%5D%20values,%20int%20target%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20for%20%28int%20index%20%3D%20values.length%20-%201%3B%20index%20%3E%3D%200%3B%20index--%29%0A%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20%28values%5Bindex%5D%20%3C%20target%29%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20index%3B%0A%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20return%20-1%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%0A%20%20%20%20%20%20public%20static%20void%20main%20%28String%5B%5D%20args%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20int%5B%5D%20theArray%20%3D%20%7B-30,%20-5,%208,%2023,%2046%7D%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28%22Last%20index%20of%20element%20smaller%20than%2050%3A%20%22%20%2B%20getIndexOfLastElementSmallerThanTarget%28theArray,%2050%29%29%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28%22Last%20index%20of%20element%20smaller%20than%2030%3A%20%22%20%2B%20getIndexOfLastElementSmallerThanTarget%28theArray,%2030%29%29%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28%22Last%20index%20of%20element%20smaller%20than%2010%3A%20%22%20%2B%20getIndexOfLastElementSmallerThanTarget%28theArray,%2010%29%29%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28%22Last%20index%20of%20element%20smaller%20than%200%3A%20%22%20%2BgetIndexOfLastElementSmallerThanTarget%28theArray,0%29%29%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28%22Last%20index%20of%20element%20smaller%20than%20-20%3A%20%22%20%2BgetIndexOfLastElementSmallerThanTarget%28theArray,-20%29%29%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28%22Last%20index%20of%20element%20smaller%20than%20-30%3A%20%22%20%2BgetIndexOfLastElementSmallerThanTarget%28theArray,-30%29%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%7D%0A%20%20%20&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Java
+          visualizer</url> with the Code Lens button. Can you add another method
+          that finds the index of the last element greater than the target
+          instead of smaller than the target and have main print out a test of
+          it? Call this method getIndexOfLastElementGreaterThanTarget and give
+          it 2 arguments and a return value like the method below.
         </p>
       </statement>
 
       <program interactive="activecode">
         <code>
-          public class ForEachDemo {
-              public static void main(String[] args) {
-                  int[] highScores = {10, 9, 8, 8};
-                  String[] names = {"Jamal", "Emily", "Destiny", "Mateo"};
-                  // for each loop with an int array
-                  for (int value : highScores) {
-                      System.out.println(value);
-                  }
-                  // for each loop with a String array
-                  for (String value : names) {
-                      System.out.println(value); // this time it's a name!
-                  }
-              }
-          }
-        </code>
-
-        <tests>
           <![CDATA[
 
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
+          public class ArrayFindSmallest
           {
-              public RunestoneTests()
+
+              /**
+               * @return index of the last number smaller than target
+               */
+              public static int getIndexOfLastElementSmallerThanTarget(int[] values, int target)
               {
-                  super("ForEachDemo");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect1 = "10\n9\n8\n8";
-                  String expect2 = "Jamal\nEmily\nDestiny\nMateo";
-
-                  boolean passed = output.contains(expect1) && output.contains(expect2);
-
-                  passed = getResults(expect1 + " " + expect2, output, "Original main()", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "10 9 8 8 Jamal Emily Destiny Mateo".replaceAll(" ", "\n");
-
-                  boolean passed = !output.equals(expect) && output.length() > expect.length();
-
-                  passed = getResults(expect, output, "Added another high score and name", passed);
-                  assertTrue(passed);
-              }
-          }
-
-          ]]>
-        </tests>
-      </program>
-    </activity>
-
-    <activity label="evenLoop">
-      <title>Rewrite as enhanced <c>for</c> loop</title>
-      <statement>
-        <p>
-          Rewrite the following for loop which prints out the even numbers in
-          the array as an enhanced <c>for</c> loop. Make sure it works!
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-        <code>
-          <![CDATA[
-
-          public class EvenLoop {
-              public static void main(String[] args) {
-                  int[] values = {6, 2, 1, 7, 12, 5};
-                  // Rewrite this loop as a for each loop and run
-                  for (int i = 0; i < values.length; i++) {
-                      if (values[i] % 2 == 0) {
-                          System.out.println(values[i] + " is even!");
+                  for (int index = values.length - 1; index >= 0; index--)
+                  {
+                      if (values[index] < target)
+                      {
+                         return index;
                       }
                   }
+                  return -1;
+              }
+
+              /**
+               * Add a method called getIndexOfLastElementGreaterThanTarget
+               *
+               * @param int array
+               * @param int target
+               * @return index of the last number greater than target
+               */
+              public static void main(String[] args)
+              {
+                  int[] theArray = {-30, -5, 8, 23, 46};
+                  System.out.println(
+                          "Last index of element smaller than 50: "
+                                  + getIndexOfLastElementSmallerThanTarget(theArray, 50));
+                  System.out.println(
+                          "Last index of element smaller than 30: "
+                                  + getIndexOfLastElementSmallerThanTarget(theArray, 30));
+                  System.out.println(
+                          "Last index of element smaller than 10: "
+                                  + getIndexOfLastElementSmallerThanTarget(theArray, 10));
+                  System.out.println(
+                          "Last index of element smaller than 0: "
+                                  + getIndexOfLastElementSmallerThanTarget(theArray, 0));
+                  System.out.println(
+                          "Last index of element smaller than -20: "
+                                  + getIndexOfLastElementSmallerThanTarget(theArray, -20));
+                  System.out.println(
+                          "Last index of element smaller than -30: "
+                                  + getIndexOfLastElementSmallerThanTarget(theArray, -30));
               }
           }
 
@@ -861,23 +1224,57 @@
           {
               public RunestoneTests()
               {
-                  super("EvenLoop");
+                  super("ArrayFindSmallest");
               }
 
               @Test
               public void test1()
               {
                   String output = getMethodOutput("main");
-                  String expect = "6 is even!\n2 is even!\n12 is even!";
+                  String expect = "Last index of element smaller than ";
 
-                  boolean passed = getResults(expect, output, "main()");
+                  boolean passed = output.contains(expect);
+                  output = output.substring(0, output.indexOf("\n"));
+                  passed =
+                          getResults(
+                                  "Last index of element smaller than 50: 4",
+                                  output,
+                                  "Ran getIndexOfLastElementSmallerThanTarget",
+                                  passed);
                   assertTrue(passed);
               }
 
               @Test
               public void test2()
               {
-                  boolean passed = checkCodeContains("for each loop", "for(int * : values)");
+                  int[] nums = {10, 50, 20, 30, 40, 20};
+                  Object[] args = {nums, 30};
+
+                  String output = getMethodOutput("getIndexOfLastElementGreaterThanTarget", args);
+                  String expect = "4";
+
+                  boolean passed =
+                          getResults(
+                                  expect,
+                                  output,
+                                  "getIndexOfLastElementGreaterThanTarget({10, 50, 20, 30, 40, 20}, 30)");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test3()
+              {
+                  int[] nums = {10, 50, 20, 30, 40, 20};
+                  Object[] args = {nums, 100};
+
+                  String output = getMethodOutput("getIndexOfLastElementGreaterThanTarget", args);
+                  String expect = "-1";
+
+                  boolean passed =
+                          getResults(
+                                  expect,
+                                  output,
+                                  "getIndexOfLastElementGreaterThanTarget({10, 50, 20, 30, 40, 20}, 100)");
                   assertTrue(passed);
               }
           }
@@ -885,242 +1282,178 @@
       </program>
     </activity>
 
-    <activity label="incrementLoop">
+    <activity label="mcq_array_loop1">
       <statement>
         <p>
-          The for-each loop below cannot change the values in the array because
-          only the loop variable value will change. Run it with the CodeLens
-          button to see why this is. Then, change the loop to an indexed for
-          loop to make it change the array values.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-        <code>
-          public class IncrementLoop
-          {
-              public static void main(String[] args)
-              {
-                  int[] values = {6, 2, 1, 7, 12, 5};
-                  // Can this loop increment the values?
-                  for (int val : values)
-                  {
-                      val++;
-                      System.out.println("New val: " + val);
-                  }
-                  // Print out array to see if they really changed
-                  System.out.println("Array after the loop: ");
-                  for (int v : values)
-                  {
-                      System.out.print(v + " ");
-                  }
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("IncrementLoop");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect =
-                          "New val: 7\n"
-                              + "New val: 3\n"
-                              + "New val: 2\n"
-                              + "New val: 8\n"
-                              + "New val: 13\n"
-                              + "New val: 6\n"
-                              + "Array after the loop:\n"
-                              + "7 3 2 8 13 6";
-
-                  boolean passed = getResults(expect, output, "main()");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2()
-              {
-                  String target = "for (int * = #; * ? *.length; *~)";
-                  boolean passed = checkCodeContains("for loop", target);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-      </program>
-    </activity>
-
-
-    <activity label="mcq_for_each1">
-      <statement>
-        <p>
-          Which of the following are reasons you would use an enhanced
-          <c>for</c> loop instead of a regular <c>for</c> loop?
+          Given the following code segment (which is identical to the method
+          above) what will be returned when you execute:
+          <c>getIndexOfLastElementSmallerThanTarget(values,-13)</c>;
         </p>
 
-        <pre>
-            I: If you wish to access every element of an array.
-           II: If you wish to modify elements of the array.
-          III: If you wish to refer to elements through a variable name instead of an array index.
-        </pre>
+        <program>
+          <![CDATA[
+
+          private int[ ] values = {-20, -15, 2, 8, 16, 33};
+
+          public static int getIndexOfLastElementSmallerThanTarget(int[ ] values, int compare)
+          {
+             for (int i = values.length - 1; i >=0; i--)
+             {
+                if (values[i] < compare)
+                   return i;
+             }
+             return -1; // to show none found
+          }
+
+          ]]>
+        </program>
       </statement>
 
       <choices>
         <choice>
           <statement>
-            <p>Only I.</p>
+            <p>-1</p>
           </statement>
 
           <feedback>
             <p>
-              This style of loop does access every element of the array, but
-              using a for-each loop also means the user can access elements
-              through the variable name.
+              The method will only return -1 if no value in the array is less
+              than the passed value.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>-15</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The method returns the index of the first item in the array that
+              is less than the value, not the value.
             </p>
           </feedback>
         </choice>
 
         <choice correct="yes">
           <statement>
-            <p>I and III only.</p>
+            <p>1</p>
           </statement>
 
           <feedback>
             <p>
-              Correct! For-each loops access all elements and enable users to
-              use a variable name to refer to array elements, but do not allow
-              users to modify elements directly.
+              Since the method loops from the back towards the front -15 is the
+              last value in the array that is less than -13 and it is at index
+              1.
             </p>
           </feedback>
         </choice>
 
         <choice>
           <statement>
-            <p>II and III only.</p>
+            <p>You will get an out of bounds error.</p>
           </statement>
 
           <feedback>
             <p>
-              For-each loops, as well as allowing users to refer to array
-              elements, run through every element. For-each loops also do not
-              allow users to modify elements directly.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>All of the Above.</p>
-          </statement>
-
-          <feedback>
-            <p>
-              For-each loops access all of an array's elements and allow users
-              to refer to elements through a variable, but do not allow users to
-              modify elements directly.
+              No, the method correctly starts the index at values.length - 1 and
+              continues as long as i is greater than or equal to 0.
             </p>
           </feedback>
         </choice>
       </choices>
     </activity>
 
-    <activity label="mcqfor-each2">
+    <activity label="mcq_array_loop2">
       <statement>
-        <p>What is the output of the following code segment?</p>
+        <p>
+          Given the following code segment (which is not quite identical to the
+          method above) what will be returned when you execute:
+          <c>getIndexOfLastElementSmallerThanTarget(values, 7)</c>;
+        </p>
 
         <program>
-          int[] numbers = { 44, 33, 22, 11 };
+          <![CDATA[
 
-          for (int num : numbers) {
-              num *= 2;
+          int[ ] values = {-20, -15, 2, 8, 16, 33};
+
+          public static int getIndexOfLastElementSmallerThanTarget(int[] values, int compare)
+          {
+             for (int i = values.length; i >=0; i--)
+             {
+                if (values[i] < compare)
+                   return i;
+             }
+             return -1; // to show none found
           }
 
-          for (int num : numbers) {
-              System.out.print(num + " ");
-          }
+          ]]>
         </program>
       </statement>
 
       <choices>
+        <choice>
+          <statement>
+            <p>-1</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The method will only return -1 if no value in the array is less
+              than the passed value.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>1</p>
+          </statement>
+
+          <feedback>
+            <p>Check the starting index. Is it correct?</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>2</p>
+          </statement>
+
+          <feedback>
+            <p>Check the starting index. Is it correct?</p>
+          </feedback>
+        </choice>
+
         <choice correct="yes">
-          <statement id="mcqfor-each2_opt_a">
-            <p>44 33 22 11</p>
+          <statement>
+            <p>You will get an out of bounds error.</p>
           </statement>
 
-          <feedback id="mcqfor-each2_opt_a">
+          <feedback>
             <p>
-              The array is unchanged because the foreach loop cannot modify the
-              array elements.
+              You can not start the index at the length of the array. You must
+              start at the length of the array minus one. This is a common
+              mistake.
             </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement id="mcqfor-each2_opt_b">
-            <p>46 35 24 13</p>
-          </statement>
-
-          <feedback id="mcqfor-each2_opt_b">
-            <p>
-              Remember that the foreach loop cannot modify the array elements,
-              but it also uses multiplication, not addition.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement id="mcqfor-each2_opt_c">
-            <p>88 66 44 22</p>
-          </statement>
-
-          <feedback id="mcqfor-each2_opt_c">
-            <p>
-              Remember that the foreach loop cannot modify the array elements.
-              Only the variable num will be doubled, not the original array
-              values.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement id="mcqfor-each2_opt_d">
-            <p>The code will not compile.</p>
-          </statement>
-
-          <feedback id="mcqfor-each2_opt_d">
-            <p>This code will compile.</p>
           </feedback>
         </choice>
       </choices>
     </activity>
   </subsection>
 
-
-
   <subsection>
     <title>Coding Challenge: SpellChecker</title>
+
     <sidebyside widths="15% 80%">
       <image source="Unit4-Data-Collections/Figures/spellcheck.png" width="18%" alt="Spell Checker" />
       <p>
         In this challenge, you will use an array of English words from a
-        dictionary file to see if a given word is spelled correctly. We encourage
-        you to work in pairs for this challenge.
+        dictionary file to see if a given word is spelled correctly. We
+        encourage you to work in pairs for this challenge.
       </p>
     </sidebyside>
-
-
 
     <datafile label="dictionary" filename="dictionary.txt" editable="no" hide="yes">
       <pre>
@@ -11131,6 +11464,7 @@ zus
 
     <project label="challenge-spellchecker">
       <title>Spellchecker</title>
+
       <statement>
         <p>
           This challenge includes a dictionary file of 10,000 English words
@@ -11146,35 +11480,36 @@ zus
           <ol>
             <li>
               <p>
-                Write a <c>print10</c> method that prints out the first 10 words of
-                the dictionary array. Do not print out the whole array of 10,000
-                words!
+                Write a <c>print10</c> method that prints out the first 10 words
+                of the dictionary array. Do not print out the whole array of
+                10,000 words!
               </p>
             </li>
 
             <li>
               <p>
-                Write a <c>spellcheck</c> method that takes a word as a parameter
-                and returns true if it is in the dictionary array. It should return
-                false if it is not found (When can you tell that you have not found
-                a word in the dictionary?). Test your code below by changing the
-                word sent to the spellcheck() method in main. This algorithm is
-                called a <term>linear search</term> where we step through the array
-                one element at a time (here the dictionary one word at a time)
-                looking for a certain element.
+                Write a <c>spellcheck</c> method that takes a word as a
+                parameter and returns true if it is in the dictionary array. It
+                should return false if it is not found (When can you tell that
+                you have not found a word in the dictionary?). Test your code
+                below by changing the word sent to the spellcheck() method in
+                main. This algorithm is called a <term>linear search</term>
+                where we step through the array one element at a time (here the
+                dictionary one word at a time) looking for a certain element.
               </p>
             </li>
 
             <li>
               <p>
-                Optional Challenge: Write a method <c>printStartsWith(String)</c>
-                that prints out the words that start with a <c>String</c> of letters
-                in the <c>dictionary</c> array. Your method should take a parameter
-                for the <c>firstLetters</c> as a <c>String</c>. You could use the
-                Java String <url
+                Optional Challenge: Write a method
+                <c>printStartsWith(String)</c> that prints out the words that
+                start with a <c>String</c> of letters in the <c>dictionary</c>
+                array. Your method should take a parameter for the
+                <c>firstLetters</c> as a <c>String</c>. You could use the Java
+                String <url
                 href="https://www.w3schools.com/java/ref_string_startswith.asp">startsWith()</url>
-                method here if you’d like to, or use <c>indexOf</c> to see if the
-                <c>firstLetters</c> is at index 0 of the string. This is not
+                method here if you’d like to, or use <c>indexOf</c> to see if
+                the <c>firstLetters</c> is at index 0 of the string. This is not
                 autograded.
               </p>
             </li>
@@ -11417,5 +11752,4 @@ zus
       </ul>
     </p>
   </subsection>
-
 </section>

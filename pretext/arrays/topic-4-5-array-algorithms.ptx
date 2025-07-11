@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-5-array-algorithms">
-  <title>Implementing Array Algorithms</title>
+  <title>Array algorithms</title>
 
   <introduction>
     <idx>array</idx>
@@ -23,68 +23,35 @@
     <idx>pairs</idx>
     <idx>duplicates</idx>
     <p>
-      In this lesson, you will study common algorithms using arrays and loops
-      and practice FRQ (Free Response Question) problems.
+      In <xref ref="topic-2-9-loop-algorithms" /> we learned some basic loop
+      algorithms for summing, counting, averaging, and findind minimums and
+      maximums. Those algorithms become a lot more useful now that we know
+      enough to use them with arrays. For instance we can sum or average all the
+      elements in an array of numeric values or count the number of elements of
+      an array that meet some criteria.
     </p>
 
     <p>
-      Here are some common algorithms that utilize array traversal that you
-      should be familiar with for the AP CSA exam (AP 4.5.A.1):
+      Additionally there are some algorithms that are more specific to arrays
+      such as those that operate on pairs of elements and algorithms that modify
+      the order of elements in an array such as by reversing or rotating the
+      elements within an array.
     </p>
 
     <p>
-      <ul>
-        <li>
-          <p>Compute a sum or average of array elements</p>
-        </li>
-
-        <li>
-          <p>Determine the minimum or maximum value in an array</p>
-        </li>
-
-        <li>
-          <p>Search for a particular element in the array</p>
-        </li>
-
-        <li>
-          <p>Determine if at least one element has a particular property</p>
-        </li>
-
-        <li>
-          <p>Determine if all elements have a particular property</p>
-        </li>
-
-        <li>
-          <p>Determine the number of elements having a particular property</p>
-        </li>
-
-        <li>
-          <p>Access all consecutive pairs of elements</p>
-        </li>
-
-        <li>
-          <p>Determine the presence or absence of duplicate elements</p>
-        </li>
-
-        <li>
-          <p>Shift or rotate elements left or right</p>
-        </li>
-
-        <li>
-          <p>Reverse the order of the elements</p>
-        </li>
-      </ul>
+      In this lesson we’ll look at how to implement these algorithms with
+      arrays.
     </p>
   </introduction>
 
   <subsection xml:id="accumulator-pattern-for-sum-average-1">
-    <title>Accumulator Pattern for Sum/Average</title>
+    <title>Summing and averaging</title>
 
     <p>
-      As we have seen before with loops, the <term>accumulator pattern</term> is
-      an algorithm that iterates through a set of values using a loop and
-      updates an accumulator variable with those values, for example to compute
-      a sum or average of a set of values. The accumulator pattern has 4 steps:
+      As we have seen before with loops, the <term>accumulator pattern</term>
+      decribes loops that iterate through a set of values while “accumulating”
+      values into a variable. For instance summing numbers is a form of
+      accumulation. The accumulator pattern has four steps:
     </p>
 
     <p>
@@ -102,29 +69,30 @@
         </li>
 
         <li>
-          <p>Print or use the accumulated value when the loop is done.</p>
+          <p>Do something with the accumulated value when the loop is done.</p>
         </li>
       </ol>
     </p>
 
     <p>
-      With arrays, the accumulator pattern is used to compute the sum or average
-      of the elements in the array. The sum is the total of all the elements in
-      the array, and the average is the sum divided by the number of elements in
-      the array.
+      The obvious way to sum the elements of an array is with an accumulating
+      loop over the elements of the array. Since we need to process all the
+      elements in the array to sum them and don’t care about their positions,
+      this is a great use for an enhanced <c>for</c> loop. And we can compute
+      the average by dividing the sum by the array’s length. For example:
     </p>
 
-    <p>For example,</p>
-
     <program>
-      int[] values = {6, 2, 1, 7, 12, 5};
+      int[] values = { 6, 2, 1, 7, 12, 5 };
+
       double sum = 0;
-      for (int val : values)
-      {
+
+      for (int val : values) {
           sum += val;
       }
+
       double average = sum / values.length;
-      System.out.println("Average is " + average);
+      System.out.println("Sum: " + sum + "; Average: " + average);
     </program>
 
     <activity label="parsons_array_avg" numbered="yes" adaptive="yes" indentation="show" language="java">
@@ -167,99 +135,6 @@
         </block>
       </blocks>
     </activity>
-
-    <p>
-      Here is an object-oriented example that has the array as a private
-      instance variable in the class and provides public methods sum and average
-      that use enhanced for loops. You can use the Code Lens button to step
-      through this code.
-    </p>
-
-    <activity label="enhanced-for-loop-avg">
-      <statement>
-        <p>
-          Try the code below that computes the average of the elements in the
-          array. Can you add another method to compute the sum of the elements?
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-        <code>
-          public class ArrayWorker
-          {
-              private int[] values;
-
-              public ArrayWorker(int[] theValues)
-              {
-                  values = theValues;
-              }
-
-              public double getSum()
-              {
-                   // TODO: Write a loop that computes and returns
-                   // the sum of the elements in the array
-
-
-              }
-              public double getAverage()
-              {
-                  double total = 0;
-                  for (int val : values)
-                  {
-                      total = total + val;
-                  }
-                  return total / values.length;
-              }
-
-              public static void main(String[] args)
-              {
-                  int[] numArray = {2, 6, 7, 12, 5};
-                  ArrayWorker aWorker = new ArrayWorker(numArray);
-                  System.out.println(aWorker.getAverage());
-                  System.out.println(aWorker.getSum());
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("ArrayWorker");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "6.4\n32.0\n";
-
-                  boolean passed = getResults(expect, output, "Output from main");
-                  assertTrue(passed);
-              }
-              @Test
-              public void testFor()
-               {
-                    String code = getCode();
-
-                    int fors = countOccurences(code, "for");
-
-                    boolean passed =
-                            getResults(
-                                    "2 for loops", fors + " for loops", "for loop used in getSum");
-                    assertTrue(passed);
-              }
-          }
-        </tests>
-      </program>
-    </activity>
   </subsection>
 
   <subsection xml:id="min-max-search-algorithms">
@@ -298,6 +173,7 @@
           The following method has the correct code to return the largest value
           in an integer array called
           <title_reference>vals</title_reference>
+
 
 
 
@@ -704,325 +580,6 @@
             <p>
               There is no count of the number of times the array element is
               equal to <c>target</c>.
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="looping-from-back-to-front">
-    <title>Looping From Back to Front</title>
-
-    <idx><h>loop</h><h>from back to front</h></idx>
-    <p>
-      You don’t have to loop through an array from the front to the back. You
-      can loop by starting at the back of the array and move toward the front
-      during each time through the loop. In the example below, the method
-      <c>getIndexOfLastElementSmallerThanTarget</c> returns the index of the
-      last element in the array that is smaller than the given argument. The
-      <term>return</term> statement inside the loop stops the execution of the
-      loop and the method and returns the index that is found immediately back
-      to the main method. It returns -1 if there is no number in the array that
-      is smaller than the given number.
-    </p>
-
-    <activity label="arrayFindSmaller">
-      <statement>
-        <p>
-          What does the following code print out? Notice that the array and the
-          target are passed in as arguments to the
-          getIndexOfLastElementSmallerThanTarget method. Trace through it
-          keeping track of the array values and the output. Then run it to see
-          if you’re right. You can also try the code in the <url
-          href="http://www.pythontutor.com/java.html#code=%20%20%20public%20class%20ArrayFindSmallest%0A%20%20%20%7B%0A%0A%20%20%20%20%20%20/**%20%40return%20index%20of%20the%20last%20number%20smaller%20than%20target%20*/%20%20%20%20%20%0A%20%20%20%20%20%20public%20static%20int%20getIndexOfLastElementSmallerThanTarget%28int%5B%20%5D%20values,%20int%20target%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20for%20%28int%20index%20%3D%20values.length%20-%201%3B%20index%20%3E%3D%200%3B%20index--%29%0A%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20%28values%5Bindex%5D%20%3C%20target%29%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20index%3B%0A%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20return%20-1%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%0A%20%20%20%20%20%20public%20static%20void%20main%20%28String%5B%5D%20args%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20int%5B%5D%20theArray%20%3D%20%7B-30,%20-5,%208,%2023,%2046%7D%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28%22Last%20index%20of%20element%20smaller%20than%2050%3A%20%22%20%2B%20getIndexOfLastElementSmallerThanTarget%28theArray,%2050%29%29%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28%22Last%20index%20of%20element%20smaller%20than%2030%3A%20%22%20%2B%20getIndexOfLastElementSmallerThanTarget%28theArray,%2030%29%29%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28%22Last%20index%20of%20element%20smaller%20than%2010%3A%20%22%20%2B%20getIndexOfLastElementSmallerThanTarget%28theArray,%2010%29%29%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28%22Last%20index%20of%20element%20smaller%20than%200%3A%20%22%20%2BgetIndexOfLastElementSmallerThanTarget%28theArray,0%29%29%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28%22Last%20index%20of%20element%20smaller%20than%20-20%3A%20%22%20%2BgetIndexOfLastElementSmallerThanTarget%28theArray,-20%29%29%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28%22Last%20index%20of%20element%20smaller%20than%20-30%3A%20%22%20%2BgetIndexOfLastElementSmallerThanTarget%28theArray,-30%29%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%7D%0A%20%20%20&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Java
-          visualizer</url> with the Code Lens button. Can you add another method
-          that finds the index of the last element greater than the target
-          instead of smaller than the target and have main print out a test of
-          it? Call this method getIndexOfLastElementGreaterThanTarget and give
-          it 2 arguments and a return value like the method below.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-        <code>
-          <![CDATA[
-
-          public class ArrayFindSmallest
-          {
-
-              /**
-               * @return index of the last number smaller than target
-               */
-              public static int getIndexOfLastElementSmallerThanTarget(int[] values, int target)
-              {
-                  for (int index = values.length - 1; index >= 0; index--)
-                  {
-                      if (values[index] < target)
-                      {
-                         return index;
-                      }
-                  }
-                  return -1;
-              }
-
-              /**
-               * Add a method called getIndexOfLastElementGreaterThanTarget
-               *
-               * @param int array
-               * @param int target
-               * @return index of the last number greater than target
-               */
-              public static void main(String[] args)
-              {
-                  int[] theArray = {-30, -5, 8, 23, 46};
-                  System.out.println(
-                          "Last index of element smaller than 50: "
-                                  + getIndexOfLastElementSmallerThanTarget(theArray, 50));
-                  System.out.println(
-                          "Last index of element smaller than 30: "
-                                  + getIndexOfLastElementSmallerThanTarget(theArray, 30));
-                  System.out.println(
-                          "Last index of element smaller than 10: "
-                                  + getIndexOfLastElementSmallerThanTarget(theArray, 10));
-                  System.out.println(
-                          "Last index of element smaller than 0: "
-                                  + getIndexOfLastElementSmallerThanTarget(theArray, 0));
-                  System.out.println(
-                          "Last index of element smaller than -20: "
-                                  + getIndexOfLastElementSmallerThanTarget(theArray, -20));
-                  System.out.println(
-                          "Last index of element smaller than -30: "
-                                  + getIndexOfLastElementSmallerThanTarget(theArray, -30));
-              }
-          }
-
-          ]]>
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("ArrayFindSmallest");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "Last index of element smaller than ";
-
-                  boolean passed = output.contains(expect);
-                  output = output.substring(0, output.indexOf("\n"));
-                  passed =
-                          getResults(
-                                  "Last index of element smaller than 50: 4",
-                                  output,
-                                  "Ran getIndexOfLastElementSmallerThanTarget",
-                                  passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2()
-              {
-                  int[] nums = {10, 50, 20, 30, 40, 20};
-                  Object[] args = {nums, 30};
-
-                  String output = getMethodOutput("getIndexOfLastElementGreaterThanTarget", args);
-                  String expect = "4";
-
-                  boolean passed =
-                          getResults(
-                                  expect,
-                                  output,
-                                  "getIndexOfLastElementGreaterThanTarget({10, 50, 20, 30, 40, 20}, 30)");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3()
-              {
-                  int[] nums = {10, 50, 20, 30, 40, 20};
-                  Object[] args = {nums, 100};
-
-                  String output = getMethodOutput("getIndexOfLastElementGreaterThanTarget", args);
-                  String expect = "-1";
-
-                  boolean passed =
-                          getResults(
-                                  expect,
-                                  output,
-                                  "getIndexOfLastElementGreaterThanTarget({10, 50, 20, 30, 40, 20}, 100)");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-      </program>
-    </activity>
-
-    <activity label="mcq_array_loop1">
-      <statement>
-        <p>
-          Given the following code segment (which is identical to the method
-          above) what will be returned when you execute:
-          <c>getIndexOfLastElementSmallerThanTarget(values,-13)</c>;
-        </p>
-
-        <program>
-          <![CDATA[
-
-          private int[ ] values = {-20, -15, 2, 8, 16, 33};
-
-          public static int getIndexOfLastElementSmallerThanTarget(int[ ] values, int compare)
-          {
-             for (int i = values.length - 1; i >=0; i--)
-             {
-                if (values[i] < compare)
-                   return i;
-             }
-             return -1; // to show none found
-          }
-
-          ]]>
-        </program>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>-1</p>
-          </statement>
-
-          <feedback>
-            <p>
-              The method will only return -1 if no value in the array is less
-              than the passed value.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>-15</p>
-          </statement>
-
-          <feedback>
-            <p>
-              The method returns the index of the first item in the array that
-              is less than the value, not the value.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>1</p>
-          </statement>
-
-          <feedback>
-            <p>
-              Since the method loops from the back towards the front -15 is the
-              last value in the array that is less than -13 and it is at index
-              1.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>You will get an out of bounds error.</p>
-          </statement>
-
-          <feedback>
-            <p>
-              No, the method correctly starts the index at values.length - 1 and
-              continues as long as i is greater than or equal to 0.
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="mcq_array_loop2">
-      <statement>
-        <p>
-          Given the following code segment (which is not quite identical to the
-          method above) what will be returned when you execute:
-          <c>getIndexOfLastElementSmallerThanTarget(values, 7)</c>;
-        </p>
-
-        <program>
-          <![CDATA[
-
-          int[ ] values = {-20, -15, 2, 8, 16, 33};
-
-          public static int getIndexOfLastElementSmallerThanTarget(int[] values, int compare)
-          {
-             for (int i = values.length; i >=0; i--)
-             {
-                if (values[i] < compare)
-                   return i;
-             }
-             return -1; // to show none found
-          }
-
-          ]]>
-        </program>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>-1</p>
-          </statement>
-
-          <feedback>
-            <p>
-              The method will only return -1 if no value in the array is less
-              than the passed value.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>1</p>
-          </statement>
-
-          <feedback>
-            <p>Check the starting index. Is it correct?</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>2</p>
-          </statement>
-
-          <feedback>
-            <p>Check the starting index. Is it correct?</p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>You will get an out of bounds error.</p>
-          </statement>
-
-          <feedback>
-            <p>
-              You can not start the index at the length of the array. You must
-              start at the length of the array minus one. This is a common
-              mistake.
             </p>
           </feedback>
         </choice>
@@ -1902,7 +1459,6 @@
       </program>
     </activity>
 
-
     <activity label="mcq_array_infinite">
       <statement>
         <p>
@@ -1990,5 +1546,46 @@
         </choice>
       </choices>
     </activity>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+
+    <p>
+      <ul>
+        <li>
+          <p>
+            (AP 4.5.A.1) There are standard algorithms that utilize array
+            traversals to:
+          </p>
+
+          <p>
+            <ul>
+              <li>Determine a minimum or maximum value</li>
+
+              <li>Compute a sum or average</li>
+
+              <li>
+                Determine if at least one element has a particular property
+              </li>
+
+              <li>Determine if all elements have a particular property</li>
+
+              <li>
+                Determine the number of elements having a particular property
+              </li>
+
+              <li>Access all consecutive pairs of elements</li>
+
+              <li>Determine the presence or absence of duplicate elements</li>
+
+              <li>Shift or rotate elements left or right</li>
+
+              <li>Reverse the order of the elements</li>
+            </ul>
+          </p>
+        </li>
+      </ul>
+    </p>
   </subsection>
 </section>
