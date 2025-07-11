@@ -1650,6 +1650,201 @@
         </ul>
       </p>
     </note>
+
+    <activity label="tripleFirstFour">
+      <statement>
+        <p>
+          What will the following code print out? Can you write a similar method
+          called tripleFirstFour() that triples the first 4 elements of the
+          array? Make sure you test it in main.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          <![CDATA[
+
+          public class ArrayWorker
+          {
+              private int[] values;
+
+              public ArrayWorker(int[] theValues)
+              {
+                  values = theValues;
+              }
+
+              /** Doubles the first 5 elements of the array */
+              public void doubleFirstFive()
+              {
+                  // Notice: Math.min to limit the number of iterations.
+                  for (int i = 0; i < Math.min(5, values.length); i++)
+                  {
+                      values[i] *= 2;
+                  }
+              }
+
+              /**
+               * Write a method called tripleFirstFour() that triples
+               * the first 4 elements of the array *
+               */
+              public void tripleFirstFour()
+              {
+
+
+              }
+
+              /** Prints the array */
+              public void printArray()
+              {
+                  for (int i = 0; i < values.length; i++)
+                  {
+                      System.out.println(values[i]);
+                  }
+              }
+
+              public static void main(String[] args)
+              {
+                  int[] numArray = {3, 8, -3, 2, 20, 5, 33, 1};
+                  ArrayWorker worker = new ArrayWorker(numArray);
+                  worker.doubleFirstFive();
+                  worker.printArray();
+                  // uncomment these to test
+                  // worker.tripleFirstFour();
+                  // worker.printArray();
+              }
+          }
+
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ArrayWorker");
+
+                  int[] numArray = {0, 1, 2, 3, 4, 5};
+                  setDefaultValues(new Object[] {numArray});
+              }
+
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "6 16 -6 4 40 5 33 1".replaceAll(" ", "\n");
+
+                  boolean passed = output.contains(expect);
+
+                  passed = getResults(expect, output, "Did you run the doubleFirstFiveMethod?", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2()
+              {
+                  String output = getMethodOutput("tripleFirstFour");
+                  output = getMethodOutput("printArray");
+                  String expect = "0 3 6 9 4 5".replaceAll(" ", "\n");
+
+                  boolean passed = output.contains(expect);
+
+                  passed =
+                          getResults(
+                                  expect,
+                                  output,
+                                  "Testing tripleFirstFour() method on array [0, 1, 2, 3, 4, 5]",
+                                  passed);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
+
+    <activity label="mcq_array_doublelast">
+      <statement>
+        <p>
+          Given the following values of a and the method doubleLast what will
+          the values of a be after you execute: doubleLast()?
+        </p>
+
+        <program>
+          <![CDATA[
+
+          private int[ ] a = {-20, -15, 2, 8, 16, 33};
+
+          public void doubleLast()
+          {
+
+             for (int i = a.length / 2; i < a.length; i++)
+             {
+                a[i] = a[i] * 2;
+             }
+          }
+
+          ]]>
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>{-40, -30, 4, 16, 32, 66}</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This would true if it looped through the whole array. Does it?
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>{-40, -30, 4, 8, 16, 32}</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This would be true if it looped from the beginning to the middle.
+              Does it?
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>{-20, -15, 2, 16, 32, 66}</p>
+          </statement>
+
+          <feedback>
+            <p>
+              It loops from the middle to the end doubling each value. Since
+              there are 6 elements it will start at index 3.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>{-20, -15, 2, 8, 16, 33}</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This would be true if array elements didn't change, but they do.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
   </subsection>
 
   <subsection>
@@ -2371,6 +2566,325 @@
           }
         </tests>
       </program>
+    </activity>
+  </subsection>
+
+    <subsection xml:id="looping-from-back-to-front">
+    <title>Looping From Back to Front</title>
+
+    <idx><h>loop</h><h>from back to front</h></idx>
+    <p>
+      You don’t have to loop through an array from the front to the back. You
+      can loop by starting at the back of the array and move toward the front
+      during each time through the loop. In the example below, the method
+      <c>getIndexOfLastElementSmallerThanTarget</c> returns the index of the
+      last element in the array that is smaller than the given argument. The
+      <term>return</term> statement inside the loop stops the execution of the
+      loop and the method and returns the index that is found immediately back
+      to the main method. It returns -1 if there is no number in the array that
+      is smaller than the given number.
+    </p>
+
+    <activity label="arrayFindSmaller">
+      <statement>
+        <p>
+          What does the following code print out? Notice that the array and the
+          target are passed in as arguments to the
+          getIndexOfLastElementSmallerThanTarget method. Trace through it
+          keeping track of the array values and the output. Then run it to see
+          if you’re right. You can also try the code in the <url
+          href="http://www.pythontutor.com/java.html#code=%20%20%20public%20class%20ArrayFindSmallest%0A%20%20%20%7B%0A%0A%20%20%20%20%20%20/**%20%40return%20index%20of%20the%20last%20number%20smaller%20than%20target%20*/%20%20%20%20%20%0A%20%20%20%20%20%20public%20static%20int%20getIndexOfLastElementSmallerThanTarget%28int%5B%20%5D%20values,%20int%20target%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20for%20%28int%20index%20%3D%20values.length%20-%201%3B%20index%20%3E%3D%200%3B%20index--%29%0A%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20%28values%5Bindex%5D%20%3C%20target%29%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20index%3B%0A%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20return%20-1%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%0A%20%20%20%20%20%20public%20static%20void%20main%20%28String%5B%5D%20args%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20int%5B%5D%20theArray%20%3D%20%7B-30,%20-5,%208,%2023,%2046%7D%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28%22Last%20index%20of%20element%20smaller%20than%2050%3A%20%22%20%2B%20getIndexOfLastElementSmallerThanTarget%28theArray,%2050%29%29%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28%22Last%20index%20of%20element%20smaller%20than%2030%3A%20%22%20%2B%20getIndexOfLastElementSmallerThanTarget%28theArray,%2030%29%29%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28%22Last%20index%20of%20element%20smaller%20than%2010%3A%20%22%20%2B%20getIndexOfLastElementSmallerThanTarget%28theArray,%2010%29%29%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28%22Last%20index%20of%20element%20smaller%20than%200%3A%20%22%20%2BgetIndexOfLastElementSmallerThanTarget%28theArray,0%29%29%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28%22Last%20index%20of%20element%20smaller%20than%20-20%3A%20%22%20%2BgetIndexOfLastElementSmallerThanTarget%28theArray,-20%29%29%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28%22Last%20index%20of%20element%20smaller%20than%20-30%3A%20%22%20%2BgetIndexOfLastElementSmallerThanTarget%28theArray,-30%29%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%7D%0A%20%20%20&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Java
+          visualizer</url> with the Code Lens button. Can you add another method
+          that finds the index of the last element greater than the target
+          instead of smaller than the target and have main print out a test of
+          it? Call this method getIndexOfLastElementGreaterThanTarget and give
+          it 2 arguments and a return value like the method below.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          <![CDATA[
+
+          public class ArrayFindSmallest
+          {
+
+              /**
+               * @return index of the last number smaller than target
+               */
+              public static int getIndexOfLastElementSmallerThanTarget(int[] values, int target)
+              {
+                  for (int index = values.length - 1; index >= 0; index--)
+                  {
+                      if (values[index] < target)
+                      {
+                         return index;
+                      }
+                  }
+                  return -1;
+              }
+
+              /**
+               * Add a method called getIndexOfLastElementGreaterThanTarget
+               *
+               * @param int array
+               * @param int target
+               * @return index of the last number greater than target
+               */
+              public static void main(String[] args)
+              {
+                  int[] theArray = {-30, -5, 8, 23, 46};
+                  System.out.println(
+                          "Last index of element smaller than 50: "
+                                  + getIndexOfLastElementSmallerThanTarget(theArray, 50));
+                  System.out.println(
+                          "Last index of element smaller than 30: "
+                                  + getIndexOfLastElementSmallerThanTarget(theArray, 30));
+                  System.out.println(
+                          "Last index of element smaller than 10: "
+                                  + getIndexOfLastElementSmallerThanTarget(theArray, 10));
+                  System.out.println(
+                          "Last index of element smaller than 0: "
+                                  + getIndexOfLastElementSmallerThanTarget(theArray, 0));
+                  System.out.println(
+                          "Last index of element smaller than -20: "
+                                  + getIndexOfLastElementSmallerThanTarget(theArray, -20));
+                  System.out.println(
+                          "Last index of element smaller than -30: "
+                                  + getIndexOfLastElementSmallerThanTarget(theArray, -30));
+              }
+          }
+
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ArrayFindSmallest");
+              }
+
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Last index of element smaller than ";
+
+                  boolean passed = output.contains(expect);
+                  output = output.substring(0, output.indexOf("\n"));
+                  passed =
+                          getResults(
+                                  "Last index of element smaller than 50: 4",
+                                  output,
+                                  "Ran getIndexOfLastElementSmallerThanTarget",
+                                  passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2()
+              {
+                  int[] nums = {10, 50, 20, 30, 40, 20};
+                  Object[] args = {nums, 30};
+
+                  String output = getMethodOutput("getIndexOfLastElementGreaterThanTarget", args);
+                  String expect = "4";
+
+                  boolean passed =
+                          getResults(
+                                  expect,
+                                  output,
+                                  "getIndexOfLastElementGreaterThanTarget({10, 50, 20, 30, 40, 20}, 30)");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test3()
+              {
+                  int[] nums = {10, 50, 20, 30, 40, 20};
+                  Object[] args = {nums, 100};
+
+                  String output = getMethodOutput("getIndexOfLastElementGreaterThanTarget", args);
+                  String expect = "-1";
+
+                  boolean passed =
+                          getResults(
+                                  expect,
+                                  output,
+                                  "getIndexOfLastElementGreaterThanTarget({10, 50, 20, 30, 40, 20}, 100)");
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
+
+    <activity label="mcq_array_loop1">
+      <statement>
+        <p>
+          Given the following code segment (which is identical to the method
+          above) what will be returned when you execute:
+          <c>getIndexOfLastElementSmallerThanTarget(values,-13)</c>;
+        </p>
+
+        <program>
+          <![CDATA[
+
+          private int[ ] values = {-20, -15, 2, 8, 16, 33};
+
+          public static int getIndexOfLastElementSmallerThanTarget(int[ ] values, int compare)
+          {
+             for (int i = values.length - 1; i >=0; i--)
+             {
+                if (values[i] < compare)
+                   return i;
+             }
+             return -1; // to show none found
+          }
+
+          ]]>
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>-1</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The method will only return -1 if no value in the array is less
+              than the passed value.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>-15</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The method returns the index of the first item in the array that
+              is less than the value, not the value.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>1</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Since the method loops from the back towards the front -15 is the
+              last value in the array that is less than -13 and it is at index
+              1.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>You will get an out of bounds error.</p>
+          </statement>
+
+          <feedback>
+            <p>
+              No, the method correctly starts the index at values.length - 1 and
+              continues as long as i is greater than or equal to 0.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="mcq_array_loop2">
+      <statement>
+        <p>
+          Given the following code segment (which is not quite identical to the
+          method above) what will be returned when you execute:
+          <c>getIndexOfLastElementSmallerThanTarget(values, 7)</c>;
+        </p>
+
+        <program>
+          <![CDATA[
+
+          int[ ] values = {-20, -15, 2, 8, 16, 33};
+
+          public static int getIndexOfLastElementSmallerThanTarget(int[] values, int compare)
+          {
+             for (int i = values.length; i >=0; i--)
+             {
+                if (values[i] < compare)
+                   return i;
+             }
+             return -1; // to show none found
+          }
+
+          ]]>
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>-1</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The method will only return -1 if no value in the array is less
+              than the passed value.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>1</p>
+          </statement>
+
+          <feedback>
+            <p>Check the starting index. Is it correct?</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>2</p>
+          </statement>
+
+          <feedback>
+            <p>Check the starting index. Is it correct?</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>You will get an out of bounds error.</p>
+          </statement>
+
+          <feedback>
+            <p>
+              You can not start the index at the length of the array. You must
+              start at the length of the array minus one. This is a common
+              mistake.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
     </activity>
   </subsection>
 </section>
