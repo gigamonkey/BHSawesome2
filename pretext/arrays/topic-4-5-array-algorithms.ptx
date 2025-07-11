@@ -24,7 +24,7 @@
     <idx>duplicates</idx>
     <p>
       In <xref ref="topic-2-9-loop-algorithms" /> we learned some basic loop
-      algorithms for summing, counting, averaging, and findind minimums and
+      algorithms for summing, counting, averaging, and finding minimums and
       maximums. Those algorithms become a lot more useful now that we know
       enough to use them with arrays. For instance we can sum or average all the
       elements in an array of numeric values or count the number of elements of
@@ -137,31 +137,55 @@
     </activity>
   </subsection>
 
-  <subsection xml:id="min-max-search-algorithms">
-    <title>Min, Max, Search Algorithms</title>
+  <subsection>
+    <title>Minimizing, maximizing, and counting</title>
 
     <p>
-      In the last lesson, you wrote a spell check algorithm which searched for a
-      word in an array of dictionary words. Searching for the minimum or maximum
-      follows a similar pattern of a loop with an if statement inside it. The
-      pattern to follow is an enhanced for loop or an indexed for loop, with an
-      embedded if statement. Remember that enhanced for loops cannot be used to
-      modify primitive values in an array or to return an index.
+      As you may recall from <xref ref="topic-2-9-loop-algorithms" /> the basic
+      pattern for finding the minimum or maximum value in a sequence is also an
+      accumulator pattern like summing but rather than adding each value into a
+      running total we instead put each smaller (or larger) value we see into
+      our accumulator variable. If we want to find the smallest value in an
+      array we can use a very similar pattern with an enhanced <c>for</c> loop.
+    </p>
+
+    <p>
+      In the code below, assuming <c>numbers</c> is a non-empty array of
+      <c>int</c> values, after the code below runs, <c>min</c> will contain the
+      smallest value in the array:
+    </p>
+
+    <program>
+      // assume numbers is an int[] variable
+
+      int min = numbers[0];
+
+      for (int num : numbers) {
+          min = Math.min(min, num);
+      }
+    </program>
+
+    <p>
+      But we can do fancier versions of finding the extreme values in an array.
+      Suppose we had an array of <c>String</c> values containing people’s names
+      and wanted to find the longest one. In this case we will compare the
+      lengths of the values in the array but save the value. We’ll probably need
+      to use an explicit <c>if</c> since there isn’t a convenient method like
+      <c>Math.max</c> that we can pass two <c>String</c> arguments and get back
+      the longer one. Maybe something like this:
     </p>
 
     <program>
       <![CDATA[
 
-      for (int value : array)
-      {
-          if (value ....)
-              ...
-      }
+      // Assume names is a String[] variable containing names
 
-      for(int i=0; i < array.length; i++)
-      {
-         if (array[i] ....)
-             ...
+      String longest = names[0];
+
+      for (String name : names) {
+          if (name.length() > longest.length()) {
+              longest = name;
+          }
       }
 
       ]]>
@@ -171,17 +195,11 @@
       <statement>
         <p>
           The following method has the correct code to return the largest value
-          in an integer array called
-          <title_reference>vals</title_reference>
-
-
-
-
- (an
-          instance variable of the current object), but the code is mixed up.
-          Drag the blocks from the left into the correct order on the right and
-          indent them correctly as well. You will be told if any of the blocks
-          are in the wrong order or not indented correctly.
+          in an integer array called <c>vals</c> (an instance variable of the
+          current object), but the code is mixed up. Drag the blocks from the
+          left into the correct order on the right and indent them correctly as
+          well. You will be told if any of the blocks are in the wrong order or
+          not indented correctly.
         </p>
       </statement>
 
@@ -247,16 +265,14 @@
         <code>
           <![CDATA[
 
-          public class MinMax
-          {
-              public static void main(String[] args)
-              {
-                  int[] values = {6, 2, 1, 7, 12, 5};
+          public class MinMax {
+              public static void main(String[] args) {
+              int[] values = {6, 2, 1, 7, 12, 5};
+
                   int min = values[0]; // initialize min to the first element
-                  for (int val : values)
-                  {
-                      if (val < min) // found a new min!
-                      {
+
+                  for (int val : values) {
+                      if (val < min) { // found a new min!
                           min = val;
                       }
                   }
@@ -325,42 +341,170 @@
     </activity>
 
     <p>
-      When searching for an element or a minimum or maximum, it is important not
-      to leave the loop early before finding the correct value and not to
-      replace the value with subsequent ones.
+      Related to minimizing and maximizing algorithms are counting algorithms
+      where we want to count the number of values that have some particular
+      property. In counting algorithms we also use an <c>if</c> statement but
+      rather than storing new values when we see a larger or smaller one, we
+      instead increment a count whenever we see a value that meets our criteria.
+    </p>
+
+    <p>
+      For instance, suppose we wanted to count how many names in our array were
+      longer than ten characters. Compare the code below to the previous
+      maximizing code.
+    </p>
+
+    <program>
+      <![CDATA[
+
+      // names is still a String[] variable containing names
+
+      int count = 0;
+
+      for (String name : names) {
+          if (name.length() > 10) {
+              count++;
+          }
+      }
+
+      ]]>
+    </program>
+
+    <p>
+      In this case our accumulator variable is the <c>int count</c>. And we
+      “accumulate” into it with the <c>++</c> operator but only when we see a
+      <c>String</c> longer than ten characters.
+    </p>
+
+    <activity label="parsons-even-array" numbered="yes" adaptive="yes" indentation="show" language="java">
+      <statement>
+        <p>
+          The following program segment should count the number of elements in
+          the array that are even using an enhanced for each loop. But, the
+          blocks have been mixed up. Drag the blocks from the left and put them
+          in the correct order on the right. Click the Check button to check
+          your solution.
+        </p>
+      </statement>
+
+      <blocks>
+        <block order="2">
+          <cline>int[] arr = {14, -5, 2, 17, 29, -8, 36};</cline>
+          <cline>int count = 0;</cline>
+        </block>
+
+        <block order="1">
+          <cline>for (int value : arr)</cline>
+          <cline>{</cline>
+        </block>
+
+        <block order="3">
+          <cline>    if (value % 2 == 0)</cline>
+          <cline>    {</cline>
+        </block>
+
+        <block order="6">
+          <cline>        count++;</cline>
+        </block>
+
+        <block order="5">
+          <cline>    } //end conditional</cline>
+        </block>
+
+        <block order="4">
+          <cline>} //end for loop</cline>
+        </block>
+      </blocks>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="min-max-search-algorithms">
+    <title>Searching</title>
+
+    <p>
+      When we’re summing, minimizing, maximizing, and counting we have to look
+      at every element in the array in order to get our final answer. Searching
+      algorithms often don’t have to look at every elemement because their goal
+      is to find one element that meets some criteria; as soon as we find an
+      element that meets the criteria we’re done and don’t need to look at any
+      more values. It’s like when you’re looking for your keys—there’s a long
+      list of places you can look but as soon as you find them you stop. Which
+      is why your keys are always in the last place you look.
+    </p>
+
+    <p>
+      The best way to write a searching algorithm is to put the loop into a
+      method so that we can <c>return</c> from the method as soon as we find a
+      value that meets our criteria. Returning from a method, from the body of a
+      loop will break us out of the loop immediately, even if the loop would
+      otherwise have run for more iterations. Here’s a method that returns the
+      first name longer than ten characters in the array it is passed.
+    </p>
+
+    <program>
+      <![CDATA[
+
+      public static String findLongName(String[] names) {
+          for (String name : names) {
+              if (name.length() > 10) {
+                  return name;
+              }
+          }
+          return null;
+      }
+
+      ]]>
+    </program>
+
+    <p>
+      When this method runs it will return the first name in the array longer
+      than ten characters. There may be many long names in the array but the
+      goal of this method is just to find the first one. Note the <c>return
+      null</c> at the end of the method. Because the return type of the method
+      is <c>String</c> we have to return something even if we didn’t find any
+      name that met our criteria in the array. Returning <c>null</c> is a
+      traditional way to deal with that situation and makes some sense since it
+      indicates “no object”. That is, the method did not find any actual
+      <c>String</c> longer than ten characters. There are some problems with
+      this idiom and Java gives some better ways to handle this kind of
+      situation but they are beyond the scope of this course. If we were
+      searching for a value in a an array of some primitive type, we couldn’t
+      return <c>null</c> but would have to return some other <term>distinguished
+      value</term> like -1 or 0, ideally something that would not be a possible
+      actual value to be found.
+    </p>
+
+    <p>
+      Note that when searching for an element, while we <c>return</c> from
+      inside the <c>if</c> when we find what we’re looking for, if we don’t find
+      it we need to keep looking and only return <c>null</c> or our other
+      distinguished value after the loop has completed.
     </p>
 
     <activity label="early_return_error">
       <statement>
         <p>
           Run the following code. Does it find 7 in the array? Click on Code
-          Lens to trace through the code to see why not. Fix the early return
-          error in the following code.
+          Lens to trace through the code to see why not. Once you’ve found it,
+          fix the early return error.
         </p>
       </statement>
 
       <program interactive="activecode">
         <code>
-          public class FindError
-          {
-              public static boolean find(int[] array, int target)
-              {
-                 for (int val : array)
-                 {
-                    if (val == target)
-                    {
+          public class FindError {
+              public static boolean find(int[] array, int target) {
+                 for (int val : array) {
+                    if (val == target) {
                         return true;
-                    }
-                    else
-                    {
+                    } else {
                         return false;
                     }
                  }
                  return false;
              }
 
-              public static void main(String[] args)
-              {
+              public static void main(String[] args) {
                   int[] values = {6, 2, 1, 7, 12, 5};
                   System.out.println(find(values, 7));
               }
@@ -416,16 +560,11 @@
         </p>
 
         <program>
-          public boolean find(int[] array, int target)
-          {
-              for (int val : array)
-              {
-                  if (val == target)
-                  {
+          public boolean find(int[] array, int target) {
+              for (int val : array) {
+                  if (val == target) {
                       return true;
-                  }
-                  else
-                  {
+                  } else {
                       return false;
                   }
               }
@@ -508,9 +647,8 @@
 
         <program>
           boolean temp = false;
-          for (int val : array)
-          {
-            temp = ( target == val );
+          for (int val : array) {
+            temp = (target == val);
           }
           return temp;
         </program>
@@ -585,206 +723,6 @@
         </choice>
       </choices>
     </activity>
-  </subsection>
-
-  <subsection xml:id="test-property">
-    <title>Test Property</title>
-
-    <p>
-      Often we loop through an array to see if elements have a particular
-      property, for example all the elements are even or at least one is
-      negative. On the AP exam, this property is often given as a boolean method
-      to use in the if statement to:
-    </p>
-
-    <p>
-      <ul>
-        <li>
-          <p>Determine if at least one element has a particular property</p>
-        </li>
-
-        <li>
-          <p>Determine if all elements have a particular property</p>
-        </li>
-
-        <li>
-          <p>Determine the number of elements having a particular property</p>
-        </li>
-      </ul>
-    </p>
-
-    <p>
-      Here are some patterns. Note that determining if <em>all</em> have a
-      certain property means that we need to check all elements before returning
-      true, so we often have to check for the negation of the property to return
-      false.
-    </p>
-
-    <program>
-      // see if at least one has the property
-      for (int val : values)
-      {
-          if (isProperty(val))
-          {
-              return true;
-          }
-      }
-      return false;
-
-      // see if all have the property
-      for (int val : values)
-      {
-          if (!isProperty(val))
-          {
-              return false;
-          }
-      }
-      return true;
-
-      // count the number of elements with the property
-      int count = 0;
-      for (int val : values)
-      {
-          if (isProperty(val))
-          {
-              count++;
-          }
-      }
-    </program>
-
-    <activity label="parsons-even-array" numbered="yes" adaptive="yes" indentation="show" language="java">
-      <statement>
-        <p>
-          The following program segment should count the number of elements in
-          the array that are even using an enhanced for each loop. But, the
-          blocks have been mixed up. Drag the blocks from the left and put them
-          in the correct order on the right. Click the Check button to check
-          your solution.
-        </p>
-      </statement>
-
-      <blocks>
-        <block order="2">
-          <cline>int[] arr = {14, -5, 2, 17, 29, -8, 36};</cline>
-          <cline>int count = 0;</cline>
-        </block>
-
-        <block order="1">
-          <cline>for (int value : arr)</cline>
-          <cline>{</cline>
-        </block>
-
-        <block order="3">
-          <cline>    if (value % 2 == 0)</cline>
-          <cline>    {</cline>
-        </block>
-
-        <block order="6">
-          <cline>        count++;</cline>
-        </block>
-
-        <block order="5">
-          <cline>    } //end conditional</cline>
-        </block>
-
-        <block order="4">
-          <cline>} //end for loop</cline>
-        </block>
-      </blocks>
-    </activity>
-
-    <activity label="exAllOdd">
-      <statement>
-        <p>
-          Write the method allOdd to return true if all the values in the array
-          are odd. First write the helper function isEven to return true or
-          false for one value, using %.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-        <code>
-          public class Test1
-          {
-              public static boolean isEven(int value)
-              {
-                  // 1. TODO: return true if value is even, false otherwise
-                  return true;
-              }
-
-              public static boolean allOdd(int[] array)
-              {
-                  // 2. TODO: Loop thru the array
-                  // and return false if any value isEven
-
-                  // if all odd, return true
-                  return true;
-              }
-
-              public static void main(String[] args)
-              {
-                  int[] a1 = {1, 3, 6};
-                  int[] a2 = {1, 3, 5};
-                  System.out.println(allOdd(a1));
-                  System.out.println(allOdd(a2));
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "false\ntrue\n";
-
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-              @Test
-              public void testMethod()
-              {
-                  int[] nums = {10, 20, 30, 40};
-                  Object[] args = {nums};
-
-                  String output = getMethodOutput("allOdd", args);
-                  String expect = "false";
-
-                  boolean passed = getResults(expect, output, "allOdd({10, 20, 30, 40})");
-                  assertTrue(passed);
-              }
-              @Test
-              public void testMethod2()
-              {
-                  int[] nums = {37,41,55,99};
-                  Object[] args = {nums};
-
-                  String output = getMethodOutput("allOdd", args);
-                  String expect = "true";
-
-                  boolean passed = getResults(expect, output, "allOdd({37,41,55,99})");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-      </program>
-    </activity>
-
-    <p>
-      Be careful not to jump out of loop too early when you are looking for a
-      value in an array. The method below uses <term>return</term> statements to
-      stop the execution of the method and return a value to the method that
-      called this method. However, you must be careful not to stop the loop too
-      soon.
-    </p>
 
     <activity label="find_loop_early_return_error">
       <statement>
@@ -880,6 +818,172 @@
                   String expect = "-1";
 
                   boolean passed = getResults(expect, output, "Testing findString(\"Hello!\")");
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="test-property">
+    <title>Any and all</title>
+
+    <p>
+      In searching algorithms we’re looking for one value that meets some
+      criteria, like being more than ten characters long. A pair of related
+      questions that we can ask about an array is do <em>any</em> elements of
+      the array meet some criteria or do <em>all</em> elements meet it.
+    </p>
+
+    <p>
+      The algorithms to answer these questions is similar to the searching
+      algorithm but instead of returning a value from the array we return a
+      <c>boolean</c> value that answers the question. On the AP exam they will
+      frequently provide a method to use to test the criteria so all you’ll have
+      to do is write the right method structure.
+    </p>
+
+    <p>
+      As with a searching algorithm, these work best in a method so we can use
+      <c>return</c> to break out of the loop as soon as we know the answer. One
+      way to think about these is as doing a search and using the fact of
+      whether you found what you were looking for to answer the any or all
+      question. Obviously if any item matches the criteria and you search for
+      that criterial you’ll find one. So an any method is structured very
+      similar to a search:
+    </p>
+
+    <program>
+      // Assume hasProperty is a method that tests the criteria we care about
+      // and returns a boolean when the value it is passed has the property.
+
+      public static boolean anyHasProperty(int[] values) {
+          for (int val : values) {
+              if (hasProperty(val)) {
+                  return true;
+              }
+          }
+          return false;
+      }
+    </program>
+
+    <p>
+      The difference between this method and a search method just just in the
+      return values: at the point where a search method would return the value
+      it found we return <c>true</c> and where a search method would return the
+      distinguished “not found” value, such as null, we return <c>false</c> to
+      indicate that no elements of the array met the criteria.
+    </p>
+
+    <p>
+      You might think that to check whether all elements of an array meet some
+      criteria you’d have to loop through the whole array and look at them all.
+      It’s right there in the name, right? However, if you think back to our
+      <c>boolean</c> operators and their short circuiting behavior you might
+      realize that saying all the element meet the criteria is the same as
+      saying that item one meets the criteria and item two meets it and item
+      three, and so on. But all those booleans and’ed together are only true if
+      they all are so just like the &amp;&amp; operator doesn’t even need to
+      evaluate it’s right hand operand if the left hand is <c>false</c>, we
+      don’t need to look at any more elements of the array as soon as we find
+      one that doesn’t meet our criteria. With just one counter example we know
+      it’s not true that all the elements meet the criteria. So the all pattern
+      is actually almost the same as the any pattern:
+    </p>
+
+    <program>
+      // Assume hasProperty is a method that tests the criteria we care about
+      // and returns a boolean when the value it is passed has the property.
+
+      public static boolean allHaveProperty(int[] values) {
+          for (int val : values) {
+              if (!hasProperty(val)) {
+                  return false;
+              }
+          }
+          return true;
+      }
+    </program>
+
+    <activity label="exAllOdd">
+      <statement>
+        <p>
+          Write the method allOdd to return true if all the values in the array
+          are odd. First write the helper function isEven to return true or
+          false for one value, using %.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          public class Test1
+          {
+              public static boolean isEven(int value)
+              {
+                  // 1. TODO: return true if value is even, false otherwise
+                  return true;
+              }
+
+              public static boolean allOdd(int[] array)
+              {
+                  // 2. TODO: Loop thru the array
+                  // and return false if any value isEven
+
+                  // if all odd, return true
+                  return true;
+              }
+
+              public static void main(String[] args)
+              {
+                  int[] a1 = {1, 3, 6};
+                  int[] a2 = {1, 3, 5};
+                  System.out.println(allOdd(a1));
+                  System.out.println(allOdd(a2));
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "false\ntrue\n";
+
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testMethod()
+              {
+                  int[] nums = {10, 20, 30, 40};
+                  Object[] args = {nums};
+
+                  String output = getMethodOutput("allOdd", args);
+                  String expect = "false";
+
+                  boolean passed = getResults(expect, output, "allOdd({10, 20, 30, 40})");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testMethod2()
+              {
+                  int[] nums = {37,41,55,99};
+                  Object[] args = {nums};
+
+                  String output = getMethodOutput("allOdd", args);
+                  String expect = "true";
+
+                  boolean passed = getResults(expect, output, "allOdd({37,41,55,99})");
                   assertTrue(passed);
               }
           }
