@@ -498,6 +498,35 @@
       ]]>
     </program>
 
+    <p>
+      If didn’t remember about the <c>Math.min</c> method, you could always
+      implement the logic yourself with an <c>if</c> statement:
+    </p>
+
+    <program>
+      <![CDATA[
+
+      int min = Integer.MAX_VALUE;
+      for (int i = 0; i < 10; i++) {
+          int num = (int) (Math.random() * 100);
+          if (num < min) {
+              min = num;
+          }
+      }
+      System.out.println("The minimum value is " + min);
+
+      ]]>
+    </program>
+
+    <p>
+      That code works essentially the same way with the very sight difference
+      that the first version always assigns a value to <c>min</c> but sometimes
+      it’s the current value and in the second version we only assign to
+      <c>min</c> when we’ve actually found a smaller value. Either way is fine
+      though avoiding <c>if</c> statements that we don’t need often leads to
+      clearer code.
+    </p>
+
     <activity label="min-max-practice">
       <statement>
         <p>
