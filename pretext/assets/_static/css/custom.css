@@ -106,7 +106,8 @@ section > .para + .para {
 }
 
 .ptx-content .heading .code-inline,
-.ptx-content span.title .code-inline
+.ptx-content span.title .code-inline,
+.ptx-content .terminology .code-inline
 {
   color: inherit;
 }
