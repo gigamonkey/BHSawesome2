@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-12-2Darray-traversal">
   <title>2D Array Traversals: Nested Loops</title>
+
   <introduction>
     <p>
       In this lesson, you will learn how to use nested loops to traverse 2D
@@ -11,14 +12,9 @@
 
   <subsection xml:id="nested-loops">
     <title>Nested Loops</title>
-    <idx>
-      <h>2D Array</h><h>traversal</h>
-    </idx>
 
-    <idx>
-      <h>loop</h><h>nested</h>
-    </idx>
-
+    <idx><h>2D Array</h><h>traversal</h></idx>
+    <idx><h>loop</h><h>nested</h></idx>
     <idx>traversal</idx>
     <idx>nested loops</idx>
     <p>
@@ -35,14 +31,18 @@
 
     <program language="java">
       <code>
-int[][] array = { {1,2,3},{4,5,6}};
-for (int row = 0; row &lt; array.length; row++)
-{
-    for (int col = 0; col &lt; array[0].length; col++)
-    {
-         System.out.println( array[row][col] );
-    }
- }
+        <![CDATA[
+
+        int[][] array = { {1,2,3},{4,5,6}};
+        for (int row = 0; row < array.length; row++)
+        {
+            for (int col = 0; col < array[0].length; col++)
+            {
+                 System.out.println( array[row][col] );
+            }
+         }
+
+        ]]>
       </code>
     </program>
 
@@ -58,70 +58,76 @@ for (int row = 0; row &lt; array.length; row++)
 
       <program interactive="activecode" language="java">
         <code>
-public class Test1
-{
+          <![CDATA[
 
-    public static double getAverage(int[][] a)
-    {
-        double total = 0;
-        int value = 0;
-        for (int row = 0; row &lt; a.length; row++)
-        {
-            for (int col = 0; col &lt; a[0].length; col++)
-            {
-                value = a[row][col];
-                total = total + value;
-            }
-        }
-        return total / (a.length * a[0].length);
-    }
+          public class Test1
+          {
 
-    public static void main(String[] args)
-    {
-        int[][] matrix = { {1, 2, 3}, {4, 5, 6}};
-        System.out.println(getAverage(matrix));
-    }
-}
+              public static double getAverage(int[][] a)
+              {
+                  double total = 0;
+                  int value = 0;
+                  for (int row = 0; row < a.length; row++)
+                  {
+                      for (int col = 0; col < a[0].length; col++)
+                      {
+                          value = a[row][col];
+                          total = total + value;
+                      }
+                  }
+                  return total / (a.length * a[0].length);
+              }
+
+              public static void main(String[] args)
+              {
+                  int[][] matrix = { {1, 2, 3}, {4, 5, 6}};
+                  System.out.println(getAverage(matrix));
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
+          public class RunestoneTests extends CodeTestHelper
+          {
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expected = "3.5";
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expected = "3.5";
 
-        boolean passed = !output.contains(expected);
+                  boolean passed = !output.contains(expected);
 
-        passed = getResults("true", "" + passed, "Average has changed");
-        assertTrue(passed);
-    }
+                  passed = getResults("true", "" + passed, "Average has changed");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test2()
-    {
-        String code = getCode();
-        String expected = "int[][] matrix = { {1,2,3},{4,5,6}};";
+              @Test
+              public void test2()
+              {
+                  String code = getCode();
+                  String expected = "int[][] matrix = { {1,2,3},{4,5,6}};";
 
-        boolean passed = !code.replaceAll(" ", "").contains(expected.replaceAll(" ", ""));
+                  boolean passed = !code.replaceAll(" ", "").contains(expected.replaceAll(" ", ""));
 
-        passed = getResults("true", "" + passed, "Matrix has been changed");
-        assertTrue(passed);
-    }
-}
+                  passed = getResults("true", "" + passed, "Matrix has been changed");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
 
     <p>Some key things to notice about this code are:</p>
+
     <p>
       <ul>
         <li>
@@ -142,9 +148,7 @@ public class RunestoneTests extends CodeTestHelper
         </li>
 
         <li>
-          <p>
-            The number of columns is <c>a[0].length</c>
-          </p>
+          <p>The number of columns is <c>a[0].length</c></p>
         </li>
 
         <li>
@@ -159,6 +163,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="row-major-and-column-major-traversals">
     <title>Row-Major and Column-Major Traversals</title>
+
     <p>
       Nested iteration statements can be written to traverse the 2D array in
       row-major order, column-major order, or a uniquely defined order.
@@ -179,40 +184,45 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java">
         <code>
-public class ColumnMajorTraversal
-{
-    public static void main(String[] args)
-    {
-        int[][] array = { {1, 2, 3}, {4, 5, 6}};
-        for (int col = 0; col &lt; array[0].length; col++)
-        {
-            for (int row = 0; row &lt; array.length; row++)
-            {
-                System.out.println(array[row][col]);
-            }
-        }
-    }
-}
+          <![CDATA[
+
+          public class ColumnMajorTraversal
+          {
+              public static void main(String[] args)
+              {
+                  int[][] array = { {1, 2, 3}, {4, 5, 6}};
+                  for (int col = 0; col < array[0].length; col++)
+                  {
+                      for (int row = 0; row < array.length; row++)
+                      {
+                          System.out.println(array[row][col]);
+                      }
+                  }
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expected = "1\n4\n2\n5\n3\n6";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expected = "1\n4\n2\n5\n3\n6";
 
-        boolean passed = getResults(expected, output, "main()", true);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = getResults(expected, output, "main()", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -226,18 +236,22 @@ public class RunestoneTests extends CodeTestHelper
 
         <program language="java">
           <code>
- int[][] points = { {11, 12, 13, 14, 15},
-                    {21, 22, 23, 24, 25},
-                    {31, 32, 33, 34, 35},
-                    {41, 42, 43, 44, 45}};
- for (int row = 0; row &lt; points.length; row++)
- {
-     for (int col = points[0].length - 1; col &gt;= row; col--)
-     {
-          System.out.print(points[row][col] + " ");
-     }
-     System.out.println();
-}
+            <![CDATA[
+
+            int[][] points = { {11, 12, 13, 14, 15},
+                                {21, 22, 23, 24, 25},
+                                {31, 32, 33, 34, 35},
+                                {41, 42, 43, 44, 45}};
+             for (int row = 0; row < points.length; row++)
+             {
+                 for (int col = points[0].length - 1; col >= row; col--)
+                 {
+                      System.out.print(points[row][col] + " ");
+                 }
+                 System.out.println();
+            }
+
+            ]]>
           </code>
         </program>
       </statement>
@@ -310,10 +324,8 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="enhanced-for-each-loop-for-2d-arrays">
     <title>Enhanced For-Each Loop for 2D Arrays</title>
-    <idx>
-      <h>2D Array</h><h>for-each loop</h>
-    </idx>
 
+    <idx><h>2D Array</h><h>for-each loop</h></idx>
     <idx>enhanced for loop</idx>
     <p>
       Since 2D arrays are really arrays of arrays you can also use a nested
@@ -326,15 +338,15 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-String[][] array;
-// Nested For-each loops that traverse a 2D String array
-for (String[] innerArray : array)
-{
-   for (String val : innerArray)
-   {
-       System.out.println(val);
-   }
-}
+        String[][] array;
+        // Nested For-each loops that traverse a 2D String array
+        for (String[] innerArray : array)
+        {
+           for (String val : innerArray)
+           {
+               System.out.println(val);
+           }
+        }
       </code>
     </program>
 
@@ -367,47 +379,48 @@ for (String[] innerArray : array)
 
       <program interactive="activecode" language="java">
         <code>
-public class Average
-{
+          public class Average
+          {
 
-    public static double getAvg(int[][] a)
-    {
-        double total = 0;
-        for (int[] innerArray : a)
-        {
-            for (int val : innerArray)
-            {
-                total = total + val;
-            }
-        }
-        return total / (a.length * a[0].length);
-    }
+              public static double getAvg(int[][] a)
+              {
+                  double total = 0;
+                  for (int[] innerArray : a)
+                  {
+                      for (int val : innerArray)
+                      {
+                          total = total + val;
+                      }
+                  }
+                  return total / (a.length * a[0].length);
+              }
 
-    public static void main(String[] args)
-    {
-        int[][] theArray = { {80, 90, 70}, {20, 80, 75}};
-        System.out.println(getAvg(theArray));
-    }
-}
+              public static void main(String[] args)
+              {
+                  int[][] theArray = { {80, 90, 70}, {20, 80, 75}};
+                  System.out.println(getAvg(theArray));
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "69.16666666666667";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "69.16666666666667";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -415,6 +428,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="d-array-of-objects">
     <title>2D Array of Objects</title>
+
     <idx>images</idx>
     <idx>pictures</idx>
     <idx>pixels</idx>
@@ -444,12 +458,12 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-public class Pixel
-{
-    private int x;
-    private int y;
-    /** Implementation not shown * */
-}
+        public class Pixel
+        {
+            private int x;
+            private int y;
+            /** Implementation not shown * */
+        }
       </code>
     </program>
 
@@ -467,13 +481,13 @@ public class Pixel
 
     <program language="java">
       <code>
-Picture pict = new Picture("beach.jpg");
-// A 2D array of pixels
-Pixel[][] pixels = pict.getPixels2D();
-Pixel p = pixels[0][0]; // get the first pixel
-int blue = p.getBlue(); // get its blue value
-System.out.println("Pixel (0,0) has a blue value of " + blue );
-p.setBlue(255);  // set its blue value to 255
+        Picture pict = new Picture("beach.jpg");
+        // A 2D array of pixels
+        Pixel[][] pixels = pict.getPixels2D();
+        Pixel p = pixels[0][0]; // get the first pixel
+        int blue = p.getBlue(); // get its blue value
+        System.out.println("Pixel (0,0) has a blue value of " + blue );
+        p.setBlue(255);  // set its blue value to 255
       </code>
     </program>
 
@@ -491,23 +505,24 @@ p.setBlue(255);  // set its blue value to 255
 
     <program language="java">
       <code>
-public void zeroBlue()
-{
-    Pixel[][] pixels = this.getPixels2D();
-    for (Pixel[] rowArray : pixels)
-    {
-        for (Pixel p : rowArray)
+        public void zeroBlue()
         {
-            p.setBlue(0);
-        }
-    }
- }
+            Pixel[][] pixels = this.getPixels2D();
+            for (Pixel[] rowArray : pixels)
+            {
+                for (Pixel p : rowArray)
+                {
+                    p.setBlue(0);
+                }
+            }
+         }
       </code>
     </program>
   </subsection>
 
   <subsection xml:id="coding-challenge-picture-lab">
     <title>Coding Challenge: Picture Lab</title>
+
     <figure align="left">
       <image source="_static/arch.jpg" width="36%" />
     </figure>
@@ -557,203 +572,208 @@ public void zeroBlue()
 
       <program interactive="activecode" language="java" datafile="pictureLab.jar,arch.jpg">
         <code>
-import java.awt.*;
-import java.awt.font.*;
-import java.awt.geom.*;
-import java.awt.image.BufferedImage;
-import java.text.*;
-import java.util.*;
+          import java.awt.*;
+          import java.awt.font.*;
+          import java.awt.geom.*;
+          import java.awt.image.BufferedImage;
+          import java.text.*;
+          import java.util.*;
 
-/**
- * A class that represents a picture. This class inherits from SimplePicture and
- * allows the student to add functionality to the Picture class.
- *
- * @author Barbara Ericson ericson@cc.gatech.edu
- */
-public class Picture extends SimplePicture
-{
-    ///////////////////// constructors //////////////////////////////////
+          /**
+           * A class that represents a picture. This class inherits from SimplePicture and
+           * allows the student to add functionality to the Picture class.
+           *
+           * @author Barbara Ericson ericson@cc.gatech.edu
+           */
+          public class Picture extends SimplePicture
+          {
+              ///////////////////// constructors //////////////////////////////////
 
-    /** Constructor that takes no arguments */
-    public Picture()
-    {
-        /* not needed but use it to show students the implicit call to super()
-         * child constructors always call a parent constructor
-         */
-        super();
-    }
+              /** Constructor that takes no arguments */
+              public Picture()
+              {
+                  /* not needed but use it to show students the implicit call to super()
+                   * child constructors always call a parent constructor
+                   */
+                  super();
+              }
 
-    /**
-     * Constructor that takes a file name and creates the picture
-     *
-     * @param fileName the name of the file to create the picture from
-     */
-    public Picture(String fileName)
-    {
-        // let the parent class handle this fileName
-        super(fileName);
-    }
+              /**
+               * Constructor that takes a file name and creates the picture
+               *
+               * @param fileName the name of the file to create the picture from
+               */
+              public Picture(String fileName)
+              {
+                  // let the parent class handle this fileName
+                  super(fileName);
+              }
 
-    /**
-     * Constructor that takes the height and width
-     *
-     * @param height the height of the desired picture
-     * @param width the width of the desired picture
-     */
-    public Picture(int height, int width)
-    {
-        // let the parent class handle this width and height
-        super(width, height);
-    }
+              /**
+               * Constructor that takes the height and width
+               *
+               * @param height the height of the desired picture
+               * @param width the width of the desired picture
+               */
+              public Picture(int height, int width)
+              {
+                  // let the parent class handle this width and height
+                  super(width, height);
+              }
 
-    /**
-     * Constructor that takes a picture and creates a copy of that picture
-     *
-     * @param copyPicture the picture to copy
-     */
-    public Picture(Picture copyPicture)
-    {
-        // let the parent class do the copy
-        super(copyPicture);
-    }
+              /**
+               * Constructor that takes a picture and creates a copy of that picture
+               *
+               * @param copyPicture the picture to copy
+               */
+              public Picture(Picture copyPicture)
+              {
+                  // let the parent class do the copy
+                  super(copyPicture);
+              }
 
-    /**
-     * Constructor that takes a buffered image
-     *
-     * @param image the buffered image to use
-     */
-    public Picture(BufferedImage image)
-    {
-        super(image);
-    }
+              /**
+               * Constructor that takes a buffered image
+               *
+               * @param image the buffered image to use
+               */
+              public Picture(BufferedImage image)
+              {
+                  super(image);
+              }
 
-    ////////////////////// methods ///////////////////////////////////////
+              ////////////////////// methods ///////////////////////////////////////
 
-    /**
-     * Method to return a string with information about this picture.
-     *
-     * @return a string with information about the picture such as fileName, height
-     *     and width.
-     */
-    public String toString()
-    {
-        String output =
-                "Picture, filename "
-                        + getFileName()
-                        + " height "
-                        + getHeight()
-                        + " width "
-                        + getWidth();
-        return output;
-    }
+              /**
+               * Method to return a string with information about this picture.
+               *
+               * @return a string with information about the picture such as fileName, height
+               *     and width.
+               */
+              public String toString()
+              {
+                  String output =
+                          "Picture, filename "
+                                  + getFileName()
+                                  + " height "
+                                  + getHeight()
+                                  + " width "
+                                  + getWidth();
+                  return output;
+              }
 
-    /** zeroBlue() method sets the blue values at all pixels to zero */
-    public void zeroBlue()
-    {
-        Pixel[][] pixels = this.getPixels2D();
+              /** zeroBlue() method sets the blue values at all pixels to zero */
+              public void zeroBlue()
+              {
+                  Pixel[][] pixels = this.getPixels2D();
 
-        for (Pixel[] rowArray : pixels)
-        {
-            for (Pixel p : rowArray)
-            {
-                p.setBlue(0);
-            }
-        }
-    }
+                  for (Pixel[] rowArray : pixels)
+                  {
+                      for (Pixel p : rowArray)
+                      {
+                          p.setBlue(0);
+                      }
+                  }
+              }
 
-    /* Add new methods here.
-       keepOnlyBlue() method sets the red and green values at all pixels to zero.
-       switchColors() method switches colors, for example the red values with green values, etc.
-    */
+              /* Add new methods here.
+                 keepOnlyBlue() method sets the red and green values at all pixels to zero.
+                 switchColors() method switches colors, for example the red values with green values, etc.
+              */
 
-    /* Main method for testing
-     */
-    public static void main(String[] args)
-    {
-        Picture arch = new Picture("arch.jpg");
-        arch.show();
-        arch.zeroBlue();
-        arch.show();
+              /* Main method for testing
+               */
+              public static void main(String[] args)
+              {
+                  Picture arch = new Picture("arch.jpg");
+                  arch.show();
+                  arch.zeroBlue();
+                  arch.show();
 
-        // Uncomment the follow code to test your keepOnlyBlue method.
-        /*
-        Picture arch2 = new Picture("arch.jpg");
-        System.out.println("Keep only blue: ");
-        arch2.keepOnlyBlue();// using new method
-        arch2.show();
-        */
-        System.out.println();
+                  // Uncomment the follow code to test your keepOnlyBlue method.
+                  /*
+                  Picture arch2 = new Picture("arch.jpg");
+                  System.out.println("Keep only blue: ");
+                  arch2.keepOnlyBlue();// using new method
+                  arch2.show();
+                  */
+                  System.out.println();
 
-        // Uncomment the follow code to test your swithColors method.
-        /*
-        Picture arch3 = new Picture("arch.jpg");
-        System.out.println("Switch colors: ");
-        arch3.switchColors();// using new method
-        arch3.show();
-        */
-    }
-}
+                  // Uncomment the follow code to test your swithColors method.
+                  /*
+                  Picture arch3 = new Picture("arch.jpg");
+                  System.out.println("Switch colors: ");
+                  arch3.switchColors();// using new method
+                  arch3.show();
+                  */
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1()
-    {
-        String target = "public void keepOnlyBlue()";
-        boolean passed = checkCodeContains("keepOnlyBlue() method", target);
-        assertTrue(passed);
-    }
+          import java.io.*;
 
-    @Test
-    public void test2()
-    {
-        String target = ".setGreen(0);";
-        boolean passed =
-                checkCodeContains("keepOnlyBlue() setting green pixels to the number 0", target);
-        assertTrue(passed);
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test1()
+              {
+                  String target = "public void keepOnlyBlue()";
+                  boolean passed = checkCodeContains("keepOnlyBlue() method", target);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test3()
-    {
-        String target = "for";
-        String code = getCode();
-        int index = code.indexOf("public void keepOnlyBlue()");
-        boolean passed = false;
-        if (index &gt; 0)
-        {
-            code = code.substring(index, index + 200);
-            int num = countOccurences(code, target);
-            passed = num == 2;
-        }
-        getResults(
-                "true", "" + passed, "Checking that keepOnlyBlue() contains 2 for loops", passed);
-        assertTrue(passed);
-    }
+              @Test
+              public void test2()
+              {
+                  String target = ".setGreen(0);";
+                  boolean passed =
+                          checkCodeContains("keepOnlyBlue() setting green pixels to the number 0", target);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testSwitch1()
-    {
-        String target = "public void switchColors()";
-        boolean passed = checkCodeContains("switchColors() method", target);
-        assertTrue(passed);
-    }
+              @Test
+              public void test3()
+              {
+                  String target = "for";
+                  String code = getCode();
+                  int index = code.indexOf("public void keepOnlyBlue()");
+                  boolean passed = false;
+                  if (index > 0)
+                  {
+                      code = code.substring(index, index + 200);
+                      int num = countOccurences(code, target);
+                      passed = num == 2;
+                  }
+                  getResults(
+                          "true", "" + passed, "Checking that keepOnlyBlue() contains 2 for loops", passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testSwitch2()
-    {
-        String target = ".getGreen()";
-        boolean passed = checkCodeContains("switchColors() uses getGreen()", target);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void testSwitch1()
+              {
+                  String target = "public void switchColors()";
+                  boolean passed = checkCodeContains("switchColors() method", target);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testSwitch2()
+              {
+                  String target = ".getGreen()";
+                  boolean passed = checkCodeContains("switchColors() uses getGreen()", target);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -797,6 +817,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-39">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -844,6 +865,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="ap-practice-24">
     <title>AP Practice</title>
+
     <activity label="AP-2DArrays2">
       <statement>
         <p>
@@ -853,17 +875,21 @@ public class RunestoneTests extends CodeTestHelper
 
         <program language="java">
           <code>
-int[][] arr = { {1, 2, 3, 4},
-                {5, 6, 7, 8},
-                {9, 10, 11, 12} };
-int sum = 0;
-for (int[] x : arr)
-{
-    for (int y = 0; y &lt; x.length - 1; y++)
-    {
-         sum += x[y];
-    }
-}
+            <![CDATA[
+
+            int[][] arr = { {1, 2, 3, 4},
+                            {5, 6, 7, 8},
+                            {9, 10, 11, 12} };
+            int sum = 0;
+            for (int[] x : arr)
+            {
+                for (int y = 0; y < x.length - 1; y++)
+                {
+                     sum += x[y];
+                }
+            }
+
+            ]]>
           </code>
         </program>
       </statement>
@@ -2036,6 +2062,7 @@ for (int[] x : arr)
 
   <subsection xml:id="array2d-game">
     <title>2D Arrays and Loops Game</title>
+
     <p>
       Try the game below to practice loops with 2D arrays. Click on
       <term>Arrays</term> and then check <term>2D</term> and check

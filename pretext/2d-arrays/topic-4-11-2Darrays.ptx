@@ -1,27 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-11-2Darrays">
   <title>2D Array Creation and Access</title>
+
   <introduction>
     <idx>2D Arrays</idx>
     <idx>row</idx>
     <idx>column</idx>
-    <idx>
-      <h>arrays</h><h>2D</h>
-    </idx>
-
-    <idx>
-      <h>2D Array</h><h>definition</h>
-    </idx>
-
-    <idx>
-      <h>2D Array</h><h>row</h>
-    </idx>
-
-    <idx>
-      <h>2D Array</h><h>column</h>
-    </idx>
-
+    <idx><h>arrays</h><h>2D</h></idx>
+    <idx><h>2D Array</h><h>definition</h></idx>
+    <idx><h>2D Array</h><h>row</h></idx>
+    <idx><h>2D Array</h><h>column</h></idx>
     <p>
       Arrays in Java can store many items of the same type. You can even store
       items in <term>two-dimensional</term> (2D) arrays which are arrays that
@@ -32,6 +21,7 @@
 
     <figure align="center">
       <caption>Lockers in rows and columns</caption>
+
       <image source="Unit4-Data-Collections/Figures/2DLockers.jpg" width="63%" />
     </figure>
 
@@ -54,21 +44,13 @@
 
   <subsection xml:id="array-storage">
     <title>Array Storage</title>
+
     <idx>row-major order</idx>
     <idx>column-major order</idx>
     <idx>array of arrays</idx>
-    <idx>
-      <h>2D Array</h><h>row-major order</h>
-    </idx>
-
-    <idx>
-      <h>2D Array</h><h>column-major order</h>
-    </idx>
-
-    <idx>
-      <h>2D Array</h><h>array of arrays</h>
-    </idx>
-
+    <idx><h>2D Array</h><h>row-major order</h></idx>
+    <idx><h>2D Array</h><h>column-major order</h></idx>
+    <idx><h>2D Array</h><h>array of arrays</h></idx>
     <p>
       Many programming languages actually store two-dimensional array data in a
       one-dimensional array. The typical way to do this is to store all the data
@@ -96,6 +78,7 @@
 
     <figure align="center">
       <caption>Java arrays of arrays</caption>
+
       <image source="Unit4-Data-Collections/Figures/ArrayRowsAndCols.png" width="54%" />
     </figure>
 
@@ -621,14 +604,9 @@
 
   <subsection xml:id="declaring-2d-arrays">
     <title>Declaring 2D Arrays</title>
-    <idx>
-      <h>2D Array</h><h>declaration</h>
-    </idx>
 
-    <idx>
-      <h>2D Array</h><h>creation</h>
-    </idx>
-
+    <idx><h>2D Array</h><h>declaration</h></idx>
+    <idx><h>2D Array</h><h>creation</h></idx>
     <p>
       2D arrays are declared and created with the following syntax, which is
       very similar to 1D arrays but include 2 dimensions (<c>[][]</c>). The code
@@ -640,10 +618,10 @@
 
     <program language="java">
       <code>
-// 2D array declaration
-// datatype[][] variableName = new datatype[numberRows][numberCols];
-int[][] ticketInfo = new int[2][3];
-String[][] seatingChart = new String[3][2];
+        // 2D array declaration
+        // datatype[][] variableName = new datatype[numberRows][numberCols];
+        int[][] ticketInfo = new int[2][3];
+        String[][] seatingChart = new String[3][2];
       </code>
     </program>
 
@@ -677,7 +655,9 @@ String[][] seatingChart = new String[3][2];
 
           <test>
             <!-- else -->
-            <feedback>Multiply the number of rows and the number of columns.</feedback>
+            <feedback>
+              Multiply the number of rows and the number of columns.
+            </feedback>
           </test>
         </evaluate>
       </evaluation>
@@ -695,53 +675,54 @@ String[][] seatingChart = new String[3][2];
 
       <program interactive="activecode" language="java">
         <code>
-public class TicketInfo
-{
-    public static void main(String[] args)
-    {
-        // declare arrays
-        int[][] ticketInfo = new int[2][3];
-        System.out.println(ticketInfo.length + " rows");
-        System.out.println(ticketInfo[0].length + " columns");
-    }
-}
+          public class TicketInfo
+          {
+              public static void main(String[] args)
+              {
+                  // declare arrays
+                  int[][] ticketInfo = new int[2][3];
+                  System.out.println(ticketInfo.length + " rows");
+                  System.out.println(ticketInfo[0].length + " columns");
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TicketInfo");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TicketInfo");
+              }
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expected = "5 rows\n10 columns";
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expected = "5 rows\n10 columns";
 
-        boolean passed = output.contains(expected);
-        passed =
-                getResults(expected, output, "Changed ticketInfo to 5 rows and 10 columns", passed);
+                  boolean passed = output.contains(expected);
+                  passed =
+                          getResults(expected, output, "Changed ticketInfo to 5 rows and 10 columns", passed);
 
-        assertTrue(passed);
-    }
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test2()
-    {
-        String expected = "studentNames = new String[10][5]";
+              @Test
+              public void test2()
+              {
+                  String expected = "studentNames = new String[10][5]";
 
-        boolean passed = checkCodeContains(expected);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = checkCodeContains(expected);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -749,6 +730,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="initializer-lists-for-2d-arrays">
     <title>Initializer Lists for 2D Arrays</title>
+
     <p>
       You can also initialize (set) the values for the array when you create it.
       In this case you don’t need to specify the size of the array, it will be
@@ -761,8 +743,8 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-int[][] ticketInfo = { {25,20,25}, {25,20,25} };
-String[][] seatingInfo = { {"Jamal", "Maria"}, {"Jake", "Suzy"}, {"Emma", "Luke"} };
+        int[][] ticketInfo = { {25,20,25}, {25,20,25} };
+        String[][] seatingInfo = { {"Jamal", "Maria"}, {"Jake", "Suzy"}, {"Emma", "Luke"} };
       </code>
     </program>
 
@@ -795,7 +777,8 @@ String[][] seatingInfo = { {"Jamal", "Maria"}, {"Jake", "Suzy"}, {"Emma", "Luke"
           <test>
             <!-- else -->
             <feedback>
-              Remember, indices start at 0, and the row index comes first, followed by the column index.
+              Remember, indices start at 0, and the row index comes first,
+              followed by the column index.
             </feedback>
           </test>
         </evaluate>
@@ -805,14 +788,9 @@ String[][] seatingInfo = { {"Jamal", "Maria"}, {"Jake", "Suzy"}, {"Emma", "Luke"
 
   <subsection xml:id="set-values-in-a-2d-array">
     <title>Set Values in a 2D Array</title>
-    <idx>
-      <h>2D Array</h><h>initialization</h>
-    </idx>
 
-    <idx>
-      <h>2D Array</h><h>set value</h>
-    </idx>
-
+    <idx><h>2D Array</h><h>initialization</h></idx>
+    <idx><h>2D Array</h><h>set value</h></idx>
     <p>
       The square brackets <c>[row][col]</c> are used to access and modify an
       element in a 2D array. When accessing the element at
@@ -825,8 +803,8 @@ String[][] seatingInfo = { {"Jamal", "Maria"}, {"Jake", "Suzy"}, {"Emma", "Luke"
 
     <program language="java">
       <code>
-int[][] ticketInfo = new int[2][3];
-ticketInfo[0][0] = 15;
+        int[][] ticketInfo = new int[2][3];
+        ticketInfo[0][0] = 15;
       </code>
     </program>
 
@@ -854,89 +832,94 @@ ticketInfo[0][0] = 15;
 
       <program interactive="activecode" language="java">
         <code>
-public class TwoDArraySet
-{
-    public static void main(String[] args)
-    {
-        // declare arrays
-        int[][] ticketInfo;
-        String[][] seatingChart;
+          public class TwoDArraySet
+          {
+              public static void main(String[] args)
+              {
+                  // declare arrays
+                  int[][] ticketInfo;
+                  String[][] seatingChart;
 
-        // create arrays
-        ticketInfo = new int[2][3];
-        seatingChart = new String[3][2];
+                  // create arrays
+                  ticketInfo = new int[2][3];
+                  seatingChart = new String[3][2];
 
-        // initialize the array elements
-        ticketInfo[0][0] = 15;
-        ticketInfo[0][1] = 10;
-        ticketInfo[0][2] = 15;
-        ticketInfo[1][0] = 25;
-        ticketInfo[1][1] = 20;
-        ticketInfo[1][2] = 25;
-        seatingChart[0][0] = "Jamal";
-        seatingChart[0][1] = "Maria";
-        seatingChart[1][0] = "Jacob";
-        seatingChart[1][1] = "Suzy";
-        seatingChart[2][0] = "Emma";
-        seatingChart[2][1] = "Luke";
+                  // initialize the array elements
+                  ticketInfo[0][0] = 15;
+                  ticketInfo[0][1] = 10;
+                  ticketInfo[0][2] = 15;
+                  ticketInfo[1][0] = 25;
+                  ticketInfo[1][1] = 20;
+                  ticketInfo[1][2] = 25;
+                  seatingChart[0][0] = "Jamal";
+                  seatingChart[0][1] = "Maria";
+                  seatingChart[1][0] = "Jacob";
+                  seatingChart[1][1] = "Suzy";
+                  seatingChart[2][0] = "Emma";
+                  seatingChart[2][1] = "Luke";
 
-        // print the contents
-        System.out.println(ticketInfo);
-        System.out.println(seatingChart);
-    }
-}
+                  // print the contents
+                  System.out.println(ticketInfo);
+                  System.out.println(seatingChart);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TwoDArraySet");
-    }
+          import java.io.*;
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expected = "[[I@", expected2 = "[[Ljava.lang.String;@";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TwoDArraySet");
+              }
 
-        boolean passed = output.contains(expected) &amp;&amp; output.contains(expected2);
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expected = "[[I@", expected2 = "[[Ljava.lang.String;@";
 
-        passed = getResults("true", "" + passed, "Prints two 2D arrays");
-        assertTrue(passed);
-    }
+                  boolean passed = output.contains(expected) && output.contains(expected2);
 
-    @Test
-    public void test2()
-    {
-        String code = getCode();
-        String expected = "new String[4][2]";
+                  passed = getResults("true", "" + passed, "Prints two 2D arrays");
+                  assertTrue(passed);
+              }
 
-        boolean passed = code.contains(expected);
+              @Test
+              public void test2()
+              {
+                  String code = getCode();
+                  String expected = "new String[4][2]";
 
-        passed = getResults("true", "" + passed, "Add another row to seatingChart");
-        assertTrue(passed);
-    }
+                  boolean passed = code.contains(expected);
 
-    @Test
-    public void test3()
-    {
-        String code = getCode();
-        String expected1 = "seatingChart[3][0]";
-        String expected2 = "seatingChart[3][1]";
+                  passed = getResults("true", "" + passed, "Add another row to seatingChart");
+                  assertTrue(passed);
+              }
 
-        boolean passed = code.contains(expected1) &amp;&amp; code.contains(expected2);
+              @Test
+              public void test3()
+              {
+                  String code = getCode();
+                  String expected1 = "seatingChart[3][0]";
+                  String expected2 = "seatingChart[3][1]";
 
-        passed = getResults("true", "" + passed, "Give values to new elements");
-        assertTrue(passed);
-    }
-}
+                  boolean passed = code.contains(expected1) && code.contains(expected2);
+
+                  passed = getResults("true", "" + passed, "Give values to new elements");
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -998,10 +981,8 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="get-a-value-from-a-2d-array">
     <title>Get a Value from a 2D Array</title>
-    <idx>
-      <h>2D Array</h><h>access value</h>
-    </idx>
 
+    <idx><h>2D Array</h><h>access value</h></idx>
     <p>
       To get the value in a 2D array give the name of the array followed by the
       row and column indices in square brackets. The code below will get the
@@ -1012,18 +993,16 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-int[][] ticketInfo = { {25,20,25}, {25,20,25} };
-String[][] seatingInfo = { {"Jamal", "Maria"}, {"Jake", "Suzy"}, {"Emma", "Luke"} };
-int value = ticketInfo[1][0];
-String name = seatingInfo[0][1];
+        int[][] ticketInfo = { {25,20,25}, {25,20,25} };
+        String[][] seatingInfo = { {"Jamal", "Maria"}, {"Jake", "Suzy"}, {"Emma", "Luke"} };
+        int value = ticketInfo[1][0];
+        String name = seatingInfo[0][1];
       </code>
     </program>
 
     <activity label="qa2dab_2">
       <statement>
-        <p>
-          What is the value of <c>name</c> after the code above executes?
-        </p>
+        <p>What is the value of <c>name</c> after the code above executes?</p>
       </statement>
 
       <choices>
@@ -1046,9 +1025,7 @@ String name = seatingInfo[0][1];
           </statement>
 
           <feedback>
-            <p>
-              Maria is the value of <c>seatingInfo[0][1];</c>.
-            </p>
+            <p>Maria is the value of <c>seatingInfo[0][1];</c>.</p>
           </feedback>
         </choice>
 
@@ -1104,105 +1081,106 @@ String name = seatingInfo[0][1];
 
       <program interactive="activecode" language="java">
         <code>
-public class TwoDArrayInitGet
-{
-    public static void main(String[] args)
-    {
-        String[][] seatingInfo =
-        {
-            {"Jamal", "Maria"},
-            {"Jake", "Suzy"},
-            {"Emma", "Luke"}
-        };
-        String name = seatingInfo[0][0];
-        System.out.println(name + " is at [0,0]");
-    }
-}
+          public class TwoDArrayInitGet
+          {
+              public static void main(String[] args)
+              {
+                  String[][] seatingInfo =
+                  {
+                      {"Jamal", "Maria"},
+                      {"Jake", "Suzy"},
+                      {"Emma", "Luke"}
+                  };
+                  String name = seatingInfo[0][0];
+                  System.out.println(name + " is at [0,0]");
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TwoDArrayInitGet");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TwoDArrayInitGet");
+              }
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expected = "Jamal is at [0,0]";
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expected = "Jamal is at [0,0]";
 
-        boolean passed = output.contains(expected);
+                  boolean passed = output.contains(expected);
 
-        passed = getResults("true", "" + passed, "Output contains " + expected);
-        assertTrue(passed);
-    }
+                  passed = getResults("true", "" + passed, "Output contains " + expected);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test2()
-    {
-        String output = getMethodOutput("main");
-        String[] lines = output.split("\n");
+              @Test
+              public void test2()
+              {
+                  String output = getMethodOutput("main");
+                  String[] lines = output.split("\n");
 
-        String expected = "[3,0]";
-        String actual = "";
+                  String expected = "[3,0]";
+                  String actual = "";
 
-        boolean passed = false;
+                  boolean passed = false;
 
-        for (String l : lines)
-        {
-            if (l.replaceAll(" ", "").contains(expected))
-            {
-                actual = l;
-                passed = true;
-            }
-        }
+                  for (String l : lines)
+                  {
+                      if (l.replaceAll(" ", "").contains(expected))
+                      {
+                          actual = l;
+                          passed = true;
+                      }
+                  }
 
-        passed =
-                getResults(
-                        "Name is at " + expected,
-                        actual,
-                        "Add one name to new row and print it out",
-                        passed);
-        assertTrue(passed);
-    }
+                  passed =
+                          getResults(
+                                  "Name is at " + expected,
+                                  actual,
+                                  "Add one name to new row and print it out",
+                                  passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test3()
-    {
-        String output = getMethodOutput("main");
-        String[] lines = output.split("\n");
+              @Test
+              public void test3()
+              {
+                  String output = getMethodOutput("main");
+                  String[] lines = output.split("\n");
 
-        String expected = "[3,1]";
-        String actual = "";
+                  String expected = "[3,1]";
+                  String actual = "";
 
-        boolean passed = false;
+                  boolean passed = false;
 
-        for (String l : lines)
-        {
-            if (l.replaceAll(" ", "").contains(expected))
-            {
-                actual = l;
-                passed = true;
-            }
-        }
+                  for (String l : lines)
+                  {
+                      if (l.replaceAll(" ", "").contains(expected))
+                      {
+                          actual = l;
+                          passed = true;
+                      }
+                  }
 
-        passed =
-                getResults(
-                        "Name is at " + expected,
-                        actual,
-                        "Add second name to new row and print it out",
-                        passed);
-        assertTrue(passed);
-    }
-}
+                  passed =
+                          getResults(
+                                  "Name is at " + expected,
+                                  actual,
+                                  "Add second name to new row and print it out",
+                                  passed);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -1210,14 +1188,9 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="d-array-row-and-column-length">
     <title>2D Array Row and Column length</title>
-    <idx>
-      <h>2D Array</h><h>number of rows</h>
-    </idx>
 
-    <idx>
-      <h>2D Array</h><h>number of columns</h>
-    </idx>
-
+    <idx><h>2D Array</h><h>number of rows</h></idx>
+    <idx><h>2D Array</h><h>number of columns</h></idx>
     <idx>length</idx>
     <p>
       Arrays know their length (how many elements they can store). The length is
@@ -1232,8 +1205,8 @@ public class RunestoneTests extends CodeTestHelper
 
     <program language="java">
       <code>
-ticketInfo.length // returns the number of rows
-ticketInfo[0].length // returns the number of columns
+        ticketInfo.length // returns the number of rows
+        ticketInfo[0].length // returns the number of columns
       </code>
     </program>
 
@@ -1368,6 +1341,7 @@ ticketInfo[0].length // returns the number of columns
 
   <subsection xml:id="coding-challenge-ascii-art">
     <title>Coding Challenge: ASCII Art</title>
+
     <p>
       ASCII is a commonly used character encoding standard where each key you
       press on the keyboard is translated to an ASCII number to be stored in the
@@ -1423,110 +1397,115 @@ ticketInfo[0].length // returns the number of columns
 
       <program interactive="activecode" language="java">
         <code>
-public class AsciiArt
-{
-    public static void main(String[] args)
-    {
+          public class AsciiArt
+          {
+              public static void main(String[] args)
+              {
 
-        String[][] asciiArt =
-        {
-            {" ", " ", "_", "_", "_", " ", " "},
-            {" ", "(", "o", " ", "o", ")", " "},
-            {"(", " ", " ", "V", " ", " ", ")"},
-            {" ", "-", "m", "-", "m", "-", " "},
-        };
+                  String[][] asciiArt =
+                  {
+                      {" ", " ", "_", "_", "_", " ", " "},
+                      {" ", "(", "o", " ", "o", ")", " "},
+                      {"(", " ", " ", "V", " ", " ", ")"},
+                      {" ", "-", "m", "-", "m", "-", " "},
+                  };
 
-        // Part 1: Add 2 assignment statements to change "o" to "@"
+                  // Part 1: Add 2 assignment statements to change "o" to "@"
 
-        // print the asciiArt for Part 1
-        System.out.println("ASCII Art:");
-        for (String[] row : asciiArt)
-        {
-            for (String column : row) System.out.print(column);
-            System.out.println();
-        }
+                  // print the asciiArt for Part 1
+                  System.out.println("ASCII Art:");
+                  for (String[] row : asciiArt)
+                  {
+                      for (String column : row) System.out.print(column);
+                      System.out.println();
+                  }
 
-        // Part 2: Create your own ASCII art array and print it out!
+                  // Part 2: Create your own ASCII art array and print it out!
 
-    }
-}
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("AsciiArt");
-    }
+          import java.io.*;
 
-    @Test
-    public void test0()
-    {
-        String output = getMethodOutput("main");
-        String expect = "ASCII Art: \n___  \n (@ @) \n(  V  )\n -m-m-";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("AsciiArt");
+              }
 
-        boolean passed = getResults(expect, output, "Running main()", true);
-        assertTrue(passed);
-    }
+              @Test
+              public void test0()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "ASCII Art: \n___  \n (@ @) \n(  V  )\n -m-m-";
 
-    /* removed because doesn't work if their own art has o
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "ASCII Art: \n___  \n (@ @) \n(  V  )\n -m-m-";
+                  boolean passed = getResults(expect, output, "Running main()", true);
+                  assertTrue(passed);
+              }
 
-        boolean passed = output.contains("@") &amp;&amp; !output.contains("o");
-        passed = getResults(expect, output, "changed o to @", passed);
-        assertTrue(passed);
-    }
-    */
+              /* removed because doesn't work if their own art has o
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "ASCII Art: \n___  \n (@ @) \n(  V  )\n -m-m-";
 
-    @Test
-    public void test2()
-    {
-        String output = getMethodOutput("main");
-        String expect = "___  \n (@ @) \n(  V  )\n -m-m-";
+                  boolean passed = output.contains("@") && !output.contains("o");
+                  passed = getResults(expect, output, "changed o to @", passed);
+                  assertTrue(passed);
+              }
+              */
 
-        if (output.contains("-m-m-"))
-        {
-            int i = output.indexOf("-m-m-") + "-m-m-".length();
-            output = output.substring(i);
-        }
+              @Test
+              public void test2()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "___  \n (@ @) \n(  V  )\n -m-m-";
 
-        String[] lines = output.split("\n");
+                  if (output.contains("-m-m-"))
+                  {
+                      int i = output.indexOf("-m-m-") + "-m-m-".length();
+                      output = output.substring(i);
+                  }
 
-        boolean passed = output.length() &gt;= 10 &amp;&amp; lines.length &gt;= 3;
+                  String[] lines = output.split("\n");
 
-        passed =
-                getResults(
-                        "Your art",
-                        output,
-                        "added your own ascii art (should be at least 3 x 3)",
-                        passed);
-        assertTrue(passed);
-    }
+                  boolean passed = output.length() >= 10 && lines.length >= 3;
 
-    @Test
-    public void test3()
-    {
-        String expect = "asciiArt[#][#] = \"@\"";
-        String code = getCode();
-        int num = countOccurencesRegex(code, expect);
+                  passed =
+                          getResults(
+                                  "Your art",
+                                  output,
+                                  "added your own ascii art (should be at least 3 x 3)",
+                                  passed);
+                  assertTrue(passed);
+              }
 
-        boolean passed = num &gt;= 2;
+              @Test
+              public void test3()
+              {
+                  String expect = "asciiArt[#][#] = \"@\"";
+                  String code = getCode();
+                  int num = countOccurencesRegex(code, expect);
 
-        getResults("2", "" + num, "Number of asciiArt[#][#] = \"@\" lines in code", passed);
+                  boolean passed = num >= 2;
 
-        assertTrue(passed);
-    }
-}
+                  getResults("2", "" + num, "Number of asciiArt[#][#] = \"@\" lines in code", passed);
+
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -1534,6 +1513,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-38">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -1622,6 +1602,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="d-arrays-game">
     <title>2D Arrays Game</title>
+
     <p>
       Try the game below to practice 2D Arrays. Click on <term>Arrays</term> and
       then check on <term>2D</term> and click on the elements of the * array
