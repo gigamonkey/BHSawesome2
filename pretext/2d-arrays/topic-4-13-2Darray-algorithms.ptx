@@ -164,35 +164,31 @@
         <code>
           <![CDATA[
 
-          public class Total
-          {
+          public class Total {
 
-              public static int getTotalForRow(int row, int[][] a)
-              {
-                  int total = 0;
-                  for (int col = 0; col < a[0].length; col++)
-                  {
-                      total = total + a[row][col];
-                  }
-                  return total;
+            public static int getTotalForRow(int row, int[][] a) {
+              int total = 0;
+              for (int col = 0; col < a[0].length; col++) {
+                total = total + a[row][col];
               }
+              return total;
+            }
 
-              // Complete the method getTotalForCol below
-              public static int getTotalForCol(int col, int[][] a)
-              {
-                  int total = 0;
-                  // Add a loop here to total a column col
+            // Complete the method getTotalForCol below
+            public static int getTotalForCol(int col, int[][] a) {
+              int total = 0;
+              // Add a loop here to total a column col
 
-                  return total;
-              }
+              return total;
+            }
 
-              public static void main(String[] args)
-              {
-                  int[][] matrix = { {1, 2, 3}, {4, 5, 6}};
-                  System.out.println(getTotalForRow(0, matrix));
-                  System.out.println(getTotalForCol(0, matrix));
-              }
+            public static void main(String[] args) {
+              int[][] matrix = {{1, 2, 3}, {4, 5, 6}};
+              System.out.println(getTotalForRow(0, matrix));
+              System.out.println(getTotalForCol(0, matrix));
+            }
           }
+
 
           ]]>
         </code>
@@ -200,41 +196,37 @@
         <tests>
           import static org.junit.Assert.*;
 
+          import java.io.*;
           import org.junit.*;
 
-          import java.io.*;
+          public class RunestoneTests extends CodeTestHelper {
+            public RunestoneTests() {
+              super("Total");
+            }
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("Total");
-              }
+            @Test
+            public void testMain() throws IOException {
+              String output = getMethodOutput("main");
+              String expect = "6\n5";
+              boolean passed = getResults(expect, output, "Expected output from main");
+              assertTrue(passed);
+            }
 
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "6\n5";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
+            @Test
+            public void test2() {
+              int[][] array = {{1, 4, 8}, {6, 7, 9}};
+              int value = 0;
+              Object[] args = {value, array};
 
-              @Test
-              public void test2()
-              {
-                  int[][] array = { {1, 4, 8}, {6, 7, 9}};
-                  int value = 0;
-                  Object[] args = {value, array};
+              String output = getMethodOutput("getTotalForCol", args);
+              String expect = "7";
 
-                  String output = getMethodOutput("getTotalForCol", args);
-                  String expect = "7";
-
-                  boolean passed =
-                          getResults(expect, output, "Testing getTotalForCol(0, { {1, 4,8},{6, 7, 9} })");
-                  assertTrue(passed);
-              }
+              boolean passed =
+                  getResults(expect, output, "Testing getTotalForCol(0, { {1, 4,8},{6, 7, 9} })");
+              assertTrue(passed);
+            }
           }
+
         </tests>
       </program>
     </activity>
@@ -331,31 +323,26 @@
         <code>
           <![CDATA[
 
-          public class Count
-          {
-              public static int countValues(int value, int[][] a, int rowStart,
-                                         int rowEnd, int colStart, int colEnd)
-              {
-                  int count = 0;
-                  for (int row = rowStart; row <= rowEnd; row++)
-                  {
-                      for (int col = colStart; col <= colEnd; col++)
-                      {
-                          if (a[row][col] == value)
-                          {
-                               count++;
-                          }
-                      }
+          public class Count {
+            public static int countValues(
+                int value, int[][] a, int rowStart, int rowEnd, int colStart, int colEnd) {
+              int count = 0;
+              for (int row = rowStart; row <= rowEnd; row++) {
+                for (int col = colStart; col <= colEnd; col++) {
+                  if (a[row][col] == value) {
+                    count++;
                   }
-                  return count;
+                }
               }
+              return count;
+            }
 
-              public static void main(String[] args)
-              {
-                  int[][] matrix = { {3, 2, 3}, {4, 3, 6}, {8, 9, 3}, {10, 3, 3}};
-                  System.out.println(countValues(3, matrix, 0, 2, 0, 2));
-              }
+            public static void main(String[] args) {
+              int[][] matrix = {{3, 2, 3}, {4, 3, 6}, {8, 9, 3}, {10, 3, 3}};
+              System.out.println(countValues(3, matrix, 0, 2, 0, 2));
+            }
           }
+
 
           ]]>
         </code>
@@ -363,21 +350,19 @@
         <tests>
           import static org.junit.Assert.*;
 
+          import java.io.*;
           import org.junit.*;
 
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "4";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
+          public class RunestoneTests extends CodeTestHelper {
+            @Test
+            public void testMain() throws IOException {
+              String output = getMethodOutput("main");
+              String expect = "4";
+              boolean passed = getResults(expect, output, "Expected output from main", true);
+              assertTrue(passed);
+            }
           }
+
         </tests>
       </program>
     </activity>
@@ -406,35 +391,28 @@
         <code>
           <![CDATA[
 
-          public class Duplicates
-          {
-              public static boolean noDups(int[][] nums)
-              {
-                  for (int row = 0; row < nums.length; row++)
-                  {
-                      for (int col = 0; col < nums[0].length; col++)
-                      {
-                          for (int row2 = row; row2 < nums.length; row2++)
-                          {
-                              for (int col2 = col + 1; col2 < nums[0].length; col2++)
-                              {
-                                  if (nums[row][col] == nums[row2][col2])
-                                  {
-                                      return false;
-                                  }
-                              }
-                          }
+          public class Duplicates {
+            public static boolean noDups(int[][] nums) {
+              for (int row = 0; row < nums.length; row++) {
+                for (int col = 0; col < nums[0].length; col++) {
+                  for (int row2 = row; row2 < nums.length; row2++) {
+                    for (int col2 = col + 1; col2 < nums[0].length; col2++) {
+                      if (nums[row][col] == nums[row2][col2]) {
+                        return false;
                       }
+                    }
                   }
-                  return true;
+                }
               }
+              return true;
+            }
 
-              public static void main(String[] args)
-              {
-                  int[][] matrix = { {3, 2, 3}, {4, 3, 6}, {8, 9, 3}, {10, 3, 3}};
-                  System.out.println(noDups(matrix));
-              }
+            public static void main(String[] args) {
+              int[][] matrix = {{3, 2, 3}, {4, 3, 6}, {8, 9, 3}, {10, 3, 3}};
+              System.out.println(noDups(matrix));
+            }
           }
+
 
           ]]>
         </code>
@@ -464,35 +442,29 @@
         <code>
           <![CDATA[
 
-          public class Rotate
-          {
-               public static int[][] rotateRowRight(int[][] nums, int row)
-               {
-                    int last = nums[row][nums[0].length - 1];
-                    // Write a backwards loop through the row's columns
-                    //  to copy elements at col-1 to col
+          public class Rotate {
+            public static int[][] rotateRowRight(int[][] nums, int row) {
+              int last = nums[row][nums[0].length - 1];
+              // Write a backwards loop through the row's columns
+              //  to copy elements at col-1 to col
 
+              // Copy the last element to the first element at col 0
 
-                    // Copy the last element to the first element at col 0
+              return nums;
+            }
 
-
-                    return nums;
-               }
-
-               public static void main(String[] args)
-               {
-                    int[][] matrix = { {3, 2, 3}, {4, 3, 6}, {8, 9, 3}, {10, 3, 3}};
-                    int[][] rotated = rotateRowRight(matrix, 1);
-                    for (int row = 0; row < rotated.length; row++)
-                    {
-                      for (int col = 0; col < rotated[0].length; col++)
-                      {
-                           System.out.print(rotated[row][col] + " ");
-                      }
-                      System.out.println();
-                    }
-               }
+            public static void main(String[] args) {
+              int[][] matrix = {{3, 2, 3}, {4, 3, 6}, {8, 9, 3}, {10, 3, 3}};
+              int[][] rotated = rotateRowRight(matrix, 1);
+              for (int row = 0; row < rotated.length; row++) {
+                for (int col = 0; col < rotated[0].length; col++) {
+                  System.out.print(rotated[row][col] + " ");
+                }
+                System.out.println();
+              }
+            }
           }
+
 
           ]]>
         </code>
@@ -500,37 +472,35 @@
         <tests>
           import static org.junit.Assert.*;
 
+          import java.io.*;
           import org.junit.*;
 
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-               @Test
-               public void testMain() throws IOException
+          public class RunestoneTests extends CodeTestHelper {
+            @Test
+            public void testMain() throws IOException {
+              String output = getMethodOutput("main");
+              String expect = "3 2 3\n6 4 3\n8 9 3\n10 3 3\n";
+              boolean passed = getResults(expect, output, "Expected output from main", true);
+              assertTrue(passed);
+            }
+            /* // giving strange error converting int to Object array.
+            @Test
+               public void test2()
                {
-                    String output = getMethodOutput("main");
-                    String expect = "3 2 3\n6 4 3\n8 9 3\n10 3 3\n";
-                    boolean passed = getResults(expect, output, "Expected output from main", true);
-                    assertTrue(passed);
+                   int[][] array = { {1, 4, 8}, {6, 7, 9}};
+                   int value = 0;
+                   Object[] args = {array, 0};
+
+                   String output = getMethodOutput("rotateRowRight", args);
+                   String expect = "8 1 4\n6 7 9\n";
+
+                   boolean passed =
+                           getResults(expect, output, "Testing rotateRowRight({ {1, 4,8},{6, 7, 9} }, 1)");
+                   assertTrue(passed);
                }
-               /* // giving strange error converting int to Object array.
-               @Test
-                  public void test2()
-                  {
-                      int[][] array = { {1, 4, 8}, {6, 7, 9}};
-                      int value = 0;
-                      Object[] args = {array, 0};
-
-                      String output = getMethodOutput("rotateRowRight", args);
-                      String expect = "8 1 4\n6 7 9\n";
-
-                      boolean passed =
-                              getResults(expect, output, "Testing rotateRowRight({ {1, 4,8},{6, 7, 9} }, 1)");
-                      assertTrue(passed);
-                  }
-                  */
+               */
           }
+
         </tests>
       </program>
     </activity>
