@@ -319,3 +319,7 @@ table .align-default, td {
 .ptx-content .project-like {
   margin-top: 2em;
 }
+
+.ptx-content .book .conclusion .para {
+  text-align: center;
+}
