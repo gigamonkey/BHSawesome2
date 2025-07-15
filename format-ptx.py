@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import subprocess
 import re
 from argparse import ArgumentParser
 from sys import stderr, stdout
@@ -16,6 +17,7 @@ ONE_LINE = {"cline"}
 COMPACT = {"cell", "idx", "premise"}
 DEFAULT_NS = {"xml": "http://www.w3.org/XML/1998/namespace"}
 
+format_code = False
 
 def indentation(level):
     return " " * (INDENT * level)
@@ -131,7 +133,7 @@ def render_program_text(elem, ns, level):
     indent1 = indentation(level)
     indent2 = indentation(level + 1)
 
-    text = dedent(to_text(elem)).strip()
+    text = maybe_formatted(dedent(to_text(elem)).strip())
     needs_cdata = any(e in text for e in "&<>")
     multiline = is_multiline(text)
 
@@ -152,6 +154,18 @@ def render_program_text(elem, ns, level):
     content += f"\n{indent1}{close_tag(elem, ns)}\n"
 
     return content
+
+def maybe_formatted(text):
+    if format_code:
+        result = subprocess.run(
+            ["java", "-jar", "google-java-format-1.25.2-all-deps.jar", "-"],
+            capture_output=True, input=text, text=True, check=False)
+        if result.returncode != 0:
+            print(f"Couldn't format\n{text}\n", file=stderr)
+
+        return result.stdout if result.returncode == 0 else text
+    else:
+        return text
 
 
 def render_block(elem, ns, level=0):
@@ -303,9 +317,14 @@ if __name__ == "__main__":
     parser.add_argument(
         "-q", "--quiet", action="store_true", help="Don't emit output about files."
     )
+    parser.add_argument(
+        "-f", "--format-code", action="store_true", help="Format Java code."
+    )
     parser.add_argument("files", nargs="*", help="Files to reformat")
 
     args = parser.parse_args()
+
+    format_code = args.format_code
 
     for f in args.files:
         if not args.quiet:
