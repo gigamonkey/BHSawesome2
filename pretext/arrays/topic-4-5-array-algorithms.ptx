@@ -978,13 +978,13 @@
     <title>Comparing elements</title>
 
     <p>
-      Sometimes we need to go beyond testing criteria of the individiual values
-      and test facts about relationships between elements within the array. For
-      instance, suppose we had a sorted array so the elements went from smallest
-      to largest. In a sorted array elements with the same value will be next to
-      each other in the array so we can test whether there are any duplicate
-      elements by looping through the array and checking all the pairs at
-      adjacent indices:
+      Sometimes we need to go beyond testing criteria against individiual
+      elements of the array and test facts about relationships between elements
+      within the array. For instance, suppose we had a sorted array so the
+      elements went from smallest to largest. In a sorted array elements with
+      the same value will be next to each other in the array so we can test
+      whether there are any duplicate elements by looping through the array and
+      checking all the pairs at adjacent indices:
     </p>
 
     <program>
@@ -1324,26 +1324,30 @@
     <title>Reversing an array</title>
 
     <p>
-      Reversing an array is similar to rotating it. We can copy the first
-      element to the last position, the second element to the second-to-last
-      position, and so on. We can use a temporary variable to store the value of
-      the element we are overwriting. We usually need an indexed loop to access
-      the elements at different indices unless we use a temporary array to store
-      the reversed elements. Note that arrays are passed as references to
-      methods, so any changes made to the array within the method will affect
-      the original array.
+      Reversing an array is similar to rotating it. However rather than shifting
+      elements one position either up or down, which only requires keeping track
+      of one extra value in a temporary variable, when we reverse an array in
+      place (meaning we are actually moving the values in the original array,
+      not making a new array with the same values in reverse order), we will
+      repeatedly <term>swap</term> elements.
     </p>
 
     <p>
-      The following programs show how you can reverse an array in place by
-      swapping elements. The first uses a while loop and the second an indexed
-      for loop. To swap two elements, you need to use a temp variable to store
-      the value of the element you are overwriting. Imagine that you have a
-      glass of milk and a glass of orange juice. How would you swap the contents
-      of the two glasses without making a huge mess? You would need a third
-      glass to hold the contents of one of the glasses while you pour the
-      contents of the other glass into it. Then you can pour the contents of the
-      third glass into the other glass. This is the same idea behind swapping
+      For intance, clearly after we’ve reversed an array, the original first
+      value will be in the last position and the originial last value will be in
+      the first. So we need to swap those two elements, using a a temporary
+      variable.
+    </p>
+
+    <p>
+      To see why, imagine that we have a glass of water and a glass of orange
+      juice and we want to swap the contents of the two glasses without making a
+      huge mess? We would need a third glass to temporarily hold the contents of
+      one of the glasses, let’s say the glass of water. Once the water glass is
+      empty we can pour the contents of the glass of orange juice into it. Then
+      we can pour the water from the third glass into the now empty orange juice
+      glass and the contents have been swapped. (At the point we can put the
+      third glass in the dishwasher.) This is the same idea behind swapping
       elements in an array.
     </p>
 
@@ -1355,10 +1359,24 @@
 
     <program>
       // Swapping 2 elements at index i and j
-      int temp = array[i];  // pour milk into temp cup
-      array[i] = array[j];  // pour orange juice into milk glass
-      array[j] = temp;      // pour milk from temp into oj glass
+      int temp = array[i];  // pour water into a third glass
+      array[i] = array[j];  // pour orange juice into original water glass
+      array[j] = temp;      // pour water from third glass into original OJ glass
     </program>
+
+    <p>
+      To completely reverse a list we need to repeatedly swap elements, starting
+      with the first and last, then the second and second to last, and so on,
+      until we get to the middle of the list. As when we rotating arrays, we
+      will need to use a regular <c>for</c> loop to access the elements at
+      specific indices.
+    </p>
+
+    <p>
+      The following two programs show how to reverse an array in place by
+      swapping elements. The first uses a <c>for</c> loop and the second a
+      should use a <c>while</c> loop.
+    </p>
 
     <activity label="parsons_array_reverse" numbered="yes" adaptive="yes" indentation="hide" language="java">
       <statement>
@@ -1373,23 +1391,20 @@
 
       <blocks>
         <block order="8">
-          <cline>public static void reverse(int[] a)</cline>
-          <cline>{</cline>
+          <cline>public static void reverse(int[] a) {</cline>
         </block>
 
         <block order="5">
-          <cline>  int temp = 0;</cline>
           <cline>  int half = a.length / 2;</cline>
           <cline>  int max = a.length - 1;</cline>
         </block>
 
         <block order="6">
-          <cline>  for (int i = 0; i &lt; half; i++)</cline>
-          <cline>  {</cline>
+          <cline>  for (int i = 0; i &lt; half; i++) {</cline>
         </block>
 
         <block order="2">
-          <cline>     temp = a[i];</cline>
+          <cline>     int temp = a[i];</cline>
         </block>
 
         <block order="7">
@@ -1424,8 +1439,7 @@
 
       <blocks>
         <block order="4">
-          <cline>public static void reverse(int[] array)</cline>
-          <cline>{</cline>
+          <cline>public static void reverse(int[] array) {</cline>
         </block>
 
         <block order="7">
@@ -1434,13 +1448,11 @@
         </block>
 
         <block order="6">
-          <cline>   while (start &lt; end)</cline>
-          <cline>   {</cline>
+          <cline>   while (start &lt; end) {</cline>
         </block>
 
         <block order="5" correct="no">
-          <cline>   for(int i = start; i &lt; end; i++)</cline>
-          <cline>   {</cline>
+          <cline>   for(int i = start; i &lt; end; i++) {</cline>
         </block>
 
         <block order="9">
