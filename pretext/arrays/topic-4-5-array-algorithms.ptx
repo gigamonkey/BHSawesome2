@@ -49,9 +49,10 @@
 
     <p>
       As we have seen before with loops, the <term>accumulator pattern</term>
-      decribes loops that iterate through a set of values while “accumulating”
-      values into a variable. For instance summing numbers is a form of
-      accumulation. The accumulator pattern has four steps:
+      decribes loops that iterate through a set of values while accumulating
+      values into a variable where the accumulation can take on various forms.
+      For instance summing numbers is a form of accumulation. The accumulator
+      pattern has four steps:
     </p>
 
     <p>
@@ -75,11 +76,12 @@
     </p>
 
     <p>
-      The obvious way to sum the elements of an array is with an accumulating
-      loop over the elements of the array. Since we need to process all the
-      elements in the array to sum them and don’t care about their positions,
-      this is a great use for an enhanced <c>for</c> loop. And we can compute
-      the average by dividing the sum by the array’s length. For example:
+      To apply this pattern to summing the elements of an array we just need to
+      recognize that the values to loop through in step 2 are just the elements
+      of the array. Since we need to process all the elements in the array to sum
+      them and don’t care about their positions, this is a great use for an
+      enhanced <c>for</c> loop. And we can compute the average by dividing the
+      sum by the array’s length. For example:
     </p>
 
     <program>
@@ -183,7 +185,9 @@
       String longest = names[0];
 
       for (String name : names) {
+          // Check if the new name is longer than the longest we've seen
           if (name.length() > longest.length()) {
+              // Save the new name if it's longer
               longest = name;
           }
       }
@@ -435,10 +439,10 @@
     <p>
       The best way to write a searching algorithm is to put the loop into a
       method so that we can <c>return</c> from the method as soon as we find a
-      value that meets our criteria. Returning from a method, from the body of a
-      loop will break us out of the loop immediately, even if the loop would
-      otherwise have run for more iterations. Here’s a method that returns the
-      first name longer than ten characters in the array it is passed.
+      value that meets our criteria. Returning from a method will break us out
+      of the loop immediately, even if the loop would otherwise have run for
+      more iterations. Here’s a method that returns the first name longer than
+      ten characters in the array it is passed.
     </p>
 
     <program>
@@ -457,9 +461,9 @@
     </program>
 
     <p>
-      When this method runs it will return the first name in the array longer
-      than ten characters. There may be many long names in the array but the
-      goal of this method is just to find the first one. Note the <c>return
+      When this method runs it will return the first name in the array that is
+      longer than ten characters. There may be many long names in the array but
+      the goal of this method is just to find the first one. Note the <c>return
       null</c> at the end of the method. Because the return type of the method
       is <c>String</c> we have to return something even if we didn’t find any
       name that met our criteria in the array. Returning <c>null</c> is a
@@ -470,8 +474,9 @@
       situation but they are beyond the scope of this course. If we were
       searching for a value in a an array of some primitive type, we couldn’t
       return <c>null</c> but would have to return some other <term>distinguished
-      value</term> like -1 or 0, ideally something that would not be a possible
-      actual value to be found.
+      value</term> that would not be a possible actual value to be found. For
+      instance methods that are intended to searching in an array of positive
+      <c>int</c> values, often use -1 as a distinguished value.
     </p>
 
     <p>
@@ -482,11 +487,12 @@
     </p>
 
     <activity label="early_return_error">
+      <title>Giving up too soon</title>
       <statement>
         <p>
           Run the following code. Does it find 7 in the array? Click on Code
           Lens to trace through the code to see why not. Once you’ve found it,
-          fix the early return error.
+          fix the error.
         </p>
       </statement>
 
@@ -837,11 +843,11 @@
     </p>
 
     <p>
-      The algorithms to answer these questions is similar to the searching
-      algorithm but instead of returning a value from the array we return a
-      <c>boolean</c> value that answers the question. On the AP exam they will
-      frequently provide a method to use to test the criteria so all you’ll have
-      to do is write the right method structure.
+      The algorithms to answer these questions are similar to the searching
+      algorithm but instead of returning the value we from in the array, we
+      return a <c>boolean</c> value that answers the question. On the AP exam
+      they will frequently provide a method to use to test the criteria so all
+      you’ll have to do is write the right method structure.
     </p>
 
     <p>
@@ -871,25 +877,23 @@
     <p>
       The difference between this method and a search method just just in the
       return values: at the point where a search method would return the value
-      it found we return <c>true</c> and where a search method would return the
-      distinguished “not found” value, such as null, we return <c>false</c> to
-      indicate that no elements of the array met the criteria.
+      it found, we return <c>true</c>, and where a search method would return
+      the distinguished “not found” value, such as null, we return <c>false</c>
+      to indicate that no elements of the array met the criteria.
     </p>
 
     <p>
       You might think that to check whether all elements of an array meet some
       criteria you’d have to loop through the whole array and look at them all.
-      It’s right there in the name, right? However, if you think back to our
-      <c>boolean</c> operators and their short circuiting behavior you might
-      realize that saying all the element meet the criteria is the same as
-      saying that item one meets the criteria and item two meets it and item
-      three, and so on. But all those booleans and’ed together are only true if
-      they all are so just like the &amp;&amp; operator doesn’t even need to
-      evaluate it’s right hand operand if the left hand is <c>false</c>, we
-      don’t need to look at any more elements of the array as soon as we find
-      one that doesn’t meet our criteria. With just one counter example we know
-      it’s not true that all the elements meet the criteria. So the all pattern
-      is actually almost the same as the any pattern:
+      It’s right there in the name, right? However, we can flip things around
+      and realize that saying <em>all</em> the elements meet some criteria is
+      the same as saying there is <em>no</em> element that <em>doesn’t</em> meet
+      the criteria. In other words, if we can find just one counter example then
+      we know not all the elements meet the criteria. So the all pattern is
+      actually almost the same as the any pattern, we just test the opposite
+      condition: <c>!hasProperty(value)</c> rather than
+      <c>hasProperty(value)</c> and then swap the return values, <c>false</c>
+      for <c>true</c> and vice versa:
     </p>
 
     <program>
@@ -917,16 +921,13 @@
 
       <program interactive="activecode">
         <code>
-          public class Test1
-          {
-              public static boolean isEven(int value)
-              {
+          public class Test1 {
+              public static boolean isEven(int value) {
                   // 1. TODO: return true if value is even, false otherwise
                   return true;
               }
 
-              public static boolean allOdd(int[] array)
-              {
+              public static boolean allOdd(int[] array) {
                   // 2. TODO: Loop thru the array
                   // and return false if any value isEven
 
@@ -934,8 +935,7 @@
                   return true;
               }
 
-              public static void main(String[] args)
-              {
+              public static void main(String[] args) {
                   int[] a1 = {1, 3, 6};
                   int[] a2 = {1, 3, 5};
                   System.out.println(allOdd(a1));
@@ -993,52 +993,69 @@
   </subsection>
 
   <subsection xml:id="pairs-and-duplicates-in-array">
-    <title>Pairs and Duplicates in Array</title>
+    <title>Comparing elements</title>
 
     <p>
-      Here is a pattern to check for duplicates in an array by accessing a pair
-      of elements next to each other, <c>array[i]</c> and <c>array[i+1]</c>.
-      Note that we need to use an indexed for loop to get access to the next
-      element.
+      Sometimes we need to go beyond testing criteria of the individiual values
+      and test facts about relationships between elements within the array. For
+      instance, suppose we had a sorted array so the elements went from smallest
+      to largest. In a sorted array elements with the same value will be next to
+      each other in the array so we can test whether there are any duplicate
+      elements by looping through the array and checking all the pairs at
+      adjacent indices:
     </p>
 
     <program>
       <![CDATA[
 
       // check for duplicates next to each other
-      for (int i = 0; i < values.length - 1; i++)
-      {
-          if (values[i] == values[i + 1])
-          {
-              return true;
+      public static boolean anyDuplicatesInSorted(int[] values) {
+          for (int i = 0; i < values.length - 1; i++) {
+              if (values[i] == values[i + 1]) {
+                  return true;
+              }
           }
+          return false;
       }
-      return false;
-
       ]]>
     </program>
 
     <p>
-      If we want to check for duplicates anywhere in the array, we need to use a
-      nested loop to compare all pairs of elements in the array.
+      There are a couple things to note about this loop. First off, we need to
+      use a regular <c>for</c> loop since we need an index variable to be able
+      to access the elements at indicies <c>i</c> and <c>i + 1</c> each time
+      through the loop. And we had to adjust the loop header from the canonical
+      <c>for</c> loop, changing the limit from the normal <c>values.length</c>
+      to <c>values.length - 1</c>. If we looped with a limit of
+      <c>values.length</c> then the last iteration of the loop <c>i</c> would be
+      the largest legal index and <c>i + 1</c> would be one greater and out of
+      bounds.
+    </p>
+
+    <p>
+      The above algorithm only works if the array is sorted. If the array is not
+      necessarily sorted, we need to do a bit more work, using a nested nested
+      loop to compare all pairs of elements in the array. Look carefully at the
+      two loops. The outer loop is a canonical loop, since we need to consider
+      every element of the array against all it’s possible pairs. But the inner
+      loop is unusual in that the initializer starts the loop variable not at
+      <c>0</c>. Why?
     </p>
 
     <program>
       <![CDATA[
 
       // check for duplicates anywhere in the array
-      for (int i = 0; i < values.length; i++)
-      {
-          for (int j = i + 1; j < values.length; j++)
-          {
-              if (values[i] == values[j])
-              {
-                  return true;
+      public static boolean anyDuplicates(int[] values) {
+          for (int i = 0; i < values.length; i++) {
+              for (int j = i + 1; j < values.length; j++) {
+                  if (values[i] == values[j]) {
+                      return true;
+                  }
               }
           }
+          return false;
       }
-      return false;
-
       ]]>
     </program>
 
@@ -1053,26 +1070,19 @@
 
       <program interactive="activecode">
         <code>
-          public class Pairs
-          {
-             public static boolean sumPairs10(int[] nums)
-             {
+          public class Pairs {
+             public static boolean sumPairs10(int[] nums) {
                  // TODO: if two adjacent numbers in nums add up to 10, return true
-
-
                  return false;
              }
 
-             public static void main(String[] args)
-             {
-
+             public static void main(String[] args) {
                 int[] nums1 = {1, 2, 8};
                 System.out.println(sumPairs10(nums1));
 
                 int[] nums2 = {2, 1, 2};
                 System.out.println(sumPairs10(nums2));
              }
-
           }
         </code>
 
@@ -1181,37 +1191,34 @@
   </subsection>
 
   <subsection xml:id="rotating-array-elements">
-    <title>Rotating Array Elements</title>
+    <title>Rotating arrays</title>
 
     <p>
       Rotating an array means shifting all the elements in the array to the
-      right or left by one position. For example, if the array is {6, 2, 5, 3},
-      rotating it to the right would give {3, 6, 2, 5}. To rotate an array, we
-      need to copy the last element to the first position and then copy all the
-      other elements to the next position. We can use a temporary variable to
-      store the last element before overwriting it. If you do not want to change
-      the original array, you can return a new array by copying in the rotated
-      elements.
+      right or left by one position. For example, if the array is <c>{ 6, 2, 5,
+      3 }</c>, rotating it to the right would give <c>{ 3, 6, 2, 5 }</c> after
+      the first three elements have each moved on position to the right and the
+      <c>3</c> that was originially the last element is now the first element.
+      Rotating the same initial array to the left would give us <c>{ 2, 5, 3, 6
+      }</c>.
     </p>
 
     <activity label="rotateRightParsons" numbered="yes" adaptive="yes" indentation="show" language="java">
+      <title>Copying right rotation</title>
       <statement>
         <p>
-          The following program segment is a method that should return an
-          integer array that is rotated to the right – so {6, 2, 5, 3} returns
-          {3, 6, 2, 5} (the parameter). Note that the method return type is
-          int[] which means it will return an int array. But, the blocks have
-          been mixed up and include one extra block that is not needed in a
-          correct solution. Drag the blocks from the left and put them in the
-          correct order on the right. Click the Check button to check your
-          solution.
+          The scrambled code below is for a method that should return a new
+          <c>int[]</c> that is the same as its argument but rotated one position
+          to the right, so <c>{ 6, 2, 5, 3 }</c> returns <c>{ 3, 6, 2, 5 }</c>.
+          The blocks also include one block that is not needed in a correct
+          solution. Drag the blocks from the left and put them in the correct
+          order on the right. Click the Check button to check your solution.
         </p>
       </statement>
 
       <blocks>
         <block order="3">
-          <cline>public static int[] rotateRight(int[] arr)</cline>
-          <cline>{</cline>
+          <cline>public static int[] rotateRight(int[] arr) {</cline>
         </block>
 
         <block order="7">
@@ -1223,13 +1230,11 @@
         </block>
 
         <block order="8">
-          <cline>    for (int i = 0; i &lt; arr.length - 1; i++)</cline>
-          <cline>    {</cline>
+          <cline>    for (int i = 0; i &lt; arr.length - 1; i++) {</cline>
         </block>
 
         <block order="5" correct="no">
-          <cline>    for (int i = 0; i &lt; arr.length; i++)</cline>
-          <cline>    {</cline>
+          <cline>    for (int i = 0; i &lt; arr.length; i++) {</cline>
         </block>
 
         <block order="1">
@@ -1251,23 +1256,21 @@
     </activity>
 
     <p>
-      We can also rotate in place without constructing another array. We can
-      copy the last element to the first position and then copy all the other
-      elements to the next position. We need to use an indexed loop to access
-      the elements at different indices. When you pass an array to a method,
-      you’re actually passing a reference to the array’s memory location. This
-      means that any changes made to the array within the method will affect the
-      original array.
+      We can also rotate in place without constructing another array if we use a
+      temporary variable to hold one value while we move all the others to their
+      new position in the array. For instance to rotate left, store the value of
+      the first element and then shift all the other elements one to the left in
+      order. When all the elements have been shifted, put the original first
+      element in the last position to complete the rotation.
     </p>
 
     <activity label="rotate">
       <statement>
         <p>
           The code below rotates array elements to the left in place without
-          constructing another array. Try it in the <url
-          href="http://www.pythontutor.com/visualize.html#code=public%20class%20Rotate%0A%20%20%20%7B%20%20%20%20%20%20%0A%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20int%5B%20%5D%20values%20%3D%20%7B6,%202,%201,%207,%2012,%205%7D%3B%0A%20%20%20%20%20%20%20%20int%20first%20%3D%20values%5B0%5D%3B%0A%20%20%20%20%20%20%20%20for%20%28int%20i%3D0%3B%20i%20%3C%20values.length%3B%20i%2B%2B%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20//%20if%20it's%20not%20the%20last%20element,%20copy%20the%20next%20one%20over%0A%20%20%20%20%20%20%20%20%20%20if%20%28i%20%3C%20values.length%20-%201%29%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20values%5Bi%5D%20%3D%20values%5Bi%2B1%5D%3B%0A%20%20%20%20%20%20%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20//%20last%20element%20gets%20first%0A%20%20%20%20%20%20%20%20%20%20%20%20%20values%5Bi%5D%20%3D%20first%3B%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20//%20print%20them%20out%20to%20see%20the%20results%0A%20%20%20%20%20%20%20%20for%20%28int%20val%20%3A%20values%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20System.out.print%28val%20%2B%20%22%20%22%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%7D%0A%20%20&amp;cumulative=false&amp;curInstr=47&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false&amp;curInstr=0">Java
-          visualizer</url> with the CodeLens button. Can you change it to rotate
-          the elements to the right instead? Hint: use a backwards loop.
+          constructing another array. Try it in the Java visualizer with the
+          CodeLens button. Can you change it to rotate the elements to the right
+          instead? Hint: use a backwards loop.
         </p>
       </statement>
 
@@ -1275,28 +1278,19 @@
         <code>
           <![CDATA[
 
-          public class Rotate
-          {
-              public static void main(String[] args)
-              {
-                  int[] values = {6, 2, 1, 7, 12, 5};
+          public class Rotate {
+              public static void main(String[] args) {
+                  int[] values = { 6, 2, 1, 7, 12, 5 };
                   int first = values[0];
-                  for (int i = 0; i < values.length; i++)
-                  {
-                      // if it's not the last element, copy the next one over
-                      if (i < values.length - 1)
-                      {
+                  for (int i = 0; i < values.length - 1; i++) {
+                      if (i < values.length - 1) {
                           values[i] = values[i + 1];
                       }
-                      else
-                      {
-                          // last element gets first
-                          values[i] = first;
-                      }
                   }
+                  values[values.length - 1] = first;
+
                   // print them out to see the results
-                  for (int val : values)
-                  {
+                  for (int val : values) {
                       System.out.print(val + " ");
                   }
               }
@@ -1345,7 +1339,7 @@
   </subsection>
 
   <subsection xml:id="reversing-an-array">
-    <title>Reversing an Array</title>
+    <title>Reversing an array</title>
 
     <p>
       Reversing an array is similar to rotating it. We can copy the first
