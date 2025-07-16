@@ -1,3 +1,5 @@
+2D, not 2d
+1D, not 1d or one-dimensional
 AP exam
 subexpression, not sub-expression
 numbers spelled out: [0, 100], [1, 100] * 10^x, e.g. ninety-nine, one hundred thousand
