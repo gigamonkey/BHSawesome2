@@ -117,8 +117,11 @@ def render_inline(elem, ns):
 
     s = open_tag(elem, ns)
 
-    if elem.text and elem.text.strip():
-        s += escape(elem.text)
+    if is_all_text(elem):
+        s += escape(elem.text.strip())
+    else:
+        if elem.text and elem.text.strip():
+            s += escape(elem.text)
 
     for child in elem:
         s += render_inline(child, ns | elem.nsmap)
