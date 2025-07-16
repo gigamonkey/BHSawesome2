@@ -20,14 +20,12 @@
       at methods that calculate and return a value of a specific type.
     </p>
 
-    <program language="java">
-      <code>
-        // static method header
-        public static return-type method-name(parameters)
-        {
-            // method body
-        }
-      </code>
+    <program>
+      // static method header
+      public static return-type method-name(parameters)
+      {
+          // method body
+      }
     </program>
   </introduction>
 
@@ -76,11 +74,9 @@
 
     <p>Here is an example of how to use these methods:</p>
 
-    <program language="java">
-      <code>
-        double x = Math.pow(3, 2); // 3^2 is 9.0
-        double y = Math.sqrt(9); // the square root of 9 is 3.0
-      </code>
+    <program>
+      double x = Math.pow(3, 2); // 3^2 is 9.0
+      double y = Math.sqrt(9); // the square root of 9 is 3.0
     </program>
   </subsection>
 
@@ -208,17 +204,15 @@
     <image source="Unit2-Selection-and-Iteration/Figures/adventure.jpg" width="36%" alt="Adventure map" />
     <p>
       One of the first games coded for early computers in the 1970s was called
-      <url href="https://en.wikipedia.org/wiki/Colossal_Cave_Adventure"
-      visual="https://en.wikipedia.org/wiki/Colossal_Cave_Adventure">Colossal
+      <url href="https://en.wikipedia.org/wiki/Colossal_Cave_Adventure">Colossal
       Cave Adventure</url>. It was a text-based interactive fiction game where
       you had to make your way through an elaborate cave. The program only
       understood one word or phrase commands like north, south, enter, take,
       etc. You can try <url
-      href="http://www.web-adventures.org/cgi-bin/webfrotz?s=Adventure"
-      visual="http://www.web-adventures.org/cgi-bin/webfrotz?s=Adventure">playing
+      href="http://www.web-adventures.org/cgi-bin/webfrotz?s=Adventure">playing
       adventure</url> recreated online following some of the commands in this
-      <url href="https://adventuregamers.com/walkthrough/full/colossal-cave"
-      visual="https://adventuregamers.com/walkthrough/full/colossal-cave">walkthrough</url>.
+      <url
+      href="https://adventuregamers.com/walkthrough/full/colossal-cave">walkthrough</url>.
       Part of the challenge is finding the commands that the code will
       understand.
     </p>
@@ -227,10 +221,9 @@
       In a game like Adventure, else if statements can be used to respond to
       commands from the user like n, s, e, w. Try the program below (or in an
       interactive input IDE like <url
-      href="https://play.juicemind.com/dashboard/teams/Mk2wWMTqPkekcxTDWqRn/item/54bfe3f4-f112-4062-8d7d-a033b2bf09b6#079f4341-137a-497f-b874-553ababd627a"
-      visual="https://play.juicemind.com/dashboard/teams/Mk2wWMTqPkekcxTDWqRn/item/54bfe3f4-f112-4062-8d7d-a033b2bf09b6#079f4341-137a-497f-b874-553ababd627a">JuiceMind</url>
-      or <url href="https://replit.com/@BerylHoffman/Adventure#Main.java"
-      visual="https://replit.com/@BerylHoffman/Adventure#Main.java">replit</url>).
+      href="https://play.juicemind.com/dashboard/teams/Mk2wWMTqPkekcxTDWqRn/item/54bfe3f4-f112-4062-8d7d-a033b2bf09b6#079f4341-137a-497f-b874-553ababd627a">JuiceMind</url>
+      or <url
+      href="https://replit.com/@BerylHoffman/Adventure#Main.java">replit</url>).
       This current adventure game asks the user whether they want to move n, s,
       e, or w, but right now only the north direction is coded. It leads to a
       new method called <c>forest()</c>.
@@ -263,7 +256,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           import java.util.Scanner;
 
@@ -439,37 +432,27 @@
 
     <p>
       <ul>
+        <li><url href="selection-summary.html">Selection Summary</url></li>
+
         <li>
-          <url href="selection-summary.html" visual="selection-summary.html">Selection Summary</url>
+          <url href="selection-practice-mixed-code.html">Selection Practice Mixed Code</url>
         </li>
 
         <li>
-          <url href="selection-practice-mixed-code.html" visual="selection-practice-mixed-code.html">Selection Practice Mixed Code</url>
+          <url href="selection-practice-coding.html">Selection Practice Coding</url>
         </li>
 
-        <li>
-          <url href="selection-practice-coding.html" visual="selection-practice-coding.html">Selection Practice Coding</url>
-        </li>
+        <li><url href="Exercises-selection.html">Exercises Selection</url></li>
+
+        <li><url href="frq-game-score.html">FRQ Game Score</url></li>
 
         <li>
-          <url href="Exercises-selection.html" visual="Exercises-selection.html">Exercises Selection</url>
+          <url href="selection-more-practice-coding.html">Selection More Practice Coding</url>
         </li>
 
-        <li>
-          <url href="frq-game-score.html" visual="frq-game-score.html">FRQ Game Score</url>
-        </li>
+        <li><url href="group-mod-practice.html">Group Mod Practice</url></li>
 
-        <li>
-          <url href="selection-more-practice-coding.html" visual="selection-more-practice-coding.html">Selection More Practice Coding</url>
-        </li>
-
-        <li>
-          <url href="group-mod-practice.html" visual="group-mod-practice.html">Group Mod Practice</url>
-        </li>
-
-        <li>
-          <url href="magpieindex.html" visual="magpieindex.html">Magpie Lab</url>
-        </li>
+        <li><url href="magpieindex.html">Magpie Lab</url></li>
       </ul>
     </p>
   </subsection>
@@ -489,20 +472,18 @@
       from Kent School, CT for this example.)
     </p>
 
-    <program language="java">
-      <code>
-        <![CDATA[
+    <program>
+      <![CDATA[
 
-        !(a && b)
+      !(a && b)
 
-        a = "senior"
-        b = "at our high school"
+      a = "senior"
+      b = "at our high school"
 
-        // This means it is not true that (a) it is a senior
-        // and (b) someone at our high school.
+      // This means it is not true that (a) it is a senior
+      // and (b) someone at our high school.
 
-        ]]>
-      </code>
+      ]]>
     </program>
 
     <p>
@@ -604,51 +585,39 @@
       Checks in the AP Classroom.
     </p>
 
-    <ul>
-      <li>
-        <url href="loops-summary.html" visual="loops-summary.html">Loops Summary</url>
-      </li>
+    <p>
+      <ul>
+        <li><url href="loops-summary.html">Loops Summary</url></li>
 
-      <li>
-        <url href="loops-practice-mixed-code.html" visual="loops-practice-mixed-code.html">Loops Practice Mixed Code</url>
-      </li>
+        <li>
+          <url href="loops-practice-mixed-code.html">Loops Practice Mixed Code</url>
+        </li>
 
-      <li>
-        <url href="loops-practice-mixed-code-toggle.html" visual="loops-practice-mixed-code-toggle.html">Loops Practice Mixed Code Toggle</url>
-      </li>
+        <li>
+          <url href="loops-practice-mixed-code-toggle.html">Loops Practice Mixed Code Toggle</url>
+        </li>
 
-      <li>
-        <url href="loops-practice-coding.html" visual="loops-practice-coding.html">Loops Practice Coding</url>
-      </li>
+        <li>
+          <url href="loops-practice-coding.html">Loops Practice Coding</url>
+        </li>
 
-      <li>
-        <url href="Exercises-loops.html" visual="Exercises-loops.html">Multiple-Choice Exercises for Loops</url>
-      </li>
+        <li>
+          <url href="Exercises-loops.html">Multiple-Choice Exercises for Loops</url>
+        </li>
 
-      <li>
-        <url href="unit2-test.html" visual="unit2-test.html">Unit 2 Test</url>
-      </li>
+        <li><url href="unit2-test.html">Unit 2 Test</url></li>
 
-      <li>
-        <url href="FRQmessagebuilder.html" visual="FRQmessagebuilder.html">FRQ Calendar</url>
-      </li>
+        <li><url href="FRQmessagebuilder.html">FRQ Calendar</url></li>
 
-      <li>
-        <url href="FRQcalendar.html" visual="FRQcalendar.html">FRQ Calendar</url>
-      </li>
+        <li><url href="FRQcalendar.html">FRQ Calendar</url></li>
 
-      <li>
-        <url href="FRQselfDivisorA.html" visual="FRQselfDivisorA.html">FRQ Self Divisor</url>
-      </li>
+        <li><url href="FRQselfDivisorA.html">FRQ Self Divisor</url></li>
 
-      <li>
-        <url href="FRQstringScrambleA.html" visual="FRQstringScrambleA.html">FRQ String Scramble</url>
-      </li>
+        <li><url href="FRQstringScrambleA.html">FRQ String Scramble</url></li>
 
-      <li>
-        <url href="ConsumerReviewLab.html" visual="ConsumerReviewLab.html">Consumer Review Lab</url>
-      </li>
-    </ul>
+        <li><url href="ConsumerReviewLab.html">Consumer Review Lab</url></li>
+      </ul>
+    </p>
   </subsection>
 <!-- moved out because I have the whole set of primes bootups. -->
   <subsection xml:id="divisibility">
@@ -665,19 +634,17 @@
       remainder.
     </p>
 
-    <program language="java">
-      <code>
-        int num1 = 10;
-        int num2 = 5;
-        if (num1 % num2 == 0)
-        {
-            System.out.println(num1 + " is evenly divisible by " + num2);
-        }
-        else
-        {
-            System.out.println(num1 + " is not evenly divisible by " + num2);
-        }
-      </code>
+    <program>
+      int num1 = 10;
+      int num2 = 5;
+      if (num1 % num2 == 0)
+      {
+          System.out.println(num1 + " is evenly divisible by " + num2);
+      }
+      else
+      {
+          System.out.println(num1 + " is not evenly divisible by " + num2);
+      }
     </program>
 
     <p>
@@ -699,7 +666,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class PrimeNumbers
           {
@@ -809,7 +776,7 @@
     <p>In the challenge below,</p>
 
     <p>
-      <ol marker="1">
+      <ol>
         <li>
           <p>
             First, copy your <c>isPrime</c> method from the exercise above to
@@ -837,7 +804,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class FindPrimeNumbers
           {
@@ -952,22 +919,20 @@
       increment the counter each time an even number is found like below:
     </p>
 
-    <program language="java">
-      <code>
-        <![CDATA[
+    <program>
+      <![CDATA[
 
-        int count = 0;
-        for (int i = 0; i < 100; i++)
-        {
-            if (i % 2 == 0)
-            {
-                count++;
-            }
-        }
-        System.out.println("There are " + count + " even numbers from 1 to 100.");
+      int count = 0;
+      for (int i = 0; i < 100; i++)
+      {
+          if (i % 2 == 0)
+          {
+              count++;
+          }
+      }
+      System.out.println("There are " + count + " even numbers from 1 to 100.");
 
-        ]]>
-      </code>
+      ]]>
     </program>
   </subsection>
 
@@ -1071,7 +1036,7 @@
         <p>Run the following code. What does it print?</p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Test1
           {
@@ -1134,10 +1099,8 @@
       new object of a class in Java.
     </p>
 
-    <program language="java">
-      <code>
-        String greeting = new String("Hello");
-      </code>
+    <program>
+      String greeting = new String("Hello");
     </program>
 
     <idx>String literal</idx>
@@ -1148,10 +1111,8 @@
       <c>String</c> object.
     </p>
 
-    <program language="java">
-      <code>
-        String greeting = "Hello";
-      </code>
+    <program>
+      String greeting = "Hello";
     </program>
 
     <p>
@@ -1171,7 +1132,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class StringTest
           {
@@ -1218,7 +1179,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class Test2
           {
@@ -1302,7 +1263,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
           public class StringMistakes {
               public static void main(String[] args) {
@@ -1429,33 +1390,25 @@
 
     <p>
       <ul>
+        <li><url href="unit1b-summary.html">Unit 1b Summary</url></li>
+
         <li>
-          <url href="unit1b-summary.html" visual="unit1b-summary.html">Unit 1b Summary</url>
+          <url href="unit1b-practice-mixed-code.html">Unit 1b Practice Mixed Code</url>
         </li>
 
         <li>
-          <url href="unit1b-practice-mixed-code.html" visual="unit1b-practice-mixed-code.html">Unit 1b Practice Mixed Code</url>
+          <url href="unit1b-practice-coding.html">Unit 1b Practice Coding</url>
         </li>
 
-        <li>
-          <url href="unit1b-practice-coding.html" visual="unit1b-practice-coding.html">Unit 1b Practice Coding</url>
-        </li>
+        <li><url href="Exercises-objects.html">Exercises on Objects</url></li>
 
         <li>
-          <url href="Exercises-objects.html" visual="Exercises-objects.html">Exercises on Objects</url>
+          <url href="practice-test-objects.html">Practice Test on Objects</url>
         </li>
 
-        <li>
-          <url href="practice-test-objects.html" visual="practice-test-objects.html">Practice Test on Objects</url>
-        </li>
+        <li><url href="JavaSwingGUIs.html">Optional Java Swing GUIs</url></li>
 
-        <li>
-          <url href="JavaSwingGUIs.html" visual="JavaSwingGUIs.html">Optional Java Swing GUIs</url>
-        </li>
-
-        <li>
-          <url href="frq-practice.html" visual="frq-practice.html">Unit 1 FRQ Practice</url>
-        </li>
+        <li><url href="frq-practice.html">Unit 1 FRQ Practice</url></li>
       </ul>
     </p>
   </subsection>
@@ -2569,7 +2522,7 @@
     </activity>
   </subsection>
 
-    <subsection xml:id="looping-from-back-to-front">
+  <subsection xml:id="looping-from-back-to-front">
     <title>Looping From Back to Front</title>
 
     <idx><h>loop</h><h>from back to front</h></idx>
@@ -2936,395 +2889,22 @@
       (also called <term>non-rectangular arrays</term> or <term>ragged
       arrays</term>).
     </p>
+  </subsection>
+
+  <subsection xml:id="array2d-game">
+    <title>2D Arrays and Loops Game</title>
 
     <p>
-      Try to answer the following questions. Click on the value or values to
-      select them. Click again to unselect a value.
+      Try the game below to practice loops with 2D arrays. Click on
+      <term>Arrays</term> and then check <term>2D</term> and check
+      <term>Loops</term> and then click on the elements of the * array that
+      would be printed out by the given code. If you’re stuck, check on Labels
+      to see the indices. We encourage you to work in pairs and see how high a
+      score you can get.
     </p>
 
-    <activity label="clicktd1">
-      <statement>
-        <p>Click on all the values in the row at index 2</p>
-      </statement>
-
-      <feedback>
-        <p>
-          Rows are horizontal and columns are vertical and both start with index
-          0.
-        </p>
-      </feedback>
-
-      <areas>
-        <table>
-          <tabular>
-            <col top="minor" />
-            <col top="minor" />
-            <col top="minor" />
-            <col top="minor" />
-            <row left="minor">
-              <cell bottom="minor" right="minor">
-                <area correct="no">8</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-2</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">3</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-1</area>
-              </cell>
-            </row>
-
-            <row left="minor">
-              <cell bottom="minor" right="minor">
-                <area correct="no">4</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">5</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">0</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-7</area>
-              </cell>
-            </row>
-
-            <row left="minor">
-              <cell bottom="minor" right="minor">
-                <area correct="yes">2</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="yes">-3</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="yes">-4</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="yes">-5</area>
-              </cell>
-            </row>
-          </tabular>
-        </table>
-      </areas>
-    </activity>
-
-    <activity label="clicktd2">
-      <statement>
-        <p>Click on all the values in the column at index 1</p>
-      </statement>
-
-      <feedback>
-        <p>
-          Rows are horizontal and columns are vertical and both start with index
-          0.
-        </p>
-      </feedback>
-
-      <areas>
-        <table>
-          <tabular>
-            <col top="minor" />
-            <col top="minor" />
-            <col top="minor" />
-            <col top="minor" />
-            <row left="minor">
-              <cell bottom="minor" right="minor">
-                <area correct="no">8</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="yes">-2</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">3</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-1</area>
-              </cell>
-            </row>
-
-            <row left="minor">
-              <cell bottom="minor" right="minor">
-                <area correct="no">4</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="yes">5</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">0</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-7</area>
-              </cell>
-            </row>
-
-            <row left="minor">
-              <cell bottom="minor" right="minor">
-                <area correct="no">2</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="yes">-3</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-4</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-5</area>
-              </cell>
-            </row>
-          </tabular>
-        </table>
-      </areas>
-    </activity>
-
-    <activity label="clicktd3">
-      <statement>
-        <p>Click on the value at row index 2 and column index 1</p>
-      </statement>
-
-      <feedback>
-        <p>
-          Rows are horizontal and columns are vertical and both start with index
-          0.
-        </p>
-      </feedback>
-
-      <areas>
-        <table>
-          <tabular>
-            <col top="minor" />
-            <col top="minor" />
-            <col top="minor" />
-            <col top="minor" />
-            <row left="minor">
-              <cell bottom="minor" right="minor">
-                <area correct="no">8</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-2</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">3</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-1</area>
-              </cell>
-            </row>
-
-            <row left="minor">
-              <cell bottom="minor" right="minor">
-                <area correct="no">4</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">5</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">0</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-7</area>
-              </cell>
-            </row>
-
-            <row left="minor">
-              <cell bottom="minor" right="minor">
-                <area correct="no">2</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="yes">-3</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-4</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-5</area>
-              </cell>
-            </row>
-          </tabular>
-        </table>
-      </areas>
-    </activity>
-
-    <activity label="clicktd4">
-      <statement>
-        <p>Click on the value at row index 0 and column index 2</p>
-      </statement>
-
-      <feedback>
-        <p>
-          Rows are horizontal and columns are vertical and both start with index
-          0.
-        </p>
-      </feedback>
-
-      <areas>
-        <table>
-          <tabular>
-            <col top="minor" />
-            <col top="minor" />
-            <col top="minor" />
-            <col top="minor" />
-            <row left="minor">
-              <cell bottom="minor" right="minor">
-                <area correct="no">8</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-2</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="yes">3</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-1</area>
-              </cell>
-            </row>
-
-            <row left="minor">
-              <cell bottom="minor" right="minor">
-                <area correct="no">4</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">5</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">0</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-7</area>
-              </cell>
-            </row>
-
-            <row left="minor">
-              <cell bottom="minor" right="minor">
-                <area correct="no">2</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-3</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-4</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-5</area>
-              </cell>
-            </row>
-          </tabular>
-        </table>
-      </areas>
-    </activity>
-
-    <activity label="clicktd5">
-      <statement>
-        <p>Click on the value at row index 1 and column index 1</p>
-      </statement>
-
-      <feedback>
-        <p>
-          Rows are horizontal and columns are vertical and both start with index
-          0.
-        </p>
-      </feedback>
-
-      <areas>
-        <table>
-          <tabular>
-            <col top="minor" />
-            <col top="minor" />
-            <col top="minor" />
-            <col top="minor" />
-            <row left="minor">
-              <cell bottom="minor" right="minor">
-                <area correct="no">8</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-2</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">3</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-1</area>
-              </cell>
-            </row>
-
-            <row left="minor">
-              <cell bottom="minor" right="minor">
-                <area correct="no">4</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="yes">5</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">0</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-7</area>
-              </cell>
-            </row>
-
-            <row left="minor">
-              <cell bottom="minor" right="minor">
-                <area correct="no">2</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-3</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-4</area>
-              </cell>
-
-              <cell bottom="minor" right="minor">
-                <area correct="no">-5</area>
-              </cell>
-            </row>
-          </tabular>
-        </table>
-      </areas>
-    </activity>
+    <p>
+      <interactive iframe="iframe/csagames.html" width="95%" aspect="1:1" />
+    </p>
   </subsection>
 </section>
