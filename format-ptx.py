@@ -161,7 +161,7 @@ def render_program_text(elem, ns, level):
 def maybe_formatted(text):
     if format_code:
         result = subprocess.run(
-            ["java", "-jar", "google-java-format-1.25.2-all-deps.jar", "-"],
+            ["java", "-jar", "google-java-format-1.25.2-all-deps.jar", "-a", "-"],
             capture_output=True, input=text, text=True, check=False)
         if result.returncode != 0:
             print(f"Couldn't format\n{text}\n", file=stderr)
