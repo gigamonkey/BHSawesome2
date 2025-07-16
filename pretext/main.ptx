@@ -47,7 +47,6 @@
     <xi:include href="./booleans-and-conditionals/toctree.ptx" />
     <xi:include href="./loops/toctree.ptx" />
     <xi:include href="./arrays/toctree.ptx" />
-    <xi:include href="./2d-arrays/toctree.ptx" />
     <xi:include href="./strings/toctree.ptx" />
     <xi:include href="./reference-types/toctree.ptx" />
     <xi:include href="./objects/toctree.ptx" />
