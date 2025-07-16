@@ -1,46 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-11-2Darrays">
-  <title>2D Array Creation and Access</title>
+  <title>Creating and using 2d arrays</title>
 
+  <idx>2D Arrays</idx>
+  <idx>row</idx>
+  <idx>column</idx>
+  <idx><h>arrays</h><h>2D</h></idx>
+  <idx><h>2D Array</h><h>definition</h></idx>
+  <idx><h>2D Array</h><h>row</h></idx>
+  <idx><h>2D Array</h><h>column</h></idx>
   <introduction>
-    <idx>2D Arrays</idx>
-    <idx>row</idx>
-    <idx>column</idx>
-    <idx><h>arrays</h><h>2D</h></idx>
-    <idx><h>2D Array</h><h>definition</h></idx>
-    <idx><h>2D Array</h><h>row</h></idx>
-    <idx><h>2D Array</h><h>column</h></idx>
+    <idx><h>2D Array</h><h>declaration</h></idx>
+    <idx><h>2D Array</h><h>creation</h></idx>
     <p>
-      Arrays in Java can store many items of the same type. You can even store
-      items in <term>two-dimensional</term> (2D) arrays which are arrays that
-      have both <term>rows</term> and <term>columns</term>. A <term>row</term>
-      has horizontal elements. A <term>column</term> has vertical elements. In
-      the picture below there are 3 rows of lockers and 6 columns.
-    </p>
-
-    <figure align="center">
-      <caption>Lockers in rows and columns</caption>
-
-      <image source="Unit4-Data-Collections/Figures/2DLockers.jpg" width="63%" />
-    </figure>
-
-    <p>
-      Two dimensional arrays are especially useful when the data is naturally
-      organized in rows and columns like in a spreadsheet, bingo, battleship,
-      theater seats, classroom seats, or a picture. In battleship, letters map
-      to the rows (A is the first row, B is the second row, and so on) and the
-      column indices start with 1.
+      The key to understanding 2d arrays is to understanding that 1d arrays can
+      contain any kind of value. So if we want to make an array of <c>int</c>
+      values, we use <c>int[]</c>. For an array of <c>String</c> values we use
+      <c>String[]</c>. Which means if we want to make an array whose values are
+      <c>int[]</c>, that is, one-dimensional arrays, we use <c>int[][]</c>,
+      adding another pair of square brackets <c>[]</c> after the element type.
     </p>
 
     <p>
-      A <term>2D array</term> is stored as an array of arrays in Java. The way
-      2D arrays are created and indexed is similar to 1D array objects. The size
-      of a 2D array is established at the time of creation and cannot be
-      changed. 2D arrays can store either primitive data or object reference
-      data.
+      We can think of an <c>int[][]</c> either as a 2d array (which is how we
+      normally think of it) or as a 1d array whose elements are <c>int[]</c>.
     </p>
   </introduction>
+
+  <subsection>
+    <title>Declaring 2d arrays</title>
+
+    <p>
+      Declaring and constructing 2d arrays is similar as to constructing 1d
+      arrays.
+    </p>
+
+    <p>For declarations, we just use a 2d array type:</p>
+
+    <program language="java">
+      <code>
+        int[][] ticketInfo;
+        String[][] seatingChart;
+      </code>
+    </program>
+
+    <p>
+      As with 1d array declarations, declaring a variable doesn’t cause an
+      actual array to be created so these variables will be <c>null</c> until
+      they are initialized.
+    </p>
+
+    <p>
+      But also like with 1d arrays we can construct new 2d arrays by either
+      specifying their dimensions or by providing specific initial values with
+      an array initializer. For example we could initialize those variables like
+      this:
+    </p>
+
+    <program language="java">
+      <code>
+        int[][] ticketInfo = new int[2][3];
+        String[][] seatingChart = new String[3][2];
+      </code>
+    </program>
+
+    <p>
+      Those array creation expressions create arrays whose outer array has the
+      length specified by the number in the first set of <c>[]</c> and whose
+      inner arrays are all the size specified in the second set of <c>[]</c>.
+    </p>
+
+    <p>
+      One nice thing Java does for us when we construct a 2d array this way, is
+      it goes ahead and makes the inner arrays and stores references to them in
+      the outer array. The inner arrays are filled with the appropriate zero
+      type for their element type, <c>int</c> for <c>ticketInfo</c> and
+      <c>String</c> for <c>seatingChart</c>.
+    </p>
+
+    <p>
+      So in the code above <c>ticketInfo</c> has two elements, each of which is
+      an <c>int[]</c> containing three <c>int</c> zeros and <c>seatingChart</c>
+      directly contains three elements, each of which is a two-element array
+      whose values are all <c>null</c>.
+    </p>
+
+    <p>
+      Also similar to creating 1d arrays we can use array initializers to
+      provide specific values. In this case, the syntactic sugar of not having
+      to include the <c>new</c> and the type of the arrays when we’re
+      initializing a newly declared array variable, makes things pretty compact
+      and readable:
+    </p>
+
+    <program language="java">
+      <code>
+        int[][] ticketInfo = {
+          { 25, 20, 25},
+          { 25, 20, 25}
+        };
+
+        String[][] seatingInfo = {
+          { "Jamal", "Maria" },
+          { "Jake", "Suzy" },
+          { "Emma", "Luke" }
+        };
+      </code>
+    </program>
+
+    <p>
+      2D arrays are declared and created with the following syntax, which is
+      very similar to 1D arrays but include 2 dimensions (<c>[][]</c>). The code
+      below creates a 2D array with 2 rows and 3 columns named <c>ticketInfo</c>
+      and a 2D array with 3 rows and 2 columns named <c>seatingChart</c>. The
+      number of elements in a 2D array is the number of rows times the number of
+      columns.
+    </p>
+  </subsection>
 
   <subsection xml:id="array-storage">
     <title>Array Storage</title>
@@ -117,79 +194,55 @@
             <col top="minor" />
             <row left="minor">
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                             8
-                            </area>
+                <area correct="no">8</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -2
-                            </area>
+                <area correct="no">-2</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                3
-                            </area>
+                <area correct="no">3</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -1
-                            </area>
+                <area correct="no">-1</area>
               </cell>
             </row>
 
             <row left="minor">
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                4
-                            </area>
+                <area correct="no">4</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                5
-                            </area>
+                <area correct="no">5</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                0
-                            </area>
+                <area correct="no">0</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -7
-                            </area>
+                <area correct="no">-7</area>
               </cell>
             </row>
 
             <row left="minor">
               <cell bottom="minor" right="minor">
-                <area correct="yes">
-                                2
-                            </area>
+                <area correct="yes">2</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="yes">
-                                -3
-                            </area>
+                <area correct="yes">-3</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="yes">
-                                -4
-                            </area>
+                <area correct="yes">-4</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="yes">
-                                -5
-                            </area>
+                <area correct="yes">-5</area>
               </cell>
             </row>
           </tabular>
@@ -218,79 +271,55 @@
             <col top="minor" />
             <row left="minor">
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                8
-                            </area>
+                <area correct="no">8</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="yes">
-                                -2
-                            </area>
+                <area correct="yes">-2</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                3
-                            </area>
+                <area correct="no">3</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -1
-                            </area>
+                <area correct="no">-1</area>
               </cell>
             </row>
 
             <row left="minor">
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                4
-                            </area>
+                <area correct="no">4</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="yes">
-                                5
-                            </area>
+                <area correct="yes">5</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                0
-                            </area>
+                <area correct="no">0</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -7
-                            </area>
+                <area correct="no">-7</area>
               </cell>
             </row>
 
             <row left="minor">
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                2
-                            </area>
+                <area correct="no">2</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="yes">
-                                -3
-                            </area>
+                <area correct="yes">-3</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -4
-                            </area>
+                <area correct="no">-4</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -5
-                            </area>
+                <area correct="no">-5</area>
               </cell>
             </row>
           </tabular>
@@ -319,79 +348,55 @@
             <col top="minor" />
             <row left="minor">
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                8
-                            </area>
+                <area correct="no">8</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -2
-                            </area>
+                <area correct="no">-2</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                3
-                            </area>
+                <area correct="no">3</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -1
-                            </area>
+                <area correct="no">-1</area>
               </cell>
             </row>
 
             <row left="minor">
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                4
-                            </area>
+                <area correct="no">4</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                5
-                            </area>
+                <area correct="no">5</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                0
-                            </area>
+                <area correct="no">0</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -7
-                            </area>
+                <area correct="no">-7</area>
               </cell>
             </row>
 
             <row left="minor">
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                2
-                            </area>
+                <area correct="no">2</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="yes">
-                                -3
-                            </area>
+                <area correct="yes">-3</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -4
-                            </area>
+                <area correct="no">-4</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -5
-                            </area>
+                <area correct="no">-5</area>
               </cell>
             </row>
           </tabular>
@@ -420,79 +425,55 @@
             <col top="minor" />
             <row left="minor">
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                8
-                            </area>
+                <area correct="no">8</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -2
-                            </area>
+                <area correct="no">-2</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="yes">
-                                3
-                            </area>
+                <area correct="yes">3</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -1
-                            </area>
+                <area correct="no">-1</area>
               </cell>
             </row>
 
             <row left="minor">
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                4
-                            </area>
+                <area correct="no">4</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                5
-                            </area>
+                <area correct="no">5</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                0
-                            </area>
+                <area correct="no">0</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -7
-                            </area>
+                <area correct="no">-7</area>
               </cell>
             </row>
 
             <row left="minor">
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                2
-                            </area>
+                <area correct="no">2</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -3
-                            </area>
+                <area correct="no">-3</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -4
-                            </area>
+                <area correct="no">-4</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -5
-                            </area>
+                <area correct="no">-5</area>
               </cell>
             </row>
           </tabular>
@@ -521,79 +502,55 @@
             <col top="minor" />
             <row left="minor">
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                8
-                            </area>
+                <area correct="no">8</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -2
-                            </area>
+                <area correct="no">-2</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                3
-                            </area>
+                <area correct="no">3</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -1
-                            </area>
+                <area correct="no">-1</area>
               </cell>
             </row>
 
             <row left="minor">
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                4
-                            </area>
+                <area correct="no">4</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="yes">
-                                5
-                            </area>
+                <area correct="yes">5</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                0
-                            </area>
+                <area correct="no">0</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -7
-                            </area>
+                <area correct="no">-7</area>
               </cell>
             </row>
 
             <row left="minor">
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                2
-                            </area>
+                <area correct="no">2</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -3
-                            </area>
+                <area correct="no">-3</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -4
-                            </area>
+                <area correct="no">-4</area>
               </cell>
 
               <cell bottom="minor" right="minor">
-                <area correct="no">
-                                -5
-                            </area>
+                <area correct="no">-5</area>
               </cell>
             </row>
           </tabular>
@@ -604,26 +561,6 @@
 
   <subsection xml:id="declaring-2d-arrays">
     <title>Declaring 2D Arrays</title>
-
-    <idx><h>2D Array</h><h>declaration</h></idx>
-    <idx><h>2D Array</h><h>creation</h></idx>
-    <p>
-      2D arrays are declared and created with the following syntax, which is
-      very similar to 1D arrays but include 2 dimensions (<c>[][]</c>). The code
-      below creates a 2D array with 2 rows and 3 columns named <c>ticketInfo</c>
-      and a 2D array with 3 rows and 2 columns named <c>seatingChart</c>. The
-      number of elements in a 2D array is the number of rows times the number of
-      columns.
-    </p>
-
-    <program language="java">
-      <code>
-        // 2D array declaration
-        // datatype[][] variableName = new datatype[numberRows][numberCols];
-        int[][] ticketInfo = new int[2][3];
-        String[][] seatingChart = new String[3][2];
-      </code>
-    </program>
 
     <p>
       Arrays are objects in Java, so any variable that declares an array holds a
@@ -683,7 +620,6 @@
               System.out.println(ticketInfo[0].length + " columns");
             }
           }
-
         </code>
 
         <tests>
@@ -716,7 +652,6 @@
               assertTrue(passed);
             }
           }
-
         </tests>
       </program>
     </activity>
@@ -734,13 +669,6 @@
       initializer list used to create and initialize a 2D array consists of 2
       initializer lists that represent 1D arrays for each row.
     </p>
-
-    <program language="java">
-      <code>
-        int[][] ticketInfo = { {25,20,25}, {25,20,25} };
-        String[][] seatingInfo = { {"Jamal", "Maria"}, {"Jake", "Suzy"}, {"Emma", "Luke"} };
-      </code>
-    </program>
 
     <activity label="twodaGetElfill">
       <statement>
@@ -855,7 +783,6 @@
               System.out.println(seatingChart);
             }
           }
-
         </code>
 
         <tests>
@@ -905,7 +832,6 @@
               assertTrue(passed);
             }
           }
-
 
           ]]>
         </tests>
@@ -1080,7 +1006,6 @@
               System.out.println(name + " is at [0,0]");
             }
           }
-
         </code>
 
         <tests>
@@ -1154,7 +1079,6 @@
               assertTrue(passed);
             }
           }
-
         </tests>
       </program>
     </activity>
@@ -1202,9 +1126,9 @@
       column index values for a 2D array are <c>0</c> through one less than the
       number of columns or the length of any given row of the array, inclusive.
       For example, given a 2D array named <c>values</c>, the number of rows is
-      <c>values.length</c> and the number of columns is
-      <c>values[0].length`</c>. Using an index value outside of these ranges
-      will result in an <c>ArrayIndexOutOfBoundsException</c>.
+      <c>values.length</c> and the number of columns is <c>values[0].length</c>.
+      Using an index value outside of these ranges will result in an
+      <c>ArrayIndexOutOfBoundsException</c>.
     </p>
 
     <activity label="qa2ldb_2">
@@ -1394,7 +1318,6 @@
 
             }
           }
-
         </code>
 
         <tests>
@@ -1465,7 +1388,6 @@
               assertTrue(passed);
             }
           }
-
 
           ]]>
         </tests>

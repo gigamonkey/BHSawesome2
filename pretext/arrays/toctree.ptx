@@ -80,4 +80,5 @@
   <xi:include href="./topic-4-3-array-basics.ptx" />
   <xi:include href="./topic-4-4-array-traversal.ptx" />
   <xi:include href="./topic-4-5-array-algorithms.ptx" />
+  <xi:include href="./2d-arrays.ptx" />
 </chapter>
