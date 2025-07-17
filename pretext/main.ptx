@@ -8,7 +8,11 @@
       BHSawesome2 is a AP CSA textbook adapted from CSAwesome2 for use at
       Berkeley High School in Berkeley, California. It follow the latest (2025)
       revision of the AP Computer Science A Course and Exam Description but
-      presents the material in a somewhat different order.
+      presents the material in a somewhat different order than CSAwesome2 and
+      does not attempt to mirror the unit and topic structure of the College
+      Board Course and Exam Description. If you want a text whose units and
+      topic numbers line up exactly with those in the College Board outline, you
+      will want to use CSAwesome2.
     </blurb>
 
     <rename element="inlineexercise">Activity</rename>
