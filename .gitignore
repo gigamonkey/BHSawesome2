@@ -36,3 +36,6 @@ sphinx_settings.json
 
 pretext/files.txt
 pretext/full-main.ptx
+
+# Compile Java files
+*.class
