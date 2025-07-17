@@ -9,17 +9,18 @@
     <idx>reference</idx>
     <idx><h>String</h><h>definition</h></idx>
     <p>
-      <c>String</c>, like most reference types in Java, is defined by a
+      The <c>String</c> datatype is another reference type. Like most reference
+      types in Java other than arrays, <c>String</c> is defined by a
       <term>class</term>. We’ll look at the structure of classes and how to
-      write our own later in this unit in <xref ref="topic-3-3-anatomy-of-class"
-      />. But <c>String</c> gets a bit of extra love from Java compared to
-      pretty much all other classes. For one thing it’s one of the handful of
-      classes in the <c>java.lang</c> package which means its available by
-      default in all Java programs. But it is also special in that it is the
-      only class in Java that supports an operator other than <c>==</c> and
-      <c>!=</c>, namely the <c>+</c> string concatenation operator. And it’s the
-      only class in Java with a literal value syntax that lets us write
-      <c>String</c> values in our programs like <c>"hello, world!</c>.
+      write our own in <xref ref="topic-3-3-anatomy-of-class" />. But
+      <c>String</c> gets a bit of extra love from Java compared to pretty much
+      all other classes. For one thing it’s one of the handful of classes in the
+      <c>java.lang</c> package which means its available by default in all Java
+      programs. But it is also special in that it is the only class in Java that
+      supports an operator other than <c>==</c> and <c>!=</c>, namely the
+      <c>+</c> string concatenation operator. And it’s the only class in Java
+      with a literal value syntax that lets us write <c>String</c> values in our
+      programs like <c>"hello, world!</c>.
     </p>
   </introduction>
 
@@ -1121,22 +1122,24 @@
   <subsection>
     <title>Coding Challenge: Pig Latin</title>
 
-    <sidebyside widths="15% 80%">
+    <sidebyside widths="15% 100%" margins="-20% 0%">
       <image source="Unit1-Using-Objects-and-Methods/Figures/pig.png" width="18%" alt="pig latin" />
+      <stack>
       <p>
         Can you speak Pig Latin? In Pig Latin, you take the first letter and put
         it at the end of the word and add the letters “ay” to the end. For
         example, “pig” becomes “igpay”.
       </p>
-    </sidebyside>
 
-    <p>
-      Create a program that takes a word and transforms it to Pig Latin using
-      String methods. You may need the word’s length, a substring that does not
-      include the first letter, and a substring that is just the first letter
-      (you can get the ith letter of a string using substring(i,i+1) so for
-      example the letter at index 3 would be substring(3,4)).
-    </p>
+      <p>
+        Create a program that takes a word and transforms it to Pig Latin using
+        String methods. You may need the word’s length, a substring that does
+        not include the first letter, and a substring that is just the first
+        letter (you can get the ith letter of a string using substring(i,i+1) so
+        for example the letter at index 3 would be substring(3,4)).
+      </p>
+      </stack>
+    </sidebyside>
 
     <project label="challenge-PigLatin">
       <statement>

@@ -4152,4 +4152,47 @@
       </program>
     </activity>
   </subsection>
+
+  <subsection>
+    <title>Cut from String algorithms</title>
+        <p>
+      The String methods (covered in a previous lesson and given in the <url
+      href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf">AP
+      CSA Java Quick Reference Sheet</url>) that are most often used to process
+      strings are:
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <p>
+            <term>int length()</term> : returns the number of characters in a
+            String object.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <term>int indexOf(String str)</term> : returns the index of the
+            first occurrence of <c>str</c> or -1 if <c>str</c> is not found.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <term>String substring(int from, int to)</term> : returns the
+            substring beginning at index from and ending at index (to – 1). Note
+            that s.substring(i,i+1) returns the character at index i.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <term>String substring(int from)</term> : returns substring(from,
+            length()).
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
 </section>
