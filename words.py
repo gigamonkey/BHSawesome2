@@ -28,7 +28,7 @@ def emit(title, count, parent_count, level):
 
 
 def title(elem):
-    return to_text(elem.xpath("title")[0]).strip()
+    return re.sub(r"\s+", " ", to_text(elem.xpath("title")[0])).strip()
 
 
 def count_paragraphs(e, excluded):
