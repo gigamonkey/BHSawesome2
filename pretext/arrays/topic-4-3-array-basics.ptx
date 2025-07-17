@@ -795,7 +795,7 @@
       <title>Random images</title>
 
       <statement>
-        <sidebyside widths="20% 75%">
+        <sidebyside widths="15% 100%" margins="-20% 0%">
           <image source="Unit4-Data-Collections/array-images/cow.jpg" width="27%" />
           <p>
             This code contains an array of image filenames. Run the code and see

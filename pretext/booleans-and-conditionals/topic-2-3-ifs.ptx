@@ -50,11 +50,11 @@
     <p>
       However there are a lot of ways we can produce <c>boolean</c> values.
       There are operators the operate <em>on</em> booleans to produce new
-      <c>boolean</c> values, which allow us to express complex conditions. There are
-      operators that operate on other kinds of values to produce <c>boolean</c>
-      values, like the <c>&gt;</c> operator that compares two numbers, producing
-      <c>true</c> if the first number is greater than the second and
-      <c>false</c> otherwise.
+      <c>boolean</c> values, which allow us to express complex conditions. There
+      are operators that operate on other kinds of values to produce
+      <c>boolean</c> values, like the <c>&gt;</c> operator that compares two
+      numbers, producing <c>true</c> if the first number is greater than the
+      second and <c>false</c> otherwise.
     </p>
 
     <p>
@@ -1028,7 +1028,7 @@
   <subsection xml:id="coding-challenge-magic-8-ball">
     <title>Coding Challenge: Magic 8 Ball</title>
 
-    <sidebyside widths="20% 75%">
+    <sidebyside widths="15% 100%" margins="-20% 0%">
       <image source="Unit2-Selection-and-Iteration/Figures/Magic_eight_ball.png" width="18%" alt="Magic 8 Ball" />
       <p>
         Have you ever seen a Magic 8 ball? You ask it a yes-no question and then

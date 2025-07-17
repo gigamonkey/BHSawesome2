@@ -502,7 +502,7 @@
   <subsection xml:id="coding-challenge-pay-calculator">
     <title>Coding Challenge: Pay calculator</title>
 
-    <sidebyside widths="10% 88%">
+    <sidebyside widths="15% 100%" margins="-20% 0%">
       <image source="Unit1-Using-Objects-and-Methods/Figures/dollarSign.png" width="18%" />
       <p>
         In this coding challenge, you can work in pairs to create a pay

@@ -989,14 +989,11 @@
   <subsection>
     <title>Coding Challenge: SpellChecker</title>
 
-    <sidebyside widths="15% 80%">
-      <image source="Unit4-Data-Collections/Figures/spellcheck.png" width="18%" alt="Spell Checker" />
-      <p>
-        In this challenge, you will use an array of English words from a
-        dictionary file to see if a given word is spelled correctly. We
-        encourage you to work in pairs for this challenge.
-      </p>
-    </sidebyside>
+    <p>
+      In this challenge, you will use an array of English words from a
+      dictionary file to see if a given word is spelled correctly. We encourage
+      you to work in pairs for this challenge.
+    </p>
 
     <datafile label="dictionary" filename="dictionary.txt" editable="no" hide="yes">
       <pre>
@@ -11009,15 +11006,18 @@ zus
       <title>Spellchecker</title>
 
       <statement>
-        <p>
-          This challenge includes a dictionary file of 10,000 English words
-          which is read into the array <c>dictionary</c> for you. You could use
-          this <url
-          href="https://replit.com/@BerylHoffman/SpellChecker1">replit</url>
-          code instead that has an even bigger dictionary of English words and
-          lets you do input with your spell checker. We will learn how to read
-          in files using Java later on in <xref ref="text-files" />.
-        </p>
+        <sidebyside widths="15% 100%" margins="-20% 0%">
+          <image source="Unit4-Data-Collections/Figures/spellcheck.png" width="18%" alt="Spell Checker" />
+          <p>
+            This challenge includes a dictionary file of 10,000 English words
+            which is read into the array <c>dictionary</c> for you. You could
+            use this <url
+            href="https://replit.com/@BerylHoffman/SpellChecker1">replit</url>
+            code instead that has an even bigger dictionary of English words and
+            lets you do input with your spell checker. We will learn how to read
+            in files using Java later on in <xref ref="text-files" />.
+          </p>
+        </sidebyside>
 
         <p>
           <ol>

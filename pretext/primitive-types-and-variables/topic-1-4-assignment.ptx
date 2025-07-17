@@ -390,7 +390,7 @@
   <subsection>
     <title>Coding Challenge: Dog Years</title>
 
-    <sidebyside widths="15% 80%">
+    <sidebyside widths="15% 100%" margins="-20% 0%">
       <image source="Unit1-Using-Objects-and-Methods/Figures/dog-free.png" width="27%" alt="dog" />
       <p>
         In this coding challenge, you will calculate your age, and your pet’s
