@@ -88,6 +88,7 @@
                   System.out.println(result);
               }
           }
+
         </code>
 
         <tests>
@@ -97,17 +98,16 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void testMain() throws IOException
-              {
+              public void testMain() throws IOException {
                   String output = getMethodOutput("main");
                   String expect = "Happy Birthday Jose Hernandez!!!";
                   boolean passed = getResults(expect, output, "Expected output from main");
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -197,14 +197,13 @@
 
       <program interactive="activecode">
         <code>
-          public class Test2
-          {
-              public static void main(String[] args)
-              {
+          public class Test2 {
+              public static void main(String[] args) {
                   String message = "12" + 4 + 3;
                   System.out.println(message);
               }
           }
+
         </code>
 
         <tests>
@@ -214,11 +213,9 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void testMain() throws IOException
-              {
+              public void testMain() throws IOException {
                   String output = getMethodOutput("main");
                   String expect = "127";
                   boolean passed = getResults(expect, output, "Expected output from main");
@@ -226,8 +223,7 @@
               }
 
               @Test
-              public void testParen() throws IOException
-              {
+              public void testParen() throws IOException {
                   String code = removeSpaces(getCodeWithoutComments());
                   String expect = "(4+3)";
                   boolean passed = code.contains(expect);
@@ -236,6 +232,7 @@
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -290,10 +287,10 @@
 
     <figure>
       <caption>
-        A string with the index of each character shown above it.
+        A string with length 14 with the index of each character shown below it.
       </caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/stringIndicies.png" width="89%" alt="a string with the position (index) shown above each character" />
+      <image source="_static/img/text-with-indices.svg" width="89%" alt="a string with the position (index) shown above each character" />
     </figure>
   </subsection>
 
@@ -389,18 +386,43 @@
       <c>StringIndexOutOfBoundsException</c>.
     </p>
 
+    <p>
+      Perhaps the easiest way to understand both arguments to <c>substring</c>
+      is to think of them as specifying where to cut the string to extract the
+      substring. If we had the string shown below on a strip piece of paper, to
+      cut out the <c>substring(5, 9)</c> we’d cut at the line just before box 5
+      and again just before box 9, giving us the shaded substring <c>"is a"</c>.
+    </p>
+
+    <figure>
+      <caption>
+        Cutting <c>substring(5, 9)</c> out of <c>"This is a test"</c>.
+      </caption>
+
+      <image source="_static/img/text-with-indices-substring.svg" width="89%" alt="a string with the position (index) shown above each character" />
+    </figure>
+
+    <p>
+      Note that this also works for <c>0</c>, which just means “cut” before the
+      first character in the string and for the length of the string, which
+      means “cut” just before the non-existant character that would be at that
+      position. Here are some more examples.
+    </p>
+
     <program>
-      String s = "abcdef";
-      s.substring(0, 1);                       // "a"
-      s.substring(1, 2);                       // "b"
-      s.substring(0, 3);                       // "abc"
-      s.substring(0, s.length());              // "abcdef"
-      s.substring(s.length() - 1, s.length()); // "f"
+      String s = "This is a test";
+      s.substring(0, 1);                       // "T"
+      s.substring(1, 2);                       // "hi"
+      s.substring(0, 4);                       // "This"
+      s.substring(4, 4);                       // ""
+      s.substring(0, s.length());              // "This is a test"
+      s.substring(10, s.length());             // "test"
+      s.substring(s.length() - 3, s.length()); // "est"
     </program>
 
     <p>
       Note how we can use any expression that produces an <c>int</c> as either
-      argument to <c>substring</c>, such as <c>s.length() - 1</c> and
+      argument to <c>substring</c>, such as <c>s.length() - 3</c> and
       <c>s.length()</c> in the last example. That also means if we had a
       variable, <c>i</c>, that held a valid index into a string <c>s</c> we
       could get a <c>String</c> containing the one character at that index with
@@ -428,6 +450,7 @@
                   System.out.println(str.substring(-1, 10));
               }
           }
+
         </code>
 
         <tests>
@@ -437,22 +460,20 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
                   super("SubstringPreconditions");
               }
 
               @Test
-              public void testMain() throws IOException
-              {
+              public void testMain() throws IOException {
                   String output = getMethodOutput("main");
                   String expect = "o";
                   boolean passed = getResults(expect, output, "Expected output from main");
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -512,10 +533,8 @@
 
       <program interactive="activecode">
         <code>
-          public class Test1
-          {
-              public static void main(String[] args)
-              {
+          public class Test1 {
+              public static void main(String[] args) {
                   String message1 = "This is a test";
                   String message2 = "Hello Class";
 
@@ -526,9 +545,7 @@
                   System.out.println(message1.substring(2, 3));
                   System.out.println(message1.substring(5));
 
-
-                  System.out.println(
-                          message1.indexOf("is")); // This will match the is in "This"!
+                  System.out.println(message1.indexOf("is")); // This will match the is in "This"!
                   System.out.println(message1.indexOf("Hello"));
                   System.out.println(message2.indexOf("Hello"));
 
@@ -537,6 +554,7 @@
                   System.out.println(message2.toUpperCase());
               }
           }
+
         </code>
 
         <tests>
@@ -546,16 +564,15 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void testMain() throws IOException
-              {
+              public void testMain() throws IOException {
                   String output = getMethodOutput("main").trim();
                   boolean passed = getResults(output, output, "Expected output from main", true);
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -921,10 +938,8 @@
 
       <program interactive="activecode">
         <code>
-          public class Test2
-          {
-              public static void main(String[] args)
-              {
+          public class Test2 {
+              public static void main(String[] args) {
                   String message = "Hello!";
 
                   System.out.println(message.compareTo("Hello!"));
@@ -935,6 +950,7 @@
                   System.out.println(message.equals("hello!"));
               }
           }
+
         </code>
 
         <tests>
@@ -944,17 +960,16 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void testMain() throws IOException
-              {
+              public void testMain() throws IOException {
                   String output = getMethodOutput("main");
                   String expect = "0\n7\n-18\ntrue\nfalse";
                   boolean passed = getResults(expect, output, "Expected output from main", true);
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -1137,27 +1152,25 @@
         <code>
           import java.util.Scanner;
 
-          public class PigLatin
-          {
-             public static String pigLatin(String word)
-             {
-                 // Change this to use word.substring to construct
-                 // the pig latin version of word
-                 String pigLatin = word;
+          public class PigLatin {
+              public static String pigLatin(String word) {
+                  // Change this to use word.substring to construct
+                  // the pig latin version of word
+                  String pigLatin = word;
 
-                 return pigLatin;
-             }
+                  return pigLatin;
+              }
 
-             public static void main(String[] args)
-             {
-                 // Do not change main!
-                 // Write your code in the pigLatin method above.
-                 Scanner scan = new Scanner(System.in);
-                 String word = scan.nextLine();
-                 System.out.println(word + " in Pig Latin is " + pigLatin(word) );
-                 scan.close();
-             }
+              public static void main(String[] args) {
+                  // Do not change main!
+                  // Write your code in the pigLatin method above.
+                  Scanner scan = new Scanner(System.in);
+                  String word = scan.nextLine();
+                  System.out.println(word + " in Pig Latin is " + pigLatin(word));
+                  scan.close();
+              }
           }
+
         </code>
 
         <stdin>
@@ -1173,31 +1186,27 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void testMethod() throws IOException
-              {
+              public void testMethod() throws IOException {
                   Object[] args = {"java"};
                   String output = getMethodOutput("pigLatin", args);
                   String expect = "avajay";
-                  boolean passed = getResults(expect, output,
-                                       "pigLatin(\"java\") should return \"avajay\"");
+                  boolean passed = getResults(expect, output, "pigLatin(\"java\") should return \"avajay\"");
                   assertTrue(passed);
               }
+
               @Test
-              public void testMethod2() throws IOException
-              {
+              public void testMethod2() throws IOException {
                   Object[] args = {"pig"};
                   String output = getMethodOutput("pigLatin", args);
                   String expect = "igpay";
-                  boolean passed = getResults(expect, output,
-                                       "pigLatin(\"pig\") should return \"igpay\"");
+                  boolean passed = getResults(expect, output, "pigLatin(\"pig\") should return \"igpay\"");
                   assertTrue(passed);
               }
+
               @Test
-              public void testContainsSubstring()
-              {
+              public void testContainsSubstring() {
                   String target = "word.substring(";
                   int count = countOccurences(getCode(), target);
                   boolean passed = count >= 2;
@@ -1210,6 +1219,7 @@
                   assertTrue(passed);
               }
           }
+
 
           ]]>
         </tests>
@@ -1227,8 +1237,7 @@
 
     <p>
       Java was one of the first programming languages to use <url
-      href="https://en.wikipedia.org/wiki/List_of_Unicode_characters"
-      visual="https://en.wikipedia.org/wiki/List_of_Unicode_characters">UNICODE</url>
+      href="https://en.wikipedia.org/wiki/List_of_Unicode_characters">UNICODE</url>
       for its characters rather than ASCII. While ASCII could represent 128
       characters which was plenty for English, Unicode is an international
       standard that tries to assign a number (which they like to call a
@@ -1270,15 +1279,13 @@
       <statement>
         <p>
           Try the following program which prints out an English “A”, a <url
-          href="https://unicodelookup.com/#cjk/1"
-          visual="https://unicodelookup.com/#cjk/1">Chinese character</url>, and
-          an <url href="http://unicode.org/emoji/charts/full-emoji-list.html"
-          visual="http://unicode.org/emoji/charts/full-emoji-list.html">emoji</url>.
+          href="https://unicodelookup.com/#cjk/1">Chinese character</url>, and
+          an <url
+          href="http://unicode.org/emoji/charts/full-emoji-list.html">emoji</url>.
           Then look up other characters at this <url
-          href="https://unicodelookup.com/"
-          visual="https://unicodelookup.com/">Unicode Lookup</url> site and
-          change the code to print them out. (Use the Dec column in site to get
-          the decimal number.) Can you print out letters from three different
+          href="https://unicodelookup.com/">Unicode Lookup</url> site and change
+          the code to print them out. (Use the Dec column in site to get the
+          decimal number.) Can you print out letters from three different
           languages?
         </p>
       </statement>
@@ -1296,6 +1303,7 @@
                   System.out.println("But this doesn't: " + (char) 128512);
               }
           }
+
         </code>
 
         <tests>
@@ -1307,23 +1315,17 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void testCount()
-              {
+              public void testCount() {
                   String code = getCodeWithoutComments();
                   int count = countOccurences(code, "Character.toString");
                   boolean passed = count >= 4;
-                  passed =
-                          getResults(
-                                  "4+",
-                                  "" + count,
-                                  "Counting number of Character.toString",
-                                  passed);
+                  passed = getResults("4+", "" + count, "Counting number of Character.toString", passed);
                   assertTrue(passed);
               }
           }
+
 
           ]]>
         </tests>
