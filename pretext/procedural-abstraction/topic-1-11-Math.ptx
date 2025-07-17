@@ -905,7 +905,7 @@
   </subsection>
 
   <subsection xml:id="coding-challenge-random-numbers">
-    <title>Coding challenge: combo lock</title>
+    <title>Coding challenge: Combo lock</title>
 
     <sidebyside widths="15% 100%" margins="-20% 0%">
       <image source="Unit1-Using-Objects-and-Methods/Figures/lock.jpg" alt="lock" />
