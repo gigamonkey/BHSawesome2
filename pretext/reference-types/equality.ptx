@@ -9,8 +9,7 @@
 
     <p>
       Watch the following <url
-      href="https://www.youtube.com/watch?v=bO9bejT0jwE&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis"
-      visual="https://www.youtube.com/watch?v=bO9bejT0jwE&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
+      href="https://www.youtube.com/watch?v=bO9bejT0jwE&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
       which shows what happens in memory as primitive types like <c>int</c> and
       reference types like <c>Dog</c> are compared with <c>==</c> in a physical
       model of Java memory.
@@ -52,10 +51,8 @@
           import java.awt.*;
           import java.util.*;
 
-          public class BoolTestRef
-          {
-              public static void main(String[] args)
-              {
+          public class BoolTestRef {
+              public static void main(String[] args) {
                   World world = new World(300, 300);
                   Turtle juan = new Turtle(world);
                   Turtle mia = new Turtle(world);
@@ -70,6 +67,7 @@
 
               }
           }
+
         </code>
 
         <tests>
@@ -79,17 +77,16 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void testMain() throws IOException
-              {
-                 String output = getMethodOutput("main");
-                 String expect = "false\ntrue\ntrue\nfalse\n";
-                 boolean passed = getResults(expect, output, "Expected output from main", true);
-                 assertTrue(passed);
+              public void testMain() throws IOException {
+                  String output = getMethodOutput("main");
+                  String expect = "false\ntrue\ntrue\nfalse\n";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -145,10 +142,8 @@
 
       <program interactive="activecode">
         <code>
-          public class Test1
-          {
-              public static void main(String[] args)
-              {
+          public class Test1 {
+              public static void main(String[] args) {
                   String s1 = new String("Hello");
                   String s2 = new String("Bye");
                   String s3 = s2; // s3 is now an alias for s2
@@ -157,6 +152,7 @@
                   System.out.println(s2.equals(s3));
               }
           }
+
         </code>
 
         <tests>
@@ -166,24 +162,23 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void testMain() throws IOException
-              {
+              public void testMain() throws IOException {
                   String output = getMethodOutput("main");
                   String expect = "Bye\ntrue\ntrue\n";
                   boolean passed = getResults(expect, output, "Expected output from main", true);
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
 
     <p>
-      The following <url href="https://www.youtube.com/watch?v=hhYBVgmC-vw"
-      visual="https://www.youtube.com/watch?v=hhYBVgmC-vw">video</url> traces
+      The following <url
+      href="https://www.youtube.com/watch?v=hhYBVgmC-vw">video</url> traces
       through the code above and shows how <c>==</c> and <c>equals</c> work with
       String objects in memory.
     </p>
@@ -225,10 +220,8 @@
 
       <program interactive="activecode">
         <code>
-          public class Test2
-          {
-              public static void main(String[] args)
-              {
+          public class Test2 {
+              public static void main(String[] args) {
                   String s1 = new String("Hello");
                   String s2 = new String("Hello");
                   System.out.println(s1 == s2);
@@ -247,6 +240,7 @@
 
               }
           }
+
         </code>
 
         <tests>
@@ -258,25 +252,23 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void testMain() throws IOException
-              {
+              public void testMain() throws IOException {
                   String output = getMethodOutput("main");
                   String expect = "false\ntrue\nEquals\nNot Equals\n";
                   boolean passed = getResults(expect, output, "Expected output from main");
                   assertTrue(passed);
               }
+
               @Test
-              public void testCodeContains1()
-              {
+              public void testCodeContains1() {
                   boolean ifStatement = checkCodeContains("if", "if");
                   assertTrue(ifStatement);
               }
-               @Test
-              public void testCount()
-              {
+
+              @Test
+              public void testCount() {
                   String code = getCode();
                   int num = countOccurences(code, ".equals");
                   boolean passed = num >= 3;
@@ -286,20 +278,20 @@
               }
           }
 
+
           ]]>
         </tests>
       </program>
     </activity>
 
     <p>
-      Watch the <url href="https://www.youtube.com/watch?v=xZroaSGhgxA"
-      visual="https://www.youtube.com/watch?v=xZroaSGhgxA">video below</url> to
-      see how this code works in memory. Since we used the <c>new</c> keyword,
-      two different <c>String</c> objects will be created that each have the
-      characters <c>Hello</c> in them. So <c>s1 == s2</c> will be false since
-      they don’t refer to the same object, but <c>s1.equals(s2)</c> is true
-      since the two different objects contain the same characters in the same
-      order.
+      Watch the <url href="https://www.youtube.com/watch?v=xZroaSGhgxA">video
+      below</url> to see how this code works in memory. Since we used the
+      <c>new</c> keyword, two different <c>String</c> objects will be created
+      that each have the characters <c>Hello</c> in them. So <c>s1 == s2</c>
+      will be false since they don’t refer to the same object, but
+      <c>s1.equals(s2)</c> is true since the two different objects contain the
+      same characters in the same order.
     </p>
 
     <video youtube="xZroaSGhgxA" label="video-equals" />
@@ -514,21 +506,18 @@
         <code>
           <![CDATA[
 
-          public class NullTest
-          {
-              public static void main(String[] args)
-              {
+          public class NullTest {
+              public static void main(String[] args) {
                   String s = null;
-                  if (s.indexOf("a") >= 0)
-                  {
+                  if (s.indexOf("a") >= 0) {
                       System.out.println(s + " contains an a");
                   }
-                  if (s != null && s.indexOf("a") >= 0)
-                  {
+                  if (s != null && s.indexOf("a") >= 0) {
                       System.out.println(s + " contains an a");
                   }
               }
           }
+
 
           ]]>
         </code>
@@ -542,16 +531,13 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
                   super("NullTest");
               }
 
               @Test
-              public void testMain()
-              {
+              public void testMain() {
                   String output = getMethodOutput("main");
                   String expect = "apple contains an a\napple contains an a";
 
@@ -559,8 +545,7 @@
               }
 
               @Test
-              public void testChangedCode()
-              {
+              public void testChangedCode() {
                   String origCode =
                           "public class NullTest { public static void main(String[] args) { String s = null;"
                               + " if (s.indexOf(\"a\") >= 0) {  System.out.println(s + \" contains an a\"); }"
@@ -573,8 +558,7 @@
               }
 
               @Test
-              public void testCodeContains()
-              {
+              public void testCodeContains() {
                   String code = getCode();
                   String target1 = "String s = ";
                   String target2 = "System.out.println(s + \" contains an a\");";
@@ -585,15 +569,15 @@
               }
           }
 
+
           ]]>
         </tests>
       </program>
     </activity>
 
     <p>
-      The <url href="https://www.youtube.com/watch?v=GPdoHm1K8HA"
-      visual="https://www.youtube.com/watch?v=GPdoHm1K8HA">following video</url>
-      shows how the null string reference works in memory.
+      The <url href="https://www.youtube.com/watch?v=GPdoHm1K8HA">following
+      video</url> shows how the null string reference works in memory.
     </p>
 
     <video youtube="GPdoHm1K8HA" label="video-null-string" />

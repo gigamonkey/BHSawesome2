@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-3-7-static-vars-methods">
   <title>Class (static) Variables and Methods</title>
+
   <introduction>
     <idx>class variables</idx>
     <idx>class methods</idx>
@@ -20,6 +21,7 @@
 
   <subsection xml:id="class-methods">
     <title>Class Methods</title>
+
     <p>
       Class methods belong to the class and not to any object of the class. They
       are called with the class name and the dot operator, like
@@ -33,18 +35,16 @@
       <c>objectName.methodName();</c>.
     </p>
 
-    <program language="java">
-      <code>
-// Calling class methods
-// ClassName.methodName();
-int x = Math.sqrt(9);
+    <program>
+      // Calling class methods
+      // ClassName.methodName();
+      int x = Math.sqrt(9);
 
- // If the method is in the same class,
- // you can call it with or without the class name
- // from other static methods in the class
- ClassName.methodName();
- methodName();
-      </code>
+       // If the method is in the same class,
+       // you can call it with or without the class name
+       // from other static methods in the class
+       ClassName.methodName();
+       methodName();
     </program>
 
     <p>
@@ -60,6 +60,7 @@ int x = Math.sqrt(9);
 
     <figure align="center">
       <caption>Comparing Method Calls to Static and Instance Methods</caption>
+
       <image source="Unit3-Class-Creation/Figures/FlowChartCallingMethods.png" width="98%" alt="Comparing method calls to static and instance methods" />
     </figure>
 
@@ -69,20 +70,18 @@ int x = Math.sqrt(9);
       the type of variables and methods in their declarations.
     </p>
 
-    <program language="java">
-      <code>
-public class ClassName
-{
-  // static class variable
-  public static type variableName;
+    <program>
+      public class ClassName
+      {
+        // static class variable
+        public static type variableName;
 
-  // static class method
-  public static returnType methodName(parameters)
-  {
-        // implementation not shown
-  }
-}
-      </code>
+        // static class method
+        public static returnType methodName(parameters)
+        {
+              // implementation not shown
+        }
+      }
     </program>
 
     <p>
@@ -108,77 +107,73 @@ public class ClassName
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class Person
-{
-    // instance variables
-    private String name;
-    private String email;
+          public class Person {
+              // instance variables
+              private String name;
+              private String email;
 
-    // constructor
-    public Person(String initName, String initEmail)
-    {
-        name = initName;
-        email = initEmail;
-    }
+              // constructor
+              public Person(String initName, String initEmail) {
+                  name = initName;
+                  email = initEmail;
+              }
 
-    // instance method
-    public void print()
-    {
-        System.out.println(name + ": " + email);
-    }
+              // instance method
+              public void print() {
+                  System.out.println(name + ": " + email);
+              }
 
-    // static method
-    public static void printStatic()
-    {
-        System.out.println("Static methods cannot print out non-static variables.");
-        // The following lines will cause errors
+              // static method
+              public static void printStatic() {
+                  System.out.println("Static methods cannot print out non-static variables.");
+                  // The following lines will cause errors
 
-        // TODO: Fix this by giving it the Person object as a parameter
-        // Use the object to print out the name and call its instance methods.
-        System.out.println(name);
-        print();
-    }
+                  // TODO: Fix this by giving it the Person object as a parameter
+                  // Use the object to print out the name and call its instance methods.
+                  System.out.println(name);
+                  print();
+              }
 
-    public static void main(String[] args)
-    {
-        Person p = new Person("Jana", "jana@gmail.com");
+              public static void main(String[] args) {
+                  Person p = new Person("Jana", "jana@gmail.com");
 
-        // Call p's instance method to print
-        p.print();
+                  // Call p's instance method to print
+                  p.print();
 
-        // Call printStatic with the class name
-        // Note this has errors.
-        // TODO: Fix the errors by giving it the object p as an arguments
-        Person.printStatic();
-    }
-}
+                  // Call printStatic with the class name
+                  // Note this has errors.
+                  // TODO: Fix the errors by giving it the object p as an arguments
+                  Person.printStatic();
+              }
+          }
+
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1()
-    {
-        String target = "printStatic(p)";
-        boolean passed = checkCodeContains(target, target);
-        assertTrue(passed);
-    }
-    @Test
-    public void test2()
-    {
-        String target = "printStatic(Person";
-        boolean passed = checkCodeContains(target, target);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void test1() {
+                  String target = "printStatic(p)";
+                  boolean passed = checkCodeContains(target, target);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2() {
+                  String target = "printStatic(Person";
+                  boolean passed = checkCodeContains(target, target);
+                  assertTrue(passed);
+              }
+          }
+
         </tests>
       </program>
     </activity>
@@ -194,6 +189,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="class-variables">
     <title>Class Variables</title>
+
     <p>
       <term>Class variables</term> belong to the class, with all objects of a
       class sharing a single copy of the class variable. Class variables are
@@ -209,8 +205,7 @@ public class RunestoneTests extends CodeTestHelper
       <c>Person</c> constructor is called to initialize a new <c>Person</c>
       object. The static method <c>printCounter</c> prints out its value. You
       can also watch how it works in the <url
-      href="http://www.pythontutor.com/visualize.html#code=%20public%20class%20Person%20%0A%20%20%7B%0A%20%20%20%20%20//%20instance%20variables%20%0A%20%20%20%20%20private%20String%20name%3B%0A%20%20%20%20%20private%20String%20email%3B%0A%20%20%20%20%20private%20String%20phoneNumber%3B%0A%20%20%20%20%20%0A%20%20%20%20%20//%20Static%20counter%20variable%0A%20%20%20%20%20public%20static%20int%20personCounter%20%3D%200%3B%0A%20%20%20%20%20%0A%20%20%20%20%20//%20static%20method%20to%20print%20out%20counter%0A%20%20%20%20%20public%20static%20void%20printPersonCounter%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20System.out.println%28%22Person%20counter%3A%20%22%20%2B%20personCounter%29%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20%0A%20%20%20%20%20//%20constructor%3A%20construct%20a%20Person%20copying%20in%20the%20data%20into%20the%20instance%20variables%0A%20%20%20%20%20public%20Person%28String%20initName,%20String%20initEmail,%20String%20initPhone%29%0A%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20name%20%3D%20initName%3B%0A%20%20%20%20%20%20%20%20email%20%3D%20initEmail%3B%0A%20%20%20%20%20%20%20%20phoneNumber%20%3D%20initPhone%3B%0A%20%20%20%20%20%20%20%20personCounter%2B%2B%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20%0A%20%20%20%20%20//%20toString%28%29%20method%0A%20%20%20%20%20public%20String%20toString%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20return%20%20name%20%2B%20%22%3A%20%22%20%2B%20email%20%2B%20%22%20%22%20%2B%20phoneNumber%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20%0A%20%20%20%20%20//%20main%20method%20for%20testing%0A%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20//%20call%20the%20constructor%20to%20create%20a%20new%20person%0A%20%20%20%20%20%20%20%20Person%20p1%20%3D%20new%20Person%28%22Sana%22,%20%22sana%40gmail.com%22,%20%22123-456-7890%22%29%3B%0A%20%20%20%20%20%20%20%20Person%20p2%20%3D%20new%20Person%28%22Jean%22,%20%22jean%40gmail.com%22,%20%22404%20899-9955%22%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20Person.printPersonCounter%28%29%3B%0A%20%20%20%20%20%7D%0A%20%20%7D%0A%20%20&amp;cumulative=false&amp;curInstr=1&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"
-      visual="http://www.pythontutor.com/visualize.html#code=%20public%20class%20Person%20%0A%20%20%7B%0A%20%20%20%20%20//%20instance%20variables%20%0A%20%20%20%20%20private%20String%20name%3B%0A%20%20%20%20%20private%20String%20email%3B%0A%20%20%20%20%20private%20String%20phoneNumber%3B%0A%20%20%20%20%20%0A%20%20%20%20%20//%20Static%20counter%20variable%0A%20%20%20%20%20public%20static%20int%20personCounter%20%3D%200%3B%0A%20%20%20%20%20%0A%20%20%20%20%20//%20static%20method%20to%20print%20out%20counter%0A%20%20%20%20%20public%20static%20void%20printPersonCounter%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20System.out.println%28%22Person%20counter%3A%20%22%20%2B%20personCounter%29%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20%0A%20%20%20%20%20//%20constructor%3A%20construct%20a%20Person%20copying%20in%20the%20data%20into%20the%20instance%20variables%0A%20%20%20%20%20public%20Person%28String%20initName,%20String%20initEmail,%20String%20initPhone%29%0A%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20name%20%3D%20initName%3B%0A%20%20%20%20%20%20%20%20email%20%3D%20initEmail%3B%0A%20%20%20%20%20%20%20%20phoneNumber%20%3D%20initPhone%3B%0A%20%20%20%20%20%20%20%20personCounter%2B%2B%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20%0A%20%20%20%20%20//%20toString%28%29%20method%0A%20%20%20%20%20public%20String%20toString%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20return%20%20name%20%2B%20%22%3A%20%22%20%2B%20email%20%2B%20%22%20%22%20%2B%20phoneNumber%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20%0A%20%20%20%20%20//%20main%20method%20for%20testing%0A%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20//%20call%20the%20constructor%20to%20create%20a%20new%20person%0A%20%20%20%20%20%20%20%20Person%20p1%20%3D%20new%20Person%28%22Sana%22,%20%22sana%40gmail.com%22,%20%22123-456-7890%22%29%3B%0A%20%20%20%20%20%20%20%20Person%20p2%20%3D%20new%20Person%28%22Jean%22,%20%22jean%40gmail.com%22,%20%22404%20899-9955%22%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20Person.printPersonCounter%28%29%3B%0A%20%20%20%20%20%7D%0A%20%20%7D%0A%20%20&amp;cumulative=false&amp;curInstr=1&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Java
+      href="http://www.pythontutor.com/visualize.html#code=%20public%20class%20Person%20%0A%20%20%7B%0A%20%20%20%20%20//%20instance%20variables%20%0A%20%20%20%20%20private%20String%20name%3B%0A%20%20%20%20%20private%20String%20email%3B%0A%20%20%20%20%20private%20String%20phoneNumber%3B%0A%20%20%20%20%20%0A%20%20%20%20%20//%20Static%20counter%20variable%0A%20%20%20%20%20public%20static%20int%20personCounter%20%3D%200%3B%0A%20%20%20%20%20%0A%20%20%20%20%20//%20static%20method%20to%20print%20out%20counter%0A%20%20%20%20%20public%20static%20void%20printPersonCounter%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20System.out.println%28%22Person%20counter%3A%20%22%20%2B%20personCounter%29%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20%0A%20%20%20%20%20//%20constructor%3A%20construct%20a%20Person%20copying%20in%20the%20data%20into%20the%20instance%20variables%0A%20%20%20%20%20public%20Person%28String%20initName,%20String%20initEmail,%20String%20initPhone%29%0A%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20name%20%3D%20initName%3B%0A%20%20%20%20%20%20%20%20email%20%3D%20initEmail%3B%0A%20%20%20%20%20%20%20%20phoneNumber%20%3D%20initPhone%3B%0A%20%20%20%20%20%20%20%20personCounter%2B%2B%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20%0A%20%20%20%20%20//%20toString%28%29%20method%0A%20%20%20%20%20public%20String%20toString%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20return%20%20name%20%2B%20%22%3A%20%22%20%2B%20email%20%2B%20%22%20%22%20%2B%20phoneNumber%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20%0A%20%20%20%20%20//%20main%20method%20for%20testing%0A%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20//%20call%20the%20constructor%20to%20create%20a%20new%20person%0A%20%20%20%20%20%20%20%20Person%20p1%20%3D%20new%20Person%28%22Sana%22,%20%22sana%40gmail.com%22,%20%22123-456-7890%22%29%3B%0A%20%20%20%20%20%20%20%20Person%20p2%20%3D%20new%20Person%28%22Jean%22,%20%22jean%40gmail.com%22,%20%22404%20899-9955%22%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20Person.printPersonCounter%28%29%3B%0A%20%20%20%20%20%7D%0A%20%20%7D%0A%20%20&amp;cumulative=false&amp;curInstr=1&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Java
       visualizer</url> by clicking the CodeLens button below.
     </p>
 
@@ -223,69 +218,65 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class Person
-{
-    // instance variables
-    private String name;
-    private String email;
-    private String phoneNumber;
+          public class Person {
+              // instance variables
+              private String name;
+              private String email;
+              private String phoneNumber;
 
-    // Static counter variable
-    public static int personCounter = 0;
+              // Static counter variable
+              public static int personCounter = 0;
 
-    // static method to print out counter
-    public static void printPersonCounter()
-    {
-        System.out.println("Person counter: " + personCounter);
-    }
+              // static method to print out counter
+              public static void printPersonCounter() {
+                  System.out.println("Person counter: " + personCounter);
+              }
 
-    // constructor: construct a Person copying in the data into the instance
-    // variables
-    public Person(String initName, String initEmail, String initPhone)
-    {
-        name = initName;
-        email = initEmail;
-        phoneNumber = initPhone;
-        personCounter++;
-    }
+              // constructor: construct a Person copying in the data into the instance
+              // variables
+              public Person(String initName, String initEmail, String initPhone) {
+                  name = initName;
+                  email = initEmail;
+                  phoneNumber = initPhone;
+                  personCounter++;
+              }
 
-    // toString() method
-    public String toString()
-    {
-        return name + ": " + email + " " + phoneNumber;
-    }
+              // toString() method
+              public String toString() {
+                  return name + ": " + email + " " + phoneNumber;
+              }
 
-    // main method for testing
-    public static void main(String[] args)
-    {
-        // call the constructor to create a new person
-        Person p1 = new Person("Sana", "sana@gmail.com", "123-456-7890");
-        Person p2 = new Person("Jean", "jean@gmail.com", "404 899-9955");
+              // main method for testing
+              public static void main(String[] args) {
+                  // call the constructor to create a new person
+                  Person p1 = new Person("Sana", "sana@gmail.com", "123-456-7890");
+                  Person p2 = new Person("Jean", "jean@gmail.com", "404 899-9955");
 
-        Person.printPersonCounter();
-    }
-}
+                  Person.printPersonCounter();
+              }
+          }
+
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Person counter: 2";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void testMain() throws IOException {
+                  String output = getMethodOutput("main");
+                  String expect = "Person counter: 2";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
+
         </tests>
       </program>
     </activity>
@@ -302,31 +293,30 @@ public class RunestoneTests extends CodeTestHelper
           is the output of the main method below?
         </p>
 
-        <program language="java">
-          <code>
-public class Temperature
-{
-    private double temperature;
-    public static double maxTemp = 0;
+        <program>
+          <![CDATA[
 
-    public Temperature(double t)
-    {
-        temperature = t;
-        if (t &gt; maxTemp)
-        {
-             maxTemp = t;
-        }
-    }
+          public class Temperature {
+              private double temperature;
+              public static double maxTemp = 0;
 
-    public static void main(String[] args)
-    {
-        Temperature t1 = new Temperature(75);
-        Temperature t2 = new Temperature(100);
-        Temperature t3 = new Temperature(65);
-        System.out.println("Max Temp: " + Temperature.maxTemp);
-    }
-}
-          </code>
+              public Temperature(double t) {
+                  temperature = t;
+                  if (t > maxTemp) {
+                      maxTemp = t;
+                  }
+              }
+
+              public static void main(String[] args) {
+                  Temperature t1 = new Temperature(75);
+                  Temperature t2 = new Temperature(100);
+                  Temperature t3 = new Temperature(65);
+                  System.out.println("Max Temp: " + Temperature.maxTemp);
+              }
+          }
+
+
+          ]]>
         </program>
       </statement>
 
@@ -402,8 +392,7 @@ public class Temperature
 
     <p>
       You can see this code in action in the <url
-      href="http://www.pythontutor.com/visualize.html#code=public%20class%20Temperature%20%0A%7B%0A%20%20%20private%20double%20temperature%3B%0A%20%20%20public%20static%20double%20maxTemp%20%3D%200%3B%0A%20%20%20%0A%20%20%20public%20Temperature%28double%20t%29%0A%20%20%20%7B%0A%20%20%20%20%20%20%20temperature%20%3D%20t%3B%0A%20%20%20%20%20%20%20if%20%28t%20%3E%20maxTemp%29%0A%20%20%20%20%20%20%20%20%20%20%20maxTemp%20%3D%20t%3B%0A%20%20%20%7D%0A%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%7B%0A%20%20%20%20%20%20%20Temperature%20t1%20%3D%20new%20Temperature%2875%29%3B%0A%20%20%20%20%20%20%20Temperature%20t2%20%3D%20new%20Temperature%28100%29%3B%0A%20%20%20%20%20%20%20Temperature%20t3%20%3D%20new%20Temperature%2865%29%3B%0A%20%20%20%20%20%20%20System.out.println%28%22Max%20Temp%3A%20%22%20%2B%20Temperature.maxTemp%29%3B%0A%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"
-      visual="http://www.pythontutor.com/visualize.html#code=public%20class%20Temperature%20%0A%7B%0A%20%20%20private%20double%20temperature%3B%0A%20%20%20public%20static%20double%20maxTemp%20%3D%200%3B%0A%20%20%20%0A%20%20%20public%20Temperature%28double%20t%29%0A%20%20%20%7B%0A%20%20%20%20%20%20%20temperature%20%3D%20t%3B%0A%20%20%20%20%20%20%20if%20%28t%20%3E%20maxTemp%29%0A%20%20%20%20%20%20%20%20%20%20%20maxTemp%20%3D%20t%3B%0A%20%20%20%7D%0A%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%7B%0A%20%20%20%20%20%20%20Temperature%20t1%20%3D%20new%20Temperature%2875%29%3B%0A%20%20%20%20%20%20%20Temperature%20t2%20%3D%20new%20Temperature%28100%29%3B%0A%20%20%20%20%20%20%20Temperature%20t3%20%3D%20new%20Temperature%2865%29%3B%0A%20%20%20%20%20%20%20System.out.println%28%22Max%20Temp%3A%20%22%20%2B%20Temperature.maxTemp%29%3B%0A%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Java
+      href="http://www.pythontutor.com/visualize.html#code=public%20class%20Temperature%20%0A%7B%0A%20%20%20private%20double%20temperature%3B%0A%20%20%20public%20static%20double%20maxTemp%20%3D%200%3B%0A%20%20%20%0A%20%20%20public%20Temperature%28double%20t%29%0A%20%20%20%7B%0A%20%20%20%20%20%20%20temperature%20%3D%20t%3B%0A%20%20%20%20%20%20%20if%20%28t%20%3E%20maxTemp%29%0A%20%20%20%20%20%20%20%20%20%20%20maxTemp%20%3D%20t%3B%0A%20%20%20%7D%0A%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%7B%0A%20%20%20%20%20%20%20Temperature%20t1%20%3D%20new%20Temperature%2875%29%3B%0A%20%20%20%20%20%20%20Temperature%20t2%20%3D%20new%20Temperature%28100%29%3B%0A%20%20%20%20%20%20%20Temperature%20t3%20%3D%20new%20Temperature%2865%29%3B%0A%20%20%20%20%20%20%20System.out.println%28%22Max%20Temp%3A%20%22%20%2B%20Temperature.maxTemp%29%3B%0A%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Java
       visualizer</url>.
     </p>
 
@@ -415,73 +404,72 @@ public class Temperature
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class Temperature
-{
-    private double temperature;
-    public static double maxTemp = 0;
+          <![CDATA[
 
-    public Temperature(double t)
-    {
-        temperature = t;
-        if (t &gt; maxTemp)
-        {
-             maxTemp = t;
-        }
-    }
-    // This static method should print out the static variable
-    public static printMax()
-    {
-        System.out.println(temperature);
-    }
+          public class Temperature {
+              private double temperature;
+              public static double maxTemp = 0;
 
-    public static void main(String[] args)
-    {
-        Temperature t1 = new Temperature(75);
-        Temperature t2 = new Temperature(100);
-        Temperature.printMax();
-    }
-}
+              public Temperature(double t) {
+                  temperature = t;
+                  if (t > maxTemp) {
+                      maxTemp = t;
+                  }
+              }
+
+              // This static method should print out the static variable
+              public static printMax() {
+                  System.out.println(temperature);
+              }
+
+              public static void main(String[] args) {
+                  Temperature t1 = new Temperature(75);
+                  Temperature t2 = new Temperature(100);
+                  Temperature.printMax();
+              }
+          }
+
+
+          ]]>
         </code>
+
         <tests>
- import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
- import org.junit.*;
+          import org.junit.*;
 
- import java.io.*;
+          import java.io.*;
 
- public class RunestoneTests extends CodeTestHelper
- {
-     @Test
-     public void testCodeContains1()
-     {
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void testCodeContains1() {
 
-         boolean passed =
-                 checkCodeContains("static printMax() header", "public static void printMax()");
-         assertTrue(passed);
-     }
+                  boolean passed =
+                          checkCodeContains("static printMax() header", "public static void printMax()");
+                  assertTrue(passed);
+              }
 
-     @Test
-     public void testCodeContains2()
-     {
-         String code = getCode();
-         boolean passed =
-                 code.contains("System.out.println(maxTemp);")
-                         || code.contains("System.out.println(Temperature.maxTemp);");
-         getResults("true", "" + passed, "printMax method returns the right value", passed);
-         assertTrue(passed);
-     }
+              @Test
+              public void testCodeContains2() {
+                  String code = getCode();
+                  boolean passed =
+                          code.contains("System.out.println(maxTemp);")
+                                  || code.contains("System.out.println(Temperature.maxTemp);");
+                  getResults("true", "" + passed, "printMax method returns the right value", passed);
+                  assertTrue(passed);
+              }
 
-     @Test
-     public void testMain() throws IOException
-     {
-         String output = getMethodOutput("main");
-         String expect = "100.0";
-         boolean passed = getResults(expect, output, "Expected output from main", true);
-         assertTrue(passed);
-     }
- }
+              @Test
+              public void testMain() throws IOException {
+                  String output = getMethodOutput("main");
+                  String expect = "100.0";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
+
         </tests>
       </program>
     </activity>
@@ -489,16 +477,15 @@ public class Temperature
 
   <subsection xml:id="final-keyword">
     <title>final keyword</title>
+
     <p>
       The keyword <term>final</term> can be used in front of a variable
       declaration to make it a constant value that cannot be modified. Constants
       are traditionally capitalized.
     </p>
 
-    <program language="java">
-      <code>
-final double PI = 3.14
-      </code>
+    <program>
+      final double PI = 3.14
     </program>
 
     <activity label="finalPi">
@@ -510,40 +497,38 @@ final double PI = 3.14
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class TestFinal
-{
-    // A static final variable for PI
-    public static final double PI = 3.14;
+          public class TestFinal {
+              // A static final variable for PI
+              public static final double PI = 3.14;
 
-    public static void main(String[] args)
-    {
-        System.out.println(PI);
-        PI = 4.2; // This will cause a syntax error
-    }
-}
+              public static void main(String[] args) {
+                  System.out.println(PI);
+                  PI = 4.2; // This will cause a syntax error
+              }
+          }
+
         </code>
+
         <tests>
-// should pass if/when they run code
-import static org.junit.Assert.*;
+          // should pass if/when they run code
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "3.14";
-        boolean passed =
-                getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void testMain() throws IOException {
+                  String output = getMethodOutput("main");
+                  String expect = "3.14";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
+
         </tests>
       </program>
     </activity>
@@ -551,40 +536,38 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-static-song-and-counter">
     <title>Coding Challenge: Static Song and counter</title>
+
     <p>
       In Unit 1, we wrote a class with methods to print out the song <url
-      href="https://www.youtube.com/watch?v=QPwEZ8Vv2YQ"
-      visual="https://www.youtube.com/watch?v=QPwEZ8Vv2YQ">The Ants Go
+      href="https://www.youtube.com/watch?v=QPwEZ8Vv2YQ">The Ants Go
       Marching</url>. Here’s the song with 3 verses, where the chorus is the
       last 2 lines of each verse:
     </p>
 
-    <program language="java">
-      <code>
-Verse 1:
-The ants go marching one by one, hurrah, hurrah
-The ants go marching one by one, hurrah, hurrah
-The ants go marching one by one
-The little one stops to suck a thumb
-And they all go marching down to the ground
-To get out of the rain, BOOM! BOOM! BOOM! BOOM!
+    <program>
+      Verse 1:
+      The ants go marching one by one, hurrah, hurrah
+      The ants go marching one by one, hurrah, hurrah
+      The ants go marching one by one
+      The little one stops to suck a thumb
+      And they all go marching down to the ground
+      To get out of the rain, BOOM! BOOM! BOOM! BOOM!
 
-Verse 2:
-The ants go marching two by two, hurrah, hurrah
-The ants go marching two by two, hurrah, hurrah
-The ants go marching two by two
-The little one stops to tie a shoe
-And they all go marching down to the ground
-To get out of the rain, BOOM! BOOM! BOOM! BOOM!
+      Verse 2:
+      The ants go marching two by two, hurrah, hurrah
+      The ants go marching two by two, hurrah, hurrah
+      The ants go marching two by two
+      The little one stops to tie a shoe
+      And they all go marching down to the ground
+      To get out of the rain, BOOM! BOOM! BOOM! BOOM!
 
-Verse 3:
-The ants go marching three by three, hurrah, hurrah
-The ants go marching three by three, hurrah, hurrah
-The ants go marching three by three
-The little one stops to climb a tree
-And they all go marching down to the ground
-To get out of the rain, BOOM! BOOM! BOOM! BOOM!
-      </code>
+      Verse 3:
+      The ants go marching three by three, hurrah, hurrah
+      The ants go marching three by three, hurrah, hurrah
+      The ants go marching three by three
+      The little one stops to climb a tree
+      And they all go marching down to the ground
+      To get out of the rain, BOOM! BOOM! BOOM! BOOM!
     </program>
 
     <p>
@@ -598,7 +581,7 @@ To get out of the rain, BOOM! BOOM! BOOM! BOOM!
     </p>
 
     <p>
-      <ol marker="1">
+      <ol>
         <li>
           <p>
             Create a class called <c>Song</c> with two static methods:
@@ -624,8 +607,7 @@ To get out of the rain, BOOM! BOOM! BOOM! BOOM!
       <statement>
         <p>
           This class should print out the <url
-          href="https://www.youtube.com/watch?v=QPwEZ8Vv2YQ"
-          visual="https://www.youtube.com/watch?v=QPwEZ8Vv2YQ">The Ants Go
+          href="https://www.youtube.com/watch?v=QPwEZ8Vv2YQ">The Ants Go
           Marching</url> Song using two static methods: <c>chorus()</c> and
           <c>verse()</c>. The chorus method should print out the last two lines
           of each verse. The verse method should take two parameters, a number
@@ -636,188 +618,181 @@ To get out of the rain, BOOM! BOOM! BOOM! BOOM!
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class Song
-{
-    // Add a public static variable called numVerses
+          public class Song {
+              // Add a public static variable called numVerses
 
-    // Add a static chorus method
+              // Add a static chorus method
 
-    // Add a static verse method with two parameters
+              // Add a static verse method with two parameters
 
-    public static void main(String args[])
-    {
-        // Print out the static variable numVerses
-        // and call the static methods to print out the Song for 3 verses
+              public static void main(String args[]) {
+                  // Print out the static variable numVerses
+                  // and call the static methods to print out the Song for 3 verses
 
+              }
+          }
 
-    }
-}
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @After
-    public void tearDown()
-    {
-        super.tearDown();
-        // Song.numVerses = 0;
+          import java.io.*;
 
-    }
+          public class RunestoneTests extends CodeTestHelper {
+              @After
+              public void tearDown() {
+                  super.tearDown();
+                  // Song.numVerses = 0;
 
-    @Test
-    public void checkCodeContains1()
-    {
-        // check verse 1
-        boolean passed =
-                checkCodeContains(
-                        "verse(...) method header with two String parameters",
-                        "public static void verse(String *, String *)");
+              }
 
-        assertTrue(passed);
-    }
+              @Test
+              public void checkCodeContains1() {
+                  // check verse 1
+                  boolean passed =
+                          checkCodeContains(
+                                  "verse(...) method header with two String parameters",
+                                  "public static void verse(String *, String *)");
 
-    @Test
-    public void checkCodeContains2()
-    {
-        // check static
-        String code = getCode();
-        int actual = countOccurences(code, "Song.verse(");
-        String expected = "3";
+                  assertTrue(passed);
+              }
 
-        boolean passed = actual &gt;= 3;
-        getResults(
-                expected,
-                "" + actual,
-                "Checking that code contains three calls to verse(...) method using"
-                    + " ClassName.staticMethod(...) syntax",
-                passed);
-        assertTrue(passed);
-    }
+              @Test
+              public void checkCodeContains2() {
+                  // check static
+                  String code = getCode();
+                  int actual = countOccurences(code, "Song.verse(");
+                  String expected = "3";
 
-    @Test
-    public void checkCodeContains3()
-    {
-        // check static
-        String code = getCode();
-        int actual = countOccurences(code, "public static int numVerses = 0");
-        String expected = "1";
+                  boolean passed = actual >= 3;
+                  getResults(
+                          expected,
+                          "" + actual,
+                          "Checking that code contains three calls to verse(...) method using"
+                                  + " ClassName.staticMethod(...) syntax",
+                          passed);
+                  assertTrue(passed);
+              }
 
-        boolean passed = actual &gt;= 1;
-        getResults(
-                expected,
-                "" + actual,
-                "Checking that code declares variable numVerses according to instructions and sets"
-                    + " it to zero",
-                passed);
+              @Test
+              public void checkCodeContains3() {
+                  // check static
+                  String code = getCode();
+                  int actual = countOccurences(code, "public static int numVerses = 0");
+                  String expected = "1";
 
-        assertTrue(passed);
-    }
+                  boolean passed = actual >= 1;
+                  getResults(
+                          expected,
+                          "" + actual,
+                          "Checking that code declares variable numVerses according to instructions and sets"
+                                  + " it to zero",
+                          passed);
 
-    @Test
-    public void checkCodeContains4()
-    {
-        // check static
-        String code = getCode();
-        boolean increment = code.contains("numVerses++");
-        String expected = "increments: true\n";
-        String actual = "increments: " + increment + "\n";
+                  assertTrue(passed);
+              }
 
-        String anytext = "[\\s\\S]*";
-        String regex = "System.out.print[ln]*\\([\"a-zA-Z0-9 +]*numVerses[\"a-zA-Z0-9 +]*\\);";
-        boolean printed = code.matches(anytext + regex + anytext);
-        expected += "prints: true";
-        actual += "prints: " + printed;
+              @Test
+              public void checkCodeContains4() {
+                  // check static
+                  String code = getCode();
+                  boolean increment = code.contains("numVerses++");
+                  String expected = "increments: true\n";
+                  String actual = "increments: " + increment + "\n";
 
-        boolean passed = increment &amp;&amp; printed;
-        getResults(expected, actual, "Checking that code increments and prints numVerses", passed);
+                  String anytext = "[\\s\\S]*";
+                  String regex = "System.out.print[ln]*\\([\"a-zA-Z0-9 +]*numVerses[\"a-zA-Z0-9 +]*\\);";
+                  boolean printed = code.matches(anytext + regex + anytext);
+                  expected += "prints: true";
+                  actual += "prints: " + printed;
 
-        assertTrue(passed);
-    }
+                  boolean passed = increment && printed;
+                  getResults(expected, actual, "Checking that code increments and prints numVerses", passed);
 
-    @Test
-    public void testVerses() throws IOException
-    {
-        String output = getMethodOutput("main").replaceAll(" his ", " a ").replaceAll("\n\n", "\n");
-        String[] actualArray = output.split("\n");
+                  assertTrue(passed);
+              }
 
-        boolean passed = true;
-        String error = "";
-        String expect = "No errors";
-        String actual = "No errors";
+              @Test
+              public void testVerses() throws IOException {
+                  String output = getMethodOutput("main").replaceAll(" his ", " a ").replaceAll("\n\n", "\n");
+                  String[] actualArray = output.split("\n");
 
-        int j = 0;
+                  boolean passed = true;
+                  String error = "";
+                  String expect = "No errors";
+                  String actual = "No errors";
 
-        for (int i = 0; i &lt; actualArray.length; i++)
-        {
-            while (j &lt; expectedArray.length &amp;&amp; expectedArray[j].length() &lt; 2) j++;
-            while (i &lt; expectedArray.length &amp;&amp; actualArray[i].length() &lt; 2) i++;
+                  int j = 0;
 
-            if (j &lt; expectedArray.length &amp;&amp; actualArray[i].length() &gt; 1)
-            {
-                /*
-                 * System.out.println(expectedArray[j]);
-                 * System.out.println(actualArray[i]);
-                 * System.out.println();
-                 */
-                if (actualArray[i].matches("[\\s\\S]*[0-9]+[\\s\\S]*"))
-                {
-                    continue;
-                }
+                  for (int i = 0; i < actualArray.length; i++) {
+                      while (j < expectedArray.length && expectedArray[j].length() < 2) j++;
+                      while (i < expectedArray.length && actualArray[i].length() < 2) i++;
 
-                String compAct = removeSpaces(actualArray[i].toLowerCase());
-                String compExp = removeSpaces(expectedArray[j].toLowerCase());
+                      if (j < expectedArray.length && actualArray[i].length() > 1) {
+                          /*
+                           * System.out.println(expectedArray[j]);
+                           * System.out.println(actualArray[i]);
+                           * System.out.println();
+                           */
+                          if (actualArray[i].matches("[\\s\\S]*[0-9]+[\\s\\S]*")) {
+                              continue;
+                          }
 
-                if (!compAct.equals(compExp))
-                {
-                    expect = expectedArray[j].trim();
-                    actual = actualArray[i].trim() + "\n(Error on line " + (i + 1) + " of output)";
-                    passed = false;
-                    error =
-                            "\n"
-                                + "There may be more than one error! Did you forget a line?\n"
-                                + "(check spelling, new lines, and punctuation carefully)";
-                    break;
-                }
-            }
+                          String compAct = removeSpaces(actualArray[i].toLowerCase());
+                          String compExp = removeSpaces(expectedArray[j].toLowerCase());
 
-            j++;
-        }
+                          if (!compAct.equals(compExp)) {
+                              expect = expectedArray[j].trim();
+                              actual = actualArray[i].trim() + "\n(Error on line " + (i + 1) + " of output)";
+                              passed = false;
+                              error =
+                                      "\n"
+                                              + "There may be more than one error! Did you forget a line?\n"
+                                              + "(check spelling, new lines, and punctuation carefully)";
+                              break;
+                          }
+                      }
 
-        getResults(expect, actual, "Checking output from main" + error, passed);
-        assertTrue(passed);
-    }
+                      j++;
+                  }
 
-    private static String expectedOutput =
-            "The ants go marching one by one, hurrah, hurrah\n"
-                    + "The ants go marching one by one, hurrah, hurrah\n"
-                    + "The ants go marching one by one\n"
-                    + "The little one stops to suck a thumb\n"
-                    + "And they all go marching down to the ground\n"
-                    + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!\n"
-                    + "\n"
-                    + "The ants go marching two by two, hurrah, hurrah\n"
-                    + "The ants go marching two by two, hurrah, hurrah\n"
-                    + "The ants go marching two by two\n"
-                    + "The little one stops to tie a shoe\n"
-                    + "And they all go marching down to the ground\n"
-                    + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!\n"
-                    + "\n"
-                    + "The ants go marching three by three, hurrah, hurrah\n"
-                    + "The ants go marching three by three, hurrah, hurrah\n"
-                    + "The ants go marching three by three\n"
-                    + "The little one stops to climb a tree\n"
-                    + "And they all go marching down to the ground\n"
-                    + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!";
-    private static String[] expectedArray = expectedOutput.replaceAll("\n\n", "\n").split("\n");
-}
+                  getResults(expect, actual, "Checking output from main" + error, passed);
+                  assertTrue(passed);
+              }
+
+              private static String expectedOutput =
+                      "The ants go marching one by one, hurrah, hurrah\n"
+                              + "The ants go marching one by one, hurrah, hurrah\n"
+                              + "The ants go marching one by one\n"
+                              + "The little one stops to suck a thumb\n"
+                              + "And they all go marching down to the ground\n"
+                              + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!\n"
+                              + "\n"
+                              + "The ants go marching two by two, hurrah, hurrah\n"
+                              + "The ants go marching two by two, hurrah, hurrah\n"
+                              + "The ants go marching two by two\n"
+                              + "The little one stops to tie a shoe\n"
+                              + "And they all go marching down to the ground\n"
+                              + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!\n"
+                              + "\n"
+                              + "The ants go marching three by three, hurrah, hurrah\n"
+                              + "The ants go marching three by three, hurrah, hurrah\n"
+                              + "The ants go marching three by three\n"
+                              + "The little one stops to climb a tree\n"
+                              + "And they all go marching down to the ground\n"
+                              + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!";
+              private static String[] expectedArray = expectedOutput.replaceAll("\n\n", "\n").split("\n");
+          }
+
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -825,6 +800,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-33">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>

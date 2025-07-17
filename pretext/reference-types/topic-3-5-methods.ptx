@@ -66,25 +66,23 @@
     </p>
 
     <program>
-      public class Person
-      {
+      public class Person {
           // instance variables
           private String name;
           private String email;
 
           // Method definition: uses instance variables name and email
-          public void print()
-          {
+          public void print() {
               System.out.println("Name: " + name);
               System.out.println("Email: " + email);
           }
 
-          public static void main(String[] args)
-          {
+          public static void main(String[] args) {
               Person p = new Person();
-              p.print();  // Method call
+              p.print(); // Method call
           }
       }
+
     </program>
 
     <p>There are three steps to creating and calling a method:</p>
@@ -161,16 +159,14 @@
 
       <program interactive="activecode">
         <code>
-          public class Person
-          {
+          public class Person {
               // instance variables
               private String name;
               private String email;
               private String phonenumber;
 
               // Constructor
-              public Person(String n, String e, String p)
-              {
+              public Person(String n, String e, String p) {
                   name = n;
                   email = e;
                   phonenumber = p;
@@ -178,13 +174,12 @@
 
               // TODO: Add a print() method that prints out all the attributes (name, email, phonenumber)
 
-
-              public static void main(String[] args)
-              {
+              public static void main(String[] args) {
                   Person p1 = new Person("Taylor", "swift@gmail.com", "123-456-7890");
                   p1.print();
               }
           }
+
         </code>
 
         <tests>
@@ -194,16 +189,15 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void test1()
-              {
+              public void test1() {
                   String target = "public void print()";
                   boolean passed = checkCodeContains("public void print() method", target);
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -345,18 +339,17 @@
     </p>
 
     <program>
-      class ExampleTemplate
-      {
+      class ExampleTemplate {
 
           // Instance variable declaration
           private typeOfVar varName;
 
           // Accessor (getter) method template
-          public typeOfVar getVarName()
-          {
+          public typeOfVar getVarName() {
               return varName;
           }
       }
+
     </program>
 
     <p>
@@ -410,8 +403,7 @@
       IDEs, you can put 2 classes in 1 file, as demonstrated here, but only 1 of
       them can be public and have a main method in it. You can also view the
       fixed code in the <url
-      href="http://www.pythontutor.com/visualize.html#code=public%20class%20TesterClass%20%0A%20%20%7B%0A%20%20%20%20%20//%20main%20method%20for%20testing%0A%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20Student%20s1%20%3D%20new%20Student%28%22Skyler%22,%20%22skyler%40sky.com%22,%20123456%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22Name%3A%22%20%2B%20%20s1.getName%28%29%20%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22Email%3A%22%20%2B%20%20s1.getEmail%28%29%20%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22ID%3A%20%22%20%2B%20s1.getId%28%29%20%29%3B%0A%20%20%20%20%20%7D%0A%20%20%20%7D%0A%20%20%0A%20%20class%20Student%20%0A%20%20%7B%0A%20%20%20%20%20private%20String%20name%3B%0A%20%20%20%20%20private%20String%20email%3B%0A%20%20%20%20%20private%20int%20id%3B%0A%20%20%20%20%20%0A%20%20%20%20%20public%20Student%28String%20initName,%20String%20initEmail,%20int%20initId%29%0A%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20name%20%3D%20initName%3B%0A%20%20%20%20%20%20%20%20email%20%3D%20initEmail%3B%0A%20%20%20%20%20%20%20%20id%20%3D%20initId%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20%0A%20%20%20%20%20//%20accessor%20methods%20-%20getters%20%0A%20%20%20%20%20/**%20getName%28%29%20%20%40return%20name%20*/%0A%20%20%20%20%20public%20String%20getName%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20return%20name%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20/**%20getEmail%28%29%20%20%40return%20email%20*/%0A%20%20%20%20%20public%20String%20getEmail%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20return%20email%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20/**%20getName%28%29%20%20%40return%20id%20*/%0A%20%20%20%20%20public%20int%20getId%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20return%20id%3B%0A%20%20%20%20%20%7D%0A%20%20%7D&amp;cumulative=false&amp;curInstr=26&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"
-      visual="http://www.pythontutor.com/visualize.html#code=public%20class%20TesterClass%20%0A%20%20%7B%0A%20%20%20%20%20//%20main%20method%20for%20testing%0A%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20Student%20s1%20%3D%20new%20Student%28%22Skyler%22,%20%22skyler%40sky.com%22,%20123456%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22Name%3A%22%20%2B%20%20s1.getName%28%29%20%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22Email%3A%22%20%2B%20%20s1.getEmail%28%29%20%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22ID%3A%20%22%20%2B%20s1.getId%28%29%20%29%3B%0A%20%20%20%20%20%7D%0A%20%20%20%7D%0A%20%20%0A%20%20class%20Student%20%0A%20%20%7B%0A%20%20%20%20%20private%20String%20name%3B%0A%20%20%20%20%20private%20String%20email%3B%0A%20%20%20%20%20private%20int%20id%3B%0A%20%20%20%20%20%0A%20%20%20%20%20public%20Student%28String%20initName,%20String%20initEmail,%20int%20initId%29%0A%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20name%20%3D%20initName%3B%0A%20%20%20%20%20%20%20%20email%20%3D%20initEmail%3B%0A%20%20%20%20%20%20%20%20id%20%3D%20initId%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20%0A%20%20%20%20%20//%20accessor%20methods%20-%20getters%20%0A%20%20%20%20%20/**%20getName%28%29%20%20%40return%20name%20*/%0A%20%20%20%20%20public%20String%20getName%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20return%20name%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20/**%20getEmail%28%29%20%20%40return%20email%20*/%0A%20%20%20%20%20public%20String%20getEmail%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20return%20email%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20/**%20getName%28%29%20%20%40return%20id%20*/%0A%20%20%20%20%20public%20int%20getId%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20return%20id%3B%0A%20%20%20%20%20%7D%0A%20%20%7D&amp;cumulative=false&amp;curInstr=26&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Java
+      href="http://www.pythontutor.com/visualize.html#code=public%20class%20TesterClass%20%0A%20%20%7B%0A%20%20%20%20%20//%20main%20method%20for%20testing%0A%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20Student%20s1%20%3D%20new%20Student%28%22Skyler%22,%20%22skyler%40sky.com%22,%20123456%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22Name%3A%22%20%2B%20%20s1.getName%28%29%20%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22Email%3A%22%20%2B%20%20s1.getEmail%28%29%20%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22ID%3A%20%22%20%2B%20s1.getId%28%29%20%29%3B%0A%20%20%20%20%20%7D%0A%20%20%20%7D%0A%20%20%0A%20%20class%20Student%20%0A%20%20%7B%0A%20%20%20%20%20private%20String%20name%3B%0A%20%20%20%20%20private%20String%20email%3B%0A%20%20%20%20%20private%20int%20id%3B%0A%20%20%20%20%20%0A%20%20%20%20%20public%20Student%28String%20initName,%20String%20initEmail,%20int%20initId%29%0A%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20name%20%3D%20initName%3B%0A%20%20%20%20%20%20%20%20email%20%3D%20initEmail%3B%0A%20%20%20%20%20%20%20%20id%20%3D%20initId%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20%0A%20%20%20%20%20//%20accessor%20methods%20-%20getters%20%0A%20%20%20%20%20/**%20getName%28%29%20%20%40return%20name%20*/%0A%20%20%20%20%20public%20String%20getName%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20return%20name%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20/**%20getEmail%28%29%20%20%40return%20email%20*/%0A%20%20%20%20%20public%20String%20getEmail%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20return%20email%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20/**%20getName%28%29%20%20%40return%20id%20*/%0A%20%20%20%20%20public%20int%20getId%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20return%20id%3B%0A%20%20%20%20%20%7D%0A%20%20%7D&amp;cumulative=false&amp;curInstr=26&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Java
       visualizer</url>.
     </p>
 
@@ -427,11 +419,9 @@
 
       <program interactive="activecode">
         <code>
-          public class TesterClass
-          {
+          public class TesterClass {
               // main method for testing
-              public static void main(String[] args)
-              {
+              public static void main(String[] args) {
                   Student s1 = new Student("Skyler", "skyler@sky.com", 123456);
                   System.out.println("Name:" + s1.getName());
                   // Fix the bug here!
@@ -441,14 +431,12 @@
           }
 
           /** Class Student keeps track of name, email, and id of a Student. */
-          class Student
-          {
+          class Student {
               private String name;
               private String email;
               private int id;
 
-              public Student(String initName, String initEmail, int initId)
-              {
+              public Student(String initName, String initEmail, int initId) {
                   name = initName;
                   email = initEmail;
                   id = initId;
@@ -456,23 +444,21 @@
 
               // accessor methods - getters
               /** getName() @return name */
-              public String getName()
-              {
+              public String getName() {
                   return name;
               }
 
               /** getEmail() @return email */
-              public String getEmail()
-              {
+              public String getEmail() {
                   return email;
               }
 
               /** getName() @return id */
-              public int getId()
-              {
+              public int getId() {
                   return id;
               }
           }
+
         </code>
 
         <tests>
@@ -482,11 +468,9 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void testMain() throws IOException
-              {
+              public void testMain() throws IOException {
                   String output = getMethodOutput("main");
                   String expect = "Name:Skyler\nEmail:skyler@sky.com\nID: 123456";
                   boolean passed = getResults(expect, output, "Checking for expected output");
@@ -494,13 +478,13 @@
               }
 
               @Test
-              public void testMethodCall() throws IOException
-              {
+              public void testMethodCall() throws IOException {
                   String target = "s1.getEmail()";
                   boolean passed = checkCodeContains("call to accessor method for email", target);
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -541,38 +525,33 @@
 
       <program interactive="activecode">
         <code>
-          public class TesterClass
-          {
+          public class TesterClass {
               // main method for testing
-              public static void main(String[] args)
-              {
+              public static void main(String[] args) {
                   Student s1 = new Student("Skyler", "skyler@sky.com", 123456);
                   System.out.println(s1);
                   // TODO: add another student s2 and print it out
 
-
               }
           }
 
-          class Student
-          {
+          class Student {
               private String name;
               private String email;
               private int id;
 
-              public Student(String initName, String initEmail, int initId)
-              {
+              public Student(String initName, String initEmail, int initId) {
                   name = initName;
                   email = initEmail;
                   id = initId;
               }
 
               // toString() method
-              public String toString()
-              {
+              public String toString() {
                   return id + ": " + name + ", " + email;
               }
           }
+
         </code>
 
         <tests>
@@ -582,16 +561,15 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void test1() throws IOException
-              {
+              public void test1() throws IOException {
                   String target = "System.out.println(s2)";
                   boolean passed = checkCodeContains("System.out.println(s2)", target);
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -636,17 +614,16 @@
     </p>
 
     <program>
-      class ExampleTemplate
-      {
+      class ExampleTemplate {
           // Instance variable declaration
           private typeOfVar varName;
 
           // Setter method template
-          public void setVarName(typeOfVar newValue)
-          {
+          public void setVarName(typeOfVar newValue) {
               varName = newValue;
           }
       }
+
     </program>
 
     <p>
@@ -655,8 +632,7 @@
     </p>
 
     <program>
-      class Student
-      {
+      class Student {
           // Instance variable name
           private String name;
 
@@ -665,18 +641,17 @@
            *
            * @param newName
            */
-          public void setName(String newName)
-          {
+          public void setName(String newName) {
               name = newName;
           }
 
-          public static void main(String[] args)
-          {
+          public static void main(String[] args) {
               // To call a set method, use objectName.setVar(newValue)
               Student s = new Student();
               s.setName("Ayanna");
           }
       }
+
     </program>
 
     <p>
@@ -717,11 +692,9 @@
 
       <program interactive="activecode">
         <code>
-          public class TesterClass
-          {
+          public class TesterClass {
               // main method for testing
-              public static void main(String[] args)
-              {
+              public static void main(String[] args) {
                   Student s1 = new Student("Skyler", "skyler@sky.com", 123456);
                   System.out.println(s1);
                   s1.setName("Skyler 2");
@@ -731,14 +704,12 @@
               }
           }
 
-          class Student
-          {
+          class Student {
               private String name;
               private String email;
               private int id;
 
-              public Student(String initName, String initEmail, int initId)
-              {
+              public Student(String initName, String initEmail, int initId) {
                   name = initName;
                   email = initEmail;
                   id = initId;
@@ -746,38 +717,33 @@
 
               // Setters
 
-              public void setName(String newName)
-              {
+              public void setName(String newName) {
                   name = newName;
               }
 
-              public void setEmail(String newEmail)
-              {
+              public void setEmail(String newEmail) {
                   email = newEmail;
               }
 
               // Getters
 
-              public String getName()
-              {
+              public String getName() {
                   return name;
               }
 
-              public String getEmail()
-              {
+              public String getEmail() {
                   return email;
               }
 
-              public int getId()
-              {
+              public int getId() {
                   return id;
               }
 
-              public String toString()
-              {
+              public String toString() {
                   return id + ": " + name + ", " + email;
               }
           }
+
         </code>
 
         <tests>
@@ -788,24 +754,20 @@
           import java.io.*;
 
           // activeCode StudentObjExample2
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
                   super("TesterClass");
               }
 
               @Test
-              public void test1()
-              {
+              public void test1() {
                   String target = "s1.setEmail(\"skyler2@gmail.com\");";
                   boolean passed = checkCodeContains("call to setEmail()", target);
                   assertTrue(passed);
               }
 
               @Test
-              public void testMain()
-              {
+              public void testMain() {
                   String output = getMethodOutput("main");
                   String expect = "123456: Skyler, skyler@sky.com\n123456: Skyler 2, skyler2@gmail.com";
 
@@ -813,6 +775,7 @@
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -825,8 +788,7 @@
         </p>
 
         <program>
-          public class Party
-          {
+          public class Party {
               // number of people at the party
               private int numOfPeople;
 
@@ -835,6 +797,7 @@
                   numOfPeople = people;
               }
           }
+
         </program>
 
         <p>
@@ -982,33 +945,26 @@
         <code>
           <![CDATA[
 
-          public class StringFind
-          {
+          public class StringFind {
               /**
                * findLetter looks for a letter in a String
                *
                * @param String letter to look for
                * @param String text to look in
-               * @return boolean true if letter is in text
-               * After running the code, change this method
-               * to return an int count of how many times letter is in
-               * the text.
+               * @return boolean true if letter is in text After running the code, change this method to
+               *     return an int count of how many times letter is in the text.
                */
-              public boolean findLetter(String letter, String text)
-              {
+              public boolean findLetter(String letter, String text) {
                   boolean flag = false;
-                  for (int i = 0; i < text.length(); i++)
-                  {
-                      if (text.substring(i, i + 1).equalsIgnoreCase(letter))
-                      {
+                  for (int i = 0; i < text.length(); i++) {
+                      if (text.substring(i, i + 1).equalsIgnoreCase(letter)) {
                           flag = true;
                       }
                   }
                   return flag;
               }
 
-              public static void main(String args[])
-              {
+              public static void main(String args[]) {
                   StringFind test = new StringFind();
                   String message = "Apples and Oranges";
                   String letter = "p";
@@ -1016,6 +972,7 @@
                   System.out.println(test.findLetter(letter, message));
               }
           }
+
 
           ]]>
         </code>
@@ -1027,11 +984,9 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void tryfindLetter() throws IOException
-              {
+              public void tryfindLetter() throws IOException {
                   String message = "Apples and Oranges";
                   String letter = "p";
                   Object[] args = {letter, message};
@@ -1043,8 +998,7 @@
               }
 
               @Test
-              public void tryfindLetter2() throws IOException
-              {
+              public void tryfindLetter2() throws IOException {
                   String message = "Test strings";
                   String letter = "s";
                   Object[] args = {letter, message};
@@ -1056,8 +1010,7 @@
               }
 
               @Test
-              public void test2()
-              {
+              public void test2() {
                   boolean passed =
                           checkCodeContains(
                                   "changed return type of findLetter",
@@ -1066,15 +1019,13 @@
               }
 
               @Test
-              public void test1()
-              {
+              public void test1() {
                   boolean passed = checkCodeContains("variable count set to 0", "int count = 0;");
                   assertTrue(passed);
               }
 
               @Test
-              public void test3()
-              {
+              public void test3() {
                   String code = removeSpaces(getCode());
                   boolean passed =
                           code.contains("count++;")
@@ -1091,6 +1042,7 @@
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -1196,8 +1148,7 @@
            * @author
            * @since
            */
-          class Pet
-          {
+          class Pet {
               // Instance Variables for the name, age, weight, type of animal, and breed of the pet
 
               // Write a constructor, accessor (get) methods, mutator (set) methods)
@@ -1206,15 +1157,14 @@
               // Don't forget to complete the main method in the TesterClass below!
           }
 
-          public class TesterClass
-          {
+          public class TesterClass {
               // main method for testing
-              public static void main(String[] args)
-              {
+              public static void main(String[] args) {
                   // Create 2 Pet objects and test all your methods
 
               }
           }
+
         </code>
 
         <tests>
@@ -1226,21 +1176,17 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
                   super("TesterClass");
               }
 
               @Test
-              public void testConstructors()
-              {
+              public void testConstructors() {
                   changeClass("Pet");
                   int count = 0;
 
-                  for (int i = 0; i < 6; i++)
-                  {
+                  for (int i = 0; i < 6; i++) {
                       if (checkConstructor(i).equals("pass")) count++;
                   }
 
@@ -1251,8 +1197,7 @@
               }
 
               @Test
-              public void testPrivateVariables()
-              {
+              public void testPrivateVariables() {
                   changeClass("Pet");
                   String expect = "5 Private";
                   String output = testPrivateInstanceVariables();
@@ -1262,8 +1207,7 @@
               }
 
               @Test
-              public void test1()
-              {
+              public void test1() {
                   String code = getCode();
                   String target = "public * get*()";
 
@@ -1276,16 +1220,14 @@
               }
 
               @Test
-              public void test3()
-              {
+              public void test3() {
                   String target = "public String toString()";
                   boolean passed = checkCodeContains("toString() method", target);
                   assertTrue(passed);
               }
 
               @Test
-              public void testSet()
-              {
+              public void testSet() {
                   String code = getCode();
                   String target = "public void set*(*)";
 
@@ -1298,8 +1240,7 @@
               }
 
               @Test
-              public void test4()
-              {
+              public void test4() {
                   String code = getCode();
                   String target = "Pet * = new Pet(";
 
@@ -1312,8 +1253,7 @@
               }
 
               @Test
-              public void testMain()
-              {
+              public void testMain() {
                   String output = getMethodOutput("main");
 
                   String expect = "2+ line(s) of text";
@@ -1321,12 +1261,9 @@
 
                   int len = output.split("\n").length;
 
-                  if (output.length() > 0)
-                  {
+                  if (output.length() > 0) {
                       actual = len + actual;
-                  }
-                  else
-                  {
+                  } else {
                       actual = output.length() + actual;
                   }
                   boolean passed = len >= 2;
@@ -1335,6 +1272,7 @@
                   assertTrue(passed);
               }
           }
+
 
           ]]>
         </tests>
@@ -1356,8 +1294,7 @@
           <p>
             Copy your class with its 3 instance variables, constructor, and its
             print() and main methods from <url
-            href="topic-3-4-constructors.html#groupwork-design-a-class-for-your-community"
-            visual="topic-3-4-constructors.html#groupwork-design-a-class-for-your-community">lesson
+            href="topic-3-4-constructors.html#groupwork-design-a-class-for-your-community">lesson
             3.4</url> into the active code exercise below.
           </p>
         </li>
@@ -1401,8 +1338,7 @@
       <statement>
         <p>
           Copy your class from <url
-          href="topic-3-4-constructors.html#groupwork-design-a-class-for-your-community"
-          visual="topic-3-4-constructors.html#groupwork-design-a-class-for-your-community">lesson
+          href="topic-3-4-constructors.html#groupwork-design-a-class-for-your-community">lesson
           3.4</url>. Add get, set, toString, and a method that takes a
           parameter. For example, there could be a print method with arguments
           that indicate how you want to print out the information, print(format)
@@ -1444,11 +1380,9 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void testPrivateVariables()
-              {
+              public void testPrivateVariables() {
                   String expect = "3 Private";
                   String output = testPrivateInstanceVariables();
                   boolean passed = false;
@@ -1469,8 +1403,7 @@
               } */
 
               @Test
-              public void testConstructor3()
-              {
+              public void testConstructor3() {
                   String output = checkConstructor(3);
                   String expect = "pass";
 
@@ -1479,18 +1412,14 @@
               }
 
               @Test
-              public void testPrint()
-              {
+              public void testPrint() {
                   String output = getMethodOutput("print");
                   String expect = "More than 15 characters";
                   String actual = " than 15 characters";
 
-                  if (output.length() < 15)
-                  {
+                  if (output.length() < 15) {
                       actual = "Less" + actual;
-                  }
-                  else
-                  {
+                  } else {
                       actual = "More" + actual;
                   }
                   boolean passed = getResults(expect, actual, "Checking print method");
@@ -1498,19 +1427,15 @@
               }
 
               @Test
-              public void testMain() throws IOException
-              {
+              public void testMain() throws IOException {
                   String output = getMethodOutput("main"); // .split("\n");
                   String expect = "3+ line(s) of text";
                   String actual = " line(s) of text";
                   int len = output.split("\n").length;
 
-                  if (output.length() > 0)
-                  {
+                  if (output.length() > 0) {
                       actual = len + actual;
-                  }
-                  else
-                  {
+                  } else {
                       actual = output.length() + actual;
                   }
                   boolean passed = len >= 3;
@@ -1520,8 +1445,7 @@
               }
 
               @Test
-              public void test1()
-              {
+              public void test1() {
                   String code = getCode();
                   String target = "public * get*()";
 
@@ -1534,8 +1458,7 @@
               }
 
               @Test
-              public void test2()
-              {
+              public void test2() {
                   String code = getCode();
                   String target = "public void set*(*)";
 
@@ -1548,21 +1471,20 @@
               }
 
               @Test
-              public void test3()
-              {
+              public void test3() {
                   String target = "public String toString()";
                   boolean passed = checkCodeContains("toString() method", target);
                   assertTrue(passed);
               }
 
               @Test
-              public void testPrintFormat()
-              {
+              public void testPrintFormat() {
                   String target = "public void print(String";
                   boolean passed = checkCodeContains("print method with String argument", target);
                   assertTrue(passed);
               }
           }
+
 
           ]]>
         </tests>
@@ -1732,20 +1654,18 @@
         </p>
 
         <program>
-          public class Party
-          {
+          public class Party {
               private int numOfPeople;
 
-              public Party(int num)
-              {
+              public Party(int num) {
                   numOfPeople = num;
               }
 
-              private int getNumOfPeople()
-              {
+              private int getNumOfPeople() {
                   return numOfPeople;
               }
           }
+
         </program>
       </statement>
 
@@ -1818,16 +1738,15 @@
         </p>
 
         <program>
-          public class Student
-          {
+          public class Student {
               private int id;
 
-              public getId()
-              {
+              public getId() {
                   return id;
               }
               // Constructor not shown
           }
+
         </program>
 
         <p>
@@ -1902,20 +1821,18 @@
         <p>Consider the following class definition.</p>
 
         <program>
-          public class Liquid
-          {
+          public class Liquid {
               private int currentTemp;
 
-              public Liquid(int temp)
-              {
+              public Liquid(int temp) {
                   currentTemp = temp;
               }
 
-              public void resetTemp()
-              {
+              public void resetTemp() {
                   currentTemp = newTemp;
               }
           }
+
         </program>
 
         <p>
@@ -1993,20 +1910,19 @@
         </p>
 
         <program>
-          public class Party
-          {
+          public class Party {
               private int numOfPeople;
 
-              public Party(int n)
-              {
+              public Party(int n) {
                   numOfPeople = n;
               }
 
               public int addPeople(int additionalPeople) // Line 10
-              {
+                      {
                   numOfPeople += additionalPeople; // Line 12
               }
           }
+
         </program>
 
         <p>

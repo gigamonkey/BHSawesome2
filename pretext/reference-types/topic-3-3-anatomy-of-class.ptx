@@ -61,11 +61,11 @@
     </note>
 
     <program>
-      public class Person
-      {
+      public class Person {
           // define class here - also called the “body” of the class
 
       }
+
     </program>
 
     <p>
@@ -128,8 +128,7 @@
     </p>
 
     <program>
-      public class Person
-      {
+      public class Person {
           // instance variables
 
           // constructors
@@ -137,6 +136,7 @@
           // methods
 
       }
+
     </program>
 
     <p>
@@ -193,8 +193,7 @@
 
       <program interactive="activecode">
         <code>
-          public class Person
-          {
+          public class Person {
               // instance variables
               private String name;
               private String email;
@@ -202,24 +201,21 @@
 
               // constructor: construct a Person copying in the data into the instance
               // variables
-              public Person(String initName, String initEmail, String initPhone)
-              {
+              public Person(String initName, String initEmail, String initPhone) {
                   name = initName;
                   email = initEmail;
                   phoneNumber = initPhone;
               }
 
               // Print all the data for a person
-              public void print()
-              {
+              public void print() {
                   System.out.println("Name: " + name);
                   System.out.println("Email: " + email);
                   System.out.println("Phone Number: " + phoneNumber);
               }
 
               // main method for testing
-              public static void main(String[] args)
-              {
+              public static void main(String[] args) {
                   // call the constructor to create a new person
                   Person p1 = new Person("Sana", "sana@gmail.com", "123-456-7890");
                   // call p1's print method
@@ -228,6 +224,7 @@
                   p2.print();
               }
           }
+
         </code>
 
         <tests>
@@ -238,24 +235,23 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void testMain() throws IOException
-              {
+              public void testMain() throws IOException {
                   String output = getMethodOutput("main");
                   String expect =
                           "Name: Sana\n"
-                              + "Email: sana@gmail.com\n"
-                              + "Phone Number: 123-456-7890\n"
-                              + "Name: Jean\n"
-                              + "Email: jean@gmail.com\n"
-                              + "Phone Number: 404 899-9955";
+                                  + "Email: sana@gmail.com\n"
+                                  + "Phone Number: 123-456-7890\n"
+                                  + "Name: Jean\n"
+                                  + "Email: jean@gmail.com\n"
+                                  + "Phone Number: 404 899-9955";
 
                   boolean passed = getResults(expect, output, "Expected output from main", true);
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -401,35 +397,31 @@
 
       <program interactive="activecode">
         <code>
-          public class Person
-          {
+          public class Person {
               // instance variables
               private String name;
               private String email;
               private String phoneNumber;
-              // Add another private instance variable about a Person here
 
+              // Add another private instance variable about a Person here
 
               // constructor: construct a Person copying in the data into the instance
               // variables
-              public Person(String initName, String initEmail, String initPhone)
-              {
+              public Person(String initName, String initEmail, String initPhone) {
                   name = initName;
                   email = initEmail;
                   phoneNumber = initPhone;
               }
 
               // Print all the data for a person
-              public void print()
-              {
+              public void print() {
                   System.out.println("Name: " + name);
                   System.out.println("Email: " + email);
                   System.out.println("Phone Number: " + phoneNumber);
               }
 
               // main method for testing
-              public static void main(String[] args)
-              {
+              public static void main(String[] args) {
                   // call the constructor to create a new person
                   Person p1 = new Person("Sana", "sana@gmail.com", "123-456-7890");
                   // call p1's print method
@@ -438,6 +430,7 @@
                   p2.print();
               }
           }
+
         </code>
 
         <tests>
@@ -447,11 +440,9 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-               @Test
-              public void testPrivateVariables()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void testPrivateVariables() {
                   String expect = "4 Private";
                   String output = testPrivateInstanceVariables();
 
@@ -459,6 +450,7 @@
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -585,30 +577,25 @@
 
       <program interactive="activecode">
         <code>
-          public class Name
-          {
+          public class Name {
               private String first;
               private String last;
 
-              public Name(String theFirst, String theLast)
-              {
+              public Name(String theFirst, String theLast) {
                   first = theFirst;
                   last = theLast;
               }
 
               // Complete the print method below to print out the
               // first and last instance variables with a space in between
-              public void print()
-              {
+              public void print() {}
 
-              }
-
-              public static void main(String[] args)
-              {
+              public static void main(String[] args) {
                   Name n = new Name("Ada", "Lovelace");
                   n.print();
               }
           }
+
         </code>
 
         <tests>
@@ -618,31 +605,34 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-                public RunestoneTests()
-                {
-                    super("Name"); // class name / location of main
-                    Object[] values = new Object[] {"Mickey", "Mouse"};
-                    setDefaultValues(values);
-                }
-                @Test
-                public void testMain()
-                {
-                    String output = getMethodOutput("main");
-                    String expect = "Ada Lovelace";
-                    boolean passed = getResults(expect, output, "Expected output from main");
-                    assertTrue(passed);
-                }
-                @Test
-                public void testPrint()
-                {
-                    String output = getMethodOutput("print");
-                    String expect = "Mickey Mouse";
-                    boolean passed = getResults(expect, output, "Expected output from print method with object Mickey Mouse");
-                    assertTrue(passed);
-                }
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("Name"); // class name / location of main
+                  Object[] values = new Object[] {"Mickey", "Mouse"};
+                  setDefaultValues(values);
+              }
+
+              @Test
+              public void testMain() {
+                  String output = getMethodOutput("main");
+                  String expect = "Ada Lovelace";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testPrint() {
+                  String output = getMethodOutput("print");
+                  String expect = "Mickey Mouse";
+                  boolean passed =
+                          getResults(
+                                  expect,
+                                  output,
+                                  "Expected output from print method with object Mickey Mouse");
+                  assertTrue(passed);
+              }
           }
+
         </tests>
       </program>
     </activity>
@@ -668,10 +658,8 @@
             or instance variables would you need to keep track of for a virtual
             pet? What behaviors or methods would the virtual pet have? (You
             could draw a Class Diagram for this class using <url
-            href="https://app.diagrams.net/"
-            visual="https://app.diagrams.net/">app.diagrams.net</url> or <url
-            href="https://creately.com"
-            visual="https://creately.com">Creately.com</url>, although it is not
+            href="https://app.diagrams.net/">app.diagrams.net</url> or <url
+            href="https://creately.com">Creately.com</url>, although it is not
             required). Then, using the <c>Person</c> class above as a guide,
             write a <c>VirtualPet</c> class in the Active Code template below
             with the following parts.
@@ -727,50 +715,42 @@
 
       <program interactive="activecode">
         <code>
-          public class VirtualPet
-          {
+          public class VirtualPet {
               // write 3 instance variables for VirtualPet's name,
               // health (as a number), and at least 1 other from your design
               // Remember the pattern:  private type variableName;
 
-
-
               // constructor written for you - do not change
-              public VirtualPet(String initName, int initHealth)
-              {
+              public VirtualPet(String initName, int initHealth) {
                   // the constructor sets the instance variables to the init parameter variables
                   name = initName;
                   health = initHealth;
               }
 
               // Print the VirtualPet's data (instance variables) with System.out.println
-              public void print()
-              {
+              public void print() {
                   // print the instance variables with spaces between them
 
               }
 
               // Complete the feed method below to add to the health instance variable
-              public void feed()
-              {
+              public void feed() {
                   // add 1 to the health variable
 
               }
 
               // Create another public void method that changes one of the instance variables
 
-
               // get method used for testing - do not change
-              public int getHealth()
-              {
+              public int getHealth() {
                   return health;
               }
 
               // main method for testing
-              public static void main(String[] args)
-              {
+              public static void main(String[] args) {
                   VirtualPet p = new VirtualPet("Fluffy", 5);
-                  // call the VirtualPet constructor to create another new object with a different name and health
+                  // call the VirtualPet constructor to create another new object with a different name and
+                  // health
 
                   // call the pet object p's feed() method
 
@@ -780,6 +760,7 @@
 
               }
           }
+
         </code>
 
         <tests>
@@ -791,32 +772,29 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
                   super("VirtualPet"); // class name / location of main
 
                   Object[] values = new Object[] {"Fluffy", 5};
                   setDefaultValues(values);
               }
-               @Test
-               public void countMethods()
-               {
-                   String target = "public void";
-                   String code = getCode();
-
-                   int num = countOccurences(code, target);
-
-                   boolean passed = num >= 3;
-
-                   getResults("3+", "" + num, "public void methods", passed);
-                   assertTrue(passed);
-               }
 
               @Test
-              public void testPrint()
-              {
+              public void countMethods() {
+                  String target = "public void";
+                  String code = getCode();
+
+                  int num = countOccurences(code, target);
+
+                  boolean passed = num >= 3;
+
+                  getResults("3+", "" + num, "public void methods", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testPrint() {
                   String output = getMethodOutput("print");
                   String expect = "Fluffy";
 
@@ -825,29 +803,35 @@
               }
 
               @Test
-              public void testFeed()
-              {
-                  VirtualPet p = new VirtualPet("Fluffy",5);
+              public void testFeed() {
+                  VirtualPet p = new VirtualPet("Fluffy", 5);
                   p.feed();
                   String output = p.getHealth() + "";
                   String expect = "6";
-                  boolean passed = getResults(expect, output, "Expected health for pet Fluffy with initial health 5 after feed()");
-                  assertTrue(passed);
-              }
-              @Test
-              public void testFeed2()
-              {
-                  VirtualPet p1 = new VirtualPet("Pikachu",1);
-                  p1.feed();
-                  String output = p1.getHealth() + "";
-                  String expect = "2";
-                  boolean passed = getResults(expect, output, "Expected health for pet Pikachu with initial health 1 after feed()");
+                  boolean passed =
+                          getResults(
+                                  expect,
+                                  output,
+                                  "Expected health for pet Fluffy with initial health 5 after feed()");
                   assertTrue(passed);
               }
 
               @Test
-              public void testCallConstructors()
-              {
+              public void testFeed2() {
+                  VirtualPet p1 = new VirtualPet("Pikachu", 1);
+                  p1.feed();
+                  String output = p1.getHealth() + "";
+                  String expect = "2";
+                  boolean passed =
+                          getResults(
+                                  expect,
+                                  output,
+                                  "Expected health for pet Pikachu with initial health 1 after feed()");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testCallConstructors() {
                   String code = getCodeWithoutComments();
                   String search = "= new VirtualPet(";
 
@@ -856,13 +840,13 @@
                   String expect = search + "...) x 2";
                   String actual = search + "...) x " + num;
 
-                  boolean passed = getResults(expect, actual, "Checking that you created another VirtualPet object");
+                  boolean passed =
+                          getResults(expect, actual, "Checking that you created another VirtualPet object");
                   assertTrue(passed);
               }
 
               @Test
-              public void testVariableTypes()
-              {
+              public void testVariableTypes() {
                   String varTypes = "String int";
                   String output = testInstanceVariableTypes(varTypes.split(" "));
 
@@ -871,8 +855,7 @@
               }
 
               @Test
-              public void testPrivateVariables()
-              {
+              public void testPrivateVariables() {
                   String expect = "3 Private";
                   String output = testPrivateInstanceVariables();
 
@@ -880,6 +863,7 @@
                   assertTrue(passed);
               }
           }
+
 
           ]]>
         </tests>
@@ -896,8 +880,7 @@
       We suggest that you work in pairs on this project. If you would rather
       work on this project as 1 stand-alone lab project rather than a piece at a
       time at the end of each lesson, you can do this in this <url
-      href="community-challenge.html"
-      visual="community-challenge.html">lesson</url> at the end of the unit.
+      href="community-challenge.html">lesson</url> at the end of the unit.
     </p>
 
     <p>
@@ -905,8 +888,7 @@
         <li>
           <p>
             Make your own copy of this <url
-            href="https://docs.google.com/document/d/11QMyHAZYhPwNLInhURqkTffeY9re05yH97xAsiSJhLg/edit?usp=sharing"
-            visual="https://docs.google.com/document/d/11QMyHAZYhPwNLInhURqkTffeY9re05yH97xAsiSJhLg/edit?usp=sharing">worksheet</url>
+            href="https://docs.google.com/document/d/11QMyHAZYhPwNLInhURqkTffeY9re05yH97xAsiSJhLg/edit?usp=sharing">worksheet</url>
             from the File menu. For question 1, brainstorm and ask people in
             your community what would be important or useful for them to track
             in a community organization or activity or to help your community.
@@ -924,16 +906,12 @@
             or thing). Come up with at least 3 instance variables that are
             attributes of things in that class. Think about what data type each
             variable should be.You can use the <url
-            href="https://docs.google.com/document/d/11QMyHAZYhPwNLInhURqkTffeY9re05yH97xAsiSJhLg/edit?usp=sharing"
-            visual="https://docs.google.com/document/d/11QMyHAZYhPwNLInhURqkTffeY9re05yH97xAsiSJhLg/edit?usp=sharing">worksheet</url>
+            href="https://docs.google.com/document/d/11QMyHAZYhPwNLInhURqkTffeY9re05yH97xAsiSJhLg/edit?usp=sharing">worksheet</url>
             to design your class. Optionally, you may want to draw a UML class
             diagram for your class on paper or using <url
-            href="https://app.diagrams.net/"
-            visual="https://app.diagrams.net/">app.diagrams.net</url> or <url
-            href="https://creately.com"
-            visual="https://creately.com">Creately.com</url> (see <url
-            href="https://medium.com/@smagid_allThings/uml-class-diagrams-tutorial-step-by-step-520fd83b300b"
-            visual="https://medium.com/@smagid_allThings/uml-class-diagrams-tutorial-step-by-step-520fd83b300b">tutorial
+            href="https://app.diagrams.net/">app.diagrams.net</url> or <url
+            href="https://creately.com">Creately.com</url> (see <url
+            href="https://medium.com/@smagid_allThings/uml-class-diagrams-tutorial-step-by-step-520fd83b300b">tutorial
             on class diagrams</url>).
           </p>
         </li>
@@ -987,11 +965,9 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void testPrivateVariables()
-              {
+              public void testPrivateVariables() {
                   String expect = "3 Private";
                   String output = testPrivateInstanceVariables();
                   boolean passed = false;
@@ -1001,6 +977,7 @@
                   assertTrue(passed);
               }
           }
+
 
           ]]>
         </tests>
@@ -1084,10 +1061,10 @@
         </p>
 
         <program>
-          public class Cat
-          {
+          public class Cat {
               /* missing code */
           }
+
         </program>
 
         <p>
@@ -1187,10 +1164,10 @@
         </p>
 
         <program>
-          public class Party
-          {
+          public class Party {
               /* missing code */
           }
+
         </program>
 
         <p>

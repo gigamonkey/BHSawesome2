@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-3-6-methods-references">
   <title>Methods: Passing and Returning References of an Object</title>
+
   <introduction>
     <p>
       Programs often consist of many classes that interact with each other.
@@ -14,32 +15,34 @@
 
   <subsection xml:id="objects-as-instance-variables">
     <title>Objects as Instance Variables</title>
+
     <p>
       Classes can have complex instance variables that use other classes. For
       example, a <c>Person</c> class could have an instance variable for the
       address which can be an object with its own instance variables of street,
       city, state, and zipcode. This is a <term>has-a</term> relationship where
-      a Person <title_reference>has an</title_reference> Address inside it.
+      a Person 
+      
+      <title_reference>has an</title_reference>
+
+ Address inside it.
     </p>
 
-    <program language="java">
-      <code>
-class Address
-{
-    // instance variables
-    private String street;
-    private String city;
-    private String state;
-    private String zipcode;
-}
+    <program>
+      class Address {
+          // instance variables
+          private String street;
+          private String city;
+          private String state;
+          private String zipcode;
+      }
 
-class Person
-{
-    // instance variables
-    private String name;
-    private Address addr;  // instance variable of type Address
-}
-      </code>
+      class Person {
+          // instance variables
+          private String name;
+          private Address addr; // instance variable of type Address
+      }
+
     </program>
 
     <p>
@@ -55,6 +58,7 @@ class Person
 
   <subsection xml:id="objects-as-arguments">
     <title>Objects as Arguments</title>
+
     <p>
       Java uses <term>Call by Value</term> when it passes arguments to methods
       and constructors. This means that a copy of the value in the argument is
@@ -77,6 +81,7 @@ class Person
 
     <figure align="center">
       <caption>Turtle Reference Equality</caption>
+
       <image source="Unit3-Class-Creation/Figures/turtleEquality.png" width="89%" />
     </figure>
 
@@ -113,97 +118,94 @@ class Person
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class Person
-{
-    // instance variables
-    private String name;
-    private Address addr;  // instance variable of type Address defined below
+          public class Person {
+              // instance variables
+              private String name;
+              private Address addr; // instance variable of type Address defined below
 
-    // Constructor
-    public Person(String initName, Address initAddress)
-    {
-        name = initName;
-        // This direct assignment of references may not be the best practice!
-        addr = initAddress;
-    }
+              // Constructor
+              public Person(String initName, Address initAddress) {
+                  name = initName;
+                  // This direct assignment of references may not be the best practice!
+                  addr = initAddress;
+              }
 
-    public String toString()
-    {
-        return "Name:" + name + "\n" + "Address:" + addr;
-    }
-    public static void main(String[] args)
-    {
-        Address a1 = new Address("123 Main St", "Anytown", "Anystate", "12345");
-        Person p1 = new Person("Skyler", a1);
-        System.out.println(p1);
-        // Add code to change a1 to your city with its setCity method
+              public String toString() {
+                  return "Name:" + name + "\n" + "Address:" + addr;
+              }
 
-        // Print out a1 and p1. Did changing a1 change p1?
+              public static void main(String[] args) {
+                  Address a1 = new Address("123 Main St", "Anytown", "Anystate", "12345");
+                  Person p1 = new Person("Skyler", a1);
+                  System.out.println(p1);
+                  // Add code to change a1 to your city with its setCity method
 
-    }
-}
-class Address
-{
-      // instance variables
-      private String street;
-      private String city;
-      private String state;
-      private String zipcode;
-      // constructor
-      public Address(String initStreet, String initCity,
-                     String initState, String initZipcode)
-      {
-          street = initStreet;
-          city = initCity;
-          state = initState;
-          zipcode = initZipcode;
-      }
-      public String toString()
-      {
-          return street + "\n" + city + ", " + state + " " + zipcode;
-      }
-      public String getStreet()
-      {
-          return street;
-      }
-      public String getCity()
-      {
-          return city;
-      }
-      public String getState()
-      {
-          return state;
-      }
-      public String getZipcode()
-      {
-          return zipcode;
-      }
-      // Setters (makes the class mutable)
-      public void setCity(String initCity)
-      {
-          city = initCity;
-      }
- }
+                  // Print out a1 and p1. Did changing a1 change p1?
+
+              }
+          }
+
+          class Address {
+              // instance variables
+              private String street;
+              private String city;
+              private String state;
+              private String zipcode;
+
+              // constructor
+              public Address(String initStreet, String initCity, String initState, String initZipcode) {
+                  street = initStreet;
+                  city = initCity;
+                  state = initState;
+                  zipcode = initZipcode;
+              }
+
+              public String toString() {
+                  return street + "\n" + city + ", " + state + " " + zipcode;
+              }
+
+              public String getStreet() {
+                  return street;
+              }
+
+              public String getCity() {
+                  return city;
+              }
+
+              public String getState() {
+                  return state;
+              }
+
+              public String getZipcode() {
+                  return zipcode;
+              }
+
+              // Setters (makes the class mutable)
+              public void setCity(String initCity) {
+                  city = initCity;
+              }
+          }
+
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1() throws IOException
-    {
-        String target = "a1.setCity";
-        boolean passed = checkCodeContains("call to a1.setCity", target);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void test1() throws IOException {
+                  String target = "a1.setCity";
+                  boolean passed = checkCodeContains("call to a1.setCity", target);
+                  assertTrue(passed);
+              }
+          }
+
         </tests>
       </program>
     </activity>
@@ -211,6 +213,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="copying-parameter-objects">
     <title>Copying Parameter Objects</title>
+
     <p>
       The <c>Person</c> class above has an <c>Address</c> object as an instance
       variable. We found that changing the Address object outside the class also
@@ -237,26 +240,24 @@ public class RunestoneTests extends CodeTestHelper
       class cannot modify the state of the original object.
     </p>
 
-    <program language="java">
-      <code>
-public class Person
-{
-    private String name;
-    private Address addr; // Assumes an Address class is already defined
+    <program>
+      public class Person {
+          private String name;
+          private Address addr; // Assumes an Address class is already defined
 
-    // constructor: initialize instance variable and call Address constructor to
-    // make a copy
-    public Person(String initName, Address initAddr)
-    {
-        name = initName;
-        addr =  new Address(
-                        initAddr.getStreet(),
-                        initAddr.getCity(),
-                        initAddr.getState(),
-                        initAddr.getZipcode());
-   }
-}
-      </code>
+          // constructor: initialize instance variable and call Address constructor to
+          // make a copy
+          public Person(String initName, Address initAddr) {
+              name = initName;
+              addr =
+                      new Address(
+                              initAddr.getStreet(),
+                              initAddr.getCity(),
+                              initAddr.getState(),
+                              initAddr.getZipcode());
+          }
+      }
+
     </program>
 
     <p>
@@ -266,49 +267,45 @@ public class Person
       <c>Address</c> copy constructor.
     </p>
 
-    <program language="java">
-      <code>
-class Address
-{
-    // instance variables
-    private String street;
-    private String city;
-    private String state;
-    private String zipcode;
-    // constructor
-    public Address(String initStreet, String initCity,
-                   String initState, String initZipcode)
-    {
-        street = initStreet;
-        city = initCity;
-        state = initState;
-        zipcode = initZipcode;
-    }
-    // copy constructor
-    public Address(Address otherAddr)
-    {
-        street = otherAddr.getStreet();
-        city = otherAddr.getCity();
-        state = otherAddr.getState();
-        zipcode = otherAddr.getZipcode();
-    }
-}
-class Person
-{
-    // instance variables
-    private String name;
-    private Address addr;  // instance variable of type Address defined below
+    <program>
+      class Address {
+          // instance variables
+          private String street;
+          private String city;
+          private String state;
+          private String zipcode;
 
-    // constructor: initialize instance variable and call Address constructor to
-    // make a copy
-    public Person(String initName, Address initAddr)
-    {
-        name = initName;
-        // call the copy constructor of Address to make a defensive copy
-        addr =  new Address(initAddr);
-    }
-}
-      </code>
+          // constructor
+          public Address(String initStreet, String initCity, String initState, String initZipcode) {
+              street = initStreet;
+              city = initCity;
+              state = initState;
+              zipcode = initZipcode;
+          }
+
+          // copy constructor
+          public Address(Address otherAddr) {
+              street = otherAddr.getStreet();
+              city = otherAddr.getCity();
+              state = otherAddr.getState();
+              zipcode = otherAddr.getZipcode();
+          }
+      }
+
+      class Person {
+          // instance variables
+          private String name;
+          private Address addr; // instance variable of type Address defined below
+
+          // constructor: initialize instance variable and call Address constructor to
+          // make a copy
+          public Person(String initName, Address initAddr) {
+              name = initName;
+              // call the copy constructor of Address to make a defensive copy
+              addr = new Address(initAddr);
+          }
+      }
+
     </program>
 
     <p>
@@ -331,127 +328,125 @@ class Person
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class Person
-{
-    // instance variables
-    private String name;
-    private Address addr;  // instance variable of type Address defined below
+          public class Person {
+              // instance variables
+              private String name;
+              private Address addr; // instance variable of type Address defined below
 
-    // constructor: initialize instance variable and call Address constructor to
-    // make a copy
-    public Person(String initName, Address initAddr)
-    {
-        name = initName;
-        // Defensive copy of the Address argument
-        addr =  new Address(
-                           initAddr.getStreet(),
-                           initAddr.getCity(),
-                           initAddr.getState(),
-                           initAddr.getZipcode());
-    }
+              // constructor: initialize instance variable and call Address constructor to
+              // make a copy
+              public Person(String initName, Address initAddr) {
+                  name = initName;
+                  // Defensive copy of the Address argument
+                  addr =
+                          new Address(
+                                  initAddr.getStreet(),
+                                  initAddr.getCity(),
+                                  initAddr.getState(),
+                                  initAddr.getZipcode());
+              }
 
-    public void setAddress(Address otherAddr)
-    {
-        // TODO: Complete the setAddress method below that
-        // makes a defensive copy of newAddr using its get methods like the constructor
+              public void setAddress(Address otherAddr) {
+                  // TODO: Complete the setAddress method below that
+                  // makes a defensive copy of newAddr using its get methods like the constructor
 
-    }
-    public String toString()
-    {
-        return "Name:" + name + "\n" + "Address:" + addr;
-    }
-    public static void main(String[] args)
-    {
-        Address a1 = new Address("123 Main St", "Anytown", "Anystate", "12345");
-        Address a2 = new Address("456 Elm St", "Othertown", "Otherstate", "67890");
-        Person p1 = new Person("Skyler", a1);
-        System.out.println(p1);
-        // TODO: Add code to change a1 to your city with its setCity method
+              }
 
-        // Print out a1 and p1. Did changing a1 change p1?
+              public String toString() {
+                  return "Name:" + name + "\n" + "Address:" + addr;
+              }
 
-        // Add code to change p1's address to a2 with its setAddress method
+              public static void main(String[] args) {
+                  Address a1 = new Address("123 Main St", "Anytown", "Anystate", "12345");
+                  Address a2 = new Address("456 Elm St", "Othertown", "Otherstate", "67890");
+                  Person p1 = new Person("Skyler", a1);
+                  System.out.println(p1);
+                  // TODO: Add code to change a1 to your city with its setCity method
 
-        // Print out a1 and p1. Did changing p1 change a1?
+                  // Print out a1 and p1. Did changing a1 change p1?
 
-    }
-}
-class Address
-{
-      // instance variables
-      private String street;
-      private String city;
-      private String state;
-      private String zipcode;
-      // constructor
-      public Address(String initStreet, String initCity,
-                     String initState, String initZipcode)
-      {
-          street = initStreet;
-          city = initCity;
-          state = initState;
-          zipcode = initZipcode;
-      }
-      public String toString()
-      {
-          return street + "\n" + city + ", " + state + " " + zipcode;
-      }
-      public String getStreet()
-      {
-          return street;
-      }
-      public String getCity()
-      {
-          return city;
-      }
-      public String getState()
-      {
-          return state;
-      }
-      public String getZipcode()
-      {
-          return zipcode;
-      }
-      // Setters (makes the class mutable)
-      public void setCity(String initCity)
-      {
-          city = initCity;
-      }
- }
+                  // Add code to change p1's address to a2 with its setAddress method
+
+                  // Print out a1 and p1. Did changing p1 change a1?
+
+              }
+          }
+
+          class Address {
+              // instance variables
+              private String street;
+              private String city;
+              private String state;
+              private String zipcode;
+
+              // constructor
+              public Address(String initStreet, String initCity, String initState, String initZipcode) {
+                  street = initStreet;
+                  city = initCity;
+                  state = initState;
+                  zipcode = initZipcode;
+              }
+
+              public String toString() {
+                  return street + "\n" + city + ", " + state + " " + zipcode;
+              }
+
+              public String getStreet() {
+                  return street;
+              }
+
+              public String getCity() {
+                  return city;
+              }
+
+              public String getState() {
+                  return state;
+              }
+
+              public String getZipcode() {
+                  return zipcode;
+              }
+
+              // Setters (makes the class mutable)
+              public void setCity(String initCity) {
+                  city = initCity;
+              }
+          }
+
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1() throws IOException
-    {
-        String target = "a1.setCity";
-        boolean passed = checkCodeContains("call to a1.setCity", target);
-        assertTrue(passed);
-    }
-    @Test
-    public void test2() throws IOException
-    {
-        String target = "p1.setAddress";
-        boolean passed = checkCodeContains("call to p1.setAddress", target);
-        assertTrue(passed);
-    }
-    @Test
-    public void test3() throws IOException
-    {
-        String target = "otherAddr.getCity()";
-        boolean passed = checkCodeContains("call to otherAddr.getCity() in setAddress", target);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void test1() throws IOException {
+                  String target = "a1.setCity";
+                  boolean passed = checkCodeContains("call to a1.setCity", target);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2() throws IOException {
+                  String target = "p1.setAddress";
+                  boolean passed = checkCodeContains("call to p1.setAddress", target);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test3() throws IOException {
+                  String target = "otherAddr.getCity()";
+                  boolean passed = checkCodeContains("call to otherAddr.getCity() in setAddress", target);
+                  assertTrue(passed);
+              }
+          }
+
         </tests>
       </program>
     </activity>
@@ -459,6 +454,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="parameter-of-the-same-class-type">
     <title>Parameter of the Same Class Type</title>
+
     <p>
       Methods cannot access the private data and methods of a parameter that
       holds a reference to an object unless the parameter is the same type as
@@ -469,31 +465,29 @@ public class RunestoneTests extends CodeTestHelper
       it is private and not of the same class.
     </p>
 
-    <program language="java">
-      <code>
-public class Person
-{
-    private String name;
-    private Address addr;  // instance variable of type Address defined below
+    <program>
+      public class Person {
+          private String name;
+          private Address addr; // instance variable of type Address defined below
 
-    public void copyAddress(Person otherPerson)
-    {
-        // otherPerson.addr will work because the parameter is of the same class Person
-        addr = new Address(otherPerson.addr);
-    }
-     public void copyCity(Address otherAddr)
-     {
-        // This will not work because the city instance variable is private
-        //   and the parameter is not of the same class type
-        // addr.city = otherAddr.city;
-        // But you can use the get method to access the city
-        addr.setCity(otherAddr.getCity());
-    }
-}
-      </code>
+          public void copyAddress(Person otherPerson) {
+              // otherPerson.addr will work because the parameter is of the same class Person
+              addr = new Address(otherPerson.addr);
+          }
+
+          public void copyCity(Address otherAddr) {
+              // This will not work because the city instance variable is private
+              //   and the parameter is not of the same class type
+              // addr.city = otherAddr.city;
+              // But you can use the get method to access the city
+              addr.setCity(otherAddr.getCity());
+          }
+      }
+
     </program>
 
     <p>Try it in the code below.</p>
+
     <activity label="PersonAddressGet">
       <statement>
         <p>
@@ -505,149 +499,144 @@ public class Person
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class Person
-{
-    // instance variables
-    private String name;
-    private Address addr;  // instance variable of type Address defined below
+          public class Person {
+              // instance variables
+              private String name;
+              private Address addr; // instance variable of type Address defined below
 
-    // constructor: initialize instance variable and call Address constructor to
-    // make a copy
-    public Person(String initName, Address initAddr)
-    {
-        name = initName;
-        // Defensive copy of the Address argument
-        addr =  new Address(
-                           initAddr.getStreet(),
-                           initAddr.getCity(),
-                           initAddr.getState(),
-                           initAddr.getZipcode());
-    }
+              // constructor: initialize instance variable and call Address constructor to
+              // make a copy
+              public Person(String initName, Address initAddr) {
+                  name = initName;
+                  // Defensive copy of the Address argument
+                  addr =
+                          new Address(
+                                  initAddr.getStreet(),
+                                  initAddr.getCity(),
+                                  initAddr.getState(),
+                                  initAddr.getZipcode());
+              }
 
-    public void copyAddressFromPerson(Person otherPerson)
-    {
-        // otherPerson.addr will work because the parameter is of the same class Person
-        addr = new Address(otherPerson.addr);
-    }
+              public void copyAddressFromPerson(Person otherPerson) {
+                  // otherPerson.addr will work because the parameter is of the same class Person
+                  addr = new Address(otherPerson.addr);
+              }
 
-    // TODO: Change the code in this method
-    public void copyAddressFromAddress(Address otherAddr)
-    {
-        // This will not work because the instance variables are private
-        //   and the parameter is not of the same class type
-        // Change this code to use set/get methods!
-        addr.street = otherAddr.street;
-        addr.city = otherAddr.city;
-        addr.state = otherAddr.state;
-        addr.zipcode = otherAddr.zipcode;
-    }
+              // TODO: Change the code in this method
+              public void copyAddressFromAddress(Address otherAddr) {
+                  // This will not work because the instance variables are private
+                  //   and the parameter is not of the same class type
+                  // Change this code to use set/get methods!
+                  addr.street = otherAddr.street;
+                  addr.city = otherAddr.city;
+                  addr.state = otherAddr.state;
+                  addr.zipcode = otherAddr.zipcode;
+              }
 
-    public String toString()
-    {
-        return "Name:" + name + "\n" + "Address:" + addr;
-    }
+              public String toString() {
+                  return "Name:" + name + "\n" + "Address:" + addr;
+              }
 
-    public static void main(String[] args)
-    {
-        Address a1 = new Address("123 Main St", "Anytown", "Anystate", "12345");
-        Address a2 = new Address("456 Elm St", "Othertown", "Otherstate", "67890");
-        Person p1 = new Person("Skyler", a1);
-        Person p2 = new Person("Jordan", a2);
-        System.out.println(p1);
-        p1.copyAddressFromPerson(p2);
-        System.out.println(p1);
-        p1.copyAddressFromAddress(a1);
-        System.out.println(p1);
-    }
-}
-class Address
-{
-      // instance variables
-      private String street;
-      private String city;
-      private String state;
-      private String zipcode;
-      // constructor
-      public Address(String initStreet, String initCity,
-                     String initState, String initZipcode)
-      {
-          street = initStreet;
-          city = initCity;
-          state = initState;
-          zipcode = initZipcode;
-      }
-      // copy constructor
-      public Address(Address otherAddr)
-      {
-          street = otherAddr.getStreet();
-          city = otherAddr.getCity();
-          zipcode = otherAddr.getZipcode();
-      }
-      public String toString()
-      {
-          return street + "\n" + city + ", " + state + " " + zipcode;
-      }
-      public String getStreet()
-      {
-          return street;
-      }
-      public String getCity()
-      {
-          return city;
-      }
-      public String getState()
-      {
-          return state;
-      }
-      public String getZipcode()
-      {
-          return zipcode;
-      }
-      // Setters (makes the class mutable)
-      public void setStreet(String initStreet)
-      {
-          street = initStreet;
-      }
-      public void setCity(String initCity)
-      {
-          city = initCity;
-      }
-      public void setState(String initState)
-      {
-          state = initState;
-      }
-      public void setZipcode(String initZipcode)
-      {
-          zipcode = initZipcode;
-      }
- }
+              public static void main(String[] args) {
+                  Address a1 = new Address("123 Main St", "Anytown", "Anystate", "12345");
+                  Address a2 = new Address("456 Elm St", "Othertown", "Otherstate", "67890");
+                  Person p1 = new Person("Skyler", a1);
+                  Person p2 = new Person("Jordan", a2);
+                  System.out.println(p1);
+                  p1.copyAddressFromPerson(p2);
+                  System.out.println(p1);
+                  p1.copyAddressFromAddress(a1);
+                  System.out.println(p1);
+              }
+          }
+
+          class Address {
+              // instance variables
+              private String street;
+              private String city;
+              private String state;
+              private String zipcode;
+
+              // constructor
+              public Address(String initStreet, String initCity, String initState, String initZipcode) {
+                  street = initStreet;
+                  city = initCity;
+                  state = initState;
+                  zipcode = initZipcode;
+              }
+
+              // copy constructor
+              public Address(Address otherAddr) {
+                  street = otherAddr.getStreet();
+                  city = otherAddr.getCity();
+                  zipcode = otherAddr.getZipcode();
+              }
+
+              public String toString() {
+                  return street + "\n" + city + ", " + state + " " + zipcode;
+              }
+
+              public String getStreet() {
+                  return street;
+              }
+
+              public String getCity() {
+                  return city;
+              }
+
+              public String getState() {
+                  return state;
+              }
+
+              public String getZipcode() {
+                  return zipcode;
+              }
+
+              // Setters (makes the class mutable)
+              public void setStreet(String initStreet) {
+                  street = initStreet;
+              }
+
+              public void setCity(String initCity) {
+                  city = initCity;
+              }
+
+              public void setState(String initState) {
+                  state = initState;
+              }
+
+              public void setZipcode(String initZipcode) {
+                  zipcode = initZipcode;
+              }
+          }
+
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1()
-    {
-        String target = "addr.setCity";
-        boolean passed = checkCodeContains("call to addr.setCity", target);
-        assertTrue(passed);
-    }
-    @Test
-    public void test2()
-    {
-        String target = "otherAddr.getCity";
-        boolean passed = checkCodeContains("call to otherAddr.getCity", target);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void test1() {
+                  String target = "addr.setCity";
+                  boolean passed = checkCodeContains("call to addr.setCity", target);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2() {
+                  String target = "otherAddr.getCity";
+                  boolean passed = checkCodeContains("call to otherAddr.getCity", target);
+                  assertTrue(passed);
+              }
+          }
+
         </tests>
       </program>
     </activity>
@@ -655,6 +644,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="returning-objects">
     <title>Returning Objects</title>
+
     <p>
       Methods can also return objects. Remember that methods can only return the
       value of a variable. If the return value is of a primitive type like int
@@ -674,31 +664,26 @@ public class RunestoneTests extends CodeTestHelper
       change the Address object through the reference returned by the method.
     </p>
 
-    <program language="java">
-      <code>
-public class Person
-{
-    // instance variables
-    private String name;
-    private Address addr;  // instance variable of type Address
+    <program>
+      public class Person {
+          // instance variables
+          private String name;
+          private Address addr; // instance variable of type Address
 
-    public Address getAddress()
-    {
-        return addr;
-    }
+          public Address getAddress() {
+              return addr;
+          }
 
-    public static void main(String[] args)
-    {
-        Person p1 = new Person("Skyler", 
-                          new Address("123 Main St", 
-                              "Anytown","Anystate","12345"));
-        System.out.println(p1);
-        Address a = p1.getAddress();
-        a.setCity("Othertown");
-        System.out.println(p1);
-    }
-}
-      </code>
+          public static void main(String[] args) {
+              Person p1 =
+                      new Person("Skyler", new Address("123 Main St", "Anytown", "Anystate", "12345"));
+              System.out.println(p1);
+              Address a = p1.getAddress();
+              a.setCity("Othertown");
+              System.out.println(p1);
+          }
+      }
+
     </program>
 
     <p>
@@ -713,6 +698,7 @@ public class Person
     </p>
 
     <p>Try it in the code below.</p>
+
     <activity label="PersonReturnAddress">
       <statement>
         <p>
@@ -723,124 +709,119 @@ public class Person
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class Person
-{
-    // instance variables
-    private String name;
-    private Address addr;  // instance variable of type Address defined below
+          public class Person {
+              // instance variables
+              private String name;
+              private Address addr; // instance variable of type Address defined below
 
-    // constructor: initialize instance variable and call Address constructor to
-    // make a copy
-    public Person(String initName, Address initAddr)
-    {
-        name = initName;
-        // Defensive copy of the Address argument
-        addr =  new Address(
-                           initAddr.getStreet(),
-                           initAddr.getCity(),
-                           initAddr.getState(),
-                           initAddr.getZipcode());
-    }
+              // constructor: initialize instance variable and call Address constructor to
+              // make a copy
+              public Person(String initName, Address initAddr) {
+                  name = initName;
+                  // Defensive copy of the Address argument
+                  addr =
+                          new Address(
+                                  initAddr.getStreet(),
+                                  initAddr.getCity(),
+                                  initAddr.getState(),
+                                  initAddr.getZipcode());
+              }
 
-    public Address getAddress()
-    {
-        return addr;
-    }
+              public Address getAddress() {
+                  return addr;
+              }
 
-    public String toString()
-    {
-        return "Name:" + name + "\n" + "Address:" + addr;
-    }
+              public String toString() {
+                  return "Name:" + name + "\n" + "Address:" + addr;
+              }
 
-    public static void main(String[] args)
-    {
-        Person p1 = new Person("Skyler", 
-                        new Address("123 Main St", 
-                           "Anytown", "Anystate", "12345"));
-        System.out.println(p1);
-        Address a = p1.getAddress();
-        // TODO: add code to change a's zipcode to "11111"
-        //    using setZipcode
+              public static void main(String[] args) {
+                  Person p1 =
+                          new Person("Skyler", new Address("123 Main St", "Anytown", "Anystate", "12345"));
+                  System.out.println(p1);
+                  Address a = p1.getAddress();
+                  // TODO: add code to change a's zipcode to "11111"
+                  //    using setZipcode
 
-        // Does it change in p1 too?
-        System.out.println(p1);
-    }
-}
-class Address
-{
-      // instance variables
-      private String street;
-      private String city;
-      private String state;
-      private String zipcode;
-      // constructor
-      public Address(String initStreet, String initCity,
-                     String initState, String initZipcode)
-      {
-          street = initStreet;
-          city = initCity;
-          state = initState;
-          zipcode = initZipcode;
-      }
-      public String toString()
-      {
-          return street + "\n" + city + ", " + state + " " + zipcode;
-      }
-      public String getStreet()
-      {
-          return street;
-      }
-      public String getCity()
-      {
-          return city;
-      }
-      public String getState()
-      {
-          return state;
-      }
-      public String getZipcode()
-      {
-          return zipcode;
-      }
-      // Setters (makes the class mutable)
-      public void setCity(String initCity)
-      {
-          city = initCity;
-      }
-      public void setZipcode(String initZipcode)
-      {
-          zipcode = initZipcode;
-      }
- }
+                  // Does it change in p1 too?
+                  System.out.println(p1);
+              }
+          }
+
+          class Address {
+              // instance variables
+              private String street;
+              private String city;
+              private String state;
+              private String zipcode;
+
+              // constructor
+              public Address(String initStreet, String initCity, String initState, String initZipcode) {
+                  street = initStreet;
+                  city = initCity;
+                  state = initState;
+                  zipcode = initZipcode;
+              }
+
+              public String toString() {
+                  return street + "\n" + city + ", " + state + " " + zipcode;
+              }
+
+              public String getStreet() {
+                  return street;
+              }
+
+              public String getCity() {
+                  return city;
+              }
+
+              public String getState() {
+                  return state;
+              }
+
+              public String getZipcode() {
+                  return zipcode;
+              }
+
+              // Setters (makes the class mutable)
+              public void setCity(String initCity) {
+                  city = initCity;
+              }
+
+              public void setZipcode(String initZipcode) {
+                  zipcode = initZipcode;
+              }
+          }
+
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1()
-    {
-        String target = "a.setZipcode";
-        boolean passed = checkCodeContains("call to a.setZipcode", target);
-        assertTrue(passed);
-    }
-    @Test
-    public void test2()
-    {
-         String output = getMethodOutput("main");
-         String expect = "11111";
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void test1() {
+                  String target = "a.setZipcode";
+                  boolean passed = checkCodeContains("call to a.setZipcode", target);
+                  assertTrue(passed);
+              }
 
-         boolean passed = getResults(expect, output, "11111 in output");
-         assertTrue(passed);
-    }
-}
+              @Test
+              public void test2() {
+                  String output = getMethodOutput("main");
+                  String expect = "11111";
+
+                  boolean passed = getResults(expect, output, "11111 in output");
+                  assertTrue(passed);
+              }
+          }
+
         </tests>
       </program>
     </activity>
@@ -848,6 +829,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="method-chaining">
     <title>Chaining Method Calls</title>
+
     <p>
       Programmers will sometimes call methods in a chain, one after another on
       the same line, for example <c>p.getAddress().getCity()</c>. The method
@@ -860,20 +842,16 @@ public class RunestoneTests extends CodeTestHelper
       <c>getCity</c> method is called on that Address object.
     </p>
 
-    <program language="java">
-      <code>
-                Person p1 = new Person("Skyler", 
-                                new Address("123 Main St", 
-                                "Anytown", "Anystate","12345"));
-                System.out.println( p1.getAddress().getCity() );
-      </code>
+    <program>
+      Person p1 = new Person("Skyler", 
+                      new Address("123 Main St", 
+                      "Anytown", "Anystate","12345"));
+      System.out.println( p1.getAddress().getCity() );
     </program>
 
     <activity label="fillAddress1">
       <statement>
-        <p>
-          What is printed out by <c>p1.getAddress().getCity()</c> above?
-        </p>
+        <p>What is printed out by <c>p1.getAddress().getCity()</c> above?</p>
 
         <p>
           <fillin answer="Anytown" mode="string" />
@@ -890,9 +868,9 @@ public class RunestoneTests extends CodeTestHelper
           <test>
             <!-- else -->
             <feedback>
-              Look at the arguments to the Address constructor in: <c>Person p1 = new Person("Skyler", 
-        new Address("123 Main St", 
-        "Anytown", "Anystate","12345"));</c>
+              Look at the arguments to the Address constructor in: <c>Person p1
+              = new Person("Skyler", new Address("123 Main St", "Anytown",
+              "Anystate","12345"));</c>
             </feedback>
           </test>
         </evaluate>
@@ -964,121 +942,116 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class Person
-{
-    // instance variables
-    private String name;
-    private Address addr;  // instance variable of type Address defined below
+          public class Person {
+              // instance variables
+              private String name;
+              private Address addr; // instance variable of type Address defined below
 
-    // constructor: initialize instance variable and call Address constructor to
-    // make a copy
-    public Person(String initName, Address initAddr)
-    {
-        name = initName;
-        // Defensive copy of the Address argument
-        addr =  new Address(
-                           initAddr.getStreet(),
-                           initAddr.getCity(),
-                           initAddr.getState(),
-                           initAddr.getZipcode());
-    }
+              // constructor: initialize instance variable and call Address constructor to
+              // make a copy
+              public Person(String initName, Address initAddr) {
+                  name = initName;
+                  // Defensive copy of the Address argument
+                  addr =
+                          new Address(
+                                  initAddr.getStreet(),
+                                  initAddr.getCity(),
+                                  initAddr.getState(),
+                                  initAddr.getZipcode());
+              }
 
-    public Address getAddress()
-    {
-        return addr;
-    }
+              public Address getAddress() {
+                  return addr;
+              }
 
-    public String toString()
-    {
-        return "Name:" + name + "\n" + "Address:" + addr;
-    }
+              public String toString() {
+                  return "Name:" + name + "\n" + "Address:" + addr;
+              }
 
-    public static void main(String[] args)
-    {
-        Person kay = new Person("Kay", 
-                        new Address("123 Main St", 
-                           "Boston", "Massachusetts", "01234"));
-        // TODO: print out the first two letters of the state 
-        // in the address of kay in 1 line
+              public static void main(String[] args) {
+                  Person kay =
+                          new Person("Kay", new Address("123 Main St", "Boston", "Massachusetts", "01234"));
+                  // TODO: print out the first two letters of the state
+                  // in the address of kay in 1 line
 
-     
-    }
-}
-class Address
-{
-      // instance variables
-      private String street;
-      private String city;
-      private String state;
-      private String zipcode;
-      // constructor
-      public Address(String initStreet, String initCity,
-                     String initState, String initZipcode)
-      {
-          street = initStreet;
-          city = initCity;
-          state = initState;
-          zipcode = initZipcode;
-      }
-      public String toString()
-      {
-          return street + "\n" + city + ", " + state + " " + zipcode;
-      }
-      public String getStreet()
-      {
-          return street;
-      }
-      public String getCity()
-      {
-          return city;
-      }
-      public String getState()
-      {
-          return state;
-      }
-      public String getZipcode()
-      {
-          return zipcode;
-      }
-      // Setters (makes the class mutable)
-      public void setCity(String initCity)
-      {
-          city = initCity;
-      }
-      public void setZipcode(String initZipcode)
-      {
-          zipcode = initZipcode;
-      }
- }
+              }
+          }
+
+          class Address {
+              // instance variables
+              private String street;
+              private String city;
+              private String state;
+              private String zipcode;
+
+              // constructor
+              public Address(String initStreet, String initCity, String initState, String initZipcode) {
+                  street = initStreet;
+                  city = initCity;
+                  state = initState;
+                  zipcode = initZipcode;
+              }
+
+              public String toString() {
+                  return street + "\n" + city + ", " + state + " " + zipcode;
+              }
+
+              public String getStreet() {
+                  return street;
+              }
+
+              public String getCity() {
+                  return city;
+              }
+
+              public String getState() {
+                  return state;
+              }
+
+              public String getZipcode() {
+                  return zipcode;
+              }
+
+              // Setters (makes the class mutable)
+              public void setCity(String initCity) {
+                  city = initCity;
+              }
+
+              public void setZipcode(String initZipcode) {
+                  zipcode = initZipcode;
+              }
+          }
+
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void test1()
-    {
-        String target = "kay.getAddress().getState().substring";
-        boolean passed = checkCodeContains("kay's getAddress and then getState and then substring", target);
-        assertTrue(passed);
-    }
-    @Test
-    public void test2()
-    {
-         String output = getMethodOutput("main");
-         String expect = "Ma";
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void test1() {
+                  String target = "kay.getAddress().getState().substring";
+                  boolean passed =
+                          checkCodeContains("kay's getAddress and then getState and then substring", target);
+                  assertTrue(passed);
+              }
 
-         boolean passed = getResults(expect, output, "Ma in output");
-         assertTrue(passed);
-    }
-}
+              @Test
+              public void test2() {
+                  String output = getMethodOutput("main");
+                  String expect = "Ma";
+
+                  boolean passed = getResults(expect, output, "Ma in output");
+                  assertTrue(passed);
+              }
+          }
+
         </tests>
       </program>
     </activity>
@@ -1086,6 +1059,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-friends-and-birthdays">
     <title>Coding Challenge: Friends and Birthdays</title>
+
     <image source="Unit3-Class-Creation/Figures/cake.jpg" width="23%" alt="Birthday cake" />
     <p>
       In this challenge, you will create a class <c>Friend</c> which keeps track
@@ -1094,7 +1068,7 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <p>
-      <ol marker="1">
+      <ol>
         <li>
           <p>
             Create a class called <c>Date</c> with the following instance
@@ -1145,88 +1119,97 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-class Date
-{
-   // Add instance variables for the month, day, and year as ints
+          class Date {
+              // Add instance variables for the month, day, and year as ints
 
-   // Add a constructor that initializes the instance variables with int parameters
+              // Add a constructor that initializes the instance variables with int parameters
 
-   // Add getters for the instance variables
+              // Add getters for the instance variables
 
-   // Add at least 1 setter to make the class mutable
+              // Add at least 1 setter to make the class mutable
 
-}
-public class Friend
-{
-    // Add instance variables for the name and birthdate using the Date class
+          }
 
-    // Add a constructor that initializes the instance variables
-    //   Make sure you copy the birthdate parameter object
+          public class Friend {
+              // Add instance variables for the name and birthdate using the Date class
 
-    // Add a toString method
+              // Add a constructor that initializes the instance variables
+              //   Make sure you copy the birthdate parameter object
 
-    // Add a method isBirthday that returns true if the birthdate matches the given Date parameter.
-    // You will need to check day, month, and year using getters.
+              // Add a toString method
 
-    public static void main(String[] args)
-    {
-        // Create a Date object with your friend's birthday date
+              // Add a method isBirthday that returns true if the birthdate matches the given Date parameter.
+              // You will need to check day, month, and year using getters.
 
-        // Create a Friend object with a friend's name and birthday
+              public static void main(String[] args) {
+                  // Create a Date object with your friend's birthday date
 
-        // Create a Date object with today's date
+                  // Create a Friend object with a friend's name and birthday
 
-        // Call your friend's isBirthday method with today's date object
+                  // Create a Date object with today's date
 
-    }
-}
+                  // Call your friend's isBirthday method with today's date object
+
+              }
+          }
+
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-     public RunestoneTests()
-     {
-         super("Friend");
-     }
-    @Test
-    public void test1()
-    {
-        String code = getCodeWithoutComments();
-        String search = ".get";
-        int num = countOccurences(code, search);
+          import java.io.*;
 
-        boolean passed = num &gt;= 3;
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("Friend");
+              }
 
-        getResults("3+", "" + num, "Date get methods called in isBirthday", passed);
-        assertTrue(passed);
-    }
-    @Test
-    public void test2()
-    {
-        Friend tw = new Friend("Taylor Swift", new Date(12, 13, 1989));
-        String output = tw.isBirthday(new Date(12, 13,1989)) + "";
-        String expect = "true";
-        boolean passed = getResults(expect, output, "Checking if friend Taylor Swift's bday is Date(12,13,1989)");
-        assertTrue(passed);
-    }
-    @Test
-    public void test3()
-    {
-        Friend tw = new Friend("Taylor Swift", new Date(12, 13, 1989));
-        String output = tw.isBirthday(new Date(1, 1,2025)) + "";
-        String expect = "false";
-        boolean passed = getResults(expect, output, "Checking if friend Taylor Swift's bday is Date(1,1,2025)");
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test1() {
+                  String code = getCodeWithoutComments();
+                  String search = ".get";
+                  int num = countOccurences(code, search);
+
+                  boolean passed = num >= 3;
+
+                  getResults("3+", "" + num, "Date get methods called in isBirthday", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2() {
+                  Friend tw = new Friend("Taylor Swift", new Date(12, 13, 1989));
+                  String output = tw.isBirthday(new Date(12, 13, 1989)) + "";
+                  String expect = "true";
+                  boolean passed =
+                          getResults(
+                                  expect,
+                                  output,
+                                  "Checking if friend Taylor Swift's bday is Date(12,13,1989)");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test3() {
+                  Friend tw = new Friend("Taylor Swift", new Date(12, 13, 1989));
+                  String output = tw.isBirthday(new Date(1, 1, 2025)) + "";
+                  String expect = "false";
+                  boolean passed =
+                          getResults(
+                                  expect, output, "Checking if friend Taylor Swift's bday is Date(1,1,2025)");
+                  assertTrue(passed);
+              }
+          }
+
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -1234,6 +1217,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-32">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>

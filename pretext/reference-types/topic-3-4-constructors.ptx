@@ -43,18 +43,17 @@
     </p>
 
     <program>
-      public class ClassName
-      {
+      public class ClassName {
           /* Instance variable declarations go here, before constructors */
 
           /* Constructor - same name as Class, no return type */
-          public ClassName()
-          {
+          public ClassName() {
               /* Implementation not shown */
           }
 
           /* Method definitions go here, after constructors */
       }
+
     </program>
 
     <note>
@@ -90,8 +89,8 @@
       the initial state of an object, which should include initial values for
       all instance variables. For example, <c>new Person("Pat", "pat@gmail.com",
       "123-456-7890")</c> calls the Person constructor with the values to fill
-      in for its name (“Pat”), email (”<url href="mailto:pat@gmail.com"
-      visual="mailto:pat@gmail.com">pat@gmail.com</url>”), and phone number
+      in for its name (“Pat”), email (”<url
+      href="mailto:pat@gmail.com">pat@gmail.com</url>”), and phone number
       (“123-456-7890”). When a constructor is called, memory is allocated for
       the object and the associated object reference is returned. Constructor
       parameters, if specified, provide data to initialize instance variables.
@@ -309,23 +308,20 @@
 
       <program interactive="activecode">
         <code>
-          public class Fraction
-          {
+          public class Fraction {
               //  instance variables
               private int numerator;
               private int denominator;
 
               // no-arg constructor: set instance variables to default values of 1
-              public Fraction()
-              {
+              public Fraction() {
                   // 1. set numerator to 1
 
                   // 2. set denominator to 1
               }
 
               // constructor w/args: set instance variables to init parameters
-              public Fraction(int initNumerator, int initDenominator)
-              {
+              public Fraction(int initNumerator, int initDenominator) {
                   // 3. set numerator to initNumerator
 
                   // 4. set denominator to initDenominator
@@ -333,14 +329,12 @@
               }
 
               // Print fraction
-              public void print()
-              {
+              public void print() {
                   System.out.println(numerator + "/" + denominator);
               }
 
               // main method for testing
-              public static void main(String[] args)
-              {
+              public static void main(String[] args) {
                   Fraction f1 = new Fraction();
                   Fraction f2 = new Fraction(1, 2);
                   // What will these print out?
@@ -348,6 +342,7 @@
                   f2.print();
               }
           }
+
         </code>
 
         <tests>
@@ -358,46 +353,47 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void test() throws IOException
-              {
+              public void test() throws IOException {
                   String output = getMethodOutput("main");
                   String expect = "1/1\n1/2";
 
                   boolean passed = getResults(expect, output, "Running main");
                   assertTrue(passed);
               }
+
               @Test
-             public void testCodeContains1()
-             {
-                 boolean check1 =
-                         checkCodeContains("numerator = 1 in Fraction()", "numerator = 1");
-                 assertTrue(check1);
-             }
-             @Test
-             public void testCodeContains2()
-             {
-                 boolean check1 =
-                         checkCodeContains("denominator = 1 in Fraction()", "denominator = 1");
-                 assertTrue(check1);
-             }
-             @Test
-             public void testCodeContains3()
-             {
-                 boolean check1 =
-                         checkCodeContains("numerator = initNumerator in 2nd constructor", "numerator = initNumerator");
-                 assertTrue(check1);
-             }
-             @Test
-             public void testCodeContains4()
-             {
-                 boolean check1 =
-                         checkCodeContains("denominator = initDenominator in 2nd constructor", "denominator = initDenominator");
-                 assertTrue(check1);
-             }
+              public void testCodeContains1() {
+                  boolean check1 = checkCodeContains("numerator = 1 in Fraction()", "numerator = 1");
+                  assertTrue(check1);
+              }
+
+              @Test
+              public void testCodeContains2() {
+                  boolean check1 = checkCodeContains("denominator = 1 in Fraction()", "denominator = 1");
+                  assertTrue(check1);
+              }
+
+              @Test
+              public void testCodeContains3() {
+                  boolean check1 =
+                          checkCodeContains(
+                                  "numerator = initNumerator in 2nd constructor",
+                                  "numerator = initNumerator");
+                  assertTrue(check1);
+              }
+
+              @Test
+              public void testCodeContains4() {
+                  boolean check1 =
+                          checkCodeContains(
+                                  "denominator = initDenominator in 2nd constructor",
+                                  "denominator = initDenominator");
+                  assertTrue(check1);
+              }
           }
+
         </tests>
       </program>
     </activity>
@@ -462,11 +458,9 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void testMain() throws IOException
-              {
+              public void testMain() throws IOException {
                   String output = getMethodOutput("main");
                   String expect = "Car model: Ford\nCar year: 2023\nCar model: Honda\nCar year: 2010";
 
@@ -474,6 +468,7 @@
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -535,31 +530,27 @@
       <program interactive="activecode">
         <code>
           /**
-           * class Student with 4 instance variables, a constructor, a print method, and a
-           * main method to test them.
+           * class Student with 4 instance variables, a constructor, a print method, and a main method to test
+           * them.
            */
-          public class Student
-          {
+          public class Student {
               // Write 4 instance variables
 
               // Write a constructor with 4 parameters to initialize all of the instance
               // variables
 
               // Write a print method that prints all the instance variables
-              public void print()
-              {
-
-              }
+              public void print() {}
 
               // main method
-              public static void main(String[] args)
-              {
+              public static void main(String[] args) {
                   // Construct 2 Student objects using the constructor with different values
 
                   // call their print() methods
 
               }
           }
+
         </code>
 
         <tests>
@@ -570,10 +561,8 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
                   super("Student");
 
                   Object[] values = new Object[] {"Name", 0};
@@ -581,8 +570,7 @@
               }
 
               @Test
-              public void testCallConstructors()
-              {
+              public void testCallConstructors() {
                   String code = getCodeWithoutComments();
                   String search = "= new Student(";
 
@@ -596,8 +584,7 @@
               }
 
               @Test
-              public void testConstructors()
-              {
+              public void testConstructors() {
                   String code = getCodeWithoutComments();
                   String search = "public Student(";
 
@@ -611,8 +598,7 @@
               }
 
               @Test
-              public void testPrint()
-              {
+              public void testPrint() {
                   String code = getCodeWithoutComments();
                   String search = ".print()";
 
@@ -626,8 +612,7 @@
               }
 
               @Test
-              public void testPrivateVariables()
-              {
+              public void testPrivateVariables() {
                   String expect = "4 Private";
                   String output = testPrivateInstanceVariables();
 
@@ -635,6 +620,7 @@
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </project>
@@ -654,8 +640,7 @@
         <li>
           <p>
             Consult your completed worksheet or your code in <url
-            href="topic-3-3-anatomy-of-class.html#groupwork-design-a-class-for-your-community"
-            visual="topic-3-3-anatomy-of-class.html#groupwork-design-a-class-for-your-community">lesson
+            href="topic-3-3-anatomy-of-class.html#groupwork-design-a-class-for-your-community">lesson
             3.3 Community Challenge</url> for the class name and its 3 instance
             variables that you created. Copy them into the active code exercise
             below.
@@ -689,8 +674,7 @@
       <statement>
         <p>
           Copy your class with its 3 instance variables from <url
-          href="topic-3-3-anatomy-of-class.html#groupwork-design-a-class-for-your-community"
-          visual="topic-3-3-anatomy-of-class.html#groupwork-design-a-class-for-your-community">lesson
+          href="topic-3-3-anatomy-of-class.html#groupwork-design-a-class-for-your-community">lesson
           3.3 Community Challenge</url>. Add a constructor with 3 parameters to
           set all of the instance variables to the given parameters. Write a
           print() method that uses System.out.println to print out all the
@@ -733,11 +717,9 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void testPrivateVariables()
-              {
+              public void testPrivateVariables() {
                   String expect = "3 Private";
                   String output = testPrivateInstanceVariables();
                   boolean passed = false;
@@ -760,8 +742,7 @@
               */
 
               @Test
-              public void testConstructor3()
-              {
+              public void testConstructor3() {
                   String output = checkConstructor(3);
                   String expect = "pass";
 
@@ -770,18 +751,14 @@
               }
 
               @Test
-              public void testPrint()
-              {
+              public void testPrint() {
                   String output = getMethodOutput("print");
                   String expect = "More than 15 characters";
                   String actual = " than 15 characters";
 
-                  if (output.length() < 15)
-                  {
+                  if (output.length() < 15) {
                       actual = "Less" + actual;
-                  }
-                  else
-                  {
+                  } else {
                       actual = "More" + actual;
                   }
                   boolean passed = getResults(expect, actual, "Checking print method");
@@ -789,19 +766,15 @@
               }
 
               @Test
-              public void testMain() throws IOException
-              {
+              public void testMain() throws IOException {
                   String output = getMethodOutput("main"); // .split("\n");
                   String expect = "3+ line(s) of text";
                   String actual = " line(s) of text";
                   int len = output.split("\n").length;
 
-                  if (output.length() > 0)
-                  {
+                  if (output.length() > 0) {
                       actual = len + actual;
-                  }
-                  else
-                  {
+                  } else {
                       actual = output.length() + actual;
                   }
                   boolean passed = len >= 3;
@@ -810,6 +783,7 @@
                   assertTrue(passed);
               }
           }
+
 
           ]]>
         </tests>
@@ -909,26 +883,22 @@
         <program>
           <![CDATA[
 
-          public class Cat
-          {
+          public class Cat {
               private String name;
               private int age;
               private boolean isSenior;
 
-              public Cat(String n, int a)
-              {
+              public Cat(String n, int a) {
                   name = n;
                   age = a;
-                  if (age >= 10)
-                  {
+                  if (age >= 10) {
                       isSenior = true;
-                  }
-                  else
-                  {
+                  } else {
                       isSenior = false;
                   }
               }
           }
+
 
           ]]>
         </program>
@@ -1104,12 +1074,12 @@
         <p>Consider the following class definition.</p>
 
         <program>
-          public class Cat
-          {
+          public class Cat {
               private String color;
               private boolean isHungry;
               /* missing constructor */
           }
+
         </program>
 
         <p>

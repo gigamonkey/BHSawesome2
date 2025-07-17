@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-1-12-objects">
   <title>Objects - Instances of Classes</title>
+
   <introduction>
     <idx>object</idx>
     <idx>class</idx>
@@ -24,6 +25,7 @@
 
   <subsection xml:id="what-are-classes-and-objects">
     <title>What are Classes and Objects?</title>
+
     <p>
       You can think of a class as something like a blueprint of a house that is
       used to construct houses (objects), or like a cookie cutter that is used
@@ -35,11 +37,13 @@
 
     <figure align="center">
       <caption>Using a blueprint (class) to construct houses (objects)</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/blueprint.png" width="71%" />
     </figure>
 
     <figure align="center">
       <caption>Using a cookie cutter (class) to make cookies (objects)</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/cookieCutterLabelled.png" width="89%" />
     </figure>
 
@@ -51,29 +55,28 @@
       are <term>instances</term> of the <c>Turtle</c> class.
     </p>
 
-    <program language="java">
-      <code>
-// Creating 2 Turtle objects called yertle and myrtle
-Turtle yertle;
-Turtle myrtle;
-      </code>
+    <program>
+      // Creating 2 Turtle objects called yertle and myrtle
+      Turtle yertle;
+      Turtle myrtle;
     </program>
 
     <p>
       Watch the following <url
-      href="https://www.youtube.com/watch?v=64DOwDu5SVo&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis"
-      visual="https://www.youtube.com/watch?v=64DOwDu5SVo&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
+      href="https://www.youtube.com/watch?v=64DOwDu5SVo&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
       by Dr. Colleen Lewis about classes and objects:
     </p>
 
     <figure align="center">
       <caption>Classes and Objects</caption>
+
       <video youtube="64DOwDu5SVo" label="video-objects" />
     </figure>
   </subsection>
 
   <subsection xml:id="attributes-and-behaviors">
     <title>Attributes and Behaviors</title>
+
     <p>
       A class defines the <term>attributes</term> (data) and
       <term>behaviors</term> (methods) that all objects of that class will have.
@@ -88,8 +91,7 @@ Turtle myrtle;
 
     <p>
       This <url
-      href="https://www.youtube.com/watch?v=Y9vn6u3901Y&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis"
-      visual="https://www.youtube.com/watch?v=Y9vn6u3901Y&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
+      href="https://www.youtube.com/watch?v=Y9vn6u3901Y&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
       shows another class called <c>Belt</c> and how it has 3 instance variables
       to define its attributes. Every belt object can have different values
       stored in the instance variables.
@@ -97,6 +99,7 @@ Turtle myrtle;
 
     <figure align="center">
       <caption>Belt Object Attributes</caption>
+
       <video youtube="Y9vn6u3901Y" label="video-belt-object" />
     </figure>
 
@@ -112,6 +115,7 @@ Turtle myrtle;
 
     <figure align="center">
       <caption>Pictures of cats (cat objects)</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/catsLabelled.png" width="89%" />
     </figure>
 
@@ -138,6 +142,7 @@ Turtle myrtle;
 
     <figure align="center">
       <caption>Turtle Attributes and Behaviors</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/turtleOOD.svg" width="63%" alt="Turtle attributes and behaviors" />
     </figure>
 
@@ -155,12 +160,18 @@ Turtle myrtle;
 
       <cardsort>
         <match>
-          <premise order="1">a specific instance of a class with defined attributes</premise>
+          <premise order="1">
+            a specific instance of a class with defined attributes
+          </premise>
+
           <response>object</response>
         </match>
 
         <match>
-          <premise order="2">defines a new data type that is like a blueprint</premise>
+          <premise order="2">
+            defines a new data type that is like a blueprint
+          </premise>
+
           <response>class</response>
         </match>
 
@@ -344,6 +355,7 @@ Turtle myrtle;
 
   <subsection xml:id="turtle-class">
     <title>Turtle Class</title>
+
     <p>
       The Turtle class (that we’ve written for you and hidden on this page) is a
       blueprint for turtle objects. It defines attributes for graphical turtles
@@ -351,8 +363,7 @@ Turtle myrtle;
       the Java program below that creates a Turtle object called yertle using
       the Turtle class. If the code below does not work or is too slow in your
       browser, you can also see the <c>Turtle</c> code in action on <url
-      href="https://play.juicemind.com/dashboard/teams/Mk2wWMTqPkekcxTDWqRn/item/beca9c16-4004-4a4e-b4b0-11593e140808#f5357602-b60b-44c3-be0e-dfb07de2a778"
-      visual="https://play.juicemind.com/dashboard/teams/Mk2wWMTqPkekcxTDWqRn/item/beca9c16-4004-4a4e-b4b0-11593e140808#f5357602-b60b-44c3-be0e-dfb07de2a778">JuiceMind</url>
+      href="https://play.juicemind.com/dashboard/teams/Mk2wWMTqPkekcxTDWqRn/item/beca9c16-4004-4a4e-b4b0-11593e140808#f5357602-b60b-44c3-be0e-dfb07de2a778">JuiceMind</url>
       or <url
       href="https://replit.com/@BerylHoffman/Java-Swing-Turtle#Main.java">replit</url>
       or download the files <url
@@ -368,61 +379,59 @@ Turtle myrtle;
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class TurtleTest
-{
-    public static void main(String[] args)
-    {
-        World habitat = new World(300, 300);
-        Turtle yertle = new Turtle(habitat);
+          public class TurtleTest {
+              public static void main(String[] args) {
+                  World habitat = new World(300, 300);
+                  Turtle yertle = new Turtle(habitat);
 
-        yertle.forward();
-        yertle.turnLeft();
-        yertle.forward();
+                  yertle.forward();
+                  yertle.turnLeft();
+                  yertle.forward();
 
-        habitat.show(true);
-    }
-}
+                  habitat.show(true);
+              }
+          }
+
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleTest");
-    }
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("TurtleTest");
+              }
 
-    @Test
-    public void test1()
-    {
-        boolean passed = getResults("true", "true", "main()");
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test1() {
+                  boolean passed = getResults("true", "true", "main()");
+                  assertTrue(passed);
+              }
+          }
+
         </tests>
       </program>
     </activity>
 
     <p>
       The following <url
-      href="https://www.youtube.com/watch?v=TFmmG4_KK8I&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis"
-      visual="https://www.youtube.com/watch?v=TFmmG4_KK8I&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
+      href="https://www.youtube.com/watch?v=TFmmG4_KK8I&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
       shows how the program creates a <c>World</c> object called <c>habitat</c>
       and a <c>Turtle</c> object called <c>yertle</c> in memory.
     </p>
 
     <figure align="center">
       <caption>Turtle Memory Model</caption>
+
       <video youtube="TFmmG4_KK8I" label="video-turtle" />
     </figure>
 
@@ -448,64 +457,65 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class TurtleTest2
-{
-    public static void main(String[] args)
-    {
-        World habitat = new World(300, 300);
-        Turtle yertle = new Turtle(habitat);
+          public class TurtleTest2 {
+              public static void main(String[] args) {
+                  World habitat = new World(300, 300);
+                  Turtle yertle = new Turtle(habitat);
 
-        yertle.forward();
-        yertle.turnLeft();
+                  yertle.forward();
+                  yertle.turnLeft();
 
-        habitat.show(true);
-    }
-}
+                  habitat.show(true);
+              }
+          }
+
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleTest2");
-    }
+          import java.io.*;
 
-    @Test
-    public void test1()
-    {
-        String code = getCode();
-        String expect = "yertle.forward";
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("TurtleTest2");
+              }
 
-        int count = countOccurences(code, expect);
+              @Test
+              public void test1() {
+                  String code = getCode();
+                  String expect = "yertle.forward";
 
-        boolean passed = getResults("2 time(s)", "" + count + " time(s)", "yertle.forward() twice");
-        assertTrue(passed);
-    }
+                  int count = countOccurences(code, expect);
 
-    @Test
-    public void test2()
-    {
-        String code = getCode();
-        String expect = "yertle.turnRight()";
+                  boolean passed = getResults("2 time(s)", "" + count + " time(s)", "yertle.forward() twice");
+                  assertTrue(passed);
+              }
 
-        int count = countOccurences(code, expect);
+              @Test
+              public void test2() {
+                  String code = getCode();
+                  String expect = "yertle.turnRight()";
 
-        boolean passed = count &gt;= 1;
-        passed = getResults("1+ time(s)", "" + count + " time(s)", "yertle.turnRight()", passed);
-        assertTrue(passed);
-    }
-}
+                  int count = countOccurences(code, expect);
+
+                  boolean passed = count >= 1;
+                  passed = getResults("1+ time(s)", "" + count + " time(s)", "yertle.turnRight()", passed);
+                  assertTrue(passed);
+              }
+          }
+
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -522,6 +532,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="creating-turtle-objects">
     <title>Creating Turtle Objects</title>
+
     <p>
       When you write a class like the <c>Turtle</c> class, you can create many
       objects of that class type. In the code below, two turtle objects are
@@ -529,13 +540,11 @@ public class RunestoneTests extends CodeTestHelper
       in a line like the following in the main method to make it move:
     </p>
 
-    <program language="java">
-      <code>
-// To create or declare a new object, write:
-// ClassName variableName = new ClassName(arguments);
-Turtle yourTurtleName = new Turtle(habitat);
-yourTurtlename.forward();
-      </code>
+    <program>
+      // To create or declare a new object, write:
+      // ClassName variableName = new ClassName(arguments);
+      Turtle yourTurtleName = new Turtle(habitat);
+      yourTurtlename.forward();
     </program>
 
     <activity label="TurtleTest3">
@@ -543,57 +552,59 @@ yourTurtlename.forward();
         <p>Can you add another turtle object to the code below?</p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class TurtleTest3
-{
-    public static void main(String[] args)
-    {
-        World habitat = new World(300, 300);
-        Turtle yertle = new Turtle(habitat);
-        Turtle myrtle = new Turtle(habitat);
+          public class TurtleTest3 {
+              public static void main(String[] args) {
+                  World habitat = new World(300, 300);
+                  Turtle yertle = new Turtle(habitat);
+                  Turtle myrtle = new Turtle(habitat);
 
-        yertle.forward();
-        yertle.turnLeft();
-        yertle.forward();
+                  yertle.forward();
+                  yertle.turnLeft();
+                  yertle.forward();
 
-        myrtle.turnRight();
-        myrtle.forward();
+                  myrtle.turnRight();
+                  myrtle.forward();
 
-        habitat.show(true);
-    }
-}
+                  habitat.show(true);
+              }
+          }
+
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleTest3");
-    }
+          import java.io.*;
 
-    @Test
-    public void test1()
-    {
-        String code = getCode();
-        String expect = "new Turtle(habitat)";
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("TurtleTest3");
+              }
 
-        int count = countOccurences(code, expect);
+              @Test
+              public void test1() {
+                  String code = getCode();
+                  String expect = "new Turtle(habitat)";
 
-        boolean passed = count &gt;= 3;
-        passed = getResults("3+ Turtles", "" + count + " Turtles", "Add a new Turtle(s)", passed);
-        assertTrue(passed);
-    }
-}
+                  int count = countOccurences(code, expect);
+
+                  boolean passed = count >= 3;
+                  passed = getResults("3+ Turtles", "" + count + " Turtles", "Add a new Turtle(s)", passed);
+                  assertTrue(passed);
+              }
+          }
+
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -601,6 +612,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="class-hierarchy-and-inheritance">
     <title>Class Hierarchy and Inheritance</title>
+
     <idx>inheritance</idx>
     <idx>superclass</idx>
     <idx>subclass</idx>
@@ -638,6 +650,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="turtle-methods">
     <title>Turtle Methods</title>
+
     <p>
       Let’s practice more with the <c>Turtle</c> class and its methods. Here is
       a class diagram that shows some of the attributes and methods in the class
@@ -646,6 +659,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <figure align="center">
       <caption>Turtle Class Diagram</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/turtleUMLClassDiagram.png" width="71%" alt="Turtle class diagram" />
     </figure>
 
@@ -659,7 +673,10 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <figure align="center">
-      <caption>The coordinate (0,0) is at the top left of the Turtle world.</caption>
+      <caption>
+        The coordinate (0,0) is at the top left of the Turtle world.
+      </caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/coords.png" width="36%" />
     </figure>
 
@@ -730,45 +747,43 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class TurtleDraw7
-{
-    public static void main(String[] args)
-    {
-        World habitat = new World(300, 300);
-        Turtle yertle = new Turtle(habitat);
-        // Make yertle draw a 7 using the code above
+          public class TurtleDraw7 {
+              public static void main(String[] args) {
+                  World habitat = new World(300, 300);
+                  Turtle yertle = new Turtle(habitat);
+                  // Make yertle draw a 7 using the code above
 
-        habitat.show(true);
-    }
-}
+                  habitat.show(true);
+              }
+          }
+
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleDraw7");
-    }
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("TurtleDraw7");
+              }
 
-    @Test
-    public void test1()
-    {
-        String orig = "yertle.forward();\nyertle.turnLeft();\nyertle.forward();";
-        boolean passed = checkCodeContains(orig);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test1() {
+                  String orig = "yertle.forward();\nyertle.turnLeft();\nyertle.forward();";
+                  boolean passed = checkCodeContains(orig);
+                  assertTrue(passed);
+              }
+          }
+
         </tests>
       </program>
     </activity>
@@ -781,84 +796,84 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class TurtleDraw8
-{
-    public static void main(String[] args)
-    {
-        World habitat = new World(500, 500);
-        Turtle yertle = new Turtle(habitat);
-        // Make yertle draw an 8 with 2 squares
-        yertle.forward();
+          public class TurtleDraw8 {
+              public static void main(String[] args) {
+                  World habitat = new World(500, 500);
+                  Turtle yertle = new Turtle(habitat);
+                  // Make yertle draw an 8 with 2 squares
+                  yertle.forward();
 
-        habitat.show(true);
-    }
-}
+                  habitat.show(true);
+              }
+          }
+
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleDraw8");
-    }
+          import java.io.*;
 
-    @Test
-    public void test1()
-    {
-        String orig =
-                "import java.awt.*;\n"
-                        + "import java.util.*;\n\n"
-                        + "public class TurtleDraw8\n"
-                        + "{\n"
-                        + "  public static void main(String[] args)\n"
-                        + "  {\n"
-                        + "      World habitat = new World(300,300);\n"
-                        + "      Turtle yertle = new Turtle(habitat);\n"
-                        + "      // Make yertle draw an 8 with 2 squares\n"
-                        + "      yertle.forward();\n\n\n"
-                        + "      habitat.show(true);\n"
-                        + "  }\n"
-                        + "}\n";
-        boolean passed = codeChanged(orig);
-        assertTrue(passed);
-    }
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("TurtleDraw8");
+              }
 
-    @Test
-    public void test2()
-    {
-        String code = getCode();
-        int numForward = countOccurences(code, "forward(");
+              @Test
+              public void test1() {
+                  String orig =
+                          "import java.awt.*;\n"
+                                  + "import java.util.*;\n\n"
+                                  + "public class TurtleDraw8\n"
+                                  + "{\n"
+                                  + "  public static void main(String[] args)\n"
+                                  + "  {\n"
+                                  + "      World habitat = new World(300,300);\n"
+                                  + "      Turtle yertle = new Turtle(habitat);\n"
+                                  + "      // Make yertle draw an 8 with 2 squares\n"
+                                  + "      yertle.forward();\n\n\n"
+                                  + "      habitat.show(true);\n"
+                                  + "  }\n"
+                                  + "}\n";
+                  boolean passed = codeChanged(orig);
+                  assertTrue(passed);
+              }
 
-        boolean passed = numForward &gt;= 7;
+              @Test
+              public void test2() {
+                  String code = getCode();
+                  int numForward = countOccurences(code, "forward(");
 
-        passed = getResults("7 or more", "" + numForward, "Calls to forward()", passed);
-        assertTrue(passed);
-    }
+                  boolean passed = numForward >= 7;
 
-    @Test
-    public void test3()
-    {
-        String code = getCode();
-        int numTurn = countOccurences(code, ".turn");
+                  passed = getResults("7 or more", "" + numForward, "Calls to forward()", passed);
+                  assertTrue(passed);
+              }
 
-        boolean passed = numTurn &gt;= 5;
+              @Test
+              public void test3() {
+                  String code = getCode();
+                  int numTurn = countOccurences(code, ".turn");
 
-        passed =
-                getResults("5 or more", "" + numTurn, "Calls to turnRight() or turnLeft()", passed);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = numTurn >= 5;
+
+                  passed =
+                          getResults("5 or more", "" + numTurn, "Calls to turnRight() or turnLeft()", passed);
+                  assertTrue(passed);
+              }
+          }
+
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -866,6 +881,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-draw-letters">
     <title>Coding Challenge: Draw Letters</title>
+
     <p>
       Working in pairs, use the area below to have your turtle draw simple
       block-style letters for your first or last name initials using just
@@ -879,42 +895,31 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <p>Here are some simple turtle methods that you can use:</p>
+
     <p>
       <ul>
         <li>
-          <p>
-            <c>forward()</c>
-          </p>
+          <p><c>forward()</c></p>
         </li>
 
         <li>
-          <p>
-            <c>turnLeft()</c>
-          </p>
+          <p><c>turnLeft()</c></p>
         </li>
 
         <li>
-          <p>
-            <c>turnRight()</c>
-          </p>
+          <p><c>turnRight()</c></p>
         </li>
 
         <li>
-          <p>
-            <c>backward()</c>
-          </p>
+          <p><c>backward()</c></p>
         </li>
 
         <li>
-          <p>
-            <c>penUp()</c>
-          </p>
+          <p><c>penUp()</c></p>
         </li>
 
         <li>
-          <p>
-            <c>penDown()</c>
-          </p>
+          <p><c>penDown()</c></p>
         </li>
       </ul>
     </p>
@@ -935,72 +940,73 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class TurtleLetter
-{
-    public static void main(String[] args)
-    {
-        World habitat = new World(300, 300);
-        // Create a turtle object
+          public class TurtleLetter {
+              public static void main(String[] args) {
+                  World habitat = new World(300, 300);
+                  // Create a turtle object
 
-        // have it draw your initials
+                  // have it draw your initials
 
-        habitat.show(true);
-    }
-}
+                  habitat.show(true);
+              }
+          }
+
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleLetter");
-    }
+          import java.io.*;
 
-    @Test
-    public void test1()
-    {
-        String orig =
-                "import java.awt.*;\n"
-                        + "import java.util.*;\n\n"
-                        + "public class TurtleLetter\n"
-                        + "{\n"
-                        + "  public static void main(String[] args)\n"
-                        + "  {\n"
-                        + "      World habitat = new World(300,300);\n\n\n\n"
-                        + "      habitat.show(true);\n"
-                        + "  }\n"
-                        + "}\n";
-        boolean passed = codeChanged(orig);
-        assertTrue(passed);
-    }
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("TurtleLetter");
+              }
 
-    @Test
-    public void test2()
-    {
-        String code = getCode();
-        String[] lines = code.split("\n");
+              @Test
+              public void test1() {
+                  String orig =
+                          "import java.awt.*;\n"
+                                  + "import java.util.*;\n\n"
+                                  + "public class TurtleLetter\n"
+                                  + "{\n"
+                                  + "  public static void main(String[] args)\n"
+                                  + "  {\n"
+                                  + "      World habitat = new World(300,300);\n\n\n\n"
+                                  + "      habitat.show(true);\n"
+                                  + "  }\n"
+                                  + "}\n";
+                  boolean passed = codeChanged(orig);
+                  assertTrue(passed);
+              }
 
-        boolean passed = lines.length &gt;= 20;
-        passed =
-                getResults(
-                        "20 or more lines",
-                        lines.length + " lines",
-                        "Adding a reasonable amount of lines to code",
-                        passed);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test2() {
+                  String code = getCode();
+                  String[] lines = code.split("\n");
+
+                  boolean passed = lines.length >= 20;
+                  passed =
+                          getResults(
+                                  "20 or more lines",
+                                  lines.length + " lines",
+                                  "Adding a reasonable amount of lines to code",
+                                  passed);
+                  assertTrue(passed);
+              }
+          }
+
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -1008,6 +1014,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-3">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -1077,6 +1084,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="ap-practice-2">
     <title>AP Practice</title>
+
     <p>
       Try these AP practice questions that will help to prepare you for the AP
       Classroom progress checks.

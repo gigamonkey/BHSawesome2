@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-3-9-this">
   <title>this Keyword</title>
+
   <introduction>
     <p>
       Within an instance method or a constructor, the keyword <c>this</c> acts
@@ -34,94 +35,84 @@
       </p>
     </statement>
 
-    <program interactive="activecode" language="java">
+    <program interactive="activecode">
       <code>
-public class Person
-{
-    // instance variables
-    private String name;
-    private String email;
-    private String phoneNumber;
+        public class Person {
+            // instance variables
+            private String name;
+            private String email;
+            private String phoneNumber;
 
-    // constructor
-    public Person(String name)
-    {
-        this.name = name;
-    }
+            // constructor
+            public Person(String name) {
+                this.name = name;
+            }
 
-    // accessor methods - getters
-    public String getName()
-    {
-        return this.name;
-    }
+            // accessor methods - getters
+            public String getName() {
+                return this.name;
+            }
 
-    public String getEmail()
-    {
-        return this.email;
-    }
+            public String getEmail() {
+                return this.email;
+            }
 
-    public String getPhoneNumber()
-    {
-        return this.phoneNumber;
-    }
+            public String getPhoneNumber() {
+                return this.phoneNumber;
+            }
 
-    // mutator methods - setters
-    public void setName(String name)
-    {
-        this.name = name;
-    }
+            // mutator methods - setters
+            public void setName(String name) {
+                this.name = name;
+            }
 
-    public void setEmail(String email)
-    {
-        this.email = email;
-    }
+            public void setEmail(String email) {
+                this.email = email;
+            }
 
-    public void setPhoneNumber(String phoneNumber)
-    {
-        this.phoneNumber = phoneNumber;
-    }
+            public void setPhoneNumber(String phoneNumber) {
+                this.phoneNumber = phoneNumber;
+            }
 
-    public String toString()
-    {
-        return this.name + " " + this.email + " " + this.phoneNumber;
-    }
+            public String toString() {
+                return this.name + " " + this.email + " " + this.phoneNumber;
+            }
 
-    // main method for testing
-    public static void main(String[] args)
-    {
-        Person p1 = new Person("Sana");
-        System.out.println(p1);
-        Person p2 = new Person("Jean");
-        p2.setEmail("jean@gmail.com");
-        p2.setPhoneNumber("404 899-9955");
-        System.out.println(p2);
-    }
-}
+            // main method for testing
+            public static void main(String[] args) {
+                Person p1 = new Person("Sana");
+                System.out.println(p1);
+                Person p2 = new Person("Jean");
+                p2.setEmail("jean@gmail.com");
+                p2.setPhoneNumber("404 899-9955");
+                System.out.println(p2);
+            }
+        }
+
       </code>
+
       <tests>
- import static org.junit.Assert.*;
+        import static org.junit.Assert.*;
 
- import org.junit.*;
+        import org.junit.*;
 
- import java.io.*;
+        import java.io.*;
 
- public class RunestoneTests extends CodeTestHelper
- {
-     public RunestoneTests()
-     {
-         super("Person");
-     }
+        public class RunestoneTests extends CodeTestHelper {
+            public RunestoneTests() {
+                super("Person");
+            }
 
-     @Test
-     public void testMain() throws IOException
-     {
-         String output = getMethodOutput("main");
-         String expect = "Sana null null\nJean jean@gmail.com 404 899-9955";
+            @Test
+            public void testMain() throws IOException {
+                String output = getMethodOutput("main");
+                String expect = "Sana null null\nJean jean@gmail.com 404 899-9955";
 
-         boolean passed = getResults(expect, output, "Expected output from main", true);
-         assertTrue(passed);
-     }
- }
+                boolean passed = getResults(expect, output, "Expected output from main", true);
+                assertTrue(passed);
+            }
+        }
+
       </tests>
     </program>
   </activity>
@@ -147,18 +138,16 @@ public class Person
       </p>
     </note>
 
-    <program language="java">
-      <code>
-// instance variables
-private String name;
+    <program>
+      // instance variables
+      private String name;
 
-// constructor
-public Person(String name)
-{
-   // Set this object's instance variable name to the parameter variable name
-   this.name = name;
-}
-      </code>
+      // constructor
+      public Person(String name)
+      {
+         // Set this object's instance variable name to the parameter variable name
+         this.name = name;
+      }
     </program>
   </subsection>
 
@@ -190,71 +179,64 @@ public Person(String name)
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class Pay
-{
-    private double pay;
+          public class Pay {
+              private double pay;
 
-    public Pay(double p)
-    {
-        pay = p;
-    }
+              public Pay(double p) {
+                  pay = p;
+              }
 
-    public double getPay()
-    {
-        return pay;
-    }
+              public double getPay() {
+                  return pay;
+              }
 
-    public void calculatePayWithOvertime()
-    {
-        // this Pay object is passed to the Overtime constructor
-        Overtime ot = new Overtime(this);
-        pay = ot.getOvertimePay();
-    }
+              public void calculatePayWithOvertime() {
+                  // this Pay object is passed to the Overtime constructor
+                  Overtime ot = new Overtime(this);
+                  pay = ot.getOvertimePay();
+              }
 
-    public static void main(String[] args)
-    {
-        Pay myPay = new Pay(100.0);
-        myPay.calculatePayWithOvertime();
-        System.out.println(myPay.getPay());
-    }
-}
+              public static void main(String[] args) {
+                  Pay myPay = new Pay(100.0);
+                  myPay.calculatePayWithOvertime();
+                  System.out.println(myPay.getPay());
+              }
+          }
 
-class Overtime
-{
-    private double payWithOvertime;
+          class Overtime {
+              private double payWithOvertime;
 
-    public Overtime(Pay p)
-    {
-        payWithOvertime = p.getPay() * 1.5;
-    }
+              public Overtime(Pay p) {
+                  payWithOvertime = p.getPay() * 1.5;
+              }
 
-    public double getOvertimePay()
-    {
-        return payWithOvertime;
-    }
-}
+              public double getOvertimePay() {
+                  return payWithOvertime;
+              }
+          }
+
         </code>
+
         <tests>
- import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
- import org.junit.*;
+          import org.junit.*;
 
- import java.io.*;
+          import java.io.*;
 
- public class RunestoneTests extends CodeTestHelper
- {
-     @Test
-     public void testMain() throws IOException
-     {
-         String output = getMethodOutput("main");
-         String expect = "150.0";
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void testMain() throws IOException {
+                  String output = getMethodOutput("main");
+                  String expect = "150.0";
 
-         boolean passed = getResults(expect, output, "Expected output from main", true);
-         assertTrue(passed);
-     }
- }
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
+
         </tests>
       </program>
     </activity>
@@ -262,45 +244,38 @@ class Overtime
     <activity label="AP-this-arg">
       <statement>
         <p>Consider the following class definitions.</p>
-        <program language="java">
-          <code>
-public class Pay
-{
-    private double pay;
 
-    public Pay(double p)
-    {
-        pay = p;
-    }
+        <program>
+          public class Pay {
+              private double pay;
 
-    public double getPay()
-    {
-        return pay;
-    }
+              public Pay(double p) {
+                  pay = p;
+              }
 
-    public void calculatePayWithOvertime()
-    {
-        // this Pay object is passed to the Overtime constructor
-        Overtime ot = new Overtime(this);
-        pay = ot.getOvertimePay();
-    }
-}
+              public double getPay() {
+                  return pay;
+              }
 
-public class Overtime
-{
-    private double payWithOvertime;
+              public void calculatePayWithOvertime() {
+                  // this Pay object is passed to the Overtime constructor
+                  Overtime ot = new Overtime(this);
+                  pay = ot.getOvertimePay();
+              }
+          }
 
-    public Overtime(Pay p)
-    {
-        payWithOvertime = p.getPay() * 1.5;
-    }
+          public class Overtime {
+              private double payWithOvertime;
 
-    public double getOvertimePay()
-    {
-        return payWithOvertime;
-    }
-}
-          </code>
+              public Overtime(Pay p) {
+                  payWithOvertime = p.getPay() * 1.5;
+              }
+
+              public double getOvertimePay() {
+                  return payWithOvertime;
+              }
+          }
+
         </program>
 
         <p>
@@ -308,12 +283,10 @@ public class Overtime
           Overtime.
         </p>
 
-        <program language="java">
-          <code>
-Pay one = new Pay(20.0);
-one.calculatePayWithOvertime();
-System.out.println(one.getPay());
-          </code>
+        <program>
+          Pay one = new Pay(20.0);
+          one.calculatePayWithOvertime();
+          System.out.println(one.getPay());
         </program>
 
         <p>
@@ -381,6 +354,7 @@ System.out.println(one.getPay());
 
   <subsection xml:id="coding-challenge-bank-account">
     <title>Coding Challenge: Bank Account</title>
+
     <figure align="left">
       <image source="Unit3-Class-Creation/Figures/dollarSign.png" width="18%" />
     </figure>
@@ -392,14 +366,14 @@ System.out.println(one.getPay());
       or an ATM (automatic teller machine) or on a phone app, the account holder
       can deposit (add) or withdraw (subtract) an amount from their account.
       Here’s a <url
-      href="https://www.youtube.com/watch?v=YpD1tJK9vIA&amp;ab_channel=Doyouknow%3F"
-      visual="https://www.youtube.com/watch?v=YpD1tJK9vIA&amp;ab_channel=Doyouknow%3F">video</url>
+      href="https://www.youtube.com/watch?v=YpD1tJK9vIA&amp;ab_channel=Doyouknow%3F">video</url>
       that shows the steps to use an ATM to withdraw money from a bank acount.
       Phone apps like Venmo and Paypal connect to your bank account or credit
       card to send and get money from businesses or friends.
     </p>
 
     <p>For this challenge, you can work in pairs to:</p>
+
     <p>
       <ul>
         <li>
@@ -463,122 +437,114 @@ System.out.println(one.getPay());
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class BankAccount 
-{
-    // 3 instance variables
+          public class BankAccount {
+              // 3 instance variables
 
-    // 2 constructors using this
+              // 2 constructors using this
 
+              // toString method
+              // deposit(amount) method
+              // withdraw(amount) method
+              // main method for testing
 
-    // toString method
-    // deposit(amount) method
-    // withdraw(amount) method
-    // main method for testing
+          }
 
-
-
-
-}
         </code>
+
         <tests>
- import static org.junit.Assert.*;
+          <![CDATA[
 
- import org.junit.*;
+          import static org.junit.Assert.*;
 
- import java.io.*;
+          import org.junit.*;
 
- public class RunestoneTests extends CodeTestHelper
- {
-     public RunestoneTests()
-     {
-         super("BankAccount");
-     }
+          import java.io.*;
 
-     @Test
-     public void test0()
-     {
-         String output = getMethodOutput("main");
-         String expect = "Something like:\nName 101 100.0\nName 101 200.0\nName 101 100.0";
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("BankAccount");
+              }
 
-         boolean passed = !output.contains("Method main does not exist");
+              @Test
+              public void test0() {
+                  String output = getMethodOutput("main");
+                  String expect = "Something like:\nName 101 100.0\nName 101 200.0\nName 101 100.0";
 
-         getResults(expect, output, "Expected output from main", passed);
-         assertTrue(passed);
-     }
+                  boolean passed = !output.contains("Method main does not exist");
 
-     @Test
-     public void test1()
-     {
-         String output = checkConstructor(2);
-         String expect = "pass";
+                  getResults(expect, output, "Expected output from main", passed);
+                  assertTrue(passed);
+              }
 
-         boolean passed = getResults(expect, output, "Checking 2-parameter constructor");
-         assertTrue(passed);
-     }
+              @Test
+              public void test1() {
+                  String output = checkConstructor(2);
+                  String expect = "pass";
 
-     @Test
-     public void test2()
-     {
-         String output = checkConstructor(3);
-         String expect = "pass";
+                  boolean passed = getResults(expect, output, "Checking 2-parameter constructor");
+                  assertTrue(passed);
+              }
 
-         boolean passed = getResults(expect, output, "Checking 3-parameter constructor");
-         assertTrue(passed);
-     }
+              @Test
+              public void test2() {
+                  String output = checkConstructor(3);
+                  String expect = "pass";
 
-     @Test
-     public void test01()
-     {
-         String expect = "3 Private";
-         String output = testPrivateInstanceVariables();
+                  boolean passed = getResults(expect, output, "Checking 3-parameter constructor");
+                  assertTrue(passed);
+              }
 
-         boolean passed = getResults(expect, output, "Checking Private Instance Variable(s)");
-         assertTrue(passed);
-     }
+              @Test
+              public void test01() {
+                  String expect = "3 Private";
+                  String output = testPrivateInstanceVariables();
 
-     @Test
-     public void test3()
-     {
-         String target = "public String toString()";
+                  boolean passed = getResults(expect, output, "Checking Private Instance Variable(s)");
+                  assertTrue(passed);
+              }
 
-         boolean passed = checkCodeContainsRegex("toString method", target);
-         assertTrue(passed);
-     }
+              @Test
+              public void test3() {
+                  String target = "public String toString()";
 
-     @Test
-     public void test41()
-     {
-         String target = "public void withdraw(*)";
+                  boolean passed = checkCodeContainsRegex("toString method", target);
+                  assertTrue(passed);
+              }
 
-         boolean passed = checkCodeContainsRegex("withdraw method", target);
-         assertTrue(passed);
-     }
+              @Test
+              public void test41() {
+                  String target = "public void withdraw(*)";
 
-     @Test
-     public void test42()
-     {
-         String target = "public void deposit(*)";
+                  boolean passed = checkCodeContainsRegex("withdraw method", target);
+                  assertTrue(passed);
+              }
 
-         boolean passed = checkCodeContainsRegex("deposit method", target);
-         assertTrue(passed);
-     }
+              @Test
+              public void test42() {
+                  String target = "public void deposit(*)";
 
-     @Test
-     public void test5()
-     {
-         String target = "this.";
-         String code = getCode();
+                  boolean passed = checkCodeContainsRegex("deposit method", target);
+                  assertTrue(passed);
+              }
 
-         int num = countOccurences(code, target);
+              @Test
+              public void test5() {
+                  String target = "this.";
+                  String code = getCode();
 
-         boolean passed = num &gt;= 6;
+                  int num = countOccurences(code, target);
 
-         getResults("6+", "" + num, "use of this.*", passed);
-         assertTrue(passed);
-     }
- }
+                  boolean passed = num >= 6;
+
+                  getResults("6+", "" + num, "use of this.*", passed);
+                  assertTrue(passed);
+              }
+          }
+
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -586,6 +552,7 @@ public class BankAccount
 
   <subsection xml:id="summary-35">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -613,9 +580,7 @@ public class BankAccount
         </li>
 
         <li>
-          <p>
-            (AP 3.9.A.3) Class methods do not have a <c>this</c> reference.
-          </p>
+          <p>(AP 3.9.A.3) Class methods do not have a <c>this</c> reference.</p>
         </li>
       </ul>
     </p>
@@ -623,52 +588,45 @@ public class BankAccount
 
   <subsection xml:id="ap-practice-23">
     <title>AP Practice</title>
+
     <activity label="AP-this">
       <statement>
         <p>Consider the following class definitions.</p>
-        <program language="java">
-          <code>
-public class Liquid
-{
-    private int currentTemp;
 
-    public Liquid(int ct)
-    {
-        currentTemp = ct;
-    }
+        <program>
+          public class Liquid {
+              private int currentTemp;
 
-    public int getCurrentTemp()
-    {
-        return currentTemp;
-    }
+              public Liquid(int ct) {
+                  currentTemp = ct;
+              }
 
-    public void addToJar(LiquidJar j)
-    {
-        j.addLiquid(this);
-    }
-}
+              public int getCurrentTemp() {
+                  return currentTemp;
+              }
 
-public class LiquidJar
-{
-    private int totalTemp;
+              public void addToJar(LiquidJar j) {
+                  j.addLiquid(this);
+              }
+          }
 
-    public LiquidJar()
-    {
-        totalTemp = 0;
-    }
+          public class LiquidJar {
+              private int totalTemp;
 
-    public void addLiquid(Liquid l)
-    {
-        totalTemp += l.getCurrentTemp();
-    }
+              public LiquidJar() {
+                  totalTemp = 0;
+              }
 
-    public int getTotalTemp()
-    {
-        return totalTemp;
-    }
-    // Constructor not shown.
-}
-          </code>
+              public void addLiquid(Liquid l) {
+                  totalTemp += l.getCurrentTemp();
+              }
+
+              public int getTotalTemp() {
+                  return totalTemp;
+              }
+              // Constructor not shown.
+          }
+
         </program>
 
         <p>
@@ -676,16 +634,14 @@ public class LiquidJar
           than Liquid or LiquidJar.
         </p>
 
-        <program language="java">
-          <code>
-Liquid water = new Liquid(50);
-Liquid milk = new Liquid(15);
+        <program>
+          Liquid water = new Liquid(50);
+          Liquid milk = new Liquid(15);
 
-LiquidJar j = new LiquidJar();
-water.addToJar(j);
-milk.addToJar(j);
-System.out.println(j.getTotalTemp());
-          </code>
+          LiquidJar j = new LiquidJar();
+          water.addToJar(j);
+          milk.addToJar(j);
+          System.out.println(j.getTotalTemp());
         </program>
 
         <p>
@@ -765,6 +721,7 @@ System.out.println(j.getTotalTemp());
 
   <subsection xml:id="progresscheck-u3-part2">
     <title>AP Classroom Progress Check Unit 3 Part 2</title>
+
     <p>
       This lesson ends the section for the College Board Unit 3 part 2. You
       should now do the review and practice lessons at the end of this unit and

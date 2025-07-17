@@ -180,10 +180,8 @@
           import java.awt.*;
           import java.util.*;
 
-          public class NullPointerTest
-          {
-              public static void main(String[] args)
-              {
+          public class NullPointerTest {
+              public static void main(String[] args) {
                   World habitat = new World(300, 300);
                   Turtle yertle = null;
 
@@ -193,6 +191,7 @@
                   habitat.show(true);
               }
           }
+
         </code>
 
         <tests>
@@ -202,16 +201,15 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void test1()
-              {
+              public void test1() {
                   String code = "new Turtle(habitat)";
                   boolean passed = checkCodeContains(code);
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -384,10 +382,8 @@
           import java.awt.*;
           import java.util.*;
 
-          public class TurtleTestMethods1
-          {
-              public static void main(String[] args)
-              {
+          public class TurtleTestMethods1 {
+              public static void main(String[] args) {
                   World world = new World(300, 300);
                   Turtle yertle = new Turtle(world);
 
@@ -398,6 +394,7 @@
                   world.show(true);
               }
           }
+
         </code>
 
         <tests>
@@ -409,41 +406,37 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
                   super("TurtleTestMethods1");
               }
 
               @Test
-              public void test1()
-              {
-                  boolean passed = codeChanged(
-                      "import java.awt.*;\n" +
-                      "import java.util.*;\n" +
-                      "\n" +
-                      "public class TurtleTestMethods1\n" +
-                      "{\n" +
-                      "    public static void main(String[] args)\n" +
-                      "    {\n" +
-                      "        World world = new World(300, 300);\n" +
-                      "        Turtle yertle = new Turtle(world);\n" +
-                      "\n" +
-                      "        yertle.forward(100);\n" +
-                      "        yertle.turnLeft();\n" +
-                      "        yertle.forward(75);\n" +
-                      "\n" +
-                      "        world.show(true);\n" +
-                      "    }\n" +
-                      "}\n"
-                  );
+              public void test1() {
+                  boolean passed =
+                          codeChanged(
+                                  "import java.awt.*;\n"
+                                          + "import java.util.*;\n"
+                                          + "\n"
+                                          + "public class TurtleTestMethods1\n"
+                                          + "{\n"
+                                          + "    public static void main(String[] args)\n"
+                                          + "    {\n"
+                                          + "        World world = new World(300, 300);\n"
+                                          + "        Turtle yertle = new Turtle(world);\n"
+                                          + "\n"
+                                          + "        yertle.forward(100);\n"
+                                          + "        yertle.turnLeft();\n"
+                                          + "        yertle.forward(75);\n"
+                                          + "\n"
+                                          + "        world.show(true);\n"
+                                          + "    }\n"
+                                          + "}\n");
                   assertTrue(passed);
               }
 
               @Test
-              public void test2()
-              {
+              public void test2() {
                   String code = getCode();
                   int numColors = countOccurences(code, "Color(");
 
@@ -453,8 +446,7 @@
               }
 
               @Test
-              public void test3()
-              {
+              public void test3() {
                   String code = getCode();
                   int numTurns = countOccurences(code, ".turn");
 
@@ -464,8 +456,7 @@
               }
 
               @Test
-              public void test4()
-              {
+              public void test4() {
                   String code = getCode();
                   int numTurns = countOccurences(code, ".turn(");
 
@@ -475,8 +466,7 @@
               }
 
               @Test
-              public void test5()
-              {
+              public void test5() {
                   String code = getCode();
                   int numForward = countOccurences(code, ".forward(");
 
@@ -485,6 +475,7 @@
                   assertTrue(passed);
               }
           }
+
 
           ]]>
         </tests>
@@ -660,28 +651,19 @@
           import java.awt.*;
           import java.util.*;
 
-          public class TurtleTestGetSet
-          {
-              public static void main(String[] args)
-              {
+          public class TurtleTestGetSet {
+              public static void main(String[] args) {
                   World world = new World(300, 300);
                   Turtle yertle = new Turtle(world);
-                  System.out.println(
-                          "Yertle is starting at: "
-                                  + yertle.getXPos()
-                                  + ", "
-                                  + yertle.getYPos());
+                  System.out.println("Yertle is starting at: " + yertle.getXPos() + ", " + yertle.getYPos());
                   yertle.forward(100);
                   yertle.turn(90);
                   yertle.forward(50);
-                  System.out.println(
-                          "Yertle has ended up at: "
-                                  + yertle.getXPos()
-                                  + ", "
-                                  + yertle.getYPos());
+                  System.out.println("Yertle has ended up at: " + yertle.getXPos() + ", " + yertle.getYPos());
                   world.show(true);
               }
           }
+
         </code>
 
         <tests>
@@ -691,16 +673,13 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
                   super("TurtleTestGetSet");
               }
 
               @Test
-              public void test1()
-              {
+              public void test1() {
                   String orig =
                           "import java.awt.*;\n"
                               + "import java.util.*;\n\n"
@@ -715,8 +694,8 @@
                               + "yertle.forward(100);\n"
                               + "yertle.turn(90);\n"
                               + "yertle.forward(50);\n"
-                              + "System.out.println(\"Yertle has ended up at: \" + yertle.getXPos() + \", \" +"
-                              + " yertle.getYPos());\n"
+                              + "System.out.println(\"Yertle has ended up at: \" + yertle.getXPos() + \", \""
+                              + " + yertle.getYPos());\n"
                               + "world.show(true);\n"
                               + "}\n"
                               + "}\n";
@@ -724,6 +703,7 @@
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -767,16 +747,13 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
                   super("TurtleArea");
               }
 
               @Test
-              public void test1()
-              {
+              public void test1() {
                   String actual = getMethodOutput("main");
                   String expected = "Yertle's area is: 270";
                   boolean passed = getResults(expected, actual, "Prints correct answer");
@@ -784,8 +761,7 @@
               }
 
               @Test
-              public void test2()
-              {
+              public void test2() {
                   String code = getCode();
                   String target = ".getHeight()";
 
@@ -798,8 +774,7 @@
               }
 
               @Test
-              public void test3()
-              {
+              public void test3() {
                   String code = getCode();
                   String target = ".getWidth()";
 
@@ -811,6 +786,7 @@
                   assertTrue(passed);
               }
           }
+
 
           ]]>
         </tests>
@@ -831,20 +807,18 @@
         <p>Consider the following class definition.</p>
 
         <program>
-          public class Circle
-          {
+          public class Circle {
               private double radius;
 
-              public Circle(double r)
-              {
+              public Circle(double r) {
                   radius = r;
               }
 
-              public double getArea()
-              {
+              public double getArea() {
                   return 3.14159 * radius * radius;
               }
           }
+
         </program>
 
         <p>Assume that the following code segment appears in a main method.</p>
@@ -857,8 +831,7 @@
         <p>
           What is printed as a result of executing the code segment? (If you get
           stuck, try this <url
-          href="https://pythontutor.com/visualize.html#code=public%20class%20Circle%0A%7B%0A%20%20%20%20private%20double%20radius%3B%0A%0A%20%20%20%20public%20Circle%28double%20r%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20radius%20%3D%20r%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20double%20getArea%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20return%203.14159%20*%20radius%20*%20radius%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20Circle%20c%20%3D%20new%20Circle%2810%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28c.getArea%28%29%29%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"
-          visual="https://pythontutor.com/visualize.html#code=public%20class%20Circle%0A%7B%0A%20%20%20%20private%20double%20radius%3B%0A%0A%20%20%20%20public%20Circle%28double%20r%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20radius%20%3D%20r%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20double%20getArea%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20return%203.14159%20*%20radius%20*%20radius%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20Circle%20c%20%3D%20new%20Circle%2810%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28c.getArea%28%29%29%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
+          href="https://pythontutor.com/visualize.html#code=public%20class%20Circle%0A%7B%0A%20%20%20%20private%20double%20radius%3B%0A%0A%20%20%20%20public%20Circle%28double%20r%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20radius%20%3D%20r%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20double%20getArea%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20return%203.14159%20*%20radius%20*%20radius%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20Circle%20c%20%3D%20new%20Circle%2810%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28c.getArea%28%29%29%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
           to see this code in action.)
         </p>
       </statement>
@@ -924,27 +897,24 @@
         <p>Consider the following class definition.</p>
 
         <program>
-          public class Rectangle
-          {
+          public class Rectangle {
               private int width;
               private int height;
 
-              public Rectangle(int w, int h)
-              {
+              public Rectangle(int w, int h) {
                   width = w;
                   height = h;
               }
 
-              public void resize(int amt)
-              {
+              public void resize(int amt) {
                   width += amt;
               }
 
-              public int getArea()
-              {
+              public int getArea() {
                   return width * height;
               }
           }
+
         </program>
 
         <p>Assume that the following code segment appears in a main method.</p>
@@ -958,8 +928,7 @@
         <p>
           What is printed as a result of executing the code segment? (If you get
           stuck, try this <url
-          href="https://pythontutor.com/render.html#code=public%20class%20Rectangle%0A%7B%0A%20%20%20%20private%20int%20width%3B%0A%20%20%20%20private%20int%20height%3B%0A%0A%20%20%20%20public%20Rectangle%28int%20w,%20int%20h%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20width%20%3D%20w%3B%0A%20%20%20%20%20%20%20%20height%20%3D%20h%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20void%20resize%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20width%20%2B%3D%205%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20int%20getArea%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20return%20width%20*%20height%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20Rectangle%20r%20%3D%20new%20Rectangle%2810,%2015%29%3B%0A%20%20%20%20%20%20%20%20r.resize%28%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28r.getArea%28%29%29%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=20&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"
-          visual="https://pythontutor.com/render.html#code=public%20class%20Rectangle%0A%7B%0A%20%20%20%20private%20int%20width%3B%0A%20%20%20%20private%20int%20height%3B%0A%0A%20%20%20%20public%20Rectangle%28int%20w,%20int%20h%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20width%20%3D%20w%3B%0A%20%20%20%20%20%20%20%20height%20%3D%20h%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20void%20resize%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20width%20%2B%3D%205%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20int%20getArea%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20return%20width%20*%20height%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20Rectangle%20r%20%3D%20new%20Rectangle%2810,%2015%29%3B%0A%20%20%20%20%20%20%20%20r.resize%28%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28r.getArea%28%29%29%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=20&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
+          href="https://pythontutor.com/render.html#code=public%20class%20Rectangle%0A%7B%0A%20%20%20%20private%20int%20width%3B%0A%20%20%20%20private%20int%20height%3B%0A%0A%20%20%20%20public%20Rectangle%28int%20w,%20int%20h%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20width%20%3D%20w%3B%0A%20%20%20%20%20%20%20%20height%20%3D%20h%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20void%20resize%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20width%20%2B%3D%205%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20int%20getArea%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20return%20width%20*%20height%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20Rectangle%20r%20%3D%20new%20Rectangle%2810,%2015%29%3B%0A%20%20%20%20%20%20%20%20r.resize%28%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28r.getArea%28%29%29%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=20&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
           to see this code in action.)
         </p>
       </statement>
@@ -1036,29 +1005,24 @@
 
       <program interactive="activecode">
         <code>
-          public class Rectangle
-          {
+          public class Rectangle {
               private int width;
               private int height;
 
-              public Rectangle(int w, int h)
-              {
+              public Rectangle(int w, int h) {
                   width = w;
                   height = h;
               }
 
-              public void resize(int amt)
-              {
+              public void resize(int amt) {
                   width += amt;
               }
 
-              public int getArea()
-              {
+              public int getArea() {
                   return width * height;
               }
 
-              public static void main(String[] args)
-              {
+              public static void main(String[] args) {
                   // 1. Create a rectangle with width 5 and height 10
 
                   // 2. Call the resize method to add 10 to its width
@@ -1067,45 +1031,47 @@
 
               }
           }
+
         </code>
 
         <tests>
           import static org.junit.Assert.*;
+
           import org.junit.*;
+
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
-              public void testMain() throws IOException
-              {
+              public void testMain() throws IOException {
                   String output = getMethodOutput("main");
                   String expect = "150";
                   boolean passed = getResults(expect, output, "Expected output from main");
                   assertTrue(passed);
               }
+
               @Test
-              public void test1()
-              {
+              public void test1() {
                   String code = "new Rectangle(5,10)";
                   boolean passed = checkCodeContains(code);
                   assertTrue(passed);
               }
+
               @Test
-              public void test2()
-              {
+              public void test2() {
                   String code = ".resize(10)";
                   boolean passed = checkCodeContains(code);
                   assertTrue(passed);
               }
+
               @Test
-              public void test3()
-              {
+              public void test3() {
                   String code = ".getArea()";
                   boolean passed = checkCodeContains(code);
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -1115,30 +1081,26 @@
         <p>
           What does the following code print out? (If you get stuck, try this
           <url
-          href="http://www.pythontutor.com/visualize.html#code=public%20class%20MethodTrace%20%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20public%20int%20square%28int%20x%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20x*x%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20int%20divide%28int%20x,%20int%20y%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20x/y%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20MethodTrace%20traceObj%20%3D%20new%20MethodTrace%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%20traceObj.square%282%29%20%2B%20traceObj.divide%286,2%29%20%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%7D&amp;cumulative=false&amp;curInstr=16&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"
-          visual="http://www.pythontutor.com/visualize.html#code=public%20class%20MethodTrace%20%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20public%20int%20square%28int%20x%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20x*x%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20int%20divide%28int%20x,%20int%20y%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20x/y%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20MethodTrace%20traceObj%20%3D%20new%20MethodTrace%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%20traceObj.square%282%29%20%2B%20traceObj.divide%286,2%29%20%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%7D&amp;cumulative=false&amp;curInstr=16&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
+          href="http://www.pythontutor.com/visualize.html#code=public%20class%20MethodTrace%20%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20public%20int%20square%28int%20x%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20x*x%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20int%20divide%28int%20x,%20int%20y%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20x/y%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20MethodTrace%20traceObj%20%3D%20new%20MethodTrace%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%20traceObj.square%282%29%20%2B%20traceObj.divide%286,2%29%20%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%7D&amp;cumulative=false&amp;curInstr=16&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
           to see this code in action.)
         </p>
 
         <program>
-          public class MethodTrace
-          {
-              public int square(int x)
-              {
+          public class MethodTrace {
+              public int square(int x) {
                   return x * x;
               }
 
-              public int divide(int x, int y)
-              {
+              public int divide(int x, int y) {
                   return x / y;
               }
 
-              public static void main(String[] args)
-              {
+              public static void main(String[] args) {
                   MethodTrace traceObj = new MethodTrace();
                   System.out.println(traceObj.square(2) + traceObj.divide(6, 2));
               }
           }
+
         </program>
       </statement>
 
@@ -1228,10 +1190,8 @@
           import java.awt.*;
           import java.util.*;
 
-          public class TurtleTestDistance
-          {
-              public static void main(String[] args)
-              {
+          public class TurtleTestDistance {
+              public static void main(String[] args) {
                   World world = new World(300, 300);
                   Turtle yertle = new Turtle(world);
 
@@ -1242,6 +1202,7 @@
                   world.show(true);
               }
           }
+
         </code>
 
         <tests>
@@ -1253,16 +1214,13 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
                   super("TurtleTestDistance");
               }
 
               @Test
-              public void test2()
-              {
+              public void test2() {
                   String code = getCode();
                   int num = countOccurences(code, ".getXPos()");
 
@@ -1272,8 +1230,7 @@
               }
 
               @Test
-              public void test3()
-              {
+              public void test3() {
                   String code = getCode();
                   int num = countOccurences(code, ".getYPos()");
 
@@ -1283,8 +1240,7 @@
               }
 
               @Test
-              public void test4()
-              {
+              public void test4() {
                   String code = getCode();
                   int num = countOccurences(code, ".getDistance(");
 
@@ -1294,8 +1250,7 @@
               }
 
               @Test
-              public void test1()
-              {
+              public void test1() {
                   String code = getCode();
                   int num = countOccurences(code, ".getDistance(0,0)");
 
@@ -1304,6 +1259,7 @@
                   assertTrue(passed);
               }
           }
+
 
           ]]>
         </tests>
@@ -1353,20 +1309,17 @@
           import java.awt.*;
           import java.util.*;
 
-          public class TurtleHouse
-          {
-              public static void main(String[] args)
-              {
+          public class TurtleHouse {
+              public static void main(String[] args) {
                   World world = new World(300, 300);
                   Turtle t = new Turtle(world);
                   // Use t to draw a house
-
-
 
                   // keep this line at the end of your code to show the drawing
                   world.show(true);
               }
           }
+
         </code>
 
         <tests>
@@ -1378,16 +1331,13 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
                   super("TurtleHouse");
               }
 
               @Test
-              public void test2()
-              {
+              public void test2() {
                   String code = getCode();
                   int num = countOccurences(code, "moveTo(");
 
@@ -1397,8 +1347,7 @@
               }
 
               @Test
-              public void test3()
-              {
+              public void test3() {
                   String code = getCode();
                   int num = countOccurences(code, ".penUp()");
 
@@ -1408,8 +1357,7 @@
               }
 
               @Test
-              public void test4()
-              {
+              public void test4() {
                   String code = getCode();
                   int num = countOccurences(code, ".penDown(");
 
@@ -1419,8 +1367,7 @@
               }
 
               @Test
-              public void test5()
-              {
+              public void test5() {
                   String code = getCode();
                   int numTurns = countOccurences(code, ".turn");
 
@@ -1430,8 +1377,7 @@
               }
 
               @Test
-              public void test6()
-              {
+              public void test6() {
                   String code = getCode();
                   int numForward = countOccurences(code, ".forward(");
 
@@ -1440,6 +1386,7 @@
                   assertTrue(passed);
               }
           }
+
 
           ]]>
         </tests>
@@ -1534,27 +1481,24 @@
         <p>Consider the following class definition.</p>
 
         <program>
-          public class Party
-          {
+          public class Party {
               private int numInvited;
               private boolean partyCancelled;
 
-              public Party()
-              {
+              public Party() {
                   numInvited = 1;
                   partyCancelled = false;
               }
 
-              public void inviteFriend()
-              {
+              public void inviteFriend() {
                   numInvited++;
               }
 
-              public void cancelParty()
-              {
+              public void cancelParty() {
                   partyCancelled = true;
               }
           }
+
         </program>
 
         <p>
@@ -1628,25 +1572,22 @@
         <p>Consider the following class definition.</p>
 
         <program>
-          public class Cat
-          {
-              public void meow()
-              {
+          public class Cat {
+              public void meow() {
                   System.out.print("Meow ");
               }
 
-              public void purr()
-              {
+              public void purr() {
                   System.out.print("purr");
               }
 
-              public void welcomeHome()
-              {
+              public void welcomeHome() {
                   purr();
                   meow();
               }
               /* Constructors not shown */
           }
+
         </program>
 
         <p>
@@ -1733,27 +1674,24 @@
         <p>Consider the following class definition.</p>
 
         <program>
-          public class Liquid
-          {
+          public class Liquid {
               private double boilingPoint;
               private double freezingPoint;
               private double currentTemp;
 
-              public Liquid()
-              {
+              public Liquid() {
                   currentTemp = 50;
               }
 
-              public void lowerTemp()
-              {
+              public void lowerTemp() {
                   currentTemp -= 10;
               }
 
-              public double getTemp()
-              {
+              public double getTemp() {
                   return currentTemp;
               }
           }
+
         </program>
 
         <p>
@@ -1770,8 +1708,7 @@
         <p>
           What is printed as a result of executing the code segment? (If you get
           stuck, try this <url
-          href="https://pythontutor.com/render.html#code=public%20class%20Liquid%20%7B%0A%20%20%0A%20%20%20%20private%20double%20boilingPoint%3B%0A%20%20%20%20private%20double%20freezingPoint%3B%0A%20%20%20%20private%20double%20currentTemp%3B%0A%0A%20%20%20%20public%20Liquid%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20currentTemp%20%3D%2050%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20void%20lowerTemp%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20currentTemp%20-%3D%2010%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20double%20getTemp%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20return%20currentTemp%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20Liquid%20water%20%3D%20new%20Liquid%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20water.lowerTemp%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20System.out.println%28water.getTemp%28%29%29%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=18&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"
-          visual="https://pythontutor.com/render.html#code=public%20class%20Liquid%20%7B%0A%20%20%0A%20%20%20%20private%20double%20boilingPoint%3B%0A%20%20%20%20private%20double%20freezingPoint%3B%0A%20%20%20%20private%20double%20currentTemp%3B%0A%0A%20%20%20%20public%20Liquid%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20currentTemp%20%3D%2050%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20void%20lowerTemp%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20currentTemp%20-%3D%2010%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20double%20getTemp%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20return%20currentTemp%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20Liquid%20water%20%3D%20new%20Liquid%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20water.lowerTemp%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20System.out.println%28water.getTemp%28%29%29%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=18&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
+          href="https://pythontutor.com/render.html#code=public%20class%20Liquid%20%7B%0A%20%20%0A%20%20%20%20private%20double%20boilingPoint%3B%0A%20%20%20%20private%20double%20freezingPoint%3B%0A%20%20%20%20private%20double%20currentTemp%3B%0A%0A%20%20%20%20public%20Liquid%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20currentTemp%20%3D%2050%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20void%20lowerTemp%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20currentTemp%20-%3D%2010%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20double%20getTemp%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20return%20currentTemp%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20Liquid%20water%20%3D%20new%20Liquid%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20water.lowerTemp%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20System.out.println%28water.getTemp%28%29%29%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=18&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
           to see this code in action.)
         </p>
       </statement>

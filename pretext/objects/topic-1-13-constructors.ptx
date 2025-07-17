@@ -303,10 +303,8 @@
           import java.awt.*;
           import java.util.*;
 
-          public class TurtleConstructorTest
-          {
-              public static void main(String[] args)
-              {
+          public class TurtleConstructorTest {
+              public static void main(String[] args) {
                   // Change the World constructor to 300x400
                   World world1 = new World(300, 300);
 
@@ -318,6 +316,7 @@
                   world1.show(true);
               }
           }
+
         </code>
 
         <tests>
@@ -327,16 +326,13 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
                   super("TurtleConstructorTest");
               }
 
               @Test
-              public void test1()
-              {
+              public void test1() {
                   String orig =
                           "import java.awt.*;\n"
                               + "import java.util.*;\n\n"
@@ -357,6 +353,7 @@
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -383,8 +380,7 @@
 
     <p>
       Watch the <url
-      href="https://www.youtube.com/watch?v=5fpjgXAV2BU&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis"
-      visual="https://www.youtube.com/watch?v=5fpjgXAV2BU&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
+      href="https://www.youtube.com/watch?v=5fpjgXAV2BU&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
       below about null.
     </p>
 
@@ -814,16 +810,13 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
                   super("TurtleConstructorDebug");
               }
 
               @Test
-              public void test1()
-              {
+              public void test1() {
                   String orig =
                           "import java.awt.*;\n"
                                   + "import java.util.*;\n\n"
@@ -845,6 +838,7 @@
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -942,10 +936,8 @@
           import java.awt.*;
           import java.util.*;
 
-          public class CustomTurtleRunner
-          {
-              public static void main(String[] args)
-              {
+          public class CustomTurtleRunner {
+              public static void main(String[] args) {
                   World world1 = new World(400, 400);
 
                   // 1. Change the constructor call below to create a large
@@ -965,8 +957,7 @@
               }
           }
 
-          class CustomTurtle extends Turtle
-          {
+          class CustomTurtle extends Turtle {
               private int x;
               private int y;
               private World w;
@@ -980,15 +971,13 @@
                *
                * @param modelDisplay the thing that displays the model or world
                */
-              public CustomTurtle(ModelDisplay modelDisplay)
-              {
+              public CustomTurtle(ModelDisplay modelDisplay) {
                   // let the parent constructor handle it
                   super(modelDisplay);
               }
 
               /**
-               * Constructor that takes the model display to draw it on and custom
-               * colors and size
+               * Constructor that takes the model display to draw it on and custom colors and size
                *
                * @param m the world
                * @param body : the body color
@@ -996,9 +985,7 @@
                * @param w: width
                * @param h: height
                */
-              public CustomTurtle(
-                      ModelDisplay m, Color body, Color shell, int w, int h)
-                      {
+              public CustomTurtle(ModelDisplay m, Color body, Color shell, int w, int h) {
                   // let the parent constructor handle it
                   super(m);
                   bodycolor = body;
@@ -1012,8 +999,8 @@
               }
 
               /**
-               * Constructor that takes the x and y and a model display to draw it on
-               * and custom colors and size
+               * Constructor that takes the x and y and a model display to draw it on and custom colors and
+               * size
                *
                * @param x the starting x position
                * @param y the starting y position
@@ -1023,15 +1010,7 @@
                * @param w: width
                * @param h: height
                */
-              public CustomTurtle(
-                      int x,
-                      int y,
-                      ModelDisplay m,
-                      Color body,
-                      Color shell,
-                      int w,
-                      int h)
-                      {
+              public CustomTurtle(int x, int y, ModelDisplay m, Color body, Color shell, int w, int h) {
                   // let the parent constructor handle it
                   super(x, y, m);
                   bodycolor = body;
@@ -1044,6 +1023,7 @@
                   setWidth(w);
               }
           }
+
         </code>
 
         <tests>
@@ -1053,16 +1033,13 @@
 
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
                   super("CustomTurtleRunner");
               }
 
               @Test
-              public void test1()
-              {
+              public void test1() {
                   String target = "new CustomTurtle(150,300,world1, Color.green, Color.blue, 150, 200)";
                   boolean passed =
                           checkCodeContains(
@@ -1073,8 +1050,7 @@
               }
 
               @Test
-              public void test2()
-              {
+              public void test2() {
                   String target = "new CustomTurtle(350,200,world1, Color.red, Color.yellow, 25, 50)";
                   boolean passed =
                           checkCodeContains(
@@ -1084,6 +1060,7 @@
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </project>
@@ -1310,29 +1287,27 @@
         </p>
 
         <program>
-          public class Movie
-          {
+          public class Movie {
               private String title;
               private String director;
               private double rating;
               private boolean inTheaters;
 
-              public Movie(String t, String d, double r)
-              {
+              public Movie(String t, String d, double r) {
                   title = t;
                   director = d;
                   rating = r;
                   inTheaters = false;
               }
 
-              public Movie(String t)
-              {
+              public Movie(String t) {
                   title = t;
                   director = "unknown";
                   rating = 0.0;
                   inTheaters = false;
               }
           }
+
         </program>
       </statement>
 
