@@ -3,7 +3,7 @@
 set -euo pipefail
 
 cat <<EOF > pretext/files.txt
--*- mode: text; eval: (jumper-line-mode); -*-
+-*- mode: text; mode: jumper-line; -*-
 
 EOF
 
