@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-1-15-strings">
-  <title>Strings</title>
+  <title>Manipulating strings</title>
 
   <introduction>
     <idx>String</idx>
@@ -9,31 +9,31 @@
     <idx>reference</idx>
     <idx><h>String</h><h>definition</h></idx>
     <p>
-      The <c>String</c> datatype is another reference type. Like most reference
-      types in Java other than arrays, <c>String</c> is defined by a
-      <term>class</term>. We’ll look at the structure of classes and how to
-      write our own in <xref ref="topic-3-3-anatomy-of-class" />. But
-      <c>String</c> gets a bit of extra love from Java compared to pretty much
-      all other classes. For one thing it’s one of the handful of classes in the
-      <c>java.lang</c> package which means its available by default in all Java
-      programs. But it is also special in that it is the only class in Java that
-      supports an operator other than <c>==</c> and <c>!=</c>, namely the
-      <c>+</c> string concatenation operator. And it’s the only class in Java
-      with a literal value syntax that lets us write <c>String</c> values in our
-      programs like <c>"hello, world!</c>.
+      We first encoutered the <c>String</c> type in <xref ref="text-output" />
+      since we have to use strings if we want to generate text output. In that
+      section we mostly looked at how to write <c>String</c> literals in double
+      quotes and how to use the concatenation operator <c>+</c> to combine
+      literal <c>String</c> values with the <c>String</c> representations of
+      other kinds of values.
+    </p>
+
+    <p>
+      In this section we’ll go into a few more details about the concatenation
+      operator and then look at <term>instance methods</term> that we can use to
+      slice and dice the text of strings and to compare strings to each other.
     </p>
   </introduction>
 
   <subsection>
-    <title>More string concatenation</title>
+    <title>A bit more string concatenation</title>
 
     <idx><h>String</h><h>append</h></idx>
     <p>
-      We first used string concatention in <xref ref="text-output" /> to
-      generate formatted strings to be printed out. As we saw then a <c>+</c>
-      expression where one of the values is a <c>String</c> results in a new
-      <c>String</c> formed by concatenating (smooshing together) the string
-      representation of both values.
+      We used string concatention in <xref ref="text-output" /> to generate
+      formatted strings to be printed out. As we saw then a <c>+</c> expression
+      where one of the values is a <c>String</c> results in a new <c>String</c>
+      formed by concatenating (smooshing together) the string representation of
+      both values.
     </p>
 
     <p>
