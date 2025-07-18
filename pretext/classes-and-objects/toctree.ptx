@@ -9,18 +9,15 @@
     <idx>instance</idx>
     <idx>attribute</idx>
     <idx>behavior</idx>
-
-    <p>
-      Now we finally get to the heart of Java: classes and objects.
-    </p>
+    <p>Now we finally get to the heart of Java: classes and objects.</p>
 
     <p>
       Java is an <term>object-oriented</term> programming language. That means
       that one of the primary ways of designing and organizing a Java program is
-      in terms of <term>objects</term>. Any value in Java that is not a
-      primitive type is an object which means arrays are technically objects.
-      But usually when we talk about objects we are talking about values defined
-      by <term>classes</term>.
+      in terms of <term>objects</term>. All values in Java that are not
+      primitive are objects. Arrays are not primitive, so they are one kind of
+      object. But usually when we talk about objects we are talking about values
+      defined by <term>classes</term>, the topic of this unit.
     </p>
 
     <p>
@@ -63,13 +60,8 @@
   <xi:include href="./instance-variables.ptx" />
   <xi:include href="./topic-3-4-constructors.ptx" />
   <xi:include href="./topic-3-5-methods.ptx" />
-
   <xi:include href="./topic-3-6-methods-references.ptx" />
-  <xi:include href="./equality.ptx" />
-
   <xi:include href="./topic-3-8-scope-access.ptx" />
   <xi:include href="./topic-3-9-this.ptx" />
   <xi:include href="./topic-3-7-static-vars-methods.ptx" />
-
-
 </chapter>

@@ -6,7 +6,7 @@
   <introduction>
     <idx><h>class</h><h>instance variables</h></idx>
     <p>
-      One way to think about classes that can help us understand the purpose of
+      Another metaphor for classes that can help us understand the purpose of
       defining instance variables is to think of a class as like a blueprint for
       a house. The blueprint is not a house but it defines the structure of a
       house and if we build two houses from the same blueprint they will each be
@@ -51,7 +51,7 @@
     </p>
   </introduction>
 
-<subsection>
+  <subsection>
     <title>Referring to instance variables</title>
 
     <p>
@@ -61,9 +61,13 @@
     </p>
 
     <program>
-        public boolean canVote() {
-          return age &gt;= 18;
-        }
+      <![CDATA[
+
+      public boolean canVote() {
+        return age >= 18;
+      }
+
+      ]]>
     </program>
 
     <p>
@@ -80,9 +84,9 @@
     </p>
 
     <program>
-        public void greet(Person other) {
-          System.out.println("Hello " + other.name + ", I'm " + name + ".");
-        }
+      public void greet(Person other) {
+        System.out.println("Hello " + other.name + ", I'm " + name + ".");
+      }
     </program>
 
     <p>
@@ -140,8 +144,8 @@
     <p>
       The idiom <c>this.x = x</c> is commonly used in constructors like the one
       above so that we can use the same name for parameters as the instance
-      variables they are going to be assigned to. Some programmers prefer to
-      use different, often shorter, names for parameters to avoid having to use
+      variables they are going to be assigned to. Some programmers prefer to use
+      different, often shorter, names for parameters to avoid having to use
       <c>this</c> but that just means they have to come up with twice as many
       names. It’s simpler and idiomatic to use the same name and to disambiguate
       with <c>this</c>.
@@ -160,6 +164,7 @@
 
     <activity>
       <title>Spellcheck</title>
+
       <statement>
         <p>
           You do need to watch out that you don’t misspell your parameter names.
@@ -191,9 +196,7 @@
         </p>
       </answer>
     </activity>
-
   </subsection>
-
 
   <subsection>
     <title>Making instance variables <c>private</c></title>
@@ -320,7 +323,6 @@
                   p2.print();
               }
           }
-
         </code>
 
         <tests>
@@ -340,12 +342,8 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
   </subsection>
-
-
-
 </section>
