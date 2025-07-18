@@ -64,4 +64,5 @@
   <xi:include href="./topic-3-8-scope-access.ptx" />
   <xi:include href="./topic-3-9-this.ptx" />
   <xi:include href="./topic-3-7-static-vars-methods.ptx" />
+  <xi:include href="./turtles.ptx" />
 </chapter>

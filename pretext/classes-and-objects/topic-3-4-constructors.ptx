@@ -96,12 +96,6 @@
     </p>
 
     <p>
-      Most constructors will be marked <c>public</c>. But note that they are
-      never <c>static</c>. That’s only an option for methods and variables which
-      will discuss more in <xref ref="topic-3-7-static-vars-methods" />.
-    </p>
-
-    <p>
       Constructor signatures are an important part of the API when we use a
       class from a library someone else has written. In order to use most
       classes, such as the <c>Turtle</c> class we first used in <xref
@@ -115,26 +109,110 @@
       instance, in a real <c>Person</c> class, we might document that the
       <c>age</c> argument has to be a positive number.
     </p>
+
+    <note>
+
+      <p>
+        Like classes, constructors will usually be made <c>public</c>. As with
+        making a class <c>public</c> it means the constructor can be invoked from
+        any code anywhere.
+      </p>
+
+      <p>
+        Constructors can also be <c>private</c> and sometimes that’s useful to
+        control how instances of a class are created. And there is a level of
+        accessibility inbetween <c>public</c> and <c>private</c> that requires a
+        deeper understanding of Java packages than we want to get into. But both
+        of those options are well outside the AP curriculum. For the purposes of
+        the AP exam classes and their constructors are always <c>public</c>.
+      </p>
+
+      <p>
+        Constructors cannot have the <c>static</c> modifier that we’ve used with
+        methods until this unit. That’s only an option for methods and variables
+        which will discuss more in <xref ref="topic-3-7-static-vars-methods" />.
+      </p>
+    </note>
   </subsection>
 
   <subsection>
     <title>Overloading constructors</title>
     <p>
-      Constructors are said to be <term>overloaded</term> when there are
-      multiple constructors, but the constructors have different signatures.
-      They can differ in the number, type, and/or order of parameters. For
-      example, here are the two constructors for the <c>Turtle</c> class that
-      take different parameters:
+      It’s also possible to define more than one constructor in a class. As long
+      as they all have different signatures, meaning the number of types of
+      their parameters are different, we can have as many constructors as we
+      want. Such constructors are said to be <term>overloaded</term>.
     </p>
 
-    <figure align="center">
-      <caption>Turtle Class Constructor Signatures and Parameters</caption>
+    <p>
+      One common reason to write overloaded constructors is when some of the
+      instance variables in the class have reasonable default values. In such
+      cases we can write one constructor that takes arguments for all the
+      instance variables that need to be initialized and then write other
+      constructors that omit certain parameters and instead initialize the
+      unspecified variables to default values.
+    </p>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/TurtleClassDefn.png" width="100%" alt="Turtle Class Constructor Signatures and Parameters" />
-    </figure>
+    <p>
+      For instance, in our <c>Person</c> class, suppose we wanted to be able to
+      make objects to represent anonymous people but we wanted all anonymous
+      people to be named the same thing: <c>"Anonymous"</c>. Rather than
+      requiring all the code that wants to construct an anonymous <c>Person</c>
+      to pass that specific <c>String</c> to the two-argument constructor we’ve
+      already written, we can write a new constructor like this:
+    </p>
+
+    <program>
+      public Person(int age) {
+          this.name = "Anonymous";
+          this.age = age;
+      }
+    </program>
+
+    <p>
+      With that constructor added to the class, writing <c>new Person(20)</c> is
+      the same as writing <c>new Person("Anonymous", 20)</c>.
+    </p>
+
+    <p>
+      However there’s an even better way to write that constructor, using the
+      <c>this</c> keyword, that we’ve previously used to access instance
+      variables. In the context of a constructor, we can use <c>this</c>
+      followed by an argument list in parentheses to invoke another
+      constructor’s code to let it initialize the object. So we could write that
+      one-argument constructor like this:
+    </p>
+
+    <program>
+      public Person(int age) {
+          this("Anonymous", age);
+      }
+    </program>
+
+    <p>
+      Then when we evaluate <c>new Person(20)</c> the argument <c>20</c> is
+      passed to that constructor which then passes it along to the original
+      constructor with the <c>"Anonymous"</c> as the name argument. In this case
+      it doesn’t simplify things much since both constructors are so simple. But
+      in more complicated classes that do more complicated initialization it
+      lets us write the complicated stuff in just one place.
+    </p>
+
+
 
     <activity label="TurtleClass1">
       <statement>
+        <p>
+          The following digram shows the signatures of two of the constructors
+          in the <c>Turtle</c> class.
+        </p>
+
+        <figure align="center">
+          <caption>Turtle Class Constructor Signatures and Parameters</caption>
+
+          <image source="Unit1-Using-Objects-and-Methods/Figures/TurtleClassDefn.png" width="100%" alt="Turtle Class Constructor Signatures and Parameters" />
+        </figure>
+
         <p>
           Given the Turtle class in the figure above and a World object world1,
           which of the following code segments will correctly create an instance
@@ -1065,578 +1143,7 @@
     </project>
   </subsection>
 
-
-  <subsection>
-    <title>Old constructors intro</title>
-    <idx><h>class</h><h>constructor</h></idx>
-    <idx>constructors</idx>
-    <idx>new</idx>
-    <p>
-      A Java class defines what objects of the class know (attributes) and what
-      they can do (behaviors). Each class has <term>constructors</term> which
-      are used to initialize the attributes in a newly created object.
-      <term>Constructors</term> have the same name as the class.
-    </p>
-
-    <p>
-      A new object is created with the <c>new</c> keyword followed by the class
-      name which is a call to the constructor (<c>new ClassName()</c>). For
-      example, <c>new World()</c> creates and initializes a new object of the
-      <c>World</c> class, and <c>new Turtle(habitat)</c> creates and initializes
-      a new <c>Turtle</c> object in the World habitat. The new object is saved
-      in a variable of a <term>reference type</term> which holds an object
-      reference or <c>null</c> if there is no object.
-    </p>
-
-    <program>
-      // To create a new object and call a constructor write:
-      // ClassName variableName = new ClassName(arguments);
-      World habitat = new World();    // create a new World object
-      Turtle t = new Turtle(habitat); // create a new Turtle object
-    </program>
-  </subsection>
-
-  <subsection xml:id="the-world-class-constructors">
-    <title>The World Class Constructors</title>
-
-    <p>
-      There can be more than one constructor defined in a class. This is called
-      <term>overloading</term> the constructor. The <c>World</c> class has the 2
-      constructors seen below. One doesn’t take any arguments and creates a
-      default sized world and one takes the world’s width and height arguments
-      to create a world of a specific size. An <term>argument</term> is a value
-      that is passed into a constructor. Arguments are used to initialize the
-      attributes of an object, in this case, the size of the world.
-    </p>
-
-    <figure align="center">
-      <caption>Two World constructors</caption>
-
-      <image source="Unit1-Using-Objects-and-Methods/Figures/worldConstructors.png" width="63%" alt="Two World constructors" />
-    </figure>
-
-    <p>
-      The <term>no-argument constructor</term> <c>World()</c>, with no arguments
-      inside the parentheses following the name of the constructor, creates a
-      graphical window with a default size of 640x480 pixels. No-argument
-      constructors usually set the attributes of the object to default values.
-      The second <c>World(int width, int height)</c> constructor takes two
-      integer arguments, and initializes the <c>World</c> object’s width and
-      height to them, for example <c>new World(300,400)</c> creates a 300x400
-      pixel world.
-    </p>
-
-    <program>
-      World world1 = new World(); // creates a default size 640x480 world
-      World world2 = new World(300,400); // creates a 300x400 world
-    </program>
-
-    <activity label="mcq_world_constructor">
-      <statement>
-        <p>
-          Which of these is valid syntax for creating and initializing a World
-          object?
-        </p>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>World w = null;</p>
-          </statement>
-
-          <feedback>
-            <p>
-              This declares a variable w that refers to a World object, but it
-              doesn't create a World object or initialize it.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>World w = new World;</p>
-          </statement>
-
-          <feedback>
-            <p>You must include parentheses () to call a constructor.</p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>World w = new World();</p>
-          </statement>
-
-          <feedback>
-            <p>
-              Correct, use the new keyword followed by the classname and
-              parentheses to create a new object and call the constructor.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>World w = World();</p>
-          </statement>
-
-          <feedback>
-            <p>You must use the new keyword to create a new object.</p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>World w = new World(300,500);</p>
-          </statement>
-
-          <feedback>
-            <p>
-              Correct, this constructor call creates a new World object with the
-              size 300x500 pixels.
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="mcq_overload_constructor">
-      <statement>
-        <p>Which of these is overloading the constructor?</p>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>When a constructor takes one argument.</p>
-          </statement>
-
-          <feedback>
-            <p>
-              For a constructor to be overloaded there must be more than one
-              constructor.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>When a constructor takes more than one argument.</p>
-          </statement>
-
-          <feedback>
-            <p>
-              For a constructor to be overloaded there must be more than one
-              constructor.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>When one constructor is defined in a class.</p>
-          </statement>
-
-          <feedback>
-            <p>
-              For a constructor to be overloaded there must be more than one
-              constructor.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>When more than one constructor is defined in a class.</p>
-          </statement>
-
-          <feedback>
-            <p>
-              Overloading means that there is more than one constructor. The
-              parameter lists must differ in either number, order, or type of
-              parameters.
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="the-turtle-class-constructors">
-    <title>The Turtle Class Constructors</title>
-
-    <p>
-      The <c>Turtle</c> class also has multiple constructors, although it always
-      requires a world as an argument in order to have a place to draw the
-      turtle. The default location for the turtle is right in the middle of the
-      world.
-    </p>
-
-    <p>
-      There is another <c>Turtle</c> constructor that places the turtle at a
-      certain (x,y) location in the world, for example at the coordinate (50,
-      100) below.
-    </p>
-
-    <program>
-      Turtle t1 = new Turtle(world1);
-      Turtle t2 = new Turtle(50, 100, world1);
-    </program>
-
-    <note>
-      <p>
-        Notice that the order of the arguments matter. The <c>Turtle</c>
-        constructor takes <c>(x,y,world)</c> as arguments in that order. If you
-        mix up the order of the arguments it will cause an error, because the
-        arguments will not be the data types that it expects. This is one reason
-        why programming languages have data types – to allow for error-checking.
-      </p>
-    </note>
-
-    <activity label="const_turtle">
-      <statement>
-        <p>
-          Which of these is valid syntax for creating and initializing a Turtle
-          object in world1?
-        </p>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>Turtle t = Turtle(world1);</p>
-          </statement>
-
-          <feedback>
-            <p>You must use the new keyword to create a new Turtle.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>Turtle t = new Turtle();</p>
-          </statement>
-
-          <feedback>
-            <p>All turtle constructors take a world as an argument.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>Turtle t = new Turtle(world1, 100, 100);</p>
-          </statement>
-
-          <feedback>
-            <p>
-              The order of the parameters matter, so this would cause a syntax
-              error.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>Turtle t = new Turtle(100, 100, world1);</p>
-          </statement>
-
-          <feedback>
-            <p>
-              This creates a new Turtle object in the passed world at location
-              (100,100)
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="TurtleConstructorTest">
-      <statement>
-        <p>
-          Try changing the code below to create a <c>World</c> object with
-          300x400 pixels. Where is the turtle placed by default? What arguments
-          do you need to pass to the <c>Turtle</c> constructor to put the turtle
-          at the top right corner? Experiment and find out. What happens if you
-          mix up the order of the arguments?
-        </p>
-      </statement>
-
-      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
-        <code>
-          import java.awt.*;
-          import java.util.*;
-
-          public class TurtleConstructorTest {
-              public static void main(String[] args) {
-                  // Change the World constructor to 300x400
-                  World world1 = new World(300, 300);
-
-                  // Change the Turtle constructor to put the turtle in the top right
-                  // corner
-                  Turtle t1 = new Turtle(world1);
-
-                  t1.turnLeft();
-                  world1.show(true);
-              }
-          }
-
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("TurtleConstructorTest");
-              }
-
-              @Test
-              public void test1() {
-                  String orig =
-                          "import java.awt.*;\n"
-                              + "import java.util.*;\n\n"
-                              + "public class TurtleConstructorTest\n"
-                              + "{\n"
-                              + "  public static void main(String[] args)\n"
-                              + "  {\n"
-                              + "      // Change the World constructor to 300x400\n"
-                              + "      World world1 = new World(300,300);\n\n"
-                              + "      // Change the Turtle constructor to put the turtle in the top right"
-                              + " corner\n"
-                              + "      Turtle t1 = new Turtle(world1);\n\n"
-                              + "      t1.turnLeft();\n"
-                              + "      world1.show(true);\n"
-                              + "  }\n"
-                              + "}\n";
-                  boolean passed = codeChanged(orig);
-                  assertTrue(passed);
-              }
-          }
-
-        </tests>
-      </program>
-    </activity>
-  </subsection>
-
-
-  <subsection xml:id="coding-challenge-custom-turtles">
-    <title>Coding Challenge: Custom Turtles</title>
-
-    <p>
-      Working in pairs, you will now look at a new class called CustomTurtle and
-      design some colorful turtles with its constructors. The CustomTurtle class
-      in the ActiveCode below inherits many of its attributes and methods from
-      the Turtle class. However, it has some new constructors with more
-      parameters to customize a turtle with its body color, shell color, width,
-      and height. CustomTurtle has 3 constructors:
-    </p>
-
-    <program>
-      /** Constructs a CustomTurtle in the middle of the world */
-      public CustomTurtle(World w)
-
-      /** Constructs a CustomTurtle with a specific body color,
-          shell color, and width and height in the middle of the world */
-      public CustomTurtle(World w, Color body, Color shell, int w, int h)
-
-      /** Constructs a CustomTurtle with a specific body color,
-          shell color, and width and height at position (x,y) in the world */
-      public CustomTurtle(int x, int y, World w, Color body, Color shell, int w, int h)
-    </program>
-
-    <p>
-      You will use the constructor(s) to create the CustomTurtles below. You can
-      specify colors like Color.red by using the <url
-      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.desktop/java/awt/Color.html">Color</url>
-      class in Java.
-    </p>
-
-    <p>
-      <ol>
-        <li>
-          <p>
-            Create a large 150x200 (width 150 and height 200) CustomTurtle with
-            a green body (Color.green) and a blue shell (Color.blue) at position
-            (150,300)
-          </p>
-        </li>
-
-        <li>
-          <p>
-            Create a small 25x50 CustomTurtle with a red body and a yellow shell
-            at position (350,200)
-          </p>
-        </li>
-
-        <li>
-          <p>Create a CustomTurtle of your own design.</p>
-        </li>
-      </ol>
-    </p>
-
-    <project label="challenge-CustomTurtles">
-      <statement>
-        <p>
-          Use the CustomTurtle constructors with the signatures below to create
-          the turtles with the colors and positions described in the comments of
-          the program.
-        </p>
-
-        <program>
-          /** Constructs a CustomTurtle in the middle of the world */
-          public CustomTurtle(World w)
-
-          /** Constructs a CustomTurtle with a specific body color,
-              shell color, and width and height in the middle of the world */
-          public CustomTurtle(World w, Color body, Color shell, int w, int h)
-
-          /** Constructs a CustomTurtle with a specific body color, shell color,
-              and width and height at position (x,y) in the world */
-          public CustomTurtle(int x, int y, World w, Color body, Color shell, int w, int h)
-        </program>
-      </statement>
-
-      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
-        <code>
-          import java.awt.*;
-          import java.util.*;
-
-          public class CustomTurtleRunner {
-              public static void main(String[] args) {
-                  World world1 = new World(400, 400);
-
-                  // 1. Change the constructor call below to create a large
-                  // 150x200 CustomTurtle with a green body (Color.green)
-                  // and a blue shell (Color.blue) at position (150,300).
-                  // Move it forward to see it.
-                  CustomTurtle turtle1 = new CustomTurtle(world1);
-                  turtle1.forward();
-
-                  // 2. Create a small 25x50 CustomTurtle with a red body
-                  // and a yellow shell at position (350,200)
-                  // Move it forward to see it.
-
-                  // 3. Create a CustomTurtle of your own design
-
-                  world1.show(true);
-              }
-          }
-
-          class CustomTurtle extends Turtle {
-              private int x;
-              private int y;
-              private World w;
-              private Color bodycolor;
-              private Color shellcolor;
-              private int width;
-              private int height;
-
-              /**
-               * Constructor that takes the model display
-               *
-               * @param modelDisplay the thing that displays the model or world
-               */
-              public CustomTurtle(ModelDisplay modelDisplay) {
-                  // let the parent constructor handle it
-                  super(modelDisplay);
-              }
-
-              /**
-               * Constructor that takes the model display to draw it on and custom colors and size
-               *
-               * @param m the world
-               * @param body : the body color
-               * @param shell : the shell color
-               * @param w: width
-               * @param h: height
-               */
-              public CustomTurtle(ModelDisplay m, Color body, Color shell, int w, int h) {
-                  // let the parent constructor handle it
-                  super(m);
-                  bodycolor = body;
-                  setBodyColor(body);
-                  shellcolor = shell;
-                  setShellColor(shell);
-                  height = h;
-                  width = w;
-                  setHeight(h);
-                  setWidth(w);
-              }
-
-              /**
-               * Constructor that takes the x and y and a model display to draw it on and custom colors and
-               * size
-               *
-               * @param x the starting x position
-               * @param y the starting y position
-               * @param m the world
-               * @param body : the body color
-               * @param shell : the shell color
-               * @param w: width
-               * @param h: height
-               */
-              public CustomTurtle(int x, int y, ModelDisplay m, Color body, Color shell, int w, int h) {
-                  // let the parent constructor handle it
-                  super(x, y, m);
-                  bodycolor = body;
-                  setBodyColor(body);
-                  shellcolor = shell;
-                  setShellColor(shell);
-                  height = h;
-                  width = w;
-                  setHeight(h);
-                  setWidth(w);
-              }
-          }
-
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("CustomTurtleRunner");
-              }
-
-              @Test
-              public void test1() {
-                  String target = "new CustomTurtle(150,300,world1, Color.green, Color.blue, 150, 200)";
-                  boolean passed =
-                          checkCodeContains(
-                                  "constructor for a large 150x200 CustomTurtle with a green body and a blue"
-                                          + " shell at position (150,300) in world1",
-                                  target);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  String target = "new CustomTurtle(350,200,world1, Color.red, Color.yellow, 25, 50)";
-                  boolean passed =
-                          checkCodeContains(
-                                  "constructor for a small 25x50 CustomTurtle with a red body and a yellow"
-                                          + " shell at position (350,200) in world1",
-                                  target);
-                  assertTrue(passed);
-              }
-          }
-
-        </tests>
-      </program>
-    </project>
-  </subsection>
-
-    <subsection xml:id="summary-4">
+  <subsection xml:id="summary-4">
     <title>Summary</title>
 
     <p>

@@ -538,4 +538,34 @@
       }
     </program>
   </subsection>
+
+    <subsection>
+    <title>Old constructors intro</title>
+    <idx><h>class</h><h>constructor</h></idx>
+    <idx>constructors</idx>
+    <idx>new</idx>
+    <p>
+      A Java class defines what objects of the class know (attributes) and what
+      they can do (behaviors). Each class has <term>constructors</term> which
+      are used to initialize the attributes in a newly created object.
+      <term>Constructors</term> have the same name as the class.
+    </p>
+
+    <p>
+      A new object is created with the <c>new</c> keyword followed by the class
+      name which is a call to the constructor (<c>new ClassName()</c>). For
+      example, <c>new World()</c> creates and initializes a new object of the
+      <c>World</c> class, and <c>new Turtle(habitat)</c> creates and initializes
+      a new <c>Turtle</c> object in the World habitat. The new object is saved
+      in a variable of a <term>reference type</term> which holds an object
+      reference or <c>null</c> if there is no object.
+    </p>
+
+    <program>
+      // To create a new object and call a constructor write:
+      // ClassName variableName = new ClassName(arguments);
+      World habitat = new World();    // create a new World object
+      Turtle t = new Turtle(habitat); // create a new Turtle object
+    </program>
+  </subsection>
 </scratch>
