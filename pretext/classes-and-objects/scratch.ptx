@@ -2,68 +2,66 @@
 
 <scratch>
   <p>
-      Remember that a <term>class</term> in Java defines a blueprint for
-      creating objects. When you create <term>objects</term>, you create new
-      <term>instances</term> of that class and what you can do with those
-      instances is determined by what methods are defined in the class.
-    </p>
+    Remember that a <term>class</term> in Java defines a blueprint for creating
+    objects. When you create <term>objects</term>, you create new
+    <term>instances</term> of that class and what you can do with those
+    instances is determined by what methods are defined in the class.
+  </p>
 
+  <p>
+    You can create instances of the <c>Person</c> class with <c>new</c> as in
+    <c>new Person()</c> And you can declare variables that can hold a reference
+    to a <c>Person</c> object with <c>Person variableName</c>. Or put it
+    altogether to declare some variables and initialize each one with a
+    reference to a new <c>Person</c> as shown here.
+  </p>
 
-    <p>
-      You can create instances of the <c>Person</c> class with <c>new</c> as in
-      <c>new Person()</c> And you can declare variables that can hold a
-      reference to a <c>Person</c> object with <c>Person variableName</c>. Or
-      put it altogether to declare some variables and initialize each one with a
-      reference to a new <c>Person</c> as shown here.
-    </p>
+  <program>
+    Person ada = new Person();
+    Person charles = new Person();
+  </program>
 
-    <program>
-      Person ada = new Person();
-      Person charles = new Person();
-    </program>
+  <p>
+    The real meat of a class is in the <term>methods</term> which define the
+    behaviors of the objects of that class. Remember that most methods either do
+    things (like the <c>Turtle</c> methods that moved the turtle on the screen)
+    or return values like the <c>getXPos</c> and <c>getYPos</c> on
+    <c>Turtle</c>. The methods of the class share access to the object’s
+    instance variables and when a method is called on an object it uses the
+    instance variables for that object. For example in the <c>Turtle</c> class
+    the <c>forward</c> method changes an instance variable <c>xPos</c>. When you
+    call <c>forward</c> on <c>yertle</c> it changes <c>xPos</c> on the
+    <c>yertle</c> object and when you call it on <c>myrtle</c> it changes the
+    <c>xPos</c> on the <c>myrtle</c> object.
+  </p>
 
-    <p>
-      The real meat of a class is in the <term>methods</term> which define the
-      behaviors of the objects of that class. Remember that most methods either
-      do things (like the <c>Turtle</c> methods that moved the turtle on the
-      screen) or return values like the <c>getXPos</c> and <c>getYPos</c> on
-      <c>Turtle</c>. The methods of the class share access to the object’s
-      instance variables and when a method is called on an object it uses the
-      instance variables for that object. For example in the <c>Turtle</c> class
-      the <c>forward</c> method changes an instance variable <c>xPos</c>. When
-      you call <c>forward</c> on <c>yertle</c> it changes <c>xPos</c> on the
-      <c>yertle</c> object and when you call it on <c>myrtle</c> it changes the
-      <c>xPos</c> on the <c>myrtle</c> object.
-    </p>
+  <p>
+    Putting it all together, the three main anatomical features of a class are
+    the <term>instance variables</term> which hold values associated with each
+    object, the <term>constructors</term> whose job is to initialize the
+    instance variables, and the <term>methods</term> who contain the code that
+    gives the objects their behavior and which can use the instance variables
+    defined in the class.
+  </p>
 
-    <p>
-      Putting it all together, the three main anatomical features of a class are
-      the <term>instance variables</term> which hold values associated with each
-      object, the <term>constructors</term> whose job is to initialize the
-      instance variables, and the <term>methods</term> who contain the code that
-      gives the objects their behavior and which can use the instance variables
-      defined in the class.
-    </p>
+  <program>
+    public class Person {
+        // instance variables
 
-    <program>
-      public class Person {
-          // instance variables
+        // constructors
 
-          // constructors
+        // methods
 
-          // methods
+    }
+  </program>
 
-      }
-
-    </program>
-
-    <p>
-      And finally one last bit of weird anatomy, kind of like the human appendix
-      which is only sometimes needed: any Java class can have a <c>main</c>
-      method which can be used to run that class as a program either to test
-      that one class or sometimes as the entry point to a whole program made up
-      of many classes and objects.
-    </p>
+  <p>
+    And finally one last bit of weird anatomy, kind of like the human appendix
+    which is only sometimes needed: any Java class can have a <c>main</c> method
+    which can be used to run that class as a program either to test that one
+    class or sometimes as the entry point to a whole program made up of many
+    classes and objects.
+  </p>
 
   <subsection xml:id="designing-a-class">
     <title>Designing a Class</title>
@@ -142,7 +140,6 @@
                   p2.print();
               }
           }
-
         </code>
 
         <tests>
@@ -169,7 +166,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -193,34 +189,34 @@
     </p>
   </subsection>
 
-      <figure align="center">
-      <caption>Person Class and Objects</caption>
+  <figure align="center">
+    <caption>Person Class and Objects</caption>
 
-      <image source="Unit3-Class-Creation/Figures/PersonClassWithCookies.png" width="100%" alt="Person data encapsulation" />
-    </figure>
+    <image source="Unit3-Class-Creation/Figures/PersonClassWithCookies.png" width="100%" alt="Person data encapsulation" />
+  </figure>
 
-    <p>
-      Access to attributes should be kept internal to the class in order to
-      accomplish encapsulation. It is good programming practice to designate the
-      instance variables as <c>private</c> in order to ensure <term>data
-      encapsulation</term> where the data (instance variables) and the code
-      acting on the data (methods) are wrapped together into a single unit and
-      the implementation details are hidden. Only code in the class can access
-      or change the values of <c>private</c> instance variables. This keeps the
-      data secure and makes it a lot easier to keep track of how your program
-      works than if you had to worry that any code anywhere in a much larger
-      program could possibly change the values of the variables.
-    </p>
+  <p>
+    Access to attributes should be kept internal to the class in order to
+    accomplish encapsulation. It is good programming practice to designate the
+    instance variables as <c>private</c> in order to ensure <term>data
+    encapsulation</term> where the data (instance variables) and the code acting
+    on the data (methods) are wrapped together into a single unit and the
+    implementation details are hidden. Only code in the class can access or
+    change the values of <c>private</c> instance variables. This keeps the data
+    secure and makes it a lot easier to keep track of how your program works
+    than if you had to worry that any code anywhere in a much larger program
+    could possibly change the values of the variables.
+  </p>
 
-    <p>
-      Code in other classes can only interact with the <c>public</c> methods you
-      provide and cannot directly access the <c>private</c> instance variables
-      (shown in the pink box above). When designing a class you get to decide
-      what data to make accessible or modifiable from other classes by what
-      <c>public</c> methods you provide.
-    </p>
+  <p>
+    Code in other classes can only interact with the <c>public</c> methods you
+    provide and cannot directly access the <c>private</c> instance variables
+    (shown in the pink box above). When designing a class you get to decide what
+    data to make accessible or modifiable from other classes by what
+    <c>public</c> methods you provide.
+  </p>
 
-      <subsection xml:id="design-a-class-for-your-community">
+  <subsection xml:id="design-a-class-for-your-community">
     <title>Design a Class for your Community</title>
 
     <p>
@@ -327,14 +323,13 @@
               }
           }
 
-
           ]]>
         </tests>
       </program>
     </project>
   </subsection>
 
-    <subsection xml:id="class-hierarchy-and-inheritance">
+  <subsection xml:id="class-hierarchy-and-inheritance">
     <title>Class Hierarchy and Inheritance</title>
 
     <idx>inheritance</idx>
@@ -372,31 +367,175 @@
     </figure>
   </subsection>
 
+  <p>
+    You can also think of a class as defining a new data type. In this lesson,
+    we will use the class <c>Turtle</c> to make animated turtle objects. Just
+    like you use <c>int</c> to declare variables that hold numbers, you can use
+    <c>Turtle</c> to declare many variables, animated turtle objects, who are
+    <term>instances</term> of the <c>Turtle</c> class.
+  </p>
+
+  <program>
+    // Creating 2 Turtle objects called yertle and myrtle
+    Turtle yertle;
+    Turtle myrtle;
+  </program>
+
+  <activity label="cats">
+    <statement>
+      <p>
+        Discuss with your class: What are some attributes of cats? What are some
+        behaviors of cats? (Note that attributes are often nouns or adjectives
+        describing features of cats, and behaviors are often verbs).
+      </p>
+    </statement>
+
+    <response />
+  </activity>
+
+  <introduction>
     <p>
-      You can also think of a class as defining a new data type. In this lesson,
-      we will use the class <c>Turtle</c> to make animated turtle objects. Just
-      like you use <c>int</c> to declare variables that hold numbers, you can
-      use <c>Turtle</c> to declare many variables, animated turtle objects, who
-      are <term>instances</term> of the <c>Turtle</c> class.
+      Within an instance method or a constructor, the keyword <c>this</c> acts
+      as a special variable that holds a reference to the current object—the
+      object whose method or constructor is being called.
     </p>
 
-    <program>
-      // Creating 2 Turtle objects called yertle and myrtle
-      Turtle yertle;
-      Turtle myrtle;
+    <p>
+      For example, in the following Class Person, when we create an object p1
+      and call the constructor or p1.setEmail(), the word “this” refers to p1.
+      And when we make the same method calls with object p2, “this” refers to
+      p2. Run the code below and also check it out in the Java visualizer with
+      the Show CodeLens button which shows how this refers to different objects
+      when the code is run.
+    </p>
+
+    <p>
+      The <c>this</c> variable can only be used in instance methods and
+      constructors. Class methods cannot refer to <c>this</c> or instance
+      variables because they are called with the classname, not an object, so
+      there is no <c>this</c> object.
+    </p>
+  </introduction>
+
+  <activity label="PersonClassThis">
+    <statement>
+      <p>
+        Observe the use of the keyword this in the code below. Click on the
+        CodeLens button and then forward to see the memory in action.
+      </p>
+    </statement>
+
+    <program interactive="activecode">
+      <code>
+        public class Person {
+            // instance variables
+            private String name;
+            private String email;
+            private String phoneNumber;
+
+            // constructor
+            public Person(String name) {
+                this.name = name;
+            }
+
+            // accessor methods - getters
+            public String getName() {
+                return this.name;
+            }
+
+            public String getEmail() {
+                return this.email;
+            }
+
+            public String getPhoneNumber() {
+                return this.phoneNumber;
+            }
+
+            // mutator methods - setters
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            public void setEmail(String email) {
+                this.email = email;
+            }
+
+            public void setPhoneNumber(String phoneNumber) {
+                this.phoneNumber = phoneNumber;
+            }
+
+            public String toString() {
+                return this.name + " " + this.email + " " + this.phoneNumber;
+            }
+
+            // main method for testing
+            public static void main(String[] args) {
+                Person p1 = new Person("Sana");
+                System.out.println(p1);
+                Person p2 = new Person("Jean");
+                p2.setEmail("jean@gmail.com");
+                p2.setPhoneNumber("404 899-9955");
+                System.out.println(p2);
+            }
+        }
+      </code>
+
+      <tests>
+        import static org.junit.Assert.*;
+
+        import org.junit.*;
+
+        import java.io.*;
+
+        public class RunestoneTests extends CodeTestHelper {
+            public RunestoneTests() {
+                super("Person");
+            }
+
+            @Test
+            public void testMain() throws IOException {
+                String output = getMethodOutput("main");
+                String expect = "Sana null null\nJean jean@gmail.com 404 899-9955";
+
+                boolean passed = getResults(expect, output, "Expected output from main", true);
+                assertTrue(passed);
+            }
+        }
+      </tests>
     </program>
+  </activity>
 
-    <activity label="cats">
-      <statement>
-        <p>
-          Discuss with your class: What are some attributes of cats? What are
-          some behaviors of cats? (Note that attributes are often nouns or
-          adjectives describing features of cats, and behaviors are often
-          verbs).
-        </p>
-      </statement>
+  <subsection xml:id="this-instancevariable">
+    <title><c>this</c>.instanceVariable</title>
 
-      <response />
-    </activity>
+    <p>
+      The keyword this is sometimes used by programmers to distinguish between
+      variables. Programmers can give the parameter variables the same names as
+      the instance variables and this can distinguish them and avoid a naming
+      conflict. For example, both the instance variable and the parameter
+      variable are called name in the code below, but <c>name</c> on its own
+      looks for the closest local variable, the parameter variable, whereas
+      <c>this.name</c> refers to this object's instance variable.
+    </p>
 
-  </scratch>
+    <note>
+      <p>
+        <c>this.instanceVariable</c> can be used to distinguish between this
+        object’s instance variables and local parameter variables that may have
+        the same variable names.
+      </p>
+    </note>
+
+    <program>
+      // instance variables
+      private String name;
+
+      // constructor
+      public Person(String name)
+      {
+         // Set this object's instance variable name to the parameter variable name
+         this.name = name;
+      }
+    </program>
+  </subsection>
+</scratch>
