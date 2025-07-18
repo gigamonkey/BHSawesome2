@@ -89,7 +89,8 @@ public class TurtleTest
       kinds of values, defined by classes, are called <term>objects</term> which
       is where <term>object-oriented programming</term> gets its name. The
       values defined by the <c>Turtle</c> class represent turtles that can move
-      around the screen, drawing lines.
+      around the screen, drawing lines. Objects are also called
+      <term>instances</term> of their class.
     </p>
 
     <p>
