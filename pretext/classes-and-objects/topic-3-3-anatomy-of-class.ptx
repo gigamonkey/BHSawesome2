@@ -6,22 +6,60 @@
   <introduction>
     <p>
       In <xref ref="topic-1-7-APIs-and-libraries" /> we saw how classes define
-      sets of <term>attributes</term> and <term>behaviors</term> that are shared
-      by objects of a given class, such as <c>Turtle</c>. We also saw how
-      different objects, while having the same attributes in an abstract sense
-      have their own values for those attributes which can then affect their
-      behavior in some way. For instance all <c>Turtle</c> objects have a
-      position but two <c>Turtle</c> objects can be at different positions on
-      the screen. And both can be made to move forward from wherever they are
-      with the <c>forward()</c> method.
+      new data types whose values share a set of <term>attributes</term> and
+      <term>behaviors</term>. We also saw how different objects, while having
+      the same abstract attributes, each have their own values for those
+      attributes and how an object’s values can then affect their behavior in
+      some way. For instance all <c>Turtle</c> objects have a position but two
+      <c>Turtle</c> objects can be at different positions on the screen. And
+      both can be made to move forward from wherever they are with the
+      <c>forward()</c> method.
     </p>
 
     <p>
-      But that’s the outside view of a class, for when we’re using an API. Now
-      it’s time to open up the black box and see how classes are structured on
-      the inside. First we’ll take a very quick tour through the main parts of a
-      class. Then we’ll go through each part in more detail.
+      To review the vocabulary, a <term>class</term> defines the
+      <term>attributes</term> and <term>behaviors</term> that all objects of
+      that class will have. From a class we make many <term>objects</term> also
+      called <term>instances</term> of the class. Each instance has its own
+      values for the attributes defined in the class. <term>Attributes</term>
+      are the data or properties that an object knows about itself, for example,
+      a turtle object’s color and size. <term>Behaviors</term> are the things
+      that an object can do. For example, a turtle object can go forward, turn
+      left, or turn right. The attributes and behaviors of a class are defined
+      in the class, but each object has its own values for the attributes.
     </p>
+
+    <figure align="center">
+      <caption>Using a cookie cutter (class) to make cookies (objects)</caption>
+
+      <image source="Unit1-Using-Objects-and-Methods/Figures/cookieCutterLabelled.png" width="89%" />
+    </figure>
+
+    <p>
+      The following picture has lots of cats (objects of the type cat). They are
+      all different, but they share the same attributes and behaviors that make
+      up a cat. They are all <term>instances</term> of cat with different values
+      for their attributes. Name some of the attributes and behaviors of the
+      cats below. For example, the color ( <em>attribute</em>) of the first cat
+      is black ( <em>attribute value</em>) and it is playing (
+      <em>behavior</em>).
+    </p>
+
+    <figure align="center">
+      <caption>Pictures of cats (cat objects)</caption>
+
+      <image source="Unit1-Using-Objects-and-Methods/Figures/catsLabelled.png" width="89%" />
+    </figure>
+
+    <p>
+      But thinking in terms of abstract attributes and behaviors is the outside
+      view of a class, for when we’re using an API. Now it’s time to open up the
+      black box and see how classes are structured on the inside. In this
+      section we’ll take a very quick tour through the main parts of a class.
+      Then we’ll go through each part in more detail in the following sections.
+    </p>
+
+
   </introduction>
 
   <subsection xml:id="parts-of-a-class">
@@ -46,9 +84,11 @@
     </p>
 
     <program>
-      Person person = new Person("Joe", 18);
-      person.greet("Sally");
-      System.out.println("Joe can vote: " + person.canVote());
+      Person person1 = new Person("Joe", 18);
+      Person person2 = new person("Sally", 17);
+      person.greet(person2);
+      System.out.println("Joe can vote: " + person1.canVote());
+      System.out.println("Sally can vote: " + person2.canVote());
     </program>
 
     <p>
@@ -58,6 +98,7 @@
     <pre>
       Hello Sally, I'm Joe.
       Joe can vote: true
+      Sally can vote: false
     </pre>
 
     <p>
@@ -79,8 +120,8 @@
         }
 
         // Methods
-        public void greet(String to) {
-          System.out.println("Hello " + to + ", I'm " + name + ".");
+        public void greet(Person other) {
+          System.out.println("Hello " + other.name + ", I'm " + name + ".");
         }
 
         public boolean canVote() {
@@ -183,8 +224,8 @@
     </p>
 
     <program>
-        public void greet(String to) {
-          System.out.println("Hello " + to + ", I'm " + name + ".");
+        public void greet(Person other) {
+          System.out.println("Hello " + other.name + ", I'm " + name + ".");
         }
 
         public boolean canVote() {
@@ -216,986 +257,224 @@
     </p>
 
     <video youtube="LfSaSANJPLg" label="video-classes" />
-  </subsection>
-
-
-  <subsection xml:id="instance-variables">
-    <title>Instance Variables</title>
-
-    <idx><h>class</h><h>instance variables</h></idx>
-    <p>
-      <term>Instance Variables</term> (sometimes called <term>attributes</term>,
-      <term>fields</term>, or <term>properties</term>) hold the data for an
-      object. They belong to the object, and each object has its own copy of
-      these variables.
-    </p>
 
     <p>
-      In general and definitely on the AP CSA exam, instance variables should be
-      declared <term>private</term>. Think of <c>private</c> as like your diary.
-      Only you should have direct access to it. Similarly, in Java a
-      <c>private</c> instance variable can only be accessed by code inside the
-      class that declares the variable.
-    </p>
-
-    <note>
-      <p>
-        Instance variables are declared right after the class declaration. They
-        usually start with <c>private</c> then the <em>type</em> of the variable
-        and then a <em>name</em> for the variable. Private means only the code
-        in this class has access to it.
-      </p>
-    </note>
-
-    <p>
-      The <c>Person</c> class declares 3 private instance variables:
-      <c>name</c>, <c>email</c>, and <c>phoneNumber</c>. These are things that
-      you might want to know about a person. They are declared at the top of the
-      class and they exist inside the <c>{ }</c> of the class.
-    </p>
-
-    <p>
-      Once we have created a class like <c>Person</c>, we can create many
-      instances (objects) of the class. The class is like a blueprint or cookie
-      cutter that defines the variables and methods for that class. Each object
-      will have their own copies of the same instance variables but with
-      possibly different values in them (as seen in the cookie decorations
-      below).
+      Watch the following <url
+      href="https://www.youtube.com/watch?v=64DOwDu5SVo&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
+      by Dr. Colleen Lewis about classes and objects:
     </p>
 
     <figure align="center">
-      <caption>Person Class and Objects</caption>
+      <caption>Classes and Objects</caption>
 
-      <image source="Unit3-Class-Creation/Figures/PersonClassWithCookies.png" width="100%" alt="Person data encapsulation" />
+      <video youtube="64DOwDu5SVo" label="video-objects" />
     </figure>
-
-    <p>
-      Access to attributes should be kept internal to the class in order to
-      accomplish encapsulation. It is good programming practice to designate the
-      instance variables as <c>private</c> in order to ensure <term>data
-      encapsulation</term> where the data (instance variables) and the code
-      acting on the data (methods) are wrapped together into a single unit and
-      the implementation details are hidden. Only code in the class can access
-      or change the values of <c>private</c> instance variables. This keeps the
-      data secure and makes it a lot easier to keep track of how your program
-      works than if you had to worry that any code anywhere in a much larger
-      program could possibly change the values of the variables.
-    </p>
-
-    <p>
-      Code in other classes can only interact with the <c>public</c> methods you
-      provide and cannot directly access the <c>private</c> instance variables
-      (shown in the pink box above). When designing a class you get to decide
-      what data to make accessible or modifiable from other classes by what
-      <c>public</c> methods you provide.
-    </p>
-
-    <activity label="name_instance_variables">
+    <activity label="vocab2_1">
       <statement>
         <p>
-          Click on all the instance variable declarations in the following class
+          Drag the definition from the left and drop it on the correct concept
+          on the right. Click the "Check Me" button to see if you are correct.
         </p>
       </statement>
 
       <feedback>
-        <p>
-          Remember, instance variables are private and are declared after the
-          class declaration.
-        </p>
+        <p>Review the summaries above.</p>
       </feedback>
 
-      <areas>
-        <cline><area correct="no">public class Name</area></cline>
-        <cline><area correct="no">{</area></cline>
-        <cline>    <area correct="yes">private String first;</area></cline>
-        <cline>    <area correct="yes">private String last;</area></cline>
-        <cline></cline>
-        <cline>    <area correct="no">public Name(String theFirst, String theLast)</area></cline>
-        <cline>    <area correct="no">{</area></cline>
-        <cline>        <area correct="no">first = theFirst;</area></cline>
-        <cline>        <area correct="no">last = theLast;</area></cline>
-        <cline>     <area correct="no">}</area></cline>
-        <cline></cline>
-        <cline>     <area correct="no">public void setFirst(String theFirst)</area></cline>
-        <cline>     <area correct="no">{</area></cline>
-        <cline>        <area correct="no">first = theFirst;</area></cline>
-        <cline>     <area correct="no">}</area></cline>
-        <cline></cline>
-        <cline>     <area correct="no">public void setLast(String theLast)</area></cline>
-        <cline>     <area correct="no">{</area></cline>
-        <cline>        <area correct="no">last = theLast;</area></cline>
-        <cline>     <area correct="no">}</area></cline>
-        <cline><area correct="no">}</area></cline>
-      </areas>
+      <cardsort>
+        <match>
+          <premise order="1">
+            a specific instance of a class with defined attributes
+          </premise>
+
+          <response>object</response>
+        </match>
+
+        <match>
+          <premise order="2">
+            defines a new data type that is like a blueprint
+          </premise>
+
+          <response>class</response>
+        </match>
+
+        <match>
+          <premise order="3">define what the object knows about itself</premise>
+          <response>attributes or instance variables</response>
+        </match>
+
+        <match>
+          <premise order="4">define what an object can do</premise>
+          <response>behaviors or methods</response>
+        </match>
+      </cardsort>
     </activity>
 
-    <activity label="PersonClass2">
+    <activity label="howmanyobjects">
       <statement>
-        <p>
-          The following Person class keeps track of the name, email, and phone
-          number of a person. What other data could you keep track of about a
-          Person? Add another private instance variable of your choice. Do not
-          worry about changing the constructor or other methods yet.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-        <code>
-          public class Person {
-              // instance variables
-              private String name;
-              private String email;
-              private String phoneNumber;
-
-              // Add another private instance variable about a Person here
-
-              // constructor: construct a Person copying in the data into the instance
-              // variables
-              public Person(String initName, String initEmail, String initPhone) {
-                  name = initName;
-                  email = initEmail;
-                  phoneNumber = initPhone;
-              }
-
-              // Print all the data for a person
-              public void print() {
-                  System.out.println("Name: " + name);
-                  System.out.println("Email: " + email);
-                  System.out.println("Phone Number: " + phoneNumber);
-              }
-
-              // main method for testing
-              public static void main(String[] args) {
-                  // call the constructor to create a new person
-                  Person p1 = new Person("Sana", "sana@gmail.com", "123-456-7890");
-                  // call p1's print method
-                  p1.print();
-                  Person p2 = new Person("Jean", "jean@gmail.com", "404 899-9955");
-                  p2.print();
-              }
-          }
-
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testPrivateVariables() {
-                  String expect = "4 Private";
-                  String output = testPrivateInstanceVariables();
-
-                  boolean passed = getResults(expect, output, "Checking Private Instance Variable(s)");
-                  assertTrue(passed);
-              }
-          }
-
-        </tests>
-      </program>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="instance-methods">
-    <title>Instance Methods</title>
-
-    <idx><h>class</h><h>method</h></idx>
-    <p>
-      <term>Instance methods</term> define what we can actually do with an
-      object, their behaviors and functions. These methods have direct access to
-      the instance variables and can use them and change them to perform their
-      tasks. In Unit 1, we used and wrote static class methods like
-      <c>Math.random()</c> which were called with the classname. Instance
-      methods are not marked static and are always called using an object of the
-      class and can access the object’s instance variables.
-    </p>
-
-    <p>
-      Methods are defined in the class after the instance variables and
-      constructors. They are usually marked as <c>public</c> so they can be
-      accessed from inside or outside the class. Methods designated as
-      <c>private</c> are not accessible outside of the class; they can only be
-      used as helper methods by other methods inside the same class.
-    </p>
-
-    <note>
-      <p>
-        Methods define what the object can do. They typically start with
-        <c>public</c> then a type, then the name of the method followed by
-        parentheses for optional parameters. Methods defined for an object can
-        access and use its instance variables!
-      </p>
-    </note>
-
-    <p>
-      The <c>Person</c> class above has a <c>print</c> method that prints out
-      all the data stored for a person object. Notice that it is marked as
-      <c>public</c> and after <c>public</c> comes the return type. The
-      <c>void</c> return type is used to indicate that the method does not
-      return anything but has some effect such as printing to the screen. After
-      the return type comes the method name followed by parentheses containing
-      the list of parameters. In this case there are no parameters but we still
-      need the <c>()</c>s. The body of the method is in <c>{}</c>s. As we’ve
-      discussed, the method can access and use the instance variables defined in
-      the class: <c>name</c>, <c>email</c>, and <c>phoneNumber</c> but will get
-      the values specific to the object we called <c>print</c> on.
-    </p>
-
-    <program>
-      public void print()
-      {
-        System.out.println("Name: " + name);
-        System.out.println("Email: " + email);
-        System.out.println("Phone Number: " + phoneNumber);
-      }
-    </program>
-
-    <p>
-      To call a method, we need an object that is an instance of the class such
-      as we get by calling its constructor. Then we use the dot (<c>.</c>)
-      operator to call its <c>public</c> methods, for example <c>p1.print()</c>
-      means call the <c>print</c> method on the object <c>p1</c>.
-    </p>
-
-    <program>
-      // call the constructor to create a new person
-      Person p1 = new Person("Sana", "sana@gmail.com", "123-456-7890");
-      // call p1's print method
-      p1.print();
-    </program>
-
-    <activity label="name_methods">
-      <statement>
-        <p>
-          Click on all the lines of code that are part of a method in the
-          following class.
-        </p>
-      </statement>
-
-      <feedback>
-        <p>
-          Methods follow the constructor. They include a return type in case
-          they returns something from the method.
-        </p>
-      </feedback>
-
-      <areas>
-        <cline><area correct="no">public class Name</area></cline>
-        <cline><area correct="no">{</area></cline>
-        <cline>    <area correct="no">private String first;</area></cline>
-        <cline>    <area correct="no">private String last;</area></cline>
-        <cline></cline>
-        <cline>    <area correct="no">public Name(String theFirst, String theLast)</area></cline>
-        <cline>    <area correct="no">{</area></cline>
-        <cline>        <area correct="no">first = theFirst;</area></cline>
-        <cline>        <area correct="no">last = theLast;</area></cline>
-        <cline>    <area correct="no">}</area></cline>
-        <cline></cline>
-        <cline>    <area correct="yes">public void setFirst(String theFirst)</area></cline>
-        <cline>    <area correct="yes">{</area></cline>
-        <cline>        <area correct="yes">first = theFirst;</area></cline>
-        <cline>    <area correct="yes">}</area></cline>
-        <cline></cline>
-        <cline>    <area correct="yes">public void setLast(String theLast)</area></cline>
-        <cline>    <area correct="yes">{</area></cline>
-        <cline>        <area correct="yes">last = theLast;</area></cline>
-        <cline>    <area correct="yes">}</area></cline>
-        <cline></cline>
-        <cline><area correct="no">}</area></cline>
-      </areas>
-    </activity>
-
-    <activity label="class-add-print-method">
-      <statement>
-        <p>
-          The following Name class keeps track of the first and last name of a
-          person. Add a method print that prints out the instance variables
-          first and last. Note that the methods have direct access and share the
-          instance variables.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-        <code>
-          public class Name {
-              private String first;
-              private String last;
-
-              public Name(String theFirst, String theLast) {
-                  first = theFirst;
-                  last = theLast;
-              }
-
-              // Complete the print method below to print out the
-              // first and last instance variables with a space in between
-              public void print() {}
-
-              public static void main(String[] args) {
-                  Name n = new Name("Ada", "Lovelace");
-                  n.print();
-              }
-          }
-
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("Name"); // class name / location of main
-                  Object[] values = new Object[] {"Mickey", "Mouse"};
-                  setDefaultValues(values);
-              }
-
-              @Test
-              public void testMain() {
-                  String output = getMethodOutput("main");
-                  String expect = "Ada Lovelace";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testPrint() {
-                  String output = getMethodOutput("print");
-                  String expect = "Mickey Mouse";
-                  boolean passed =
-                          getResults(
-                                  expect,
-                                  output,
-                                  "Expected output from print method with object Mickey Mouse");
-                  assertTrue(passed);
-              }
-          }
-
-        </tests>
-      </program>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="coding-challenge-virtual-pet-class">
-    <title>Coding Challenge: Virtual Pet Class</title>
-
-    <image source="Unit3-Class-Creation/Figures/virtualpet.jpg" width="23%" alt="Virtual Pet" />
-    <p>
-      In the late 1990s and early 2000s, digital pets like in the photo were a
-      huge hit! You had to feed, play, and interact with your virtual pet in
-      order to keep it healthy and happy. Let’s think about how they were
-      programmed.
-    </p>
-
-    <p>
-      <ol>
-        <li>
-          <p>
-            <term>Design:</term> In pairs, brainstorm about the
-            <term>object-oriented design</term> for the virtual pet. What data
-            or instance variables would you need to keep track of for a virtual
-            pet? What behaviors or methods would the virtual pet have? (You
-            could draw a Class Diagram for this class using <url
-            href="https://app.diagrams.net/">app.diagrams.net</url> or <url
-            href="https://creately.com">Creately.com</url>, although it is not
-            required). Then, using the <c>Person</c> class above as a guide,
-            write a <c>VirtualPet</c> class in the Active Code template below
-            with the following parts.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <term>Instance Variables</term>: Declare at least 3 instance
-            variables in the <c>VirtualPet</c> class below. Two of the instance
-            variables should be called <c>name</c> and <c>health</c> where
-            health is a number from 0 to 10. The rest can be variables from your
-            design above. Don’t forget to add in their <c>private</c> access
-            modifiers.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <term>Methods</term>: Complete the <c>print</c> method to print out
-            the instance variables of the <c>VirtualPet</c> object, and complete
-            the <c>feed</c> method to add 1 to the health instance variable.
-            Remember that the methods have direct access to the instance
-            variables. Create at least one more method that changes one of the
-            instance variables from your design. (The constructor method and a
-            get method is written for you below. You will learn how to write
-            constructors in detail in the next lesson.)
-          </p>
-        </li>
-
-        <li>
-          <p>
-            Complete the <c>main</c> method to construct at least 2
-            <c>VirtualPet</c> objects that call the <c>VirtualPet</c>
-            constructor given to you with arguments for name and health. Then,
-            use at least one of the objects to call its <c>feed</c> and
-            <c>print</c> methods.
-          </p>
-        </li>
-      </ol>
-    </p>
-
-    <project label="challenge-VirtualPet-Class">
-      <statement>
-        <p>
-          Complete the VirtualPet class below. Add at least 3 instance
-          variables, a print method, a feed method, and at least 1 other method
-          that changes an instance variable. Then complete the main method to
-          construct at least 2 VirtualPet objects, call the feed and print
-          method with one of them.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-        <code>
-          public class VirtualPet {
-              // write 3 instance variables for VirtualPet's name,
-              // health (as a number), and at least 1 other from your design
-              // Remember the pattern:  private type variableName;
-
-              // constructor written for you - do not change
-              public VirtualPet(String initName, int initHealth) {
-                  // the constructor sets the instance variables to the init parameter variables
-                  name = initName;
-                  health = initHealth;
-              }
-
-              // Print the VirtualPet's data (instance variables) with System.out.println
-              public void print() {
-                  // print the instance variables with spaces between them
-
-              }
-
-              // Complete the feed method below to add to the health instance variable
-              public void feed() {
-                  // add 1 to the health variable
-
-              }
-
-              // Create another public void method that changes one of the instance variables
-
-              // get method used for testing - do not change
-              public int getHealth() {
-                  return health;
-              }
-
-              // main method for testing
-              public static void main(String[] args) {
-                  VirtualPet p = new VirtualPet("Fluffy", 5);
-                  // call the VirtualPet constructor to create another new object with a different name and
-                  // health
-
-                  // call the pet object p's feed() method
-
-                  // call the other method that you created
-
-                  // call the pet object p's print() method
-
-              }
-          }
-
-        </code>
-
-        <tests>
-          <![CDATA[
-
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("VirtualPet"); // class name / location of main
-
-                  Object[] values = new Object[] {"Fluffy", 5};
-                  setDefaultValues(values);
-              }
-
-              @Test
-              public void countMethods() {
-                  String target = "public void";
-                  String code = getCode();
-
-                  int num = countOccurences(code, target);
-
-                  boolean passed = num >= 3;
-
-                  getResults("3+", "" + num, "public void methods", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testPrint() {
-                  String output = getMethodOutput("print");
-                  String expect = "Fluffy";
-
-                  boolean passed = getResults(expect, output, "Checking method print()");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testFeed() {
-                  VirtualPet p = new VirtualPet("Fluffy", 5);
-                  p.feed();
-                  String output = p.getHealth() + "";
-                  String expect = "6";
-                  boolean passed =
-                          getResults(
-                                  expect,
-                                  output,
-                                  "Expected health for pet Fluffy with initial health 5 after feed()");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testFeed2() {
-                  VirtualPet p1 = new VirtualPet("Pikachu", 1);
-                  p1.feed();
-                  String output = p1.getHealth() + "";
-                  String expect = "2";
-                  boolean passed =
-                          getResults(
-                                  expect,
-                                  output,
-                                  "Expected health for pet Pikachu with initial health 1 after feed()");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testCallConstructors() {
-                  String code = getCodeWithoutComments();
-                  String search = "= new VirtualPet(";
-
-                  int num = countOccurences(code, search);
-
-                  String expect = search + "...) x 2";
-                  String actual = search + "...) x " + num;
-
-                  boolean passed =
-                          getResults(expect, actual, "Checking that you created another VirtualPet object");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testVariableTypes() {
-                  String varTypes = "String int";
-                  String output = testInstanceVariableTypes(varTypes.split(" "));
-
-                  boolean passed = getResults(varTypes, output, "Checking Instance Variable Type(s)");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testPrivateVariables() {
-                  String expect = "3 Private";
-                  String output = testPrivateInstanceVariables();
-
-                  boolean passed = getResults(expect, output, "Checking Private Instance Variable(s)");
-                  assertTrue(passed);
-              }
-          }
-
-
-          ]]>
-        </tests>
-      </program>
-    </project>
-  </subsection>
-
-  <subsection xml:id="design-a-class-for-your-community">
-    <title>Design a Class for your Community</title>
-
-    <p>
-      In this unit, you will design a class of your own choice that is relevant
-      to your community. You will improve the class in each lesson of this unit.
-      We suggest that you work in pairs on this project. If you would rather
-      work on this project as 1 stand-alone lab project rather than a piece at a
-      time at the end of each lesson, you can do this in this <url
-      href="community-challenge.html">lesson</url> at the end of the unit.
-    </p>
-
-    <p>
-      <ol>
-        <li>
-          <p>
-            Make your own copy of this <url
-            href="https://docs.google.com/document/d/11QMyHAZYhPwNLInhURqkTffeY9re05yH97xAsiSJhLg/edit?usp=sharing">worksheet</url>
-            from the File menu. For question 1, brainstorm and ask people in
-            your community what would be important or useful for them to track
-            in a community organization or activity or to help your community.
-            For example, you could create a Java class to keep track of
-            community events, club activities, athletic games or statistics,
-            community leaders, performers or performances, health tracking, or
-            another subject of your choice.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            Come up with the class name for your community data-tracking class
-            (it should be a category of people or things, not a specific person
-            or thing). Come up with at least 3 instance variables that are
-            attributes of things in that class. Think about what data type each
-            variable should be.You can use the <url
-            href="https://docs.google.com/document/d/11QMyHAZYhPwNLInhURqkTffeY9re05yH97xAsiSJhLg/edit?usp=sharing">worksheet</url>
-            to design your class. Optionally, you may want to draw a UML class
-            diagram for your class on paper or using <url
-            href="https://app.diagrams.net/">app.diagrams.net</url> or <url
-            href="https://creately.com">Creately.com</url> (see <url
-            href="https://medium.com/@smagid_allThings/uml-class-diagrams-tutorial-step-by-step-520fd83b300b">tutorial
-            on class diagrams</url>).
-          </p>
-        </li>
-
-        <li>
-          <p>
-            Type in your class name and declare the instance variables for your
-            class in the active code exercise below. Click on run. Your class
-            will not print out anything yet, but it should run without errors.
-            You will add constructors and other methods to this class in the
-            next lessons.
-          </p>
-        </li>
-      </ol>
-    </p>
-
-    <project label="community-challenge1">
-      <statement>
-        <p>
-          Come up with the class name for your community data-tracking class (it
-          should be a category of people or things, not a specific person or
-          thing) and at least 3 instance variables that are attributes of things
-          in that class. Your class will not print out anything yet, but it
-          should run without errors.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-        <code>
-          public class          // Add your class name here!
-          {
-              // write 3 instance variables for class: private type variableName;
-
-
-
-              public static void main(String[] args)
-              {
-                // Run your code to check for errors.
-                // It will not print anything yet.
-                // You will add more in the next lesson.
-              }
-          }
-        </code>
-
-        <tests>
-          <![CDATA[
-
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testPrivateVariables() {
-                  String expect = "3 Private";
-                  String output = testPrivateInstanceVariables();
-                  boolean passed = false;
-                  if (Integer.parseInt(expect.substring(0, 1)) <= Integer.parseInt(output.substring(0, 1)))
-                      passed = true;
-                  passed = getResults(expect, output, "Checking private instance variable(s)", passed);
-                  assertTrue(passed);
-              }
-          }
-
-
-          ]]>
-        </tests>
-      </program>
-    </project>
-  </subsection>
-
-  <subsection xml:id="summary-29">
-    <title>Summary</title>
-
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 3.3.A.1) <term>Data encapsulation</term> is a technique in which
-            the implementation details of a class are kept hidden from external
-            classes.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            (AP 3.3.A.1) The keywords <c>public</c> and <c>private</c> affect
-            the access of classes, data, constructors, and methods. The keyword
-            <c>private</c> restricts access to the declaring class, while the
-            keyword <c>public</c> allows access from classes outside the
-            declaring class.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            (AP 3.3.A.2) In this course, classes are always designated
-            <c>public</c> and are declared with the keyword <c>class</c>.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            (AP 3.3.A.3) In this course, constructors are always designated
-            <c>public</c>.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            (AP 3.3.A.4) <term>Instance variables</term> belong to the object,
-            and each object has its own copy of the variables.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            (AP 3.3.A.5) Access to attributes should be kept internal to the
-            class in order to accomplish encapsulation. Therefore, it is good
-            programming practice to designate the instance variables for these
-            attributes as <c>private</c> unless the class specification states
-            otherwise.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <term>Instance Variables</term> define the attributes or data needed
-            for objects, and <term>methods</term> define the behaviors or
-            functions of the object.
-          </p>
-        </li>
-      </ul>
-    </p>
-  </subsection>
-
-  <subsection xml:id="ap-practice-19">
-    <title>AP Practice</title>
-
-    <activity label="APclass1">
-      <statement>
-        <p>
-          Consider the Cat class which will contain a String and an int
-          attribute for a cat’s name and age and a constructor.
-        </p>
-
-        <program>
-          public class Cat {
-              /* missing code */
-          }
-
-        </program>
-
-        <p>
-          Which of the following replacements for /* missing code */ is the most
-          appropriate implementation of the class?
-        </p>
+        <p>How many objects can you create from a class in Java?</p>
       </statement>
 
       <choices>
         <choice>
-          <statement id="APclass1_opt_a">
-            <program>
-              public String name;
-              public int age;
-              private Cat(String name, int age)
-              { /* implementation not shown */ }
-            </program>
+          <statement>
+            <p>1</p>
           </statement>
 
-          <feedback id="APclass1_opt_a">
-            <p>Instance variables should be private.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement id="APclass1_opt_b">
-            <program>
-              public String name;
-              private int age;
-              private Cat(String name, int age)
-              { /* implementation not shown */ }
-            </program>
-          </statement>
-
-          <feedback id="APclass1_opt_b">
-            <p>Instance variables should be private.</p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement id="APclass1_opt_c">
-            <program>
-              private String name;
-              private int age;
-              public Cat(String name, int age)
-              { /* implementation not shown */ }
-            </program>
-          </statement>
-
-          <feedback id="APclass1_opt_c">
+          <feedback>
             <p>
-              Correct! The instance variables are private and the constructor is
-              public.
+              There is one definition of a class, but the class can create as
+              many objects as are needed.
             </p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="APclass1_opt_d">
-            <program>
-              public String name;
-              public int age;
-              public Cat(String name, int age)
-              { /* implementation not shown */ }
-            </program>
+          <statement>
+            <p>10</p>
           </statement>
 
-          <feedback id="APclass1_opt_d">
-            <p>Instance variables should be private.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement id="APclass1_opt_e">
-            <program>
-              private String name;
-              private int age;
-              private Cat(String name, int age)
-              { /* implementation not shown */ }
-            </program>
-          </statement>
-
-          <feedback id="APclass1_opt_e">
-            <p>Constructor should be public.</p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="APclass2">
-      <statement>
-        <p>
-          Consider the Party class below which will contain three int attributes
-          for numOfPeople, volumeOfMusic, and numOfBoxesOfPizza, a constructor,
-          and a startParty method. The startParty method is intended to be
-          accessed outside the class.
-        </p>
-
-        <program>
-          public class Party {
-              /* missing code */
-          }
-
-        </program>
-
-        <p>
-          Which of the following replacements for /* missing code */ is the most
-          appropriate implementation of the class?
-        </p>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement id="APclass2_opt_a">
-            <program>
-              private int numOfPeople;
-              private int volumeOfMusic;
-              private int numOfBoxesOfPizza;
-              public Party()
-              { /* implementation not shown */ }
-              private void startParty()
-              { /* implementation not shown */ }
-            </program>
-          </statement>
-
-          <feedback id="APclass2_opt_a">
-            <p>Method startParty() should be public.</p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement id="APclass2_opt_b">
-            <program>
-              private int numOfPeople;
-              private int volumeOfMusic;
-              private int numOfBoxesOfPizza;
-              public Party()
-              { /* implementation not shown */ }
-              public void startParty()
-              { /* implementation not shown */ }
-            </program>
-          </statement>
-
-          <feedback id="APclass2_opt_b">
+          <feedback>
             <p>
-              Correct, instance variables should be private and the methods
-              should be public.
+              There is no limit on the number of objects you can create from a
+              class.
             </p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="APclass2_opt_c">
-            <program>
-              public int numOfPeople;
-              public int volumeOfMusic;
-              public int numOfBoxesOfPizza;
-              public Party()
-              { /* implementation not shown */ }
-              public void startParty()
-              { /* implementation not shown */ }
-            </program>
+          <statement>
+            <p>1000</p>
           </statement>
 
-          <feedback id="APclass2_opt_c">
-            <p>Instance variables should be private.</p>
+          <feedback>
+            <p>
+              There is no limit on the number of objects you can create from a
+              class.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>As many as you need</p>
+          </statement>
+
+          <feedback>
+            <p>You can create as many objects as you need from one class.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="mcq_behaviors">
+      <statement>
+        <p>What specifies the behavior for objects of a class in Java?</p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>attributes</p>
+          </statement>
+
+          <feedback>
+            <p>attributes specify the data that an object keeps track of.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>methods</p>
+          </statement>
+
+          <feedback>
+            <p>Methods specify the behavior of all objects of a class.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="APclass2_opt_d">
-            <program>
-              private int numOfPeople;
-              private int volumeOfMusic;
-              private int numOfBoxesOfPizza;
-              private Party()
-              { /* implementation not shown */ }
-              private void startParty()
-              { /* implementation not shown */ }
-            </program>
+          <statement>
+            <p>class</p>
           </statement>
 
-          <feedback id="APclass2_opt_d">
-            <p>Methods should be public.</p>
+          <feedback>
+            <p>
+              While the class does specify the behavior of all objects created
+              by that class, what part of a class specifies the behavior?
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>object</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The object behavior is specified by the methods in the class that
+              created the object.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="mcq_data">
+      <statement>
+        <p>What are the data or properties of an object called?</p>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement>
+            <p>attributes</p>
+          </statement>
+
+          <feedback>
+            <p>attributes specify the data that an object keeps track of.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>methods</p>
+          </statement>
+
+          <feedback>
+            <p>Methods specify the behavior of all objects of a class.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>class</p>
+          </statement>
+
+          <feedback>
+            <p>
+              While the class does specify the data that all objects of the
+              class keep track of, what part of the class stores the data?
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>object</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The object data is stored in the attributes of the object. The
+              attributes are defined in the class.
+            </p>
           </feedback>
         </choice>
       </choices>
     </activity>
   </subsection>
+
+
 </section>

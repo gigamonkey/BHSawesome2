@@ -193,4 +193,210 @@
     </p>
   </subsection>
 
-</scratch>
+      <figure align="center">
+      <caption>Person Class and Objects</caption>
+
+      <image source="Unit3-Class-Creation/Figures/PersonClassWithCookies.png" width="100%" alt="Person data encapsulation" />
+    </figure>
+
+    <p>
+      Access to attributes should be kept internal to the class in order to
+      accomplish encapsulation. It is good programming practice to designate the
+      instance variables as <c>private</c> in order to ensure <term>data
+      encapsulation</term> where the data (instance variables) and the code
+      acting on the data (methods) are wrapped together into a single unit and
+      the implementation details are hidden. Only code in the class can access
+      or change the values of <c>private</c> instance variables. This keeps the
+      data secure and makes it a lot easier to keep track of how your program
+      works than if you had to worry that any code anywhere in a much larger
+      program could possibly change the values of the variables.
+    </p>
+
+    <p>
+      Code in other classes can only interact with the <c>public</c> methods you
+      provide and cannot directly access the <c>private</c> instance variables
+      (shown in the pink box above). When designing a class you get to decide
+      what data to make accessible or modifiable from other classes by what
+      <c>public</c> methods you provide.
+    </p>
+
+      <subsection xml:id="design-a-class-for-your-community">
+    <title>Design a Class for your Community</title>
+
+    <p>
+      In this unit, you will design a class of your own choice that is relevant
+      to your community. You will improve the class in each lesson of this unit.
+      We suggest that you work in pairs on this project. If you would rather
+      work on this project as 1 stand-alone lab project rather than a piece at a
+      time at the end of each lesson, you can do this in this <url
+      href="community-challenge.html">lesson</url> at the end of the unit.
+    </p>
+
+    <p>
+      <ol>
+        <li>
+          <p>
+            Make your own copy of this <url
+            href="https://docs.google.com/document/d/11QMyHAZYhPwNLInhURqkTffeY9re05yH97xAsiSJhLg/edit?usp=sharing">worksheet</url>
+            from the File menu. For question 1, brainstorm and ask people in
+            your community what would be important or useful for them to track
+            in a community organization or activity or to help your community.
+            For example, you could create a Java class to keep track of
+            community events, club activities, athletic games or statistics,
+            community leaders, performers or performances, health tracking, or
+            another subject of your choice.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Come up with the class name for your community data-tracking class
+            (it should be a category of people or things, not a specific person
+            or thing). Come up with at least 3 instance variables that are
+            attributes of things in that class. Think about what data type each
+            variable should be.You can use the <url
+            href="https://docs.google.com/document/d/11QMyHAZYhPwNLInhURqkTffeY9re05yH97xAsiSJhLg/edit?usp=sharing">worksheet</url>
+            to design your class. Optionally, you may want to draw a UML class
+            diagram for your class on paper or using <url
+            href="https://app.diagrams.net/">app.diagrams.net</url> or <url
+            href="https://creately.com">Creately.com</url> (see <url
+            href="https://medium.com/@smagid_allThings/uml-class-diagrams-tutorial-step-by-step-520fd83b300b">tutorial
+            on class diagrams</url>).
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Type in your class name and declare the instance variables for your
+            class in the active code exercise below. Click on run. Your class
+            will not print out anything yet, but it should run without errors.
+            You will add constructors and other methods to this class in the
+            next lessons.
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <project label="community-challenge1">
+      <statement>
+        <p>
+          Come up with the class name for your community data-tracking class (it
+          should be a category of people or things, not a specific person or
+          thing) and at least 3 instance variables that are attributes of things
+          in that class. Your class will not print out anything yet, but it
+          should run without errors.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          public class          // Add your class name here!
+          {
+              // write 3 instance variables for class: private type variableName;
+
+
+
+              public static void main(String[] args)
+              {
+                // Run your code to check for errors.
+                // It will not print anything yet.
+                // You will add more in the next lesson.
+              }
+          }
+        </code>
+
+        <tests>
+          <![CDATA[
+
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void testPrivateVariables() {
+                  String expect = "3 Private";
+                  String output = testPrivateInstanceVariables();
+                  boolean passed = false;
+                  if (Integer.parseInt(expect.substring(0, 1)) <= Integer.parseInt(output.substring(0, 1)))
+                      passed = true;
+                  passed = getResults(expect, output, "Checking private instance variable(s)", passed);
+                  assertTrue(passed);
+              }
+          }
+
+
+          ]]>
+        </tests>
+      </program>
+    </project>
+  </subsection>
+
+    <subsection xml:id="class-hierarchy-and-inheritance">
+    <title>Class Hierarchy and Inheritance</title>
+
+    <idx>inheritance</idx>
+    <idx>superclass</idx>
+    <idx>subclass</idx>
+    <idx>Object</idx>
+    <p>
+      Another important concept in object-oriented programming is
+      <term>inheritance</term>. Although the AP CSA exam no longer covers
+      inheritance, you should know what it means. <term>Inheritance</term> is a
+      way to create a new class that is based on an existing class. The new
+      class, called a <term>subclass</term>, inherits the attributes and
+      behaviors of the existing class, called a <term>superclass</term>. In
+      Java, all classes are subclasses of a superclass called
+      <term>Object</term>.
+    </p>
+
+    <p>
+      For example, you could have a superclass called <c>Pet</c> with attributes
+      like <c>name</c> and <c>age</c> and behaviors like <c>eat</c> and
+      <c>sleep</c>. You could then have subclasses like <c>Dog</c> and
+      <c>Cat</c> and <c>Turtle</c> that inherit the attributes and behaviors of
+      the <c>Pet</c> class. Each subclass could add attributes and behaviors
+      specific to that type of pet. For example, a <c>Dog</c> subclass could
+      have an attribute called <c>breed</c> and a behavior called <c>bark</c>.
+    </p>
+
+    <figure align="center">
+      <caption>
+        Inheritance hierarchy for Pet superclass with the subclasses Dog, Cat,
+        and Turtle
+      </caption>
+
+      <image source="Unit1-Using-Objects-and-Methods/Figures/inheritance-hierarchy-pet.png" width="89%" />
+    </figure>
+  </subsection>
+
+    <p>
+      You can also think of a class as defining a new data type. In this lesson,
+      we will use the class <c>Turtle</c> to make animated turtle objects. Just
+      like you use <c>int</c> to declare variables that hold numbers, you can
+      use <c>Turtle</c> to declare many variables, animated turtle objects, who
+      are <term>instances</term> of the <c>Turtle</c> class.
+    </p>
+
+    <program>
+      // Creating 2 Turtle objects called yertle and myrtle
+      Turtle yertle;
+      Turtle myrtle;
+    </program>
+
+    <activity label="cats">
+      <statement>
+        <p>
+          Discuss with your class: What are some attributes of cats? What are
+          some behaviors of cats? (Note that attributes are often nouns or
+          adjectives describing features of cats, and behaviors are often
+          verbs).
+        </p>
+      </statement>
+
+      <response />
+    </activity>
+
+  </scratch>

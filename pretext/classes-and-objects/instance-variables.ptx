@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<section xml:id="classes-instance-variables">
+  <title>Instance variables</title>
+
+  <introduction>
+    <idx><h>class</h><h>instance variables</h></idx>
+    <p>
+      One way to think about classes that can help us understand the purpose of
+      defining instance variables is to think of a class as like a blueprint for
+      a house. The blueprint is not a house but it defines the structure of a
+      house and if we build two houses from the same blueprint they will each be
+      different houses but they will have the same attributes. If the blueprint
+      says there’s a bathroom on the second floor, then both houses will have a
+      bathroom on the second floor. In this analogy, the blueprint is like the
+      class and the actual houses are the objects.
+    </p>
+
+    <figure align="center">
+      <caption>Using a blueprint (class) to construct houses (objects)</caption>
+
+      <image source="Unit1-Using-Objects-and-Methods/Figures/blueprint.png" width="71%" />
+    </figure>
+
+    <p>
+      And to extend the analogy, the instance variables declared in a class are
+      like the rooms in a blueprint; they lay out the structure of the objects
+      made from that class. In our <c>Person</c> class from the previous
+      section, we know that every instance of that class will have one
+      <c>String</c> reference and one <c>int</c> value in its object data in
+      memory.
+    </p>
+
+    <p>
+      This <url
+      href="https://www.youtube.com/watch?v=Y9vn6u3901Y&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
+      explains the relationship between classes and instances and their
+      attributes using a class <c>Belt</c>.
+    </p>
+
+    <figure align="center">
+      <caption>Belt Object Attributes</caption>
+
+      <video youtube="Y9vn6u3901Y" label="video-belt-object" />
+    </figure>
+
+    <p>
+      Now let’s look at some of the details of using instance variables such as
+      how to refer to them, how they interact with other variables, and what
+      <c>private</c> means.
+    </p>
+  </introduction>
+
+<subsection>
+    <title>Referring to instance variables</title>
+
+    <p>
+      As we saw in the previous section, instance variables declared in a class
+      can be used by code anywhere in the class. For instance the <c>canVote</c>
+      method refers to the <c>age</c> variable.
+    </p>
+
+    <program>
+        public boolean canVote() {
+          return age &gt;= 18;
+        }
+    </program>
+
+    <p>
+      Even though <c>age</c> is neither a parameter nor a local variable
+      declared in <c>canVote</c> we can refer to it to access the value of the
+      instance variable, getting the value stored in the object data of whatever
+      object we called <c>canVote</c> on.
+    </p>
+
+    <p>
+      But sometimes we need to access an instance variable of another object.
+      For example the <c>greet</c> method needs to get the name of the other
+      <c>Person</c>:
+    </p>
+
+    <program>
+        public void greet(Person other) {
+          System.out.println("Hello " + other.name + ", I'm " + name + ".");
+        }
+    </program>
+
+    <p>
+      The code in the <c>System.out.println</c> line refers to both <c>name</c>
+      and <c>other.name</c>. Just plain <c>name</c> refers to the instance
+      variable in whatever object we called <c>greet</c> on. But
+      <c>other.name</c> means get the instance variable from the object
+      referenced by <c>other</c>, in this case the argument that was passed to
+      <c>greet</c>. The dot in <c>other.name</c> is called the <term>dot
+      operator</term> as we firs saw in <xref ref="topic-1-7-APIs-and-libraries"
+      />.
+    </p>
+
+    <p>
+      But what happens if a method or constructor has a parameter with the same
+      name as an instance variable? For instance we saw this in the
+      <c>Person</c> constructor where the constructor signature was:
+    </p>
+
+    <program>
+      public Person(String name, int age) {
+    </program>
+
+    <p>
+      Should plain <c>name</c> refer to the parameter holding the argument
+      passed to the constructor or the instance variable? The rule in Java is it
+      refers to the parameter. This is called <term>shadowing</term>; when two
+      variables have the same name, one of them shadows the other. The parameter
+      <term>shadows</term> the instance variable.
+    </p>
+
+    <p>
+      However, even when an instance variable is shadowed, we can refer to it
+      using the dot operator and the keyword <c>this</c> as we saw in the code
+      of the <c>Person</c> constructor.
+    </p>
+
+    <program>
+      public Person(String name, int age) {
+          this.name = name;
+          this.age = age;
+      }
+    </program>
+
+    <p>
+      The keyword <c>this</c> is kind of like a variable that exists without
+      being declared in the body of all constructors and instance methods and
+      whose value is always a reference to the the object being constructed or
+      the object an instance method was invoked on. Because it’s a keyword we
+      can’t use it as the name of a variable ourselves so it can’t be shadowed.
+      That guarantees that <c>this.name</c> is always a reference to the
+      instance variable <c>name</c> on the current object.
+    </p>
+
+    <p>
+      The idiom <c>this.x = x</c> is commonly used in constructors like the one
+      above so that we can use the same name for parameters as the instance
+      variables they are going to be assigned to. Some programmers prefer to
+      use different, often shorter, names for parameters to avoid having to use
+      <c>this</c> but that just means they have to come up with twice as many
+      names. It’s simpler and idiomatic to use the same name and to disambiguate
+      with <c>this</c>.
+    </p>
+
+    <note>
+      <p>
+        It is legal to use <c>this</c> and the dot operator to access an
+        instance variable even if it is not shadowed but usually Java
+        programmers don’t. Some other languages such as Javascript and Python
+        always require a <c>this.</c> (Javascript) or <c>self.</c> (Python) to
+        access instance variables so if you’ve used those languages you may be
+        in the habit of always using them.
+      </p>
+    </note>
+
+    <activity>
+      <title>Spellcheck</title>
+      <statement>
+        <p>
+          You do need to watch out that you don’t misspell your parameter names.
+          In this constructor the instance variable <c>name</c> is not set to
+          the argument passed to the constructor. Can you see why?
+        </p>
+
+        <program>
+          public Person(String nam, int age) {
+              this.name = name;
+              this.age = age;
+          }
+        </program>
+      </statement>
+
+      <answer>
+        <p>
+          Did you notice that the first parameter spelled <c>nam</c> instead of
+          <c>name</c>?
+        </p>
+
+        <p>
+          As a result in the line <c>this.name = name</c> both <c>this.name</c>
+          and <c>name</c> refer to the instance variable so this line just
+          assigns the current value (which will be <c>null</c>) back to the
+          variable. It could just as well have been written <c>name = name</c>
+          since there is no parameter shadowing it. Hopefully it’s obvious that
+          that does nothing.
+        </p>
+      </answer>
+    </activity>
+
+  </subsection>
+
+
+  <subsection>
+    <title>Making instance variables <c>private</c></title>
+
+    <p>
+      Unlike method parameters and local variables declared inside the body of a
+      method, which disappear as soon as the method returns, instance variables
+      last as long as the object that contains them. And since we can pass
+      object references as arguments to methods, including methods in other
+      classes, that raises the question of what code is allowed to access these
+      instance variables. Should any code that gets a reference to an object be
+      able to access its instance variables, getting and setting their values?
+    </p>
+
+    <p>
+      In Java, the answer is that it’s up to the author of the class. The
+      keyword <c>private</c> placed before the type in the variable declarations
+      in <c>Person</c> is called an <term>access modifier</term> and it tells
+      Java that those variables cannot be accessed by code outside the
+      <c>Person</c> class, even if that code has a reference to a <c>Person</c>
+      object.
+    </p>
+
+    <p>
+      Instance variables should almost always be declared <term>private</term>.
+      The main reason is it makes it much easier to understand our own code: if
+      we marked the variables as <c>public</c> and were trying to understand why
+      a <c>Person</c> object’s age had changed we’d have to check every line of
+      code in our whole program to see what code might have a reference to a
+      <c>Person</c> object and might have assigned a new value to its <c>age</c>
+      variable. Whereas with a <c>private</c> age variable, we know that the
+      only code that could possibly have changed it has to be somewhere in the
+      body of the <c>Person</c> class.
+    </p>
+
+    <p>
+      Making variables <c>private</c> also makes it easier to change our code
+      later. If only code in the class can access a variable, then we can rename
+      it, change its type, or even delete it, if we decide we want to store the
+      information in a different way or don’t need it any more. But if it’s
+      <c>public</c> we again have to look at all the code in any class that
+      might use <c>Person</c> to see if it references that variable. Making
+      variables is Java’s mechanism for <term>data encapsulation</term> or
+      <term>data hiding</term>.
+    </p>
+
+    <activity label="name_instance_variables">
+      <statement>
+        <p>
+          Click on all the instance variable declarations in the following class
+        </p>
+      </statement>
+
+      <feedback>
+        <p>
+          Remember, instance variables are private and are declared after the
+          class declaration.
+        </p>
+      </feedback>
+
+      <areas>
+        <cline><area correct="no">public class Name {</area></cline>
+        <cline>    <area correct="yes">private String first;</area></cline>
+        <cline>    <area correct="yes">private String last;</area></cline>
+        <cline></cline>
+        <cline>    <area correct="no">public Name(String first, String last) {</area></cline>
+        <cline>        <area correct="no">this.first = first;</area></cline>
+        <cline>        <area correct="no">this.last = last;</area></cline>
+        <cline>     <area correct="no">}</area></cline>
+        <cline></cline>
+        <cline>     <area correct="no">public void setFirst(String first) {</area></cline>
+        <cline>        <area correct="no">this.first = first;</area></cline>
+        <cline>     <area correct="no">}</area></cline>
+        <cline></cline>
+        <cline>     <area correct="no">public void setLast(String last) {</area></cline>
+        <cline>        <area correct="no">this.last = last;</area></cline>
+        <cline>     <area correct="no">}</area></cline>
+        <cline><area correct="no">}</area></cline>
+      </areas>
+    </activity>
+
+    <activity label="PersonClass2">
+      <statement>
+        <p>
+          The following Person class keeps track of the name, email, and phone
+          number of a person. What other data could you keep track of about a
+          Person? Add another private instance variable of your choice. Do not
+          worry about changing the constructor or other methods yet.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          public class Person {
+              // instance variables
+              private String name;
+              private String email;
+              private String phoneNumber;
+
+              // Add another private instance variable about a Person here
+
+              // constructor: construct a Person copying in the data into the instance
+              // variables
+              public Person(String initName, String initEmail, String initPhone) {
+                  name = initName;
+                  email = initEmail;
+                  phoneNumber = initPhone;
+              }
+
+              // Print all the data for a person
+              public void print() {
+                  System.out.println("Name: " + name);
+                  System.out.println("Email: " + email);
+                  System.out.println("Phone Number: " + phoneNumber);
+              }
+
+              // main method for testing
+              public static void main(String[] args) {
+                  // call the constructor to create a new person
+                  Person p1 = new Person("Sana", "sana@gmail.com", "123-456-7890");
+                  // call p1's print method
+                  p1.print();
+                  Person p2 = new Person("Jean", "jean@gmail.com", "404 899-9955");
+                  p2.print();
+              }
+          }
+
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void testPrivateVariables() {
+                  String expect = "4 Private";
+                  String output = testPrivateInstanceVariables();
+
+                  boolean passed = getResults(expect, output, "Checking Private Instance Variable(s)");
+                  assertTrue(passed);
+              }
+          }
+
+        </tests>
+      </program>
+    </activity>
+  </subsection>
+
+
+
+</section>

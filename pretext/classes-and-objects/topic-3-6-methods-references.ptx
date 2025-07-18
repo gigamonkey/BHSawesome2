@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-3-6-methods-references">
-  <title>Methods: Passing and Returning References of an Object</title>
+  <title>Using objects</title>
 
   <introduction>
     <p>
@@ -21,8 +21,8 @@
       example, a <c>Person</c> class could have an instance variable for the
       address which can be an object with its own instance variables of street,
       city, state, and zipcode. This is a <term>has-a</term> relationship where
-      a Person 
-      
+      a Person
+
       <title_reference>has an</title_reference>
 
  Address inside it.
@@ -843,8 +843,8 @@
     </p>
 
     <program>
-      Person p1 = new Person("Skyler", 
-                      new Address("123 Main St", 
+      Person p1 = new Person("Skyler",
+                      new Address("123 Main St",
                       "Anytown", "Anystate","12345"));
       System.out.println( p1.getAddress().getCity() );
     </program>

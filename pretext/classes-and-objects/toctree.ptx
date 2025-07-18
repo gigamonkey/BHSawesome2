@@ -60,14 +60,13 @@
   </introduction>
 
   <xi:include href="./topic-3-3-anatomy-of-class.ptx" />
+  <xi:include href="./instance-variables.ptx" />
   <xi:include href="./topic-3-4-constructors.ptx" />
   <xi:include href="./topic-3-5-methods.ptx" />
-  <xi:include href="./topic-1-14-calling-instance-methods.ptx" />
-  <xi:include href="./equality.ptx" />
 
   <xi:include href="./topic-3-6-methods-references.ptx" />
-  <xi:include href="./topic-1-12-objects.ptx" />
-  <xi:include href="./topic-1-13-constructors.ptx" />
+  <xi:include href="./equality.ptx" />
+
   <xi:include href="./topic-3-8-scope-access.ptx" />
   <xi:include href="./topic-3-9-this.ptx" />
   <xi:include href="./topic-3-7-static-vars-methods.ptx" />
