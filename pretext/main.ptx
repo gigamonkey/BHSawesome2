@@ -52,8 +52,7 @@
     <xi:include href="./loops/toctree.ptx" />
     <xi:include href="./arrays/toctree.ptx" />
     <xi:include href="./strings/toctree.ptx" />
-    <xi:include href="./reference-types/toctree.ptx" />
-    <xi:include href="./objects/toctree.ptx" />
+    <xi:include href="./classes-and-objects/toctree.ptx" />
     <xi:include href="./abstraction-and-program-design/toctree.ptx" />
     <xi:include href="./array-lists/toctree.ptx" />
     <xi:include href="./text-files/toctree.ptx" />

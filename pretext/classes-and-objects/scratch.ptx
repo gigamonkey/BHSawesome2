@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<scratch>
+  <p>
+      Remember that a <term>class</term> in Java defines a blueprint for
+      creating objects. When you create <term>objects</term>, you create new
+      <term>instances</term> of that class and what you can do with those
+      instances is determined by what methods are defined in the class.
+    </p>
+
+
+    <p>
+      You can create instances of the <c>Person</c> class with <c>new</c> as in
+      <c>new Person()</c> And you can declare variables that can hold a
+      reference to a <c>Person</c> object with <c>Person variableName</c>. Or
+      put it altogether to declare some variables and initialize each one with a
+      reference to a new <c>Person</c> as shown here.
+    </p>
+
+    <program>
+      Person ada = new Person();
+      Person charles = new Person();
+    </program>
+
+    <p>
+      The real meat of a class is in the <term>methods</term> which define the
+      behaviors of the objects of that class. Remember that most methods either
+      do things (like the <c>Turtle</c> methods that moved the turtle on the
+      screen) or return values like the <c>getXPos</c> and <c>getYPos</c> on
+      <c>Turtle</c>. The methods of the class share access to the object’s
+      instance variables and when a method is called on an object it uses the
+      instance variables for that object. For example in the <c>Turtle</c> class
+      the <c>forward</c> method changes an instance variable <c>xPos</c>. When
+      you call <c>forward</c> on <c>yertle</c> it changes <c>xPos</c> on the
+      <c>yertle</c> object and when you call it on <c>myrtle</c> it changes the
+      <c>xPos</c> on the <c>myrtle</c> object.
+    </p>
+
+    <p>
+      Putting it all together, the three main anatomical features of a class are
+      the <term>instance variables</term> which hold values associated with each
+      object, the <term>constructors</term> whose job is to initialize the
+      instance variables, and the <term>methods</term> who contain the code that
+      gives the objects their behavior and which can use the instance variables
+      defined in the class.
+    </p>
+
+    <program>
+      public class Person {
+          // instance variables
+
+          // constructors
+
+          // methods
+
+      }
+
+    </program>
+
+    <p>
+      And finally one last bit of weird anatomy, kind of like the human appendix
+      which is only sometimes needed: any Java class can have a <c>main</c>
+      method which can be used to run that class as a program either to test
+      that one class or sometimes as the entry point to a whole program made up
+      of many classes and objects.
+    </p>
+
+  <subsection xml:id="designing-a-class">
+    <title>Designing a Class</title>
+
+    <p>
+      Now that we know what the skeleton of a class looks like and the elements
+      that make up the body of the class, we’re ready to create our own class.
+      Let’s start with a quick look at how to design a class such as
+      <c>Person</c>.
+    </p>
+
+    <p>
+      One important question we have to ask when designing a class is, what data
+      does it represent? In this case we can ask, what would we want to know
+      about a person? Our answer will depend on what problem we are trying to
+      solve. In one program, perhaps an address book, we might want to know the
+      person’s name and phone number and email. In another program, such as a
+      medical application, we might need to know their vital signs such as their
+      blood pressure, temperature, and pulse rate.
+    </p>
+
+    <p>
+      For now let’s go with the address book example. Here’s a fleshed out
+      <c>Person</c> class with instance variables, a constructor, and methods.
+      We’ll go through the details in the next few sections but for now you can
+      run the code to see how it constructs 2 <c>Person</c> objects and fills in
+      their data. Remember that execution always starts in the <c>main</c>
+      method. When a method like <c>print</c> is called, the code defined in the
+      method runs but when it gets the values of <c>name</c>, <c>email</c>, and
+      <c>phoneNumber</c> it gets the specific values of those variables that
+      were set by the constructor when the particular object we called
+      <c>print</c> on was created. Click on the Show CodeLens button below and
+      the Next button to run the code step by step.
+    </p>
+
+    <activity label="PersonClass">
+      <statement>
+        <p>
+          The following Person class keeps track of the name, email, and phone
+          number of a person. Try changing the Person p2 object in the main
+          method to your name. Click on the Show CodeLens button and then Next
+          to step through the code.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          public class Person {
+              // instance variables
+              private String name;
+              private String email;
+              private String phoneNumber;
+
+              // constructor: construct a Person copying in the data into the instance
+              // variables
+              public Person(String initName, String initEmail, String initPhone) {
+                  name = initName;
+                  email = initEmail;
+                  phoneNumber = initPhone;
+              }
+
+              // Print all the data for a person
+              public void print() {
+                  System.out.println("Name: " + name);
+                  System.out.println("Email: " + email);
+                  System.out.println("Phone Number: " + phoneNumber);
+              }
+
+              // main method for testing
+              public static void main(String[] args) {
+                  // call the constructor to create a new person
+                  Person p1 = new Person("Sana", "sana@gmail.com", "123-456-7890");
+                  // call p1's print method
+                  p1.print();
+                  Person p2 = new Person("Jean", "jean@gmail.com", "404 899-9955");
+                  p2.print();
+              }
+          }
+
+        </code>
+
+        <tests>
+          // Test for Lesson 5.1.0 - Person class - should pass if/when they run code
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void testMain() throws IOException {
+                  String output = getMethodOutput("main");
+                  String expect =
+                          "Name: Sana\n"
+                                  + "Email: sana@gmail.com\n"
+                                  + "Phone Number: 123-456-7890\n"
+                                  + "Name: Jean\n"
+                                  + "Email: jean@gmail.com\n"
+                                  + "Phone Number: 404 899-9955";
+
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
+
+        </tests>
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="data-encapsulation">
+    <title>Data encapsulation</title>
+
+    <p>
+      <term>Data encapsulation</term> is an object-oriented design technique in
+      which the implementation details of a class are kept hidden from external
+      classes. The keywords <c>public</c> and <c>private</c> are called
+      <term>access modifiers</term>, and they affect how you can the access
+      classes, data, constructors, and methods. The keyword <c>public</c> means
+      anyone can access this; it allows access from classes outside the
+      declaring class. The keyword <c>private</c> restricts access to the
+      declaring class which means that variables or methods marked private are
+      only accessible inside the class where they are defined. In general,
+      instance variables in a class should be declared <c>private</c> to ensure
+      data encapsulation.
+    </p>
+  </subsection>
+
+</scratch>

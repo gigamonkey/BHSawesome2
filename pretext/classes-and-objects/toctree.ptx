@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<chapter xml:id="classes" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Classes and objects</title>
+
+  <introduction>
+    <idx>object</idx>
+    <idx>class</idx>
+    <idx>instance</idx>
+    <idx>attribute</idx>
+    <idx>behavior</idx>
+
+    <p>
+      Now we finally get to the heart of Java: classes and objects.
+    </p>
+
+    <p>
+      Java is an <term>object-oriented</term> programming language. That means
+      that one of the primary ways of designing and organizing a Java program is
+      in terms of <term>objects</term>. Any value in Java that is not a
+      primitive type is an object which means arrays are technically objects.
+      But usually when we talk about objects we are talking about values defined
+      by <term>classes</term>.
+    </p>
+
+    <p>
+      Classes let us define new data types way that combines the definition of
+      the data that makes up the values and the code that operates on that data
+      into a single unit. One consequence of this organization is it lets us
+      treat objects as somewhat of a <term>black box</term>, a thing we can use
+      without having to know all the details of how it works on the inside.
+      We’ve already seen how that can work when we’ve used <c>String</c> and
+      <c>Turtle</c> objects. We don’t know exactly how, say, <c>indexOf</c>
+      works or what exactly happens when we tell a <c>Turtle</c> to got
+      <c>forward()</c>, but we can use those methods in our programs as long as
+      we understand <em>what</em> they do.
+    </p>
+
+    <p>
+      But we can also open up the box and look inside to see how a class works.
+      And we can write our own. In fact quite a lot of what we think of as Java,
+      is really just classes written <em>in</em> Java that we could write
+      ourselves if they didn’t exist. There are a few classes, such as
+      <c>String</c>, that are built into a Java at a slightly deeper level than
+      something we could write. For instance, the fact that we can write
+      <c>String</c> literals in double quotes in our Java programs is a feature
+      of Java built into the Java compiler; we cannot define literal syntax for
+      our own classes in the same way. But even most of the <c>String</c> class
+      is written <url
+      href="https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/lang/String.java">in
+      java</url>
+    </p>
+
+    <p>
+      In this unit we’ll look first at classes from inside the box to see how
+      they are structured on the inside. Then, with some of the mystery
+      hopefully dispelled, we’ll look at the details of using classes and
+      objects.
+    </p>
+  </introduction>
+
+  <xi:include href="./topic-3-3-anatomy-of-class.ptx" />
+  <xi:include href="./topic-3-4-constructors.ptx" />
+  <xi:include href="./topic-3-5-methods.ptx" />
+  <xi:include href="./topic-1-14-calling-instance-methods.ptx" />
+  <xi:include href="./equality.ptx" />
+
+  <xi:include href="./topic-3-6-methods-references.ptx" />
+  <xi:include href="./topic-1-12-objects.ptx" />
+  <xi:include href="./topic-1-13-constructors.ptx" />
+  <xi:include href="./topic-3-8-scope-access.ptx" />
+  <xi:include href="./topic-3-9-this.ptx" />
+  <xi:include href="./topic-3-7-static-vars-methods.ptx" />
+
+
+</chapter>
