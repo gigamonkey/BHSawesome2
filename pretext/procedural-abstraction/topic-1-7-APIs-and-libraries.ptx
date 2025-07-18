@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-1-7-APIs-and-libraries">
   <title>APIs and Libraries</title>
+
   <introduction>
     <idx>API</idx>
     <idx>library</idx>
@@ -35,12 +36,14 @@
 
     <figure align="center">
       <caption>Library and API</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/api.png" width="50%" alt="Library, API, package, documentation" />
     </figure>
   </introduction>
 
   <subsection xml:id="classes-attributes-behaviors">
     <title>The Turtle Library: Classes, Attributes, and Behaviors</title>
+
     <p>
       One of the great things about Java is the number of libraries written by
       other programmers that we can use. One such library is the <c>Turtle</c>
@@ -52,24 +55,23 @@
 
     <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
       <code>
-import java.awt.*;
-import java.util.*;
+        import java.awt.*;
+        import java.util.*;
 
-public class TurtleTest
-{
-    public static void main(String[] args)
-    {
-        // Do not change the next 2 lines
-        World habitat = new World(300, 300);
-        Turtle yertle = new Turtle(habitat);
+        public class TurtleTest {
+            public static void main(String[] args) {
+                // Do not change the next 2 lines
+                World habitat = new World(300, 300);
+                Turtle yertle = new Turtle(habitat);
 
-        // Code to make yertle move forward and turn right
-        yertle.forward();
-        yertle.turnRight();
+                // Code to make yertle move forward and turn right
+                yertle.forward();
+                yertle.turnRight();
 
-        habitat.show(true);
-    }
-}
+                habitat.show(true);
+            }
+        }
+
       </code>
     </program>
 
@@ -116,6 +118,7 @@ public class TurtleTest
 
     <figure align="center">
       <caption>Turtle Attributes and Behaviors</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/turtleOOD.svg" width="50%" alt="Turtle attributes and behaviors" />
     </figure>
 
@@ -154,8 +157,8 @@ public class TurtleTest
 
     <program language="java">
       <code>
-yertle.forward();
-yertle.turnRight();
+        yertle.forward();
+        yertle.turnRight();
       </code>
     </program>
 
@@ -194,53 +197,56 @@ yertle.turnRight();
 
       <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class TurtleTest
-{
-    public static void main(String[] args)
-    {
-        // Do not change the next 2 lines
-        World habitat = new World(300, 300);
-        Turtle yertle = new Turtle(habitat);
+          public class TurtleTest {
+              public static void main(String[] args) {
+                  // Do not change the next 2 lines
+                  World habitat = new World(300, 300);
+                  Turtle yertle = new Turtle(habitat);
 
-        // Code to make yertle move forward and turn right
-        yertle.forward();
-        yertle.turnRight();
-        // Add a line of code here to make yertle go forward again
+                  // Code to make yertle move forward and turn right
+                  yertle.forward();
+                  yertle.turnRight();
+                  // Add a line of code here to make yertle go forward again
 
-        // Do not change
-        habitat.show(true);
-    }
-}
+                  // Do not change
+                  habitat.show(true);
+              }
+          }
+
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleTest");
-    }
-    @Test
-    public void test1()
-    {
-        String code = getCode();
-        String expect = "yertle.forward";
+          import java.io.*;
 
-        int count = countOccurences(code, expect);
-        boolean passed = (count &gt;= 2);
-        passed = getResults("2+", "" + count, "yertle.forward() count", passed);
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("TurtleTest");
+              }
 
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test1() {
+                  String code = getCode();
+                  String expect = "yertle.forward";
+
+                  int count = countOccurences(code, expect);
+                  boolean passed = (count >= 2);
+                  passed = getResults("2+", "" + count, "yertle.forward() count", passed);
+
+                  assertTrue(passed);
+              }
+          }
+
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -301,9 +307,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="turtle_type">
       <statement>
-        <p>
-          What does <c>Turtle</c> refer to in the program above?
-        </p>
+        <p>What does <c>Turtle</c> refer to in the program above?</p>
       </statement>
 
       <choices>
@@ -365,9 +369,7 @@ public class RunestoneTests extends CodeTestHelper
 
     <activity label="type_turn_right">
       <statement>
-        <p>
-          What does <c>turnRight</c> refer to in the program above?
-        </p>
+        <p>What does <c>turnRight</c> refer to in the program above?</p>
       </statement>
 
       <choices>
@@ -612,6 +614,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="packages">
     <title>Packages</title>
+
     <p>
       While classes are the main building blocks of Java programs, most programs
       and libraries are made up of multiple classes that need to be used
@@ -712,7 +715,9 @@ public class RunestoneTests extends CodeTestHelper
           <test>
             <!-- else -->
             <feedback>
-              <p>Only count the println methods, not print or printf methods.</p>
+              <p>
+                Only count the println methods, not print or printf methods.
+              </p>
             </feedback>
           </test>
         </evaluate>
@@ -733,30 +738,43 @@ public class RunestoneTests extends CodeTestHelper
 
       <cardsort>
         <match>
-          <premise order="1">A collection of classes written by other programmers</premise>
+          <premise order="1">
+            A collection of classes written by other programmers
+          </premise>
+
           <response>library</response>
         </match>
 
         <match>
           <premise order="2">
-            A collection of related classes organized to be imported into your code
+            A collection of related classes organized to be imported into your
+            code
           </premise>
 
           <response>package</response>
         </match>
 
         <match>
-          <premise order="3">A specification that tells a programmer how to use a library</premise>
+          <premise order="3">
+            A specification that tells a programmer how to use a library
+          </premise>
+
           <response>API</response>
         </match>
 
         <match>
-          <premise order="4">The main building block of programs in Java</premise>
+          <premise order="4">
+            The main building block of programs in Java
+          </premise>
+
           <response>class</response>
         </match>
 
         <match>
-          <premise order="5">A block of code that performs a specific task</premise>
+          <premise order="5">
+            A block of code that performs a specific task
+          </premise>
+
           <response>method</response>
         </match>
       </cardsort>
@@ -787,7 +805,9 @@ public class RunestoneTests extends CodeTestHelper
           </statement>
 
           <feedback>
-            <p>Correct! APIs and libraries let you use code written by others.</p>
+            <p>
+              Correct! APIs and libraries let you use code written by others.
+            </p>
           </feedback>
         </choice>
 
@@ -819,6 +839,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-turtle-drawing">
     <title>Coding Challenge: Turtle Drawing</title>
+
     <p>
       Make yertle the Turtle draw a shape. For example, have it draw a square or
       a zigzag shape or a block letter by calling the forward method and a turn
@@ -832,39 +853,27 @@ public class RunestoneTests extends CodeTestHelper
     <p>
       <ul>
         <li>
-          <p>
-            <c>yertle.forward();</c>
-          </p>
+          <p><c>yertle.forward();</c></p>
         </li>
 
         <li>
-          <p>
-            <c>yertle.turnLeft();</c>
-          </p>
+          <p><c>yertle.turnLeft();</c></p>
         </li>
 
         <li>
-          <p>
-            <c>yertle.turnRight();</c>
-          </p>
+          <p><c>yertle.turnRight();</c></p>
         </li>
 
         <li>
-          <p>
-            <c>yertle.backward();</c>
-          </p>
+          <p><c>yertle.backward();</c></p>
         </li>
 
         <li>
-          <p>
-            <c>yertle.penUp();</c>
-          </p>
+          <p><c>yertle.penUp();</c></p>
         </li>
 
         <li>
-          <p>
-            <c>yertle.penDown();</c>
-          </p>
+          <p><c>yertle.penDown();</c></p>
         </li>
       </ul>
     </p>
@@ -880,98 +889,91 @@ public class RunestoneTests extends CodeTestHelper
 
       <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class TurtleShape
-{
-    public static void main(String[] args)
-    {
-        World habitat = new World(500, 500);
-        Turtle yertle = new Turtle(habitat);
+          public class TurtleShape {
+              public static void main(String[] args) {
+                  World habitat = new World(500, 500);
+                  Turtle yertle = new Turtle(habitat);
 
-        // Use any of yertle's methods such as forward, turnRight, and turnLeft
-        // to draw a shape
+                  // Use any of yertle's methods such as forward, turnRight, and turnLeft
+                  // to draw a shape
 
-        // Do not change the line below!
-        habitat.show(true);
-    }
-}
+                  // Do not change the line below!
+                  habitat.show(true);
+              }
+          }
+
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtleShape");
-    }
+          import java.io.*;
 
-    @Test
-    public void test2()
-    {
-        String code = getCode();
-        String right = ".turnRight()";
-        String left = ".turnLeft()";
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("TurtleShape");
+              }
 
-        int countR = countOccurences(code, right);
-        int countL = countOccurences(code, left);
-        int count = countR + countL;
+              @Test
+              public void test2() {
+                  String code = getCode();
+                  String right = ".turnRight()";
+                  String left = ".turnLeft()";
 
-        boolean passed = (count &gt;= 3);
+                  int countR = countOccurences(code, right);
+                  int countL = countOccurences(code, left);
+                  int count = countR + countL;
 
-        passed =
-                getResults(
-                        "3+ turns",
-                        "" + count + "+ turns",
-                        "3+ turnRight() or turnLeft()",
-                        passed);
-        assertTrue(passed);
-    }
+                  boolean passed = (count >= 3);
 
-    @Test
-    public void test3()
-    {
-        String code = getCode();
-        String forwards = ".forward";
-        String backwards = ".backward";
+                  passed =
+                          getResults(
+                                  "3+ turns", "" + count + "+ turns", "3+ turnRight() or turnLeft()", passed);
+                  assertTrue(passed);
+              }
 
-        int forward = countOccurences(code, forwards);
-        int backward = countOccurences(code, backwards);
-        int moves = forward + backward;
+              @Test
+              public void test3() {
+                  String code = getCode();
+                  String forwards = ".forward";
+                  String backwards = ".backward";
 
-        boolean passed = (moves &gt;= 4);
+                  int forward = countOccurences(code, forwards);
+                  int backward = countOccurences(code, backwards);
+                  int moves = forward + backward;
 
-        passed =
-                getResults(
-                        "4+ moves", "" + moves +
-                        "+ moves",
-                        "forward or backward", passed);
-        assertTrue(passed);
-    }
+                  boolean passed = (moves >= 4);
 
-    @Test
-    public void test4()
-    {
-        String[] code = getCode().split("\n");
-        int expect = 25;
+                  passed = getResults("4+ moves", "" + moves + "+ moves", "forward or backward", passed);
+                  assertTrue(passed);
+              }
 
-        boolean passed = code.length &gt;= expect;
+              @Test
+              public void test4() {
+                  String[] code = getCode().split("\n");
+                  int expect = 25;
 
-        passed =
-                getResults(
-                        expect + "+ line(s)",
-                        "" + code.length + " lines(s)",
-                        "More than " + expect + " lines of code",
-                        passed);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = code.length >= expect;
+
+                  passed =
+                          getResults(
+                                  expect + "+ line(s)",
+                                  "" + code.length + " lines(s)",
+                                  "More than " + expect + " lines of code",
+                                  passed);
+                  assertTrue(passed);
+              }
+          }
+
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -979,6 +981,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-12">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
