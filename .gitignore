@@ -1,41 +1,24 @@
-# Ignore unique build info
-build_info
-build
-.env
-.github
-logs
-_fixed_sources
-.error_schema.log
-pretext/generated
-codechat_config.yaml
-published/
-cli.log
-.devcontainer.json
-node_modules
+# Pretext build and run stuff
 .cache
-package.json
-package-lock.json
+.error_schema.log
+author_build.log
+generated-assets/
+logs/
 output/
+pretext/generated
+published/
 
-# Miscellaneous source files
-_sources/Tests/test6.rst
-_sources/Tests/test5.rst
-_sources copy/Appendix/DrJava.rst
-_sources copy/Appendix/DrJava.rst
-_sources copy/Appendix/Figures/AddJarToPrefs.png
-_sources copy/Appendix/DrJava.rst
-
-# Compiled Python files
+# Compiled files
 *.pyc
+*.class
+*.jar
 
 # Machine specific files
 .DS_Store
-pavement.py
-sphinx_settings.json
-.vscode/settings.json
+.vscode/
 
+# Some files I generate
+all-files.mk
 pretext/files.txt
 pretext/full-main.ptx
-
-# Compile Java files
-*.class
+words.txt
