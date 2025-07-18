@@ -323,3 +323,9 @@ table .align-default, td {
 .ptx-content .book .conclusion .para {
   text-align: center;
 }
+
+
+.ptx-content .tabular-box {
+  width: unset;
+  margin-left: unset;
+}
