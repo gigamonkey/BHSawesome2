@@ -114,23 +114,23 @@
         <cline><area correct="no">{</area></cline>
         <cline>    <area correct="no">private String first;</area></cline>
         <cline>    <area correct="no">private String last;</area></cline>
-        <cline></cline>
+        <cline />
         <cline>    <area correct="no">public Name(String theFirst, String theLast)</area></cline>
         <cline>    <area correct="no">{</area></cline>
         <cline>        <area correct="no">first = theFirst;</area></cline>
         <cline>        <area correct="no">last = theLast;</area></cline>
         <cline>    <area correct="no">}</area></cline>
-        <cline></cline>
+        <cline />
         <cline>    <area correct="yes">public void setFirst(String theFirst)</area></cline>
         <cline>    <area correct="yes">{</area></cline>
         <cline>        <area correct="yes">first = theFirst;</area></cline>
         <cline>    <area correct="yes">}</area></cline>
-        <cline></cline>
+        <cline />
         <cline>    <area correct="yes">public void setLast(String theLast)</area></cline>
         <cline>    <area correct="yes">{</area></cline>
         <cline>        <area correct="yes">last = theLast;</area></cline>
         <cline>    <area correct="yes">}</area></cline>
-        <cline></cline>
+        <cline />
         <cline><area correct="no">}</area></cline>
       </areas>
     </activity>
@@ -2472,21 +2472,21 @@
 
       <areas>
         <cline><area correct="no">public class Student {</area></cline>
-        <cline></cline>
+        <cline />
         <cline>    <area correct="no">private String name;</area></cline>
         <cline>    <area correct="no">private String email;</area></cline>
-        <cline></cline>
+        <cline />
         <cline>    <area correct="no">public Student(String initName, String intEmail) </area></cline>
         <cline>    <area correct="no">{</area></cline>
         <cline>        <area correct="no">name = initName;</area></cline>
         <cline>        <area correct="no">email = initEmail;</area></cline>
         <cline>     <area correct="no">}</area></cline>
-        <cline></cline>
+        <cline />
         <cline>     <area correct="yes">public String getName() </area></cline>
         <cline>     <area correct="no">{</area></cline>
         <cline>        <area correct="no">return name;</area></cline>
         <cline>     <area correct="no">}</area></cline>
-        <cline></cline>
+        <cline />
         <cline>     <area correct="yes">public void print() </area></cline>
         <cline>     <area correct="no">{</area></cline>
         <cline>        <area correct="no">System.out.println(name + ":" + email);</area></cline>
@@ -2894,17 +2894,17 @@
         <block order="2">
           <cline>   public static void main(String[] args)</cline>
           <cline>   {</cline>
-          <cline></cline>
+          <cline />
         </block>
 
         <block order="4">
           <cline>      World world = new World(300,300);</cline>
-          <cline></cline>
+          <cline />
         </block>
 
         <block order="5">
           <cline>      Turtle builder = new Turtle(world);</cline>
-          <cline></cline>
+          <cline />
         </block>
 
         <block order="9">
@@ -2917,12 +2917,12 @@
           <cline>      builder.forward(100);</cline>
           <cline>      builder.turnRight();</cline>
           <cline>      builder.forward(100);</cline>
-          <cline></cline>
+          <cline />
         </block>
 
         <block order="10">
           <cline>      builder.setColor(Color.red);</cline>
-          <cline></cline>
+          <cline />
         </block>
 
         <block order="7">
@@ -2933,17 +2933,17 @@
           <cline>      builder.forward(100);</cline>
           <cline>      builder.turn(120);</cline>
           <cline>      builder.forward(100);</cline>
-          <cline></cline>
+          <cline />
         </block>
 
         <block order="3">
           <cline>      world.show(true);</cline>
-          <cline></cline>
+          <cline />
         </block>
 
         <block order="8">
           <cline>   }</cline>
-          <cline></cline>
+          <cline />
         </block>
 
         <block order="1">

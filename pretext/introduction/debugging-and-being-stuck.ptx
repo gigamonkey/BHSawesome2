@@ -181,7 +181,7 @@
 
           <choice>
             <cline>      System.out.println("Hi there!")</cline>
-            <cline></cline>
+            <cline />
           </choice>
         </block>
 

@@ -583,35 +583,35 @@
           <cline> int current = 0;</cline>
           <cline> for(int r=0;r &lt; arr.length;r++)</cline>
           <cline> {</cline>
-          <cline></cline>
+          <cline />
         </block>
 
         <block order="2">
           <cline>   for(int c=0;c &lt; arr[0].length;c++)</cline>
           <cline>   {</cline>
-          <cline></cline>
+          <cline />
         </block>
 
         <block order="8">
           <cline>     current = arr[r][c];</cline>
           <cline>     if (current &gt; largest)</cline>
           <cline>     {</cline>
-          <cline></cline>
+          <cline />
         </block>
 
         <block order="9">
           <cline>       largest = current;</cline>
-          <cline></cline>
+          <cline />
         </block>
 
         <block order="1">
           <cline>     } // end if</cline>
-          <cline></cline>
+          <cline />
         </block>
 
         <block order="5">
           <cline>   } // end column loop</cline>
-          <cline></cline>
+          <cline />
         </block>
 
         <block order="6">

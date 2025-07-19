@@ -460,20 +460,20 @@
 
       <areas>
         <cline><area correct="no">public class Date {</area></cline>
-        <cline></cline>
+        <cline />
         <cline>    <area correct="no">private int year;</area></cline>
         <cline>    <area correct="no">private int month;</area></cline>
         <cline>    <area correct="no">private int day;</area></cline>
-        <cline></cline>
+        <cline />
         <cline>    <area correct="yes">public Date() </area></cline>
         <cline>        <area correct="no">{ /** Implementation not shown */ }</area></cline>
-        <cline></cline>
+        <cline />
         <cline>    <area correct="yes">public Date(int year, int month, int day) </area></cline>
         <cline>        <area correct="no">{ /** Implementation not shown */ }</area></cline>
-        <cline></cline>
+        <cline />
         <cline>     <area correct="no">public void print() </area></cline>
         <cline>        <area correct="no">{ /** Implementation not shown */ }</area></cline>
-        <cline></cline>
+        <cline />
         <cline><area correct="no">}</area></cline>
       </areas>
     </activity>
@@ -574,23 +574,23 @@
         <cline><area correct="no">{</area></cline>
         <cline>    <area correct="no">private String first;</area></cline>
         <cline>    <area correct="no">private String last;</area></cline>
-        <cline></cline>
+        <cline />
         <cline>    <area correct="yes">public Name(String theFirst, String theLast)</area></cline>
         <cline>    <area correct="yes">{</area></cline>
         <cline>        <area correct="yes">first = theFirst;</area></cline>
         <cline>        <area correct="yes">last = theLast;</area></cline>
         <cline>    <area correct="yes">}</area></cline>
-        <cline></cline>
+        <cline />
         <cline>    <area correct="no">public void setFirst(String theFirst)</area></cline>
         <cline>    <area correct="no">{</area></cline>
         <cline>        <area correct="no">first = theFirst;</area></cline>
         <cline>    <area correct="no">}</area></cline>
-        <cline></cline>
+        <cline />
         <cline>    <area correct="no">public void setLast(String theLast)</area></cline>
         <cline>    <area correct="no">{</area></cline>
         <cline>        <area correct="no">last = theLast;</area></cline>
         <cline>    <area correct="no">}</area></cline>
-        <cline></cline>
+        <cline />
         <cline><area correct="no">}</area></cline>
       </areas>
     </activity>

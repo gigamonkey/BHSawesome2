@@ -78,7 +78,7 @@
         <cline><area correct="no">{</area></cline>
         <cline>    <area correct="yes">private String first;</area></cline>
         <cline>    <area correct="yes">public String last;</area></cline>
-        <cline></cline>
+        <cline />
         <cline>    <area correct="no">public Name(String theFirst, String theLast)</area></cline>
         <cline>    <area correct="no">{</area></cline>
         <cline>        <area correct="no">String firstName = theFirst;</area></cline>
@@ -108,7 +108,7 @@
         <cline><area correct="no">{</area></cline>
         <cline>    <area correct="no">private String first;</area></cline>
         <cline>    <area correct="no">public String last;</area></cline>
-        <cline></cline>
+        <cline />
         <cline>    public Name(<area correct="yes">String theFirst</area>, <area correct="yes">String theLast</area>)</cline>
         <cline>    <area correct="no">{</area></cline>
         <cline>        <area correct="yes">String firstName = theFirst;</area></cline>

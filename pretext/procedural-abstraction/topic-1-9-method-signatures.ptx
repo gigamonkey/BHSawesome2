@@ -545,11 +545,11 @@
         <cline>    <area correct="no">System.out.println("Old MacDonald had a farm");</area></cline>
         <cline>    <area correct="no">eieio();</area></cline>
         <cline>  <area correct="no">}</area></cline>
-        <cline></cline>
+        <cline />
         <cline>  <area correct="no">public static void eieio() {</area></cline>
         <cline>    <area correct="no">System.out.println("E-I-E-I-O");</area></cline>
         <cline>  <area correct="no">}</area></cline>
-        <cline></cline>
+        <cline />
         <cline>  <area correct="no">public static void main(String[] args) {</area></cline>
         <cline>    <area correct="no">chorus();</area></cline>
         <cline>    <area correct="no">System.out.println("And on that farm they had a</area> <area correct="yes">cow</area><area correct="no">.");</area></cline>
@@ -812,14 +812,14 @@
         <cline><area correct="no">The little one stops to </area> <area correct="yes"> suck a thumb</area></cline>
         <cline><area correct="no">And they all go marching down to the ground</area></cline>
         <cline><area correct="no">To get out of the rain, BOOM! BOOM! BOOM! BOOM!</area></cline>
-        <cline></cline>
+        <cline />
         <cline><area correct="no">The ants go marching </area> <area correct="yes"> two by two</area><area correct="no">, hurrah, hurrah</area></cline>
         <cline><area correct="no">The ants go marching </area> <area correct="yes"> two by two</area><area correct="no">, hurrah, hurrah</area></cline>
         <cline><area correct="no">The ants go marching </area> <area correct="yes"> two by two</area></cline>
         <cline><area correct="no">The little one stops to </area> <area correct="yes"> tie a shoe</area></cline>
         <cline><area correct="no">And they all go marching down to the ground</area></cline>
         <cline><area correct="no">To get out of the rain, BOOM! BOOM! BOOM! BOOM!</area></cline>
-        <cline></cline>
+        <cline />
         <cline><area correct="no">The ants go marching </area> <area correct="yes"> three by three</area><area correct="no">, hurrah, hurrah</area></cline>
         <cline><area correct="no">The ants go marching </area> <area correct="yes"> three by three</area><area correct="no">, hurrah, hurrah</area></cline>
         <cline><area correct="no">The ants go marching </area> <area correct="yes"> three by three</area></cline>

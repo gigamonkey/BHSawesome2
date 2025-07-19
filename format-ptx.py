@@ -91,6 +91,7 @@ def is_pre_in_datafile(elem):
         elem.tag == "pre"
         and elem.getparent() is not None
         and elem.getparent().tag == "datafile"
+        and not "source" in elem.attrib
     )
 
 
@@ -244,6 +245,10 @@ def fill_with_indent(text, i):
 
 
 def render_with_whitespace(elem, ns, level=0):
+
+    if is_empty(elem):
+        return f"\n{indentation(level)}{open_tag(elem, ns, empty=True)}"
+
     s = f"\n{indentation(level)}{open_tag(elem, ns)}"
     if (
         elem.text

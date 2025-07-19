@@ -261,16 +261,16 @@
         <cline><area correct="no">public class Name {</area></cline>
         <cline>    <area correct="yes">private String first;</area></cline>
         <cline>    <area correct="yes">private String last;</area></cline>
-        <cline></cline>
+        <cline />
         <cline>    <area correct="no">public Name(String first, String last) {</area></cline>
         <cline>        <area correct="no">this.first = first;</area></cline>
         <cline>        <area correct="no">this.last = last;</area></cline>
         <cline>     <area correct="no">}</area></cline>
-        <cline></cline>
+        <cline />
         <cline>     <area correct="no">public void setFirst(String first) {</area></cline>
         <cline>        <area correct="no">this.first = first;</area></cline>
         <cline>     <area correct="no">}</area></cline>
-        <cline></cline>
+        <cline />
         <cline>     <area correct="no">public void setLast(String last) {</area></cline>
         <cline>        <area correct="no">this.last = last;</area></cline>
         <cline>     <area correct="no">}</area></cline>
