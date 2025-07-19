@@ -55,7 +55,7 @@ div.time {
 }
 
 /* Default spacing between paragraphs is too much. */
-section > .para + .para {
+.ptx-content section > .para + .para {
   margin-top: 0.6em;
 }
 
@@ -160,14 +160,12 @@ section > .para + .para {
   font-size: inherit;
 }
 
-.ptx-content
-#summary ul.simple li
+.ptx-content #summary ul.simple li
 {
   padding-top: 1em;
 }
 
-.ptx-content
-figure.table-like {
+.ptx-content figure.table-like {
      margin-left: 0px;
 }
 
