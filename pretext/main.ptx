@@ -59,7 +59,6 @@
     <xi:include href="./algorithms/toctree.ptx" />
 
     <backmatter>
-      <xi:include href="./turtle-classes.ptx" />
       <index>
         <index-list />
       </index>
@@ -70,6 +69,15 @@
         If you see errors or bugs, please email <url
         href="mailto:peterseibel@berkeley.net">peterseibel@berkeley.net</url>.
       </p>
+
+      <datafile label="turtleClasses" filename="turtleClasses.jar" editable="no" hide="yes">
+        <pre source="_static/code/turtleClasses.java" />
+      </datafile>
+
+      <datafile label="turtleClasses2" filename="turtleClasses2.jar" editable="no" hide="yes">
+        <pre source="_static/code/turtleClasses2.java" />
+      </datafile>
+
     </conclusion>
   </book>
 </pretext>
