@@ -275,7 +275,7 @@
     </p>
   </subsection>
 
-  <subsection xml:id="instance-variables">
+  <subsection>
     <title>Instance Variables</title>
 
     <idx><h>class</h><h>instance variables</h></idx>

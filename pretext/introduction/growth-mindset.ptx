@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<section label="growth-mindset">
+<section xml:id="growth-mindset">
   <title>Growth Mindset and Pair Programming</title>
 
   <introduction>

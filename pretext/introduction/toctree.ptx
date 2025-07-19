@@ -25,5 +25,5 @@
   <xi:include href="./debugging-and-being-stuck.ptx" />
   <xi:include href="./csptransition.ptx" />
   <xi:include href="./javaIDEs.ptx" />
-  <xi:include href="./growthMindset.ptx" />
+  <xi:include href="./growth-mindset.ptx" />
 </chapter>
