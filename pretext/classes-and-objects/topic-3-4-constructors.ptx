@@ -5,22 +5,43 @@
 
   <introduction>
     <idx><h>class</h><h>constructor</h></idx>
-
     <p>
       As we’ve seen, instance variables define the structure that all instances
       of a class share. And each object stores its own value for each instance
       variable in its object data. But how do those instances get created and
-      how are their instance variables initialized? That is the job of the
-      constructor.
+      how are their instance variables initialized?
     </p>
 
     <p>
-      As we’ll see, constructors are similar in many ways to methods, in that
-      they can take arguments and contain code that is run when they are
-      invoked. But unlike methods a constructor is called exactly once for each
-      object, when the object is created. This is in contrast to methods that
-      can be called whenever we want, for as long as we have a reference to an
-      object.
+      That’s the job of the constructor—to set the initial values for the
+      object’s instance variables to useful values. But what does “useful” mean?
+      Sometimes we describe the values of all an object’s instance variables at
+      a given time as the object’s <term>state</term>. And we say an object is
+      in a <term>valid state</term> when all its instance variables have values
+      that let us use the object by invoking its public methods.
+    </p>
+
+    <p>
+      So another way to describe the job of a constructor is to set the object’s
+      instance values so it’s in a valid state and ready to be used. As we’ll
+      see, classes can have zero or more constructors but they should all
+      produce an object in a valid state.
+    </p>
+
+    <p>
+      For instance, it doesn’t really make sense to call <c>greet</c> on a
+      <c>Person</c> object unless it’s <c>name</c> instance variable has been
+      set. And <c>canVote</c> only works if <c>age</c> has been initialized.
+      Which is why the constructor in the <c>Person</c> class takes arguments
+      that let it initialize both of those variables.
+    </p>
+
+    <p>
+      As we’ll see, constructors are similar in many ways to methods: they can
+      take arguments and contain code that is run when they are invoked. But
+      unlike a method, a constructor is called exactly once for each object,
+      when the object is created. This is in contrast to methods that can be
+      called whenever we want, for as long as we have a reference to an object.
     </p>
 
     <p>
@@ -31,8 +52,90 @@
       need to see how those variables are initialized. And to understand that,
       we need to look at the classes constructors.
     </p>
-
   </introduction>
+
+  <subsection>
+    <title>Not writing a constructor</title>
+
+    <p>
+      The simplest way to get a constructor is to not write one at all! If a
+      class does not contain an explicit constructor, Java creates what is
+      called the <term>default constructor</term> automatically. The default
+      constructor takes no arguments and does nothing. But that doesn’t mean the
+      object’s instance variables are not initialized.
+    </p>
+
+    <p>
+      Instance variables can be declared with and without initializers. Here’s a
+      class that has one of each as well as an instance method to show their
+      values and a <c>main</c> to instantiate an object and call the method.
+    </p>
+
+    <program>
+      public class Demo {
+          private String a;
+          private String b = "I have a value";
+
+          public void showValues() {
+              System.out.println("a: " + uninitialized);
+              System.out.println("b: " + initialized);
+          }
+
+          public static void main(String[] args) {
+              Demo d = new Demo();
+              d.showValues();
+          }
+      }
+
+    </program>
+
+    <p>This will produce the output:</p>
+
+    <pre>
+      a: null
+      b: I have a value
+    </pre>
+
+    <p>
+      We can see that both instance variables have a value but one of them is
+      <c>null</c>. Every instance variable in an object has a value from the
+      moment the object is created. To ensure that, if an instance variable
+      declaration doesn’t assign a value, the variable will start out with the
+      approriate zero value for its type, <c>0</c>, <c>0.0</c>, <c>false</c>, or
+      <c>null</c>. But otherwise the variable is assigned the value specifed in
+      the declaration. These assignments happen even before the constructor runs
+      so code in the constructor can rely on instance variables being
+      initialized.
+    </p>
+
+    <p>
+      One important note: if you <em>do</em> write a constructor, Java will not
+      generate the default constructor for you. This is a good thing because it
+      lets you make sure that instances of your class are always properly
+      initialized. For example, because our <c>Person</c> class contains an
+      explicit constructor, there’s no way to construct a <c>Person</c> object
+      without providing the required name and age values so there will never be
+      an instance of <c>Person</c> missing those values.
+    </p>
+
+    <note>
+      <p>
+        Technically someone could call our <c>Person</c> constructor like <c>new
+        Person(null, 0)</c> but then they’d kind of get what they deserve. And
+        some Java programmers, especiallly when working in large systems, would
+        write the constructor to check that the arguments themselves are valid
+        and to fail immediately if they are not.
+      </p>
+    </note>
+
+    <p>
+      In general it is good style to initialize variables in their declaration
+      if possible. But that’s not always the case. Often we need information
+      from the code that is constructing the object to know what the values in
+      the object should be. In those cases we actually have to write a
+      constructor.
+    </p>
+  </subsection>
 
   <subsection xml:id="constructor-signature">
     <idx>signature</idx>
@@ -42,7 +145,7 @@
     <title>Constructor signatures</title>
 
     <p>
-      In <xref ref="topic-1-9-method-signatures"/> we learned about method
+      In <xref ref="topic-1-9-method-signatures" /> we learned about method
       signatures, the combination of the return type, method name, and
       parameters that identify a method. Constructors also have a signature but
       it is structured slightly differently.
@@ -57,10 +160,10 @@
     </p>
 
     <program>
-        public Person(String name, int age) {
-          this.name = name;
-          this.age = age;
-        }
+      public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+      }
     </program>
 
     <p>
@@ -68,7 +171,8 @@
       <c>Person</c>. And <c>Person</c> is the name of the class this constructor
       came from. After the name comes a list of parameters which work just like
       parameters in a method: they are local variables that will hold the values
-      of the arguments passed to the constructor.
+      of the arguments passed to the constructor. And constructors don’t need a
+      <c>return</c> statement because they don’t return a value.
     </p>
 
     <p>
@@ -86,13 +190,16 @@
     <p>
       When we invoke a constructor with <c>new</c> two things happen: first a
       new object is created and the memory needed to hold all its instance
-      variables is allocated somewhere in the computers memory. Then the
-      constructor is run with <c>this</c> being the newly created object and the
-      code in the constructor can initialize the object however is appropriate.
-      In the case of the above constructor invocation, the constructor will set
-      the instance variable <c>name</c> to the value <c>"Joe"</c> and set
-      <c>age</c> to <c>18</c>. The value of a constructor invocation is a
-      reference to the new object.
+      variables is allocated somewhere in the computer’s memory. Then, after the
+      instance variable are initialized either to their default zero value or
+      the value specified in the declaration, the constructor is run with
+      <c>this</c> being the newly created object. The code in the constructor
+      can then finish initializing the object however is appropriate. In the
+      case of the above constructor invocation, the constructor will set the
+      instance variable <c>name</c> to the value <c>"Joe"</c> and set <c>age</c>
+      to <c>18</c>. The value of a constructor invocation is a reference to the
+      new object just like the value of an array creation expression is a
+      reference to the newly created array.
     </p>
 
     <p>
@@ -111,11 +218,10 @@
     </p>
 
     <note>
-
       <p>
         Like classes, constructors will usually be made <c>public</c>. As with
-        making a class <c>public</c> it means the constructor can be invoked from
-        any code anywhere.
+        making a class <c>public</c> it means the constructor can be invoked
+        from any code anywhere.
       </p>
 
       <p>
@@ -137,9 +243,10 @@
 
   <subsection>
     <title>Overloading constructors</title>
+
     <p>
       It’s also possible to define more than one constructor in a class. As long
-      as they all have different signatures, meaning the number of types of
+      as they all have different signatures, meaning the number or the types of
       their parameters are different, we can have as many constructors as we
       want. Such constructors are said to be <term>overloaded</term>.
     </p>
@@ -175,7 +282,7 @@
     </p>
 
     <p>
-      However there’s an even better way to write that constructor, using the
+      However there’s an even better way to write that constructor using the
       <c>this</c> keyword, that we’ve previously used to access instance
       variables. In the context of a constructor, we can use <c>this</c>
       followed by an argument list in parentheses to invoke another
@@ -195,10 +302,12 @@
       constructor with the <c>"Anonymous"</c> as the name argument. In this case
       it doesn’t simplify things much since both constructors are so simple. But
       in more complicated classes that do more complicated initialization it
-      lets us write the complicated stuff in just one place.
+      lets us write the complicated stuff in just one place. The typical pattern
+      for writing overloaded constructors is to write one main constructor that
+      takes all the arguments that could possibly be passed, and then write
+      other constructors that take fewer arguments and invoke the main
+      constructor using <c>this()</c>, passing default values as needed.
     </p>
-
-
 
     <activity label="TurtleClass1">
       <statement>
@@ -210,13 +319,17 @@
         <figure align="center">
           <caption>Turtle Class Constructor Signatures and Parameters</caption>
 
-          <image source="Unit1-Using-Objects-and-Methods/Figures/TurtleClassDefn.png" width="100%" alt="Turtle Class Constructor Signatures and Parameters" />
+          <image source="Unit1-Using-Objects-and-Methods/Figures/TurtleClassDefn.png" width="100%">
+            <shortdescription>
+              Turtle Class Constructor Signatures and Parameters
+            </shortdescription>
+          </image>
         </figure>
 
         <p>
-          Given the Turtle class in the figure above and a World object world1,
-          which of the following code segments will correctly create an instance
-          of a Turtle object at (x,y) coordinates (50,150)?
+          Given the Turtle class in the figure above and a <c>World</c> object
+          <c>world1</c>, which of the following code segments will correctly
+          create an instance of a Turtle object at x, y coordinates 50, 150?
         </p>
       </statement>
 
@@ -289,21 +402,53 @@
     </activity>
 
     <p>
-      In Unit 3, you will learn to write your own classes. However, if you see a
-      class definition on the AP exam, like the one below for a class called
-      <c>Date</c>, you should be able to pick out the attributes (instance
-      variables) and the constructors and know how to use them.
+      One other reason to overload constructors is to allow callers to construct
+      objects with arguments of a type different than what the class really
+      needs. As a trivial example, consider class that stores an ammount in an
+      <c>int</c> variable. The obvious constructor would look like:
     </p>
 
-    <figure align="center">
-      <caption>A Date class showing attributes and constructors</caption>
+    <program>
+      public Amount(int value) {
+          this.value = value;
+      }
+    </program>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/DateClass.png" width="89%" alt="A Date class showing attributes and constructors" />
-    </figure>
+    <p>
+      But maybe sometimes it’d be convenient to construct an amount from a
+      <c>String</c> containing a numeric value. In that case we could write
+      another constructor:
+    </p>
+
+    <program>
+      public Amount(String value) {
+          this(Integer.parseInt(value));
+      }
+    </program>
 
     <activity label="date_constructor">
       <statement>
-        <p>Click on the constructor headers (signatures)</p>
+        <p>
+          If you see a class definition on the AP exam, like the one below for a
+          class called <c>Date</c>, you should be able to pick out the
+          attributes (instance variables) and the constructors and know how to
+          use them.
+        </p>
+
+        <figure align="center">
+          <caption>A Date class showing attributes and constructors</caption>
+
+          <image source="Unit1-Using-Objects-and-Methods/Figures/DateClass.png" width="89%">
+            <shortdescription>
+              A Date class showing attributes and constructors
+            </shortdescription>
+          </image>
+        </figure>
+
+        <p>
+          Show that you recognize the constructors by clicking on the
+          constructor signatures.
+        </p>
       </statement>
 
       <feedback>
@@ -337,7 +482,7 @@
     <activity label="DateClass1">
       <statement>
         <p>
-          Given the <c>Date</c> class in the figure above and assuming that
+          Given the <c>Date</c> class in the previous problem and assuming that
           months in the <c>Date</c> class are numbered starting at 1, which of
           the following code segments will create a <c>Date</c> object for the
           date September 20, 2020 using the correct constructor?
@@ -413,134 +558,6 @@
       </choices>
     </activity>
 
-  </subsection>
-
-  <subsection xml:id="the-job-of-a-constructor">
-    <title>The Job of a Constructor</title>
-
-
-    <p>
-      The job of a constructor is to set the initial values for the object’s
-      instance variables to useful values. But what does “useful” mean?
-      Sometimes we describe the values of all an object’s instance variables at
-      a given time as the object’s <term>state</term>. And we say an object is
-      in a <term>valid state</term> when all its instance variables have values
-      that let us use the object by invoking its public methods. So another way
-      to describe the job of a constructor is to set the object’s instance
-      values so it’s in a valid state and ready to be used. Classes can have
-      zero or more constructors but they should all produce an object in a valid
-      state.
-    </p>
-
-    <p>
-      An object’s <term>state</term> refers to its attributes and their values
-      at a given time and is defined by instance variables belonging to the
-      object. This defines a <term>has-a</term> relationship between the object
-      and its instance variables. For example, a Person object <term>has</term>
-      a name, email, and phone number attributes. A constructor is used to set
-      the initial state of an object, which should include initial values for
-      all instance variables. For example, <c>new Person("Pat", "pat@gmail.com",
-      "123-456-7890")</c> calls the Person constructor with the values to fill
-      in for its name (“Pat”), email (”<url
-      href="mailto:pat@gmail.com">pat@gmail.com</url>”), and phone number
-      (“123-456-7890”). When a constructor is called, memory is allocated for
-      the object and the associated object reference is returned. Constructor
-      parameters, if specified, provide data to initialize instance variables.
-    </p>
-
-    <p>
-      The easiest way to write a constructor is to <em>not</em> write one. If
-      you do not write a constructor your class will automatically get what is
-      called the <term>default constructor</term> with no parameters. This
-      constructor will initialize all your instance variables to the default
-      value for their type:
-    </p>
-
-    <p>
-      <ul>
-        <li>
-          <p>0 for <c>int</c></p>
-        </li>
-
-        <li>
-          <p>0.0 for <c>double</c></p>
-        </li>
-
-        <li>
-          <p><c>false</c> for <c>boolean</c></p>
-        </li>
-
-        <li>
-          <p><c>null</c> for all reference types</p>
-        </li>
-      </ul>
-    </p>
-
-    <p>
-      If those default values are sufficient to put your object into a valid
-      state you may not need to write a constructor at all.
-    </p>
-
-    <p>
-      Usually, however, if you are writing a class that has instance variables,
-      you need to initialize your instance values to some other values. In that
-      case you probably need to write a constructor that takes arguments and
-      uses them to initialize your instance variables.
-    </p>
-
-    <p>
-      For example, consider the constructor from the <c>Person</c> class from
-      the last lesson.
-    </p>
-
-    <program>
-      public Person(String initName, String initEmail, String initPhone)
-      {
-          name = initName;
-          email = initEmail;
-          phoneNumber = initPhone;
-      }
-    </program>
-
-    <p>
-      This constructor ensures that all three of the instance variables
-      (<c>name</c>, <c>email</c>, and <c>phoneNumber</c>) in <c>Person</c> are
-      initialized to the values provided by whatever code called the
-      constructor. For example, in the constructor call <c>new Person("Pat",
-      "pat@gmail.com", "123-456-7890")</c>, the argument “Pat” is passed into
-      the parameter variable <c>initName</c>, which the constructor then assigns
-      to the instance variable <c>name</c>.
-    </p>
-
-    <p>
-      One important note: if you do write a constructor, Java will not generate
-      the default constructor for you. This is a good thing because it lets you
-      make sure that instances of your class are always properly initialized.
-      With this constructor in place, for instance, there’s no way to construct
-      a <c>Person</c> object without providing the three required <c>String</c>
-      values.
-    </p>
-
-    <p>
-      Sometimes you will want to write more than one constructor so that there
-      are different ways of making an instance of your class. One reason to do
-      that is to make it convenient to create instances from different kinds of
-      arguments. This is called <term>overloading</term>. You could write a
-      no-argument constructor for <c>Person</c> that provides fill-in values
-      like the following, if those make sense for your program. It’s up to you
-      to decide if this is actually a useful value to have or if it would be
-      better to force the users of the <c>Person</c> class to choose the values
-      themselves using the constructor with arguments.
-    </p>
-
-    <program>
-      public Person()
-      {
-          name = "Anonymous";
-          email = "unknown";
-          phoneNumber = "unknown";
-      }
-    </program>
 
     <activity label="name_constructor">
       <statement>
@@ -1324,7 +1341,6 @@
     </p>
   </subsection>
 
-
   <subsection xml:id="ap-practice-3">
     <title>AP Practice</title>
 
@@ -1841,6 +1857,4 @@
       </choices>
     </activity>
   </subsection>
-
-
 </section>
