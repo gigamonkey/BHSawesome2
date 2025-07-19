@@ -7,7 +7,7 @@
     <p>
       Writing Java code consists of about equal parts writing methods and using
       them but it is probably easier to understand how to use them if we
-      understand what they are so we’le start by looking at how to write our own
+      understand what they are so we’ll start by looking at how to write our own
       methods. In the next lesson we’ll look at a bunch of methods that are part
       of Java that we don’t have to write but which we can use.
     </p>
@@ -23,7 +23,7 @@
     <idx>parameter list</idx>
     <p>
       As we learned in the previous unit, to create a variable we need to
-      declare it, specify its name and its type and optionally providing an
+      declare it, specify its name and its type, and optionally provide an
       initial value. Declaring methods is similar but there are more parts we
       need to specify.
     </p>
@@ -54,7 +54,7 @@
       For now don't worry about the <c>public static</c>, just treat that as
       boiler plate that all your methods will start with for now. (We’ll start
       writing methods without <c>static</c> in <xref ref="classes" />.) The next
-      word <c>int</c> is the return type. It is the name of some type or the
+      word, <c>int</c>, is the return type. It is the name of some type or the
       special keyword <c>void</c> which means the method doesn't return any
       value. Then comes the name of the method, in this case, <c>add</c>. And
       finally, in parentheses, the method’s <term>parameter list</term>, a
@@ -87,8 +87,8 @@
     <p>
       The number of expressions in the argument list has to match the number of
       parameters in the parameter list in the method signature. And each
-      expression must evaluate a value of the correct data type for the
-      corresponding paramete. But the expressions can be anything: variables,
+      expression must evaluate to a value of the correct data type for the
+      corresponding parameter. But the expressions can be anything: variables,
       literals, or any other expressions that evaluate to the correct types. The
       values of the expressions in the argument list become the values of the
       method’s parameters when the method’s code runs.
@@ -128,14 +128,14 @@
       particular, it does not tell us what computation the method actually
       performs or how it does it. For that we need to write a method body. The
       body is enclosed in a pair of curly braces (<c>{}</c>) and contains code
-      that can use the variables from the parameter list. And at an point in the
-      methed body we can use the keyword <c>return</c> followed by an expression
-      to cause the method to return the value of that expression as the value of
-      the method call.
+      that can use the variables from the parameter list. And at any point in
+      the method body we can use the keyword <c>return</c> followed by an
+      expression to cause the method to return the value of that expression as
+      the value of the method call.
     </p>
 
     <p>
-      For intstance, adding the body to our <c>add</c> method to get a complete
+      For instance, adding the body to our <c>add</c> method to get a complete
       method definition would look like this:
     </p>
 
