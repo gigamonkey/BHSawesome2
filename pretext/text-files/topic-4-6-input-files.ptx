@@ -44,11 +44,8 @@
       A file can be connected to the program using the <c>File</c> and
       <c>Scanner</c> classes. These classes must be imported in from libraries;
       the <c>Scanner</c> class is in the <c>java.util</c> package and
-      <c>File</c> is in the <c>java.io</c> package (
-      
-      <title_reference>io</title_reference>
- stands for
-      <term>input/output</term>).
+      <c>File</c> is in the <c>java.io</c> package (<c>io</c> stands for
+      <term>i/o</term> which is short for <term>input/output</term>).
     </p>
 
     <p>
@@ -494,8 +491,7 @@
       which stands for <term>Comma Separated Values</term>. All spreadsheets can
       be saved as CSV text files, and spreadsheet software can easily open CSV
       files as spreadsheets. You can take a look at the <url
-      href="external/_static/datasets/pokemon.csv"
-      visual="external/_static/datasets/pokemon.csv">pokemon.csv</url> file
+      href="external/_static/datasets/pokemon.csv">pokemon.csv</url> file
       contents below:
     </p>
 
@@ -1193,12 +1189,10 @@
       If your class has time, you can try the following open-ended challenge
       that uses a dataset of your choice. You could work in pairs for this
       challenge. Choose a dataset from the files <url
-      href="external/_static/datasets/pokemon.csv"
-      visual="external/_static/datasets/pokemon.csv">pokemon.csv</url>, <url
-      href="external/_static/datasets/WorldIndicators2000.csv"
-      visual="external/_static/datasets/WorldIndicators2000.csv">WorldIndicators2000.csv</url>,
-      or <url href="external/_static/datasets/StateData2020-CDC-Census.csv"
-      visual="external/_static/datasets/StateData2020-CDC-Census.csv">StateData2020-CDC-Census.csv</url>
+      href="external/_static/datasets/pokemon.csv">pokemon.csv</url>, <url
+      href="external/_static/datasets/WorldIndicators2000.csv">WorldIndicators2000.csv</url>,
+      or <url
+      href="external/_static/datasets/StateData2020-CDC-Census.csv">StateData2020-CDC-Census.csv</url>
       to read into an array of objects. The activecode window below is set up to
       use these files. Look at the columns of the dataset you have chosen at the
       bottom of this web page to decide on the name and at least 3 attributes

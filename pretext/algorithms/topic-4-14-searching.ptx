@@ -19,10 +19,9 @@
 
     <p>
       The following video is also on YouTube at <url
-      href="https://youtu.be/DHLCXXX1OtE"
-      visual="https://youtu.be/DHLCXXX1OtE">https://youtu.be/DHLCXXX1OtE</url>.
-      It introduces the concept of searching including sequential search and
-      binary search.
+      href="https://youtu.be/DHLCXXX1OtE">https://youtu.be/DHLCXXX1OtE</url>. It
+      introduces the concept of searching including sequential search and binary
+      search.
     </p>
 
     <video youtube="DHLCXXX1OtE" label="video-search" />
@@ -555,8 +554,7 @@
       of the current range. Each time through the loop it eliminates half the
       values in the search area until either the value is found or there is no
       more data to look at. See the animation below from <url
-      href="https://github.com/AlvaroIsrael/binary-search"
-      visual="https://github.com/AlvaroIsrael/binary-search">https://github.com/AlvaroIsrael/binary-search</url>:
+      href="https://github.com/AlvaroIsrael/binary-search">https://github.com/AlvaroIsrael/binary-search</url>:
     </p>
 
     <figure align="center">
@@ -858,10 +856,9 @@
       size n, linear search runtime is a linear function, and binary search
       runtime is a function of log base 2 of n (or log n + 1 comparisons). This
       is called the big-O runtime function in computer science, for example
-      O(log n) vs. O(n). You can compare the growth of functions like n and log
-      <subscript>2</subscript>
-n as n, the data size, grows and see that binary
-      search runs much faster for any n. You don’t need to know the log n
+      O(log n) vs. O(n). You can compare the growth of functions like n and
+      <m>\log_{2}n</m> as <m>n</m>, the data size, grows and see that binary
+      search runs much faster for any <m>n</m>. You don’t need to know the log n
       runtime growth function for the AP exam, but you should be able to
       calculate how many steps binary search takes for a given n by counting how
       many times you can divide it in half. Or you can start at 1 and keep a
@@ -1241,8 +1238,7 @@ n as n, the data size, grows and see that binary
     <p>
       Run your code with the following test cases and record the runtime for
       each word in this <url
-      href="https://docs.google.com/document/d/1VrQf7wFIEIu7qfOg7FYUTeNWrdrRsPw4eJSdehhz4dM/edit?usp=sharing"
-      visual="https://docs.google.com/document/d/1VrQf7wFIEIu7qfOg7FYUTeNWrdrRsPw4eJSdehhz4dM/edit?usp=sharing">Google
+      href="https://docs.google.com/document/d/1VrQf7wFIEIu7qfOg7FYUTeNWrdrRsPw4eJSdehhz4dM/edit?usp=sharing">Google
       document</url> (do File/Make a Copy) also seen below to record your
       answers.
     </p>

@@ -521,8 +521,7 @@
       better at it with practice! Sometimes another pair of eyes really helps,
       so ask a friend if you get stuck or try explaining your code line by line
       to someone or even a rubber duck. <url
-      href="https://rubberduckdebugging.com/"
-      visual="https://rubberduckdebugging.com/">Rubber duck debugging</url> is a
+      href="https://rubberduckdebugging.com/">Rubber duck debugging</url> is a
       lot of fun!
     </p>
 
@@ -532,7 +531,10 @@
   <subsection>
     <title>Debugging Challenge</title>
 
-    <image source="Unit1-Using-Objects-and-Methods/Figures/rubberduck.jpg" width="18%" alt="Rubber Duck" />
+    <image source="Unit1-Using-Objects-and-Methods/Figures/rubberduck.jpg" width="18%">
+      <shortdescription>Rubber Duck</shortdescription>
+    </image>
+
     <p>
       In this course, you are encouraged to work together in pairs to complete
       the programming challenges. Pair programming is a successful software
@@ -542,8 +544,7 @@
       buddy programming, where two or three coders work on their own computers
       but help each other as needed. If you’re working alone, you may want to
       explain the code to a rubber duck or another toy using <url
-      href="https://rubberduckdebugging.com/"
-      visual="https://rubberduckdebugging.com/">Rubber duck debugging</url>.
+      href="https://rubberduckdebugging.com/">Rubber duck debugging</url>.
     </p>
 
     <p>

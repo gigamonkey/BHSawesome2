@@ -96,9 +96,9 @@
     </figure>
 
     <p>
-      The following <url href="https://www.youtube.com/watch?v=Uw9mv53Jnfs"
-      visual="https://www.youtube.com/watch?v=Uw9mv53Jnfs">video</url>
-      introduces while loops.
+      The following <url
+      href="https://www.youtube.com/watch?v=Uw9mv53Jnfs">video</url> introduces
+      while loops.
     </p>
 
     <video youtube="Uw9mv53Jnfs" label="video-while-loop" />
@@ -332,8 +332,7 @@
 
     <p>
       Watch the following <url
-      href="https://www.youtube.com/watch?v=TZss5ukwN8s"
-      visual="https://www.youtube.com/watch?v=TZss5ukwN8s">video</url> for a
+      href="https://www.youtube.com/watch?v=TZss5ukwN8s">video</url> for a
       tracing demo. When you are tracing through code, pretend to be the
       computer running the code line by line, repeating the code in the loop,
       and keeping track of the variable values and output.
@@ -409,8 +408,7 @@
 
     <p>
       Step through the code above with the <url
-      href="http://www.pythontutor.com/visualize.html#code=public%20class%20TraceLoop%20%7B%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20int%20count%20%3D%201%3B%0A%20%20%20%20%20%20while%20%28count%20%3C%3D%2010%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20count%20*%3D%202%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20count%20%3D%20count%20-%2010%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=16&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"
-      visual="http://www.pythontutor.com/visualize.html#code=public%20class%20TraceLoop%20%7B%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20int%20count%20%3D%201%3B%0A%20%20%20%20%20%20while%20%28count%20%3C%3D%2010%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20count%20*%3D%202%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20count%20%3D%20count%20-%2010%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=16&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualizer</url>.
+      href="http://www.pythontutor.com/visualize.html#code=public%20class%20TraceLoop%20%7B%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20int%20count%20%3D%201%3B%0A%20%20%20%20%20%20while%20%28count%20%3C%3D%2010%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20count%20*%3D%202%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20count%20%3D%20count%20-%2010%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=16&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualizer</url>.
     </p>
 
     <activity label="while3">
@@ -713,12 +711,10 @@
 
     <p>
       (If the code below does not work for you, you can copy the code into this
-      <url href="https://replit.com/@BerylHoffman/Java-Swing-Turtle"
-      visual="https://replit.com/@BerylHoffman/Java-Swing-Turtle">replit
+      <url href="https://replit.com/@BerylHoffman/Java-Swing-Turtle">replit
       link</url> (refresh page after forking and if it gets stuck) or download
       the files <url
-      href="https://github.com/bhoffman0/csawesome2/tree/main/_sources/Unit1-Using-Objects-and-Methods/TurtleJavaSwingCode.zip"
-      visual="https://github.com/bhoffman0/csawesome2/tree/main/_sources/Unit1-Using-Objects-and-Methods/TurtleJavaSwingCode.zip">here</url>
+      href="https://github.com/bhoffman0/csawesome2/tree/main/_sources/Unit1-Using-Objects-and-Methods/TurtleJavaSwingCode.zip">here</url>
       to use in your own IDE.)
     </p>
 

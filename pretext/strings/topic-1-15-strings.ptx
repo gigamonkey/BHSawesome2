@@ -89,7 +89,6 @@
                   System.out.println(result);
               }
           }
-
         </code>
 
         <tests>
@@ -108,7 +107,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -204,7 +202,6 @@
                   System.out.println(message);
               }
           }
-
         </code>
 
         <tests>
@@ -233,7 +230,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -291,7 +287,11 @@
         A string with length 14 with the index of each character shown below it.
       </caption>
 
-      <image source="_static/img/text-with-indices.svg" width="89%" alt="a string with the position (index) shown above each character" />
+      <image source="_static/img/text-with-indices.svg" width="89%">
+        <shortdescription>
+          a string with the position (index) shown above each character
+        </shortdescription>
+      </image>
     </figure>
   </subsection>
 
@@ -400,7 +400,11 @@
         Cutting <c>substring(5, 9)</c> out of <c>"This is a test"</c>.
       </caption>
 
-      <image source="_static/img/text-with-indices-substring.svg" width="89%" alt="a string with the position (index) shown above each character" />
+      <image source="_static/img/text-with-indices-substring.svg" width="89%">
+        <shortdescription>
+          a string with the position (index) shown above each character
+        </shortdescription>
+      </image>
     </figure>
 
     <p>
@@ -451,7 +455,6 @@
                   System.out.println(str.substring(-1, 10));
               }
           }
-
         </code>
 
         <tests>
@@ -474,7 +477,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -555,7 +557,6 @@
                   System.out.println(message2.toUpperCase());
               }
           }
-
         </code>
 
         <tests>
@@ -573,7 +574,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -951,7 +951,6 @@
                   System.out.println(message.equals("hello!"));
               }
           }
-
         </code>
 
         <tests>
@@ -970,7 +969,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -1123,21 +1121,25 @@
     <title>Coding Challenge: Pig Latin</title>
 
     <sidebyside widths="15% 100%" margins="-20% 0%">
-      <image source="Unit1-Using-Objects-and-Methods/Figures/pig.png" width="18%" alt="pig latin" />
-      <stack>
-      <p>
-        Can you speak Pig Latin? In Pig Latin, you take the first letter and put
-        it at the end of the word and add the letters “ay” to the end. For
-        example, “pig” becomes “igpay”.
-      </p>
+      <image source="Unit1-Using-Objects-and-Methods/Figures/pig.png" width="18%">
+        <shortdescription>pig latin</shortdescription>
+      </image>
 
-      <p>
-        Create a program that takes a word and transforms it to Pig Latin using
-        String methods. You may need the word’s length, a substring that does
-        not include the first letter, and a substring that is just the first
-        letter (you can get the ith letter of a string using substring(i,i+1) so
-        for example the letter at index 3 would be substring(3,4)).
-      </p>
+      <stack>
+        <p>
+          Can you speak Pig Latin? In Pig Latin, you take the first letter and
+          put it at the end of the word and add the letters “ay” to the end. For
+          example, “pig” becomes “igpay”.
+        </p>
+
+        <p>
+          Create a program that takes a word and transforms it to Pig Latin
+          using String methods. You may need the word’s length, a substring that
+          does not include the first letter, and a substring that is just the
+          first letter (you can get the ith letter of a string using
+          substring(i,i+1) so for example the letter at index 3 would be
+          substring(3,4)).
+        </p>
       </stack>
     </sidebyside>
 
@@ -1173,7 +1175,6 @@
                   scan.close();
               }
           }
-
         </code>
 
         <stdin>
@@ -1222,7 +1223,6 @@
                   assertTrue(passed);
               }
           }
-
 
           ]]>
         </tests>
@@ -1306,7 +1306,6 @@
                   System.out.println("But this doesn't: " + (char) 128512);
               }
           }
-
         </code>
 
         <tests>
@@ -1328,7 +1327,6 @@
                   assertTrue(passed);
               }
           }
-
 
           ]]>
         </tests>

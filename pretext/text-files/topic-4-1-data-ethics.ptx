@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-1-data-ethics">
   <title>Ethical and Social Issues Around Data Collection</title>
+
   <introduction />
   <subsection xml:id="data-privacy">
     <title>Data Privacy</title>
+
     <p>
       Your phone keeps a lot of information about you, including where you have
       been, what you buy, what games you play, etc. Here’s a <url
-      href="https://www.youtube.com/watch?v=bqWuioPHhz0"
-      visual="https://www.youtube.com/watch?v=bqWuioPHhz0">video</url> about the
+      href="https://www.youtube.com/watch?v=bqWuioPHhz0">video</url> about the
       massive amounts of data our smart phones and computers collect about us.
       If you have used your phone to give you directions to go somewhere, it
       probably tracks your location. Follow the directions in <url
-      href="https://www.lifewire.com/location-history-google-maps-iphone-1683392"
-      visual="https://www.lifewire.com/location-history-google-maps-iphone-1683392">https://www.lifewire.com/location-history-google-maps-iphone-1683392</url>
+      href="https://www.lifewire.com/location-history-google-maps-iphone-1683392">https://www.lifewire.com/location-history-google-maps-iphone-1683392</url>
       to see if you have location history settings on. You can also turn off
       location tracking, but it is useful when you want directions and it’s
       free. Do the benefits of apps that provide driving directions outweigh the
@@ -70,15 +70,21 @@
     <p>
       <ul>
         <li>
-          A short <url href="https://www.cnbc.com/video/2018/03/23/everything-you-need-to-know-about-the-cambridge-analytica-scandal.html" style="text-decoration:underline" visual="https://www.cnbc.com/video/2018/03/23/everything-you-need-to-know-about-the-cambridge-analytica-scandal.html">1 minute video</url> about the Facebook Cambridge Analytica incident and a longer <url href="https://www.pbs.org/wgbh/frontline/film/facebook-dilemma/#video-2" style="text-decoration:underline" visual="https://www.pbs.org/wgbh/frontline/film/facebook-dilemma/#video-2">1 hour PBS special</url> on Facebook.
+          A short <url
+          href="https://www.cnbc.com/video/2018/03/23/everything-you-need-to-know-about-the-cambridge-analytica-scandal.html"
+          style="text-decoration:underline">1 minute video</url> about the
+          Facebook Cambridge Analytica incident and a longer <url
+          href="https://www.pbs.org/wgbh/frontline/film/facebook-dilemma/#video-2"
+          style="text-decoration:underline">1 hour PBS special</url> on
+          Facebook.
         </li>
 
         <li>
-          <url href="https://www.youtube.com/watch?v=gXiEBcb0Vs8" style="text-decoration:underline" visual="https://www.youtube.com/watch?v=gXiEBcb0Vs8">What is Geo-fencing (2 mins)</url>
+          <url href="https://www.youtube.com/watch?v=gXiEBcb0Vs8" style="text-decoration:underline">What is Geo-fencing (2 mins)</url>
         </li>
 
         <li>
-          <url href="https://www.youtube.com/watch?v=j6wwBqfSk-o" style="text-decoration:underline" visual="https://www.youtube.com/watch?v=j6wwBqfSk-o">The European General Data Protection Regulation (GDPR) (3 mins)</url>
+          <url href="https://www.youtube.com/watch?v=j6wwBqfSk-o" style="text-decoration:underline">The European General Data Protection Regulation (GDPR) (3 mins)</url>
         </li>
       </ul>
     </p>
@@ -86,6 +92,7 @@
 
   <subsection xml:id="data-and-bias">
     <title>Data and Bias</title>
+
     <p>
       The fields of <term>AI (Artificial Intelligence)</term> and <term>Machine
       Learning (ML)</term> are rapidly growing and increasingly involve ethical
@@ -95,16 +102,14 @@
       But where does this data come from? Often the data is collected from the
       internet, and the internet is full of biases. For example, if you search
       for professions like “programmer”, “doctor”, “CEO” in <url
-      href="https://images.google.com/"
-      visual="https://images.google.com/">https://images.google.com/</url>, you
+      href="https://images.google.com/">https://images.google.com/</url>, you
       will probably see mostly images of white men. This reflects a bias in our
       world that AIs may learn. An AI could then generate text or images that
       are biased against historically underrepresented groups. For example, a
       prominent tech company in 2014 started building an automated hiring tool,
       a resume filtering AI trained on their current employees resumes, and
       ended up with an AI system that was biased against women (<url
-      href="https://www.aclu.org/news/womens-rights/why-amazons-automated-hiring-tool-discriminated-against"
-      visual="https://www.aclu.org/news/womens-rights/why-amazons-automated-hiring-tool-discriminated-against">https://www.aclu.org/news/womens-rights/why-amazons-automated-hiring-tool-discriminated-against</url>).
+      href="https://www.aclu.org/news/womens-rights/why-amazons-automated-hiring-tool-discriminated-against">https://www.aclu.org/news/womens-rights/why-amazons-automated-hiring-tool-discriminated-against</url>).
       This is a problem because the AI is learning from biased data and then
       creating biased outcomes that could affect people’s lives.
     </p>
@@ -122,12 +127,10 @@
 
     <p>
       Watch the following <url
-      href="https://www.youtube.com/watch?v=TWWsW1w-BVo"
-      visual="https://www.youtube.com/watch?v=TWWsW1w-BVo">Gender Shades
+      href="https://www.youtube.com/watch?v=TWWsW1w-BVo">Gender Shades
       video</url> about gender and race bias in face recognition algorithms by
-      computer scientist <url href="https://www.poetofcode.com/"
-      visual="https://www.poetofcode.com/">Joy Buolamwini</url> (MIT Media Lab
-      and Algorithmic Justice League).
+      computer scientist <url href="https://www.poetofcode.com/">Joy
+      Buolamwini</url> (MIT Media Lab and Algorithmic Justice League).
     </p>
 
     <video youtube="TWWsW1w-BVo" label="video-gender-shades" />
@@ -151,15 +154,18 @@
     <p>
       <ul>
         <li>
-          <url href="https://www.youtube.com/watch?v=QxuyfWoVV98" visual="https://www.youtube.com/watch?v=QxuyfWoVV98">AI, Ain't I a Woman?</url>, a poem by Joy Buolamwini
+          <url href="https://www.youtube.com/watch?v=QxuyfWoVV98">AI, Ain't I a
+          Woman?</url>, a poem by Joy Buolamwini
         </li>
 
         <li>
-          Ted Talk video on <url href="https://www.youtube.com/watch?v=UG_X_7g63rY" visual="https://www.youtube.com/watch?v=UG_X_7g63rY">Bias in Facial Recognition</url> by Joy Buolamwini,
+          Ted Talk video on <url
+          href="https://www.youtube.com/watch?v=UG_X_7g63rY">Bias in Facial
+          Recognition</url> by Joy Buolamwini,
         </li>
 
         <li>
-          <url href="https://www.youtube.com/watch?v=7lpCWxlRFAw" visual="https://www.youtube.com/watch?v=7lpCWxlRFAw">A report on police crime prediction software and bias</url>
+          <url href="https://www.youtube.com/watch?v=7lpCWxlRFAw">A report on police crime prediction software and bias</url>
         </li>
       </ul>
     </p>
@@ -218,8 +224,8 @@
     <project label="datasets">
       <statement>
         <p>
-          Go to <url href="https://datasetsearch.research.google.com/"
-          visual="https://datasetsearch.research.google.com/">https://datasetsearch.research.google.com/</url>
+          Go to <url
+          href="https://datasetsearch.research.google.com/">https://datasetsearch.research.google.com/</url>
           and search for a dataset for “face recognition” or another topic you
           are interested in. Find an appropriate (“good”) dataset and an
           inappropriate (“bad”) dataset for your topic and put links to them
@@ -237,6 +243,7 @@
 
   <subsection xml:id="summary-36">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>

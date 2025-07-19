@@ -17,9 +17,8 @@
     </p>
 
     <p>
-      Watch this <url href="https://youtu.be/WtKJrB5rOKs"
-      visual="https://youtu.be/WtKJrB5rOKs">video</url> about the Growth
-      Mindset:
+      Watch this <url href="https://youtu.be/WtKJrB5rOKs">video</url> about the
+      Growth Mindset:
     </p>
 
     <video youtube="WtKJrB5rOKs" label="video-growth-mindset" />
@@ -106,9 +105,9 @@
     </p>
 
     <p>
-      Watch this <url href="https://www.youtube.com/watch?v=q7d_JtyCq1A"
-      visual="https://www.youtube.com/watch?v=q7d_JtyCq1A">video</url> about
-      pair programming:
+      Watch this <url
+      href="https://www.youtube.com/watch?v=q7d_JtyCq1A">video</url> about pair
+      programming:
     </p>
 
     <video youtube="q7d_JtyCq1A" label="video-pair-programming" />

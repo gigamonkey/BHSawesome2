@@ -48,7 +48,9 @@
     <figure align="center">
       <caption>Two World constructors</caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/worldConstructors.png" width="63%" alt="Two World constructors" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/worldConstructors.png" width="63%">
+        <shortdescription>Two World constructors</shortdescription>
+      </image>
     </figure>
 
     <p>
@@ -316,7 +318,6 @@
                   world1.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -353,7 +354,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -435,7 +435,11 @@
     <figure align="center">
       <caption>Turtle Class Constructor Signatures and Parameters</caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/TurtleClassDefn.png" width="100%" alt="Turtle Class Constructor Signatures and Parameters" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/TurtleClassDefn.png" width="100%">
+        <shortdescription>
+          Turtle Class Constructor Signatures and Parameters
+        </shortdescription>
+      </image>
     </figure>
 
     <activity label="TurtleClass1">
@@ -525,7 +529,11 @@
     <figure align="center">
       <caption>A Date class showing attributes and constructors</caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/DateClass.png" width="89%" alt="A Date class showing attributes and constructors" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/DateClass.png" width="89%">
+        <shortdescription>
+          A Date class showing attributes and constructors
+        </shortdescription>
+      </image>
     </figure>
 
     <activity label="date_constructor">
@@ -660,7 +668,9 @@
     <figure align="center">
       <caption>Parameter Mapping</caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/parameterMappingDate.png" width="80%" alt="Parameter Mapping" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/parameterMappingDate.png" width="80%">
+        <shortdescription>Parameter Mapping</shortdescription>
+      </image>
     </figure>
 
     <p>
@@ -838,7 +848,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -1023,7 +1032,6 @@
                   setWidth(w);
               }
           }
-
         </code>
 
         <tests>
@@ -1060,7 +1068,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </project>
@@ -1307,7 +1314,6 @@
                   inTheaters = false;
               }
           }
-
         </program>
       </statement>
 

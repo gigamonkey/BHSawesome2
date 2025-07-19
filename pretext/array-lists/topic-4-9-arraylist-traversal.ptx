@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-9-arraylist-traversal">
   <title>ArrayList Traversals</title>
+
   <introduction>
     <idx>ArrayList traversal</idx>
     <idx>traversal</idx>
@@ -22,10 +23,8 @@
 
   <subsection xml:id="enhanced-for-loop">
     <title>Enhanced For Loop</title>
-    <idx>
-      <h>list</h><h>for-each loop</h>
-    </idx>
 
+    <idx><h>list</h><h>for-each loop</h></idx>
     <p>
       You can use an enhanced <c>for</c> loop to traverse all of the items in an
       <c>ArrayList</c>, just like you do with an array when you only care about
@@ -53,70 +52,79 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*; // import all classes in this package.
+          <![CDATA[
 
-public class Test1
-{
-    public static void main(String[] args)
-    {
-        ArrayList&lt;Integer&gt; myList = new ArrayList&lt;Integer&gt;();
-        myList.add(50);
-        myList.add(30);
-        myList.add(20);
-        int total = 0;
-        for (Integer value : myList)
-        {
-            total += value;
-        }
-        System.out.println("Sum of all elements: " + total);
+          import java.util.*; // import all classes in this package.
 
-        // Write a for-each loop that computes the product
-        // of all the elements in myList and print out the product.
+          public class Test1
+          {
+              public static void main(String[] args)
+              {
+                  ArrayList<Integer> myList = new ArrayList<Integer>();
+                  myList.add(50);
+                  myList.add(30);
+                  myList.add(20);
+                  int total = 0;
+                  for (Integer value : myList)
+                  {
+                      total += value;
+                  }
+                  System.out.println("Sum of all elements: " + total);
 
-    }
-}
+                  // Write a for-each loop that computes the product
+                  // of all the elements in myList and print out the product.
+
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testExpected() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "100";
-        boolean passed = output.contains(expect);
-        getResults(expect, output, "Prints out sum", passed);
-        assertTrue(passed);
-    }
+          import java.io.*;
 
-    @Test
-    public void testProduct() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "30000";
-        boolean passed = output.contains(expect);
-        getResults(expect, output, "Prints out product", passed);
-        assertTrue(passed);
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testExpected() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "100";
+                  boolean passed = output.contains(expect);
+                  getResults(expect, output, "Prints out sum", passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void countForLoops()
-    {
-        String code = removeSpaces(getCode());
-        int count = countOccurences(code, "for(Integer");
-        boolean passed = count &gt;= 2;
-        getResults("2", count + "", "Number of for each loops", passed);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void testProduct() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "30000";
+                  boolean passed = output.contains(expect);
+                  getResults(expect, output, "Prints out product", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void countForLoops()
+              {
+                  String code = removeSpaces(getCode());
+                  int count = countOccurences(code, "for(Integer");
+                  boolean passed = count >= 2;
+                  getResults("2", count + "", "Number of for each loops", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -194,6 +202,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="for-loops-and-indexoutofbounds-exception">
     <title>For Loops and IndexOutOfBounds Exception</title>
+
     <p>
       You can also use a regular indexed <c>for</c> loop to process list
       elements accessed using an index. <c>ArrayList</c> indices starts at 0
@@ -219,52 +228,61 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*;
+          <![CDATA[
 
-public class TestForLoop
-{
-    public static void main(String[] args)
-    {
-        ArrayList&lt;Integer&gt; myList = new ArrayList&lt;Integer&gt;();
-        myList.add(50);
-        myList.add(30);
-        myList.add(20);
-        int total = 0;
-        for (int i = 0; i &lt;= myList.size(); i++)
-        {
-            total = total + myList.get(i);
-        }
-        System.out.println(total);
-    }
-}
+          import java.util.*;
+
+          public class TestForLoop
+          {
+              public static void main(String[] args)
+              {
+                  ArrayList<Integer> myList = new ArrayList<Integer>();
+                  myList.add(50);
+                  myList.add(30);
+                  myList.add(20);
+                  int total = 0;
+                  for (int i = 0; i <= myList.size(); i++)
+                  {
+                      total = total + myList.get(i);
+                  }
+                  System.out.println(total);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "100";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
+          import java.io.*;
 
-    @Test
-    public void fixedCode()
-    {
-        boolean passed = checkCodeContains("fixed test in loop", "i &lt; myList.size()");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "100";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void fixedCode()
+              {
+                  boolean passed = checkCodeContains("fixed test in loop", "i < myList.size()");
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -272,6 +290,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="while-loop">
     <title>While Loop</title>
+
     <p>
       The example below demonstrates a <c>while</c> loop and an object-oriented
       approach where the list is a field of the current object and an instance
@@ -287,70 +306,75 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*;
-public class ListWorker
-{
-   private ArrayList&lt;String&gt; nameList;
+          <![CDATA[
 
-   public ListWorker(ArrayList&lt;String&gt; nameList)
-   {
-       this.nameList = nameList;
-   }
+          import java.util.*;
+          public class ListWorker
+          {
+             private ArrayList<String> nameList;
 
-   public boolean removeName(String name)
-   {
-       boolean found =   // true or false?
-       int index = 0;
-       while (index &lt; nameList.size())
-       {
-           if (name.equals(nameList.get(index)))
-           {
-               nameList.remove(index);
-               found =    // true or false?
-           }
-           else
-           {
-               index++;
-           }
-       }
-       return found;
-    }
+             public ListWorker(ArrayList<String> nameList)
+             {
+                 this.nameList = nameList;
+             }
 
-    public static void main(String[] args)
-    {
-        ArrayList&lt;String&gt; myList = new ArrayList&lt;String&gt;();
-        myList.add("Amun");
-        myList.add("Ethan");
-        myList.add("Donnie");
-        myList.add("Ethan");
-        ListWorker listWorker = new ListWorker(myList);
-        System.out.println(listWorker.nameList);
-        listWorker.removeName("Ethan");
-        System.out.println("After removing Ethan: "
-                  + listWorker.nameList);
-    }
-}
+             public boolean removeName(String name)
+             {
+                 boolean found =   // true or false?
+                 int index = 0;
+                 while (index < nameList.size())
+                 {
+                     if (name.equals(nameList.get(index)))
+                     {
+                         nameList.remove(index);
+                         found =    // true or false?
+                     }
+                     else
+                     {
+                         index++;
+                     }
+                 }
+                 return found;
+              }
+
+              public static void main(String[] args)
+              {
+                  ArrayList<String> myList = new ArrayList<String>();
+                  myList.add("Amun");
+                  myList.add("Ethan");
+                  myList.add("Donnie");
+                  myList.add("Ethan");
+                  ListWorker listWorker = new ListWorker(myList);
+                  System.out.println(listWorker.nameList);
+                  listWorker.removeName("Ethan");
+                  System.out.println("After removing Ethan: "
+                            + listWorker.nameList);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "[Amun, Ethan, Donnie, Ethan]\nAfter removing Ethan: [Amun, Donnie]";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "[Amun, Ethan, Donnie, Ethan]\nAfter removing Ethan: [Amun, Donnie]";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -377,25 +401,27 @@ public class RunestoneTests extends CodeTestHelper
           executing <c>numQuest</c>?
         </p>
 
-        <program language="java">
-          <code>
-ArrayList&lt;Integer&gt; list1 = new ArrayList&lt;Integer&gt;();
-private ArrayList&lt;Integer&gt; nums;
+        <program>
+          <![CDATA[
 
-// precondition: nums.size() &gt; 0;
-// nums contains Integer objects
-public void numQuest()
-{
-   int k = 0;
-   Integer zero = new Integer(0);
-   while (k &lt; nums.size())
-   {
-      if (nums.get(k).equals(zero))
-         nums.remove(k);
-      k++;
-   }
-}
-          </code>
+          ArrayList<Integer> list1 = new ArrayList<Integer>();
+          private ArrayList<Integer> nums;
+
+          // precondition: nums.size() > 0;
+          // nums contains Integer objects
+          public void numQuest()
+          {
+             int k = 0;
+             Integer zero = new Integer(0);
+             while (k < nums.size())
+             {
+                if (nums.get(k).equals(zero))
+                   nums.remove(k);
+                k++;
+             }
+          }
+
+          ]]>
         </program>
       </statement>
 
@@ -456,8 +482,7 @@ public void numQuest()
 
     <p>
       You can step through the code above by clicking on the following <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0A%0Apublic+class+ListWorker+%7B%0A%0A+++private+List%3CInteger%3E+nums%3B%0A+++%0A+++public+ListWorker(List%3CInteger%3E+theNums)%0A+++%7B%0A++++++nums+%3D+theNums%3B%0A+++%7D%0A%0A+++//+precondition%3A+nums.size()+%3E+0%3B%0A+++//+nums+contains+Integer+objects%0A+++public+void+numQuest()%0A+++%7B%0A++++++int+k+%3D+0%3B%0A++++++Integer+zero+%3D+new+Integer(0)%3B%0A++++++while+(k+%3C+nums.size())%0A++++++%7B%0A+++++++++if+(nums.get(k).equals(zero))%0A++++++++++++nums.remove(k)%3B%0A+++++++++k%2B%2B%3B%0A++++++%7D%0A+++%7D%0A+++%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++List%3CInteger%3E+numList+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++numList.add(0)%3B%0A++++++numList.add(0)%3B%0A++++++numList.add(4)%3B%0A++++++numList.add(2)%3B%0A++++++numList.add(5)%3B%0A++++++numList.add(0)%3B%0A++++++numList.add(3)%3B%0A++++++numList.add(0)%3B%0A++++++System.out.println(numList)%3B%0A++++++ListWorker+listW+%3D+new+ListWorker(numList)%3B%0A++++++listW.numQuest()%3B%0A++++++System.out.println(numList)%3B%0A+++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=11"
-      visual="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0A%0Apublic+class+ListWorker+%7B%0A%0A+++private+List%3CInteger%3E+nums%3B%0A+++%0A+++public+ListWorker(List%3CInteger%3E+theNums)%0A+++%7B%0A++++++nums+%3D+theNums%3B%0A+++%7D%0A%0A+++//+precondition%3A+nums.size()+%3E+0%3B%0A+++//+nums+contains+Integer+objects%0A+++public+void+numQuest()%0A+++%7B%0A++++++int+k+%3D+0%3B%0A++++++Integer+zero+%3D+new+Integer(0)%3B%0A++++++while+(k+%3C+nums.size())%0A++++++%7B%0A+++++++++if+(nums.get(k).equals(zero))%0A++++++++++++nums.remove(k)%3B%0A+++++++++k%2B%2B%3B%0A++++++%7D%0A+++%7D%0A+++%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++List%3CInteger%3E+numList+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++numList.add(0)%3B%0A++++++numList.add(0)%3B%0A++++++numList.add(4)%3B%0A++++++numList.add(2)%3B%0A++++++numList.add(5)%3B%0A++++++numList.add(0)%3B%0A++++++numList.add(3)%3B%0A++++++numList.add(0)%3B%0A++++++System.out.println(numList)%3B%0A++++++ListWorker+listW+%3D+new+ListWorker(numList)%3B%0A++++++listW.numQuest()%3B%0A++++++System.out.println(numList)%3B%0A+++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=11">Example</url>.
+      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0A%0Apublic+class+ListWorker+%7B%0A%0A+++private+List%3CInteger%3E+nums%3B%0A+++%0A+++public+ListWorker(List%3CInteger%3E+theNums)%0A+++%7B%0A++++++nums+%3D+theNums%3B%0A+++%7D%0A%0A+++//+precondition%3A+nums.size()+%3E+0%3B%0A+++//+nums+contains+Integer+objects%0A+++public+void+numQuest()%0A+++%7B%0A++++++int+k+%3D+0%3B%0A++++++Integer+zero+%3D+new+Integer(0)%3B%0A++++++while+(k+%3C+nums.size())%0A++++++%7B%0A+++++++++if+(nums.get(k).equals(zero))%0A++++++++++++nums.remove(k)%3B%0A+++++++++k%2B%2B%3B%0A++++++%7D%0A+++%7D%0A+++%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++List%3CInteger%3E+numList+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++numList.add(0)%3B%0A++++++numList.add(0)%3B%0A++++++numList.add(4)%3B%0A++++++numList.add(2)%3B%0A++++++numList.add(5)%3B%0A++++++numList.add(0)%3B%0A++++++numList.add(3)%3B%0A++++++numList.add(0)%3B%0A++++++System.out.println(numList)%3B%0A++++++ListWorker+listW+%3D+new+ListWorker(numList)%3B%0A++++++listW.numQuest()%3B%0A++++++System.out.println(numList)%3B%0A+++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=11">Example</url>.
     </p>
 
     <activity label="listInsertParsons" numbered="yes" adaptive="yes" indentation="show" language="java">
@@ -531,15 +556,17 @@ public void numQuest()
       such as the one returned by <c>readAllLines</c>.)
     </p>
 
-    <program language="java">
-      <code>
-import java.nio.file.*;
-...
+    <program>
+      <![CDATA[
 
-// This connects and reads in the file in 1 line of code!
-// It needs to be in a method that throws or handles IOException
-List&lt;String&gt; lines = Files.readAllLines(Paths.get("data.txt"));
-      </code>
+      import java.nio.file.*;
+      ...
+
+      // This connects and reads in the file in 1 line of code!
+      // It needs to be in a method that throws or handles IOException
+      List<String> lines = Files.readAllLines(Paths.get("data.txt"));
+
+      ]]>
     </program>
 
     <p>
@@ -563,52 +590,61 @@ List&lt;String&gt; lines = Files.readAllLines(Paths.get("data.txt"));
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="pokemon.csv">
+      <program interactive="activecode" datafile="pokemon.csv">
         <code>
-import java.io.*;
-import java.nio.file.*;
-import java.util.*;
+          <![CDATA[
 
-public class ReadData
-{
-    public static void main(String[] args) throws IOException
-    {
-        List&lt;String&gt; lines = Files.readAllLines(Paths.get("pokemon.csv"));
-        // Add a loop that prints out the first 10 elements of the List lines
-        // You can use the get method with Lists just like ArrayLists
+          import java.io.*;
+          import java.nio.file.*;
+          import java.util.*;
 
-    }
-}
+          public class ReadData
+          {
+              public static void main(String[] args) throws IOException
+              {
+                  List<String> lines = Files.readAllLines(Paths.get("pokemon.csv"));
+                  // Add a loop that prints out the first 10 elements of the List lines
+                  // You can use the get method with Lists just like ArrayLists
+
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
-import org.junit.*;
-import java.io.*;
+          <![CDATA[
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("ReadData");
-    }
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
 
-    @Test
-    public void testMain() throws IOException
-    {
-         String output = getMethodOutput("main");
-         String[] lines = output.split("\\s+");
-         boolean passed = lines.length &gt;= 10;
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ReadData");
+              }
 
-         passed = getResults("10+ lines of output", lines.length + " lines of output", "Expected output", passed);
-         assertTrue(passed);
-    }
-    @Test
-    public void getMethodTest()
-    {
-       boolean passed = checkCodeContains("call to get method with lines", "lines.get");
-       assertTrue(passed);
-    }
- }
+              @Test
+              public void testMain() throws IOException
+              {
+                   String output = getMethodOutput("main");
+                   String[] lines = output.split("\\s+");
+                   boolean passed = lines.length >= 10;
+
+                   passed = getResults("10+ lines of output", lines.length + " lines of output", "Expected output", passed);
+                   assertTrue(passed);
+              }
+              @Test
+              public void getMethodTest()
+              {
+                 boolean passed = checkCodeContains("call to get method with lines", "lines.get");
+                 assertTrue(passed);
+              }
+           }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -616,6 +652,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="arraylist-of-student-objects">
     <title>Traversing an ArrayList of Student Objects</title>
+
     <p>
       You can put any kind of objects into an <c>ArrayList</c>. For example,
       here is an <c>ArrayList</c> of <c>Student</c>s. Let's write some loops
@@ -626,131 +663,135 @@ public class RunestoneTests extends CodeTestHelper
     </p>
 
     <p>Method calls can be chained together like the following:</p>
-    <program language="java">
-      <code>
-       // get the name of the 0's student
-       String name = students.get(0).getName();
-       // get the GPA of the student at index i
-       double gpa = students.get(i).getGPA();
-      </code>
+
+    <program>
+      // get the name of the 0's student
+      String name = students.get(0).getName();
+      // get the GPA of the student at index i
+      double gpa = students.get(i).getGPA();
     </program>
 
     <activity label="StudentListLoops">
       <statement>
         <p>
-          Write the methods <pf>printRoster()</pf> and <pf>honorRoll()</pf> for
-          the <pf>ArrayList</pf> of <pf>Student</pf> objects below.
+          Write the methods <c>printRoster()</c> and <c>honorRoll()</c> for the
+          <c>ArrayList</c> of <c>Student</c> objects below.
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*;
+          <![CDATA[
 
-public class Roster
-{
-    private ArrayList&lt;Student&gt; list = new ArrayList&lt;Student&gt;();
+          import java.util.*;
 
-    public Roster()
-    {
-        list.add(new Student("Skyler", 123456, 3.4));
-        list.add(new Student("Ayanna", 234567, 4.0));
-        list.add(new Student("Lin", 345678, 3.6));
-        list.add(new Student("Sunil", 456789, 3.0));
-    }
+          public class Roster
+          {
+              private ArrayList<Student> list = new ArrayList<Student>();
 
-    // Write a method to print the info for each student on the list
-    // with each student's info on a new line using a for or for-each loop,
-    // implicitly calling the toString() method of the Student class.
-    public void printRoster()
-    {
+              public Roster()
+              {
+                  list.add(new Student("Skyler", 123456, 3.4));
+                  list.add(new Student("Ayanna", 234567, 4.0));
+                  list.add(new Student("Lin", 345678, 3.6));
+                  list.add(new Student("Sunil", 456789, 3.0));
+              }
 
-    }
+              // Write a method to print the info for each student on the list
+              // with each student's info on a new line using a for or for-each loop,
+              // implicitly calling the toString() method of the Student class.
+              public void printRoster()
+              {
 
-    // Write a honorRoll() method to print the names of students
-    // with a GPA greater than 3.5 on the list using an indexed for loop with index i
-    // and chaining get(i) with the getGPA() and getName() methods of the Student class.
-    public void honorRoll()
-    {
+              }
 
-    }
+              // Write a honorRoll() method to print the names of students
+              // with a GPA greater than 3.5 on the list using an indexed for loop with index i
+              // and chaining get(i) with the getGPA() and getName() methods of the Student class.
+              public void honorRoll()
+              {
 
-
-    // main method for testing
-    public static void main(String[] args)
-    {
-        Roster r = new Roster();
-        System.out.println("Roster:");
-        r.printRoster();
-        System.out.println("Honor Roll:");
-        r.honorRoll();
-    }
-}
-
-class Student
-{
-    private String name;
-    private int id;
-    private double gpa;
+              }
 
 
-    public Student(String name, int id, double gpa)
-    {
-        this.name = name;
-        this.id = id;
-        this.gpa = gpa;
-    }
+              // main method for testing
+              public static void main(String[] args)
+              {
+                  Roster r = new Roster();
+                  System.out.println("Roster:");
+                  r.printRoster();
+                  System.out.println("Honor Roll:");
+                  r.honorRoll();
+              }
+          }
 
-    // toString() method
-    public String toString()
-    {
-        return id + ": " + name + ": " + gpa;
-    }
+          class Student
+          {
+              private String name;
+              private int id;
+              private double gpa;
 
-    public String getName()
-    {
-        return name;
-    }
 
-    public double getGPA()
-    {
-        return gpa;
-    }
+              public Student(String name, int id, double gpa)
+              {
+                  this.name = name;
+                  this.id = id;
+                  this.gpa = gpa;
+              }
 
-}
+              // toString() method
+              public String toString()
+              {
+                  return id + ": " + name + ": " + gpa;
+              }
+
+              public String getName()
+              {
+                  return name;
+              }
+
+              public double getGPA()
+              {
+                  return gpa;
+              }
+
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "Roster:\n123456: Skyler: 3.4\n234567: Ayanna: 4.0\n345678: Lin: 3.6\n456789: Sunil: 3.0\nHonor Roll:\nAyanna\nLin\n";
-        boolean passed = getResults(expect, output, "Expected output from main");
-        assertTrue(passed);
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Roster:\n123456: Skyler: 3.4\n234567: Ayanna: 4.0\n345678: Lin: 3.6\n456789: Sunil: 3.0\nHonor Roll:\nAyanna\nLin\n";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void loopCode()
-    {
-        boolean passed = checkCodeContains("for loop", "for");
-        assertTrue(passed);
-    }
+              @Test
+              public void loopCode()
+              {
+                  boolean passed = checkCodeContains("for loop", "for");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void chain()
-    {
-        boolean passed = checkCodeContains("chaining list.get(i).getGPA()", "list.get(i).getGPA()");
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void chain()
+              {
+                  boolean passed = checkCodeContains("chaining list.get(i).getGPA()", "list.get(i).getGPA()");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -758,10 +799,10 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-frq-word-pairs">
     <title>Coding Challenge: FRQ Word Pairs</title>
+
     <p>
       This challenge is based on the <url
-      href="https://secure-media.collegeboard.org/ap/pdf/ap18-frq-computer-science-a.pdf#page=7"
-      visual="https://secure-media.collegeboard.org/ap/pdf/ap18-frq-computer-science-a.pdf#page=7">2018
+      href="https://secure-media.collegeboard.org/ap/pdf/ap18-frq-computer-science-a.pdf#page=7">2018
       Free Response Question #2 WordPair</url>. We encourage you to work in
       pairs on this challenge.
     </p>
@@ -771,35 +812,33 @@ public class RunestoneTests extends CodeTestHelper
       words.
     </p>
 
-    <program language="java">
-      <code>
-class WordPair
-{
-    private String word1;
-    private String word2;
+    <program>
+      class WordPair
+      {
+          private String word1;
+          private String word2;
 
-    public WordPair(String word1, String word2)
-    {
-        this.word1 = word1;
-        this.word2 = word2;
-    }
+          public WordPair(String word1, String word2)
+          {
+              this.word1 = word1;
+              this.word2 = word2;
+          }
 
-    public String getFirst()
-    {
-        return word1;
-    }
+          public String getFirst()
+          {
+              return word1;
+          }
 
-    public String getSecond()
-    {
-        return word2;
-    }
+          public String getSecond()
+          {
+              return word2;
+          }
 
-    public String toString()
-    {
-        return "(" + word1 + ", " + word2 + ")";
-    }
-}
-      </code>
+          public String toString()
+          {
+              return "(" + word1 + ", " + word2 + ")";
+          }
+      }
     </program>
 
     <p>
@@ -812,79 +851,84 @@ class WordPair
         <p>Create an Arraylist of WordPair objects.</p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*;
+          import java.util.*;
 
-public class WordPairTest
-{
-    public static void main(String[] args)
-    {
-        // Create an ArrayList of WordPair objects called pairs
+          public class WordPairTest
+          {
+              public static void main(String[] args)
+              {
+                  // Create an ArrayList of WordPair objects called pairs
 
-        pairs.add(new WordPair("hi", "there"));
-        pairs.add(new WordPair("hi", "bye"));
-        System.out.println(pairs);
-    }
-}
+                  pairs.add(new WordPair("hi", "there"));
+                  pairs.add(new WordPair("hi", "bye"));
+                  System.out.println(pairs);
+              }
+          }
 
-class WordPair
-{
-    private String word1;
-    private String word2;
+          class WordPair
+          {
+              private String word1;
+              private String word2;
 
-    public WordPair(String word1, String word2)
-    {
-        this.word1 = word1;
-        this.word2 = word2;
-    }
+              public WordPair(String word1, String word2)
+              {
+                  this.word1 = word1;
+                  this.word2 = word2;
+              }
 
-    public String getFirst()
-    {
-        return word1;
-    }
+              public String getFirst()
+              {
+                  return word1;
+              }
 
-    public String getSecond()
-    {
-        return word2;
-    }
+              public String getSecond()
+              {
+                  return word2;
+              }
 
-    public String toString()
-    {
-        return "(" + word1 + ", " + word2 + ")";
-    }
-}
+              public String toString()
+              {
+                  return "(" + word1 + ", " + word2 + ")";
+              }
+          }
         </code>
+
         <tests>
- import static org.junit.Assert.*;
+          <![CDATA[
 
- import org.junit.*;
+          import static org.junit.Assert.*;
 
- import java.io.*;
+          import org.junit.*;
 
- public class RunestoneTests extends CodeTestHelper
- {
-     public RunestoneTests()
-     {
-         super("WordPairTest");
-     }
+          import java.io.*;
 
-     @Test
-     public void testMain() throws IOException
-     {
-         String output = getMethodOutput("main");
-         String expect = "[(hi, there), (hi, bye)]";
-         boolean passed = getResults(expect, output, "Expected output from main");
-         assertTrue(passed);
-     }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("WordPairTest");
+              }
 
-     @Test
-     public void hasArrayList()
-     {
-         boolean passed = checkCodeContains("ArrayList declaration", "ArrayList&lt;WordPair&gt;");
-         assertTrue(passed);
-     }
- }
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "[(hi, there), (hi, bye)]";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void hasArrayList()
+              {
+                  boolean passed = checkCodeContains("ArrayList declaration", "ArrayList<WordPair>");
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -909,6 +953,7 @@ class WordPair
     </p>
 
     <p>Here is the pseudocode for the constructor method.</p>
+
     <p>
       <ul>
         <li>
@@ -961,150 +1006,159 @@ class WordPair
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*;
+          <![CDATA[
 
-public class WordPairsList
-{
-    private ArrayList&lt;WordPair&gt; allPairs;
+          import java.util.*;
 
-    public WordPairsList(String[] words)
-    {
-        // WRITE YOUR CODE HERE
-        // initialize allPairs to an empty ArrayList of WordPair objects
+          public class WordPairsList
+          {
+              private ArrayList<WordPair> allPairs;
 
-        // nested loops through the words array to add each pair to allPairs
+              public WordPairsList(String[] words)
+              {
+                  // WRITE YOUR CODE HERE
+                  // initialize allPairs to an empty ArrayList of WordPair objects
 
-    }
+                  // nested loops through the words array to add each pair to allPairs
 
-    public int numMatches()
-    {
-        // Write the code for the second part described below
-        return 0;
-    }
+              }
 
-    public String toString()
-    {
-        return allPairs.toString();
-    }
+              public int numMatches()
+              {
+                  // Write the code for the second part described below
+                  return 0;
+              }
 
-    public static void main(String[] args)
-    {
-        String[] words = {"Hi", "there", "Tyler", "Sam"};
-        WordPairsList list = new WordPairsList(words);
-        System.out.println(list);
-        // For second part below, uncomment this test:
-        // System.out.println("The number of matched pairs is: " +
-        // list.numMatches());
-    }
-}
+              public String toString()
+              {
+                  return allPairs.toString();
+              }
 
-class WordPair
-{
-    private String word1;
-    private String word2;
+              public static void main(String[] args)
+              {
+                  String[] words = {"Hi", "there", "Tyler", "Sam"};
+                  WordPairsList list = new WordPairsList(words);
+                  System.out.println(list);
+                  // For second part below, uncomment this test:
+                  // System.out.println("The number of matched pairs is: " +
+                  // list.numMatches());
+              }
+          }
 
-    public WordPair(String word1, String word2)
-    {
-        this.word1 = word1;
-        this.word2 = word2;
-    }
+          class WordPair
+          {
+              private String word1;
+              private String word2;
 
-    public String getFirst()
-    {
-        return word1;
-    }
+              public WordPair(String word1, String word2)
+              {
+                  this.word1 = word1;
+                  this.word2 = word2;
+              }
 
-    public String getSecond()
-    {
-        return word2;
-    }
+              public String getFirst()
+              {
+                  return word1;
+              }
 
-    public String toString()
-    {
-        return "(" + word1 + ", " + word2 + ")";
-    }
-}
+              public String getSecond()
+              {
+                  return word2;
+              }
+
+              public String toString()
+              {
+                  return "(" + word1 + ", " + word2 + ")";
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
- import static org.junit.Assert.*;
+          <![CDATA[
 
- import org.junit.*;
+          import static org.junit.Assert.*;
 
- import java.io.*;
+          import org.junit.*;
 
- public class RunestoneTests extends CodeTestHelper
- {
-     public RunestoneTests()
-     {
-         super("WordPairsList");
-     }
+          import java.io.*;
 
-     @Test
-     public void test1()
-     {
-         String output = getMethodOutput("main");
-         String expect =
-                 "[(Hi, there), (Hi, Tyler), (Hi, Sam), (there, Tyler), (there, Sam), (Tyler, Sam)]";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("WordPairsList");
+              }
 
-         boolean passed = output.contains(expect);
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect =
+                          "[(Hi, there), (Hi, Tyler), (Hi, Sam), (there, Tyler), (there, Sam), (Tyler, Sam)]";
 
-         String[] lines = output.split("\n");
-         if (lines.length &gt; 1) output = lines[0];
+                  boolean passed = output.contains(expect);
 
-         getResults(expect, output, "Part 1 - Add all word pairs from main()", passed);
-         assertTrue(passed);
-     }
+                  String[] lines = output.split("\n");
+                  if (lines.length > 1) output = lines[0];
 
-     /* //remove test because instructions say to add a matched pair.
-     @Test
-     public void test2()
-     {
-         String output = getMethodOutput("main");
-         String expect = "The number of matched pairs is: 0";
+                  getResults(expect, output, "Part 1 - Add all word pairs from main()", passed);
+                  assertTrue(passed);
+              }
 
-         boolean passed = output.contains(expect);
-         String[] lines = output.split("\n");
-         if (lines.length &gt; 1) output = lines[1];
+              /* //remove test because instructions say to add a matched pair.
+              @Test
+              public void test2()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "The number of matched pairs is: 0";
 
-         getResults(expect, output, "Part 2 - call to numMatches from main()", passed);
-         assertTrue(passed);
-     }
-     */
+                  boolean passed = output.contains(expect);
+                  String[] lines = output.split("\n");
+                  if (lines.length > 1) output = lines[1];
 
-     @Test
-     public void test3()
-     {
-         String[] words = {"Hi", "Hi", "Test", "Test"};
-         WordPairsList list = new WordPairsList(words);
-         String output = list.toString();
-         String expect = "[(Hi, Hi), (Hi, Test), (Hi, Test), (Hi, Test), (Hi, Test), (Test, Test)]";
+                  getResults(expect, output, "Part 2 - call to numMatches from main()", passed);
+                  assertTrue(passed);
+              }
+              */
 
-         boolean passed =
-                 getResults(
-                         expect,
-                         output,
-                         "Part 1 - Add all word pairs with {\"Hi\", \"Hi\", \"Test\", \"Test\"}");
-         assertTrue(passed);
-     }
+              @Test
+              public void test3()
+              {
+                  String[] words = {"Hi", "Hi", "Test", "Test"};
+                  WordPairsList list = new WordPairsList(words);
+                  String output = list.toString();
+                  String expect = "[(Hi, Hi), (Hi, Test), (Hi, Test), (Hi, Test), (Hi, Test), (Test, Test)]";
 
-     @Test
-     public void test4()
-     {
-         String[] words = {"Hi", "Hi", "Test", "Test"};
-         WordPairsList list = new WordPairsList(words);
-         String output = "The number of matched pairs is: " + list.numMatches();
-         String expect = "The number of matched pairs is: 2";
+                  boolean passed =
+                          getResults(
+                                  expect,
+                                  output,
+                                  "Part 1 - Add all word pairs with {\"Hi\", \"Hi\", \"Test\", \"Test\"}");
+                  assertTrue(passed);
+              }
 
-         boolean passed =
-                 getResults(
-                         expect,
-                         output,
-                         "Part 2 - numMatches() with {\"Hi\", \"Hi\", \"Test\", \"Test\"}");
-         assertTrue(passed);
-     }
- }
+              @Test
+              public void test4()
+              {
+                  String[] words = {"Hi", "Hi", "Test", "Test"};
+                  WordPairsList list = new WordPairsList(words);
+                  String output = "The number of matched pairs is: " + list.numMatches();
+                  String expect = "The number of matched pairs is: 2";
+
+                  boolean passed =
+                          getResults(
+                                  expect,
+                                  output,
+                                  "Part 2 - numMatches() with {\"Hi\", \"Hi\", \"Test\", \"Test\"}");
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </project>
@@ -1132,6 +1186,7 @@ class WordPair
 
   <subsection xml:id="summary-50">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>

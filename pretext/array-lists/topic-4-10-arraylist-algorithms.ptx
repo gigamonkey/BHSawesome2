@@ -176,8 +176,7 @@
 
     <p>
       You can step through the code above by clicking on the following <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(2))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.set(2,+new+Integer(4))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(1,+new+Integer(5))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(6))%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0"
-      visual="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(2))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.set(2,+new+Integer(4))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(1,+new+Integer(5))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(6))%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Example1</url>.
+      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(2))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.set(2,+new+Integer(4))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(1,+new+Integer(5))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(6))%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Example1</url>.
     </p>
 
     <activity label="qListRem4">
@@ -246,8 +245,7 @@
 
     <p>
       You can step through the code above by clicking on the following <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(2))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.remove(1)%3B%0A++++++System.out.println(list1)%3B%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0"
-      visual="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(2))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.remove(1)%3B%0A++++++System.out.println(list1)%3B%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Example2</url>.
+      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(2))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.remove(1)%3B%0A++++++System.out.println(list1)%3B%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Example2</url>.
     </p>
 
     <activity label="arrayListRemoveInLoop">
@@ -1390,20 +1388,18 @@
 
     <p>
       <ul>
+        <li><url href="ArrayList-summary.html">ArrayList Summary</url></li>
+
         <li>
-          <url href="ArrayList-summary.html" visual="ArrayList-summary.html">ArrayList Summary</url>
+          <url href="ArrayListParsonsPractice.html">ArrayList Mixed-up Code Practice</url>
         </li>
 
         <li>
-          <url href="ArrayListParsonsPractice.html" visual="ArrayListParsonsPractice.html">ArrayList Mixed-up Code Practice</url>
+          <url href="ArrayListPractice.html">ArrayList Coding Practice</url>
         </li>
 
         <li>
-          <url href="ArrayListPractice.html" visual="ArrayListPractice.html">ArrayList Coding Practice</url>
-        </li>
-
-        <li>
-          <url href="ArrayList-Exercises.html" visual="ArrayList-Exercises.html">ArrayList Multiple-Choice Exercises</url>
+          <url href="ArrayList-Exercises.html">ArrayList Multiple-Choice Exercises</url>
         </li>
       </ul>
     </p>
@@ -1416,49 +1412,31 @@
 
     <p>
       <ul>
+        <li><url href="FRQ3ArrayList.html">FRQ 3 ArrayList Inventory</url></li>
+
+        <li><url href="climbClubA.html">Climb Club A FRQ</url></li>
+
+        <li><url href="climbClubB.html">Climb Club B FRQ</url></li>
+
+        <li><url href="climbClubC.html">Climb Club C FRQ</url></li>
+
+        <li><url href="cookieOrderA.html">Cookie Order A FRQ</url></li>
+
+        <li><url href="cookieOrderB.html">Cookie Order B FRQ</url></li>
+
         <li>
-          <url href="FRQ3ArrayList.html" visual="FRQ3ArrayList.html">FRQ 3 ArrayList Inventory</url>
+          <url href="2016freeresponseQ4A.html">StringFormatter Q4 A FRQ</url>
         </li>
 
         <li>
-          <url href="climbClubA.html" visual="climbClubA.html">Climb Club A FRQ</url>
+          <url href="2016freeresponseQ4B.html">StringFormatter Q4 B FRQ</url>
         </li>
 
-        <li>
-          <url href="climbClubB.html" visual="climbClubB.html">Climb Club B FRQ</url>
-        </li>
+        <li><url href="2019delimitersQ3a.html">Delimiters Q3 A FRQ</url></li>
 
-        <li>
-          <url href="climbClubC.html" visual="climbClubC.html">Climb Club C FRQ</url>
-        </li>
+        <li><url href="2019delimitersQ3b.html">Delimiters Q3 B FRQ</url></li>
 
-        <li>
-          <url href="cookieOrderA.html" visual="cookieOrderA.html">Cookie Order A FRQ</url>
-        </li>
-
-        <li>
-          <url href="cookieOrderB.html" visual="cookieOrderB.html">Cookie Order B FRQ</url>
-        </li>
-
-        <li>
-          <url href="2016freeresponseQ4A.html" visual="2016freeresponseQ4A.html">StringFormatter Q4 A FRQ</url>
-        </li>
-
-        <li>
-          <url href="2016freeresponseQ4B.html" visual="2016freeresponseQ4B.html">StringFormatter Q4 B FRQ</url>
-        </li>
-
-        <li>
-          <url href="2019delimitersQ3a.html" visual="2019delimitersQ3a.html">Delimiters Q3 A FRQ</url>
-        </li>
-
-        <li>
-          <url href="2019delimitersQ3b.html" visual="2019delimitersQ3b.html"> Delimiters Q3 B FRQ</url>
-        </li>
-
-        <li>
-          <url href="2013gridworldQ3A.html" visual="2013gridworldQ3A.html"> Gridworld Q3 A FRQ</url>
-        </li>
+        <li><url href="2013gridworldQ3A.html">Gridworld Q3 A FRQ</url></li>
       </ul>
     </p>
   </subsection>

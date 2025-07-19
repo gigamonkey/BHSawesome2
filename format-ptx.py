@@ -19,6 +19,7 @@ DEFAULT_NS = {"xml": "http://www.w3.org/XML/1998/namespace"}
 
 format_code = False
 
+
 def indentation(level):
     return " " * (INDENT * level)
 
@@ -73,12 +74,24 @@ def to_text(elem):
     return etree.tostring(elem, encoding="unicode", method="text")
 
 
+def is_program(elem):
+    return is_program_or_in_program(elem) or is_pre_in_datafile(elem)
+
+
+def is_program_or_in_program(elem):
+    return (elem.tag == "program" or is_in_program(elem)) and is_all_text(elem)
+
+
 def is_in_program(elem):
     return elem.getparent() is not None and elem.getparent().tag == "program"
 
 
-def is_program(elem):
-    return (elem.tag == "program" or is_in_program(elem)) and is_all_text(elem)
+def is_pre_in_datafile(elem):
+    return (
+        elem.tag == "pre"
+        and elem.getparent() is not None
+        and elem.getparent().tag == "datafile"
+    )
 
 
 def is_inline(elem):
@@ -158,11 +171,16 @@ def render_program_text(elem, ns, level):
 
     return content
 
+
 def maybe_formatted(text):
     if format_code:
         result = subprocess.run(
             ["java", "-jar", "google-java-format-1.25.2-all-deps.jar", "-a", "-"],
-            capture_output=True, input=text, text=True, check=False)
+            capture_output=True,
+            input=text,
+            text=True,
+            check=False,
+        )
         if result.returncode != 0:
             print(f"Couldn't format\n{text}\n", file=stderr)
 

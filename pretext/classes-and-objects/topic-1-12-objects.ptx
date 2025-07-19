@@ -3,7 +3,6 @@
 <section xml:id="topic-1-12-objects">
   <title>Objects - Instances of Classes</title>
 
-
   <subsection xml:id="what-are-classes-and-objects">
     <title>What are Classes and Objects?</title>
 
@@ -103,7 +102,9 @@
     <figure align="center">
       <caption>Turtle Attributes and Behaviors</caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/turtleOOD.svg" width="63%" alt="Turtle attributes and behaviors" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/turtleOOD.svg" width="63%">
+        <shortdescription>Turtle attributes and behaviors</shortdescription>
+      </image>
     </figure>
 
     <activity label="vocab2_1">
@@ -356,7 +357,6 @@
                   habitat.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -377,7 +377,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -433,7 +432,6 @@
                   habitat.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -473,7 +471,6 @@
                   assertTrue(passed);
               }
           }
-
 
           ]]>
         </tests>
@@ -533,7 +530,6 @@
                   habitat.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -562,7 +558,6 @@
                   assertTrue(passed);
               }
           }
-
 
           ]]>
         </tests>
@@ -620,7 +615,9 @@
     <figure align="center">
       <caption>Turtle Class Diagram</caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/turtleUMLClassDiagram.png" width="71%" alt="Turtle class diagram" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/turtleUMLClassDiagram.png" width="71%">
+        <shortdescription>Turtle class diagram</shortdescription>
+      </image>
     </figure>
 
     <p>
@@ -721,7 +718,6 @@
                   habitat.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -743,7 +739,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -771,7 +766,6 @@
                   habitat.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -831,7 +825,6 @@
                   assertTrue(passed);
               }
           }
-
 
           ]]>
         </tests>
@@ -915,7 +908,6 @@
                   habitat.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -964,7 +956,6 @@
                   assertTrue(passed);
               }
           }
-
 
           ]]>
         </tests>

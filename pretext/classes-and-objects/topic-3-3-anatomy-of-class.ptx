@@ -58,8 +58,6 @@
       section we’ll take a very quick tour through the main parts of a class.
       Then we’ll go through each part in more detail in the following sections.
     </p>
-
-
   </introduction>
 
   <subsection xml:id="parts-of-a-class">
@@ -79,9 +77,7 @@
       whether they are eighteen or older.
     </p>
 
-    <p>
-      For instance we should be able to write this code:
-    </p>
+    <p>For instance we should be able to write this code:</p>
 
     <program>
       Person person1 = new Person("Joe", 18);
@@ -91,9 +87,7 @@
       System.out.println("Sally can vote: " + person2.canVote());
     </program>
 
-    <p>
-      and when we run it get this output:
-    </p>
+    <p>and when we run it get this output:</p>
 
     <pre>
       Hello Sally, I'm Joe.
@@ -107,6 +101,7 @@
 
     <program interactive="activecode">
       <![CDATA[
+
       public class Person {
 
         // Instance variables
@@ -128,12 +123,11 @@
           return age >= 18;
         }
       }
+
       ]]>
     </program>
 
-    <p>
-      Let’s take this in chunks, starting with the first line:
-    </p>
+    <p>Let’s take this in chunks, starting with the first line:</p>
 
     <program>
       public class Person {
@@ -224,13 +218,17 @@
     </p>
 
     <program>
-        public void greet(Person other) {
-          System.out.println("Hello " + other.name + ", I'm " + name + ".");
-        }
+      <![CDATA[
 
-        public boolean canVote() {
-          return age &gt;= 18;
-        }
+      public void greet(Person other) {
+        System.out.println("Hello " + other.name + ", I'm " + name + ".");
+      }
+
+      public boolean canVote() {
+        return age >= 18;
+      }
+
+      ]]>
     </program>
 
     <p>
@@ -257,7 +255,6 @@
     </p>
 
     <video youtube="LfSaSANJPLg" label="video-classes" />
-
     <p>
       Watch the following <url
       href="https://www.youtube.com/watch?v=64DOwDu5SVo&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
@@ -269,6 +266,7 @@
 
       <video youtube="64DOwDu5SVo" label="video-objects" />
     </figure>
+
     <activity label="vocab2_1">
       <statement>
         <p>
@@ -475,6 +473,4 @@
       </choices>
     </activity>
   </subsection>
-
-
 </section>

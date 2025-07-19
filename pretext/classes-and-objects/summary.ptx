@@ -3,11 +3,7 @@
 <section xml:id="topic-3-3-anatomy-of-class">
   <title>Summary</title>
 
-  <introduction>
-
-  </introduction>
-
-
+  <introduction />
   <subsection xml:id="summary-29">
     <title>Summary</title>
 
@@ -87,7 +83,6 @@
           public class Cat {
               /* missing code */
           }
-
         </program>
 
         <p>
@@ -190,7 +185,6 @@
           public class Party {
               /* missing code */
           }
-
         </program>
 
         <p>

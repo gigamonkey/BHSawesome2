@@ -893,9 +893,8 @@
     <p>
       The three logical operators in Java come from <term>Boolean
       algebra</term>, a system for evaluating logical statements invented by
-      <url href="https://en.wikipedia.org/wiki/George_Boole"
-      visual="https://en.wikipedia.org/wiki/George_Boole">George Boole</url>, a
-      19th century English mathematician most famous for his book <em>The Laws
+      <url href="https://en.wikipedia.org/wiki/George_Boole">George Boole</url>,
+      a 19th century English mathematician most famous for his book <em>The Laws
       of Thought</em>. These days we call these three operatarors <term>logical
       and</term>, <term>logical or</term> and <term>logical not</term>. And you
       are almost certainly already completely familiar with these operators and

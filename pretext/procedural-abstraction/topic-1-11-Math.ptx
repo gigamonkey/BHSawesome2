@@ -270,7 +270,10 @@
           from -3 to 1 is 4.
         </p>
 
-        <image source="Unit1-Using-Objects-and-Methods/Figures/number-line.svg" width="80%" alt="number line" />
+        <image source="Unit1-Using-Objects-and-Methods/Figures/number-line.svg" width="80%">
+          <shortdescription>number line</shortdescription>
+        </image>
+
         <p>
           Which of the following are correct expressions to compute the distance
           between the numbers <c>a</c> and <c>b</c>.
@@ -386,7 +389,10 @@
     <idx><h>Math</h><h>random</h></idx>
     <idx>random</idx>
     <sidebyside widths="15% 100%" margins="-20% 0%">
-      <image source="Unit1-Using-Objects-and-Methods/Figures/dice.png" alt="Dice" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/dice.png">
+        <shortdescription>Dice</shortdescription>
+      </image>
+
       <stack>
         <p>
           Games would be boring if the same thing happened each time you played
@@ -908,7 +914,10 @@
     <title>Coding challenge: Combo lock</title>
 
     <sidebyside widths="15% 100%" margins="-20% 0%">
-      <image source="Unit1-Using-Objects-and-Methods/Figures/lock.jpg" alt="lock" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/lock.jpg">
+        <shortdescription>lock</shortdescription>
+      </image>
+
       <stack>
         <p>
           You may have a combination lock on your locker at school where you
@@ -1175,7 +1184,10 @@
     <title>Coding Challenge: Tower ladder</title>
 
     <sidebyside widths="15% 100%" margins="-20% 0%">
-      <image source="Unit1-Using-Objects-and-Methods/Figures/ladder.png" width="36%" alt="Ladder on tower" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/ladder.png" width="36%">
+        <shortdescription>Ladder on tower</shortdescription>
+      </image>
+
       <stack>
         <p>
           The Pythagorean theorem states that the length of the hypotenuse (the

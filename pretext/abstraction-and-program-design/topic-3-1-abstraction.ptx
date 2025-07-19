@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-3-1-abstraction">
   <title>Abstraction and Program Design</title>
+
   <introduction>
     <p>
       In Unit 1, we learned to use <term>classes</term> and <term>objects</term>
@@ -17,6 +18,7 @@
 
   <subsection xml:id="object-oriented-design">
     <title>Object-Oriented Design</title>
+
     <p>
       In <term>object-oriented design</term> (OOD), programmers often start by
       deciding which classes are needed to solve a problem and then figure out
@@ -59,6 +61,7 @@
 
   <subsection xml:id="uml-class-diagrams">
     <title>UML Class Diagrams</title>
+
     <p>
       Sometimes it’s useful, when designing a complex system with lots of
       classes, to make diagrams of the classes that show you at a glance what
@@ -77,25 +80,26 @@
       (The <c>-</c> in front of the attributes indicate that they are private,
       and the <c>+</c> in front of the methods indicate that they are public.
       We’ll learn about these more later on). Here is a <url
-      href="https://medium.com/@smagid_allThings/uml-class-diagrams-tutorial-step-by-step-520fd83b300b"
-      visual="https://medium.com/@smagid_allThings/uml-class-diagrams-tutorial-step-by-step-520fd83b300b">tutorial
+      href="https://medium.com/@smagid_allThings/uml-class-diagrams-tutorial-step-by-step-520fd83b300b">tutorial
       on class diagrams</url> that explains it in more detail if you are curious
       (Class diagrams are not on the AP CSA exam). If you want to draw your own,
-      <url href="https://app.diagrams.net/"
-      visual="https://app.diagrams.net/">app.diagrams.net</url> or <url
-      href="https://creately.com"
-      visual="https://creately.com">Creately.com</url> are good free online
+      <url href="https://app.diagrams.net/">app.diagrams.net</url> or <url
+      href="https://creately.com">Creately.com</url> are good free online
       drawing tools for UML class diagrams.
     </p>
 
     <figure align="center">
       <caption>Turtle Class Diagram</caption>
-      <image source="Unit3-Class-Creation/Figures/turtleUMLClassDiagram.png" width="63%" alt="Turtle class diagram" />
+
+      <image source="Unit3-Class-Creation/Figures/turtleUMLClassDiagram.png" width="63%">
+        <shortdescription>Turtle class diagram</shortdescription>
+      </image>
     </figure>
   </subsection>
 
   <subsection xml:id="abstraction">
     <title>Abstraction</title>
+
     <p>
       <term>Abstraction</term> is the process of reducing complexity by focusing
       on the main idea. By hiding details irrelevant to the question at hand and
@@ -113,6 +117,7 @@
 
   <subsection xml:id="data-abstraction">
     <title>Data Abstraction</title>
+
     <p>
       <term>Data abstraction</term> provides a separation between the abstract
       properties of a data type and the concrete details of its representation.
@@ -137,6 +142,7 @@
 
   <subsection xml:id="procedural-abstraction">
     <title>Procedural Abstraction</title>
+
     <p>
       <term>Procedural abstraction</term> provides a name for a process and
       allows a method to be used only knowing what it does, not how it does it.
@@ -218,101 +224,106 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class OldMacDonaldSong
-{
-    public static void intro()
-    {
-        System.out.println("Old MacDonald had a farm");
-        chorus();
-    }
+          public class OldMacDonaldSong
+          {
+              public static void intro()
+              {
+                  System.out.println("Old MacDonald had a farm");
+                  chorus();
+              }
 
-    /* Complete the following method to print E-I-E-I-O */
-    public static void chorus()
-    {
+              /* Complete the following method to print E-I-E-I-O */
+              public static void chorus()
+              {
 
-    }
+              }
 
-    /* Complete the following method to print the verse for the given animal and sound.
-       For example, for a cow and moo, it should print out
-       "And on this farm, they had a cow. E-I-E-I-O
-       With a moo moo here and a moo moo there,
-       here a moo, there a moo, everywhere a moo moo".
-       Make sure to use the variables animal and sound and the method chorus()!
-    */
-    public static void verse(String animal, String sound)
-    {
+              /* Complete the following method to print the verse for the given animal and sound.
+                 For example, for a cow and moo, it should print out
+                 "And on this farm, they had a cow. E-I-E-I-O
+                 With a moo moo here and a moo moo there,
+                 here a moo, there a moo, everywhere a moo moo".
+                 Make sure to use the variables animal and sound and the method chorus()!
+              */
+              public static void verse(String animal, String sound)
+              {
 
-    }
+              }
 
-    public static void main(String[] args)
-    {
-        intro();
-        verse("cow","moo");
-        intro();
-        // TODO:
-        // Call verse again with duck and quack
-        //   and then call intro again
-
-
-        // Call verse again with another animal and sound
-        //  and then call intro again
+              public static void main(String[] args)
+              {
+                  intro();
+                  verse("cow","moo");
+                  intro();
+                  // TODO:
+                  // Call verse again with duck and quack
+                  //   and then call intro again
 
 
-     }
-}
+                  // Call verse again with another animal and sound
+                  //  and then call intro again
+
+
+               }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testVar1()
-    {
-        boolean passed = checkCodeContains("use of animal variable in verse", "+ animal");
-        assertTrue(passed);
-    }
-    @Test
-    public void testVar2()
-    {
-        boolean passed = checkCodeContains("use of sound variable in verse", "+ sound");
-        assertTrue(passed);
-    }
-    @Test
-    public void testCall()
-    {
-        boolean passed = checkCodeContains("call to verse with duck and quack", "verse(\"duck\", \"quack\");");
-        assertTrue(passed);
-    }
-    @Test
-    public void test1()
-    {
-        String code = getCode();
-        int num = countOccurences(code, "intro();");
+          import java.io.*;
 
-        boolean passed = num &gt;= 4;
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testVar1()
+              {
+                  boolean passed = checkCodeContains("use of animal variable in verse", "+ animal");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testVar2()
+              {
+                  boolean passed = checkCodeContains("use of sound variable in verse", "+ sound");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testCall()
+              {
+                  boolean passed = checkCodeContains("call to verse with duck and quack", "verse(\"duck\", \"quack\");");
+                  assertTrue(passed);
+              }
+              @Test
+              public void test1()
+              {
+                  String code = getCode();
+                  int num = countOccurences(code, "intro();");
 
-        passed = getResults("4 or more", "" + num, "Calls to intro", passed);
-        assertTrue(passed);
-    }
-     @Test
-    public void test2()
-    {
-        String code = getCode();
-        int num = countOccurences(code, "chorus();");
+                  boolean passed = num >= 4;
 
-        boolean passed = num &gt;= 2;
+                  passed = getResults("4 or more", "" + num, "Calls to intro", passed);
+                  assertTrue(passed);
+              }
+               @Test
+              public void test2()
+              {
+                  String code = getCode();
+                  int num = countOccurences(code, "chorus();");
 
-        passed = getResults("2 or more", "" + num, "Call chorus() in intro and verse", passed);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = num >= 2;
+
+                  passed = getResults("2 or more", "" + num, "Call chorus() in intro and verse", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -320,6 +331,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="group-challenge-game-design">
     <title>Group Challenge: Game Design</title>
+
     <p>
       Working in groups, let’s explore making a computer game that is an
       adaptation of a board game that you know. Think about what objects are in
@@ -351,12 +363,10 @@ public class RunestoneTests extends CodeTestHelper
 
     <p>
       If your class has time, you could explore drawing a UML class diagram for
-      your class using an online tool like <url href="https://creately.com"
-      visual="https://creately.com">Creately.com</url> or <url
-      href="https://app.diagrams.net/"
-      visual="https://app.diagrams.net/">app.diagrams.net</url> using this <url
-      href="https://medium.com/@smagid_allThings/uml-class-diagrams-tutorial-step-by-step-520fd83b300b"
-      visual="https://medium.com/@smagid_allThings/uml-class-diagrams-tutorial-step-by-step-520fd83b300b">tutorial
+      your class using an online tool like <url
+      href="https://creately.com">Creately.com</url> or <url
+      href="https://app.diagrams.net/">app.diagrams.net</url> using this <url
+      href="https://medium.com/@smagid_allThings/uml-class-diagrams-tutorial-step-by-step-520fd83b300b">tutorial
       on class diagrams</url>
     </p>
 
@@ -384,6 +394,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-27">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>

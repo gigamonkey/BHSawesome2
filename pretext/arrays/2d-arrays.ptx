@@ -648,7 +648,6 @@
 
     <idx><h>2D Array</h><h>initialization</h></idx>
     <idx><h>2D Array</h><h>set value</h></idx>
-
     <p>
       Another similarity between one-dimensional and 2d arrays is the way we
       access the values. Normally we want to get and set the actual values in
@@ -746,7 +745,6 @@
       </choices>
     </activity>
 
-
     <activity label="twoDArraySet">
       <statement>
         <p>
@@ -777,18 +775,14 @@
           import java.util.Arrays;
         </program>
 
-        <p>
-          and the change the two <c>System.out.println</c> lines to:
-        </p>
+        <p>and the change the two <c>System.out.println</c> lines to:</p>
 
         <program>
           System.out.println(Arrays.deepToString(ticketInfo));
           System.out.println(Arrays.deepToString(seatingChart));
         </program>
 
-        <p>
-          to get more readable representations of the two arrays.
-        </p>
+        <p>to get more readable representations of the two arrays.</p>
       </hint>
 
       <program interactive="activecode">
@@ -930,8 +924,6 @@
         </choice>
       </choices>
     </activity>
-
-
 
     <activity label="twoDArrayInitGet">
       <statement>
@@ -1422,5 +1414,4 @@
       </ul>
     </p>
   </subsection>
-
 </section>

@@ -1,27 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-15-sorting">
   <title>Sorting Algorithms</title>
+
   <introduction>
     <p>
       There are many sorting algorithms to put an array or <c>ArrayList</c>
       elements in alphabetic or numerical order. Selection sort and insertion
       sort are iterative sorting algorithms that can be used to sort elements in
-      an array or <title_reference>ArrayList</title_reference>. We will show
-      these algorithms below for arrays. The three sorting algorithms that you
-      need to know for the AP CSA exam are:
+      an array or <c>ArrayList</c>. We will show these algorithms below for
+      arrays. The three sorting algorithms that you need to know for the AP CSA
+      exam are:
     </p>
 
     <idx>selection sort</idx>
     <idx>insertion sort</idx>
-    <idx>
-      <h>sort</h><h>selection</h>
-    </idx>
-
-    <idx>
-      <h>sort</h><h>insertion</h>
-    </idx>
-
+    <idx><h>sort</h><h>selection</h></idx>
+    <idx><h>sort</h><h>insertion</h></idx>
     <p>
       <ul>
         <li>
@@ -56,11 +51,9 @@
 
   <subsection xml:id="selection-sort">
     <title>Selection Sort</title>
-    <idx>selection sort</idx>
-    <idx>
-      <h>sort</h><h>selection</h>
-    </idx>
 
+    <idx>selection sort</idx>
+    <idx><h>sort</h><h>selection</h></idx>
     <p>
       Selection sort usually starts at index 0 and looks through the entire
       array keeping track of the index of the smallest value in the array (a
@@ -71,20 +64,19 @@
     </p>
 
     <p>
-      Here is a folk dance <url href="https://youtu.be/Ns4TPTC8whw"
-      visual="https://youtu.be/Ns4TPTC8whw">video</url> that shows the selection
-      sort process.
+      Here is a folk dance <url href="https://youtu.be/Ns4TPTC8whw">video</url>
+      that shows the selection sort process.
     </p>
 
     <video youtube="Ns4TPTC8whw" label="video-dance1" />
     <p>
-      And a short <url href="https://youtu.be/g-PGLbMth_g"
-      visual="https://youtu.be/g-PGLbMth_g">video</url> that describes how
-      selection sort works.
+      And a short <url href="https://youtu.be/g-PGLbMth_g">video</url> that
+      describes how selection sort works.
     </p>
 
     <video youtube="g-PGLbMth_g" label="video-sort1" />
     <p>To identify a selection sort look for the following:</p>
+
     <p>
       <ul>
         <li>
@@ -138,57 +130,62 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.Arrays;
+          <![CDATA[
 
-public class SortTest
-{
-    public static void selectionSort(int[] elements)
-    {
-        for (int j = 0; j &lt; elements.length - 1; j++)
-        {
-            int minIndex = j;
-            for (int k = j + 1; k &lt; elements.length; k++)
-            {
-                if (elements[k] &lt; elements[minIndex])
-                {
-                    minIndex = k;
-                }
-            }
-            int temp = elements[j];
-            elements[j] = elements[minIndex];
-            elements[minIndex] = temp;
-        }
-    }
+          import java.util.Arrays;
 
-    public static void main(String[] args)
-    {
-        int[] arr1 = {3, 86, -20, 14, 40};
-        System.out.println(Arrays.toString(arr1));
-        selectionSort(arr1);
-        System.out.println(Arrays.toString(arr1));
-    }
-}
+          public class SortTest
+          {
+              public static void selectionSort(int[] elements)
+              {
+                  for (int j = 0; j < elements.length - 1; j++)
+                  {
+                      int minIndex = j;
+                      for (int k = j + 1; k < elements.length; k++)
+                      {
+                          if (elements[k] < elements[minIndex])
+                          {
+                              minIndex = k;
+                          }
+                      }
+                      int temp = elements[j];
+                      elements[j] = elements[minIndex];
+                      elements[minIndex] = temp;
+                  }
+              }
+
+              public static void main(String[] args)
+              {
+                  int[] arr1 = {3, 86, -20, 14, 40};
+                  System.out.println(Arrays.toString(arr1));
+                  selectionSort(arr1);
+                  System.out.println(Arrays.toString(arr1));
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "[3, 86, -20, 14, 40]\n[-20, 3, 14, 40, 86]";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "[3, 86, -20, 14, 40]\n[-20, 3, 14, 40, 86]";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -196,8 +193,7 @@ public class RunestoneTests extends CodeTestHelper
     <p>
       To see this executing using the Java Visualizer click on the following
       <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=+import+java.util.Arrays%3B%0A+%0A+public+class+SortTest%0A++%7B%0A+++++public+static+void+selectionSort(int%5B%5D+elements)+%0A+++++%7B%0A++++++++for+(int+j+%3D+0%3B+j+%3C+elements.length+-+1%3B+j%2B%2B)+%0A++++++++%7B%0A+++++++++++int+minIndex+%3D+j%3B%0A+++++++++++for+(int+k+%3D+j+%2B+1%3B+k+%3C+elements.length%3B+k%2B%2B)+%0A+++++++++++%7B%0A++++++++++++++if+(elements%5Bk%5D+%3C+elements%5BminIndex%5D)+%0A++++++++++++++%7B%0A+++++++++++++++++minIndex+%3D+k%3B+%0A++++++++++++++%7D%0A+++++++++++%7D%0A+++++++++++int+temp+%3D+elements%5Bj%5D%3B+%0A+++++++++++elements%5Bj%5D+%3D+elements%5BminIndex%5D%3B+%0A+++++++++++elements%5BminIndex%5D+%3D+temp%3B%0A+++++++++%7D%0A+++++%7D%0A++++++%0A+++++public+static+void+main(String%5B%5D+args)%0A+++++%7B%0A++++++++int%5B%5D+arr1+%3D+%7B3,+86,+-20,+14,+40%7D%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A++++++++selectionSort(arr1)%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A+++++%7D%0A++%7D&amp;mode=display&amp;curInstr=0"
-      visual="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=+import+java.util.Arrays%3B%0A+%0A+public+class+SortTest%0A++%7B%0A+++++public+static+void+selectionSort(int%5B%5D+elements)+%0A+++++%7B%0A++++++++for+(int+j+%3D+0%3B+j+%3C+elements.length+-+1%3B+j%2B%2B)+%0A++++++++%7B%0A+++++++++++int+minIndex+%3D+j%3B%0A+++++++++++for+(int+k+%3D+j+%2B+1%3B+k+%3C+elements.length%3B+k%2B%2B)+%0A+++++++++++%7B%0A++++++++++++++if+(elements%5Bk%5D+%3C+elements%5BminIndex%5D)+%0A++++++++++++++%7B%0A+++++++++++++++++minIndex+%3D+k%3B+%0A++++++++++++++%7D%0A+++++++++++%7D%0A+++++++++++int+temp+%3D+elements%5Bj%5D%3B+%0A+++++++++++elements%5Bj%5D+%3D+elements%5BminIndex%5D%3B+%0A+++++++++++elements%5BminIndex%5D+%3D+temp%3B%0A+++++++++%7D%0A+++++%7D%0A++++++%0A+++++public+static+void+main(String%5B%5D+args)%0A+++++%7B%0A++++++++int%5B%5D+arr1+%3D+%7B3,+86,+-20,+14,+40%7D%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A++++++++selectionSort(arr1)%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A+++++%7D%0A++%7D&amp;mode=display&amp;curInstr=0">SelectionSort</url>
+      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=+import+java.util.Arrays%3B%0A+%0A+public+class+SortTest%0A++%7B%0A+++++public+static+void+selectionSort(int%5B%5D+elements)+%0A+++++%7B%0A++++++++for+(int+j+%3D+0%3B+j+%3C+elements.length+-+1%3B+j%2B%2B)+%0A++++++++%7B%0A+++++++++++int+minIndex+%3D+j%3B%0A+++++++++++for+(int+k+%3D+j+%2B+1%3B+k+%3C+elements.length%3B+k%2B%2B)+%0A+++++++++++%7B%0A++++++++++++++if+(elements%5Bk%5D+%3C+elements%5BminIndex%5D)+%0A++++++++++++++%7B%0A+++++++++++++++++minIndex+%3D+k%3B+%0A++++++++++++++%7D%0A+++++++++++%7D%0A+++++++++++int+temp+%3D+elements%5Bj%5D%3B+%0A+++++++++++elements%5Bj%5D+%3D+elements%5BminIndex%5D%3B+%0A+++++++++++elements%5BminIndex%5D+%3D+temp%3B%0A+++++++++%7D%0A+++++%7D%0A++++++%0A+++++public+static+void+main(String%5B%5D+args)%0A+++++%7B%0A++++++++int%5B%5D+arr1+%3D+%7B3,+86,+-20,+14,+40%7D%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A++++++++selectionSort(arr1)%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A+++++%7D%0A++%7D&amp;mode=display&amp;curInstr=0">SelectionSort</url>
     </p>
 
     <activity label="qsel_1">
@@ -249,26 +245,28 @@ public class RunestoneTests extends CodeTestHelper
           order. But, it does not work. Which of the following lines is wrong?
         </p>
 
-        <program language="java">
-          <code>
-public static void selectionSort(int[] elements)
-{
-  for (int j = 0; j &lt; elements.length − 1; j++)      // line 1
-  {
-     int minIndex = j;                               // line 2
-     for (int k = 0; k &lt; elements.length; k++)       // line 3
-     {
-        if (elements[k] &lt; elements[minIndex])        // line 4
-        {
-           minIndex = k;                             // line 5
-        }
-     }
-     int temp = elements[j];
-     elements[j] = elements[minIndex];
-     elements[minIndex] = temp;
-   }
-}
-          </code>
+        <program>
+          <![CDATA[
+
+          public static void selectionSort(int[] elements)
+          {
+            for (int j = 0; j < elements.length − 1; j++)      // line 1
+            {
+               int minIndex = j;                               // line 2
+               for (int k = 0; k < elements.length; k++)       // line 3
+               {
+                  if (elements[k] < elements[minIndex])        // line 4
+                  {
+                     minIndex = k;                             // line 5
+                  }
+               }
+               int temp = elements[j];
+               elements[j] = elements[minIndex];
+               elements[minIndex] = temp;
+             }
+          }
+
+          ]]>
         </program>
       </statement>
 
@@ -336,18 +334,15 @@ public static void selectionSort(int[] elements)
 
     <p>
       You can step through the code above by clicking on the following <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.Arrays%3B%0A%0Apublic+class+SortTest2%0A%7B%0A+++%0A+++public+static+void+selectionSort(int%5B%5D+elements)%0A+++%7B%0A++++++for+(int+j+%3D+0%3B+j+%3C+elements.length+-+1%3B+j%2B%2B)++++++//+line+1%0A++++++%7B%0A+++++++++int+minIndex+%3D+j%3B+++++++++++++++++++++++++++++++//+line+2%0A+++++++++for+(int+k+%3D+0%3B+k+%3C+elements.length%3B+k%2B%2B)+++++++//+line+3%0A+++++++++%7B%0A++++++++++++if+(elements%5Bk%5D+%3C+elements%5BminIndex%5D)++++++++//+line+4%0A++++++++++++%7B%0A+++++++++++++++minIndex+%3D+k%3B+++++++++++++++++++++++++++++//+line+5%0A++++++++++++%7D%0A+++++++++%7D%0A+++++++++int+temp+%3D+elements%5Bj%5D%3B%0A+++++++++elements%5Bj%5D+%3D+elements%5BminIndex%5D%3B%0A+++++++++elements%5BminIndex%5D+%3D+temp%3B%0A++++++%7D%0A+++%7D%0A+++%0A+++public+static+void+main(String%5B%5D+args)%0A+++%7B%0A++++++int%5B%5D+arr1+%3D+%7B3,+86,+-20,+14,+40%7D%3B%0A++++++System.out.println(Arrays.toString(arr1))%3B%0A++++++selectionSort(arr1)%3B%0A++++++System.out.println(Arrays.toString(arr1))%3B%0A+++%7D%0A++++++%0A%7D&amp;mode=display&amp;curInstr=0"
-      visual="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.Arrays%3B%0A%0Apublic+class+SortTest2%0A%7B%0A+++%0A+++public+static+void+selectionSort(int%5B%5D+elements)%0A+++%7B%0A++++++for+(int+j+%3D+0%3B+j+%3C+elements.length+-+1%3B+j%2B%2B)++++++//+line+1%0A++++++%7B%0A+++++++++int+minIndex+%3D+j%3B+++++++++++++++++++++++++++++++//+line+2%0A+++++++++for+(int+k+%3D+0%3B+k+%3C+elements.length%3B+k%2B%2B)+++++++//+line+3%0A+++++++++%7B%0A++++++++++++if+(elements%5Bk%5D+%3C+elements%5BminIndex%5D)++++++++//+line+4%0A++++++++++++%7B%0A+++++++++++++++minIndex+%3D+k%3B+++++++++++++++++++++++++++++//+line+5%0A++++++++++++%7D%0A+++++++++%7D%0A+++++++++int+temp+%3D+elements%5Bj%5D%3B%0A+++++++++elements%5Bj%5D+%3D+elements%5BminIndex%5D%3B%0A+++++++++elements%5BminIndex%5D+%3D+temp%3B%0A++++++%7D%0A+++%7D%0A+++%0A+++public+static+void+main(String%5B%5D+args)%0A+++%7B%0A++++++int%5B%5D+arr1+%3D+%7B3,+86,+-20,+14,+40%7D%3B%0A++++++System.out.println(Arrays.toString(arr1))%3B%0A++++++selectionSort(arr1)%3B%0A++++++System.out.println(Arrays.toString(arr1))%3B%0A+++%7D%0A++++++%0A%7D&amp;mode=display&amp;curInstr=0">Ex-12-4-2</url>.
+      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.Arrays%3B%0A%0Apublic+class+SortTest2%0A%7B%0A+++%0A+++public+static+void+selectionSort(int%5B%5D+elements)%0A+++%7B%0A++++++for+(int+j+%3D+0%3B+j+%3C+elements.length+-+1%3B+j%2B%2B)++++++//+line+1%0A++++++%7B%0A+++++++++int+minIndex+%3D+j%3B+++++++++++++++++++++++++++++++//+line+2%0A+++++++++for+(int+k+%3D+0%3B+k+%3C+elements.length%3B+k%2B%2B)+++++++//+line+3%0A+++++++++%7B%0A++++++++++++if+(elements%5Bk%5D+%3C+elements%5BminIndex%5D)++++++++//+line+4%0A++++++++++++%7B%0A+++++++++++++++minIndex+%3D+k%3B+++++++++++++++++++++++++++++//+line+5%0A++++++++++++%7D%0A+++++++++%7D%0A+++++++++int+temp+%3D+elements%5Bj%5D%3B%0A+++++++++elements%5Bj%5D+%3D+elements%5BminIndex%5D%3B%0A+++++++++elements%5BminIndex%5D+%3D+temp%3B%0A++++++%7D%0A+++%7D%0A+++%0A+++public+static+void+main(String%5B%5D+args)%0A+++%7B%0A++++++int%5B%5D+arr1+%3D+%7B3,+86,+-20,+14,+40%7D%3B%0A++++++System.out.println(Arrays.toString(arr1))%3B%0A++++++selectionSort(arr1)%3B%0A++++++System.out.println(Arrays.toString(arr1))%3B%0A+++%7D%0A++++++%0A%7D&amp;mode=display&amp;curInstr=0">Ex-12-4-2</url>.
     </p>
   </subsection>
 
   <subsection xml:id="insertion-sort">
     <title>Insertion Sort</title>
-    <idx>insertion sort</idx>
-    <idx>
-      <h>sort</h><h>insertion</h>
-    </idx>
 
+    <idx>insertion sort</idx>
+    <idx><h>sort</h><h>insertion</h></idx>
     <p>
       Insertion sort usually starts at index 1 and inserts the value at index 1
       into its correct place in the already sorted part (the part to the left of
@@ -357,20 +352,19 @@ public static void selectionSort(int[] elements)
     </p>
 
     <p>
-      Here is a folk dance <url href="https://youtu.be/ROalU379l3U"
-      visual="https://youtu.be/ROalU379l3U">video</url> that shows the insertion
-      sort process.
+      Here is a folk dance <url href="https://youtu.be/ROalU379l3U">video</url>
+      that shows the insertion sort process.
     </p>
 
     <video youtube="ROalU379l3U" label="video-dance2" />
     <p>
-      And a short <url href="https://youtu.be/JU767SDMDvA"
-      visual="https://youtu.be/JU767SDMDvA">video</url> that describes how
-      insertion sort works.
+      And a short <url href="https://youtu.be/JU767SDMDvA">video</url> that
+      describes how insertion sort works.
     </p>
 
     <video youtube="JU767SDMDvA" label="video-sort2" />
     <p>To identify an insertion sort look for the following:</p>
+
     <p>
       <ul>
         <li>
@@ -436,54 +430,59 @@ public static void selectionSort(int[] elements)
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.Arrays;
+          <![CDATA[
 
-public class SortTest
-{
-    public static void insertionSort(int[] elements)
-    {
-        for (int j = 1; j &lt; elements.length; j++)
-        {
-            int temp = elements[j];
-            int possibleIndex = j;
-            while (possibleIndex &gt; 0 &amp;&amp; temp &lt; elements[possibleIndex - 1])
-            {
-                elements[possibleIndex] = elements[possibleIndex - 1];
-                possibleIndex--;
-            }
-            elements[possibleIndex] = temp;
-        }
-    }
+          import java.util.Arrays;
 
-    public static void main(String[] args)
-    {
-        int[] arr1 = {3, 86, -20, 14, 40};
-        System.out.println(Arrays.toString(arr1));
-        insertionSort(arr1);
-        System.out.println(Arrays.toString(arr1));
-    }
-}
+          public class SortTest
+          {
+              public static void insertionSort(int[] elements)
+              {
+                  for (int j = 1; j < elements.length; j++)
+                  {
+                      int temp = elements[j];
+                      int possibleIndex = j;
+                      while (possibleIndex > 0 && temp < elements[possibleIndex - 1])
+                      {
+                          elements[possibleIndex] = elements[possibleIndex - 1];
+                          possibleIndex--;
+                      }
+                      elements[possibleIndex] = temp;
+                  }
+              }
+
+              public static void main(String[] args)
+              {
+                  int[] arr1 = {3, 86, -20, 14, 40};
+                  System.out.println(Arrays.toString(arr1));
+                  insertionSort(arr1);
+                  System.out.println(Arrays.toString(arr1));
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "[3, 86, -20, 14, 40]\n[-20, 3, 14, 40, 86]";
-        boolean passed = getResults(expect, output, "Expected output from main", true);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "[3, 86, -20, 14, 40]\n[-20, 3, 14, 40, 86]";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -491,8 +490,7 @@ public class RunestoneTests extends CodeTestHelper
     <p>
       To see this executing using the Java Visualizer click on the following
       <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=++import+java.util.Arrays%3B%0A++%0A++public+class+SortTest%0A++%7B%0A+++++public+static+void+insertionSort(int%5B%5D+elements)+%0A+++++%7B%0A++++++++for+(int+j+%3D+1%3B+j+%3C+elements.length%3B+j%2B%2B)+%0A++++++++%7B%0A+++++++++++int+temp+%3D+elements%5Bj%5D%3B%0A+++++++++++int+possibleIndex+%3D+j%3B%0A+++++++++++while+(possibleIndex+%3E+0+%26%26+temp+%3C+elements%5BpossibleIndex+-+1%5D)+%0A+++++++++++%7B%0A++++++++++++++elements%5BpossibleIndex%5D+%3D+elements%5BpossibleIndex+-+1%5D%3B%0A++++++++++++++possibleIndex--%3B+%0A+++++++++++%7D%0A+++++++++++elements%5BpossibleIndex%5D+%3D+temp%3B%0A++++++++%7D%0A++++%7D%0A++++++%0A+++++public+static+void+main(String%5B%5D+args)%0A+++++%7B%0A++++++++int%5B%5D+arr1+%3D+%7B3,+86,+-20,+14,+40%7D%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A++++++++insertionSort(arr1)%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A+++++%7D%0A++%7D&amp;mode=display&amp;curInstr=0"
-      visual="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=++import+java.util.Arrays%3B%0A++%0A++public+class+SortTest%0A++%7B%0A+++++public+static+void+insertionSort(int%5B%5D+elements)+%0A+++++%7B%0A++++++++for+(int+j+%3D+1%3B+j+%3C+elements.length%3B+j%2B%2B)+%0A++++++++%7B%0A+++++++++++int+temp+%3D+elements%5Bj%5D%3B%0A+++++++++++int+possibleIndex+%3D+j%3B%0A+++++++++++while+(possibleIndex+%3E+0+%26%26+temp+%3C+elements%5BpossibleIndex+-+1%5D)+%0A+++++++++++%7B%0A++++++++++++++elements%5BpossibleIndex%5D+%3D+elements%5BpossibleIndex+-+1%5D%3B%0A++++++++++++++possibleIndex--%3B+%0A+++++++++++%7D%0A+++++++++++elements%5BpossibleIndex%5D+%3D+temp%3B%0A++++++++%7D%0A++++%7D%0A++++++%0A+++++public+static+void+main(String%5B%5D+args)%0A+++++%7B%0A++++++++int%5B%5D+arr1+%3D+%7B3,+86,+-20,+14,+40%7D%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A++++++++insertionSort(arr1)%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A+++++%7D%0A++%7D&amp;mode=display&amp;curInstr=0">Insertion-Sort</url>
+      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=++import+java.util.Arrays%3B%0A++%0A++public+class+SortTest%0A++%7B%0A+++++public+static+void+insertionSort(int%5B%5D+elements)+%0A+++++%7B%0A++++++++for+(int+j+%3D+1%3B+j+%3C+elements.length%3B+j%2B%2B)+%0A++++++++%7B%0A+++++++++++int+temp+%3D+elements%5Bj%5D%3B%0A+++++++++++int+possibleIndex+%3D+j%3B%0A+++++++++++while+(possibleIndex+%3E+0+%26%26+temp+%3C+elements%5BpossibleIndex+-+1%5D)+%0A+++++++++++%7B%0A++++++++++++++elements%5BpossibleIndex%5D+%3D+elements%5BpossibleIndex+-+1%5D%3B%0A++++++++++++++possibleIndex--%3B+%0A+++++++++++%7D%0A+++++++++++elements%5BpossibleIndex%5D+%3D+temp%3B%0A++++++++%7D%0A++++%7D%0A++++++%0A+++++public+static+void+main(String%5B%5D+args)%0A+++++%7B%0A++++++++int%5B%5D+arr1+%3D+%7B3,+86,+-20,+14,+40%7D%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A++++++++insertionSort(arr1)%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A+++++%7D%0A++%7D&amp;mode=display&amp;curInstr=0">Insertion-Sort</url>
     </p>
 
     <activity label="qins_1">
@@ -543,23 +541,25 @@ public class RunestoneTests extends CodeTestHelper
           order. But, it does not work. Which of the following lines is wrong?
         </p>
 
-        <program language="java">
-          <code>
-public static void insertionSort(int[] elements)
-{
-  for (int j = 1; j &lt; elements.length - 1; j++)                       // line 1
-  {
-     int temp = elements[j];                                          // line 2
-     int possibleIndex = j;                                           // line 3
-     while (possibleIndex &gt; 0 &amp;&amp; temp &lt; elements[possibleIndex - 1])  // line 4
-     {
-        elements[possibleIndex] = elements[possibleIndex - 1];        // line 5
-        possibleIndex--;
-     }
-     elements[possibleIndex] = temp;
-  }
-}
-          </code>
+        <program>
+          <![CDATA[
+
+          public static void insertionSort(int[] elements)
+          {
+            for (int j = 1; j < elements.length - 1; j++)                       // line 1
+            {
+               int temp = elements[j];                                          // line 2
+               int possibleIndex = j;                                           // line 3
+               while (possibleIndex > 0 && temp < elements[possibleIndex - 1])  // line 4
+               {
+                  elements[possibleIndex] = elements[possibleIndex - 1];        // line 5
+                  possibleIndex--;
+               }
+               elements[possibleIndex] = temp;
+            }
+          }
+
+          ]]>
         </program>
       </statement>
 
@@ -627,13 +627,13 @@ public static void insertionSort(int[] elements)
 
     <p>
       You can step through the code above by clicking on the following <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.Arrays%3B%0A++%0A++public+class+SortTest%0A++%7B%0A+++++public+static+void+insertionSort(int%5B%5D+elements)+%0A+++++%7B%0A++++++++for+(int+j+%3D+1%3B+j+%3C+elements.length+-+1%3B+j%2B%2B)+++++++++++++++++++++++//+line+1%0A++++++++%7B%0A+++++++++++int+temp+%3D+elements%5Bj%5D%3B++++++++++++++++++++++++++++++++++++++++++//+line+2%0A+++++++++++int+possibleIndex+%3D+j%3B+++++++++++++++++++++++++++++++++++++++++++//+line+3%0A+++++++++++while+(possibleIndex+%3E+0+%26%26+temp+%3C+elements%5BpossibleIndex+-+1%5D)++//+line+4%0A+++++++++++%7B%0A++++++++++++++elements%5BpossibleIndex%5D+%3D+elements%5BpossibleIndex+-+1%5D%3B++++++++//+line+5%0A++++++++++++++possibleIndex--%3B+%0A+++++++++++%7D%0A+++++++++++elements%5BpossibleIndex%5D+%3D+temp%3B%0A++++++++%7D%0A+++++%7D%0A++++++%0A+++++public+static+void+main(String%5B%5D+args)%0A+++++%7B%0A++++++++int%5B%5D+arr1+%3D+%7B3,+86,+-20,+14,+40%7D%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A++++++++insertionSort(arr1)%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A+++++%7D%0A++%7D&amp;mode=display&amp;curInstr=0"
-      visual="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.Arrays%3B%0A++%0A++public+class+SortTest%0A++%7B%0A+++++public+static+void+insertionSort(int%5B%5D+elements)+%0A+++++%7B%0A++++++++for+(int+j+%3D+1%3B+j+%3C+elements.length+-+1%3B+j%2B%2B)+++++++++++++++++++++++//+line+1%0A++++++++%7B%0A+++++++++++int+temp+%3D+elements%5Bj%5D%3B++++++++++++++++++++++++++++++++++++++++++//+line+2%0A+++++++++++int+possibleIndex+%3D+j%3B+++++++++++++++++++++++++++++++++++++++++++//+line+3%0A+++++++++++while+(possibleIndex+%3E+0+%26%26+temp+%3C+elements%5BpossibleIndex+-+1%5D)++//+line+4%0A+++++++++++%7B%0A++++++++++++++elements%5BpossibleIndex%5D+%3D+elements%5BpossibleIndex+-+1%5D%3B++++++++//+line+5%0A++++++++++++++possibleIndex--%3B+%0A+++++++++++%7D%0A+++++++++++elements%5BpossibleIndex%5D+%3D+temp%3B%0A++++++++%7D%0A+++++%7D%0A++++++%0A+++++public+static+void+main(String%5B%5D+args)%0A+++++%7B%0A++++++++int%5B%5D+arr1+%3D+%7B3,+86,+-20,+14,+40%7D%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A++++++++insertionSort(arr1)%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A+++++%7D%0A++%7D&amp;mode=display&amp;curInstr=0">Visualization</url>.
+      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.Arrays%3B%0A++%0A++public+class+SortTest%0A++%7B%0A+++++public+static+void+insertionSort(int%5B%5D+elements)+%0A+++++%7B%0A++++++++for+(int+j+%3D+1%3B+j+%3C+elements.length+-+1%3B+j%2B%2B)+++++++++++++++++++++++//+line+1%0A++++++++%7B%0A+++++++++++int+temp+%3D+elements%5Bj%5D%3B++++++++++++++++++++++++++++++++++++++++++//+line+2%0A+++++++++++int+possibleIndex+%3D+j%3B+++++++++++++++++++++++++++++++++++++++++++//+line+3%0A+++++++++++while+(possibleIndex+%3E+0+%26%26+temp+%3C+elements%5BpossibleIndex+-+1%5D)++//+line+4%0A+++++++++++%7B%0A++++++++++++++elements%5BpossibleIndex%5D+%3D+elements%5BpossibleIndex+-+1%5D%3B++++++++//+line+5%0A++++++++++++++possibleIndex--%3B+%0A+++++++++++%7D%0A+++++++++++elements%5BpossibleIndex%5D+%3D+temp%3B%0A++++++++%7D%0A+++++%7D%0A++++++%0A+++++public+static+void+main(String%5B%5D+args)%0A+++++%7B%0A++++++++int%5B%5D+arr1+%3D+%7B3,+86,+-20,+14,+40%7D%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A++++++++insertionSort(arr1)%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A+++++%7D%0A++%7D&amp;mode=display&amp;curInstr=0">Visualization</url>.
     </p>
   </subsection>
 
   <subsection xml:id="coding-challenge-sort-runtimes">
     <title>Coding Challenge: Sort Runtimes</title>
+
     <p>
       Selection sort and Insertion sort have similar runtimes. They both have
       nested loops that run through the data of size n approximately n squared
@@ -646,8 +646,7 @@ public static void insertionSort(int[] elements)
       number of iterations. Add in print statements that will print the counter
       value after the loops. Run the code on the following data and record the
       runtimes in this <url
-      href="https://docs.google.com/document/d/1uGhFyrcGqokcOWQC-f8Cz-kow7I_xs6s5G-p-qXZ7wA/copy"
-      visual="https://docs.google.com/document/d/1uGhFyrcGqokcOWQC-f8Cz-kow7I_xs6s5G-p-qXZ7wA/copy">Google
+      href="https://docs.google.com/document/d/1uGhFyrcGqokcOWQC-f8Cz-kow7I_xs6s5G-p-qXZ7wA/copy">Google
       document</url> (login to Google to make your own copy) also seen below.
     </p>
 
@@ -670,6 +669,7 @@ public static void insertionSort(int[] elements)
 
   <subsection xml:id="summary-41">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -710,11 +710,11 @@ public static void insertionSort(int[] elements)
 
   <subsection xml:id="search-sort-multiple-choice-exercises-1">
     <title>Search/Sort Multiple-Choice Exercises</title>
+
     <p>
       Try the following multiple-choice exercises to practice search and sort
-      algorithms: <url href="Search-Sort-Exercises.html"
-      visual="Search-Sort-Exercises.html">Search/Sort Multiple-Choice
-      Exercises</url>.
+      algorithms: <url href="Search-Sort-Exercises.html">Search/Sort
+      Multiple-Choice Exercises</url>.
     </p>
   </subsection>
 </section>

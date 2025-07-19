@@ -173,8 +173,7 @@
 
     <p>
       Here’s the <url
-      href="https://www.youtube.com/watch?v=jp-T9lFISlI&amp;ab_channel=colleenlewis"
-      visual="https://www.youtube.com/watch?v=jp-T9lFISlI&amp;ab_channel=colleenlewis">video</url>.
+      href="https://www.youtube.com/watch?v=jp-T9lFISlI&amp;ab_channel=colleenlewis">video</url>.
     </p>
 
     <video youtube="jp-T9lFISlI" label="video-mod" />

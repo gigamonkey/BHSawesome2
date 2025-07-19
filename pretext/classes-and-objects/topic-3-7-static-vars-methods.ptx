@@ -61,7 +61,11 @@
     <figure align="center">
       <caption>Comparing Method Calls to Static and Instance Methods</caption>
 
-      <image source="Unit3-Class-Creation/Figures/FlowChartCallingMethods.png" width="98%" alt="Comparing method calls to static and instance methods" />
+      <image source="Unit3-Class-Creation/Figures/FlowChartCallingMethods.png" width="98%">
+        <shortdescription>
+          Comparing method calls to static and instance methods
+        </shortdescription>
+      </image>
     </figure>
 
     <p>
@@ -148,7 +152,6 @@
                   Person.printStatic();
               }
           }
-
         </code>
 
         <tests>
@@ -173,7 +176,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -257,7 +259,6 @@
                   Person.printPersonCounter();
               }
           }
-
         </code>
 
         <tests>
@@ -276,7 +277,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -314,7 +314,6 @@
                   System.out.println("Max Temp: " + Temperature.maxTemp);
               }
           }
-
 
           ]]>
         </program>
@@ -431,7 +430,6 @@
               }
           }
 
-
           ]]>
         </code>
 
@@ -469,7 +467,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -508,7 +505,6 @@
                   PI = 4.2; // This will cause a syntax error
               }
           }
-
         </code>
 
         <tests>
@@ -528,7 +524,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -633,7 +628,6 @@
 
               }
           }
-
         </code>
 
         <tests>
@@ -790,7 +784,6 @@
                               + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!";
               private static String[] expectedArray = expectedOutput.replaceAll("\n\n", "\n").split("\n");
           }
-
 
           ]]>
         </tests>

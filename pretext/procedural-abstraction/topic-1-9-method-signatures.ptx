@@ -639,7 +639,9 @@
     <figure align="center">
       <caption>Matching Arguments to Parameters</caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/args2paramsFarm.png" width="89%" alt="Arguments to Parameters" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/args2paramsFarm.png" width="89%">
+        <shortdescription>Arguments to Parameters</shortdescription>
+      </image>
     </figure>
 
     <p>
@@ -785,12 +787,11 @@
     <title>Coding Challenge: Song with Parameters</title>
 
     <p>
-      Here’s another song, <url href="https://youtu.be/QPwEZ8Vv2YQ"
-      visual="https://youtu.be/QPwEZ8Vv2YQ">The Ants Go Marching</url> with a
-      repetitive structure. The verses below have a lot of repeated words and
-      phrases. Click on the words or phrases that are different in each verse.
-      These will be the arguments that you will pass to the methods in your song
-      code.
+      Here’s another song, <url href="https://youtu.be/QPwEZ8Vv2YQ">The Ants Go
+      Marching</url> with a repetitive structure. The verses below have a lot of
+      repeated words and phrases. Click on the words or phrases that are
+      different in each verse. These will be the arguments that you will pass to
+      the methods in your song code.
     </p>
 
     <activity label="clickDifferentAntSong">
@@ -970,7 +971,9 @@
     <figure align="center">
       <caption>Method that takes arguments and returns a value</caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/function.png" width="71%" alt="function" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/function.png" width="71%">
+        <shortdescription>function</shortdescription>
+      </image>
     </figure>
 
     <p>
@@ -981,7 +984,9 @@
     <figure align="center">
       <caption>The Square Method</caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/square-method.png" width="71%" alt="Square Method" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/square-method.png" width="71%">
+        <shortdescription>Square Method</shortdescription>
+      </image>
     </figure>
 
     <p>
@@ -1004,8 +1009,7 @@
       method execution, so any code after the return statement is not executed.
       Let’s try this below. Click on the next button to step through the code in
       the <url
-      href="https://pythontutor.com/render.html#code=public%20class%20SquareMethod%0A%7B%0A%20%20%20%20%20%20%20%20%20public%20static%20int%20square%28int%20number%29%20%0A%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20result%20%3D%20number%20*%20number%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20result%3B%0A%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%0A%20%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20x%20%3D%205%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20y%20%3D%20square%28x%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22The%20square%20of%20%22%20%2B%20x%20%2B%20%22%20is%20%22%20%2B%20y%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20x%20%3D%204%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22The%20square%20of%20%22%20%2B%20x%20%2B%20%22%20is%20%22%20%2B%20square%28x%29%29%3B%0A%20%20%20%20%20%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=11&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"
-      visual="https://pythontutor.com/render.html#code=public%20class%20SquareMethod%0A%7B%0A%20%20%20%20%20%20%20%20%20public%20static%20int%20square%28int%20number%29%20%0A%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20result%20%3D%20number%20*%20number%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20result%3B%0A%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%0A%20%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20x%20%3D%205%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20y%20%3D%20square%28x%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22The%20square%20of%20%22%20%2B%20x%20%2B%20%22%20is%20%22%20%2B%20y%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20x%20%3D%204%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22The%20square%20of%20%22%20%2B%20x%20%2B%20%22%20is%20%22%20%2B%20square%28x%29%29%3B%0A%20%20%20%20%20%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=11&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
+      href="https://pythontutor.com/render.html#code=public%20class%20SquareMethod%0A%7B%0A%20%20%20%20%20%20%20%20%20public%20static%20int%20square%28int%20number%29%20%0A%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20result%20%3D%20number%20*%20number%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20result%3B%0A%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%0A%20%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20x%20%3D%205%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20y%20%3D%20square%28x%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22The%20square%20of%20%22%20%2B%20x%20%2B%20%22%20is%20%22%20%2B%20y%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20x%20%3D%204%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22The%20square%20of%20%22%20%2B%20x%20%2B%20%22%20is%20%22%20%2B%20square%28x%29%29%3B%0A%20%20%20%20%20%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=11&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
       below and see the variables and the return values.
     </p>
 

@@ -284,7 +284,6 @@
             }
           }
 
-
           ]]>
         </code>
 
@@ -333,7 +332,6 @@
               assertTrue(passed);
             }
           }
-
 
           ]]>
         </tests>
@@ -512,7 +510,6 @@
               System.out.println(find(values, 7));
             }
           }
-
         </code>
 
         <tests>
@@ -546,7 +543,6 @@
               assertTrue(passed);
             }
           }
-
         </tests>
       </program>
     </activity>
@@ -764,7 +760,6 @@
             }
           }
 
-
           ]]>
         </code>
 
@@ -809,7 +804,6 @@
               assertTrue(passed);
             }
           }
-
         </tests>
       </program>
     </activity>
@@ -925,7 +919,6 @@
               System.out.println(allOdd(a2));
             }
           }
-
         </code>
 
         <tests>
@@ -968,7 +961,6 @@
               assertTrue(passed);
             }
           }
-
         </tests>
       </program>
     </activity>
@@ -1068,7 +1060,6 @@
               System.out.println(sumPairs10(nums2));
             }
           }
-
         </code>
 
         <tests>
@@ -1102,7 +1093,6 @@
               assertTrue(passed);
             }
           }
-
         </tests>
       </program>
     </activity>
@@ -1134,7 +1124,6 @@
               System.out.println(noDups(nums2));
             }
           }
-
         </code>
 
         <tests>
@@ -1168,7 +1157,6 @@
               assertTrue(passed);
             }
           }
-
         </tests>
       </program>
     </activity>
@@ -1281,7 +1269,6 @@
             }
           }
 
-
           ]]>
         </code>
 
@@ -1314,7 +1301,6 @@
               assertTrue(passed);
             }
           }
-
         </tests>
       </program>
     </activity>
@@ -1507,7 +1493,6 @@
               System.out.println(Arrays.toString(a1));
             }
           }
-
         </code>
 
         <tests>
@@ -1541,7 +1526,6 @@
               assertTrue(passed);
             }
           }
-
         </tests>
       </program>
     </activity>

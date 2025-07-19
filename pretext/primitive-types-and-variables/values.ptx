@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="values">
   <title>Values</title>
@@ -83,8 +83,7 @@
           <p>
             <c>boolean</c> which can represent only two values: <c>true</c> and
             <c>false</c>. (The data type is named for <url
-            href="https://en.wikipedia.org/wiki/George_Boole"
-            visual="https://en.wikipedia.org/wiki/George_Boole">George
+            href="https://en.wikipedia.org/wiki/George_Boole">George
             Boole</url>, a 19th century English mathematician who invented
             Boolean algebra, a system for dealing with statements made up of
             only true and false values.) We’ll return to <c>boolean</c>s in
@@ -105,9 +104,9 @@
     </p>
 
     <p>
-      The following <url href="https://youtu.be/pHgYlVjagmA"
-      visual="https://youtu.be/pHgYlVjagmA">video</url> gives a quick summary of
-      the relationship between variables, their names, and their data types.
+      The following <url href="https://youtu.be/pHgYlVjagmA">video</url> gives a
+      quick summary of the relationship between variables, their names, and
+      their data types.
     </p>
 
     <video youtube="pHgYlVjagmA" label="video-variables" />
@@ -438,11 +437,9 @@
             A variable can be declared and initialized with the following code:
           </p>
 
-          <program language="java">
-            <code>
-              int score;
-              double gpa = 3.5;
-            </code>
+          <program>
+            int score;
+            double gpa = 3.5;
           </program>
         </li>
 

@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-2-data-sets">
   <title>Data Sets</title>
+
   <introduction>
     <p>
       A <term>data set</term> is a collection of specific pieces of information
@@ -15,6 +16,7 @@
 
     <figure align="center">
       <caption>A spreadsheet</caption>
+
       <image source="Unit4-Data-Collections/Figures/disney-spreadsheet.png" width="85%" />
     </figure>
 
@@ -91,6 +93,7 @@
 
   <subsection xml:id="summary-44">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>

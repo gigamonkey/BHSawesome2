@@ -157,8 +157,7 @@
     <p>
       For a very good walkthrough of how <c>for</c> and <c>while</c> loops are
       equivalent, watch the following <url
-      href="https://www.youtube.com/watch?v=SEDnzXeb2hU&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;index=9&amp;ab_channel=colleenlewis"
-      visual="https://www.youtube.com/watch?v=SEDnzXeb2hU&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;index=9&amp;ab_channel=colleenlewis">video</url>
+      href="https://www.youtube.com/watch?v=SEDnzXeb2hU&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;index=9&amp;ab_channel=colleenlewis">video</url>
       which compares a <c>while</c> loop and <c>for</c> loop line by line.
     </p>
 

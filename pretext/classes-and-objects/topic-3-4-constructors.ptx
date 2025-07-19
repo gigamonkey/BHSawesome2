@@ -86,7 +86,6 @@
               d.showValues();
           }
       }
-
     </program>
 
     <p>This will produce the output:</p>
@@ -558,7 +557,6 @@
       </choices>
     </activity>
 
-
     <activity label="name_constructor">
       <statement>
         <p>
@@ -711,7 +709,6 @@
                   f2.print();
               }
           }
-
         </code>
 
         <tests>
@@ -762,7 +759,6 @@
                   assertTrue(check1);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -837,7 +833,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -919,7 +914,6 @@
 
               }
           }
-
         </code>
 
         <tests>
@@ -989,7 +983,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </project>
@@ -1152,7 +1145,6 @@
                   assertTrue(passed);
               }
           }
-
 
           ]]>
         </tests>
@@ -1475,7 +1467,6 @@
                   inTheaters = false;
               }
           }
-
         </program>
       </statement>
 
@@ -1565,7 +1556,6 @@
                   }
               }
           }
-
 
           ]]>
         </program>
@@ -1746,7 +1736,6 @@
               private boolean isHungry;
               /* missing constructor */
           }
-
         </program>
 
         <p>

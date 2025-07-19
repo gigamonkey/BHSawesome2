@@ -192,7 +192,9 @@
   <figure align="center">
     <caption>Person Class and Objects</caption>
 
-    <image source="Unit3-Class-Creation/Figures/PersonClassWithCookies.png" width="100%" alt="Person data encapsulation" />
+    <image source="Unit3-Class-Creation/Figures/PersonClassWithCookies.png" width="100%">
+      <shortdescription>Person data encapsulation</shortdescription>
+    </image>
   </figure>
 
   <p>
@@ -539,8 +541,9 @@
     </program>
   </subsection>
 
-    <subsection>
+  <subsection>
     <title>Old constructors intro</title>
+
     <idx><h>class</h><h>constructor</h></idx>
     <idx>constructors</idx>
     <idx>new</idx>

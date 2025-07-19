@@ -192,7 +192,9 @@
     <figure align="center">
       <caption>The <c>substring(2, 4)</c> of <c>"abcdef"</c>.</caption>
 
-      <image source="_static/img/abcdef.svg" width="50%" alt="abcdef with cd shaded" />
+      <image source="_static/img/abcdef.svg" width="50%">
+        <shortdescription>abcdef with cd shaded</shortdescription>
+      </image>
     </figure>
 
     <p>
@@ -525,7 +527,10 @@
     <title>Coding Challenge: Cats and dogs</title>
 
     <sidebyside widths="15% 100%" margins="-20% 0%">
-      <image source="Unit2-Selection-and-Iteration/Figures/catordog.jpg" width="27%" alt="Cat or Dog" />
+      <image source="Unit2-Selection-and-Iteration/Figures/catordog.jpg" width="27%">
+        <shortdescription>Cat or Dog</shortdescription>
+      </image>
+
       <stack>
         <p>
           Are you a cat person or a dog person? The code below prints a nice

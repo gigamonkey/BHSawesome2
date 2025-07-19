@@ -30,13 +30,13 @@
     Dr. Beryl Hoffman, Professor of Computer Science at Elms College, MA,
     created and adapted the CSAwesome curriculum to follow the College Board CSA
     2019 guidelines with the support of a 2019 Google CS-ER grant and the Mobile
-    CSP project (<url href="https://www.mobile-csp.org"
-    visual="https://www.mobile-csp.org">https://www.mobile-csp.org</url>) to
-    help transition students and teachers from AP CSP to AP CSA. Special thanks
-    to Barb Ericson, Beth Simon, Colleen Lewis (for her awesome Java memory
-    model videos), John Figliulo, Pauline Lake, Jennifer Rosato, Kim Evelti,
-    Becky Stacey, Art Lopez, Kyle Gillette, and Peter Bowers for feedback,
-    edits, and ideas.
+    CSP project (<url
+    href="https://www.mobile-csp.org">https://www.mobile-csp.org</url>) to help
+    transition students and teachers from AP CSP to AP CSA. Special thanks to
+    Barb Ericson, Beth Simon, Colleen Lewis (for her awesome Java memory model
+    videos), John Figliulo, Pauline Lake, Jennifer Rosato, Kim Evelti, Becky
+    Stacey, Art Lopez, Kyle Gillette, and Peter Bowers for feedback, edits, and
+    ideas.
   </p>
 
   <p>
@@ -56,8 +56,7 @@
 
   <p>
     If you see errors or bugs, please report them with this <url
-    href="https://forms.gle/4gMBsv4W71vG5mNe8"
-    visual="https://forms.gle/4gMBsv4W71vG5mNe8">form</url>.
+    href="https://forms.gle/4gMBsv4W71vG5mNe8">form</url>.
   </p>
 
   <p><term>Acknowledgements</term></p>
@@ -359,8 +358,7 @@
       <li>
         <p>
           Sanjana Duttagupta - added Peer Instruction questions from <url
-          href="http://peerinstruction4cs.com/"
-          visual="http://peerinstruction4cs.com/">http://peerinstruction4cs.com/</url>
+          href="http://peerinstruction4cs.com/">http://peerinstruction4cs.com/</url>
         </p>
       </li>
     </ul>
@@ -371,26 +369,24 @@
   <image source="Unit0-Getting-Started/Figures/by-nc-sa.png" width="50%" />
   <p>
     This work is licensed under a <url
-    href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
-    visual="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons
+    href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons
     Attribution-NonCommercial-ShareAlike 4.0 International License</url>.
   </p>
 
   <p>
-    Barbara Ericson <url href="mailto://barbarer@umich.edu"
-    visual="mailto://barbarer@umich.edu">barbarer@umich.edu</url> 2014-current
-    All rights reserved.
-  </p>
-
-  <p>
-    Beryl Hoffman <url href="mailto://hoffmanb@elms.edu"
-    visual="mailto://hoffmanb@elms.edu">hoffmanb@elms.edu</url> 2019-current All
+    Barbara Ericson <url
+    href="mailto://barbarer@umich.edu">barbarer@umich.edu</url> 2014-current All
     rights reserved.
   </p>
 
   <p>
-    Peter Seibel <url href="mailto://peterseibel@berkeley.net"
-    visual="mailto://peterseibel@berkeley.net">peterseibel@berkeley.net</url>
+    Beryl Hoffman <url href="mailto://hoffmanb@elms.edu">hoffmanb@elms.edu</url>
+    2019-current All rights reserved.
+  </p>
+
+  <p>
+    Peter Seibel <url
+    href="mailto://peterseibel@berkeley.net">peterseibel@berkeley.net</url>
     2023-current All rights reserved.
   </p>
 
@@ -442,12 +438,10 @@
   </p>
 
   <p>
-    We acknowledge icons used from <url href="https://www.flaticon.com/"
-    visual="https://www.flaticon.com/">https://www.flaticon.com/</url> and <url
-    href="https://icons.getbootstrap.com/icons/"
-    visual="https://icons.getbootstrap.com/icons/">https://icons.getbootstrap.com/icons/</url>
+    We acknowledge icons used from <url
+    href="https://www.flaticon.com/">https://www.flaticon.com/</url> and <url
+    href="https://icons.getbootstrap.com/icons/">https://icons.getbootstrap.com/icons/</url>
     which are licensed by <url
-    href="http://creativecommons.org/licenses/by/3.0/"
-    visual="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</url>.
+    href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</url>.
   </p>
 </preface>

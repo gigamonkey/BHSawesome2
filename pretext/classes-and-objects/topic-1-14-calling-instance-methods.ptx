@@ -54,7 +54,9 @@
     <figure align="center">
       <caption>Calling static vs. instance methods</caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/calling-static-vs-instance-methods.png" width="63%" alt="Calling static vs. instance methods" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/calling-static-vs-instance-methods.png" width="63%">
+        <shortdescription>Calling static vs. instance methods</shortdescription>
+      </image>
     </figure>
   </subsection>
 
@@ -76,7 +78,11 @@
         A Student class showing instance variables, constructors, and methods
       </caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/StudentClass.png" width="89%" alt="A Student class showing instance variables, constructors, and methods" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/StudentClass.png" width="89%">
+        <shortdescription>
+          A Student class showing instance variables, constructors, and methods
+        </shortdescription>
+      </image>
     </figure>
 
     <activity label="student_methods">
@@ -145,7 +151,9 @@
         same class.
       </caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/calling-methods.png" width="80%" alt="Calling Methods" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/calling-methods.png" width="80%">
+        <shortdescription>Calling Methods</shortdescription>
+      </image>
     </figure>
 
     <note>
@@ -191,7 +199,6 @@
                   habitat.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -209,7 +216,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -228,7 +234,11 @@
     <figure align="center">
       <caption>Comparing Method Calls to Static and Instance Methods</caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/FlowChartCallingMethods.png" width="98%" alt="Comparing method calls to static and instance methods" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/FlowChartCallingMethods.png" width="98%">
+        <shortdescription>
+          Comparing method calls to static and instance methods
+        </shortdescription>
+      </image>
     </figure>
   </subsection>
 
@@ -277,7 +287,9 @@
         Method signatures with parameters and method calls arguments
       </caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/method-param-arg.png" width="98%" alt="Method parameters and arguments" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/method-param-arg.png" width="98%">
+        <shortdescription>Method parameters and arguments</shortdescription>
+      </image>
     </figure>
 
     <activity label="methodVocab">
@@ -334,7 +346,9 @@
     <figure align="center">
       <caption>Turtle Class Diagram</caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/turtleUMLClassDiagram.png" width="71%" alt="Turtle class diagram" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/turtleUMLClassDiagram.png" width="71%">
+        <shortdescription>Turtle class diagram</shortdescription>
+      </image>
     </figure>
 
     <p>
@@ -394,7 +408,6 @@
                   world.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -476,13 +489,15 @@
               }
           }
 
-
           ]]>
         </tests>
       </program>
     </activity>
 
-    <image source="Unit1-Using-Objects-and-Methods/Figures/house.png" width="27%" alt="simple house" />
+    <image source="Unit1-Using-Objects-and-Methods/Figures/house.png" width="27%">
+      <shortdescription>simple house</shortdescription>
+    </image>
+
     <p>
       Try the following mixed up code to draw a simple house made of a square
       and a triangle roof.
@@ -663,7 +678,6 @@
                   world.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -703,7 +717,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -787,7 +800,6 @@
               }
           }
 
-
           ]]>
         </tests>
       </program>
@@ -818,7 +830,6 @@
                   return 3.14159 * radius * radius;
               }
           }
-
         </program>
 
         <p>Assume that the following code segment appears in a main method.</p>
@@ -914,7 +925,6 @@
                   return width * height;
               }
           }
-
         </program>
 
         <p>Assume that the following code segment appears in a main method.</p>
@@ -1031,7 +1041,6 @@
 
               }
           }
-
         </code>
 
         <tests>
@@ -1071,7 +1080,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -1100,7 +1108,6 @@
                   System.out.println(traceObj.square(2) + traceObj.divide(6, 2));
               }
           }
-
         </program>
       </statement>
 
@@ -1202,7 +1209,6 @@
                   world.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -1260,7 +1266,6 @@
               }
           }
 
-
           ]]>
         </tests>
       </program>
@@ -1270,7 +1275,10 @@
   <subsection xml:id="coding-challenge-turtle-house">
     <title>Coding Challenge: Turtle House</title>
 
-    <image source="Unit1-Using-Objects-and-Methods/Figures/houseWithWindows.png" width="36%" alt="simple house" />
+    <image source="Unit1-Using-Objects-and-Methods/Figures/houseWithWindows.png" width="36%">
+      <shortdescription>simple house</shortdescription>
+    </image>
+
     <p>
       This creative challenge is fun to do collaboratively in pairs. Design a
       house and have the turtle draw it with different colors below. Can you add
@@ -1319,7 +1327,6 @@
                   world.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -1386,7 +1393,6 @@
                   assertTrue(passed);
               }
           }
-
 
           ]]>
         </tests>
@@ -1498,7 +1504,6 @@
                   partyCancelled = true;
               }
           }
-
         </program>
 
         <p>
@@ -1587,7 +1592,6 @@
               }
               /* Constructors not shown */
           }
-
         </program>
 
         <p>
@@ -1691,7 +1695,6 @@
                   return currentTemp;
               }
           }
-
         </program>
 
         <p>

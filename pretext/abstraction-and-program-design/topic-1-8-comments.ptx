@@ -1,10 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-1-8-comments">
   <title>Documentation with Comments and Preconditions</title>
+
   <introduction />
   <subsection xml:id="comments-1">
     <title>Comments</title>
+
     <p>
       Adding comments to your code helps to make it more readable and
       maintainable. In the commercial world, software development is usually a
@@ -18,22 +20,19 @@
     </p>
 
     <p>There are 3 types of comments in Java:</p>
+
     <p>
-      <ol marker="1">
+      <ol>
         <li>
           <p><c>//</c> Single line comment</p>
         </li>
 
         <li>
-          <p>
-            <c>/*</c> Multiline block of comments <c>*/</c>
-          </p>
+          <p><c>/*</c> Multiline block of comments <c>*/</c></p>
         </li>
 
         <li>
-          <p>
-            <c>/**</c> Java documentation comments <c>*/</c>
-          </p>
+          <p><c>/**</c> Java documentation comments <c>*/</c></p>
         </li>
       </ol>
     </p>
@@ -48,11 +47,10 @@
     <p>
       There is also a special version of the multi-line comment, <c>/**</c> ...
       <c>*/</c>, called the documentation comment. Java has a cool tool called
-      <url href="https://www.tutorialspoint.com/java/java_documentation.htm"
-      visual="https://www.tutorialspoint.com/java/java_documentation.htm">javadoc</url>
+      <url
+      href="https://www.tutorialspoint.com/java/java_documentation.htm">javadoc</url>
       that comes with the <url
-      href="https://www.oracle.com/technetwork/java/javase/downloads/index.html"
-      visual="https://www.oracle.com/technetwork/java/javase/downloads/index.html">Java
+      href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">Java
       JDK</url> that will pull out all of these comments to make documentation
       of a class as a web page. This tool generates the official Java
       documentation too, for example for the <url
@@ -99,24 +97,22 @@
       working with you. Here are some examples of good commenting:
     </p>
 
-    <program language="java">
-      <code>
-/**
-* MyClass.java
-* @author My Name
-* @since Date
-* This class keeps track of the max score.
-*/
-public class MyClass()
-{
-   private int max = 10; // this keeps track of the max score
-   /* The print() method prints out the max */
-   public print()
-   {
-      System.out.println(max);
-   }
-}
-      </code>
+    <program>
+      /**
+      * MyClass.java
+      * @author My Name
+      * @since Date
+      * This class keeps track of the max score.
+      */
+      public class MyClass()
+      {
+         private int max = 10; // this keeps track of the max score
+         /* The print() method prints out the max */
+         public print()
+         {
+            System.out.println(max);
+         }
+      }
     </program>
 
     <p>
@@ -164,59 +160,63 @@ public class MyClass()
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-   import java.util.Scanner;
+          import java.util.Scanner;
 
 
 
 
-    public class Multiply
-    {
-         public static void main(String[] args)
-         {
-              Scanner scan = new Scanner(System.in);
-              int num1 = scan.nextInt();
-              int num2 = scan.nextInt();
+           public class Multiply
+           {
+                public static void main(String[] args)
+                {
+                     Scanner scan = new Scanner(System.in);
+                     int num1 = scan.nextInt();
+                     int num2 = scan.nextInt();
 
-              int result = num1 * num2;
+                     int result = num1 * num2;
 
-              System.out.println(num1 + " x " + num2 + " = " + result);
-              scan.close();
-         }
-    }
+                     System.out.println(num1 + " x " + num2 + " = " + result);
+                     scan.close();
+                }
+           }
         </code>
-        <stdin>5 3</stdin>
+
+        <stdin>
+          5 3
+        </stdin>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-     public RunestoneTests()
-    {
-        super("CommentMultiply");
-     }
-         @Test
-        public void containsOp1()
-        {
-            String code = getCodeWithComments();
-            boolean passed = code.contains("/*");
-            getResults("true",passed+"","Contains /*");
-            assertTrue(passed);
-        }
-        @Test
-        public void containsOp2()
-        {
-            String code = getCodeWithComments();
-            boolean passed = code.contains("//");
-            getResults("true",passed+"","Contains //");
-            assertTrue(passed);
-        }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+               public RunestoneTests()
+              {
+                  super("CommentMultiply");
+               }
+                   @Test
+                  public void containsOp1()
+                  {
+                      String code = getCodeWithComments();
+                      boolean passed = code.contains("/*");
+                      getResults("true",passed+"","Contains /*");
+                      assertTrue(passed);
+                  }
+                  @Test
+                  public void containsOp2()
+                  {
+                      String code = getCodeWithComments();
+                      boolean passed = code.contains("//");
+                      getResults("true",passed+"","Contains //");
+                      assertTrue(passed);
+                  }
+          }
         </tests>
       </program>
     </activity>
@@ -224,6 +224,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="preconditions-and-postconditions">
     <title>Preconditions and Postconditions</title>
+
     <p>
       Many methods in API libraries have <term>preconditions</term> and the
       <term>postconditions</term> described in their comments. A
@@ -255,8 +256,7 @@ public class RunestoneTests extends CodeTestHelper
       it’s better to think of <c>sqrt</c> as having a precondition that says it
       only works properly if given a positive argument. These are described as
       special cases in the API documentation, for example in <url
-      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Math.html#sqrt(double)">
-      https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Math.html#sqrt(double)</url>.
+      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Math.html#sqrt(double)">https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Math.html#sqrt(double)</url>.
       Try this out below.
     </p>
 
@@ -272,34 +272,35 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class SqRoot
-{
-   public static void main(String[] args)
-   {
-         double num = -4;
-         System.out.println(Math.sqrt(num));
-   }
-}
+          public class SqRoot
+          {
+             public static void main(String[] args)
+             {
+                   double num = -4;
+                   System.out.println(Math.sqrt(num));
+             }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    @Test
-    public void testMain() throws IOException
-    {
-        String target = "-4";
-        boolean passed = checkCodeNotContains(target);
-        assertTrue(passed);
-    }
-}
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String target = "-4";
+                  boolean passed = checkCodeNotContains(target);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -314,21 +315,19 @@ public class RunestoneTests extends CodeTestHelper
       the world.
     </p>
 
-    <program language="java">
-      <code>
-/**
-  * Method to move the turtle forward the given number of pixels
-  * @param pixels the number of pixels to walk forward in the heading direction
-  * Preconditions: parameters pixel is between 0 and
-  *    the width and height of the world.
-  * Postconditions: the turtle is moved forward by pixels amount
-  *   but stays within the width and height of the world.
-  */
- public void forward(int pixels)
- {
-   /* code to move the turtle forward */
- }
-      </code>
+    <program>
+      /**
+        * Method to move the turtle forward the given number of pixels
+        * @param pixels the number of pixels to walk forward in the heading direction
+        * Preconditions: parameters pixel is between 0 and
+        *    the width and height of the world.
+        * Postconditions: the turtle is moved forward by pixels amount
+        *   but stays within the width and height of the world.
+        */
+       public void forward(int pixels)
+       {
+         /* code to move the turtle forward */
+       }
     </program>
 
     <p>
@@ -336,12 +335,11 @@ public class RunestoneTests extends CodeTestHelper
       Try to make the turtle go completely off screen by changing the number of
       pixels given to the forward method. What happens if you put in negative
       numbers? (If the code below does not work for you, you can copy the code
-      into this <url href="https://replit.com/@BerylHoffman/Java-Swing-Turtle"
-      visual="https://replit.com/@BerylHoffman/Java-Swing-Turtle">replit.com
+      into this <url
+      href="https://replit.com/@BerylHoffman/Java-Swing-Turtle">replit.com
       link</url> (refresh page after forking and if it gets stuck) or download
       the files <url
-      href="https://github.com/bhoffman0/csawesome2/tree/main/_sources/Unit1-Using-Objects-and-Methods/TurtleJavaSwingCode.zip"
-      visual="https://github.com/bhoffman0/csawesome2/tree/main/_sources/Unit1-Using-Objects-and-Methods/TurtleJavaSwingCode.zip">here</url>
+      href="https://github.com/bhoffman0/csawesome2/tree/main/_sources/Unit1-Using-Objects-and-Methods/TurtleJavaSwingCode.zip">here</url>
       to use in your own IDE.)
     </p>
 
@@ -355,55 +353,56 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
-import java.awt.*;
-import java.util.*;
+          import java.awt.*;
+          import java.util.*;
 
-public class TurtlePreconditions
-{
-    public static void main(String[] args)
-    {
-        World habitat = new World(300, 300);
-        Turtle yertle = new Turtle(habitat);
+          public class TurtlePreconditions
+          {
+              public static void main(String[] args)
+              {
+                  World habitat = new World(300, 300);
+                  Turtle yertle = new Turtle(habitat);
 
-        // Change 100 pixels below to a larger number
-        //   to try to go off screen to break preconditions
-        yertle.forward(100);
+                  // Change 100 pixels below to a larger number
+                  //   to try to go off screen to break preconditions
+                  yertle.forward(100);
 
-        // code to turn and come back down
-        yertle.turnLeft();
-        yertle.forward();
-        yertle.turnLeft();
-        yertle.forward();
+                  // code to turn and come back down
+                  yertle.turnLeft();
+                  yertle.forward();
+                  yertle.turnLeft();
+                  yertle.forward();
 
-        habitat.show(true);
-    }
-}
+                  habitat.show(true);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TurtlePreconditions");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TurtlePreconditions");
+              }
 
-    @Test
-    public void test1()
-    {
-        String code = getCode();
-        boolean passed = !(code.contains("forward(100)"));
-        passed = getResults("true", "" + passed, "Change forward(100) to try to break preconditions", passed);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test1()
+              {
+                  String code = getCode();
+                  boolean passed = !(code.contains("forward(100)"));
+                  passed = getResults("true", "" + passed, "Change forward(100) to try to break preconditions", passed);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -411,6 +410,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="software-validity-and-use-case-diagrams">
     <title>Software Validity and Use-Case Diagrams</title>
+
     <p>
       Preconditions and postconditions are covered on the AP CSA exam. Software
       validity, testing, and use-case diagrams which are discussed in this
@@ -451,7 +451,10 @@ public class RunestoneTests extends CodeTestHelper
 
     <figure align="center">
       <caption>Use-Case Diagram of a Restaurant System</caption>
-      <image source="Unit1-Using-Objects-and-Methods/Figures/use-case-restaurant.png" width="89%" alt="Use Case Diagram" />
+
+      <image source="Unit1-Using-Objects-and-Methods/Figures/use-case-restaurant.png" width="89%">
+        <shortdescription>Use Case Diagram</shortdescription>
+      </image>
     </figure>
 
     <p>
@@ -505,6 +508,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="agile-software-development">
     <title>Agile Software Development</title>
+
     <p>
       There are many different models for software development. The
       <term>waterfall model</term>, developed in the 1970s, is a step by step
@@ -520,19 +524,20 @@ public class RunestoneTests extends CodeTestHelper
 
     <figure align="center">
       <caption>Waterfall vs Agile Models</caption>
+
       <image source="Unit1-Using-Objects-and-Methods/Figures/waterfallVsAgile.png" width="89%" />
     </figure>
 
     <p>
       One very popular type of agile development is called <term>Scrum</term>.
       The following short <url
-      href="https://www.youtube.com/watch?v=TRcReyRYIMg"
-      visual="https://www.youtube.com/watch?v=TRcReyRYIMg">video</url> describes
+      href="https://www.youtube.com/watch?v=TRcReyRYIMg">video</url> describes
       software development with Scrum.
     </p>
 
     <video youtube="TRcReyRYIMg" label="video-agile" />
     <p>Group Exercise</p>
+
     <p>
       Try the <url
       href="https://www.agilesparks.com/blog/wake-up-in-the-morning-game/">Wake
@@ -543,16 +548,17 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-preconditions-in-algorithms">
     <title>Coding Challenge: Preconditions in Algorithms</title>
+
     <p>
       Working in pairs or groups, come up with 4 steps that a user must do to
       purchase a product, for example a book on Java, in an online store, and
       list the preconditions and postconditions for each step. You could pretend
       to buy something online to come up with the steps. (You could use an
-      online drawing tool like <url href="https://creately.com"
-      visual="https://creately.com">Creately.com</url> (choose Use-Case
-      Diagrams) to draw a Use-Case diagram for the Online Store System, but it
-      is not required). Don’t forget to list the preconditions and
-      postconditions for each step. You can type in your answer below.
+      online drawing tool like <url
+      href="https://creately.com">Creately.com</url> (choose Use-Case Diagrams)
+      to draw a Use-Case diagram for the Online Store System, but it is not
+      required). Don’t forget to list the preconditions and postconditions for
+      each step. You can type in your answer below.
     </p>
 
     <project label="challenge-1-8-use-case-preconditions">
@@ -570,6 +576,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-13">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>
@@ -614,20 +621,20 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="ap-practice-10">
     <title>AP Practice</title>
+
     <activity label="AP-preconditions">
       <statement>
         <p>Consider the following method.</p>
-        <program language="java">
-          <code>
-       /** method to add extra-credit to the score **/
-       public double computeScore(double score, double extraCredit)
-       {
-           double totalScore = score + extraCredit;
-           return totalScore;
-       }
 
-Which of the following preconditions are reasonable for the computeScore method?
-          </code>
+        <program>
+          /** method to add extra-credit to the score **/
+                 public double computeScore(double score, double extraCredit)
+                 {
+                     double totalScore = score + extraCredit;
+                     return totalScore;
+                 }
+
+          Which of the following preconditions are reasonable for the computeScore method?
         </program>
       </statement>
 

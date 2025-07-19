@@ -1,16 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-8-arraylists">
   <title>ArrayList and its Methods</title>
+
   <introduction>
     <idx>arraylist</idx>
     <idx>ArrayList</idx>
-    <idx>
-      <h>arraylist</h><h>definition</h>
-    </idx>
-
+    <idx><h>arraylist</h><h>definition</h></idx>
     <figure align="left">
       <caption>A couple of lists</caption>
+
       <image source="Unit4-Data-Collections/Figures/lists.jpg" width="54%" />
     </figure>
 
@@ -127,6 +126,7 @@
 
   <subsection xml:id="import-java-util-arraylist">
     <title>import java.util.ArrayList</title>
+
     <idx>import</idx>
     <idx>java.util</idx>
     <p>
@@ -150,18 +150,13 @@
       <c>import</c> of the fully-qualified name of the class like this:
     </p>
 
-    <program language="java">
-      <code>
-// Import just the ArrayList class from java.util
-import java.util.ArrayList;
-      </code>
+    <program>
+      // Import just the ArrayList class from java.util
+      import java.util.ArrayList;
     </program>
 
     <idx>package</idx>
-    <idx>
-      <h>statement</h><h>import</h>
-    </idx>
-
+    <idx><h>statement</h><h>import</h></idx>
     <p>
       After such an import statement, anywhere <c>ArrayList</c> is used as a
       class name in the file it will be taken to mean
@@ -173,11 +168,9 @@ import java.util.ArrayList;
       import:
     </p>
 
-    <program language="java">
-      <code>
-// Import everything in java.util including ArrayList
-import java.util.*;
-      </code>
+    <program>
+      // Import everything in java.util including ArrayList
+      import java.util.*;
     </program>
 
     <p>
@@ -259,6 +252,7 @@ import java.util.*;
 
   <subsection xml:id="declaring-and-creating-arraylists">
     <title>Declaring and Creating ArrayLists</title>
+
     <p>
       To declare an ArrayList use <c>ArrayList&lt;Type&gt; name</c> where
       <em>Type</em>, called a <term>type parameter</term> is the type of objects
@@ -286,12 +280,14 @@ import java.util.*;
       time.
     </p>
 
-    <program language="java">
-      <code>
-// ArrayList&lt;Type&gt; name = new ArrayList&lt;Type&gt;();
-// An ArrayList of Strings:
-ArrayList&lt;String&gt; shoppingList = new ArrayList&lt;String&gt;();
-      </code>
+    <program>
+      <![CDATA[
+
+      // ArrayList<Type> name = new ArrayList<Type>();
+      // An ArrayList of Strings:
+      ArrayList<String> shoppingList = new ArrayList<String>();
+
+      ]]>
     </program>
 
     <p>
@@ -320,45 +316,50 @@ ArrayList&lt;String&gt; shoppingList = new ArrayList&lt;String&gt;();
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*; // import needed for ArrayList
+          <![CDATA[
 
-public class ArrayListCreateStr
-{
-    public static void main(String[] args)
-    {
-        ArrayList&lt;String&gt; nameList = new ArrayList&lt;String&gt;();
-        System.out.println("The size of nameList is: " + nameList.size());
-        ArrayList&lt;String&gt; list2 = null;
-        System.out.println("The size of list2 is: " + list2.size());
-    }
-}
+          import java.util.*; // import needed for ArrayList
+
+          public class ArrayListCreateStr
+          {
+              public static void main(String[] args)
+              {
+                  ArrayList<String> nameList = new ArrayList<String>();
+                  System.out.println("The size of nameList is: " + nameList.size());
+                  ArrayList<String> list2 = null;
+                  System.out.println("The size of list2 is: " + list2.size());
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("ArrayListCreateStr");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ArrayListCreateStr");
+              }
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "The size of nameList is: 0\nThe size of list2 is: 0";
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "The size of nameList is: 0\nThe size of list2 is: 0";
 
-        boolean passed = getResults(expect, output, "main()", true);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = getResults(expect, output, "main()", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -380,13 +381,15 @@ public class RunestoneTests extends CodeTestHelper
       <c>Person</c>, or <c>Pet</c> classes.
     </p>
 
-    <program language="java">
-      <code>
-// An ArrayList of Integers:
-ArrayList&lt;Integer&gt; numList = new ArrayList&lt;Integer&gt;();
-// An ArrayList of Student objects:
-ArrayList&lt;Student&gt; roster = new ArrayList&lt;Student&gt;();
-      </code>
+    <program>
+      <![CDATA[
+
+      // An ArrayList of Integers:
+      ArrayList<Integer> numList = new ArrayList<Integer>();
+      // An ArrayList of Student objects:
+      ArrayList<Student> roster = new ArrayList<Student>();
+
+      ]]>
     </program>
 
     <activity label="qArrayListInteger">
@@ -438,7 +441,9 @@ ArrayList&lt;Student&gt; roster = new ArrayList&lt;Student&gt;();
 
         <choice correct="yes">
           <statement>
-            <p>ArrayList&lt;Integer&gt; numbers = new ArrayList&lt;Integer&gt;();</p>
+            <p>
+              ArrayList&lt;Integer&gt; numbers = new ArrayList&lt;Integer&gt;();
+            </p>
           </statement>
 
           <feedback>
@@ -454,26 +459,12 @@ ArrayList&lt;Student&gt; roster = new ArrayList&lt;Student&gt;();
 
   <subsection xml:id="arraylist-methods">
     <title>ArrayList Methods</title>
-    <idx>
-      <h>arraylist</h><h>size</h>
-    </idx>
 
-    <idx>
-      <h>arraylist</h><h>add</h>
-    </idx>
-
-    <idx>
-      <h>arraylist</h><h>get</h>
-    </idx>
-
-    <idx>
-      <h>arraylist</h><h>set</h>
-    </idx>
-
-    <idx>
-      <h>arraylist</h><h>remove</h>
-    </idx>
-
+    <idx><h>arraylist</h><h>size</h></idx>
+    <idx><h>arraylist</h><h>add</h></idx>
+    <idx><h>arraylist</h><h>get</h></idx>
+    <idx><h>arraylist</h><h>set</h></idx>
+    <idx><h>arraylist</h><h>remove</h></idx>
     <p>
       The following are the <c>ArrayList</c> methods that you need to know for
       the AP CSA exam. These are included on the <url
@@ -532,25 +523,22 @@ ArrayList&lt;Student&gt; roster = new ArrayList&lt;Student&gt;();
   </subsection>
 
   <subsection xml:id="size">
-    <title>
-      <c>size()</c>
-    </title>
+    <title><c>size()</c></title>
 
-    <idx>
-      <h>arraylist</h><h>size</h>
-    </idx>
-
+    <idx><h>arraylist</h><h>size</h></idx>
     <p>
       You can get the number of items in a <c>ArrayList</c> using its
       <c>size()</c> method. The <c>ArrayList</c> starts out empty with a size of
       0.
     </p>
 
-    <program language="java">
-      <code>
-ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;();
-System.out.println( list.size() );
-      </code>
+    <program>
+      <![CDATA[
+
+      ArrayList<String> list = new ArrayList<String>();
+      System.out.println( list.size() );
+
+      ]]>
     </program>
 
     <note>
@@ -565,14 +553,9 @@ System.out.println( list.size() );
   </subsection>
 
   <subsection xml:id="add-obj">
-    <title>
-      <c>add(obj)</c>
-    </title>
+    <title><c>add(obj)</c></title>
 
-    <idx>
-      <h>arraylist</h><h>add</h>
-    </idx>
-
+    <idx><h>arraylist</h><h>add</h></idx>
     <p>
       You can add values to an <c>ArrayList</c> using the method <c>add(obj)</c>
       which will add the object to the end of the list, just like you would join
@@ -589,74 +572,73 @@ System.out.println( list.size() );
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*;
+          <![CDATA[
 
-public class Shopping
-{
-    public static void main(String[] args)
-    {
-        ArrayList&lt;String&gt; shoppingList = new ArrayList&lt;String&gt;();
-        System.out.println("Size: " + shoppingList.size());
-        shoppingList.add("carrots");
-        System.out.println(shoppingList);
-        shoppingList.add("bread");
-        System.out.println(shoppingList);
-        shoppingList.add("chocolate");
-        System.out.println(shoppingList);
-        System.out.println("Size: " + shoppingList.size());
-        ArrayList&lt;Integer&gt; quantities = new ArrayList&lt;Integer&gt;();
-        quantities.add(2);
-        quantities.add(4);
-        System.out.println(quantities);
-    }
-}
+          import java.util.*;
+
+          public class Shopping
+          {
+              public static void main(String[] args)
+              {
+                  ArrayList<String> shoppingList = new ArrayList<String>();
+                  System.out.println("Size: " + shoppingList.size());
+                  shoppingList.add("carrots");
+                  System.out.println(shoppingList);
+                  shoppingList.add("bread");
+                  System.out.println(shoppingList);
+                  shoppingList.add("chocolate");
+                  System.out.println(shoppingList);
+                  System.out.println("Size: " + shoppingList.size());
+                  ArrayList<Integer> quantities = new ArrayList<Integer>();
+                  quantities.add(2);
+                  quantities.add(4);
+                  System.out.println(quantities);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("Shopping");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("Shopping");
+              }
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect =
-                "Size: 0\n"
-                    + "[carrots]\n"
-                    + "[carrots, bread]\n"
-                    + "[carrots, bread, chocolate]\n"
-                    + "Size: 3\n"
-                    + "[2, 4]";
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect =
+                          "Size: 0\n"
+                              + "[carrots]\n"
+                              + "[carrots, bread]\n"
+                              + "[carrots, bread, chocolate]\n"
+                              + "Size: 3\n"
+                              + "[2, 4]";
 
-        boolean passed = !output.equals(expect);
+                  boolean passed = !output.equals(expect);
 
-        passed = getResults(expect, output, "Changed code", passed);
-        assertTrue(passed);
-    }
-}
+                  passed = getResults(expect, output, "Changed code", passed);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
 
-    <idx>
-      <h>list</h><h>autoboxing</h>
-    </idx>
-
-    <idx>
-      <h>list</h><h>unboxing</h>
-    </idx>
-
+    <idx><h>list</h><h>autoboxing</h></idx>
+    <idx><h>list</h><h>unboxing</h></idx>
     <p>
       Primitive types like <c>int</c> and <c>double</c> are automatically
       converted to their corresponding wrapper classes <c>Integer</c> and
@@ -665,12 +647,14 @@ public class RunestoneTests extends CodeTestHelper
       <term>unboxing</term>.
     </p>
 
-    <program language="java">
-      <code>
-ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
-list.add(new Integer(5)); // this will work in Java 7
-list.add(5); // this will work in all Java versions
-      </code>
+    <program>
+      <![CDATA[
+
+      ArrayList<Integer> list = new ArrayList<Integer>();
+      list.add(new Integer(5)); // this will work in Java 7
+      list.add(5); // this will work in all Java versions
+
+      ]]>
     </program>
 
     <p>
@@ -687,76 +671,79 @@ list.add(5); // this will work in all Java versions
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*;
+          <![CDATA[
 
-public class StudentList
-{
-    // main method for testing
-    public static void main(String[] args)
-    {
-        ArrayList&lt;Student&gt; roster = new ArrayList&lt;Student&gt;();
-        roster.add(new Student("Skyler", "skyler@sky.com", 123456));
-        roster.add(new Student("Ayanna", "ayanna@gmail.com", 789012));
+          import java.util.*;
 
-        System.out.println(roster);
-    }
-}
+          public class StudentList
+          {
+              // main method for testing
+              public static void main(String[] args)
+              {
+                  ArrayList<Student> roster = new ArrayList<Student>();
+                  roster.add(new Student("Skyler", "skyler@sky.com", 123456));
+                  roster.add(new Student("Ayanna", "ayanna@gmail.com", 789012));
 
-class Student
-{
-    private String name;
-    private String email;
-    private int id;
+                  System.out.println(roster);
+              }
+          }
 
-    public Student(String initName, String initEmail, int initId)
-    {
-        name = initName;
-        email = initEmail;
-        id = initId;
-    }
+          class Student
+          {
+              private String name;
+              private String email;
+              private int id;
 
-    // toString() method
-    public String toString()
-    {
-        return id + ": " + name + ", " + email;
-    }
-}
+              public Student(String initName, String initEmail, int initId)
+              {
+                  name = initName;
+                  email = initEmail;
+                  id = initId;
+              }
+
+              // toString() method
+              public String toString()
+              {
+                  return id + ": " + name + ", " + email;
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("StudentList");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("StudentList");
+              }
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "[123456: Skyler, skyler@sky.com, 789012: Ayanna, ayanna@gmail.com]";
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "[123456: Skyler, skyler@sky.com, 789012: Ayanna, ayanna@gmail.com]";
 
-        boolean passed = getResults(expect, output, "main()", true);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = getResults(expect, output, "main()", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
   </subsection>
 
   <subsection xml:id="add-index-obj">
-    <title>
-      <c>add(index,obj)</c>
-    </title>
+    <title><c>add(index,obj)</c></title>
 
     <p>
       There are actually two different <c>add</c> methods in the
@@ -777,54 +764,59 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*; // import all classes in this package.
+          <![CDATA[
 
-public class listAddInt2
-{
-    public static void main(String[] arts)
-    {
-        ArrayList&lt;Integer&gt; list1 = new ArrayList&lt;Integer&gt;();
-        list1.add(1);
-        System.out.println(list1);
-        // adds the number 2 to the end of the list
-        list1.add(2);
-        System.out.println(list1);
-        // This will add the number 3 at index 1
-        list1.add(1, 3);
-        System.out.println(list1);
-        // This will add the number 4 at index 1
-        list1.add(1, 4);
-        System.out.println(list1);
-        System.out.println(list1.size());
-    }
-}
+          import java.util.*; // import all classes in this package.
+
+          public class listAddInt2
+          {
+              public static void main(String[] arts)
+              {
+                  ArrayList<Integer> list1 = new ArrayList<Integer>();
+                  list1.add(1);
+                  System.out.println(list1);
+                  // adds the number 2 to the end of the list
+                  list1.add(2);
+                  System.out.println(list1);
+                  // This will add the number 3 at index 1
+                  list1.add(1, 3);
+                  System.out.println(list1);
+                  // This will add the number 4 at index 1
+                  list1.add(1, 4);
+                  System.out.println(list1);
+                  System.out.println(list1.size());
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("listAddInt2");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("listAddInt2");
+              }
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "[1]\n[1, 2]\n[1, 3, 2]\n[1, 4, 3, 2]\n4\n";
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "[1]\n[1, 2]\n[1, 3, 2]\n[1, 4, 3, 2]\n4\n";
 
-        boolean passed = getResults(expect, output, "main()", true);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = getResults(expect, output, "main()", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -838,16 +830,19 @@ public class RunestoneTests extends CodeTestHelper
     <activity label="qalAdd1">
       <statement>
         <p>What will print when the following code executes?</p>
-        <program language="java">
-          <code>
-ArrayList&lt;Integer&gt; list1 = new ArrayList&lt;Integer&gt;();
-list1.add(1);
-list1.add(2);
-list1.add(3);
-list1.add(2, 4);
-list1.add(5);
-System.out.println(list1);
-          </code>
+
+        <program>
+          <![CDATA[
+
+          ArrayList<Integer> list1 = new ArrayList<Integer>();
+          list1.add(1);
+          list1.add(2);
+          list1.add(3);
+          list1.add(2, 4);
+          list1.add(5);
+          System.out.println(list1);
+
+          ]]>
         </program>
       </statement>
 
@@ -871,9 +866,7 @@ System.out.println(list1);
           </statement>
 
           <feedback>
-            <p>
-              This would be true if it was <c>add(1, 4)</c>
-            </p>
+            <p>This would be true if it was <c>add(1, 4)</c></p>
           </feedback>
         </choice>
 
@@ -908,23 +901,25 @@ System.out.println(list1);
 
     <p>
       You can step through the code above by clicking on this <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2,4)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(5))%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0"
-      visual="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2,4)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(5))%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Java
+      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2,4)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(5))%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Java
       Visualizer</url>.
     </p>
 
     <activity label="qalAdd2">
       <statement>
         <p>What will print when the following code executes?</p>
-        <program language="java">
-          <code>
-ArrayList&lt;String&gt; list1 = new ArrayList&lt;String&gt;();
-list1.add("Anaya");
-list1.add("Layla");
-list1.add("Sharrie");
-list1.add(1, "Sarah");
-System.out.println(list1);
-          </code>
+
+        <program>
+          <![CDATA[
+
+          ArrayList<String> list1 = new ArrayList<String>();
+          list1.add("Anaya");
+          list1.add("Layla");
+          list1.add("Sharrie");
+          list1.add(1, "Sarah");
+          System.out.println(list1);
+
+          ]]>
         </program>
       </statement>
 
@@ -948,9 +943,7 @@ System.out.println(list1);
           </statement>
 
           <feedback>
-            <p>
-              This would be true if the last one was <c>add("Sarah")</c>
-            </p>
+            <p>This would be true if the last one was <c>add("Sarah")</c></p>
           </feedback>
         </choice>
 
@@ -960,9 +953,7 @@ System.out.println(list1);
           </statement>
 
           <feedback>
-            <p>
-              This would be true if the last one was <c>add(0, "Sarah")</c>
-            </p>
+            <p>This would be true if the last one was <c>add(0, "Sarah")</c></p>
           </feedback>
         </choice>
 
@@ -972,9 +963,7 @@ System.out.println(list1);
           </statement>
 
           <feedback>
-            <p>
-              This would be true if the last one was <c>add(2, "Sarah")</c>
-            </p>
+            <p>This would be true if the last one was <c>add(2, "Sarah")</c></p>
           </feedback>
         </choice>
       </choices>
@@ -982,21 +971,15 @@ System.out.println(list1);
 
     <p>
       You can step through the code above by clicking on the following <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CString%3E+list1+%3D+new+ArrayList%3CString%3E()%3B%0A++++++list1.add(%22Anaya%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Layla%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Sharrie%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(1,+%22Sarah%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0"
-      visual="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CString%3E+list1+%3D+new+ArrayList%3CString%3E()%3B%0A++++++list1.add(%22Anaya%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Layla%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Sharrie%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(1,+%22Sarah%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Java
+      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CString%3E+list1+%3D+new+ArrayList%3CString%3E()%3B%0A++++++list1.add(%22Anaya%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Layla%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Sharrie%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(1,+%22Sarah%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Java
       Visualizer</url>.
     </p>
   </subsection>
 
   <subsection xml:id="remove-index">
-    <title>
-      <c>remove(index)</c>
-    </title>
+    <title><c>remove(index)</c></title>
 
-    <idx>
-      <h>arraylist</h><h>removing an item</h>
-    </idx>
-
+    <idx><h>arraylist</h><h>removing an item</h></idx>
     <p>
       You can also remove values from an <c>ArrayList</c> using the
       <c>remove(index)</c> method. It removes and returns the item at the given
@@ -1012,48 +995,53 @@ System.out.println(list1);
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*; // import all classes in this package.
+          <![CDATA[
 
-public class listRem
-{
-    public static void main(String[] arts)
-    {
-        ArrayList&lt;Integer&gt; list1 = new ArrayList&lt;Integer&gt;();
-        list1.add(1);
-        list1.add(2);
-        list1.add(3);
-        System.out.println(list1);
-        list1.remove(1);
-        System.out.println(list1);
-    }
-}
+          import java.util.*; // import all classes in this package.
+
+          public class listRem
+          {
+              public static void main(String[] arts)
+              {
+                  ArrayList<Integer> list1 = new ArrayList<Integer>();
+                  list1.add(1);
+                  list1.add(2);
+                  list1.add(3);
+                  System.out.println(list1);
+                  list1.remove(1);
+                  System.out.println(list1);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("listRem");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("listRem");
+              }
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "[1, 2, 3]\n[1, 3]";
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "[1, 2, 3]\n[1, 3]";
 
-        boolean passed = getResults(expect, output, "main()", true);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = getResults(expect, output, "main()", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -1070,15 +1058,18 @@ public class RunestoneTests extends CodeTestHelper
     <activity label="qListRem">
       <statement>
         <p>What will print when the following code executes?</p>
-        <program language="java">
-          <code>
-List&lt;Integer&gt; list1 = new ArrayList&lt;Integer&gt;();
-list1.add(1);
-list1.add(2);
-list1.add(3);
-list1.remove(2);
-System.out.println(list1);
-          </code>
+
+        <program>
+          <![CDATA[
+
+          List<Integer> list1 = new ArrayList<Integer>();
+          list1.add(1);
+          list1.add(2);
+          list1.add(3);
+          list1.remove(2);
+          System.out.println(list1);
+
+          ]]>
         </program>
       </statement>
 
@@ -1089,9 +1080,7 @@ System.out.println(list1);
           </statement>
 
           <feedback>
-            <p>
-              This would be true if it was <c>remove(0)</c>
-            </p>
+            <p>This would be true if it was <c>remove(0)</c></p>
           </feedback>
         </choice>
 
@@ -1124,9 +1113,7 @@ System.out.println(list1);
           </statement>
 
           <feedback>
-            <p>
-              This would be true if it was <c>remove(1)</c>
-            </p>
+            <p>This would be true if it was <c>remove(1)</c></p>
           </feedback>
         </choice>
       </choices>
@@ -1134,22 +1121,15 @@ System.out.println(list1);
 
     <p>
       You can step through the code above by clicking on the following <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(2))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.remove(2)%3B%0A++++++System.out.println(list1)%3B%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0"
-      visual="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(2))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.remove(2)%3B%0A++++++System.out.println(list1)%3B%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">RemoveExample</url>.
+      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(2))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.remove(2)%3B%0A++++++System.out.println(list1)%3B%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">RemoveExample</url>.
     </p>
   </subsection>
 
   <subsection xml:id="get-index-and-set-index-obj">
     <title><c>get(index)</c> and <c>set(index, obj)</c></title>
 
-    <idx>
-      <h>arraylist</h><h>getting an item</h>
-    </idx>
-
-    <idx>
-      <h>arraylist</h><h>setting an item</h>
-    </idx>
-
+    <idx><h>arraylist</h><h>getting an item</h></idx>
+    <idx><h>arraylist</h><h>setting an item</h></idx>
     <p>
       You can get the object at an index using <c>obj = listName.get(index)</c>
       and set the object at an index using <c>listName.set(index,obj)</c>. Both
@@ -1175,62 +1155,67 @@ System.out.println(list1);
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*; // import all classes in this package.
+          <![CDATA[
 
-public class listGetSet
-{
-    public static void main(String[] args)
-    {
-        ArrayList&lt;String&gt; nameList = new ArrayList&lt;String&gt;();
-        nameList.add("Diego");
-        nameList.add("Grace");
-        nameList.add("Deja");
-        System.out.println(nameList);
-        System.out.println(nameList.get(0));
-        System.out.println(nameList.get(1));
-        nameList.set(1, "John");
-        System.out.println(nameList);
-    }
-}
+          import java.util.*; // import all classes in this package.
+
+          public class listGetSet
+          {
+              public static void main(String[] args)
+              {
+                  ArrayList<String> nameList = new ArrayList<String>();
+                  nameList.add("Diego");
+                  nameList.add("Grace");
+                  nameList.add("Deja");
+                  System.out.println(nameList);
+                  System.out.println(nameList.get(0));
+                  System.out.println(nameList.get(1));
+                  nameList.set(1, "John");
+                  System.out.println(nameList);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("listGetSet");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("listGetSet");
+              }
 
-    @Test
-    public void test1()
-    {
-        boolean passed =
-                checkCodeContainsRegex("nameList.set(0, \"Your name\")", "nameList.set(0, ");
-        assertTrue(passed);
-    }
+              @Test
+              public void test1()
+              {
+                  boolean passed =
+                          checkCodeContainsRegex("nameList.set(0, \"Your name\")", "nameList.set(0, ");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test2()
-    {
-        String output = getMethodOutput("main");
-        String searchString = "Deja";
+              @Test
+              public void test2()
+              {
+                  String output = getMethodOutput("main");
+                  String searchString = "Deja";
 
-        boolean passed =
-                output.contains("\n" + searchString)
-                        || output.matches("\\s+" + searchString + "\\s+");
+                  boolean passed =
+                          output.contains("\n" + searchString)
+                                  || output.matches("\\s+" + searchString + "\\s+");
 
-        passed = getResults("true", "" + passed, "Prints last item in list (Deja)", passed);
-        assertTrue(passed);
-    }
-}
+                  passed = getResults("true", "" + passed, "Prints last item in list (Deja)", passed);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -1238,17 +1223,20 @@ public class RunestoneTests extends CodeTestHelper
     <activity label="qListRem1">
       <statement>
         <p>What will print when the following code executes?</p>
-        <program language="java">
-          <code>
-List&lt;Integer&gt; list1 = new ArrayList&lt;Integer&gt;();
-list1.add(1);
-list1.add(2);
-list1.add(3);
-list1.set(2, 4);
-list1.add(2, 5);
-list1.add(6);
-System.out.println(list1);
-          </code>
+
+        <program>
+          <![CDATA[
+
+          List<Integer> list1 = new ArrayList<Integer>();
+          list1.add(1);
+          list1.add(2);
+          list1.add(3);
+          list1.set(2, 4);
+          list1.add(2, 5);
+          list1.add(6);
+          System.out.println(list1);
+
+          ]]>
         </program>
       </statement>
 
@@ -1310,23 +1298,25 @@ System.out.println(list1);
 
     <p>
       You can step through the code above by clicking on the following <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++ArrayList%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(1)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(3)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.set(2,4)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2,5)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(6)%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0"
-      visual="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++ArrayList%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(1)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(3)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.set(2,4)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2,5)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(6)%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Example1</url>.
+      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++ArrayList%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(1)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(3)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.set(2,4)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2,5)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(6)%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Example1</url>.
     </p>
 
     <activity label="qListRem2">
       <statement>
         <p>What will print when the following code executes?</p>
-        <program language="java">
-          <code>
-List&lt;String&gt; list1 = new ArrayList&lt;String&gt;();
-list1.add("Anaya");
-list1.add("Layla");
-list1.add("Sharrie");
-list1.set(1, "Destini");
-list1.add(1, "Sarah");
-System.out.println(list1);
-          </code>
+
+        <program>
+          <![CDATA[
+
+          List<String> list1 = new ArrayList<String>();
+          list1.add("Anaya");
+          list1.add("Layla");
+          list1.add("Sharrie");
+          list1.set(1, "Destini");
+          list1.add(1, "Sarah");
+          System.out.println(list1);
+
+          ]]>
         </program>
       </statement>
 
@@ -1347,9 +1337,7 @@ System.out.println(list1);
           </statement>
 
           <feedback>
-            <p>
-              <c>set</c> changes the value and the first index is 0 not 1.
-            </p>
+            <p><c>set</c> changes the value and the first index is 0 not 1.</p>
           </feedback>
         </choice>
 
@@ -1384,8 +1372,7 @@ System.out.println(list1);
 
     <p>
       You can step through the code above by clicking on the following <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CString%3E+list1+%3D+new+ArrayList%3CString%3E()%3B%0A++++++list1.add(%22Anaya%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Layla%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Sharrie%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.set(1,+%22Destini%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(1,+%22Sarah%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0"
-      visual="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CString%3E+list1+%3D+new+ArrayList%3CString%3E()%3B%0A++++++list1.add(%22Anaya%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Layla%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Sharrie%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.set(1,+%22Destini%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(1,+%22Sarah%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Example2</url>.
+      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CString%3E+list1+%3D+new+ArrayList%3CString%3E()%3B%0A++++++list1.add(%22Anaya%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Layla%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Sharrie%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.set(1,+%22Destini%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(1,+%22Sarah%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Example2</url>.
     </p>
   </subsection>
 
@@ -1402,20 +1389,20 @@ System.out.println(list1);
       the list while the program is running.
     </p>
 
-    <p>
-      Here is a comparison of how to create arrays and <c>ArrayList</c>s:
-    </p>
+    <p>Here is a comparison of how to create arrays and <c>ArrayList</c>s:</p>
 
-    <program language="java">
-      <code>
-// arrays must specify a size!
-int[] highScores = new int[5];
-String[] names = new String[5];
+    <program>
+      <![CDATA[
 
-// ArrayLists are empty to start with
-ArrayList&lt;Integer&gt; highScoreList = new ArrayList&lt;Integer&gt;();
-ArrayList&lt;String&gt; nameList = new ArrayList&lt;String&gt;();
-      </code>
+      // arrays must specify a size!
+      int[] highScores = new int[5];
+      String[] names = new String[5];
+
+      // ArrayLists are empty to start with
+      ArrayList<Integer> highScoreList = new ArrayList<Integer>();
+      ArrayList<String> nameList = new ArrayList<String>();
+
+      ]]>
     </program>
 
     <p>
@@ -1464,8 +1451,7 @@ ArrayList&lt;String&gt; nameList = new ArrayList&lt;String&gt;();
 
     <p>
       Here is a <url
-      href="https://drive.google.com/file/d/1EzkHa3TNlbHOKVeZReQIf4HzuwwXsCAV/view?usp=sharing"
-      visual="https://drive.google.com/file/d/1EzkHa3TNlbHOKVeZReQIf4HzuwwXsCAV/view?usp=sharing">comparison
+      href="https://drive.google.com/file/d/1EzkHa3TNlbHOKVeZReQIf4HzuwwXsCAV/view?usp=sharing">comparison
       handout</url> of the basic operations to access 1-dimensional and
       2-dimensional arrays (which we will see in the next lessons),
       <c>ArrayList</c>s, and <c>String</c>s made by AP CSA teacher Sam Procopio
@@ -1482,88 +1468,93 @@ ArrayList&lt;String&gt; nameList = new ArrayList&lt;String&gt;();
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*;
+          import java.util.*;
 
-public class ToDoList
-{
-    public static void main(String[] args)
-    {
-        // Rewrite this code to use an ArrayList instead of an array
-        String[] toDoList = new String[3];
-        toDoList[0] = "Do homework";
-        toDoList[1] = "Help make dinner";
-        toDoList[2] = "Call grandma";
+          public class ToDoList
+          {
+              public static void main(String[] args)
+              {
+                  // Rewrite this code to use an ArrayList instead of an array
+                  String[] toDoList = new String[3];
+                  toDoList[0] = "Do homework";
+                  toDoList[1] = "Help make dinner";
+                  toDoList[2] = "Call grandma";
 
-        // changing element 1
-        toDoList[1] = "Order pizza";
+                  // changing element 1
+                  toDoList[1] = "Order pizza";
 
-        System.out.println(toDoList.length + " things to do!");
-        System.out.println("Here's the first thing to do: " + toDoList[0]);
+                  System.out.println(toDoList.length + " things to do!");
+                  System.out.println("Here's the first thing to do: " + toDoList[0]);
 
-        // remove item 0 and move everything down
-        //  (this can be done in one method call with ArrayList)
-        toDoList[0] = toDoList[1];
-        toDoList[1] = toDoList[2];
-        toDoList[2] = "";
+                  // remove item 0 and move everything down
+                  //  (this can be done in one method call with ArrayList)
+                  toDoList[0] = toDoList[1];
+                  toDoList[1] = toDoList[2];
+                  toDoList[2] = "";
 
-        System.out.println("Here's the next thing to do: " + toDoList[0]);
+                  System.out.println("Here's the next thing to do: " + toDoList[0]);
 
-        // Why is an ArrayList better than an array for a toDoList?
-        // Answer:
-    }
-}
+                  // Why is an ArrayList better than an array for a toDoList?
+                  // Answer:
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
 
-import org.junit.*;
+          import static org.junit.Assert.*;
 
-import java.io.*;
+          import org.junit.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("ToDoList");
-    }
+          import java.io.*;
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect =
-                "3 things to do!\n"
-                    + "Here's the first thing to do: Do homework\n"
-                    + "Here's the next thing to do: Order pizza";
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ToDoList");
+              }
 
-        boolean passed = getResults(expect, output, "Output is the same");
-        assertTrue(passed);
-    }
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect =
+                          "3 things to do!\n"
+                              + "Here's the first thing to do: Do homework\n"
+                              + "Here's the next thing to do: Order pizza";
 
-    @Test
-    public void test2()
-    {
-         boolean passed = checkCodeContains("ArrayList&lt;String&gt;");
-         assertTrue(passed);
-    }
-    @Test
-    public void contains2()
-    {
-         boolean passed = checkCodeContains(".add");
-         assertTrue(passed);
-    }
+                  boolean passed = getResults(expect, output, "Output is the same");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test3()
-    {
-        String expect = "[*]";
+              @Test
+              public void test2()
+              {
+                   boolean passed = checkCodeContains("ArrayList<String>");
+                   assertTrue(passed);
+              }
+              @Test
+              public void contains2()
+              {
+                   boolean passed = checkCodeContains(".add");
+                   assertTrue(passed);
+              }
 
-        boolean passed = checkCodeNotContains(expect);
-        assertTrue(passed);
-    }
-}
+              @Test
+              public void test3()
+              {
+                  String expect = "[*]";
+
+                  boolean passed = checkCodeNotContains(expect);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
         </tests>
       </program>
     </activity>
@@ -1581,44 +1572,49 @@ public class RunestoneTests extends CodeTestHelper
         <p>Example code creating an ArrayList from an array.</p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*;
+          <![CDATA[
 
-public class ArrayListFromArray
-{
-    public static void main(String[] args)
-    {
-        String[] names = {"Dakota", "Madison", "Brooklyn"};
-        ArrayList&lt;String&gt; namesList = new ArrayList&lt;String&gt;(Arrays.asList(names));
-        System.out.println(namesList);
-    }
-}
+          import java.util.*;
+
+          public class ArrayListFromArray
+          {
+              public static void main(String[] args)
+              {
+                  String[] names = {"Dakota", "Madison", "Brooklyn"};
+                  ArrayList<String> namesList = new ArrayList<String>(Arrays.asList(names));
+                  System.out.println(namesList);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("ArrayListFromArray");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ArrayListFromArray");
+              }
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "[Dakota, Madison, Brooklyn]";
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "[Dakota, Madison, Brooklyn]";
 
-        boolean passed = getResults(expect, output, "main()", true);
-        assertTrue(passed);
-    }
-}
+                  boolean passed = getResults(expect, output, "main()", true);
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -1626,10 +1622,10 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="coding-challenge-frq-digits">
     <title>Coding Challenge: FRQ Digits</title>
+
     <p>
       This coding challenge is based on the <url
-      href="https://apcentral.collegeboard.org/pdf/ap-computer-science-a-frq-2017.pdf?course=ap-computer-science-a"
-      visual="https://apcentral.collegeboard.org/pdf/ap-computer-science-a-frq-2017.pdf?course=ap-computer-science-a">2017
+      href="https://apcentral.collegeboard.org/pdf/ap-computer-science-a-frq-2017.pdf?course=ap-computer-science-a">2017
       Free Response Question</url> part 1a on the 2017 AP CSA exam. In this
       question, you are asked to write a constructor for a class called
       <c>Digits</c>. This constructor takes an integer number as its argument
@@ -1655,44 +1651,45 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-public class DivideBy10
-{
-    public static void main(String[] args)
-    {
-        int number = 154;
-        System.out.println(number / 10);
-        System.out.println(number % 10);
-    }
-}
+          public class DivideBy10
+          {
+              public static void main(String[] args)
+              {
+                  int number = 154;
+                  System.out.println(number / 10);
+                  System.out.println(number % 10);
+              }
+          }
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("DivideBy10");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("DivideBy10");
+              }
 
-    @Test
-    public void test1()
-    {
-        String origCode =
-                "public class DivideBy10{public static void main(String[] args){int number ="
-                    + " 154;System.out.println(number / 10);System.out.println(number % 10);}}";
+              @Test
+              public void test1()
+              {
+                  String origCode =
+                          "public class DivideBy10{public static void main(String[] args){int number ="
+                              + " 154;System.out.println(number / 10);System.out.println(number % 10);}}";
 
-        boolean changed = codeChanged(origCode);
+                  boolean changed = codeChanged(origCode);
 
-        assertTrue(changed);
-    }
-}
+                  assertTrue(changed);
+              }
+          }
         </tests>
       </program>
     </activity>
@@ -1707,6 +1704,7 @@ public class RunestoneTests extends CodeTestHelper
       <ul>
         <li>
           <p>while number is greater than 0</p>
+
           <p>
             <ul>
               <li>
@@ -1743,75 +1741,80 @@ public class RunestoneTests extends CodeTestHelper
         </p>
       </statement>
 
-      <program interactive="activecode" language="java">
+      <program interactive="activecode">
         <code>
-import java.util.*;
+          <![CDATA[
 
-public class Digits
-{
-    /** A list of digits */
-    private ArrayList&lt;Integer&gt; digitList;
+          import java.util.*;
 
-    /** Constructs a list of digits from the given number */
-    public Digits(int number)
-    {
-        // initialize digitList to an empty ArrayList of Integers
+          public class Digits
+          {
+              /** A list of digits */
+              private ArrayList<Integer> digitList;
 
-        // Use a while loop to add each digit in number to digitList
-        //   use add(object,index) with the index 0 to add the
-        //   digit to the beginning of the list instead of the end
+              /** Constructs a list of digits from the given number */
+              public Digits(int number)
+              {
+                  // initialize digitList to an empty ArrayList of Integers
+
+                  // Use a while loop to add each digit in number to digitList
+                  //   use add(object,index) with the index 0 to add the
+                  //   digit to the beginning of the list instead of the end
 
 
-    }
+              }
 
-    /** returns the string representation of the digits list */
-    public String toString()
-    {
-        return digitList.toString();
-    }
+              /** returns the string representation of the digits list */
+              public String toString()
+              {
+                  return digitList.toString();
+              }
 
-    public static void main(String[] args)
-    {
-        Digits d1 = new Digits(154);
-        System.out.println(d1);
-    }
-}
+              public static void main(String[] args)
+              {
+                  Digits d1 = new Digits(154);
+                  System.out.println(d1);
+              }
+          }
+
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("Digits");
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("Digits");
+              }
 
-    @Test
-    public void test1()
-    {
-        String output = getMethodOutput("main");
-        String expect = "[1, 5, 4]";
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "[1, 5, 4]";
 
-        boolean passed = getResults(expect, output, "Digits(154)");
-        assertTrue(passed);
-    }
+                  boolean passed = getResults(expect, output, "Digits(154)");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test2()
-    {
-        Digits test = new Digits(123456);
-        String output = test.toString();
-        String expect = "[1, 2, 3, 4, 5, 6]";
+              @Test
+              public void test2()
+              {
+                  Digits test = new Digits(123456);
+                  String output = test.toString();
+                  String expect = "[1, 2, 3, 4, 5, 6]";
 
-        boolean passed = getResults(expect, output, "Digits(123456)");
-        assertTrue(passed);
-    }
-}
+                  boolean passed = getResults(expect, output, "Digits(123456)");
+                  assertTrue(passed);
+              }
+          }
         </tests>
       </program>
     </project>
@@ -1819,6 +1822,7 @@ public class RunestoneTests extends CodeTestHelper
 
   <subsection xml:id="summary-49">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>

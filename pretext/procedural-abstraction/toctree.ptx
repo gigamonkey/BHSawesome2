@@ -43,6 +43,6 @@
   </introduction>
 
   <xi:include href="./topic-1-9-method-signatures.ptx" />
-  <xi:include href="./topic-1-7-APIs-and-libraries.ptx"/>
+  <xi:include href="./topic-1-7-APIs-and-libraries.ptx" />
   <xi:include href="./topic-1-11-Math.ptx" />
 </chapter>

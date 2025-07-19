@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-3-2-impacts">
   <title>Impact of Program Design</title>
+
   <introduction>
     <p>
       We are living in an age of rapid development in technology and automation.
       Software and hardware developers increasingly have real impacts on
       people’s lives. In computer science, we follow the following <url
-      href="https://ethics.acm.org/" visual="https://ethics.acm.org/">ACM
-      professional code of ethics</url> which includes guidelines such as “Avoid
-      harm” and “Respect privacy”.
+      href="https://ethics.acm.org/">ACM professional code of ethics</url> which
+      includes guidelines such as “Avoid harm” and “Respect privacy”.
     </p>
 
     <p>
@@ -48,14 +48,14 @@
       the loss of life? Who makes these decisions? The software? the
       programmers? If you were a programmer for a self-driving car, how would
       you approach such decisions? Here’s a great <url
-      href="https://www.wired.com/2016/06/self-driving-cars-will-power-kill-wont-conscience/"
-      visual="https://www.wired.com/2016/06/self-driving-cars-will-power-kill-wont-conscience/">Wired
-      article</url> or <url href="https://www.youtube.com/watch?v=FypPSJfCRFk"
-      visual="https://www.youtube.com/watch?v=FypPSJfCRFk">BBC video</url> about
+      href="https://www.wired.com/2016/06/self-driving-cars-will-power-kill-wont-conscience/">Wired
+      article</url> or <url
+      href="https://www.youtube.com/watch?v=FypPSJfCRFk">BBC video</url> about
       self-driving cars and ethical problems.
     </p>
 
     <p>Watch the following video about the impacts of AI:</p>
+
     <video youtube="tJQSyzBUAew" label="video-ai" />
     <p>
       Here are some other interesting videos about the impacts of AI in
@@ -67,16 +67,14 @@
         <li>
           <p>
             AI in Healthcare and Radiology: <url
-            href="https://www.youtube.com/watch?v=dCDuMyzWS8Q"
-            visual="https://www.youtube.com/watch?v=dCDuMyzWS8Q">https://www.youtube.com/watch?v=dCDuMyzWS8Q</url>
+            href="https://www.youtube.com/watch?v=dCDuMyzWS8Q">https://www.youtube.com/watch?v=dCDuMyzWS8Q</url>
           </p>
         </li>
 
         <li>
           <p>
             AI in Agriculture: <url
-            href="https://www.youtube.com/watch?v=DjHGG7eQevY"
-            visual="https://www.youtube.com/watch?v=DjHGG7eQevY">https://www.youtube.com/watch?v=DjHGG7eQevY</url>
+            href="https://www.youtube.com/watch?v=DjHGG7eQevY">https://www.youtube.com/watch?v=DjHGG7eQevY</url>
           </p>
         </li>
       </ul>
@@ -85,6 +83,7 @@
 
   <subsection xml:id="groupwork-impacts-of-cs">
     <title>Groupwork: Impacts of CS</title>
+
     <p>
       In groups, choose a software application that has social and ethical
       implications. Discuss the beneficial and harmful effects of this software
@@ -108,6 +107,7 @@
 
   <subsection xml:id="summary-28">
     <title>Summary</title>
+
     <p>
       <ul>
         <li>

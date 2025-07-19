@@ -2,9 +2,11 @@
 
 <appendix>
   <title>Turtle classes</title>
+
   <datafile label="turtleClasses" filename="turtleClasses.jar" editable="no" hide="yes">
     <pre>
       <![CDATA[
+
       import java.awt.Image;
       import java.awt.image.BufferedImage;
 
@@ -1415,6 +1417,7 @@
        }
 
       } // end of SimplePicture class
+
       ]]>
     </pre>
   </datafile>
@@ -1422,6 +1425,7 @@
   <datafile label="turtleClasses2" filename="turtleClasses2.jar" editable="no" hide="yes">
     <pre>
       <![CDATA[
+
       import javax.swing.*;
       import java.awt.*;
       import java.awt.font.*;
@@ -2688,6 +2692,7 @@
         }
 
       } // end of World class
+
       ]]>
     </pre>
   </datafile>

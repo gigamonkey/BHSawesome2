@@ -37,7 +37,11 @@
     <figure align="center">
       <caption>Library and API</caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/api.png" width="50%" alt="Library, API, package, documentation" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/api.png" width="50%">
+        <shortdescription>
+          Library, API, package, documentation
+        </shortdescription>
+      </image>
     </figure>
   </introduction>
 
@@ -53,26 +57,23 @@
       see a turtle in action.
     </p>
 
-    <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
-      <code>
-        import java.awt.*;
-        import java.util.*;
+    <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+      import java.awt.*;
+      import java.util.*;
 
-        public class TurtleTest {
-            public static void main(String[] args) {
-                // Do not change the next 2 lines
-                World habitat = new World(300, 300);
-                Turtle yertle = new Turtle(habitat);
+      public class TurtleTest {
+          public static void main(String[] args) {
+              // Do not change the next 2 lines
+              World habitat = new World(300, 300);
+              Turtle yertle = new Turtle(habitat);
 
-                // Code to make yertle move forward and turn right
-                yertle.forward();
-                yertle.turnRight();
+              // Code to make yertle move forward and turn right
+              yertle.forward();
+              yertle.turnRight();
 
-                habitat.show(true);
-            }
-        }
-
-      </code>
+              habitat.show(true);
+          }
+      }
     </program>
 
     <p>
@@ -119,7 +120,9 @@
     <figure align="center">
       <caption>Turtle Attributes and Behaviors</caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/turtleOOD.svg" width="50%" alt="Turtle attributes and behaviors" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/turtleOOD.svg" width="50%">
+        <shortdescription>Turtle attributes and behaviors</shortdescription>
+      </image>
     </figure>
 
     <p>
@@ -155,11 +158,9 @@
       tell the turtle to move forward and then turn right.
     </p>
 
-    <program language="java">
-      <code>
-        yertle.forward();
-        yertle.turnRight();
-      </code>
+    <program>
+      yertle.forward();
+      yertle.turnRight();
     </program>
 
     <p>
@@ -195,7 +196,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
           import java.awt.*;
           import java.util.*;
@@ -215,7 +216,6 @@
                   habitat.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -244,7 +244,6 @@
                   assertTrue(passed);
               }
           }
-
 
           ]]>
         </tests>
@@ -887,7 +886,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" language="java" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
         <code>
           import java.awt.*;
           import java.util.*;
@@ -904,7 +903,6 @@
                   habitat.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -971,7 +969,6 @@
                   assertTrue(passed);
               }
           }
-
 
           ]]>
         </tests>

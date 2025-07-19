@@ -54,7 +54,9 @@
     <figure align="center">
       <caption>Class, Method, and Block Level Scope</caption>
 
-      <image source="Unit3-Class-Creation/Figures/scopeDiagram.png" width="89%" alt="Scope Levels" />
+      <image source="Unit3-Class-Creation/Figures/scopeDiagram.png" width="89%">
+        <shortdescription>Scope Levels</shortdescription>
+      </image>
     </figure>
 
     <activity label="name_class_scope">
@@ -194,7 +196,6 @@
               }
           }
 
-
           ]]>
         </code>
 
@@ -220,7 +221,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -267,7 +267,6 @@
                   System.out.println(p1);
               }
           }
-
         </code>
 
         <tests>
@@ -286,7 +285,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -343,7 +341,6 @@
                   return newNumerator + "/" + denominator;
               }
           }
-
         </code>
 
         <tests>
@@ -429,7 +426,6 @@
               }
           }
 
-
           ]]>
         </tests>
       </program>
@@ -506,7 +502,6 @@
                   boxesOfFood = updatedAmountOfFood - eatenBoxes;
               }
           }
-
         </program>
       </statement>
 
@@ -600,7 +595,6 @@
                   System.out.println(getCurrentPrice());
               }
           }
-
         </program>
 
         <p>
