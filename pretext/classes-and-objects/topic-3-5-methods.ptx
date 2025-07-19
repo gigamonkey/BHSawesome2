@@ -18,55 +18,22 @@
     <idx>getter</idx>
     <idx>mutator method</idx>
     <idx>setter</idx>
-    <p>In object-oriented programming, the three main parts of a class are:</p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            the <term>instance variables</term> which hold attributes or values
-            associated with each object,
-          </p>
-        </li>
-
-        <li>
-          <p>
-            the <term>constructors</term> whose job is to initialize the
-            instance variables,
-          </p>
-        </li>
-
-        <li>
-          <p>
-            and the <term>methods</term> which contain the code for the
-            behaviors of an object and which can use the instance variables
-            defined in the class.
-          </p>
-        </li>
-      </ul>
-    </p>
-
-    <p>
-      In Unit 1, we used <c>Turtle</c> objects and called methods like
-      <c>forward</c> which changed the <c>x</c> and <c>y</c> coordinates
-      (instance variables) of the turtle. We also defined static methods that
-      did not work with objects. In this unit, we will learn how to write our
-      own methods in our own classes.
-    </p>
-  </introduction>
-
-    <subsection xml:id="instance-methods">
-    <title>Instance Methods</title>
-
-    <idx><h>class</h><h>method</h></idx>
     <p>
       <term>Instance methods</term> define what we can actually do with an
       object, their behaviors and functions. These methods have direct access to
-      the instance variables and can use them and change them to perform their
-      tasks. In Unit 1, we used and wrote static class methods like
-      <c>Math.random()</c> which were called with the classname. Instance
-      methods are not marked static and are always called using an object of the
-      class and can access the object’s instance variables.
+      an object’s instance variables and can refer to them in their code. But
+      that also means we can only call instance methods if we have an instance
+      of the class to call them on. We’ve used instance methods previously such
+      as the <c>indexOf</c> and <c>substring</c> methods on the <c>String</c>
+      class.
+    </p>
+
+    <p>
+      Up until now we’ve written methods marked with <c>static</c> which  like <c>Math.random()</c> which were
+      called with the classname. Instance methods are not marked static and are
+      always called using an object of the class and can access the object’s
+      instance variables.
     </p>
 
     <p>
@@ -85,6 +52,14 @@
         access and use its instance variables!
       </p>
     </note>
+
+  </introduction>
+
+    <subsection xml:id="instance-methods">
+    <title>Instance Methods</title>
+
+    <idx><h>class</h><h>method</h></idx>
+
 
     <p>
       The <c>Person</c> class above has a <c>print</c> method that prints out
@@ -1471,7 +1446,9 @@
   <subsection xml:id="coding-challenge-class-pet">
     <title>Coding Challenge: Class Pet</title>
 
-    <image source="Unit3-Class-Creation/Figures/animalclinic.png" width="27%" alt="Animal Clinic" />
+    <sidebyside widths="15% 100%" margins="-20% 0%">
+      <image source="Unit3-Class-Creation/Figures/animalclinic.png" width="27%" alt="Animal Clinic" />
+      <stack>
     <p>
       You’ve been hired to create a software system for the Awesome Animal
       Clinic! They would like to keep track of their animal patients. Here are
@@ -1549,6 +1526,8 @@
         </li>
       </ol>
     </p>
+      </stack>
+    </sidebyside>
 
     <project label="challenge-Pet-Class">
       <statement>
