@@ -571,4 +571,429 @@
       Turtle t = new Turtle(habitat); // create a new Turtle object
     </program>
   </subsection>
+
+  <subsection xml:id="instance-methods">
+    <title>Writing methods</title>
+
+    <idx><h>class</h><h>method</h></idx>
+    <p>
+      But that also means we can only call instance methods if we have an
+      instance of the class to call them on. We’ve used instance methods
+      previously such as the <c>indexOf</c> and <c>substring</c> methods on the
+      <c>String</c> class.
+    </p>
+
+    <p>
+      Up until now we’ve written methods marked with <c>static</c> which like
+      <c>Math.random()</c> which were called with the classname. Instance
+      methods are not marked static and are always called using an object of the
+      class and can access the object’s instance variables.
+    </p>
+
+    <p>
+      Methods are defined in the class after the instance variables and
+      constructors. They are usually marked as <c>public</c> so they can be
+      accessed from inside or outside the class. Methods designated as
+      <c>private</c> are not accessible outside of the class; they can only be
+      used as helper methods by other methods inside the same class.
+    </p>
+
+    <p>
+      The <c>Person</c> class above has a <c>print</c> method that prints out
+      all the data stored for a person object. Notice that it is marked as
+      <c>public</c> and after <c>public</c> comes the return type. The
+      <c>void</c> return type is used to indicate that the method does not
+      return anything but has some effect such as printing to the screen. After
+      the return type comes the method name followed by parentheses containing
+      the list of parameters. In this case there are no parameters but we still
+      need the <c>()</c>s. The body of the method is in <c>{}</c>s. As we’ve
+      discussed, the method can access and use the instance variables defined in
+      the class: <c>name</c>, <c>email</c>, and <c>phoneNumber</c> but will get
+      the values specific to the object we called <c>print</c> on.
+    </p>
+
+    <program>
+      public void print()
+      {
+        System.out.println("Name: " + name);
+        System.out.println("Email: " + email);
+        System.out.println("Phone Number: " + phoneNumber);
+      }
+    </program>
+
+    <p>
+      To call a method, we need an object that is an instance of the class such
+      as we get by calling its constructor. Then we use the dot (<c>.</c>)
+      operator to call its <c>public</c> methods, for example <c>p1.print()</c>
+      means call the <c>print</c> method on the object <c>p1</c>.
+    </p>
+
+    <program>
+      // call the constructor to create a new person
+      Person p1 = new Person("Sana", "sana@gmail.com", "123-456-7890");
+      // call p1's print method
+      p1.print();
+    </program>
+
+    <activity label="name_methods">
+      <statement>
+        <p>
+          Click on all the lines of code that are part of a method in the
+          following class.
+        </p>
+      </statement>
+
+      <feedback>
+        <p>
+          Methods follow the constructor. They include a return type in case
+          they returns something from the method.
+        </p>
+      </feedback>
+
+      <areas>
+        <cline><area correct="no">public class Name</area></cline>
+        <cline><area correct="no">{</area></cline>
+        <cline>    <area correct="no">private String first;</area></cline>
+        <cline>    <area correct="no">private String last;</area></cline>
+        <cline />
+        <cline>    <area correct="no">public Name(String theFirst, String theLast)</area></cline>
+        <cline>    <area correct="no">{</area></cline>
+        <cline>        <area correct="no">first = theFirst;</area></cline>
+        <cline>        <area correct="no">last = theLast;</area></cline>
+        <cline>    <area correct="no">}</area></cline>
+        <cline />
+        <cline>    <area correct="yes">public void setFirst(String theFirst)</area></cline>
+        <cline>    <area correct="yes">{</area></cline>
+        <cline>        <area correct="yes">first = theFirst;</area></cline>
+        <cline>    <area correct="yes">}</area></cline>
+        <cline />
+        <cline>    <area correct="yes">public void setLast(String theLast)</area></cline>
+        <cline>    <area correct="yes">{</area></cline>
+        <cline>        <area correct="yes">last = theLast;</area></cline>
+        <cline>    <area correct="yes">}</area></cline>
+        <cline />
+        <cline><area correct="no">}</area></cline>
+      </areas>
+    </activity>
+
+    <activity label="class-add-print-method">
+      <statement>
+        <p>
+          The following Name class keeps track of the first and last name of a
+          person. Add a method print that prints out the instance variables
+          first and last. Note that the methods have direct access and share the
+          instance variables.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          public class Name {
+              private String first;
+              private String last;
+
+              public Name(String theFirst, String theLast) {
+                  first = theFirst;
+                  last = theLast;
+              }
+
+              // Complete the print method below to print out the
+              // first and last instance variables with a space in between
+              public void print() {}
+
+              public static void main(String[] args) {
+                  Name n = new Name("Ada", "Lovelace");
+                  n.print();
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("Name"); // class name / location of main
+                  Object[] values = new Object[] {"Mickey", "Mouse"};
+                  setDefaultValues(values);
+              }
+
+              @Test
+              public void testMain() {
+                  String output = getMethodOutput("main");
+                  String expect = "Ada Lovelace";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testPrint() {
+                  String output = getMethodOutput("print");
+                  String expect = "Mickey Mouse";
+                  boolean passed =
+                          getResults(
+                                  expect,
+                                  output,
+                                  "Expected output from print method with object Mickey Mouse");
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="defining-and-calling-methods">
+    <title>Defining and Calling Methods</title>
+
+    <p>
+      A <term>method</term> is a block of code that performs a specific task.
+      Methods are defined inside a class and can access the instance variables
+      of the class. For example, the print() method below prints the instance
+      variables of the Person class. Methods are usually public.
+    </p>
+
+    <program>
+      public class Person {
+          // instance variables
+          private String name;
+          private String email;
+
+          // Method definition: uses instance variables name and email
+          public void print() {
+              System.out.println("Name: " + name);
+              System.out.println("Email: " + email);
+          }
+
+          public static void main(String[] args) {
+              Person p = new Person();
+              p.print(); // Method call
+          }
+      }
+    </program>
+
+    <p>There are three steps to creating and calling a method:</p>
+
+    <p>
+      <ol>
+        <li>
+          <p>
+            <term>Object of the Class</term>: Declare an object of your class in
+            the main method or from outside the class.
+          </p>
+
+          <program>
+            // Step 1: declare an object in main or from outside the class
+            Classname objectName = new Classname();
+          </program>
+        </li>
+
+        <li>
+          <p>
+            <term>Method Call</term>: whenever you want to use the method, call
+            objectName.methodName();
+          </p>
+
+          <program>
+            // Step 2: call the object's method
+            objectName.methodName(); //Step 2
+          </program>
+        </li>
+
+        <li>
+          <p>
+            <term>Method Definition</term>: write the method’s
+            <term>header</term> and <term>body</term> code like below:
+          </p>
+
+          <program>
+            // Step 3: Define the method in the class
+            // method header
+            public void methodName()
+            {
+                  // method body for the code
+            }
+          </program>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      The following flowchart can be used to compare three different ways of
+      calling methods. Class (static) methods are called using the class name.
+      Instance methods which are discussing in this lesson are called using an
+      object of the class. If you are calling the instance method from the main
+      method or from another class, you must first create an object of that
+      class and then call its methods using <c>object.methodName()</c>. If you
+      are calling the method from within the same class, you can just call the
+      method using <c>methodName()</c> which will refer to the current object.
+    </p>
+
+    <figure align="center">
+      <caption>Comparing Method Calls to Static and Instance Methods</caption>
+
+      <image source="Unit3-Class-Creation/Figures/FlowChartCallingMethods.png" width="98%">
+        <shortdescription>
+          Comparing method calls to static and instance methods
+        </shortdescription>
+      </image>
+    </figure>
+
+    <activity label="PersonPrint">
+      <statement>
+        <p>
+          Try the following code. Add a print() method in the Person class that
+          prints out all the attributes (name, email, phonenumber) of a person
+          object.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          public class Person {
+              // instance variables
+              private String name;
+              private String email;
+              private String phonenumber;
+
+              // Constructor
+              public Person(String n, String e, String p) {
+                  name = n;
+                  email = e;
+                  phonenumber = p;
+              }
+
+              // TODO: Add a print() method that prints out all the attributes (name, email, phonenumber)
+
+              public static void main(String[] args) {
+                  Person p1 = new Person("Taylor", "swift@gmail.com", "123-456-7890");
+                  p1.print();
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void test1() {
+                  String target = "public void print()";
+                  boolean passed = checkCodeContains("public void print() method", target);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="void-methods">
+    <title>void Methods</title>
+
+    <p>
+      A <term>void method</term> is a method that does not return a value. It is
+      used when you want to perform an action but do not need to return a value.
+      The method header for a void method looks like this:
+    </p>
+
+    <program>
+      public void methodName()
+      {
+          // method body
+      }
+    </program>
+
+    <p>
+      The <c>print</c> method above is a void method. It does not return a
+      value, but it does print out the name and email of the person. In the
+      sections below, we will learn about setter methods that are also void
+      methods.
+    </p>
+  </subsection>
+
+  <subsection xml:id="non-void-methods-1">
+    <title>Non-void Methods</title>
+
+    <p>
+      A <term>non-void method</term> is a method that returns a single value.
+      Its body must have a <term>return</term> statement, usually at the end,
+      that returns a variable’s value or an expression. Its header includes the
+      <term>return type</term> (the type of the value in the return statement)
+      in place of the keyword <c>void</c>. The method header for a non-void
+      method looks like this:
+    </p>
+
+    <program>
+      public returnType methodName()
+      {
+          // method body
+          return value;
+      }
+    </program>
+
+    <p>
+      In Unit 1, we used static non-void methods like `` Math.random()`` which
+      returned a random number. We also used non-void methods that belonged to
+      Turtle objects like <c>getXPos()</c> and <c>getYPos()</c> that returned
+      the x and y coordinates of the turtle. The most common non-void methods in
+      Java are methods that start with <c>get</c> and return the value of an
+      instance variable. We will learn about these in the next section.
+    </p>
+
+    <p>
+      In non-void methods, a return expression compatible with the return type
+      is evaluated, and the value is returned. This is referred to as
+      <term>return by value</term>. The <c>return</c> keyword is used to return
+      the flow of control to the point where the method or constructor was
+      called. Any code that is sequentially after a return statement will never
+      be executed, so usually non-void methods end with a return statement.
+      Executing a return statement inside a selection or iteration statement
+      will halt the statement and exit the method or constructor.
+    </p>
+
+    <note>
+      <p>Some common errors when writing and using non-void methods are:</p>
+
+      <p>
+        <ul>
+          <li>
+            <p>
+              Forgetting a return type like <c>int</c> before the method name.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Forgetting to use the <c>return</c> keyword to return a value at
+              the end of the method.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Returning too soon from a method. If you have a return statement
+              in a selection or iteration statement, the method will exit at
+              that point and not execute the rest of the code.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Forgetting to do something with the value returned from a method,
+              like assigning it to a variable or printing it out.
+            </p>
+          </li>
+        </ul>
+      </p>
+    </note>
+  </subsection>
 </scratch>

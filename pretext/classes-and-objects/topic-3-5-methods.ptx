@@ -12,7 +12,6 @@
     <idx><h>method</h><h>parameter</h></idx>
     <idx><h>method</h><h>argument</h></idx>
     <idx><h>method</h><h>return</h></idx>
-    <idx>void method</idx>
     <idx>non-void method</idx>
     <idx>accessor method</idx>
     <idx>getter</idx>
@@ -20,551 +19,176 @@
     <idx>setter</idx>
     <p>
       <term>Instance methods</term> define what we can actually do with an
-      object, their behaviors and functions. These methods have direct access to
-      an object’s instance variables and can refer to them in their code. But
-      that also means we can only call instance methods if we have an instance
-      of the class to call them on. We’ve used instance methods previously such
-      as the <c>indexOf</c> and <c>substring</c> methods on the <c>String</c>
-      class.
+      object, their behaviors and functions. Everything we’ve already covered in
+      <xref ref="methods" /> about writing method still applies. The only new
+      thing about instance methods, compared to the methods we’ve written
+      previously is that instance methods must be called <em>on</em> some
+      specific object but because of that they can refer to the object’s
+      instance variables in their code.
     </p>
 
     <p>
-      Up until now we’ve written methods marked with <c>static</c> which like
-      <c>Math.random()</c> which were called with the classname. Instance
-      methods are not marked static and are always called using an object of the
-      class and can access the object’s instance variables.
+      This may seem like a small thing but is very powerful because it allows us
+      to use objects without having to constantly think about how the underlying
+      data is represented.
     </p>
 
     <p>
-      Methods are defined in the class after the instance variables and
-      constructors. They are usually marked as <c>public</c> so they can be
-      accessed from inside or outside the class. Methods designated as
-      <c>private</c> are not accessible outside of the class; they can only be
-      used as helper methods by other methods inside the same class.
+      To take a simple example, consider the method <c>canVote</c> in our
+      <c>Person</c> class from <xref ref="topic-3-3-anatomy-of-class" />. We can
+      call that method on a <c>Person</c> object without having to know exactly
+      what data it uses to answer the question; the method itself gets the data
+      it needs from the object and returns the result.
     </p>
 
-    <note>
-      <p>
-        Methods define what the object can do. They typically start with
-        <c>public</c> then a type, then the name of the method followed by
-        parentheses for optional parameters. Methods defined for an object can
-        access and use its instance variables!
-      </p>
-    </note>
+    <p>
+      In this case it’s pretty simple since it only uses one variable. But
+      imagine a more complex <c>Person</c> class that kept track of whether the
+      <c>Person</c> was registered to vote or not? The <c>canVote</c> method
+      might change on the inside but from the outside we would still call it
+      like <c>p.canVote()</c>.
+    </p>
+
+    <p>
+      Instance methods can be void and non-void. In <c>Person</c> we had one of
+      each: <c>greet</c> is a void method that has the side effect of printng to
+      the screen while <c>canVote</c> is a non-void method that computes and
+      returns a boolean value.
+    </p>
+
+    <p>
+      Similarly, instance methods can take any number of arguments. They often
+      will require fewer arguments than <c>static</c> methods because they have
+      access to all the data in the object they are called on.
+    </p>
+
+    <p>
+      In this section we’ll take a closer look at the things we can do with
+      instance methods and some of the common kinds of instance methods that we
+      will write in many classes.
+    </p>
   </introduction>
 
-  <subsection xml:id="instance-methods">
-    <title>Instance Methods</title>
-
-    <idx><h>class</h><h>method</h></idx>
-    <p>
-      The <c>Person</c> class above has a <c>print</c> method that prints out
-      all the data stored for a person object. Notice that it is marked as
-      <c>public</c> and after <c>public</c> comes the return type. The
-      <c>void</c> return type is used to indicate that the method does not
-      return anything but has some effect such as printing to the screen. After
-      the return type comes the method name followed by parentheses containing
-      the list of parameters. In this case there are no parameters but we still
-      need the <c>()</c>s. The body of the method is in <c>{}</c>s. As we’ve
-      discussed, the method can access and use the instance variables defined in
-      the class: <c>name</c>, <c>email</c>, and <c>phoneNumber</c> but will get
-      the values specific to the object we called <c>print</c> on.
-    </p>
-
-    <program>
-      public void print()
-      {
-        System.out.println("Name: " + name);
-        System.out.println("Email: " + email);
-        System.out.println("Phone Number: " + phoneNumber);
-      }
-    </program>
-
-    <p>
-      To call a method, we need an object that is an instance of the class such
-      as we get by calling its constructor. Then we use the dot (<c>.</c>)
-      operator to call its <c>public</c> methods, for example <c>p1.print()</c>
-      means call the <c>print</c> method on the object <c>p1</c>.
-    </p>
-
-    <program>
-      // call the constructor to create a new person
-      Person p1 = new Person("Sana", "sana@gmail.com", "123-456-7890");
-      // call p1's print method
-      p1.print();
-    </program>
-
-    <activity label="name_methods">
-      <statement>
-        <p>
-          Click on all the lines of code that are part of a method in the
-          following class.
-        </p>
-      </statement>
-
-      <feedback>
-        <p>
-          Methods follow the constructor. They include a return type in case
-          they returns something from the method.
-        </p>
-      </feedback>
-
-      <areas>
-        <cline><area correct="no">public class Name</area></cline>
-        <cline><area correct="no">{</area></cline>
-        <cline>    <area correct="no">private String first;</area></cline>
-        <cline>    <area correct="no">private String last;</area></cline>
-        <cline />
-        <cline>    <area correct="no">public Name(String theFirst, String theLast)</area></cline>
-        <cline>    <area correct="no">{</area></cline>
-        <cline>        <area correct="no">first = theFirst;</area></cline>
-        <cline>        <area correct="no">last = theLast;</area></cline>
-        <cline>    <area correct="no">}</area></cline>
-        <cline />
-        <cline>    <area correct="yes">public void setFirst(String theFirst)</area></cline>
-        <cline>    <area correct="yes">{</area></cline>
-        <cline>        <area correct="yes">first = theFirst;</area></cline>
-        <cline>    <area correct="yes">}</area></cline>
-        <cline />
-        <cline>    <area correct="yes">public void setLast(String theLast)</area></cline>
-        <cline>    <area correct="yes">{</area></cline>
-        <cline>        <area correct="yes">last = theLast;</area></cline>
-        <cline>    <area correct="yes">}</area></cline>
-        <cline />
-        <cline><area correct="no">}</area></cline>
-      </areas>
-    </activity>
-
-    <activity label="class-add-print-method">
-      <statement>
-        <p>
-          The following Name class keeps track of the first and last name of a
-          person. Add a method print that prints out the instance variables
-          first and last. Note that the methods have direct access and share the
-          instance variables.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-        <code>
-          public class Name {
-              private String first;
-              private String last;
-
-              public Name(String theFirst, String theLast) {
-                  first = theFirst;
-                  last = theLast;
-              }
-
-              // Complete the print method below to print out the
-              // first and last instance variables with a space in between
-              public void print() {}
-
-              public static void main(String[] args) {
-                  Name n = new Name("Ada", "Lovelace");
-                  n.print();
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("Name"); // class name / location of main
-                  Object[] values = new Object[] {"Mickey", "Mouse"};
-                  setDefaultValues(values);
-              }
-
-              @Test
-              public void testMain() {
-                  String output = getMethodOutput("main");
-                  String expect = "Ada Lovelace";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testPrint() {
-                  String output = getMethodOutput("print");
-                  String expect = "Mickey Mouse";
-                  boolean passed =
-                          getResults(
-                                  expect,
-                                  output,
-                                  "Expected output from print method with object Mickey Mouse");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-      </program>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="defining-and-calling-methods">
-    <title>Defining and Calling Methods</title>
-
-    <p>
-      A <term>method</term> is a block of code that performs a specific task.
-      Methods are defined inside a class and can access the instance variables
-      of the class. For example, the print() method below prints the instance
-      variables of the Person class. Methods are usually public.
-    </p>
-
-    <program>
-      public class Person {
-          // instance variables
-          private String name;
-          private String email;
-
-          // Method definition: uses instance variables name and email
-          public void print() {
-              System.out.println("Name: " + name);
-              System.out.println("Email: " + email);
-          }
-
-          public static void main(String[] args) {
-              Person p = new Person();
-              p.print(); // Method call
-          }
-      }
-    </program>
-
-    <p>There are three steps to creating and calling a method:</p>
-
-    <p>
-      <ol>
-        <li>
-          <p>
-            <term>Object of the Class</term>: Declare an object of your class in
-            the main method or from outside the class.
-          </p>
-
-          <program>
-            // Step 1: declare an object in main or from outside the class
-            Classname objectName = new Classname();
-          </program>
-        </li>
-
-        <li>
-          <p>
-            <term>Method Call</term>: whenever you want to use the method, call
-            objectName.methodName();
-          </p>
-
-          <program>
-            // Step 2: call the object's method
-            objectName.methodName(); //Step 2
-          </program>
-        </li>
-
-        <li>
-          <p>
-            <term>Method Definition</term>: write the method’s
-            <term>header</term> and <term>body</term> code like below:
-          </p>
-
-          <program>
-            // Step 3: Define the method in the class
-            // method header
-            public void methodName()
-            {
-                  // method body for the code
-            }
-          </program>
-        </li>
-      </ol>
-    </p>
-
-    <p>
-      The following flowchart can be used to compare three different ways of
-      calling methods. Class (static) methods are called using the class name.
-      Instance methods which are discussing in this lesson are called using an
-      object of the class. If you are calling the instance method from the main
-      method or from another class, you must first create an object of that
-      class and then call its methods using <c>object.methodName()</c>. If you
-      are calling the method from within the same class, you can just call the
-      method using <c>methodName()</c> which will refer to the current object.
-    </p>
-
-    <figure align="center">
-      <caption>Comparing Method Calls to Static and Instance Methods</caption>
-
-      <image source="Unit3-Class-Creation/Figures/FlowChartCallingMethods.png" width="98%">
-        <shortdescription>
-          Comparing method calls to static and instance methods
-        </shortdescription>
-      </image>
-    </figure>
-
-    <activity label="PersonPrint">
-      <statement>
-        <p>
-          Try the following code. Add a print() method in the Person class that
-          prints out all the attributes (name, email, phonenumber) of a person
-          object.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-        <code>
-          public class Person {
-              // instance variables
-              private String name;
-              private String email;
-              private String phonenumber;
-
-              // Constructor
-              public Person(String n, String e, String p) {
-                  name = n;
-                  email = e;
-                  phonenumber = p;
-              }
-
-              // TODO: Add a print() method that prints out all the attributes (name, email, phonenumber)
-
-              public static void main(String[] args) {
-                  Person p1 = new Person("Taylor", "swift@gmail.com", "123-456-7890");
-                  p1.print();
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void test1() {
-                  String target = "public void print()";
-                  boolean passed = checkCodeContains("public void print() method", target);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-      </program>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="void-methods">
-    <title>void Methods</title>
-
-    <p>
-      A <term>void method</term> is a method that does not return a value. It is
-      used when you want to perform an action but do not need to return a value.
-      The method header for a void method looks like this:
-    </p>
-
-    <program>
-      public void methodName()
-      {
-          // method body
-      }
-    </program>
-
-    <p>
-      The <c>print</c> method above is a void method. It does not return a
-      value, but it does print out the name and email of the person. In the
-      sections below, we will learn about setter methods that are also void
-      methods.
-    </p>
-  </subsection>
-
-  <subsection xml:id="non-void-methods-1">
-    <title>Non-void Methods</title>
-
-    <p>
-      A <term>non-void method</term> is a method that returns a single value.
-      Its body must have a <term>return</term> statement, usually at the end,
-      that returns a variable’s value or an expression. Its header includes the
-      <term>return type</term> (the type of the value in the return statement)
-      in place of the keyword <c>void</c>. The method header for a non-void
-      method looks like this:
-    </p>
-
-    <program>
-      public returnType methodName()
-      {
-          // method body
-          return value;
-      }
-    </program>
-
-    <p>
-      In Unit 1, we used static non-void methods like `` Math.random()`` which
-      returned a random number. We also used non-void methods that belonged to
-      Turtle objects like <c>getXPos()</c> and <c>getYPos()</c> that returned
-      the x and y coordinates of the turtle. The most common non-void methods in
-      Java are methods that start with <c>get</c> and return the value of an
-      instance variable. We will learn about these in the next section.
-    </p>
-
-    <p>
-      In non-void methods, a return expression compatible with the return type
-      is evaluated, and the value is returned. This is referred to as
-      <term>return by value</term>. The <c>return</c> keyword is used to return
-      the flow of control to the point where the method or constructor was
-      called. Any code that is sequentially after a return statement will never
-      be executed, so usually non-void methods end with a return statement.
-      Executing a return statement inside a selection or iteration statement
-      will halt the statement and exit the method or constructor.
-    </p>
-
-    <note>
-      <p>Some common errors when writing and using non-void methods are:</p>
-
-      <p>
-        <ul>
-          <li>
-            <p>
-              Forgetting a return type like <c>int</c> before the method name.
-            </p>
-          </li>
-
-          <li>
-            <p>
-              Forgetting to use the <c>return</c> keyword to return a value at
-              the end of the method.
-            </p>
-          </li>
-
-          <li>
-            <p>
-              Returning too soon from a method. If you have a return statement
-              in a selection or iteration statement, the method will exit at
-              that point and not execute the rest of the code.
-            </p>
-          </li>
-
-          <li>
-            <p>
-              Forgetting to do something with the value returned from a method,
-              like assigning it to a variable or printing it out.
-            </p>
-          </li>
-        </ul>
-      </p>
-    </note>
-  </subsection>
-
   <subsection xml:id="accessors-getters">
-    <title>Accessors / Getters</title>
+    <title>Getters and setters</title>
 
     <p>
-      Since the instance variables in a class are usually marked as
-      <c>private</c> to the class, if you want code outside the class to be able
-      to access the value of an instance variable, you need to write what is
-      formally called an <term>accessor methods</term> but which everyone
-      actually just calls a <term>getter</term>. A getter is a <c>public</c>
-      method that takes no arguments and returns the value of the <c>private</c>
-      instance variable.
-    </p>
-
-    <p>
-      If you used a language like App Inventor in an AP CSP class, you may have
-      used setter and getter blocks. In App Inventor, you cannot make your own
-      classes, but you can declare UI objects like Button1, Button2 from the
-      Button class and use their get/set methods for any property like below.
-      (We’ll talk about setters in Java in the next section.)
-    </p>
-
-    <figure align="center">
-      <caption>App Inventor Set and Get blocks for object Button1</caption>
-
-      <image source="Unit3-Class-Creation/Figures/AppInvSetGet.png" width="54%" />
-    </figure>
-
-    <p>
-      You don’t need to write a getter for every instance variable in a class
-      but if you want code outside the class to be able to get the value of one
-      of your instance variables, you’ll need to write a getter that looks like
-      the following.
+      One simple but common kind of instance methods are <term>getters</term>
+      and <term>setters</term> or—if you’re fancy— <term>accessors</term> and
+      <term>mutators</term>. These are methods that exist in order to let code
+      outside the class have at least some access to the data stored in the
+      class’s private instance variables. Here’s an example of both a getter and
+      a setter for the variable age from our <c>Person</c> class.
     </p>
 
     <program>
-      class ExampleTemplate {
+      private int age; // included for reference
 
-          // Instance variable declaration
-          private typeOfVar varName;
+      public int getAge() {
+          return age;
+      }
 
-          // Accessor (getter) method template
-          public typeOfVar getVarName() {
-              return varName;
-          }
+      public void setAge(int age) {
+          this.age = age;
       }
     </program>
 
     <p>
-      Notice that the getter’s return type is the same as the type of the
-      instance variable and all the body of the getter does is return the value
-      of the variable using a <c>return</c> statement. We’ll talk more about the
-      <c>return</c> statement in the next lesson, but for now just notice that
-      it is followed by an expression whose value must be the same type as the
-      return type in the method’s header. In a getter, that will definitely be
-      true as long as the type of the instance variable and the return type of
-      the getter are the same.
+      The pattern is simple: A getter for a variable <c>x</c> is a <c>public</c>
+      method named <c>getX</c>, that takes no arguments, and whose return type
+      is the same as the type of the variable. And a setter is a <c>public</c>
+      method named <c>setX</c> that takes one argument of the same type is the
+      variable and has a <c>void</c> return type. All the getter does is return
+      the value of the variable and all the setter does is assign its argument
+      to the variable.
     </p>
 
     <p>
-      Here’s an example of an accessor method called <c>getName</c> for the
-      <c>Student</c> class which also demonstrates how to call <c>getName</c>
-      using a <c>Student</c> object:
+      It might not be immediately obvious what the point of getters and setters
+      are. If we want code outside the class to be able to get and set the value
+      of one of our instance variables, why not just make it <c>public</c>?
+      There are a few advantages:
     </p>
 
-    <program>
-      class Student
-      {
-
-        //Instance variable name
-        private String name;
-
-        /** getName() example
-         *  @return name */
-        public String getName()
-        {
-           return name;
-        }
-
-        public static void main(String[] args)
-        {
-           // To call a get method, use objectName.getVarName()
-           Student s = new Student();
-           System.out.println("Name: " + s.getName() );
-        }
-    </program>
-
-    <p>Note, that getters only return the <em>value</em> of the variable.</p>
-
     <p>
-      Try the following code. Note that this active code window has 2 classes!
-      The main method is in a separate <term>Tester</term> or
-      <term>Driver</term> class. It does not have access to the private instance
-      variables in the other Student class. Note that when you use multiple
-      classes in an IDE, you usually put them in separate files, and you give
-      the files the same name as the public class in them. In active code and
-      IDEs, you can put 2 classes in 1 file, as demonstrated here, but only 1 of
-      them can be public and have a main method in it. You can also view the
-      fixed code in the <url
-      href="http://www.pythontutor.com/visualize.html#code=public%20class%20TesterClass%20%0A%20%20%7B%0A%20%20%20%20%20//%20main%20method%20for%20testing%0A%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20Student%20s1%20%3D%20new%20Student%28%22Skyler%22,%20%22skyler%40sky.com%22,%20123456%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22Name%3A%22%20%2B%20%20s1.getName%28%29%20%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22Email%3A%22%20%2B%20%20s1.getEmail%28%29%20%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22ID%3A%20%22%20%2B%20s1.getId%28%29%20%29%3B%0A%20%20%20%20%20%7D%0A%20%20%20%7D%0A%20%20%0A%20%20class%20Student%20%0A%20%20%7B%0A%20%20%20%20%20private%20String%20name%3B%0A%20%20%20%20%20private%20String%20email%3B%0A%20%20%20%20%20private%20int%20id%3B%0A%20%20%20%20%20%0A%20%20%20%20%20public%20Student%28String%20initName,%20String%20initEmail,%20int%20initId%29%0A%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20name%20%3D%20initName%3B%0A%20%20%20%20%20%20%20%20email%20%3D%20initEmail%3B%0A%20%20%20%20%20%20%20%20id%20%3D%20initId%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20%0A%20%20%20%20%20//%20accessor%20methods%20-%20getters%20%0A%20%20%20%20%20/**%20getName%28%29%20%20%40return%20name%20*/%0A%20%20%20%20%20public%20String%20getName%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20return%20name%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20/**%20getEmail%28%29%20%20%40return%20email%20*/%0A%20%20%20%20%20public%20String%20getEmail%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20return%20email%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20/**%20getName%28%29%20%20%40return%20id%20*/%0A%20%20%20%20%20public%20int%20getId%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20return%20id%3B%0A%20%20%20%20%20%7D%0A%20%20%7D&amp;cumulative=false&amp;curInstr=26&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Java
-      visualizer</url>.
+      <dl>
+        <li>
+          <title>We don’t have to provide both a getter and a setter.</title>
+
+          <p>
+            If we just wrote <c>getAge</c> but didn’t write a <c>setAge</c> then
+            any code could access the age of a <c>Person</c> but only code
+            within the class could change it. Since getters don’t change
+            anything it’s almost impossible for a bug to be caused by someone
+            calling a getter. Setters are much more dangerous.
+          </p>
+        </li>
+
+        <li>
+          <title>Setters can validate values or do other work.</title>
+
+          <p>
+            Even if we do choose to provide a setter, it can still be better
+            than making the variable <c>public</c> because it gives us a place
+            to control how the variable is set. For instance <c>setAge</c> could
+            ensure that the value is positive and generate an error if it is not
+            rather than setting the variable to a nonsense value.
+          </p>
+        </li>
+
+        <li>
+          <title>
+            We can change things without breaking code in other classes.
+          </title>
+
+          <p>
+            While usually we write getters and setters to provide access to a
+            variable, from outside the class there’s no way of knowing for sure
+            that there <em>is</em> a variable. This provides a layer of
+            <term>indirection</term> that allows us to change how we represent
+            things inside the class without breaking code in other classes.
+          </p>
+
+          <p>
+            For instance, in <c>Person</c> we might realize that we want to
+            store the persons birthdate and to compute their age based on that.
+            We can change the implementation of <c>getAge</c> and then get rid
+            of the <c>age</c> variable and code that uses <c>getAge</c> will
+            still work.
+          </p>
+        </li>
+      </dl>
     </p>
 
     <activity label="StudentObjExample">
       <statement>
         <p>
+          Try the following code. Note that there are two classes! The
+          <c>main</c> method is in a separate <term>tester</term> or
+          <term>driver</term> class so that it does not have access to the
+          <c>private</c> instance variables in the <c>Student</c> class.
+        </p>
+
+        <p>
+          Note that when we write multiple classes in an IDE, we normally would
+          put each class in a separate file named after the class it contains.
+          It is legal to put two classes in one file, as we are here, but only
+          one of them can be <c>public</c> which is why <c>Student</c> is not
+          public in this code.
+        </p>
+
+        <p>
           Try the following code. Note that it has a bug! It tries to access the
-          private instance variable email from outside the class Student. Change
-          the main method in Tester class so that it uses the appropriate public
-          accessor method (get method) to access the email value instead.
+          <c>private</c> instance variable <c>email</c> from outside the class
+          <c>Student</c>. Change The <c>main</c> method in <c>Tester</c> so that
+          it instead uses the appropriate getter to access the value of
+          <c>email</c>.
+        </p>
+
+        <p>
+          You can also view the fixed code in the <url
+          href="http://www.pythontutor.com/visualize.html#code=public%20class%20TesterClass%20%0A%20%20%7B%0A%20%20%20%20%20//%20main%20method%20for%20testing%0A%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20Student%20s1%20%3D%20new%20Student%28%22Skyler%22,%20%22skyler%40sky.com%22,%20123456%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22Name%3A%22%20%2B%20%20s1.getName%28%29%20%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22Email%3A%22%20%2B%20%20s1.getEmail%28%29%20%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22ID%3A%20%22%20%2B%20s1.getId%28%29%20%29%3B%0A%20%20%20%20%20%7D%0A%20%20%20%7D%0A%20%20%0A%20%20class%20Student%20%0A%20%20%7B%0A%20%20%20%20%20private%20String%20name%3B%0A%20%20%20%20%20private%20String%20email%3B%0A%20%20%20%20%20private%20int%20id%3B%0A%20%20%20%20%20%0A%20%20%20%20%20public%20Student%28String%20initName,%20String%20initEmail,%20int%20initId%29%0A%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20name%20%3D%20initName%3B%0A%20%20%20%20%20%20%20%20email%20%3D%20initEmail%3B%0A%20%20%20%20%20%20%20%20id%20%3D%20initId%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20%0A%20%20%20%20%20//%20accessor%20methods%20-%20getters%20%0A%20%20%20%20%20/**%20getName%28%29%20%20%40return%20name%20*/%0A%20%20%20%20%20public%20String%20getName%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20return%20name%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20/**%20getEmail%28%29%20%20%40return%20email%20*/%0A%20%20%20%20%20public%20String%20getEmail%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20return%20email%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20/**%20getName%28%29%20%20%40return%20id%20*/%0A%20%20%20%20%20public%20int%20getId%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20return%20id%3B%0A%20%20%20%20%20%7D%0A%20%20%7D&amp;cumulative=false&amp;curInstr=26&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Java
+          visualizer</url>.
         </p>
       </statement>
 
@@ -631,89 +255,6 @@
               public void testMethodCall() throws IOException {
                   String target = "s1.getEmail()";
                   boolean passed = checkCodeContains("call to accessor method for email", target);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-      </program>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="tostring">
-    <title><c>toString</c></title>
-
-    <p>
-      While not strictly speaking a getter, another important method that
-      returns a value is the <c>toString</c> method. This method is called
-      automatically by Java in a number of situations when it needs to convert
-      an object to a <c>String</c>. Most notably the methods
-      <c>System.out.print</c> and <c>System.out.println</c> use it to convert a
-      object argument into a <c>String</c> to be printed and when objects are
-      added to <c>String</c>s with <c>+</c> and <c>+=</c> their <c>String</c>
-      representation comes from calling their <c>toString</c> method.
-    </p>
-
-    <p>
-      Here is the <c>Student</c> class again, but this time with a
-      <c>toString</c> method. Note that when we call
-      <c>System.out.println(s1)</c> it will automatically call the
-      <c>toString</c> method to get a <c>String</c> representation of the
-      <c>Student</c> object. The <c>toString</c> method will return a
-      <c>String</c> that is then printed out. Watch how the control moves to the
-      <c>toString</c> method and then comes back to <c>main</c> in the Java
-      visualizer by using the Show CodeLens button.
-    </p>
-
-    <activity label="StudentToString">
-      <statement>
-        <p>
-          See the toString() method in action. Add another student object and
-          print it out.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-        <code>
-          public class TesterClass {
-              // main method for testing
-              public static void main(String[] args) {
-                  Student s1 = new Student("Skyler", "skyler@sky.com", 123456);
-                  System.out.println(s1);
-                  // TODO: add another student s2 and print it out
-
-              }
-          }
-
-          class Student {
-              private String name;
-              private String email;
-              private int id;
-
-              public Student(String initName, String initEmail, int initId) {
-                  name = initName;
-                  email = initEmail;
-                  id = initId;
-              }
-
-              // toString() method
-              public String toString() {
-                  return id + ": " + name + ", " + email;
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void test1() throws IOException {
-                  String target = "System.out.println(s2)";
-                  boolean passed = checkCodeContains("System.out.println(s2)", target);
                   assertTrue(passed);
               }
           }
@@ -1022,6 +563,93 @@
       in the class. Most mutator methods are non-void methods. Mutator methods
       do not have to have parameters, but they usually do.
     </p>
+  </subsection>
+
+  <subsection xml:id="tostring">
+    <title><c>toString</c></title>
+
+    <p>
+      While not strictly speaking a getter, another important method that
+      returns a value is the <c>toString</c> method. This method is called
+      automatically by Java in a number of situations when it needs to convert
+      an object to a <c>String</c>. Most notably the methods
+      <c>System.out.print</c> and <c>System.out.println</c> use it to convert a
+      object argument into a <c>String</c> to be printed and when objects are
+      added to <c>String</c>s with <c>+</c> and <c>+=</c> their <c>String</c>
+      representation comes from calling their <c>toString</c> method.
+    </p>
+
+    <p>
+      Here is the <c>Student</c> class again, but this time with a
+      <c>toString</c> method. Note that when we call
+      <c>System.out.println(s1)</c> it will automatically call the
+      <c>toString</c> method to get a <c>String</c> representation of the
+      <c>Student</c> object. The <c>toString</c> method will return a
+      <c>String</c> that is then printed out. Watch how the control moves to the
+      <c>toString</c> method and then comes back to <c>main</c> in the Java
+      visualizer by using the Show CodeLens button.
+    </p>
+
+    <activity label="StudentToString">
+      <statement>
+        <p>
+          See the toString() method in action. Add another student object and
+          print it out.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          public class TesterClass {
+              // main method for testing
+              public static void main(String[] args) {
+                  Student s1 = new Student("Skyler", "skyler@sky.com", 123456);
+                  System.out.println(s1);
+                  // TODO: add another student s2 and print it out
+
+              }
+          }
+
+          class Student {
+              private String name;
+              private String email;
+              private int id;
+
+              public Student(String initName, String initEmail, int initId) {
+                  name = initName;
+                  email = initEmail;
+                  id = initId;
+              }
+
+              // toString() method
+              public String toString() {
+                  return id + ": " + name + ", " + email;
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void test1() throws IOException {
+                  String target = "System.out.println(s2)";
+                  boolean passed = checkCodeContains("System.out.println(s2)", target);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Methods with side-effects</title>
   </subsection>
 
   <subsection xml:id="parameters">
