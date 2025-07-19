@@ -35,4 +35,14 @@
 
   <xsl:template match="url/@visual[. = ../@href]" />
 
+  <xsl:template match="image[@alt]">
+    <xsl:copy>
+      <xsl:apply-templates select="@*[name() != 'alt']" />
+      <shortdescription>
+        <xsl:value-of select="@alt" />
+      </shortdescription>
+      <xsl:apply-templates select="node()" />
+    </xsl:copy>
+  </xsl:template>
+
 </xsl:stylesheet>
