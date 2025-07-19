@@ -15,7 +15,7 @@
       In this unit we are going to look at <term>arrays</term> which as our
       first real dive into a reference type. Arrays sit a bit between the
       primitive types and classes, which we’ll learn about in <xref
-      ref="reference-types" />, but they give us a good way to start to
+      ref="classes-and-objects" />, but they give us a good way to start to
       understand the difference between primitive and reference types. So we’ll
       start with a quick overview here before getting into arrays themselves in
       the next section.

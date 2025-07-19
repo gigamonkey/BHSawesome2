@@ -147,8 +147,8 @@
         In some programming languages comparison operators like <c>&lt;</c> can
         be used to compare non-numeric values such as strings. But in Java they
         can only be used with numbers. As we’ll see in <xref
-        ref="reference-types" /> there are other ways to compare <c>String</c>
-        values for both ordering and equality.
+        ref="classes-and-objects" /> there are other ways to compare
+        <c>String</c> values for both ordering and equality.
       </p>
     </note>
 
@@ -244,8 +244,8 @@
     <p>
       For <c>String</c> and other reference types we’ll discuss later, they
       “work” but maybe not in the way you’d expect. We’ll discuss that in detail
-      in the section on <xref ref="equality" /> in the <xref
-      ref="reference-types" /> unit.
+      in the section on <xref ref="comparing-objects" /> in <xref
+      ref="classes-and-objects" />.
     </p>
 
     <p>

@@ -61,7 +61,7 @@
       <term>reference types</term> hold a reference to a more complex value
       called an object. For now we’ll focus on three of the main primitive data
       types in Java. We’ll come back to reference types in <xref
-      ref="reference-types" />.
+      ref="classes-and-objects" />.
     </p>
 
     <p>The primitive types you need to know about for the AP exam are:</p>
