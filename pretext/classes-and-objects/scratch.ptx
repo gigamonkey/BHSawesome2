@@ -53,6 +53,7 @@
         // methods
 
     }
+
   </program>
 
   <p>
@@ -140,6 +141,7 @@
                   p2.print();
               }
           }
+
         </code>
 
         <tests>
@@ -166,6 +168,7 @@
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -305,7 +308,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -480,6 +482,7 @@
                 System.out.println(p2);
             }
         }
+
       </code>
 
       <tests>
@@ -503,6 +506,7 @@
                 assertTrue(passed);
             }
         }
+
       </tests>
     </program>
   </activity>
@@ -706,6 +710,7 @@
                   n.print();
               }
           }
+
         </code>
 
         <tests>
@@ -742,6 +747,7 @@
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -774,6 +780,7 @@
               p.print(); // Method call
           }
       }
+
     </program>
 
     <p>There are three steps to creating and calling a method:</p>
@@ -874,6 +881,7 @@
                   p1.print();
               }
           }
+
         </code>
 
         <tests>
@@ -891,6 +899,7 @@
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -1145,4 +1154,10 @@
       </image>
     </figure>
   </subsection>
+
+  <figure align="center">
+    <title>Comparison of accessor/getters and mutator/setters syntax</title>
+
+    <image source="Unit3-Class-Creation/Figures/get-set-comparison.png" width="100%" />
+  </figure>
 </scratch>

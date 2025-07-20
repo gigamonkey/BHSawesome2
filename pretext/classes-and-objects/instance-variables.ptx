@@ -56,17 +56,15 @@
 
     <p>
       As we saw in the previous section, instance variables declared in a class
-      can be used by code anywhere in the class. For instance the <c>canVote</c>
-      method refers to the <c>age</c> variable.
+      can be used by code elsewhere in the class. For instance the
+      <c>canVote</c> method refers to the <c>age</c> variable.
     </p>
 
     <program>
       <![CDATA[
-
       public boolean canVote() {
         return age >= 18;
       }
-
       ]]>
     </program>
 
@@ -114,8 +112,8 @@
       Should plain <c>name</c> refer to the parameter holding the argument
       passed to the constructor or the instance variable? The rule in Java is it
       refers to the parameter. This is called <term>shadowing</term>; when two
-      variables have the same name, one of them shadows the other. The parameter
-      <term>shadows</term> the instance variable.
+      variables have the same name, one of them <term>shadows</term> the other.
+      In methods and constructors, parameters shadow instance variables.
     </p>
 
     <p>
@@ -196,6 +194,73 @@
         </p>
       </answer>
     </activity>
+  </subsection>
+
+  <subsection>
+    <title>The dreaded <c>NullPointerException</c></title>
+
+    <p>
+      There is, however, one other requirement for accessing an instance
+      variable. We actually have to have an object. You may recall from <xref
+      ref="topic-4-3-array-basics" /> where we met our first reference type,
+      arrays, Java has a special reference value, <c>null</c>, which represents
+      the absence of an object. That is, if a normal reference points to some
+      object’s data somewhere in memory, the <c>null</c> reference is a special
+      value that doesn’t point to anywhere in memory. So anywhere we have a
+      value of a reference type— in a variable, as the value returned by a
+      method, or the result of evaluating an expression—it’s possible for that
+      value to be <c>null</c>.
+    </p>
+
+    <p>
+      However we get it, since the <c>null</c> reference doesn’t point to any
+      actual object data we can’t use it to get at instance variable because
+      there’s nothing to get. If we try to use the dot operator on an expression
+      whose value is <c>null</c>, then we get a
+      <term>NullPointerException</term>, which will crash our program. (It
+      should really be called a <c>NullReferenceException</c>; “pointer” is old
+      fashioned name for what Java calls a reference.)
+    </p>
+
+    <note>
+      <p>
+        Java actually provides a way to prevent errors like <c>NullPointerException</c> and others we’ve seen such as
+        <c>IndexOutOfBoundsException</c> from crashing our whole program. But it
+        is sadly beyond the scope of the AP curriculum. If you want to know more
+        you can read this <url href="https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html">lesson</url>
+        from Oracle’s 
+        
+        <booktitle>Java™ Tutorials</booktitle>
+
+ series.
+      </p>
+    </note>
+
+    <p>
+      The good new about getting a <c>NullPointerException</c> is they’re
+      usually pretty easy to debug. When the program crashes, we’ll get an error
+      message pinpointing the specific line where the the exception occurred.
+      From there we just need to check any expression on that line to the left
+      of a dot. One of them must have been <c>null</c>. Then we just have to
+      track back to where that value came from to figure out why it’s
+      <c>null</c> at that point in the program. Did we forget to initialize a
+      variable? Did some other code pass a <c>null</c> reference as an argument
+      to the method?
+    </p>
+
+    <p>
+      As we’ll see in more detail in <xref ref="topic-3-4-constructors" />,
+      instance variables that are declared without an initial value are
+      themselves initialized to <c>null</c> so one common source of <c>null</c>
+      references is forgetting to initialize an instance variable which can lead
+      to a <c>NullPointerException</c> if we try to access an instance variable
+      from (or invoke an instance method on) that variable. And as we saw in
+      <xref ref="topic-4-3-array-basics" /> if we make an array with an array
+      creation expression like <c>new String[10]</c> while the resulting array
+      has places to store ten <c>String</c> references, they all start out
+      <c>null</c> so when we make arrays with elements of a reference type we
+      need to be sure to initialize the elements before we try to use them.
+    </p>
   </subsection>
 
   <subsection>
@@ -323,6 +388,7 @@
                   p2.print();
               }
           }
+
         </code>
 
         <tests>
@@ -342,6 +408,7 @@
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>

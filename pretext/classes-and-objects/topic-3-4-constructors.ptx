@@ -86,6 +86,7 @@
               d.showValues();
           }
       }
+
     </program>
 
     <p>This will produce the output:</p>
@@ -401,7 +402,7 @@
     </activity>
 
     <p>
-      One other reason to overload constructors is to allow callers to construct
+      Another reason to overload constructors is to allow callers to construct
       objects with arguments of a type different than what the class really
       needs. As a trivial example, consider class that stores an ammount in an
       <c>int</c> variable. The obvious constructor would look like:
@@ -709,6 +710,7 @@
                   f2.print();
               }
           }
+
         </code>
 
         <tests>
@@ -759,6 +761,7 @@
                   assertTrue(check1);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -833,6 +836,7 @@
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </activity>
@@ -914,6 +918,7 @@
 
               }
           }
+
         </code>
 
         <tests>
@@ -983,6 +988,7 @@
                   assertTrue(passed);
               }
           }
+
         </tests>
       </program>
     </project>
@@ -1072,7 +1078,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -1467,6 +1472,7 @@
                   inTheaters = false;
               }
           }
+
         </program>
       </statement>
 
@@ -1540,7 +1546,6 @@
 
         <program>
           <![CDATA[
-
           public class Cat {
               private String name;
               private int age;
@@ -1736,6 +1741,7 @@
               private boolean isHungry;
               /* missing constructor */
           }
+
         </program>
 
         <p>
