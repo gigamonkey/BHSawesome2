@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<chapter xml:id="classes-and-objects" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>Classes and objects</title>
+<chapter xml:id="classes" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Classes</title>
 
   <introduction>
     <idx>object</idx>
@@ -60,9 +60,5 @@
   <xi:include href="./instance-variables.ptx" />
   <xi:include href="./topic-3-4-constructors.ptx" />
   <xi:include href="./topic-3-5-methods.ptx" />
-  <xi:include href="./topic-3-6-methods-references.ptx" />
-  <xi:include href="./topic-3-8-scope-access.ptx" />
-  <xi:include href="./topic-3-9-this.ptx" />
-  <xi:include href="./topic-3-7-static-vars-methods.ptx" />
   <xi:include href="./turtles.ptx" />
 </chapter>

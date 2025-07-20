@@ -19,6 +19,45 @@
     </p>
   </introduction>
 
+  <subsection xml:id="class-methods-vs-instance-methods">
+    <title>Class Methods vs. Instance Methods</title>
+
+    <p>
+      In lessons 1.9 and 1.10, we learned how to call <term>class methods</term>
+      (also called <term>static methods</term>). Class methods are called using
+      the class name followed by the dot (.) operator and the method name,
+      example, <c>Math.sqrt(25);</c> calls the <c>sqrt</c> method in the
+      <c>Math</c> class to find the square root of 25. Class methods use the
+      keyword <c>static</c> in their method signature. They do not access or
+      change the attributes of an object.
+    </p>
+
+    <p>
+      In this lesson, we will learn more about <term>instance methods</term>
+      which are always called using an object of the class. They are not static
+      methods. They access and change the attributes of the object they are
+      called on, for example <c>yertle.forward()</c> changes the <c>Turtle</c>
+      object yertle’s position.
+    </p>
+
+    <p>
+      The following flowchart shows the difference between calling class
+      (static) methods and instance methods. Static methods are called using the
+      class name, for example, <c>Math.sqrt(25);</c>. Instance methods are
+      called using an object of the class, for example,
+      <c>yertle.forward();</c>. Traditionally, class names are capitalized, and
+      object variables are lowercase.
+    </p>
+
+    <figure align="center">
+      <caption>Calling static vs. instance methods</caption>
+
+      <image source="Unit1-Using-Objects-and-Methods/Figures/calling-static-vs-instance-methods.png" width="63%">
+        <shortdescription>Calling static vs. instance methods</shortdescription>
+      </image>
+    </figure>
+  </subsection>
+
   <subsection xml:id="class-methods">
     <title>Class Methods</title>
 
@@ -61,7 +100,11 @@
     <figure align="center">
       <caption>Comparing Method Calls to Static and Instance Methods</caption>
 
-      <image source="Unit3-Class-Creation/Figures/FlowChartCallingMethods.png" width="98%" alt="Comparing method calls to static and instance methods" />
+      <image source="Unit3-Class-Creation/Figures/FlowChartCallingMethods.png" width="98%">
+        <shortdescription>
+          Comparing method calls to static and instance methods
+        </shortdescription>
+      </image>
     </figure>
 
     <p>
@@ -148,7 +191,6 @@
                   Person.printStatic();
               }
           }
-
         </code>
 
         <tests>
@@ -173,7 +215,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -257,7 +298,6 @@
                   Person.printPersonCounter();
               }
           }
-
         </code>
 
         <tests>
@@ -276,7 +316,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -314,7 +353,6 @@
                   System.out.println("Max Temp: " + Temperature.maxTemp);
               }
           }
-
 
           ]]>
         </program>
@@ -431,7 +469,6 @@
               }
           }
 
-
           ]]>
         </code>
 
@@ -469,7 +506,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -508,7 +544,6 @@
                   PI = 4.2; // This will cause a syntax error
               }
           }
-
         </code>
 
         <tests>
@@ -528,7 +563,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -633,7 +667,6 @@
 
               }
           }
-
         </code>
 
         <tests>
@@ -790,7 +823,6 @@
                               + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!";
               private static String[] expectedArray = expectedOutput.replaceAll("\n\n", "\n").split("\n");
           }
-
 
           ]]>
         </tests>

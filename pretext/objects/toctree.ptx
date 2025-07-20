@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <chapter xml:id="objects" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>objects</title>
+  <title>Objects</title>
 
   <introduction />
+
   <xi:include href="./topic-3-6-methods-references.ptx" />
-  <xi:include href="./topic-1-12-objects.ptx" />
-  <xi:include href="./topic-1-13-constructors.ptx" />
   <xi:include href="./topic-3-8-scope-access.ptx" />
   <xi:include href="./topic-3-9-this.ptx" />
   <xi:include href="./topic-3-7-static-vars-methods.ptx" />

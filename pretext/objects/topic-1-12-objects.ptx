@@ -3,49 +3,8 @@
 <section xml:id="topic-1-12-objects">
   <title>Objects - Instances of Classes</title>
 
-  <introduction>
-    <idx>object</idx>
-    <idx>class</idx>
-    <idx>instance</idx>
-    <idx>attribute</idx>
-    <idx>behavior</idx>
-    <p>
-      Java is an <term>object-oriented programming</term> language. That means
-      that one of the primary ways of designing and organizing a Java program is
-      in terms of <term>objects</term>. Objects combine data and the code that
-      operates on that data into a single unit. To create objects, we first
-      define a <term>class</term> which provides a blueprint for creating the
-      objects. In Java, all programs are built out of classes. This is why,
-      every Java program starts with <c>public class</c>. In this unit, you will
-      learn the vocabulary of object-oriented programming and to create and use
-      objects of a class written for you. In later units, you will learn to
-      write your own classes.
-    </p>
-  </introduction>
-
   <subsection xml:id="what-are-classes-and-objects">
     <title>What are Classes and Objects?</title>
-
-    <p>
-      You can think of a class as something like a blueprint of a house that is
-      used to construct houses (objects), or like a cookie cutter that is used
-      to create the cookies (objects). The cookie cutter (class) can be used to
-      create as many cookies (objects) as you want. The cookies (objects) are
-      all the same shape and size, but they can have different colors and
-      decorations.
-    </p>
-
-    <figure align="center">
-      <caption>Using a blueprint (class) to construct houses (objects)</caption>
-
-      <image source="Unit1-Using-Objects-and-Methods/Figures/blueprint.png" width="71%" />
-    </figure>
-
-    <figure align="center">
-      <caption>Using a cookie cutter (class) to make cookies (objects)</caption>
-
-      <image source="Unit1-Using-Objects-and-Methods/Figures/cookieCutterLabelled.png" width="89%" />
-    </figure>
 
     <p>
       You can also think of a class as defining a new data type. In this lesson,
@@ -143,7 +102,9 @@
     <figure align="center">
       <caption>Turtle Attributes and Behaviors</caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/turtleOOD.svg" width="63%" alt="Turtle attributes and behaviors" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/turtleOOD.svg" width="63%">
+        <shortdescription>Turtle attributes and behaviors</shortdescription>
+      </image>
     </figure>
 
     <activity label="vocab2_1">
@@ -396,7 +357,6 @@
                   habitat.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -417,7 +377,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -473,7 +432,6 @@
                   habitat.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -513,7 +471,6 @@
                   assertTrue(passed);
               }
           }
-
 
           ]]>
         </tests>
@@ -573,7 +530,6 @@
                   habitat.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -602,7 +558,6 @@
                   assertTrue(passed);
               }
           }
-
 
           ]]>
         </tests>
@@ -660,7 +615,9 @@
     <figure align="center">
       <caption>Turtle Class Diagram</caption>
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/turtleUMLClassDiagram.png" width="71%" alt="Turtle class diagram" />
+      <image source="Unit1-Using-Objects-and-Methods/Figures/turtleUMLClassDiagram.png" width="71%">
+        <shortdescription>Turtle class diagram</shortdescription>
+      </image>
     </figure>
 
     <p>
@@ -761,7 +718,6 @@
                   habitat.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -783,7 +739,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
       </program>
     </activity>
@@ -811,7 +766,6 @@
                   habitat.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -871,7 +825,6 @@
                   assertTrue(passed);
               }
           }
-
 
           ]]>
         </tests>
@@ -955,7 +908,6 @@
                   habitat.show(true);
               }
           }
-
         </code>
 
         <tests>
@@ -1004,7 +956,6 @@
                   assertTrue(passed);
               }
           }
-
 
           ]]>
         </tests>

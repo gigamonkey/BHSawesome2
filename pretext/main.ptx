@@ -52,7 +52,8 @@
     <xi:include href="./loops/toctree.ptx" />
     <xi:include href="./arrays/toctree.ptx" />
     <xi:include href="./strings/toctree.ptx" />
-    <xi:include href="./classes-and-objects/toctree.ptx" />
+    <xi:include href="./classes/toctree.ptx" />
+    <xi:include href="./objects/toctree.ptx" />
     <xi:include href="./abstraction-and-program-design/toctree.ptx" />
     <xi:include href="./array-lists/toctree.ptx" />
     <xi:include href="./text-files/toctree.ptx" />
@@ -77,7 +78,6 @@
       <datafile label="turtleClasses2" filename="turtleClasses2.jar" editable="no" hide="yes">
         <pre source="_static/code/turtleClasses2.java" />
       </datafile>
-
     </conclusion>
   </book>
 </pretext>
