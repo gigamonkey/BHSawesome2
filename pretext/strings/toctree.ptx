@@ -10,9 +10,9 @@
       on out, the <c>String</c> datatype is a reference type. However, unlike
       arrays, but like most other reference types in Java, <c>String</c> is
       defined by a <term>class</term>. Classes are a critical part of Java and
-      we’ll discuss them in depth starting in <xref ref="classes-and-objects"
-      />. But first we’re going to fill in some more details we need to know
-      about how to use <c>String</c> values to represent and manipulate text.
+      we’ll discuss them in depth starting in <xref ref="classes" />. But first
+      we’re going to fill in some more details we need to know about how to use
+      <c>String</c> values to represent and manipulate text.
     </p>
 
     <p>

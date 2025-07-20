@@ -53,15 +53,15 @@
     <p>
       For now don't worry about the <c>public static</c>, just treat that as
       boiler plate that all your methods will start with for now. (We’ll start
-      writing methods without <c>static</c> in <xref ref="classes-and-objects"
-      />.) The next word, <c>int</c>, is the return type. It is the name of some
-      type or the special keyword <c>void</c> which means the method doesn't
-      return any value. Then comes the name of the method, in this case,
-      <c>add</c>. And finally, in parentheses, the method’s <term>parameter
-      list</term>, a comma-delimited list of variables which are the method's
-      parameters. Parameters are declared like other variables with a type and a
-      name. In this method there are two, named <c>a</c> and <c>b</c>, both of
-      type <c>int</c>.
+      writing methods without <c>static</c> in <xref ref="classes" />.) The next
+      word, <c>int</c>, is the return type. It is the name of some type or the
+      special keyword <c>void</c> which means the method doesn't return any
+      value. Then comes the name of the method, in this case, <c>add</c>. And
+      finally, in parentheses, the method’s <term>parameter list</term>, a
+      comma-delimited list of variables which are the method's parameters.
+      Parameters are declared like other variables with a type and a name. In
+      this method there are two, named <c>a</c> and <c>b</c>, both of type
+      <c>int</c>.
     </p>
 
     <p>

@@ -60,8 +60,8 @@
       logical values that we can do, well, logic with. The other,
       <term>reference types</term> hold a reference to a more complex value
       called an object. For now we’ll focus on three of the main primitive data
-      types in Java. We’ll come back to reference types in <xref
-      ref="classes-and-objects" />.
+      types in Java. We’ll come back to reference types in <xref ref="classes"
+      />.
     </p>
 
     <p>The primitive types you need to know about for the AP exam are:</p>
@@ -540,7 +540,7 @@
         </p>
 
         <p>
-          <fillin answer="int" mode="string" /><c>age =</c> 
+          <fillin answer="int" mode="string" /><c>age =</c>
           <fillin mode="number" answer="5" /><!-- this will use a number input
           --><c>;</c>
         </p>

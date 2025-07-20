@@ -408,12 +408,12 @@
     <p>
       The size of each array is stored as part of its object data and is
       accessible via an <term>instance variable</term> <c>length</c>. We’ll
-      learn more about instance variables in <xref ref="classes-and-objects" />
-      but for now all we need to know is that we can access the size of any
-      array with the <term>dot operator</term>, a dot <c>.</c> followed by the
-      word <c>length</c> immediately after any expression whose value is an
-      array reference. For example, <c>arrayName.length</c> accesses the length
-      of the array referenced by the variable <c>arrayName</c>.
+      learn more about instance variables in <xref ref="classes" /> but for now
+      all we need to know is that we can access the size of any array with the
+      <term>dot operator</term>, a dot <c>.</c> followed by the word
+      <c>length</c> immediately after any expression whose value is an array
+      reference. For example, <c>arrayName.length</c> accesses the length of the
+      array referenced by the variable <c>arrayName</c>.
     </p>
 
     <activity label="arrayex2">

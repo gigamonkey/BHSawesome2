@@ -79,9 +79,9 @@
     <p>
       The Turtle library is named after its main <term>class</term>,
       <c>Turtle</c>. Classes are the main building blocks of Java programs and
-      libraries. We’ll discuss writing our own classes in <xref
-      ref="classes-and-objects" />, but in this unit, we just want to focus on
-      using classes that other programmers have written.
+      libraries. We’ll discuss writing our own classes in <xref ref="classes"
+      />, but in this unit, we just want to focus on using classes that other
+      programmers have written.
     </p>
 
     <p>
