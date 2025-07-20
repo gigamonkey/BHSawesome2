@@ -22,3 +22,7 @@ all-files.mk
 pretext/files.txt
 pretext/full-main.ptx
 words.txt
+
+# For now just write bits of Java to make formatting easier but teh source of
+# truth is whatever's in the ptx
+pretext/**/*.java
