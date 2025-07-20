@@ -189,6 +189,9 @@ def maybe_formatted(text):
     else:
         return text
 
+def render_comment(elem, level):
+    return f"{elem}{elem.tail}"
+
 
 def render_block(elem, ns, level=0):
     tag = f"\n{indentation(level)}{open_tag(elem, ns)}"
@@ -291,8 +294,7 @@ def render_child_with_whitespace(elem, ns, level=0):
 
 def serialize_element(elem, ns=DEFAULT_NS, level=0):
     if not isinstance(elem.tag, str):
-        # This seems to do the trick for comments
-        return f"{elem}"
+        return render_comment(elem, level)
     if is_inline(elem):
         return render_inline(elem, ns)
     elif is_program(elem):
