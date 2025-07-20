@@ -158,14 +158,10 @@ def render_program_text(elem, ns, level):
 
     if needs_cdata:
         content += f"{indent2}<![CDATA[\n"
-        if multiline:
-            content += "\n"
 
     content += indent(text, indent2)
 
     if needs_cdata:
-        if multiline:
-            content += "\n"
         content += f"\n{indent2}]]>"
 
     content += f"\n{indent1}{close_tag(elem, ns)}\n"
