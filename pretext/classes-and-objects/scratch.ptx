@@ -996,4 +996,153 @@
       </p>
     </note>
   </subsection>
+
+  <subsection xml:id="parameters">
+    <title>Parameters</title>
+
+    <p>
+      The setter methods above contained parameters. A <term>parameter</term> is
+      a variable in a method’s header that is used to pass in data that the
+      method needs to do its job. In a setter, the parameter is the new value
+      that you want to assign to the instance variable. Methods with parameters
+      receive values through those parameters and use those values in
+      accomplishing the method’s task.
+    </p>
+
+    <p>
+      An <term>argument</term> is a value that is passed into a method when the
+      method is called. It is saved into a parameter variable. The arguments
+      passed to a method must be compatible in number and order with the types
+      identified in the parameter list of the method signature. When calling
+      methods, arguments are passed using call by value. <term>Call by
+      value</term> initializes the parameters with copies of the arguments. When
+      an argument is a primitive value, the parameter is initialized with a copy
+      of that value. Changes to the parameter have no effect on the
+      corresponding argument.
+    </p>
+
+    <figure align="center">
+      <caption>
+        Method signatures with parameters and method calls arguments
+      </caption>
+
+      <image source="Unit3-Class-Creation/Figures/method-param-arg.png" width="98%">
+        <shortdescription>Method parameters and arguments</shortdescription>
+      </image>
+    </figure>
+  </subsection>
+
+  <subsection>
+    <title>Old intro</title>
+
+    <idx>instance methods</idx>
+    <idx>object methods</idx>
+    <idx>method</idx>
+    <idx>parameter</idx>
+    <idx>argument</idx>
+    <p>
+      In object-oriented programming, <term>methods</term> define the behavior
+      and actions that an object can perform. For example, <c>Turtle</c> objects
+      can go forward or turn left using method calls like
+      <c>yertle.forward()</c> and <c>yertle.turnRight()</c> to change its
+      position. These methods are sometimes called <term>instance methods</term>
+      or <term>object methods</term> because they are called using an instance
+      or object of the class, in this case a specific <c>Turtle</c> object like
+      <c>yertle</c>.
+    </p>
+  </subsection>
+
+  <p>
+    The <term>method signature</term> defines the method’s name and the number
+    and types of parameters it takes. In a class definition or in documentation
+    of a library, instance methods are usually defined after the instance
+    variables (attributes) and constructors in a class. For example, see the
+    <c>Student</c> class below. Notice that the methods do not use the keyword
+    <c>static</c>. They are instance methods that are called using an object of
+    the class and can access and change the object’s attributes.
+  </p>
+
+  <figure align="center">
+    <caption>
+      A Student class showing instance variables, constructors, and methods
+    </caption>
+
+    <image source="Unit1-Using-Objects-and-Methods/Figures/StudentClass.png" width="89%">
+      <shortdescription>
+        A Student class showing instance variables, constructors, and methods
+      </shortdescription>
+    </image>
+  </figure>
+
+  <p>
+    The following flowchart can be used to compare three different ways of
+    calling methods. Class (static) methods are called using the class name.
+    Instance methods are called using an object of the class. If you are calling
+    the instance method from the main method or from another class, you must
+    first create an object of that class and then call its methods using
+    <c>object.methodName()</c>. If you are calling the method from within the
+    same class, you can just call the method using <c>methodName()</c> which
+    will refer to the current object.
+  </p>
+
+  <figure align="center">
+    <caption>Comparing Method Calls to Static and Instance Methods</caption>
+
+    <image source="Unit1-Using-Objects-and-Methods/Figures/FlowChartCallingMethods.png" width="98%">
+      <shortdescription>
+        Comparing method calls to static and instance methods
+      </shortdescription>
+    </image>
+  </figure>
+
+  <subsection xml:id="methods-calls-with-arguments">
+    <title>Methods Calls with Arguments</title>
+
+    <p>
+      In the last lessons, we used simple <term>methods</term> like
+      <c>forward</c> and <c>turnRight</c> to make the turtle draw lines. You may
+      have noticed that <c>forward()</c> and <c>backward()</c> always move the
+      same number of pixels (100 pixels), and <c>turnRight()</c> and
+      <c>turnLeft()</c> always turn at right angles (90 degrees). This is a
+      little limiting. What if we wanted to draw a triangle or the letter A?
+      These require smaller angles to draw diagonal lines and different length
+      lines. Luckily, there are more complex methods in the <c>Turtle</c> class
+      that let you specify the number of pixels to move forward or the number of
+      degrees to turn. These values that you can give to methods to help them do
+      their job are called <term>arguments</term> or <term>parameters</term>.
+      For example, we can give the argument 200 in <c>forward(200)</c> to make
+      the turtle go forward 200 pixels instead of the default of 100 or the
+      argument 30 in <c>turn(30)</c> to make the turtle turn 30 degrees instead
+      of 90 degrees.
+    </p>
+
+    <note>
+      <p>
+        <c>object.method(arguments);</c> is used to call an object’s method and
+        give it some argument values that it will need to do its job.
+      </p>
+    </note>
+
+    <p>
+      When you create your own method, the variables you define for it are
+      called <term>parameters</term>. When you call the method to do its job,
+      you give or pass in <term>arguments</term> to it that are then saved in
+      the parameter variables. So, in the definition of the <c>forward</c>
+      method, it has a parameter variable called <c>pixels</c>, and in the call
+      to <c>forward(200)</c>, the argument is the value 200 which will get saved
+      in the parameter variable pixels. You will learn to write your own methods
+      in Unit 3. In this unit, you will learn to call methods that are already
+      written for you.
+    </p>
+
+    <figure align="center">
+      <caption>
+        Method signatures with parameters and method calls arguments
+      </caption>
+
+      <image source="Unit1-Using-Objects-and-Methods/Figures/method-param-arg.png" width="98%">
+        <shortdescription>Method parameters and arguments</shortdescription>
+      </image>
+    </figure>
+  </subsection>
 </scratch>

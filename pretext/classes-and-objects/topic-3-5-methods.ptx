@@ -22,9 +22,9 @@
       object, their behaviors and functions. Everything we’ve already covered in
       <xref ref="methods" /> about writing method still applies. The only new
       thing about instance methods, compared to the methods we’ve written
-      previously is that instance methods must be called <em>on</em> some
-      specific object but because of that they can refer to the object’s
-      instance variables in their code.
+      previously, is that instance methods must be called on some specific
+      object because they need to be able to refer to the object’s instance
+      variables in their code.
     </p>
 
     <p>
@@ -51,7 +51,7 @@
 
     <p>
       Instance methods can be void and non-void. In <c>Person</c> we had one of
-      each: <c>greet</c> is a void method that has the side effect of printng to
+      each: <c>greet</c> is a void method that has the side effect of printing to
       the screen while <c>canVote</c> is a non-void method that computes and
       returns a boolean value.
     </p>
@@ -68,6 +68,162 @@
       will write in many classes.
     </p>
   </introduction>
+
+  <subsection xml:id="method-calls">
+    <title>Calling instance methods requires an instance</title>
+
+    <p>
+      First, however it is key that we be very clear that instance methods can
+      only be called on some particular object. Instance methods almost
+      invariably depend on the values of instance variables in the object and
+      won’t be able to do their job without an object to provide those values.
+      Calling an instance method without an instance to call it on is like
+      trying to ask someone’s name without someone to ask. It just doesn’t make
+      sense.
+    </p>
+
+    <note>
+      <p>
+        It is possible to write an instance method that doesn’t actually depend
+        on any instance variables. But if it is not declared <c>static</c> it
+        still needs to be called on an instance. There are reasons why we might
+        write such methods to be instance methods but they are beyond the scope
+        of the AP curriculum.
+      </p>
+    </note>
+
+    <p>
+      However, syntactically there are two pretty different ways we can call a
+      method on a particular object. The normal one is using the same dot
+      operator we used to access instance variables to access the method via a
+      particular object reference. Most frequently the object reference is
+      stored in a variable so the method call looks like:
+      <c>someVariable.methodName()</c>. Note that there’s nothing special about
+      a variable as an expression; we’ll explore some other options in a moment.
+    </p>
+
+    <p>
+      But the other we can call a method is with just the method name:
+      <c>methodName()</c>. But—and this is an important “but”—that only works in
+      certain contexts, namely in the code of other instance methods and
+      constructors of the same class. In those contexts, as it does with
+      instance variables, Java will treat a bare name like <c>methodName</c> as
+      a shorthand for <c>this.methodName()</c>, calling the method on the current
+      object.
+    </p>
+
+    <p>
+      In code in other classes and in <c>static</c> methods there is no current
+      object so trying to call a method without a specific object reference and
+      the dot operator is back to trying to ask someone’s name with no one to
+      ask.
+    </p>
+
+    <p>
+      This is why in a classes <c>main</c> method we must either call only other
+      <c>static</c> methods or construct an instance of the class in order to
+      call instance methods on it.
+    </p>
+
+    <p>
+      Finally, there’s one last way we can fail to have an object to call an
+      instance method on. Remember from <xref ref="topic-3-4-constructors" />
+      that if we declare an instance variable of a reference type but don’t
+      initialize it, it is initialized to the special reference value
+      <c>null</c>. Similarly, if we make an array with an array creation
+      expression like <c>new String[10]</c> it makes an array with places to
+      store ten <c>String</c> references but they all start out <c>null</c>. And
+      sometimes we will explicitly initialize a variable to <c>null</c>,
+      planning to assign it an actual reference later.
+    </p>
+
+    <p>
+      But however we get it the <c>null</c> reference is an explict reference to
+      no object. So if we try to invoke an instance method on an expression
+      whose value is <c>null</c>, then we get a
+      <term>NullPointerException</term>, which will crash our program. (It
+      should really be called a <c>NullReferenceException</c>; “pointer” is old
+      fashioned name for what Java calls a reference.)
+    </p>
+
+    <note>
+      <p>
+        Java actually provides a way to prevent errors like <c>NullPointerException</c> and others we’ve seen such as
+        <c>IndexOutOfBoundsException</c> from crashing our whole program. But it
+        is sadly beyond the scope of the AP curriculum. If you want to know more
+        you can read this <url href="https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html">lesson</url>
+        from Oracle’s
+        <booktitle>Java™ Tutorials</booktitle>
+ series.
+      </p>
+    </note>
+
+    <activity label="nullPointerTest">
+      <statement>
+        <p>
+          Run the code below to see that it gets a <c>NullPointerException</c>.
+          Fix the code by initializing the variable <c>person</c> in <c>main</c>
+          to a reference an actual <c>Person</c> object.
+        </p>
+      </statement>
+
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+        <preamble>
+          <![CDATA[
+          public class Person {
+
+              private String name;
+              private int age;
+
+              public Person(String name, int age) {
+                  this.name = name;
+                  this.age = age;
+              }
+
+              public String getName() {
+                  return name;
+              }
+
+              public void greet(String to) {
+                  System.out.println("Hello " + to + ", I'm " + name + ".");
+              }
+
+              public boolean canVote() {
+                  return age >= 18;
+              }
+          ]]>
+        </preamble>
+
+        <code>
+              public static void main(String[] args) {
+                Person person = null;
+                System.out.println(person.getName() + " can vote: " + person.canVote());
+              }
+        </code>
+
+        <postamble>
+          }
+        </postamble>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void test1() {
+                  String code = "new Person(";
+                  boolean passed = checkCodeContains(code);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
+  </subsection>
 
   <subsection xml:id="accessors-getters">
     <title>Getters and setters</title>
@@ -158,6 +314,21 @@
           </p>
         </li>
       </dl>
+    </p>
+
+    <p>
+      It is quite common to write getters and setters and we should definitely
+      write than rather than making instance variables <c>public</c>. But we
+      shouldn’t write them reflexively. We should think about whether code
+      outside our class really needs to directly access the values of our
+      variables. And we should think even harder about whether want to let
+      outside code change the values of our variables.
+    </p>
+
+    <p>
+      Less is more when writing code. We can always add a getter or setter when
+      we discover a true need for it. In the meantime better to keep things as
+      simple as possible.
     </p>
 
     <activity label="StudentObjExample">
@@ -261,118 +432,23 @@
         </tests>
       </program>
     </activity>
-  </subsection>
-
-  <subsection xml:id="mutators-setters">
-    <title>Mutators / Setters</title>
-
-    <p>
-      In complement to the accessor/getter methods, if we want to allow code
-      outside the class to <em>change</em> the value of an instance variable we
-      have to provide what is formally called a <term>mutator method</term> but
-      which everyone actually calls a <term>setter</term>. A setter is a void
-      method with a name that starts with <c>set</c> and that takes a single
-      argument of the same type as the instance variable to be set. The effect
-      of a setter, as you would probably expect, is to assign the provided value
-      to the instance variable.
-    </p>
-
-    <p>
-      Just as you shouldn’t reflexively write a getter for every instance
-      variable, you should think even harder about whether you want to write a
-      setter. Not all instance variables are meant to be manipulated directly by
-      code outside the class.
-    </p>
-
-    <p>
-      For example, consider the <c>Turtle</c> class. It provides getters
-      <c>getXPos</c> and <c>getYPos</c> but it does not provide corresponding
-      setters. There are, however, methods that change a <c>Turtle</c>’s
-      position like <c>forward</c> and <c>moveTo</c>. But they do more than just
-      changing the values of instance variables; they also take care of drawing
-      lines on the screen if the pen is down. By not providing setters for those
-      instance variables, the authors of the <c>Turtle</c> class can assume the
-      a <c>Turtle</c>’s position won’t change other than by going through one of
-      the approved movement methods. In general, you shouldn’t write a setter
-      until you find a real reason to do so.
-    </p>
-
-    <p>
-      Here are some examples of how to write a setter for an instance variable:
-    </p>
-
-    <program>
-      class ExampleTemplate {
-          // Instance variable declaration
-          private typeOfVar varName;
-
-          // Setter method template
-          public void setVarName(typeOfVar newValue) {
-              varName = newValue;
-          }
-      }
-    </program>
-
-    <p>
-      Here’s an example of the <c>Student</c> class with a setter for the
-      <c>name</c> variable:
-    </p>
-
-    <program>
-      class Student {
-          // Instance variable name
-          private String name;
-
-          /**
-           * setName sets name to newName
-           *
-           * @param newName
-           */
-          public void setName(String newName) {
-              name = newName;
-          }
-
-          public static void main(String[] args) {
-              // To call a set method, use objectName.setVar(newValue)
-              Student s = new Student();
-              s.setName("Ayanna");
-          }
-      }
-    </program>
-
-    <p>
-      Notice the difference between setters and getters in the following figure.
-      Getters return an instance variable’s value and have the same return type
-      as this variable and no parameters. Setters have a void return type and
-      take a new value as a parameter to change the value of the instance
-      variable.
-    </p>
-
-    <figure align="center">
-      <caption>Comparison of setters and getters</caption>
-
-      <image source="Unit3-Class-Creation/Figures/get-set-comparison.png" width="100%" />
-    </figure>
-
-    <p>
-      Try the <c>Student</c> class below which has had some setters added.
-      Notice that there is no <c>setId</c> method even though there is a
-      <c>getId</c>. This is presumably because in the system this class is part
-      of, while it makes sense for a student to change their name or email,
-      their id should never change.
-    </p>
-
-    <p>
-      You will need to fix one error. The <c>main</c> method is in a separate
-      class <c>TesterClass</c> and does not have access to the <c>private</c>
-      instance variables in the <c>`Student</c> class. Change the <c>main</c>
-      method so that it uses a <c>public</c> setter to change the value instead.
-    </p>
 
     <activity label="StudentObjExample2">
       <statement>
         <p>
-          Fix the main method to include a call to the appropriate set method.
+          Try the <c>Student</c> class below which has had some setters added.
+          Notice that there is no <c>setId</c> method even though there is a
+          <c>getId</c>. This is presumably because in the system this class is
+          part of, while it makes sense for a student to change their name or
+          email, their id should never change.
+        </p>
+
+        <p>
+          You will need to fix one error. The <c>main</c> method is in a
+          separate class <c>TesterClass</c> and does not have access to the
+          <c>private</c> instance variables in the <c>Student</c> class. Change
+          the <c>main</c> method so that it uses a <c>public</c> setter to
+          change the value instead.
         </p>
       </statement>
 
@@ -511,7 +587,8 @@
 
           <feedback id="setSignature_opt_b">
             <p>
-              The set method should not have a return value and needs a
+              The set method should have a <c>void</c> return value as the body
+              does not contain a <c>return</c> statement and it needs a
               parameter.
             </p>
           </feedback>
@@ -523,7 +600,10 @@
           </statement>
 
           <feedback id="setSignature_opt_c">
-            <p>The set method should not have a return value.</p>
+            <p>
+              The set method should have a <c>void</c> return value as the body
+              does not contain a <c>return</c> statement.
+            </p>
           </feedback>
         </choice>
 
@@ -535,9 +615,9 @@
           <feedback id="setSignature_opt_d">
             <p>
               Yes, the set method should take a parameter called people and have
-              a void return value. The name of the set method is usually set
-              followed by the full instance variable name, but it does not have
-              to be an exact match.
+              a <c>void</c> return type. The name of the set method is usually
+              set followed by the full instance variable name, but it does not
+              have to be an exact match.
             </p>
           </feedback>
         </choice>
@@ -550,62 +630,125 @@
           <feedback id="setSignature_opt_e">
             <p>
               The parameter of this set method should be called people in order
-              to match the code in the method body.
+              to match the code in the method body. Also the method body does
+              not contain a <c>return</c> statement so the return type must be
+              <c>void</c>.
             </p>
           </feedback>
         </choice>
       </choices>
     </activity>
 
-    <p>
-      Mutator methods do not have to have a name with “set” in it, although most
-      do. They can be any methods that change the value of an instance variable
-      in the class. Most mutator methods are non-void methods. Mutator methods
-      do not have to have parameters, but they usually do.
-    </p>
+    <activity label="AccessorMutator">
+      <statement>
+        <p>
+          Drag the definition from the left and drop it on the correct word on
+          the right. Click the "Check Me" button to see if you are correct.
+        </p>
+      </statement>
+
+      <feedback>
+        <p>Review the vocabulary.</p>
+      </feedback>
+
+      <cardsort>
+        <match>
+          <premise order="1">
+            gets and returns the value of an instance variable
+          </premise>
+
+          <response>accessor method</response>
+        </match>
+
+        <match>
+          <premise order="2">
+            sets the instance variable to a value in its parameter
+          </premise>
+
+          <response>mutator method</response>
+        </match>
+
+        <match>
+          <premise order="3">
+            initializes the instance variables to values
+          </premise>
+
+          <response>constructor</response>
+        </match>
+
+        <match>
+          <premise order="4">accessible from outside the class</premise>
+          <response>public</response>
+        </match>
+
+        <match>
+          <premise order="5">accessible only inside the class</premise>
+          <response>private</response>
+        </match>
+      </cardsort>
+    </activity>
   </subsection>
 
   <subsection xml:id="tostring">
     <title><c>toString</c></title>
 
     <p>
-      While not strictly speaking a getter, another important method that
-      returns a value is the <c>toString</c> method. This method is called
-      automatically by Java in a number of situations when it needs to convert
-      an object to a <c>String</c>. Most notably the methods
-      <c>System.out.print</c> and <c>System.out.println</c> use it to convert a
-      object argument into a <c>String</c> to be printed and when objects are
-      added to <c>String</c>s with <c>+</c> and <c>+=</c> their <c>String</c>
-      representation comes from calling their <c>toString</c> method.
+      Another important kind of method is one that returns some kind of
+      representation of the object. In particular there’s a special method in
+      Java with the signature <c>public String toString()</c>.
     </p>
 
     <p>
-      Here is the <c>Student</c> class again, but this time with a
-      <c>toString</c> method. Note that when we call
-      <c>System.out.println(s1)</c> it will automatically call the
-      <c>toString</c> method to get a <c>String</c> representation of the
-      <c>Student</c> object. The <c>toString</c> method will return a
-      <c>String</c> that is then printed out. Watch how the control moves to the
-      <c>toString</c> method and then comes back to <c>main</c> in the Java
-      visualizer by using the Show CodeLens button.
+      This method is called automatically in a number of situations when Java
+      needs to convert an arbitrary object to a <c>String</c>. In particular the
+      <c>print</c> and <c>println</c> methods on <c>System.out</c> use it to
+      convert a object argument into a <c>String</c> to be printed. And the
+      <c>String</c> concatenation operators, <c>+</c> and <c>+=</c>, use it to
+      get the <c>String</c> representation of object values.
+    </p>
+
+    <p>
+      The reason this works is because of a feature of Java called
+      <term>inheritance</term> that is no longer covered on AP exam. But the
+      extremely short version is: classes in Java can be related to other
+      classes such that they <term>inherit</term> certain methods from them. All
+      objects in Java inherit methods from the class <c>java.lang.Object</c>,
+      among them <c>toString</c>. So if a class doesn’t contain its own
+      <c>toString</c> it will have the one that it inherits from <c>Object</c>.
+      Unfortunately the strings it returns are not all that useful. For instance
+      our <c>Person</c> class’s <c>toString</c>, inherited from <c>Object</c>,
+      returns strings like <c>"Person@6d4b1c02"</c>. If a class contains a
+      <c>toString</c> method, that method <term>overrides</term> the inherited
+      one, allowing us to return a more useful <c>String</c> representation.
     </p>
 
     <activity label="StudentToString">
       <statement>
         <p>
-          See the toString() method in action. Add another student object and
-          print it out.
+          Here is the <c>Student</c> class again, but this time with a
+          <c>toString</c> method. Note that when we call
+          <c>System.out.println(s1)</c> it will automatically call the
+          <c>toString</c> method to get a <c>String</c> representation of the
+          <c>Student</c> object. The <c>toString</c> method will return a
+          <c>String</c> that is then printed out. Watch how the control moves to
+          the <c>toString</c> method and then comes back to <c>main</c> in the
+          Java visualizer by using the Show CodeLens button.
+        </p>
+
+        <p>
+          Add another <c>Student</c> object with a different name, email, and ID
+          and print it out.
         </p>
       </statement>
 
       <program interactive="activecode">
         <code>
           public class TesterClass {
-              // main method for testing
+
               public static void main(String[] args) {
                   Student s1 = new Student("Skyler", "skyler@sky.com", 123456);
                   System.out.println(s1);
-                  // TODO: add another student s2 and print it out
+                  // TODO: add another Student s2 and print it out
 
               }
           }
@@ -615,13 +758,12 @@
               private String email;
               private int id;
 
-              public Student(String initName, String initEmail, int initId) {
-                  name = initName;
-                  email = initEmail;
-                  id = initId;
+              public Student(String name, String email, int id) {
+                  this.name = name;
+                  this.email = email;
+                  this.id = id;
               }
 
-              // toString() method
               public String toString() {
                   return id + ": " + name + ", " + email;
               }
@@ -650,41 +792,549 @@
 
   <subsection>
     <title>Methods with side-effects</title>
+
+    <p>
+      Mutator methods do not have to have a name with “set” in it, although most
+      do. They can be any methods that change the value of an instance variable
+      in the class. Most mutator methods are non-void methods. Mutator methods
+      do not have to have parameters, but they usually do.
+    </p>
   </subsection>
 
-  <subsection xml:id="parameters">
-    <title>Parameters</title>
+  <subsection xml:id="methods-that-return-values">
+    <title>Methods that Return Values</title>
 
     <p>
-      The setter methods above contained parameters. A <term>parameter</term> is
-      a variable in a method’s header that is used to pass in data that the
-      method needs to do its job. In a setter, the parameter is the new value
-      that you want to assign to the instance variable. Methods with parameters
-      receive values through those parameters and use those values in
-      accomplishing the method’s task.
+      All the methods on <c>Turtle</c> that we’ve discussed so far are
+      <term>void methods</term> with <c>void</c> return type. This means they
+      don’t return anything. Because a <c>void</c> method doesn’t return any
+      value, the only point of calling one is because it does something that can
+      be observed by the user or by other code—it changes the state of the
+      object or maybe causes something to happen like drawing a line on the
+      screen. Or both. These things they do are sometimes called “effects”.
     </p>
 
     <p>
-      An <term>argument</term> is a value that is passed into a method when the
-      method is called. It is saved into a parameter variable. The arguments
-      passed to a method must be compatible in number and order with the types
-      identified in the parameter list of the method signature. When calling
-      methods, arguments are passed using call by value. <term>Call by
-      value</term> initializes the parameters with copies of the arguments. When
-      an argument is a primitive value, the parameter is initialized with a copy
-      of that value. Changes to the parameter have no effect on the
-      corresponding argument.
+      In contrast, methods with a return type of anything <em>other</em> than
+      <c>void</c> are called <term>non-void</term> methods. These methods
+      <term>return</term> a value that the code calling the method can use. And
+      because methods are called on an object, these methods can be used to
+      return values that tell us things about an object’s internal state. In
+      well-designed programs, non- void methods typically don’t have effects;
+      they just compute and return a value. To put it another way, void methods
+      <em>do things</em> while non-void methods <em>produce values</em>.
     </p>
 
-    <figure align="center">
-      <caption>
-        Method signatures with parameters and method calls arguments
-      </caption>
+    <p>
+      A simple kind of method that returns a value is what is formally called an
+      <term>accessor</term> because it accesses a value in an object. In the
+      real world everyone calls them <term>getters</term>. A getter is a method
+      that takes no arguments and has a non-<c>void</c> return type. In Java
+      they are almost always named something that starts with <c>get</c>, and
+      they usually just return the value of one of the object’s instance
+      variables. For example, the <c>Turtle</c> class has several getters,
+      <c>getWidth</c> and <c>getHeight</c> which return the width and the height
+      of a <c>Turtle</c> object and <c>getXPos</c> and <c>getYPos</c> which
+      return the x and y values of the <c>Turtle</c>’s position.
+    </p>
 
-      <image source="Unit3-Class-Creation/Figures/method-param-arg.png" width="98%">
-        <shortdescription>Method parameters and arguments</shortdescription>
-      </image>
-    </figure>
+    <p>
+      Note that when you use a getter, you need to do something with the value
+      it returns. You might assign it to a variable, use it in an expression, or
+      print it out. If you don’t, you’re just getting a value and doing nothing
+      with it—you might as well not have bothered to call the getter in the
+      first place.
+    </p>
+
+    <p>
+      Here are some examples of using getters on the <c>Turtle</c> object
+      <c>yertle</c>.
+    </p>
+
+    <program>
+      Turtle yertle = new Turtle(world);
+      int width = yertle.getWidth();
+      int height = yertle.getHeight();
+      System.out.println("Yertle's width is: " + width);
+      System.out.println("Yertle's height is: " + height);
+      System.out.println("Yertle's x position is: " + yertle.getXPos() );
+      System.out.println("Yertle's y position is: " + yertle.getYPos() );
+    </program>
+
+    <note>
+      <p>
+        A common error is forgetting to do something with the value returned
+        from a method. When you call a method that returns a value, you should
+        do something with that value like assigning it to a variable or printing
+        it out.
+      </p>
+    </note>
+
+    <p>
+      We will save a deeper discussion of actually writing getters and other
+      methods until Unit 3, but for the AP progress checks for this unit, you
+      should be able to trace through method calls like the ones below. Notice
+      that the <term>return statement</term> in a method returns the value, and
+      it must match declared return type of the method. The calling method must
+      then do something useful with that value.
+    </p>
+
+    <activity label="traceCircleArea">
+      <statement>
+        <p>Consider the following class definition.</p>
+
+        <program>
+          public class Circle {
+              private double radius;
+
+              public Circle(double r) {
+                  radius = r;
+              }
+
+              public double getArea() {
+                  return 3.14159 * radius * radius;
+              }
+          }
+        </program>
+
+        <p>Assume that the following code segment appears in a main method.</p>
+
+        <program>
+          Circle c = new Circle(10);
+          System.out.println(c.getArea());
+        </program>
+
+        <p>
+          What is printed as a result of executing the code segment? (If you get
+          stuck, try this <url
+          href="https://pythontutor.com/visualize.html#code=public%20class%20Circle%0A%7B%0A%20%20%20%20private%20double%20radius%3B%0A%0A%20%20%20%20public%20Circle%28double%20r%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20radius%20%3D%20r%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20double%20getArea%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20return%203.14159%20*%20radius%20*%20radius%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20Circle%20c%20%3D%20new%20Circle%2810%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28c.getArea%28%29%29%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
+          to see this code in action.)
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>0</p>
+          </statement>
+
+          <feedback>
+            <p>First, call the constructor, then call getArea().</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>314.159</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Correct! getArea() returns 3.14159 * radius * radius, where radius
+              is set to 10 by the constructor.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>c.getArea()</p>
+          </statement>
+
+          <feedback>
+            <p>c.getArea() is a method call, not a value.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>The code will not compile.</p>
+          </statement>
+
+          <feedback>
+            <p>The code does compile.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>100.0</p>
+          </statement>
+
+          <feedback>
+            <p>Don't forget to multiply by 3.14159.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="traceRectangleArea">
+      <statement>
+        <p>Consider the following class definition.</p>
+
+        <program>
+          public class Rectangle {
+              private int width;
+              private int height;
+
+              public Rectangle(int w, int h) {
+                  width = w;
+                  height = h;
+              }
+
+              public void resize(int amt) {
+                  width += amt;
+              }
+
+              public int getArea() {
+                  return width * height;
+              }
+          }
+        </program>
+
+        <p>Assume that the following code segment appears in a main method.</p>
+
+        <program>
+          Rectangle r = new Rectangle(10, 15);
+          r.resize(5);
+          System.out.println(r.getArea());
+        </program>
+
+        <p>
+          What is printed as a result of executing the code segment? (If you get
+          stuck, try this <url
+          href="https://pythontutor.com/render.html#code=public%20class%20Rectangle%0A%7B%0A%20%20%20%20private%20int%20width%3B%0A%20%20%20%20private%20int%20height%3B%0A%0A%20%20%20%20public%20Rectangle%28int%20w,%20int%20h%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20width%20%3D%20w%3B%0A%20%20%20%20%20%20%20%20height%20%3D%20h%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20void%20resize%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20width%20%2B%3D%205%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20int%20getArea%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20return%20width%20*%20height%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20Rectangle%20r%20%3D%20new%20Rectangle%2810,%2015%29%3B%0A%20%20%20%20%20%20%20%20r.resize%28%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28r.getArea%28%29%29%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=20&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
+          to see this code in action.)
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>150</p>
+          </statement>
+
+          <feedback>
+            <p>Note that the method resize() is called before getArea().</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>150.0</p>
+          </statement>
+
+          <feedback>
+            <p>Note that the method resize() is called before getArea().</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>225</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Correct! resize() increases the width by 5, so the area is 15 * 15
+              = 225.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>255.0</p>
+          </statement>
+
+          <feedback>
+            <p>Note that getArea() returns an int</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>0</p>
+          </statement>
+
+          <feedback>
+            <p>Note that the constructor initializes width and height.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <p>
+      Let's try calling the constructor and methods of this Rectangle class in
+      an active code exercise below.
+    </p>
+
+    <activity label="rectangleMethods">
+      <statement>
+        <p>
+          Given the Rectangle class below, use its constructor to create a 5x10
+          rectangle, then call its resize method to add 10 to its width, and
+          then print out its area using its getArea method.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <code>
+          public class Rectangle {
+              private int width;
+              private int height;
+
+              public Rectangle(int w, int h) {
+                  width = w;
+                  height = h;
+              }
+
+              public void resize(int amt) {
+                  width += amt;
+              }
+
+              public int getArea() {
+                  return width * height;
+              }
+
+              public static void main(String[] args) {
+                  // 1. Create a rectangle with width 5 and height 10
+
+                  // 2. Call the resize method to add 10 to its width
+
+                  // 3. Print out its area using its getArea method
+
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void testMain() throws IOException {
+                  String output = getMethodOutput("main");
+                  String expect = "150";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test1() {
+                  String code = "new Rectangle(5,10)";
+                  boolean passed = checkCodeContains(code);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2() {
+                  String code = ".resize(10)";
+                  boolean passed = checkCodeContains(code);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test3() {
+                  String code = ".getArea()";
+                  boolean passed = checkCodeContains(code);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+      </program>
+    </activity>
+
+    <activity label="traceReturnMethods">
+      <statement>
+        <p>
+          What does the following code print out? (If you get stuck, try this
+          <url
+          href="http://www.pythontutor.com/visualize.html#code=public%20class%20MethodTrace%20%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20public%20int%20square%28int%20x%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20x*x%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20int%20divide%28int%20x,%20int%20y%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20x/y%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20MethodTrace%20traceObj%20%3D%20new%20MethodTrace%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%20traceObj.square%282%29%20%2B%20traceObj.divide%286,2%29%20%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%7D&amp;cumulative=false&amp;curInstr=16&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
+          to see this code in action.)
+        </p>
+
+        <program>
+          public class MethodTrace {
+              public int square(int x) {
+                  return x * x;
+              }
+
+              public int divide(int x, int y) {
+                  return x / y;
+              }
+
+              public static void main(String[] args) {
+                  MethodTrace traceObj = new MethodTrace();
+                  System.out.println(traceObj.square(2) + traceObj.divide(6, 2));
+              }
+          }
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>5</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Make sure you call both methods and compute the square of 2 and
+              then add the results.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>7</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Yes, square(2) returns 4 which is added to divide(6,2) which
+              returns 3. The total of 4 + 3 is 7.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>4 3</p>
+          </statement>
+
+          <feedback>
+            <p>Make sure you add the results before printing it out.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>2 3</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Make sure you square(2) and add the results before printing it
+              out.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>Does not compile.</p>
+          </statement>
+
+          <feedback>
+            <p>Try the code in an active code window.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <p>
+      The <c>Turtle</c> class has a method called <c>getDistance(x,y)</c> which
+      will return the turtle’s distance from a point (x,y). Can you find
+      yertle’s distance from the point (0,0)? In the exercise below, add another
+      turtle and make both turtles move. Then find the distance between them.
+      You must use the <c>getXPos</c> and <c>getYPos</c> methods as well as the
+      <c>getDistance</c> method.
+    </p>
+
+    <activity label="TurtleDistance">
+      <statement>
+        <p>
+          Use the <c>getXPos</c>, <c>getYPos</c>, and <c>getDistance(x,y)</c>
+          methods to find yertle’s distance from the point (0,0). Add another
+          turtle, move both turtles to different positions, and find the
+          distance between the two turtles.
+        </p>
+      </statement>
+
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+        <code>
+          import java.awt.*;
+          import java.util.*;
+
+          public class TurtleTestDistance {
+              public static void main(String[] args) {
+                  World world = new World(300, 300);
+                  Turtle yertle = new Turtle(world);
+
+                  // Can you find yertle's distance from the point (0,0)?
+
+                  // Can you find the distance between 2 turtles?
+
+                  world.show(true);
+              }
+          }
+        </code>
+
+        <tests>
+          <![CDATA[
+
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("TurtleTestDistance");
+              }
+
+              @Test
+              public void test2() {
+                  String code = getCode();
+                  int num = countOccurences(code, ".getXPos()");
+
+                  boolean passed = num > 0;
+                  getResults(">=1", "" + num, "Calls to getXPos()", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test3() {
+                  String code = getCode();
+                  int num = countOccurences(code, ".getYPos()");
+
+                  boolean passed = num > 0;
+                  getResults(">=1", "" + num, "Calls to getYPos()", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test4() {
+                  String code = getCode();
+                  int num = countOccurences(code, ".getDistance(");
+
+                  boolean passed = num >= 2;
+                  getResults(">=2", "" + num, "Calls to getDistance(...)", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test1() {
+                  String code = getCode();
+                  int num = countOccurences(code, ".getDistance(0,0)");
+
+                  boolean passed = num >= 1;
+                  getResults(">=1", "" + num, "Calls getDistance(0,0)", passed);
+                  assertTrue(passed);
+              }
+          }
+
+          ]]>
+        </tests>
+      </program>
+    </activity>
   </subsection>
 
   <subsection xml:id="methods-with-parameters-that-return-calculated-values">
@@ -815,6 +1465,109 @@
           }
         </tests>
       </program>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Overloaded methods</title>
+
+    <p>
+      Methods are said to be <term>overloaded</term> when there are multiple
+      methods with the same name but a different <term>method signature</term>,
+      where it requires a different number or type of parameters. For example,
+      we have two different forward methods, <c>forward()</c> with no arguments
+      and <c>forward(100)</c> which has an argument that tells it how much to
+      move forward. The arguments given to the method need to correspond to the
+      order and types of the parameters in the method signature.
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Practice</title>
+
+    <activity label="student_methods">
+      <statement>
+        <p>
+          Click on the method headers (signatures) in the following class. Do
+          not click on the constructors.
+        </p>
+      </statement>
+
+      <feedback>
+        <p>
+          Methods follow the constructors. The method header is the first line
+          of a method.
+        </p>
+      </feedback>
+
+      <areas>
+        <cline><area correct="no">public class Student {</area></cline>
+        <cline />
+        <cline>    <area correct="no">private String name;</area></cline>
+        <cline>    <area correct="no">private String email;</area></cline>
+        <cline />
+        <cline>    <area correct="no">public Student(String initName, String intEmail) </area></cline>
+        <cline>    <area correct="no">{</area></cline>
+        <cline>        <area correct="no">name = initName;</area></cline>
+        <cline>        <area correct="no">email = initEmail;</area></cline>
+        <cline>     <area correct="no">}</area></cline>
+        <cline />
+        <cline>     <area correct="yes">public String getName() </area></cline>
+        <cline>     <area correct="no">{</area></cline>
+        <cline>        <area correct="no">return name;</area></cline>
+        <cline>     <area correct="no">}</area></cline>
+        <cline />
+        <cline>     <area correct="yes">public void print() </area></cline>
+        <cline>     <area correct="no">{</area></cline>
+        <cline>        <area correct="no">System.out.println(name + ":" + email);</area></cline>
+        <cline>     <area correct="no">}</area></cline>
+        <cline><area correct="no">}</area></cline>
+      </areas>
+    </activity>
+
+    <activity label="methodVocab">
+      <statement>
+        <p>
+          Drag the definition from the left and drop it on the correct word on
+          the right. Click the "Check Me" button to see if you are correct.
+        </p>
+      </statement>
+
+      <feedback>
+        <p>Review the vocabulary above.</p>
+      </feedback>
+
+      <cardsort>
+        <match>
+          <premise order="1">
+            an object's behaviors or functions that can be used or called to do
+            its job
+          </premise>
+
+          <response>methods</response>
+        </match>
+
+        <match>
+          <premise order="2">
+            the values or data passed to an object's method
+          </premise>
+
+          <response>arguments</response>
+        </match>
+
+        <match>
+          <premise order="3">
+            the variables in a method's definition that hold the arguments
+          </premise>
+
+          <response>parameters</response>
+        </match>
+
+        <match>
+          <premise order="4">asking to run the method</premise>
+          <response>method call</response>
+        </match>
+      </cardsort>
     </activity>
   </subsection>
 
@@ -1605,54 +2358,80 @@
       </ul>
     </p>
 
-    <activity label="AccessorMutator">
-      <statement>
-        <p>
-          Drag the definition from the left and drop it on the correct word on
-          the right. Click the "Check Me" button to see if you are correct.
-        </p>
-      </statement>
+    <p>
+      <ul>
+        <li>
+          <p>
+            <term>Instance methods</term> define the behavior and actions that
+            an object can perform.
+          </p>
+        </li>
 
-      <feedback>
-        <p>Review the vocabulary.</p>
-      </feedback>
+        <li>
+          <p>
+            (AP 1.14.A.1) <term>Instance methods</term> are called on objects of
+            the class.
+          </p>
+        </li>
 
-      <cardsort>
-        <match>
-          <premise order="1">
-            gets and returns the value of an instance variable
-          </premise>
+        <li>
+          <p>
+            (AP 1.14.A.1) The dot operator is used along with the object name to
+            <term>call</term> instance methods, for example
+            <term>object.method();</term>
+          </p>
+        </li>
 
-          <response>accessor method</response>
-        </match>
+        <li>
+          <p>
+            (AP 1.14.A.2) A method call on a <c>null</c> reference will result
+            in a <c>NullPointerException</c>.
+          </p>
+        </li>
 
-        <match>
-          <premise order="2">
-            sets the instance variable to a value in its parameter
-          </premise>
+        <li>
+          <p>
+            Some methods take <term>arguments</term> that are placed inside the
+            parentheses <term>object.method(arguments)</term>.
+          </p>
+        </li>
 
-          <response>mutator method</response>
-        </match>
+        <li>
+          <p>
+            A <term>method signature</term> is the method name followed by the
+            parameter list which gives the type and name for each parameter.
+            Note that methods do not have to take any parameters, but you still
+            need the parentheses after the method name.
+          </p>
+        </li>
 
-        <match>
-          <premise order="3">
-            initializes the instance variables to values
-          </premise>
+        <li>
+          <p>
+            The method call arguments must match the method signature in number,
+            order, and type.
+          </p>
+        </li>
 
-          <response>constructor</response>
-        </match>
+        <li>
+          <p>
+            A <term>method</term> call interrupts the sequential execution of
+            statements, causing the program to first execute the statements in
+            the method or constructor before continuing. Once the last statement
+            in the method or constructor has executed or a <c>return</c>
+            statement is executed, the flow of control is returned to the point
+            immediately following the method or constructor call.
+          </p>
+        </li>
 
-        <match>
-          <premise order="4">accessible from outside the class</premise>
-          <response>public</response>
-        </match>
-
-        <match>
-          <premise order="5">accessible only inside the class</premise>
-          <response>private</response>
-        </match>
-      </cardsort>
-    </activity>
+        <li>
+          <p>
+            <term>Non-void methods</term> are methods that return values. You
+            should do something with the return value, such as assigning it to a
+            variable, using it in an expression, or printing it.
+          </p>
+        </li>
+      </ul>
+    </p>
   </subsection>
 
   <subsection xml:id="ap-practice-21">
@@ -1997,1488 +2776,6 @@
         </choice>
       </choices>
     </activity>
-  </subsection>
-
-  <subsection>
-    <title>Foo</title>
-
-    <idx>instance methods</idx>
-    <idx>object methods</idx>
-    <idx>method</idx>
-    <idx>parameter</idx>
-    <idx>argument</idx>
-    <p>
-      In object-oriented programming, <term>methods</term> define the behavior
-      and actions that an object can perform. For example, <c>Turtle</c> objects
-      can go forward or turn left using method calls like
-      <c>yertle.forward()</c> and <c>yertle.turnRight()</c> to change its
-      position. These methods are sometimes called <term>instance methods</term>
-      or <term>object methods</term> because they are called using an instance
-      or object of the class, in this case a specific <c>Turtle</c> object like
-      <c>yertle</c>.
-    </p>
-  </subsection>
-
-  <subsection xml:id="class-methods-vs-instance-methods">
-    <title>Class Methods vs. Instance Methods</title>
-
-    <p>
-      In lessons 1.9 and 1.10, we learned how to call <term>class methods</term>
-      (also called <term>static methods</term>). Class methods are called using
-      the class name followed by the dot (.) operator and the method name,
-      example, <c>Math.sqrt(25);</c> calls the <c>sqrt</c> method in the
-      <c>Math</c> class to find the square root of 25. Class methods use the
-      keyword <c>static</c> in their method signature. They do not access or
-      change the attributes of an object.
-    </p>
-
-    <p>
-      In this lesson, we will learn more about <term>instance methods</term>
-      which are always called using an object of the class. They are not static
-      methods. They access and change the attributes of the object they are
-      called on, for example <c>yertle.forward()</c> changes the <c>Turtle</c>
-      object yertle’s position.
-    </p>
-
-    <p>
-      The following flowchart shows the difference between calling class
-      (static) methods and instance methods. Static methods are called using the
-      class name, for example, <c>Math.sqrt(25);</c>. Instance methods are
-      called using an object of the class, for example,
-      <c>yertle.forward();</c>. Traditionally, class names are capitalized, and
-      object variables are lowercase.
-    </p>
-
-    <figure align="center">
-      <caption>Calling static vs. instance methods</caption>
-
-      <image source="Unit1-Using-Objects-and-Methods/Figures/calling-static-vs-instance-methods.png" width="63%">
-        <shortdescription>Calling static vs. instance methods</shortdescription>
-      </image>
-    </figure>
-  </subsection>
-
-  <subsection xml:id="method-signatures">
-    <title>Method Signatures</title>
-
-    <p>
-      The <term>method signature</term> defines the method’s name and the number
-      and types of parameters it takes. In a class definition or in
-      documentation of a library, instance methods are usually defined after the
-      instance variables (attributes) and constructors in a class. For example,
-      see the <c>Student</c> class below. Notice that the methods do not use the
-      keyword <c>static</c>. They are instance methods that are called using an
-      object of the class and can access and change the object’s attributes.
-    </p>
-
-    <figure align="center">
-      <caption>
-        A Student class showing instance variables, constructors, and methods
-      </caption>
-
-      <image source="Unit1-Using-Objects-and-Methods/Figures/StudentClass.png" width="89%">
-        <shortdescription>
-          A Student class showing instance variables, constructors, and methods
-        </shortdescription>
-      </image>
-    </figure>
-
-    <activity label="student_methods">
-      <statement>
-        <p>
-          Click on the method headers (signatures) in the following class. Do
-          not click on the constructors.
-        </p>
-      </statement>
-
-      <feedback>
-        <p>
-          Methods follow the constructors. The method header is the first line
-          of a method.
-        </p>
-      </feedback>
-
-      <areas>
-        <cline><area correct="no">public class Student {</area></cline>
-        <cline />
-        <cline>    <area correct="no">private String name;</area></cline>
-        <cline>    <area correct="no">private String email;</area></cline>
-        <cline />
-        <cline>    <area correct="no">public Student(String initName, String intEmail) </area></cline>
-        <cline>    <area correct="no">{</area></cline>
-        <cline>        <area correct="no">name = initName;</area></cline>
-        <cline>        <area correct="no">email = initEmail;</area></cline>
-        <cline>     <area correct="no">}</area></cline>
-        <cline />
-        <cline>     <area correct="yes">public String getName() </area></cline>
-        <cline>     <area correct="no">{</area></cline>
-        <cline>        <area correct="no">return name;</area></cline>
-        <cline>     <area correct="no">}</area></cline>
-        <cline />
-        <cline>     <area correct="yes">public void print() </area></cline>
-        <cline>     <area correct="no">{</area></cline>
-        <cline>        <area correct="no">System.out.println(name + ":" + email);</area></cline>
-        <cline>     <area correct="no">}</area></cline>
-        <cline><area correct="no">}</area></cline>
-      </areas>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="method-calls">
-    <title>Method Calls</title>
-
-    <p>
-      To use an object’s method, you must use the object name and the dot (.)
-      operator followed by the method name, for example,
-      <c>yertle.forward();</c> calls <c>yertle</c>’s <c>forward</c> method to
-      move a turtle object forward 100 pixels. Object methods work with the
-      <term>attributes</term> of the object, such as the direction the turtle is
-      heading or its position.
-    </p>
-
-    <p>
-      Methods inside the same class can call each other using just
-      <c>methodName()</c>, but to call instance methods in another class or from
-      a main method, you must first create an object of that class and then call
-      its methods using <c>object.methodName()</c>.
-    </p>
-
-    <figure align="center">
-      <caption>
-        Calling instance methods from main() or from other methods inside the
-        same class.
-      </caption>
-
-      <image source="Unit1-Using-Objects-and-Methods/Figures/calling-methods.png" width="80%">
-        <shortdescription>Calling Methods</shortdescription>
-      </image>
-    </figure>
-
-    <note>
-      <p>
-        <c>method();</c> is used to call a method within the same class, but
-        <c>object.method();</c> is necessary if you are calling the method from
-        the main method or from a different class.
-      </p>
-    </note>
-
-    <p>
-      Before you call a method from <c>main</c> or from outside of the current
-      class, you must make sure that you have created and initialized an object.
-      However, if you just declare an object reference without setting it to
-      refer to a new object, the value will be <c>null</c>, meaning that it
-      doesn’t reference an object. If you call a method on a variable whose
-      value is <c>null</c>, you will get a <term>NullPointerException</term>
-      error, where a <term>pointer</term> is another name for a reference.
-    </p>
-
-    <activity label="nullPointerTest">
-      <statement>
-        <p>
-          Run the code below to see a NullPointerException. Fix the code by
-          using <c>new Turtle(habitat)</c> to create a new Turtle object before
-          calling its methods.
-        </p>
-      </statement>
-
-      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
-        <code>
-          import java.awt.*;
-          import java.util.*;
-
-          public class NullPointerTest {
-              public static void main(String[] args) {
-                  World habitat = new World(300, 300);
-                  Turtle yertle = null;
-
-                  // yertle is null!
-                  yertle.forward();
-
-                  habitat.show(true);
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void test1() {
-                  String code = "new Turtle(habitat)";
-                  boolean passed = checkCodeContains(code);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-      </program>
-    </activity>
-
-    <p>
-      The following flowchart can be used to compare three different ways of
-      calling methods. Class (static) methods are called using the class name.
-      Instance methods are called using an object of the class. If you are
-      calling the instance method from the main method or from another class,
-      you must first create an object of that class and then call its methods
-      using <c>object.methodName()</c>. If you are calling the method from
-      within the same class, you can just call the method using
-      <c>methodName()</c> which will refer to the current object.
-    </p>
-
-    <figure align="center">
-      <caption>Comparing Method Calls to Static and Instance Methods</caption>
-
-      <image source="Unit1-Using-Objects-and-Methods/Figures/FlowChartCallingMethods.png" width="98%">
-        <shortdescription>
-          Comparing method calls to static and instance methods
-        </shortdescription>
-      </image>
-    </figure>
-  </subsection>
-
-  <subsection xml:id="methods-calls-with-arguments">
-    <title>Methods Calls with Arguments</title>
-
-    <p>
-      In the last lessons, we used simple <term>methods</term> like
-      <c>forward</c> and <c>turnRight</c> to make the turtle draw lines. You may
-      have noticed that <c>forward()</c> and <c>backward()</c> always move the
-      same number of pixels (100 pixels), and <c>turnRight()</c> and
-      <c>turnLeft()</c> always turn at right angles (90 degrees). This is a
-      little limiting. What if we wanted to draw a triangle or the letter A?
-      These require smaller angles to draw diagonal lines and different length
-      lines. Luckily, there are more complex methods in the <c>Turtle</c> class
-      that let you specify the number of pixels to move forward or the number of
-      degrees to turn. These values that you can give to methods to help them do
-      their job are called <term>arguments</term> or <term>parameters</term>.
-      For example, we can give the argument 200 in <c>forward(200)</c> to make
-      the turtle go forward 200 pixels instead of the default of 100 or the
-      argument 30 in <c>turn(30)</c> to make the turtle turn 30 degrees instead
-      of 90 degrees.
-    </p>
-
-    <note>
-      <p>
-        <c>object.method(arguments);</c> is used to call an object’s method and
-        give it some argument values that it will need to do its job.
-      </p>
-    </note>
-
-    <p>
-      When you create your own method, the variables you define for it are
-      called <term>parameters</term>. When you call the method to do its job,
-      you give or pass in <term>arguments</term> to it that are then saved in
-      the parameter variables. So, in the definition of the <c>forward</c>
-      method, it has a parameter variable called <c>pixels</c>, and in the call
-      to <c>forward(200)</c>, the argument is the value 200 which will get saved
-      in the parameter variable pixels. You will learn to write your own methods
-      in Unit 3. In this unit, you will learn to call methods that are already
-      written for you.
-    </p>
-
-    <figure align="center">
-      <caption>
-        Method signatures with parameters and method calls arguments
-      </caption>
-
-      <image source="Unit1-Using-Objects-and-Methods/Figures/method-param-arg.png" width="98%">
-        <shortdescription>Method parameters and arguments</shortdescription>
-      </image>
-    </figure>
-
-    <activity label="methodVocab">
-      <statement>
-        <p>
-          Drag the definition from the left and drop it on the correct word on
-          the right. Click the "Check Me" button to see if you are correct.
-        </p>
-      </statement>
-
-      <feedback>
-        <p>Review the vocabulary above.</p>
-      </feedback>
-
-      <cardsort>
-        <match>
-          <premise order="1">
-            an object's behaviors or functions that can be used or called to do
-            its job
-          </premise>
-
-          <response>methods</response>
-        </match>
-
-        <match>
-          <premise order="2">
-            the values or data passed to an object's method
-          </premise>
-
-          <response>arguments</response>
-        </match>
-
-        <match>
-          <premise order="3">
-            the variables in a method's definition that hold the arguments
-          </premise>
-
-          <response>parameters</response>
-        </match>
-
-        <match>
-          <premise order="4">asking to run the method</premise>
-          <response>method call</response>
-        </match>
-      </cardsort>
-    </activity>
-
-    <p>
-      Here is the Turtle class diagram again that shows some of the variables
-      and methods inherited from the SimpleTurtle class in the class Turtle that
-      are written for you.
-    </p>
-
-    <figure align="center">
-      <caption>Turtle Class Diagram</caption>
-
-      <image source="Unit1-Using-Objects-and-Methods/Figures/turtleUMLClassDiagram.png" width="71%">
-        <shortdescription>Turtle class diagram</shortdescription>
-      </image>
-    </figure>
-
-    <p>
-      Methods are said to be <term>overloaded</term> when there are multiple
-      methods with the same name but a different <term>method signature</term>,
-      where it requires a different number or type of parameters. For example,
-      we have two different forward methods, <c>forward()</c> with no arguments
-      and <c>forward(100)</c> which has an argument that tells it how much to
-      move forward. The arguments given to the method need to correspond to the
-      order and types of the parameters in the method signature.
-    </p>
-
-    <activity label="TurtleTestMethods1">
-      <statement>
-        <p>
-          <ol>
-            <li>
-              <p>
-                Can you make yertle draw a square and change the pen color for
-                each side of the square? Try something like:
-                yertle.setColor(Color.red); This uses the <url
-                href="https://docs.oracle.com/en/java/javase/22/docs/api/java.desktop/java/awt/Color.html">Color</url>
-                class in Java which has some colors predefined like red, yellow,
-                blue, magenta, cyan. You can also use more specific methods like
-                setPenColor, setBodyColor, and setShellColor.
-              </p>
-            </li>
-
-            <li>
-              <p>
-                Can you draw a triangle? The turnRight() method always does 90
-                degree turns, but you’ll need external angles of 120 degree for
-                an equilateral triangle. Use the turn method which has a
-                parameter for the angle of the turn in degrees. For example,
-                turn(90) is the same as turnRight(). Try drawing a triangle with
-                different colors.
-              </p>
-            </li>
-          </ol>
-        </p>
-      </statement>
-
-      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
-        <code>
-          import java.awt.*;
-          import java.util.*;
-
-          public class TurtleTestMethods1 {
-              public static void main(String[] args) {
-                  World world = new World(300, 300);
-                  Turtle yertle = new Turtle(world);
-
-                  yertle.forward(100);
-                  yertle.turnLeft();
-                  yertle.forward(75);
-
-                  world.show(true);
-              }
-          }
-        </code>
-
-        <tests>
-          <![CDATA[
-
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("TurtleTestMethods1");
-              }
-
-              @Test
-              public void test1() {
-                  boolean passed =
-                          codeChanged(
-                                  "import java.awt.*;\n"
-                                          + "import java.util.*;\n"
-                                          + "\n"
-                                          + "public class TurtleTestMethods1\n"
-                                          + "{\n"
-                                          + "    public static void main(String[] args)\n"
-                                          + "    {\n"
-                                          + "        World world = new World(300, 300);\n"
-                                          + "        Turtle yertle = new Turtle(world);\n"
-                                          + "\n"
-                                          + "        yertle.forward(100);\n"
-                                          + "        yertle.turnLeft();\n"
-                                          + "        yertle.forward(75);\n"
-                                          + "\n"
-                                          + "        world.show(true);\n"
-                                          + "    }\n"
-                                          + "}\n");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  String code = getCode();
-                  int numColors = countOccurences(code, "Color(");
-
-                  boolean passed = numColors >= 3;
-                  passed = getResults("3 or more", "" + numColors, "Changes color at least 3 times", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3() {
-                  String code = getCode();
-                  int numTurns = countOccurences(code, ".turn");
-
-                  boolean passed = numTurns >= 3;
-                  passed = getResults("3 or more", "" + numTurns, "Turns at least 3 times", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test4() {
-                  String code = getCode();
-                  int numTurns = countOccurences(code, ".turn(");
-
-                  boolean passed = numTurns >= 1;
-                  passed = getResults("1 or more", "" + numTurns, "Calls to turn(...)", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test5() {
-                  String code = getCode();
-                  int numForward = countOccurences(code, ".forward(");
-
-                  boolean passed = numForward >= 4;
-                  passed = getResults("4 or more", "" + numForward, "Calls to forward()", passed);
-                  assertTrue(passed);
-              }
-          }
-
-          ]]>
-        </tests>
-      </program>
-    </activity>
-
-    <image source="Unit1-Using-Objects-and-Methods/Figures/house.png" width="27%">
-      <shortdescription>simple house</shortdescription>
-    </image>
-
-    <p>
-      Try the following mixed up code to draw a simple house made of a square
-      and a triangle roof.
-    </p>
-
-    <activity label="DrawAHouse" numbered="yes" adaptive="yes" indentation="hide" language="java">
-      <statement>
-        <p>
-          The following code uses a turtle to draw a simple house, but the lines
-          are mixed up. Drag the code blocks to the right and put them in the
-          correct order to first draw a square for the house and then a red
-          triangle for the roof. Click on the “Check Me” button to check your
-          solution. You can type this code in the Active Code window above to
-          see it in action.
-        </p>
-      </statement>
-
-      <blocks>
-        <block order="6">
-          <cline>public class TurtleDrawHouse</cline>
-          <cline>{</cline>
-        </block>
-
-        <block order="2">
-          <cline>   public static void main(String[] args)</cline>
-          <cline>   {</cline>
-          <cline />
-        </block>
-
-        <block order="4">
-          <cline>      World world = new World(300,300);</cline>
-          <cline />
-        </block>
-
-        <block order="5">
-          <cline>      Turtle builder = new Turtle(world);</cline>
-          <cline />
-        </block>
-
-        <block order="9">
-          <cline>      // Draw a square</cline>
-          <cline>      builder.turnRight();</cline>
-          <cline>      builder.forward(100);</cline>
-          <cline>      builder.turnRight();</cline>
-          <cline>      builder.forward(100);</cline>
-          <cline>      builder.turnRight();</cline>
-          <cline>      builder.forward(100);</cline>
-          <cline>      builder.turnRight();</cline>
-          <cline>      builder.forward(100);</cline>
-          <cline />
-        </block>
-
-        <block order="10">
-          <cline>      builder.setColor(Color.red);</cline>
-          <cline />
-        </block>
-
-        <block order="7">
-          <cline>      // Draw a triangle</cline>
-          <cline>      builder.turn(30);</cline>
-          <cline>      builder.forward(100);</cline>
-          <cline>      builder.turn(120);</cline>
-          <cline>      builder.forward(100);</cline>
-          <cline>      builder.turn(120);</cline>
-          <cline>      builder.forward(100);</cline>
-          <cline />
-        </block>
-
-        <block order="3">
-          <cline>      world.show(true);</cline>
-          <cline />
-        </block>
-
-        <block order="8">
-          <cline>   }</cline>
-          <cline />
-        </block>
-
-        <block order="1">
-          <cline>}</cline>
-        </block>
-      </blocks>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="methods-that-return-values">
-    <title>Methods that Return Values</title>
-
-    <p>
-      All the methods on <c>Turtle</c> that we’ve discussed so far are
-      <term>void methods</term> with <c>void</c> return type. This means they
-      don’t return anything. Because a <c>void</c> method doesn’t return any
-      value, the only point of calling one is because it does something that can
-      be observed by the user or by other code—it changes the state of the
-      object or maybe causes something to happen like drawing a line on the
-      screen. Or both. These things they do are sometimes called “effects”.
-    </p>
-
-    <p>
-      In contrast, methods with a return type of anything <em>other</em> than
-      <c>void</c> are called <term>non-void</term> methods. These methods
-      <term>return</term> a value that the code calling the method can use. And
-      because methods are called on an object, these methods can be used to
-      return values that tell us things about an object’s internal state. In
-      well-designed programs, non- void methods typically don’t have effects;
-      they just compute and return a value. To put it another way, void methods
-      <em>do things</em> while non-void methods <em>produce values</em>.
-    </p>
-
-    <p>
-      A simple kind of method that returns a value is what is formally called an
-      <term>accessor</term> because it accesses a value in an object. In the
-      real world everyone calls them <term>getters</term>. A getter is a method
-      that takes no arguments and has a non-<c>void</c> return type. In Java
-      they are almost always named something that starts with <c>get</c>, and
-      they usually just return the value of one of the object’s instance
-      variables. For example, the <c>Turtle</c> class has several getters,
-      <c>getWidth</c> and <c>getHeight</c> which return the width and the height
-      of a <c>Turtle</c> object and <c>getXPos</c> and <c>getYPos</c> which
-      return the x and y values of the <c>Turtle</c>’s position.
-    </p>
-
-    <p>
-      Note that when you use a getter, you need to do something with the value
-      it returns. You might assign it to a variable, use it in an expression, or
-      print it out. If you don’t, you’re just getting a value and doing nothing
-      with it—you might as well not have bothered to call the getter in the
-      first place.
-    </p>
-
-    <p>
-      Here are some examples of using getters on the <c>Turtle</c> object
-      <c>yertle</c>.
-    </p>
-
-    <program>
-      Turtle yertle = new Turtle(world);
-      int width = yertle.getWidth();
-      int height = yertle.getHeight();
-      System.out.println("Yertle's width is: " + width);
-      System.out.println("Yertle's height is: " + height);
-      System.out.println("Yertle's x position is: " + yertle.getXPos() );
-      System.out.println("Yertle's y position is: " + yertle.getYPos() );
-    </program>
-
-    <note>
-      <p>
-        A common error is forgetting to do something with the value returned
-        from a method. When you call a method that returns a value, you should
-        do something with that value like assigning it to a variable or printing
-        it out.
-      </p>
-    </note>
-
-    <activity label="TurtleTestGetSet">
-      <statement>
-        <p>
-          Try the code below that prints out the turtle’s current position using
-          <c>getXPos()</c> and <c>getYPos()</c>. Can you make it go to position
-          (0,0) or as close to it as possible?
-        </p>
-      </statement>
-
-      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
-        <code>
-          import java.awt.*;
-          import java.util.*;
-
-          public class TurtleTestGetSet {
-              public static void main(String[] args) {
-                  World world = new World(300, 300);
-                  Turtle yertle = new Turtle(world);
-                  System.out.println("Yertle is starting at: " + yertle.getXPos() + ", " + yertle.getYPos());
-                  yertle.forward(100);
-                  yertle.turn(90);
-                  yertle.forward(50);
-                  System.out.println("Yertle has ended up at: " + yertle.getXPos() + ", " + yertle.getYPos());
-                  world.show(true);
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("TurtleTestGetSet");
-              }
-
-              @Test
-              public void test1() {
-                  String orig =
-                          "import java.awt.*;\n"
-                              + "import java.util.*;\n\n"
-                              + "public class TurtleTestGetSet\n"
-                              + "{\n"
-                              + "public static void main(String[] args)\n"
-                              + "{\n"
-                              + "World world = new World(300,300);\n"
-                              + "Turtle yertle = new Turtle(world);\n"
-                              + "System.out.println(\"Yertle is starting at: \" + yertle.getXPos() + \", \" +"
-                              + " yertle.getYPos());\n"
-                              + "yertle.forward(100);\n"
-                              + "yertle.turn(90);\n"
-                              + "yertle.forward(50);\n"
-                              + "System.out.println(\"Yertle has ended up at: \" + yertle.getXPos() + \", \""
-                              + " + yertle.getYPos());\n"
-                              + "world.show(true);\n"
-                              + "}\n"
-                              + "}\n";
-                  boolean passed = codeChanged(orig);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-      </program>
-    </activity>
-
-    <activity label="TurtleArea">
-      <statement>
-        <p>
-          Fix the errors in the code below so that it prints out the area of the
-          space that the turtle occupies by multiplying its width and height.
-          Remember that you have to do something with the values that the get
-          methods return.
-        </p>
-      </statement>
-
-      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
-        <code>
-          import java.awt.*;
-          import java.lang.Math;
-          import java.util.*;
-
-          public class TurtleArea
-          {
-              public static void main(String[] args)
-              {
-                  World world = new World(300,300);
-                  Turtle yertle = new Turtle(world);
-
-                  int area;
-                  yertle.getWidth() * getHeight;
-                  System.out.println("Yertle's area is: ");
-              }
-          }
-        </code>
-
-        <tests>
-          <![CDATA[
-
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("TurtleArea");
-              }
-
-              @Test
-              public void test1() {
-                  String actual = getMethodOutput("main");
-                  String expected = "Yertle's area is: 270";
-                  boolean passed = getResults(expected, actual, "Prints correct answer");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  String code = getCode();
-                  String target = ".getHeight()";
-
-                  int num = countOccurences(code, target);
-
-                  boolean passed = num >= 1;
-
-                  getResults("1+", "" + num, "Calls to " + target, passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3() {
-                  String code = getCode();
-                  String target = ".getWidth()";
-
-                  int num = countOccurences(code, target);
-
-                  boolean passed = num >= 1;
-
-                  getResults("1+", "" + num, "Calls to " + target, passed);
-                  assertTrue(passed);
-              }
-          }
-
-          ]]>
-        </tests>
-      </program>
-    </activity>
-
-    <p>
-      We will save a deeper discussion of actually writing getters and other
-      methods until Unit 3, but for the AP progress checks for this unit, you
-      should be able to trace through method calls like the ones below. Notice
-      that the <term>return statement</term> in a method returns the value, and
-      it must match declared return type of the method. The calling method must
-      then do something useful with that value.
-    </p>
-
-    <activity label="traceCircleArea">
-      <statement>
-        <p>Consider the following class definition.</p>
-
-        <program>
-          public class Circle {
-              private double radius;
-
-              public Circle(double r) {
-                  radius = r;
-              }
-
-              public double getArea() {
-                  return 3.14159 * radius * radius;
-              }
-          }
-        </program>
-
-        <p>Assume that the following code segment appears in a main method.</p>
-
-        <program>
-          Circle c = new Circle(10);
-          System.out.println(c.getArea());
-        </program>
-
-        <p>
-          What is printed as a result of executing the code segment? (If you get
-          stuck, try this <url
-          href="https://pythontutor.com/visualize.html#code=public%20class%20Circle%0A%7B%0A%20%20%20%20private%20double%20radius%3B%0A%0A%20%20%20%20public%20Circle%28double%20r%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20radius%20%3D%20r%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20double%20getArea%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20return%203.14159%20*%20radius%20*%20radius%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20Circle%20c%20%3D%20new%20Circle%2810%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28c.getArea%28%29%29%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
-          to see this code in action.)
-        </p>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>0</p>
-          </statement>
-
-          <feedback>
-            <p>First, call the constructor, then call getArea().</p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>314.159</p>
-          </statement>
-
-          <feedback>
-            <p>
-              Correct! getArea() returns 3.14159 * radius * radius, where radius
-              is set to 10 by the constructor.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>c.getArea()</p>
-          </statement>
-
-          <feedback>
-            <p>c.getArea() is a method call, not a value.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>The code will not compile.</p>
-          </statement>
-
-          <feedback>
-            <p>The code does compile.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>100.0</p>
-          </statement>
-
-          <feedback>
-            <p>Don't forget to multiply by 3.14159.</p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="traceRectangleArea">
-      <statement>
-        <p>Consider the following class definition.</p>
-
-        <program>
-          public class Rectangle {
-              private int width;
-              private int height;
-
-              public Rectangle(int w, int h) {
-                  width = w;
-                  height = h;
-              }
-
-              public void resize(int amt) {
-                  width += amt;
-              }
-
-              public int getArea() {
-                  return width * height;
-              }
-          }
-        </program>
-
-        <p>Assume that the following code segment appears in a main method.</p>
-
-        <program>
-          Rectangle r = new Rectangle(10, 15);
-          r.resize(5);
-          System.out.println(r.getArea());
-        </program>
-
-        <p>
-          What is printed as a result of executing the code segment? (If you get
-          stuck, try this <url
-          href="https://pythontutor.com/render.html#code=public%20class%20Rectangle%0A%7B%0A%20%20%20%20private%20int%20width%3B%0A%20%20%20%20private%20int%20height%3B%0A%0A%20%20%20%20public%20Rectangle%28int%20w,%20int%20h%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20width%20%3D%20w%3B%0A%20%20%20%20%20%20%20%20height%20%3D%20h%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20void%20resize%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20width%20%2B%3D%205%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20int%20getArea%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20return%20width%20*%20height%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20Rectangle%20r%20%3D%20new%20Rectangle%2810,%2015%29%3B%0A%20%20%20%20%20%20%20%20r.resize%28%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28r.getArea%28%29%29%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=20&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
-          to see this code in action.)
-        </p>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>150</p>
-          </statement>
-
-          <feedback>
-            <p>Note that the method resize() is called before getArea().</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>150.0</p>
-          </statement>
-
-          <feedback>
-            <p>Note that the method resize() is called before getArea().</p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>225</p>
-          </statement>
-
-          <feedback>
-            <p>
-              Correct! resize() increases the width by 5, so the area is 15 * 15
-              = 225.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>255.0</p>
-          </statement>
-
-          <feedback>
-            <p>Note that getArea() returns an int</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>0</p>
-          </statement>
-
-          <feedback>
-            <p>Note that the constructor initializes width and height.</p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <p>
-      Let's try calling the constructor and methods of this Rectangle class in
-      an active code exercise below.
-    </p>
-
-    <activity label="rectangleMethods">
-      <statement>
-        <p>
-          Given the Rectangle class below, use its constructor to create a 5x10
-          rectangle, then call its resize method to add 10 to its width, and
-          then print out its area using its getArea method.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-        <code>
-          public class Rectangle {
-              private int width;
-              private int height;
-
-              public Rectangle(int w, int h) {
-                  width = w;
-                  height = h;
-              }
-
-              public void resize(int amt) {
-                  width += amt;
-              }
-
-              public int getArea() {
-                  return width * height;
-              }
-
-              public static void main(String[] args) {
-                  // 1. Create a rectangle with width 5 and height 10
-
-                  // 2. Call the resize method to add 10 to its width
-
-                  // 3. Print out its area using its getArea method
-
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "150";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test1() {
-                  String code = "new Rectangle(5,10)";
-                  boolean passed = checkCodeContains(code);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  String code = ".resize(10)";
-                  boolean passed = checkCodeContains(code);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3() {
-                  String code = ".getArea()";
-                  boolean passed = checkCodeContains(code);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-      </program>
-    </activity>
-
-    <activity label="traceReturnMethods">
-      <statement>
-        <p>
-          What does the following code print out? (If you get stuck, try this
-          <url
-          href="http://www.pythontutor.com/visualize.html#code=public%20class%20MethodTrace%20%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20public%20int%20square%28int%20x%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20x*x%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20int%20divide%28int%20x,%20int%20y%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20x/y%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20MethodTrace%20traceObj%20%3D%20new%20MethodTrace%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%20traceObj.square%282%29%20%2B%20traceObj.divide%286,2%29%20%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%7D&amp;cumulative=false&amp;curInstr=16&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
-          to see this code in action.)
-        </p>
-
-        <program>
-          public class MethodTrace {
-              public int square(int x) {
-                  return x * x;
-              }
-
-              public int divide(int x, int y) {
-                  return x / y;
-              }
-
-              public static void main(String[] args) {
-                  MethodTrace traceObj = new MethodTrace();
-                  System.out.println(traceObj.square(2) + traceObj.divide(6, 2));
-              }
-          }
-        </program>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>5</p>
-          </statement>
-
-          <feedback>
-            <p>
-              Make sure you call both methods and compute the square of 2 and
-              then add the results.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>7</p>
-          </statement>
-
-          <feedback>
-            <p>
-              Yes, square(2) returns 4 which is added to divide(6,2) which
-              returns 3. The total of 4 + 3 is 7.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>4 3</p>
-          </statement>
-
-          <feedback>
-            <p>Make sure you add the results before printing it out.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>2 3</p>
-          </statement>
-
-          <feedback>
-            <p>
-              Make sure you square(2) and add the results before printing it
-              out.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>Does not compile.</p>
-          </statement>
-
-          <feedback>
-            <p>Try the code in an active code window.</p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <p>
-      The <c>Turtle</c> class has a method called <c>getDistance(x,y)</c> which
-      will return the turtle’s distance from a point (x,y). Can you find
-      yertle’s distance from the point (0,0)? In the exercise below, add another
-      turtle and make both turtles move. Then find the distance between them.
-      You must use the <c>getXPos</c> and <c>getYPos</c> methods as well as the
-      <c>getDistance</c> method.
-    </p>
-
-    <activity label="TurtleDistance">
-      <statement>
-        <p>
-          Use the <c>getXPos</c>, <c>getYPos</c>, and <c>getDistance(x,y)</c>
-          methods to find yertle’s distance from the point (0,0). Add another
-          turtle, move both turtles to different positions, and find the
-          distance between the two turtles.
-        </p>
-      </statement>
-
-      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
-        <code>
-          import java.awt.*;
-          import java.util.*;
-
-          public class TurtleTestDistance {
-              public static void main(String[] args) {
-                  World world = new World(300, 300);
-                  Turtle yertle = new Turtle(world);
-
-                  // Can you find yertle's distance from the point (0,0)?
-
-                  // Can you find the distance between 2 turtles?
-
-                  world.show(true);
-              }
-          }
-        </code>
-
-        <tests>
-          <![CDATA[
-
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("TurtleTestDistance");
-              }
-
-              @Test
-              public void test2() {
-                  String code = getCode();
-                  int num = countOccurences(code, ".getXPos()");
-
-                  boolean passed = num > 0;
-                  getResults(">=1", "" + num, "Calls to getXPos()", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3() {
-                  String code = getCode();
-                  int num = countOccurences(code, ".getYPos()");
-
-                  boolean passed = num > 0;
-                  getResults(">=1", "" + num, "Calls to getYPos()", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test4() {
-                  String code = getCode();
-                  int num = countOccurences(code, ".getDistance(");
-
-                  boolean passed = num >= 2;
-                  getResults(">=2", "" + num, "Calls to getDistance(...)", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test1() {
-                  String code = getCode();
-                  int num = countOccurences(code, ".getDistance(0,0)");
-
-                  boolean passed = num >= 1;
-                  getResults(">=1", "" + num, "Calls getDistance(0,0)", passed);
-                  assertTrue(passed);
-              }
-          }
-
-          ]]>
-        </tests>
-      </program>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="coding-challenge-turtle-house">
-    <title>Coding Challenge: Turtle House</title>
-
-    <image source="Unit1-Using-Objects-and-Methods/Figures/houseWithWindows.png" width="36%">
-      <shortdescription>simple house</shortdescription>
-    </image>
-
-    <p>
-      This creative challenge is fun to do collaboratively in pairs. Design a
-      house and have the turtle draw it with different colors below. Can you add
-      windows and a door? Come up with your own house design as a team.
-    </p>
-
-    <p>
-      To draw a window, you will need to call <c>penUp</c> and <c>moveTo</c> to
-      walk the turtle into position without drawing, for example:
-    </p>
-
-    <program>
-      t.penUp();
-      t.moveTo(120,200);
-      t.penDown();
-    </program>
-
-    <p>
-      It may help to act out the code pretending you are the turtle. Remember
-      that the angles you turn depend on which direction you are facing, and the
-      turtle begins facing up. When planning your coordinates for the house,
-      remember that the turtle starts at the center of the screen (150,150) and
-      the top left corner is (0,0).
-    </p>
-
-    <project label="challenge-TurtleHouse">
-      <statement>
-        <p>
-          Draw a Turtle House! Make sure you use forward, turn, penUp, penDown,
-          moveTo methods as well as different colors. Have fun!
-        </p>
-      </statement>
-
-      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
-        <code>
-          import java.awt.*;
-          import java.util.*;
-
-          public class TurtleHouse {
-              public static void main(String[] args) {
-                  World world = new World(300, 300);
-                  Turtle t = new Turtle(world);
-                  // Use t to draw a house
-
-                  // keep this line at the end of your code to show the drawing
-                  world.show(true);
-              }
-          }
-        </code>
-
-        <tests>
-          <![CDATA[
-
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("TurtleHouse");
-              }
-
-              @Test
-              public void test2() {
-                  String code = getCode();
-                  int num = countOccurences(code, "moveTo(");
-
-                  boolean passed = num >= 1;
-                  passed = getResults("1 or more", "" + num, "Calls moveTo(...)", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3() {
-                  String code = getCode();
-                  int num = countOccurences(code, ".penUp()");
-
-                  boolean passed = num >= 1;
-                  passed = getResults("1 or more", "" + num, "Calls penUp()", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test4() {
-                  String code = getCode();
-                  int num = countOccurences(code, ".penDown(");
-
-                  boolean passed = num >= 1;
-                  passed = getResults("1 or more", "" + num, "Calls penDown()", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test5() {
-                  String code = getCode();
-                  int numTurns = countOccurences(code, ".turn");
-
-                  boolean passed = numTurns >= 6;
-                  passed = getResults("6 or more", "" + numTurns, "turns", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test6() {
-                  String code = getCode();
-                  int numForward = countOccurences(code, ".forward(");
-
-                  boolean passed = numForward >= 6;
-                  passed = getResults("6 or more", "" + numForward, "Calls to forward()", passed);
-                  assertTrue(passed);
-              }
-          }
-
-          ]]>
-        </tests>
-      </program>
-    </project>
-  </subsection>
-
-  <subsection xml:id="summary-5">
-    <title>Summary</title>
-
-    <p>
-      <ul>
-        <li>
-          <p>
-            <term>Instance methods</term> define the behavior and actions that
-            an object can perform.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            (AP 1.14.A.1) <term>Instance methods</term> are called on objects of
-            the class.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            (AP 1.14.A.1) The dot operator is used along with the object name to
-            <term>call</term> instance methods, for example
-            <term>object.method();</term>
-          </p>
-        </li>
-
-        <li>
-          <p>
-            (AP 1.14.A.2) A method call on a <c>null</c> reference will result
-            in a <c>NullPointerException</c>.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            Some methods take <term>arguments</term> that are placed inside the
-            parentheses <term>object.method(arguments)</term>.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            A <term>method signature</term> is the method name followed by the
-            parameter list which gives the type and name for each parameter.
-            Note that methods do not have to take any parameters, but you still
-            need the parentheses after the method name.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            The method call arguments must match the method signature in number,
-            order, and type.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            A <term>method</term> call interrupts the sequential execution of
-            statements, causing the program to first execute the statements in
-            the method or constructor before continuing. Once the last statement
-            in the method or constructor has executed or a <c>return</c>
-            statement is executed, the flow of control is returned to the point
-            immediately following the method or constructor call.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <term>Non-void methods</term> are methods that return values. You
-            should do something with the return value, such as assigning it to a
-            variable, using it in an expression, or printing it.
-          </p>
-        </li>
-      </ul>
-    </p>
-  </subsection>
-
-  <subsection xml:id="ap-practice-4">
-    <title>AP Practice</title>
 
     <activity label="AP-Party-Methods">
       <statement>
