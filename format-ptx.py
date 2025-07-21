@@ -11,13 +11,28 @@ from lxml import etree
 
 INDENT = 2
 WIDTH = 80
-INLINE_TAGS = {"term", "url", "c", "h", "area", "em", "xref", "m", "pubtitlebooktitle"}
-PRESERVE_WHITESPACE = {"code", "cline", "tests", "pre", "program"}
+INLINE_TAGS = {
+    "term",
+    "url",
+    "c",
+    "h",
+    "area",
+    "em",
+    "xref",
+    "m",
+    "pubtitle",
+    "booktitle",
+}
+PRESERVE_WHITESPACE = {"cline", "pre"}
 ONE_LINE = {"cline"}
 COMPACT = {"cell", "idx", "premise"}
 DEFAULT_NS = {"xml": "http://www.w3.org/XML/1998/namespace"}
 
 format_code = False
+
+
+def say(x):
+    print(x, file=stderr)
 
 
 def indentation(level):
@@ -76,18 +91,6 @@ def to_text(elem):
 
 def is_program(elem):
     return elem.tag == "program"
-
-
-def is_program_or_whatever(elem):
-    return is_program_or_in_program(elem) or is_pre_in_datafile(elem)
-
-
-def is_program_or_in_program(elem):
-    return (elem.tag == "program" or is_in_program(elem)) and is_just_text(elem)
-
-
-def is_in_program(elem):
-    return elem.getparent() is not None and elem.getparent().tag == "program"
 
 
 def is_pre_in_datafile(elem):
@@ -150,10 +153,6 @@ def render_inline(elem, ns):
     return s
 
 
-def say(x):
-    print(x, file=stderr)
-
-
 def render_program(elem, ns, level):
     """
     Render a <program> element. It may directly contain text which we then
@@ -169,26 +168,26 @@ def render_program(elem, ns, level):
 
     if is_just_text(elem):
         # Simple <program> that directly contains code
-        return render_program_text(elem, ns, level)
+        return render_verbatim_text(elem, ns, level)
     else:
         content = f"\n{indentation(level)}{open_tag(elem, ns)}\n"
 
         # Complex <program> with child elements
         code = elem.xpath("./*[self::preamble or self::code or self::postamble]")
-        tests = elem.xpath("./tests")
+        other = elem.xpath("./*[not(self::preamble or self::code or self::postamble)]")
 
         if code:
             d = common_indentation(to_text(x).rstrip() for x in code)
-            say(f"Common indentation {d}")
             for c in code:
-                content += render_program_text(c, ns, level + 1, d)
+                content += render_verbatim_text(c, ns, level + 1, d)
 
-        if tests:
-            for t in tests: # really probably only one
-                content += render_program_text(t, ns, level + 1)
+        if other:
+            for o in other:
+                content += render_verbatim_text(o, ns, level + 1)
 
         content += f"\n{indentation(level)}{close_tag(elem, ns)}\n"
         return content
+
 
 def common_indentation(texts):
     return min(dedent_amount(text) for text in texts)
@@ -203,16 +202,24 @@ def measure_indentation(line):
 
 
 def dedent_by(text, amount):
-    return dedent(text) if amount is None else "\n".join(
-        line[amount:] if len(line) > 0 else line for line in text.split("\n")
+    return (
+        dedent(text)
+        if amount is None
+        else "\n".join(
+            line[amount:] if len(line) > 0 else line for line in text.split("\n")
+        )
     )
 
 
-def render_program_text(elem, ns, level, dedentation=None):
+def render_verbatim_text(elem, ns, level, dedentation=None):
     indent1 = indentation(level)
     indent2 = indentation(level + 1)
 
-    text = re.sub(r'^(\s*\n)*', '', maybe_formatted(dedent_by(to_text(elem), dedentation).rstrip()))
+    text = re.sub(
+        r"^(\s*\n)*",
+        "",
+        maybe_formatted(dedent_by(to_text(elem), dedentation).rstrip()),
+    )
     needs_cdata = any(e in text for e in "&<>")
     multiline = is_multiline(text)
 
@@ -249,7 +256,7 @@ def maybe_formatted(text):
 
 
 def render_comment(elem, level):
-    return f"{elem}{elem.tail}"
+    return f"{elem}{elem.tail or ''}".rstrip()
 
 
 def render_block(elem, ns, level=0):
@@ -311,19 +318,12 @@ def render_with_whitespace(elem, ns, level=0):
         return f"\n{indentation(level)}{open_tag(elem, ns, empty=True)}"
 
     s = f"\n{indentation(level)}{open_tag(elem, ns)}"
-    if (
-        elem.text
-        and len(elem.text) > 0
-        and (not is_program_or_whatever(elem[0]) if len(elem) > 0 else True)
-    ):
+    if elem.text and len(elem.text) > 0:
         s += escape(elem.text)
     for child in elem:
-        if is_program_or_whatever(child):
-            s += render_program_text(child, ns | elem.nsmap, level + 1)
-        else:
-            s += render_child_with_whitespace(child, ns | elem.nsmap)
-            if child.tail and len(child.tail) > 0:
-                s += child.tail
+        s += render_child_with_whitespace(child, ns | elem.nsmap)
+        if child.tail and len(child.tail) > 0:
+            s += child.tail
 
     s = s.rstrip()
 
@@ -360,8 +360,8 @@ def serialize_element(elem, ns=DEFAULT_NS, level=0):
         return render_inline(elem, ns)
     elif is_program(elem):
         return render_program(elem, ns, level)
-    elif is_program_or_whatever(elem):
-        return render_program_text(elem, ns, level)
+    elif is_pre_in_datafile(elem):
+        return render_verbatim_text(elem, ns, level)
     elif preserve_whitespace(elem):
         return render_with_whitespace(elem, ns, level)
     else:
