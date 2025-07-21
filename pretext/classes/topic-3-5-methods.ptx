@@ -144,6 +144,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <preamble>
           <![CDATA[
           public class Person {
@@ -197,6 +198,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -317,8 +319,8 @@
           we write multiple classes in an IDE, we normally put each class in a
           separate file named after the class it contains. But it is legal to
           put two classes in one file, as we are here, as long as only one of
-          them is <c>public</c>. That's why <c>Student</c> is not public in
-          this code.)
+          them is <c>public</c>. That's why <c>Student</c> is not public in this
+          code.)
         </p>
 
         <p>
@@ -337,6 +339,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class TesterClass {
               // main method for testing
@@ -403,6 +406,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -426,6 +430,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class TesterClass {
               // main method for testing
@@ -510,6 +515,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -530,7 +536,6 @@
                   numOfPeople = people;
               }
           }
-
         </program>
 
         <p>
@@ -717,6 +722,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class TesterClass {
 
@@ -761,6 +767,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -859,6 +866,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
           public class StringFinder {
@@ -901,7 +909,6 @@
                   // System.out.println(test.letterCount(letter));
               }
           }
-
           ]]>
         </code>
 
@@ -928,6 +935,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1089,7 +1097,6 @@
                   System.out.println(c.getArea());
               }
           }
-
         </program>
 
         <p>What is printed when this program is run?</p>
@@ -1187,7 +1194,6 @@
                   System.out.println(r.getArea());
               }
           }
-
         </program>
 
         <p>What is printed when this program is run?</p>
@@ -1272,6 +1278,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Rectangle {
               private int width;
@@ -1339,6 +1346,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -1366,7 +1374,6 @@
                   System.out.println(traceObj.square(2) + traceObj.divide(6, 2));
               }
           }
-
         </program>
       </statement>
 
@@ -1445,6 +1452,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           import java.awt.*;
           import java.util.*;
@@ -1516,9 +1524,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1606,6 +1614,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class VirtualPet {
               // write 3 instance variables for VirtualPet's name,
@@ -1753,9 +1762,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
   </subsection>
@@ -1863,6 +1872,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           /**
            * Pet class (complete comments)
@@ -1992,9 +2002,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
   </subsection>
@@ -2066,6 +2076,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class          // Add your class name here!
           {
@@ -2202,9 +2213,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
   </subsection>
@@ -2396,7 +2407,6 @@
                   return numOfPeople;
               }
           }
-
         </program>
       </statement>
 
@@ -2477,7 +2487,6 @@
               }
               // Constructor not shown
           }
-
         </program>
 
         <p>
@@ -2563,7 +2572,6 @@
                   currentTemp = newTemp;
               }
           }
-
         </program>
 
         <p>
@@ -2653,7 +2661,6 @@
                   numOfPeople += additionalPeople; // Line 12
               }
           }
-
         </program>
 
         <p>
@@ -2740,7 +2747,6 @@
                   partyCancelled = true;
               }
           }
-
         </program>
 
         <p>
@@ -2829,7 +2835,6 @@
               }
               /* Constructors not shown */
           }
-
         </program>
 
         <p>
@@ -2933,7 +2938,6 @@
                   return currentTemp;
               }
           }
-
         </program>
 
         <p>
