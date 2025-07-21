@@ -113,7 +113,8 @@
       passed to the constructor or the instance variable? The rule in Java is it
       refers to the parameter. This is called <term>shadowing</term>; when two
       variables have the same name, one of them <term>shadows</term> the other.
-      In methods and constructors, parameters shadow instance variables.
+      In methods and constructors, local variables, including parameters, shadow
+      instance variables.
     </p>
 
     <p>
@@ -201,10 +202,10 @@
 
     <p>
       There is, however, one other requirement for accessing an instance
-      variable. We actually have to have an object. You may recall from <xref
+      variable: we actually have to have an object. You may recall from <xref
       ref="topic-4-3-array-basics" /> where we met our first reference type,
-      arrays, Java has a special reference value, <c>null</c>, which represents
-      the absence of an object. That is, if a normal reference points to some
+      that Java has a special reference value, <c>null</c>, which represents the
+      absence of an object. That is, if a normal reference points to some
       object’s data somewhere in memory, the <c>null</c> reference is a special
       value that doesn’t point to anywhere in memory. So anywhere we have a
       value of a reference type— in a variable, as the value returned by a
@@ -224,20 +225,18 @@
 
     <note>
       <p>
-        Java actually provides a way to prevent errors like <c>NullPointerException</c> and others we’ve seen such as
+        Java actually provides a way to prevent errors like
+        <c>NullPointerException</c> and others we’ve seen such as
         <c>IndexOutOfBoundsException</c> from crashing our whole program. But it
         is sadly beyond the scope of the AP curriculum. If you want to know more
-        you can read this <url href="https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html">lesson</url>
-        from Oracle’s 
-        
-        <booktitle>Java™ Tutorials</booktitle>
-
- series.
+        you can read the lesson <url
+        href="https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html">”Exceptions”</url>
+        from Oracle’s <booktitle>Java™ Tutorials</booktitle> series.
       </p>
     </note>
 
     <p>
-      The good new about getting a <c>NullPointerException</c> is they’re
+      The good news about getting a <c>NullPointerException</c> is they’re
       usually pretty easy to debug. When the program crashes, we’ll get an error
       message pinpointing the specific line where the the exception occurred.
       From there we just need to check any expression on that line to the left
@@ -305,7 +304,9 @@
       <c>public</c> we again have to look at all the code in any class that
       might use <c>Person</c> to see if it references that variable. Making
       variables is Java’s mechanism for <term>data encapsulation</term> or
-      <term>data hiding</term>.
+      <term>data hiding</term>. In <xref ref="topic-3-5-methods" /> we’ll look
+      at a common pattern for using <c>public</c> methods to give controlled
+      access to <c>private</c> instance variables.
     </p>
 
     <activity label="name_instance_variables">

@@ -19,12 +19,11 @@
     <idx>setter</idx>
     <p>
       <term>Instance methods</term> define what we can actually do with an
-      object, their behaviors and functions. Everything we’ve already covered in
-      <xref ref="methods" /> about writing method still applies. The only new
-      thing about instance methods, compared to the methods we’ve written
-      previously, is that instance methods must be called on some specific
-      object because they need to be able to refer to the object’s instance
-      variables in their code.
+      object. Everything we covered in <xref ref="methods" /> about writing
+      method still applies. The only new thing about instance methods, compared
+      to the methods we’ve written previously, is that instance methods must be
+      called on some specific object because they need to be able to refer to
+      the object’s instance variables in their code.
     </p>
 
     <p>
@@ -66,8 +65,8 @@
     <p>
       In this section we’ll take a closer look at the things we can do with
       instance methods and some of the common kinds of instance methods that we
-      will write in many classes. But first let’s make doubly sure we’re clear
-      on what it means to call a method on a particular object.
+      will write in many classes. But first let’s make extra sure we’re clear on
+      what it means to call a method on a particular object.
     </p>
   </introduction>
 
@@ -173,8 +172,8 @@
 
         <code>
               public static void main(String[] args) {
-                Person person = null;
-                System.out.println(person.getName() + " can vote: " + person.canVote());
+                  Person person = null;
+                  System.out.println(person.getName() + " can vote: " + person.canVote());
               }
         </code>
 
@@ -319,7 +318,7 @@
           we write multiple classes in an IDE, we normally put each class in a
           separate file named after the class it contains. But it is legal to
           put two classes in one file, as we are here, as long as only one of
-          them is <c>public</c>. Thaty’s why <c>Student</c> is not public in
+          them is <c>public</c>. That's why <c>Student</c> is not public in
           this code.)
         </p>
 
