@@ -65,6 +65,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Test1
           {
@@ -97,6 +98,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -259,6 +261,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Test2
           {
@@ -303,6 +306,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -315,6 +319,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Debug
           {
@@ -367,6 +372,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -394,6 +400,7 @@
       </statement>
 
       <program interactive="activecode" datafile="pokemon.csv">
+
         <code>
           import java.io.*;
           import java.util.*;
@@ -517,6 +524,7 @@
              }
           }
         </tests>
+
       </program>
     </project>
   </subsection>

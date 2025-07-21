@@ -334,6 +334,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Test1
           {
@@ -383,6 +384,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -426,6 +428,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Test2 {
               public static void main(String[] args) {
@@ -474,6 +477,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -709,6 +713,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Test1
           {
@@ -764,6 +769,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -811,9 +817,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class ImageEx {
               public static void main(String[] args) {
                   String[] images = {
@@ -833,7 +839,6 @@
                   System.out.print("<img src=" + baseURL + filename + " width=500px />");
               }
           }
-
           ]]>
         </code>
 
@@ -867,6 +872,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1136,9 +1142,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class Countries {
               public static void main(String[] args) {
                   // 1. Declare 4 arrays and initialize them to the given values.
@@ -1170,13 +1176,11 @@
                   System.out.print("<img src=" + baseURL + filename + " width=500px />");
               }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -1262,9 +1266,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
   </subsection>

@@ -128,6 +128,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class MyClass
           {
@@ -159,6 +160,7 @@
               }
           }
         </tests>
+
       </program>
     </exercise>
   </subsection>

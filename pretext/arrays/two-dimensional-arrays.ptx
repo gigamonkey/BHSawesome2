@@ -244,6 +244,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class TicketInfo {
             public static void main(String[] args) {
@@ -286,6 +287,7 @@
             }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -786,6 +788,7 @@
       </hint>
 
       <program interactive="activecode">
+
         <code>
           public class TwoDArraySet {
             public static void main(String[] args) {
@@ -820,7 +823,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import java.io.*;
@@ -865,9 +867,9 @@
               assertTrue(passed);
             }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
 
@@ -935,6 +937,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class TwoDArrayInitGet {
             public static void main(String[] args) {
@@ -1021,6 +1024,7 @@
             }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1225,6 +1229,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class AsciiArt {
             public static void main(String[] args) {
@@ -1253,7 +1258,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import java.io.*;
@@ -1319,9 +1323,9 @@
               assertTrue(passed);
             }
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
   </subsection>

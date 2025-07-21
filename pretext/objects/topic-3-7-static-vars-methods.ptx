@@ -151,6 +151,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Person {
               // instance variables
@@ -216,6 +217,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -260,6 +262,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Person {
               // instance variables
@@ -317,6 +320,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -334,7 +338,6 @@
 
         <program>
           <![CDATA[
-
           public class Temperature {
               private double temperature;
               public static double maxTemp = 0;
@@ -353,7 +356,6 @@
                   System.out.println("Max Temp: " + Temperature.maxTemp);
               }
           }
-
           ]]>
         </program>
       </statement>
@@ -443,9 +445,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class Temperature {
               private double temperature;
               public static double maxTemp = 0;
@@ -468,7 +470,6 @@
                   Temperature.printMax();
               }
           }
-
           ]]>
         </code>
 
@@ -507,6 +508,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -534,6 +536,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class TestFinal {
               // A static final variable for PI
@@ -564,6 +567,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -653,6 +657,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Song {
               // Add a public static variable called numVerses
@@ -671,7 +676,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -823,9 +827,9 @@
                               + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!";
               private static String[] expectedArray = expectedOutput.replaceAll("\n\n", "\n").split("\n");
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
   </subsection>

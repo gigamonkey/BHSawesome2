@@ -29,7 +29,6 @@
 
     <program interactive="activecode">
       <![CDATA[
-
       public class IterativeBinarySearch
       {
           public static int binarySearch(int[] elements, int target)
@@ -63,7 +62,6 @@
               System.out.println(index);
           }
       }
-
       ]]>
     </program>
 
@@ -126,7 +124,6 @@
 
       <program interactive="activecode">
         <![CDATA[
-
         public class RecursiveBinarySearch
         {
             public static int recursiveBinarySearch(
@@ -164,7 +161,6 @@
                 System.out.println(target + " was found at index " + foundIndex);
             }
         }
-
         ]]>
       </program>
     </activity>
@@ -191,7 +187,6 @@
 
       <program interactive="activecode">
         <![CDATA[
-
         import java.util.ArrayList;
 
         public class RecursiveBinarySearchArrayList
@@ -239,7 +234,6 @@
                 System.out.println(target + " was found at index " + foundIndex);
             }
         }
-
         ]]>
       </program>
     </activity>
@@ -305,7 +299,6 @@
 
     <program interactive="activecode">
       <![CDATA[
-
       import java.util.Arrays;
 
       public class SortTest
@@ -379,7 +372,6 @@
               System.out.println(Arrays.toString(arr1));
           }
       }
-
       ]]>
     </program>
 

@@ -107,6 +107,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Casting {
               public static void main(String[] args) {
@@ -148,6 +149,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -278,6 +280,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class NearestInt
           {
@@ -325,6 +328,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -380,6 +384,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class TestOverflow
           {
@@ -415,6 +420,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -475,6 +481,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class TestFormat
           {
@@ -515,6 +522,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -616,6 +624,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Challenge1_6
           {
@@ -642,7 +651,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -868,9 +876,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
 

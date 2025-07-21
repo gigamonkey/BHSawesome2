@@ -68,11 +68,9 @@
 
     <program>
       <![CDATA[
-
       for (int i = 0; i < n; i++) {
         // whatever
       }
-
       ]]>
     </program>
 
@@ -127,11 +125,9 @@
 
         <program>
           <![CDATA[
-
           for (int i = 0; i < 100; i++) {
             // whatever
           }
-
           ]]>
         </program>
       </statement>
@@ -291,11 +287,9 @@
 
         <program>
           <![CDATA[
-
           for (int i = 20; i > 10; i--) {
             // whatever
           }
-
           ]]>
         </program>
       </statement>
@@ -364,9 +358,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class CountLoop {
 
               public static void main(String[] args) {
@@ -375,7 +369,6 @@
                   }
               }
           }
-
           ]]>
         </code>
 
@@ -398,6 +391,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -511,9 +505,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class NestedLoops {
 
               public static void main(String[] args) {
@@ -525,7 +519,6 @@
                   }
               }
           }
-
           ]]>
         </code>
 
@@ -548,6 +541,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -575,14 +569,12 @@
           <statement>
             <program>
               <![CDATA[
-
               for (int row = 0; row < 10; row++) {
                   for (int col = 0; col < 5; col++) {
                       System.out.print("*");
                   }
                   System.out.println();
               }
-
               ]]>
             </program>
           </statement>
@@ -596,14 +588,12 @@
           <statement>
             <program>
               <![CDATA[
-
               for (int row = 0; row <= 5; row++) {
                   for (int col = 0; col <= 10; col++) {
                       System.out.print("*");
                   }
                   System.out.println();
               }
-
               ]]>
             </program>
           </statement>
@@ -617,14 +607,12 @@
           <statement>
             <program>
               <![CDATA[
-
               for (int row = 0; row < 5; row++) {
                   for (int col = 0; col < 10; col++) {
                       System.out.print("*");
                       System.out.println();
                   }
               }
-
               ]]>
             </program>
           </statement>
@@ -659,7 +647,6 @@
 
     <program>
       <![CDATA[
-
       int var1 = 3;
       int var2 = 2;
 
@@ -667,7 +654,6 @@
           var1 = var1 + 1;
           var2 = var2 - 1;
       }
-
       ]]>
     </program>
 
@@ -791,9 +777,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class Trace {
 
               public static void main(String[] args) {
@@ -806,7 +792,6 @@
                   }
               }
           }
-
           ]]>
         </code>
 
@@ -829,6 +814,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -840,7 +826,6 @@
 
         <program>
           <![CDATA[
-
           int var1 = 0;
           int var2 = 2;
 
@@ -849,7 +834,6 @@
              var1 = var1 + 1;
              var2 = var2 -1;
           }
-
           ]]>
         </program>
       </statement>
@@ -931,7 +915,6 @@
 
         <program>
           <![CDATA[
-
           int x = 2;
           int y = 5;
 
@@ -940,7 +923,6 @@
              x = x + 1;
              y = y - 1;
           }
-
           ]]>
         </program>
       </statement>
@@ -1026,7 +1008,6 @@
 
         <program>
           <![CDATA[
-
           int x = 0;
             int y = 4;
             int z = 2;
@@ -1037,7 +1018,6 @@
               z *= 2;
             }
           }
-
           ]]>
         </program>
       </statement>
@@ -1160,7 +1140,6 @@
 
         <program>
           <![CDATA[
-
           for (int i = 3; i < 8; i++)
           {
               for (int y = 1; y < 5; y++)
@@ -1169,7 +1148,6 @@
               }
               System.out.println();
           }
-
           ]]>
         </program>
       </statement>
@@ -1235,7 +1213,6 @@
 
         <program>
           <![CDATA[
-
           for (int i = 2; i < 8; i++)
           {
               for (int y = 1; y <= 5; y++)
@@ -1244,7 +1221,6 @@
               }
               System.out.println();
           }
-
           ]]>
         </program>
       </statement>
@@ -1307,7 +1283,6 @@
 
         <program>
           <![CDATA[
-
           for (int i = 3; i <= 9; i++)
           {
              for (int j = 6; j > 0; j--)
@@ -1316,7 +1291,6 @@
              }
              System.out.println();
           }
-
           ]]>
         </program>
       </statement>
@@ -1376,7 +1350,6 @@
 
         <program>
           <![CDATA[
-
           int i = 0;
           while (i <= 4)
           {
@@ -1386,7 +1359,6 @@
             }
             i++;
           }
-
           ]]>
         </program>
       </statement>

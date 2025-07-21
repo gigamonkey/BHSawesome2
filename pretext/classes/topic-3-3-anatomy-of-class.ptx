@@ -101,7 +101,6 @@
 
     <program interactive="activecode">
       <![CDATA[
-
       public class Person {
 
         // Instance variables
@@ -123,7 +122,6 @@
           return age >= 18;
         }
       }
-
       ]]>
     </program>
 
@@ -219,7 +217,6 @@
 
     <program>
       <![CDATA[
-
       public void greet(Person other) {
         System.out.println("Hello " + other.name + ", I'm " + name + ".");
       }
@@ -227,7 +224,6 @@
       public boolean canVote() {
         return age >= 18;
       }
-
       ]]>
     </program>
 

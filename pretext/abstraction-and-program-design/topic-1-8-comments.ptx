@@ -161,6 +161,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           import java.util.Scanner;
 
@@ -218,6 +219,7 @@
                   }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -273,6 +275,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class SqRoot
           {
@@ -302,6 +305,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -354,6 +358,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           import java.awt.*;
           import java.util.*;
@@ -404,6 +409,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>

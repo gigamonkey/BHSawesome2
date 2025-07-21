@@ -71,14 +71,12 @@
 
     <program>
       <![CDATA[
-
       int[] highScores = { 10, 9, 8, 11};
 
       // Loop over array with a canonical for loop
       for (int i = 0; i < highScores.length; i++) {
           System.out.println(highScores[i]);
       }
-
       ]]>
     </program>
 
@@ -111,9 +109,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class Test2 {
               public static void main(String[] args) {
                   String[] names = {"Jamal", "Emily", "Destiny", "Mateo", "Sofia"};
@@ -123,13 +121,11 @@
                   }
               }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -168,9 +164,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
 
@@ -270,9 +266,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class OffByone
           {
               public static void main(String[] args)
@@ -285,13 +281,11 @@
                   }
               }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
            import org.junit.*;
@@ -334,9 +328,9 @@
                    assertTrue(passed);
                }
            }
-
           ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -377,12 +371,10 @@
 
         <program>
           <![CDATA[
-
           for (int i = 0; i < names.length; i++) {
             String s = names[i];
             // use s
           }
-
           ]]>
         </program>
       </listing>
@@ -430,11 +422,9 @@
 
     <program>
       <![CDATA[
-
       for (int i = 0; i < numbers.length; i++) {
         numbers[i]++; // Need the index to be able to change the array element
       }
-
       ]]>
     </program>
 
@@ -465,6 +455,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class ForEachDemo {
               public static void main(String[] args) {
@@ -484,7 +475,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -523,9 +513,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
 
@@ -540,9 +530,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class EvenLoop {
               public static void main(String[] args) {
                   int[] values = {6, 2, 1, 7, 12, 5};
@@ -554,7 +544,6 @@
                   }
               }
           }
-
           ]]>
         </code>
 
@@ -590,6 +579,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -604,6 +594,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class IncrementLoop
           {
@@ -667,6 +658,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -837,12 +829,10 @@
 
     <program>
       <![CDATA[
-
       // Notice: Math.min to limit the number of iterations.
       for (int i = 0; i < Math.min(5, values.length); i++) {
         values[i] *= 2;
       }
-
       ]]>
     </program>
 
@@ -860,13 +850,11 @@
 
     <program>
       <![CDATA[
-
       String[] names = { "Jamal", "Emily", "Destiny", "Mateo" };
 
       for (int i = names.length - 1; i >= 0; i--) {
         System.out.println(names[i]);
       }
-
       ]]>
     </program>
 
@@ -877,14 +865,12 @@
 
     <program>
       <![CDATA[
-
       String[] names = { "Jamal", "Emily", "Destiny", "Mateo" };
       int[] ages = { 15, 16, 14, 17 };
 
       for (int i = 0; i < names.length; i++) {
         System.out.println("Name: " + names[i] + "; age: " + ages[i]);
       }
-
       ]]>
     </program>
 
@@ -906,13 +892,11 @@
 
         <program>
           <![CDATA[
-
           private int[] a = { -20, -15, 2, 8, 16, 33 };
 
           for (int i = 0; i < a.length / 2; i += 2) {
              a[i] *= 2;
           }
-
           ]]>
         </program>
       </statement>
@@ -1061,9 +1045,9 @@
       </statement>
 
       <program interactive="activecode" datafile="dictionary.txt">
+
         <code>
           <![CDATA[
-
           import java.io.*;
           import java.nio.file.*;
           import java.util.*;
@@ -1134,7 +1118,6 @@
                   */
               }
           }
-
           ]]>
         </code>
 
@@ -1207,6 +1190,7 @@
               }
           }
         </tests>
+
       </program>
     </project>
   </subsection>

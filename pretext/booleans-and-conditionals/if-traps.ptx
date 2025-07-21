@@ -371,6 +371,7 @@
       </p>
 
       <program interactive="activecode">
+
         <code>
           public class Test1 {
               public static void main(String[] args) {
@@ -384,7 +385,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
           import org.junit.*;
           import java.io.*;
@@ -411,9 +411,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>

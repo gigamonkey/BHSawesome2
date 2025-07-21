@@ -135,6 +135,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class TryMath {
               public static void main(String[] args) {
@@ -168,6 +169,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -334,6 +336,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class DistanceCalculator {
 
@@ -379,6 +382,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -450,6 +454,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Test3 {
               public static void main(String[] args) {
@@ -478,6 +483,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -532,6 +538,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class StretchedRandom {
               public static void main(String[] args) {
@@ -560,6 +567,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -606,6 +614,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Test4 {
               public static void main(String[] args) {
@@ -632,6 +641,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -984,6 +994,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class MathChallenge {
               public static void main(String[] args) {
@@ -1000,7 +1011,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
           import org.junit.*;
           import java.io.*;
@@ -1063,9 +1073,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
   </subsection>
@@ -1091,9 +1101,9 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           <![CDATA[
-
           import java.util.*;
           import java.awt.*;
 
@@ -1133,13 +1143,11 @@
                 world.show(true);
             }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -1173,9 +1181,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
   </subsection>
@@ -1295,6 +1303,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class LadderHelper {
               /* ladderSizeNeeded computes the hypotenuse of a right triangle
@@ -1358,6 +1367,7 @@
               }
           }
         </tests>
+
       </program>
     </project>
 

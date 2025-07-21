@@ -332,6 +332,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class OldMacDonaldSong {
               public static void chorus() {
@@ -368,7 +369,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
           import org.junit.*;
           import java.io.*;
@@ -397,9 +397,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
 
@@ -709,6 +709,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class OldMacDonaldSong {
               public static void chorus() {
@@ -749,7 +750,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -776,9 +776,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -840,6 +840,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class AntsSong
           {
@@ -870,7 +871,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
           import org.junit.*;
           import java.io.*;
@@ -940,9 +940,9 @@
                    }
 
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
   </subsection>
@@ -1070,6 +1070,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class SquareMethod {
                public static int square(int number) {
@@ -1108,6 +1109,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -1230,6 +1232,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class MathMethods {
                /** Returns the square of a number. Do NOT change */
@@ -1293,6 +1296,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1611,7 +1615,6 @@
 
         <program>
           <![CDATA[
-
           public void static inchesToCentimeters(double i)
           {
               double c = i * 2.54;
@@ -1622,7 +1625,6 @@
           {
               System.out.print(inches + "-->" + centimeters);
           }
-
           ]]>
         </program>
 

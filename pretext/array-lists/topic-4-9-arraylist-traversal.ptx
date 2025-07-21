@@ -53,9 +53,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*; // import all classes in this package.
 
           public class Test1
@@ -78,13 +78,11 @@
 
               }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -123,9 +121,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
 
@@ -229,9 +227,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*;
 
           public class TestForLoop
@@ -250,13 +248,11 @@
                   System.out.println(total);
               }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -281,9 +277,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -307,9 +303,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*;
           public class ListWorker
           {
@@ -353,7 +349,6 @@
                             + listWorker.nameList);
               }
           }
-
           ]]>
         </code>
 
@@ -376,6 +371,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -403,7 +399,6 @@
 
         <program>
           <![CDATA[
-
           ArrayList<Integer> list1 = new ArrayList<Integer>();
           private ArrayList<Integer> nums;
 
@@ -420,7 +415,6 @@
                 k++;
              }
           }
-
           ]]>
         </program>
       </statement>
@@ -558,14 +552,12 @@
 
     <program>
       <![CDATA[
-
       import java.nio.file.*;
       ...
 
       // This connects and reads in the file in 1 line of code!
       // It needs to be in a method that throws or handles IOException
       List<String> lines = Files.readAllLines(Paths.get("data.txt"));
-
       ]]>
     </program>
 
@@ -591,9 +583,9 @@
       </statement>
 
       <program interactive="activecode" datafile="pokemon.csv">
+
         <code>
           <![CDATA[
-
           import java.io.*;
           import java.nio.file.*;
           import java.util.*;
@@ -608,13 +600,11 @@
 
               }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
           import org.junit.*;
           import java.io.*;
@@ -643,9 +633,9 @@
                  assertTrue(passed);
               }
            }
-
           ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -680,9 +670,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*;
 
           public class Roster
@@ -756,7 +746,6 @@
               }
 
           }
-
           ]]>
         </code>
 
@@ -793,6 +782,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -852,6 +842,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           import java.util.*;
 
@@ -897,7 +888,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -927,9 +917,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
 
@@ -1007,9 +997,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*;
 
           public class WordPairsList
@@ -1073,13 +1063,11 @@
                   return "(" + word1 + ", " + word2 + ")";
               }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -1157,9 +1145,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
 

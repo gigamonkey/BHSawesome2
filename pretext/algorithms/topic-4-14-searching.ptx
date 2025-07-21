@@ -83,9 +83,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class ArraySearcher
           {
 
@@ -118,7 +118,6 @@
                   System.out.println(sequentialSearch(numArray, 99));
               }
           }
-
           ]]>
         </code>
 
@@ -141,6 +140,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -166,9 +166,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*;
 
           public class ArrayListSearcher
@@ -208,7 +208,6 @@
                   System.out.println(sequentialSearch(numList, 99));
               }
           }
-
           ]]>
         </code>
 
@@ -231,6 +230,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -369,9 +369,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class SearchTest
           {
 
@@ -400,7 +400,6 @@
                   System.out.println(index);
               }
           }
-
           ]]>
         </code>
 
@@ -423,6 +422,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -451,9 +451,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class Search
           {
               public static boolean search(int[][] array, int value)
@@ -484,7 +484,6 @@
 
               }
           }
-
           ]]>
         </code>
 
@@ -523,6 +522,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -589,9 +589,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class SearchTest
           {
               public static int binarySearch(int[] elements, int target)
@@ -638,7 +638,6 @@
                   System.out.println(index);
               }
           }
-
           ]]>
         </code>
 
@@ -661,6 +660,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -693,9 +693,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class BinSearchStrings
           {
               public static int binarySearch(String[] elements, String target)
@@ -742,7 +742,6 @@
                   System.out.println(index);
               }
           }
-
           ]]>
         </code>
 
@@ -765,6 +764,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1128,9 +1128,9 @@
       </statement>
 
       <program interactive="activecode" datafile="dictionary.txt">
+
         <code>
           <![CDATA[
-
           import java.io.*;
           import java.nio.file.*;
           import java.util.*;
@@ -1182,7 +1182,6 @@
                   System.out.println("Binary search steps for " + word + " = " + count);
               }
           }
-
           ]]>
         </code>
 
@@ -1232,6 +1231,7 @@
              }
           }
         </tests>
+
       </program>
     </project>
 

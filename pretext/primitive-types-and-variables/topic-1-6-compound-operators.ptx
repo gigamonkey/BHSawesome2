@@ -143,6 +143,7 @@
     </statement>
 
     <program interactive="activecode">
+
       <code>
         public class Test2
         {
@@ -197,6 +198,7 @@
              }
         }
       </tests>
+
     </program>
   </activity>
 

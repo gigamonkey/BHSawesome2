@@ -498,6 +498,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Test3 {
               public static void main(String[] args) {
@@ -529,6 +530,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -540,7 +542,7 @@
         </p>
 
         <p>
-          <fillin answer="int" mode="string" /><c>age =</c>
+          <fillin answer="int" mode="string" /><c>age =</c> 
           <fillin mode="number" answer="5" /><!-- this will use a number input
           --><c>;</c>
         </p>
@@ -766,6 +768,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class CaseSensitiveClass
           {
@@ -798,6 +801,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -890,6 +894,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Challenge1_2_weather
           {
@@ -932,6 +937,7 @@
               }
           }
         </tests>
+
       </program>
     </project>
   </subsection>

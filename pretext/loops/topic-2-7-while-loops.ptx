@@ -149,9 +149,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class LoopTest1 {
               public static void main(String[] args) {
                   // 1. initialize the loop variable
@@ -165,7 +165,6 @@
                   }
               }
           }
-
           ]]>
         </code>
 
@@ -188,6 +187,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -349,13 +349,11 @@
 
         <program>
           <![CDATA[
-
           int count = 1;
           while (count <= 10) {
               count *= 2;
           }
           count = count - 10;
-
           ]]>
         </program>
       </statement>
@@ -421,13 +419,11 @@
 
         <program>
           <![CDATA[
-
           int x = -5;
           while (x < 0) {
              x++;
              System.out.print(x + " ");
           }
-
           ]]>
         </program>
       </statement>
@@ -485,12 +481,10 @@
 
     <program>
       <![CDATA[
-
       int i = 0;
       while (i < 10) {
           System.out.println(i);
       }
-
       ]]>
     </program>
 
@@ -506,13 +500,11 @@
 
     <program>
       <![CDATA[
-
       int i = 0;
       while (i < 10) {
           System.out.println(i);
           i++; // This fixes it!
       }
-
       ]]>
     </program>
 
@@ -543,13 +535,11 @@
 
     <program>
       <![CDATA[
-
       int i = 10;
       while (i < 10){ // This loop will never run!
           System.out.println(i);
           i++;
       }
-
       ]]>
     </program>
   </subsection>
@@ -577,9 +567,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class LoopTest2 {
               public static void main(String[] args) {
                   int count = 1;
@@ -588,7 +578,6 @@
                   }
               }
           }
-
           ]]>
         </code>
 
@@ -617,6 +606,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -727,6 +717,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           import java.awt.*;
           import java.util.*;
@@ -755,7 +746,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -827,9 +817,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
   </subsection>
@@ -860,7 +850,6 @@
 
           <program>
             <![CDATA[
-
             // The statements in a while loop run zero or more times,
             // determined by how many times the condition is true
             int count = 0; // initialize the loop variable
@@ -870,7 +859,6 @@
                 // update the loop variable
                 count++;
             }
-
             ]]>
           </program>
         </li>
@@ -935,7 +923,6 @@
 
         <program>
           <![CDATA[
-
           int n = 35;
           int result = 1;
           while (n > 0)
@@ -945,7 +932,6 @@
               n /= 10;
           }
           System.out.println(result);
-
           ]]>
         </program>
 

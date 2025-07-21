@@ -179,7 +179,6 @@
 
     <program>
       <![CDATA[
-
       // Assume names is a String[] variable containing names
 
       String longest = names[0];
@@ -191,7 +190,6 @@
               longest = name;
           }
       }
-
       ]]>
     </program>
 
@@ -266,9 +264,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class MinMax {
             public static void main(String[] args) {
               int[] values = {6, 2, 1, 7, 12, 5};
@@ -283,13 +281,11 @@
               System.out.println("Min is " + min);
             }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           // Test for Lesson MinMax
           import static org.junit.Assert.*;
 
@@ -332,9 +328,9 @@
               assertTrue(passed);
             }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
 
@@ -354,7 +350,6 @@
 
     <program>
       <![CDATA[
-
       // names is still a String[] variable containing names
 
       int count = 0;
@@ -364,7 +359,6 @@
               count++;
           }
       }
-
       ]]>
     </program>
 
@@ -441,7 +435,6 @@
 
     <program>
       <![CDATA[
-
       public static String findLongName(String[] names) {
           for (String name : names) {
               if (name.length() > 10) {
@@ -450,7 +443,6 @@
           }
           return null;
       }
-
       ]]>
     </program>
 
@@ -492,6 +484,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class FindError {
             public static boolean find(int[] array, int target) {
@@ -544,6 +537,7 @@
             }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -734,9 +728,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class StringWorker {
             private String[] arr = {"Hello", "Hey", "Good morning!"};
 
@@ -759,7 +753,6 @@
               System.out.println(sWorker.findString("Hey"));
             }
           }
-
           ]]>
         </code>
 
@@ -805,6 +798,7 @@
             }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -897,6 +891,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Test1 {
             public static boolean isEven(int value) {
@@ -962,6 +957,7 @@
             }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -981,7 +977,6 @@
 
     <program>
       <![CDATA[
-
       // check for duplicates next to each other
       public static boolean anyDuplicatesInSorted(int[] values) {
           for (int i = 0; i < values.length - 1; i++) {
@@ -991,7 +986,6 @@
           }
           return false;
       }
-
       ]]>
     </program>
 
@@ -1019,7 +1013,6 @@
 
     <program>
       <![CDATA[
-
       // check for duplicates anywhere in the array
       public static boolean anyDuplicates(int[] values) {
           for (int i = 0; i < values.length; i++) {
@@ -1031,7 +1024,6 @@
           }
           return false;
       }
-
       ]]>
     </program>
 
@@ -1045,6 +1037,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Pairs {
             public static boolean sumPairs10(int[] nums) {
@@ -1094,6 +1087,7 @@
             }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -1107,6 +1101,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Pairs {
             public static boolean noDups(int[] nums) {
@@ -1158,6 +1153,7 @@
             }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1248,9 +1244,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class Rotate {
             public static void main(String[] args) {
               int[] values = {6, 2, 1, 7, 12, 5};
@@ -1268,7 +1264,6 @@
               }
             }
           }
-
           ]]>
         </code>
 
@@ -1302,6 +1297,7 @@
             }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1478,6 +1474,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           import java.util.Arrays;
 
@@ -1527,6 +1524,7 @@
             }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -1540,13 +1538,11 @@
 
         <program>
           <![CDATA[
-
           for (int k = 0; k < a.length; k++) {
              while (a[k] < temp) {
                 a[k] *= 2;
              }
           }
-
           ]]>
         </program>
       </statement>

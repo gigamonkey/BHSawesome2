@@ -130,6 +130,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Test1 {
               public static void main(String[] args) {
@@ -161,6 +162,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -265,6 +267,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Test2 {
               public static void main(String[] args) {
@@ -299,6 +302,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -426,9 +430,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class TryElseIf {
               public static void main(String[] args) {
                   int x = 2;
@@ -442,13 +446,11 @@
                   System.out.println("after conditional");
               }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
           import org.junit.*;
           import java.io.*;
@@ -526,9 +528,9 @@
                   return str1.contains(str2);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
 
@@ -559,7 +561,6 @@
 
         <program>
           <![CDATA[
-
           if (x < 0)
           {
              System.out.println("x is negative");
@@ -572,7 +573,6 @@
           {
              System.out.println("x is positive");
           }
-
           ]]>
         </program>
       </statement>
@@ -616,7 +616,6 @@
 
         <program>
           <![CDATA[
-
           if (x < 0)
           {
              System.out.println("x is negative");
@@ -629,7 +628,6 @@
           {
              System.out.println("x is positive");
           }
-
           ]]>
         </program>
       </statement>
@@ -679,7 +677,6 @@
 
         <program>
           <![CDATA[
-
           if (x < .25)
           {
               System.out.println("first quartile");
@@ -696,7 +693,6 @@
           {
               System.out.println("fourth quartile");
           }
-
           ]]>
         </program>
       </statement>
@@ -764,9 +760,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.Scanner;
 
           public class IfDebug
@@ -802,7 +798,6 @@
                   System.out.println(score + " = " + grade);
               }
           }
-
           ]]>
         </code>
 
@@ -916,6 +911,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -930,6 +926,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           import java.util.Scanner;
 
@@ -1020,6 +1017,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1058,6 +1056,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Magic8Ball
           {
@@ -1090,7 +1089,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -1168,9 +1166,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
 
@@ -1318,7 +1316,6 @@
 
         <program>
           <![CDATA[
-
           int speed = 35;
           boolean rain = false;
 
@@ -1338,7 +1335,6 @@
           }
 
           System.out.println(speed);
-
           ]]>
         </program>
 
@@ -1410,7 +1406,6 @@
 
         <program>
           <![CDATA[
-
           int x = 5;
 
           if (x < 5)
@@ -1424,7 +1419,6 @@
           }
 
           System.out.print(2*x + 1);
-
           ]]>
         </program>
 
@@ -1498,7 +1492,6 @@
 
         <program>
           <![CDATA[
-
           if (x >= 80)
           {
              System.out.println("High");
@@ -1512,7 +1505,6 @@
           {
              System.out.println("Low");
           }
-
           ]]>
         </program>
 
@@ -1597,7 +1589,6 @@
 
         <program>
           <![CDATA[
-
           I.   if (x > 66)
                {
                  System.out.println("High");
@@ -1634,7 +1625,6 @@
                {
                  System.out.println("Low");
                }
-
           ]]>
         </program>
       </statement>

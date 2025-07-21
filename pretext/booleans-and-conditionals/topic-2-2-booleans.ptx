@@ -162,9 +162,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class BoolTest2 {
               public static void main(String[] args) {
                   int age = 15;
@@ -176,13 +176,11 @@
                   // 2. Print whether age is less than or equal to year
               }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -207,9 +205,9 @@
                    assertTrue(passed);
                }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
 
@@ -346,6 +344,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class BoolTest1
           {
@@ -386,6 +385,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -507,6 +507,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class BoolRem
           {
@@ -557,6 +558,7 @@
 
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -583,13 +585,11 @@
 
     <program>
       <![CDATA[
-
       if (Math.random() < 0.5) {
           System.out.println("Heads");
       } else {
           System.out.println("Tails");
       }
-
       ]]>
     </program>
 
@@ -600,13 +600,11 @@
 
     <program>
       <![CDATA[
-
       if (Math.random() < p) {
           System.out.println("Event happened");
       } else {
           System.out.println("Event did not happen");
       }
-
       ]]>
     </program>
 
@@ -800,9 +798,9 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           <![CDATA[
-
           import java.util.*;
           import java.awt.*;
 
@@ -831,7 +829,6 @@
                   world.show(true);
               }
           }
-
           ]]>
         </code>
 
@@ -875,6 +872,7 @@
              }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1027,9 +1025,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class Test1 {
               public static void main(String[] args) {
                   boolean cleanedRoom = true;
@@ -1041,13 +1039,11 @@
                   }
               }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -1079,9 +1075,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
 
@@ -1096,6 +1092,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Test2 {
               public static void main(String[] args) {
@@ -1143,6 +1140,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -1155,6 +1153,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class TestNot {
               public static void main(String[] args) {
@@ -1188,6 +1187,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1247,9 +1247,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class TestNum {
               public static void main(String[] args) {
                   int score = 10; // Try -10 and 110
@@ -1261,13 +1261,11 @@
                   }
               }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -1289,9 +1287,9 @@
                   assertTrue(changed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1342,7 +1340,6 @@
 
         <program>
           <![CDATA[
-
           if (x > 0 && (y / x) == 3)
           {
              System.out.println("first case");
@@ -1351,7 +1348,6 @@
           {
              System.out.println("second case");
           }
-
           ]]>
         </program>
       </statement>
@@ -1725,7 +1721,6 @@
 
         <program>
           <![CDATA[
-
           int x = 10;
           int y = 5;
 
@@ -1742,7 +1737,6 @@
                  System.out.print("Third ");
               }
           }
-
           ]]>
         </program>
       </statement>

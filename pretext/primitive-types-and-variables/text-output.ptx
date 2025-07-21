@@ -108,6 +108,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class MyClass
           {
@@ -122,7 +123,6 @@
 
         <tests>
           <![CDATA[
-
           // should pass if/when they run code
           import static org.junit.Assert.*;
 
@@ -162,9 +162,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -221,6 +221,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Test2
           {
@@ -267,6 +268,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -316,6 +318,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class TestEscape
           {
@@ -347,6 +350,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -392,6 +396,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           import java.util.Scanner;
 
@@ -431,6 +436,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -489,6 +495,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class MadLibs1
           {
@@ -545,6 +552,7 @@
               }
           }
         </tests>
+
       </program>
     </project>
   </subsection>

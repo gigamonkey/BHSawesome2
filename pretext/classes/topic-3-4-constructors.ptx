@@ -86,7 +86,6 @@
               d.showValues();
           }
       }
-
     </program>
 
     <p>This will produce the output:</p>
@@ -675,6 +674,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Fraction {
               //  instance variables
@@ -710,7 +710,6 @@
                   f2.print();
               }
           }
-
         </code>
 
         <tests>
@@ -761,8 +760,8 @@
                   assertTrue(check1);
               }
           }
-
         </tests>
+
       </program>
     </activity>
 
@@ -780,6 +779,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Car
           {
@@ -836,8 +836,8 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -896,6 +896,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           /**
            * class Student with 4 instance variables, a constructor, a print method, and a main method to test
@@ -918,7 +919,6 @@
 
               }
           }
-
         </code>
 
         <tests>
@@ -988,8 +988,8 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
+
       </program>
     </project>
   </subsection>
@@ -1053,6 +1053,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class          // Add your class name here!
           {
@@ -1150,9 +1151,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
   </subsection>
@@ -1472,7 +1473,6 @@
                   inTheaters = false;
               }
           }
-
         </program>
       </statement>
 
@@ -1561,7 +1561,6 @@
                   }
               }
           }
-
           ]]>
         </program>
 
@@ -1741,7 +1740,6 @@
               private boolean isHungry;
               /* missing constructor */
           }
-
         </program>
 
         <p>

@@ -225,6 +225,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class OldMacDonaldSong
           {
@@ -272,7 +273,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -322,9 +322,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>

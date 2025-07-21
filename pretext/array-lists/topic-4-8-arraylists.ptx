@@ -282,11 +282,9 @@
 
     <program>
       <![CDATA[
-
       // ArrayList<Type> name = new ArrayList<Type>();
       // An ArrayList of Strings:
       ArrayList<String> shoppingList = new ArrayList<String>();
-
       ]]>
     </program>
 
@@ -317,9 +315,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*; // import needed for ArrayList
 
           public class ArrayListCreateStr
@@ -332,7 +330,6 @@
                   System.out.println("The size of list2 is: " + list2.size());
               }
           }
-
           ]]>
         </code>
 
@@ -361,6 +358,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -383,12 +381,10 @@
 
     <program>
       <![CDATA[
-
       // An ArrayList of Integers:
       ArrayList<Integer> numList = new ArrayList<Integer>();
       // An ArrayList of Student objects:
       ArrayList<Student> roster = new ArrayList<Student>();
-
       ]]>
     </program>
 
@@ -534,10 +530,8 @@
 
     <program>
       <![CDATA[
-
       ArrayList<String> list = new ArrayList<String>();
       System.out.println( list.size() );
-
       ]]>
     </program>
 
@@ -573,9 +567,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*;
 
           public class Shopping
@@ -597,7 +591,6 @@
                   System.out.println(quantities);
               }
           }
-
           ]]>
         </code>
 
@@ -634,6 +627,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -649,11 +643,9 @@
 
     <program>
       <![CDATA[
-
       ArrayList<Integer> list = new ArrayList<Integer>();
       list.add(new Integer(5)); // this will work in Java 7
       list.add(5); // this will work in all Java versions
-
       ]]>
     </program>
 
@@ -672,9 +664,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*;
 
           public class StudentList
@@ -709,7 +701,6 @@
                   return id + ": " + name + ", " + email;
               }
           }
-
           ]]>
         </code>
 
@@ -738,6 +729,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -765,9 +757,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*; // import all classes in this package.
 
           public class listAddInt2
@@ -789,7 +781,6 @@
                   System.out.println(list1.size());
               }
           }
-
           ]]>
         </code>
 
@@ -818,6 +809,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -833,7 +825,6 @@
 
         <program>
           <![CDATA[
-
           ArrayList<Integer> list1 = new ArrayList<Integer>();
           list1.add(1);
           list1.add(2);
@@ -841,7 +832,6 @@
           list1.add(2, 4);
           list1.add(5);
           System.out.println(list1);
-
           ]]>
         </program>
       </statement>
@@ -911,14 +901,12 @@
 
         <program>
           <![CDATA[
-
           ArrayList<String> list1 = new ArrayList<String>();
           list1.add("Anaya");
           list1.add("Layla");
           list1.add("Sharrie");
           list1.add(1, "Sarah");
           System.out.println(list1);
-
           ]]>
         </program>
       </statement>
@@ -996,9 +984,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*; // import all classes in this package.
 
           public class listRem
@@ -1014,7 +1002,6 @@
                   System.out.println(list1);
               }
           }
-
           ]]>
         </code>
 
@@ -1043,6 +1030,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -1061,14 +1049,12 @@
 
         <program>
           <![CDATA[
-
           List<Integer> list1 = new ArrayList<Integer>();
           list1.add(1);
           list1.add(2);
           list1.add(3);
           list1.remove(2);
           System.out.println(list1);
-
           ]]>
         </program>
       </statement>
@@ -1156,9 +1142,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*; // import all classes in this package.
 
           public class listGetSet
@@ -1176,7 +1162,6 @@
                   System.out.println(nameList);
               }
           }
-
           ]]>
         </code>
 
@@ -1217,6 +1202,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -1226,7 +1212,6 @@
 
         <program>
           <![CDATA[
-
           List<Integer> list1 = new ArrayList<Integer>();
           list1.add(1);
           list1.add(2);
@@ -1235,7 +1220,6 @@
           list1.add(2, 5);
           list1.add(6);
           System.out.println(list1);
-
           ]]>
         </program>
       </statement>
@@ -1307,7 +1291,6 @@
 
         <program>
           <![CDATA[
-
           List<String> list1 = new ArrayList<String>();
           list1.add("Anaya");
           list1.add("Layla");
@@ -1315,7 +1298,6 @@
           list1.set(1, "Destini");
           list1.add(1, "Sarah");
           System.out.println(list1);
-
           ]]>
         </program>
       </statement>
@@ -1393,7 +1375,6 @@
 
     <program>
       <![CDATA[
-
       // arrays must specify a size!
       int[] highScores = new int[5];
       String[] names = new String[5];
@@ -1401,7 +1382,6 @@
       // ArrayLists are empty to start with
       ArrayList<Integer> highScoreList = new ArrayList<Integer>();
       ArrayList<String> nameList = new ArrayList<String>();
-
       ]]>
     </program>
 
@@ -1469,6 +1449,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           import java.util.*;
 
@@ -1504,7 +1485,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -1553,9 +1533,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
 
@@ -1573,9 +1553,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*;
 
           public class ArrayListFromArray
@@ -1587,7 +1567,6 @@
                   System.out.println(namesList);
               }
           }
-
           ]]>
         </code>
 
@@ -1616,6 +1595,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1652,6 +1632,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class DivideBy10
           {
@@ -1691,6 +1672,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -1742,9 +1724,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*;
 
           public class Digits
@@ -1776,7 +1758,6 @@
                   System.out.println(d1);
               }
           }
-
           ]]>
         </code>
 
@@ -1816,6 +1797,7 @@
               }
           }
         </tests>
+
       </program>
     </project>
   </subsection>

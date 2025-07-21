@@ -164,9 +164,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class Person {
               private String name;
               private String email;
@@ -195,7 +195,6 @@
                   System.out.println(p1);
               }
           }
-
           ]]>
         </code>
 
@@ -222,6 +221,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -243,6 +243,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Person {
               private String name;
@@ -286,6 +287,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -304,6 +306,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class TesterClass {
               public static void main(String[] args) {
@@ -345,7 +348,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -425,9 +427,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
   </subsection>

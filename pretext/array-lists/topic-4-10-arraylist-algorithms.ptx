@@ -72,7 +72,6 @@
 
     <program>
       <![CDATA[
-
       for (Type obj : list)
       {
           if (obj ....)
@@ -84,7 +83,6 @@
          if (list.get(i) ....)
              ...
       }
-
       ]]>
     </program>
   </introduction>
@@ -103,7 +101,6 @@
 
         <program>
           <![CDATA[
-
           List<Integer> numList = new ArrayList<Integer>();
           numList.add(new Integer(1));
           numList.add(new Integer(2));
@@ -112,7 +109,6 @@
           numList.add(1, new Integer(5));
           numList.add(new Integer(6));
           System.out.println(numList);
-
           ]]>
         </program>
       </statement>
@@ -185,14 +181,12 @@
 
         <program>
           <![CDATA[
-
           List<Integer> list1 = new ArrayList<Integer>();
           list1.add(new Integer(1));
           list1.add(new Integer(2));
           list1.add(new Integer(3));
           list1.remove(1);
           System.out.println(list1);
-
           ]]>
         </program>
       </statement>
@@ -260,9 +254,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*;
 
           public class ArrayListLoop
@@ -285,7 +279,6 @@
                   System.out.println(arr);
               }
           }
-
           ]]>
         </code>
 
@@ -308,6 +301,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -450,9 +444,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.ArrayList;
 
           public class ListMax
@@ -476,13 +470,11 @@
                   System.out.println("Max: " + findMax(list));
               }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -521,9 +513,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -619,9 +611,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*;
 
           public class TestCountOdd
@@ -646,13 +638,11 @@
                     System.out.println("Your Result:\t\t " + result);
                }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -689,9 +679,9 @@
                       assertTrue(passed);
                }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -788,9 +778,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*;
 
           public class TestDuplicates
@@ -819,13 +809,11 @@
                   System.out.println("Your Result: " + result1 + ", " + result2);
               }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -883,9 +871,9 @@
                       assertTrue(passed);
                   }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -978,9 +966,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*;
 
           public class TestRotate
@@ -1004,13 +992,11 @@
                   System.out.println("Your Result: " + values);
               }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -1057,9 +1043,9 @@
                       assertTrue(passed);
                   }
               }
-
           ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1135,9 +1121,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*;
 
           public class TestReverse
@@ -1163,13 +1149,11 @@
                   System.out.println("Your Result:\t\t " + result);
               }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -1214,9 +1198,9 @@
                 assertTrue(passed);
             }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1240,9 +1224,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.*;
 
           public class ParallelTests
@@ -1267,7 +1251,6 @@
                   System.out.println("Average over two tests: " + total / numberOfGrades);
               }
           }
-
           ]]>
         </code>
 
@@ -1299,6 +1282,7 @@
                   }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>

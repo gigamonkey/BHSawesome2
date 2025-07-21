@@ -30,6 +30,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           import java.awt.*;
           import java.util.*;
@@ -67,6 +68,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -106,6 +108,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           import java.awt.*;
           import java.util.*;
@@ -125,7 +128,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -160,9 +162,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
 
@@ -199,6 +201,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           import java.awt.*;
           import java.util.*;
@@ -223,7 +226,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -247,9 +249,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -356,6 +358,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           import java.awt.*;
           import java.util.*;
@@ -391,6 +394,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -403,6 +407,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           import java.awt.*;
           import java.util.*;
@@ -421,7 +426,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -476,9 +480,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -545,6 +549,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           import java.awt.*;
           import java.util.*;
@@ -563,7 +568,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -607,9 +611,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
   </subsection>
@@ -1144,6 +1148,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           import java.awt.*;
           import java.util.*;
@@ -1198,6 +1203,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1280,6 +1286,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           import java.awt.*;
           import java.util.*;
@@ -1408,6 +1415,7 @@
               }
           }
         </tests>
+
       </program>
     </project>
   </subsection>
@@ -1470,6 +1478,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           import java.awt.*;
           import java.util.*;
@@ -1490,7 +1499,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -1566,9 +1574,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
 
@@ -1670,6 +1678,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           import java.awt.*;
           import java.util.*;
@@ -1726,6 +1735,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -1740,6 +1750,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           import java.awt.*;
           import java.lang.Math;
@@ -1761,7 +1772,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -1807,9 +1817,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1855,6 +1865,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           import java.awt.*;
           import java.util.*;
@@ -1873,7 +1884,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -1935,9 +1945,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
   </subsection>

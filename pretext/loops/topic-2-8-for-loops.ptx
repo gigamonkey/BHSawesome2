@@ -120,7 +120,6 @@
 
       <program>
         <![CDATA[
-
         // These loops both run 10 times
 
         // If you start at 0, use <
@@ -132,7 +131,6 @@
         for (int i = 1; i <= 10; i++) {
            System.out.println(i);
         }
-
         ]]>
       </program>
     </note>
@@ -198,9 +196,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class ForLoop {
               public static void main(String[] args) {
                   for (int count = 1; count <= 5; count++) {
@@ -208,7 +206,6 @@
                   }
               }
           }
-
           ]]>
         </code>
 
@@ -231,6 +228,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -244,9 +242,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class ForLoopFromWhile {
               public static void main(String[] args) {
                   int count = 5;
@@ -256,7 +254,6 @@
                   }
               }
           }
-
           ]]>
         </code>
 
@@ -301,6 +298,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -310,11 +308,9 @@
 
         <program>
           <![CDATA[
-
           for (int i = 3; i < 8; i++) {
              System.out.print(i + " ");
           }
-
           ]]>
         </program>
       </statement>
@@ -378,11 +374,9 @@
 
         <program>
           <![CDATA[
-
           for (int i = 1; i <= 10; i++) {
              System.out.print(i + " ");
           }
-
           ]]>
         </program>
       </statement>
@@ -439,11 +433,9 @@
 
         <program>
           <![CDATA[
-
           for (int i = 3; i <= 9; i++) {
              System.out.print("*");
           }
-
           ]]>
         </program>
       </statement>
@@ -554,10 +546,8 @@
 
         <program>
           <![CDATA[
-
           for (int i = 1; i <= 5; i++) {
           }
-
           ]]>
         </program>
       </listing>
@@ -567,10 +557,8 @@
 
         <program>
           <![CDATA[
-
           for (int i = 5; i > 0; i--) {
           }
-
           ]]>
         </program>
       </listing>
@@ -587,9 +575,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class SongTest {
 
               public static void main(String[] args) {
@@ -607,7 +595,6 @@
                   }
               }
           }
-
           ]]>
         </code>
 
@@ -655,6 +642,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -676,9 +664,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class ForLoop {
               public static void main(String[] args) {
                   for (int count = 1; count <= 5; count++) {
@@ -686,7 +674,6 @@
                   }
               }
           }
-
           ]]>
         </code>
 
@@ -709,6 +696,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -791,6 +779,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           import java.awt.*;
           import java.util.*;
@@ -915,6 +904,7 @@
               }
           }
         </tests>
+
       </program>
     </project>
   </subsection>
@@ -979,7 +969,6 @@
 
         <program>
           <![CDATA[
-
           int count = 0, sum = 0;
           while (count <= 6)
           {
@@ -990,7 +979,6 @@
               }
           }
           System.out.println(sum);
-
           ]]>
         </program>
 
@@ -1001,7 +989,6 @@
 
         <program>
           <![CDATA[
-
           I.  int sum = 0;
               for (int count = 0; count <= 6; count++) {
                   count++;
@@ -1024,7 +1011,6 @@
                   }
                }
                System.out.println(sum);
-
           ]]>
         </program>
       </statement>
@@ -1101,13 +1087,11 @@
 
         <program>
           <![CDATA[
-
           int result = 1;
           for (int i = 3; i < 6; i += 2) {
             result *= i;
           }
           System.out.println(result);
-
           ]]>
         </program>
 

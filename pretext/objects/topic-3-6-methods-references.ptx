@@ -114,6 +114,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Person {
               // instance variables
@@ -200,6 +201,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -392,6 +394,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           import java.awt.*;
           import java.util.*;
@@ -448,6 +451,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -578,6 +582,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Person {
               // instance variables
@@ -695,6 +700,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -746,6 +752,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Person {
               // instance variables
@@ -882,6 +889,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -953,6 +961,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Person {
               // instance variables
@@ -1064,6 +1073,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1184,6 +1194,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Person {
               // instance variables
@@ -1292,6 +1303,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1362,6 +1374,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           class Date {
               // Add instance variables for the month, day, and year as ints
@@ -1400,7 +1413,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -1448,9 +1460,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
   </subsection>
@@ -1498,6 +1510,7 @@
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
         <code>
           import java.awt.*;
           import java.util.*;
@@ -1537,6 +1550,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -1590,6 +1604,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Test1 {
               public static void main(String[] args) {
@@ -1620,6 +1635,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -1666,6 +1682,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Test2 {
               public static void main(String[] args) {
@@ -1691,7 +1708,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -1723,9 +1739,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
 
@@ -1948,9 +1964,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class NullTest {
               public static void main(String[] args) {
                   String s = null;
@@ -1962,13 +1978,11 @@
                   }
               }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -2012,9 +2026,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
 
@@ -2081,7 +2095,6 @@
 
         <program>
           <![CDATA[
-
           String message = new String("AP Practice");
           String note = new String("AP Practice");
           String memo = new String("memo");
@@ -2097,7 +2110,6 @@
                  memo = message.substring(i);
               }
           }
-
           ]]>
         </program>
 

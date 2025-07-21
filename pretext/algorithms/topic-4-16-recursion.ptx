@@ -79,7 +79,6 @@
 
         <program>
           <![CDATA[
-
           public static int mystery()
           {
              int total = 0;
@@ -89,7 +88,6 @@
              }
              return total;
           }
-
           ]]>
         </program>
       </statement>
@@ -309,6 +307,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class FactorialTest
           {
@@ -352,6 +351,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -542,7 +542,6 @@
 
         <program>
           <![CDATA[
-
           public static int bunnyEars(int bunnies)
           {
              int total = 0;
@@ -552,7 +551,6 @@
              }
              return total;
           }
-
           ]]>
         </program>
       </statement>

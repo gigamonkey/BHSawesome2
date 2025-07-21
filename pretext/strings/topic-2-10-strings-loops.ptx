@@ -62,7 +62,6 @@
 
     <program>
       <![CDATA[
-
       public boolean containsVowel(String s) {
           for (int i = 0; i < s.length(); i++) {
               if ("aeiou".indexOf(s.substring(i, i + 1)) != -1) {
@@ -71,7 +70,6 @@
           }
           return false;
       }
-
       ]]>
     </program>
 
@@ -263,7 +261,6 @@
 
     <program>
       <![CDATA[
-
       public static String without(String s, String toRemove) {
           while (s.indexOf(toRemove) >= 0) {
               int i = s.indexOf(toRemove);
@@ -271,7 +268,6 @@
           }
           return s;
       }
-
       ]]>
     </program>
 
@@ -367,9 +363,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class FindAndReplace {
               public static void main(String[] args) {
                   String message = "Have a 1ong and happy 1ife";
@@ -393,7 +389,6 @@
                   System.out.println("Cleaned text: " + message);
               }
           }
-
           ]]>
         </code>
 
@@ -431,6 +426,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -481,9 +477,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class ReverseString {
               public static void main(String[] args) {
                   String s = "Hello";
@@ -496,7 +492,6 @@
                   System.out.println(s + " reversed is " + reversed);
               }
           }
-
           ]]>
         </code>
 
@@ -519,6 +514,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -601,6 +597,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class ChallengeReplace {
               public static void main(String[] args) {
@@ -661,6 +658,7 @@
               }
           }
         </tests>
+
       </program>
     </project>
   </subsection>

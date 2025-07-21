@@ -92,6 +92,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Test1 {
               public static void main(String[] args) {
@@ -121,6 +122,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -186,6 +188,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Test1 {
               public static void main(String[] args) {
@@ -218,6 +221,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -358,6 +362,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class CmToInches {
               public static void main(String[] args) {
@@ -392,6 +397,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -463,6 +469,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class TestCompound {
               public static void main(String[] args) {
@@ -494,6 +501,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -517,9 +525,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class Challenge1_3_Pay_Calculator {
              public static void main(String[] args) {
                  // Put in the math operator between 4 and 10 below to compute
@@ -550,7 +558,6 @@
 
              }
           }
-
           ]]>
         </code>
 
@@ -604,6 +611,7 @@
               }
           }
         </tests>
+
       </program>
     </project>
   </subsection>

@@ -87,13 +87,11 @@
 
     <program>
       <![CDATA[
-
       int sum = 0;
       for (int i = 1; i <= 100; i++) {
           sum += i;
       }
       System.out.println("The sum of 1 through 100 is " + sum);
-
       ]]>
     </program>
 
@@ -125,13 +123,11 @@
 
     <program>
       <![CDATA[
-
       double total = 0;
       for (int i = 0; i < 24; i++) {
           total += nextMeasurement();
       }
       System.out.println(total + " cm of total rainfall.");
-
       ]]>
     </program>
 
@@ -144,7 +140,6 @@
 
     <program>
       <![CDATA[
-
       int count = 0;
       for (int i = 0; i < 24; i++) {
           if (nextMeasurement() > 12.0) {
@@ -152,7 +147,6 @@
           }
       }
       System.out.println(total + " hours with over 12.0 cm of rainfall.");
-
       ]]>
     </program>
 
@@ -179,7 +173,6 @@
 
     <program>
       <![CDATA[
-
       int count = 0;
       for (int i = 0; i < 24; i++) {
           if (extraRainy(nextMeasurement())) { // change the condition to use the provided method
@@ -187,7 +180,6 @@
           }
       }
       System.out.println(total + " extra rainy hours.");
-
       ]]>
     </program>
   </subsection>
@@ -206,13 +198,11 @@
 
     <program>
       <![CDATA[
-
       double total = 0;
       for (int i = 0; i < 24; i++) {
           total += nextMeasurement();
       }
       System.out.println("Average rainfall: " + total / 24);
-
       ]]>
     </program>
 
@@ -224,7 +214,6 @@
 
     <program>
       <![CDATA[
-
       double total = 0;
       int count = 0;
       for (int i = 0; i < 24; i++) {
@@ -235,7 +224,6 @@
           }
       }
       System.out.println("Average rainfall in rainy hours: " + total / count);
-
       ]]>
     </program>
 
@@ -250,6 +238,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Accumulator {
               // sum calculates and returns the sum of the numbers 1 to n
@@ -333,6 +322,7 @@
              }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -381,6 +371,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           import java.util.Scanner;
 
@@ -460,6 +451,7 @@
               }
             }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -486,14 +478,12 @@
 
     <program>
       <![CDATA[
-
       int min = Integer.MAX_VALUE;
       for (int i = 0; i < 10; i++) {
           int num = (int) (Math.random() * 100);
           min = Math.min(min, num);
       }
       System.out.println("The minimum value is " + min);
-
       ]]>
     </program>
 
@@ -504,7 +494,6 @@
 
     <program>
       <![CDATA[
-
       int min = Integer.MAX_VALUE;
       for (int i = 0; i < 10; i++) {
           int num = (int) (Math.random() * 100);
@@ -513,7 +502,6 @@
           }
       }
       System.out.println("The minimum value is " + min);
-
       ]]>
     </program>
 
@@ -538,9 +526,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class MinMax {
               // min calculates and returns the minimum of n random numbers
               public static int min(int n) {
@@ -568,13 +556,11 @@
                   System.out.println("The maximum value is " + max(n));
               }
           }
-
           ]]>
         </code>
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -604,9 +590,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -641,13 +627,11 @@
 
     <program>
       <![CDATA[
-
       while (n > 0) { // i.e. n still has at least one non-0 digit
           int d = n % 10;
           n /= 10;
           // Do something with d
       }
-
       ]]>
     </program>
 
@@ -668,6 +652,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class CheckDigitTest {
                 // checkDigit checks whether a number has a given digit in it
@@ -742,6 +727,7 @@
              }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>

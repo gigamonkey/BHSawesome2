@@ -304,6 +304,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class FirstClass
           {
@@ -334,6 +335,7 @@
               }
           }
         </tests>
+
       </program>
     </exercise>
 
@@ -350,6 +352,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class SecondClass
           {
@@ -381,6 +384,7 @@
               }
           }
         </tests>
+
       </program>
     </exercise>
 
@@ -398,6 +402,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class ThirdClass
           {
@@ -430,6 +435,7 @@
               }
           }
         </tests>
+
       </program>
     </exercise>
   </subsection>
@@ -467,6 +473,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class DivideByZero
           {
@@ -496,6 +503,7 @@
               }
           }
         </tests>
+
       </program>
     </exercise>
 
@@ -558,6 +566,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Challenge1_1
           {
@@ -591,6 +600,7 @@
               }
           }
         </tests>
+
       </program>
     </exercise>
   </subsection>

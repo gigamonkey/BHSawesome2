@@ -131,9 +131,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.Arrays;
 
           public class SortTest
@@ -164,7 +164,6 @@
                   System.out.println(Arrays.toString(arr1));
               }
           }
-
           ]]>
         </code>
 
@@ -187,6 +186,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -247,7 +247,6 @@
 
         <program>
           <![CDATA[
-
           public static void selectionSort(int[] elements)
           {
             for (int j = 0; j < elements.length − 1; j++)      // line 1
@@ -265,7 +264,6 @@
                elements[minIndex] = temp;
              }
           }
-
           ]]>
         </program>
       </statement>
@@ -431,9 +429,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           import java.util.Arrays;
 
           public class SortTest
@@ -461,7 +459,6 @@
                   System.out.println(Arrays.toString(arr1));
               }
           }
-
           ]]>
         </code>
 
@@ -484,6 +481,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -543,7 +541,6 @@
 
         <program>
           <![CDATA[
-
           public static void insertionSort(int[] elements)
           {
             for (int j = 1; j < elements.length - 1; j++)                       // line 1
@@ -558,7 +555,6 @@
                elements[possibleIndex] = temp;
             }
           }
-
           ]]>
         </program>
       </statement>

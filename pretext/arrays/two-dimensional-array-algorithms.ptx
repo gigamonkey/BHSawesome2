@@ -27,13 +27,11 @@
 
     <program>
       <![CDATA[
-
       for (int r = 0; r < array.length; r++) {
           for (int c = 0; c < array[0].length; c++) {
               System.out.println(array[r][c]);
           }
       }
-
       ]]>
     </program>
 
@@ -78,13 +76,11 @@
 
     <program>
       <![CDATA[
-
       for (int c = 0; c < array[0].length; c++) {
           for (int r = 0; r < array.length; r++) {
               System.out.println(array[r][c]);
           }
       }
-
       ]]>
     </program>
 
@@ -103,9 +99,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class Test1 {
 
               public static double getAverage(int[][] a) {
@@ -125,7 +121,6 @@
                   System.out.println(getAverage(matrix));
               }
           }
-
           ]]>
         </code>
 
@@ -161,6 +156,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -173,9 +169,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class ColumnMajorTraversal {
               public static void main(String[] args) {
                   int[][] array = {{1, 2, 3}, {4, 5, 6}};
@@ -186,7 +182,6 @@
                   }
               }
           }
-
           ]]>
         </code>
 
@@ -208,6 +203,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -220,7 +216,6 @@
 
         <program>
           <![CDATA[
-
           int[][] points = {
                {11, 12, 13, 14, 15},
                {21, 22, 23, 24, 25},
@@ -234,7 +229,6 @@
                }
                System.out.println();
           }
-
           ]]>
         </program>
       </statement>
@@ -349,6 +343,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Average {
 
@@ -386,6 +381,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -404,7 +400,6 @@
 
     <program>
       <![CDATA[
-
       int biggestRowIndex = 0;
       int biggestSum = Integer.MIN_VALUE;
 
@@ -421,7 +416,6 @@
               biggestRowIndex = r;
           }
       }
-
       ]]>
     </program>
 
@@ -484,9 +478,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class Total {
 
               public static int getTotalForRow(int row, int[][] a) {
@@ -511,7 +505,6 @@
                   System.out.println(getTotalForCol(0, matrix));
               }
           }
-
           ]]>
         </code>
 
@@ -550,6 +543,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -650,12 +644,10 @@
 
       <program>
         <![CDATA[
-
         // r never changes so we loop across the row
         for (int c = 0; c < array[r].length; c++) {
             System.out.println(array[r][c]);
         }
-
         ]]>
       </program>
     </listing>
@@ -665,12 +657,10 @@
 
       <program>
         <![CDATA[
-
         // c never changes so we loop down the column
         for (int r = 0; r < array.length; r++) {
             System.out.println(array[r][c]);
         }
-
         ]]>
       </program>
     </listing>
@@ -688,13 +678,11 @@
 
       <program>
         <![CDATA[
-
         for (int r = 0; r < row; r++) {
             for (int c = 0; c < col; c++) {
                 System.out.println(array[r][c]);
             }
         }
-
         ]]>
       </program>
     </listing>
@@ -706,13 +694,11 @@
 
       <program>
         <![CDATA[
-
         for (int r = row; r < array.length; r++) {
             for (int c = col; c < array[0].length; c++) {
                 System.out.println(array[r][c]);
             }
         }
-
         ]]>
       </program>
     </listing>
@@ -725,13 +711,11 @@
 
       <program>
         <![CDATA[
-
         for (int r = row1; r < row2; r++) {
             for (int c = col1; c < col2; c++) {
                 System.out.println(array[r][c]);
             }
         }
-
         ]]>
       </program>
     </listing>
@@ -746,9 +730,9 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           <![CDATA[
-
           public class Count {
               public static int countValues(
                       int value, int[][] a, int rowStart, int rowEnd, int colStart, int colEnd) {
@@ -768,7 +752,6 @@
                   System.out.println(countValues(3, matrix, 0, 2, 0, 2));
               }
           }
-
           ]]>
         </code>
 
@@ -789,6 +772,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -853,7 +837,6 @@
 
         <program>
           <![CDATA[
-
           int[][] arr = { {1, 2, 3, 4},
                           {5, 6, 7, 8},
                           {9, 10, 11, 12} };
@@ -865,7 +848,6 @@
                    sum += x[y];
               }
           }
-
           ]]>
         </program>
       </statement>

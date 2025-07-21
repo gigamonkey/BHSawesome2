@@ -32,6 +32,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class Pay {
               private double pay;
@@ -88,6 +89,7 @@
               }
           }
         </tests>
+
       </program>
     </activity>
 
@@ -287,6 +289,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class BankAccount {
               // 3 instance variables
@@ -303,7 +306,6 @@
 
         <tests>
           <![CDATA[
-
           import static org.junit.Assert.*;
 
           import org.junit.*;
@@ -390,9 +392,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
   </subsection>
@@ -564,5 +566,4 @@
       </choices>
     </activity>
   </subsection>
-
 </section>
