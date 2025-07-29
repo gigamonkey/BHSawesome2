@@ -27,14 +27,14 @@
 
     <p>
       You can learn Java by just using the interactive coding panels called
-      <term>Active Code</term> in this e-book. If you are logged in, the Active
+      <term>Active Code</term> in this book. If you are logged in, the Active
       Code will remember your changes and even show you a history of your
       changes to the code if you click on Load History.
     </p>
 
     <p>
       However, it’s a good idea to also try a Java IDE to build code outside of
-      this e-book, especially to try coding with user input which Active Code
+      this book, especially to try coding with user input which Active Code
       cannot do. There are many Java IDEs available. Here are some of most
       popular ones used by AP CSA teachers:
     </p>
@@ -48,9 +48,9 @@
       programming languages. Most are free to start, but offer different
       features for a price. These are great options if you are using a
       Chromebook or you cannot install software on your computer or you want an
-      easy no-installation option. Some of the Active Code samples in this
-      e-book also include a link to online IDEs. These projects can be copied to
-      make your own copy.
+      easy no-installation option. Some of the Active Code samples in this book
+      also include a link to online IDEs. These projects can be copied to make
+      your own copy.
     </p>
 
     <p>Here are some popular online IDEs:</p>

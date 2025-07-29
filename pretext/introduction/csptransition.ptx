@@ -74,18 +74,19 @@
   </p>
 
   <p>
-    Here is a comparison of some App Inventor blocks compared to AP CSP
-    pseudocode and Java code used in AP CSA (<url
-    href="https://docs.google.com/document/d/1xhSAfzF1pH0nlUL94lmpdvd8fO4sa38cOuunXnJU4Bs/view">open
-    in Google Docs</url>).
+    Here are some comparisons between some App Inventor blocks, AP CSP
+    pseudocode, and Java code used in AP CSA.
   </p>
 
-  <interactive iframe="iframe/appinventor.html" width="100%" aspect="1:1" />
   <p>
-    And here is a comparison of <url
-    href="https://docs.google.com/document/d/1LB6a36tRKGgTGJUcpT_3TspXFqn5luu1YU8YmYt1CQs/edit?usp=sharing">code.org
-    App Lab code to Java</url>:
-  </p>
+    <ul>
+      <li><url
+      href="https://docs.google.com/document/d/1xhSAfzF1pH0nlUL94lmpdvd8fO4sa38cOuunXnJU4Bs/view">AP
+      CSP Pseudocode and App Inventor to Java Comparison</url></li>
 
-  <interactive iframe="iframe/applab.html" width="100%" aspect="1:1" />
+      <li><url
+      href="https://docs.google.com/document/d/1LB6a36tRKGgTGJUcpT_3TspXFqn5luu1YU8YmYt1CQs/view">AP
+      CSP Pseudocode and code.org AppLab to Java Comparison</url></li>
+    </ul>
+  </p>
 </section>

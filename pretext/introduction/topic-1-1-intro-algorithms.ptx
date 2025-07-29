@@ -76,10 +76,12 @@
 
     <p>
       In particular, within any class there can be a <term>main method</term>
-      that contains the code that runs if that class is run as program. Working
-      in an IDE that might happen when you hit a run button. In the coding
-      activities in this book, there is almost always one class and that is the
-      one that is run when you hit the run button.
+      that contains the code that runs if that class is run as program. In the
+      coding activities in this book, there is almost always one class and that
+      is the one that is run when you hit the run button. In other programming
+      environments that you will use for more complex programs there will be
+      some other way to run your programs but they always start from some
+      class’s <c>main</c> method.
     </p>
 
     <p>
@@ -95,20 +97,12 @@
     </p>
 
     <program>
-      public class MyClass
-      {
-          public static void main(String[] args)
-          {
+      public class MyClass {
+          public static void main(String[] args) {
               // Put your code here!
           }
       }
     </program>
-
-    <p>
-      In Java every open curly brace <c>{</c> must have a matched close curly
-      brace <c>}</c>. These are used to start and end class definitions and
-      method definitions.
-    </p>
 
     <p>
       Click on the run button below to have the computer execute the <c>main</c>
@@ -130,10 +124,8 @@
       <program interactive="activecode">
 
         <code>
-          public class MyClass
-          {
-              public static void main(String[] args)
-              {
+          public class MyClass {
+              public static void main(String[] args) {
                   System.out.println("Hi there!");
               }
           }
@@ -166,41 +158,78 @@
   </subsection>
 
   <subsection>
-    <title>Compiling and running Java programs</title>
+    <title>Java syntax</title>
 
     <p>
-      Code can be written in any text editor, including the small text editor
-      built into the Active Code exercises in this e-book. However, an
-      <term>Integrated Development Environment (IDE)</term> is often used to
-      write programs because it provides tools for a programmer to write,
-      compile, and run code. For this course, you can use the e-book Active Code
-      exercises or the Scratch button above as your IDE to run your code. Or you
-      can try other IDEs mentioned in the last unit. In other IDEs, you must
-      name the file the same name as the class name with “.java” as the
-      extension. All code (programs) in Java must be defined inside a class in a
-      source file, and the name of the class must match the file name.
+      Every programming language has a <term>syntax</term> which is a set of
+      rules for how thet text of a program has to be organized. Human languages
+      also have syntax. For instance in English, “The robot ate the cupcake”, is
+      a syntactically correct sentence while, “Ate robot cupcake the the”, is
+      not. A program, like a sentence, can only actually be a program if it is
+      syntactically correct. But computers are even more picky that humans about
+      syntax so one of the first things we need to learn, when learning a new
+      programming language are the exact rules of it’s syntax. Luckily most
+      programming languages are designed to have a relatively simple syntax,
+      even if it looks a bit odd at first so we can usually pick it up by
+      reading and writing code and paying attention to the error messages we get
+      when we make mistakes: no need to memorize a bunch of rules.
     </p>
 
     <p>
-      Computers don’t actually speak Java so we have to <term>compile</term>
-      (translate) Java source files that we write into class files which is code
-      that a computer can understand and run. A <term>compiler</term> checks
-      your code for errors and translates your code to executable code that can
-      be run. Errors detectable by the compiler need to be fixed before the
-      program can be run. In this e-book, the Java code is actually being sent
-      to a Java server to be compiled and run, and the errors and output are
-      sent back to be shown in the web page.
+      Puncuation plays a big role in programming syntax. As you can see in the
+      simple programs above, Java uses <term>curly braces</term> <c>{}</c> in
+      pairs so each open brace <c>{</c> must have a matched close brace
+      <c>}</c>. These are used to start and end class definitions and method
+      definitions.
     </p>
-  </subsection>
-
-  <subsection>
-    <title>Java keywords</title>
 
     <p>
-      <term>Keywords</term> are reserved words that have special meaning in
-      Java. Keywords such as <c>public</c>, <c>class</c>, and <c>void</c> must
-      be in lowercase, but class names such as <c>System</c> and <c>String</c>
-      are capitalized.
+      Semicolons <c>;</c> are also used all the time in Java. They are kind of
+      like Java’s equivalent of a perod in English, used to end a complete
+      statement like <c>System.out.println("Hi there!");</c>. For most beginning
+      Java programmers the most common error is leaving out a necessary
+      semicolon.
+    </p>
+
+    <note>
+      <p>
+        You will not be penalized on the exam if you forget a needed semicolon,
+        but the Java compiler is not so lenient; your program won’t compile
+        without it. Note also that not <em>every</em> line ends with a
+        semicolon; if the line starts a construct like an <c>if</c> statement,
+        there is no semicolon before the opening <c>{</c> nor one after the
+        closing <c>}</c>.
+      </p>
+    </note>
+
+    <p>
+      Other than punctuation most of the rest of programs are made up of words.
+      Some words are special to Java and are called <term>keywords</term>. In
+      the programs above the keywords are <c>public</c>, <c>class</c>,
+      <c>static</c>, and <c>void</c>. Because keywords have a special meaning to
+      Java we can only use them for the particular purpose each one has. All
+      keywords in Java are lower case.
+    </p>
+
+    <p>
+      Other names are ones we get to make up. In the program above
+      <c>MyClass</c> and <c>args</c> are <term>names</term>, or, more formally,
+      <term>identifiers</term>. <c>MyClass</c> is the name of a class and
+      <c>args</c> is the name of a variable (we’ll learn all about classes and
+      variables later.) Java doesn’t care at all what names we use there other
+      than that they be made up of just letters and numbers and start with a
+      letter. And as you can see, when a name is made up of multiple words like
+      <c>MyClass</c> the convention is to capitalize the first letter of each
+      word.
+    </p>
+
+    <p>
+      Finally the words <c>main</c> and <c>String</c> are not keywords, but have
+      a particular meaning to Java. The name <c>main</c> is used to identify the
+      method we want Java to run when we run our program. And <c>String</c> is a
+      class that is part of Java’s standard library. But since they are not
+      keywords we could use those names in other ways in our programs. (But it
+      would be confusing so we probably wouldn’t.)
     </p>
 
     <exercise label="mp-main-method-order-1" adaptive="yes">
@@ -285,19 +314,6 @@
       </blocks>
     </exercise>
 
-    <p>
-      Lines in a Java program that express a complete action such as printing
-      output must end with a semicolon (<c>;</c>). Such a line is called a
-      <term>statement</term>. You can think of the semicolon (<c>;</c>) in Java
-      like a period (<c>.</c>) in English. The same way you use a period to end
-      a sentence in English, you use a semicolon to end a statement in Java. You
-      will not be penalized on the exam if you forget a needed semicolon, but
-      the Java compiler is not so lenient; your program won’t compile without
-      it. Note also that not <em>every</em> line ends with a semicolon; if the
-      line starts a construct like an <c>if</c> statement, there is no semicolon
-      before the opening <c>{</c> nor one after the closing <c>}</c>.
-    </p>
-
     <exercise label="mp-print-order-1" adaptive="yes">
       <statement>
         <p>
@@ -363,23 +379,102 @@
     <title>Comments</title>
 
     <p>
-      In Java and many text-based coding languages, <c>//</c> is used to mark
-      the beginning of a comment. For multi-line comments, use <c>/*</c> to
-      start the comment and <c>*/</c> to end the comment. The compiler will skip
-      over comments. However, it is a good idea to use comments to make notes to
-      yourself and other programmers working with you. Here are some examples of
-      good commenting:
+      Another important piece of Java syntax are <term>comments</term> which are
+      bits of the program that Java ignores but which are useful for humans
+      reading the program.
+    </p>
+
+    <p>
+      Java uses two styles of comments. Single line comments start with
+      <c>//</c> and go to the end of the line. Sometimes they are placed on a
+      line by themselves, usually to comment on the next bit of code. And
+      sometimes short comments are added at the end of a line.
+    </p>
+
+    <p>
+      Multi-line comments, are marked with a <c>/*</c> to start the comment and
+      a <c>*/</c> to end it.
+    </p>
+
+    <p>
+      Commenting code well is an art form: there is no need to explain things
+      that can be understood from the code itself but it can be very valuable to
+      explain <em>why</em> code is a certain way.
+    </p>
+
+    <p>
+      It can also be useful to use comments as we develop code to make notes
+      about our plan and then delete the comments as we develop the code. And
+      perhaps the most common use of comments is to temporarily remove a bit of
+      code without deleting it. Many programming editors will have a keyboard
+      shortcut for adding <c>//</c>  at the start of a selected range of text.
+    </p>
+
+    <p>
+      Here are some examples of the different kinds of comments:
     </p>
 
     <program>
-      /* MyClass.java
-         Programmer: My Name
-         Date:
-      */
+      /*
+       * This style of multiline comment is often used before classes and methods to
+       * document their purpose.
+       */
+      public class Foo {
+      }
 
-      int max = 10; // this keeps track of the max score
+      int max = 10; // a comment about this particular line
+
+      // Some comments about whatever comes next
+      if (foo) {
+        doStuff();
+      }
     </program>
   </subsection>
+
+  <subsection>
+    <title>Compiling and running Java programs</title>
+
+    <p>
+      However computers don’t actually know what to do with Java source code so
+      we have to <term>compile</term> (translate) Java source files that we
+      write into class files which is code that a computer can understand and
+      run. A <term>compiler</term> checks your code for errors and then
+      translates it into executable code that can be run.
+    </p>
+
+    <p>
+      If the compiler can’t understand our program because of syntax errors it
+      will try to tell us what is wrong. That’s when we need to check for
+      missing semicolons and unmatched curly braces; we have to fix any syntax
+      errors before the program can be run.
+    </p>
+
+    <p>
+      We can write Java code in any text editor, including the small text editor
+      built into the Active Code exercises in this book. For this course, you’ll
+      write a lot of code in the Active Code exercises and you can use the
+      scratch coding area accessible via the pencil icon at the top of this page
+      to write simple programs.
+    </p>
+
+    <p>
+      However, for complex programs many programmers use an <term>Integrated
+      Development Environment (IDE)</term> that provides tools for writing,
+      compiling, and running code all in one place. Several are discussed in
+      <xref ref="javaIDEs" />. Most likely your teacher will tell you which one
+      to use.
+    </p>
+
+    <p>
+      When working in an IDEs or text editor you must name the file the same
+      name as the class name with “.java” as the extension. All code (programs)
+      in Java must be defined inside a class in a source file, and the name of
+      the class must match the file name.
+    </p>
+
+  </subsection>
+
+
 
   <subsection>
     <title>Summary</title>
