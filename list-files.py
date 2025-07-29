@@ -24,7 +24,7 @@ def process_xml(filename, base_dir=None, parent_source=None):
     return walk(root, source=full_path, base_dir=os.path.dirname(full_path))
 
 def walk(elem, source, base_dir):
-    if elem.tag == XI_TAG:
+    if elem.tag == XI_TAG and elem.get("parse") != "text":
         href = elem.get("href")
         if href:
             # Resolve included file
