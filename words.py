@@ -58,7 +58,7 @@ def main(filename, excluded):
 
     chapters = tree.xpath("//chapter")
 
-    print("-*- mode: list-outline; -*-\n")
+    print("-*- mode: list-outline; eval: (outline-hide-sublevels 2) -*-\n")
 
     print(f"Total words: {total:,}\n")
 
