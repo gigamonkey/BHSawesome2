@@ -1,4 +1,3 @@
-<![CDATA[
 import javax.swing.*;
 import java.awt.*;
 import java.awt.font.*;
@@ -1265,4 +1264,3 @@ public class World implements ModelDisplay
   }
 
 } // end of World class
-]]>

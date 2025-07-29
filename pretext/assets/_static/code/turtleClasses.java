@@ -1,4 +1,3 @@
-<![CDATA[
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
@@ -1409,4 +1408,3 @@ public class SimplePicture implements DigitalPicture
  }
 
 } // end of SimplePicture class
-]]>
