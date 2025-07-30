@@ -20,12 +20,14 @@ def init_db(con):
     con.execute("DROP TABLE IF EXISTS hashes")
     con.execute("DROP TABLE IF EXISTS dupe_hashes")
     con.execute("DROP VIEW IF EXISTS dupes")
+    con.execute("DROP VIEW IF EXISTS hash_source")
     con.execute("CREATE TABLE hashes (hash TEXT NOT NULL, source TEXT NOT NULL, contents TEXT NOT NULL, parent TEXT NULL)")
 
 
 def finish_db(con):
     con.execute("CREATE TABLE dupe_hashes AS SELECT hash, COUNT(*) num, LENGTH(contents) size FROM hashes GROUP BY hash HAVING COUNT(*) > 1")
     con.execute("CREATE VIEW dupes AS SELECT hash, source, contents, parent FROM hashes LEFT JOIN dupe_hashes USING (hash) WHERE dupe_hashes.hash IS NOT NULL")
+    con.execute("CREATE VIEW hash_source AS SELECT DISTINCT hash, source, LENGTH(contents) size FROM hashes")
 
 
 def insert_hashes(con, all):
