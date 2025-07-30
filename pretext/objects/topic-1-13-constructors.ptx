@@ -219,48 +219,6 @@
       variables) and the constructors and know how to use them.
     </p>
 
-    <figure align="center">
-      <caption>A Date class showing attributes and constructors</caption>
-
-      <image source="Unit1-Using-Objects-and-Methods/Figures/DateClass.png" width="89%">
-        <shortdescription>
-          A Date class showing attributes and constructors
-        </shortdescription>
-      </image>
-    </figure>
-
-    <activity label="date_constructor">
-      <statement>
-        <p>Click on the constructor headers (signatures)</p>
-      </statement>
-
-      <feedback>
-        <p>
-          Constructors are public and have the same name as the class. Click on
-          the constructor headers which are the first line of the constructors
-          showing their name and parameters.
-        </p>
-      </feedback>
-
-      <areas>
-        <cline><area correct="no">public class Date {</area></cline>
-        <cline />
-        <cline>    <area correct="no">private int year;</area></cline>
-        <cline>    <area correct="no">private int month;</area></cline>
-        <cline>    <area correct="no">private int day;</area></cline>
-        <cline />
-        <cline>    <area correct="yes">public Date() </area></cline>
-        <cline>        <area correct="no">{ /** Implementation not shown */ }</area></cline>
-        <cline />
-        <cline>    <area correct="yes">public Date(int year, int month, int day) </area></cline>
-        <cline>        <area correct="no">{ /** Implementation not shown */ }</area></cline>
-        <cline />
-        <cline>     <area correct="no">public void print() </area></cline>
-        <cline>        <area correct="no">{ /** Implementation not shown */ }</area></cline>
-        <cline />
-        <cline><area correct="no">}</area></cline>
-      </areas>
-    </activity>
 
   </subsection>
 
