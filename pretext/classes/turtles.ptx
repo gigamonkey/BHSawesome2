@@ -16,7 +16,6 @@
       Then we will practice using classes from the Turtle library in a set of
       coding exercises and challenges.
     </p>
-
   </introduction>
 
   <subsection xml:id="turtle-class">
@@ -113,7 +112,7 @@
 
     <p>
       The <c>Turtle</c> class gives us an example of overloaded methods, which
-      we learned about in <xref ref="overloaded-methods"/>. It defines two
+      we learned about in <xref ref="overloaded-methods" />. It defines two
       <c>forward</c> methods; the no-args version used above and another that
       takes an <c>int</c> arguments specifying the number of pixels to move. For
       example to have the turtle move forward fifty pixels instead of one
@@ -205,12 +204,13 @@
 
     <activity label="TurtleTest3">
       <statement>
-        <p>After running the code once to see what <c>yertle</c> and
-        <c>myrtle</c> draw, can you add another turtle object to the code below?
-        You will need to declare a new variable, construct a new <c>Turtle</c>
-        and then call some methods on the new turtle to make it draw
-        something.</p>
-
+        <p>
+          After running the code once to see what <c>yertle</c> and
+          <c>myrtle</c> draw, can you add another turtle object to the code
+          below? You will need to declare a new variable, construct a new
+          <c>Turtle</c> and then call some methods on the new turtle to make it
+          draw something.
+        </p>
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
@@ -296,9 +296,7 @@
       </image>
     </figure>
 
-    <p>
-      Here are two lines of code that each use one of the constructors:
-    </p>
+    <p>Here are two lines of code that each use one of the constructors:</p>
 
     <program>
       World world1 = new World(); // creates a default size 640x480 world
@@ -691,7 +689,6 @@
       </blocks>
     </activity>
 
-
     <activity label="TurtleDrawSeven">
       <statement>
         <p>
@@ -832,7 +829,6 @@
 
       </program>
     </activity>
-
 
     <activity label="TurtleTestMethods1">
       <statement>
@@ -981,7 +977,6 @@
         <image source="Unit1-Using-Objects-and-Methods/Figures/house.png" width="27%">
           <shortdescription>simple house</shortdescription>
         </image>
-
       </statement>
 
       <blocks>
@@ -1298,11 +1293,11 @@
 
       </program>
     </project>
-
   </subsection>
 
   <subsection xml:id="coding-challenge-turtle-house">
     <title>Coding Challenge: Turtle house</title>
+
     <sidebyside widths="15% 100%" margins="-20% 0%">
       <image source="Unit1-Using-Objects-and-Methods/Figures/houseWithWindows.png" width="36%">
         <shortdescription>simple house</shortdescription>
@@ -1310,14 +1305,15 @@
 
       <stack>
         <p>
-          This creative challenge is fun to do collaboratively in pairs. Design a
-          house and have the turtle draw it with different colors below. Can you add
-          windows and a door? Come up with your own house design as a team.
+          This creative challenge is fun to do collaboratively in pairs. Design
+          a house and have the turtle draw it with different colors below. Can
+          you add windows and a door? Come up with your own house design as a
+          team.
         </p>
 
         <p>
-          To draw a window, you will need to call <c>penUp</c> and <c>moveTo</c> to
-          walk the turtle into position without drawing, for example:
+          To draw a window, you will need to call <c>penUp</c> and <c>moveTo</c>
+          to walk the turtle into position without drawing, for example:
         </p>
 
         <program>
@@ -1327,11 +1323,11 @@
         </program>
 
         <p>
-          It may help to act out the code pretending you are the turtle. Remember
-          that the angles you turn depend on which direction you are facing, and the
-          turtle begins facing up. When planning your coordinates for the house,
-          remember that the turtle starts at the center of the screen (150,150) and
-          the top left corner is (0,0).
+          It may help to act out the code pretending you are the turtle.
+          Remember that the angles you turn depend on which direction you are
+          facing, and the turtle begins facing up. When planning your
+          coordinates for the house, remember that the turtle starts at the
+          center of the screen (150,150) and the top left corner is (0,0).
         </p>
       </stack>
     </sidebyside>
