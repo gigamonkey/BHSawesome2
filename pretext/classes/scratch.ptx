@@ -1160,4 +1160,215 @@
 
     <image source="Unit3-Class-Creation/Figures/get-set-comparison.png" width="100%" />
   </figure>
+  <subsection xml:id="coding-challenge-custom-turtles">
+    <title>Coding Challenge: Custom Turtles</title>
+
+    <p>
+      Working in pairs, you will now look at a new class called CustomTurtle and
+      design some colorful turtles with its constructors. The CustomTurtle class
+      in the ActiveCode below inherits many of its attributes and methods from
+      the Turtle class. However, it has some new constructors with more
+      parameters to customize a turtle with its body color, shell color, width,
+      and height. CustomTurtle has 3 constructors:
+    </p>
+
+    <program>
+      /** Constructs a CustomTurtle in the middle of the world */
+      public CustomTurtle(World w)
+
+      /** Constructs a CustomTurtle with a specific body color,
+          shell color, and width and height in the middle of the world */
+      public CustomTurtle(World w, Color body, Color shell, int w, int h)
+
+      /** Constructs a CustomTurtle with a specific body color,
+          shell color, and width and height at position (x,y) in the world */
+      public CustomTurtle(int x, int y, World w, Color body, Color shell, int w, int h)
+    </program>
+
+    <p>
+      You will use the constructor(s) to create the CustomTurtles below. You can
+      specify colors like Color.red by using the <url
+      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.desktop/java/awt/Color.html">Color</url>
+      class in Java.
+    </p>
+
+    <p>
+      <ol>
+        <li>
+          <p>
+            Create a large 150x200 (width 150 and height 200) CustomTurtle with
+            a green body (Color.green) and a blue shell (Color.blue) at position
+            (150,300)
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Create a small 25x50 CustomTurtle with a red body and a yellow shell
+            at position (350,200)
+          </p>
+        </li>
+
+        <li>
+          <p>Create a CustomTurtle of your own design.</p>
+        </li>
+      </ol>
+    </p>
+
+    <project label="challenge-CustomTurtles">
+      <statement>
+        <p>
+          Use the CustomTurtle constructors with the signatures below to create
+          the turtles with the colors and positions described in the comments of
+          the program.
+        </p>
+
+        <program>
+          /** Constructs a CustomTurtle in the middle of the world */
+          public CustomTurtle(World w)
+
+          /** Constructs a CustomTurtle with a specific body color,
+              shell color, and width and height in the middle of the world */
+          public CustomTurtle(World w, Color body, Color shell, int w, int h)
+
+          /** Constructs a CustomTurtle with a specific body color, shell color,
+              and width and height at position (x,y) in the world */
+          public CustomTurtle(int x, int y, World w, Color body, Color shell, int w, int h)
+        </program>
+      </statement>
+
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
+        <code>
+          import java.awt.*;
+          import java.util.*;
+
+          public class CustomTurtleRunner {
+              public static void main(String[] args) {
+                  World world1 = new World(400, 400);
+
+                  // 1. Change the constructor call below to create a large
+                  // 150x200 CustomTurtle with a green body (Color.green)
+                  // and a blue shell (Color.blue) at position (150,300).
+                  // Move it forward to see it.
+                  CustomTurtle turtle1 = new CustomTurtle(world1);
+                  turtle1.forward();
+
+                  // 2. Create a small 25x50 CustomTurtle with a red body
+                  // and a yellow shell at position (350,200)
+                  // Move it forward to see it.
+
+                  // 3. Create a CustomTurtle of your own design
+
+                  world1.show(true);
+              }
+          }
+
+          class CustomTurtle extends Turtle {
+              private int x;
+              private int y;
+              private World w;
+              private Color bodycolor;
+              private Color shellcolor;
+              private int width;
+              private int height;
+
+              /**
+               * Constructor that takes the model display
+               *
+               * @param modelDisplay the thing that displays the model or world
+               */
+              public CustomTurtle(ModelDisplay modelDisplay) {
+                  // let the parent constructor handle it
+                  super(modelDisplay);
+              }
+
+              /**
+               * Constructor that takes the model display to draw it on and custom colors and size
+               *
+               * @param m the world
+               * @param body : the body color
+               * @param shell : the shell color
+               * @param w: width
+               * @param h: height
+               */
+              public CustomTurtle(ModelDisplay m, Color body, Color shell, int w, int h) {
+                  // let the parent constructor handle it
+                  super(m);
+                  bodycolor = body;
+                  setBodyColor(body);
+                  shellcolor = shell;
+                  setShellColor(shell);
+                  height = h;
+                  width = w;
+                  setHeight(h);
+                  setWidth(w);
+              }
+
+              /**
+               * Constructor that takes the x and y and a model display to draw it on and custom colors and
+               * size
+               *
+               * @param x the starting x position
+               * @param y the starting y position
+               * @param m the world
+               * @param body : the body color
+               * @param shell : the shell color
+               * @param w: width
+               * @param h: height
+               */
+              public CustomTurtle(int x, int y, ModelDisplay m, Color body, Color shell, int w, int h) {
+                  // let the parent constructor handle it
+                  super(x, y, m);
+                  bodycolor = body;
+                  setBodyColor(body);
+                  shellcolor = shell;
+                  setShellColor(shell);
+                  height = h;
+                  width = w;
+                  setHeight(h);
+                  setWidth(w);
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("CustomTurtleRunner");
+              }
+
+              @Test
+              public void test1() {
+                  String target = "new CustomTurtle(150,300,world1, Color.green, Color.blue, 150, 200)";
+                  boolean passed =
+                          checkCodeContains(
+                                  "constructor for a large 150x200 CustomTurtle with a green body and a blue"
+                                          + " shell at position (150,300) in world1",
+                                  target);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2() {
+                  String target = "new CustomTurtle(350,200,world1, Color.red, Color.yellow, 25, 50)";
+                  boolean passed =
+                          checkCodeContains(
+                                  "constructor for a small 25x50 CustomTurtle with a red body and a yellow"
+                                          + " shell at position (350,200) in world1",
+                                  target);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </project>
+  </subsection>
 </scratch>

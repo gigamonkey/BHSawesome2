@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="turtles">
-  <title>Turtles</title>
+  <title>More turtles</title>
 
-  <subsection xml:id="turtle-class">
-    <title>Turtle Class</title>
+  <introduction>
+    <p>
+      We first used the Turtle library that is built into this book in <xref
+      ref="topic-1-7-APIs-and-libraries" />. Now that we’ve learned more about
+      classes we can use the classes in the Turtle library, <c>Turtle</c> and
+      <c>World</c> to look at some concrete examples of some of the topics we’ve
+      discussed in this unit.
+    </p>
 
     <p>
-      The Turtle class (that we’ve written for you and hidden on this page) is a
-      blueprint for turtle objects. It defines attributes for graphical turtles
-      like their color and position and methods to make the turtles move. Try
-      the Java program below that creates a Turtle object called yertle using
-      the Turtle class. If the code below does not work or is too slow in your
-      browser, you can also see the <c>Turtle</c> code in action on <url
-      href="https://play.juicemind.com/dashboard/teams/Mk2wWMTqPkekcxTDWqRn/item/beca9c16-4004-4a4e-b4b0-11593e140808#f5357602-b60b-44c3-be0e-dfb07de2a778">JuiceMind</url>
-      or <url
-      href="https://replit.com/@BerylHoffman/Java-Swing-Turtle#Main.java">replit</url>
-      or download the files <url
-      href="https://github.com/bhoffman0/CSAwesome2/raw/main/_sources/Unit1-Using-Objects-and-Methods/TurtleJavaSwingCode.zip">here</url>
-      to use in your own IDE.
+      Then we will practice using classes from the Turtle library in a set of
+      coding exercises and challenges.
+    </p>
+
+  </introduction>
+
+  <subsection xml:id="turtle-class">
+    <title>Turtle basics</title>
+
+    <p>
+      Like any class the <c>Turtle</c> class is a blueprint for making objects
+      that each represent one turtle we can use to draw lines on a graphical
+      world. It defines attributes for graphical turtles like their color and
+      position and methods to make the turtles move. As a refresher, here’s a
+      simple program that makes one <c>Turtle</c> and calls a few methods on it
+      to draw a couple lines.
     </p>
 
     <activity label="TurtleTest">
@@ -75,8 +85,9 @@
     <p>
       The following <url
       href="https://www.youtube.com/watch?v=TFmmG4_KK8I&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
-      shows how the program creates a <c>World</c> object called <c>habitat</c>
-      and a <c>Turtle</c> object called <c>yertle</c> in memory.
+      walk through how the program creates a <c>World</c> object and a
+      <c>Turtle</c> object assigning them to the variables <c>habitat</c> and
+      <c>yertle</c>
     </p>
 
     <figure align="center">
@@ -86,16 +97,28 @@
     </figure>
 
     <p>
-      The <term>dot operator</term> (.) is used to run an object’s method. You
-      can think of the (.) as asking the object to do something (execute one of
-      its methods). For example, <c>yertle.forward()</c> asks the turtle
-      <c>yertle</c> to go <c>forward</c>. It doesn’t tell <c>yertle</c> how much
-      to go forward, so it goes forward 100 pixels by default. The parentheses
-      <c>()</c> after a method name are there in case you need to give the
-      method <term>arguments</term> (some data) to do its job, for example to go
-      forward 50 pixels instead of 100 in <c>yertle.forward(50);</c> Try
-      changing the code above to go forward 50 pixels instead and then run it
-      again.
+      This code also demonstrates the use of the <term>dot operator</term> to
+      invoke an object’s method. The dot allows us to get a particular method
+      from an object, such as <c>forward</c> or <c>turnLeft</c>, and then we can
+      call that method to cause the object to do whatever the code in the method
+      specifies.
+    </p>
+
+    <p>
+      For example, <c>yertle.forward()</c> asks the turtle referenced by the
+      variable <c>yertle</c> to go <c>forward</c>. The <c>forward</c> method
+      doesn’t take any arguments so it moves the turtle forward a default amount
+      of one hundred pixels.
+    </p>
+
+    <p>
+      The <c>Turtle</c> class gives us an example of overloaded methods, which
+      we learned about in <xref ref="overloaded-methods"/>. It defines two
+      <c>forward</c> methods; the no-args version used above and another that
+      takes an <c>int</c> arguments specifying the number of pixels to move. For
+      example to have the turtle move forward fifty pixels instead of one
+      hundred, we can use <c>yertle.forward(50);</c>. Try making that change in
+      the code above and then run it again to see the change.
     </p>
 
     <activity label="TurtleTest2">
@@ -167,37 +190,27 @@
 
       </program>
     </activity>
-
-    <p>
-      A variable like <c>yertle</c> of a <term>reference</term> type like
-      <c>Turtle</c> holds an object reference, which can be thought of as the
-      memory address of that object. Variables that are of a primitive types
-      like <c>int</c> hold just a single number value. But objects are complex
-      and contain a collection of values called <term>attributes</term>, for
-      example the color and the size of the turtle.
-    </p>
   </subsection>
 
   <subsection xml:id="creating-turtle-objects">
-    <title>Creating Turtle Objects</title>
+    <title>Creating multiple objects</title>
 
     <p>
-      When you write a class like the <c>Turtle</c> class, you can create many
-      objects of that class type. In the code below, two turtle objects are
-      created: <c>yertle</c> and <c>myrtle</c>. You can name your turtle and add
-      in a line like the following in the main method to make it move:
+      Remember that a class is a blueprint from which we can make as many
+      instances as we want. The code below creates two turtle objects and stores
+      references to them in the variables <c>yertle</c> and <c>myrtle</c>. They
+      are both added to the same <c>World</c> so when we run the code we see two
+      turtles drawing.
     </p>
-
-    <program>
-      // To create or declare a new object, write:
-      // ClassName variableName = new ClassName(arguments);
-      Turtle yourTurtleName = new Turtle(habitat);
-      yourTurtlename.forward();
-    </program>
 
     <activity label="TurtleTest3">
       <statement>
-        <p>Can you add another turtle object to the code below?</p>
+        <p>After running the code once to see what <c>yertle</c> and
+        <c>myrtle</c> draw, can you add another turtle object to the code below?
+        You will need to declare a new variable, construct a new <c>Turtle</c>
+        and then call some methods on the new turtle to make it draw
+        something.</p>
+
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
@@ -256,640 +269,23 @@
     </activity>
   </subsection>
 
-  <subsection xml:id="turtle-methods">
-    <title>Turtle Methods</title>
-
-    <p>
-      Let’s practice more with the <c>Turtle</c> class and its methods. Here is
-      a class diagram that shows some of the attributes and methods in the class
-      <c>Turtle</c>.
-    </p>
-
-    <figure align="center">
-      <caption>Turtle Class Diagram</caption>
-
-      <image source="Unit1-Using-Objects-and-Methods/Figures/turtleUMLClassDiagram.png" width="71%">
-        <shortdescription>Turtle class diagram</shortdescription>
-      </image>
-    </figure>
-
-    <p>
-      The Turtle world does not use the Cartesian coordinate system with (0,0)
-      in the middle the screen. Instead, (0,0) is at the top left corner of the
-      screen and x increases to the right and y increases towards the bottom of
-      the screen. Most computer graphics systems use this coordinate system
-      which is a carry over from before computers could display graphics and had
-      to approximate the graphics with text print outs.
-    </p>
-
-    <figure align="center">
-      <caption>
-        The coordinate (0,0) is at the top left of the Turtle world.
-      </caption>
-
-      <image source="Unit1-Using-Objects-and-Methods/Figures/coords.png" width="36%" />
-    </figure>
-
-    <activity label="ParsonsDraw7" numbered="yes" adaptive="yes" indentation="hide" language="java">
-      <statement>
-        <p>
-          The following code uses a turtle to draw the digital number 7 (with
-          just straight lines), but the code is mixed up. Drag the code blocks
-          to the right and put them in the correct order to first draw the line
-          going up (towards the top of the page) and then turn and draw a line
-          to the left to make a 7. Remember that the turtle is facing the top of
-          the page when it is first created. Click on the “Check Me” button to
-          check your solution.
-        </p>
-      </statement>
-
-      <blocks>
-        <block order="2">
-          <cline>public class Draw7</cline>
-          <cline>{</cline>
-        </block>
-
-        <block order="7">
-          <cline>    public static void main(String[] args)</cline>
-          <cline>    {</cline>
-        </block>
-
-        <block order="6">
-          <cline>        World habitat = new World(300,300);</cline>
-        </block>
-
-        <block order="8">
-          <cline>        Turtle yertle = new Turtle(habitat);</cline>
-        </block>
-
-        <block order="1">
-          <cline>        yertle.forward();</cline>
-        </block>
-
-        <block order="4">
-          <cline>        yertle.turnLeft();</cline>
-          <cline>        yertle.forward();</cline>
-        </block>
-
-        <block order="9">
-          <cline>        habitat.show(true);</cline>
-        </block>
-
-        <block order="5">
-          <cline>    } // end main</cline>
-        </block>
-
-        <block order="3">
-          <cline>} // end class</cline>
-        </block>
-      </blocks>
-    </activity>
-
-    <p>
-      After you put the mixed up code in order above, type in the same code
-      below to make the turtle draw a 7.
-    </p>
-
-    <activity label="TurtleDrawSeven">
-      <statement>
-        <p>
-          Can you make yertle draw a 7 by going forward to go up and then left?
-        </p>
-      </statement>
-
-      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
-
-        <code>
-          import java.awt.*;
-          import java.util.*;
-
-          public class TurtleDraw7 {
-              public static void main(String[] args) {
-                  World habitat = new World(300, 300);
-                  Turtle yertle = new Turtle(habitat);
-                  // Make yertle draw a 7 using the code above
-
-                  habitat.show(true);
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("TurtleDraw7");
-              }
-
-              @Test
-              public void test1() {
-                  String orig = "yertle.forward();\nyertle.turnLeft();\nyertle.forward();";
-                  boolean passed = checkCodeContains(orig);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
-      </program>
-    </activity>
-
-    <activity label="TurtleDrawEight">
-      <statement>
-        <p>
-          Can you make yertle draw the digital number 8, as 2 squares on top of
-          each other?
-        </p>
-      </statement>
-
-      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
-
-        <code>
-          import java.awt.*;
-          import java.util.*;
-
-          public class TurtleDraw8 {
-              public static void main(String[] args) {
-                  World habitat = new World(500, 500);
-                  Turtle yertle = new Turtle(habitat);
-                  // Make yertle draw an 8 with 2 squares
-                  yertle.forward();
-
-                  habitat.show(true);
-              }
-          }
-        </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("TurtleDraw8");
-              }
-
-              @Test
-              public void test1() {
-                  String orig =
-                          "import java.awt.*;\n"
-                                  + "import java.util.*;\n\n"
-                                  + "public class TurtleDraw8\n"
-                                  + "{\n"
-                                  + "  public static void main(String[] args)\n"
-                                  + "  {\n"
-                                  + "      World habitat = new World(300,300);\n"
-                                  + "      Turtle yertle = new Turtle(habitat);\n"
-                                  + "      // Make yertle draw an 8 with 2 squares\n"
-                                  + "      yertle.forward();\n\n\n"
-                                  + "      habitat.show(true);\n"
-                                  + "  }\n"
-                                  + "}\n";
-                  boolean passed = codeChanged(orig);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  String code = getCode();
-                  int numForward = countOccurences(code, "forward(");
-
-                  boolean passed = numForward >= 7;
-
-                  passed = getResults("7 or more", "" + numForward, "Calls to forward()", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3() {
-                  String code = getCode();
-                  int numTurn = countOccurences(code, ".turn");
-
-                  boolean passed = numTurn >= 5;
-
-                  passed =
-                          getResults("5 or more", "" + numTurn, "Calls to turnRight() or turnLeft()", passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
-      </program>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="coding-challenge-draw-letters">
-    <title>Coding Challenge: Draw Letters</title>
-
-    <p>
-      Working in pairs, use the area below to have your turtle draw simple
-      block-style letters for your first or last name initials using just
-      straight lines (no curves or diagonals).
-    </p>
-
-    <p>
-      It may help to act out the code pretending you are the turtle. Remember
-      that which way you turn depends on which direction you are facing, and the
-      turtle begins facing north (towards the top of the page).
-    </p>
-
-    <p>Here are some simple turtle methods that you can use:</p>
-
-    <p>
-      <ul>
-        <li>
-          <p><c>forward()</c></p>
-        </li>
-
-        <li>
-          <p><c>turnLeft()</c></p>
-        </li>
-
-        <li>
-          <p><c>turnRight()</c></p>
-        </li>
-
-        <li>
-          <p><c>backward()</c></p>
-        </li>
-
-        <li>
-          <p><c>penUp()</c></p>
-        </li>
-
-        <li>
-          <p><c>penDown()</c></p>
-        </li>
-      </ul>
-    </p>
-
-    <p>
-      You may notice that it is challenging to have your turtle draw with these
-      simple methods. In the next lessons, we will use more complex
-      <c>Turtle</c> methods where you can indicate how many steps to take or
-      what angle to turn that will make drawing a lot easier!
-    </p>
-
-    <project label="challenge-Turtle_Letter">
-      <statement>
-        <p>
-          Have your turtle create a block drawing of the initials of your name.
-          Use straight lines (no curves or diagonals unless you want to try
-          adding arguments to the turtle methods).
-        </p>
-      </statement>
-
-      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
-
-        <code>
-          import java.awt.*;
-          import java.util.*;
-
-          public class TurtleLetter {
-              public static void main(String[] args) {
-                  World habitat = new World(300, 300);
-                  // Create a turtle object
-
-                  // have it draw your initials
-
-                  habitat.show(true);
-              }
-          }
-        </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("TurtleLetter");
-              }
-
-              @Test
-              public void test1() {
-                  String orig =
-                          "import java.awt.*;\n"
-                                  + "import java.util.*;\n\n"
-                                  + "public class TurtleLetter\n"
-                                  + "{\n"
-                                  + "  public static void main(String[] args)\n"
-                                  + "  {\n"
-                                  + "      World habitat = new World(300,300);\n\n\n\n"
-                                  + "      habitat.show(true);\n"
-                                  + "  }\n"
-                                  + "}\n";
-                  boolean passed = codeChanged(orig);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  String code = getCode();
-                  String[] lines = code.split("\n");
-
-                  boolean passed = lines.length >= 20;
-                  passed =
-                          getResults(
-                                  "20 or more lines",
-                                  lines.length + " lines",
-                                  "Adding a reasonable amount of lines to code",
-                                  passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
-      </program>
-    </project>
-  </subsection>
-
-  <subsection xml:id="summary-3">
-    <title>Summary</title>
-
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 1.12.A.1) A <term>class</term> defines a new data type (a
-            classification). It is the formal implementation, or blueprint, of
-            the <em>attributes</em> and <em>behaviors</em> of the objects of
-            that class.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            (AP 1.12.A.1) An <term>object</term> is a specific
-            <term>instance</term> of a class with defined attributes. Objects
-            are declared as variables of a class type.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            (AP 1.12.B.1) A variable of a reference type holds an object
-            reference, which can be thought of as the memory address of that
-            object.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            An <term>attribute</term> or <term>instance variable</term> is data
-            the object knows about itself. For example a turtle object knows the
-            direction it is facing or its color.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            A <term>behavior</term> or <term>method</term> is something that an
-            object can do. For example a turtle object can go forward 100
-            pixels.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            (AP 1.12.A.2) A <term>class hierarchy</term> can be developed by
-            putting common attributes and behaviors of related classes into a
-            single class called a <term>superclass</term>. Classes that
-            <term>extend</term> a superclass, called <term>subclasses</term>,
-            can draw upon the existing attributes and behaviors of the
-            superclass without replacing these in the code. This creates an
-            <term>inheritance</term> relationship from the subclasses to the
-            superclass. Designing and implementing inheritance relationships are
-            outside the scope of the AP Computer Science A course and exam.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            (AP 1.12.A.2) All classes in Java are subclasses of the
-            <term>Object</term> class.
-          </p>
-        </li>
-      </ul>
-    </p>
-  </subsection>
-
-  <subsection xml:id="ap-practice-2">
-    <title>AP Practice</title>
-
-    <p>
-      Try these AP practice questions that will help to prepare you for the AP
-      Classroom progress checks.
-    </p>
-
-    <activity label="AP-attributes">
-      <statement>
-        <p>
-          A student has created a <c>Dog</c> class. The class contains variables
-          to represent the following.
-        </p>
-
-        <p>
-          <ul>
-            <li>
-              <p>
-                A String variable called <c>breed</c> to represent the breed of
-                the dog
-              </p>
-            </li>
-
-            <li>
-              <p>
-                An int variable called <c>age</c> to represent the age of the
-                dog
-              </p>
-            </li>
-
-            <li>
-              <p>
-                A String variable called <c>name</c> to represent the name of
-                the dog
-              </p>
-            </li>
-          </ul>
-        </p>
-
-        <p>
-          The object <c>pet</c> is declared as type Dog. Which of the following
-          descriptions is accurate?
-        </p>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>An attribute of the name object is String.</p>
-          </statement>
-
-          <feedback>
-            <p>name is an attribute of the pet object or Dog class.</p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>An attribute of the pet object is name.</p>
-          </statement>
-
-          <feedback>
-            <p>name is an attribute of the pet object or Dog class.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>An instance of the pet class is Dog.</p>
-          </statement>
-
-          <feedback>
-            <p>An instance of the Dog class is pet.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>An attribute of the Dog instance is pet.</p>
-          </statement>
-
-          <feedback>
-            <p>An attribute of the Dog class is name.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>An instance of the Dog object is pet.</p>
-          </statement>
-
-          <feedback>
-            <p>An instance of the Dog class is pet.</p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="AP-objects">
-      <statement>
-        <p>
-          A student has created a <c>Party</c> class. The class contains
-          variables to represent the following.
-        </p>
-
-        <p>
-          <ul>
-            <li>
-              <p>
-                An int variable called <c>numOfPeople</c> to represent the
-                number of people at the party.
-              </p>
-            </li>
-
-            <li>
-              <p>
-                A boolean variable called <c>discoLightsOn</c> to represent
-                whether the disco ball is on.
-              </p>
-            </li>
-
-            <li>
-              <p>
-                A boolean variable called <c>partyStarted</c> to represent
-                whether the party has started.
-              </p>
-            </li>
-          </ul>
-        </p>
-
-        <p>
-          The object <c>myParty</c> is declared as type Party. Which of the
-          following descriptions is accurate?
-        </p>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>boolean is an attribute of the myParty object.</p>
-          </statement>
-
-          <feedback>
-            <p>boolean is the type of an attribute, but not an attribute.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>myParty is an attribute of the Party class.</p>
-          </statement>
-
-          <feedback>
-            <p>myParty is an instance of the Party class.</p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>myParty is an instance of the Party class.</p>
-          </statement>
-
-          <feedback>
-            <p>myParty is an object that is an instance of the Party class.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>myParty is an attribute of the Party instance.</p>
-          </statement>
-
-          <feedback>
-            <p>An attribute of the Party class is numOfPeople.</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>numOfPeople is an instance of the Party object.</p>
-          </statement>
-
-          <feedback>
-            <p>An attribute of the Party class is numOfPeople.</p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-  </subsection>
-
   <subsection xml:id="the-world-class-constructors">
-    <title>The World Class Constructors</title>
+    <title>Overloaded constructors</title>
 
     <p>
-      There can be more than one constructor defined in a class. This is called
-      <term>overloading</term> the constructor. The <c>World</c> class has the 2
-      constructors seen below. One doesn’t take any arguments and creates a
-      default sized world and one takes the world’s width and height arguments
-      to create a world of a specific size. An <term>argument</term> is a value
-      that is passed into a constructor. Arguments are used to initialize the
-      attributes of an object, in this case, the size of the world.
+      As we saw in <xref ref="overloading-constructors" />, a class can define
+      more than one constructor class, creating <term>overloaded</term>
+      constructors. Both the <c>World</c> and <c>Turtle</c> classes have
+      overloaded constructors in order to allow us to create instances with
+      reasonable default values for some of their attributes and also to specify
+      things ourselves.
+    </p>
+
+    <p>
+      The <c>World</c> class has two constructors, one that takes no arguments
+      and one that takes two <c>int</c> arguments that specify the size of the
+      world and thus the size the image that will be created. The no-argument
+      constructor creates a world with a default size of 640x480 pixels.
     </p>
 
     <figure align="center">
@@ -901,14 +297,7 @@
     </figure>
 
     <p>
-      The <term>no-argument constructor</term> <c>World()</c>, with no arguments
-      inside the parentheses following the name of the constructor, creates a
-      graphical window with a default size of 640x480 pixels. No-argument
-      constructors usually set the attributes of the object to default values.
-      The second <c>World(int width, int height)</c> constructor takes two
-      integer arguments, and initializes the <c>World</c> object’s width and
-      height to them, for example <c>new World(300,400)</c> creates a 300x400
-      pixel world.
+      Here are two lines of code that each use one of the constructors:
     </p>
 
     <program>
@@ -955,7 +344,7 @@
 
           <feedback>
             <p>
-              Correct, use the new keyword followed by the classname and
+              Correct, use the new keyword followed by the class name and
               parentheses to create a new object and call the constructor.
             </p>
           </feedback>
@@ -1046,36 +435,58 @@
         </choice>
       </choices>
     </activity>
-  </subsection>
-
-  <subsection xml:id="the-turtle-class-constructors">
-    <title>The Turtle Class Constructors</title>
 
     <p>
-      The <c>Turtle</c> class also has multiple constructors, although it always
-      requires a world as an argument in order to have a place to draw the
-      turtle. The default location for the turtle is right in the middle of the
-      world.
-    </p>
-
-    <p>
-      There is another <c>Turtle</c> constructor that places the turtle at a
-      certain (x,y) location in the world, for example at the coordinate (50,
-      100) below.
+      The <c>Turtle</c> class also also has multiple constructors. They all take
+      at least a <c>World</c> argument in order to have a place to draw the
+      turtle but one of them takes two <c>int</c> arguments to specify the
+      initial <c>x</c> and <c>y</c> position of the <c>Turtle</c> in the
+      <c>World</c>. The constructor that does not take these <c>int</c>
+      arguments puts the <c>Turtle</c> in the middle of the <c>World</c>.
     </p>
 
     <program>
-      Turtle t1 = new Turtle(world1);
-      Turtle t2 = new Turtle(50, 100, world1);
+      Turtle t1 = new Turtle(world1); // put turtle in center of image
+      Turtle t2 = new Turtle(50, 100, world1); // put turtle at 50,100
     </program>
+
+    <p>
+      In order to understand how to position a new <c>Turtle</c> in the world we
+      need to know how the <c>x</c> and <c>y</c> values are used which may be
+      surprising since the Turtle world does not use the Cartesian coordinate
+      system with (0,0) in the middle the screen like we may be used to from
+      math class or languages like Snap! Instead, (0,0) is at the top left
+      corner of the screen and x increases to the right and y increases towards
+      the bottom of the screen.
+    </p>
+
+    <p>
+      Most computer graphics systems use this coordinate system which is a
+      carryover from when computers dealt only with text being printed line by
+      line, where it made sense to think of row zero, column zero as where the
+      first character would come out.
+    </p>
+
+    <figure align="center">
+      <caption>
+        The coordinate (0,0) is at the top left of the Turtle world.
+      </caption>
+
+      <image source="Unit1-Using-Objects-and-Methods/Figures/coords.png" width="36%" />
+    </figure>
 
     <note>
       <p>
-        Notice that the order of the arguments matter. The <c>Turtle</c>
-        constructor takes <c>(x,y,world)</c> as arguments in that order. If you
-        mix up the order of the arguments it will cause an error, because the
-        arguments will not be the data types that it expects. This is one reason
-        why programming languages have data types – to allow for error-checking.
+        Notice that the order of the arguments matter. The three-argument
+        <c>Turtle</c> constructor takes the arguments <c>x</c>, <c>y</c>, and
+        <c>world</c> in that order. If we put the <c>World</c> argument first
+        Java will complain because there is no constructor that takes a
+        <c>World</c>followed by two <c>int</c> values. Worse yet, if we swap the
+        <c>x</c> and <c>y</c> values, the code will compile and probably run
+        fine, i.e. it won’t crash, but our <c>Turtle</c> will not be positioned
+        where we intended. So we need to be extra careful when a constructor or
+        method takes multiple arguments of the same type to make sure we’re
+        passing them in the right order.
       </p>
     </note>
 
@@ -1208,81 +619,85 @@
     </activity>
   </subsection>
 
-  <subsection xml:id="coding-challenge-custom-turtles">
-    <title>Coding Challenge: Custom Turtles</title>
+  <subsection xml:id="turtle-methods">
+    <title>Turtle exercises</title>
 
     <p>
-      Working in pairs, you will now look at a new class called CustomTurtle and
-      design some colorful turtles with its constructors. The CustomTurtle class
-      in the ActiveCode below inherits many of its attributes and methods from
-      the Turtle class. However, it has some new constructors with more
-      parameters to customize a turtle with its body color, shell color, width,
-      and height. CustomTurtle has 3 constructors:
+      Now we can practice more with the <c>Turtle</c> class and its methods.
+      Here is a class diagram that shows some of the attributes and methods in
+      the class <c>Turtle</c>.
     </p>
 
-    <program>
-      /** Constructs a CustomTurtle in the middle of the world */
-      public CustomTurtle(World w)
+    <figure align="center">
+      <caption>Turtle class diagram</caption>
 
-      /** Constructs a CustomTurtle with a specific body color,
-          shell color, and width and height in the middle of the world */
-      public CustomTurtle(World w, Color body, Color shell, int w, int h)
+      <image source="Unit1-Using-Objects-and-Methods/Figures/turtleUMLClassDiagram.png" width="71%">
+        <shortdescription>Turtle class diagram</shortdescription>
+      </image>
+    </figure>
 
-      /** Constructs a CustomTurtle with a specific body color,
-          shell color, and width and height at position (x,y) in the world */
-      public CustomTurtle(int x, int y, World w, Color body, Color shell, int w, int h)
-    </program>
-
-    <p>
-      You will use the constructor(s) to create the CustomTurtles below. You can
-      specify colors like Color.red by using the <url
-      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.desktop/java/awt/Color.html">Color</url>
-      class in Java.
-    </p>
-
-    <p>
-      <ol>
-        <li>
-          <p>
-            Create a large 150x200 (width 150 and height 200) CustomTurtle with
-            a green body (Color.green) and a blue shell (Color.blue) at position
-            (150,300)
-          </p>
-        </li>
-
-        <li>
-          <p>
-            Create a small 25x50 CustomTurtle with a red body and a yellow shell
-            at position (350,200)
-          </p>
-        </li>
-
-        <li>
-          <p>Create a CustomTurtle of your own design.</p>
-        </li>
-      </ol>
-    </p>
-
-    <project label="challenge-CustomTurtles">
+    <activity label="ParsonsDraw7" numbered="yes" adaptive="yes" indentation="hide" language="java">
       <statement>
         <p>
-          Use the CustomTurtle constructors with the signatures below to create
-          the turtles with the colors and positions described in the comments of
-          the program.
+          The following code uses a turtle to draw the digital number 7 (with
+          just straight lines), but the code is mixed up. Drag the code blocks
+          to the right and put them in the correct order to first draw the line
+          going up (towards the top of the page) and then turn and draw a line
+          to the left to make a 7. Remember that the turtle is facing the top of
+          the page when it is first created. Click on the “Check Me” button to
+          check your solution.
         </p>
+      </statement>
 
-        <program>
-          /** Constructs a CustomTurtle in the middle of the world */
-          public CustomTurtle(World w)
+      <blocks>
+        <block order="2">
+          <cline>public class Draw7</cline>
+          <cline>{</cline>
+        </block>
 
-          /** Constructs a CustomTurtle with a specific body color,
-              shell color, and width and height in the middle of the world */
-          public CustomTurtle(World w, Color body, Color shell, int w, int h)
+        <block order="7">
+          <cline>    public static void main(String[] args)</cline>
+          <cline>    {</cline>
+        </block>
 
-          /** Constructs a CustomTurtle with a specific body color, shell color,
-              and width and height at position (x,y) in the world */
-          public CustomTurtle(int x, int y, World w, Color body, Color shell, int w, int h)
-        </program>
+        <block order="6">
+          <cline>        World habitat = new World(300,300);</cline>
+        </block>
+
+        <block order="8">
+          <cline>        Turtle yertle = new Turtle(habitat);</cline>
+        </block>
+
+        <block order="1">
+          <cline>        yertle.forward();</cline>
+        </block>
+
+        <block order="4">
+          <cline>        yertle.turnLeft();</cline>
+          <cline>        yertle.forward();</cline>
+        </block>
+
+        <block order="9">
+          <cline>        habitat.show(true);</cline>
+        </block>
+
+        <block order="5">
+          <cline>    } // end main</cline>
+        </block>
+
+        <block order="3">
+          <cline>} // end class</cline>
+        </block>
+      </blocks>
+    </activity>
+
+
+    <activity label="TurtleDrawSeven">
+      <statement>
+        <p>
+          After solving the mixed up code problem above, type in the same code
+          below to make the turtle draw a 7.
+        </p>
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
@@ -1291,91 +706,13 @@
           import java.awt.*;
           import java.util.*;
 
-          public class CustomTurtleRunner {
+          public class TurtleDraw7 {
               public static void main(String[] args) {
-                  World world1 = new World(400, 400);
+                  World habitat = new World(300, 300);
+                  Turtle yertle = new Turtle(habitat);
+                  // Make yertle draw a 7 using the code above
 
-                  // 1. Change the constructor call below to create a large
-                  // 150x200 CustomTurtle with a green body (Color.green)
-                  // and a blue shell (Color.blue) at position (150,300).
-                  // Move it forward to see it.
-                  CustomTurtle turtle1 = new CustomTurtle(world1);
-                  turtle1.forward();
-
-                  // 2. Create a small 25x50 CustomTurtle with a red body
-                  // and a yellow shell at position (350,200)
-                  // Move it forward to see it.
-
-                  // 3. Create a CustomTurtle of your own design
-
-                  world1.show(true);
-              }
-          }
-
-          class CustomTurtle extends Turtle {
-              private int x;
-              private int y;
-              private World w;
-              private Color bodycolor;
-              private Color shellcolor;
-              private int width;
-              private int height;
-
-              /**
-               * Constructor that takes the model display
-               *
-               * @param modelDisplay the thing that displays the model or world
-               */
-              public CustomTurtle(ModelDisplay modelDisplay) {
-                  // let the parent constructor handle it
-                  super(modelDisplay);
-              }
-
-              /**
-               * Constructor that takes the model display to draw it on and custom colors and size
-               *
-               * @param m the world
-               * @param body : the body color
-               * @param shell : the shell color
-               * @param w: width
-               * @param h: height
-               */
-              public CustomTurtle(ModelDisplay m, Color body, Color shell, int w, int h) {
-                  // let the parent constructor handle it
-                  super(m);
-                  bodycolor = body;
-                  setBodyColor(body);
-                  shellcolor = shell;
-                  setShellColor(shell);
-                  height = h;
-                  width = w;
-                  setHeight(h);
-                  setWidth(w);
-              }
-
-              /**
-               * Constructor that takes the x and y and a model display to draw it on and custom colors and
-               * size
-               *
-               * @param x the starting x position
-               * @param y the starting y position
-               * @param m the world
-               * @param body : the body color
-               * @param shell : the shell color
-               * @param w: width
-               * @param h: height
-               */
-              public CustomTurtle(int x, int y, ModelDisplay m, Color body, Color shell, int w, int h) {
-                  // let the parent constructor handle it
-                  super(x, y, m);
-                  bodycolor = body;
-                  setBodyColor(body);
-                  shellcolor = shell;
-                  setShellColor(shell);
-                  height = h;
-                  width = w;
-                  setHeight(h);
-                  setWidth(w);
+                  habitat.show(true);
               }
           }
         </code>
@@ -1389,63 +726,113 @@
 
           public class RunestoneTests extends CodeTestHelper {
               public RunestoneTests() {
-                  super("CustomTurtleRunner");
+                  super("TurtleDraw7");
               }
 
               @Test
               public void test1() {
-                  String target = "new CustomTurtle(150,300,world1, Color.green, Color.blue, 150, 200)";
-                  boolean passed =
-                          checkCodeContains(
-                                  "constructor for a large 150x200 CustomTurtle with a green body and a blue"
-                                          + " shell at position (150,300) in world1",
-                                  target);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  String target = "new CustomTurtle(350,200,world1, Color.red, Color.yellow, 25, 50)";
-                  boolean passed =
-                          checkCodeContains(
-                                  "constructor for a small 25x50 CustomTurtle with a red body and a yellow"
-                                          + " shell at position (350,200) in world1",
-                                  target);
+                  String orig = "yertle.forward();\nyertle.turnLeft();\nyertle.forward();";
+                  boolean passed = checkCodeContains(orig);
                   assertTrue(passed);
               }
           }
         </tests>
 
       </program>
-    </project>
-  </subsection>
+    </activity>
 
-  <subsection>
-    <title>Turtle exercises</title>
+    <activity label="TurtleDrawEight">
+      <statement>
+        <p>
+          Can you make yertle draw the number 8, as two squares on top of each
+          other? If you want to be really fancy you can use <c>penUp</c> and
+          <c>penDown</c> to put some space between the two squares. Maybe you
+          can even draw an 8 as it would be displayed on a <url
+          href="https://en.wikipedia.org/wiki/Seven-segment_display">seven
+          segment display</url>.
+        </p>
+      </statement>
 
-    <p>
-      Here is the Turtle class diagram again that shows some of the variables
-      and methods inherited from the SimpleTurtle class in the class Turtle that
-      are written for you.
-    </p>
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
 
-    <figure align="center">
-      <caption>Turtle Class Diagram</caption>
+        <code>
+          import java.awt.*;
+          import java.util.*;
 
-      <image source="Unit1-Using-Objects-and-Methods/Figures/turtleUMLClassDiagram.png" width="71%">
-        <shortdescription>Turtle class diagram</shortdescription>
-      </image>
-    </figure>
+          public class TurtleDraw8 {
+              public static void main(String[] args) {
+                  World habitat = new World(500, 500);
+                  Turtle yertle = new Turtle(habitat);
+                  // Make yertle draw an 8 with 2 squares
+                  yertle.forward();
 
-    <p>
-      Methods are said to be <term>overloaded</term> when there are multiple
-      methods with the same name but a different <term>method signature</term>,
-      where it requires a different number or type of parameters. For example,
-      we have two different forward methods, <c>forward()</c> with no arguments
-      and <c>forward(100)</c> which has an argument that tells it how much to
-      move forward. The arguments given to the method need to correspond to the
-      order and types of the parameters in the method signature.
-    </p>
+                  habitat.show(true);
+              }
+          }
+        </code>
+
+        <tests>
+          <![CDATA[
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("TurtleDraw8");
+              }
+
+              @Test
+              public void test1() {
+                  String orig =
+                          "import java.awt.*;\n"
+                                  + "import java.util.*;\n\n"
+                                  + "public class TurtleDraw8\n"
+                                  + "{\n"
+                                  + "  public static void main(String[] args)\n"
+                                  + "  {\n"
+                                  + "      World habitat = new World(300,300);\n"
+                                  + "      Turtle yertle = new Turtle(habitat);\n"
+                                  + "      // Make yertle draw an 8 with 2 squares\n"
+                                  + "      yertle.forward();\n\n\n"
+                                  + "      habitat.show(true);\n"
+                                  + "  }\n"
+                                  + "}\n";
+                  boolean passed = codeChanged(orig);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2() {
+                  String code = getCode();
+                  int numForward = countOccurences(code, "forward(");
+
+                  boolean passed = numForward >= 7;
+
+                  passed = getResults("7 or more", "" + numForward, "Calls to forward()", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test3() {
+                  String code = getCode();
+                  int numTurn = countOccurences(code, ".turn");
+
+                  boolean passed = numTurn >= 5;
+
+                  passed =
+                          getResults("5 or more", "" + numTurn, "Calls to turnRight() or turnLeft()", passed);
+                  assertTrue(passed);
+              }
+          }
+          ]]>
+        </tests>
+
+      </program>
+    </activity>
+
 
     <activity label="TurtleTestMethods1">
       <statement>
@@ -1580,15 +967,6 @@
       </program>
     </activity>
 
-    <image source="Unit1-Using-Objects-and-Methods/Figures/house.png" width="27%">
-      <shortdescription>simple house</shortdescription>
-    </image>
-
-    <p>
-      Try the following mixed up code to draw a simple house made of a square
-      and a triangle roof.
-    </p>
-
     <activity label="DrawAHouse" numbered="yes" adaptive="yes" indentation="hide" language="java">
       <statement>
         <p>
@@ -1599,6 +977,11 @@
           solution. You can type this code in the Active Code window above to
           see it in action.
         </p>
+
+        <image source="Unit1-Using-Objects-and-Methods/Figures/house.png" width="27%">
+          <shortdescription>simple house</shortdescription>
+        </image>
+
       </statement>
 
       <blocks>
@@ -1824,37 +1207,134 @@
     </activity>
   </subsection>
 
-  <subsection xml:id="coding-challenge-turtle-house">
-    <title>Coding Challenge: Turtle House</title>
-
-    <image source="Unit1-Using-Objects-and-Methods/Figures/houseWithWindows.png" width="36%">
-      <shortdescription>simple house</shortdescription>
-    </image>
+  <subsection xml:id="coding-challenge-draw-letters">
+    <title>Coding Challenge: Draw letters</title>
 
     <p>
-      This creative challenge is fun to do collaboratively in pairs. Design a
-      house and have the turtle draw it with different colors below. Can you add
-      windows and a door? Come up with your own house design as a team.
+      Working in pairs, use the area below to have your turtle draw simple
+      block-style letters for your first or last name initials using just
+      straight lines.
     </p>
-
-    <p>
-      To draw a window, you will need to call <c>penUp</c> and <c>moveTo</c> to
-      walk the turtle into position without drawing, for example:
-    </p>
-
-    <program>
-      t.penUp();
-      t.moveTo(120,200);
-      t.penDown();
-    </program>
 
     <p>
       It may help to act out the code pretending you are the turtle. Remember
-      that the angles you turn depend on which direction you are facing, and the
-      turtle begins facing up. When planning your coordinates for the house,
-      remember that the turtle starts at the center of the screen (150,150) and
-      the top left corner is (0,0).
+      that which way you turn depends on which direction you are facing, and the
+      turtle begins facing north (towards the top of the page).
     </p>
+
+    <project label="challenge-Turtle_Letter">
+      <statement>
+        <p>
+          Have your turtle create a block drawing of the initials of your name.
+          Use just straight lines.
+        </p>
+      </statement>
+
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
+        <code>
+          import java.awt.*;
+          import java.util.*;
+
+          public class TurtleLetter {
+              public static void main(String[] args) {
+                  World habitat = new World(300, 300);
+                  // Create a turtle object
+
+                  // have it draw your initials
+
+                  habitat.show(true);
+              }
+          }
+        </code>
+
+        <tests>
+          <![CDATA[
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("TurtleLetter");
+              }
+
+              @Test
+              public void test1() {
+                  String orig =
+                          "import java.awt.*;\n"
+                                  + "import java.util.*;\n\n"
+                                  + "public class TurtleLetter\n"
+                                  + "{\n"
+                                  + "  public static void main(String[] args)\n"
+                                  + "  {\n"
+                                  + "      World habitat = new World(300,300);\n\n\n\n"
+                                  + "      habitat.show(true);\n"
+                                  + "  }\n"
+                                  + "}\n";
+                  boolean passed = codeChanged(orig);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2() {
+                  String code = getCode();
+                  String[] lines = code.split("\n");
+
+                  boolean passed = lines.length >= 20;
+                  passed =
+                          getResults(
+                                  "20 or more lines",
+                                  lines.length + " lines",
+                                  "Adding a reasonable amount of lines to code",
+                                  passed);
+                  assertTrue(passed);
+              }
+          }
+          ]]>
+        </tests>
+
+      </program>
+    </project>
+
+  </subsection>
+
+  <subsection xml:id="coding-challenge-turtle-house">
+    <title>Coding Challenge: Turtle house</title>
+    <sidebyside widths="15% 100%" margins="-20% 0%">
+      <image source="Unit1-Using-Objects-and-Methods/Figures/houseWithWindows.png" width="36%">
+        <shortdescription>simple house</shortdescription>
+      </image>
+
+      <stack>
+        <p>
+          This creative challenge is fun to do collaboratively in pairs. Design a
+          house and have the turtle draw it with different colors below. Can you add
+          windows and a door? Come up with your own house design as a team.
+        </p>
+
+        <p>
+          To draw a window, you will need to call <c>penUp</c> and <c>moveTo</c> to
+          walk the turtle into position without drawing, for example:
+        </p>
+
+        <program>
+          t.penUp();
+          t.moveTo(120,200);
+          t.penDown();
+        </program>
+
+        <p>
+          It may help to act out the code pretending you are the turtle. Remember
+          that the angles you turn depend on which direction you are facing, and the
+          turtle begins facing up. When planning your coordinates for the house,
+          remember that the turtle starts at the center of the screen (150,150) and
+          the top left corner is (0,0).
+        </p>
+      </stack>
+    </sidebyside>
 
     <project label="challenge-TurtleHouse">
       <statement>
@@ -1950,5 +1430,75 @@
 
       </program>
     </project>
+  </subsection>
+
+  <subsection xml:id="summary-3">
+    <title>Summary</title>
+
+    <p>
+      <ul>
+        <li>
+          <p>
+            (AP 1.12.A.1) A <term>class</term> defines a new data type (a
+            classification). It is the formal implementation, or blueprint, of
+            the <em>attributes</em> and <em>behaviors</em> of the objects of
+            that class.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.12.A.1) An <term>object</term> is a specific
+            <term>instance</term> of a class with defined attributes. Objects
+            are declared as variables of a class type.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.12.B.1) A variable of a reference type holds an object
+            reference, which can be thought of as the memory address of that
+            object.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            An <term>attribute</term> or <term>instance variable</term> is data
+            the object knows about itself. For example a turtle object knows the
+            direction it is facing or its color.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            A <term>behavior</term> or <term>method</term> is something that an
+            object can do. For example a turtle object can go forward 100
+            pixels.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.12.A.2) A <term>class hierarchy</term> can be developed by
+            putting common attributes and behaviors of related classes into a
+            single class called a <term>superclass</term>. Classes that
+            <term>extend</term> a superclass, called <term>subclasses</term>,
+            can draw upon the existing attributes and behaviors of the
+            superclass without replacing these in the code. This creates an
+            <term>inheritance</term> relationship from the subclasses to the
+            superclass. Designing and implementing inheritance relationships are
+            outside the scope of the AP Computer Science A course and exam.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.12.A.2) All classes in Java are subclasses of the
+            <term>Object</term> class.
+          </p>
+        </li>
+      </ul>
+    </p>
   </subsection>
 </section>
