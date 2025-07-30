@@ -59,7 +59,7 @@ def walk(elem, source, base_dir, parent):
 def hashText(text):
     m = hashlib.sha256()
     m.update(text.encode('utf-8'))
-    return m.hexdigest()
+    return m.hexdigest()[:8]
 
 
 def row(elem, source, parent):
@@ -74,7 +74,6 @@ def row(elem, source, parent):
 
 
 if __name__ == "__main__":
-    import sys
 
     parser = ArgumentParser(
         prog="hash-contents",
