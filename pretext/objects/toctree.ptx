@@ -3,9 +3,24 @@
 <chapter xml:id="objects" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Objects</title>
 
-  <introduction />
+  <introduction>
+    <p>
+      Programs usually consist of many classes that are combined in various
+      ways. One class can have instance variables whose types are other classes
+      meaning that objects of one class can hold references to objects of other
+      classes. We can make arrays of object references. And object references
+      can be passed as arguments to methods and returned from methods.
+    </p>
+
+    <p>
+      This ability to make complex structures out of relatively simple objects
+      is one of the most powerful feature of object-oriented programming as it
+      lets us manage the complexity of those structures by breaking them into
+      comprehensible pieces.
+    </p>
+  </introduction>
+
   <xi:include href="./topic-3-6-methods-references.ptx" />
   <xi:include href="./topic-3-8-scope-access.ptx" />
-  <xi:include href="./topic-3-9-this.ptx" />
   <xi:include href="./topic-3-7-static-vars-methods.ptx" />
 </chapter>
