@@ -33,8 +33,8 @@
     <introduction>
 
       <p>
-        <alert>Warning: this book is still under construction. Several chapters
-        are still in pieces on the floor.</alert>
+        <alert>Warning: this book is still under construction. Several of the
+        later chapters are still in pieces on the floor.</alert>
       </p>
 
       <p>
@@ -50,26 +50,26 @@
       </p>
     </introduction>
 
-    <xi:include href="./frontmatter/toctree.ptx" />
-    <xi:include href="./introduction/toctree.ptx" />
-    <xi:include href="./primitive-types-and-variables/toctree.ptx" />
-    <xi:include href="./methods/toctree.ptx" />
-    <xi:include href="./booleans-and-conditionals/toctree.ptx" />
-    <xi:include href="./loops/toctree.ptx" />
-    <xi:include href="./arrays/toctree.ptx" />
-    <xi:include href="./strings/toctree.ptx" />
+    <!-- <xi:include href="./frontmatter/toctree.ptx" /> -->
+    <!-- <xi:include href="./introduction/toctree.ptx" /> -->
+    <!-- <xi:include href="./primitive-types-and-variables/toctree.ptx" /> -->
+    <!-- <xi:include href="./methods/toctree.ptx" /> -->
+    <!-- <xi:include href="./booleans-and-conditionals/toctree.ptx" /> -->
+    <!-- <xi:include href="./loops/toctree.ptx" /> -->
+    <!-- <xi:include href="./arrays/toctree.ptx" /> -->
+    <!-- <xi:include href="./strings/toctree.ptx" /> -->
     <xi:include href="./classes/toctree.ptx" />
     <xi:include href="./objects/toctree.ptx" />
-    <xi:include href="./abstraction-and-program-design/toctree.ptx" />
-    <xi:include href="./array-lists/toctree.ptx" />
-    <xi:include href="./text-files/toctree.ptx" />
-    <xi:include href="./algorithms/toctree.ptx" />
+    <!-- <xi:include href="./abstraction-and-program-design/toctree.ptx" /> -->
+    <!-- <xi:include href="./array-lists/toctree.ptx" /> -->
+    <!-- <xi:include href="./text-files/toctree.ptx" /> -->
+    <!-- <xi:include href="./algorithms/toctree.ptx" /> -->
 
-    <backmatter>
-      <index>
-        <index-list />
-      </index>
-    </backmatter>
+    <!-- <backmatter> -->
+    <!--   <index> -->
+    <!--     <index-list /> -->
+    <!--   </index> -->
+    <!-- </backmatter> -->
 
     <conclusion>
       <p>
