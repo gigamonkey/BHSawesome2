@@ -3,5 +3,5 @@
 AP exam
 subexpression, not sub-expression
 numbers spelled out: [0, 100], [1, 100] * 10^x, e.g. ninety-nine, one hundred thousand
-??? chapter or unit?
-??? section or lesson?
+Chapter, not unit
+Section, not lesson
