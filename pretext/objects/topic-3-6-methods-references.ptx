@@ -1,98 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-3-6-methods-references">
-  <title>Using objects</title>
+  <title>Connecting objects</title>
 
   <introduction>
+    <p>
+      When we’re dealing with objects, the actual value that is stored in a
+      variable, passed as an argumment, or returned from a method is a reference
+      to the object’s data. This means it’s possible to connect objects to each
+      other in all kinds of ways. We’ll look at some of the most important in
+      this section.
+    </p>
   </introduction>
 
   <subsection xml:id="objects-as-instance-variables">
-    <title>Objects as Instance Variables</title>
+    <title>Objects as instance variables</title>
 
     <p>
-      Classes can have complex instance variables that use other classes. For
-      example, a <c>Person</c> class could have an instance variable for the
-      address which can be an object with its own instance variables of street,
-      city, state, and zipcode. This is a <term>has-a</term> relationship where
-      a Person <em>has</em> an Address inside it.
+      A class can declare instance variables whose type is another class. For
+      example, a <c>Person</c> class could have an instance variable of type
+      <c>Address</c> which has its own instance variables that hold a street,
+      city, state, and zipcode. This is sometimes called <term>has-a</term>
+      relationship because a person <em>has</em> an address.
+    </p>
+
+    <p>
+      The person class, with just its instance variables and a constructor might
+      look like this:
     </p>
 
     <program>
-      class Address {
-          // instance variables
-          private String street;
-          private String city;
-          private String state;
-          private String zipcode;
-      }
-
       class Person {
-          // instance variables
           private String name;
-          private Address addr; // instance variable of type Address
+          private Address address;
+
+          public Person(String name, Address address) {
+              this.name = name;
+              this.address = address;
+          }
+
       }
     </program>
 
     <p>
-      In Java, usually each class is saved in its own file with the same name as
-      the class, so the Person class would be in Person.java and the Address
-      class would be in Address.java. If the files are in the same folder, they
-      can be compiled together so that they can interact. In Runestone, we
-      cannot have separate files, so we put them in 1 coding area. In Runestone,
-      only the class that has the main method can be public; the other classes
-      can leave out the public keyword.
+      And the <c>Address</c> class that it uses might look like this:
     </p>
+
+    <program>
+      class Address {
+          private String street;
+          private String city;
+          private String state;
+          private String zipcode;
+
+          public Address(String street, String city, String state, String zipcode) {
+              this.street = street;
+              this.city = city;
+              this.state = state;
+              this.zipcode = zipcode;
+          }
+      }
+    </program>
+
+    <p>
+      This is preferable to having the <c>Person</c> class define its own
+      <c>street</c>, <c>city</c>, <c>state</c>, and <c>zipcode</c> instance
+      variables for a couple reasons. The main one is it makes <c>Person</c>
+      simpler—a <c>Person</c> is just made up of two things, a name and an
+      address. When trying to understand the <c>Person</c> class we don’t have
+      to deal with the complexity of how an address is represented. And then
+      when we do look at the <c>Address</c> class, we don’t have to even think
+      about the <c>Person</c> class at all; we can understand the <c>Address</c>
+      class entirely on its own terms.
+    </p>
+
+    <p>
+      Also, people are not the only things that have addresses. If in our
+      program we want to represent houses or schools or other things that have
+      addresses it’s better to have all of our code related to addresses live
+      in one place rather than duplicating it in every class that represents
+      something with an address.
+    </p>
+
+    <note>
+      <p>
+        In Java, the source code for each class is saved in its own file named
+        after the class, so the <c>Person</c> class would be in <c>Person.java</c>
+        and the <c>Address</c> class would be in <c>Address.java</c>. If the files
+        are in the same folder, they can be compiled together so that they can
+        interact. In Runestone, we cannot have separate files, so we put them in 1
+        coding area. In Runestone, only the class that has the main method can be
+        public; the other classes can leave out the public keyword.
+      </p>
+
+    </note>
   </subsection>
 
   <subsection xml:id="objects-as-arguments">
-    <title>Objects as Arguments</title>
+    <title>Passing objects as arguments</title>
 
     <p>
-      Java uses <term>Call by Value</term> when it passes arguments to methods
-      and constructors. This means that a copy of the value in the argument is
-      saved in the parameter variable. If the parameter variable changes its
-      value inside the method, the original value outside the method is not
-      changed. With primitive types like int and double, the argument value is
-      copied into the parameter variable as expected. However, if you pass in an
-      argument that holds a reference to an object, like a String or Person or
-      Address or Turtle objects, the reference is copied, not the whole object.
-      Java was designed this way to avoid copying large objects from method to
-      method.
+      The <c>Person</c> constructor above demonstrates one of the ways that
+      objects can be connected, by passing one object to the constructor of
+      another. Remember that every object is made up of two parts: its object
+      data that lives somewhere in memory and a reference to that data which is
+      the value that can be passed around and stored. So when we write code
+      like this to construct an <c>Address</c>:
+    </p>
+
+    <program>
+      Address addr = new Address("345 Cave Stone Road", "Bedrock", "CA", "12345");
+    </program>
+
+    <p>
+      the value stored in the variable <c>addr</c> is a reference to the the
+      object data that was allocated to hold the data that makes up the
+      <c>Address</c> object. And when we write a line like this to create a
+      <c>Person</c>:
+    </p>
+
+    <program>
+      Person fred = new Person("Fred Flintstone", addr);
+    </program>
+
+    <p>
+      The value of <c>addr</c>, i.e. the reference is what is passed to the
+      <c>Person</c> contructor which then stores it in the <c>address</c>
+      instance variable in the <c>Person</c> object data.
     </p>
 
     <p>
-      When a copy of a reference is passed in and saved in the parameter
-      variable, the parameter and the argument are then <term>aliases</term>,
-      both refering to the same object. Remember when we discussed reference
-      aliases with turtle objects who are set equal to one another.
-    </p>
-
-    <figure align="center">
-      <caption>Turtle Reference Equality</caption>
-
-      <image source="Unit3-Class-Creation/Figures/turtleEquality.png" width="89%" />
-    </figure>
-
-    <p>
-      There can be unexpected results if the parameter refers to a mutable
-      object; the method or constructor can use this reference to alter the
-      state of the original object. Some classes like <c>String</c> are
-      immutable, so they cannot be changed by any method; for example, when
-      <c>s.toUpperCase()</c> is called, it returns a new String object with the
-      uppercase letters, but the original String object is not changed. Any new
-      classes that you write that have setters or methods that change the state
-      of the object will be mutable. So, if you pass in an object of a class
-      that you write into a method as an argument, you need to be careful that
-      the method does not change the object unless that is the intended
-      behavior. It is good programming practice to not modify mutable objects
-      that are passed as parameters unless required in the specification.
+      This way of passing arguments is known as <term>call by value</term> and
+      is used for both constructor and method calls in Java. Because the value
+      of <c>addr</c> is passed to the constructor, the code in the constructor
+      cannot affect the variable <c>addr</c>.
     </p>
 
     <p>
-      Try the code below. Add code in the main method that changes the original
-      address to your city. Does it also change in the person object? This can
-      be a problem with references to mutable objects. In the next subsection,
-      we’ll copy the Address object to avoid this problem.
+      However because the value of <c>addr</c> is a reference to the
+      <c>Address</c> object, if the <c>Address</c> class defined methods that
+      let us modify an <c>Address</c> object, then code in the constructor or
+      elsewhere in <c>Person</c> could use those methods to change the
+      <c>Address</c> object and those changes would be visible to any code that
+      had a reference to that <c>Address</c> object.
+    </p>
+
+    <p>
+      Consider, for example, if given the previous two lines of code, we added
+      this line:
+    </p>
+
+    <program>
+      Person wilma = new Person("Wilma Flintstone", addr);
+    </program>
+
+    <p>
+      Fred and Wilma live at the same address so it makes sense that they share
+      an <c>Address</c> object. Now suppose that <c>Address</c> provided a
+      <c>setCity</c> method that changed the <c>city</c> instance variable in an
+      <c>Address</c>. What happens to Fred and Wilma if we execute this line?
+    </p>
+
+    <program>
+      addr.setCity("Orbit City");
+    </program>
+
+    <p>
+      In this case, there’s just one <c>Address</c> object so the change would
+      affect both <c>Person</c> objects in that if you got their address and
+      then got the city from that address it would now return <c>"Orbit
+      City"</c>. Sometimes that’s what we want and the whole point of passing
+      around mutable objects. Other times it can be the source of subtle bugs if
+      we forget or don’t realize that an object referenced by one object may be
+      referenced elsewhere.
+    </p>
+
+    <p>
+      This is the same thing that happens with arrays as we discussed in <xref
+      ref="array-refs-as-args" />. It doesn’t happen with primitive types
+      because the value of primitive types <em>is</em> the value that is copied
+      and passed as an argument. And it doesn’t happen with <c>String</c> values
+      because even though <c>String</c> is a reference type, it is immutable.
     </p>
 
     <activity label="AddressPerson">
@@ -110,15 +198,15 @@
 
         <code>
           public class Person {
-              // instance variables
+
+              // Instance variables
               private String name;
-              private Address addr; // instance variable of type Address defined below
+              private Address address;
 
               // Constructor
-              public Person(String initName, Address initAddress) {
-                  name = initName;
-                  // This direct assignment of references may not be the best practice!
-                  addr = initAddress;
+              public Person(String name, Address address) {
+                  this.name = name;
+                  this.address = address;
               }
 
               public String toString() {
@@ -137,18 +225,18 @@
           }
 
           class Address {
-              // instance variables
+              // Instance variables
               private String street;
               private String city;
               private String state;
               private String zipcode;
 
               // constructor
-              public Address(String initStreet, String initCity, String initState, String initZipcode) {
-                  street = initStreet;
-                  city = initCity;
-                  state = initState;
-                  zipcode = initZipcode;
+              public Address(String street, String city, String state, String zipcode) {
+                  this.street = street;
+                  this.city = city;
+                  this.state = state;
+                  this.zipcode = zipcode;
               }
 
               public String toString() {
@@ -172,8 +260,8 @@
               }
 
               // Setters (makes the class mutable)
-              public void setCity(String initCity) {
-                  city = initCity;
+              public void setCity(String city) {
+                  this.city = city;
               }
           }
         </code>
@@ -1499,580 +1587,6 @@
 
       </program>
     </activity>
-  </subsection>
-
-
-  <subsection>
-    <title>Reference equality</title>
-
-    <p>
-      Watch the following <url
-      href="https://www.youtube.com/watch?v=bO9bejT0jwE&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
-      which shows what happens in memory as primitive types like <c>int</c> and
-      reference types like <c>Dog</c> are compared with <c>==</c> in a physical
-      model of Java memory.
-    </p>
-
-    <video youtube="bO9bejT0jwE" label="video-ref-model" />
-    <p>
-      We can also use <c>==</c> or <c>!=</c> to test if two reference values,
-      like <c>Turtle</c> and <c>String</c> objects, refer to the same object. In
-      the figure below, we are creating two separate <c>Turtle</c> objects
-      called <c>juan</c> and <c>mia</c>. They do not refer to same object or
-      turtle. Then, we create a reference variable called <c>friend</c> that is
-      set to <c>mia</c>. The turtle <c>mia</c> will have two ways
-      (<term>references</term> or <term>aliases</term>) to name her – she’s both
-      <c>mia</c> and <c>friend</c>, and these variables refer to the same object
-      (same <c>Turtle</c>) in memory. If two reference variables refer to the
-      same object like the turtle on the right in the image below, the test with
-      <c>==</c> will return true which you can see in the code below.
-    </p>
-
-    <figure align="center">
-      <caption>Turtle Reference Equality</caption>
-
-      <image source="Unit2-Selection-and-Iteration/Figures/turtleEquality.png" width="89%" />
-    </figure>
-
-    <activity label="boolRef">
-      <statement>
-        <p>
-          What will the code below print out? Try to guess before you run it!
-          Then, add another Turtle friend2 and set it to juan. Does friend2 ==
-          juan? Does friend2 == friend? Print out the Boolean expressions for
-          these.
-        </p>
-      </statement>
-
-      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
-
-        <code>
-          import java.awt.*;
-          import java.util.*;
-
-          public class BoolTestRef {
-              public static void main(String[] args) {
-                  World world = new World(300, 300);
-                  Turtle juan = new Turtle(world);
-                  Turtle mia = new Turtle(world);
-
-                  // Will these print true or false?
-                  System.out.println(juan == mia);
-                  Turtle friend = mia; // set friend to be an alias for mia
-                  System.out.println(friend == mia);
-                  // Create another Turtle friend2 and set it to juan
-                  // Does friend2 == juan?
-                  // Does friend2 == friend?
-
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "false\ntrue\ntrue\nfalse\n";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
-      </program>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="comparing-objects">
-    <title>Comparing Objects</title>
-
-    <p>
-      Comparing objects is a little different than comparing primitive typed
-      values like numbers. Objects can be very complex and have many attribute
-      values or instance variables inside them. For example, the <c>Turtle</c>
-      objects have many instance variables like <c>name</c>, <c>width</c>,
-      <c>height</c>, <c>xPos</c>, <c>yPos</c>, etc. When comparing two
-      <c>Turtle</c> objects, we need a specially written <term>equals</term>
-      method to compare all of these values. In the next sections, we will take
-      a look at <c>String</c> objects and the difference between comparing them
-      with <c>==</c> vs. the <c>equals</c> method.
-    </p>
-  </subsection>
-
-  <subsection xml:id="string-equality">
-    <title>String Equality</title>
-
-    <idx><h>String</h><h>equality</h></idx>
-    <idx><h>String</h><h>equals</h></idx>
-    <p>
-      The <term>equals</term> method for Strings compares two strings letter by
-      letter. <c>s1.equals(s2)</c> is true if <c>s1</c> and <c>s2</c> have all
-      the same characters in the same order. With <c>Strings</c> and other
-      objects, you almost always use <c>equals</c> instead of <c>==</c> to check
-      their equality.
-    </p>
-
-    <p>
-      When the operator <c>==</c> or <c>!=</c> is used to compare object
-      variables, it returns true when the two variables <em>refer to the same
-      object</em>. These variables are called <term>object references</term> and
-      <term>aliases</term> for the same object. With strings this happens when
-      one string variable is set to another.
-    </p>
-
-    <figure align="center">
-      <caption>String aliases</caption>
-
-      <image source="Unit2-Selection-and-Iteration/Figures/stringEquality.png" width="54%" />
-    </figure>
-
-    <activity label="lcse1">
-      <statement>
-        <p>If you run the following, what will be printed?</p>
-      </statement>
-
-      <program interactive="activecode">
-
-        <code>
-          public class Test1 {
-              public static void main(String[] args) {
-                  String s1 = new String("Hello");
-                  String s2 = new String("Bye");
-                  String s3 = s2; // s3 is now an alias for s2
-                  System.out.println(s3);
-                  System.out.println(s2 == s3);
-                  System.out.println(s2.equals(s3));
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "Bye\ntrue\ntrue\n";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
-      </program>
-    </activity>
-
-    <p>
-      The following <url
-      href="https://www.youtube.com/watch?v=hhYBVgmC-vw">video</url> traces
-      through the code above and shows how <c>==</c> and <c>equals</c> work with
-      String objects in memory.
-    </p>
-
-    <video youtube="hhYBVgmC-vw" label="video-strings" />
-    <p>
-      Here’s the representation of memory where s2 and s3 refer to the same
-      String object.
-    </p>
-
-    <figure align="center">
-      <caption>
-        s2 and s3 are aliases referring to the same String object
-      </caption>
-
-      <image source="Unit2-Selection-and-Iteration/Figures/s2ands3.jpg" width="63%" />
-    </figure>
-  </subsection>
-
-  <subsection xml:id="equality-with-new-strings">
-    <title>Equality with New Strings</title>
-
-    <p>
-      If you use the <c>new</c> keyword to create a string, it will always
-      create a new string object. So, even if we create two string objects with
-      new that contain all the same characters in the same order, they will not
-      refer to the same object.
-    </p>
-
-    <activity label="strEquals">
-      <statement>
-        <p>
-          What will the following print? Run the code to see the difference
-          between == and equals with new Strings that are both “Hello”. Then,
-          write the if statements described below to test the equality of s1 and
-          s3 to see if capitalization matters.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-
-        <code>
-          public class Test2 {
-              public static void main(String[] args) {
-                  String s1 = new String("Hello");
-                  String s2 = new String("Hello");
-                  System.out.println(s1 == s2);
-                  System.out.println(s1.equals(s2));
-
-                  String s3 = new String("hello");
-                  // Write an if statement to test if
-                  //  s1 and s2 are equal with equals
-                  // If they are, print "Equals"
-
-                  // Write an if/else statement to test if
-                  //   s1 and s3 are equal with equals
-                  // If they are, print "Equals"
-                  // else print "Not Equals".
-                  // Note that case matters with equals unless you use equalsIgnoreCase
-
-              }
-          }
-        </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "false\ntrue\nEquals\nNot Equals\n";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testCodeContains1() {
-                  boolean ifStatement = checkCodeContains("if", "if");
-                  assertTrue(ifStatement);
-              }
-
-              @Test
-              public void testCount() {
-                  String code = getCode();
-                  int num = countOccurences(code, ".equals");
-                  boolean passed = num >= 3;
-
-                  getResults("3", "" + num, "Number of equals used", passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
-      </program>
-    </activity>
-
-    <p>
-      Watch the <url href="https://www.youtube.com/watch?v=xZroaSGhgxA">video
-      below</url> to see how this code works in memory. Since we used the
-      <c>new</c> keyword, two different <c>String</c> objects will be created
-      that each have the characters <c>Hello</c> in them. So <c>s1 == s2</c>
-      will be false since they don’t refer to the same object, but
-      <c>s1.equals(s2)</c> is true since the two different objects contain the
-      same characters in the same order.
-    </p>
-
-    <video youtube="xZroaSGhgxA" label="video-equals" />
-    <p>Here is the representation of these String objects in memory.</p>
-
-    <figure align="center">
-      <caption>
-        Two strings that are equal with <c>equals</c> but not with <c>==</c>.
-      </caption>
-
-      <image source="Unit2-Selection-and-Iteration/Figures/s1ands2.jpg" width="63%" />
-    </figure>
-
-    <p>
-      Note that you can also create <c>Strings</c> using string literals instead
-      of new, like <c>String s = "Hello"</c>. <c>String</c> literals behave a
-      little differently because they are re-used if they already exist instead
-      of creating a new object. But you should not see questions with string
-      literals and <c>==</c> on the AP exam.
-    </p>
-
-    <note>
-      <p>
-        Only use <c>==</c> and <c>!=</c> with primitive types like <c>int</c> or
-        to test if two strings (or objects) refer to the same object. Use
-        <c>equals</c>, not <c>==</c> or <c>!=</c>, with strings to test if they
-        are equal letter by letter, and with other objects to see if all of
-        their relevant attributes are equal.
-      </p>
-    </note>
-
-    <activity label="qsbeq_1">
-      <statement>
-        <p>Which of the following is true after the code executes?</p>
-
-        <program>
-          String s1 = new String("hi");
-          String s2 = new String("bye");
-          String s3 = new String("hi");
-          s2 = s1;
-        </program>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>s1 == s2 &amp;&amp; s1 == s3</p>
-          </statement>
-
-          <feedback>
-            <p>Do s1 and s3 refer to the same object?</p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>s1 == s2 &amp;&amp; s1.equals(s3)</p>
-          </statement>
-
-          <feedback>
-            <p>
-              Yes s2 was set to refer to the same object as s1 and s1 and s3
-              have the same characters.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>s1 != s2 &amp;&amp; s1.equals(s3)</p>
-          </statement>
-
-          <feedback>
-            <p>
-              Did you miss that s2 was set to refer to the same object as s1?
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="qsbeq_2">
-      <statement>
-        <p>Which of the following is true after the code executes?</p>
-
-        <program>
-          String s1 = new String("hi");
-          String s2 = new String("bye");
-          String s3 = new String("hi");
-        </program>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>s1 == s2 &amp;&amp; s1 == s3</p>
-          </statement>
-
-          <feedback>
-            <p>Do s1 and s2 refer to the same object?</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>s2.equals(s3) &amp;&amp; s1.equals(s3)</p>
-          </statement>
-
-          <feedback>
-            <p>Does s2 have the same characters as s1 or s3?</p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>s1 != s3 &amp;&amp; s1.equals(s3)</p>
-          </statement>
-
-          <feedback>
-            <p>
-              s1 and s3 refer to different string objects but they contain the
-              same characters "hi" in the same order.
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <activity label="qsbeq_3">
-      <statement>
-        <p>Which of the following is true after the code executes?</p>
-
-        <program>
-          String s1 = new String("hi");
-          String s2 = new String("bye");
-          String s3 = new String("hi");
-        </program>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>s1 == s3 &amp;&amp; s1.equals(s3)</p>
-          </statement>
-
-          <feedback>
-            <p>
-              Since s3 uses the new operator it will not refer to the same
-              object as s1.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>s2.equals(s3) &amp;&amp; s1.equals(s3)</p>
-          </statement>
-
-          <feedback>
-            <p>Do s2 and s3 have the same characters in the same order?</p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>!(s1 == s2) &amp;&amp; !(s1 == s3)</p>
-          </statement>
-
-          <feedback>
-            <p>
-              All of the variables refer to different objects. But,
-              s1.equals(s3) would be true since they have the same characters in
-              the same order.
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="comparing-with-null">
-    <title>Comparing with null</title>
-
-    <p>
-      One common place to use <c>==</c> or <c>!=</c> with objects is to compare
-      them to <term>null</term> to see if they really exist. Sometimes
-      short-circuit evaluation is used to avoid an error if the object doesn’t
-      exist. Remember that <term>short-circuit evaluation</term> is used with
-      <c>&amp;&amp;</c> in Java meaning that if the first part of the if
-      condition is false, it doesn’t even have to check the second condition and
-      it knows the whole <c>&amp;&amp;</c> test is false.
-    </p>
-
-    <activity label="nullTest">
-      <statement>
-        <p>
-          Try the following code to see a <c>NullPointerException</c> (if you
-          don’t see the exception because of the autograding, you can copy it
-          into the pencil icon scratch area to run it without the grader). Since
-          <c>s</c> is <c>null</c>, trying to access <c>indexOf</c> on <c>s</c>
-          throws an <c>NullPointerException</c>. Comment out the first <c>if</c>
-          statement and run the program again. The second <c>if</c> statement
-          avoids the error with shortcircuit evaluation. Because <c>s !=
-          null</c> is <c>false</c>, the rest of the Boolean expression is not
-          evaluated. Now, change <c>s</c> to set it to <c>"apple"</c> instead of
-          <c>null</c> in the first line and run the code again to see that the
-          <c>if</c> statements can print out that “apple contains an a”.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-
-        <code>
-          <![CDATA[
-          public class NullTest {
-              public static void main(String[] args) {
-                  String s = null;
-                  if (s.indexOf("a") >= 0) {
-                      System.out.println(s + " contains an a");
-                  }
-                  if (s != null && s.indexOf("a") >= 0) {
-                      System.out.println(s + " contains an a");
-                  }
-              }
-          }
-          ]]>
-        </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("NullTest");
-              }
-
-              @Test
-              public void testMain() {
-                  String output = getMethodOutput("main");
-                  String expect = "apple contains an a\napple contains an a";
-
-                  boolean passed = getResults(expect, output, "Checking main() gives correct results");
-              }
-
-              @Test
-              public void testChangedCode() {
-                  String origCode =
-                          "public class NullTest { public static void main(String[] args) { String s = null;"
-                              + " if (s.indexOf(\"a\") >= 0) {  System.out.println(s + \" contains an a\"); }"
-                              + " if (s != null && s.indexOf(\"a\") >= 0) { System.out.println(s + \""
-                              + " contains an a\"); } } }";
-
-                  boolean changed = codeChanged(origCode);
-
-                  assertTrue(changed);
-              }
-
-              @Test
-              public void testCodeContains() {
-                  String code = getCode();
-                  String target1 = "String s = ";
-                  String target2 = "System.out.println(s + \" contains an a\");";
-
-                  boolean passed = code.contains(target1) && code.contains(target2);
-                  getResults("true", "" + passed, "Checking that code has not been removed", passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
-      </program>
-    </activity>
-
-    <p>
-      The <url href="https://www.youtube.com/watch?v=GPdoHm1K8HA">following
-      video</url> shows how the null string reference works in memory.
-    </p>
-
-    <video youtube="GPdoHm1K8HA" label="video-null-string" />
   </subsection>
 
   <subsection xml:id="coding-challenge-friends-and-birthdays">

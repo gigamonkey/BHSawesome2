@@ -877,7 +877,7 @@
     </activity>
   </subsection>
 
-  <subsection>
+  <subsection xml:id="array-refs-as-args">
     <title>Array references as arguments</title>
 
     <p>

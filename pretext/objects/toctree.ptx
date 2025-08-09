@@ -5,11 +5,14 @@
 
   <introduction>
     <p>
-      Programs usually consist of many classes that are combined in various
-      ways. One class can have instance variables whose types are other classes
-      meaning that objects of one class can hold references to objects of other
-      classes. We can make arrays of object references. And object references
-      can be passed as arguments to methods and returned from methods.
+      Java programs usually consist of many classes that are combined in various
+      ways. For instance a class with a <c>main</c> method may make instances of
+      several other classes in that <c>main</c> method and then call methods on
+      those objects that do most of the work of the program. Or one class can
+      have instance variables that hold references to objects of other classes
+      or to arrays of object types. And references can be passed as arguments to
+      methods and returned from methods, allowing code in one class to use
+      objects of another class that are passed to its methods.
     </p>
 
     <p>
@@ -18,9 +21,20 @@
       lets us manage the complexity of those structures by breaking them into
       comprehensible pieces.
     </p>
+
+    <p>
+      In this chapter we’ll focus on using objects in all these different ways
+      and make sure we understand some of the subtleties that come up when we
+      pass objects around and hold references to them. We’ll also look at what
+      it means to ask if two objects are “equal”, something we discussed briefly
+      in <xref ref="topic-1-15-strings" />. And finally we’ll wrap up with some
+      odds and ends about different kinds of variables that we now know enough
+      to understand including finally being able to answer the question, “What
+      does <c>static</c> really mean?”
+    </p>
   </introduction>
 
   <xi:include href="./topic-3-6-methods-references.ptx" />
+  <xi:include href="./object-equality.ptx" />
   <xi:include href="./topic-3-8-scope-access.ptx" />
-  <xi:include href="./topic-3-7-static-vars-methods.ptx" />
 </chapter>
