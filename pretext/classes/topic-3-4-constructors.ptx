@@ -235,7 +235,7 @@
       <p>
         Constructors cannot have the <c>static</c> modifier that we’ve used with
         methods until this unit. That’s only an option for methods and variables
-        which will discuss more in <xref ref="topic-3-7-static-vars-methods" />.
+        which will discuss more in <xref ref="objects"/>.
       </p>
     </note>
   </subsection>
