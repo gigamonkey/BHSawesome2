@@ -18,7 +18,6 @@ CodeDigest.class: CodeDigest.java junit-4.13-beta-3.jar
 all-files.mk: pretext/full-main.ptx $(files)
 	@echo "files := $<" > $@
 	@./list-files.py -f $< | perl -pe 's/^/files += /' >> $@
-	@echo '.SECONDARY: $(files)' >> $@
 
 pretext/full-main.ptx: pretext/main.ptx
 	perl -pe 's/<!-- (.*) -->/$$1/;' $< > $@
