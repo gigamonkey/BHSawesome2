@@ -17,8 +17,6 @@
 
     <rename element="inlineexercise">Activity</rename>
 
-    <rename element="chapter">Unit</rename>
-
     <brandlogo url="./bhsawesome.html" source="_static/BHSawesomeLogo.png" alt="BHSawesome" />
     <cross-references text="type-global-title" />
     <programs language="java" />
