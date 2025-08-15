@@ -52,12 +52,12 @@
     <idx><h>variable</h><h>floating point</h></idx>
     <idx><h>variable</h><h>Boolean</h></idx>
     <p>
-      In Java, every value has a <term>data type</term> that determines what how
-      it represented (which mostly we don’t have to worry about) and what we can
-      do with it. There are two categories of data types in Java. One,
-      <term>primitive types</term>, hold the kinds of values that the computer
-      can directly operate on such as numbers which we can do math with and
-      logical values that we can do, well, logic with. The other,
+      In Java, every value has a <term>data type</term> that determines how it
+      is represented in the computer’s memory (which mostly we don’t have to
+      worry about) and what we can do with it. There are two categories of data
+      types in Java. One, <term>primitive types</term>, hold the kinds of values
+      that the computer can directly operate on such as numbers which we can do
+      math with and logical values that we can do, well, logic with. The other,
       <term>reference types</term> hold a reference to a more complex value
       called an object. For now we’ll focus on three of the main primitive data
       types in Java. We’ll come back to reference types in <xref ref="classes"
@@ -542,7 +542,7 @@
         </p>
 
         <p>
-          <fillin answer="int" mode="string" /><c>age =</c> 
+          <fillin answer="int" mode="string" /><c>age =</c>
           <fillin mode="number" answer="5" /><!-- this will use a number input
           --><c>;</c>
         </p>
