@@ -162,7 +162,7 @@
 
     <p>
       Every programming language has a <term>syntax</term> which is a set of
-      rules for how thet text of a program has to be organized. Human languages
+      rules for how the text of a program has to be organized. Human languages
       also have syntax. For instance in English, “The robot ate the cupcake”, is
       a syntactically correct sentence while, “Ate robot cupcake the the”, is
       not. A program, like a sentence, can only actually be a program if it is
