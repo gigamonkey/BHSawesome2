@@ -107,7 +107,7 @@
     <p>
       Click on the run button below to have the computer execute the <c>main</c>
       method in the following class. Then, change the code to print your name.
-      Be sure to keep the starting and ending quotes <c>"</c>. Click on the run
+      Be sure to keep the starting and ending quotation marks. Click on the run
       button to run the modified code.
     </p>
 
@@ -166,11 +166,11 @@
       also have syntax. For instance in English, “The robot ate the cupcake”, is
       a syntactically correct sentence while, “Ate robot cupcake the the”, is
       not. A program, like a sentence, can only actually be a program if it is
-      syntactically correct. But computers are even more picky that humans about
-      syntax so one of the first things we need to learn, when learning a new
-      programming language are the exact rules of it’s syntax. Luckily most
+      syntactically correct. But computers are even more picky than humans about
+      syntax, so one of the first things we need to learn, when learning a new
+      programming language are the exact rules of its syntax. Luckily most
       programming languages are designed to have a relatively simple syntax,
-      even if it looks a bit odd at first so we can usually pick it up by
+      even if it looks a bit odd at first, so we can usually pick it up by
       reading and writing code and paying attention to the error messages we get
       when we make mistakes: no need to memorize a bunch of rules.
     </p>
@@ -203,12 +203,22 @@
     </note>
 
     <p>
-      Other than punctuation most of the rest of programs are made up of words.
-      Some words are special to Java and are called <term>keywords</term>. In
-      the programs above the keywords are <c>public</c>, <c>class</c>,
-      <c>static</c>, and <c>void</c>. Because keywords have a special meaning to
-      Java we can only use them for the particular purpose each one has. All
-      keywords in Java are lower case.
+      So punctuation is critical. Whitespace, on the other hand, such as the
+      indentation at the beginning of lines or blank lines is completely
+      unimportant to the computer, except in a few special contexts. But it is
+      very important to human progarammers to help show the structure of code.
+      You should pay attention to how code in this book is indented and try to
+      indent your code in the same way. (Or use the Reformat button on the
+      coding exercises to automatically properly indent your code.)
+    </p>
+
+    <p>
+      Other than punctuation and whitespace, the rest of the text of a program
+      is made up of words. Some words are special to Java and are called
+      <term>keywords</term>. In the programs above the keywords are
+      <c>public</c>, <c>class</c>, <c>static</c>, and <c>void</c>. Because
+      keywords have a special meaning to Java we can only use them for the
+      particular purpose each one has. All keywords in Java are lower case.
     </p>
 
     <p>
@@ -435,12 +445,25 @@
     <title>Compiling and running Java programs</title>
 
     <p>
-      However computers don’t actually know what to do with Java source code so
-      we have to <term>compile</term> (translate) Java source files that we
-      write into class files which is code that a computer can understand and
-      run. A <term>compiler</term> checks your code for errors and then
-      translates it into executable code that can be run.
+      Even though Java is a programming language designed for us to communicate
+      with the computer, computers don’t actually know what to do with Java
+      source code. Instead we have to <term>compile</term> (translate) Java
+      source files that we write into files that are meaningless to a human but
+      which are closer to something the computer can actually run. A
+      <term>compiler</term> checks your code for errors and then translates it
+      into executable code that can be run.
     </p>
+
+    <note>
+      <p>
+        Some languages compile their source code to something called
+        <term>machine code</term> that can run directly on the computer
+        hardware. Java uses a different strategy, compliling to an intermediate
+        form called <term>bytecode</term> which is run by another program called
+        the <term>Java Virtual Machine</term>. But bytecode is much closer to
+        machine code than it is to Java source code.
+      </p>
+    </note>
 
     <p>
       If the compiler can’t understand our program because of syntax errors it
