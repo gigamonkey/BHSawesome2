@@ -337,7 +337,7 @@
           public class OldMacDonaldSong {
               public static void chorus() {
                   System.out.println("Old MacDonald had a farm");
-                  chorus();
+                  eieio();
               }
 
               public static void eieio() {
