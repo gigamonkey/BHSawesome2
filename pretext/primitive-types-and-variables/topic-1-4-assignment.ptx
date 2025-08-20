@@ -51,8 +51,8 @@
 
     <p>
       To take a simple example of initializing and then reassigning a variable,
-      suppose we are keeping track of the score in a game. We need to decare and
-      initialize the variable with something like this:
+      suppose we are keeping track of the score in a game. We need to declare
+      and initialize the variable with something like this:
     </p>
 
     <program>
