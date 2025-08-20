@@ -370,28 +370,26 @@
     </p>
 
     <p>
-      If we try to write a literal <c>int</c> that it out of range the compiler
+      If we try to write a literal <c>int</c> that is out of range the compiler
       will give us an error as shown in the exercise below.
     </p>
 
     <activity label="overfl">
       <statement>
         <p>
-          Try the code below to see two integer overflows for a positive and
-          negative number. An int cannot hold that many digits! Fix the integer
-          overflow by deleting the last 0 in the numbers to store less digits.
+          Try the code below to see that there are limits to how big <c>int</c>
+          values can be. Fix the code by deleting the last 0 in the numbers to
+          make the values small enough to be stored in an <c>int</c>.
         </p>
       </statement>
 
       <program interactive="activecode">
 
         <code>
-          public class TestOverflow
-          {
-              public static void main(String[] args)
-              {
-                  int id = 2147483650; // overflow
-                  int negative = -2147483650; // overflow
+          public class TestOverflow {
+              public static void main(String[] args) {
+                  int id = 2147483650; // out of range
+                  int negative = -2147483650; // out of range
                   System.out.println(id);
                   System.out.println(negative);
               }
