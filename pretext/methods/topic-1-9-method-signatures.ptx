@@ -240,13 +240,13 @@
 
       <areas>
         <cline><area correct="no">public static void main(String args[]) {</area></cline>
-        <cline>    <area correct="yes">System.out.println("Old MacDonald had a farm.");</area></cline>
+        <cline>    <area correct="yes">System.out.println("Old MacDonald had a farm,");</area></cline>
         <cline>    <area correct="yes">System.out.println("E-I-E-I-O");</area></cline>
         <cline>    <area correct="no">System.out.println("And on this farm, they had a cow.");</area></cline>
         <cline>    <area correct="yes">System.out.println("E-I-E-I-O");</area></cline>
         <cline>    <area correct="no">System.out.println("With a moo moo here and a moo moo there");</area></cline>
         <cline>    <area correct="no">System.out.println("Here a moo, there a moo, everywhere a moo moo");</area></cline>
-        <cline>    <area correct="yes">System.out.println("Old MacDonald had a farm");</area></cline>
+        <cline>    <area correct="yes">System.out.println("Old MacDonald had a farm,");</area></cline>
         <cline>    <area correct="yes">System.out.println("E-I-E-I-O");</area></cline>
         <cline><area correct="no">}</area></cline>
       </areas>
