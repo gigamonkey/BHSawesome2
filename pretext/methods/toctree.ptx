@@ -36,9 +36,9 @@
       smaller more manageable chunks. Additionally, we can also use methods
       written by other programmers without having to worry about the details of
       exactly how they work. We just need to know the method’s name and what
-      arguments it expects. Later in this unit well look at several methods from
-      the class <c>Math</c> that comes with Java, which save us from having to
-      know, for instance, how to compute square roots.
+      arguments it expects. Later in this unit we’ll look at several methods
+      from the class <c>Math</c> that comes with Java, which save us from having
+      to know, for instance, how to compute square roots.
     </p>
   </introduction>
 
