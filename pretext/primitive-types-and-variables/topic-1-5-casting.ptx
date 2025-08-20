@@ -392,6 +392,8 @@
                   int negative = -2147483650; // out of range
                   System.out.println(id);
                   System.out.println(negative);
+                  System.out.println(Integer.MAX_VALUE); // this is fine
+                  System.out.println(Integer.MAX_VALUE + 1); // this overflows to negative
               }
           }
         </code>
@@ -409,11 +411,11 @@
               public void testMain() throws IOException
               {
                   String output = getMethodOutput("main");
-                  String expect = "214748365\n-214748365\n";
+                  String expect = "214748365\n-214748365\n2147483647\n-2147483648";
 
                   boolean passed =
                           getResults(
-                                  expect, output, "Fixed Integer Overflow Error");
+                                  expect, output, "Fixed int out of range errors");
                   assertTrue(passed);
               }
           }
