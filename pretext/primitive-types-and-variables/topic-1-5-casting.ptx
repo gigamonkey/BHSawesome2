@@ -16,7 +16,7 @@
 
     <p>
       Also both data types have some limitations that we need to understand in
-      order to avoid mathmatically nonsensical results. (For instance, you’d
+      order to avoid mathematically nonsensical results. (For instance, you’d
       probably get an F in math class if you said <c>2147483647 + 1</c> was
       <c>-2147483648</c>. But that’s what you’d get from Java due to the
       limitation on the range of values that can be represented with an
@@ -162,7 +162,7 @@
       it produces an <c>int</c> result by truncating the actual mathematical
       result, removing anything after the decimal point. Thus <c>3 / 4</c>
       evaluates to <c>0</c>, not <c>0.75</c> as we might expect. It also does
-      not evaluate to <c>1</c> even thoun <c>0.75</c> is closer to <c>1</c> than
+      not evaluate to <c>1</c> even though <c>0.75</c> is closer to <c>1</c> than
       it is to <c>0</c>; truncating is not the same as rounding!
     </p>
 
@@ -449,9 +449,9 @@
       purposes. But you should be aware that the accuracy of any calculation on
       a computer is limited by the fact that computers can only hold a limited
       number of digits. When these limitations lead to incorrect results it is
-      called a <term>roundoff error</term>. Programmers who write software that
+      called a <term>round-off error</term>. Programmers who write software that
       does complex scientific calculations do something called <term>numeric
-      analysis</term> to make sure their programs won’t be affected by roundof
+      analysis</term> to make sure their programs won’t be affected by round-off
       errors but most of us don’t have to worry about that most of the time.
     </p>
 
@@ -606,9 +606,9 @@
       code. In the code below, type in three made up int grades and then sum and
       average them. Use casting to report the result as a double. For example,
       if the grades are 90, 100, and 94, the sum of the three numbers is 90 +
-      100 + 94 = 284, and the average is the sum 284 divided by 3 which casted
-      to a double is 94.666667. You should use your variables instead of the
-      numbers in your formulas. Follow the pseudocode below.
+      100 + 94 = 284, and the average is the sum 284 divided by 3 which, when
+      cast to a double, is 94.666667. You should use your variables instead of
+      the numbers in your formulas. Follow the pseudocode below.
     </p>
 
     <project label="challenge1-5-average">
