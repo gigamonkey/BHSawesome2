@@ -378,7 +378,7 @@
 
     <p>
       The code below uses the <c>Scanner</c> class to read a name the user types
-      in and then says hello. It will have different results depending no what
+      in and then says hello. It will have different results depending on what
       the user types. Try it by typing in your name in the box below the code
       before you click “Run”. Try again with a friend’s name. The code works for
       any name.
