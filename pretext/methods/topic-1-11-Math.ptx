@@ -105,7 +105,7 @@
       square root of the argument. As with <c>Math.pow</c>, we can call it with
       an <c>int</c> argument but the argument will be converted to a
       <c>double</c> and the result will always be a <c>double</c> even if it
-      could have been reprenested with an <c>int</c>.
+      could have been represented with an <c>int</c>.
     </p>
 
     <program>

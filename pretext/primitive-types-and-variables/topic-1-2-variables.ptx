@@ -314,7 +314,7 @@
     <p>
       For example, in a computer game we might need to keep track of the
       player’s score, which will start at 0 and increase as the player earns
-      points. The score can be stored somewher in memory but in our program
+      points. The score can be stored somewhere in memory but in our program
       we’ll refer to it with the name <c>score</c> since that’s much more
       convenient than something like “address <c>66a3ffec</c>”.
     </p>

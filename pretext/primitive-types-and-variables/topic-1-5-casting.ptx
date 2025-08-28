@@ -608,7 +608,7 @@
       if the grades are 90, 100, and 94, the sum of the three numbers is 90 +
       100 + 94 = 284, and the average is the sum 284 divided by 3 which, when
       cast to a double, is 94.666667. You should use your variables instead of
-      the numbers in your formulas. Follow the pseudocode below.
+      the numbers in your formulas. Follow the pseudo code below.
     </p>
 
     <project label="challenge1-5-average">

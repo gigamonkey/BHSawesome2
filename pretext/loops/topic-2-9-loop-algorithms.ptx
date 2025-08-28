@@ -329,7 +329,7 @@
     <p>
       We can also use a while loop to calculate the average of an arbitrary
       number of numbers given to us as input from the user. Intead of a loop
-      that runs a specific number of times, the loop runs as long as teh number
+      that runs a specific number of times, the loop runs as long as the number
       provided by the user is not -1.
     </p>
 

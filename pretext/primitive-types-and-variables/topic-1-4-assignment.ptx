@@ -23,7 +23,7 @@
 
     <p>
       Relatedly, if we want to take input from the user, for instance using the
-      <c>Scanner</c> class we discussed in <xref ref="scanner" />, we'll often
+      <c>Scanner</c> class we discussed in <xref ref="scanner" />, we’ll often
       assign the values we get from the user to variables that we then use in
       our computations.
     </p>
@@ -158,7 +158,7 @@
       <c>int</c> and <c>double</c> values in an arithmetic expression and get a
       <c>double</c> result, we can also assign an <c>int</c> value to a
       <c>double</c> variable and it will be automatically converted to the
-      equivalent <c>double</c>. In the next lesson, we will see how to explictly
+      equivalent <c>double</c>. In the next lesson, we will see how to explicitly
       convert values to different types.
     </p>
 
@@ -309,7 +309,7 @@
 
           <feedback>
             <p>
-              x changes to y's initial value, y's value is doubled, and z is set
+              x changes to y’s initial value, y’s value is doubled, and z is set
               to 3
             </p>
           </feedback>
@@ -322,7 +322,7 @@
 
           <feedback>
             <p>
-              Remember that the equal sign doesn't mean that the two sides are
+              Remember that the equal sign doesn’t mean that the two sides are
               equal. It sets the value for the variable on the left to the value
               from evaluating the right side.
             </p>
@@ -336,7 +336,7 @@
 
           <feedback>
             <p>
-              Remember that the equal sign doesn't mean that the two sides are
+              Remember that the equal sign doesn’t mean that the two sides are
               equal. It sets the value for the variable on the left to the value
               from evaluating the right side.
             </p>
@@ -492,7 +492,7 @@
 
     <note>
       <p>
-        If you look at real-world Java code, you may occassionally see the
+        If you look at real-world Java code, you may occasionally see the
         <c>++</c> and <c>--</c> operators used before the name of the variable,
         like <c>++x</c> rather than <c>x++</c>. That is legal but not something
         that you will see on the AP exam.
@@ -506,7 +506,7 @@
         value of the variable in incremented <em>before</em> the variable is
         evaluated to get the value of the expression. For example, if <c>x</c>
         is 10 and we write, <c>System.out.println(x++)</c> it will print 10 but
-        aftewards <c>x</c> will be 11. On the other hand if we write,
+        afterwards <c>x</c> will be 11. On the other hand if we write,
         <c>System.out.println(++x)</c>, it will print 11 and afterwards the
         value will be 11.
       </p>
@@ -522,7 +522,7 @@
   <activity label="compound-ops">
     <statement>
       <p>
-        Run the code below to see what the <c>++</c> and shorcut operators do.
+        Run the code below to see what the <c>++</c> and shortcut operators do.
         Click on the Show Code Lens button to trace through the code and the
         variable values change in the visualizer. Create more compound
         assignment statements with shortcut operators as described below and
@@ -769,7 +769,7 @@
 
     <p>
       <term>Code Tracing</term> is a technique used to simulate a dry run
-      through the code or pseudocode line by line by hand as if you are the
+      through the code or pseudo code line by line by hand as if you are the
       computer executing the code. Tracing can be used for debugging or proving
       that your program runs correctly or for figuring out what the code
       actually does.
@@ -1084,7 +1084,7 @@
 
           <feedback>
             <p>
-              Don't forget that the result will be a <c>double</c> since at
+              Don’t forget that the result will be a <c>double</c> since at
               least one <c>double</c> value is involved.
             </p>
           </feedback>
@@ -1111,7 +1111,7 @@
 
           <feedback>
             <p>
-              Don't forget that division and multiplication will be done first
+              Don’t forget that division and multiplication will be done first
               due to operator precedence, and that an <c>int</c> divided by an
               <c>int</c> gives a truncated <c>int</c> result where everything to
               the right of the decimal point is dropped.
