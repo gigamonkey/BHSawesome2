@@ -99,7 +99,7 @@
       Here’s the code for a <c>Person</c> class that meets those requirements.
     </p>
 
-    <program interactive="activecode">
+    <program>
       <![CDATA[
       public class Person {
 

@@ -143,7 +143,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+      <program interactive="activecode">
 
         <preamble>
           <![CDATA[

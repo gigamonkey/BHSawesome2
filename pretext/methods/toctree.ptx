@@ -33,7 +33,7 @@
 
     <p>
       Writing methods lets us break a large program into problem down into
-      smaller more manageable chunks. Additionally, we can also use methods
+      smaller, more manageable chunks. Additionally, we can also use methods
       written by other programmers without having to worry about the details of
       exactly how they work. We just need to know the method’s name and what
       arguments it expects. Later in this unit we’ll look at several methods
