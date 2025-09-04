@@ -103,7 +103,7 @@
 
         <row>
           <cell bottom="minor" right="minor">Equals</cell>
-          <cell bottom="minor" right="minor"><c>a &gt;= b</c></cell>
+          <cell bottom="minor" right="minor"><c>a == b</c></cell>
           <cell bottom="minor">
             <c>true</c> if <c>a</c> is the same value as <c>b</c>, <c>false</c>
             otherwise
