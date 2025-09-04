@@ -36,7 +36,7 @@
       <c>&amp;&amp;</c> and <c>||</c> each apply to only two operands and
       <c>!</c> only applies to one. But we can build compound expressions where
       the operands are other expressions using either other logical operators or
-      comparison operators. We some some examples of this in the previous
+      comparison operators. We saw some examples of this in the previous
       section.
     </p>
 
