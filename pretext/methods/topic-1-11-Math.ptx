@@ -114,7 +114,7 @@
     </program>
 
     <p>
-      Since these methods all all non-void methods, calling them only makes
+      Since these methods are all non-void methods, calling them only makes
       sense in a context that will do something with the value they return, such
       as assigning the value to a variable or printing it out.
     </p>
@@ -1127,7 +1127,7 @@
                   Turtle yertle = new Turtle(world);
 
                   // This is a loop that runs 10 times (you will learn to write loops in
-                  // Unit 2)
+                  // Chapter 5)
                   for (int i = 1; i <= 10; i++) {
                       // Can you choose a randomX between 0-500?
                       // Can you adjust for the 20 pixel width of the turtle,
