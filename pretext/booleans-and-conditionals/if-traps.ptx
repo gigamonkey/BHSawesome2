@@ -291,9 +291,12 @@
 
     <p>
       By changing the <c>=</c> operators to <c>==</c>, the code calls
-      <c>eat()</c> and <c>study()</c> at the correct timess. However, there’s an
-      even better way to write these that is both simpler and avoids the
-      possibility of falling into the <c>= != ==</c> trap:
+      <c>eat()</c> and <c>study()</c> at the correct timess.
+    </p>
+
+    <p>
+      However, there’s an even better way to write these that is both simpler
+      and avoids the possibility of falling into the <c>= != ==</c> trap:
     </p>
 
     <program>

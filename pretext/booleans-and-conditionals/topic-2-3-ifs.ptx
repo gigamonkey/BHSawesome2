@@ -49,7 +49,7 @@
     <p>
       However there are a lot of ways we can produce <c>boolean</c> values.
       There are operators the operate <em>on</em> booleans to produce new
-      <c>boolean</c> values, which allow us to express complex conditions. There
+      <c>boolean</c> values which allow us to express complex conditions. There
       are operators that operate on other kinds of values to produce
       <c>boolean</c> values, like the <c>&gt;</c> operator that compares two
       numbers, producing <c>true</c> if the first number is greater than the
