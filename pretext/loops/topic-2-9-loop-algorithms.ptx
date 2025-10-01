@@ -22,8 +22,8 @@
       <c>while</c> loops under our belts, we’re ready to implement some actual
       algorithms. There are quite a few algorithms we can build out of a single
       loop with an occasional <c>if</c> inside the body of the loop. In later
-      units we will apply these ideas to to data types like <c>String</c>,
-      arrays, <c>ArrayList</c> which contain multiple elements and are naturally
+      units we will apply these ideas to data types like <c>String</c>, arrays,
+      <c>ArrayList</c> which contain multiple elements and are naturally
       processed with loops. But in this section we will stick with loops dealing
       with the data types we’ve already learned, mostly <c>int</c> and
       <c>double</c>.

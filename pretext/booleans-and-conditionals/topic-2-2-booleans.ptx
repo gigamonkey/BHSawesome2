@@ -15,7 +15,7 @@
   <introduction>
     <p>
       In the previous section we discussed the different ways we could combine
-      <c>if</c> statements to to make one-way, two-way, and multiway selection
+      <c>if</c> statements to make one-way, two-way, and multiway selection
       constructs. But in most of the examples we just assumed we had some
       <c>boolean</c> variable already set up to use in the conditions of our
       <c>if</c> statements.
