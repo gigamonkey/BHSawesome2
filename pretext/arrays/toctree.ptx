@@ -67,8 +67,7 @@
       except through the reference. But when we say the value of some variable
       is a particular object what we really mean is that the variable holds a
       reference to that object’s data. And when we say an object contains a
-      particular value, we means that that value is somewhere in the object
-      data.
+      particular value, we mean that that value is somewhere in the object data.
     </p>
 
     <p>

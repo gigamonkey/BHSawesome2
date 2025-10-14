@@ -57,11 +57,11 @@
       We can access the elements of an array using an <term>index</term>, a
       number that identifies a position in the array, similar to how the number
       on a locker identifies it out of all the lockers in a hallway. We can use
-      an index to both access and assign te value at that position in an array.
+      an index to both access and assign the value at that position in an array.
     </p>
 
     <p>
-      In Java, the object data of arrays is stored in the computer’s memory as
+      In Java, the object data of arrays is stored in the computer’s memory as a
       contiguous block and the index indicates how far each element is from the
       front of the block. So the first index is <c>0</c>, not <c>1</c>. Most
       programming languages these days use this kind of <term>zero-based
@@ -107,13 +107,14 @@
       pronounced “array of <c>int</c>” or “<c>int</c> array”.
     </p>
 
-    <p>So as we know, if we want to declare an <c>int</c> variable we write:</p>
+    <p>We already know that if we want to declare an <c>int</c> variable we
+    write:</p>
 
     <program>
       int score; // One int value
     </program>
 
-    <p>So if we want to declare an array of <c>int</c>, we write:</p>
+    <p>To declare an array of <c>int</c>, we just write:</p>
 
     <program>
       int[] scores; // A reference to an array of any number of int values
@@ -151,11 +152,10 @@
       To create an array of a specific size we use the keyword <c>new</c>
       followed by what looks like an array type but with an <c>int</c>
       expression (often a literal <c>int</c>) inside the square brackets that
-      says how big the array should be. The whole expression causes a new
-      array’s to be created and space allocated for it’s object data and then
-      evaluates to a reference to that new array. We then need to do something
-      with that reference like assign it to a variable or possibly pass it a
-      method.
+      says how big the array should be. The whole expression causes a new array
+      to be created and space allocated for it’s object data and then evaluates
+      to a reference to that new array. We then need to do something with that
+      reference like assign it to a variable or possibly pass it a method.
     </p>
 
     <p>
@@ -326,10 +326,10 @@
     <activity label="arrayex1">
       <statement>
         <p>
-          In the following code, add another two more array declarations, one
-          that creates an array of 5 doubles called prices and another of 5
-          Strings called names. Then add <c>System.out.println</c> calls to
-          print their lengths.
+          In the following code, add two more array declarations, one that
+          creates an array of five <c>double</c> values called <c>prices</c> and
+          another of five <c>String</c> values called <c>names</c>. Then add
+          <c>System.out.println</c> calls to print their lengths.
         </p>
       </statement>
 
@@ -496,8 +496,8 @@
 
     <p>
       An array access expression like <c>arrayname[index]</c> can be used
-      anywhere a regular variable can be used. That is, we can use it in an
-      expression to get the value of an element of the array. But we can also
+      anywhere a regular variable can be used. That is, not only can use it in
+      an expression to get the value of an element of the array, but we can also
       use it on the left side of an assignment operator to change the value
       stored at that position in the array.
     </p>
@@ -976,7 +976,7 @@
       <program>
         public void changeArrayElement(int[] ns) {
           // changes the referenced array
-          ns[0] += 10;
+          ns[0] = 20;
         }
 
         int[] nums = new int[] { 10 };
