@@ -100,8 +100,8 @@
       <c>null</c>. Every instance variable in an object has a value from the
       moment the object is created. To ensure that, if an instance variable
       declaration doesn’t assign a value, the variable will start out with the
-      approriate zero value for its type, <c>0</c>, <c>0.0</c>, <c>false</c>, or
-      <c>null</c>. But otherwise the variable is assigned the value specifed in
+      appropriate zero value for its type, <c>0</c>, <c>0.0</c>, <c>false</c>, or
+      <c>null</c>. But otherwise the variable is assigned the value specified in
       the declaration. These assignments happen even before the constructor runs
       so code in the constructor can rely on instance variables being
       initialized.
@@ -121,7 +121,7 @@
       <p>
         Technically someone could call our <c>Person</c> constructor like <c>new
         Person(null, 0)</c> but then they’d kind of get what they deserve. And
-        some Java programmers, especiallly when working in large systems, would
+        some Java programmers, especially when working in large systems, would
         write the constructor to check that the arguments themselves are valid
         and to fail immediately if they are not.
       </p>
@@ -226,7 +226,7 @@
       <p>
         Constructors can also be <c>private</c> and sometimes that’s useful to
         control how instances of a class are created. And there is a level of
-        accessibility inbetween <c>public</c> and <c>private</c> that requires a
+        accessibility in between <c>public</c> and <c>private</c> that requires a
         deeper understanding of Java packages than we want to get into. But both
         of those options are well outside the AP curriculum. For the purposes of
         the AP exam classes and their constructors are always <c>public</c>.
@@ -311,7 +311,7 @@
     <activity label="TurtleClass1">
       <statement>
         <p>
-          The following digram shows the signatures of two of the constructors
+          The following diagram shows the signatures of two of the constructors
           in the <c>Turtle</c> class.
         </p>
 
@@ -403,7 +403,7 @@
     <p>
       Another reason to overload constructors is to allow callers to construct
       objects with arguments of a type different than what the class really
-      needs. As a trivial example, consider class that stores an ammount in an
+      needs. As a trivial example, consider class that stores an amount in an
       <c>int</c> variable. The obvious constructor would look like:
     </p>
 
