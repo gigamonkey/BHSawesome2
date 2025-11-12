@@ -225,7 +225,7 @@
 
     <p>
       In this code we got the computer to figure out what indices we needed to
-      use by finding the start af the substring we want to snip out with
+      use by finding the start of the substring we want to snip out with
       <c>indexOf</c> and then adding the length of the substring to that to get
       the end.
     </p>
