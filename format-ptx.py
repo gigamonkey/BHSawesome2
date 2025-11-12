@@ -21,7 +21,6 @@ INLINE_TAGS = {
     "xref",
     "m",
     "pubtitle",
-    "booktitle",
 }
 PRESERVE_WHITESPACE = {"cline", "pre"}
 ONE_LINE = {"cline"}

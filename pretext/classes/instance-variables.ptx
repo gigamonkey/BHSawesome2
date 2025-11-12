@@ -231,7 +231,7 @@
         is sadly beyond the scope of the AP curriculum. If you want to know more
         you can read the lesson <url
         href="https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html">”Exceptions”</url>
-        from Oracle’s <booktitle>Java™ Tutorials</booktitle> series.
+        from Oracle’s <pubtitle>Java™ Tutorials</pubtitle> series.
       </p>
     </note>
 
