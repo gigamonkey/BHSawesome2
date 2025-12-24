@@ -1317,7 +1317,7 @@
     <p>
       For intance, clearly after we’ve reversed an array, the original first
       value will be in the last position and the originial last value will be in
-      the first. So we need to swap those two elements, using a a temporary
+      the first. So we need to swap those two elements, using a temporary
       variable.
     </p>
 
