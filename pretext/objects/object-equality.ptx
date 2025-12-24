@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="object-equality">
-  <title>Object equality and comparison</title>
+  <title>Object equality</title>
 
-  <introduction />
+  <introduction>
+    <p>
+      In <xref ref="topic-1-15-strings" /> we learned that we needed to use the
+      <c>equals</c> method to test whether two <c>String</c> values were the
+      same if what we cared about was whether they contained the same text. Now
+      that we understand object references we can dig a bit deeper into exactly
+      why that is.
+    </p>
+  </introduction>
 
   <subsection>
     <title>Reference equality</title>
@@ -11,24 +19,31 @@
     <p>
       Watch the following <url
       href="https://www.youtube.com/watch?v=bO9bejT0jwE&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
-      which shows what happens in memory as primitive types like <c>int</c> and
-      reference types like <c>Dog</c> are compared with <c>==</c> in a physical
-      model of Java memory.
+      which shows what happens in memory as both primitive types like <c>int</c>
+      and reference types like <c>Dog</c> are compared with <c>==</c> in a
+      physical model of Java memory.
     </p>
 
     <video youtube="bO9bejT0jwE" label="video-ref-model" />
     <p>
-      We can also use <c>==</c> or <c>!=</c> to test if two reference values,
-      like <c>Turtle</c> and <c>String</c> objects, refer to the same object. In
-      the figure below, we are creating two separate <c>Turtle</c> objects
-      called <c>juan</c> and <c>mia</c>. They do not refer to same object or
-      turtle. Then, we create a reference variable called <c>friend</c> that is
-      set to <c>mia</c>. The turtle <c>mia</c> will have two ways
-      (<term>references</term> or <term>aliases</term>) to name her – she’s both
-      <c>mia</c> and <c>friend</c>, and these variables refer to the same object
-      (same <c>Turtle</c>) in memory. If two reference variables refer to the
-      same object like the turtle on the right in the image below, the test with
-      <c>==</c> will return true which you can see in the code below.
+      As the video shows we can also use the <c>==</c> or <c>!=</c> to test if
+      two reference values, refer to the same object. In the video, she used
+      <c>Dog</c> objects. In the figure below, we use <c>Turtle</c> objects,
+      creating two <c>Turtle</c> objects assigned to variables <c>juan</c> and
+      <c>mia</c>. Because each variable is assigned to the result of calling the
+      <c>Turtle</c> constructor they do not refer to same object.
+    </p>
+
+    <p>
+      Then, we create a new variable called <c>friend</c>, assigning it the
+      value from <c>mia</c>. The turtle object <c>mia</c> referenced is now also
+      referenced by the variable <c>friend</c> because each variable holds a
+      copy of the same reference. This is sometimes called an
+      <term>aliases</term> because there are two names, <c>mia</c> and
+      <c>friend</c> that refer to the same object in memory. If two reference
+      variables refer to the same object like the turtle on the right in the
+      image below, the test with <c>==</c> will return true which you can see in
+      the code below.
     </p>
 
     <figure align="center">
@@ -93,47 +108,74 @@
     </activity>
   </subsection>
 
-  <subsection xml:id="comparing-objects">
-    <title>Comparing Objects</title>
-
-    <p>
-      Comparing objects is a little different than comparing primitive typed
-      values like numbers. Objects can be very complex and have many attribute
-      values or instance variables inside them. For example, the <c>Turtle</c>
-      objects have many instance variables like <c>name</c>, <c>width</c>,
-      <c>height</c>, <c>xPos</c>, <c>yPos</c>, etc. When comparing two
-      <c>Turtle</c> objects, we need a specially written <term>equals</term>
-      method to compare all of these values. In the next sections, we will take
-      a look at <c>String</c> objects and the difference between comparing them
-      with <c>==</c> vs. the <c>equals</c> method.
-    </p>
-  </subsection>
-
   <subsection xml:id="string-equality">
-    <title>String Equality</title>
+    <title>String equality</title>
 
     <idx><h>String</h><h>equality</h></idx>
     <idx><h>String</h><h>equals</h></idx>
+
     <p>
-      The <term>equals</term> method for Strings compares two strings letter by
-      letter. <c>s1.equals(s2)</c> is true if <c>s1</c> and <c>s2</c> have all
-      the same characters in the same order. With <c>Strings</c> and other
-      objects, you almost always use <c>equals</c> instead of <c>==</c> to check
-      their equality.
+      While <c>==</c> and <c>!=</c> have a clear meaning when comparing
+      references, often with object types we often care about a different notion
+      of equality that looks at the values stored an objects’ instance variables
+      to decide if they are the same. This is particularly true of classes like
+      <c>String</c> that represent immutable values that just happen to be
+      stored in a more complex way than primitive types like <c>int</c>and
+      <c>double</c>.
     </p>
 
     <p>
-      When the operator <c>==</c> or <c>!=</c> is used to compare object
-      variables, it returns true when the two variables <em>refer to the same
-      object</em>. These variables are called <term>object references</term> and
-      <term>aliases</term> for the same object. With strings this happens when
-      one string variable is set to another.
+      The <term>equals</term> method for Strings compares two strings letter by
+      letter. <c>s1.equals(s2)</c> is true if <c>s1</c> and <c>s2</c> have all
+      the same characters in the same order. It is beyond the scope of the AP
+      curriculum but any class can define its own <c>equals</c> method to
+      compare instances of the class in some meaningful way. By default all
+      classes have an <c>equals</c> method that just uses <c>==</c> but many
+      classes will provide a more meaningful <c>equals</c> so in general
+      whenever you are testing whether two non-primitive values are the same you
+      should use <c>equals</c> unless you specifically care about whether they
+      are literally the same (or different) objects in memory.
+    </p>
+
+    <p>
+      The figure below shows how a set of variables can include <c>String</c>
+      values that are both <c>==</c> and <c>equals</c> and not. The value of
+      <c>a</c> is neither <c>==</c> nor <c>equals</c> to any of the other
+      variables’ values since it is the only <c>String</c> with the contents
+      <c>"hi"</c>. The other three variables’ values are all <c>equals</c> to
+      each other since they all contain the text <c>"bye"</c> but only <c>c</c>
+      and <c>d</c> are <c>==</c> since they reference the same actual object.
+      The values of <c>b</c> and <c>c</c> are not <c>==</c> because whenever a
+      <c>String</c> (or any other object) is created with <c>new</c>, it is
+      always a new object that is not <c>==</c> to any other.
     </p>
 
     <figure align="center">
       <caption>String aliases</caption>
 
-      <image source="Unit2-Selection-and-Iteration/Figures/stringEquality.png" width="54%" />
+      <image source="Unit2-Selection-and-Iteration/Figures/stringEquality.svg" width="54%" />
+    </figure>
+
+
+    <p>
+      The following <url
+      href="https://www.youtube.com/watch?v=hhYBVgmC-vw">video</url> traces
+      through the code above and shows how <c>==</c> and <c>equals</c> work with
+      String objects in memory.
+    </p>
+
+    <video youtube="hhYBVgmC-vw" label="video-strings" />
+    <p>
+      Here’s the representation of memory where s2 and s3 refer to the same
+      String object.
+    </p>
+
+    <figure align="center">
+      <caption>
+        s2 and s3 are aliases referring to the same String object
+      </caption>
+
+      <image source="Unit2-Selection-and-Iteration/Figures/s2ands3.jpg" width="63%" />
     </figure>
 
     <activity label="lcse1">
@@ -176,38 +218,6 @@
 
       </program>
     </activity>
-
-    <p>
-      The following <url
-      href="https://www.youtube.com/watch?v=hhYBVgmC-vw">video</url> traces
-      through the code above and shows how <c>==</c> and <c>equals</c> work with
-      String objects in memory.
-    </p>
-
-    <video youtube="hhYBVgmC-vw" label="video-strings" />
-    <p>
-      Here’s the representation of memory where s2 and s3 refer to the same
-      String object.
-    </p>
-
-    <figure align="center">
-      <caption>
-        s2 and s3 are aliases referring to the same String object
-      </caption>
-
-      <image source="Unit2-Selection-and-Iteration/Figures/s2ands3.jpg" width="63%" />
-    </figure>
-  </subsection>
-
-  <subsection xml:id="equality-with-new-strings">
-    <title>Equality with New Strings</title>
-
-    <p>
-      If you use the <c>new</c> keyword to create a string, it will always
-      create a new string object. So, even if we create two string objects with
-      new that contain all the same characters in the same order, they will not
-      refer to the same object.
-    </p>
 
     <activity label="strEquals">
       <statement>
@@ -304,21 +314,15 @@
       <image source="Unit2-Selection-and-Iteration/Figures/s1ands2.jpg" width="63%" />
     </figure>
 
-    <p>
-      Note that you can also create <c>Strings</c> using string literals instead
-      of new, like <c>String s = "Hello"</c>. <c>String</c> literals behave a
-      little differently because they are re-used if they already exist instead
-      of creating a new object. But you should not see questions with string
-      literals and <c>==</c> on the AP exam.
-    </p>
-
     <note>
       <p>
-        Only use <c>==</c> and <c>!=</c> with primitive types like <c>int</c> or
-        to test if two strings (or objects) refer to the same object. Use
-        <c>equals</c>, not <c>==</c> or <c>!=</c>, with strings to test if they
-        are equal letter by letter, and with other objects to see if all of
-        their relevant attributes are equal.
+        <c>Strings</c> values that come from string literals like <c>String s =
+        "Hello"</c> behave a little differently because Java makes sure, as a
+        way of saving memory, that each unique string literal is represented by
+        the same object in memory. Thus two string literals with the same
+        content would in fact be <c>==</c>. But that is pretty esoteric Java
+        knowledge and nothing on the AP exam would expect you to know that and
+        almost no Java code is written to take advantage of that fact.
       </p>
     </note>
 
@@ -475,13 +479,24 @@
     <title>Comparing with null</title>
 
     <p>
-      One common place to use <c>==</c> or <c>!=</c> with objects is to compare
-      them to <term>null</term> to see if they really exist. Sometimes
-      short-circuit evaluation is used to avoid an error if the object doesn’t
-      exist. Remember that <term>short-circuit evaluation</term> is used with
-      <c>&amp;&amp;</c> in Java meaning that if the first part of the if
-      condition is false, it doesn’t even have to check the second condition and
-      it knows the whole <c>&amp;&amp;</c> test is false.
+      The one time we do use <c>==</c> or <c>!=</c> with reference values is to
+      compare a reference value to <term>null</term> to see if it safe to use
+      since accessing an instance variable or invoking a method on <c>null</c>
+      produces a <c>NullPointerException</c>. Often <term>short-circuit
+      evaluation</term> is used to avoid an error if the object doesn’t exist.
+      Remember that short-circuit evaluation is a feature of <c>&amp;&amp;</c>
+      that means that if the first part of the if condition is <c>false</c>, it
+      doesn’t even have to check the second condition and it knows the whole
+      <c>&amp;&amp;</c> test is false. So we can write something like:
+    </p>
+
+    <program>
+      if (s != null &amp;&amp; s.indexOf("x") != -1) { ...
+    </program>
+
+    <p>
+      to safely test whether <c>s</c> contains the substring <c>"x"</c> even if
+      <c>s</c> may be <c>null</c>.
     </p>
 
     <activity label="nullTest">
