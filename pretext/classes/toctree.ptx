@@ -17,15 +17,15 @@
       in terms of <term>objects</term>. All values in Java that are not
       primitive are objects. Arrays are not primitive, so they are one kind of
       object. But usually when we talk about objects we are talking about values
-      defined by <term>classes</term>, the topic of this unit.
+      defined by <term>classes</term>, the topic of this chapter.
     </p>
 
     <p>
-      Classes let us define new data types way that combines the definition of
-      the data that makes up the values and the code that operates on that data
-      into a single unit. One consequence of this organization is it lets us
-      treat objects as somewhat of a <term>black box</term>, a thing we can use
-      without having to know all the details of how it works on the inside.
+      Classes let us define new data types in a way that combines the definition
+      of the data that makes up the values and the code that operates on that
+      data into a single unit. One consequence of this organization is it lets
+      us treat objects as somewhat of a <term>black box</term>, a thing we can
+      use without having to know all the details of how it works on the inside.
       We’ve already seen how that can work when we’ve used <c>String</c> and
       <c>Turtle</c> objects. We don’t know exactly how, say, <c>indexOf</c>
       works or what exactly happens when we tell a <c>Turtle</c> to got

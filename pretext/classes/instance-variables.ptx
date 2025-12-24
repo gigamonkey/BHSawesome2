@@ -197,30 +197,57 @@
     </activity>
   </subsection>
 
+  <subsection xml:id="object-variables-and-references">
+    <title>Instance variables always have a value</title>
+
+    <idx>reference</idx>
+    <idx>null</idx>
+
+    <p>
+      When an object is created, the memory to hold its instance variables is
+      allocated and initialized. We’ll see in the next section how we can write
+      constructors to initialize instance variables to specific values but if we
+      don’t instance variables have to have some value so ar initialized to the
+      zero value for their type. For <c>int</c> and <c>double</c> variables that
+      is <c>0</c> and <c>0.0</c>. For <c>boolean</c> variables it’s
+      <c>false</c>. And for all reference types it’s the special value
+      <c>null</c> which is a special reference value that doesn’t refer to any
+      actual object.
+    </p>
+
+    <p>
+      Local variables can also be assigned the value <c>null</c> as shown in the
+      following <url
+      href="https://www.youtube.com/watch?v=5fpjgXAV2BU&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
+      but usually we try to initialize local variables right away so <c>null</c>
+      values are most likely to arise as the value of instance variables in an
+      object.
+    </p>
+
+    <video youtube="5fpjgXAV2BU" label="video-null" />
+
+  </subsection>
+
   <subsection>
     <title>The dreaded <c>NullPointerException</c></title>
 
     <p>
-      There is, however, one other requirement for accessing an instance
-      variable: we actually have to have an object. You may recall from <xref
-      ref="topic-4-3-array-basics" /> where we met our first reference type,
-      that Java has a special reference value, <c>null</c>, which represents the
-      absence of an object. That is, if a normal reference points to some
-      object’s data somewhere in memory, the <c>null</c> reference is a special
-      value that doesn’t point to anywhere in memory. So anywhere we have a
-      value of a reference type— in a variable, as the value returned by a
-      method, or the result of evaluating an expression—it’s possible for that
-      value to be <c>null</c>.
+      The existance of <c>null</c> means that there is another thing we need to
+      watch out for when accessing instance variables: we actually have to have
+      an object. Since anywhere we can store a value of a reference type—in a
+      variable, as the value returned by a method, or the result of evaluating
+      an expression—it’s possible for that value to be the special value
+      <c>null</c>.
     </p>
 
     <p>
-      However we get it, since the <c>null</c> reference doesn’t point to any
-      actual object data we can’t use it to get at instance variable because
-      there’s nothing to get. If we try to use the dot operator on an expression
-      whose value is <c>null</c>, then we get a
-      <term>NullPointerException</term>, which will crash our program. (It
-      should really be called a <c>NullReferenceException</c>; “pointer” is old
-      fashioned name for what Java calls a reference.)
+      Since the <c>null</c> reference doesn’t point to any actual object data we
+      can’t use it to get at an instance variable because there’s nothing to
+      get. If we try to use the dot operator on an expression whose value is
+      <c>null</c>, then we get a <term>NullPointerException</term>, which will
+      crash our program. (It should really be called a
+      <c>NullReferenceException</c>; “pointer” is old fashioned name for what
+      Java calls a reference.)
     </p>
 
     <note>
@@ -248,16 +275,21 @@
     </p>
 
     <p>
-      As we’ll see in more detail in <xref ref="topic-3-4-constructors" />,
-      instance variables that are declared without an initial value are
-      themselves initialized to <c>null</c> so one common source of <c>null</c>
-      references is forgetting to initialize an instance variable which can lead
-      to a <c>NullPointerException</c> if we try to access an instance variable
-      from (or invoke an instance method on) that variable. And as we saw in
-      <xref ref="topic-4-3-array-basics" /> if we make an array with an array
-      creation expression like <c>new String[10]</c> while the resulting array
-      has places to store ten <c>String</c> references, they all start out
-      <c>null</c> so when we make arrays with elements of a reference type we
+      Since instance variables that are declared without an initial value are
+      initialized to <c>null</c> one common source of <c>null</c> references is
+      forgetting to initialize an instance variable which can later lead to a
+      <c>NullPointerException</c> if we try to access an instance variable from
+      (or invoke an instance method on) that variable. We’ll see in more detail
+      in <xref ref="topic-3-4-constructors" /> how to make sure all our instance
+      variables are properly initialized.
+    </p>
+
+    <p>
+      Another common source of null references is arrays. And as we saw in <xref
+      ref="topic-4-3-array-basics" /> if we make an array with an array creation
+      expression like <c>new String[10]</c> it makes an array with places to
+      store ten <c>String</c> references but all those references start out
+      <c>null</c>. So when we make arrays with elements of a reference type we
       need to be sure to initialize the elements before we try to use them.
     </p>
   </subsection>
@@ -268,7 +300,7 @@
     <p>
       Unlike method parameters and local variables declared inside the body of a
       method, which disappear as soon as the method returns, instance variables
-      last as long as the object that contains them. And since we can pass
+      last as long as the object that contains them does. And since we can pass
       object references as arguments to methods, including methods in other
       classes, that raises the question of what code is allowed to access these
       instance variables. Should any code that gets a reference to an object be

@@ -54,6 +54,221 @@
     </p>
   </introduction>
 
+  <subsection xml:id="arguments-parameters-and-call-by-value">
+    <title>Parameters, arguments, and call by value</title>
+
+    <p>
+      Just like with method calls, when a constructor is called, such as <c>new
+      Date(2005,9,1)</c>, the <term>parameters</term>, (<c>year</c>,
+      <c>month</c>, and <c>day</c>), are set to copies of the
+      <term>arguments</term>, (<c>2005</c>, <c>9</c>, and <c>1</c>). This is
+      <term>call by value</term> which means that copies of the argument values
+      are passed to the constructor. These values can then be used to initialize
+      the object’s instance variables.
+    </p>
+
+    <figure align="center">
+      <caption>Parameter Mapping</caption>
+
+      <image source="Unit1-Using-Objects-and-Methods/Figures/parameterMappingDate.png" width="80%">
+        <shortdescription>Parameter Mapping</shortdescription>
+      </image>
+    </figure>
+
+    <p>
+      Also like when we call a method, when we call a constructor the types of
+      the values passed as arguments have to match the types of the parameter
+      variables. We cannot give a constructor a <c>String</c> object when it is
+      expecting an <c>int</c>. And the order of the arguments also matters. If
+      you mix up the month and the day in the <c>Date</c> constructor, you will
+      get a completely different date, for example January ninth (1/9/2025)
+      instead of September first (9/1/2025).
+    </p>
+
+    <p>
+      Finally, as with a method call, a constructor call interrupts the
+      sequential execution of statements in that the program executes the
+      statements in the constructor before continuing. Once the last statement
+      in the constructor has been executed, the flow of control is returned to
+      the point immediately following where the constructor was called. The
+      result of calling a constructor is a reference to the object just created
+      and initialized by the constructor.
+    </p>
+
+    <activity label="mcq_params">
+      <statement>
+        <p>
+          In <c>public World(int width, int height)</c> what are <c>width</c>
+          and <c>height</c>?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>objects</p>
+          </statement>
+
+          <feedback>
+            <p>Objects have attributes and behavior.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>classes</p>
+          </statement>
+
+          <feedback>
+            <p>
+              A class defines the data and behavior for all objects of that
+              type.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>parameters</p>
+          </statement>
+
+          <feedback>
+            <p>The parameters are in the constructor's signature.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>arguments</p>
+          </statement>
+
+          <feedback>
+            <p>An argument is the value that is passed into the constructor.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="mcq_arguments">
+      <statement>
+        <p>In <c>new World(150, 200)</c> what are <c>150</c> and <c>200</c>?</p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>objects</p>
+          </statement>
+
+          <feedback>
+            <p>Objects have attributes and behavior.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>classes</p>
+          </statement>
+
+          <feedback>
+            <p>
+              A class defines the data and behavior for all objects of that
+              type.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>parameters</p>
+          </statement>
+
+          <feedback>
+            <p>A parameter is in the constructor's signature.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>arguments</p>
+          </statement>
+
+          <feedback>
+            <p>An argument is the value that is passed into the constructor.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="TurtleConstructorDebug">
+      <statement>
+        <p>Debug the following code.</p>
+      </statement>
+
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
+        <code>
+          import java.awt.*;
+          import java.util.*;
+
+          public class TurtleConstructorDebug
+          {
+              public static void main(String[] args)
+              {
+                  World w = new World(300,0);
+                  turtle t0;
+                  Turtle t1 = new Turtle();
+                  Turtle t2 = new Turtle(world, 100, 50)
+                  t0.forward();
+                  t1.turnRight();
+                  t2.turnLeft();
+                  world.show(true);
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("TurtleConstructorDebug");
+              }
+
+              @Test
+              public void test1() {
+                  String orig =
+                          "import java.awt.*;\n"
+                                  + "import java.util.*;\n\n"
+                                  + "public class TurtleConstructorDebug\n"
+                                  + "{\n"
+                                  + "  public static void main(String[] args)\n"
+                                  + "  {\n"
+                                  + "      World w = new World(300,0);\n"
+                                  + "      turtle t0;\n"
+                                  + "      Turtle t1 = new Turtle();\n"
+                                  + "      Turtle t2 = new Turtle(world, 100, 50)\n"
+                                  + "      t0.forward();\n"
+                                  + "      t1.turnRight();\n"
+                                  + "      t2.turnLeft();\n"
+                                  + "      world.show(true);\n"
+                                  + "  }\n"
+                                  + "}\n";
+                  boolean passed = codeChanged(orig);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+
+  </subsection>
+
   <subsection>
     <title>Not writing a constructor</title>
 
@@ -66,9 +281,17 @@
     </p>
 
     <p>
-      Instance variables can be declared with and without initializers. Here’s a
-      class that has one of each as well as an instance method to show their
-      values and a <c>main</c> to instantiate an object and call the method.
+      Instance variables can be declared with and without initializers. As we
+      saw in the previous section, instance varliables that are not explicitly
+      initialized are automatically initialized to <c>0</c>, <c>0.0</c>,
+      <c>false</c>, or <c>null</c>. Or we can provide an initializer as part of
+      the instance variable declaration to specify another value.
+    </p>
+
+    <p>
+      Here’s a class that has one instance variable with no explicit initial
+      value and one with as well as an instance method to show their values and
+      a <c>main</c> to instantiate an object and call the method.
     </p>
 
     <program>
@@ -77,8 +300,8 @@
           private String b = "I have a value";
 
           public void showValues() {
-              System.out.println("a: " + uninitialized);
-              System.out.println("b: " + initialized);
+              System.out.println("a: " + a);
+              System.out.println("b: " + b);
           }
 
           public static void main(String[] args) {

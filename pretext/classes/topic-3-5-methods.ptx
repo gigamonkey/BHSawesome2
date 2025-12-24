@@ -43,10 +43,10 @@
 
     <p>
       In this case it’s pretty simple since it only uses one variable. But
-      imagine a more complex <c>Person</c> class that kept track of whether the
-      <c>Person</c> was registered to vote or not? The <c>canVote</c> method
-      might change on the inside but from the outside we would still call it
-      like <c>p.canVote()</c>.
+      imagine a more complex <c>Person</c> class that kept track not only of a
+      person’s age but also whether they are actually registered to vote. The
+      <c>canVote</c> method might change on the inside but from the outside we
+      would still call it like <c>p.canVote()</c>.
     </p>
 
     <p>
@@ -127,11 +127,11 @@
     </p>
 
     <p>
-      Finally, there’s one last way we can fail to have an object to call an
-      instance method on. Remember from <xref ref="instance-variables" /> that
-      trying to access an instance variable with the dot operator on a
-      <c>null</c> reference results in a <c>NullPointerException</c>? The same
-      thing happens if we try to invoke a method on a <c>null</c> reference.
+      Finally, when we call a method on a specific object reference, that object
+      reference can’t be <c>null</c>. Just like trying to access an instance
+      variable with the dot operator on a <c>null</c> reference results in a
+      <c>NullPointerException</c>, trying to invoke a method on a <c>null</c>
+      reference also produces a <c>NullPointerException</c>.
     </p>
 
     <activity label="nullPointerTest">
@@ -208,11 +208,12 @@
 
     <p>
       One simple but common kind of instance methods are <term>getters</term>
-      and <term>setters</term> or—if you’re fancy— <term>accessors</term> and
-      <term>mutators</term>. These are methods that exist in order to let code
-      outside the class have at least some access to the data stored in the
-      class’s private instance variables. Here’s an example of both a getter and
-      a setter for the variable age from our <c>Person</c> class.
+      and <term>setters</term> or—if you want to be fancy—
+      <term>accessors</term> and <term>mutators</term>. These are methods that
+      exist in order to let code outside the class have at least some access to
+      the data stored in the class’s private instance variables. Here’s an
+      example of both a getter and a setter for the variable age from our
+      <c>Person</c> class.
     </p>
 
     <program>
@@ -296,7 +297,7 @@
 
     <p>
       It is quite common to write getters and setters and we should definitely
-      write than rather than making instance variables <c>public</c>. But we
+      write them rather than making instance variables <c>public</c>. But we
       shouldn’t write them reflexively. We should think about whether code
       outside our class really needs to directly access the values of our
       variables. And we should think even harder about whether want to let
@@ -773,7 +774,7 @@
   </subsection>
 
   <subsection>
-    <title>Methods with and without side effects</title>
+    <title>A new kind of side effect</title>
 
     <p>
       In our earlier discussions of methods, we drew a distinction between
@@ -811,7 +812,7 @@
 
     <p>
       Which is not to say we should never write methods with side effects.
-      Ultimately our programs have to have some effect or what’s the point of
+      Ultimately our programs have to have some effect or there’d by no point to
       running them. But it is a good idea to be clear about whether the point of
       a method is to compute a value, based on some combination of its arguments
       and the current values of the object’s instance variables, or to have a
