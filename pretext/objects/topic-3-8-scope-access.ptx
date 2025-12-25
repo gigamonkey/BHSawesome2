@@ -1,39 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-3-8-scope-access">
-  <title>Scope and Access</title>
+  <title>Some odds and ends</title>
 
   <introduction>
     <idx>scope</idx>
     <idx>access</idx>
     <idx>local variable</idx>
     <p>
-      The <term>scope</term> of a variable is defined as where a variable is
-      accessible or can be used. The scope is determined by where you declare
-      the variable when you write your programs. When you declare a variable,
-      look for the closest enclosing curly braces (<c>{}</c>) – this is its
-      scope.
+      Now that we know about classes and objects we know enough to talk about a
+      few odds and ends that are important but don’t really fit in anywhere
+      else.
     </p>
+
+    <p>
+      To start with, we’ll finally get to understand what the <c>static</c>
+      keyword, which we’ve been using without a lot of explanation, is actually
+      for. We’ll learn about how the <term>scope</term> of variables controls
+      where we can refer to what variables, about how to use the <c>final</c>
+      modifier to make some variables immutable, and how to use the <term>access
+      modifiers</term> <c>public</c> and <c>private</c> to control what code can
+      access the variables and methods in our classes,
+    </p>
+
   </introduction>
+
   <subsection xml:id="class-methods-vs-instance-methods">
-    <title>Class Methods vs. Instance Methods</title>
+    <title>Class methods vs. instance methods</title>
 
     <p>
-      In lessons 1.9 and 1.10, we learned how to call <term>class methods</term>
-      (also called <term>static methods</term>). Class methods are called using
-      the class name followed by the dot (.) operator and the method name,
-      example, <c>Math.sqrt(25);</c> calls the <c>sqrt</c> method in the
-      <c>Math</c> class to find the square root of 25. Class methods use the
-      keyword <c>static</c> in their method signature. They do not access or
-      change the attributes of an object.
+      In <xref ref="topic-1-9-method-signatures" /> when we first learned to
+      write methods we made all our methods <c>static</c>. Then in <xref
+      ref="topic-3-5-methods" /> we learned about instance methods. As you may
+      have already figured out the important difference between <c>static</c>
+      and instance methods is that instance methods must be invoked on a
+      specific object—an instance of the class—in order to be able to access the
+      instance variables stored in that object.
     </p>
 
     <p>
-      In this lesson, we will learn more about <term>instance methods</term>
-      which are always called using an object of the class. They are not static
-      methods. They access and change the attributes of the object they are
-      called on, for example <c>yertle.forward()</c> changes the <c>Turtle</c>
-      object yertle’s position.
+      Methods declared with the <c>static</c> modifier, on the other hand don’t
+      have access to instance variables because they are not invoked on any
+      particular object. They are also called <term>class methods</term> because
+      we can think of them as belonging to the class as a whole, rather than to
+      any specific instance of the class.
+    </p>
+
+    <p>
+      Within a class we can call <c>static</c> methods defined in that class by
+      their simple name, even from instance methods. But code in <c>static</c>
+      methods will not have access to <c>this</c> so won’t be able to reference
+      instance variables or call non-<c>static</c> methods without being given
+      an instance to call them on.
+    </p>
+
+    <p>
+      To call static methods from a different class, we call them on the class
+      itself, as we first saw in <xref ref="topic-1-11-Math" /> when we learned
+      how to call the <c>static</c>methods in the <c>Math</c> class. Class
+      methods are called using the class name followed by the dot (.) operator
+      and the method name, example, <c>Math.sqrt(25);</c> calls the <c>sqrt</c>
+      method in the <c>Math</c> class.
     </p>
 
     <p>
@@ -52,97 +79,16 @@
         <shortdescription>Calling static vs. instance methods</shortdescription>
       </image>
     </figure>
-  </subsection>
-
-  <subsection xml:id="class-methods">
-    <title>Class Methods</title>
-
-    <p>
-      Class methods belong to the class and not to any object of the class. They
-      are called with the class name and the dot operator, like
-      <c>ClassName.methodName();</c>, for example the Math methods like
-      <c>Math.random();</c>. There is only one copy of a class variable or
-      method for the whole class. For example, the main method is a class
-      (static) method because there should only be 1 main method. If the method
-      is in the same class, you can call it with or without the class name from
-      other static methods in the class: <c>Classname.methodName();</c> or
-      <c>staticMethodName();</c> or even with an object of the class:
-      <c>objectName.methodName();</c>.
-    </p>
-
-    <program>
-      // Calling class methods
-      // ClassName.methodName();
-      int x = Math.sqrt(9);
-
-       // If the method is in the same class,
-       // you can call it with or without the class name
-       // from other static methods in the class
-       ClassName.methodName();
-       methodName();
-    </program>
-
-    <p>
-      Let’s revisit the following flowchart to compare three different ways of
-      calling methods. Class (static) methods are called using the class name.
-      Instance methods can only be called using an object of the class. If you
-      are calling the instance method from the main method or from another
-      class, you must first create an object of that class and then call its
-      methods using <c>object.methodName()</c>. If you are calling the method
-      from within the same class, you can just call the method using
-      <c>methodName()</c> which will refer to the current object.
-    </p>
-
-    <figure align="center">
-      <caption>Comparing Method Calls to Static and Instance Methods</caption>
-
-      <image source="Unit3-Class-Creation/Figures/FlowChartCallingMethods.png" width="98%">
-        <shortdescription>
-          Comparing method calls to static and instance methods
-        </shortdescription>
-      </image>
-    </figure>
-
-    <p>
-      When writing class methods, they can be public or private. The static
-      keyword is placed right after the public/private modifier and right before
-      the type of variables and methods in their declarations.
-    </p>
-
-    <program>
-      public class ClassName
-      {
-        // static class variable
-        public static type variableName;
-
-        // static class method
-        public static returnType methodName(parameters)
-        {
-              // implementation not shown
-        }
-      }
-    </program>
-
-    <p>
-      Class (static) methods can access or change the values of class (static)
-      variables and can call other class (static) methods. However, they cannot
-      access or change the values of (non-static) instance variables or call
-      (nont-static) instance methods without being passed an instance of the
-      class via a parameter. For example, the main method which is static can
-      call other static methods directly with or without the classname, but it
-      cannot call instance methods without first creating an object. Try this
-      below to see “non-static variable or method cannot be referenced from a
-      static context” errors.
-    </p>
 
     <activity label="staticmethods">
       <statement>
         <p>
-          Note that the static method printStatic has errors in it because it
-          cannot access the instance variables and methods. Fix the printStatic
-          method by giving it the Person object as a parameter and using this
-          object to call its instance variables and methods. Also fix the method
-          call to printStatic in main to pass in the object as an argument.
+          Note that the static method <c>printStatic</c> has errors in it
+          because it cannot access the instance variables and methods. Fix
+          <c>printStatic</c> by giving it a <c>Person</c> parameter and then
+          accessing the instance variables and methods of that object. Then fix
+          the method call to <c>printStatic</c> in <c>main</c> to pass in an
+          object as an argument.
         </p>
       </statement>
 
@@ -167,11 +113,11 @@
 
               // static method
               public static void printStatic() {
-                  System.out.println("Static methods cannot print out non-static variables.");
+                  System.out.println("Static methods cannot access instance variables.");
                   // The following lines will cause errors
 
-                  // TODO: Fix this by giving it the Person object as a parameter
-                  // Use the object to print out the name and call its instance methods.
+                  // TODO: Fix this by giving this method a Person parameter
+                  // and acces the name of that Person and call print on that object.
                   System.out.println(name);
                   print();
               }
@@ -184,7 +130,7 @@
 
                   // Call printStatic with the class name
                   // Note this has errors.
-                  // TODO: Fix the errors by giving it the object p as an arguments
+                  // TODO: Fix the errors by passing the object p as an argument
                   Person.printStatic();
               }
           }
@@ -227,15 +173,17 @@
   </subsection>
 
   <subsection xml:id="class-variables">
-    <title>Class Variables</title>
+    <title>Class variables</title>
 
     <p>
-      <term>Class variables</term> belong to the class, with all objects of a
-      class sharing a single copy of the class variable. Class variables are
-      designated with the <c>static</c> keyword before the variable type. Class
-      variables that are designated <c>public</c> are accessed outside of the
-      class by using the class name and the dot operator, since they are
-      associated with a class, not objects of a class.
+      Like class methods, <term>class variables</term> are declared with the
+      <c>static</c> modifier before the variable type. Class variables belong to
+      the class as a whole rather than to a specific object so each
+      <c>static</c> variable is shared by all instances of the class. Class
+      variables that are declared <c>public</c> can be accessed by code outside
+      of the class by using the class name and the dot operator. <c>Math.PI</c>
+      is an example of such a variable. Within a class all code can access
+      <c>static</c> variables by their simple name.
     </p>
 
     <p>
@@ -509,119 +457,127 @@
     </activity>
   </subsection>
 
-  <subsection xml:id="final-keyword">
-    <title>final keyword</title>
+  <subsection xml:id="class-method-and-block-level-scope">
+    <title>Scope: class, method, and block level</title>
 
     <p>
-      The keyword <term>final</term> can be used in front of a variable
-      declaration to make it a constant value that cannot be modified. Constants
-      are traditionally capitalized.
+      The <term>scope</term> of a variable is defined the textual part of a
+      program where a variable can be referred to. The scope of a variable is
+      determined by where you declare the variable when you write your programs.
+      Roughly speaking each set of curly braces (<c>{}</c>) encloses a scope.
+      Thus scopes can be nested within each other.
+    </p>
+
+    <p>
+      The largest scope is called <term>class scope</term> and consists of the
+      whole body of a class between the opening and closing <c>{}</c>’s of the
+      class. So all static and non-static variables declared at the top-level of
+      a class are in class scope and can be referred to any code anywhere else
+      in the same class. (Note, however, that being in scope is not the only
+      requirement; code in a static method can’t access an instance variable in
+      the same class not because it’s not in scope but because instance
+      variables can’t be accessed by static code.)
+    </p>
+
+    <p>
+      The next smaller scope, <term>method scope</term>, is defined by the body
+      of a method or constructor. It includes the parameter declarations even
+      though they are outside the curly braces the define the body of a method
+      or constructor. This is why variables defined as method parameters or
+      declared within the body of a method can only be referred to by code
+      within that same method. It’s also why two different methods can have
+      parameters with the same name without conflict because each method defines
+      its own scope.
+    </p>
+
+    <p>
+      Finally we have <term>block scope</term> which is defined by control
+      constructs within methods and constructors that have their own bodies such
+      as <c>for</c> and <c>while</c> loop and <c>if</c> statements. The curly
+      braces that mark the bodies of <c>while</c> loops and <c>if</c> statements
+      create a block scope in which new variables can be declared that can only
+      be referred to within those curly braces. And <c>for</c> loops define a
+      scope that includes both the body within the curly braces but also the
+      initializer, condition, and updater in the loop header. This is why when
+      we write a loop like this we can only refer to <c>i</c> within the loop:
     </p>
 
     <program>
-      final double PI = 3.14
+      <![CDATA[
+      for (int i = 0; i < 10; i++) {
+        System.out.println(i);
+      }
+      // can't access i here, out of scope
+      ]]>
     </program>
 
-    <activity label="finalPi">
-      <statement>
-        <p>
-          Try the following code and notice the syntax error when we try to
-          change the constant PI. Put the comment symbols // in front of that
-          line to remove the error and run it again.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-
-        <code>
-          public class TestFinal {
-              // A static final variable for PI
-              public static final double PI = 3.14;
-
-              public static void main(String[] args) {
-                  System.out.println(PI);
-                  PI = 4.2; // This will cause a syntax error
-              }
-          }
-        </code>
-
-        <tests>
-          // should pass if/when they run code
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "3.14";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
-      </program>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="class-method-and-block-level-scope">
-    <title>Class, Method, and Block Level Scope</title>
-
     <p>
-      Java has 3 levels of scope that correspond to different types of
-      variables:
+      Block scopes can be nested within each other. For instance in the nested
+      loops below, the code of the inner loop can refer to the variable <c>i</c>
+      defined in the outer loop but code outside the inner loop can’t refer to
+      <c>j</c>.
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            <term>Class Level Scope</term> for <term>instance variables</term>
-            inside a class.
-          </p>
-        </li>
+    <program>
+      <![CDATA[
+      for (int i = 0; i < 10; i++) {
+        for (int j = i; j < 10; j++) {
+          System.out.println("i: " + i + "; j: " + j);
+        }
+        // can't access j here, out of scope
+      }
+      // can't access i here, out of scope
+      ]]>
+    </program>
 
-        <li>
-          <p>
-            <term>Method Level Scope</term> for <term>local variables</term>
-            (including <term>parameter variables</term>) inside a method.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <term>Block Level Scope</term> for <term>loop variables</term> and
-            other local variables defined inside of blocks of code with { }.
-          </p>
-        </li>
-      </ul>
-    </p>
-
-    <p>The image below shows these 3 levels of scope.</p>
+    <p>The image below shows the three basic levels of scope.</p>
 
     <figure align="center">
-      <caption>Class, Method, and Block Level Scope</caption>
+      <caption>Class, method, and block scope</caption>
 
       <image source="Unit3-Class-Creation/Figures/scopeDiagram.png" width="89%">
         <shortdescription>Scope Levels</shortdescription>
       </image>
     </figure>
 
+    <note>
+      <p>
+        Java inherits its basic scope model from Algol 60, invented in the
+        1960s. In most languages in that lineage variables in a nested scope
+        with the same name as a variable defined in an enclosing scope
+        <term>shadow</term> the variable, meaning that within the inner scope
+        the name refers to the variable declared in the the inner scope and the
+        variable from the outer scope is not accessible. This is sometimes
+        convenient but can also lead to subtle bugs.
+      </p>
+
+      <p>
+        Java’s designers, under the assumption that eliminating the bugs caused
+        by accidentally shadowing variables is worth the slight inconvenience of
+        having to pick all unique names for variables within a single method
+        scope, disallowed shadowing of method and block scoped variables.
+      </p>
+
+      <p>
+        Java does allow locally scoped variables shadow to shadow class scoped
+        variables which is why we can define constructors with parameter names
+        that are the same as the names of instance variables and then use the
+        <c>this.x = x</c> to set the instance variable to the value of a
+        parameter with the same name.
+      </p>
+    </note>
+
     <activity label="name_class_scope">
       <statement>
         <p>
-          Click on all the variable declarations that are at Class Level Scope.
+          Click on all the variable declarations that are at class scope.
         </p>
       </statement>
 
       <feedback>
         <p>
           Remember that the instance variables declared at the top of the class
-          have Class Scope.
+          have class scope.
         </p>
       </feedback>
 
@@ -670,39 +626,6 @@
         <cline><area correct="no">}</area></cline>
       </areas>
     </activity>
-  </subsection>
-
-  <subsection xml:id="local-variables">
-    <title>Local Variables</title>
-
-    <p>
-      <term>Local variables</term> are variables declared in the headers or
-      bodies of blocks of code. Local variables can only be accessed in the
-      block in which they are declared. Local variables that are declared inside
-      a method are usually declared at the top of the method. These variables
-      can only be used within the method and do not exist outside of the method.
-    </p>
-
-    <p>
-      Parameter variables are also considered local variables that only exist
-      for that method or constructor. These variables may only be used within
-      the constructor or method and cannot be declared to be <c>public</c> or
-      <c>private</c>.It’s good practice to declare any variables that are used
-      by just one method as local variables in that method.
-    </p>
-
-    <p>
-      Instance variables at class scope are shared by all the methods in the
-      class and can be marked as public or private with respect to their access
-      outside of the class. They have class scope regardless of whether they are
-      public or private.
-    </p>
-
-    <p>
-      Another way to look at scope is that a variable’s scope is where it lives
-      and exists. You cannot use the variable in code outside of its scope. The
-      variable does not exist outside of its scope.
-    </p>
 
     <activity label="PersonScope">
       <statement>
@@ -777,14 +700,6 @@
       </program>
     </activity>
 
-    <p>
-      If there is a local variable with the same name as an instance variable,
-      the variable name will refer to the local variable instead of the instance
-      variable, as seen below. We’ll see in the next lesson, that we can
-      distinguish between the local variable and the instance variable using the
-      keyword <c>this</c> to refer to this object’s instance variables.
-    </p>
-
     <activity label="PersonLocalVar">
       <statement>
         <p>
@@ -842,6 +757,199 @@
 
       </program>
     </activity>
+  </subsection>
+
+  <subsection xml:id="final-keyword">
+    <title>The <c>final</c> keyword</title>
+
+    <p>
+      The keyword <term>final</term> is used for a few things in Java but the
+      only one we need to know about is as a modifier in a variable declaration.
+      When we include <c>final</c> before the type in a variable declaration it
+      tells Java that we want the variable to be immutable. Thus if we declare a
+      variable to be <c>final</c> and later write code that tries to assign a
+      new value to the variable, the compiler will give us an error.
+    </p>
+
+    <p>
+      There are two main ways to use <c>final</c> variables. Perhaps the
+      simplest is when we want to define a constant value in which case we
+      usually combine it with <c>static</c> to make a <c>static final</c>
+      variable. For instance the variable <c>PI</c> is a <c>public static
+      final</c> variable in the <c>Math</c> class which means it can be
+      referenced by code anywhere as <c>Math.PI</c> . And since it’s
+      <c>final</c> we don’t have to worry about some code accidentally
+      redefining <m>π</m>. Constants defined this way are typicall given all
+      uppercase names.
+    </p>
+
+    <p>
+      The other main way to use <c>final</c> is when we are defining a class
+      whose instances are immutable. If we declare all the class’s instance
+      variables to be <c>final</c> then the instances will be immutable. As a
+      convinence we can declare variables as <c>final</c> without providing an
+      initial value as long as they are initialized in every constructor. For
+      instance, if we wanted our <c>Address</c> class to have immutable
+      instances we might write it like this:
+    </p>
+
+    <program>
+      class Address {
+          private final String street;
+          private final String city;
+          private final String state;
+          private final String zipcode;
+
+          public Address(String street, String city, String state, String zipcode) {
+              this.street = street;
+              this.city = city;
+              this.state = state;
+              this.zipcode = zipcode;
+          }
+
+          public String getStreet() {
+            return street;
+          }
+          public String getCity() {
+            return city;
+          }
+          public String getState() {
+            return state;
+          }
+          public String getZipcode() {
+            return zipcode;
+          }
+      }
+    </program>
+
+    <p>
+      In a class like this, with no setters defined, as long as the instance
+      variables are <c>private</c>, the instances would effectively be immutable
+      even without the <c>final</c> modifiers because there’s no code in the
+      class that ever changes them and code outside the class can’t. But it can
+      still be useful to mark variables as <c>final</c> both to make your intent
+      clear (even to yourself) and also to get help from the compiler if you
+      forget and write some code that tries to change the value of something
+      that’s not supposed to change.
+    </p>
+
+    <activity label="finalPi">
+      <statement>
+        <p>
+          Try the following code and notice the syntax error when we try to
+          change the constant PI. Put the comment symbols // in front of that
+          line to remove the error and run it again.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class TestFinal {
+              // A static final variable for PI
+              public static final double PI = 3.14;
+
+              public static void main(String[] args) {
+                  System.out.println(PI);
+                  PI = 4.2; // This will cause a syntax error
+              }
+          }
+        </code>
+
+        <tests>
+          // should pass if/when they run code
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void testMain() throws IOException {
+                  String output = getMethodOutput("main");
+                  String expect = "3.14";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="acessibility">
+    <title>Accessibility: <c>public</c> and <c>private</c></title>
+
+    <p>
+      In <xref ref="classes" /> we covered the main uses of the <c>public</c>
+      and <c>private</c> <term>accessibility modifiers</term>. These modifiers
+      are another way to control what code is allowed to use a variable or
+      method. In particular, they control whether variables, constructors, and
+      methods in one class can be accessed or invoked by code in other classes.
+    </p>
+
+    <p>
+      This is a bit different from the scope of variables because code in
+      different classes are never in the same scope. This is about whether some
+      code can use <c>obj.foo</c> or <c>obj.bar()</c> to access a variable named
+      <c>foo</c> or to invoke a method named <c>bar</c> defined in whatever
+      class <c>obj</c> is an instance of.
+    </p>
+
+    <p>
+      The basics are <c>public</c> members are can accessible to code in any
+      class and <c>private</c> members are only accessibel to code within the
+      same class.
+    </p>
+
+    <p>
+      The short version of how to use these two modifiers, which are a good set
+      of rules for basic Java programming and everything you need to know for
+      the AP exam is:
+    </p>
+
+    <p>
+      <ul>
+        <li>Instance variables should always be marked <c>private</c>.</li>
+        <li>Constructors are always <c>public</c>.</li>
+        <li>Methods are always <c>public</c>.</li>
+      </ul>
+    </p>
+
+    <p>
+      In reality things are, of course, a bit more complicated.
+    </p>
+
+    <p>
+      The first rule is basically always true. It is far better to keep instance
+      variables <c>private</c> and then write getters and setters as appropriate
+      both to keep fine grained control over what code can modify instances of
+      your class but also to not tie yourself down to a particular set of
+      variables as the way you want to hold the data that makes up instances of
+      a class.
+    </p>
+
+    <p>
+      The rule also applies to <c>static</c> variables unless they are also
+      <c>final</c> in which case they can be made <c>public</c> if they are
+      meant to defined a value that is useful outside of the class, like
+      <c>Math.PI</c>.
+    </p>
+
+    <p>
+      Constructors and methods, however, require more judgement. Often as we
+      break up big methods into smaller methods we will write methods that
+      shouldn’t be used directly by code outside the class; those methods should
+      be declared <c>private</c> so we know they are only used within the class.
+      And sometimes, though less commonly, we will have constructors that are
+      only meant to be used internally. Those constructors can also be made
+      <c>private</c>. Though do note if a class doesn’t have <em>any</em>
+      <c>public</c> constructors, there will be no way for any code outside the
+      class to make instances of it.
+    </p>
+
   </subsection>
 
   <subsection xml:id="coding-challenge-debugging">
