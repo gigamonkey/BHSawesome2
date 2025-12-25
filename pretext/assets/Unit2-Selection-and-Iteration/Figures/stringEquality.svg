@@ -1,0 +1,48 @@
+<svg width="650" height="420" viewBox="0 0 650 420" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#A020F0" />
+    </marker>
+  </defs>
+
+  <g font-family="monospace" font-size="24" fill="black">
+    <text x="40" y="60">String a = new String("hi");</text>
+    <text x="40" y="95">String b = new String("bye");</text>
+    <text x="40" y="130">String c = new String("bye");</text>
+    <text x="40" y="165">String d = c; // c and d are now aliases</text>
+  </g>
+
+  <g font-family="monospace" font-size="30" stroke-width="2">
+
+    <g transform="translate(100, 210)">
+      <text x="27.5" y="35" text-anchor="middle">a</text>
+      <rect x="0" y="0" width="55" height="55" fill="none" stroke="black"/>
+      <line x1="27.5" y1="55" x2="27.5" y2="120" stroke="#A020F0" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+      <text x="27.5" y="165" text-anchor="middle">"hi"</text>
+    </g>
+
+    <g transform="translate(235, 210)">
+      <text x="27.5" y="35" text-anchor="middle">b</text>
+      <rect x="0" y="0" width="55" height="55" fill="none" stroke="black"/>
+      <line x1="27.5" y1="55" x2="27.5" y2="120" stroke="#A020F0" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+      <text x="27.5" y="165" text-anchor="middle">"bye"</text>
+    </g>
+
+    <g transform="translate(370, 210)">
+      <text x="27.5" y="35" text-anchor="middle">c</text>
+      <rect x="0" y="0" width="55" height="55" fill="none" stroke="black"/>
+      <line x1="27.5" y1="55" x2="50" y2="125" stroke="#A020F0" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+
+      <g transform="translate(135, 0)">
+        <text x="27.5" y="35" text-anchor="middle">d</text>
+        <rect x="0" y="0" width="55" height="55" fill="none" stroke="black"/>
+        <line x1="27.5" y1="55" x2="-15" y2="125" stroke="#A020F0" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+      </g>
+
+      <text x="85" y="165" text-anchor="middle">"bye"</text>
+    </g>
+
+  </g>
+</svg>
