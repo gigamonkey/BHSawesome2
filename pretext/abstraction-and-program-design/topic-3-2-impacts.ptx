@@ -1,41 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-3-2-impacts">
-  <title>Impact of Program Design</title>
+  <title>Impact of program design</title>
 
   <introduction>
     <p>
-      We are living in an age of rapid development in technology and automation.
-      Software and hardware developers increasingly have real impacts on
-      people’s lives. In computer science, we follow the following <url
+      Usually when we think about our program design we are thinking about how
+      to make our program correct and efficient. But in an age of rapid
+      development in technology and automation, the work of software developers
+      has real impacts on people’s lives and we need to think about the effects
+      the software we build will have on people and society.
+    </p>
+
+    <p>
+      Programmers also have to be aware of legal and ethical issues in how
+      software is developed. Much of modern software is developed using code
+      written by others and and published as <term>open source</term> which is
+      free to use. But even freely available open source software comes with
+      licenses that developers have to abide by if they want to use it.
+    </p>
+
+    <p>
+      Professional software developers and computer scientists have codes of
+      conduct that they can follow such as <url
       href="https://ethics.acm.org/">ACM professional code of ethics</url> which
-      includes guidelines such as “Avoid harm” and “Respect privacy”.
+      includes guidelines such as “Avoid harm” and “Respect privacy” but in
+      order to live up to codes like that we need to understand the ways
+      software can have unintended harmful effects.
+    </p>
+
+  </introduction>
+
+  <subsection>
+
+    <title>Software reliability</title>
+
+    <p>
+      Sometimes the harm is caused by unreliable software. Software can work in
+      many cirumstances and still fail sometimes catastrophic ways. <term>System
+      reliability</term> refers to a program being able to perform its tasks as
+      expected under stated conditions without failure. Responsible programmers
+      make an effort to maximize system reliability by testing the program under
+      a variety of conditions.
     </p>
 
     <p>
-      However, sometimes programs have unintended consequences. It can be
-      difficult to ensure <term>system reliability</term>, which refers to a
-      program being able to perform its tasks as expected under stated
-      conditions without failure. Programmers should make an effort to maximize
-      system reliability by testing the program with a variety of conditions.
+      But even programs that work perfectly, according to their intended design,
+      can have unintended harmful effects that we need to think about.
     </p>
+  </subsection>
 
-    <p>
-      The creation of programs has impacts on society, the economy, and culture.
-      These impacts can be both beneficial and harmful. Programs meant to fill a
-      need or solve a problem can have unintended harmful effects beyond their
-      intended use.
-    </p>
+  <subsection>
 
-    <p>
-      Legal issues and intellectual property concerns can also arise when
-      creating programs. Programmers often reuse code written by others and
-      published as <term>open source</term> which is free to use. Incorporation
-      of code that is not published as open source requires the programmer to
-      obtain permission and often purchase the code before integrating it into
-      their program. There are also newly arising issues with the use of AIs in
-      coding.
-    </p>
+    <title>AI and machine learning</title>
 
     <p>
       The fields of <term>AI (Artificial Intelligence)</term> and <term>Machine
@@ -79,116 +96,33 @@
         </li>
       </ul>
     </p>
-  </introduction>
-
-  <subsection xml:id="data-privacy">
-    <title>Data Privacy</title>
-
-    <p>
-      Your phone keeps a lot of information about you, including where you have
-      been, what you buy, what games you play, etc. Here’s a <url
-      href="https://www.youtube.com/watch?v=bqWuioPHhz0">video</url> about the
-      massive amounts of data our smart phones and computers collect about us.
-      If you have used your phone to give you directions to go somewhere, it
-      probably tracks your location. Follow the directions in <url
-      href="https://www.lifewire.com/location-history-google-maps-iphone-1683392">https://www.lifewire.com/location-history-google-maps-iphone-1683392</url>
-      to see if you have location history settings on. You can also turn off
-      location tracking, but it is useful when you want directions and it’s
-      free. Do the benefits of apps that provide driving directions outweigh the
-      lack of privacy for you? In what situations would it be beneficial or
-      harmful for the app to track your location?
-    </p>
-
-    <figure align="center">
-      <image source="Unit4-Data-Collections/Figures/googletimeline.png" width="100%" />
-    </figure>
-
-    <p>
-      As users, we often don’t realize how much personal data we are giving
-      away. If you use a computer or phone, your personal privacy is at risk. As
-      computer programmers, we must be aware of the risks to data privacy when
-      our code collects and stores personal data on computer systems.
-      Programmers should attempt to safeguard the personal privacy of the user.
-      Legally and ethically, we must ask the users for permission to access and
-      store their data. And if there are data breaches where the data is stolen,
-      we must inform the affected users. The laws are slowly catching up to our
-      technology, and many countries and states are passing laws to protect data
-      privacy.
-    </p>
-
-    <p>
-      Computer use and programs have beneficial and/or harmful impacts on
-      personal security. Software apps for maps and driving directions are very
-      useful, but they have impacts on personal security and privacy if they
-      keep track of your location. This information could be beneficial, for
-      example if you are lost and need to be found, but could be harmful and
-      unsafe if someone unauthorized gains access to your location.
-    </p>
-
-    <activity label="privacy">
-      <statement>
-        <p>
-          Explore a popular app or web site and its data collecting practices.
-          Explain the risks to privacy from collecting and storing personal data
-          on computer systems. Discuss the ethical and legal problems that may
-          arise and how programmers can try to avoid them. We encourage you to
-          work on this activity in pairs or groups.
-        </p>
-      </statement>
-
-      <response />
-    </activity>
-
-    <p>
-      Here are some interesting video resources about data collection and data
-      privacy:
-    </p>
-
-    <p>
-      <ul>
-        <li>
-          A short <url
-          href="https://www.cnbc.com/video/2018/03/23/everything-you-need-to-know-about-the-cambridge-analytica-scandal.html"
-          style="text-decoration:underline">1 minute video</url> about the
-          Facebook Cambridge Analytica incident and a longer <url
-          href="https://www.pbs.org/wgbh/frontline/film/facebook-dilemma/#video-2"
-          style="text-decoration:underline">1 hour PBS special</url> on
-          Facebook.
-        </li>
-
-        <li>
-          <url href="https://www.youtube.com/watch?v=gXiEBcb0Vs8" style="text-decoration:underline">What is Geo-fencing (2 mins)</url>
-        </li>
-
-        <li>
-          <url href="https://www.youtube.com/watch?v=j6wwBqfSk-o" style="text-decoration:underline">The European General Data Protection Regulation (GDPR) (3 mins)</url>
-        </li>
-      </ul>
-    </p>
   </subsection>
 
   <subsection xml:id="data-and-bias">
-    <title>Data and Bias</title>
+    <title>Algorithmic bias</title>
 
     <p>
-      The fields of <term>AI (Artificial Intelligence)</term> and <term>Machine
-      Learning (ML)</term> are rapidly growing and increasingly involve ethical
-      questions about data collection, privacy, and resource use. Machine
-      learning algorithms to create software like ChatGPT require massive
-      amounts of data to learn from as well as massive amounts of energy use.
-      But where does this data come from? Often the data is collected from the
-      internet, and the internet is full of biases. For example, if you search
-      for professions like “programmer”, “doctor”, “CEO” in <url
+      AI and machine learning also raise ethical questions about data
+      collection, privacy, and resource use. Machine learning algorithms to
+      create software like ChatGPT require massive amounts of data to learn from
+      and also use massive amounts of energy to both train and run. But where
+      does this data come from? Often the data is collected from the internet,
+      and the internet is full of biases. For example, if you search for
+      professions like “programmer”, “doctor”, “CEO” in <url
       href="https://images.google.com/">https://images.google.com/</url>, you
       will probably see mostly images of white men. This reflects a bias in our
-      world that AIs may learn. An AI could then generate text or images that
-      are biased against historically underrepresented groups. For example, a
-      prominent tech company in 2014 started building an automated hiring tool,
-      a resume filtering AI trained on their current employees resumes, and
-      ended up with an AI system that was biased against women (<url
+      world that AIs may learn.
+    </p>
+
+    <p>
+      An AI could then generate text or images that are biased against
+      historically underrepresented groups. For example, a prominent tech
+      company in 2014 started building an automated hiring tool, a resume
+      filtering AI trained on their current employees resumes, and ended up with
+      an AI system that was biased against women (<url
       href="https://www.aclu.org/news/womens-rights/why-amazons-automated-hiring-tool-discriminated-against">https://www.aclu.org/news/womens-rights/why-amazons-automated-hiring-tool-discriminated-against</url>).
       This is a problem because the AI is learning from biased data and then
-      creating biased outcomes that could affect people’s lives.
+      reproducing the same bias in outcomes that could affect people’s lives.
     </p>
 
     <p>
@@ -317,6 +251,93 @@
       <response />
     </project>
   </subsection>
+
+  <subsection xml:id="data-privacy">
+    <title>Data privacy</title>
+
+    <p>
+      Your phone keeps a lot of information about you, including where you have
+      been, what you buy, what games you play, etc. Here’s a <url
+      href="https://www.youtube.com/watch?v=bqWuioPHhz0">video</url> about the
+      massive amounts of data our smart phones and computers collect about us.
+      If you have used your phone to give you directions to go somewhere, it
+      probably tracks your location. Follow the directions in <url
+      href="https://www.lifewire.com/location-history-google-maps-iphone-1683392">https://www.lifewire.com/location-history-google-maps-iphone-1683392</url>
+      to see if you have location history settings on. You can also turn off
+      location tracking, but it is useful when you want directions and it’s
+      free. Do the benefits of apps that provide driving directions outweigh the
+      lack of privacy for you? In what situations would it be beneficial or
+      harmful for the app to track your location?
+    </p>
+
+    <figure align="center">
+      <image source="Unit4-Data-Collections/Figures/googletimeline.png" width="100%" />
+    </figure>
+
+    <p>
+      As users, we often don’t realize how much personal data we are giving
+      away. If you use a computer or phone, your personal privacy is at risk. As
+      computer programmers, we must be aware of the risks to data privacy when
+      our code collects and stores personal data on computer systems.
+      Programmers should attempt to safeguard the personal privacy of the user.
+      Legally and ethically, we must ask the users for permission to access and
+      store their data. And if there are data breaches where the data is stolen,
+      we must inform the affected users. The laws are slowly catching up to our
+      technology, and many countries and states are passing laws to protect data
+      privacy.
+    </p>
+
+    <p>
+      Computer use and programs have beneficial and/or harmful impacts on
+      personal security. Software apps for maps and driving directions are very
+      useful, but they have impacts on personal security and privacy if they
+      keep track of your location. This information could be beneficial, for
+      example if you are lost and need to be found, but could be harmful and
+      unsafe if someone unauthorized gains access to your location.
+    </p>
+
+    <activity label="privacy">
+      <statement>
+        <p>
+          Explore a popular app or web site and its data collecting practices.
+          Explain the risks to privacy from collecting and storing personal data
+          on computer systems. Discuss the ethical and legal problems that may
+          arise and how programmers can try to avoid them. We encourage you to
+          work on this activity in pairs or groups.
+        </p>
+      </statement>
+
+      <response />
+    </activity>
+
+    <p>
+      Here are some interesting video resources about data collection and data
+      privacy:
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          A short <url
+          href="https://www.cnbc.com/video/2018/03/23/everything-you-need-to-know-about-the-cambridge-analytica-scandal.html"
+          style="text-decoration:underline">1 minute video</url> about the
+          Facebook Cambridge Analytica incident and a longer <url
+          href="https://www.pbs.org/wgbh/frontline/film/facebook-dilemma/#video-2"
+          style="text-decoration:underline">1 hour PBS special</url> on
+          Facebook.
+        </li>
+
+        <li>
+          <url href="https://www.youtube.com/watch?v=gXiEBcb0Vs8" style="text-decoration:underline">What is Geo-fencing (2 mins)</url>
+        </li>
+
+        <li>
+          <url href="https://www.youtube.com/watch?v=j6wwBqfSk-o" style="text-decoration:underline">The European General Data Protection Regulation (GDPR) (3 mins)</url>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+
 
   <subsection xml:id="groupwork-impacts-of-cs">
     <title>Groupwork: Impacts of CS</title>
