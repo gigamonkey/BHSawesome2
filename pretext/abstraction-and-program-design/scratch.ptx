@@ -1,0 +1,104 @@
+    <p>
+      Using procedural abstraction in a program allows programmers to change the
+      internals of a method (to make it faster, more efficient, use less
+      storage, etc.) without needing to notify method users of the change as
+      long as the method signature and what the method does is preserved. For
+      example, we could change the way the Turtle class is implemented to make
+      it faster without needing to change the way the <c>forward()</c> method is
+      called.
+    </p>
+
+    <p>
+      Another reason to use procedural abstraction is to avoid repetition of
+      code. For example, when we were deconstructing songs into methods in Unit
+      1, we found that we could reuse the <c>chorus()</c> or <c>verse()</c>
+      method for each verse of the song. A procedural abstraction may extract
+      shared features to generalize functionality instead of duplicating code.
+      This allows for code reuse, which helps manage complexity.
+    </p>
+
+    <p>
+      Adding parameters to methods allows for even more abstraction and
+      flexibility in code. Parameters allow procedures to be generalized,
+      enabling the procedures to be reused with a range of input values or
+      arguments.
+    </p>
+
+
+        <note>
+      <p>
+        Many popular languages such as Javascript and Python do not provide
+        language-level support for enforcing invariants such as that a variable
+        always hold values of a particular type or that a method be called with
+        the appropriate number of arguments. However even when working in those
+        languages those things tend to be invariants in practice; it is possible
+        to write code the same variable will hold different kinds of values at
+        different times in a way that could never happen in Java. But usually
+        that’s to confusing to manage so programmers using those languages treat
+        the type of value a variable can hold as an invariant even though it could happen
+      </p>
+    </note>
+
+
+    <p>
+      One precondition that we talked about is that divisors cannot be zero in
+      expressions because that will cause the code to have a runtime error or
+      exception. Many math functions have preconditions about their operands
+      because not every mathematical operation is defined for every value. For
+      example, computing the square root of a negative number is undefined, so
+      the <c>Math.sqrt(num)</c> Java method, which we will learn later, will
+      return a special value <c>NaN</c> which stands for “not a number” if num
+      is negative. But since you can’t really do anything useful with <c>NaN</c>
+      it’s better to think of <c>sqrt</c> as having a precondition that says it
+      only works properly if given a positive argument. These are described as
+      special cases in the API documentation, for example in <url
+      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Math.html#sqrt(double)">https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Math.html#sqrt(double)</url>.
+      Try this out below.
+    </p>
+
+    <activity label="math-preconditions">
+      <statement>
+        <p>
+          The following code uses the square root method in Java which has a
+          precondition that the number that you give it is not negative. When
+          you click on run, the compiler will not catch the error, but it will
+          return the error value <c>NaN</c>. Can you fix the value of num so
+          that it does not return <c>NaN</c>? What is the precondition for the
+          Math.sqrt method?
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class SqRoot
+          {
+             public static void main(String[] args)
+             {
+                   double num = -4;
+                   System.out.println(Math.sqrt(num));
+             }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String target = "-4";
+                  boolean passed = checkCodeNotContains(target);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>

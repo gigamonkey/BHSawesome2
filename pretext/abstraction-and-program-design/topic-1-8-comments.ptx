@@ -1,64 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-1-8-comments">
-  <title>Documentation with Comments and Preconditions</title>
+  <title>Documentation and invariants</title>
 
-  <introduction />
+  <introduction>
+    <p>
+      Another two important, and related aspects of program design are internal
+      documentation of the program with comments and especially documenting the
+      <term>invariants</term> that the program relies on.
+    </p>
+  </introduction>
+
   <subsection xml:id="comments-1">
     <title>Comments</title>
 
     <p>
-      Adding comments to your code helps to make it more readable and
-      maintainable. In the commercial world, software development is usually a
-      team effort where many programmers will use your code and maintain it for
-      years. Commenting is essential in this kind of environment and a good
-      habit to develop. Comments will also help you to remember what you were
-      doing when you look back to your code a month or a year from now. Comments
-      are written for both the original programmer and other programmers to
-      understand the code and its functionality, but are ignored by the compiler
-      and are not executed when the program is run.
+      We learned about the syntax of comments in Java way back in <xref
+      ref="topic-1-1-intro-algorithms" />. Comments—text included in the source
+      code of a program meant for humans to read and ignored by the compiler—can
+      help make code more readable and maintainable.
     </p>
 
-    <p>There are 3 types of comments in Java:</p>
+    <p>
+      In real-world software development, most code is worked on by teams of
+      programmers over the course of years. While the code itself is unambigious
+      about <em>what</em> it does, comments can be essential for explaining
+      <em>why</em> it written the way it is.
+    </p>
+
+    <p>
+      Even when we write programs by ourselves, it can be easy to forget all the
+      details of why we wrote the code the way we did or assumptions that we
+      made about how the pieces fit gother. A few well-placed comments can help
+      us remember those things when we come back to a section of code after a
+      few months or a few years. Good comments are a gift to other programmers
+      who might have to understand and modify the code including our future selves.
+    </p>
+
+    <p>There are three types of comments in Java:</p>
 
     <p>
       <ol>
         <li>
-          <p><c>//</c> Single line comment</p>
+          <p>Single line comments, marked with <c>//</c></p>
         </li>
 
         <li>
-          <p><c>/*</c> Multiline block of comments <c>*/</c></p>
+          <p>Multiline comments, enclosed in <c>/*</c> and <c>*/</c> markers.</p>
         </li>
 
         <li>
-          <p><c>/**</c> Java documentation comments <c>*/</c></p>
+          <p>Java documentation, or Javadoc, comments which are multiline
+          commens where the first marker is <c>/**</c></p>
         </li>
       </ol>
     </p>
 
     <p>
-      The special characters <c>//</c> are used to mark the rest of the line as
-      a comment in many programming languages. If the comment is going to be
-      multiple lines, we use <c>/*</c> to start the comment and <c>*/</c> to end
-      the comment.
+      Single line comments are typically used within the body of methods to
+      explain details of how the code works. Many coders also use multiple lines
+      each starting with <c>//</c> to write multiline comments. Also <c>//</c>
+      can be put at the beginning of a line of code to “comment it out”, usually
+      as a temporary debugging technique so see how the program works if certain
+      code isn’t there without actually deleting it.
     </p>
 
     <p>
-      There is also a special version of the multi-line comment, <c>/**</c> ...
-      <c>*/</c>, called the documentation comment. Java has a cool tool called
-      <url
+      Multi-line comments marked with <c>/*</c> and <c>*/</c> are typically used
+      for higher-level comments at the top level of classes. And in Java the
+      most important for of these comments are the Javadoc variation which start
+      with <c>/**</c> rather than <c>/*</c>. These comments are placed before
+      instance and class variables, methods, constructors, and classes to
+      document their purpose. A tool called <url
       href="https://www.tutorialspoint.com/java/java_documentation.htm">javadoc</url>
       that comes with the <url
       href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">Java
-      JDK</url> that will pull out all of these comments to make documentation
-      of a class as a web page. This tool generates the official Java
-      documentation too, for example for the <url
+      JDK</url> can pull out all of these comments to make documentation of a
+      class as a web page.
+    </p>
+
+    <p>
+      This is the tool used to generate the official documentation of Java’s
+      built in classes, for example for the <url
       href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/String.html">String
-      class</url>. Although you do not have to use this in the AP exam, it’s a
-      good idea to use the documentation comment in front of classes, methods,
-      and instance variables in case you want to use this tool later on to save
-      your code as a library.
+      class</url>. While you don’t need to know about the details of how to
+      format Javadoc comments for the AP Exam, it is useful to get in the habit
+      of adding at least brief Javadoc-style comments before each class you
+      write and each <c>public</c> method even if you don’t plan to generate the
+      web-based documentation.
+    </p>
+
+    <p>
+      Here’s an example of how Javadoc comments and a single line comment might
+      be used.
+    </p>
+
+    <program>
+      /**
+       * A scorekeeper that can track the maximum score achieved.
+       *
+       * @author My Name
+       * @since Date
+       * @version 0.0.1
+       */
+      public class Scorekeeper()
+      {
+         // The maximum score obtained.
+         private int max = 0;
+
+         /**
+          * Record a new score, updating the maximum score if new score is greater.
+          *
+          * @param score the new score. Must be positive.
+          */
+         public recordScore(int score) {
+           max = Math.max(max, score);
+         }
+
+         /**
+          * Return the current maximum score.
+          *
+          * @return the current maximum score.
+          */
+         public int getMaximum() {
+           return max;
+         }
+
+         /**
+          * Priints the maximum score achieved.
+          */
+         public printMaxScore() {
+            System.out.println(max);
+         }
+      }
+    </program>
+
+    <p>
+      The example above shows some special tags that you can use in Javadoc
+      comments. They are mostly important if you actually want to generate
+      online documentation for your classes as the Javadoc tool will use them to
+      extract the different parts of the Javadoc comment and put them in the
+      right place in the generated documentation. If you are just writing
+      Javadocs to be read in the code it’s less important to use thes tags. Some
+      of the main Javadoc tags are:
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <p>@author Author of the program</p>
+        </li>
+
+        <li>
+          <p>@since Date released</p>
+        </li>
+
+        <li>
+          <p>@version Version of program</p>
+        </li>
+
+        <li>
+          <p>@param Parameter of a method</p>
+        </li>
+
+        <li>
+          <p>@return Return value for a method</p>
+        </li>
+      </ul>
     </p>
 
     <activity label="comments">
@@ -91,72 +199,16 @@
       </cardsort>
     </activity>
 
-    <p>
-      The compiler will skip over comments, and they don’t affect how your
-      program runs. They are for you, your teacher, and other programmers
-      working with you. Here are some examples of good commenting:
-    </p>
-
-    <program>
-      /**
-      * MyClass.java
-      * @author My Name
-      * @since Date
-      * This class keeps track of the max score.
-      */
-      public class MyClass()
-      {
-         private int max = 10; // this keeps track of the max score
-         /* The print() method prints out the max */
-         public print()
-         {
-            System.out.println(max);
-         }
-      }
-    </program>
-
-    <p>
-      Note that most IDEs will tend to show comments formatted in italics – to
-      make them easier to spot.
-    </p>
-
-    <p>
-      Notice that there are some special tags that you can use in Java
-      documentation. These are not required but many programmers use them. Here
-      are some common tags:
-    </p>
-
-    <p>
-      <ul>
-        <li>
-          <p>@author Author of the program</p>
-        </li>
-
-        <li>
-          <p>@since Date released</p>
-        </li>
-
-        <li>
-          <p>@version Version of program</p>
-        </li>
-
-        <li>
-          <p>@param Parameter of a method</p>
-        </li>
-
-        <li>
-          <p>@return Return value for a method</p>
-        </li>
-      </ul>
-    </p>
-
     <activity label="commentExercise">
       <statement>
         <p>
-          The code below will read in the 2 numbers below it and multiply them.
-          Add a multiline comment above the public class to describe what the
-          class does and add single-line comments above each section of the code
-          to read in, calculate, and print the result to describe what it does.
+          The code below will read in two numbers entered by the user (here in
+          the box below the code) and multiply them. Add a multiline comment
+          above the public class to describe what the class does. Then think
+          about whether there are any parts of the code that need short,
+          single-line comments to explain what they do? Add any you think are
+          necessary. Then talk compare your comments with your neighbor? Who
+          wrote more? Is more always better?
         </p>
       </statement>
 
@@ -165,23 +217,18 @@
         <code>
           import java.util.Scanner;
 
+          public class Multiply {
+              public static void main(String[] args) {
+                  Scanner scan = new Scanner(System.in);
+                  int num1 = scan.nextInt();
+                  int num2 = scan.nextInt();
 
+                  int result = num1 * num2;
 
-
-           public class Multiply
-           {
-                public static void main(String[] args)
-                {
-                     Scanner scan = new Scanner(System.in);
-                     int num1 = scan.nextInt();
-                     int num2 = scan.nextInt();
-
-                     int result = num1 * num2;
-
-                     System.out.println(num1 + " x " + num2 + " = " + result);
-                     scan.close();
-                }
-           }
+                  System.out.println(num1 + " x " + num2 + " = " + result);
+                  scan.close();
+              }
+          }
         </code>
 
         <stdin>
@@ -225,135 +272,122 @@
   </subsection>
 
   <subsection xml:id="preconditions-and-postconditions">
-    <title>Preconditions and Postconditions</title>
+    <title>Invariants</title>
 
     <p>
-      Many methods in API libraries have <term>preconditions</term> and the
-      <term>postconditions</term> described in their comments. A
-      <term>precondition</term> is a condition that must be true for your method
-      code to work, for example the assumption that the parameters, the data
-      that you give the method to do its job, have values within limits and are
-      not null. The methods could check for these preconditions, but they do not
-      have to. The precondition is what the method expects in order to do its
-      job properly.
+      One of the most important things to think about as we write programs and
+      often to document in comments are the <term>invariants</term> of our
+      program. Invariant means “constant or unchanging” and in a program
+      invariants are the things that should always be true. If something we
+      think is an invariant is ever <em>not</em> true then we have a bug in our
+      program and we can focus on tracking down how that invariant was violated.
+      But the rest of the time we can write code assuming our invariants hold
+      which reduces the number of things we have to worry about.
     </p>
 
     <p>
-      A <term>postcondition</term> is a condition that is true after running the
-      method. It is what the method promises to do. Postconditions describe the
-      outcome of running the method, for example what is being returned from the
-      method or the changes to the state. These assumptions are very useful to
-      other programmers who want to use that method and get the correct results.
+      Some invariants are enforced for us by Java. When we declare a variable to
+      be an <c>int</c> we can rely on the fact that that the value of that
+      variable will always be an integer. And when we write a method that takes
+      two arguments it will always be true that any code that calls that method
+      will have to provide two arguments of the right types because otherwise
+      the code wouldn’t compile.
     </p>
 
     <p>
-      One precondition that we talked about is that divisors cannot be zero in
-      expressions because that will cause the code to have a runtime error or
-      exception. Many math functions have preconditions about their operands
-      because not every mathematical operation is defined for every value. For
-      example, computing the square root of a negative number is undefined, so
-      the <c>Math.sqrt(num)</c> Java method, which we will learn later, will
-      return a special value <c>NaN</c> which stands for “not a number” if num
-      is negative. But since you can’t really do anything useful with <c>NaN</c>
-      it’s better to think of <c>sqrt</c> as having a precondition that says it
-      only works properly if given a positive argument. These are described as
-      special cases in the API documentation, for example in <url
-      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Math.html#sqrt(double)">https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Math.html#sqrt(double)</url>.
-      Try this out below.
+      But there are also things that we might want to always be true that the
+      compiler can’t guarantee for us. Those are the things we normally think of
+      as invariants.
     </p>
-
-    <activity label="math-preconditions">
-      <statement>
-        <p>
-          The following code uses the square root method in Java which has a
-          precondition that the number that you give it is not negative. When
-          you click on run, the compiler will not catch the error, but it will
-          return the error value <c>NaN</c>. Can you fix the value of num so
-          that it does not return <c>NaN</c>? What is the precondition for the
-          Math.sqrt method?
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-
-        <code>
-          public class SqRoot
-          {
-             public static void main(String[] args)
-             {
-                   double num = -4;
-                   System.out.println(Math.sqrt(num));
-             }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String target = "-4";
-                  boolean passed = checkCodeNotContains(target);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
-      </program>
-    </activity>
 
     <p>
-      Here is an example of preconditions, postconditions, and @param in the
-      Turtle code that we use for animating turtle drawings. The Turtle
-      <c>forward</c> method’s precondition is that the amount of <c>pixels</c>
-      forward should be between 0 and the width and height of the world. If it
-      receives value out of this range, it sets <c>pixels</c> to the closest
-      legal values that it can so that the turtle appears just at the edge of
-      the world.
+      One of the two most important kinds of invariants are related to methods
+      and are called a method’s <term>preconditions</term> and
+      <term>postconditions</term>. A <term>precondition</term> is something that
+      must be true for the method’s code to work.
     </p>
-
-    <program>
-      /**
-        * Method to move the turtle forward the given number of pixels
-        * @param pixels the number of pixels to walk forward in the heading direction
-        * Preconditions: parameters pixel is between 0 and
-        *    the width and height of the world.
-        * Postconditions: the turtle is moved forward by pixels amount
-        *   but stays within the width and height of the world.
-        */
-       public void forward(int pixels)
-       {
-         /* code to move the turtle forward */
-       }
-    </program>
 
     <p>
-      Try to break the preconditions of the <c>Turtle forward</c> method below.
-      Try to make the turtle go completely off screen by changing the number of
-      pixels given to the forward method. What happens if you put in negative
-      numbers? (If the code below does not work for you, you can copy the code
-      into this <url
-      href="https://replit.com/@BerylHoffman/Java-Swing-Turtle">replit.com
-      link</url> (refresh page after forking and if it gets stuck) or download
-      the files <url
-      href="https://github.com/bhoffman0/csawesome2/tree/main/_sources/Unit1-Using-Objects-and-Methods/TurtleJavaSwingCode.zip">here</url>
-      to use in your own IDE.)
+      For instance the version the <c>String</c> class’s <c>substring</c> method
+      that takes a single <c>int</c> argument has a further precondition that
+      the argument be in the bounds of the string index (not negative and not
+      larger than the length of the string. If called with an invalid argument
+      it throws an <c>IndexOutOfBoundsException</c> and crashes your program
+      rather than returning a substring.
     </p>
+
+    <p>
+      The beauty of establishing a precondition for a method (even just in your
+      mind) is that it tells you where the bug is if it is violated: it has to
+      be in the code that is calling the method. By establishing a precondition
+      you are saying, this method doesn’t have to work at all unless this thing
+      is true.
+    </p>
+
+    <p>
+      A method’s <term>postcondition</term> is the flip side of its
+      precondition; it is the thing, or things, that must be true after the
+      method calls. In other words, the postconditinos of a method describe what
+      the method promises to do. Those might be facts about the value returned
+      by the method or facts about any side effects the method has.
+    </p>
+
+    <p>
+      Unlike a precondition which frees a method from having to deal with
+      certain situations, a postcondition puts responsibility on the method. If
+      a method is called with its preconditions met and fails to meet its
+      postconditions, then the method is buggy and we know what code we need to
+      debug.
+    </p>
+
+    <p>
+      Preconditions and postconditions are related to comments because they are
+      some of the most important things to document about our code. We don’t
+      need to document things like variable types that are enforced by the
+      compiler but the interesting preconditions and postconditions of our
+      methods are things that the compiler can’t enforce but our code implicitly
+      relies on so its important to make them explicit in comments.
+    </p>
+
 
     <activity label="turtle-preconditions">
       <statement>
+
         <p>
-          Try to break the preconditions of the Turtle forward method below. Can
-          you make it go completely off screen by changing the number of pixels
-          given to the forward method in line 13? What happens if you put in
-          negative numbers?
+          Here is an example of how preconditions and postconditions can be
+          document in a Javadoc comment from the Turtle code that we use for
+          animating turtle drawings. The Turtle <c>forward</c> method’s
+          precondition is that the amount of <c>pixels</c> forward should be
+          between 0 and the width and height of the world. If it receives value
+          out of this range, it sets <c>pixels</c> to the closest legal values
+          that it can so that the turtle appears just at the edge of the world.
+        </p>
+
+        <program>
+          /**
+           * Method to move the turtle forward the given number of pixels
+           * @param pixels the number of pixels to walk forward in the heading direction
+           * Preconditions: parameters pixel is between 0 and
+           *    the width and height of the world.
+           * Postconditions: the turtle is moved forward by pixels amount
+           *   but stays within the width and height of the world.
+           */
+          public void forward(int pixels) {
+            /* code to move the turtle forward */
+          }
+        </program>
+
+        <p>
+          Try to break the preconditions of the <c>Turtle forward</c> method
+          below. Try to make the turtle go completely off screen by changing the
+          number of pixels given to the forward method. What happens if you put
+          in negative numbers? (If the code below does not work for you, you can
+          copy the code into this <url
+          href="https://replit.com/@BerylHoffman/Java-Swing-Turtle">replit.com
+          link</url> (refresh page after forking and if it gets stuck) or
+          download the files <url
+          href="https://github.com/bhoffman0/csawesome2/tree/main/_sources/Unit1-Using-Objects-and-Methods/TurtleJavaSwingCode.zip">here</url>
+          to use in your own IDE.)
         </p>
       </statement>
 
@@ -415,7 +449,7 @@
   </subsection>
 
   <subsection xml:id="software-validity-and-use-case-diagrams">
-    <title>Software Validity and Use-Case Diagrams</title>
+    <title>Software validity and use-case diagrams</title>
 
     <p>
       Preconditions and postconditions are covered on the AP CSA exam. Software
@@ -430,9 +464,9 @@
       and determine the <term>validity</term> of our software. Software validity
       tests whether the software does what it is supposed to do before it is
       released. This is sometimes very important. For example, if the code is
-      part of a satellite going to outerspace or is going to be used in an
-      emergency condition, we want to test it thoroughly and make sure it works
-      and is valid before it is put into use.
+      part of a satellite going to outer space or is going to be used in a
+      medical device, we want to test it thoroughly and make sure it works and
+      is valid before it is put into use.
     </p>
 
     <p>
@@ -446,17 +480,17 @@
     <p>
       Preconditions and postconditions can also help us to design better
       software systems. Software designers often first draw a high-level
-      <term>Use-Case Diagram</term> of a system that shows the different ways
+      <term>use-case diagram</term> of a system that shows the different ways
       that a user might interact with a system before they build it. Here is a
-      simple Use-Case Diagram of a restaurant system. It shows 2 actors in the
-      system: the customer and the staff at the restaurant, and 3 use-cases in
-      circles. A <term>Use-case</term> is a particular user interaction or
+      simple use-case diagram of a restaurant system. It shows two actors in the
+      system: the customer and the staff at the restaurant, and three use-cases
+      in circles. A <term>use-case</term> is a particular user interaction or
       situation in the system or software, and they often become methods in the
       program.
     </p>
 
     <figure align="center">
-      <caption>Use-Case Diagram of a Restaurant System</caption>
+      <caption>Use-case diagram of a restaurant system</caption>
 
       <image source="Unit1-Using-Objects-and-Methods/Figures/use-case-restaurant.png" width="89%">
         <shortdescription>Use Case Diagram</shortdescription>
@@ -465,8 +499,8 @@
 
     <p>
       After drawing a Use-Case Diagram, designers write down the preconditions
-      and the postconditions for each Use-Case. Often the successful post-
-      condition for one use-case becomes the preconditions for the next use-
+      and the postconditions for each use-case. Often the successful
+      postcondition for one use-case becomes the preconditions for the next use-
       case. For example, for the “Order Food” and “Eat Food” Use Cases:
     </p>
 
@@ -513,23 +547,25 @@
   </subsection>
 
   <subsection xml:id="agile-software-development">
-    <title>Agile Software Development</title>
+    <title>Agile software development</title>
 
     <p>
-      There are many different models for software development. The
-      <term>waterfall model</term>, developed in the 1970s, is a step by step
-      model where each phase is finished before the next phase begins. This
-      model has recently been criticized because it is not very adaptable. The
-      more recent <term>Agile</term> development model involves iterative,
-      incremental development where teams works in short 2-3 week
-      <term>sprints</term> to completely develop, test, and release a component
-      of the project to the customer for feedback. It is very adaptable as
-      project requirements change because of early testing, immediate customer
-      feedback and collaboration.
+      There are many different models for software development. The term
+      <term>waterfall model</term> was first used in the 1970s to critique
+      existing step-by-step models where each phase such as requirements
+      gathering, coding, and testing is finished before the next phase begins.
+      Such models despite their many flaws were nontheless was adopted by some
+      large organizations such as the U.S. Department of Defense. But these days
+      many developers use some flavor of an <term>Agile</term> development model
+      that involves iterative, incremental development where teams works in
+      short two to three week <term>sprints</term> to completely develop, test,
+      and release a component of the project to the customer for feedback. It is
+      very adaptable as project requirements change because of early testing,
+      immediate customer feedback and collaboration.
     </p>
 
     <figure align="center">
-      <caption>Waterfall vs Agile Models</caption>
+      <caption>Waterfall vs agile models</caption>
 
       <image source="Unit1-Using-Objects-and-Methods/Figures/waterfallVsAgile.png" width="89%" />
     </figure>
@@ -542,7 +578,6 @@
     </p>
 
     <video youtube="TRcReyRYIMg" label="video-agile" />
-    <p>Group Exercise</p>
 
     <p>
       Try the <url
@@ -556,7 +591,7 @@
     <title>Coding Challenge: Preconditions in Algorithms</title>
 
     <p>
-      Working in pairs or groups, come up with 4 steps that a user must do to
+      Working in pairs or groups, come up with four steps that a user must do to
       purchase a product, for example a book on Java, in an online store, and
       list the preconditions and postconditions for each step. You could pretend
       to buy something online to come up with the steps. (You could use an
@@ -570,7 +605,7 @@
     <project label="challenge-1-8-use-case-preconditions">
       <statement>
         <p>
-          Write down 4 steps that a user must do to purchase a product, for
+          Write down four steps that a user must take to purchase a product, for
           example a book on Java, in an online store, and list the preconditions
           and postconditions for each step.
         </p>
@@ -634,14 +669,16 @@
 
         <program>
           /** method to add extra-credit to the score **/
-                 public double computeScore(double score, double extraCredit)
-                 {
-                     double totalScore = score + extraCredit;
-                     return totalScore;
-                 }
-
-          Which of the following preconditions are reasonable for the computeScore method?
+          public double computeScore(double score, double extraCredit) {
+              double totalScore = score + extraCredit;
+              return totalScore;
+          }
         </program>
+
+        <p>
+          Which of the following preconditions are reasonable for the
+          computeScore method?
+        </p>
       </statement>
 
       <choices>
