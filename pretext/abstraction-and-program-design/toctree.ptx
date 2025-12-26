@@ -1,9 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <chapter xml:id="abstraction-and-program-design" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>abstraction-and-program-design</title>
+  <title>Program design</title>
 
-  <introduction />
+  <introduction>
+    <p>
+      In the last two chapters we learned the mechanics of how to write our own
+      <term>classes</term> and to use <term>objects</term> defined by those
+      classes, by classes built-in to Java, and by classes written by other
+      programmers such as the <c>Turtle</c> class. In this unit, we will look at
+      how to think at a higher level about designing our programs. For any given
+      program that we might want to write there are many, many ways to break it
+      down into classes. While the Java compiler doesn’t care how your program
+      is organized, as long as it follows the rules of Java, programmers have
+      learned that it matters a lot to human programmers.
+    </p>
+
+    <p>
+      In this chapter we will look at some of the ways to think about our
+      classes and how they fit together that we can use before we jump into
+      coding. In particular we will look some key kinds of
+      <term>abstraction</term> and how they help us keep our programs
+      manageable.
+    </p>
+
+    <p>
+      In the last section we’ll look at some of the larger implications of
+      designing programs: how software affects society and some issues we need
+      to think about when designing software to avoid harms it might cause.
+    </p>
+
+  </introduction>
+
   <xi:include href="./topic-3-1-abstraction.ptx" />
   <xi:include href="./topic-1-8-comments.ptx" />
   <xi:include href="./topic-3-2-impacts.ptx" />

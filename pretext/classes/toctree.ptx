@@ -60,5 +60,4 @@
   <xi:include href="./instance-variables.ptx" />
   <xi:include href="./topic-3-4-constructors.ptx" />
   <xi:include href="./topic-3-5-methods.ptx" />
-  <xi:include href="./turtles.ptx" />
 </chapter>

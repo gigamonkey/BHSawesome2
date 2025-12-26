@@ -7,9 +7,9 @@
     <p>
       We first used the Turtle library that is built into this book in <xref
       ref="topic-1-7-APIs-and-libraries" />. Now that we’ve learned more about
-      classes we can use the classes in the Turtle library, <c>Turtle</c> and
-      <c>World</c> to look at some concrete examples of some of the topics we’ve
-      discussed in this unit.
+      classes and objects we can use the classes from the Turtle library,
+      <c>Turtle</c> and <c>World</c>, to look at some concrete examples of some
+      of the topics we’ve discussed in the last two chapters.
     </p>
 
     <p>

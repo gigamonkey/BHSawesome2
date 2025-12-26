@@ -37,4 +37,5 @@
   <xi:include href="./topic-3-6-methods-references.ptx" />
   <xi:include href="./object-equality.ptx" />
   <xi:include href="./topic-3-8-scope-access.ptx" />
+  <xi:include href="./turtles.ptx" />
 </chapter>

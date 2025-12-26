@@ -4,7 +4,6 @@
   <title>text-files</title>
 
   <introduction />
-  <xi:include href="./topic-4-1-data-ethics.ptx" />
   <xi:include href="./topic-4-2-data-sets.ptx" />
   <xi:include href="./topic-4-6-input-files.ptx" />
 </chapter>
