@@ -26,6 +26,152 @@
     </p>
   </introduction>
 
+  <subsection>
+    <title>Using wrapper classes with <c>ArrayList</c></title>
+
+      <activity label="qArrayListInteger">
+      <statement>
+        <p>
+          Which of the following is the correct way to create an ArrayList of
+          integers?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>ArrayList[int] numbers = new ArrayList();</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The square brackets [] are only used with arrays, not ArrayLists.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>ArrayList&lt;String&gt; numbers = new ArrayList();</p>
+          </statement>
+
+          <feedback>
+            <p>
+              String is not the correct type since this is for an array of
+              integers, and the type should be next to ArrayList on both sides.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>ArrayList&lt;int&gt; numbers = new ArrayList&lt;int&gt;();</p>
+          </statement>
+
+          <feedback>
+            <p>
+              ArrayLists cannot hold primitive types like int. You must use the
+              wrapper class Integer.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>
+              ArrayList&lt;Integer&gt; numbers = new ArrayList&lt;Integer&gt;();
+            </p>
+          </statement>
+
+          <feedback>
+            <p>
+              The wrapper class Integer is used to hold integers in an
+              ArrayList.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+  </subsection>
+
+  <subsection>
+        <activity label="qalAdd1">
+      <statement>
+        <p>What will print when the following code executes?</p>
+
+        <program>
+          <![CDATA[
+          ArrayList<Integer> list1 = new ArrayList<Integer>();
+          list1.add(1);
+          list1.add(2);
+          list1.add(3);
+          list1.add(2, 4);
+          list1.add(5);
+          System.out.println(list1);
+          ]]>
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>[1, 2, 3, 4, 5]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This would be true if all the <c>add</c> method calls were
+              <c>add(value)</c>, but at least one is not.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>[1, 4, 2, 3, 5]</p>
+          </statement>
+
+          <feedback>
+            <p>This would be true if it was <c>add(1, 4)</c></p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>[1, 2, 4, 3, 5]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The <c>add(2, 4)</c> will put the 4 at index 2, but first move the
+              3 to index 3.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>[1, 2, 4, 5]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This would be true if the <c>add(2, 4)</c> replaced what was at
+              index 2, but it actually moves the value currently at index 2 to
+              index 3.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <p>
+      You can step through the code above by clicking on this <url
+      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2,4)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(5))%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Java
+      Visualizer</url>.
+    </p>
+  </subsection>
+
   <subsection xml:id="creating-integer-and-double-objects">
     <title>Creating <c>Integer</c> and <c>Double</c> Objects</title>
 
@@ -216,6 +362,232 @@
       </cardsort>
     </activity>
   </subsection>
+
+  <subsection>
+    <title>A autoboxing subtlety</title>
+
+        <activity label="listRem">
+      <statement>
+        <p>
+          Remember that the <c>remove(int index)</c> method removes a value from
+          an <c>ArrayList</c> at a specific position decreasing the size of the
+          list by one and shifting down the items that were at higher indexes in
+          the array by one position. It also returns the item that was removed.
+        </p>
+        <p>
+          What will the following code print out? Try to guess before you run
+          it. Were you surprised? Read the note below.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          <![CDATA[
+          import java.util.*; // import all classes in this package.
+
+          public class listRem
+          {
+              public static void main(String[] arts)
+              {
+                  ArrayList<Integer> list1 = new ArrayList<Integer>();
+                  list1.add(1);
+                  list1.add(2);
+                  list1.add(3);
+                  System.out.println(list1);
+                  list1.remove(1);
+                  System.out.println(list1);
+              }
+          }
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("listRem");
+              }
+
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "[1, 2, 3]\n[1, 3]";
+
+                  boolean passed = getResults(expect, output, "main()", true);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+
+    <note>
+      <p>
+        The <c>remove(int index)</c> method will remove the object at the given
+        index and shift left any values to the right of that index. It doesn’t
+        remove the object that matches the integer value given. In the example
+        above it doesn’t remove the value 1. It removes the value 2 at index 1.
+      </p>
+    </note>
+
+    <activity label="qListRem">
+      <statement>
+        <p>What will print when the following code executes?</p>
+
+        <program>
+          <![CDATA[
+          List<Integer> list1 = new ArrayList<Integer>();
+          list1.add(1);
+          list1.add(2);
+          list1.add(3);
+          list1.remove(2);
+          System.out.println(list1);
+          ]]>
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>[2, 3]</p>
+          </statement>
+
+          <feedback>
+            <p>This would be true if it was <c>remove(0)</c></p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>[1, 2, 3]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The <c>remove</c> will remove a value from the list, so this can't
+              be correct.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>[1, 2]</p>
+          </statement>
+
+          <feedback>
+            <p>The 3 (at index 2) is removed</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>[1, 3]</p>
+          </statement>
+
+          <feedback>
+            <p>This would be true if it was <c>remove(1)</c></p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <p>
+      You can step through the code above by clicking on the following <url
+      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(2))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.remove(2)%3B%0A++++++System.out.println(list1)%3B%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">RemoveExample</url>.
+    </p>
+
+        <activity label="qListRem1">
+      <statement>
+        <p>What will print when the following code executes?</p>
+
+        <program>
+          <![CDATA[
+          List<Integer> list1 = new ArrayList<Integer>();
+          list1.add(1);
+          list1.add(2);
+          list1.add(3);
+          list1.set(2, 4);
+          list1.add(2, 5);
+          list1.add(6);
+          System.out.println(list1);
+          ]]>
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>[1, 2, 3, 4, 5]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The <c>set</c> will replace the item at index 2 so this can not be
+              right.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>[1, 2, 4, 5, 6]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The <c>add</c> with an index of 2 and a value of 5 adds the 5 at
+              index 2 not 3. Remember that the first index is 0.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>[1, 2, 5, 4, 6]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The <c>set</c> will change the item at index 2 to 4. The add of 5
+              at index 2 will move everything else to the right and insert 5.
+              The last <c>add</c> will be at the end of the list.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>[1, 5, 2, 4, 6]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The <c>add</c> with an index of 2 and a value of 5 adds the 5 at
+              index 2 not 1. Remember that the first index is 0.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <p>
+      You can step through the code above by clicking on the following <url
+      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++ArrayList%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(1)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(3)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.set(2,4)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2,5)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(6)%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Example1</url>.
+    </p>
+  </subsection>
+
+
 
   <subsection xml:id="parsing-strings-to-numbers">
     <title>Parsing Strings to Numbers</title>

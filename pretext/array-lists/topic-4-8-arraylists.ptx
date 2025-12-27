@@ -1,46 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-8-arraylists">
-  <title>ArrayList and its Methods</title>
+  <title><c>ArrayList</c> and its methods</title>
 
   <introduction>
     <idx>arraylist</idx>
     <idx>ArrayList</idx>
     <idx><h>arraylist</h><h>definition</h></idx>
-    <figure align="left">
+    <figure>
       <caption>A couple of lists</caption>
-
       <image source="Unit4-Data-Collections/Figures/lists.jpg" width="54%" />
     </figure>
 
     <p>
-      At the beginning of this unit, we learned about using arrays to hold
-      collections of related data. However arrays are not very flexible. Most
-      notably, the size of an array is established at the time of creation and
-      cannot be changed. What if you don’t know how big the collection of data
-      will be? What if you want to both add and remove items from a collection?
-      For example, if you wanted to represent a shopping list, you might add to
-      the list throughout the week and remove things from the list while you are
-      shopping. You probably would not know how many items will be on the list
-      at the beginning of the week.
+      Unlike arrays which are built into Java the language and are used with
+      special syntax such as array initializers like <c>new int[] { 1, 2, 3
+      }</c> and array access expressions like <c>nums[0]</c>, and even unlike
+      the <c>String</c> class which gets some special support from the language,
+      <c>ArrayList</c> is a class that we could write ourselves if it didn’t
+      exist. In other words <c>ArrayList</c> is a new class abstraction that
+      hides some of the messy details of using an array to represent a
+      collection of values when we want to be able to change the number of
+      values in the collection over time.
     </p>
 
     <p>
-      For cases like this, Java has a class called <c>ArrayList</c> which is a
-      re-sizable list. It is called <c>ArrayList</c> because it stores the items
-      that have been added to it in an underlying array. But it also takes care
-      of keeping track of how many items have been added to the array and it
-      will create a new bigger array under the covers when needed to hold more
-      items.
-    </p>
-
-    <p>
-      You can use <c>ArrayList</c> instead of arrays whenever you don’t know the
-      size of the array you need or you know that you will add and remove items
-      and may need to change the array’s size dynamically during run time. An
-      <c>ArrayList</c> is <term>mutable</term> in size and contains object
-      references, meaning it can change during run time by adding and removing
-      objects from it.
+      Thus to learn how to use it we just need to learn about its public API—the
+      constructors and methods the class provides. The whole API is quite large
+      and is fully documented in the <url
+      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/ArrayList.html">class’s
+      Javadocs</url>. But for our purposes we only need to know a handful of
+      methods which we’ll cover in this chapter.
     </p>
 
     <note>
@@ -50,7 +40,8 @@
         classes and the interface <c>List</c> was often used to declare a
         variable that would refer to an <c>ArrayList</c>. Interfaces are no
         longer on the exam, but if you see <c>List</c> being used in an old exam
-        question just assume it’s an <c>ArrayList</c>.
+        question just assume it’s an <c>ArrayList</c>. You will also see
+        references to <c>List</c> if you read the <c>ArrayList</c> javadocs.
       </p>
     </note>
   </introduction>
@@ -71,9 +62,11 @@
 
         <feedback>
           <p>
-            No, An ArrayList grows as needed and is typically bigger than the
-            data put into it. If the underlying array in an ArrayList is full
-            when adding in new data, it usually doubles in size.
+            No, The underlying array in an <c>ArrayList</c> is actually usually
+            bigger than the number of values stored in the <c>ArrayList</c>. It
+            is expanded as needed by making a new bigger array, usually twice
+            the size of the old array, and copying values from the old array
+            into the new one.
           </p>
         </feedback>
       </choice>
@@ -87,7 +80,10 @@
         </statement>
 
         <feedback>
-          <p>No, you can have an array of objects.</p>
+          <p>No, arrays can store both primitive and reference types while
+          <c>ArrayList</c>s can only store reference types. We’ll see in the
+          next section how to use <term>wrapper classes</term> to make
+          <c>ArrayList</c> that hold <c>int</c> and <c>double</c> values.</p>
         </feedback>
       </choice>
 
@@ -100,8 +96,9 @@
 
         <feedback>
           <p>
-            No, an ArrayList is implemented using an array so it has the same
-            access time to any index as an array does.
+            No, an <c>ArrayList</c> is implemented using an array so the time to
+            access an element of an array list is essentially the same same as
+            the time to access the element of the underlying array.
           </p>
         </feedback>
       </choice>
@@ -116,8 +113,7 @@
 
         <feedback>
           <p>
-            An ArrayList is really a dynamic array (one that can grow or shrink
-            as needed).
+            An <c>ArrayList</c> can grow or shrink as needed.
           </p>
         </feedback>
       </choice>
@@ -130,23 +126,26 @@
     <idx>import</idx>
     <idx>java.util</idx>
     <p>
-      The <c>ArrayList</c> class is in the <c>java.util</c> package. A
-      <term>package</term> is a set or library of related classes. The classes
-      we have used until now, such as <c>String</c> and <c>Math</c>, are in the
-      special package <c>java.lang</c> whose classes are always available in any
-      Java program. Other packages, such as <c>java.util</c>, provide classes
-      that can only be used either by <term>importing</term> them or (much more
-      rarely) by referring to them by their full name which includes the package
-      as a prefix. The full name of <c>ArrayList</c> is thus
-      <c>java.util.ArrayList</c> but rather than type that out all the time, in
-      any class where we want to use <c>ArrayList</c> we will usually import it
-      with an <c>import</c> statement.
+      Recall from <xref ref="packages" /> that classes in Java are organized
+      into packages. The standard Java classes we have used until now,
+      <c>String</c> and <c>Math</c>, are in the special package <c>java.lang</c>
+      whose classes are always available in any Java program so we’ve been able
+      to refer to them without doing anything special.
+    </p>
+
+    <p>
+      <c>ArrayList</c>, on the other hand, is in a different package, called
+      <c>java.util</c>. That means that if we want to use <c>ArrayList</c> in a
+      program we need to either <term>import</term> it or (much more rarely)
+      refer to it by its full name which includes the package as a prefix:
+      <c>java.util.ArrayList</c>. But rather than type that out all the time
+      we’ll almost always use an <c>import</c> statement.
     </p>
 
     <p>
       Import statements have to come before the class definition in a Java
-      source file and serve to tell Java which class you mean when you use a
-      short name like <c>ArrayList</c>. To import just one class we use a single
+      source file and serve to tell Java which class we mean when we use a short
+      name like <c>ArrayList</c>. To import just one class we use a single
       <c>import</c> of the fully-qualified name of the class like this:
     </p>
 
@@ -158,9 +157,8 @@
     <idx>package</idx>
     <idx><h>statement</h><h>import</h></idx>
     <p>
-      After such an import statement, anywhere <c>ArrayList</c> is used as a
-      class name in the file it will be taken to mean
-      <c>java.util.ArrayList</c>.
+      Anywhere <c>ArrayList</c> is used in a class containing that import
+      statement it will be taken to mean <c>java.util.ArrayList</c>.
     </p>
 
     <p>
@@ -251,66 +249,158 @@
   </subsection>
 
   <subsection xml:id="declaring-and-creating-arraylists">
-    <title>Declaring and Creating ArrayLists</title>
+    <title>Declaring <c>ArrayList</c> variables</title>
 
     <p>
-      To declare an ArrayList use <c>ArrayList&lt;Type&gt; name</c> where
-      <em>Type</em>, called a <term>type parameter</term> is the type of objects
-      you want to store in the ArrayList. For example a variable naming an
-      <c>ArrayList</c> meant to hold <c>String</c>s is declared as
-      <c>ArrayList&lt;String&gt;</c> as shown in the code below. Programmers use
-      the letter E and call it the <term>generic type</term> for an Element.
-      <c>ArrayList&lt;E&gt;</c>, where the generic type <c>E</c> specifies the
-      type of the elements. (Without it, the type will be <c>Object</c>). When
-      <c>ArrayList&lt;E&gt;</c> is specified, the types of the reference
-      parameters and return type when using its methods are type <c>E</c>.
-      <c>ArrayList&lt;E&gt;</c>, where the generic type <c>E</c> specifies the
-      type of the elements. So if E is <c>String</c>, then the type of the
-      reference parameters and return type when using its methods are type
-      <c>String</c>.
+      Just like when we declare an array and have to specify what kind of array
+      it is in terms of what kind of values it can hold (e.g. <c>String[]</c> vs
+      <c>int[]</c>), when we declare an <c>ArrayList</c> we also need to specify
+      what kind of values it will hold. The syntax is slightly different from
+      the array declaration syntax and is actually an example of a feature of
+      Java called <term>generic types</term>. Generic types are not otherwise
+      covered in the AP curriculum but are an important part of real-world Java
+      programming.
     </p>
 
     <p>
-      You can declare a variable to just be of type <c>ArrayList</c>, with no
-      type parameter, and it’ll be approximately the same as if you had declared
-      <c>ArrayList&lt;Object&gt;</c>, but it is good practice to specify the
-      type of objects you intend to store in an <c>ArrayList</c> as it allows
-      the compiler to find errors (that are specific to that to Strings or ints
-      or whatever type you put in) that would otherwise be missed until run
-      time.
+      To declare an <c>ArrayList</c> variable we write the type of the variable
+      as <c>ArrayList&lt;Type&gt; name</c> where <em>Type</em>, called a
+      <term>type parameter</term>, is the type of the objects we want to store
+      in the <c>ArrayList</c>.
+    </p>
+
+    <p>
+      For example a variable whose type is an <c>ArrayList</c> meant to hold
+      <c>String</c> values is declared as <c>ArrayList&lt;String&gt;</c> as
+      shown in the code below.
     </p>
 
     <program>
       <![CDATA[
-      // ArrayList<Type> name = new ArrayList<Type>();
-      // An ArrayList of Strings:
-      ArrayList<String> shoppingList = new ArrayList<String>();
+      ArrayList<String> shoppingList;
       ]]>
     </program>
 
     <p>
-      As with other reference types, declaring a <c>ArrayList</c> variable
-      doesn’t actually create a <c>ArrayList</c> object. It only creates a
-      variable that can refer to a <c>ArrayList</c> or <c>null</c>. To actually
-      create a <c>ArrayList</c> we must invoke a constructor such as <c>new
-      ArrayList&lt;String&gt;()</c>. The <c>ArrayList</c> constructor
-      <c>ArrayList()</c> constructs an empty list.
+      If you look at the <c>ArrayList</c> javadocs you’ll see the class listed
+      as <c>ArrayList&lt;E&gt;</c>. The <c>E</c> is the name for the type
+      parameter and tells us that we need to provide an actual type like
+      <c>String</c> when we declare an <c>ArrayList</c>. If you look at the
+      Javadocs for <c>ArrayList</c> methods (or at the <url
+      href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf">AP
+      CSA Java Quick Reference Sheet</url>) you’ll see the <c>E</c> again as the
+      type of method parameters and return types. That means that those methods
+      take parameters and return values of whatever specific type you specified
+      when you declared a particular <c>ArrayList</c>.
     </p>
 
     <p>
-      You can get the number of items in a <c>ArrayList</c> using the
-      <c>size()</c> method. Notice that a newly constructed <c>ArrayList</c> is
-      empty and thus has a size of 0. Also remember that you can’t call methods
-      on <c>null</c> so trying to call <c>size</c> on the value of <c>list2</c>
-      at line 10 below causes a <c>NullPointerException</c>.
+      For example the <c>add</c> method has the signature <c>boolean add(E
+      e)</c> which means if you’ve declared an <c>ArrayList&lt;String&gt;</c>
+      then, for that <c>ArrayList</c>, it’s as if the <c>add</c> method had the
+      signature <c>boolean add(String e)</c> which makes sure that no code can
+      add anything other than a <c>String</c> to that <c>ArrayList</c>.
     </p>
+
+    <p>
+      Similarly the <c>get</c> method has the signature <c>E get(int index)</c>
+      which means that the values returned by <c>get</c> from the same
+      <c>ArrayList</c> will be of type <c>String</c> so we can safely use
+      <c>String</c> methods on them.
+    </p>
+
+    <note>
+      <p>
+        It is legal to declare a variable to just be of type <c>ArrayList</c>,
+        with no type parameter, but you’ll get a warning from the compiler about
+        <term>raw types</term>. That raw types are allowed at all is due to the
+        history of how generic types were added to Java and a desire to add the
+        feature to the language without breaking older Java code. These days you
+        should always specify the type of objects you intend to store in an
+        <c>ArrayList</c> as it allows the compiler to find errors that would
+        otherwise not be detected until run time.
+      </p>
+    </note>
+  </subsection>
+
+  <subsection>
+    <title><c>ArrayList</c> constructors</title>
+    <p>
+      As with other reference types, declaring a <c>ArrayList</c> variable
+      doesn’t actually create an object; it just creates a variable that can
+      hold a reference to an <c>ArrayList</c> or the special reference
+      <c>null</c>.
+    </p>
+
+    <p>
+      To actually create a <c>ArrayList</c> we must invoke a constructor. The
+      main <c>ArrayList</c> constructor takes no arguments and returns an empty
+      <c>ArrayList</c>. There are two ways to invoke the constructor: <c>new
+      ArrayList&lt;String&gt;()</c> with a type parameter or <c>new
+      ArrayList&lt;&gt;()</c> without the type parameter. The latter way is
+      generally preferred; in most contexts, such as when initializing a
+      variable declaration Java will <term>infer</term> the necessary type
+      parameter so you don’t have to specify it twice:
+    </p>
+
+    <program>
+      <![CDATA[
+      ArrayList<String> strings = new ArrayList<>();
+      ]]>
+    </program>
+
+    <p>
+      Another useful constructor, though not officially part of the AP
+      curriculum, is the copy constructor that takes another <c>ArrayList</c>
+      and makes a new <c>ArrayList</c> containing the same values:
+    </p>
+
+    <program>
+      <![CDATA[
+      ArrayList<String> copyOfStrings = new ArrayList<>(strings);
+      ]]>
+    </program>
+
+    <p>
+      The type parameter of an <c>ArrayList</c> can be any reference type
+      including classes that we write, such as the <c>Student</c> or
+      <c>Person</c>, classes that other programmers have written such as
+      <c>Turtle</c>, or even arrays like <c>int[]</c> though it is a bit odd to
+      mix <c>ArrayList</c>s and arrays that way.
+    </p>
+
+    <p>
+      However the type parameter cannot be a primitve type so we cannot make an
+      <c>ArrayList&lt;int&gt;</c> or <c>ArrayList&lt;double&gt;</c>. In the next
+      section we’ll discuss how to use wrapper classes to work around that
+      limitation.
+    </p>
+
+    <program>
+      <![CDATA[
+      // An ArrayList of Students:
+      ArrayList<Student> roster = new ArrayList<>();
+      // An ArrayList of Turtles:
+      ArrayList<Turtle> turtles = new ArrayList<>();
+      // An ArrayList of arrays of int
+      ArrayList<int[]> arrays = new ArrayList<>();
+      ]]>
+    </program>
 
     <activity label="ArrayListCreateStr">
       <statement>
         <p>
-          The following code demonstrates a NullPointerException. Change the
-          list2 declaration so that it creates a new ArrayList to remove the
-          NullPointerException.
+          The code below uses the <c>size</c> method which will discuss in a
+          moment to show how many elements are in an <c>ArrayList</c>. Notice
+          that a newly constructed <c>ArrayList</c> is empty and thus has a size
+          of 0.
+        </p>
+
+        <p>
+          The following code also has a bug that leads to a
+          <c>NullPointerException</c>. Change the list2 declaration so that it
+          creates a new <c>ArrayList</c> to remove the
+          <c>NullPointerException</c>.
         </p>
       </statement>
 
@@ -362,207 +452,112 @@
       </program>
     </activity>
 
-    <p>
-      You can also create ArrayLists of integer and double values. However, you
-      have to use the wrapper classes <c>Integer</c> or <c>Double</c> as the
-      type parameter because <c>ArrayList</c>s can only hold objects, not
-      primitive values. All primitive types must be <term>wrapped</term> in
-      objects before they are added to an ArrayList. For example, <c>int</c>
-      values can be wrapped in <c>Integer</c> objects, <c>double</c> values can
-      be wrapped in <c>Double</c> objects. However this normally happens
-      automatically thanks to autoboxing.
-    </p>
 
-    <p>
-      You can actually put in any kind of objects in an <c>ArrayList</c>,
-      including instances of classes that you write, such as the <c>Student</c>,
-      <c>Person</c>, or <c>Pet</c> classes.
-    </p>
-
-    <program>
-      <![CDATA[
-      // An ArrayList of Integers:
-      ArrayList<Integer> numList = new ArrayList<Integer>();
-      // An ArrayList of Student objects:
-      ArrayList<Student> roster = new ArrayList<Student>();
-      ]]>
-    </program>
-
-    <activity label="qArrayListInteger">
-      <statement>
-        <p>
-          Which of the following is the correct way to create an ArrayList of
-          integers?
-        </p>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>ArrayList[int] numbers = new ArrayList();</p>
-          </statement>
-
-          <feedback>
-            <p>
-              The square brackets [] are only used with arrays, not ArrayLists.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>ArrayList&lt;String&gt; numbers = new ArrayList();</p>
-          </statement>
-
-          <feedback>
-            <p>
-              String is not the correct type since this is for an array of
-              integers, and the type should be next to ArrayList on both sides.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>ArrayList&lt;int&gt; numbers = new ArrayList&lt;int&gt;();</p>
-          </statement>
-
-          <feedback>
-            <p>
-              ArrayLists cannot hold primitive types like int. You must use the
-              wrapper class Integer.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>
-              ArrayList&lt;Integer&gt; numbers = new ArrayList&lt;Integer&gt;();
-            </p>
-          </statement>
-
-          <feedback>
-            <p>
-              The wrapper class Integer is used to hold integers in an
-              ArrayList.
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
   </subsection>
 
   <subsection xml:id="arraylist-methods">
-    <title>ArrayList Methods</title>
+    <title><c>ArrayList</c> methods</title>
 
     <idx><h>arraylist</h><h>size</h></idx>
     <idx><h>arraylist</h><h>add</h></idx>
     <idx><h>arraylist</h><h>get</h></idx>
     <idx><h>arraylist</h><h>set</h></idx>
     <idx><h>arraylist</h><h>remove</h></idx>
+    <idx><h>arraylist</h><h>removing an item</h></idx>
+    <idx><h>arraylist</h><h>getting an item</h></idx>
+    <idx><h>arraylist</h><h>setting an item</h></idx>
+
     <p>
       The following are the <c>ArrayList</c> methods that you need to know for
       the AP CSA exam. These are included on the <url
       href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf">AP
       CSA Java Quick Reference Sheet</url> that you will receive during the exam
-      so you do not need to memorize them. The E in the method headers below
-      stands for the type of the element in the ArrayList; this type E can be
-      any Object type. We will look at how these methods work below.
+      so you do not need to memorize them. As we discussed above the <c>E</c> in
+      the method headers is a placeholder for the specific type used when we
+      declare an specific <c>ArrayList</c>.
     </p>
 
     <p>
       <ul>
         <li>
           <p>
-            <term>int size()</term> returns the number of elements in the list
+            <c>int size()</c> returns the number of elements in the list. An
+            empty list has size 0.
           </p>
         </li>
 
         <li>
           <p>
-            <term>boolean add(E obj)</term> appends obj to the end of the list
-            and returns true
+            <c>boolean add(E obj)</c> appends <c>obj</c> to the end of the
+            list and returns <c>true</c>
           </p>
         </li>
 
         <li>
           <p>
-            <term>E remove(int index)</term> removes the item at the index and
-            shifts remaining items to the left (to a lower index)
+            <c>E get(int index)</c> returns the item in the list at the position
+            <c>index</c>. The <c>index</c> must be a valid index into the list.
+            As with array and <c>String</c> indexes, index of the first item in
+            an <c>ArrayList</c> is <c>0</c> and the last valid index is one less
+            than the <c>size()</c> of the list.
           </p>
         </li>
 
         <li>
           <p>
-            <term>void add(int index, E obj)</term> moves any current objects at
-            index or beyond to the right (to a higher index) and inserts obj at
-            the index
+            <c>E set(int index, E obj)</c> replaces the item at position
+            <c>index</c> with <c>obj</c> which must be a valid index into the
+            list.
           </p>
         </li>
 
         <li>
           <p>
-            <term>E get(int index)</term> returns the item in the list at the
-            index
+            <c>E remove(int index)</c> removes the item at the index
+            <c>index</c> and shifts remaining items to the left (to a lower
+            index), returning the removed item. The <c>index</c> argument must
+            be a valid index into the list.
           </p>
         </li>
 
         <li>
           <p>
-            <term>E set(int index, E obj)</term> replaces the item at index with
-            obj
+            <c>void add(int index, E obj)</c> moves any objects at positions
+            greater than or equal to <c>index</c> to the right (to a higher
+            indexes) and inserts <c>obj</c> at the position <c>index</c>. The
+            <c>index</c> argument must be a valid index or exactly the
+            <c>size()</c> of the list in which case the item is added at the end
+            of the list.
           </p>
         </li>
+
       </ul>
     </p>
-  </subsection>
-
-  <subsection xml:id="size">
-    <title><c>size()</c></title>
-
-    <idx><h>arraylist</h><h>size</h></idx>
-    <p>
-      You can get the number of items in a <c>ArrayList</c> using its
-      <c>size()</c> method. The <c>ArrayList</c> starts out empty with a size of
-      0.
-    </p>
-
-    <program>
-      <![CDATA[
-      ArrayList<String> list = new ArrayList<String>();
-      System.out.println( list.size() );
-      ]]>
-    </program>
 
     <note>
       <p>
-        With arrays, you use the <c>length</c> field to get the number of items
-        in the array. But, with an <c>ArrayList</c> you use the <c>size()</c>
-        method to get the number of items in the <c>ArrayList</c>. You will not
-        be penalized if you mix up <c>length</c> and <c>size()</c> in the CSA
-        exam. The number of items in an empty <c>ArrayList</c> is 0.
+        Java is unfortunately all over the map when it comes to how to get the
+        number of items in different data structures. With an array, we use the
+        <c>length</c> <em>field</em> to get the number of items in the array
+        while with a <c>String</c> we use the <c>length()</c> <em>method</em> to
+        get the number of characters in the <c>String</c>. And with an
+        <c>ArrayList</c> we use the <c>size()</c> method to get the number of
+        items in the list. Mixing these up is a common mistake for new Java
+        programmers. However you will not be penalized if you mix them up on the
+        AP exam.
       </p>
     </note>
-  </subsection>
-
-  <subsection xml:id="add-obj">
-    <title><c>add(obj)</c></title>
-
-    <idx><h>arraylist</h><h>add</h></idx>
-    <p>
-      You can add values to an <c>ArrayList</c> using the method <c>add(obj)</c>
-      which will add the object to the end of the list, just like you would join
-      the end of the line to board a bus. Note that we can add objects of any
-      type to an <c>ArrayList</c>. The following code has a <c>String</c> list
-      and an <c>Integer</c> list.
-    </p>
 
     <activity label="listAdd">
       <statement>
         <p>
+          The code below demonstrates using the <c>add</c> method to add values
+          to the end of a list and the <c>size</c> method to get the size after
+          addingn several items.
+        </p>
+        <p>
           Can you add another item to the shopping list and print out the new
-          list?
+          list and its new size?
         </p>
       </statement>
 
@@ -576,7 +571,7 @@
           {
               public static void main(String[] args)
               {
-                  ArrayList<String> shoppingList = new ArrayList<String>();
+                  ArrayList<String> shoppingList = new ArrayList<>();
                   System.out.println("Size: " + shoppingList.size());
                   shoppingList.add("carrots");
                   System.out.println(shoppingList);
@@ -585,10 +580,6 @@
                   shoppingList.add("chocolate");
                   System.out.println(shoppingList);
                   System.out.println("Size: " + shoppingList.size());
-                  ArrayList<Integer> quantities = new ArrayList<Integer>();
-                  quantities.add(2);
-                  quantities.add(4);
-                  System.out.println(quantities);
               }
           }
           ]]>
@@ -617,8 +608,7 @@
                               + "[carrots]\n"
                               + "[carrots, bread]\n"
                               + "[carrots, bread, chocolate]\n"
-                              + "Size: 3\n"
-                              + "[2, 4]";
+                              + "Size: 3";
 
                   boolean passed = !output.equals(expect);
 
@@ -631,35 +621,11 @@
       </program>
     </activity>
 
-    <idx><h>list</h><h>autoboxing</h></idx>
-    <idx><h>list</h><h>unboxing</h></idx>
-    <p>
-      Primitive types like <c>int</c> and <c>double</c> are automatically
-      converted to their corresponding wrapper classes <c>Integer</c> and
-      <c>Double</c> using autoboxing when added to an <c>ArrayList</c>. When you
-      pull an <c>int</c> value out of a list of <c>Integers</c> that is called
-      <term>unboxing</term>.
-    </p>
-
-    <program>
-      <![CDATA[
-      ArrayList<Integer> list = new ArrayList<Integer>();
-      list.add(new Integer(5)); // this will work in Java 7
-      list.add(5); // this will work in all Java versions
-      ]]>
-    </program>
-
-    <p>
-      You can put any kind of objects into an <c>ArrayList</c>. Even instances
-      of a class that you wrote. For example, here is an <c>ArrayList</c> of
-      <c>Student</c>s.
-    </p>
-
     <activity label="StudentArrayList">
       <statement>
         <p>
           An example of an <c>ArrayList</c> of <c>Student</c> objects. Add a new
-          student with your name and info in it.
+          student with your name and info.
         </p>
       </statement>
 
@@ -674,7 +640,7 @@
               // main method for testing
               public static void main(String[] args)
               {
-                  ArrayList<Student> roster = new ArrayList<Student>();
+                  ArrayList<Student> roster = new ArrayList<>();
                   roster.add(new Student("Skyler", "skyler@sky.com", 123456));
                   roster.add(new Student("Ayanna", "ayanna@gmail.com", 789012));
 
@@ -732,408 +698,22 @@
 
       </program>
     </activity>
-  </subsection>
-
-  <subsection xml:id="add-index-obj">
-    <title><c>add(index,obj)</c></title>
-
-    <p>
-      There are actually two different <c>add</c> methods in the
-      <c>ArrayList</c> class. The <c>add(obj)</c> method adds the passed object
-      to the end of the list. The <c>add(index,obj)</c> method adds the passed
-      object at the passed index, but first moves over any existing values to
-      higher indices to make room for the new object. The indices for an
-      <c>ArrayList</c> start at <c>0</c> and end at the number of elements <c>-
-      1</c>.
-    </p>
-
-    <activity label="listAddInt2">
-      <statement>
-        <p>
-          What will the code below print out? Try figuring it out before running
-          it. Remember that <c>ArrayList</c>s start at index 0 and that the
-          add(index,obj) always has the index as the first argument.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-
-        <code>
-          <![CDATA[
-          import java.util.*; // import all classes in this package.
-
-          public class listAddInt2
-          {
-              public static void main(String[] arts)
-              {
-                  ArrayList<Integer> list1 = new ArrayList<Integer>();
-                  list1.add(1);
-                  System.out.println(list1);
-                  // adds the number 2 to the end of the list
-                  list1.add(2);
-                  System.out.println(list1);
-                  // This will add the number 3 at index 1
-                  list1.add(1, 3);
-                  System.out.println(list1);
-                  // This will add the number 4 at index 1
-                  list1.add(1, 4);
-                  System.out.println(list1);
-                  System.out.println(list1.size());
-              }
-          }
-          ]]>
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("listAddInt2");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "[1]\n[1, 2]\n[1, 3, 2]\n[1, 4, 3, 2]\n4\n";
-
-                  boolean passed = getResults(expect, output, "main()", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
-      </program>
-    </activity>
-
-    <note>
-      <p>
-        <c>ArrayList</c>s like arrays start numbering their elements from 0.
-      </p>
-    </note>
-
-    <activity label="qalAdd1">
-      <statement>
-        <p>What will print when the following code executes?</p>
-
-        <program>
-          <![CDATA[
-          ArrayList<Integer> list1 = new ArrayList<Integer>();
-          list1.add(1);
-          list1.add(2);
-          list1.add(3);
-          list1.add(2, 4);
-          list1.add(5);
-          System.out.println(list1);
-          ]]>
-        </program>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>[1, 2, 3, 4, 5]</p>
-          </statement>
-
-          <feedback>
-            <p>
-              This would be true if all the <c>add</c> method calls were
-              <c>add(value)</c>, but at least one is not.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>[1, 4, 2, 3, 5]</p>
-          </statement>
-
-          <feedback>
-            <p>This would be true if it was <c>add(1, 4)</c></p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>[1, 2, 4, 3, 5]</p>
-          </statement>
-
-          <feedback>
-            <p>
-              The <c>add(2, 4)</c> will put the 4 at index 2, but first move the
-              3 to index 3.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>[1, 2, 4, 5]</p>
-          </statement>
-
-          <feedback>
-            <p>
-              This would be true if the <c>add(2, 4)</c> replaced what was at
-              index 2, but it actually moves the value currently at index 2 to
-              index 3.
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <p>
-      You can step through the code above by clicking on this <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2,4)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(5))%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Java
-      Visualizer</url>.
-    </p>
-
-    <activity label="qalAdd2">
-      <statement>
-        <p>What will print when the following code executes?</p>
-
-        <program>
-          <![CDATA[
-          ArrayList<String> list1 = new ArrayList<String>();
-          list1.add("Anaya");
-          list1.add("Layla");
-          list1.add("Sharrie");
-          list1.add(1, "Sarah");
-          System.out.println(list1);
-          ]]>
-        </program>
-      </statement>
-
-      <choices>
-        <choice correct="yes">
-          <statement>
-            <p>["Anaya", "Sarah", "Layla", "Sharrie"]</p>
-          </statement>
-
-          <feedback>
-            <p>
-              The <c>add(1, "Sarah")</c> will move any current items to the
-              right and then put "Sarah" at index 1.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>["Anaya", "Layla", "Sharrie", "Sarah"]</p>
-          </statement>
-
-          <feedback>
-            <p>This would be true if the last one was <c>add("Sarah")</c></p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>["Sarah", "Anaya", "Layla", "Sharrie"]</p>
-          </statement>
-
-          <feedback>
-            <p>This would be true if the last one was <c>add(0, "Sarah")</c></p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>["Anaya", "Layla", "Sarah", "Sharrie"]</p>
-          </statement>
-
-          <feedback>
-            <p>This would be true if the last one was <c>add(2, "Sarah")</c></p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <p>
-      You can step through the code above by clicking on the following <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CString%3E+list1+%3D+new+ArrayList%3CString%3E()%3B%0A++++++list1.add(%22Anaya%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Layla%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Sharrie%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(1,+%22Sarah%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Java
-      Visualizer</url>.
-    </p>
-  </subsection>
-
-  <subsection xml:id="remove-index">
-    <title><c>remove(index)</c></title>
-
-    <idx><h>arraylist</h><h>removing an item</h></idx>
-    <p>
-      You can also remove values from an <c>ArrayList</c> using the
-      <c>remove(index)</c> method. It removes and returns the item at the given
-      index. This will move all the other items over in the underlying array and
-      decrease the size of the <c>ArrayList</c> by 1.
-    </p>
-
-    <activity label="listRem">
-      <statement>
-        <p>
-          What will the following code print out? Try to guess before you run
-          it. Were you surprised? Read the note below.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-
-        <code>
-          <![CDATA[
-          import java.util.*; // import all classes in this package.
-
-          public class listRem
-          {
-              public static void main(String[] arts)
-              {
-                  ArrayList<Integer> list1 = new ArrayList<Integer>();
-                  list1.add(1);
-                  list1.add(2);
-                  list1.add(3);
-                  System.out.println(list1);
-                  list1.remove(1);
-                  System.out.println(list1);
-              }
-          }
-          ]]>
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("listRem");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "[1, 2, 3]\n[1, 3]";
-
-                  boolean passed = getResults(expect, output, "main()", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
-      </program>
-    </activity>
-
-    <note>
-      <p>
-        The <c>remove(int index)</c> method will remove the object at the given
-        index and shift left any values to the right of that index. It doesn’t
-        remove the object that matches the integer value given. In the example
-        above it doesn’t remove the value 1. It removes the value 2 at index 1.
-      </p>
-    </note>
-
-    <activity label="qListRem">
-      <statement>
-        <p>What will print when the following code executes?</p>
-
-        <program>
-          <![CDATA[
-          List<Integer> list1 = new ArrayList<Integer>();
-          list1.add(1);
-          list1.add(2);
-          list1.add(3);
-          list1.remove(2);
-          System.out.println(list1);
-          ]]>
-        </program>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>[2, 3]</p>
-          </statement>
-
-          <feedback>
-            <p>This would be true if it was <c>remove(0)</c></p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>[1, 2, 3]</p>
-          </statement>
-
-          <feedback>
-            <p>
-              The <c>remove</c> will remove a value from the list, so this can't
-              be correct.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>[1, 2]</p>
-          </statement>
-
-          <feedback>
-            <p>The 3 (at index 2) is removed</p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>[1, 3]</p>
-          </statement>
-
-          <feedback>
-            <p>This would be true if it was <c>remove(1)</c></p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <p>
-      You can step through the code above by clicking on the following <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(2))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.remove(2)%3B%0A++++++System.out.println(list1)%3B%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">RemoveExample</url>.
-    </p>
-  </subsection>
-
-  <subsection xml:id="get-index-and-set-index-obj">
-    <title><c>get(index)</c> and <c>set(index, obj)</c></title>
-
-    <idx><h>arraylist</h><h>getting an item</h></idx>
-    <idx><h>arraylist</h><h>setting an item</h></idx>
-    <p>
-      You can get the object at an index using <c>obj = listName.get(index)</c>
-      and set the object at an index using <c>listName.set(index,obj)</c>. Both
-      methods require that the index argument refer to an existing element of
-      the list, i.e. the index must be greater than or equal to 0 and less than
-      the <c>size()</c> of the list.
-    </p>
-
-    <p>
-      Notice that <c>ArrayList</c>s use <c>get</c> and <c>set</c> methods
-      instead of the index operator that we use with arrays:
-      <c>array[index]</c>. This is because <c>ArrayList</c> is a class with
-      methods, not a built in type with special support in the language like
-      arrays.
-    </p>
 
     <activity label="listGetSet">
       <statement>
+        <p>
+          You can get the object at an index using <c>obj = listName.get(index)</c>
+          and set the object at an index using <c>listName.set(index,obj)</c>. Both
+          methods require that the index argument refer to an existing element of
+          the list, i.e. the index must be greater than or equal to 0 and less than
+          the <c>size()</c> of the list.
+        </p>
+
+        <p>
+          These methods are the <c>ArrayList</c> equivalents of the array access
+          expressions (<c>array[idx]</c>) we use to access elements of arrays.
+        </p>
+
         <p>
           Try to guess what the code below will print before running it. Can you
           get the last element in the nameList to print it out? Can you set the
@@ -1151,7 +731,7 @@
           {
               public static void main(String[] args)
               {
-                  ArrayList<String> nameList = new ArrayList<String>();
+                  ArrayList<String> nameList = new ArrayList<>();
                   nameList.add("Diego");
                   nameList.add("Grace");
                   nameList.add("Deja");
@@ -1206,84 +786,7 @@
       </program>
     </activity>
 
-    <activity label="qListRem1">
-      <statement>
-        <p>What will print when the following code executes?</p>
 
-        <program>
-          <![CDATA[
-          List<Integer> list1 = new ArrayList<Integer>();
-          list1.add(1);
-          list1.add(2);
-          list1.add(3);
-          list1.set(2, 4);
-          list1.add(2, 5);
-          list1.add(6);
-          System.out.println(list1);
-          ]]>
-        </program>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>[1, 2, 3, 4, 5]</p>
-          </statement>
-
-          <feedback>
-            <p>
-              The <c>set</c> will replace the item at index 2 so this can not be
-              right.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>[1, 2, 4, 5, 6]</p>
-          </statement>
-
-          <feedback>
-            <p>
-              The <c>add</c> with an index of 2 and a value of 5 adds the 5 at
-              index 2 not 3. Remember that the first index is 0.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>[1, 2, 5, 4, 6]</p>
-          </statement>
-
-          <feedback>
-            <p>
-              The <c>set</c> will change the item at index 2 to 4. The add of 5
-              at index 2 will move everything else to the right and insert 5.
-              The last <c>add</c> will be at the end of the list.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>[1, 5, 2, 4, 6]</p>
-          </statement>
-
-          <feedback>
-            <p>
-              The <c>add</c> with an index of 2 and a value of 5 adds the 5 at
-              index 2 not 1. Remember that the first index is 0.
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <p>
-      You can step through the code above by clicking on the following <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++ArrayList%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(1)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(3)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.set(2,4)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2,5)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(6)%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Example1</url>.
-    </p>
 
     <activity label="qListRem2">
       <statement>
@@ -1300,6 +803,11 @@
           System.out.println(list1);
           ]]>
         </program>
+
+        <p>
+          You can step through the code by clicking on the following <url
+          href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CString%3E+list1+%3D+new+ArrayList%3CString%3E()%3B%0A++++++list1.add(%22Anaya%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Layla%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Sharrie%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.set(1,+%22Destini%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(1,+%22Sarah%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Example2</url>.
+        </p>
       </statement>
 
       <choices>
@@ -1352,44 +860,239 @@
       </choices>
     </activity>
 
-    <p>
-      You can step through the code above by clicking on the following <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CString%3E+list1+%3D+new+ArrayList%3CString%3E()%3B%0A++++++list1.add(%22Anaya%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Layla%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Sharrie%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.set(1,+%22Destini%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(1,+%22Sarah%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Example2</url>.
-    </p>
+
+
+
+    <activity label="listAddInt2">
+      <statement>
+        <p>
+          Remember that there are two different <c>add</c> methods in the
+          <c>ArrayList</c> class. The <c>add(obj)</c> method adds the passed
+          object to the end of the list while <c>add(index,obj)</c> method adds
+          the passed object at the passed index, but first moves over any
+          existing values to higher indices to make room for the new object.
+        </p>
+
+        <p>
+          What will the code below print out? Try figuring it out before running
+          it.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          <![CDATA[
+          import java.util.*; // import all classes in this package.
+
+          public class listAddInt2 {
+
+              public static void main(String[] arts) {
+                  ArrayList<String> list = new ArrayList<>();
+
+                  list.add("foo");
+                  System.out.println(list);
+
+                  list.add("bar");
+                  System.out.println(list);
+
+                  list.add(1, "baz");
+                  System.out.println(list);
+
+                  list.add(1, "quux");
+                  System.out.println(list);
+
+                  System.out.println(list.size());
+              }
+          }
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("listAddInt2");
+              }
+
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "[foo]\n[foo, bar]\n[foo, baz, bar]\n[foo, quux, baz, bar]\n4\n";
+
+                  boolean passed = getResults(expect, output, "main()", true);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+
+    <activity label="qalAdd2">
+      <statement>
+        <p>What will print when the following code executes?</p>
+
+        <program>
+          <![CDATA[
+          ArrayList<String> list1 = new ArrayList<String>();
+          list1.add("Anaya");
+          list1.add("Layla");
+          list1.add("Sharrie");
+          list1.add(1, "Sarah");
+          System.out.println(list1);
+          ]]>
+        </program>
+
+        <p>
+          You can step through the code by clicking on the following <url
+      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CString%3E+list1+%3D+new+ArrayList%3CString%3E()%3B%0A++++++list1.add(%22Anaya%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Layla%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(%22Sharrie%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(1,+%22Sarah%22)%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Java
+          Visualizer</url>.
+        </p>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement>
+            <p>["Anaya", "Sarah", "Layla", "Sharrie"]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The <c>add(1, "Sarah")</c> will move any current items to the
+              right and then put "Sarah" at index 1.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>["Anaya", "Layla", "Sharrie", "Sarah"]</p>
+          </statement>
+
+          <feedback>
+            <p>This would be true if the last one was <c>add("Sarah")</c></p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>["Sarah", "Anaya", "Layla", "Sharrie"]</p>
+          </statement>
+
+          <feedback>
+            <p>This would be true if the last one was <c>add(0, "Sarah")</c></p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>["Anaya", "Layla", "Sarah", "Sharrie"]</p>
+          </statement>
+
+          <feedback>
+            <p>This would be true if the last one was <c>add(2, "Sarah")</c></p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+
   </subsection>
 
   <subsection xml:id="comparing-arrays-and-arraylists">
-    <title>Comparing arrays and <c>ArrayList</c>s</title>
+    <title>When to use an array vs an <c>ArrayList</c>?</title>
 
     <p>
-      When do you use arrays and when do you use <c>ArrayList</c>s? Use an array
-      when you want to store several items of the same type and you know how
-      many items will be in the array and the items in the array won’t change in
-      order or number. Use an <c>ArrayList</c> when you want to store several
-      items of the same type and you don’t know how many items you will need in
-      the list or when you want to remove items from the list or add items to
-      the list while the program is running.
+      Suppose we need to store a collection of values. How do we decide when to
+      use an array vs an <c>ArrayList</c>? Often the choice is obvious: if we
+      want to store a collection of values that can grow or shrink we definitely
+      want to use an <c>ArrayList</c>.
     </p>
 
-    <p>Here is a comparison of how to create arrays and <c>ArrayList</c>s:</p>
+    <p>
+      And even if we don’t think we need to grow or shrink our collection an
+      <c>ArrayList</c> is often still a good choice. While you need to know how
+      to use arrays to be a competent Java programmer (and to do well on the AP
+      exam) in day-to-day programming you can get pretty far just using
+      <c>ArrayList</c> when you need a collection of values.
+    </p>
+
+    <p>
+      That said, arrays have some advantages: precisely because they are
+      relatively limited, they are also very efficient. And because they have
+      special syntax in the language they can be easier to use.
+    </p>
+
+    <p>
+      For instance, if we were writing a chess game and wanted to represent the
+      chess board we could use a two-dimensional array of <c>Piece</c> objects
+      like this:
+    </p>
 
     <program>
       <![CDATA[
-      // arrays must specify a size!
-      int[] highScores = new int[5];
-      String[] names = new String[5];
-
-      // ArrayLists are empty to start with
-      ArrayList<Integer> highScoreList = new ArrayList<Integer>();
-      ArrayList<String> nameList = new ArrayList<String>();
+      Piece[][] board = new Piece[8][8];
+      board[0][0] = new Piece("black", "rook");
       ]]>
     </program>
 
     <p>
-      Here is a comparison of how to access and change elements in arrays and
-      <c>ArrayList</c>s. Note that <c>ArrayList</c>s have a method <c>size()</c>
-      instead of a <c>length</c> property, and <c>ArrayList</c>s use
-      <c>get</c>/<c>set</c> methods instead of the index operator (<c>[]</c>).
+      Simply constructing the array allocates memory to hold sixty-four
+      <c>Piece</c> objects and then we can set an element with the simple array
+      access expression <c>board[0][0]</c>.
+    </p>
+
+    <p>
+      Compare that to what we have to do to use nested <c>ArrayList</c>s.
+    </p>
+
+    <program>
+      <![CDATA[
+      ArrayList<ArrayList<Piece>> board = new ArrayList<>();
+
+      // Need to make all the nested ArrayLists and fill them out
+      for (int i = 0; i < 8; i++) {
+        ArrayList<Piece> row = new ArrayList<>();
+        for (int j = 0; j < 8; j++) {
+          row.add(null);
+        }
+        board.add(row);
+      }
+
+      // To set an particular square we get the row and then set the column.
+      board.get(0).set(0, new Piece("black", "rook"));
+      ]]>
+    </program>
+
+    <p>
+      Pretty much everything about the <c>ArrayList</c> version, from the type
+      of the variable to the code we have to write to initialize things and then
+      the code to access elements of the nested <c>ArrayList</c>s is way more
+      complicated with no real benefit since the size of the chess board is
+      never going to change.
+    </p>
+
+    <p>
+      The other place arrays have some advantages are in dealing with primitive
+      values since an <c>ArrayList</c> can really only hold reference types.
+      We’ll look at that issue in more detail in the next section.
+    </p>
+
+    <p>
+      Here is a comparison of how to access and change elements in an array vs
+      an <c>ArrayList</c>. Note that <c>ArrayList</c>s have a method
+      <c>size()</c> instead of a <c>length</c> property, and <c>ArrayList</c>s
+      use <c>get</c>/<c>set</c> methods instead of the index operator
+      (<c>[]</c>).
     </p>
 
     <table>
@@ -1432,10 +1135,9 @@
     <p>
       Here is a <url
       href="https://drive.google.com/file/d/1EzkHa3TNlbHOKVeZReQIf4HzuwwXsCAV/view?usp=sharing">comparison
-      handout</url> of the basic operations to access 1-dimensional and
-      2-dimensional arrays (which we will see in the next lessons),
-      <c>ArrayList</c>s, and <c>String</c>s made by AP CSA teacher Sam Procopio
-      of Bishop Blanchet High School.
+      handout</url> of the basic operations to access one- and two-dimensional
+      arrays, <c>ArrayList</c>s, and <c>String</c>s made by AP CSA teacher Sam
+      Procopio of Bishop Blanchet High School.
     </p>
 
     <activity label="array-to-arraylist">
@@ -1563,7 +1265,7 @@
               public static void main(String[] args)
               {
                   String[] names = {"Dakota", "Madison", "Brooklyn"};
-                  ArrayList<String> namesList = new ArrayList<String>(Arrays.asList(names));
+                  ArrayList<String> namesList = new ArrayList<>(Arrays.asList(names));
                   System.out.println(namesList);
               }
           }
@@ -1610,8 +1312,8 @@
       question, you are asked to write a constructor for a class called
       <c>Digits</c>. This constructor takes an integer number as its argument
       and divides it up into its digits and puts the digits into an
-      <c>ArrayList</c>. For example, <c>new Digits(154)</c> creates an ArrayList
-      with the digits [1, 5, 4].
+      <c>ArrayList</c>. For example, <c>new Digits(154)</c> creates an
+      <c>ArrayList</c> with the digits <c>[1, 5, 4]</c>.
     </p>
 
     <p>

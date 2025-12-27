@@ -1,0 +1,48 @@
+    <p>
+      You can use <c>ArrayList</c> instead of arrays whenever you don’t know the
+      size of the array you need or you know that you will add and remove items
+      and may need to change the array’s size dynamically during run time. An
+      <c>ArrayList</c> is <term>mutable</term> in size and contains object
+      references, meaning it can change during run time by adding and removing
+      objects from it.
+    </p>
+
+
+    <idx><h>list</h><h>autoboxing</h></idx>
+    <idx><h>list</h><h>unboxing</h></idx>
+    <p>
+      Primitive types like <c>int</c> and <c>double</c> are automatically
+      converted to their corresponding wrapper classes <c>Integer</c> and
+      <c>Double</c> using autoboxing when added to an <c>ArrayList</c>. When you
+      pull an <c>int</c> value out of a list of <c>Integers</c> that is called
+      <term>unboxing</term>.
+    </p>
+
+    <program>
+      <![CDATA[
+      ArrayList<Integer> list = new ArrayList<Integer>();
+      list.add(new Integer(5)); // this will work in Java 7
+      list.add(5); // this will work in all Java versions
+      ]]>
+    </program>
+
+    <p>
+      You can put any kind of objects into an <c>ArrayList</c>. Even instances
+      of a class that you wrote. For example, here is an <c>ArrayList</c> of
+      <c>Student</c>s.
+    </p>
+
+
+    <p>Here is a comparison of how to create arrays and <c>ArrayList</c>s:</p>
+
+    <program>
+      <![CDATA[
+      // arrays must specify a size!
+      int[] highScores = new int[5];
+      String[] names = new String[5];
+
+      // ArrayLists are empty to start with
+      ArrayList<Integer> highScoreList = new ArrayList<Integer>();
+      ArrayList<String> nameList = new ArrayList<String>();
+      ]]>
+    </program>
