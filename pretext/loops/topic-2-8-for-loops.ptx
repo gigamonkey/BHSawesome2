@@ -530,7 +530,7 @@
     <title>Counting backwards</title>
 
     <p>
-      You can also write <c>for</c>loops that count backwards starting at a big
+      You can also write <c>for</c> loops that count backwards starting at a big
       number and decrementing the loop variable until it is some small number,
       usually 0 or 1. If you want to change a forwards loop into a backwards
       loop that runs with the same values of the loop variable, just counting
