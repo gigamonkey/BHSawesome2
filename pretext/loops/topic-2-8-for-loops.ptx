@@ -9,7 +9,7 @@
     <p>
       While the <c>while</c> loop is all we need to be able to provide the
       repetition component required by any algorithm, it’s a little bit
-      primitive. It has it’s uses but the real workhorse loop in Java is the
+      primitive. It has its uses but the real workhorse loop in Java is the
       <c>for</c> loop.
     </p>
 
