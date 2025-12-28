@@ -5,16 +5,16 @@
 
   <introduction>
     <p>
-      In <xref ref="arrays" /> we learned arrays, our first data type that we
-      use to hold multiple values. However arrays are not very flexible. Most
-      notably, the size of an array is established at the time of creation and
-      cannot be changed. What are we supposed to do if we want to collect an
-      unknown number of objects. Or if we want to both add and remove items from
-      a collection? For example, if we wanted to represent a shopping list, we
-      might add to the list throughout the week and remove things from the list
-      while we are shopping. We wouldn’t want to have to guess when we first
-      made our shopping list at the beginning of the week how many things we
-      were going to put in it.
+      In <xref ref="arrays" /> we learned about arrays, as our first data type
+      that we can use to hold multiple values. However arrays are not very
+      flexible. Most notably, the size of an array is established at the time of
+      creation and cannot be changed. What are we supposed to do if we want to
+      collect an unknown number of objects. Or if we want to both add and remove
+      items from a collection? For example, if we wanted to represent a shopping
+      list, we might add to the list throughout the week and remove things from
+      the list while we are shopping. We wouldn’t want to have to guess when we
+      first made our shopping list at the beginning of the week how many things
+      we were going to put in it.
     </p>
 
     <p>

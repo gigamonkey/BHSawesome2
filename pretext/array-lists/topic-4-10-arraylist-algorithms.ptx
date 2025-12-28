@@ -24,114 +24,570 @@
       start with a specific letter or that are greater than a certain length. We
       can search an <c>ArrayList</c> for an element that meets some criteria,
       count how many do, or test whether at least one does or whether all
-      elements do.
+      elements do. Likewise we can rotate elements within an <c>ArrayList</c>
+      and write algorithms that operate on pairs of elemnets, either adjacent
+      pairs or all possible pairs.
     </p>
 
     <p>
-      As with arrays we can rotate the elements within an <c>ArrayList</c> or
-      reverse them in place.
+      But there are a few kinds of algorithms that we can write with
+      <c>ArrayList</c>s that don’t apply to arrays since we can add and remove
+      elemnets from <c>ArrayList</c>s. For instance, we can write algorithms to
+      remove certain elements from an <c>ArrayList</c> or to insert new elements
+      at specific positions into an <c>ArrayList</c>.
     </p>
 
     <p>
-      And moving beyond what we can do with arrays, we can also write algorithms
-      that insert elements into an <c>ArrayList</c> or removes them though as
-      we’ll see that requires a bit of care.
+      We’ll look at those algorithms in this section and also take a quick peek
+      at algorithms that operate on more than one <c>ArrayList</c> in parallel.
     </p>
   </introduction>
 
-  <subsection xml:id="add-remove-elements">
-    <title>Adding and removing elements</title>
+  <subsection xml:id="remove-elements">
+    <title>Removing elements</title>
 
-    <note>
-      <p>
-        If you use add or remove inside a loop that traverses an
-        <c>ArrayList</c>, you may get unexpected results because the size of the
-        <c>ArrayList</c> has changed! Enhanced <c>for</c> should not be used to
-        remove elements from an <c>ArrayList</c>.
-      </p>
-    </note>
+    <p>
+      Suppose we want to remove items matching some criteria from an
+      <c>ArrayList</c>. We need to check all the elements of the list so that
+      suggests we need a loop.
+    </p>
+
+    <p>
+      But we need to be a bit careful about how we iterate through the loop
+      since when we remove an item from a list all the items to the right (at
+      greater indexes) shift down one index.
+    </p>
+
+
+    <p>
+      As we discussed in the previous section, we can’t use an enhanced
+      <c>for</c> loop because it will throw a
+      <c>ConcurrentModificationException</c> if the size of the <c>ArrayList</c>
+      changes while the loop is running. Also, in an enhanced <c>for</c> loop we
+      don’t know what index we are on so we can’t remove the current item
+      anyway with the <c>remove(int)</c> method.
+    </p>
+
+    <p>
+      So there are a few ways to implement removing elements from an ArrayList.
+      We can use a regular <c>for</c> loop and adjust the index variable when we
+      remove an item, we can do roughly same thing with a <c>while</c> loop,
+      which gives us a bit more explicit control over the index variable. Or we
+      can loop backwards.
+    </p>
+
+    <p>
+      A normal <c>for</c> does require doing a thing that is generally frowned
+      upon, namely modifying the loop variable in the body of the loop. The
+      problem is, if we determine that we want to remove the element at index
+      <c>i</c> and call <c>list.remove(i)</c>, then all the elements after the
+      removed one shift down one and if we continue looping as normal, <c>i</c>
+      will get incrementeed and we will not consider the element that used to be
+      at position <c>i + 1</c> and is not at position <c>i</c>. So we have to
+      write something like this;
+    </p>
+
+    <program>
+      <![CDATA[
+      for (int i = 0; i < strings.size(); i++) {
+        if (dontLikeThisOne(strings.get(i))) {
+           strings.remove(i);
+           // The element that was at i + 1 is now at i,
+           // so on the next iteration of the loop we'd
+           // end up skipping that element. So we decrement
+           // i here so after the i++ we're back to the
+           // current value of i.
+           i--;
+        }
+      }
+     ]]>
+    </program>
+
+    <p>
+      In the case where we remove the item, we decrement <c>i</c> with
+      <c>i--</c> so that when the <c>for</c> loop increments it in the updater,
+      it gets set back to the same value and the next iteration of the loop will
+      consider the element that just shifted down into position we just removed
+      the element from.
+    </p>
+
+    <p>
+      Since it can be a bit confusing to have the loop variable modified both by
+      the <c>for</c> loop updater clause and in the body of the loop, some
+      programmers would prefer to implement this technique using a <c>while</c>
+      loop as a way to make it clear that we doing something beyond a normal
+      <c>for</c> loop.
+    </p>
+
+    <program>
+      <![CDATA[
+      int i = 0;
+      while (i < strings.size()) {
+        if (dontLikeThisOne(strings.get(i))) {
+           strings.remove(i);
+        } else {
+          i++;
+        }
+      }
+     ]]>
+    </program>
+
+    <p>
+      Because we have to update the loop variable in the loop body anyway, in
+      this code instead of decrementing <c>i</c> to compensate for the fact it
+      is about to be incremented, we can instead only increment it when we don’t
+      remove the current item. Thus <c>i</c> always points to the position of
+      the next element to consider for removal: if we just removed an item and
+      things have shifted down it stays where it is and if we have considered
+      the element at position <c>i</c> and kept it, then <c>i</c> is incremented
+      to we can consider the next element.
+    </p>
+
+    <p>
+      The third approach is possibly the cleanest. Instead of looping forward
+      through the loop, if we loop backwards, starting at the last index and
+      decrementing toward 0, then we don’t have to compensate at all. When we
+      remove an item, the items at greater indices shift down but they’ve all
+      been considered already so we can just keep going.
+    </p>
+
+    <program>
+      <![CDATA[
+      for (int i = strings.size() - 1; i >= 0; i--) {
+        if (dontLikeThisOne(strings.get(i))) {
+          strings.remove(i);
+        }
+      }
+      ]]>
+    </program>
+
+    <p>
+      This approach also has the very slight advantage over the forward loops
+      that it doesn’t spend any time shifting down elements that will later be
+      removed.
+    </p>
   </subsection>
 
-  <subsection xml:id="min-max-sum-average">
-    <title>Min, Max, Sum, Average</title>
+  <subsection xml:id="insert-elements">
+    <title>Inserting elements</title>
 
     <p>
-      You should be able to write code that finds the minimum, maximum, sum, and
-      average of the elements in an <c>ArrayList</c>.
+      Inserting elements into an <c>ArrayList</c> sometimes requires a similar
+      attention to how shifting elements around in the <c>ArrayList</c> is
+      interacts with our loop variable.
     </p>
+
+    <p>
+      If we just want to insert one element things are pretty easy. The
+      <c>add(int, E)</c> method will insert an element at a given index. So all
+      we have to do is figure out where we want to insert the new element and
+      then call <c>add</c> with that index.
+    </p>
+
+    <p>
+      For example, suppose we wanted to write a method to insert a word into an
+      already sorted list of words. Our basic plan might be, loop through the
+      list until we find a word that is greater than the word we want to insert
+      using <c>compareTo</c> and insert the word at that postion. It might look
+      like this:
+    </p>
+
+    <program>
+      <![CDATA[
+      public void addWord(String word, ArrayList<String> words) {
+        for (int i = 0; i < words.size(); i++) {
+          if (word.compareTo(words.get(i)) <= 0) {
+            words.add(i, word);
+            return;
+          }
+        }
+        words.add(word);
+      }
+      ]]>
+    </program>
+
+    <p>
+      In this method as soon as the word is added we’re done and we can return
+      so it doesn’t matter that the rest of the list has shifted down. Then
+      outside the loop, if we get there, we add <c>word</c> at the end of the
+      list because it must belong after all the other words in the list.
+    </p>
+
+    <p>
+      Now consider a slightly different problem. Insert the word <c>"very"</c>
+      into the list before every occurrence of the word <c>"special"</c>. Does
+      this code work?
+    </p>
+
+    <program>
+      <![CDATA[
+      public void addVery(ArrayList<String> words) {
+        for (int i = 0; i < words.size(); i++) {
+          if (words.get(i).equals("special")) {
+            words.add(i, "very");
+          }
+        }
+      }
+      ]]>
+    </program>
+
+    <p>
+      If you said it doesn’t, you are correct and probably see why. If you said
+      it does work or weren’t sure, consider what happens the first time it
+      comes across the word <c>"special"</c>. Let’s say that happens at index
+      10. The line <c>words.add(i, "very")</c> insert <c>"very"</c> at position
+      10 as we want. But now where is <c>"special"</c>? It has shifted up one
+      position to index 11. But now the loop continues and <c>i</c> is
+      incremented to 11. So <c>words.get(i)</c> returns <c>"special"</c> again
+      and the code insert another <c>"very"</c> shifting <c>"special"</c> up to
+      position 12. We are stuck in an infinite loop which will eventually crash
+      with an <c>OutOfMemoryError</c> when we’ve inserted more very’s than we
+      have room to store in our computers memory.
+    </p>
+
+    <p>
+      The fix to this is similar to the fix we used when removing elements. We
+      can adjust the index like this:
+    </p>
+
+    <program>
+      <![CDATA[
+      public void addVery(ArrayList<String> words) {
+        for (int i = 0; i < words.size(); i++) {
+          if (words.get(i).equals("special")) {
+            words.add(i, "very");
+            i++; // add an extra 1
+          }
+        }
+      }
+      ]]>
+    </program>
+
+    <p>
+      Or we could use the trick of looping backwards since then after inserting
+      the <c>"very"</c> and shifting up the <c>"special"</c>, we’ll move down to
+      the word that used to be before <c>"special"</c> and carry on, eventually
+      getting to index 0.
+    </p>
+
+    <program>
+      <![CDATA[
+      public void addVery(ArrayList<String> words) {
+        for (int i = words.size() - 1; i >= 0; i--) {
+          if (words.get(i).equals("special")) {
+            words.add(i, "very");
+          }
+        }
+      }
+      ]]>
+    </program>
+  </subsection>
+
+  <subsection>
+    <title>Collecting into an <c>ArrayList</c></title>
+
+    <p>
+      One variant of the standard loop algorithms that works well with
+      <c>ArrayList</c>s is an accumulating loop. Previously we have written
+      loops that accumulate numbers by counting or totalling them or accumulate
+      into a <c>String</c> by adding to <c>String</c> variable in a loop.
+    </p>
+
+    <p>
+      But an <c>ArrayList</c> is an excellent data structure to use for
+      accumulating values since we can add elements to it whenever we want. For
+      instance, suppose we had a <c>ArrayList&lt;String&gt;</c> containing a
+      bunch of words and we wanted to count how many were longer than six
+      letters. That’s a straightforward counting loop:
+    </p>
+
+    <program>
+      <![CDATA[
+      int count = 0;
+      for (String word : words) {
+        if (word.length() > 6) {
+          count++;
+        }
+      }
+      ]]>
+    </program>
+
+    <p>
+      In that code, the variable <c>count</c> is our accumulator and it is
+      accumulating a count. But now with an <c>ArrayList</c> we colud instead
+      collect all the words longer than six letters.
+    </p>
+
+    <program>
+      <![CDATA[
+      ArrayList<String> longWords = new ArrayList<>();
+      for (String word : words) {
+        if (word.length() > 6) {
+          longWords.add(word);
+        }
+      }
+      ]]>
+    </program>
+
+    <p>
+      That is an example of a <term>filtering</term> pattern because it filters
+      the original list down to a new list containing only the ones that meet a
+      certain criteria.
+    </p>
+
+    <p>
+      Another related pattern is <term>mapping</term> where we make a new list
+      containing an element for every element of the original list but
+      transformed in some way. For instance this loop makes a list of
+      all-uppercase version of all the words in <c>words</c>.
+    </p>
+
+    <program>
+      <![CDATA[
+      ArrayList<String> loudWords = new ArrayList<>();
+      for (String word : words) {
+        loudWords.add(word.toUpperCase());
+      }
+      ]]>
+    </program>
 
 
   </subsection>
 
-  <subsection xml:id="finding-a-property">
-    <title>Finding a property</title>
+  <subsection xml:id="coding-challenge-frq-digits">
+    <title>Coding Challenge: FRQ Digits</title>
 
     <p>
-      You should be able to write code that determines if at least one element
-      has a particular property, if all elements have a particular property, or
-      the number of elements having a particular property. This means that you
-      will need to use an <c>if</c> statement to check for the property inside a
-      loop. In the AP exam, the property is often given as boolean method for
-      you to use inside the loop, for example <c>isEven(num)</c> returns true if
-      the number is even.
+      This coding challenge is based on the <url
+      href="https://apcentral.collegeboard.org/pdf/ap-computer-science-a-frq-2017.pdf?course=ap-computer-science-a">2017
+      Free Response Question</url> part 1a on the 2017 AP CSA exam. In this
+      question, you are asked to write a constructor for a class called
+      <c>Digits</c>. This constructor takes an integer number as its argument
+      and divides it up into its digits and puts the digits into an
+      <c>ArrayList</c>. For example, <c>new Digits(154)</c> creates an
+      <c>ArrayList</c> with the digits <c>[1, 5, 4]</c>.
     </p>
-
 
     <p>
-      The following method counts the number of odd numbers in an
-      <c>ArrayList</c> of Integers.
+      First, let’s discuss how to break up a number into its digits. Try the
+      code below. What happens if you divide an integer by 10? Remember that in
+      integer division the result truncates (cuts off) everything to the right
+      of the decimal point. Which digit can you get by using <c>% 10</c> which
+      returns the remainder after dividing by 10? Try a different number and
+      guess what it will print and then run to check.
     </p>
 
-  </subsection>
+    <activity label="divideby10">
+      <statement>
+        <p>
+          Set number to a different number and guess what number / and % will
+          return. Which operator gives you a digit in number?
+        </p>
+      </statement>
 
-  <subsection xml:id="pairs-and-duplicates">
-    <title>Pairs and Duplicates</title>
+      <program interactive="activecode">
+
+        <code>
+          public class DivideBy10
+          {
+              public static void main(String[] args)
+              {
+                  int number = 154;
+                  System.out.println(number / 10);
+                  System.out.println(number % 10);
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("DivideBy10");
+              }
+
+              @Test
+              public void test1()
+              {
+                  String origCode =
+                          "public class DivideBy10{public static void main(String[] args){int number ="
+                              + " 154;System.out.println(number / 10);System.out.println(number % 10);}}";
+
+                  boolean changed = codeChanged(origCode);
+
+                  assertTrue(changed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
 
     <p>
-      In the last lesson, the coding challenge involved finding pairs. You
-      should be able to write code that accesses all consecutive pairs of
-      elements in an <c>ArrayList</c> and determines the presence or absence of
-      duplicate elements. These problems often require nested loops.
+      We can use a while loop to print out each digit in reverse order starting
+      from the right (4, 5, 1 for the number 154) while dividing it by 10. You
+      can try it in the active code above. Here is the pseudocode:
     </p>
-
-
-  </subsection>
-
-  <subsection xml:id="shift-rotate-an-arraylist">
-    <title>Shift/Rotate an <c>ArrayList</c></title>
 
     <p>
-      We can write code that shifts or rotates elements left or right in an
-      <c>ArrayList</c>. The following code rotates the elements in an
-      <c>ArrayList</c> to the right by one position.
+      <ul>
+        <li>
+          <p>while number is greater than 0</p>
+
+          <p>
+            <ul>
+              <li>
+                <p>print out the last digit using %</p>
+              </li>
+
+              <li>
+                <p>change the number to cut off the last digit using /</p>
+              </li>
+            </ul>
+          </p>
+        </li>
+      </ul>
     </p>
-
-
-  </subsection>
-
-  <subsection xml:id="reversing-an-arraylist">
-    <title>Reversing an <c>ArrayList</c></title>
 
     <p>
-      The following examples reverse the order of the elements in an
-      <c>ArrayList</c> by adding each element to the beginning of a new
-      <c>String</c> or <c>ArrayList</c>.
+      Now, let’s write a constructor for the <c>Digits</c> class that uses this
+      loop and adds each found digit to the <c>ArrayList</c> instead of printing
+      it out.
     </p>
 
+    <p>
+      Note that this will create the digit list in reverse order. To get the
+      digits in the right order, you can use the <c>add(index, obj)</c> method
+      to add the digit to the beginning of the <c>ArrayList</c> instead of the
+      end.
+    </p>
 
+    <project label="challenge-digits">
+      <statement>
+        <p>
+          Complete the challenge below to put the digits of a number in an
+          ArrayList.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          <![CDATA[
+          import java.util.*;
+
+          public class Digits
+          {
+              /** A list of digits */
+              private ArrayList<Integer> digitList;
+
+              /** Constructs a list of digits from the given number */
+              public Digits(int number)
+              {
+                  // initialize digitList to an empty ArrayList of Integers
+
+                  // Use a while loop to add each digit in number to digitList
+                  //   use add(object,index) with the index 0 to add the
+                  //   digit to the beginning of the list instead of the end
+
+
+              }
+
+              /** returns the string representation of the digits list */
+              public String toString()
+              {
+                  return digitList.toString();
+              }
+
+              public static void main(String[] args)
+              {
+                  Digits d1 = new Digits(154);
+                  System.out.println(d1);
+              }
+          }
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("Digits");
+              }
+
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "[1, 5, 4]";
+
+                  boolean passed = getResults(expect, output, "Digits(154)");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2()
+              {
+                  Digits test = new Digits(123456);
+                  String output = test.toString();
+                  String expect = "[1, 2, 3, 4, 5, 6]";
+
+                  boolean passed = getResults(expect, output, "Digits(123456)");
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </project>
   </subsection>
 
   <subsection xml:id="multiple-or-parallel-data-structures">
-    <title>Multiple or Parallel Data Structures</title>
+    <title>Parallel lists</title>
 
     <p>
-      Some algorithms require multiple <c>String</c>, array, or <c>ArrayList</c>
-      objects to be traversed simultaneously. For example, the following code
-      traverses two parallel <c>ArrayList</c>s that hold the grades for
-      different tests.
+      Some algorithms require multiple <c>ArrayList</c> objects to be traversed
+      simultaneously. For example, the following code traverses three parallel
+      <c>ArrayList</c>s, one that holds a list of student names, and the other
+      two hold the students’ scores on two tests. It prints the names of all the
+      students who did better on Test 2 than on Test 1.
     </p>
 
+    <program>
+      <![CDATA[
+      ArrayList<String> students = studentNames();
+      ArrayList<Integer> test1 = getTestScores("Test 1");
+      ArrayList<Integer> test2 = getTestScores("Test 2");
 
+      for (int i = 0; i < students.size(); i++) {
+        if (test2.get(i) > test1.get(i)) {
+          System.out.println(students.get(i));
+        }
+      }
+      ]]>
+    </program>
+
+    <p>
+      The key to this kind of algorithm is that the lists need to be organized
+      the same way; they need to each be the same length and also in the same
+      order. That is, for every index <c>i</c> the scores at index <c>i</c> in
+      <c>test1</c> and <c>test2</c> have to belong to the student at index
+      <c>i</c> in students.
+    </p>
   </subsection>
 
   <subsection xml:id="summary-37">

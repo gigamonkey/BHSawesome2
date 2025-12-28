@@ -12,7 +12,7 @@
     <idx>ConcurrentModificationException</idx>
     <p>
       We <term>traverse</term> an <c>ArrayList</c> when we use a loop to access
-      it elements in order. Traversing an <c>ArrayList</c> is very similar to
+      its elements in order. Traversing an <c>ArrayList</c> is very similar to
       traversing an array; we use the same kinds of loops and just have to swap
       the <c>length</c> property of arrays for the <c>size()</c> method of
       <c>ArrayList</c> and use <c>get</c> and <c>set</c> methods instead of
@@ -375,13 +375,13 @@
     <title><c>while</c> loop</title>
 
     <p>
-      And of course we can use a <c>while</c> loop to loop over an
-      <c>ArrayList</c> though if we want to go element by element we’ll have to
-      manage an index variable separately at which point a <c>for</c> loop might
-      make more sense. But if we want to repeatedly modify an <c>ArrayList</c>
-      until some condition is met a while loop can be just the thing. For
-      example this code uses a <c>while</c> loop to remove all the elements from
-      the beginning of an <c>ArrayList</c>, <c>numbers</c>, that are less than 100.
+      And of course we can use a <c>while</c> loop to traverse an
+      <c>ArrayList</c>. If we want to go element by element we’ll have to manage
+      an index variable separately at which point a <c>for</c> loop might make
+      more sense, but if we want to repeatedly modify an <c>ArrayList</c> until
+      some condition is met a while loop can be just the thing. For example this
+      code uses a <c>while</c> loop to remove all the elements from the
+      beginning of an <c>ArrayList</c>, <c>numbers</c>, that are less than 100.
     </p>
 
     <program>
