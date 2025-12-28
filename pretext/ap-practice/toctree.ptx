@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<chapter xml:id="ap-practice" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>AP practice</title>
+
+  <introduction>
+    <p>
+      Stuff to practice.
+    </p>
+
+  </introduction>
+
+  <xi:include href="./mcq-practice.ptx" />
+  <xi:include href="./frq-practice.ptx" />
+
+</chapter>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-7-wrapper-classes">
-  <title>Wrapper Classes - Integer and Double</title>
+  <title>Wrapper classes</title>
 
   <introduction>
     <idx>wrapper classes</idx>
@@ -10,26 +10,159 @@
     <idx>wrapper</idx>
     <idx><h>integer</h><h>minimum</h></idx>
     <idx><h>integer</h><h>maximum</h></idx>
+
     <p>
-      A <term>wrapper class</term> is a class that wraps (encloses) around a
-      primitive data type and gives it an object appearance. The wrapper classes
-      are part of the <c>java.lang</c> package, which is imported by default
-      into all Java programs. The <c>Integer</c> class and <c>Double</c> class
-      are <term>wrapper classes</term> that create objects from primitive types
-      of <c>int</c> and <c>double</c> respectively. Sometimes you need to create
-      a wrapped object for a primitive type so that you can give it to a method
-      that is expecting an object, or to put it in a collection like an
-      <c>ArrayList</c> that we will see in the next lesson. The wrapper classes
-      are also used to convert strings to primitive data types and to convert
-      primitive data types to strings which is useful when using the
-      <c>Scanner</c> class with input.
+      As we discussed in the previous section, one of the limitations of the
+      <c>ArrayList</c> class (which is actually a limitation of Java’s generic
+      types more generally) is that the element type of an <c>ArrayList</c> must
+      be a reference type. So we can make an <c>ArrayList&lt;String&gt;</c> but
+      not an <c>ArrayList&lt;int&gt;</c>. So what are we supposed to do if we
+      want to make a growable, shrinkable collection of <c>int</c> or
+      <c>double</c> values?
     </p>
+
+    <p>
+      Java’s solution to this problem is to define <term>wrapper classes</term>,
+      classes that exist to provide a reference type that wraps up a single
+      value of a given primitive type. These types are defined in the
+      <c>java.lang</c> pacakge and have names that are the capitalized,
+      unabbreviated names of the corresponding primitive types: <c>Integer</c>,
+      <c>Double</c>, and <c>Boolean</c>.
+    </p>
+
+    <p>
+      As reference types, these types can be used as the element type of an
+      <c>ArrayList</c>: <c>ArrayList&lt;Integer&gt;</c>,
+      <c>ArrayList&lt;Double&gt;</c>, and <c>ArrayList&lt;Boolean&gt;</c>. As
+      we’ll see Java provides a bit of extra support for these types,
+      automatically converting between wrapper types and the corresponding
+      primitive values in many contexts.
+    </p>
+
+    <p>
+      There are also a few <c>static</c> utility methods and constants defined
+      in the wrapper classes related to the corresponding primitive type.
+    </p>
+
   </introduction>
 
   <subsection>
     <title>Using wrapper classes with <c>ArrayList</c></title>
 
-      <activity label="qArrayListInteger">
+    <p>
+      The main use of wrapper types is as type parameter in an <c>ArrayList</c>
+      declaration. If what we really want is a list of <c>int</c> values we can
+      declare an <c>ArrayList&lt;Integer&gt;</c>.
+    </p>
+
+
+    <p>
+      Once we’ve declared an <c>ArrayList</c> with a wrapper class for an
+      element type, how do we create instances of the wrapper class to put in
+      it?
+    </p>
+
+    <p>
+      There are three ways, but in fact we almost only ever need one of them.
+      The oldest, and worst, way is to construct a new instance of the wrapper
+      class with a the constructor that takes a single value of the
+      corresponding primitive type. These constructors exist but have been
+      <term>deprecated</term> which means they still exist because removing them
+      would break old code but they are now considered a mistake.
+    </p>
+
+    <program>
+      <![CDATA[
+      ArrayList<Integer> integers = new ArrayList<>();
+      ArrayList<Double> doubles = new ArrayList<>();
+
+      // BAD: don't do this. But it does work
+      integers.add(new Integer(42));
+      doubles.add(new Double(3.14));
+      ]]>
+    </program>
+
+    <p>
+      Slightly better is to use the <c>static</c> utility methods,
+      <c>valueOf</c>, defined in the wrapper classes that take a primitive value
+      and return a wrapped instance.
+    </p>
+
+    <program>
+      <![CDATA[
+      // Slightly better: also works. But also not necessary as we'll see
+      integers.add(Integer.valueOf(42));
+      doubles.add(Double.valueOf(3.14));
+      ]]>
+    </program>
+
+    <p>
+      The advantage of the <c>valueOf</c> methods compared to the constructors
+      is that the methods don’t have to create a new object each time. This can
+      save a lot of memory by reusing the same object for the same commonly
+      wrapped primitive value. For example, making an array list containing a
+      million zeros obtained with with <c>Integer.valueOf(0)</c> would use only
+      one object to represent all the zeros whereas if we made them with <c> new
+      Integer(0)</c> Java would have to allocate a million different objects,
+      each holding the same <c>0</c> value, using a million times as much
+      memory.
+    </p>
+
+    <p>
+      But the right way to do this is to ignore the wrapper types and let a
+      feature of Java called <term>autoboxing</term> take care of it for us.
+    </p>
+
+    <program>
+      <![CDATA[
+      // The right way
+      integers.add(42);
+      doubles.add(3.14);
+      ]]>
+    </program>
+
+    <p>
+      <term>Autoboxing</term> is the automatic conversion that the Java compiler
+      makes between primitive types and their corresponding object wrapper
+      classes. The Java compiler applies autoboxing when a primitive value is
+      passed as a parameter to a method that expects an object of the
+      corresponding wrapper class or assigned to a variable of the corresponding
+      wrapper class. So when we call <c>add</c> on an
+      <c>ArrayList&lt;Integer&gt;</c> the compiler knows <c>add</c> expects an
+      <c>Integer</c>. If it sees that we’re passing an <c>int</c> it
+      automatically gets an instance of <c>Integer</c>to wrap it, basically as
+      if we had written a call to <c>Integer.valueOf</c>.
+    </p>
+
+    <p>
+      An automatic conversion going in the other direction called
+      <term>unboxing</term> happens when a value of a wrapper type is passed as
+      a parameter or assigned to a variable that expects the corresponding
+      primitive type. This means we can write code like this:
+    </p>
+
+    <program>
+      <![CDATA[
+      int i = integer.get(0);
+      double d = doubles.get(0);
+      ]]>
+    </program>
+
+    <p>
+      The values actally returned by <c>get</c> in those two lines are
+      <c>Integer</c> and <c>Double</c> but Java unwraps them and assigns the
+      underlying value to the primitive variables <c>i</c> and <c>d</c>.
+    </p>
+
+    <p>
+      Thanks to autoboxing and unboxing we almost never need to use the wrapper
+      types anywhere except as the type parameters when declaring an
+      <c>ArrayList</c>. For the most part we can just use primitive values and
+      everything will work out fine. Unfortunately they are a few edge cases
+      where it doesn’t which we’ll discuss below.
+    </p>
+
+    <activity label="qArrayListInteger">
       <statement>
         <p>
           Which of the following is the correct way to create an ArrayList of
@@ -40,7 +173,7 @@
       <choices>
         <choice>
           <statement>
-            <p>ArrayList[int] numbers = new ArrayList();</p>
+            <p>ArrayList[int] numbers = new ArrayList&lt;&gt;();</p>
           </statement>
 
           <feedback>
@@ -52,26 +185,26 @@
 
         <choice>
           <statement>
-            <p>ArrayList&lt;String&gt; numbers = new ArrayList();</p>
+            <p>ArrayList&lt;String&gt; numbers = new ArrayList&lt;&gt;();</p>
           </statement>
 
           <feedback>
             <p>
               String is not the correct type since this is for an array of
-              integers, and the type should be next to ArrayList on both sides.
+              integers.
             </p>
           </feedback>
         </choice>
 
         <choice>
           <statement>
-            <p>ArrayList&lt;int&gt; numbers = new ArrayList&lt;int&gt;();</p>
+            <p>ArrayList&lt;int&gt; numbers = new ArrayList&lt;&gt;();</p>
           </statement>
 
           <feedback>
             <p>
-              ArrayLists cannot hold primitive types like int. You must use the
-              wrapper class Integer.
+              ArrayLists cannot hold primitive types like <c>int</c>. You must
+              use the wrapper class <c>Integer</c>.
             </p>
           </feedback>
         </choice>
@@ -79,237 +212,19 @@
         <choice correct="yes">
           <statement>
             <p>
-              ArrayList&lt;Integer&gt; numbers = new ArrayList&lt;Integer&gt;();
+              ArrayList&lt;Integer&gt; numbers = new ArrayList&lt;&gt;();
             </p>
           </statement>
 
           <feedback>
             <p>
-              The wrapper class Integer is used to hold integers in an
-              ArrayList.
+              The wrapper class <c>Integer</c> is used to hold integers in an
+              <c>ArrayList</c>.
             </p>
           </feedback>
         </choice>
       </choices>
     </activity>
-  </subsection>
-
-  <subsection>
-        <activity label="qalAdd1">
-      <statement>
-        <p>What will print when the following code executes?</p>
-
-        <program>
-          <![CDATA[
-          ArrayList<Integer> list1 = new ArrayList<Integer>();
-          list1.add(1);
-          list1.add(2);
-          list1.add(3);
-          list1.add(2, 4);
-          list1.add(5);
-          System.out.println(list1);
-          ]]>
-        </program>
-      </statement>
-
-      <choices>
-        <choice>
-          <statement>
-            <p>[1, 2, 3, 4, 5]</p>
-          </statement>
-
-          <feedback>
-            <p>
-              This would be true if all the <c>add</c> method calls were
-              <c>add(value)</c>, but at least one is not.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>[1, 4, 2, 3, 5]</p>
-          </statement>
-
-          <feedback>
-            <p>This would be true if it was <c>add(1, 4)</c></p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>[1, 2, 4, 3, 5]</p>
-          </statement>
-
-          <feedback>
-            <p>
-              The <c>add(2, 4)</c> will put the 4 at index 2, but first move the
-              3 to index 3.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>[1, 2, 4, 5]</p>
-          </statement>
-
-          <feedback>
-            <p>
-              This would be true if the <c>add(2, 4)</c> replaced what was at
-              index 2, but it actually moves the value currently at index 2 to
-              index 3.
-            </p>
-          </feedback>
-        </choice>
-      </choices>
-    </activity>
-
-    <p>
-      You can step through the code above by clicking on this <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2,4)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(5))%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Java
-      Visualizer</url>.
-    </p>
-  </subsection>
-
-  <subsection xml:id="creating-integer-and-double-objects">
-    <title>Creating <c>Integer</c> and <c>Double</c> Objects</title>
-
-    <p>
-      Here are some examples of creating <c>Integer</c> and <c>Double</c>
-      objects. In Java version 7, you can use a constructor like <c>new
-      Integer(2)</c> to create an object with the value 2 in it. In Java 9 and
-      later, you can just use <c>Integer i = 2;</c> to create an object with the
-      value 2 wrapped in it. <c>Integer</c> and <c>Double</c> objects are
-      immutable, meaning once the objects are created, their attributes (their
-      values) cannot be changed.
-    </p>
-
-    <program>
-      // in older versions of Java
-      Integer i = new Integer(2); // create an object with 2 in it
-      Double d = new Double(3.5); // create an object with 3.5 in it
-
-      // in newer versions of Java (9+)
-      Integer i = 2;
-      Double d = 3.5;
-    </program>
-
-    <p>
-      These wrapper classes are also useful because they have some special
-      values (like the minimum and maximum values for the type) and methods that
-      you can use. Try the following code to see the minimum and maximum values
-      possible for the type int.
-    </p>
-
-    <activity label="lcmm1">
-      <statement>
-        <p>
-          What’s the minimum and maximum numbers for an int? What happens if you
-          go beyond these limits with - 1 or + 1?
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-
-        <code>
-          public class Test1
-          {
-              public static void main(String[] args)
-              {
-                  System.out.println(Integer.MIN_VALUE);
-                  System.out.println(Integer.MAX_VALUE);
-                  System.out.println(Integer.MIN_VALUE - 1);
-                  System.out.println(Integer.MAX_VALUE + 1);
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "-2147483648\n2147483647\n2147483647\n-2147483648";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
-      </program>
-    </activity>
-
-    <p>
-      The int type in Java can be used to represent any whole number from
-      -2147483648 to 2147483647. Why those numbers? Integers in Java are
-      represented in 2’s complement binary and each integer gets 32 bits of
-      space. In 32 bits of space with one bit used to represent the sign you can
-      represent that many values. Why is there one more negative number than
-      positive number? It is because 0 is considered a positive number.
-    </p>
-
-    <idx>overflow</idx>
-    <p>
-      What do the last two lines print out? Did this surprise you? Java will
-      actually return the maximum integer value if you try to subtract one from
-      the minimum value. This is called <term>underflow</term>. And, Java will
-      return the minimum integer value if you try to add one to the maximum.
-      This is called <term>overflow</term>. It is similar to how odometers work
-      – in a really old car that reaches the maximum miles possible on the
-      odometer, the odometer rolls over back to 0, the minimum value. In Java,
-      any int value that surpasses 32 bits gets rolled over, so that the
-      Integer.MAX_VALUE 2147483647 incremented (+1) returns -2147483648 which is
-      the Integer.MIN_VALUE.
-    </p>
-
-    <p>
-      When would you ever use Integer.MIN_VALUE or Integer.MAX_VALUE? They are
-      handy if you want to initialize a variable to the smallest possible value
-      and then search a sequence of values for a larger value.
-    </p>
-  </subsection>
-
-  <subsection xml:id="autoboxing-and-unboxing">
-    <title>Autoboxing and Unboxing</title>
-
-    <p>
-      <term>Autoboxing</term> is the automatic conversion that the Java compiler
-      makes between primitive types and their corresponding object wrapper
-      classes. This includes converting an <c>int</c> to an <c>Integer</c> and a
-      <c>double</c> to a <c>Double</c>. The Java compiler applies autoboxing
-      when a primitive value is passed as a parameter to a method that expects
-      an object of the corresponding wrapper class or assigned to a variable of
-      the corresponding wrapper class. Here’s an example of autoboxing.
-    </p>
-
-    <program>
-      Integer i = 2;
-      Double d = 3.5;
-    </program>
-
-    <p>
-      <term>Unboxing</term> is the automatic conversion that the Java compiler
-      makes from the wrapper class to the primitive type. This includes
-      converting an Integer to an int and a Double to a double. The Java
-      compiler applies unboxing when a wrapper class object is passed as a
-      parameter to a method that expects a value of the corresponding primitive
-      type or assigned to a variable of the corresponding primitive type. Here’s
-      an example of unboxing:
-    </p>
-
-    <program>
-      Integer i = 2;  // autoboxing - wrap 2
-      int number = i; // unboxing - back to primitive type
-    </program>
 
     <activity label="WrapperClasses">
       <statement>
@@ -361,12 +276,146 @@
         </match>
       </cardsort>
     </activity>
+
+    <activity label="qalAdd1">
+      <statement>
+        <p>
+          Here’s an example of code that uses autoxboxing to add values to an
+          <c>ArrayList&lt;Integer&gt;</c>. What will print when the following
+          code executes?
+        </p>
+
+        <program>
+          <![CDATA[
+          ArrayList<Integer> list1 = new ArrayList<>();
+          list1.add(1);
+          list1.add(2);
+          list1.add(3);
+          list1.add(2, 4);
+          list1.add(5);
+          System.out.println(list1);
+          ]]>
+        </program>
+
+        <p>
+          You can step through the code above by clicking on this <url
+      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(2,4)%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(5))%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Java
+          Visualizer</url>.
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>[1, 2, 3, 4, 5]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This would be true if all the <c>add</c> method calls were
+              <c>add(value)</c>, but at least one is not.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>[1, 4, 2, 3, 5]</p>
+          </statement>
+
+          <feedback>
+            <p>This would be true if <c>add(2, 4)</c> was <c>add(1, 4)</c> instead</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>[1, 2, 4, 3, 5]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The <c>add(2, 4)</c> will put the 4 at index 2, but first move the
+              3 to index 3.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>[1, 2, 4, 5]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This would be true if the <c>add(2, 4)</c> replaced what was at
+              index 2, but it actually moves the value currently at index 2 to
+              index 3.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
   </subsection>
 
   <subsection>
-    <title>A autoboxing subtlety</title>
+    <title>An autoboxing subtlety</title>
 
-        <activity label="listRem">
+    <p>
+      As mentioned above, there are a few times when we can’t completely ignore
+      what’s going on with autoboxing and unboxing. If we stick strictly within
+      the AP curriculum we won’t hit them but we don’t have to go very far
+      outside the bounds to run into one.
+    </p>
+
+    <p>
+      The AP curriculum covers the <c>ArrayList</c> method <c>E remove(int)</c>
+      which takes an <c>int</c> argument specifying the index of the element to
+      remove. That’s fine. But there’s another <c>remove</c> method, <c>boolean
+      remove(Object)</c> that takes any reference type as an argument
+      <c>ArrayList</c> and either removes the first object in the list that is
+      <c>equals</c> to it and returns <c>true</c> or returns <c>false</c> if
+      there was no such object to remove.
+    </p>
+
+    <p>
+      The subtlety is this. What happens if we have an
+      <c>ArrayList&lt;Integer&gt;</c> and then call <c>remove(42)</c>? Should it
+      call <c>remove(int)</c>, and remove the element at index <c>42</c> or
+      should it autobox <c>42</c> and remove the first element of the list whose
+      value is an <c>Integer</c> wrapping the value <c>42</c>?
+    </p>
+
+    <p>
+      As it happens, Java goes with <c>remove(int)</c>. Which means the calls to
+      <c>remove</c> below behave very differently:
+    </p>
+
+    <program>
+      <![CDATA[
+      ArrayList<Integer> nums = new ArrayList<>();
+      nums.add(10);
+      nums.add(20);
+      nums.add(30);
+
+      nums.remove(Integer.valueOf(0))
+      nums.remove(0);
+      nums.remove(Integer.valueOf(20))
+      nums.remove(20);
+      ]]>
+    </program>
+
+    <p>
+      The first call to <c>remove</c> does nothing and returns false because
+      there’s no <c>0</c> in the list. The second call removes the first element
+      of the list, <c>10</c>, because the argument is treated as the index 0,
+      not a value. The third call successfully removes the <c>20</c> from the
+      list. And the fourth call crashes with an <c>IndexOutOfBoundsException</c>
+      because 20, as an index, is way too big for the list which now only has
+      one element in it.
+    </p>
+
+    <activity label="listRem">
       <statement>
         <p>
           Remember that the <c>remove(int index)</c> method removes a value from
@@ -374,6 +423,7 @@
           list by one and shifting down the items that were at higher indexes in
           the array by one position. It also returns the item that was removed.
         </p>
+
         <p>
           What will the following code print out? Try to guess before you run
           it. Were you surprised? Read the note below.
@@ -430,15 +480,6 @@
 
       </program>
     </activity>
-
-    <note>
-      <p>
-        The <c>remove(int index)</c> method will remove the object at the given
-        index and shift left any values to the right of that index. It doesn’t
-        remove the object that matches the integer value given. In the example
-        above it doesn’t remove the value 1. It removes the value 2 at index 1.
-      </p>
-    </note>
 
     <activity label="qListRem">
       <statement>
@@ -589,317 +630,7 @@
 
 
 
-  <subsection xml:id="parsing-strings-to-numbers">
-    <title>Parsing Strings to Numbers</title>
 
-    <p>
-      The <c>Integer</c> and <c>Double</c> classes have methods called
-      <c>Integer.parseInt</c> and <c>Double.parseDouble</c> that can be used to
-      convert strings to numbers. They are often used with the <c>Scanner</c>
-      class to convert input which is read in as a <c>String</c> into an
-      <c>int</c> or <c>double</c> so that you can create arithmetic expressions
-      (do math) or create logical conditions that test the values against other
-      numbers using relational operators like <c>&lt;</c> and <c>&gt;</c>. These
-      methods are listed on the Java Quick Reference Sheet provided during the
-      AP exam.
-    </p>
-
-    <p>
-      <ul>
-        <li>
-          <p>
-            <c>static int parseInt(String s)</c> returns the <c>String</c>
-            argument as a signed <c>int</c>.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <c>static double parseDouble(String s)</c> returns the <c>String</c>
-            argument as a signed <c>double</c>.
-          </p>
-        </li>
-      </ul>
-    </p>
-
-    <p>Here’s an example of using these methods:</p>
-
-    <activity label="parseMethods">
-      <statement>
-        <p>
-          Run the code below to see useful parse methods in the Integer and
-          Double wrapper classes.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-
-        <code>
-          public class Test2
-          {
-              public static void main(String[] args)
-              {
-                  Integer i = 2;
-                  Double d = 3.5;
-                  System.out.println(
-                          i.intValue()); // intValue() returns the primitive value
-                  System.out.println(d.doubleValue());
-
-                  String ageStr = "16";
-                  // Integer.parseInt and Double.parseDouble are often used to
-                  // convert an input string to a number so you can do math on it.
-                  System.out.println(
-                          "Age "
-                                  + ageStr
-                                  + " in 10 years is "
-                                  + (Integer.parseInt(ageStr) + 10));
-
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                     String output = getMethodOutput("main");
-                     String expect = "2\n3.5\nAge 16 in 10 years is 26";
-                     boolean passed = getResults(expect, output, "Expected output from main", true);
-                     assertTrue(passed);
-
-              }
-          }
-        </tests>
-
-      </program>
-    </activity>
-
-    <activity label="wrapperDebug">
-      <statement>
-        <p>
-          Find and fix the bugs below to use the correct Integer and Double
-          methods and variables.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-
-        <code>
-          public class Debug
-          {
-              public static void main(String[] args)
-              {
-                  integer i = 2.3;
-                  Double d = 5;
-                  System.out.println( i.intValue );
-                  System.out.println( doubleValue() );
-                  // Print out the min and max values possible for integers
-                  System.out.println(Integer.min_value);
-                  System.out.println( int.MAX_VALUE() );
-                  // parse strings to numbers
-                  String numStr = "2.5";
-                  System.out.println( Int.parseInt(numStr) * 2 );
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "2\n5.0\n-2147483648\n2147483647\n5.0";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testCode() throws IOException
-              {
-                  String target = "Integer.MAX_VALUE";
-                  boolean passed = checkCodeContains("MAX_VALUE", target);
-                  assertTrue(passed);
-              }
-              @Test
-              public void testDouble() throws IOException
-              {
-                  boolean passed = checkCodeContains("Double.parseDouble");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
-      </program>
-    </activity>
-  </subsection>
-
-  <subsection xml:id="coding-challenge-pokemon-speed">
-    <title>Coding Challenge: Pokemon Speed</title>
-
-    <p>
-      In the last lesson, we read in a file of Pokemon data. In this exercise,
-      we will read in the file and calculate the average Pokemon speed and find
-      the Pokemon with the highest speed. The speed is the 8th column in the
-      file; when a row of data is split into an array with the index starting at
-      0, the speed will have the 7th index. We will use the
-      <c>Integer.parseInt</c> method to convert the speed from a string to an
-      integer so we can compare the speeds.
-    </p>
-
-    <project label="challenge-pokespeed">
-      <statement>
-        <p>
-          This program reads in each line from the pokemon file into a String
-          array of lines. Complete the <c>findMaxSpeed</c> and
-          <c>findAverageSpeed</c> methods below.
-        </p>
-      </statement>
-
-      <program interactive="activecode" datafile="pokemon.csv">
-
-        <code>
-          import java.io.*;
-          import java.util.*;
-
-          public class PokeSpeed
-          {
-              private String filename = "pokemon.csv";
-              private String[] pokemonLines = new String[152];
-
-              public PokeSpeed() throws IOException
-              {
-                  readFile(); // read in the file
-              }
-
-              /* This method reads in filename into the pokemonLines array */
-              public int readFile() throws IOException
-              {
-                  File myFile = new File(filename);
-                  Scanner scan = new Scanner(myFile);
-                  int i = 0;
-                  while (scan.hasNext())
-                  {
-                      pokemonLines[i] = scan.nextLine();
-                      i++;
-                  }
-                  System.out.println("Read in " + i + " lines.");
-                  scan.close();
-                  return i;
-              }
-
-              /* Write a function findMaxSpeed that loops through the pokemonLines array,
-                splits it on commas to get the speed in the 7th index, and parses it to compare to a maxSpeed, and returns the maxSpeed.  */
-              public int findMaxSpeed()
-              {
-                  int maxSpeed = 0;
-                  String maxPokemonName = "";
-
-                  // 1. Loop through the pokemonLines array starting at index 1
-                  //     (0 is the column headers)
-                      // 2. Split the line on commas into a data array
-                      // 3. Use parseInt on the 7th indexed element of the data array to get the speed
-                      // 4. If speed is larger than maxSpeed, update maxSpeed and maxPokemonName
-
-                  // 5. Print out the maxPokemonName and return the maxSpeed
-                  return maxSpeed;
-              }
-
-              /* Write a function findAverageSpeed that loops through the pokemonLines array,
-                splits it on commas to get the speed in the 7th index, and parses it to add it to the total, and returns the average speed.  */
-              public double findAverageSpeed()
-              {
-                  double averageSpeed = 0;
-                  double totalSpeed = 0;
-
-                  // Loop through the pokemonLines array, split, parse, and add up the speeds
-
-                  return averageSpeed;
-              }
-
-              public static void main(String[] args) throws IOException
-              {
-                  PokeSpeed p = new PokeSpeed();
-                  System.out.println("Max speed: " + p.findMaxSpeed());
-                  System.out.println("Average speed: " + p.findAverageSpeed());
-              }
-          }
-        </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-             public RunestoneTests() throws IOException
-             {
-                 super("PokeSpeed");
-             }
-
-             @Test
-             public void parseTest()
-             {
-                 boolean passed = checkCodeContains("Integer.parseInt");
-                 assertTrue(passed);
-             }
-
-             @Test
-             public void callFindMax() throws IOException
-             {
-                  String output = getMethodOutput("findMaxSpeed");
-                  String expect = "140";
-                  boolean passed = getResults(expect, output, "Expected output from findMaxSpeed");
-                  assertTrue(passed);
-              }
-
-              @Test
-               public void callAvgSpeed() throws IOException
-               {
-                      String output = getMethodOutput("findAverageSpeed");
-                      String expect = "68";
-                      boolean passed = output.startsWith(expect);
-                      passed = getResults(expect, output, "Expected output from findAverageSpeed", passed);
-                      assertTrue(passed);
-               }
-
-             @Test
-             public void splitCode()
-             {
-                 boolean passed = checkCodeContains("call to split method", ".split");
-                 assertTrue(passed);
-             }
-
-             @Test
-             public void speedIndexCode()
-             {
-                 boolean passed = checkCodeContains("the correct index for the speed (7)", "[7]");
-                 assertTrue(passed);
-             }
-          }
-        </tests>
-
-      </program>
-    </project>
-  </subsection>
 
   <subsection xml:id="summary-48">
     <title>Summary</title>

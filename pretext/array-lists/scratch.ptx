@@ -46,3 +46,358 @@
       ArrayList<String> nameList = new ArrayList<String>();
       ]]>
     </program>
+
+    <p>
+      A <term>wrapper class</term> is a class that wraps (encloses) around a
+      primitive data type and gives it an object appearance. The wrapper classes
+      are part of the <c>java.lang</c> package, which is imported by default
+      into all Java programs. The <c>Integer</c> class and <c>Double</c> class
+      are <term>wrapper classes</term> that create objects from primitive types
+      of <c>int</c> and <c>double</c> respectively. Sometimes you need to create
+      a wrapped object for a primitive type so that you can give it to a method
+      that is expecting an object, or to put it in a collection like an
+      <c>ArrayList</c> that we will see in the next lesson. The wrapper classes
+      are also used to convert strings to primitive data types and to convert
+      primitive data types to strings which is useful when using the
+      <c>Scanner</c> class with input.
+    </p>
+
+
+      <subsection xml:id="creating-integer-and-double-objects">
+    <title>Creating <c>Integer</c> and <c>Double</c> Objects</title>
+
+    <p>
+      Here are some examples of creating <c>Integer</c> and <c>Double</c>
+      objects. In Java version 7, you can use a constructor like <c>new
+      Integer(2)</c> to create an object with the value 2 in it. In Java 9 and
+      later, you can just use <c>Integer i = 2;</c> to create an object with the
+      value 2 wrapped in it. <c>Integer</c> and <c>Double</c> objects are
+      immutable, meaning once the objects are created, their attributes (their
+      values) cannot be changed.
+    </p>
+
+    <program>
+      // in older versions of Java
+      Integer i = new Integer(2); // create an object with 2 in it
+      Double d = new Double(3.5); // create an object with 3.5 in it
+
+      // in newer versions of Java (9+)
+      Integer i = 2;
+      Double d = 3.5;
+    </program>
+  </subsection>
+
+      <activity label="lcmm1">
+      <statement>
+        <p>
+          What’s the minimum and maximum numbers for an int? What happens if you
+          go beyond these limits with - 1 or + 1?
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class Test1
+          {
+              public static void main(String[] args)
+              {
+                  System.out.println(Integer.MIN_VALUE);
+                  System.out.println(Integer.MAX_VALUE);
+                  System.out.println(Integer.MIN_VALUE - 1);
+                  System.out.println(Integer.MAX_VALUE + 1);
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "-2147483648\n2147483647\n2147483647\n-2147483648";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+
+    <p>
+      The int type in Java can be used to represent any whole number from
+      -2147483648 to 2147483647. Why those numbers? Integers in Java are
+      represented in 2’s complement binary and each integer gets 32 bits of
+      space. In 32 bits of space with one bit used to represent the sign you can
+      represent that many values. Why is there one more negative number than
+      positive number? It is because 0 is considered a positive number.
+    </p>
+
+    <idx>overflow</idx>
+    <p>
+      What do the last two lines print out? Did this surprise you? Java will
+      actually return the maximum integer value if you try to subtract one from
+      the minimum value. This is called <term>underflow</term>. And, Java will
+      return the minimum integer value if you try to add one to the maximum.
+      This is called <term>overflow</term>. It is similar to how odometers work
+      – in a really old car that reaches the maximum miles possible on the
+      odometer, the odometer rolls over back to 0, the minimum value. In Java,
+      any int value that surpasses 32 bits gets rolled over, so that the
+      Integer.MAX_VALUE 2147483647 incremented (+1) returns -2147483648 which is
+      the Integer.MIN_VALUE.
+    </p>
+
+    <p>
+      When would you ever use Integer.MIN_VALUE or Integer.MAX_VALUE? They are
+      handy if you want to initialize a variable to the smallest possible value
+      and then search a sequence of values for a larger value.
+    </p>
+
+    <subsection>
+    <title>Wrapper class odds and ends</title>
+
+    <p>
+      The wrapper classes also provide a few useful constants and <c>static</c>
+      utility methods.
+    </p>
+
+    <p>
+      As we discussed back in <xref ref="range-of-values" />, <c>Integer</c>
+      class defines two constants <c>MIN_VALUE</c> and <c>MAX_VALUE</c> that
+      provide the most negative and most positive values that can be stored in
+      an <c>int</c>. The <c>Double</c> class provides some similar variables but
+      they are not part of the AP cirriculum.
+    </p>
+
+    <p>
+      And both classes provide a <c>static</c> method that takes a <c>String</c>
+      argument containing a and converts it to the corresponding primitive
+      value. In <c>Integer</c> it is called <c>parseInt</c> and in <c>Double</c>
+      it’s called <c>parseDouble</c>. The exact details of how the <c>String</c>
+      argument is formatted for each method is described in the classes’
+      Javadocs but roughtly it needs to look like a number: something like
+      <c>"1234"</c> or <c>"42.17"</c>. These methods can be useful for turning
+      information stored in files or entered by the user into primitive values
+      that we can compute with.
+    </p>
+  </subsection>
+
+      <note>
+      <p>
+        The <c>remove(int index)</c> method will remove the object at the given
+        index and shift left any values to the right of that index. It doesn’t
+        remove the object that matches the integer value given. In the example
+        above it doesn’t remove the value 1. It removes the value 2 at index 1.
+      </p>
+    </note>
+
+    <activity label="wrapperDebug">
+      <statement>
+        <p>
+          Find and fix the bugs below to use the correct Integer and Double
+          methods and variables.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class Debug
+          {
+              public static void main(String[] args)
+              {
+                  integer i = 2.3;
+                  Double d = 5;
+                  System.out.println( i.intValue );
+                  System.out.println( doubleValue() );
+                  // Print out the min and max values possible for integers
+                  System.out.println(Integer.min_value);
+                  System.out.println( int.MAX_VALUE() );
+                  // parse strings to numbers
+                  String numStr = "2.5";
+                  System.out.println( Int.parseInt(numStr) * 2 );
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "2\n5.0\n-2147483648\n2147483647\n5.0";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testCode() throws IOException
+              {
+                  String target = "Integer.MAX_VALUE";
+                  boolean passed = checkCodeContains("MAX_VALUE", target);
+                  assertTrue(passed);
+              }
+              @Test
+              public void testDouble() throws IOException
+              {
+                  boolean passed = checkCodeContains("Double.parseDouble");
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+
+
+    <p>
+      <ul>
+        <li>
+          <p>insert elements</p>
+        </li>
+
+        <li>
+          <p>delete elements-</p>
+        </li>
+
+        <li>
+          <p>determine a minimum or maximum value</p>
+        </li>
+
+        <li>
+          <p>compute a sum or average</p>
+        </li>
+
+        <li>
+          <p>determine if at least one element has a particular property</p>
+        </li>
+
+        <li>
+          <p>determine if all elements have a particular property</p>
+        </li>
+
+        <li>
+          <p>determine the number of elements having a particular property</p>
+        </li>
+
+        <li>
+          <p>access all consecutive pairs of elements</p>
+        </li>
+
+        <li>
+          <p>determine the presence or absence of duplicate elements</p>
+        </li>
+
+        <li>
+          <p>shift or rotate elements left or right</p>
+        </li>
+
+        <li>
+          <p>reverse the order of the elements</p>
+        </li>
+      </ul>
+    </p>
+
+
+
+    <p>
+      Here are two common <c>ArrayList</c> traversal loops that can be used for
+      these algorithms:
+    </p>
+
+    <program>
+      <![CDATA[
+      for (Type obj : list)
+      {
+          if (obj ....)
+              ...
+      }
+
+      for(int i=0; i < list.size(); i++)
+      {
+         if (list.get(i) ....)
+             ...
+      }
+      ]]>
+    </program>
+
+  <subsection xml:id="review-and-frq-practice-with-arraylists">
+    <title>Review and FRQ Practice with ArrayLists</title>
+
+    <p>
+      This lesson ends the <c>ArrayList</c> section of this unit. You can now do
+      the following review lessons and FRQs at the end of the unit and College
+      Board Progress Check for Unit 4 Part 2 in the AP Classroom.
+    </p>
+
+    <p>
+      <ul>
+        <li><url href="ArrayList-summary.html">ArrayList Summary</url></li>
+
+        <li>
+          <url href="ArrayListParsonsPractice.html">ArrayList Mixed-up Code Practice</url>
+        </li>
+
+        <li>
+          <url href="ArrayListPractice.html">ArrayList Coding Practice</url>
+        </li>
+
+        <li>
+          <url href="ArrayList-Exercises.html">ArrayList Multiple-Choice Exercises</url>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      We encourage you to work in pairs or groups to tackle the following
+      challenging FRQ problems and take them one step at a time. These will get
+      easier with practice!
+    </p>
+
+    <p>
+      <ul>
+        <li><url href="FRQ3ArrayList.html">FRQ 3 ArrayList Inventory</url></li>
+
+        <li><url href="climbClubA.html">Climb Club A FRQ</url></li>
+
+        <li><url href="climbClubB.html">Climb Club B FRQ</url></li>
+
+        <li><url href="climbClubC.html">Climb Club C FRQ</url></li>
+
+        <li><url href="cookieOrderA.html">Cookie Order A FRQ</url></li>
+
+        <li><url href="cookieOrderB.html">Cookie Order B FRQ</url></li>
+
+        <li>
+          <url href="2016freeresponseQ4A.html">StringFormatter Q4 A FRQ</url>
+        </li>
+
+        <li>
+          <url href="2016freeresponseQ4B.html">StringFormatter Q4 B FRQ</url>
+        </li>
+
+        <li><url href="2019delimitersQ3a.html">Delimiters Q3 A FRQ</url></li>
+
+        <li><url href="2019delimitersQ3b.html">Delimiters Q3 B FRQ</url></li>
+
+        <li><url href="2013gridworldQ3A.html">Gridworld Q3 A FRQ</url></li>
+      </ul>
+    </p>
+  </subsection>

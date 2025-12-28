@@ -1,0 +1,194 @@
+<scratch>
+    <p>
+      Java uses <term>Call by Value</term> when it passes arguments to methods
+      and constructors. This means means that a copy of the value in the
+      argument is saved in the parameter variable. If the parameter variable
+      changes its value inside the method, the original value outside the method
+      is not changed. With primitive types like int and double, the argument
+      value is copied into the parameter variable as expected. However, if you
+      pass in an argument that holds a reference to an object, like a String or
+      Person or Address or Turtle objects, the reference is copied, not the
+      whole object. Java was designed this way to avoid copying large objects
+      from method to method.
+    </p>
+
+    <p>
+      When a copy of a reference is passed in and saved in the parameter
+      variable, the parameter and the argument are then <term>aliases</term>,
+      both refering to the same object. Remember when we discussed reference
+      aliases with turtle objects who are set equal to one another.
+    </p>
+
+    <figure align="center">
+      <caption>Turtle Reference Equality</caption>
+
+      <image source="Unit3-Class-Creation/Figures/turtleEquality.png" width="89%" />
+    </figure>
+
+    <p>
+      There can be unexpected results if the parameter refers to a mutable
+      object; the method or constructor can use this reference to alter the
+      state of the original object. Some classes like <c>String</c> are
+      immutable, so they cannot be changed by any method; for example, when
+      <c>s.toUpperCase()</c> is called, it returns a new String object with the
+      uppercase letters, but the original String object is not changed. Any new
+      classes that you write that have setters or methods that change the state
+      of the object will be mutable. So, if you pass in an object of a class
+      that you write into a method as an argument, you need to be careful that
+      the method does not change the object unless that is the intended
+      behavior. It is good programming practice to not modify mutable objects
+      that are passed as parameters unless required in the specification.
+    </p>
+
+
+
+  <subsection xml:id="class-methods">
+    <title>Class Methods</title>
+
+    <p>
+      Class methods belong to the class and not to any object of the class. They
+      are called with the class name and the dot operator, like
+      <c>ClassName.methodName();</c>, for example the Math methods like
+      <c>Math.random();</c>. There is only one copy of a class variable or
+      method for the whole class. For example, the main method is a class
+      (static) method because there should only be 1 main method. If the method
+      is in the same class, you can call it with or without the class name from
+      other static methods in the class: <c>Classname.methodName();</c> or
+      <c>staticMethodName();</c> or even with an object of the class:
+      <c>objectName.methodName();</c>.
+    </p>
+
+    <program>
+      // Calling class methods
+      // ClassName.methodName();
+      int x = Math.sqrt(9);
+
+       // If the method is in the same class,
+       // you can call it with or without the class name
+       // from other static methods in the class
+       ClassName.methodName();
+       methodName();
+    </program>
+
+    <p>
+      Let’s revisit the following flowchart to compare three different ways of
+      calling methods. Class (static) methods are called using the class name.
+      Instance methods can only be called using an object of the class. If you
+      are calling the instance method from the main method or from another
+      class, you must first create an object of that class and then call its
+      methods using <c>object.methodName()</c>. If you are calling the method
+      from within the same class, you can just call the method using
+      <c>methodName()</c> which will refer to the current object.
+    </p>
+
+    <figure align="center">
+      <caption>Comparing Method Calls to Static and Instance Methods</caption>
+
+      <image source="Unit3-Class-Creation/Figures/FlowChartCallingMethods.png" width="98%">
+        <shortdescription>
+          Comparing method calls to static and instance methods
+        </shortdescription>
+      </image>
+    </figure>
+
+    <p>
+      When writing class methods, they can be public or private. The static
+      keyword is placed right after the public/private modifier and right before
+      the type of variables and methods in their declarations.
+    </p>
+
+    <program>
+      public class ClassName
+      {
+        // static class variable
+        public static type variableName;
+
+        // static class method
+        public static returnType methodName(parameters)
+        {
+              // implementation not shown
+        }
+      }
+    </program>
+
+    <p>
+      Class (static) methods can access or change the values of class (static)
+      variables and can call other class (static) methods. However, they cannot
+      access or change the values of (non-static) instance variables or call
+      (nont-static) instance methods without being passed an instance of the
+      class via a parameter. For example, the main method which is static can
+      call other static methods directly with or without the classname, but it
+      cannot call instance methods without first creating an object. Try this
+      below to see “non-static variable or method cannot be referenced from a
+      static context” errors.
+    </p>
+
+
+  </subsection>
+
+  <subsection xml:id="local-variables">
+    <title>Local Variables</title>
+
+    <p>
+      <term>Local variables</term> are variables declared in the headers or
+      bodies of blocks of code. Local variables can only be accessed in the
+      block in which they are declared. Local variables that are declared inside
+      a method are usually declared at the top of the method. These variables
+      can only be used within the method and do not exist outside of the method.
+    </p>
+
+    <p>
+      Parameter variables are also considered local variables that only exist
+      for that method or constructor. These variables may only be used within
+      the constructor or method and cannot be declared to be <c>public</c> or
+      <c>private</c>.It’s good practice to declare any variables that are used
+      by just one method as local variables in that method.
+    </p>
+
+    <p>
+      Instance variables at class scope are shared by all the methods in the
+      class and can be marked as public or private with respect to their access
+      outside of the class. They have class scope regardless of whether they are
+      public or private.
+    </p>
+
+    <p>
+      Another way to look at scope is that a variable’s scope is where it lives
+      and exists. You cannot use the variable in code outside of its scope. The
+      variable does not exist outside of its scope.
+    </p>
+
+    <p>
+      If there is a local variable with the same name as an instance variable,
+      the variable name will refer to the local variable instead of the instance
+      variable, as seen below. We’ll see in the next lesson, that we can
+      distinguish between the local variable and the instance variable using the
+      keyword <c>this</c> to refer to this object’s instance variables.
+    </p>
+
+  </subsection>
+
+
+<section xml:id="topic-3-7-static-vars-methods">
+  <title>Class (static) Variables and Methods</title>
+
+  <introduction>
+    <idx>class variables</idx>
+    <idx>class methods</idx>
+    <idx>static</idx>
+    <idx>final</idx>
+    <p>
+      In Unit 1, we learned about methods by using the <c>Math</c> class and its
+      many <term>static</term> methods like <c>Math.random()</c>, and we wrote
+      our own main methods and other methods that were static. These are called
+      <term>class methods</term> because they belong to the class and not to any
+      object of the class. In this lesson, you will learn to write your own
+      class variables and methods using the keyword <c>static</c> and compare
+      them to instance variables and methods.
+    </p>
+  </introduction>
+
+</section>
+
+
+</scratch>

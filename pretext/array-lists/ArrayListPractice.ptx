@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section xml:id="ArrayListPractice">
+<subsection xml:id="ArrayListPractice">
   <title>Code Practice with ArrayLists</title>
   <activity label="ArrayListPractice1">
     <statement>
@@ -1157,4 +1157,4 @@ public class Test1
       </program>
     </solution>
   </activity>
-</section>
+</subsection>

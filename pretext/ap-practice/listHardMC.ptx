@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section xml:id="listHardMC">
+<subsection xml:id="listHardMC">
   <title>ArrayList Hard Multiple Choice Questions</title>
   <p>
     These problems are about the same or harder than those you will see on the
@@ -228,4 +228,4 @@ public void numQuest() {
       </li>
     </ul>
   </p>
-</section>
+</subsection>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <chapter xml:id="array-lists" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>ArrayList</title>
+  <title>ArrayLists</title>
 
   <introduction>
     <p>
@@ -44,4 +44,6 @@
   <xi:include href="./topic-4-7-wrapper-classes.ptx" />
   <xi:include href="./topic-4-9-arraylist-traversal.ptx" />
   <xi:include href="./topic-4-10-arraylist-algorithms.ptx" />
+  <xi:include href="./ArrayList-summary.ptx" />
+
 </chapter>

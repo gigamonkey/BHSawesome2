@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section xml:id="ArrayList-summary">
-  <title>ArrayList Summary</title>
+<section xml:id="ArrayList-summary" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Summary and exercises</title>
   <introduction>
     <idx>List</idx>
     <idx>ArrayList</idx>
@@ -288,4 +288,9 @@
       </p>
     </blockquote>
   </subsection>
+
+  <xi:include href="./ArrayList-Exercises.ptx" />
+  <xi:include href="./ArrayListParsonsPractice.ptx" />
+  <xi:include href="./ArrayListPractice.ptx" />
+
 </section>

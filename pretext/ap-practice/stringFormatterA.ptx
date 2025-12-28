@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section xml:id="stringFormatterA">
+<subsection xml:id="stringFormatterA">
   <title>Free Response - StringFormatter A</title>
   <introduction>
     <idx>trio</idx>
@@ -317,4 +317,4 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </activity>
   </subsection>
-</section>
+</subsection>

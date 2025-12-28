@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<section xml:id="mcq-practice" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>MCQ practice</title>
+
+  <introduction>
+    <p>
+      MCQ stuff
+    </p>
+  </introduction>
+
+  <xi:include href="./listEasyMC.ptx" />
+  <xi:include href="./listMedMC.ptx" />
+  <xi:include href="./listHardMC.ptx" />
+
+</section>

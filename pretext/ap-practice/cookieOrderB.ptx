@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section xml:id="cookieOrderB">
+<subsection xml:id="cookieOrderB">
   <title>Free Response - CookieOrder B</title>
   <introduction>
     <idx>cookieorder</idx>
@@ -575,4 +575,4 @@ public class MasterOrder
       </program>
     </activity>
   </subsection>
-</section>
+</subsection>

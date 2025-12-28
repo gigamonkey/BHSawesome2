@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section xml:id="gridworldQ3A">
+<subsection xml:id="gridworldQ3A">
   <title>Free Response - Grid World A</title>
   <introduction>
     <idx>Grid World</idx>
@@ -1284,8 +1284,8 @@ public class RunestoneTests extends CodeTestHelper
 
     <datafile label="GrideWorld.jar" filename="GridWorld.jar" editable="no" hide="yes">
       <pre>
-        
-        
+
+
         import java.util.ArrayList;
 
         /**
@@ -1816,4 +1816,4 @@ public class RunestoneTests extends CodeTestHelper
       </pre>
     </datafile>
   </subsection>
-</section>
+</subsection>

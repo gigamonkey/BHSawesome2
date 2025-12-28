@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section xml:id="climbClubC">
+<subsection xml:id="climbClubC">
   <title>Free Response - Climbing Club C</title>
   <introduction>
     <idx>ClimbingClub</idx>
@@ -440,4 +440,4 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </activity>
   </subsection>
-</section>
+</subsection>

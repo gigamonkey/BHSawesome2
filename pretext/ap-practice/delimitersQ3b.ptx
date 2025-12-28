@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section xml:id="delimitersQ3b">
+<subsection xml:id="delimitersQ3b">
   <title>Free Response - Delimiters B</title>
   <introduction />
   <subsection xml:id="part-b">
@@ -562,4 +562,4 @@ public class RunestoneTests extends CodeTestHelper
       </program>
     </activity>
   </subsection>
-</section>
+</subsection>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section xml:id="climbClubB">
+<subsection xml:id="climbClubB">
   <title>Free Response - Climbing Club B</title>
   <introduction>
     <idx>ClimbingClub</idx>
@@ -510,4 +510,4 @@ public class RunestoneTests extends CodeTestHelper
 
     <video youtube="Fye33yPQk-g" label="video-climbB" />
   </subsection>
-</section>
+</subsection>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section xml:id="listMedMC">
+<subsection xml:id="listMedMC">
   <title>ArrayList Medium Multiple Choice Questions</title>
   <p>These problems are like those you will see on the AP CSA exam.</p>
   <activity label="qalm_1">
@@ -920,4 +920,4 @@ public void mystery(int value)
     href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A+++%0Apublic+class+ListTester%0A%7B%0A+++%0A++++private+List%3CInteger%3E+numList+%3D+null%3B%0A+++%0A++++public+ListTester(List%3CInteger%3E+myList)%0A++++%7B%0A+++++++numList+%3D+myList%3B%0A++++%7D%0A+++%0A++++public+void+mystery(int+value)%0A++++%7B%0A++++++++int+i+%3D+0%3B%0A++++++++while+(i+%3C+numList.size()+%26%26+numList.get(i)+%3C+value)%0A++++++++%7B+%0A++++++++++++i%2B%2B%3B%0A++++++++%7D%0A++++++++numList.add(i,+value)%3B%0A++++%7D%0A++++++%0A++++public+static+void+main(String%5B%5D+args)+%0A++++%7B%0A+++++++List%3CInteger%3E+aList+%3D+new+ArrayList%3CInteger%3E()%3B%0A+++++++aList.add(5)%3B%0A+++++++aList.add(7)%3B%0A+++++++aList.add(8)%3B%0A+++++++aList.add(12)%3B%0A+++++++ListTester+tester+%3D+new+ListTester(aList)%3B%0A+++++++System.out.println(tester.numList)%3B%0A+++++++tester.mystery(11)%3B%0A+++++++System.out.println(tester.numList)%3B%0A+++%0A++++%7D%0A%7D&amp;mode=display&amp;curInstr=0"
     visual="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A+++%0Apublic+class+ListTester%0A%7B%0A+++%0A++++private+List%3CInteger%3E+numList+%3D+null%3B%0A+++%0A++++public+ListTester(List%3CInteger%3E+myList)%0A++++%7B%0A+++++++numList+%3D+myList%3B%0A++++%7D%0A+++%0A++++public+void+mystery(int+value)%0A++++%7B%0A++++++++int+i+%3D+0%3B%0A++++++++while+(i+%3C+numList.size()+%26%26+numList.get(i)+%3C+value)%0A++++++++%7B+%0A++++++++++++i%2B%2B%3B%0A++++++++%7D%0A++++++++numList.add(i,+value)%3B%0A++++%7D%0A++++++%0A++++public+static+void+main(String%5B%5D+args)+%0A++++%7B%0A+++++++List%3CInteger%3E+aList+%3D+new+ArrayList%3CInteger%3E()%3B%0A+++++++aList.add(5)%3B%0A+++++++aList.add(7)%3B%0A+++++++aList.add(8)%3B%0A+++++++aList.add(12)%3B%0A+++++++ListTester+tester+%3D+new+ListTester(aList)%3B%0A+++++++System.out.println(tester.numList)%3B%0A+++++++tester.mystery(11)%3B%0A+++++++System.out.println(tester.numList)%3B%0A+++%0A++++%7D%0A%7D&amp;mode=display&amp;curInstr=0">Example-8-12-10</url>.
   </p>
-</section>
+</subsection>

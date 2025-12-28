@@ -1,48 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section xml:id="FRQ3ArrayList">
+<subsection xml:id="FRQ3ArrayList">
   <title>Free Response Question (FRQ) 3 - ItemInventory</title>
-  <introduction>
-    <idx>ArrayList</idx>
-    <idx>free response</idx>
-    <idx>FRQ</idx>
-    <idx>FRQ 3</idx>
-    <p>
-      The third FRQ on the AP CSA Exam as of 2026 will be on Data Analysis with
-      ArrayList and worth 5 points. Students will be provided with a scenario
-      and its associated class(es). Students will write one method of a given
-      class based on provided specifications and examples. The method requires
-      students to use, analyze,and manipulate data in an <term>ArrayList</term>
-      structure. (Arrays will not be tested in an FRQ.)
-    </p>
 
-    <p>
-      Here are two common patterns for <c>ArrayList</c> traversal loops that you
-      will need to use in this FRQ:
-    </p>
-
-    <program language="java">
-      <code>
-for (Type obj : list)
-{
-    if (obj ....)
-        ...
-}
-
-for(int i=0; i &lt; list.size(); i++)
-{
-   if (list.get(i) ....)
-       ...
-}
-      </code>
-    </program>
-
-    <p>
-      The following problem is a good example FRQ 3 from the <url
-      href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-course-and-exam-description-effective-fall-2025.pdf">
-      2025-2026 AP CSA Course and Exam Description (CED)</url>.
-    </p>
-  </introduction>
+  <p>
+    The following problem is a good example FRQ 3 from the <url
+    href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-course-and-exam-description-effective-fall-2025.pdf">
+    2025-2026 AP CSA Course and Exam Description (CED)</url>.
+  </p>
 
   <subsection xml:id="FRQ3ItemInventory">
     <title>FRQ ItemInventory Description</title>
@@ -67,14 +32,14 @@ public class ItemInfo
     */
     public double getCost()
     { /* implementation not shown */ }
-    
+
     /**
     * Returns true if the item is currently available and
     * returns false otherwise
     */
     public boolean isAvailable()
     { /* implementation not shown */ }
-    
+
     /* There may be instance variables, constructors, and
     methods that are not shown. */
 }
@@ -94,7 +59,7 @@ public class ItemInventory
 {
     /** The list of all items at the store */
     private ArrayList&lt;ItemInfo&gt; inventory;
-    
+
     /**
     * Returns the average cost of the available items
     * whose cost is between lower and upper, inclusive
@@ -239,7 +204,7 @@ public double averageWithinRange(double lower, double upper)
 
         <program language="java">
           <code>
-for (ItemInfo currentItem : inventory) 
+for (ItemInfo currentItem : inventory)
 {
     // ...
 }
@@ -327,7 +292,7 @@ for (ItemInfo currentItem : inventory)
             <p>
               <program language="java">
                 <code>
-currentItem.isAvailable() &amp;&amp; 
+currentItem.isAvailable() &amp;&amp;
    currentItem.getCost() &gt; lower &amp;&amp; currentItem.getCost() &lt; upper
                 </code>
               </program>
@@ -350,7 +315,7 @@ currentItem.isAvailable() &amp;&amp;
             <p>
               <program language="java">
                 <code>
-currentItem.isAvailable() || 
+currentItem.isAvailable() ||
    (currentItem.getCost() &gt;= lower &amp;&amp; currentItem.getCost() &lt;= upper)
                 </code>
               </program>
@@ -372,7 +337,7 @@ currentItem.isAvailable() ||
             <p>
               <program language="java">
                 <code>
-currentItem.isAvailable() &amp;&amp; 
+currentItem.isAvailable() &amp;&amp;
    currentItem.getCost() &gt;= lower &amp;&amp; currentItem.getCost() &lt;= upper
                 </code>
               </program>
@@ -395,7 +360,7 @@ currentItem.isAvailable() &amp;&amp;
             <p>
               <program language="java">
                 <code>
-currentItem.isAvailable() &amp;&amp; 
+currentItem.isAvailable() &amp;&amp;
   (currentItem.getCost() &gt; lower || currentItem.getCost() &lt; upper)
                 </code>
               </program>
@@ -447,7 +412,7 @@ public class ItemInventory
 {
     /** The list of all items at the store */
     private ArrayList&lt;ItemInfo&gt; inventory;
-    
+
     public ItemInventory()
     {
         inventory = new ArrayList&lt;ItemInfo&gt;();
@@ -467,11 +432,11 @@ public class ItemInventory
     * No elements of inventory are null.
     */
     public double averageWithinRange(double lower, double upper)
-    { 
+    {
         /* Write your code here */
-    
 
-    
+
+
     }
 
     public static void main(String[] args)
@@ -508,8 +473,8 @@ class ItemInfo
     * Returns the name of the item
     */
     public String getName()
-    { 
-        return name; 
+    {
+        return name;
     }
 
     /**
@@ -517,8 +482,8 @@ class ItemInfo
     * cost of a single unit of the item, in dollars
     */
     public double getCost()
-    { 
-        return cost; 
+    {
+        return cost;
     }
 
     /**
@@ -526,8 +491,8 @@ class ItemInfo
     * returns false otherwise
     */
     public boolean isAvailable()
-    { 
-        return available; 
+    {
+        return available;
     }
 }
         </code>
@@ -563,7 +528,7 @@ public class RunestoneTests extends CodeTestHelper
         store2.addItem(new ItemInfo("Action Figure", 15.0, true));
         store2.addItem(new ItemInfo("Frying Pan", 10.0, true));
         String expect = "12.5";
-        String output = "" + 
+        String output = "" +
             store2.averageWithinRange(10.0, 20.0);
 
         boolean passed = getResults(expect, output, "Average cost in new list of 15.0 + 10.0");
@@ -591,4 +556,4 @@ public class RunestoneTests extends CodeTestHelper
       <image source="Unit4-Data-Collections/Figures/itemInventoryRubric2.png" width="100%" alt="Rubric for averageWithinRange" />
     </figure>
   </subsection>
-</section>
+</subsection>

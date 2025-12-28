@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<section xml:id="array-list-frq-practice" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>FRQ practice</title>
+
+  <introduction>
+    <idx>ArrayList</idx>
+    <idx>free response</idx>
+    <idx>FRQ</idx>
+    <idx>FRQ 3</idx>
+    <p>
+      The third FRQ on the AP CSA Exam as of 2026 will be on Data Analysis with
+      ArrayList and worth 5 points. Students will be provided with a scenario
+      and its associated class(es). Students will write one method of a given
+      class based on provided specifications and examples. The method requires
+      students to use, analyze,and manipulate data in an <term>ArrayList</term>
+      structure. (Arrays will not be tested in an FRQ.)
+    </p>
+
+    <p>
+      Here are two common patterns for <c>ArrayList</c> traversal loops that you
+      will need to use in this FRQ:
+    </p>
+
+    <program language="java">
+      <code>
+for (Type obj : list)
+{
+    if (obj ....)
+        ...
+}
+
+for(int i=0; i &lt; list.size(); i++)
+{
+   if (list.get(i) ....)
+       ...
+}
+      </code>
+    </program>
+
+  </introduction>
+
+  <xi:include href="./FRQ3ArrayList.ptx" />
+  <xi:include href="./climbClubA.ptx" />
+  <xi:include href="./climbClubB.ptx" />
+  <xi:include href="./climbClubC.ptx" />
+  <xi:include href="./cookieOrderA.ptx" />
+  <xi:include href="./cookieOrderB.ptx" />
+  <xi:include href="./stringFormatterA.ptx" />
+  <xi:include href="./stringFormatterB.ptx" />
+  <xi:include href="./delimitersQ3a.ptx" />
+  <xi:include href="./delimitersQ3b.ptx" />
+  <xi:include href="./gridworldQ3A.ptx" />
+
+</section>

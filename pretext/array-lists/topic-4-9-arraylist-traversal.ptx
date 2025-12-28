@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-9-arraylist-traversal">
-  <title>ArrayList Traversals</title>
+  <title><c>ArrayList</c> traversals</title>
 
   <introduction>
     <idx>ArrayList traversal</idx>
@@ -11,44 +11,189 @@
     <idx>IndexOutOfBoundsException</idx>
     <idx>ConcurrentModificationException</idx>
     <p>
-      Traversing an <c>ArrayList</c> is when iteration (a loop) is used to
-      access all or an ordered sequence of the elements in the <c>ArrayList</c>.
-      Just like with arrays, we can use <c>while</c> loops, indexed <c>for</c>
-      loops, or enhanced <c>for</c> loops to traverse an <c>ArrayList</c>. In a
-      later lesson, we’ll also talk about recursion which is when a method calls
-      itself over again which is another way you can traverse an array or
-      <c>ArrayList</c>. In this lesson, we’ll focus on using loops.
+      We <term>traverse</term> an <c>ArrayList</c> when we use a loop to access
+      it elements in order. Traversing an <c>ArrayList</c> is very similar to
+      traversing an array; we use the same kinds of loops and just have to swap
+      the <c>length</c> property of arrays for the <c>size()</c> method of
+      <c>ArrayList</c> and use <c>get</c> and <c>set</c> methods instead of
+      array access expressions with <c>[]</c>.
+    </p>
+
+    <p>
+      Similarly, all the algorithms we learned about in <xref
+      ref="topic-2-9-loop-algorithms" /> can be used with an <c>ArrayList</c>.
+      Additionally we can write algorithms that remove elements from an
+      <c>ArrayList</c> while we loop over it though as we’ll see we do need to
+      exercise some care.
     </p>
   </introduction>
 
+  <subsection>
+    <title>The canonical <c>for</c> loop over an <c>ArrayList</c></title>
+
+    <p>
+      Recall the structure of the canonical <c>for</c> loop that runs <em>n</em>
+      times:
+    </p>
+
+    <program>
+      <![CDATA[
+      for (int i = 0; i < n; i++) {
+        // whatever
+      }
+      ]]>
+    </program>
+
+    <p>
+      When we used that canonical structure to loop over an array we replaced
+      <c>n</c> with <c>array.legnth</c> and in the body of the loop used
+      <c>array[i]</c> to access the individual elements of the array.
+    </p>
+
+    <program>
+      <![CDATA[
+      for (int i = 0; i < array.length; i++) {
+        // whatever with array[i]
+      }
+      ]]>
+    </program>
+
+    <p>
+      Now we can apply the same pattern to loop over an <c>ArrayList</c> using
+      <c>list.size()</c> in the loop condition <c>list.get(i)</c> and
+      <c>list.set(i, value)</c> in the body of the loop to access the individual
+      elements of the <c>ArrayList</c>.
+    </p>
+
+    <program>
+      <![CDATA[
+      for (int i = 0; i < list.size(); i++) {
+        // whatever with list.get(i) and list.set(i, value)
+      }
+      ]]>
+    </program>
+
+    <p>
+      Note that even though an <c>ArrayList</c> can grow and shrink via the
+      <c>add</c> and <c>remove</c> methods, the <c>get</c> and <c>set</c>
+      methods still require a valid index, i.e. greater than or equal to 0 and
+      less than the size of the <c>ArrayList</c>. So if we try to use an index
+      that is outside that range, the code will throw an
+      <c>IndexOutOfBoundsException</c>, similar to the
+      <c>ArrayIndexOutOfBoundsException</c> thrown if we use an invalid index in
+      an array access expression..
+    </p>
+
+    <activity label="listForLoop">
+      <statement>
+        <p>
+          The following code will throw an <c>IndexOutOfBoundsException</c>. Can
+          you fix it?
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          <![CDATA[
+          import java.util.*;
+
+          public class TestForLoop
+          {
+              public static void main(String[] args)
+              {
+                  ArrayList<Integer> myList = new ArrayList<Integer>();
+                  myList.add(50);
+                  myList.add(30);
+                  myList.add(20);
+                  int total = 0;
+                  for (int i = 0; i <= myList.size(); i++)
+                  {
+                      total = total + myList.get(i);
+                  }
+                  System.out.println(total);
+              }
+          }
+          ]]>
+        </code>
+
+        <tests>
+          <![CDATA[
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "100";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void fixedCode()
+              {
+                  boolean passed = checkCodeContains("fixed test in loop", "i < myList.size()");
+                  assertTrue(passed);
+              }
+          }
+          ]]>
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+
   <subsection xml:id="enhanced-for-loop">
-    <title>Enhanced For Loop</title>
+    <title>Enhanced <c>for</c> loop</title>
 
     <idx><h>list</h><h>for-each loop</h></idx>
     <p>
-      You can use an enhanced <c>for</c> loop to traverse all of the items in an
-      <c>ArrayList</c>, just like you do with an array when you only care about
-      the values in the list and not their indices. An example is shown in the
-      <c>main</c> method below.
+      Also as with arrays, we can use an enhanced <c>for</c> loop to traverse
+      all of the items in an <c>ArrayList</c> when we only care about the values
+      in the list and not their indexes. The type of the loop variable needs to
+      be the same as the type parameter of the <c>ArrayList</c> but if the type
+      parameter is a wrapper class like <c>Integer</c> we can (and usually
+      should) use the primitive type for the loop variable and let auto-unboxing
+      take care of it for us.
     </p>
 
-    <p>
-      Note however that you can’t use the enhanced <c>for</c> loop if you want
-      to add or remove elements while traversing an <c>ArrayList</c>. If the
-      size of an <c>ArrayList</c> is modified, such as by calling the <c>add</c>
-      or <c>remove</c> methods, while it is being looped over, it will cause the
-      loop to throw a <c>ConcurrentModificationException</c>. If you need to
-      modify an <c>ArrayList</c> while looping over it, you’ll need to use a
-      regular <c>while</c> or <c>for</c> loop.
-    </p>
+    <program>
+      <![CDATA[
+      ArrayList<String> strings = new ArrayList<>();
+      ArrayList<Integer> numbers = new ArrayList<>();
+
+      // Loop variable is a String, the element type of strings
+      for (String s : strings) {
+        // do stuff with s
+      }
+
+      // Loop variable is an int, the unboxed version of the element type
+      for (int n : numbers) {
+        // do stuff with n
+      }
+
+      // Less stylish but this also works. n will probably be unboxed as needed in the body
+      for (Integer n : numbers) {
+        // do stuff with n
+      }
+      ]]>
+    </program>
+
 
     <activity label="listForEachLoop">
       <statement>
         <p>
           What does the following code do? Guess before you run it. Then, add
           another enhanced for each loop that computes the product of all the
-          elements in myList by multiplying them. Print out the product after
-          the new loop.
+          elements in <c>numbers</c> by multiplying them. Print out the product
+          after the new loop.
         </p>
       </statement>
 
@@ -62,19 +207,19 @@
           {
               public static void main(String[] args)
               {
-                  ArrayList<Integer> myList = new ArrayList<Integer>();
-                  myList.add(50);
-                  myList.add(30);
-                  myList.add(20);
+                  ArrayList<Integer> numbers = new ArrayList<>();
+                  numbers.add(50);
+                  numbers.add(30);
+                  numbers.add(20);
+
                   int total = 0;
-                  for (Integer value : myList)
-                  {
+                  for (int value : numbers) {
                       total += value;
                   }
                   System.out.println("Sum of all elements: " + total);
 
                   // Write a for-each loop that computes the product
-                  // of all the elements in myList and print out the product.
+                  // of all the elements in numbers and print out the product.
 
               }
           }
@@ -115,7 +260,7 @@
               public void countForLoops()
               {
                   String code = removeSpaces(getCode());
-                  int count = countOccurences(code, "for(Integer");
+                  int count = countOccurences(code, "for(int");
                   boolean passed = count >= 2;
                   getResults("2", count + "", "Number of for each loops", passed);
                   assertTrue(passed);
@@ -126,6 +271,32 @@
 
       </program>
     </activity>
+
+    <p>
+      One thing to watch out for with the enhanced <c>for</c> loop is that we
+      can’t add or remove items from an <c>ArrayList</c> while we loop over it.
+      We’ll see in a later section how to write loops that remove items from an
+      <c>ArrayList</c> using a regular <c>for</c> loop, but with an enhanced for
+      loop if the size of an <c>ArrayList</c> changes in any way, such as by a
+      call to <c>add</c> or <c>remove</c>, while it is being looped over, the
+      loop will immediately throw a <c>ConcurrentModificationException</c>.
+    </p>
+
+    <note>
+      <p>
+        If you’ve been paying very close attention you might wonder how it can
+        be that <c>ArrayList</c> can be a regular class that we could have
+        written ourselves yet it can be used with the special enhanced
+        <c>for</c> loop syntax. The full resolution to that mystery is well
+        beyond the scope of the AP curriculum but it happens that the way the
+        enhanced <c>for</c> loop is defined in terms of an
+        <term>interface</term> that any class can implement and <c>ArrayList</c>
+        is one of the classes that does. So if you wanted to write your own
+        class that you could loop over with an enhanced <c>for</c> loop, you
+        could.
+      </p>
+    </note>
+
 
     <activity label="list_1" numbered="yes" adaptive="yes" indentation="show" language="java">
       <statement>
@@ -198,107 +369,53 @@
     </activity>
   </subsection>
 
-  <subsection xml:id="for-loops-and-indexoutofbounds-exception">
-    <title>For Loops and IndexOutOfBounds Exception</title>
 
-    <p>
-      You can also use a regular indexed <c>for</c> loop to process list
-      elements accessed using an index. <c>ArrayList</c> indices starts at 0
-      just like array indices, but instead of using the index operator <c>[]</c>
-      to access elements, you use the <c>get(index)</c> method to get the value
-      at the index and <c>set(index,value)</c> to set the element at an index to
-      a new value.
-    </p>
-
-    <p>
-      If you try to use an index that is outside of the range of 0 to the number
-      of elements − 1 in an ArrayList, your code will throw an
-      <c>IndexOutOfBoundsException</c>, similar to the
-      <c>ArrayIndexOutOfBoundsException</c> thrown if you use the index operator
-      on an array with an index out of bounds for that array.
-    </p>
-
-    <activity label="listForLoop">
-      <statement>
-        <p>
-          The following code will throw an <c>IndexOutOfBoundsException</c>. Can
-          you fix it?
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-
-        <code>
-          <![CDATA[
-          import java.util.*;
-
-          public class TestForLoop
-          {
-              public static void main(String[] args)
-              {
-                  ArrayList<Integer> myList = new ArrayList<Integer>();
-                  myList.add(50);
-                  myList.add(30);
-                  myList.add(20);
-                  int total = 0;
-                  for (int i = 0; i <= myList.size(); i++)
-                  {
-                      total = total + myList.get(i);
-                  }
-                  System.out.println(total);
-              }
-          }
-          ]]>
-        </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "100";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void fixedCode()
-              {
-                  boolean passed = checkCodeContains("fixed test in loop", "i < myList.size()");
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
-      </program>
-    </activity>
-  </subsection>
 
   <subsection xml:id="while-loop">
-    <title>While Loop</title>
+    <title><c>while</c> loop</title>
 
     <p>
-      The example below demonstrates a <c>while</c> loop and an object-oriented
-      approach where the list is a field of the current object and an instance
-      method rather than a class (static) method loops through the list.
+      And of course we can use a <c>while</c> loop to loop over an
+      <c>ArrayList</c> though if we want to go element by element we’ll have to
+      manage an index variable separately at which point a <c>for</c> loop might
+      make more sense. But if we want to repeatedly modify an <c>ArrayList</c>
+      until some condition is met a while loop can be just the thing. For
+      example this code uses a <c>while</c> loop to remove all the elements from
+      the beginning of an <c>ArrayList</c>, <c>numbers</c>, that are less than 100.
     </p>
+
+    <program>
+      <![CDATA[
+      // numbers is an ArrayList<Integer>
+
+      // Loop as long as there are elements in teh list and element 0 is < 100
+      while (numbers.size() > 0 && numbers.get(0) < 100) {
+        // Remove element 0
+        numbers.remove(0);
+      }
+      ]]>
+    </program>
+
+    <p>
+      After this code runs the list <c>numbers</c> is either empty or starts
+      with a number greater than or equal to 100. There may be numbers less than
+      100 later in the list but all the ones at the start will have been removed.
+    </p>
+
 
     <activity label="listForEachLoopObj">
       <statement>
         <p>
-          The following code removes a name from a list. Set the found variable
-          to the appropriate true or false values at line 13 and line 20 to make
-          the code work.
+          The code in this activity demonstrates using <c>while</c> loop and an
+          object-oriented approach where the list is a field of the current
+          object and an instance method rather than a class (static) method
+          loops through the list.
+        </p>
+
+        <p>
+          The code removes all instances of a name from a list. Set the found
+          variable to the appropriate true or false values at line 13 and line
+          20 to make the code work.
         </p>
       </statement>
 
@@ -533,112 +650,7 @@
     </activity>
   </subsection>
 
-  <subsection xml:id="reading-in-files-with-java-nio-file">
-    <title>Reading in Files with <c>java.nio.file</c></title>
 
-    <p>
-      Although not covered in the AP CSA exam, the <c>java.nio.file</c> package
-      (nio stands for new input/output), added in Java version 7, provides a
-      better and easier way to read in files. The <c>Files</c> class in this
-      package has a method called <c>readAllLines</c> that reads all of the
-      lines in a file and returns them as a <c>List</c> of <c>String</c>
-      objects. The <c>readAllLines</c> method throws an <c>IOException</c> if
-      the file cannot be read. (<c>List</c> is an <term>interface</term>.
-      Interfaces are not on the AP CSA exam but are quite common in actual Java
-      programming. For now all you need to know is that all the methods we’ve
-      talked about using with <c>ArrayList</c> you can use on any <c>List</c>
-      such as the one returned by <c>readAllLines</c>.)
-    </p>
-
-    <program>
-      <![CDATA[
-      import java.nio.file.*;
-      ...
-
-      // This connects and reads in the file in 1 line of code!
-      // It needs to be in a method that throws or handles IOException
-      List<String> lines = Files.readAllLines(Paths.get("data.txt"));
-      ]]>
-    </program>
-
-    <p>
-      Under the covers <c>readAllLines</c> is almost certainly using an
-      <c>ArrayList</c> which is a kind of <c>List</c>. The advantage of storing
-      the lines in a dynamic data structure like an <c>ArrayList</c>, instead of
-      an array, is that you do not need to know how many lines you are going to
-      store when you create the <c>ArrayList</c> the way you do when you create
-      an array. The <c>ArrayList</c> can then grow in size as needed. (If you
-      absolutely need an array, you can convert the <c>List</c> to an array
-      declared to be the correct size with <c>myArray =
-      lines.toArray(myArray);</c>)
-    </p>
-
-    <activity label="read-pokemon-file-nio">
-      <statement>
-        <p>
-          Complete the code in the main method below to reads all lines of the
-          file using <c>Files.readAllLines</c> into a <c>List&lt;String&gt;</c>
-          named <c>lines</c>. Add a loop that prints out the first 10 pokemon.
-        </p>
-      </statement>
-
-      <program interactive="activecode" datafile="pokemon.csv">
-
-        <code>
-          <![CDATA[
-          import java.io.*;
-          import java.nio.file.*;
-          import java.util.*;
-
-          public class ReadData
-          {
-              public static void main(String[] args) throws IOException
-              {
-                  List<String> lines = Files.readAllLines(Paths.get("pokemon.csv"));
-                  // Add a loop that prints out the first 10 elements of the List lines
-                  // You can use the get method with Lists just like ArrayLists
-
-              }
-          }
-          ]]>
-        </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-          import org.junit.*;
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("ReadData");
-              }
-
-              @Test
-              public void testMain() throws IOException
-              {
-                   String output = getMethodOutput("main");
-                   String[] lines = output.split("\\s+");
-                   boolean passed = lines.length >= 10;
-
-                   passed = getResults("10+ lines of output", lines.length + " lines of output", "Expected output", passed);
-                   assertTrue(passed);
-              }
-              @Test
-              public void getMethodTest()
-              {
-                 boolean passed = checkCodeContains("call to get method with lines", "lines.get");
-                 assertTrue(passed);
-              }
-           }
-          ]]>
-        </tests>
-
-      </program>
-    </activity>
-  </subsection>
 
   <subsection xml:id="arraylist-of-student-objects">
     <title>Traversing an ArrayList of Student Objects</title>
