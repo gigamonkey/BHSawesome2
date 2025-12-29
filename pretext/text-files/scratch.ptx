@@ -1,0 +1,71 @@
+    <p>
+      Once the file is opened, the data can be read using <c>Scanner</c>
+      methods. For example, the method, <c>nextLine</c> will read the next line
+      of input and returns it as a <c>String</c>. Here are the methods used in
+      the Scanner file to read all types of input (also on page 2 of the <url
+      href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf">Java
+      Quick Reference</url> provided during the AP exam):
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <p>
+            <c>Scanner(File f)</c> the Scanner constructor that accepts a File
+            for reading.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>String nextLine()</c> returns the next line of text up until the
+            end of the line as a String read from the file or input source;
+            returns null if there is no next line.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>String next()</c> returns the next String up until a white space
+            is read from the file or input source.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>int nextInt()</c> returns the next int read from the file or
+            input source. If the next <c>int</c> does not exist, it will result
+            in an <c>InputMismatchException</c>. Note that this method does not
+            read the end of the line, so the next call to <c>nextLine()</c> will
+            return the rest of the line which will be empty.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>double nextDouble()</c> returns the next double read from the
+            file or input source. If the next <c>double</c> does not exist, it
+            will result in an <c>InputMismatchException</c>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>boolean nextBoolean()</c> returns the next Boolean read from the
+            file or input source. If the next <c>boolean</c> does not exist, it
+            will result in an <c>InputMismatchException</c>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>boolean hasNext()</c> returns true if there is a next item to
+            read in the file or input source; false otherwise.
+          </p>
+        </li>
+
+        <li>
+          <p><c>void close()</c> closes the input stream.</p>
+        </li>
+      </ul>
+    </p>
