@@ -1142,7 +1142,7 @@
               /* Constructor populates the dictionary ArrayList from the file dictionary.txt*/
               public SpellChecker() throws IOException
               {
-                  List<String> lines = Files.readAllLines(Paths.get("dictionary.txt"));
+                  List<String> lines = Files.readAllLines(Path.of("dictionary.txt"));
                   dictionary = new ArrayList<String>(lines);
               }
 

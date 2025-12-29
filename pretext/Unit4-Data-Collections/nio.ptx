@@ -85,7 +85,7 @@ public class SpellChecker
     public SpellChecker() throws IOException
     {
         // Let's use java.nio method readAllLines and convert to an array!
-        List&lt;String&gt; lines = Files.readAllLines(Paths.get("dictionary.txt"));
+        List&lt;String&gt; lines = Files.readAllLines(Path.of("dictionary.txt"));
         dictionary = lines.toArray(dictionary);
 
         /* The old java.io.* Scan/File method of reading in files, replaced by java.nio above // create File object

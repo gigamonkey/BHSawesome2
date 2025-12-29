@@ -1054,9 +1054,9 @@
 
           public class SpellChecker {
 
-              // This dictionary has 10,000 English words that will be read
+              // This dictionary has 10,002 English words that will be read
               // in from a dictionary file in the constructor
-              private String[] dictionary = new String[10000];
+              private String[] dictionary = new String[10002];
 
               /* 1. Write a print10() method that prints out the first ten
                * words of the dictionary array. Do not print out the whole array!
@@ -1096,7 +1096,7 @@
               // The constructor reads in the dictionary from a file
               public SpellChecker() throws IOException {
                   // Let's use java.nio method readAllLines and convert to an array!
-                  List<String> lines = Files.readAllLines(Paths.get("dictionary.txt"));
+                  List<String> lines = Files.readAllLines(Path.of("dictionary.txt"));
                   dictionary = lines.toArray(dictionary);
 
                   /* The old java.io.* Scan/File method of reading in files, replaced by java.nio above
