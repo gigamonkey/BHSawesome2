@@ -80,9 +80,9 @@
       the values passed as arguments have to match the types of the parameter
       variables. We cannot give a constructor a <c>String</c> object when it is
       expecting an <c>int</c>. And the order of the arguments also matters. If
-      you mix up the month and the day in the <c>Date</c> constructor, you will
-      get a completely different date, for example January ninth (1/9/2025)
-      instead of September first (9/1/2025).
+      we mix up the month and the day in the <c>Date</c> constructor, we’ll get
+      a completely different date, for example January ninth (1/9/2025) instead
+      of September first (9/1/2025).
     </p>
 
     <p>
@@ -91,8 +91,7 @@
       statements in the constructor before continuing. Once the last statement
       in the constructor has been executed, the flow of control is returned to
       the point immediately following where the constructor was called. The
-      result of calling a constructor is a reference to the object just created
-      and initialized by the constructor.
+      result of calling a constructor is a reference to the object just created.
     </p>
 
     <activity label="mcq_params">
@@ -413,30 +412,40 @@
       When we invoke a constructor with <c>new</c> two things happen: first a
       new object is created and the memory needed to hold all its instance
       variables is allocated somewhere in the computer’s memory. Then, after the
-      instance variable are initialized either to their default zero value or
+      instance variables are initialized either to their default zero value or
       the value specified in the declaration, the constructor is run with
       <c>this</c> being the newly created object. The code in the constructor
-      can then finish initializing the object however is appropriate. In the
-      case of the above constructor invocation, the constructor will set the
-      instance variable <c>name</c> to the value <c>"Joe"</c> and set <c>age</c>
-      to <c>18</c>. The value of a constructor invocation is a reference to the
-      new object just like the value of an array creation expression is a
-      reference to the newly created array.
+      can then finish initializing the object however is appropriate.
+    </p>
+
+    <p>
+      In the case of the above constructor invocation, the constructor will set
+      the instance variable <c>name</c> to the value <c>"Joe"</c> and set
+      <c>age</c> to <c>18</c>. The value of a constructor invocation is a
+      reference to the new object just like the value of an array creation
+      expression is a reference to the newly created array.
     </p>
 
     <p>
       Constructor signatures are an important part of the API when we use a
-      class from a library someone else has written. In order to use most
-      classes, such as the <c>Turtle</c> class we first used in <xref
-      ref="topic-1-7-APIs-and-libraries" /> we need to look up how to construct
-      an instance of the class. Usually we’ll look at the class’s <url
+      class from a library someone else has written.
+    </p>
+
+    <p>
+      In order to use most classes, such as the <c>Turtle</c> class we first
+      used in <xref ref="topic-1-7-APIs-and-libraries" /> we need to look up how
+      to construct an instance of the class. Usually we’ll look at the class’s
+      <url
       href="https://cseweb.ucsd.edu/~ricko/CSE11/turtleClassesDocs/index.html?turtleClasses/SimpleTurtle.html">documentation</url>
-      which will list the signatures of the constructors available. Knowing the
-      parameter list of a constructor gives us the information we need to invoke
-      the constructor. The documentation may also give us more information about
-      how the constructor’s arguments will be used or restrictions. For
-      instance, in a real <c>Person</c> class, we might document that the
-      <c>age</c> argument has to be a positive number.
+      which will list the signatures of the constructors available.
+    </p>
+
+    <p>
+      Knowing the parameter list of a constructor gives us the information we
+      need to invoke the constructor. The documentation may also give us more
+      information about how the constructor’s arguments will be used or
+      restrictions. For instance, in a real <c>Person</c> class, we might
+      document that the <c>age</c> argument has to be a positive number.
     </p>
 
     <note>
@@ -524,11 +533,15 @@
       constructor with the <c>"Anonymous"</c> as the name argument. In this case
       it doesn’t simplify things much since both constructors are so simple. But
       in more complicated classes that do more complicated initialization it
-      lets us write the complicated stuff in just one place. The typical pattern
-      for writing overloaded constructors is to write one main constructor that
-      takes all the arguments that could possibly be passed, and then write
-      other constructors that take fewer arguments and invoke the main
-      constructor using <c>this()</c>, passing default values as needed.
+      lets us write the complicated stuff in just one place.
+    </p>
+
+    <p>
+      The typical pattern for writing overloaded constructors is to write one
+      main constructor that takes all the arguments that could possibly be
+      passed, and then write other constructors that take fewer arguments and
+      invoke the main constructor using <c>this()</c>, passing default values as
+      needed.
     </p>
 
     <activity label="TurtleClass1">
@@ -1217,7 +1230,7 @@
     </project>
   </subsection>
 
-  <subsection xml:id="design-a-class-for-your-community-1">
+  <subsection xml:id="design-a-class-for-your-community-part2">
     <title>Design a Class for your Community</title>
 
     <p>
@@ -1230,17 +1243,16 @@
       <ol>
         <li>
           <p>
-            Consult your completed worksheet or your code in <url
-            href="topic-3-3-anatomy-of-class.html#groupwork-design-a-class-for-your-community">lesson
-            3.3 Community Challenge</url> for the class name and its 3 instance
-            variables that you created. Copy them into the active code exercise
-            below.
+            Consult your completed worksheet or your code in <xref
+            ref="design-a-class-for-your-community-part1" /> for the class name
+            and its three instance variables that you created. Copy them into the
+            active code exercise below.
           </p>
         </li>
 
         <li>
           <p>
-            Add a constructor with 3 parameters to set all of the instance
+            Add a constructor with three parameters to set all of the instance
             variables to the given parameters.
           </p>
         </li>
@@ -1264,9 +1276,9 @@
     <project label="community-challenge2">
       <statement>
         <p>
-          Copy your class with its 3 instance variables from <url
+          Copy your class with its three instance variables from <url
           href="topic-3-3-anatomy-of-class.html#groupwork-design-a-class-for-your-community">lesson
-          3.3 Community Challenge</url>. Add a constructor with 3 parameters to
+          3.3 Community Challenge</url>. Add a constructor with three parameters to
           set all of the instance variables to the given parameters. Write a
           print() method that uses System.out.println to print out all the
           instance variables. Write a main method that constructs at least 2
@@ -1282,7 +1294,7 @@
           {
               // 1. copy in your instance variables for class from the last lesson
 
-              // 2. Add a constructor with 3 parameters to set all of the instance variables to the given parameters.
+              // 2. Add a constructor with three parameters to set all of the instance variables to the given parameters.
 
 
               // 3. Write a print() method that uses System.out.println to print out all the instance variables.

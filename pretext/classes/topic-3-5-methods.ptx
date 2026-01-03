@@ -830,8 +830,8 @@
 
     <program>
       public int updateCounter() {
-      counter++;
-      return counter;
+          counter++;
+          return counter;
       }
     </program>
 
@@ -2010,7 +2010,7 @@
     </project>
   </subsection>
 
-  <subsection xml:id="design-a-class-for-your-community-2">
+  <subsection xml:id="design-a-class-for-your-community-part3">
     <title>Design a Class for your Community</title>
 
     <p>
@@ -2022,10 +2022,10 @@
       <ol>
         <li>
           <p>
-            Copy your class with its 3 instance variables, constructor, and its
-            print() and main methods from <url
-            href="topic-3-4-constructors.html#groupwork-design-a-class-for-your-community">lesson
-            3.4</url> into the active code exercise below.
+            Copy your class with its three instance variables, constructor, and
+            its print() and main methods from <xref
+            ref="design-a-class-for-your-community-part2" /> into the active
+            code exercise below.
           </p>
         </li>
 

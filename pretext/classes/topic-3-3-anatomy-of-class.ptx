@@ -173,14 +173,9 @@
       they are called <term>instance variables</term> and they are what define
       the attributes instances of this class have. So from these two lines we
       can see that every <c>Person</c> object has two attributes, a name and an
-      age.
-    </p>
-
-    <p>
-      These variables define the structure of a <c>Person</c> object and they
-      are called instance variables because each instance of the class, that is
-      each object, has its own set of variables that aren’t shared with other
-      instances.
+      age. Each instance of the class has its own set of instance variables that
+      aren’t shared with other instances so we can have two different
+      <c>Person</c> objects, each with their own <c>name</c>.
     </p>
 
     <p>
@@ -232,16 +227,17 @@
       ref="topic-1-9-method-signatures" /> but there are two new things here.
       First, both of these methods refer to a variable that is neither a
       parameter nor is declared inside the method. The method <c>greet</c> has
-      one parameter, <c>to</c>, but it also refers to the variable <c>name</c>.
-      And <c>canVote</c> has no parameters but refers to the variable
-      <c>age</c>.
+      one parameter, <c>to</c>, but the code in the method also refers to the
+      variable <c>name</c>. And <c>canVote</c> has no parameters but its code
+      refers to the variable <c>age</c>.
     </p>
 
     <p>
-      This works because of the second new thing that is that these methods do
-      not have the keyword <c>static</c> in their signature. That makes them
-      <term>instance methods</term> which means they have access to the instance
-      variables defined in the class.
+      This works because of the second new thing that about these methods,
+      compared to the ones we’ve written before now: theey do not have the
+      keyword <c>static</c> in their signature. That makes them <term>instance
+      methods</term> which means they have access to the instance variables
+      defined in the class.
     </p>
 
     <p>
