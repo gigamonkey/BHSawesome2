@@ -417,7 +417,7 @@
     <p>
       Notice that the <c>nextInt()</c> and <c>nextDouble()</c> methods read in a
       number but leave any space or newline characters on the input stream. This
-      can cause problems if you have input to read in multiple lines. Using
+      can cause problems if we have input to read in multiple lines. Using
       <c>nextLine</c> and the other <c>Scanner</c> methods together on the same
       input source sometimes requires code to adjust for the methods’ different
       ways of handling whitespace. Java programmers will often add in an extra
@@ -454,8 +454,8 @@
       <statement>
         <p>
           Complete the code below to count the number of lines in the dictionary
-          file using a <c>while</c> loop. This code will also tell you how many
-          lines are in the file.
+          file using a <c>while</c> loop and then print how many lines are in
+          the file.
         </p>
       </statement>
 
@@ -677,7 +677,7 @@
       its argument and returns a <c>List</c> of <c>String</c> values, one
       <c>String</c> per line. <c>List</c> is an <term>interface</term>, another
       feature of Java that’s not part of the AP curriculum but which are a key
-      part of real Java programming. For now all you need to know is that a
+      part of real Java programming. For now all we need to know is that a
       <c>List</c> is effectively the same as an <c>ArrayList</c>.
     </p>
 
@@ -702,10 +702,10 @@
       Under the covers <c>readAllLines</c> is almost certainly using an
       <c>ArrayList</c> which is a kind of <c>List</c>. The advantage of storing
       the lines in a dynamic data structure like an <c>ArrayList</c>, instead of
-      an array, is that you do not need to know how many lines you are going to
-      store when you create the <c>ArrayList</c> the way you do when you create
-      an array. The <c>ArrayList</c> can then grow in size as needed. (If you
-      absolutely need an array, you can convert the <c>List</c> to an array
+      an array, is that we do not need to know how many lines we are going to
+      read when you create the <c>ArrayList</c> the way ve do when we create an
+      array. The <c>ArrayList</c> can then grow in size as needed. (If we
+      absolutely need an array, we can convert the <c>List</c> to an array
       declared to be the correct size with the <c>toArray</c> method on
       <c>List</c>:
     </p>

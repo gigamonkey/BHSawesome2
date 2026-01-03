@@ -13,33 +13,50 @@
   <idx>data files</idx>
   <introduction>
     <p>
+      While methods like <c>Scanner.nextLine</c> or <c>Files.readAllLines</c>
+      allow us to get the contents of a file broken up into lines, if we want to
+      do computations with that data we will often need to convert the data into
+      other types like <c>int</c> or <c>double</c> to work with. The process of
+      extracting structure from a linear sequence of characters in a
+      <c>String</c> is called <term>parsing</term>.
     </p>
+
+    <p>
+      In this section we’ll look at some relatively simple kinds of parsing,
+      turning the lines in a CSV file like <c>pokemon.csv</c> from the previous
+      section into data we can work with.
+    </p>
+
   </introduction>
 
   <subsection xml:id="split">
-    <title>Split Strings</title>
+    <title>Splitting strings</title>
 
     <idx>split</idx>
     <p>
       If you take a look at the Pokemon CSV file, you’ll notice that each line
-      contains multiple data attributes separated by commas. These attributes
-      include each Pokemon’s name, type, speed, etc. on each row. Typically, the
-      first line of a CSV file serves as the header, indicating the names of
-      these attributes.
+      contains multiple values by commas. These values are the attributes of a
+      single Pokemon: its name, type, speed, etc. Often the first line of a CSV
+      file is a header line, indicating the names of these attributes.
     </p>
 
     <program language="text">
-      // The first line of the Pokemon CSV file
-      Number, Pokemon, Type 1, Type 2, HP, Attack, Defense, Speed, PNG, Description
+      Number,Pokemon,Type 1,Type 2,HP,Attack,Defense,Speed,PNG,Description
     </program>
 
     <p>
-      The Java <c>String</c> class provides a useful method called
-      <c>split(String delimeter)</c> that splits a string into an array of
-      substrings based on a specified <term>delimiter</term> which is a
-      character like a comma or a space that separates the units of data. This
-      method returns a <c>String</c> array where each element in the array
-      represents a field of data from the line.
+      So our first task, if we want to do something more interesting with the
+      Pokemon data than just counting how many lines are in the file is not
+      parse each line into the individual values.
+    </p>
+
+    <p>
+      The <c>String</c> class provides a useful method <c>split(String
+      delimeter)</c> that splits a string into an array of substrings based on a
+      specified <term>delimiter</term> which is a character like a comma or a
+      space that separates the units of data. This method returns a
+      <c>String</c> array where each element in the array contains one substring
+      from the original string.
     </p>
 
     <program>
