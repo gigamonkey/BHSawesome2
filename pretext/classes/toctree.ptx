@@ -28,7 +28,7 @@
       use without having to know all the details of how it works on the inside.
       We’ve already seen how that can work when we’ve used <c>String</c> and
       <c>Turtle</c> objects. We don’t know exactly how, say, <c>indexOf</c>
-      works or what exactly happens when we tell a <c>Turtle</c> to got
+      works or what exactly happens when we tell a <c>Turtle</c> to go
       <c>forward()</c>, but we can use those methods in our programs as long as
       we understand <em>what</em> they do.
     </p>

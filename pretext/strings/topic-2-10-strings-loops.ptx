@@ -48,7 +48,7 @@
     <p>
       The first category of <c>String</c> algorithms are related to the array
       searching algorithms we discussed in <xref ref="min-max-search-algorithms"
-      /> and the the any and all algorithms from <xref ref="test-property" />.
+      /> and the any and all algorithms from <xref ref="test-property" />.
       However rather than searching for or testing elements of an array, we will
       search for or test for the presence of substrings of a given string that
       have certain properties. The basic structure of this sort of algorithm is

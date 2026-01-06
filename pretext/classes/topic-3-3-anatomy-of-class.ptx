@@ -144,7 +144,7 @@
       Next is the name of the class, <c>Person</c>. Class names in Java are
       always capitalized. It is not strictly required by the language but is as
       universally followed a convention as just about anything in programming.
-      Consequenly, Java code with uncapitalized class names can be extremely
+      Consequently, Java code with uncapitalized class names can be extremely
       confusing, especially to experienced Java programmers, so don’t write code
       with uncapitalized class names!
     </p>
@@ -201,7 +201,7 @@
       <c>this.age</c> which are specifically the instance variables we defined
       above. This constructor guarantees that whenever we make a <c>Person</c>
       we have to supply a name and an age and those values are stored in the
-      object’s intstance variables.
+      object’s instance variables.
     </p>
 
     <p>
@@ -234,7 +234,7 @@
 
     <p>
       This works because of the second new thing that about these methods,
-      compared to the ones we’ve written before now: theey do not have the
+      compared to the ones we’ve written before now: they do not have the
       keyword <c>static</c> in their signature. That makes them <term>instance
       methods</term> which means they have access to the instance variables
       defined in the class.

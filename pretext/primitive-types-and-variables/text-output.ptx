@@ -35,9 +35,9 @@
       <ul>
         <li>
           <p>
-            <c>System.out.println(value)</c> prints the the textual
-            representation of value followed by a new line (<c>println</c> is an
-            abbreviation for “print line”.)
+            <c>System.out.println(value)</c> prints the textual representation
+            of value followed by a new line (<c>println</c> is an abbreviation
+            for “print line”.)
           </p>
         </li>
 

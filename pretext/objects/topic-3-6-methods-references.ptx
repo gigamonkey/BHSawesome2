@@ -114,10 +114,9 @@
     </program>
 
     <p>
-      the value stored in the variable <c>addr</c> is a reference to the the
-      object data that was allocated to hold the data that makes up the
-      <c>Address</c> object. And when we write a line like this to create a
-      <c>Person</c>:
+      the value stored in the variable <c>addr</c> is a reference to the object
+      data that was allocated to hold the data that makes up the <c>Address</c>
+      object. And when we write a line like this to create a <c>Person</c>:
     </p>
 
     <program>

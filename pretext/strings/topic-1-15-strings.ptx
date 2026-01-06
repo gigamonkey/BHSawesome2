@@ -328,7 +328,7 @@
 
     <p>
       For example there’s a <c>length</c> method defined in the <c>String</c>
-      class that returns the the <c>String</c>’s length. The number it returns
+      class that returns the <c>String</c>’s length. The number it returns
       depends on the specific <c>String</c> we call it on.
     </p>
 

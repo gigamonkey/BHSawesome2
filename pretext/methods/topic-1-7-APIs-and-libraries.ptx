@@ -152,10 +152,10 @@
     </p>
 
     <p>
-      To see an example of this, look at the the Java program in the exercise
-      below. It creates a <c>Turtle</c> object and stores a reference to it in
-      the variable <c>yertle</c>. The following two lines of code are used to
-      tell the turtle to move forward and then turn right.
+      To see an example of this, look at the Java program in the exercise below.
+      It creates a <c>Turtle</c> object and stores a reference to it in the
+      variable <c>yertle</c>. The following two lines of code are used to tell
+      the turtle to move forward and then turn right.
     </p>
 
     <program>
