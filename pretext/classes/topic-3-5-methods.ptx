@@ -286,7 +286,7 @@
 
           <p>
             For instance, in <c>Person</c> we might realize that we want to
-            store the persons birthdate and to compute their age based on that.
+            store the persons birth date and to compute their age based on that.
             We can change the implementation of <c>getAge</c> and then get rid
             of the <c>age</c> variable and code that uses <c>getAge</c> will
             still work.
@@ -854,7 +854,7 @@
         <p>
           Then change the call to <c>letterPresent</c> in <c>main</c> and run it
           again to try finding a different letter. Try one that is not present
-          in the string <c>"Apples and Oranges"</c>. Or try passing a differest
+          in the string <c>"Apples and Oranges"</c>. Or try passing a different
           <c>String</c> to the constructor call in <c>main</c>.
         </p>
 
