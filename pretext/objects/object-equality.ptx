@@ -133,8 +133,9 @@
       classes have an <c>equals</c> method that just uses <c>==</c> but many
       classes will provide a more meaningful <c>equals</c> so in general
       whenever you are testing whether two non-primitive values are the same you
-      should use <c>equals</c> unless you specifically care about whether they
-      are literally the same (or different) objects in memory.
+      should use <c>equals</c> unless for some reason you specifically care
+      about whether they are literally the same (or different) objects in
+      memory.
     </p>
 
     <p>
