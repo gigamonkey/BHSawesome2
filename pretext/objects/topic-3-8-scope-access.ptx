@@ -65,11 +65,8 @@
 
     <p>
       The following flowchart shows the difference between calling class
-      (static) methods and instance methods. Static methods are called using the
-      class name, for example, <c>Math.sqrt(25);</c>. Instance methods are
-      called using an object of the class, for example,
-      <c>yertle.forward();</c>. Traditionally, class names are capitalized, and
-      object variables are lowercase.
+      (static) methods such as <c>Math.sqrt</c> and instance methods such as
+      <c>myturtle.forward</c>.
     </p>
 
     <figure align="center">
