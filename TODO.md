@@ -28,7 +28,7 @@
 
 # Functionality
 
-- [ ] Make sure Turtle graphics work.
+- [x] Make sure Turtle graphics work.
 
 # Formatting cleanup
 
