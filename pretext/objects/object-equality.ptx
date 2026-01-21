@@ -480,15 +480,19 @@
     <title>Comparing with null</title>
 
     <p>
-      The one time we do use <c>==</c> or <c>!=</c> with reference values is to
-      compare a reference value to <term>null</term> to see if it safe to use
-      since accessing an instance variable or invoking a method on <c>null</c>
-      produces a <c>NullPointerException</c>. Often <term>short-circuit
-      evaluation</term> is used to avoid an error if the object doesn’t exist.
-      Remember that short-circuit evaluation is a feature of <c>&amp;&amp;</c>
-      that means that if the first part of the if condition is <c>false</c>, it
-      doesn’t even have to check the second condition and it knows the whole
-      <c>&amp;&amp;</c> test is false. So we can write something like:
+      One time we do commonly use <c>==</c> or <c>!=</c> with reference values
+      is to compare a reference value to <term>null</term> to see if it safe to
+      use. Remember that accessing an instance variable or invoking a method on
+      <c>null</c> produces a <c>NullPointerException</c> so if we don’t know
+      that a reference is non-<c>null</c> we need to check before we use it.
+    </p>
+
+    <p>
+      A common idiom is to use the <term>short-circuit evaluation</term> of
+      <c>&amp;&amp;</c> which ensures that if the first expression in the
+      <c>&amp;&amp;</c> is <c>false</c>, it doesn’t evaluate the second
+      expression since it already knows the whole <c>&amp;&amp;</c> test is
+      false. So we can write something like:
     </p>
 
     <program>
