@@ -116,9 +116,9 @@
 
     <p>
       While <c>==</c> and <c>!=</c> have a clear meaning when comparing
-      references, often with object types we often care about a different notion
-      of equality that looks at the values stored an objects’ instance variables
-      to decide if they are the same. This is particularly true of classes like
+      references, with object types we often care about a different notion of
+      equality that looks at the values stored an objects’ instance variables to
+      decide if they are the same. This is particularly true of classes like
       <c>String</c> that represent immutable values that just happen to be
       stored in a more complex way than primitive types like <c>int</c>and
       <c>double</c>.
