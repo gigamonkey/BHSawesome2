@@ -59,10 +59,10 @@
     <xi:include href="./strings/toctree.ptx" />
     <xi:include href="./classes/toctree.ptx" />
     <xi:include href="./objects/toctree.ptx" />
-    <xi:include href="./abstraction-and-program-design/toctree.ptx" />
     <xi:include href="./array-lists/toctree.ptx" />
     <xi:include href="./text-files/toctree.ptx" />
     <xi:include href="./algorithms/toctree.ptx" />
+    <xi:include href="./abstraction-and-program-design/toctree.ptx" />
     <xi:include href="./ap-practice/toctree.ptx" />
 
     <backmatter>
