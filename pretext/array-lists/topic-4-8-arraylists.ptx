@@ -41,7 +41,7 @@
         variable that would refer to an <c>ArrayList</c>. Interfaces are no
         longer on the exam, but if you see <c>List</c> being used in an old exam
         question just assume it’s an <c>ArrayList</c>. You will also see
-        references to <c>List</c> if you read the <c>ArrayList</c> javadocs.
+        references to <c>List</c> if you read the <c>ArrayList</c> Javadocs.
       </p>
     </note>
   </introduction>
@@ -282,7 +282,7 @@
     </program>
 
     <p>
-      If you look at the <c>ArrayList</c> javadocs you’ll see the class listed
+      If you look at the <c>ArrayList</c> Javadocs you’ll see the class listed
       as <c>ArrayList&lt;E&gt;</c>. The <c>E</c> is the name for the type
       parameter and tells us that we need to provide an actual type like
       <c>String</c> when we declare an <c>ArrayList</c>. If you look at the
@@ -370,7 +370,7 @@
     </p>
 
     <p>
-      However the type parameter cannot be a primitve type so we cannot make an
+      However the type parameter cannot be a primitive type so we cannot make an
       <c>ArrayList&lt;int&gt;</c> or <c>ArrayList&lt;double&gt;</c>. In the next
       section we’ll discuss how to use wrapper classes to work around that
       limitation.
@@ -553,7 +553,7 @@
         <p>
           The code below demonstrates using the <c>add</c> method to add values
           to the end of a list and the <c>size</c> method to get the size after
-          addingn several items.
+          adding several items.
         </p>
         <p>
           Can you add another item to the shopping list and print out the new
