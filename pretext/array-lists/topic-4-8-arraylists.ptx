@@ -414,7 +414,7 @@
           {
               public static void main(String[] args)
               {
-                  ArrayList<String> nameList = new ArrayList<String>();
+                  ArrayList<String> nameList = new ArrayList<>();
                   System.out.println("The size of nameList is: " + nameList.size());
                   ArrayList<String> list2 = null;
                   System.out.println("The size of list2 is: " + list2.size());
@@ -794,7 +794,7 @@
 
         <program>
           <![CDATA[
-          List<String> list1 = new ArrayList<String>();
+          ArrayList<String> list1 = new ArrayList<>();
           list1.add("Anaya");
           list1.add("Layla");
           list1.add("Sharrie");
@@ -943,7 +943,7 @@
 
         <program>
           <![CDATA[
-          ArrayList<String> list1 = new ArrayList<String>();
+          ArrayList<String> list1 = new ArrayList<>();
           list1.add("Anaya");
           list1.add("Layla");
           list1.add("Sharrie");
