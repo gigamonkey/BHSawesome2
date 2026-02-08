@@ -69,11 +69,11 @@
     </p>
 
     <p>
-      So there are a few ways to implement removing elements from an ArrayList.
-      We can use a regular <c>for</c> loop and adjust the index variable when we
-      remove an item, we can do roughly same thing with a <c>while</c> loop,
-      which gives us a bit more explicit control over the index variable. Or we
-      can loop backwards.
+      So there are a few ways to implement removing elements from an
+      <c>ArrayList</c>. We can use a regular <c>for</c> loop and adjust the
+      index variable when we remove an item, we can do roughly same thing with a
+      <c>while</c> loop, which gives us a bit more explicit control over the
+      index variable. Or we can loop backwards.
     </p>
 
     <p>
@@ -83,7 +83,7 @@
       <c>i</c> and call <c>list.remove(i)</c>, then all the elements after the
       removed one shift down one and if we continue looping as normal, <c>i</c>
       will get incrementeed and we will not consider the element that used to be
-      at position <c>i + 1</c> and is not at position <c>i</c>. So we have to
+      at position <c>i + 1</c> and is now at position <c>i</c>. So we have to
       write something like this;
     </p>
 
