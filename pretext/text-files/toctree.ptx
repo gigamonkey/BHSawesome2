@@ -5,27 +5,28 @@
 
   <introduction>
     <p>
-      While we can initialize arrays and <c>ArrayList</c>s in our programs
-      that’s only reasonable to do for small amounts of data. It’s not very
-      convenient if we want to write a program that processes a lot of data. And
-      processing large amounts of data is one of the things computers are great
-      at. Also, if we initialize our data structures in our program, then we
-      need to edit our program and recompile it if we want to process different
-      data, which is not convenient at all.
+      While we can initialize arrays and <c>ArrayList</c>s with code in our
+      programs that’s only reasonable to do for small amounts of data. It’s not
+      very convenient if we want to write a program that processes a lot of
+      data. And processing large amounts of data is one of the things computers
+      are great at. Also, if we initialize our data structures in our program,
+      then we need to edit our program and recompile it if we want to process
+      different data, which is not convenient at all.
     </p>
 
     <p>
       Instead of embedding data directly in the source code of our programs, we
       typically store data as files on the computer’s hard drive and then load
-      data from those files in our programs. This allows us to write a program
-      once that can run the same computation on different data just by loading a
-      different file.
+      the data from those files into our programs. This allows us to write a
+      program once that can run the same computation on different data just by
+      loading a different file.
     </p>
 
     <p>
-      In this chapter we’ll look at how to load data from files and put it into
-      an <c>ArrayList</c> so we can then compute answers based on the data using
-      list algorithms like the ones we discussed in the previous chapter.
+      In this short chapter we’ll look at how to load data from files and put it
+      into arrays and <c>ArrayList</c>s so we can then compute answers based on
+      the data using list algorithms like the ones we discussed in the previous
+      chapter.
     </p>
 
   </introduction>

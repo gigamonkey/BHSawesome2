@@ -97,8 +97,8 @@
 
     <p>
       The simplest of these methods to use is <c>nextLine</c> which reads the
-      next complete line from the file, up to the next newline character or the
-      end of the file and returns it as a <c>String</c> with the newline
+      next complete line from the file, up to either the next newline character
+      or the end of the file, and returns it as a <c>String</c> with the newline
       removed. Often, as we’ll see in the next section, the easiest way to read
       data from a file is to read it a line at a time and then use various
       methods on <c>String</c> and the wrapper classes <c>Integer</c> and
@@ -117,7 +117,7 @@
       <ul>
         <li><c>nextInt</c> - reads the next bit of text and tries to parse it as an <c>int</c> value.</li>
         <li><c>nextDouble</c> - reads the next bit of text and tries to parse it as a <c>double</c> value.</li>
-        <li><c>nextBoolean</c> - reads the next bit of text and tries to parse it as an <c>boolean</c> value.</li>
+        <li><c>nextBoolean</c> - reads the next bit of text and tries to parse it as a <c>boolean</c> value.</li>
         <li><c>next</c> - reads and return the next <term>token</term> as a <c>String</c></li>
         <li><c>hasNext</c> - returns true if there is another token to read</li>
         <li><c>close</c> - closes the <c>Scanner</c> and the underlying file so
@@ -161,14 +161,14 @@
       In earlier chapters we saw that if we wrote code that tried to do
       something impossible such as accessing an element of an array at an index
       that didn’t exist or invoking a method on a <c>null</c> reference, Java
-      would through an exception like an <c>ArrayIndexOutOfBoundsException</c>
-      or <c>NullPointerException</c>.
+      would throw an exception like an <c>ArrayIndexOutOfBoundsException</c> or
+      <c>NullPointerException</c>.
     </p>
 
     <p>
       Exceptions are how Java handles situations where a
       <term>precondition</term>, like we discussed in <xref
-      ref="topic-1-8-comments" /> is not met causing a bit of code to be unable
+      ref="topic-1-8-comments" /> is not met, causing a bit of code to be unable
       to satisfiy its <term>postcondition</term>. For instance there’s an
       implicit precondition whenever we try to access an array element that the
       index is valid and if it’s not, there’s no way for the array access
@@ -202,13 +202,13 @@
       specify what we will do if one is thrown. There are basically two choices.
       The simplest is to add <c>throws IOException</c> after the argument list
       of the method that contains the line creates the <c>Scanner</c>. This is
-      basically passin the buck: the method is saying, this bad thing can happen
-      and I can’t recover if it does so it is now the responsibility of whatever
-      methods call me to deal with it. Those methods can continue to pass the
-      buck by adding <c>throws IOException</c> to their own signatures or
-      eventually some method could handle the exception using a construct we’ll
-      describe below. But within the bounds of the AP curriculum, we should just
-      add <c>throws IOException</c> to any method that needs it.
+      basically passing the buck: the method is saying, this bad thing can
+      happen and I can’t recover if it does so it is now the responsibility of
+      whatever methods call me to deal with it. Those methods can continue to
+      pass the buck by adding <c>throws IOException</c> to their own signatures
+      or eventually some method could handle the exception using a construct
+      we’ll describe below. But within the bounds of the AP curriculum, we
+      should just add <c>throws IOException</c> to any method that needs it.
     </p>
 
     <program>
@@ -235,9 +235,9 @@
       <statement>
         <p>
           Try the following exercise to practice reading in a file. Notice the
-          compiler error “unreported exception FileNotFoundException; must be caught
-          or declared to be thrown”. Add <term>throws IOException</term> to the end
-          of the main method header to fix the error.
+          compiler error “unreported exception FileNotFoundException; must be
+          caught or declared to be thrown”. Add <term>throws IOException</term>
+          to the end of the <c>main</c> method header to fix the error.
         </p>
 
         <p>
@@ -705,9 +705,8 @@
       an array, is that we do not need to know how many lines we are going to
       read when you create the <c>ArrayList</c> the way ve do when we create an
       array. The <c>ArrayList</c> can then grow in size as needed. (If we
-      absolutely need an array, we can convert the <c>List</c> to an array
-      declared to be the correct size with the <c>toArray</c> method on
-      <c>List</c>:
+      absolutely need an array, we can convert the <c>List</c> to an array with
+      the <c>toArray</c> method on <c>List</c>:
     </p>
 
     <program>

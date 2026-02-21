@@ -46,8 +46,8 @@
 
     <p>
       So our first task, if we want to do something more interesting with the
-      Pokemon data than just counting how many lines are in the file is not
-      parse each line into the individual values.
+      Pokemon data than just counting how many lines are in the file is to parse
+      each line into the individual values.
     </p>
 
     <p>
@@ -72,10 +72,10 @@
       identifiable chunks of data. The first line of headers in the file
       indicates that the 0th element of the data array is the Pokemon’s number,
       element 1 is the name, etc. We only need to save the data that we want to
-      use. In this case, we want to save the name, type1, speed, and imageFile.
-      If we want to do math or comparisons with the speed, we can convert it to
-      an int using the <c>Integer.parseInt</c> method that will be described in
-      the next lesson.
+      use. In this case, we want to save the <c>name</c>, <c>type1</c>,
+      <c>speed</c>, and <c>imageFile</c>. If we want to do math or comparisons
+      with the speed, we can convert it to an int using the
+      <c>Integer.parseInt</c> method that will be described in the next lesson.
     </p>
 
     <program>
@@ -538,29 +538,31 @@
 
     <p>
       Let’s end with a challenge that combines all the skills you have learned
-      so far. You could work in pairs for this challenge. Create a class Pokemon
-      that has at least 3 attributes that can be found in the Pokemon file,
-      including its name, type1, and imagefile, and any other attributes from
-      the file that you would like. Write a constructor and getters for these
-      attributes. Then, read in the data from the pokemon file, split each line,
-      and save the data in an array of Pokemon objects. Write a <c>findType</c>
-      method that returns to the type of a Pokemon given its name as an
-      argument. It should loop through the array to find the right Pokemon
-      object using the <c>getName</c> and <c>getType</c> methods that you will
-      write. It should also display the image for the Pokemon.
+      so far. You could work in pairs for this challenge. Create a class
+      <c>Pokemon</c> that has at least three attributes that can be found in the
+      Pokemon file, including its <c>name</c>, <c>type1</c>, and
+      <c>imagefile</c>, and any other attributes from the file that you would
+      like. Write a constructor and getters for these attributes. Then, read in
+      the data from the pokemon file, split each line, and save the data in an
+      array of <c>Pokemon</c> objects. Write a <c>findType</c> method that
+      returns to the type of a <c>Pokemon</c> given its name as an argument. It
+      should loop through the array to find the right <c>Pokemon</c> object
+      using the <c>getName</c> and <c>getType</c> methods that you will write.
+      It should also display the image for the Pokemon.
     </p>
 
     <project label="challenge-pokemon-file">
       <statement>
         <p>
-          Design the class Pokemon that has at least 3 attributes that can be
-          found in the Pokemon file, including its name, type1, and imagefile,
-          and any other attributes from the file that you would like. Write a
-          constructor and getters for these attributes. Then, read in the data
-          from the pokemon file, split each line, and save the data in an array
-          of Pokemon objects. Write a <c>findType</c> method that loops through
-          the array to find the Pokemon with the given name as argument and
-          print out and return its type and its image.
+          Design the class <c>Pokemon</c> that has at least three attributes
+          that can be found in the Pokemon file, including its <c>name</c>,
+          <c>type1</c>, and <c>imagefile</c>, and any other attributes from the
+          file that you would like. Write a constructor and getters for these
+          attributes. Then, read in the data from the pokemon file, split each
+          line, and save the data in an array of <c>Pokemon</c> objects. Write a
+          <c>findType</c> method that loops through the array to find the
+          <c>Pokemon</c> with the given name as argument and print out and
+          return its type and its image.
         </p>
       </statement>
 
