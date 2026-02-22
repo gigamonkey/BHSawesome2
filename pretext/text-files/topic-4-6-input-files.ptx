@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-6-input-files">
-  <title>Data from files</title>
+  <title>Files</title>
 
   <idx>files</idx>
   <idx>Scanner</idx>
@@ -13,26 +13,27 @@
   <idx>data files</idx>
   <introduction>
     <p>
-      Files are used to store data in software that we use every day. For
-      example, when you play a game on your computer, your game progress is
-      saved in a file. The next time you play that game, your game progress is
-      loaded in from that file, so you can continue where you left off. In this
-      lesson, you will learn how to read in data from a file in Java.
+      A <term>file</term> contains data that persists when the program is not
+      running. Files are stored on our computers’ hard drives, have names, and
+      are organized into hierarchical folders. Our programs can open files and
+      read the data they contain into memory. For example in <xref
+      ref="topic-4-4-array-traversal" />, we created a <c>SpellChecker</c> class
+      that reads a dictionary file into an array of words which the
+      <c>spellcheck</c> method could use to verify if a word is spelled
+      correctly.
     </p>
 
     <p>
-      A <term>file</term> is storage for data that <em>persists</em> when the
-      program is not running. The data in a file can be retrieved during program
-      execution. For example in <xref ref="topic-4-4-array-traversal" />, you
-      created a <c>SpellChecker</c> class that reads in a dictionary file into
-      an array of words, and a <c>spellcheck</c> method that uses this array to
-      verify if a word is spelled correctly. Input files like the dictionary
-      enable us to handle large amounts of data efficiently. Instead of manually
-      entering data into our program every time it runs, we can store the data
-      in a file and read it as needed. Another benefit of using files is the
-      ability to separate the data from the code, allowing for more modular and
-      flexible software design.
+      By separating the data the program needs (the dictionary) from the program
+      itself, we can use the same program with different data. For example, we
+      could use our spellchecker to spellcheck a different language if we ran it
+      with a file contain a list of words in that language.
     </p>
+
+    <p>
+      In this lesson, we will learn how to read data from a file in Java.
+    </p>
+
   </introduction>
 
   <subsection xml:id="File-Scanner-IOException">
@@ -40,22 +41,22 @@
 
     <p>
       These days there are two sets of classes for interacting with files from
-      Java. We’ll start with the more traditional way which is part of the AP
-      curriculum. Then later we’ll look at a more modern and slightly more
-      convenient way.
+      Java. We’ll start with the more traditional classes which are part of the
+      AP curriculum. Then we’ll look at a more modern and convenient set of
+      classes that you might want to use in real programs.
     </p>
 
     <p>
-      The first thing we need is an object to represent a file on our computer.
-      The traditional way—and the AP way—is with the class <c>File</c> in the
-      package <c>java.io</c>. The <c>io</c> in the package name stands for
-      <term>I/O</term> which is itself an abbreviation for
+      On order to work with files, the first thing we need is an object to
+      represent a file. The traditional way—and the AP way—is with the class
+      <c>File</c> in the package <c>java.io</c>. The <c>io</c> in the package
+      name stands for <term>I/O</term> which is itself an abbreviation for
       <term>Input/Output</term> since the classes in that package are all
       related to moving data into a program (input) and back out (output).
     </p>
 
     <p>
-      A <c>File</c> object can be constructed with a contstructor that takes a
+      A <c>File</c> object can be constructed with a constructor that takes a
       <c>String</c> containing the name of the file. For example if we want to
       use a file named <c>data.txt</c> we can construct a <c>File</c> object
       like this:
@@ -68,15 +69,16 @@
     </program>
 
     <p>
-      At this point the file doesn’t even need to exist. We just have a way to
-      refer to such a file. But if it does exist and we want to read data from
-      it we need to <term>open</term> the file with some object that knows how
-      to read data from it. There are a number of classes in Java for doing that
-      depending on how we want to access the data. In the AP curriculum we use
-      the class <c>Scanner</c> which is in the package <c>java.util</c>, the
-      same package as <c>ArrayList</c>. If we construct a <c>Scanner</c> with a
-      <c>File</c> object as an argument we get a <c>Scanner</c> that we can use
-      to read data from the file on our harddrive.
+      The <c>File</c> object just gives us a way to refer to the file. To read
+      data from the file we need to <term>open</term> the file with some object
+      that knows how to read data from it. There are a number of classes in Java
+      for doing that depending on how we want to access the data. In the AP
+      curriculum we use the class <c>Scanner</c> which is in the package
+      <c>java.util</c>, the same package as <c>ArrayList</c>. If we construct a
+      <c>Scanner</c> with a <c>File</c> object as an argument we get a
+      <c>Scanner</c> that we can use to read data from the file. (We previously
+      used <c>Scanner</c> in <xref ref="scanner" /> to read input typed by the
+      user.)
     </p>
 
     <program>
@@ -88,27 +90,31 @@
     </program>
 
     <p>
-      A single <c>Scanner</c> can be used repeatedly to read from the same file.
-      It has a number of methods that will each read different data from the
-      underlying file and it keeps track of where it left off so calling the
-      same method multiple times will probably return different things each time
-      as the <c>Scanner</c> advances through the file.
+      Once we construct a <c>Scanner</c>, we can use it to repeatedly read from
+      the same file. It has a number of methods that will each read different
+      data from the underlying file and it keeps track of where it left off so
+      calling the same method multiple times will probably return different
+      things each time as the <c>Scanner</c> advances through the file.
     </p>
 
     <p>
       The simplest of these methods to use is <c>nextLine</c> which reads the
       next complete line from the file, up to either the next newline character
-      or the end of the file, and returns it as a <c>String</c> with the newline
-      removed. Often, as we’ll see in the next section, the easiest way to read
-      data from a file is to read it a line at a time and then use various
-      methods on <c>String</c> and the wrapper classes <c>Integer</c> and
-      <c>Double</c> to take apart the <c>String</c> and convert the parts to the
-      data types we actually want.
+      or the end of the file. It returns the line as a <c>String</c> with the
+      newline removed.
+    </p>
+
+    <p>
+      Often, as we’ll see in the next section, the easiest way
+      to read data from a file is to read it a line at a time and then use
+      various methods on <c>String</c> and the wrapper classes <c>Integer</c>
+      and <c>Double</c> to take apart the <c>String</c> and convert the parts to
+      the data types we actually want.
     </p>
 
     <p>
       But <c>Scanner</c> does provide some other methods that are part of the AP
-      curriculum ande are listed on the <url
+      curriculum and are listed on the <url
       href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf">Java
       Quick Reference</url>.
     </p>
@@ -130,7 +136,7 @@
       because of the way the <c>Scanner</c> decides whether there’s another
       token. One method that is not part of the AP curriculum but which goes
       very well with <c>nextLine</c> is <c>hasNextLine</c> which returns a
-      boolean indicating whether it is possible got get another line with
+      boolean indicating whether it is possible to get another line with
       <c>nextLine</c>.
     </p>
 
@@ -151,6 +157,7 @@
       while (data.hasNextLine()) {
         lines.add(data.nextLine());
       }
+      // Now lines contains all the lines from data.txt
       ]]>
     </program>
   </subsection>
@@ -166,49 +173,58 @@
     </p>
 
     <p>
-      Exceptions are how Java handles situations where a
-      <term>precondition</term>, like we discussed in <xref
-      ref="topic-1-8-comments" /> is not met, causing a bit of code to be unable
-      to satisfiy its <term>postcondition</term>. For instance there’s an
-      implicit precondition whenever we try to access an array element that the
-      index is valid and if it’s not, there’s no way for the array access
-      expression to satisfy the postcondition of returning the value at that
-      index.
+      Exceptions are how Java handles situations where a bit of code just can’t
+      do what it’s supposed to do. For instance if we try to access an array
+      element that doesn’t exist, there’s no good way to continue—the program
+      was expecting a value and there's no value to be had. Which is why Java
+      throws an <c>ArrayIndexOutOfBoundsException</c> in that case.
     </p>
 
     <p>
-      Creating a <c>Scanner</c> has a precondition that the file represented by
-      the <c>File</c> object actually exists; if it doesn’t there’s no way to
-      make a <c>Scanner</c> that can read data from it. This can happen for
-      reasons that have nothing to do with bugs in the program. Maybe the user
-      misspelled the file name or accidentally deleted it before they ran the
-      program.
+      To create a <c>Scanner</c> to read from a file, the file has to actually
+      exist—if it doesn’t, there’s obviously no way to read data from it. It
+      doesn’t really matter why the file doesn’t exist and it’s not necessarily
+      due to to a bug in the program. Maybe the user provided the wrong file
+      name or maybe they deleted the file before they ran the program.
     </p>
 
     <p>
       Whatever the reason, if the file does not exist or is otherwise
       inaccessible, the <c>Scanner</c> constructor will <term>throw</term> a
-      <c>FileNotFoundException</c>. Exceptions are organized into hierarchies
-      and in real-world Java programs there are ways to handle exceptions so
-      they don’t crash our program. <c>FilNotFoundException</c> is one of the
-      exceptions in the <c>IOException</c> hierarchy which represents various
-      things that can go wrong when trying to read and write data.
+      <c>FileNotFoundException</c> which is a kind of <c>IOException</c>. (In
+      real-world Java programs there are ways to handle exceptions so they don’t
+      crash our program and exceptions are organized into hierarchies so
+      programs can choose to handle different kinds of exceptions differently.
+      The different kinds of <c>IOException</c> represent all the things that
+      can go wrong when trying to read and write data. Not finding a needed file
+      is just one of those things.)
     </p>
+  </subsection>
+
+  <subsection>
+    <title>Throwing exceptions</title>
 
     <p>
       Unlike <c>ArrayIndexOutOfBoundsException</c> and
-      <c>NullPointerException</c>, <c>IOException</c> is something called a
-      <term>checked exception</term> which means that Java requires us to
-      specify what we will do if one is thrown. There are basically two choices.
-      The simplest is to add <c>throws IOException</c> after the argument list
-      of the method that contains the line creates the <c>Scanner</c>. This is
-      basically passing the buck: the method is saying, this bad thing can
-      happen and I can’t recover if it does so it is now the responsibility of
-      whatever methods call me to deal with it. Those methods can continue to
-      pass the buck by adding <c>throws IOException</c> to their own signatures
-      or eventually some method could handle the exception using a construct
-      we’ll describe below. But within the bounds of the AP curriculum, we
-      should just add <c>throws IOException</c> to any method that needs it.
+      <c>NullPointerException</c>, an <c>IOException</c> is a <term>checked
+      exception</term> which means that Java requires us to specify what our
+      code will do if one is thrown.
+    </p>
+
+    <p>
+      There are basically two choices. Our code can also throw the exception or
+      we can handle it. However the second option is not part of the AP
+      curriculum so for now the simplest thing to do is to have our code also
+      throw the exception which we achieve by simply adding <c>throws
+      IOException</c> after the argument list of the method that constructs the
+      <c>Scanner</c>. This is basically passing the buck: the method is saying,
+      this bad thing can happen and I can’t recover if it does so it is now the
+      responsibility of whatever methods call me to deal with it. Those methods
+      can continue to pass the buck by adding <c>throws IOException</c> to their
+      own signatures or eventually some method could handle the exception using
+      a construct we’ll describe below. But within the bounds of the AP
+      curriculum, we should just add <c>throws IOException</c> to any method
+      that needs it.
     </p>
 
     <program>
@@ -298,7 +314,10 @@
 
       </program>
     </activity>
+  </subsection>
 
+  <subsection>
+    <title>Catching exceptions</title>
     <p>
       Another possibility, which is outside the AP curriculum, is to use a
       construct called a <c>try/catch</c> block to handle the exception somehow.
@@ -318,113 +337,24 @@
     <p>
       The code that may cause an exception goes in the <c>try</c> block, marked
       by the curly braces after the word <c>try</c>. If the code in the
-      <c>try</c> block throws an exception listed in the parentheses after
-      <c>catch</c>, then the code in the block marked by the curly braces after
-      the <c>catch</c> line will be executed to handle the exception. In this
-      case it prints an error message. Then the code continues after the
+      <c>try</c> block throws an exception of a type listed in the parentheses
+      after <c>catch</c>, then the code in the block marked by the curly braces
+      after the <c>catch</c> line will be executed to handle the exception. In
+      this case it prints an error message. Then the code continues after the
       <c>catch</c> block
     </p>
 
     <program>
       try {
           Scanner scan = new Scanner(myFile);
+          // do stuff with scan here ... if the constructor throws an
+          // exception we will never get here and thus won't try to use scan.
       } catch (FileNotFoundException e) {
           System.out.println("File not found!");
       }
     </program>
   </subsection>
 
-  <subsection>
-    <title>Reading user input with <c>Scanner</c></title>
-
-    <p>
-      Another way to use <c>Scanner</c> that is handy but not part of the AP
-      curriculum, is to read input that the user types. To do that instead of
-      constructing a <c>Scanner</c> with a <c>File</c> object we pass it
-      <c>System.in</c> which is the counterpart to <c>System.out</c> which we’ve
-      been using to print message <em>to</em> the user; <c>System.in</c> is
-      where we can read <em>from</em> the user. When we create a <c>Scanner</c>
-      wrapped around <c>System.in</c> we can then use the <c>Scanner</c> methods
-      to read data the user types.
-    </p>
-
-    <p>
-      Here’s an example of the <c>nextInt</c> method being used to read from the
-      keyboard.
-    </p>
-
-    <activity label="calculatorInput">
-      <statement>
-        <p>
-          The code below will read in the two numbers below it and multiply
-          them. Try changing the input below the code to decimal numbers like
-          2.5 and run to see the <c>InputMismatchException</c>. Then, change the
-          code to use <c>nextDouble()</c> instead of <c>nextInt()</c> and change
-          the variables to type <c>double</c> to read in decimal numbers.
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-
-        <code>
-          import java.util.Scanner;
-
-          public class Multiply {
-               public static void main(String[] args) {
-                    Scanner scan = new Scanner(System.in);
-                    int num1 = scan.nextInt();
-                    int num2 = scan.nextInt();
-
-                    int result = num1 * num2;
-
-                    System.out.println(num1 + " x " + num2 + " = " + result);
-                    scan.close();
-                }
-           }
-        </code>
-
-        <stdin>
-          2 3
-        </stdin>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.Test;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-               @Test
-               public void containsnextDouble()
-               {
-                   boolean passed = checkCodeContains("nextDouble()");
-                   assertTrue(passed);
-               }
-               @Test
-               public void containsdouble()
-               {
-                   boolean passed = checkCodeContains("double");
-                   assertTrue(passed);
-               }
-          }
-        </tests>
-
-      </program>
-    </activity>
-
-    <p>
-      Notice that the <c>nextInt()</c> and <c>nextDouble()</c> methods read in a
-      number but leave any space or newline characters on the input stream. This
-      can cause problems if we have input to read in multiple lines. Using
-      <c>nextLine</c> and the other <c>Scanner</c> methods together on the same
-      input source sometimes requires code to adjust for the methods’ different
-      ways of handling whitespace. Java programmers will often add in an extra
-      call to <c>scan.nextLine();</c> to read in the rest of the line after
-      reading in a number.
-    </p>
-  </subsection>
 
   <subsection xml:id="loop-read-file">
     <title>Read all the lines in a file</title>
@@ -658,18 +588,19 @@
     <title>Reading files with <c>java.nio.file</c></title>
 
     <p>
-      Although not covered in the AP curriculum, the more modern way (by which
-      we mean, it has only been around for fourteen years) to read all the lines
-      from a file is using the classes <c>java.nio.file</c> package. The
-      <c>nio</c> stands for “new input/output” and was added in Java version 7.
-      The two important classes for our purposes in this package are
-      <c>Files</c> (note the plural) and <c>Path</c>.
+      Although not covered in the AP curriculum, the more modern way to read all
+      the lines from a file (and by <em>modern</em> we mean it was added to Java
+      in 2011) is using the classes <c>java.nio.file</c> package. The <c>nio</c>
+      stands for “new input/output” and was added in Java version 7. The two
+      important classes for our purposes in this package are <c>Files</c> (note
+      the plural) and <c>Path</c>.
     </p>
 
     <p>
       <c>Path</c> serves basically the same purpose as <c>java.io.File</c>,
       giving us a way to refer to file on the computer’s hard drive. And
-      <c>Files</c> contains a number of utility methods for interacting with files.
+      <c>Files</c> contains a number of utility methods for interacting with
+      files.
     </p>
 
     <p>
@@ -683,7 +614,9 @@
 
     <p>
       Like the <c>Scanner</c> constructor, <c>readAllLines</c> method throws an
-      <c>IOException</c> if the file cannot be read.
+      <c>IOException</c> if the file cannot be read. Which we can deal with the
+      same way as before, most likely by declaring that our method also throws
+      <c>IOException</c>.
     </p>
 
     <p>
@@ -703,7 +636,7 @@
       <c>ArrayList</c> which is a kind of <c>List</c>. The advantage of storing
       the lines in a dynamic data structure like an <c>ArrayList</c>, instead of
       an array, is that we do not need to know how many lines we are going to
-      read when you create the <c>ArrayList</c> the way ve do when we create an
+      read when you create the <c>ArrayList</c> the way we do when we create an
       array. The <c>ArrayList</c> can then grow in size as needed. (If we
       absolutely need an array, we can convert the <c>List</c> to an array with
       the <c>toArray</c> method on <c>List</c>:
@@ -717,7 +650,7 @@
 
     <p>
       The empty array passed as an argument to <c>toArray</c> tells Java what
-      kind of array to make; it then allocates a new array of the approprite
+      kind of array to make; it then allocates a new array of the appropriate
       size to hold all the elements of the list.
     </p>
 
@@ -727,6 +660,8 @@
           Complete the code in the main method below to reads all lines of the
           file using <c>Files.readAllLines</c> into a <c>List&lt;String&gt;</c>
           named <c>lines</c>. Add a loop that prints out the first 10 pokemon.
+          You can use the same methods with <c>List</c> as with
+          <c>ArrayList</c>.
         </p>
       </statement>
 

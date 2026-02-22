@@ -1,38 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <chapter xml:id="text-files" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>text-files</title>
+  <title>Data from files</title>
 
   <introduction>
     <p>
-      While we can initialize arrays and <c>ArrayList</c>s with code in our
-      programs that’s only reasonable to do for small amounts of data. It’s not
-      very convenient if we want to write a program that processes a lot of
-      data. And processing large amounts of data is one of the things computers
-      are great at. Also, if we initialize our data structures in our program,
-      then we need to edit our program and recompile it if we want to process
-      different data, which is not convenient at all.
+      When a Java program runs, the data it operates on has to be in the
+      computer’s memory. When we create a variable we are allocating a small bit
+      of memory which we can then initialize to hold one value. When we create
+      an array on an <c>ArrayList</c>, we are allocating a larger chunk of
+      memory that can hold lots of values. But where do those values that we put
+      into memory come from?
+    </p>
+
+    <p>
+      They might come from our code. If we make an array like:
+    </p>
+
+    <program>
+      String[] foods = new String[] { "egg", "chicken", "fruit cup" };
+    </program>
+
+    <p>
+      we are creating an array that holds those three <c>String</c> values.
+    </p>
+
+    <p>
+      But initializing data in our code this way is only reasonable when we’re
+      dealing with small amounts of data. It would be really cumbersome to
+      include a million element array of words in our source code. Also it would
+      mean that if we wanted to run the program on different data, we would need
+      to change our program. So we need another way to load data if we want to
+      processes a lot of data or process different data at different times.
     </p>
 
     <p>
       Instead of embedding data directly in the source code of our programs, we
-      typically store data as files on the computer’s hard drive and then load
-      the data from those files into our programs. This allows us to write a
-      program once that can run the same computation on different data just by
-      loading a different file.
+      typically store data in <term>files</term> on the computer’s hard drive
+      and then load the data from those files into our programs. This allows us
+      to write a program once that can run the same computation on different
+      data just by loading a different file. (Programs can also write data to
+      files but we are not going to cover that in this course.)
+
     </p>
 
     <p>
-      In this short chapter we’ll look at how to load data from files and put it
-      into arrays and <c>ArrayList</c>s so we can then compute answers based on
-      the data using list algorithms like the ones we discussed in the previous
-      chapter.
+      All of the different ways that data can be stored in files is a bigger
+      topic than we can cover. Instead in this chapter we are going to focus on
+      files that contain <term>data sets</term>, collections of data made up of
+      many instances of the same basic kind of data such as a list words in a
+      dictionary, of students in a class, or books in a library.
     </p>
 
   </introduction>
 
-  <xi:include href="./topic-4-2-data-sets.ptx" />
   <xi:include href="./topic-4-6-input-files.ptx" />
-  <xi:include href="./parsing-data.ptx" />
+  <xi:include href="./topic-4-2-data-sets.ptx" />
 
 </chapter>

@@ -1,0 +1,164 @@
+    <p>
+      Once the file is opened, the data can be read using <c>Scanner</c>
+      methods. For example, the method, <c>nextLine</c> will read the next line
+      of input and returns it as a <c>String</c>. Here are the methods used in
+      the Scanner file to read all types of input (also on page 2 of the <url
+      href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf">Java
+      Quick Reference</url> provided during the AP exam):
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <p>
+            <c>Scanner(File f)</c> the Scanner constructor that accepts a File
+            for reading.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>String nextLine()</c> returns the next line of text up until the
+            end of the line as a String read from the file or input source;
+            returns null if there is no next line.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>String next()</c> returns the next String up until a white space
+            is read from the file or input source.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>int nextInt()</c> returns the next int read from the file or
+            input source. If the next <c>int</c> does not exist, it will result
+            in an <c>InputMismatchException</c>. Note that this method does not
+            read the end of the line, so the next call to <c>nextLine()</c> will
+            return the rest of the line which will be empty.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>double nextDouble()</c> returns the next double read from the
+            file or input source. If the next <c>double</c> does not exist, it
+            will result in an <c>InputMismatchException</c>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>boolean nextBoolean()</c> returns the next Boolean read from the
+            file or input source. If the next <c>boolean</c> does not exist, it
+            will result in an <c>InputMismatchException</c>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <c>boolean hasNext()</c> returns true if there is a next item to
+            read in the file or input source; false otherwise.
+          </p>
+        </li>
+
+        <li>
+          <p><c>void close()</c> closes the input stream.</p>
+        </li>
+      </ul>
+    </p>
+
+
+    <subsection>
+        <title>Reading user input with <c>Scanner</c></title>
+    
+    <p>
+      Another way to use <c>Scanner</c> that is handy but not part of the AP
+      curriculum, is to read input that the user types. To do that instead of
+      constructing a <c>Scanner</c> with a <c>File</c> object we pass it
+      <c>System.in</c> which is the counterpart to <c>System.out</c> which we’ve
+      been using to print message <em>to</em> the user; <c>System.in</c> is
+      where we can read <em>from</em> the user. When we create a <c>Scanner</c>
+      wrapped around <c>System.in</c> we can then use the <c>Scanner</c> methods
+      to read data the user types.
+    </p>
+
+    <p>
+      Here’s an example of the <c>nextInt</c> method being used to read from the
+      keyboard.
+    </p>
+
+    <activity label="calculatorInput">
+      <statement>
+        <p>
+          The code below will read in the two numbers below it and multiply
+          them. Try changing the input below the code to decimal numbers like
+          2.5 and run to see the <c>InputMismatchException</c>. Then, change the
+          code to use <c>nextDouble()</c> instead of <c>nextInt()</c> and change
+          the variables to type <c>double</c> to read in decimal numbers.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          import java.util.Scanner;
+
+          public class Multiply {
+               public static void main(String[] args) {
+                    Scanner scan = new Scanner(System.in);
+                    int num1 = scan.nextInt();
+                    int num2 = scan.nextInt();
+
+                    int result = num1 * num2;
+
+                    System.out.println(num1 + " x " + num2 + " = " + result);
+                    scan.close();
+                }
+           }
+        </code>
+
+        <stdin>
+          2 3
+        </stdin>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.Test;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+               @Test
+               public void containsnextDouble()
+               {
+                   boolean passed = checkCodeContains("nextDouble()");
+                   assertTrue(passed);
+               }
+               @Test
+               public void containsdouble()
+               {
+                   boolean passed = checkCodeContains("double");
+                   assertTrue(passed);
+               }
+          }
+        </tests>
+
+      </program>
+    </activity>
+
+    <p>
+      Notice that the <c>nextInt()</c> and <c>nextDouble()</c> methods read in a
+      number but leave any space or newline characters on the input stream. This
+      can cause problems if we have input to read in multiple lines. Using
+      <c>nextLine</c> and the other <c>Scanner</c> methods together on the same
+      input source sometimes requires code to adjust for the methods’ different
+      ways of handling whitespace. Java programmers will often add in an extra
+      call to <c>scan.nextLine();</c> to read in the rest of the line after
+      reading in a number.
+    </p>
+  </subsection>
