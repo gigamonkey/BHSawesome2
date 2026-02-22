@@ -150,9 +150,9 @@
       import java.io.*;
       import java.util.*;
       ...
-      ArrayList<String> lines = new ArrayList<>();
       File dataFile = new File("data.txt");
       Scanner data = new Scanner(dataFile);
+      ArrayList<String> lines = new ArrayList<>();
 
       while (data.hasNextLine()) {
         lines.add(data.nextLine());
@@ -216,15 +216,20 @@
       we can handle it. However the second option is not part of the AP
       curriculum so for now the simplest thing to do is to have our code also
       throw the exception which we achieve by simply adding <c>throws
-      IOException</c> after the argument list of the method that constructs the
-      <c>Scanner</c>. This is basically passing the buck: the method is saying,
-      this bad thing can happen and I can’t recover if it does so it is now the
-      responsibility of whatever methods call me to deal with it. Those methods
-      can continue to pass the buck by adding <c>throws IOException</c> to their
-      own signatures or eventually some method could handle the exception using
-      a construct we’ll describe below. But within the bounds of the AP
-      curriculum, we should just add <c>throws IOException</c> to any method
-      that needs it.
+      IOException</c> clause to the signature of the method that constructs the
+      <c>Scanner</c>.
+    </p>
+
+    <p>
+      The throws clause goes after the argument list. By adding a throws clause
+      we are passing the buck, declaring that this this bad thing can happen in
+      the method and the method can’t recover if it does, so it is now the
+      responsibility of whatever other methods call it to deal with it. Those
+      methods can continue to pass the buck by adding <c>throws IOException</c>
+      to their own signatures or eventually some method could handle the
+      exception using a construct we’ll describe below. But within the bounds of
+      the AP curriculum, we should just add <c>throws IOException</c> to any
+      method that needs it. Here’s how we could add it to a <c>main</c> method.
     </p>
 
     <program>
@@ -311,7 +316,6 @@
               }
           }
         </tests>
-
       </program>
     </activity>
   </subsection>
@@ -319,40 +323,37 @@
   <subsection>
     <title>Catching exceptions</title>
     <p>
-      Another possibility, which is outside the AP curriculum, is to use a
-      construct called a <c>try/catch</c> block to handle the exception somehow.
-      The right thing to do depends on the context of the program. If the
-      program can’t do anything at all without the file, then the best we can do
-      is maybe print a useful error message and exit. But in some other program
-      it might be possible to ask the user to provide a different file name or
-      to use some default data if the file doesn’t exist.
+      The other way to deal with exceptions, which is outside the AP curriculum,
+      is to use a construct called a <c>try</c>/<c>catch</c> block to handle the
+      exception somehow. It looks like this
     </p>
 
-    <p>
-      Here is an example of a <c>try/catch</c> block that catches the
-      <c>FileNotFoundException</c> exception and prints an error message rather
-      than letting the exception crash the program.
-    </p>
+    <program>
+      try {
+          Scanner scan = new Scanner(myFile);
+          // Do stuff with the Scanner here. If the constructor throws an
+          // exception we will never get here and thus won't try to use scan.
+      } catch (IOException e) {
+          System.out.println("File not found!");
+      }
+    </program>
 
     <p>
       The code that may cause an exception goes in the <c>try</c> block, marked
       by the curly braces after the word <c>try</c>. If the code in the
       <c>try</c> block throws an exception of a type listed in the parentheses
       after <c>catch</c>, then the code in the block marked by the curly braces
-      after the <c>catch</c> line will be executed to handle the exception. In
-      this case it prints an error message. Then the code continues after the
-      <c>catch</c> block
+      after the <c>catch</c> line will be executed to handle the exception. The
+      code then continues after the <c>catch</c> block.
     </p>
 
-    <program>
-      try {
-          Scanner scan = new Scanner(myFile);
-          // do stuff with scan here ... if the constructor throws an
-          // exception we will never get here and thus won't try to use scan.
-      } catch (FileNotFoundException e) {
-          System.out.println("File not found!");
-      }
-    </program>
+    <p>
+      The right thing to do depends on the context of the program. If the
+      program can’t do anything at all without the file, then the best we can do
+      is maybe print a useful error message as show above. But in some other
+      program it might be possible to ask the user to provide a different file
+      name or to use some default data if the file doesn’t exist.
+    </p>
   </subsection>
 
 
@@ -366,10 +367,14 @@
 
     <p>
       The loop can use the method <c>hasNextLine</c> or <c>hasNext</c> as the
-      loop condition to detect if the file still contains lines to read. A
-      loop with this condition will terminate when there are no more lines to
-      read in the file. After the loop is finished reading the data, the
-      <c>close</c> method from Scanner should be called to close the file.
+      loop condition to detect if the file still contains lines to read. A loop
+      with this condition will terminate when there are no more lines to read in
+      the file. After the loop is finished reading the data, the <c>close</c>
+      method from Scanner should be called to close the file. (It’s a good idea
+      to <c>close</c> the <c>Scanner</c> when we’re done with it because there
+      is a limit on the number of files a program can have open at once. But
+      note that once we <c>close</c> a <c>Scanner</c> we can no longer read from
+      it.)
     </p>
 
     <program>
@@ -447,7 +452,7 @@
               @Test
               public void testHasNext()
               {
-                  boolean passed = checkCodeContains("hasNext()") || checkCodeContains("hasNextLine()");
+                  boolean passed = checkCodeContains("hasNextLine() or hasNext()", "hasNext$()");
                   assertTrue(passed);
               }
           }
@@ -464,20 +469,32 @@
       We can save a file line by line into a data structure such as an array or
       an <c>ArrayList</c>. In the <c>SpellChecker</c> class in <xref
       ref="topic-4-4-array-traversal" />, code was provided that read all the
-      words into a array. But now that we know about <c>ArrayList</c>s, that’s a
-      better data structure to use since we don’t need to know how many lines
-      the file contains in order to build up an <c>ArrayList</c> they way we
-      would with an array.
+      words into a array. But that code required us to hard-code the size of the
+      array to match the number of lines in our dictionary file. If we added or
+      removed words from the dictionary we’d have to change our code to fix the
+      size of the array. (Or we could write code like the previous example to
+      count the number of lines in the file and then make the array and then
+      load the lines into it but that would require reading through the file
+      twice.)
     </p>
 
     <p>
-      The following exercise reads in a data file about Pokemon and prints out
+      <c>ArrayList</c>s, are a much better data structure to use to collect
+      lines from a file since we don’t need to know how many lines the file
+      contains in order to build up an <c>ArrayList</c> they way we would with
+      an array.
+    </p>
+
+    <p>
+      The following exercise reads in a data file about Pokémon and prints out
       the first ten lines in the file. This file has the extension <em>csv</em>
       which stands for <term>Comma Separated Values</term>. All spreadsheets can
       be saved as CSV text files, and spreadsheet software can easily open CSV
       files as spreadsheets. You can take a look at the <url
       href="external/_static/datasets/pokemon.csv">pokemon.csv</url> file
-      contents below:
+      contents below. For now we’ll just read the lines of the file into an
+      <c>ArrayList</c>; in the next section we’ll look at how to break each line
+      up into individual pieces of data about specific Pokémon.
     </p>
 
     <datafile label="pokemon" filename="pokemon.csv" editable="no" hide="no">
@@ -489,7 +506,7 @@
         <p>
           Complete the code in the main method below to read in the first ten
           lines of the pokemon file using the <c>Scanner</c> class, printing
-          each line and save to the <c>pokemonLines</c> <c>ArrayList</c>.
+          each line and save to the <c>lines</c> <c>ArrayList</c>.
         </p>
       </statement>
 
@@ -499,27 +516,21 @@
           import java.io.*;
           import java.util.*;
 
-          public class ReadData
-          {
-              public static void main(String[] args) throws IOException
-              {
+          public class ReadData {
+              public static void main(String[] args) throws IOException {
                   File myFile = new File("pokemon.csv");
                   Scanner scan = new Scanner(myFile);
-                  ArrayList<String> pokemonLines = new ArrayList<>();
+                  ArrayList<String> lines = new ArrayList<>();
 
-                  int i = 0;
                   // 1. Add a loop condition will stop the loop if there are no more
                   // lines or when we've read ten lines, whichever comes first.
-                  while (         )
-                  {
+                  while (         ) {
                       // 2. Read in the next line of the file
 
                       // 3. Print the line
 
-                      // 3. Add the line to pokemonLines
+                      // 3. Add the line to lines
 
-
-                      i++; // line count
                    }
                    scan.close();
              }
@@ -546,12 +557,12 @@
               public void testMain() throws IOException
               {
                   String output = getMethodOutput("main");
-                  String[] lines = output.split("\\n");
-                  boolean passed = lines.length >= 10;
+                  String[] lines = output.split("\n");
+                  boolean passed = lines.length == 10;
 
                   passed =
                           getResults(
-                                  "10+ lines of output",
+                                  "10 lines of output",
                                   lines.length + " lines of output",
                                   "Expected output",
                                   passed);
@@ -561,19 +572,19 @@
               @Test
               public void arrayCode()
               {
-                  boolean passed = checkCodeContains("adding to  pokemonLines", "pokemonLines.add(");
+                  boolean passed = checkCodeContains("adding to lines", "lines.add(");
                   assertTrue(passed);
               }
               @Test
               public void testHasNext()
               {
-                  boolean passed = checkCodeContains("hasNext()") || checkCodeContains("hasNextLine()");
+                  boolean passed = checkCodeContains("hasNextLine() or hasNext()", "hasNext$()");
                   assertTrue(passed);
               }
               @Test
               public void testHasLess10()
               {
-                  boolean passed = checkCodeContains("i < 10");
+                  boolean passed = checkCodeContains("lines.size() < 10");
                   assertTrue(passed);
               }
           }
@@ -673,12 +684,10 @@
           import java.nio.file.*;
           import java.util.*;
 
-          public class ReadData
-          {
-              public static void main(String[] args) throws IOException
-              {
+          public class ReadData {
+              public static void main(String[] args) throws IOException {
                   List<String> lines = Files.readAllLines(Path.of("pokemon.csv"));
-                  // Add a loop that prints out the first 10 elements of the List lines
+                  // Add a loop that prints out the first 10 elements of the List lines.
                   // You can use the get method with Lists just like ArrayLists
 
               }
@@ -703,10 +712,10 @@
               public void testMain() throws IOException
               {
                    String output = getMethodOutput("main");
-                   String[] lines = output.split("\\s+");
-                   boolean passed = lines.length >= 10;
+                   String[] lines = output.split("\n");
+                   boolean passed = lines.length == 10;
 
-                   passed = getResults("10+ lines of output", lines.length + " lines of output", "Expected output", passed);
+                   passed = getResults("10 lines of output", lines.length + " lines of output", "Expected output", passed);
                    assertTrue(passed);
               }
               @Test
@@ -722,5 +731,4 @@
       </program>
     </activity>
   </subsection>
-
 </section>
