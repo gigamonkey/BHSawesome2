@@ -193,58 +193,54 @@
           import java.io.*;
           import java.util.*;
 
-          public class PokeImages
-          {
+          public class PokeImages {
               private String filename = "pokemon.csv";
-              private String[] pokemonLines = new String[152];
+              private ArrayList<String> lines = new ArrayList<>();
 
-              /* This method reads in filename into the pokemonLines array */
-              public int readFile() throws IOException
-              {
+              /* This method reads lines from the file into the lines ArrayList */
+              public void readFile() throws IOException {
                   File myFile = new File(filename);
                   Scanner scan = new Scanner(myFile);
-                  int i = 0;
-                  while (scan.hasNext())
-                  {
-                      pokemonLines[i] = scan.nextLine();
-                      i++;
+
+                  // Skip the header line if there is one
+                  if (scan.hasNextLine()) scan.nextLine();
+
+                  while (scan.hasNextLine()) {
+                      lines.add(scan.nextLine());
                   }
-                  System.out.println("Read in " + i + " lines.");
+                  System.out.println("Read in " + lines.size() + " lines.");
                   scan.close();
-                  return i;
               }
 
-              /* Write a function randomPokemon that prints out a random Pokemon name and image */
-              public void randomPokemon(int length)
-              {
-                  // 1. pick a random number from 1 to length
-                  //    (the 0th row is the headers)
+              /*
+               * Write a function randomPokemon that picks a random line
+               * and parses it and then prints out the Pokemon's name
+               * and image
+               */
+              public void randomPokemon() {
+                  // 1. pick a random index into the lines array
 
-
-                  // 2. get the line at that random index from the array pokemonLines
+                  // 2. get the line at that random index from the list lines
 
                   // 3. Use the split method to split the line into a String array data
 
                   // 4. Print out the name using the correct index in the split data
                   //   (Check above for the correct index for the name)
 
-                  // 5. Call the printHTMLimage method below
+                  // 5. Call the printHtmlImage method below
                   //    with an element of the data array to print out the image.
                   //    (Check above for the correct index for the image url)
 
               }
 
-              public static void main(String[] args) throws IOException
-              {
+              public static void main(String[] args) throws IOException {
                   PokeImages obj = new PokeImages();
-                  // call readFile() to read file into the array pokemonLines
-                  int length = obj.readFile();
-                  obj.randomPokemon(length);
+                  obj.readFile(); // fills the ArrayList lines
+                  obj.randomPokemon();
               }
 
               // This method will just work on Runestone to print out images
-              public static void printHTMLimage(String url)
-              {
+              public static void printHtmlImage(String url) {
                   System.out.print("<img src=" + url + " width=300px />");
               }
           }
@@ -268,13 +264,7 @@
              @Test
              public void randomTest()
              {
-                 boolean passed = checkCodeContains("(int)(Math.random()*length");
-                 assertTrue(passed);
-             }
-             @Test
-             public void randomTest2()
-             {
-                 boolean passed = checkCodeContains("+ 1 in Math.random() line", "+ 1");
+                 boolean passed = checkCodeContains("(int)(Math.random()*lines.size()");
                  assertTrue(passed);
              }
 
@@ -289,7 +279,7 @@
              public void imageCode()
              {
                  boolean passed =
-                         checkCodeContains("call to printHTMLimage", "printHTMLimage(");
+                         checkCodeContains("call to printHtmlImage", "printHtmlImage(");
                  assertTrue(passed);
              }
 
@@ -439,71 +429,73 @@
       <program interactive="activecode" datafile="pokemon.csv">
 
         <code>
+          <![CDATA[
           import java.io.*;
           import java.util.*;
 
-          public class PokeSpeed
-          {
+          public class PokeSpeed {
               private String filename = "pokemon.csv";
-              private String[] pokemonLines = new String[152];
+              private ArrayList<String> lines = new ArrayList<>();
 
-              public PokeSpeed() throws IOException
-              {
+              public PokeSpeed() throws IOException {
                   readFile(); // read in the file
               }
 
-              /* This method reads in filename into the pokemonLines array */
-              public int readFile() throws IOException
-              {
+              public void readFile() throws IOException {
                   File myFile = new File(filename);
                   Scanner scan = new Scanner(myFile);
-                  int i = 0;
-                  while (scan.hasNext())
-                  {
-                      pokemonLines[i] = scan.nextLine();
-                      i++;
+
+                  // Skip the header line if there is one
+                  if (scan.hasNextLine()) scan.nextLine();
+
+                  while (scan.hasNextLine()) {
+                      lines.add(scan.nextLine());
                   }
-                  System.out.println("Read in " + i + " lines.");
+                  System.out.println("Read in " + lines.size() + " lines.");
                   scan.close();
-                  return i;
               }
 
-              /* Write a function findMaxSpeed that loops through the pokemonLines array,
-                splits it on commas to get the speed in the 7th index, and parses it to compare to a maxSpeed, and returns the maxSpeed.  */
-              public int findMaxSpeed()
-              {
+              /*
+               * Write a function findMaxSpeed that loops through the lines ArrayList,
+               * splits it on commas to get the speed in the 7th index, and parses it
+               * to compare to a maxSpeed. Keep track of the name of the fastest Pokemon
+               * and at the end print that name and return the maxSpeed.
+               */
+              public int findMaxSpeed() {
                   int maxSpeed = 0;
-                  String maxPokemonName = "";
+                  String fastest = "";
 
-                  // 1. Loop through the pokemonLines array starting at index 1
-                  //     (0 is the column headers)
-                      // 2. Split the line on commas into a data array
-                      // 3. Use parseInt on the 7th indexed element of the data array to get the speed
-                      // 4. If speed is larger than maxSpeed, update maxSpeed and maxPokemonName
+                  // 1. Loop through lines
 
-                  // 5. Print out the maxPokemonName and return the maxSpeed
-                  return maxSpeed;
+                  // 2. Split the line on commas into a data array
+
+                  // 3. Use parseInt on the 7th indexed element of the data array to get the speed
+
+                  // 4. If speed is larger than maxSpeed, update maxSpeed and maxPokemonName
+
+                  // 5. Print out the name of the fastest Pokemon and return maxSpeed
               }
 
-              /* Write a function findAverageSpeed that loops through the pokemonLines array,
-                splits it on commas to get the speed in the 7th index, and parses it to add it to the total, and returns the average speed.  */
-              public double findAverageSpeed()
-              {
-                  double averageSpeed = 0;
+              /*
+               * Write a function findAverageSpeed that loops through the lines ArrayList,
+               * splits it on commas to get the speed in the 7th index, and parses it to
+               * add it to the total, and returns the average speed.
+               */
+              public double findAverageSpeed() {
                   double totalSpeed = 0;
 
-                  // Loop through the pokemonLines array, split, parse, and add up the speeds
+                  // 1. Loop through the lines, split, parse, and add up the speeds
 
-                  return averageSpeed;
+                  // 2. Return the average speed
               }
 
-              public static void main(String[] args) throws IOException
-              {
+              public static void main(String[] args) throws IOException {
                   PokeSpeed p = new PokeSpeed();
                   System.out.println("Max speed: " + p.findMaxSpeed());
                   System.out.println("Average speed: " + p.findAverageSpeed());
               }
           }
+          ]]>
         </code>
 
         <tests>
@@ -589,36 +581,36 @@
     </p>
 
     <program>
-      // Create an array of Pokemon objects
-      Pokemon[] pokemonArray = new Pokemon[152];
+      <![CDATA[
+      // Create a list to hold Pokemon objects
+      ArrayList<Pokemon> pokemon = new ArrayList<>();
 
-      int i = 0;
-      while (scan.hasNext())
-      {
+      while (scan.hasNextLine()) {
           String line = scan.nextLine();
           // Split each line into its attributes name, type1, etc.
           String[] data = line.split(",");
           String name = data[1];
           String type1 = data[2];
-          ...
           String speed = data[7];
           String imageFile = data[8];
 
-          // Create a Pokemon object from the split data
-          Pokemon p = new Pokemon(name, type1, speed, imageFile);
-          // Save p in the array
-          pokemonArray[i] = p;
-
-          i++;
+          // Create a Pokemon object from the data and add to list.
+          pokemon.add(new Pokemon(name, type1, speed, imageFile));
       }
+      ]]>
     </program>
 
     <p>
-      Note that sometimes you may need to skip the 0th row in the file if it is
-      column headers. For this file, it will just get split into strings, but if
-      your data file contains numbers that need to be processed, you could skip
-      one like: <c>if (i == 0) scan.nextLine();</c>.
+      Note that sometimes you may need to skip the 0th row in the file if it
+      contains column headers so you don’t make a nonesense <c>Pokemon</c>
+      object. You need to know whether the file you are reading from has a
+      header line or not. If it does you can add this line before the
+      <c>while</c> loop to read and discard a line.
     </p>
+
+    <program>
+      if (scan.hasNextLine()) scan.nextLine();
+    </program>
 
     <p>
       Let’s try the code to read into an array of Pokemon objects in the
@@ -627,36 +619,37 @@
   </subsection>
 
   <subsection xml:id="challenge-pokemon">
-    <title>Coding Challenge: Array of Pokemon from Input File</title>
+    <title>Coding Challenge: list of Pokemon from input file</title>
 
     <p>
       Let’s end with a challenge that combines all the skills you have learned
-      so far. You could work in pairs for this challenge. Create a class
-      <c>Pokemon</c> that has at least three attributes that can be found in the
-      Pokemon file, including its <c>name</c>, <c>type1</c>, and
-      <c>imagefile</c>, and any other attributes from the file that you would
-      like. Write a constructor and getters for these attributes. Then, read in
-      the data from the pokemon file, split each line, and save the data in an
-      array of <c>Pokemon</c> objects. Write a <c>findType</c> method that
-      returns to the type of a <c>Pokemon</c> given its name as an argument. It
-      should loop through the array to find the right <c>Pokemon</c> object
-      using the <c>getName</c> and <c>getType</c> methods that you will write.
-      It should also display the image for the Pokemon.
+      so far. You could work in pairs for this challenge.
     </p>
 
     <project label="challenge-pokemon-file">
       <statement>
         <p>
-          Design the class <c>Pokemon</c> that has at least three attributes
-          that can be found in the Pokemon file, including its <c>name</c>,
+          Create a class <c>Pokemon</c> that has at least three attributes that
+          can be found in the Pokemon file, including its <c>name</c>,
           <c>type1</c>, and <c>imagefile</c>, and any other attributes from the
           file that you would like. Write a constructor and getters for these
-          attributes. Then, read in the data from the pokemon file, split each
-          line, and save the data in an array of <c>Pokemon</c> objects. Write a
-          <c>findType</c> method that loops through the array to find the
-          <c>Pokemon</c> with the given name as argument and print out and
-          return its type and its image.
+          attributes.
         </p>
+
+        <p>
+          Then, read in the data from the pokemon file, skipping the header row,
+          split each line, and save the data in an array of <c>Pokemon</c>
+          objects.
+        </p>
+
+        <p>
+          Write a <c>findType</c> method that returns to the type of a
+          <c>Pokemon</c> given its name as an argument. It should loop through
+          the array to find the right <c>Pokemon</c> object using the
+          <c>getName</c> and <c>getType</c> methods that you will write. It
+          should also display the image for the Pokemon.
+        </p>
+
       </statement>
 
       <program interactive="activecode" datafile="pokemon.csv">
@@ -666,8 +659,7 @@
           import java.io.*;
           import java.util.*;
 
-          class Pokemon
-          {
+          class Pokemon {
               // 1. Add at least 3 String attributes of a Pokemon
               //   including name, type1, and imagefile
 
@@ -678,14 +670,11 @@
 
           }
 
-          public class PokemonArray
-          {
-              // An array of 152 Pokemon objects
-              private Pokemon[] pokemonArray = new Pokemon[152];
+          public class PokemonCollection {
+              private ArrayList<Pokemon> pokemon = new ArrayList<>();
               private String filename = "pokemon.csv";
 
-              public PokemonArray() throws IOException
-              {
+              public PokemonCollection() throws IOException {
                    readFile(); // read in the data file into pokemonArray
               }
 
@@ -693,38 +682,35 @@
               // Loop through each row to split it into attributes.
               //     Create a new Pokemon object from the attributes.
               //     and save it into the pokemonArray
-              public void readFile()
-              {
+              // Remember to skip the header line.
+              public void readFile() {
 
               }
 
               // 5. Write a findType method that prints out the type of a Pokemon
               // given its name as an argument.
-              // It should loop through the array to find the Pokemon object with the correct name.
-              // It should print and return the type and print the image.
-              // This method can call printHTMLimage(url) defined below.
-              public String findType(String name)
-              {
+              //
+              // It should loop through the array to find the Pokemon object with
+              // the correct name.
+              //
+              // It should use printHtmlImage to emit the image and then return the type.
+              public String findType(String name) {
                   // Loop through the array to find the Pokemon with the given name
                   // Call the getType method to get the type of the Pokemon
-                  // Call the printHTMLimage method to print out the image
+                  // Call the printHtmlImage method to print out the image and then
                   // return the type
-
-
-                  return "Type";
+                  return null;
               }
 
               // This method will just work on Runestone to print out images
-              public static void printHTMLimage(String url)
-              {
+              public static void printHtmlImage(String url) {
                   System.out.print("<img src=" + url + " width=300px />");
               }
 
-              public static void main(String[] args) throws IOException
-              {
-                  PokemonArray obj = new PokemonArray();
+              public static void main(String[] args) throws IOException {
+                  PokemonCollection collection = new PokemonCollection();
                   // Call your method to find the type of a Pokemon and display its image
-                  System.out.println("Pikachu's type is " + obj.findType("Pikachu"));
+                  System.out.println("Pikachu's type is " + collection.findType("Pikachu"));
 
               }
           }
@@ -881,20 +867,17 @@
           import java.util.*;
 
           /* Change this class name to a meaningful name for one record from the dataset. */
-          class OneItem
-          {
+          class OneItem {
               // Add at least 3 attributes found in the data file
 
               // Add a constructor that initializes the attributes
 
               // Add any getters and toString methods that you need
-
           }
 
           /* Change this class name to a meaningful name for the whole dataset. */
-          public class Data
-          {
-              // Declare an array of your class type
+          public class Data {
+              // Declare an ArrayList of your class type
 
               // Write a method to read in the data (it may throw an exception).
               // Use a while loop to split each row into attributes.
@@ -906,8 +889,7 @@
               // find the object with a min or max attribute value
               // or print out all the objects of a certain attribute value.
 
-              public static void main(String[] args) throws IOException
-              {
+              public static void main(String[] args) throws IOException {
                   Data obj = new Data(); // change to your class name
                   // Call your method to read in the data
 
