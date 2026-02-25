@@ -201,7 +201,7 @@
                   File myFile = new File(filename);
                   Scanner scan = new Scanner(myFile);
 
-                  // Skip the header line if there is one
+                  // Skip the header line
                   if (scan.hasNextLine()) scan.nextLine();
 
                   while (scan.hasNextLine()) {
