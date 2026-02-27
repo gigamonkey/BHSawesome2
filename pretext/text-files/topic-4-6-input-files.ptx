@@ -529,7 +529,7 @@
 
                       // 3. Print the line
 
-                      // 3. Add the line to lines
+                      // 4. Add the line to lines
 
                    }
                    scan.close();
