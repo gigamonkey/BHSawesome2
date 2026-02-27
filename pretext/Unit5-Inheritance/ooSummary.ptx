@@ -67,7 +67,7 @@
 
         <li>
           <p>
-            <term>polymorphism</term> - The runtime type of an object can be
+            <term>polymorphism</term> - The run-time type of an object can be
             that type or any subclass of the declared type. All method calls are
             resolved starting with the class that created the object. If the
             method isn’t found in the class that created the object, then it

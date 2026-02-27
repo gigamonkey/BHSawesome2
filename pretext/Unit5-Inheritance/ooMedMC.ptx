@@ -423,14 +423,14 @@ Animal[] a = { new Cat(), new Cow(), new Dog(), new Pig(), new Bird() }
 
       <choice>
         <statement>
-          <p>This will have runtime errors</p>
+          <p>This will have run-time errors</p>
         </statement>
 
         <feedback>
           <p>
             Because <c>Bird</c>, <c>Cow</c>, <c>Cat</c>, <c>Dog</c>, and
             <c>Pig</c> are subclasses of <c>Animal</c>, they can be stored in an
-            array declared as <c>Animal</c> without any runtime errors.
+            array declared as <c>Animal</c> without any run-time errors.
           </p>
         </feedback>
       </choice>
@@ -562,7 +562,7 @@ fastCar.display();
       <choice>
         <statement>
           <p>
-            You get a runtime error <c>ClassCastException</c>, when
+            You get a run-time error <c>ClassCastException</c>, when
             <c>fastCar.addFuel()</c> is executed.
           </p>
         </statement>

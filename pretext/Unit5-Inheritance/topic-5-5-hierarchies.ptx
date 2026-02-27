@@ -171,7 +171,7 @@ public void print(Shape s)
       type <c>Person</c>, but it can be called with <c>Student</c> or
       <c>Person</c> objects in the <c>main</c> method. Which <c>toString</c>
       method is called? It depends on whether a <c>Person</c> or <c>Student</c>
-      is passed in at runtime. What would happen if you commented out the
+      is passed in at run time. What would happen if you commented out the
       <c>toString</c> method in <c>Student</c>? Which one would be called now?
     </p>
 

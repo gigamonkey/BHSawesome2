@@ -1649,7 +1649,7 @@ public class MainClass
 
         <choice>
           <statement>
-            <p>runtime error</p>
+            <p>run-time error</p>
           </statement>
 
           <feedback>
@@ -1724,7 +1724,7 @@ public class MainClass
 
         <choice>
           <statement>
-            <p>runtime error</p>
+            <p>run-time error</p>
           </statement>
 
           <feedback>

@@ -150,7 +150,7 @@
       and <c>get(i)</c> are used with <c>ArrayList</c>s instead of <c>length</c>
       and <c>[i]</c> which are used in arrays. Many of our examples will use
       arrays for simplicity since with arrays, we know how many items we have
-      and the size won’t change during runtime. There are methods such as
+      and the size won’t change during run time. There are methods such as
       <c>contains</c> that can be used in ArrayLists instead of writing your own
       algorithms. However, they are not in the AP CSA Java subset.
     </p>
@@ -770,34 +770,34 @@
   </subsection>
 
   <subsection xml:id="runtimes">
-    <title>Runtimes</title>
+    <title>Run times</title>
 
     <p>
       How do we choose between two algorithms that solve the same problem? They
-      usually have different characteristics and <term>runtimes</term> which
+      usually have different characteristics and <term>run times</term> which
       measures how fast they run. For the searching problem, it depends on your
       data.
     </p>
 
     <p>
       Binary search is much faster than linear search, especially on large data
-      sets, but it can only be used on sorted data. Often with runtimes,
+      sets, but it can only be used on sorted data. Often with run times,
       computer scientist think about the <term>worst case behavior</term>. With
       searching, the worst case is usually if you cannot find the item. With
       linear search, you would have to go through the whole array before
       realizing that it is not there, but binary search is much faster even in
       this case because it eliminates half the data set in each step. We can
-      measure an informal runtime by just counting the number of steps.
+      measure an informal run time by just counting the number of steps.
     </p>
 
     <p>
-      Here is a table that compares the worst case runtime of each search
-      algorithm given an array of n elements. The runtime here is measured as
+      Here is a table that compares the worst case run time of each search
+      algorithm given an array of n elements. The run time here is measured as
       the number of times the loop runs in each algorithm or the number of
       elements we need to check in the worst case when we don’t find the item we
-      are looking for. Notice that with linear search, the worst case runtime is
+      are looking for. Notice that with linear search, the worst case run time is
       the size of the array n, because it has to look through the whole array.
-      For the binary search runtime, we can calculate the number of times you
+      For the binary search run time, we can calculate the number of times you
       can divide n in half until you get to 1. So, for example 8 elements can be
       divided in half to narrow down to 4 elements, which can be further divided
       in half to narrow down to 2 elements, which can be further divided in half
@@ -852,14 +852,14 @@
     </table>
 
     <p>
-      Runtimes can be described with mathematical functions. For an array of
-      size n, linear search runtime is a linear function, and binary search
-      runtime is a function of log base 2 of n (or log n + 1 comparisons). This
-      is called the big-O runtime function in computer science, for example
+      Run Times can be described with mathematical functions. For an array of
+      size n, linear search run time is a linear function, and binary search
+      run time is a function of log base 2 of n (or log n + 1 comparisons). This
+      is called the big-O run time function in computer science, for example
       O(log n) vs. O(n). You can compare the growth of functions like n and
       <m>\log_{2}n</m> as <m>n</m>, the data size, grows and see that binary
       search runs much faster for any <m>n</m>. You don’t need to know the log n
-      runtime growth function for the AP exam, but you should be able to
+      run time growth function for the AP exam, but you should be able to
       calculate how many steps binary search takes for a given n by counting how
       many times you can divide it in half. Or you can start at 1 and keep a
       count of how many times you can double it with the powers of two (1, 2, 4,
@@ -1090,7 +1090,7 @@
   </subsection>
 
   <subsection xml:id="coding-challenge-search-runtimes">
-    <title>Coding Challenge: Search Runtimes</title>
+    <title>Coding Challenge: Search Run Times</title>
 
     <p>
       Let’s go back to the spellchecker that we created with arrays. Here is a
@@ -1236,7 +1236,7 @@
     </project>
 
     <p>
-      Run your code with the following test cases and record the runtime for
+      Run your code with the following test cases and record the run time for
       each word in this <url
       href="https://docs.google.com/document/d/1VrQf7wFIEIu7qfOg7FYUTeNWrdrRsPw4eJSdehhz4dM/edit?usp=sharing">Google
       document</url> (do File/Make a Copy) also seen below to record your
@@ -1254,7 +1254,7 @@
       <statement>
         <p>
           After you complete your code, write in your comparison of the linear
-          vs. binary search runtimes based on your test cases. Were there any
+          vs. binary search run times based on your test cases. Were there any
           cases where one was faster than the other? How did each perform in the
           worst case when a word is misspelled?
         </p>

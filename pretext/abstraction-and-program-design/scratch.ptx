@@ -42,7 +42,7 @@
 
     <p>
       One precondition that we talked about is that divisors cannot be zero in
-      expressions because that will cause the code to have a runtime error or
+      expressions because that will cause the code to have a run-time error or
       exception. Many math functions have preconditions about their operands
       because not every mathematical operation is defined for every value. For
       example, computing the square root of a negative number is undefined, so

@@ -628,10 +628,10 @@
   </subsection>
 
   <subsection xml:id="coding-challenge-sort-runtimes">
-    <title>Coding Challenge: Sort Runtimes</title>
+    <title>Coding Challenge: Sort Run Times</title>
 
     <p>
-      Selection sort and Insertion sort have similar runtimes. They both have
+      Selection sort and Insertion sort have similar run times. They both have
       nested loops that run through the data of size n approximately n squared
       times. However, they perform differently on some data.
     </p>
@@ -641,7 +641,7 @@
       add in a counter and increment it inside the inner loop to count the
       number of iterations. Add in print statements that will print the counter
       value after the loops. Run the code on the following data and record the
-      runtimes in this <url
+      run times in this <url
       href="https://docs.google.com/document/d/1uGhFyrcGqokcOWQC-f8Cz-kow7I_xs6s5G-p-qXZ7wA/copy">Google
       document</url> (login to Google to make your own copy) also seen below.
     </p>
@@ -650,12 +650,12 @@
     <project label="challenge-sorting">
       <statement>
         <p>
-          Compare the runtimes of selection and insertion sort on the same data.
+          Compare the run times of selection and insertion sort on the same data.
           There should be some data where one performed better than the other.
           Can you explain why this is? Trace through the code to figure out why.
           Discuss in pairs or groups. Using the space provided below, summarize
           the key discussion points and include a link to your Google document
-          with the table of runtimes.
+          with the table of run times.
         </p>
       </statement>
 

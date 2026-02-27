@@ -118,7 +118,7 @@
     <p>
       This method uses a <term>try catch</term> block for error-checking which
       is not covered in the AP exam. If you put some code in a try block and it
-      has a runtime error (which is called an <term>Exception</term> in Java),
+      has a run-time error (which is called an <term>Exception</term> in Java),
       the code in the catch block will be executed to handle that error. You
       also do not need to know some of the other complicated code with files and
       data structures in Review.java.
