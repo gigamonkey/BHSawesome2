@@ -3,7 +3,45 @@
 <chapter xml:id="algorithms" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>algorithms</title>
 
-  <introduction />
+  <introduction>
+    <p>
+      An <term>algorithm</term> is a step-by-step procedure that can be followed
+      to solve a problem or perform a task. (The word comes from the
+      Latinization of the name of the eighth-century Persian mathematician
+      Muhammad ibn Musa al-Khwarizmi who also gave us the term
+      <term>algebra</term>.)
+    </p>
+
+    <p>
+      Since every computer program is a step-by-step procedure, in some sense
+      every computer program is an algorithm. However, when programmers and
+      computer scientists talk about algorithms, we’re usually talking about
+      something simpler and more general than a whole program. We can talk about
+      algorithms and how they work indendently of any particular program that
+      might <term>implement</term> a given algorithm.
+    </p>
+
+    <p>
+      As programmers we need to know about some practical algorithms for solving
+      problems that come up in many programs so we can apply those ideas in our
+      programs without having to invent them from first principles. Computer
+      scientists also study algorithms to understand what it is even
+      theoretically possible to do with computers and what limits there are on
+      how efficient algorithms can be.
+    </p>
+
+    <p>
+      In this chapter we will look at two categories of the most basic and
+      useful algorithms that are used in lots of programs: algorithms for
+      searching through a collection such as an array, a <c>String</c> or an
+      <c>ArrayList</c> and algorithms for sorting the values in an array or
+      <c>ArrayList</c>, such as alphabetizing a list of names. We will also look
+      at <term>recursion</term>, a technique for implementing certain
+      algorithms, including searching and sorting algorithms, that sometimes
+      makes it easier to express the algorithm.
+    </p>
+  </introduction>
+
   <xi:include href="./topic-4-14-searching.ptx" />
   <xi:include href="./topic-4-15-sorting.ptx" />
   <xi:include href="./topic-4-16-recursion.ptx" />
