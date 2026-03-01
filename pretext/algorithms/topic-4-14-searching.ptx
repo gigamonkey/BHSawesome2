@@ -419,7 +419,7 @@
       represented a chess board and we were searching for the position of the
       black queen, we could loop over all the row of the 2D array and and then
       loop through the values in each row, checking each position to see if it
-      held black queen. We are essentially searching linearally through the rows
+      held black queen. We are essentially searching linearly through the rows
       and then again within each row.
     </p>
 
@@ -516,7 +516,7 @@
       <xref ref="topic-4-6-input-files" />. When we have that kind of date,
       often what we’re searching for is a row within that table that matches
       some criteria. In this case we’d loop over the rows of the 2D array and
-      then for each row test whether it matches our critera. That could be as
+      then for each row test whether it matches our criteria. That could be as
       simple as checking whether some value at a given position in the row is a
       particular value. But it might also require us to do a linear search
       within the row such as if we’re looking for a row that contains a
@@ -543,9 +543,9 @@
       But things change if the list is sorted. If you’ve ever looked up a word
       in a physical dictionary you probably didn’t start on the first page and
       read all the words until you found the one you were looking for. Instead,
-      you probably opened the dictonary to about the middle and then looked to
+      you probably opened the dictionary to about the middle and then looked to
       see if the words on that page were before or after the word you were
-      looking for, alphabetically. That told you which half of the dictonary
+      looking for, alphabetically. That told you which half of the dictionary
       your word was in.
     </p>
 
@@ -591,9 +591,9 @@
     <p>
       Binary search can be surprisingly hard to implement correctly. Stanford
       computer science courses used to start by having everyone try to write a
-      binary search algorithm and according to Standford professor Donald Knuth,
+      binary search algorithm and according to Stanford professor Donald Knuth,
       fewer than ten percent of students wrote a bug free implementation. Even
-      the verison of binary search in the Java standard libarary contained a bug
+      the version of binary search in the Java standard library contained a bug
       for nine years before it was <url
       href="https://research.google/blog/extra-extra-read-all-about-it-nearly-all-binary-searches-and-mergesorts-are-broken/">found
       in 2006!</url>.
@@ -792,42 +792,81 @@
   </subsection>
 
   <subsection xml:id="runtimes">
-    <title>Run times</title>
+    <title>Algorithmic run time</title>
 
     <p>
-      How do we choose between two algorithms that solve the same problem? They
-      usually have different characteristics and <term>run times</term> which
-      measures how fast they run. For the searching problem, it depends on your
-      data.
+      At a high level, linear search and binary search are two different
+      algorithms that solve the same problem. How do we choose between them?
+      Sometimes the choice is easy: if our array or list is not sorted we pretty
+      much have to use a linear search.
     </p>
 
     <p>
-      Binary search is much faster than linear search, especially on large data
-      sets, but it can only be used on sorted data. Often with run times,
-      computer scientist think about the <term>worst case behavior</term>. With
-      searching, the worst case is usually if you cannot find the item. With
-      linear search, you would have to go through the whole array before
-      realizing that it is not there, but binary search is much faster even in
-      this case because it eliminates half the data set in each step. We can
-      measure an informal run time by just counting the number of steps.
+      But suppose our data is sorted and we could use either. Should we always
+      use a binary search? What does it mean when we say binary search is faster
+      than linear search? Is that always true?
     </p>
 
     <p>
-      Here is a table that compares the worst case run time of each search
-      algorithm given an array of n elements. The run time here is measured as
-      the number of times the loop runs in each algorithm or the number of
-      elements we need to check in the worst case when we don’t find the item we
-      are looking for. Notice that with linear search, the worst case run time is
-      the size of the array n, because it has to look through the whole array.
-      For the binary search run time, we can calculate the number of times you
-      can divide n in half until you get to 1. So, for example 8 elements can be
-      divided in half to narrow down to 4 elements, which can be further divided
-      in half to narrow down to 2 elements, which can be further divided in half
-      to get down to 1 element, and then if that is wrong, to 0 elements, so
-      that is 4 divisions or guesses to get the answer
-      (8-&gt;4-&gt;2-&gt;1-&gt;0). In the table below, every time we double the
-      size of N, we need at most one more guess or comparison with binary
-      search. It’s much faster than linear search!
+      Computer scientists like to answer these questions by analyzing algorithms
+      in terms of their <term>run time</term> which isn’t measured by running a
+      program and timing it but rather by characterizing, slightly abstractly,
+      how many steps the algorithm will have to execute before it finishes. In
+      particular computer scientist think about the <term>worst case</term> run
+      times of algorithms, meaning how many steps will the algorithm take if
+      given the worst possible input.
+    </p>
+
+    <p>
+      With searching, the abstract step is something like, how many items does
+      the algorithm have to compare to the thing it is searching for and the
+      worst case is usually if the thing we are searching for isn’t there to be
+      found.
+    </p>
+
+    <p>
+      A linear search, searching an array would have to look at every item in
+      the array before it could say that the item wasn’t present. By contrast a
+      binary search would only have to look at a handful of items before the
+      search space would collapse and it could determine that the search had
+      failed.
+    </p>
+
+    <p>
+      Finally, the thing computer scientists most often care about is not even
+      how many steps an algorithm takes on any given input but how the worst
+      case run time changes as the size of the problem changes. For searching it
+      makes sense that it would take longer to search a bigger array or list.
+      And indeed both linear and binary searches take longer, the more things
+      they have to search. But we can actually compare how they change.
+    </p>
+
+    <p>
+      If we define run time of a search algorithm as the number of elements the
+      algorithm has to compare to the target and the worst case run time
+      occurring when the target isn’t present, then it’s easy to analyze linear
+      search: the worst case run time is the size of the array being searched,
+      because the algorithm has to look at every element of the array before it
+      can be sure the target isn’t present.
+    </p>
+
+    <p>
+      Binary search on the other hand, doesn’t always need to look at every
+      element. It only needs to look at the middle elements of ever-shrinking
+      search spaces until the search space is just one element. After comparing
+      the middle element of the array to the target, it will reduce the search
+      space by half which means half of the elements will never be looked at.
+      And half of the remaining half will be eliminated with one more
+      comparison.
+    </p>
+
+    <p>
+      The table below shows how both the linear and binary search run times
+      change. Notice how doubling the size of of the input <em>n</em> adds only
+      one more comparison with binary search. So even though for a two-element
+      array linear search and binary search take the same number of steps,
+      because the number of steps increases so much slower as the size of the
+      input grows we say that binary search is faster than linear search.
     </p>
 
     <table>
@@ -874,19 +913,34 @@
     </table>
 
     <p>
-      Run Times can be described with mathematical functions. For an array of
-      size n, linear search run time is a linear function, and binary search
-      run time is a function of log base 2 of n (or log n + 1 comparisons). This
-      is called the big-O run time function in computer science, for example
-      O(log n) vs. O(n). You can compare the growth of functions like n and
-      <m>\log_{2}n</m> as <m>n</m>, the data size, grows and see that binary
-      search runs much faster for any <m>n</m>. You don’t need to know the log n
-      run time growth function for the AP exam, but you should be able to
-      calculate how many steps binary search takes for a given n by counting how
-      many times you can divide it in half. Or you can start at 1 and keep a
-      count of how many times you can double it with the powers of two (1, 2, 4,
-      8, 16, 32, 64, 128, 256, 512, 1024, etc.) until you reach a number that is
-      slightly above n.
+      Run times can be described with mathematical functions that describe the
+      rough mathematical relationship between the size of the input and the run
+      time of the algorithm. For instance, since linear search’s run time grows
+      by a constant amount with every increase in the input size, we can
+      describe it with the function <m>f(n) = n</m>. As n (the input size) gets
+      bigger, so does the run time. Because we are analyzing things abstractly,
+      we don’t worry about coefficients—if every additional element we are
+      searching actually adds two steps rather than one, that’s still a linear
+      function. A computer scientist would use <term>big-O notation</term> and
+      write describe the run time of the algorithm as <m>O(n)</m>.
+    </p>
+
+    <p>
+      Binary search’s run time grows logarithmically since the number of steps
+      is basically log base 2 of the size of the input, so <m>f(n) =
+      \log_{2}n</m>. But again, we don’t care about coefficients and the base of
+      the logarithm is really just a coefficient, so a computer scientist would
+      describe binary search’s run time as <m>O(\log n)</m>.
+    </p>
+
+    <p>
+      You don’t need to know big-O notation for the AP exam, but you should be
+      able to calculate how many steps binary search takes for a given input
+      size. You can figure it out by counting how many times you can divide it
+      the size in half. Or you can start at 1 and keep a count of how many times
+      you can double it with the powers of two (1, 2, 4, 8, 16, 32, 64, 128,
+      256, 512, 1024, etc.) until you reach a number that is slightly above the
+      original size.
     </p>
 
     <activity label="qbs_1">
