@@ -38,7 +38,7 @@
     <p>
       Well-constructed recursive methods contain at least one <term>base
       case</term>, which halts the recursion, and at least one <term>recursive
-      call</term>.
+      call</term> where the method calls itself.
     </p>
 
     <activity label="recurb1fill">
@@ -181,10 +181,10 @@
     <p>
       But that’s actually great news because we can use the same procedure to
       solve this smaller problem: find the size of all the files and sub-folders
-      in <em>it</em> and add them up. Eventually, as we try to get the size more
-      deeply nested folders, eventually we’ll get to folders that only contain
-      plain files whose sizes we can add up and return and eventually we work
-      our way back up to give the answer to our question about the original
+      in <em>it</em> and add them up. Eventually, as we try to get the size of
+      more deeply nested folders, eventually we’ll get to folders that only
+      contain plain files whose sizes we can add up and return and eventually we
+      work our way back up to give the answer to our question about the original
       top-most folder.
     </p>
 
@@ -225,7 +225,7 @@
       structures to keep track where you are in the tree. Thus one way to think
       about recursion is as “loops for trees”. If you need to loop over a simple
       linear structure like a <c>String</c> or an array, by all mean use a
-      <c>for</c> loop. And if you want to navigate a 2D array a pair of nested
+      <c>for</c> loop. And if you want to navigate a 2D array, a pair of nested
       <c>for</c> loops is the way to go. But if you need to traverse a tree
       structure, recursion should be your go to.
     </p>
@@ -588,11 +588,11 @@
     <idx>call stack</idx>
     <idx>stack</idx>
     <p>
-      In Java, the <term>call stack</term> keeps track of the methods that you
-      have called since the main method executes. A <term>stack</term> is a way
-      of organizing data that adds and removes items only from the top of the
-      stack. An example is a stack of cups. You can grap a cup from the top of
-      the stack or add more cups at the top of the stack.
+      In Java, the <term>call stack</term> keeps track of the methods that are
+      currently running, starting from <c>main</c>. A <term>stack</term> is a
+      way of organizing data that adds and removes items only from the top of
+      the stack. An example is a stack of cups. You can grap a cup from the top
+      of the stack or add more cups at the top of the stack.
     </p>
 
     <figure align="center">
@@ -641,7 +641,7 @@
       capture the progress of a recursive process, much like loop control
       variable values capture the progress of a loop. The parameter values
       usually change in each recursive call until we reach the base case which
-      stops the recursion when a parameter reaches some base value.
+      stops the recursion by returning immediately.
     </p>
 
     <p>Let’s trace the execution of the factorial method defined below.</p>

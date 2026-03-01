@@ -1,0 +1,100 @@
+    <p>
+      <ul>
+        <li>
+          <p>
+            <term>Linear search</term> algorithms check each element in order
+            until the desired value is found or all elements in the array or
+            <c>ArrayList</c> have been checked. Linear search algorithms can
+            begin the search process from either end of the array or
+            <c>ArrayList</c>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <term>Binary search</term> algorithms can only be used on data that
+            has been <term>sorted</term> or stored in order. It checks the
+            middle of the data to see if that middle value is less than, equal,
+            or greater than the desired value and then based on the results of
+            that it narrows the search. It cuts the search space in half each
+            time.
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      If binary search requires the values in an array or list to be sorted, how
+      can you do that? There are many sorting algorithms which are covered in
+      the next lesson.
+    </p>
+
+
+
+    <p>
+      Here is a version of the recursive binary search that works with an
+      <c>ArrayList</c>. Click on CodeLens to step through the code.
+    </p>
+
+    <activity label="recursiveBinarySearchArrayList">
+      <statement>
+        <p>
+          Here is a version of the recursive binary search that works with an
+          ArrayList. Run the code below. Try searching for the value 3 and then
+          the value 2 which is not in the ArrayList. What happens?
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+        <![CDATA[
+        import java.util.ArrayList;
+
+        public class RecursiveBinarySearchArrayList
+        {
+            public static int recursiveBinarySearch(
+                ArrayList<Integer> list, int start, int end, int target)
+            {
+                int middle = (start + end) / 2;
+                // base case: check middle element
+                if (target == list.get(middle))
+                {
+                    return middle;
+                }
+                // base case: check if we've run out of elements
+                if (end < start)
+                {
+                    return -1; // not found
+                }
+                // recursive call: search start to middle
+                if (target < list.get(middle))
+                {
+                    return recursiveBinarySearch(list, start, middle - 1, target);
+                }
+                // recursive call: search middle to end
+                if (target > list.get(middle))
+                {
+                    return recursiveBinarySearch(list, middle + 1, end, target);
+                }
+                return -1;
+            }
+
+            public static void main(String[] args)
+            {
+                ArrayList<Integer> list = new ArrayList<>();
+                list.add(3);
+                list.add(7);
+                list.add(12);
+                list.add(19);
+                list.add(22);
+                list.add(25);
+                list.add(29);
+                list.add(30);
+                int target = 25;
+                int foundIndex = recursiveBinarySearch(list, 0, list.size() - 1, target);
+                System.out.println(target + " was found at index " + foundIndex);
+            }
+        }
+        ]]>
+      </program>
+
+    </activity>

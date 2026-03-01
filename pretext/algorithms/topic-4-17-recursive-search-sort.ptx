@@ -1,97 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="topic-4-17-recursive-search-sort">
-  <title>Recursive Searching and Sorting</title>
+  <title>Recursive searching and sorting</title>
 
   <introduction>
     <p>
-      In previous lessons, we learned about searching and sorting algorithms
-      using iteration (loops) to search or sort arrays and <c>ArrayLists</c>. In
-      this lesson, we will take a look at a <term>recursive binary search</term>
-      algorithm and a <term>recursive merge-sort</term> algorithm. Recursion can
-      be used to traverse <c>String</c> objects, arrays, and <c>ArrayList</c>
-      objects.
+      In the first two lessons of this chapter , we learned about searching and
+      sorting algorithms that using iteration (loops) to search or sort arrays
+      and <c>ArrayList</c>s. And as we saw in the previous lesson, recursion can
+      also be used to traverse <c>String</c>s, arrays, and <c>ArrayList</c>s but
+      is even more useful for traversing tree structures.
+    </p>
+
+    <p>
+      In this lesson, we will take a look at how we can use recursion to
+      implement binary searching and a recursive sorting algorithm called
+      <term>merge-sort</term> algorithm.
     </p>
   </introduction>
 
   <subsection xml:id="recursive-binary-search">
-    <title>Recursive Binary Search</title>
+    <title>Recursive binary search</title>
 
     <p>
-      We have already seen two search algorithms using loops, linear search and
-      binary search. Linear search searches for an element in an array or
-      ArrayList by checking each element in order. Binary search is more
-      efficient (faster) because it starts at the middle of a sorted array or
-      ArrayList and eliminates half of the array or ArrayList each pass through
-      the algorithm. Binary search only works on sorted data. It can be written
-      with iteration (using a loop) like below or recursively.
+      In <xref ref="binary-search" /> we saw how to implement a binary search
+      using a loop. And in the previous lesson we learned that recursion, while
+      it can be used for linear traversals, is most powerful as “loops for
+      trees”. Let’s look at another way of thinking about binary search that
+      lends itself naturally to a recursive solution.
     </p>
 
-    <program interactive="activecode">
+    <p>
+      For reference, here’s the iterative binary search from <xref
+      ref="binary-search" />.
+    </p>
+
+    <program>
       <![CDATA[
-      public class IterativeBinarySearch
-      {
-          public static int binarySearch(int[] elements, int target)
-          {
-              int left = 0;
-              int right = elements.length - 1;
-              while (left <= right)
-              {
-                  int middle = (left + right) / 2;
-                  if (target < elements[middle])
-                  {
-                      right = middle - 1;
-                  }
-                  else if (target > elements[middle])
-                  {
-                      left = middle + 1;
-                  }
-                  else
-                  {
-                      return middle;
+      public class BinarySearch {
+
+          public static int search(int[] nums, int n) {
+
+              int low = 0;
+              int high = nums.length;
+
+              while (low < high) {
+                  int mid = low + (high - low) / 2;
+
+                  if (nums[mid] < n) {
+                      low = mid + 1;
+                  } else if (nums[mid] > n) {
+                      high = mid;
+                  } else {
+                      return mid;
                   }
               }
               return -1;
           }
-
-          public static void main(String[] args)
-          {
-              int[] arr1 = {-20, 3, 15, 81, 432};
-
-              int index = binarySearch(arr1, 81);
-              System.out.println(index);
-          }
       }
       ]]>
-    </program>
+     </program>
+
+     <p>
+       Now let’s consider how that algorithm proceeds. Let’s assume we’re
+       searching an array with length 8. So the <c>low</c> and <c>high</c>
+       variables will start at <c>0</c> and <c>8</c>, representing the half-open
+       interval <m>[0, 8)</m>. And the first value of <c>mid</c> will be
+       <c>4</c>. On the next iteration of the loop <c>low</c> and <c>high</c>
+       will be either <c>0</c> and <c>4</c> or <c>4</c> and <c>8</c>, depending
+       on which half of the original range the target value is determined to be
+       in. And then whichever range we end up in, on the next iteration it will
+       be split in half one one of it’s halves chosen and so on until we get
+       down to ranges containing just a single number.
+     </p>
+
+     <p>
+       While in any given call to <c>search</c> we will go down one path until
+       we find, or fail to find, our target number. But we could also think of
+       the possible paths as a tree that starts with one range covering the
+       whole range and then has children that represent each half, and each of
+       them have children representing their two halves until we reach the
+       leaves containing only one number each. We can draw the tree like this.
+     </p>
+
+     <figure align="center">
+       <caption>Binary search as a tree</caption>
+       <image source="_static/img/binary-seach-tree.svg"  />
+     </figure>
 
     <p>
-      Watch the iterative binary search code running in the <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=++public+class+SearchTest%0A++%7B%0A+++++%0A+++++/**+%0A++++++*+Find+the+index+of+a+value+in+an+array+of+integers+sorted+in+ascending+order.%0A++++++*+%40param+elements+an+array+containing+the+items+to+be+searched.+Precondition%3A+items+in+elements+are+sorted+in+ascending+order.%0A++++++*+%40param+target+the+item+to+be+found+in+elements.%0A++++++*+%40return+an+index+of+target+in+elements+if+target+found%3B%0A++++++*+-1+other+wise.%0A++++++*/%0A+++++public+static+int+binarySearch(int%5B%5D+elements,+int+target)+%7B%0A++++++++int+left+%3D+0%3B%0A++++++++int+right+%3D+elements.length+-+1%3B%0A++++++++while+(left+%3C%3D+right)+%0A++++++++%7B%0A+++++++++++int+middle+%3D+(left+%2B+right)+/+2%3B+%0A+++++++++++if+(target+%3C+elements%5Bmiddle%5D)%0A+++++++++++%7B%0A++++++++++++++right+%3D+middle+-+1%3B%0A+++++++++++%7D%0A+++++++++++else+if+(target+%3E+elements%5Bmiddle%5D)+%0A+++++++++++%7B%0A++++++++++++++left+%3D+middle+%2B+1%3B+%0A+++++++++++%7D%0A+++++++++++else+%7B%0A++++++++++++++return+middle%3B+%0A+++++++++++%7D%0A+++++++++%7D%0A+++++++++return+-1%3B%0A++++++%7D%0A++++++%0A++++++public+static+void+main(String%5B%5D+args)%0A++++++%7B%0A+++++++++int%5B%5D+arr1+%3D+%7B-20,+3,+15,+81,+432%7D%3B%0A++++++++%0A+++++++++//+test+when+the+target+is+in+the+array%0A+++++++++int+index+%3D+binarySearch(arr1,-20)%3B%0A+++++++++System.out.println(index)%3B%0A++++++++%0A+++++++++//+test+when+the+target+is+not+in+the+array%0A+++++++++index+%3D+binarySearch(arr1,53)%3B%0A+++++++++System.out.println(index)%3B%0A+++++++%7D%0A++%7D%0A&amp;mode=display&amp;curInstr=0">|Java
-      Visualizer|</url>.
+      With that tree in mind, we can write a recursive version of binary search.
+      Unlike our iterative binary search method, the recursive search needs to
+      take two extra arguments that specify what part of the array any single
+      call is responsible for. The first call will pass a range covering the
+      whole array and then each recursive calls will narrow the range to one
+      half of the range. In other words, to find a number in a given range we
+      determine which half of that range it’s in and then find in in that
+      smaller range. Eventually the range will get small enough that we either
+      found it or we know it’s not there.
     </p>
 
     <p>
-      Let’s write a recursive version of Binary Search. <term>Recursive Binary
-      search</term> starts at the middle of a sorted array or <c>ArrayList</c>
-      and eliminates half of the array or <c>ArrayList</c> in each recursive
-      call until the desired value is found or all elements have been
-      eliminated.
-    </p>
-
-    <p>
-      Note that you can write solutions to many problems using recursion or
-      iteration. Iteration is usually preferred and more efficient, but
-      recursive solutions can be elegant and require less code.
+      Before we look at the code, try to answer these questions.
     </p>
 
     <activity label="baseCaseQ">
       <statement>
         <p>
-          What’s the base case for a recursive version of Binary Search (where
-          we want the recursion to stop)? Remember that in binary search, we
-          always check the middle element first when looking for a target
-          element from a startIndex to an endIndex.
+          What are the base cases for a recursive version of binary search?
+          Hint, look at the tree above and think about when we can no longer go
+          any deeper into the tree. There are two such cases.
         </p>
       </statement>
 
@@ -111,54 +129,59 @@
       <response />
     </activity>
 
-    <p>Here is the Java code for a recursive binary search:</p>
-
     <activity label="recursiveBinarySearch">
       <statement>
         <p>
-          Run the code below. Try searching for the value 3 and then the value 2
-          which is not in the array. What would happen if we removed the second
-          base case checking if end &lt; start? Try it and see.
+          Now we’re ready to look at an implementation. This version is designed
+          to exactly match the structure of our tree diagram above. It could be
+          optimized a bit to return immediately if the target value is ever
+          found at the midpoint.
+        </p>
+
+        <p>
+          Try running the code below with different values for <c>target</c> in
+          main including some values that are in the array and some that are not.
         </p>
       </statement>
 
       <program interactive="activecode">
         <![CDATA[
-        public class RecursiveBinarySearch
-        {
-            public static int recursiveBinarySearch(
-                int[] array, int start, int end, int target)
-            {
-                int middle = (start + end) / 2;
-                // base case: check middle element
-                if (target == array[middle])
-                {
-                    return middle;
+        public class RecursiveBinarySearch {
+            public static int search(int[] nums, int low, int high, int target) {
+                if (low == high) {
+                    // Base case 1: range is empty. Target not found
+                    return -1;
+                } else if (low == high - 1) {
+                    // Base case 2: range is one element. Target is either there or not found
+                    if (target == nums[low]) {
+                        return low;
+                    } else {
+                        return -1;
+                    }
+                } else {
+                    // Recursive case: figure out which branch of the tree to go down
+                    int mid = low + (high - low) / 2;
+
+                    if (target < nums[mid]) {
+                        // Recurse down left branch
+                        return search(nums, low, mid, target);
+                    } else {
+                        // Recurse down right branch
+                        return search(nums, mid, high, target);
+                    }
                 }
-                // base case: check if we've run out of elements
-                if (end < start)
-                {
-                    return -1; // not found
-                }
-                // recursive call: search start to middle
-                if (target < array[middle])
-                {
-                    return recursiveBinarySearch(array, start, middle - 1, target);
-                }
-                // recursive call: search middle to end
-                if (target > array[middle])
-                {
-                    return recursiveBinarySearch(array, middle + 1, end, target);
-                }
-                return -1;
             }
 
             public static void main(String[] args)
             {
-                int[] array = {3, 7, 12, 19, 22, 25, 29, 30};
-                int target = 25;
-                int foundIndex = recursiveBinarySearch(array, 0, array.length - 1, target);
-                System.out.println(target + " was found at index " + foundIndex);
+                int[] array = {3, 7, 12, 19, 19, 22, 25, 29, 30};
+                int target = 19;
+                int idx = search(array, 0, array.length, target);
+                if (idx == -1) {
+                    System.out.println(target + " not found.");
+                } else {
+                    System.out.println(target + " was found at index " + idx);
+                }
             }
         }
         ]]>
@@ -167,104 +190,53 @@
 
     <p>
       Try the recursive binary search code in this <url
-      href="https://cscircles.cemc.uwaterloo.ca/java_visualize/#code=++public+class+RecursiveBinarySearch%0A++%7B%0A+++++public+static+int+recursiveBinarySearch(int%5B%5D+array,+int+target,+int+start,+int+end)%0A+++++%7B%0A+++++++int+middle+%3D+(start+%2B+end)/2%3B%0A%09+++%0A+++++++if+(target+%3D%3D+array%5Bmiddle%5D)+%7B%0A%09%09%09return+middle%3B%0A%09+++%7D%09%0A%09+++if(end+%3C+start)%7B%0A%09%09%09+return+-1%3B+//+not+found%0A%09++++%7D+%0A%09%09%0A%09++++if+(target+%3C+array%5Bmiddle%5D)%7B%0A%09%09%09return+recursiveBinarySearch(array,+target,+start,+middle+-+1)%3B%0A%09%09%7D%0A%09%09%0A%09%09if+(target+%3E+array%5Bmiddle%5D)%7B%0A%09%09%09return+recursiveBinarySearch(array,+target,+middle+%2B+1,+end)%3B%0A%09%09%7D%0A%0A%09%09return+-1%3B%0A+++%7D%0A%0A+++public+static+void+main(String%5B%5D+args)%0A+++%7B%0A++++++int%5B%5D+array+%3D+%7B+3,+7,+12,+19,+22,+25,+29,+30+%7D%3B%0A++++++int+foundIndex+%3D+recursiveBinarySearch(array,25,0,array.length)%3B%0A++++++System.out.println(%2225+was+found+at+index+%22+%2B+foundIndex)%3B%0A+++%7D%0A++%7D&amp;mode=display&amp;curInstr=28">Java
-      visualizer link</url> or with the CodeLens button above.
+      href="https://pythontutor.com/visualize.html#code=public%20class%20RecursiveBinarySearch%20%7B%0A%20%20%20%20public%20static%20int%20search%28int%5B%5D%20nums%2C%20int%20low%2C%20int%20high%2C%20int%20target%29%20%7B%0A%20%20%20%20%20%20%20%20if%20%28low%20%3D%3D%20high%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20//%20Base%20case%201%3A%20range%20is%20empty.%20Target%20not%20found%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20-1%3B%0A%20%20%20%20%20%20%20%20%7D%20else%20if%20%28low%20%3D%3D%20high%20-%201%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20//%20Base%20case%202%3A%20range%20is%20one%20element.%20Target%20is%20either%20there%20or%20not%20found%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20%28target%20%3D%3D%20nums%5Blow%5D%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20low%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20-1%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20//%20Recursive%20case%3A%20figure%20out%20which%20branch%20of%20the%20tree%20to%20go%20down%0A%20%20%20%20%20%20%20%20%20%20%20%20int%20mid%20%3D%20low%20%2B%20%28high%20-%20low%29%20/%202%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20%28target%20%3C%20nums%5Bmid%5D%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20//%20Recurse%20down%20left%20branch%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20search%28nums%2C%20low%2C%20mid%2C%20target%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20//%20Recurse%20down%20right%20branch%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20search%28nums%2C%20mid%2C%20high%2C%20target%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20int%5B%5D%20array%20%3D%20%7B3%2C%207%2C%2012%2C%2019%2C%2019%2C%2022%2C%2025%2C%2029%2C%2030%7D%3B%0A%20%20%20%20%20%20%20%20int%20target%20%3D%2019%3B%0A%20%20%20%20%20%20%20%20int%20idx%20%3D%20search%28array%2C%200%2C%20array.length%2C%20target%29%3B%0A%20%20%20%20%20%20%20%20if%20%28idx%20%3D%3D%20-1%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28target%20%2B%20%22%20not%20found.%22%29%3B%0A%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28target%20%2B%20%22%20was%20found%20at%20index%20%22%20%2B%20idx%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%7D%0A&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
+      or with the CodeLens button above.
     </p>
 
     <p>
-      Here is a version of the recursive binary search that works with an
-      <c>ArrayList</c>. Click on CodeLens to step through the code.
+      Note that binary search is one of many algorithms that can be written
+      either using loops or recursively. Which you prefer when is largely a
+      matter of taste though all other things being equal, in many languages
+      iteration is preferred and likely to be more efficient. On the other hand,
+      for some algorithms, it can be very straightforward to express them
+      recursively and very difficult to translate them into iterative code.
     </p>
-
-    <activity label="recursiveBinarySearchArrayList">
-      <statement>
-        <p>
-          Here is a version of the recursive binary search that works with an
-          ArrayList. Run the code below. Try searching for the value 3 and then
-          the value 2 which is not in the ArrayList. What happens?
-        </p>
-      </statement>
-
-      <program interactive="activecode">
-        <![CDATA[
-        import java.util.ArrayList;
-
-        public class RecursiveBinarySearchArrayList
-        {
-            public static int recursiveBinarySearch(
-                ArrayList<Integer> list, int start, int end, int target)
-            {
-                int middle = (start + end) / 2;
-                // base case: check middle element
-                if (target == list.get(middle))
-                {
-                    return middle;
-                }
-                // base case: check if we've run out of elements
-                if (end < start)
-                {
-                    return -1; // not found
-                }
-                // recursive call: search start to middle
-                if (target < list.get(middle))
-                {
-                    return recursiveBinarySearch(list, start, middle - 1, target);
-                }
-                // recursive call: search middle to end
-                if (target > list.get(middle))
-                {
-                    return recursiveBinarySearch(list, middle + 1, end, target);
-                }
-                return -1;
-            }
-
-            public static void main(String[] args)
-            {
-                ArrayList<Integer> list = new ArrayList<>();
-                list.add(3);
-                list.add(7);
-                list.add(12);
-                list.add(19);
-                list.add(22);
-                list.add(25);
-                list.add(29);
-                list.add(30);
-                int target = 25;
-                int foundIndex = recursiveBinarySearch(list, 0, list.size() - 1, target);
-                System.out.println(target + " was found at index " + foundIndex);
-            }
-        }
-        ]]>
-      </program>
-    </activity>
   </subsection>
 
   <subsection xml:id="merge-sort">
-    <title>Merge Sort</title>
+    <title>Merge sort</title>
 
     <idx>merge sort</idx>
     <idx><h>sort</h><h>merge</h></idx>
     <p>
-      In previous lessons, we looked at two sorting algorithms, Selection Sort
-      and Insertion Sort. In this lesson, we will look at a third sorting
-      algorithm, Merge Sort, which uses recursion. <term>Merge sort</term> is a
-      recursive sorting algorithm that can be used to sort elements in an array
-      or <c>ArrayList</c>.
+      In <xref ref="topic-4-15-sorting" />, we looked at two sorting algorithms,
+      selection sort and insertion sort. In this lesson, we will look at a third
+      sorting algorithm, <term>merge sort</term>, which uses recursion. In this
+      case recursion makes the algorithm more efficient than either of the other
+      two algorithms we’ve looked it.
     </p>
 
     <p>
-      Merge Sort is actually more efficient (faster) than Selection Sort and
-      Insertion Sort because it divides the problem in half each time like
-      binary search. This is called a <term>divide and conquer</term> algorithm.
+      Similar to how the recursive binary search worked by searching smaller and
+      smaller sub-ranges of the original array, merge sort repeatedly divides
+      ranges covering part of the array into smaller sub-ranges until each range
+      is just one element wide and then recursively merges adjacent ranges back
+      together in sorted order.
     </p>
 
     <p>
-      Merge sort repeatedly divides an array into smaller subarrays until each
-      subarray is one element and then recursively merges the sorted subarrays
-      back together in sorted order to form the final sorted array. The code
-      shown below uses a second array the same size as the original array for
-      merging the values in order. Then it copies all of the sorted values back
-      into the original array.
+      For example, after four adjacent one-element ranges are merged into two
+      adjacent two-element ranges, those two-element ranges are merged into one
+      four-element range, and so on until on the very last step, the sorted
+      first half of the array is merged with the sorted second half of the
+      array, completing the sort.
+    </p>
+
+    <p>
+      Merge sort typically uses a second array the same size as the original
+      array to hold the values while merging and then copies the sorted values
+      back into the original array.
     </p>
 
     <p>
@@ -279,96 +251,76 @@
     </p>
 
     <video youtube="4VqmGXwpLqc" label="video-mergesort" />
-    <p>
-      The code for <c>mergeSort</c> below is from the AP CSA course description.
-    </p>
-
-    <p>To identify a merge sort look for the following:</p>
 
     <p>
-      <ul>
-        <li>
-          <p>3 methods, mergeSort, mergeSortHelper, and merge</p>
-        </li>
-
-        <li>
-          <p>mergeSortHelper is recursive</p>
-        </li>
-      </ul>
+      And here is an implementation of merge sort. Note that the only
+      <c>public</c> method here is <c>sort</c> but it is written in terms of two
+      helper methods: <c>sortRange</c> and <c>merge</c>. The <c>sortRange</c>
+      method is actually the recursive method. Since recursive methods often
+      need some extra arguments to specify what sub-problem each recursive call
+      is working on, it’s common to write a non-recursive method that calls a
+      recursive method with the right initial arguments to kick things off. Here
+      <c>sort</c> calls <c>sortRange</c> with the range covering the whole
+      array.
     </p>
 
     <program interactive="activecode">
       <![CDATA[
       import java.util.Arrays;
 
-      public class SortTest
+      public class MergeSort
       {
-          public static void mergeSort(int[] elements)
-          {
-              int n = elements.length;
-              int[] temp = new int[n];
-              mergeSortHelper(elements, 0, n - 1, temp);
+          public static void sort(int[] elements) {
+              int[] temp = new int[elements.length];
+              sortRange(elements, 0, elements.length, temp);
           }
 
-          private static void mergeSortHelper(
-              int[] elements, int from, int to, int[] temp)
-          {
-              if (from < to)
-              {
-                  int middle = (from + to) / 2;
-                  mergeSortHelper(elements, from, middle, temp);
-                  mergeSortHelper(elements, middle + 1, to, temp);
-                  merge(elements, from, middle, to, temp);
+          private static void sortRange(int[] elements, int low, int high, int[] temp) {
+              if (high - low > 1) {
+                  int mid = low + (high - low) / 2;
+                  sortRange(elements, low, mid, temp);
+                  sortRange(elements, mid, high, temp);
+                  merge(elements, low, mid, high, temp);
               }
           }
 
-          private static void merge(
-              int[] elements, int from, int mid, int to, int[] temp)
-          {
-              int i = from;
-              int j = mid + 1;
-              int k = from;
+          private static void merge(int[] elements, int low, int mid, int high, int[] temp) {
+              int i = low;
+              int j = mid;
+              int k = low;
 
-              while (i <= mid && j <= to)
-              {
-                  if (elements[i] < elements[j])
-                  {
-                      temp[k] = elements[i];
-                      i++;
+              // Pull from both parts putting values into temp in sorted order
+              while (i < mid && j < high) {
+                  if (elements[i] <= elements[j]) {
+                      temp[k++] = elements[i++];
+                  } else {
+                      temp[k++] = elements[j++];
+
                   }
-                  else
-                  {
-                      temp[k] = elements[j];
-                      j++;
-                  }
-                  k++;
               }
 
-              while (i <= mid)
-              {
-                  temp[k] = elements[i];
-                  i++;
-                  k++;
+              // If i is still < mid copy remaining elements from
+              // the left half of the range.
+              while (i < mid) {
+                  temp[k++] = elements[i++];
               }
 
-              while (j <= to)
-              {
-                  temp[k] = elements[j];
-                  j++;
-                  k++;
+              // Otherwise if j is still < high copy remaining
+              // elements from right half of range
+              while (j < high) {
+                  temp[k++] = elements[j++];
               }
 
-              for (k = from; k <= to; k++)
-              {
+              // Copy merged values back into original array
+              for (k = low; k < high; k++) {
                   elements[k] = temp[k];
               }
           }
 
-          public static void main(String[] args)
-          {
+          public static void main(String[] args) {
               int[] arr1 = {86, 3, 43, 5};
               System.out.println(Arrays.toString(arr1));
-              mergeSort(arr1);
+              sort(arr1);
               System.out.println(Arrays.toString(arr1));
           }
       }
@@ -376,31 +328,28 @@
     </program>
 
     <p>
-      You can see this executing using the <url
-      href="http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=++import+java.util.Arrays%3B%0A++%0A++public+class+SortTest%0A++%7B%0A+++++public+static+void+mergeSort(int%5B%5D+elements)+%0A+++++%7B%0A++++++++int+n+%3D+elements.length%3B%0A++++++++int%5B%5D+temp+%3D+new+int%5Bn%5D%3B+%0A++++++++mergeSortHelper(elements,+0,+n+-+1,+temp)%3B%0A+++++%7D%0A+++++%0A+++++private+static+void+mergeSortHelper(int%5B%5D+elements,+int+from,+int+to,+int%5B%5D+temp)%0A+++++%7B%0A+++++++++if+(from+%3C+to)%0A+++++++++%7B%0A++++++++++++int+middle+%3D+(from+%2B+to)+/+2%3B+%0A++++++++++++mergeSortHelper(elements,+from,+middle,+temp)%3B+%0A++++++++++++mergeSortHelper(elements,+middle+%2B+1,+to,+temp)%3B+%0A++++++++++++merge(elements,+from,+middle,+to,+temp)%3B%0A+++++++++%7D%0A+++++%7D%0A+++++%0A+++++private+static+void+merge(int%5B%5D+elements,+int+from,+int+mid,+int+to,+int%5B%5D+temp)%0A+++++%7B%0A++++++++int+i+%3D+from%3B+%0A++++++++int+j+%3D+mid+%2B+1%3B+%0A++++++++int+k+%3D+from%3B%0A++++++++%0A++++++++while+(i+%3C%3D+mid+%26%26+j+%3C%3D+to)+%0A++++++++%7B%0A+++++++++++if+(elements%5Bi%5D+%3C+elements%5Bj%5D)+%0A+++++++++++%7B%0A++++++++++++++temp%5Bk%5D+%3D+elements%5Bi%5D%3B%0A++++++++++++++i%2B%2B%3B+%0A+++++++++++%7D%0A+++++++++++else+%0A+++++++++++%7B%0A++++++++++++++temp%5Bk%5D+%3D+elements%5Bj%5D%3B%0A++++++++++++++j%2B%2B%3B+%0A+++++++++++%7D%0A+++++++++++k%2B%2B%3B+%0A++++++++%7D%0A%0A++++++++while+(i+%3C%3D+mid)+%0A++++++++%7B%0A+++++++++++temp%5Bk%5D+%3D+elements%5Bi%5D%3B+%0A+++++++++++i%2B%2B%3B%0A+++++++++++k%2B%2B%3B%0A++++++++%7D%0A++++++++%0A++++++++while+(j+%3C%3D+to)+%0A++++++++%7B%0A+++++++++++temp%5Bk%5D+%3D+elements%5Bj%5D%3B+%0A+++++++++++j%2B%2B%3B%0A+++++++++++k%2B%2B%3B%0A++++++++%7D%0A++++++++%0A++++++++for+(k+%3D+from%3B+k+%3C%3D+to%3B+k%2B%2B)+%0A++++++++%7B%0A+++++++++++elements%5Bk%5D+%3D+temp%5Bk%5D%3B+%0A++++++++%7D%0A+++++%7D%0A++++++++%0A++++++%0A+++++public+static+void+main(String%5B%5D+args)%0A+++++%7B%0A++++++++int%5B%5D+arr1+%3D+%7B86,+3,+43%7D%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A++++++++mergeSort(arr1)%3B%0A++++++++System.out.println(Arrays.toString(arr1))%3B%0A+++++%7D%0A++%7D&amp;mode=display&amp;curInstr=0">Java
-      visualizer for merge sort</url>.
+      You can see this executing using this <url href="https://pythontutor.com/visualize.html#code=import%20java.util.Arrays%3B%0A%0Apublic%20class%20MergeSort%0A%7B%0A%20%20%20%20public%20static%20void%20sort%28int%5B%5D%20elements%29%20%7B%0A%20%20%20%20%20%20%20%20int%5B%5D%20temp%20%3D%20new%20int%5Belements.length%5D%3B%0A%20%20%20%20%20%20%20%20sortRange%28elements%2C%200%2C%20elements.length%2C%20temp%29%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20private%20static%20void%20sortRange%28int%5B%5D%20elements%2C%20int%20low%2C%20int%20high%2C%20int%5B%5D%20temp%29%20%7B%0A%20%20%20%20%20%20%20%20if%20%28high%20-%20low%20%3E%201%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20int%20mid%20%3D%20low%20%2B%20%28high%20-%20low%29%20/%202%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20sortRange%28elements%2C%20low%2C%20mid%2C%20temp%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20sortRange%28elements%2C%20mid%2C%20high%2C%20temp%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20merge%28elements%2C%20low%2C%20mid%2C%20high%2C%20temp%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%0A%20%20%20%20private%20static%20void%20merge%28int%5B%5D%20elements%2C%20int%20low%2C%20int%20mid%2C%20int%20high%2C%20int%5B%5D%20temp%29%20%7B%0A%20%20%20%20%20%20%20%20int%20i%20%3D%20low%3B%0A%20%20%20%20%20%20%20%20int%20j%20%3D%20mid%3B%0A%20%20%20%20%20%20%20%20int%20k%20%3D%20low%3B%0A%0A%20%20%20%20%20%20%20%20//%20Pull%20from%20both%20parts%20putting%20values%20into%20temp%20in%20sorted%20order%0A%20%20%20%20%20%20%20%20while%20%28i%20%3C%20mid%20%26%26%20j%20%3C%20high%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20%28elements%5Bi%5D%20%3C%3D%20elements%5Bj%5D%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20temp%5Bk%2B%2B%5D%20%3D%20elements%5Bi%2B%2B%5D%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20temp%5Bk%2B%2B%5D%20%3D%20elements%5Bj%2B%2B%5D%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20//%20If%20i%20is%20still%20%3C%20mid%20copy%20remaining%20elements%20from%0A%20%20%20%20%20%20%20%20//%20the%20left%20half%20of%20the%20range.%0A%20%20%20%20%20%20%20%20while%20%28i%20%3C%20mid%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20temp%5Bk%2B%2B%5D%20%3D%20elements%5Bi%2B%2B%5D%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20//%20Otherwise%20if%20j%20is%20still%20%3C%20high%20copy%20remaining%0A%20%20%20%20%20%20%20%20//%20elements%20from%20right%20half%20of%20range%0A%20%20%20%20%20%20%20%20while%20%28j%20%3C%20high%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20temp%5Bk%2B%2B%5D%20%3D%20elements%5Bj%2B%2B%5D%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20//%20Copy%20merged%20values%20back%20into%20original%20array%0A%20%20%20%20%20%20%20%20for%20%28k%20%3D%20low%3B%20k%20%3C%20high%3B%20k%2B%2B%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20elements%5Bk%5D%20%3D%20temp%5Bk%5D%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20int%5B%5D%20arr1%20%3D%20%7B86%2C%203%2C%2043%2C%205%7D%3B%0A%20%20%20%20%20%20%20%20System.out.println%28Arrays.toString%28arr1%29%29%3B%0A%20%20%20%20%20%20%20%20sort%28arr1%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28Arrays.toString%28arr1%29%29%3B%0A%20%20%20%20%7D%0A%7D%0A&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url> or the CodeLens button above.
     </p>
 
     <p>
-      You can trace through a merge sort algorithm given an array by using
+      To understand merge sort it can be useful to trace through the steps using
       parentheses or curly braces to show how the array is divided into
-      subarrays and then merged. For example, here is how you could write down
-      the trace of <c>mergeSort(arr1)</c> where arr1 = {86, 3, 43, 5} like in
-      the example above.
+      sub-arrays and then merged. For example, here is a trace of of sorting the
+      array <c>{86, 3, 43, 5}</c> from the code above.
     </p>
 
     <p>
       <ol>
         <li>
-          <p>Split 1: { {86, 3} , {43, 5} }</p>
+          <p>Split 1: { { 86, 3 } , { 43, 5 } }</p>
         </li>
 
         <li>
-          <p>Split 2: { { {86},{3}} , { {43},{5}} }</p>
+          <p>Split 2: { { { 86 }, { 3 } } , { { 43 }, { 5 }} }</p>
         </li>
 
         <li>
-          <p>Merge 1: { {3, 86} , {5,43} }</p>
+          <p>Merge 1: { { 3, 86 }, { 5, 43 } }</p>
         </li>
 
         <li>
@@ -576,8 +525,8 @@
         <li>
           <p>
             (AP 4.17.C.2) Merge sort repeatedly divides an array into smaller
-            subarrays until each subarray is one element and then recursively
-            merges the sorted subarrays back together in sorted order to form
+            sub-arrays until each sub-array is one element and then recursively
+            merges the sorted sub-arrays back together in sorted order to form
             the final sorted array.
           </p>
         </li>
