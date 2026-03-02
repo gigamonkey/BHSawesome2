@@ -136,17 +136,17 @@
       and <c>[i]</c> which are used in arrays. Many of our examples will use
       arrays for simplicity since with arrays, we know how many items we have
       and the size won’t change during run time. There are methods such as
-      <c>contains</c> that can be used in ArrayLists instead of writing your own
-      algorithms. However, they are not in the AP CSA Java subset.
+      <c>contains</c> that can be used with <c>ArrayList</c> instead of writing
+      your own algorithms. However, they are not in the AP CSA Java subset.
     </p>
 
     <activity label="seqSearchList">
       <statement>
         <p>
-          Here is a linear search using ArrayLists. Notice that size() and
-          get(i) is used with ArrayLists instead of length and [i] which are
-          used in arrays. Click on the Code Lens button to step through this
-          code in the visualizer.
+          Here is a linear search using <c>ArrayList</c>s. Notice that
+          <c>size()</c> and <c>get(i)</c> is used with <c>ArrayList</c>s instead
+          of <c>length</c> and <c>[i]</c> which are used with arrays. Click on
+          the Code Lens button to step through this code in the visualizer.
         </p>
       </statement>
 
@@ -917,12 +917,15 @@
       rough mathematical relationship between the size of the input and the run
       time of the algorithm. For instance, since linear search’s run time grows
       by a constant amount with every increase in the input size, we can
-      describe it with the function <m>f(n) = n</m>. As n (the input size) gets
-      bigger, so does the run time. Because we are analyzing things abstractly,
-      we don’t worry about coefficients—if every additional element we are
-      searching actually adds two steps rather than one, that’s still a linear
-      function. A computer scientist would use <term>big-O notation</term> and
-      write describe the run time of the algorithm as <m>O(n)</m>.
+      describe it with the function <m>f(n) = n</m>. As <m>n</m> (the input
+      size) gets bigger, so does the run time. Because we are analyzing things
+      abstractly, we don’t worry about coefficients—if every additional element
+      we are searching actually adds two steps rather than one, that’s still a
+      linear function. Computer scientists notate algorithmic run times by
+      putting the function that describes the growth of an algorithm’s run time
+      in parentheses preceded by an <m>O</m>, which stands for “order of
+      approximation”. This is called <term>big-O notation</term>. Thus, the
+      big-O notation for linear search is <m>O(n)</m>.
     </p>
 
     <p>
@@ -934,7 +937,7 @@
     </p>
 
     <p>
-      You don’t need to know big-O notation for the AP exam, but you should be
+      You won’t be asked about big-O notation on the AP exam, but you should be
       able to calculate how many steps binary search takes for a given input
       size. You can figure it out by counting how many times you can divide it
       the size in half. Or you can start at 1 and keep a count of how many times
