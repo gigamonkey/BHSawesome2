@@ -46,4 +46,5 @@
   <xi:include href="./topic-4-15-sorting.ptx" />
   <xi:include href="./topic-4-16-recursion.ptx" />
   <xi:include href="./topic-4-17-recursive-search-sort.ptx" />
+  <xi:include href="./search-sort-mcq.ptx" />
 </chapter>

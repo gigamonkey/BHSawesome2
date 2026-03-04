@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:lang="en-US" xml:id="search-sort-mcq" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Searching and sorting multiple-choice questions</title>
+
+  <introduction>
+    <p>
+      This section contains three subsections of easier, medium, and hard
+      searching and sorting related multiple choice questions. The medium set
+      are most similar to ones that might appear on the AP exam.
+    </p>
+  </introduction>
+
+  <xi:include href="./ssEasyMC.ptx" />
+  <xi:include href="./ssMedMC.ptx" />
+  <xi:include href="./ssHardMC.ptx" />
+
+</section>
