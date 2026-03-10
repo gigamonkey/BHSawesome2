@@ -268,8 +268,7 @@
       <![CDATA[
       import java.util.Arrays;
 
-      public class MergeSort
-      {
+      public class MergeSort {
           public static void sort(int[] elements) {
               int[] temp = new int[elements.length];
               sortRange(elements, 0, elements.length, temp);
