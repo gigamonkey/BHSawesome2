@@ -15,7 +15,7 @@
     <p>
       Programmers also have to be aware of legal and ethical issues in how
       software is developed. Much of modern software is developed using code
-      written by others and and published as <term>open source</term> which is
+      written by others and published as <term>open source</term> which is
       free to use. But even freely available open source software comes with
       licenses that developers have to abide by if they want to use it.
     </p>
@@ -37,7 +37,7 @@
 
     <p>
       Sometimes the harm is caused by unreliable software. Software can work in
-      many cirumstances and still fail sometimes catastrophic ways. <term>System
+      many circumstances and still fail in sometimes catastrophic ways. <term>System
       reliability</term> refers to a program being able to perform its tasks as
       expected under stated conditions without failure. Responsible programmers
       make an effort to maximize system reliability by testing the program under

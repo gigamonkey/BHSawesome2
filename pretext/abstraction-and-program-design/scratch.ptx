@@ -32,10 +32,10 @@
         always hold values of a particular type or that a method be called with
         the appropriate number of arguments. However even when working in those
         languages those things tend to be invariants in practice; it is possible
-        to write code the same variable will hold different kinds of values at
+        to write code where the same variable will hold different kinds of values at
         different times in a way that could never happen in Java. But usually
-        that’s to confusing to manage so programmers using those languages treat
-        the type of value a variable can hold as an invariant even though it could happen
+        that’s too confusing to manage so programmers using those languages treat
+        the type of value a variable can hold as an invariant even though it could happen.
       </p>
     </note>
 

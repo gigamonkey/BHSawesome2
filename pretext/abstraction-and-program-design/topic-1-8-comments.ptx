@@ -23,15 +23,15 @@
 
     <p>
       In real-world software development, most code is worked on by teams of
-      programmers over the course of years. While the code itself is unambigious
+      programmers over the course of years. While the code itself is unambiguous
       about <em>what</em> it does, comments can be essential for explaining
-      <em>why</em> it written the way it is.
+      <em>why</em> it's written the way it is.
     </p>
 
     <p>
       Even when we write programs by ourselves, it can be easy to forget all the
       details of why we wrote the code the way we did or assumptions that we
-      made about how the pieces fit gother. A few well-placed comments can help
+      made about how the pieces fit together. A few well-placed comments can help
       us remember those things when we come back to a section of code after a
       few months or a few years. Good comments are a gift to other programmers
       who might have to understand and modify the code including our future selves.
@@ -51,7 +51,7 @@
 
         <li>
           <p>Java documentation, or Javadoc, comments which are multiline
-          commens where the first marker is <c>/**</c></p>
+          comments where the first marker is <c>/**</c></p>
         </li>
       </ol>
     </p>
@@ -61,14 +61,14 @@
       explain details of how the code works. Many coders also use multiple lines
       each starting with <c>//</c> to write multiline comments. Also <c>//</c>
       can be put at the beginning of a line of code to “comment it out”, usually
-      as a temporary debugging technique so see how the program works if certain
+      as a temporary debugging technique to see how the program works if certain
       code isn’t there without actually deleting it.
     </p>
 
     <p>
       Multi-line comments marked with <c>/*</c> and <c>*/</c> are typically used
       for higher-level comments at the top level of classes. And in Java the
-      most important for of these comments are the Javadoc variation which start
+      most important form of these comments are the Javadoc variation which start
       with <c>/**</c> rather than <c>/*</c>. These comments are placed before
       instance and class variables, methods, constructors, and classes to
       document their purpose. A tool called <url
@@ -127,7 +127,7 @@
          }
 
          /**
-          * Priints the maximum score achieved.
+          * Prints the maximum score achieved.
           */
          public printMaxScore() {
             System.out.println(max);
@@ -141,7 +141,7 @@
       online documentation for your classes as the Javadoc tool will use them to
       extract the different parts of the Javadoc comment and put them in the
       right place in the generated documentation. If you are just writing
-      Javadocs to be read in the code it’s less important to use thes tags. Some
+      Javadocs to be read in the code it’s less important to use these tags. Some
       of the main Javadoc tags are:
     </p>
 
@@ -207,7 +207,7 @@
           above the public class to describe what the class does. Then think
           about whether there are any parts of the code that need short,
           single-line comments to explain what they do? Add any you think are
-          necessary. Then talk compare your comments with your neighbor? Who
+          necessary. Then compare your comments with your neighbor? Who
           wrote more? Is more always better?
         </p>
       </statement>
@@ -327,7 +327,7 @@
     <p>
       A method’s <term>postcondition</term> is the flip side of its
       precondition; it is the thing, or things, that must be true after the
-      method calls. In other words, the postconditinos of a method describe what
+      method calls. In other words, the postconditions of a method describe what
       the method promises to do. Those might be facts about the value returned
       by the method or facts about any side effects the method has.
     </p>
@@ -346,7 +346,7 @@
       need to document things like variable types that are enforced by the
       compiler but the interesting preconditions and postconditions of our
       methods are things that the compiler can’t enforce but our code implicitly
-      relies on so its important to make them explicit in comments.
+      relies on so it's important to make them explicit in comments.
     </p>
 
 
@@ -554,10 +554,10 @@
       <term>waterfall model</term> was first used in the 1970s to critique
       existing step-by-step models where each phase such as requirements
       gathering, coding, and testing is finished before the next phase begins.
-      Such models despite their many flaws were nontheless was adopted by some
+      Such models despite their many flaws were nonetheless adopted by some
       large organizations such as the U.S. Department of Defense. But these days
       many developers use some flavor of an <term>Agile</term> development model
-      that involves iterative, incremental development where teams works in
+      that involves iterative, incremental development where teams work in
       short two to three week <term>sprints</term> to completely develop, test,
       and release a component of the project to the customer for feedback. It is
       very adaptable as project requirements change because of early testing,

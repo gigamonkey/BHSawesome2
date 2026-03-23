@@ -26,14 +26,14 @@
       designing our programs. For any given program that we might want to write
       there are many, many ways to break it down into classes. While the Java
       compiler doesn’t care how your program is organized, as long as it follows
-      the rules of Java, programmers have learned that it matters a lot us
+      the rules of Java, programmers have learned that it matters a lot to us
       humans.
     </p>
 
     <p>
       In this chapter we will look at some of the ways to think about our
       classes and how they fit together that we can use before we jump into
-      coding. In particular we will look some key kinds of
+      coding. In particular we will look at some key kinds of
       <term>abstraction</term> and how they help us keep our programs
       manageable.
     </p>

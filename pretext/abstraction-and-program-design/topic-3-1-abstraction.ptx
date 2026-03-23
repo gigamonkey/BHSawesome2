@@ -14,7 +14,7 @@
 
     <p>
       By layering abstractions we can build up from the very primitive
-      capabalities of the computer (basically to do arithmetic very fast) to
+      capabilities of the computer (basically to do arithmetic very fast) to
       things humans care about like playing games, browsing the web, editing
       videos, or anything else people use computers for.
     </p>
@@ -64,7 +64,7 @@
     </program>
 
     <p>
-      then we’re build a slightly higher level abstraction of checking whether a
+      then we’re building a slightly higher level abstraction of checking whether
       our abstract value <c>total</c> is greater than a specific concrete value.
       This expression works for any possible value for total and could be used
       in an <c>if</c> statement to decide whether to do something or not. Of
@@ -87,7 +87,7 @@
 
     <p>
       So once we have the ability to name things we have the ability to create
-      new higmer levels of abstraction. Let’s look at a few of the main kinds of
+      new higher levels of abstraction. Let’s look at a few of the main kinds of
       abstraction.
     </p>
   </subsection>
@@ -98,14 +98,14 @@
     <p>
       <term>Data abstraction</term> is one of the simplest kinds of abstraction.
       A data abstraction hides the exact details of how something is represented
-      in the computer’s memory and lets us focus instead of what we can do with
+      in the computer’s memory and lets us focus instead on what we can do with
       it.
     </p>
 
     <p>
-      Java’s primitive are a form of data abstraction. While the details of
+      Java’s primitives are a form of data abstraction. While the details of
       exactly how <c>int</c> and <c>double</c> values are represented are
-      actually specified (an <c>int</c> is alwaays 32 bits, etc.) most of the
+      actually specified (an <c>int</c> is always 32 bits, etc.) most of the
       time we can ignore those details and just focus on what we can do with
       those values—add them, multiply them, etc. That is a lot easier to think
       about than if we had to think about exactly what is happening at the level
@@ -113,7 +113,7 @@
     </p>
 
     <p>
-      It’s worth noting that no abstraction is perfect. For example when do
+      It’s worth noting that no abstraction is perfect. For example when we do
       arithmetic with <c>int</c> values, the abstraction breaks down around the
       limits <c>Integer.MAX_VALUE</c> or <c>Integer.MIN_VALUE</c>. In the
       abstract, adding one to a positive integer should always yield a larger
@@ -187,7 +187,7 @@
     <p>
       The <c>hypotenuse</c> method abstracts the computation of the length of
       the hypotenuse of a right triangle from the lengths of the triangle’s legs
-      using the Pythogarean theorem. But it is built on top of two other
+      using the Pythagorean theorem. But it is built on top of two other
       procedural abstractions: <c>Math.sqrt</c> which comes from Java’s
       <c>Math</c> class and <c>square</c>, a method we wrote to abstract the
       idea of squaring a <c>double</c> value.
@@ -199,11 +199,11 @@
       methods, each method is an abstraction that we can think about on its own.
       We can ask, does <c>square</c> do what it’s supposed to do? Once we’re
       sure about that we can ask, does <c>hypotenuse</c> correctly implement the
-      Pythogarean theorem, if we assume that <c>Math.sqrt</c> and <c>square</c>
+      Pythagorean theorem, if we assume that <c>Math.sqrt</c> and <c>square</c>
       work correctly? Whereas if we had written <c>hypotenuse</c> to do the
       squaring inline as <c>a * a</c> and <c>b * b</c> it would probably still
-      be understandable but we’d have decode those two expressions to recognize
-      that they are doing the squaring called for my the Pythogarean theorem.
+      be understandable but we’d have to decode those two expressions to recognize
+      that they are doing the squaring called for by the Pythagorean theorem.
     </p>
 
     <p>
@@ -240,7 +240,7 @@
             methods it is easier to make changes. If you ever find yourself
             fixing a bug and having to make the same changes in a bunch of
             different places in your program that’s a sign that that code should
-            probably have been put into its own method s you could make the fix
+            probably have been put into its own method so you could make the fix
             in one place.
           </p>
         </li>
@@ -378,8 +378,8 @@
       When designing a program we often start by deciding which classes are
       needed by thinking about the <term>nouns</term> we use when talking about
       the program. The main nouns then become classes in our program and we use
-      data abstraction within in the class by defining the instance variables
-      that make up the class and procedural abstraction by write the methods
+      data abstraction within the class by defining the instance variables
+      that make up the class and procedural abstraction by writing the methods
       that define what we can do with instances of the class.
     </p>
 
@@ -459,7 +459,7 @@
     </figure>
 
     <p>
-      Class diagrams themselves are a knid of abstraction: they shows the main
+      Class diagrams themselves are a kind of abstraction: they show the main
       structure of a class so we can think about it without showing all the
       details of the code we’d have to write to implement the class.
     </p>
