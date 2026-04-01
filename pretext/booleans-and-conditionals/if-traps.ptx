@@ -365,13 +365,15 @@
     <activity label="if-missing-curlies">
       <title>Fix the <c>if</c> bugs</title>
 
-      <p>
-        The code below doesn’t work as the author intended. It was supposed to
-        print both <c>Wear a coat</c> and <c>Wear gloves</c> but only when
-        <c>isCold</c> is <c>true</c>. But somehow the author has fallen into all
-        the traps mentioned in this chapter! Fix it so it does what they wanted
-        it to.
-      </p>
+      <statement>
+        <p>
+          The code below doesn’t work as the author intended. It was supposed to
+          print both <c>Wear a coat</c> and <c>Wear gloves</c> but only when
+          <c>isCold</c> is <c>true</c>. But somehow the author has fallen into all
+          the traps mentioned in this chapter! Fix it so it does what they wanted
+          it to.
+        </p>
+      </statement>
 
       <program interactive="activecode">
 
