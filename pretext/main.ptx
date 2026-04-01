@@ -58,6 +58,7 @@
     <xi:include href="./algorithms/toctree.ptx" />
     <xi:include href="./abstraction-and-program-design/toctree.ptx" />
     <xi:include href="./ap-practice/toctree.ptx" />
+    <xi:include href="./free-response/toctree.ptx" />
 
     <backmatter>
       <index>

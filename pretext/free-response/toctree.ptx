@@ -2,6 +2,22 @@
 
 <chapter xml:id="unit-frq-practice" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Free Response Practice</title>
+
+  <introduction>
+    <p>
+      This chapter provides an overview of the four kinds of free response
+      questions (FRQs) that will appear on the AP exam and walk through some
+      strategies for understinding what is being asked by th questions with
+      examples from past exams.
+    </p>
+
+    <p>
+      The last four sections contain questions from previous versions of the AP
+      curriculum so they are less like what you will likely see on the exam but
+      are still good practice.
+    </p>
+  </introduction>
+
   <xi:include href="./FRQ1A-Part1.ptx" />
   <xi:include href="./FRQ1A-Part2.ptx" />
   <xi:include href="./FRQ1A-Part3.ptx" />

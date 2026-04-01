@@ -45,7 +45,7 @@
     <p>When methods are in the same class, you just need to call the method name and include the proper parameters.   When methods are in different classes, you use an object to call the method with dot notation and include the proper parameters.  If the method returns a value, make sure you are storing the value somehow.</p>
 
     <p><b>Example</b>: The orderCoffee and calculateTotal methods are in the same class, so you can call them with the method name. Make sure you include the correct parameters.</p>
-    
+
     <program language="java">
       <code>
 public class CoffeeShop
@@ -57,7 +57,7 @@ public class CoffeeShop
         return total * 1.10;
     }
 
-    public double calculateTotal(int count, double price) 
+    public double calculateTotal(int count, double price)
     {
         return count * price;
     }
@@ -103,7 +103,7 @@ public class APCalendar
       </code>
     </program>
 
-<p>Write the static method dayOfWeek, which returns the integer value representing the day of the week for 
+<p>Write the static method dayOfWeek, which returns the integer value representing the day of the week for
     the given date (month, day, year), where 0 denotes Sunday, 1 denotes Monday, ..., and 6 denotes Saturday. </p>
 <p>For example, 2019 began on a Tuesday, and January 5 is the fifth day of 2019. As a result, January 5, 2019, fell on a Saturday, and the method call dayOfWeek(1, 5, 2019) returns 6.</p>
 <p>As another example, January 10 is the tenth day of 2019. As a result, January 10, 2019, fell on a Thursday, and the method call dayOfWeek(1, 10, 2019) returns 4.</p>
@@ -292,7 +292,7 @@ public class APCalendar
         // WRITE YOUR CODE HERE using methods firstDayOfYear and dayOfYear
 
     }
-    
+
     /* Do NOT change anything after this comment */
 
     public static void main(String[] args)
@@ -370,7 +370,7 @@ public class RunestoneTests extends CodeTestHelper
         </tests>
       </program>
     </activity>
-  
+
 
   </subsection>
 
@@ -402,7 +402,7 @@ public class RunestoneTests extends CodeTestHelper
     <title>Calling Methods on Objects</title>
         <p>Sometimes you need to call methods on objects. In most FRQs, these objects will already exist. We will specifically look at calling String methods later.</p>
         <p>To call a method on an object, you use <c>objectName.methodName(parameters)</c>.</p>
-        <p><b>Example</b>: The <c>Match</c> class has two instance variables <c>team1</c> and <c>team2</c> of type <c>Team</c>. We can call the getScore() method that is part of Team using 
+        <p><b>Example</b>: The <c>Match</c> class has two instance variables <c>team1</c> and <c>team2</c> of type <c>Team</c>. We can call the getScore() method that is part of Team using
             the name of the team object and the method name: <c>team1.getScore()</c> and <c>team2.getScore()</c>.
         </p>
 
@@ -563,7 +563,7 @@ public class Game
     <activity label="FRQ-2022-Game-Score-Part0">
       <statement>
         <p>
-          Complete the getScore method below. The score is calculated by adding the points from each level, but in this version, level 2 points are doubled, and level 3 points are tripled. 
+          Complete the getScore method below. The score is calculated by adding the points from each level, but in this version, level 2 points are doubled, and level 3 points are tripled.
         </p>
       </statement>
 
@@ -637,60 +637,60 @@ public class RunestoneTests extends CodeTestHelper
         String code = getCode();
         code = code.substring(0, code.indexOf("class Level"));
         int count = countOccurences(code, ".getPoints()");
-        
+
         String desc = "Calls to .getPoints()";
-        
+
         boolean passed = getResults(""+3, ""+count, desc);
         assertTrue(passed);
     }
-    
+
     @Test
     public void test01() {
         Level l1 = new Level(100, true);
         Level l2 = new Level(100, true);
         Level l3 = new Level(200, true);
-        
+
         int exp = 100 + 200 + 3 * 200;
-        
+
         boolean passed = test(l1, l2, l3, exp);
         assertTrue(passed);
     }
-    
+
     @Test
     public void test02() {
         Level l1 = new Level(100, true);
         Level l2 = new Level(200, true);
         Level l3 = new Level(300, true);
-        
+
         int exp = 100 + 2 * 200 + 3 * 300;
-        
+
         boolean passed = test(l1, l2, l3, exp);
         assertTrue(passed);
     }
-    
+
     @Test
     public void test03() {
         Level l1 = new Level(300, true);
         Level l2 = new Level(200, true);
         Level l3 = new Level(100, true);
-        
+
         int exp = 300 + 2 * 200 + 3 * 100;
-        
+
         boolean passed = test(l1, l2, l3, exp);
         assertTrue(passed);
     }
-    
+
     private boolean test(Level l1, Level l2, Level l3, int exp) {
         Game g = new Game(l1, l2, l3);
-        
+
         int result = g.getScore();
-        
+
         boolean passed = result == exp;
-        
+
         String desc = "Final score for " + l1.getPoints() + ", " + l2.getPoints() + ", and " + l3.getPoints();
-        
-        getResults(""+exp, ""+result, desc, passed);        
-        return passed;        
+
+        getResults(""+exp, ""+result, desc, passed);
+        return passed;
     }
 }
           </tests>
