@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section xml:id="ArrayTesterB">
-  <title>ArrayTester - Part B</title>
+<section xml:id="FRQ5-ArrayTesterB">
+  <title>Retired FRQ - Arrays - ArrayTester - Part B</title>
   <introduction>
     <idx>ArrayTester</idx>
     <idx>free response</idx>
+    <p>Arrays are no longer part of an assigned FRQ. However, they are good practice with reading and answering FRQs.</p>
     <p>
       <term>Part b.</term> Write the static method <c>isLatin</c>, which returns
       <c>true</c> if a given two-dimensional square array is a <c>Latin
@@ -49,7 +50,9 @@
     <title>Try and Solve It</title>
     <activity label="isLatinTwo">
       <statement>
-        <p>Complete the method <c>isLatin</c> below.</p>
+        <p>
+          Complete the method <c>isLatin</c> below.
+        </p>
       </statement>
 
       <program interactive="activecode" language="java">
