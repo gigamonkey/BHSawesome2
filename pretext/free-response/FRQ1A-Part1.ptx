@@ -76,15 +76,16 @@
 
     <p>
       When methods are in the same class, you just need to call the method name
-      and include the proper parameters. When methods are in different classes,
-      you use an object to call the method with dot notation and include the
-      proper parameters. If the method returns a value, make sure you are
-      storing the value somehow.
+      and pass the necessary arguments. When methods are in different classes,
+      you use an object to call the method with dot notation and pass the
+      necessary arguments. If the method returns a value, make sure you are
+      storing or using the value somehow.
     </p>
 
     <p>
-      <b>Example</b>
-: The orderCoffee and calculateTotal methods are in the same class, so you can call them with the method name. Make sure you include the correct parameters.
+      <b>Example</b>: The orderCoffee and calculateTotal methods are in the
+      same class, so you can call them with the method name. Make sure you pass
+      appropriate arguments.
     </p>
 
     <program language="java">
@@ -99,7 +100,7 @@
                 return total * 1.10;
             }
 
-            public double calculateTotal(int count, double price) 
+            public double calculateTotal(int count, double price)
             {
                 return count * price;
             }
@@ -273,7 +274,7 @@
 
           <feedback>
             <p>
-              We do not need to include the type when passing parameters to a
+              We do not need to include the type when passing arguments to a
               method.
             </p>
           </feedback>
@@ -298,7 +299,7 @@
 
           <feedback>
             <p>
-              <c>firstDayOfYear(year)</c> requires one parameter which should be
+              <c>firstDayOfYear(year)</c> requires one argument which should be
               a year
             </p>
           </feedback>
@@ -310,7 +311,7 @@
           </statement>
 
           <feedback>
-            <p>This method only requires one parameter, not three.</p>
+            <p>This method only requires one argument, not three.</p>
           </feedback>
         </choice>
       </choices>
@@ -332,7 +333,7 @@
 
           <feedback>
             <p>
-              We do not need to include the type when passing parameters to a
+              We do not need to include the type when passing arguments to a
               method.
             </p>
           </feedback>
@@ -357,7 +358,7 @@
 
           <feedback>
             <p>
-              <c>dayOfYear(month, day, year)</c> requires three parameters
+              <c>dayOfYear(month, day, year)</c> requires three arguments
               instead of one
             </p>
           </feedback>
@@ -408,7 +409,7 @@
                   // WRITE YOUR CODE HERE using methods firstDayOfYear and dayOfYear
 
               }
-    
+
               /* Do NOT change anything after this comment */
 
               public static void main(String[] args)
@@ -526,12 +527,12 @@
 
     <p>
       To call a method on an object, you use
-      <c>objectName.methodName(parameters)</c>.
+      <c>objectName.methodName(arguments)</c>.
     </p>
 
     <p>
       <b>Example</b>
-: The <c>Match</c> class has two instance variables <c>team1</c> and <c>team2</c> of type <c>Team</c>. We can call the getScore() method that is part of Team using 
+: The <c>Match</c> class has two instance variables <c>team1</c> and <c>team2</c> of type <c>Team</c>. We can call the getScore() method that is part of Team using
             the name of the team object and the method name: <c>team1.getScore()</c> and <c>team2.getScore()</c>.
     </p>
 
@@ -681,7 +682,7 @@
           <feedback>
             <p>
               Remember that getPoints() must be called on an object and does not
-              have a parameter.
+              take any arguments.
             </p>
           </feedback>
         </choice>
@@ -703,8 +704,8 @@
 
           <feedback>
             <p>
-              Remember that getPoints() is not a static method and does not have
-              a parameter.
+              Remember that getPoints() is not a static method and does not take
+              any arguments.
             </p>
           </feedback>
         </choice>
@@ -843,8 +844,8 @@
 
                   String desc = "Final score for " + l1.getPoints() + ", " + l2.getPoints() + ", and " + l3.getPoints();
 
-                  getResults(""+exp, ""+result, desc, passed);        
-                  return passed;        
+                  getResults(""+exp, ""+result, desc, passed);
+                  return passed;
               }
           }
         </tests>
