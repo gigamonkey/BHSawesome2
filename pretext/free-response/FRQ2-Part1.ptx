@@ -103,7 +103,7 @@
       equation <c>ax + by + c = 0</c>,where <c>a</c> is not equal to zero,
       <c>b</c> is not equal to zero, and <c>a</c>, <c>b</c>, and <c>c</c> are
       all integers. The slope of an <c>APLine</c> is defined to be the double
-      value <c>-a / b</c> . A point (represented by integers <c>x</c> and
+      value <c>-a / b</c>. A point (represented by integers <c>x</c> and
       <c>y</c>) is on an <c>APLine</c> if the equation of the <c>APLine</c> is
       satisfied when those <c>x</c> and <c>y</c> values are substituted into the
       equation. That is, a point represented by <c>x</c> and <c>y</c> is on the

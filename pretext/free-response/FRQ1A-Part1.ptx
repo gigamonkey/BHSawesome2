@@ -99,7 +99,7 @@
                 return total * 1.10;
             }
 
-            public double calculateTotal(int count, double price)
+            public double calculateTotal(int count, double price) 
             {
                 return count * price;
             }
@@ -408,7 +408,7 @@
                   // WRITE YOUR CODE HERE using methods firstDayOfYear and dayOfYear
 
               }
-
+    
               /* Do NOT change anything after this comment */
 
               public static void main(String[] args)
@@ -531,7 +531,7 @@
 
     <p>
       <b>Example</b>
-: The <c>Match</c> class has two instance variables <c>team1</c> and <c>team2</c> of type <c>Team</c>. We can call the getScore() method that is part of Team using
+: The <c>Match</c> class has two instance variables <c>team1</c> and <c>team2</c> of type <c>Team</c>. We can call the getScore() method that is part of Team using 
             the name of the team object and the method name: <c>team1.getScore()</c> and <c>team2.getScore()</c>.
     </p>
 
@@ -843,8 +843,8 @@
 
                   String desc = "Final score for " + l1.getPoints() + ", " + l2.getPoints() + ", and " + l3.getPoints();
 
-                  getResults(""+exp, ""+result, desc, passed);
-                  return passed;
+                  getResults(""+exp, ""+result, desc, passed);        
+                  return passed;        
               }
           }
         </tests>

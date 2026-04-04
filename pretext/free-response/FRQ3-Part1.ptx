@@ -131,20 +131,9 @@
           <![CDATA[
           import java.util.ArrayList;
           import java.util.Arrays;
-          import java.util.List;
 
           public class StudentAnswerSheet
           {
-              private List<String> answers; // the list of the student's answers
-              private String name;
-
-              public StudentAnswerSheet(String nm, List<String> ans)
-              {
-                  name = nm;
-                  answers = new ArrayList<String>();
-                  for (String a : ans) answers.add(a);
-              }
-
               /**
                * @param key the list of correct answers, represented as strings of length one
                *     Precondition: key.size() is equal to the number of answers in this
@@ -162,6 +151,17 @@
               public String getName()
               {
                   return name;
+              }
+
+    
+              private ArrayList<String> answers; // the list of the student's answers
+              private String name;
+
+              public StudentAnswerSheet(String nm, ArrayList<String> ans)
+              {
+                  name = nm;
+                  answers = new ArrayList<String>();
+                  for (String a : ans) answers.add(a);
               }
 
               public static void main(String[] args)
@@ -363,61 +363,11 @@
           <![CDATA[
           import java.util.ArrayList;
           import java.util.Arrays;
-          import java.util.List;
 
-          class StudentAnswerSheet
-          {
-              private List<String> answers; // the list of the student's answers
-              private String name;
-
-              public StudentAnswerSheet(String nm, List<String> ans)
-              {
-                  name = nm;
-                  answers = new ArrayList<String>();
-                  for (String a : ans) answers.add(a);
-              }
-
-              /**
-               * @param key the list of correct answers, represented as strings of length one
-               *     Precondition: key.size() is equal to the number of answers in this
-               *     answer sheet
-               * @return this student's test score
-               */
-              public double getScore(ArrayList<String> key)
-              {
-                  double score = 0;
-                  for (int i = 0; i < key.size(); i++)
-                  {
-                      if (key.get(i).equals(answers.get(i)))
-                      {
-                           score = score + 1.0;
-                      }
-                      else if (!answers.get(i).equals("?"))
-                      {
-                           score = score - 0.25;
-                      }
-                  }
-                  return score;
-              }
-
-              /**
-               * @return the name of the student
-               */
-              public String getName()
-              {
-                  return name;
-              }
-          }
 
           public class TestResults
           {
               private ArrayList<StudentAnswerSheet> sheets;
-
-              public TestResults(ArrayList<StudentAnswerSheet> shs)
-              {
-                  sheets = new ArrayList<StudentAnswerSheet>();
-                  for (StudentAnswerSheet s : shs) sheets.add(s);
-              }
 
               /**
                * Precondition: sheets.size() > 0; all answer sheets in sheets have the same
@@ -511,6 +461,56 @@
                           "Your best is: "
                                   + results.highestScoringStudent(key)
                                   + " and should be S4");
+              }
+    
+              public TestResults(ArrayList<StudentAnswerSheet> shs)
+              {
+                  sheets = new ArrayList<StudentAnswerSheet>();
+                  for (StudentAnswerSheet s : shs) sheets.add(s);
+              }
+          }
+
+          class StudentAnswerSheet
+          {
+              private ArrayList<String> answers; // the list of the student's answers
+              private String name;
+
+              public StudentAnswerSheet(String nm, ArrayList<String> ans)
+              {
+                  name = nm;
+                  answers = new ArrayList<String>();
+                  for (String a : ans) answers.add(a);
+              }
+
+              /**
+               * @param key the list of correct answers, represented as strings of length one
+               *     Precondition: key.size() is equal to the number of answers in this
+               *     answer sheet
+               * @return this student's test score
+               */
+              public double getScore(ArrayList<String> key)
+              {
+                  double score = 0;
+                  for (int i = 0; i < key.size(); i++)
+                  {
+                      if (key.get(i).equals(answers.get(i)))
+                      {
+                           score = score + 1.0;
+                      }
+                      else if (!answers.get(i).equals("?"))
+                      {
+                           score = score - 0.25;
+                      }
+                  }
+                  return score;
+              }
+
+              /**
+               * @return the name of the student
+               */
+              public String getName()
+              {
+                  return name;
               }
           }
           ]]>

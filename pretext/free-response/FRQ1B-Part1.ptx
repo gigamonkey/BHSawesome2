@@ -138,6 +138,7 @@
         </code>
 
         <tests>
+          <![CDATA[
           import static org.junit.Assert.*;
           import org.junit.*;
           import java.io.*;import java.util.Arrays;
@@ -188,10 +189,12 @@
                       actual = "The code caused an exception";
                   }
 
-                  boolean passed = getResults(expected[i],actual,desc);
+                  boolean passed = expected[i].equals(actual) && !actual.contains("@");
+                  getResults(expected[i], actual, desc, passed);
                   return passed;        
               }
           }
+          ]]>
         </tests>
 
       </program>
@@ -240,6 +243,7 @@
         </code>
 
         <tests>
+          <![CDATA[
           import static org.junit.Assert.*;
           import org.junit.*;
           import java.io.*;
@@ -289,7 +293,8 @@
                       actual = "The code caused an exception";
                   }
 
-                  boolean passed = getResults(expected[i],actual,desc);
+                  boolean passed = expected[i].equals(actual) && !(actual.contains("(") || actual.contains(")"));
+                  getResults(expected[i],actual,desc, passed);
                   return passed;        
               }
 
@@ -300,6 +305,7 @@
                   return str1.contains(str2);
               }
           }
+          ]]>
         </tests>
 
       </program>
@@ -610,8 +616,13 @@
                       actual = "The code caused an exception";
                   }
 
-                  boolean passed = getResults(expected[i],actual,desc);
+                  boolean passed = getResults(expected[i],replaceTags(actual),replaceTags(desc));
                   return passed;        
+              }
+
+              private String replaceTags(String text)
+              {
+                  return text.replaceAll("<","&lt;").replaceAll(">","&gt;");
               }
 
               private boolean stringMatch(String str1, String str2) {
