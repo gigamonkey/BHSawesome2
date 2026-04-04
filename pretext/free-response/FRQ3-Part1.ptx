@@ -1,36 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="FRQ3-Part1">
   <title>FRQ3 - ArrayLists - Part 1</title>
+
   <introduction>
     <idx>ArrayList</idx>
     <idx>free response</idx>
+    <p>From the 2025 Course and Exam Description:</p>
 
-    <p>From the 2025 Course and Exam Description: </p>
-    <p><term>Free-Response Question 3: Data Analysis with ArrayList</term>. Students will be provided with a scenario and
-its associated class(es). Students will write one method of a given class based on provided specifications and 
-examples. The method requires students to use, analyze, and manipulate data in an ArrayList structure.</p>
+    <p>
+      <term>Free-Response Question 3: Data Analysis with ArrayList</term>.
+      Students will be provided with a scenario and its associated class(es).
+      Students will write one method of a given class based on provided
+      specifications and examples. The method requires students to use, analyze,
+      and manipulate data in an ArrayList structure.
+    </p>
 
-<p>FRQ 3 requires the following skills:</p>
-<ul>
-<li>Iterate through an ArrayList</li>
-<li>Access elements of an ArrayList</li>
-<li>Call methods on elements of the ArrayList</li>
-<li>Use a provided class</li>
-</ul>
+    <p>FRQ 3 requires the following skills:</p>
 
+    <ul>
+      <li>Iterate through an ArrayList</li>
+
+      <li>Access elements of an ArrayList</li>
+
+      <li>Call methods on elements of the ArrayList</li>
+
+      <li>Use a provided class</li>
+    </ul>
   </introduction>
 
   <subsection xml:id="frq3-studentanswerkey-A">
     <title>2007 FRQ3 - Student Answer Key - Part (a)</title>
-   
 
     <p>
       The following is a free response question from 2007. It was question 3 on
       the exam. You can see all the free response questions from past exams at
       <url
-     href="https://www.savemyexams.com/ap/computer-science/college-board/a/past-papers/">Past AP CSA Exams</url>.
- 
+      href="https://www.savemyexams.com/ap/computer-science/college-board/a/past-papers/">Past
+      AP CSA Exams</url>.
     </p>
 
     <p>
@@ -49,33 +56,37 @@ examples. The method requires students to use, analyze, and manipulate data in a
     </p>
 
     <program language="java">
+
       <code>
-public class StudentAnswerSheet
-{
+        <![CDATA[
+        public class StudentAnswerSheet
+        {
 
-    private List&lt;String&gt; answers;
+            private List<String> answers;
 
-    /** @param key the list of correct answers, represented as strings
-     *         of length one
-     *  Precondition: key.size() is equal to the number of answers in
-     *         this answer sheet
-     *  @return this student's test score
-    public double getScore(List&lt;String&gt; key)
-    {
-      /* to be implemented in part (a) */
-    }
+            /** @param key the list of correct answers, represented as strings
+             *         of length one
+             *  Precondition: key.size() is equal to the number of answers in
+             *         this answer sheet
+             *  @return this student's test score
+            public double getScore(List<String> key)
+            {
+              /* to be implemented in part (a) */
+            }
 
-    /** @return the name of the student
-     */
-    public String getName()
-    {
-       /* implementation not shown */
-    }
+            /** @return the name of the student
+             */
+            public String getName()
+            {
+               /* implementation not shown */
+            }
 
-    // There may be other fields, constructors, and methods
+            // There may be other fields, constructors, and methods
 
-}
+        }
+        ]]>
       </code>
+
     </program>
 
     <p>
@@ -88,6 +99,7 @@ public class StudentAnswerSheet
 
     <figure align="center">
       <caption>The answer key and student answers and point values</caption>
+
       <image source="FreeResponse/Figures/StudentAnswerSheetEx.png" width="100%" />
     </figure>
 
@@ -106,180 +118,183 @@ public class StudentAnswerSheet
       The code below has a main method for testing the <c>getScore</c> method.
     </p>
 
-     <p>
-      Complete method <c>getScore</c> below.
-    </p>
+    <p>Complete method <c>getScore</c> below.</p>
 
     <activity label="StudentAnswerKeyA">
       <statement>
-        <p>
-          Complete method <c>getScore</c> below.
-        </p>
+        <p>Complete method <c>getScore</c> below.</p>
       </statement>
 
       <program interactive="activecode" language="java">
+
         <code>
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+          <![CDATA[
+          import java.util.ArrayList;
+          import java.util.Arrays;
+          import java.util.List;
 
-public class StudentAnswerSheet
-{
-    private List&lt;String&gt; answers; // the list of the student's answers
-    private String name;
+          public class StudentAnswerSheet
+          {
+              private List<String> answers; // the list of the student's answers
+              private String name;
 
-    public StudentAnswerSheet(String nm, List&lt;String&gt; ans)
-    {
-        name = nm;
-        answers = new ArrayList&lt;String&gt;();
-        for (String a : ans) answers.add(a);
-    }
+              public StudentAnswerSheet(String nm, List<String> ans)
+              {
+                  name = nm;
+                  answers = new ArrayList<String>();
+                  for (String a : ans) answers.add(a);
+              }
 
-    /**
-     * @param key the list of correct answers, represented as strings of length one
-     *     Precondition: key.size() is equal to the number of answers in this
-     *     answer sheet
-     * @return this student's test score
-     */
-    public double getScore(ArrayList&lt;String&gt; key)
-    {
-        // *** Write this method! ***
-    }
+              /**
+               * @param key the list of correct answers, represented as strings of length one
+               *     Precondition: key.size() is equal to the number of answers in this
+               *     answer sheet
+               * @return this student's test score
+               */
+              public double getScore(ArrayList<String> key)
+              {
+                  // *** Write this method! ***
+              }
 
-    /**
-     * @return the name of the student
-     */
-    public String getName()
-    {
-        return name;
-    }
+              /**
+               * @return the name of the student
+               */
+              public String getName()
+              {
+                  return name;
+              }
 
-    public static void main(String[] args)
-    {
-        ArrayList&lt;String&gt; key =
-                new ArrayList&lt;String&gt;(
-                        Arrays.asList(
-                                new String[]
-                                {
-                                    "A", "C", "D", "E", "B", "C", "E", "B", "B",
-                                    "C"
-                                }));
+              public static void main(String[] args)
+              {
+                  ArrayList<String> key =
+                          new ArrayList<String>(
+                                  Arrays.asList(
+                                          new String[]
+                                          {
+                                              "A", "C", "D", "E", "B", "C", "E", "B", "B",
+                                              "C"
+                                          }));
 
-        ArrayList&lt;String&gt; answers1 =
-                new ArrayList&lt;String&gt;(
-                        Arrays.asList(
-                                new String[]
-                                {
-                                    "A", "B", "D", "E", "A", "C", "?", "B", "D",
-                                    "C"
-                                }));
-        StudentAnswerSheet s1 = new StudentAnswerSheet("S1", answers1);
-        System.out.println(
-                "Your score for s1 is: "
-                        + s1.getScore(key)
-                        + " and should be 5.25");
+                  ArrayList<String> answers1 =
+                          new ArrayList<String>(
+                                  Arrays.asList(
+                                          new String[]
+                                          {
+                                              "A", "B", "D", "E", "A", "C", "?", "B", "D",
+                                              "C"
+                                          }));
+                  StudentAnswerSheet s1 = new StudentAnswerSheet("S1", answers1);
+                  System.out.println(
+                          "Your score for s1 is: "
+                                  + s1.getScore(key)
+                                  + " and should be 5.25");
 
-        ArrayList&lt;String&gt; answers2 =
-                new ArrayList&lt;String&gt;(
-                        Arrays.asList(
-                                new String[]
-                                {
-                                    "A", "?", "D", "E", "A", "C", "?", "B", "D",
-                                    "C"
-                                }));
-        StudentAnswerSheet s2 = new StudentAnswerSheet("S2", answers2);
-        System.out.println(
-                "Your score for s2 is: "
-                        + s2.getScore(key)
-                        + " and should be 5.5");
+                  ArrayList<String> answers2 =
+                          new ArrayList<String>(
+                                  Arrays.asList(
+                                          new String[]
+                                          {
+                                              "A", "?", "D", "E", "A", "C", "?", "B", "D",
+                                              "C"
+                                          }));
+                  StudentAnswerSheet s2 = new StudentAnswerSheet("S2", answers2);
+                  System.out.println(
+                          "Your score for s2 is: "
+                                  + s2.getScore(key)
+                                  + " and should be 5.5");
 
-        ArrayList&lt;String&gt; answers3 =
-                new ArrayList&lt;String&gt;(
-                        Arrays.asList(
-                                new String[]
-                                {
-                                    "A", "?", "D", "E", "A", "C", "E", "B", "D",
-                                    "C"
-                                }));
-        StudentAnswerSheet s3 = new StudentAnswerSheet("S3", answers3);
-        System.out.println(
-                "Your score for s3 is: "
-                        + s3.getScore(key)
-                        + " and should be 6.5");
+                  ArrayList<String> answers3 =
+                          new ArrayList<String>(
+                                  Arrays.asList(
+                                          new String[]
+                                          {
+                                              "A", "?", "D", "E", "A", "C", "E", "B", "D",
+                                              "C"
+                                          }));
+                  StudentAnswerSheet s3 = new StudentAnswerSheet("S3", answers3);
+                  System.out.println(
+                          "Your score for s3 is: "
+                                  + s3.getScore(key)
+                                  + " and should be 6.5");
 
-        ArrayList&lt;String&gt; answers4 =
-                new ArrayList&lt;String&gt;(
-                        Arrays.asList(
-                                new String[]
-                                {
-                                    "A", "C", "D", "E", "A", "C", "E", "B", "D",
-                                    "C"
-                                }));
-        StudentAnswerSheet s4 = new StudentAnswerSheet("S4", answers4);
-        System.out.println(
-                "Your score for s4 is: "
-                        + s4.getScore(key)
-                        + " and should be 7.5");
-    }
-}
+                  ArrayList<String> answers4 =
+                          new ArrayList<String>(
+                                  Arrays.asList(
+                                          new String[]
+                                          {
+                                              "A", "C", "D", "E", "A", "C", "E", "B", "D",
+                                              "C"
+                                          }));
+                  StudentAnswerSheet s4 = new StudentAnswerSheet("S4", answers4);
+                  System.out.println(
+                          "Your score for s4 is: "
+                                  + s4.getScore(key)
+                                  + " and should be 7.5");
+              }
+          }
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
+          import java.io.*;
+          import java.util.ArrayList;
+          import java.util.Arrays;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("StudentAnswerSheet");
-        // CodeTestHelper.sort = true;
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("StudentAnswerSheet");
+                  // CodeTestHelper.sort = true;
+              }
 
-    @Test
-    public void testMain1()
-    {
-        boolean passed = false;
+              @Test
+              public void testMain1()
+              {
+                  boolean passed = false;
 
-        String expect =
-                "Your score for s1 is: 5.25 and should be 5.25\n"
-                    + "Your score for s2 is: 5.5 and should be 5.5\n"
-                    + "Your score for s3 is: 6.5 and should be 6.5\n"
-                    + "Your score for s4 is: 7.5 and should be 7.5";
+                  String expect =
+                          "Your score for s1 is: 5.25 and should be 5.25\n"
+                              + "Your score for s2 is: 5.5 and should be 5.5\n"
+                              + "Your score for s3 is: 6.5 and should be 6.5\n"
+                              + "Your score for s4 is: 7.5 and should be 7.5";
 
-        String output = getMethodOutput("main");
+                  String output = getMethodOutput("main");
 
-        passed = getResults(expect, output, "Checking for expected output");
-        assertTrue(passed);
-    }
+                  passed = getResults(expect, output, "Checking for expected output");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testMain2()
-    {
-        boolean passed = false;
+              @Test
+              public void testMain2()
+              {
+                  boolean passed = false;
 
-        String keyList = "A A A B B B C C C D D D E E E";
-        String ansList = "A B ? B C ? C D ? D E ? E A ?";
+                  String keyList = "A A A B B B C C C D D D E E E";
+                  String ansList = "A B ? B C ? C D ? D E ? E A ?";
 
-        ArrayList&lt;String&gt; key = new ArrayList&lt;String&gt;(Arrays.asList(keyList.split(" ")));
+                  ArrayList<String> key = new ArrayList<String>(Arrays.asList(keyList.split(" ")));
 
-        ArrayList&lt;String&gt; answers1 = new ArrayList&lt;String&gt;(Arrays.asList(ansList.split(" ")));
+                  ArrayList<String> answers1 = new ArrayList<String>(Arrays.asList(ansList.split(" ")));
 
-        StudentAnswerSheet s1 = new StudentAnswerSheet("S1", answers1);
+                  StudentAnswerSheet s1 = new StudentAnswerSheet("S1", answers1);
 
-        String output = "Your score for s1 is: " + s1.getScore(key);
+                  String output = "Your score for s1 is: " + s1.getScore(key);
 
-        String expect = "Your score for s1 is: 3.75";
+                  String expect = "Your score for s1 is: 3.75";
 
-        passed = getResults(expect, output, "Checking for expected output");
-        assertTrue(passed);
-    }
-}
+                  passed = getResults(expect, output, "Checking for expected output");
+                  assertTrue(passed);
+              }
+          }
+          ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>
@@ -287,34 +302,38 @@ public class RunestoneTests extends CodeTestHelper
   <subsection xml:id="frq3-studentanswerkey-B">
     <title>2007 FRQ3 - Student Answer Key - Part (b)</title>
 
-<p>
+    <p>
       <term>Part b.</term> Consider the following class that represents the test
       results of a group of students that took a multiple-choice test.
     </p>
 
     <program language="java">
+
       <code>
-public class TestResults
-{
-    private List&lt;StudentAnswerSheet&gt; sheets;
+        <![CDATA[
+        public class TestResults
+        {
+            private List<StudentAnswerSheet> sheets;
 
-    /**
-     * Precondition: sheets.size() &gt; 0; all answer sheets in sheets have the same
-     * number of answers
-     *
-     * @param key the list of correct answers represented as strings of length one
-     *     Precondition: key.size() is equal to the number of answers in each of
-     *     the answer sheets in sheets
-     * @return the name of the student with the highest score
-     */
-    public String highestScoringStudent(List&lt;String&gt; key)
-    {
-        /* to be implemented in part (b) */
-    }
+            /**
+             * Precondition: sheets.size() > 0; all answer sheets in sheets have the same
+             * number of answers
+             *
+             * @param key the list of correct answers represented as strings of length one
+             *     Precondition: key.size() is equal to the number of answers in each of
+             *     the answer sheets in sheets
+             * @return the name of the student with the highest score
+             */
+            public String highestScoringStudent(List<String> key)
+            {
+                /* to be implemented in part (b) */
+            }
 
-    // There may be fields, constructors, and methods that are not shown.
-}
+            // There may be fields, constructors, and methods that are not shown.
+        }
+        ]]>
       </code>
+
     </program>
 
     <p>
@@ -326,9 +345,7 @@ public class TestResults
       sheet represented in <c>sheets</c> is equal to the size of <c>key</c>.
     </p>
 
-    <p>
-      Complete method <c>highestScoringStudent</c> below.
-    </p>
+    <p>Complete method <c>highestScoringStudent</c> below.</p>
 
     <p>
       The code below has a main method for testing the
@@ -337,247 +354,248 @@ public class TestResults
 
     <activity label="StudentAnswerKeyB">
       <statement>
-        <p>
-          Complete method <c>highestScoringStudent</c> below.
-        </p>
+        <p>Complete method <c>highestScoringStudent</c> below.</p>
       </statement>
 
       <program interactive="activecode" language="java">
+
         <code>
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+          <![CDATA[
+          import java.util.ArrayList;
+          import java.util.Arrays;
+          import java.util.List;
 
-class StudentAnswerSheet
-{
-    private List&lt;String&gt; answers; // the list of the student's answers
-    private String name;
+          class StudentAnswerSheet
+          {
+              private List<String> answers; // the list of the student's answers
+              private String name;
 
-    public StudentAnswerSheet(String nm, List&lt;String&gt; ans)
-    {
-        name = nm;
-        answers = new ArrayList&lt;String&gt;();
-        for (String a : ans) answers.add(a);
-    }
+              public StudentAnswerSheet(String nm, List<String> ans)
+              {
+                  name = nm;
+                  answers = new ArrayList<String>();
+                  for (String a : ans) answers.add(a);
+              }
 
-    /**
-     * @param key the list of correct answers, represented as strings of length one
-     *     Precondition: key.size() is equal to the number of answers in this
-     *     answer sheet
-     * @return this student's test score
-     */
-    public double getScore(ArrayList&lt;String&gt; key)
-    {
-        double score = 0;
-        for (int i = 0; i &lt; key.size(); i++)
-        {
-            if (key.get(i).equals(answers.get(i)))
-            {
-                 score = score + 1.0;
-            }
-            else if (!answers.get(i).equals("?"))
-            {
-                 score = score - 0.25;
-            }
-        }
-        return score;
-    }
+              /**
+               * @param key the list of correct answers, represented as strings of length one
+               *     Precondition: key.size() is equal to the number of answers in this
+               *     answer sheet
+               * @return this student's test score
+               */
+              public double getScore(ArrayList<String> key)
+              {
+                  double score = 0;
+                  for (int i = 0; i < key.size(); i++)
+                  {
+                      if (key.get(i).equals(answers.get(i)))
+                      {
+                           score = score + 1.0;
+                      }
+                      else if (!answers.get(i).equals("?"))
+                      {
+                           score = score - 0.25;
+                      }
+                  }
+                  return score;
+              }
 
-    /**
-     * @return the name of the student
-     */
-    public String getName()
-    {
-        return name;
-    }
-}
+              /**
+               * @return the name of the student
+               */
+              public String getName()
+              {
+                  return name;
+              }
+          }
 
-public class TestResults
-{
-    private ArrayList&lt;StudentAnswerSheet&gt; sheets;
+          public class TestResults
+          {
+              private ArrayList<StudentAnswerSheet> sheets;
 
-    public TestResults(ArrayList&lt;StudentAnswerSheet&gt; shs)
-    {
-        sheets = new ArrayList&lt;StudentAnswerSheet&gt;();
-        for (StudentAnswerSheet s : shs) sheets.add(s);
-    }
+              public TestResults(ArrayList<StudentAnswerSheet> shs)
+              {
+                  sheets = new ArrayList<StudentAnswerSheet>();
+                  for (StudentAnswerSheet s : shs) sheets.add(s);
+              }
 
-    /**
-     * Precondition: sheets.size() &gt; 0; all answer sheets in sheets have the same
-     * number of answers
-     *
-     * @param key the list of correct answers represented as strings of length one
-     *     Precondition: key.size() is equal to the number of answers in each of
-     *     the answer sheets in sheets
-     * @return the name of the student with the highest score
-     */
-    public String highestScoringStudent(ArrayList&lt;String&gt; key)
-    {
-        // *** Write this method! ***
-    }
+              /**
+               * Precondition: sheets.size() > 0; all answer sheets in sheets have the same
+               * number of answers
+               *
+               * @param key the list of correct answers represented as strings of length one
+               *     Precondition: key.size() is equal to the number of answers in each of
+               *     the answer sheets in sheets
+               * @return the name of the student with the highest score
+               */
+              public String highestScoringStudent(ArrayList<String> key)
+              {
+                  // *** Write this method! ***
+              }
 
-    public static void main(String[] args)
-    {
-        ArrayList&lt;String&gt; key =
-                new ArrayList&lt;String&gt;(
-                        Arrays.asList(
-                                new String[]
-                                {
-                                    "A", "C", "D", "E", "B", "C", "E", "B", "B",
-                                    "C"
-                                }));
+              public static void main(String[] args)
+              {
+                  ArrayList<String> key =
+                          new ArrayList<String>(
+                                  Arrays.asList(
+                                          new String[]
+                                          {
+                                              "A", "C", "D", "E", "B", "C", "E", "B", "B",
+                                              "C"
+                                          }));
 
-        ArrayList&lt;String&gt; answers1 =
-                new ArrayList&lt;String&gt;(
-                        Arrays.asList(
-                                new String[]
-                                {
-                                    "A", "B", "D", "E", "A", "C", "?", "B", "D",
-                                    "C"
-                                }));
-        StudentAnswerSheet s1 = new StudentAnswerSheet("S1", answers1);
-        System.out.println(
-                "Your score for s1 is: "
-                        + s1.getScore(key)
-                        + " and should be 5.25");
+                  ArrayList<String> answers1 =
+                          new ArrayList<String>(
+                                  Arrays.asList(
+                                          new String[]
+                                          {
+                                              "A", "B", "D", "E", "A", "C", "?", "B", "D",
+                                              "C"
+                                          }));
+                  StudentAnswerSheet s1 = new StudentAnswerSheet("S1", answers1);
+                  System.out.println(
+                          "Your score for s1 is: "
+                                  + s1.getScore(key)
+                                  + " and should be 5.25");
 
-        ArrayList&lt;String&gt; answers2 =
-                new ArrayList&lt;String&gt;(
-                        Arrays.asList(
-                                new String[]
-                                {
-                                    "A", "?", "D", "E", "A", "C", "?", "B", "D",
-                                    "C"
-                                }));
-        StudentAnswerSheet s2 = new StudentAnswerSheet("S2", answers2);
-        System.out.println(
-                "Your score for s2 is: "
-                        + s2.getScore(key)
-                        + " and should be 5.5");
+                  ArrayList<String> answers2 =
+                          new ArrayList<String>(
+                                  Arrays.asList(
+                                          new String[]
+                                          {
+                                              "A", "?", "D", "E", "A", "C", "?", "B", "D",
+                                              "C"
+                                          }));
+                  StudentAnswerSheet s2 = new StudentAnswerSheet("S2", answers2);
+                  System.out.println(
+                          "Your score for s2 is: "
+                                  + s2.getScore(key)
+                                  + " and should be 5.5");
 
-        ArrayList&lt;String&gt; answers3 =
-                new ArrayList&lt;String&gt;(
-                        Arrays.asList(
-                                new String[]
-                                {
-                                    "A", "?", "D", "E", "A", "C", "E", "B", "D",
-                                    "C"
-                                }));
-        StudentAnswerSheet s3 = new StudentAnswerSheet("S3", answers3);
-        System.out.println(
-                "Your score for s3 is: "
-                        + s3.getScore(key)
-                        + " and should be 6.5");
+                  ArrayList<String> answers3 =
+                          new ArrayList<String>(
+                                  Arrays.asList(
+                                          new String[]
+                                          {
+                                              "A", "?", "D", "E", "A", "C", "E", "B", "D",
+                                              "C"
+                                          }));
+                  StudentAnswerSheet s3 = new StudentAnswerSheet("S3", answers3);
+                  System.out.println(
+                          "Your score for s3 is: "
+                                  + s3.getScore(key)
+                                  + " and should be 6.5");
 
-        ArrayList&lt;String&gt; answers4 =
-                new ArrayList&lt;String&gt;(
-                        Arrays.asList(
-                                new String[]
-                                {
-                                    "A", "C", "D", "E", "A", "C", "E", "B", "D",
-                                    "C"
-                                }));
-        StudentAnswerSheet s4 = new StudentAnswerSheet("S4", answers4);
-        System.out.println(
-                "Your score for s4 is: "
-                        + s4.getScore(key)
-                        + " and should be 7.5");
+                  ArrayList<String> answers4 =
+                          new ArrayList<String>(
+                                  Arrays.asList(
+                                          new String[]
+                                          {
+                                              "A", "C", "D", "E", "A", "C", "E", "B", "D",
+                                              "C"
+                                          }));
+                  StudentAnswerSheet s4 = new StudentAnswerSheet("S4", answers4);
+                  System.out.println(
+                          "Your score for s4 is: "
+                                  + s4.getScore(key)
+                                  + " and should be 7.5");
 
-        ArrayList&lt;StudentAnswerSheet&gt; sheets = new ArrayList&lt;StudentAnswerSheet&gt;();
-        sheets.add(s1);
-        sheets.add(s2);
-        sheets.add(s3);
-        sheets.add(s4);
+                  ArrayList<StudentAnswerSheet> sheets = new ArrayList<StudentAnswerSheet>();
+                  sheets.add(s1);
+                  sheets.add(s2);
+                  sheets.add(s3);
+                  sheets.add(s4);
 
-        TestResults results = new TestResults(sheets);
-        System.out.println(
-                "Your best is: "
-                        + results.highestScoringStudent(key)
-                        + " and should be S4");
-    }
-}
+                  TestResults results = new TestResults(sheets);
+                  System.out.println(
+                          "Your best is: "
+                                  + results.highestScoringStudent(key)
+                                  + " and should be S4");
+              }
+          }
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
+          import java.io.*;
+          import java.util.ArrayList;
+          import java.util.Arrays;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("TestResults");
-        // CodeTestHelper.sort = true;
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("TestResults");
+                  // CodeTestHelper.sort = true;
+              }
 
-    @Test
-    public void testMain1()
-    {
-        boolean passed = false;
+              @Test
+              public void testMain1()
+              {
+                  boolean passed = false;
 
-        String expect =
-                "Your score for s1 is: 5.25 and should be 5.25\n"
-                    + "Your score for s2 is: 5.5 and should be 5.5\n"
-                    + "Your score for s3 is: 6.5 and should be 6.5\n"
-                    + "Your score for s4 is: 7.5 and should be 7.5\n"
-                    + "Your best is: S4 and should be S4";
+                  String expect =
+                          "Your score for s1 is: 5.25 and should be 5.25\n"
+                              + "Your score for s2 is: 5.5 and should be 5.5\n"
+                              + "Your score for s3 is: 6.5 and should be 6.5\n"
+                              + "Your score for s4 is: 7.5 and should be 7.5\n"
+                              + "Your best is: S4 and should be S4";
 
-        String output = getMethodOutput("main");
+                  String output = getMethodOutput("main");
 
-        passed = getResults(expect, output, "Checking for expected output");
-        assertTrue(passed);
-    }
+                  passed = getResults(expect, output, "Checking for expected output");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testMain2()
-    {
-        boolean passed = false;
+              @Test
+              public void testMain2()
+              {
+                  boolean passed = false;
 
-        String keyList = "A A A B B B C C C D D D E E E";
-        String ansList1 = "A B ? B C ? C D ? D E ? E A ?";
-        String ansList2 = "A B D B C D C D B D E C E A B";
-        String ansList3 = "A A A B B B C C C D D D E E E";
-        String ansList4 = "B B B B B B C C C C C C E E E";
+                  String keyList = "A A A B B B C C C D D D E E E";
+                  String ansList1 = "A B ? B C ? C D ? D E ? E A ?";
+                  String ansList2 = "A B D B C D C D B D E C E A B";
+                  String ansList3 = "A A A B B B C C C D D D E E E";
+                  String ansList4 = "B B B B B B C C C C C C E E E";
 
-        ArrayList&lt;String&gt; key = new ArrayList&lt;String&gt;(Arrays.asList(keyList.split(" ")));
+                  ArrayList<String> key = new ArrayList<String>(Arrays.asList(keyList.split(" ")));
 
-        ArrayList&lt;String&gt; answers1 = new ArrayList&lt;String&gt;(Arrays.asList(ansList1.split(" ")));
-        ArrayList&lt;String&gt; answers2 = new ArrayList&lt;String&gt;(Arrays.asList(ansList2.split(" ")));
-        ArrayList&lt;String&gt; answers3 = new ArrayList&lt;String&gt;(Arrays.asList(ansList3.split(" ")));
-        ArrayList&lt;String&gt; answers4 = new ArrayList&lt;String&gt;(Arrays.asList(ansList4.split(" ")));
+                  ArrayList<String> answers1 = new ArrayList<String>(Arrays.asList(ansList1.split(" ")));
+                  ArrayList<String> answers2 = new ArrayList<String>(Arrays.asList(ansList2.split(" ")));
+                  ArrayList<String> answers3 = new ArrayList<String>(Arrays.asList(ansList3.split(" ")));
+                  ArrayList<String> answers4 = new ArrayList<String>(Arrays.asList(ansList4.split(" ")));
 
-        StudentAnswerSheet s1 = new StudentAnswerSheet("S1", answers1);
-        StudentAnswerSheet s2 = new StudentAnswerSheet("S2", answers2);
-        StudentAnswerSheet s3 = new StudentAnswerSheet("S2", answers3);
-        StudentAnswerSheet s4 = new StudentAnswerSheet("S2", answers4);
+                  StudentAnswerSheet s1 = new StudentAnswerSheet("S1", answers1);
+                  StudentAnswerSheet s2 = new StudentAnswerSheet("S2", answers2);
+                  StudentAnswerSheet s3 = new StudentAnswerSheet("S2", answers3);
+                  StudentAnswerSheet s4 = new StudentAnswerSheet("S2", answers4);
 
-        ArrayList&lt;StudentAnswerSheet&gt; sheets = new ArrayList&lt;StudentAnswerSheet&gt;();
-        sheets.add(s1);
-        sheets.add(s2);
-        sheets.add(s3);
-        sheets.add(s4);
+                  ArrayList<StudentAnswerSheet> sheets = new ArrayList<StudentAnswerSheet>();
+                  sheets.add(s1);
+                  sheets.add(s2);
+                  sheets.add(s3);
+                  sheets.add(s4);
 
-        TestResults results = new TestResults(sheets);
+                  TestResults results = new TestResults(sheets);
 
-        // change this next line
-        String output = "Your best is: " + results.highestScoringStudent(key);
+                  // change this next line
+                  String output = "Your best is: " + results.highestScoringStudent(key);
 
-        String expect = "Your best is: S2";
+                  String expect = "Your best is: S2";
 
-        passed = getResults(expect, output, "Checking for expected output");
-        assertTrue(passed);
-    }
-}
+                  passed = getResults(expect, output, "Checking for expected output");
+                  assertTrue(passed);
+              }
+          }
+          ]]>
         </tests>
+
       </program>
     </activity>
-
-
-    </subsection>
-
-
+  </subsection>
 </section>

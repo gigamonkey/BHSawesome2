@@ -1,45 +1,53 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="FRQ3-Part2">
   <title>FRQ3 - ArrayLists - Part 2</title>
+
   <introduction>
     <idx>string scramble</idx>
     <idx>ArrayList</idx>
     <idx>free response</idx>
+    <p>From the 2025 Course and Exam Description:</p>
 
-    <p>From the 2025 Course and Exam Description: </p>
-    <p><term>Free-Response Question 3: Data Analysis with ArrayList</term>. Students will be provided with a scenario and
-its associated class(es). Students will write one method of a given class based on provided specifications and 
-examples. The method requires students to use, analyze, and manipulate data in an ArrayList structure.</p>
+    <p>
+      <term>Free-Response Question 3: Data Analysis with ArrayList</term>.
+      Students will be provided with a scenario and its associated class(es).
+      Students will write one method of a given class based on provided
+      specifications and examples. The method requires students to use, analyze,
+      and manipulate data in an ArrayList structure.
+    </p>
 
-<p>FRQ 3 requires the following skills:</p>
-<ul>
-<li>Iterate through an ArrayList</li>
-<li>Access elements of an ArrayList</li>
-<li>Call methods on elements of the ArrayList</li>
-<li>Use a provided class</li>
-</ul>
-</introduction>
+    <p>FRQ 3 requires the following skills:</p>
 
-<subsection xml:id="frq3-2014-ScrambledStrings">
+    <ul>
+      <li>Iterate through an ArrayList</li>
+
+      <li>Access elements of an ArrayList</li>
+
+      <li>Call methods on elements of the ArrayList</li>
+
+      <li>Use a provided class</li>
+    </ul>
+  </introduction>
+
+  <subsection xml:id="frq3-2014-ScrambledStrings">
     <title>2014 FRQ3 - ScrambledStrings</title>
 
     <p>
       The following is part b of a free response question from 2014. It was
       question 1 on the exam. You can see all the free response questions from
       past exams at <url
-     href="https://www.savemyexams.com/ap/computer-science/college-board/a/past-papers/">Past AP CSA Exams</url>
- .
+      href="https://www.savemyexams.com/ap/computer-science/college-board/a/past-papers/">Past
+      AP CSA Exams</url> .
     </p>
 
     <p>
-      This question involves reasoning about strings
-      made up of uppercase letters. You will implement two related methods that
-      appear in the same class (not shown). The first method takes a single
-      string parameter and returns a scrambled version of that string. The
-      second method takes a list of strings and modifies the list by scrambling
-      each entry in the list. Any entry that cannot be scrambled is removed from
-      the list.
+      This question involves reasoning about strings made up of uppercase
+      letters. You will implement two related methods that appear in the same
+      class (not shown). The first method takes a single string parameter and
+      returns a scrambled version of that string. The second method takes a list
+      of strings and modifies the list by scrambling each entry in the list. Any
+      entry that cannot be scrambled is removed from the list.
     </p>
 
     <p>
@@ -57,6 +65,7 @@ examples. The method requires students to use, analyze, and manipulate data in a
 
     <figure align="center">
       <caption>Example call and result</caption>
+
       <image source="Unit4-Data-Collections/Figures/stringScrambleB.png" width="89%" />
     </figure>
 
@@ -68,34 +77,38 @@ examples. The method requires students to use, analyze, and manipulate data in a
     </p>
 
     <program language="java">
+
       <code>
-import java.util.List;
+        <![CDATA[
+        import java.util.List;
 
-public class ScrambledStrings
-{
+        public class ScrambledStrings
+        {
 
-    /**
-     * Modifies wordList by replacing each word with its scrambled version,
-     * removing any words that are unchanged as a result of scrambling.
-     *
-     * @param wordList the list of words Precondition: wordList contains only
-     *     non-null objects Postcondition: - all words unchanged by scrambling have
-     *     been removed from wordList - each of the remaining words has been
-     *     replaced by its scrambled version - the relative ordering of the entries
-     *     in wordList is the same as it was before the method was called
-     */
-    public static void scrambleOrRemove(List&lt;String&gt; wordList)
-    {
-        /* to be implemented in part b */
-    }
-}
+            /**
+             * Modifies wordList by replacing each word with its scrambled version,
+             * removing any words that are unchanged as a result of scrambling.
+             *
+             * @param wordList the list of words Precondition: wordList contains only
+             *     non-null objects Postcondition: - all words unchanged by scrambling have
+             *     been removed from wordList - each of the remaining words has been
+             *     replaced by its scrambled version - the relative ordering of the entries
+             *     in wordList is the same as it was before the method was called
+             */
+            public static void scrambleOrRemove(List<String> wordList)
+            {
+                /* to be implemented in part b */
+            }
+        }
+        ]]>
       </code>
-    </program>
 
+    </program>
   </subsection>
 
   <subsection xml:id="how-to-solve-this-problem-7">
     <title>How to solve this problem</title>
+
     <activity label="string_algorithm_partB">
       <statement>
         <p>
@@ -460,6 +473,7 @@ public class ScrambledStrings
 
   <subsection xml:id="the-algorithm-1">
     <title>The Algorithm</title>
+
     <p>
       Loop through the list and scramble the current word. If the scrambled word
       and original are equal then remove the word from the list and otherwise
@@ -473,21 +487,25 @@ public class ScrambledStrings
     </p>
 
     <program language="java">
+
       <code>
-public static void scrambleOrRemove(List&lt;String&gt; wordList)
-    initialize index counter
-    while (index less than wordlist size)
-      initialize a string and set it equal to word in wordList at index
+        <![CDATA[
+        public static void scrambleOrRemove(List<String> wordList)
+            initialize index counter
+            while (index less than wordlist size)
+              initialize a string and set it equal to word in wordList at index
 
-      initialize another string and set it equal to the scrambled version
-      of the word in wordlist at index
+              initialize another string and set it equal to the scrambled version
+              of the word in wordlist at index
 
-      if (the normal string equals the scrambled string)
-          remove the word in wordList at the current index
-      else
-          reassign the current word in wordList to be the scrambled version
-          iterate the index
+              if (the normal string equals the scrambled string)
+                  remove the word in wordList at the current index
+              else
+                  reassign the current word in wordList to be the scrambled version
+                  iterate the index
+        ]]>
       </code>
+
     </program>
 
     <activity label="StringScrambleB1" numbered="yes" adaptive="yes" indentation="show" language="java">
@@ -559,20 +577,24 @@ public static void scrambleOrRemove(List&lt;String&gt; wordList)
     </p>
 
     <program language="java">
+
       <code>
-public static void scrambleOrRemove(List&lt;String&gt; wordList)
-      for( int i = wordList size - 1; i &gt;= 0; i--)
-          initialize a string and set it equal to word in wordList at index
+        <![CDATA[
+        public static void scrambleOrRemove(List<String> wordList)
+              for( int i = wordList size - 1; i >= 0; i--)
+                  initialize a string and set it equal to word in wordList at index
 
-          initialize another string and set it equal to the scrambled version
-          of the word in wordlist at index
+                  initialize another string and set it equal to the scrambled version
+                  of the word in wordlist at index
 
-          if (the normal string equals the scrambled string)
-              remove the word in wordList at the current index
-          else
-              reassign the current word in wordList to be the scrambled version
-              iterate the index
+                  if (the normal string equals the scrambled string)
+                      remove the word in wordList at the current index
+                  else
+                      reassign the current word in wordList to be the scrambled version
+                      iterate the index
+        ]]>
       </code>
+
     </program>
 
     <activity label="StringScrambleB2" numbered="yes" adaptive="yes" indentation="show" language="java">
@@ -633,6 +655,7 @@ public static void scrambleOrRemove(List&lt;String&gt; wordList)
 
   <subsection xml:id="try-and-solve-it-19">
     <title>Try and Solve It</title>
+
     <activity label="frqScrambleOrRemove">
       <statement>
         <p>
@@ -642,161 +665,168 @@ public static void scrambleOrRemove(List&lt;String&gt; wordList)
       </statement>
 
       <program interactive="activecode" language="java">
+
         <code>
-import java.util.ArrayList;
-import java.util.List;
+          <![CDATA[
+          import java.util.ArrayList;
+          import java.util.List;
 
-public class ScrambledStrings
-{
+          public class ScrambledStrings
+          {
 
-    /********************** Part (b) *********************/
+              /********************** Part (b) *********************/
 
-    /**
-     * Modifies wordList by replacing each word with its scrambled version,
-     * removing any words that are unchanged as a result of scrambling.
-     *
-     * @param wordList the list of words Precondition: wordList contains only
-     *     non-null objects Postcondition: - all words unchanged by scrambling have
-     *     been removed from wordList - each of the remaining words has been
-     *     replaced by its scrambled version - the relative ordering of the entries
-     *     in wordList is the same as it was before the method was called
-     */
-    public static void scrambleOrRemove(List&lt;String&gt; wordList) {
-      /********************** Write your code here /**********************
+              /**
+               * Modifies wordList by replacing each word with its scrambled version,
+               * removing any words that are unchanged as a result of scrambling.
+               *
+               * @param wordList the list of words Precondition: wordList contains only
+               *     non-null objects Postcondition: - all words unchanged by scrambling have
+               *     been removed from wordList - each of the remaining words has been
+               *     replaced by its scrambled version - the relative ordering of the entries
+               *     in wordList is the same as it was before the method was called
+               */
+              public static void scrambleOrRemove(List<String> wordList) {
+                /********************** Write your code here /**********************
 
-    }
-
-
-
-    /**
-     * Scrambles a given word.
-     *
-     * @param word the word to be scrambled
-     * @return the scrambled word (possibly equal to word) Precondition: word is
-     *     either an empty string or contains only uppercase letters.
-     *     Postcondition: the string returned was created from word as follows: -
-     *     the word was scrambled, beginning at the first letter and continuing
-     *     from left to right - two consecutive letters consisting of "A" followed
-     *     by a letter that was not "A" were swapped - letters were swapped at most
-     *     once
-     */
-    public static String scrambleWord(String word)
-    {
-        String scrambled = "";
-        int i = 0;
-
-        while (i &lt; word.length())
-        {
-            String letter1 = word.substring(i, i + 1);
-            String letter2 = "";
-            if (i &lt; word.length() - 1)
-            {
-                letter2 = word.substring(i + 1, i + 2);
-            }
-            if (letter1.equals("A")
-                    &amp;&amp; !letter2.equals("A")
-                    &amp;&amp; !letter2.equals(""))
-            {
-                scrambled += letter2 + letter1;
-                i += 2;
-            }
-            else
-            {
-                scrambled += letter1;
-                i += 1;
-            }
-        }
-        return scrambled;
-    }
+              }
 
 
-    /********************** Test *********************/
 
-    public static void main(String[] args)
-    {
+              /**
+               * Scrambles a given word.
+               *
+               * @param word the word to be scrambled
+               * @return the scrambled word (possibly equal to word) Precondition: word is
+               *     either an empty string or contains only uppercase letters.
+               *     Postcondition: the string returned was created from word as follows: -
+               *     the word was scrambled, beginning at the first letter and continuing
+               *     from left to right - two consecutive letters consisting of "A" followed
+               *     by a letter that was not "A" were swapped - letters were swapped at most
+               *     once
+               */
+              public static String scrambleWord(String word)
+              {
+                  String scrambled = "";
+                  int i = 0;
 
-        System.out.println("\nTesting Part (b):\n");
+                  while (i < word.length())
+                  {
+                      String letter1 = word.substring(i, i + 1);
+                      String letter2 = "";
+                      if (i < word.length() - 1)
+                      {
+                          letter2 = word.substring(i + 1, i + 2);
+                      }
+                      if (letter1.equals("A")
+                              && !letter2.equals("A")
+                              && !letter2.equals(""))
+                      {
+                          scrambled += letter2 + letter1;
+                          i += 2;
+                      }
+                      else
+                      {
+                          scrambled += letter1;
+                          i += 1;
+                      }
+                  }
+                  return scrambled;
+              }
 
-        String[] words2 = {"TAN", "ABRACADABRA", "WHOA", "APPLE", "EGGS"};
-        ArrayList&lt;String&gt; wordList = new ArrayList&lt;String&gt;();
-        for (String word : words2) wordList.add(word);
-        System.out.print(wordList);
-        scrambleOrRemove(wordList);
-        System.out.println(" ==&gt; " + wordList);
-    }
-}
+
+              /********************** Test *********************/
+
+              public static void main(String[] args)
+              {
+
+                  System.out.println("\nTesting Part (b):\n");
+
+                  String[] words2 = {"TAN", "ABRACADABRA", "WHOA", "APPLE", "EGGS"};
+                  ArrayList<String> wordList = new ArrayList<String>();
+                  for (String word : words2) wordList.add(word);
+                  System.out.print(wordList);
+                  scrambleOrRemove(wordList);
+                  System.out.println(" ==> " + wordList);
+              }
+          }
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          <![CDATA[
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
+          import java.io.*;
+          import java.util.ArrayList;
+          import java.util.Arrays;
 
-@SuppressWarnings("unchecked")
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("ScrambledStrings");
-    }
+          @SuppressWarnings("unchecked")
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ScrambledStrings");
+              }
 
-    @Test
-    public void testMain() throws IOException
-    {
-        String output = getMethodOutput("main");
-        String expect = "[TNA, BARCADABARA, PAPLE]";
-        boolean passed = output.contains(expect);
-        passed = getResults(expect, output, "expected output from main", passed);
-        assertTrue(passed);
-    }
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "[TNA, BARCADABARA, PAPLE]";
+                  boolean passed = output.contains(expect);
+                  passed = getResults(expect, output, "expected output from main", passed);
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test1()
-    {
-        ArrayList&lt;String&gt; wordList =
-                new ArrayList(Arrays.asList("TAN", "ABRACADABRA", "WHOA", "APPLE", "EGGS"));
+              @Test
+              public void test1()
+              {
+                  ArrayList<String> wordList =
+                          new ArrayList(Arrays.asList("TAN", "ABRACADABRA", "WHOA", "APPLE", "EGGS"));
 
-        ArrayList&lt;String&gt; wordListExpect =
-                new ArrayList&lt;String&gt;(Arrays.asList("TNA", "BARCADABARA", "PAPLE"));
+                  ArrayList<String> wordListExpect =
+                          new ArrayList<String>(Arrays.asList("TNA", "BARCADABARA", "PAPLE"));
 
-        ScrambledStrings.scrambleOrRemove(wordList);
+                  ScrambledStrings.scrambleOrRemove(wordList);
 
-        boolean result = wordList.equals(wordListExpect);
+                  boolean result = wordList.equals(wordListExpect);
 
-        boolean passed =
-                getResults(
-                        "true",
-                        "" + result,
-                        "scrambleOrRemove works for ArrayList #1: TAN, ABRACADABRA, WHOA, APPLE,"
-                            + " EGGS");
+                  boolean passed =
+                          getResults(
+                                  "true",
+                                  "" + result,
+                                  "scrambleOrRemove works for ArrayList #1: TAN, ABRACADABRA, WHOA, APPLE,"
+                                      + " EGGS");
 
-        assertTrue(passed);
-    }
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void test2()
-    {
-        ArrayList&lt;String&gt; wordList = new ArrayList(Arrays.asList("TESTING", "ONE", "TWO", "THREE"));
+              @Test
+              public void test2()
+              {
+                  ArrayList<String> wordList = new ArrayList(Arrays.asList("TESTING", "ONE", "TWO", "THREE"));
 
-        ArrayList&lt;String&gt; wordListExpect = new ArrayList&lt;String&gt;(Arrays.asList());
+                  ArrayList<String> wordListExpect = new ArrayList<String>(Arrays.asList());
 
-        ScrambledStrings.scrambleOrRemove(wordList);
+                  ScrambledStrings.scrambleOrRemove(wordList);
 
-        boolean result = wordList.equals(wordListExpect);
+                  boolean result = wordList.equals(wordListExpect);
 
-        boolean passed =
-                getResults(
-                        "true",
-                        "" + result,
-                        "scrambleOrRemove works for ArrayList #2: TESTING, ONE, TWO, THREE");
+                  boolean passed =
+                          getResults(
+                                  "true",
+                                  "" + result,
+                                  "scrambleOrRemove works for ArrayList #2: TESTING, ONE, TWO, THREE");
 
-        assertTrue(passed);
-    }
-}
+                  assertTrue(passed);
+              }
+          }
+          ]]>
         </tests>
+
       </program>
     </activity>
   </subsection>

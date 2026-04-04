@@ -1,27 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="SkyViewA">
   <title>FRQ4 - 2D Arrays - SkyView - Part A</title>
+
   <introduction>
     <idx>RandomStringChooser</idx>
     <idx>free response</idx>
-
     <p>
       The following is a free response question from 2013. It was question 4 on
-      the exam on 
-      <url
-      href="https://secure-media.collegeboard.org/digitalServices/pdf/ap/apcentral/ap13_frq_comp_sci.pdf"
-      >https://secure-media.collegeboard.org/digitalServices/pdf/ap/apcentral/ap13_frq_comp_sci.pdf</url>.
+      the exam on <url
+      href="https://secure-media.collegeboard.org/digitalServices/pdf/ap/apcentral/ap13_frq_comp_sci.pdf">https://secure-media.collegeboard.org/digitalServices/pdf/ap/apcentral/ap13_frq_comp_sci.pdf</url>.
     </p>
+
     <note>
-    <title>JuiceMind AI-Graded FRQ Practice</title>
+      <title>JuiceMind AI-Graded FRQ Practice</title>
+
       <p>
-        This is also available as an AI-graded FRQ on the 
-        <url href="https://play.juicemind.com/dashboard/explore?tab=frq&amp;frqId=8cd7ba1f-a4e1-4a02-bdca-58681297afc5">
-          JuiceMind IDE</url> for AP exam practice with rubrics and AI instant feedback. 
-          Teachers must create free accounts and assign the FRQ on JuiceMind for students to access it.
+        This is also available as an AI-graded FRQ on the <url
+        href="https://play.juicemind.com/dashboard/explore?tab=frq&amp;frqId=8cd7ba1f-a4e1-4a02-bdca-58681297afc5">JuiceMind
+        IDE</url> for AP exam practice with rubrics and AI instant feedback.
+        Teachers must create free accounts and assign the FRQ on JuiceMind for
+        students to access it.
       </p>
     </note>
+
     <p>
       <term>Question 4.</term> A telescope scans a rectangular area of the night
       sky and collects the data into a 1-dimensional array. Each data value
@@ -51,53 +53,57 @@
     </p>
 
     <program language="java">
+
       <code>
-public class SkyView
-{
-    /**
-     * A rectangular array that holds the data representing a rectangular area of
-     * the sky.
-     */
-    private double[][] view;
+        <![CDATA[
+        public class SkyView
+        {
+            /**
+             * A rectangular array that holds the data representing a rectangular area of
+             * the sky.
+             */
+            private double[][] view;
 
-    /**
-     * Constructs a SkyView object from a 1-dimensional array of scan data.
-     *
-     * @param numRows the number of rows represented in the view Precondition:
-     *     numRows &gt; 0
-     * @param numCols the number of columns represented in the view Precondition:
-     *     numCols &gt; 0
-     * @param scanned the scan data received from the telescope, stored in
-     *     telescope order Precondition: scanned.length == numRows * numCols
-     *     Postcondition: view has been created as a rectangular 2-dimensional
-     *     array with numRows rows and numCols columns and the values in scanned
-     *     have been copied to view and are ordered as in the original rectangular
-     *     area of sky.
-     */
-    public SkyView(int numRows, int numCols, double[] scanned)
-    {
-        /* to be implemented in part (a) */
-    }
+            /**
+             * Constructs a SkyView object from a 1-dimensional array of scan data.
+             *
+             * @param numRows the number of rows represented in the view Precondition:
+             *     numRows > 0
+             * @param numCols the number of columns represented in the view Precondition:
+             *     numCols > 0
+             * @param scanned the scan data received from the telescope, stored in
+             *     telescope order Precondition: scanned.length == numRows * numCols
+             *     Postcondition: view has been created as a rectangular 2-dimensional
+             *     array with numRows rows and numCols columns and the values in scanned
+             *     have been copied to view and are ordered as in the original rectangular
+             *     area of sky.
+             */
+            public SkyView(int numRows, int numCols, double[] scanned)
+            {
+                /* to be implemented in part (a) */
+            }
 
-    /**
-     * Returns the average of the values in a rectangular section of view.
-     *
-     * @param startRow the first row index of the section
-     * @param endRow the last row index of the section
-     * @param startCol the first column index of the section
-     * @param endCol the last column index of the section Precondition: 0 &lt;=
-     *     startRow &lt;= endRow &lt; view.length Precondition: 0 &lt;= startCol &lt;= endCol &lt;
-     *     view[0].length
-     * @return the average of the values in the specified section of view
-     */
-    public double getAverage(int startRow, int endRow, int startCol, int endCol)
-    {
-        /* to be implemented in part (b) */
-    }
+            /**
+             * Returns the average of the values in a rectangular section of view.
+             *
+             * @param startRow the first row index of the section
+             * @param endRow the last row index of the section
+             * @param startCol the first column index of the section
+             * @param endCol the last column index of the section Precondition: 0 <=
+             *     startRow <= endRow < view.length Precondition: 0 <= startCol <= endCol <
+             *     view[0].length
+             * @return the average of the values in the specified section of view
+             */
+            public double getAverage(int startRow, int endRow, int startCol, int endCol)
+            {
+                /* to be implemented in part (b) */
+            }
 
-    // There may be other instance variables, constructors, and methods
-}
+            // There may be other instance variables, constructors, and methods
+        }
+        ]]>
       </code>
+
     </program>
 
     <p>
@@ -118,6 +124,7 @@ public class SkyView
 
     <figure align="center">
       <caption>First example scanned array values</caption>
+
       <image source="FreeResponse/Figures/SkyViewExArray.png" width="100%" />
     </figure>
 
@@ -129,6 +136,7 @@ public class SkyView
 
     <figure align="center">
       <caption>The resulting view from the first example scanned array</caption>
+
       <image source="FreeResponse/Figures/SkyViewRes1.png" width="100%" />
     </figure>
 
@@ -138,6 +146,7 @@ public class SkyView
 
     <figure align="center">
       <caption>Second example scanned array values</caption>
+
       <image source="FreeResponse/Figures/SkyViewEx2Array.png" width="100%" />
     </figure>
 
@@ -147,16 +156,18 @@ public class SkyView
     </p>
 
     <figure align="center">
-      <caption>The resulting view from the second example scanned array</caption>
+      <caption>
+        The resulting view from the second example scanned array
+      </caption>
+
       <image source="FreeResponse/Figures/SkyViewRes2.png" width="100%" />
     </figure>
   </introduction>
 
   <subsection xml:id="try-and-solve-it-7">
     <title>Try and Solve It</title>
-    <p>
-      Complete the <c>SkyView</c> constructor in the class below.
-    </p>
+
+    <p>Complete the <c>SkyView</c> constructor in the class below.</p>
 
     <p>
       The code below declares the class, the view, and a constructor for you to
@@ -165,144 +176,147 @@ public class SkyView
 
     <activity label="SkyViewA">
       <statement>
-        <p>
-          Complete the <c>SkyView</c> constructor in the class below.
-        </p>
+        <p>Complete the <c>SkyView</c> constructor in the class below.</p>
       </statement>
 
       <program interactive="activecode" language="java">
+
         <code>
-public class SkyView
-{
-    private double[][] view;
+          <![CDATA[
+          public class SkyView
+          {
+              private double[][] view;
 
-    /**
-     * Constructs a SkyView object from a 1-dimensional array of scan data.
-     *
-     * @param numRows the number of rows represented in the view Precondition:
-     *     numRows &gt; 0
-     * @param numCols the number of columns represented in the view Precondition:
-     *     numCols &gt; 0
-     * @param scanned the scan data received from the telescope, stored in
-     *     telescope order Precondition: scanned.length == numRows * numCols
-     *     Postcondition: view has been created as a rectangular 2-dimensional
-     *     array with numRows rows and numCols columns and the values in scanned
-     *     have been copied to view and are ordered as in the original rectangular
-     *     area of sky.
-     */
-    public SkyView(int numRows, int numCols, double[] scanned)
-    {
-        // *** Write the constructor! ***
-    }
+              /**
+               * Constructs a SkyView object from a 1-dimensional array of scan data.
+               *
+               * @param numRows the number of rows represented in the view Precondition:
+               *     numRows > 0
+               * @param numCols the number of columns represented in the view Precondition:
+               *     numCols > 0
+               * @param scanned the scan data received from the telescope, stored in
+               *     telescope order Precondition: scanned.length == numRows * numCols
+               *     Postcondition: view has been created as a rectangular 2-dimensional
+               *     array with numRows rows and numCols columns and the values in scanned
+               *     have been copied to view and are ordered as in the original rectangular
+               *     area of sky.
+               */
+              public SkyView(int numRows, int numCols, double[] scanned)
+              {
+                  // *** Write the constructor! ***
+              }
 
-    /** This is a main method for testing the class */
-    public static void main(String[] args)
-    {
-        double[] values =
-        {
-            0.3, 0.7, 0.8, 0.4, 1.4, 1.1, 0.2, 0.5, 0.1, 1.6, 0.6, 0.9
-        };
-        SkyView sView = new SkyView(4, 3, values);
-        System.out.println("It should print the following:");
-        System.out.println("0.3, 0.7, 0.8,");
-        System.out.println("1.1, 1.4, 0.4,");
-        System.out.println("0.2, 0.5, 0.1,");
-        System.out.println("0.9, 0.6, 1.6,");
-        System.out.println();
-        System.out.println("Your results");
-        for (int row = 0; row &lt; sView.view.length; row++)
-        {
-            for (int col = 0; col &lt; sView.view[0].length; col++)
-            {
-                System.out.print(sView.view[row][col] + ", ");
-            }
-            System.out.println();
-        }
+              /** This is a main method for testing the class */
+              public static void main(String[] args)
+              {
+                  double[] values =
+                  {
+                      0.3, 0.7, 0.8, 0.4, 1.4, 1.1, 0.2, 0.5, 0.1, 1.6, 0.6, 0.9
+                  };
+                  SkyView sView = new SkyView(4, 3, values);
+                  System.out.println("It should print the following:");
+                  System.out.println("0.3, 0.7, 0.8,");
+                  System.out.println("1.1, 1.4, 0.4,");
+                  System.out.println("0.2, 0.5, 0.1,");
+                  System.out.println("0.9, 0.6, 1.6,");
+                  System.out.println();
+                  System.out.println("Your results");
+                  for (int row = 0; row < sView.view.length; row++)
+                  {
+                      for (int col = 0; col < sView.view[0].length; col++)
+                      {
+                          System.out.print(sView.view[row][col] + ", ");
+                      }
+                      System.out.println();
+                  }
 
-        System.out.println();
+                  System.out.println();
 
-        double[] val2 = {0.3, 0.7, 0.8, 0.4, 1.4, 1.1};
-        sView = new SkyView(3, 2, val2);
-        System.out.println("It should print the following:");
-        System.out.println("0.3, 0.7,");
-        System.out.println("0.4, 0.8,");
-        System.out.println("1.4, 1.1,");
-        System.out.println();
-        System.out.println("Your results");
-        for (int row = 0; row &lt; sView.view.length; row++)
-        {
-            for (int col = 0; col &lt; sView.view[0].length; col++)
-            {
-                System.out.print(sView.view[row][col] + ", ");
-            }
-            System.out.println();
-        }
-    } // end of main
+                  double[] val2 = {0.3, 0.7, 0.8, 0.4, 1.4, 1.1};
+                  sView = new SkyView(3, 2, val2);
+                  System.out.println("It should print the following:");
+                  System.out.println("0.3, 0.7,");
+                  System.out.println("0.4, 0.8,");
+                  System.out.println("1.4, 1.1,");
+                  System.out.println();
+                  System.out.println("Your results");
+                  for (int row = 0; row < sView.view.length; row++)
+                  {
+                      for (int col = 0; col < sView.view[0].length; col++)
+                      {
+                          System.out.print(sView.view[row][col] + ", ");
+                      }
+                      System.out.println();
+                  }
+              } // end of main
 
-    public String toString()
-    {
-        String output = "";
-        for (int row = 0; row &lt; view.length; row++)
-        {
-            for (int col = 0; col &lt; view[row].length; col++)
-            {
-                output += view[row][col] + ", ";
-            }
-            output += "\n";
-        }
-        return output;
-    }
-} // end of class
+              public String toString()
+              {
+                  String output = "";
+                  for (int row = 0; row < view.length; row++)
+                  {
+                      for (int col = 0; col < view[row].length; col++)
+                      {
+                          output += view[row][col] + ", ";
+                      }
+                      output += "\n";
+                  }
+                  return output;
+              }
+          } // end of class
+          ]]>
         </code>
+
         <tests>
-import static org.junit.Assert.*;
+          import static org.junit.Assert.*;
 
-import org.junit.*;
+          import org.junit.*;
 
-import java.io.*;
+          import java.io.*;
 
-// import java.util.Arrays;
-// import java.util.ArrayList;
+          // import java.util.Arrays;
+          // import java.util.ArrayList;
 
-public class RunestoneTests extends CodeTestHelper
-{
-    public RunestoneTests()
-    {
-        super("SkyView");
-        // CodeTestHelper.sort = true;
-    }
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("SkyView");
+                  // CodeTestHelper.sort = true;
+              }
 
-    @Test
-    public void testMain1()
-    {
-        boolean passed = false;
+              @Test
+              public void testMain1()
+              {
+                  boolean passed = false;
 
-        double[] val2 = {0.3, 0.7, 0.4, 0.8, 1.4, 1.1};
-        SkyView sView = new SkyView(3, 2, val2);
-        String expect = "0.3, 0.7,\n0.8, 0.4,\n1.4, 1.1,";
+                  double[] val2 = {0.3, 0.7, 0.4, 0.8, 1.4, 1.1};
+                  SkyView sView = new SkyView(3, 2, val2);
+                  String expect = "0.3, 0.7,\n0.8, 0.4,\n1.4, 1.1,";
 
-        String output = sView.toString().trim();
+                  String output = sView.toString().trim();
 
-        passed = getResults(expect, output, "Checking for expected output");
-        assertTrue(passed);
-    }
+                  passed = getResults(expect, output, "Checking for expected output");
+                  assertTrue(passed);
+              }
 
-    @Test
-    public void testMain2()
-    {
-        boolean passed = false;
+              @Test
+              public void testMain2()
+              {
+                  boolean passed = false;
 
-        double[] val2 = {0.3, 0.7, 0.4, 0.8, 1.4, 1.1};
-        SkyView sView = new SkyView(2, 3, val2);
-        String expect = "0.3, 0.7, 0.4, \n1.1, 1.4, 0.8,";
+                  double[] val2 = {0.3, 0.7, 0.4, 0.8, 1.4, 1.1};
+                  SkyView sView = new SkyView(2, 3, val2);
+                  String expect = "0.3, 0.7, 0.4, \n1.1, 1.4, 0.8,";
 
-        String output = sView.toString().trim();
+                  String output = sView.toString().trim();
 
-        passed = getResults(expect, output, "Checking for expected output");
-        assertTrue(passed);
-    }
-}
+                  passed = getResults(expect, output, "Checking for expected output");
+                  assertTrue(passed);
+              }
+          }
         </tests>
+
       </program>
     </activity>
   </subsection>

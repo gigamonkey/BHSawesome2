@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <chapter xml:id="unit-frq-practice" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Free Response Practice</title>
@@ -36,5 +36,4 @@
   <xi:include href="./FRQ5-ArrayTesterB.ptx" />
   <xi:include href="./FRQ6-NumberGroupB.ptx" />
   <xi:include href="./FRQ6-NumberGroupC.ptx" />
-
 </chapter>
