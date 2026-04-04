@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import math
 import subprocess
 import re
 from argparse import ArgumentParser
@@ -203,7 +204,7 @@ def measure_indentation(line):
 def dedent_by(text, amount):
     return (
         dedent(text)
-        if amount is None
+        if (amount is None or math.isinf(amount))
         else "\n".join(
             line[amount:] if len(line) > 0 else line for line in text.split("\n")
         )
