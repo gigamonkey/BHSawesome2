@@ -80,30 +80,22 @@
 
       <code>
         <![CDATA[
-        public class SkyView
-        {
-            /**
-             * A rectangular array that holds the data representing a rectangular area of
-             * the sky.
-             */
+        public class SkyView {
+            /** A rectangular array that holds the data representing a rectangular area of the sky. */
             private double[][] view;
 
             /**
              * Constructs a SkyView object from a 1-dimensional array of scan data.
              *
-             * @param numRows the number of rows represented in the view Precondition:
-             *     numRows > 0
-             * @param numCols the number of columns represented in the view Precondition:
-             *     numCols > 0
-             * @param scanned the scan data received from the telescope, stored in
-             *     telescope order Precondition: scanned.length == numRows * numCols
-             *     Postcondition: view has been created as a rectangular 2-dimensional
-             *     array with numRows rows and numCols columns and the values in scanned
-             *     have been copied to view and are ordered as in the original rectangular
-             *     area of sky.
+             * @param numRows the number of rows represented in the view Precondition: numRows > 0
+             * @param numCols the number of columns represented in the view Precondition: numCols > 0
+             * @param scanned the scan data received from the telescope, stored in telescope order
+             *     Precondition: scanned.length == numRows * numCols Postcondition: view has been created as
+             *     a rectangular 2-dimensional array with numRows rows and numCols columns and the values in
+             *     scanned have been copied to view and are ordered as in the original rectangular area of
+             *     sky.
              */
-            public SkyView(int numRows, int numCols, double[] scanned)
-            {
+            public SkyView(int numRows, int numCols, double[] scanned) {
                 /* to be implemented in part (a) */
             }
 
@@ -113,18 +105,17 @@
              * @param startRow the first row index of the section
              * @param endRow the last row index of the section
              * @param startCol the first column index of the section
-             * @param endCol the last column index of the section Precondition: 0 <=
-             *     startRow <= endRow < view.length Precondition: 0 <= startCol <= endCol <
-             *     view[0].length
+             * @param endCol the last column index of the section Precondition: 0 <= startRow <= endRow <
+             *     view.length Precondition: 0 <= startCol <= endCol < view[0].length
              * @return the average of the values in the specified section of view
              */
-            public double getAverage(int startRow, int endRow, int startCol, int endCol)
-            {
+            public double getAverage(int startRow, int endRow, int startCol, int endCol) {
                 /* to be implemented in part (b) */
             }
 
             // There may be other instance variables, constructors, and methods
         }
+
         ]]>
       </code>
 
@@ -203,36 +194,27 @@
 
         <code>
           <![CDATA[
-          public class SkyView
-          {
+          public class SkyView {
               private double[][] view;
 
               /**
                * Constructs a SkyView object from a 1-dimensional array of scan data.
                *
-               * @param numRows the number of rows represented in the view Precondition:
-               *     numRows > 0
-               * @param numCols the number of columns represented in the view Precondition:
-               *     numCols > 0
-               * @param scanned the scan data received from the telescope, stored in
-               *     telescope order Precondition: scanned.length == numRows * numCols
-               *     Postcondition: view has been created as a rectangular 2-dimensional
-               *     array with numRows rows and numCols columns and the values in scanned
-               *     have been copied to view and are ordered as in the original rectangular
-               *     area of sky.
+               * @param numRows the number of rows represented in the view Precondition: numRows > 0
+               * @param numCols the number of columns represented in the view Precondition: numCols > 0
+               * @param scanned the scan data received from the telescope, stored in telescope order
+               *     Precondition: scanned.length == numRows * numCols Postcondition: view has been created as
+               *     a rectangular 2-dimensional array with numRows rows and numCols columns and the values in
+               *     scanned have been copied to view and are ordered as in the original rectangular area of
+               *     sky.
                */
-              public SkyView(int numRows, int numCols, double[] scanned)
-              {
+              public SkyView(int numRows, int numCols, double[] scanned) {
                   // *** Write the constructor! ***
               }
 
               /** This is a main method for testing the class */
-              public static void main(String[] args)
-              {
-                  double[] values =
-                  {
-                      0.3, 0.7, 0.8, 0.4, 1.4, 1.1, 0.2, 0.5, 0.1, 1.6, 0.6, 0.9
-                  };
+              public static void main(String[] args) {
+                  double[] values = {0.3, 0.7, 0.8, 0.4, 1.4, 1.1, 0.2, 0.5, 0.1, 1.6, 0.6, 0.9};
                   SkyView sView = new SkyView(4, 3, values);
                   System.out.println("It should print the following:");
                   System.out.println("0.3, 0.7, 0.8,");
@@ -241,10 +223,8 @@
                   System.out.println("0.9, 0.6, 1.6,");
                   System.out.println();
                   System.out.println("Your results");
-                  for (int row = 0; row < sView.view.length; row++)
-                  {
-                      for (int col = 0; col < sView.view[0].length; col++)
-                      {
+                  for (int row = 0; row < sView.view.length; row++) {
+                      for (int col = 0; col < sView.view[0].length; col++) {
                           System.out.print(sView.view[row][col] + ", ");
                       }
                       System.out.println();
@@ -260,23 +240,18 @@
                   System.out.println("1.4, 1.1,");
                   System.out.println();
                   System.out.println("Your results");
-                  for (int row = 0; row < sView.view.length; row++)
-                  {
-                      for (int col = 0; col < sView.view[0].length; col++)
-                      {
+                  for (int row = 0; row < sView.view.length; row++) {
+                      for (int col = 0; col < sView.view[0].length; col++) {
                           System.out.print(sView.view[row][col] + ", ");
                       }
                       System.out.println();
                   }
               } // end of main
 
-              public String toString()
-              {
+              public String toString() {
                   String output = "";
-                  for (int row = 0; row < view.length; row++)
-                  {
-                      for (int col = 0; col < view[row].length; col++)
-                      {
+                  for (int row = 0; row < view.length; row++) {
+                      for (int col = 0; col < view[row].length; col++) {
                           output += view[row][col] + ", ";
                       }
                       output += "\n";
@@ -284,6 +259,7 @@
                   return output;
               }
           } // end of class
+
           ]]>
         </code>
 
@@ -297,17 +273,14 @@
           // import java.util.Arrays;
           // import java.util.ArrayList;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
                   super("SkyView");
                   // CodeTestHelper.sort = true;
               }
 
               @Test
-              public void testMain1()
-              {
+              public void testMain1() {
                   boolean passed = false;
 
                   double[] val2 = {0.3, 0.7, 0.4, 0.8, 1.4, 1.1};
@@ -321,8 +294,7 @@
               }
 
               @Test
-              public void testMain2()
-              {
+              public void testMain2() {
                   boolean passed = false;
 
                   double[] val2 = {0.3, 0.7, 0.4, 0.8, 1.4, 1.1};
@@ -335,6 +307,7 @@
                   assertTrue(passed);
               }
           }
+
         </tests>
 
       </program>
@@ -399,43 +372,32 @@
 
         <code>
           <![CDATA[
-          public class SkyView
-          {
+          public class SkyView {
               private double[][] view;
 
               /**
                * Constructs a SkyView object from a 1-dimensional array of scan data.
                *
-               * @param numRows the number of rows represented in the view Precondition:
-               *     numRows > 0
-               * @param numCols the number of columns represented in the view Precondition:
-               *     numCols > 0
-               * @param scanned the scan data received from the telescope, stored in
-               *     telescope order Precondition: scanned.length == numRows * numCols
-               *     Postcondition: view has been created as a rectangular 2-dimensional
-               *     array with numRows rows and numCols columns and the values in scanned
-               *     have been copied to view and are ordered as in the original rectangular
-               *     area of sky.
+               * @param numRows the number of rows represented in the view Precondition: numRows > 0
+               * @param numCols the number of columns represented in the view Precondition: numCols > 0
+               * @param scanned the scan data received from the telescope, stored in telescope order
+               *     Precondition: scanned.length == numRows * numCols Postcondition: view has been created as
+               *     a rectangular 2-dimensional array with numRows rows and numCols columns and the values in
+               *     scanned have been copied to view and are ordered as in the original rectangular area of
+               *     sky.
                */
-              public SkyView(int numRows, int numCols, double[] scanned)
-              {
+              public SkyView(int numRows, int numCols, double[] scanned) {
                   view = new double[numRows][numCols];
                   int scannedIndex = 0;
-                  for (int r = 0; r < numRows; r++)
-                  {
+                  for (int r = 0; r < numRows; r++) {
                       // if even row number go left to right */
-                      if (r % 2 == 0)
-                      {
-                          for (int c = 0; c < numCols; c++)
-                          {
+                      if (r % 2 == 0) {
+                          for (int c = 0; c < numCols; c++) {
                               view[r][c] = scanned[scannedIndex];
                               scannedIndex++;
                           }
-                      }
-                      else
-                      {
-                          for (int c = numCols - 1; c >= 0; c--)
-                          {
+                      } else {
+                          for (int c = numCols - 1; c >= 0; c--) {
                               view[r][c] = scanned[scannedIndex];
                               scannedIndex++;
                           }
@@ -449,29 +411,24 @@
                * @param startRow the first row index of the section
                * @param endRow the last row index of the section
                * @param startCol the first column index of the section
-               * @param endCol the last column index of the section Precondition: 0 <=
-          *     startRow <= endRow < view.length Precondition: 0 <= startCol <= endCol <
-               *     view[0].length
+               * @param endCol the last column index of the section Precondition: 0 <= startRow <= endRow <
+               *     view.length Precondition: 0 <= startCol <= endCol < view[0].length
                * @return the average of the values in the specified section of view
                */
-              public double getAverage(int startRow, int endRow, int startCol, int endCol)
-              {
+              public double getAverage(int startRow, int endRow, int startCol, int endCol) {
                   // *** Finish writing this method! ***
               }
 
               /** This is a main method for testing getAverage */
-              public static void main(String[] args)
-              {
-                  double[] startArray =
-                  {
-                      0.3, 0.7, 0.8, 0.4, 1.4, 1.1, 0.2, 0.5, 0.1, 1.6, 0.6, 0.9
-                  };
+              public static void main(String[] args) {
+                  double[] startArray = {0.3, 0.7, 0.8, 0.4, 1.4, 1.1, 0.2, 0.5, 0.1, 1.6, 0.6, 0.9};
                   SkyView sView = new SkyView(4, 3, startArray);
                   System.out.println(
                           "getAverage(1,2,0,1) should return 0.8 and returns "
                                   + sView.getAverage(1, 2, 0, 1));
               } // end of main
           } // end of class
+
           ]]>
         </code>
 
@@ -486,17 +443,14 @@
           // import java.util.Arrays;
           // import java.util.ArrayList;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
                   super("SkyView");
                   // CodeTestHelper.sort = true;
               }
 
               @Test
-              public void testMain1()
-              {
+              public void testMain1() {
                   boolean passed = false;
 
                   double[] val2 = {0.3, 0.7, 0.4, 0.8, 1.4, 1.1};
@@ -513,8 +467,7 @@
               }
 
               @Test
-              public void testMain2()
-              {
+              public void testMain2() {
                   boolean passed = false;
 
                   double[] val2 = {0.3, 0.7, 0.4, 0.8, 1.4, 1.1};
@@ -528,6 +481,7 @@
                   assertTrue(passed);
               }
           }
+
           ]]>
         </tests>
 

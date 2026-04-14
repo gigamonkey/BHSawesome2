@@ -82,24 +82,22 @@
         <![CDATA[
         import java.util.List;
 
-        public class ScrambledStrings
-        {
+        public class ScrambledStrings {
 
             /**
-             * Modifies wordList by replacing each word with its scrambled version,
-             * removing any words that are unchanged as a result of scrambling.
+             * Modifies wordList by replacing each word with its scrambled version, removing any words that
+             * are unchanged as a result of scrambling.
              *
-             * @param wordList the list of words Precondition: wordList contains only
-             *     non-null objects Postcondition: - all words unchanged by scrambling have
-             *     been removed from wordList - each of the remaining words has been
-             *     replaced by its scrambled version - the relative ordering of the entries
-             *     in wordList is the same as it was before the method was called
+             * @param wordList the list of words Precondition: wordList contains only non-null objects
+             *     Postcondition: - all words unchanged by scrambling have been removed from wordList - each
+             *     of the remaining words has been replaced by its scrambled version - the relative ordering
+             *     of the entries in wordList is the same as it was before the method was called
              */
-            public static void scrambleOrRemove(List<String> wordList)
-            {
+            public static void scrambleOrRemove(List<String> wordList) {
                 /* to be implemented in part b */
             }
         }
+
         ]]>
       </code>
 
@@ -764,16 +762,13 @@
           import java.util.Arrays;
 
           @SuppressWarnings("unchecked")
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
                   super("ScrambledStrings");
               }
 
               @Test
-              public void testMain() throws IOException
-              {
+              public void testMain() throws IOException {
                   String output = getMethodOutput("main");
                   String expect = "[TNA, BARCADABARA, PAPLE]";
                   boolean passed = output.contains(expect);
@@ -782,8 +777,7 @@
               }
 
               @Test
-              public void test1()
-              {
+              public void test1() {
                   ArrayList<String> wordList =
                           new ArrayList(Arrays.asList("TAN", "ABRACADABRA", "WHOA", "APPLE", "EGGS"));
 
@@ -799,14 +793,13 @@
                                   "true",
                                   "" + result,
                                   "scrambleOrRemove works for ArrayList #1: TAN, ABRACADABRA, WHOA, APPLE,"
-                                      + " EGGS");
+                                          + " EGGS");
 
                   assertTrue(passed);
               }
 
               @Test
-              public void test2()
-              {
+              public void test2() {
                   ArrayList<String> wordList = new ArrayList(Arrays.asList("TESTING", "ONE", "TWO", "THREE"));
 
                   ArrayList<String> wordListExpect = new ArrayList<String>(Arrays.asList());
@@ -824,6 +817,7 @@
                   assertTrue(passed);
               }
           }
+
           ]]>
         </tests>
 

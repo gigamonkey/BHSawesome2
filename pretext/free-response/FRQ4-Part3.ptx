@@ -49,30 +49,30 @@
 
       <code>
         <![CDATA[
-        public class SumOrSameGame
-        {
+        public class SumOrSameGame {
             private int[][] puzzle;
 
             /**
-            * Creates a two-dimensional array and fills it with random integers,
-            * as described in part (a)
-            * Precondition: numRows > 0; numCols > 0
-            */
-            public SumOrSameGame(int numRows, int numCols)
-            { /* to be implemented in part (a) */ }
-    
+             * Creates a two-dimensional array and fills it with random integers, as described in part (a)
+             * Precondition: numRows > 0; numCols > 0
+             */
+            public SumOrSameGame(int numRows, int numCols) {
+                /* to be implemented in part (a) */
+            }
+
             /**
-            * Identifies and clears an element of puzzle that can be paired with
-            * the element at the given row and column, as described in part (b)
-            * Preconditions: row and col are valid row and column indices in puzzle.
-            * The element at the given row and column is between 1 and 9, inclusive.
-            */
-            public boolean clearPair(int row, int col)
-            { /* to be implemented in part (b) */ }
-    
+             * Identifies and clears an element of puzzle that can be paired with the element at the given
+             * row and column, as described in part (b) Preconditions: row and col are valid row and column
+             * indices in puzzle. The element at the given row and column is between 1 and 9, inclusive.
+             */
+            public boolean clearPair(int row, int col) {
+                /* to be implemented in part (b) */
+            }
+
             /* There may be instance variables, constructors,
             and methods that are not shown. */
         }
+
         ]]>
       </code>
 
@@ -103,86 +103,84 @@
         <code>
           import java.util.Arrays;
 
-          public class SumOrSameGame
-          {
+          public class SumOrSameGame {
               private int[][] puzzle;
-    
+
               /**
-               * Identifies and clears an element of puzzle that can be paired with
-               * the element at the given row and column, as described in part (b)
-               * Preconditions: row and col are valid row and column indices in puzzle.
-               * The element at the given row and column is between 1 and 9, inclusive.
+               * Identifies and clears an element of puzzle that can be paired with the element at the given
+               * row and column, as described in part (b) Preconditions: row and col are valid row and column
+               * indices in puzzle. The element at the given row and column is between 1 and 9, inclusive.
                */
-              public boolean clearPair(int row, int col)
-              { 
-                  /* to be implemented in part (b) */ 
-        
+              public boolean clearPair(int row, int col) {
+                  /* to be implemented in part (b) */
 
               }
-    
+
               /* There may be instance variables, constructors,
               and methods that are not shown. */
-    
-              public static void main(String[] args)
-              {
+
+              public static void main(String[] args) {
                   int[][] p1 = {{0, 7, 9, 0}, {7, 4, 1, 6}, {8, 4, 1, 8}};
-        
+
                   SumOrSameGame g1 = new SumOrSameGame(p1);
                   System.out.println(g1);
                   System.out.println(g1.clearPair(0, 1));
                   System.out.println(g1);
                   System.out.println();
-        
+
                   int[][] p2 = {{1, 2, 3, 4}, {5, 6, 7, 8}, {5, 4, 1, 2}};
-        
+
                   g1 = new SumOrSameGame(p2);
                   System.out.println(g1);
                   System.out.println(g1.clearPair(2, 2));
                   System.out.println(g1);
                   System.out.println();
-        
+
                   int[][] p3 = {{8, 1, 0, 5}, {0, 4, 3, 6}, {3, 4, 5, 8}};
-        
+
                   g1 = new SumOrSameGame(p3);
                   System.out.println(g1);
                   System.out.println(g1.clearPair(1, 1));
                   System.out.println(g1);
                   System.out.println();
-        
+
                   int[][] p4 = {{1, 7, 9}, {2, 6, 5}, {4, 4, 4}};
-        
+
                   g1 = new SumOrSameGame(p4);
                   System.out.println(g1);
                   System.out.println(g1.clearPair(0, 2));
                   System.out.println(g1);
                   System.out.println();
               }
-    
-              public String toString()
-              {
-                  return Arrays.deepToString(puzzle).replaceAll("], ", "\n").replaceAll(",","").replaceAll("\\[","").replaceAll("]",""); //replaceAll("\\[","\\{").replaceAll("\\]","\\}");
+
+              public String toString() {
+                  return Arrays.deepToString(puzzle)
+                          .replaceAll("], ", "\n")
+                          .replaceAll(",", "")
+                          .replaceAll("\\[", "")
+                          .replaceAll("]", ""); // replaceAll("\\[","\\{").replaceAll("\\]","\\}");
               }
-    
+
               public int[][] getPuzzle() {
                   return puzzle;
               }
-    
-              public SumOrSameGame(int[][] p)
-              { 
+
+              public SumOrSameGame(int[][] p) {
                   puzzle = p;
               }
-    
           }
+
         </code>
 
         <tests>
           import static org.junit.Assert.*;
+
           import org.junit.*;
+
           import java.io.*;
           import java.util.Arrays;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
               public void test00() {
                   int[][] puz = {{3, 4, 4}, {8, 5, 9}, {8, 7, 6}};
@@ -190,7 +188,7 @@
                   boolean ans = true;
 
                   boolean passed = test(puz, res, ans, 0, 1);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               @Test
@@ -200,7 +198,7 @@
                   boolean ans = true;
 
                   boolean passed = test(puz, res, ans, 1, 0);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               @Test
@@ -210,7 +208,7 @@
                   boolean ans = true;
 
                   boolean passed = test(puz, res, ans, 1, 1);
-                  assertTrue(passed);         
+                  assertTrue(passed);
               }
 
               @Test
@@ -220,7 +218,7 @@
                   boolean ans = false;
 
                   boolean passed = test(puz, res, ans, 2, 0);
-                  assertTrue(passed);          
+                  assertTrue(passed);
               }
 
               @Test
@@ -230,11 +228,11 @@
                   boolean ans = false;
 
                   boolean passed = test(puz, res, ans, 2, 1);
-                  assertTrue(passed);      
+                  assertTrue(passed);
               }
 
               private boolean test(int[][] puz, String res, boolean ans, int r, int c) {
-                  String desc = "Testing clearPair(" + r + ", " + c + ") on\n"+  toString(puz);
+                  String desc = "Testing clearPair(" + r + ", " + c + ") on\n" + toString(puz);
                   String expected = ans + "\n" + res;
                   String actual = "";
                   boolean passed = false;
@@ -251,15 +249,19 @@
                       actual = "Code caused an error";
                   }
 
-                  getResults(expected, actual, desc, passed);        
+                  getResults(expected, actual, desc, passed);
                   return passed;
               }
 
-              private String toString(int[][] puzzle)
-              {
-                  return Arrays.deepToString(puzzle).replaceAll("], ", "\n").replaceAll(",","").replaceAll("\\[","").replaceAll("]",""); //replaceAll("\\[","\\{").replaceAll("\\]","\\}");
+              private String toString(int[][] puzzle) {
+                  return Arrays.deepToString(puzzle)
+                          .replaceAll("], ", "\n")
+                          .replaceAll(",", "")
+                          .replaceAll("\\[", "")
+                          .replaceAll("]", ""); // replaceAll("\\[","\\{").replaceAll("\\]","\\}");
               }
           }
+
         </tests>
 
       </program>
@@ -318,83 +320,84 @@
         <code>
           import java.util.Arrays;
 
-          public class SumOrSameGame
-          {
+          public class SumOrSameGame {
               private int[][] puzzle;
-    
-              /**
-               * Identifies and clears an element of puzzle that can be paired with
-               * the element at the given row and column, as described in part (b)
-               * Preconditions: row and col are valid row and column indices in puzzle.
-               * The element at the given row and column is between 1 and 9, inclusive.
-               */
-              public boolean clearPair(int row, int col)
-              { 
-                  /* to be implemented in part (b) */ 
 
-        
+              /**
+               * Identifies and clears an element of puzzle that can be paired with the element at the given
+               * row and column, as described in part (b) Preconditions: row and col are valid row and column
+               * indices in puzzle. The element at the given row and column is between 1 and 9, inclusive.
+               */
+              public boolean clearPair(int row, int col) {
+                  /* to be implemented in part (b) */
+
               }
-    
+
               /* There may be instance variables, constructors,
               and methods that are not shown. */
-    
-              public static void main(String[] args)
-              {
+
+              public static void main(String[] args) {
                   int[][] p1 = {{0, 7, 9, 0}, {7, 4, 1, 6}, {8, 4, 1, 8}};
-        
+
                   SumOrSameGame g1 = new SumOrSameGame(p1);
                   System.out.println(g1);
                   System.out.println(g1.clearPair(0, 1));
                   System.out.println(g1);
                   System.out.println();
-        
+
                   int[][] p2 = {{1, 2, 3, 4}, {5, 6, 7, 8}, {5, 4, 1, 2}};
-        
+
                   g1 = new SumOrSameGame(p2);
                   System.out.println(g1);
                   System.out.println(g1.clearPair(2, 2));
                   System.out.println(g1);
                   System.out.println();
-        
+
                   int[][] p3 = {{8, 1, 0, 5}, {0, 4, 3, 6}, {3, 4, 5, 8}};
-        
+
                   g1 = new SumOrSameGame(p3);
                   System.out.println(g1);
                   System.out.println(g1.clearPair(1, 1));
                   System.out.println(g1);
                   System.out.println();
-        
+
                   int[][] p4 = {{1, 7, 9}, {2, 6, 5}, {4, 4, 4}};
-        
+
                   g1 = new SumOrSameGame(p4);
                   System.out.println(g1);
                   System.out.println(g1.clearPair(0, 2));
                   System.out.println(g1);
                   System.out.println();
               }
-    
+
               public String toString() {
-                  return Arrays.deepToString(puzzle).replaceAll("], ", "\n").replaceAll(",","").replaceAll("\\[","").replaceAll("]",""); //replaceAll("\\[","\\{").replaceAll("\\]","\\}");
+                  return Arrays.deepToString(puzzle)
+                          .replaceAll("], ", "\n")
+                          .replaceAll(",", "")
+                          .replaceAll("\\[", "")
+                          .replaceAll("]", ""); // replaceAll("\\[","\\{").replaceAll("\\]","\\}");
               }
-    
+
               public int[][] getPuzzle() {
                   return puzzle;
               }
-    
-              public SumOrSameGame(int[][] p) { 
+
+              public SumOrSameGame(int[][] p) {
                   puzzle = p;
-              }  
+              }
           }
+
         </code>
 
         <tests>
           import static org.junit.Assert.*;
+
           import org.junit.*;
+
           import java.io.*;
           import java.util.Arrays;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
               public void test00() {
                   int[][] puz = {{3, 4, 4}, {8, 5, 9}, {8, 7, 6}};
@@ -402,7 +405,7 @@
                   boolean ans = true;
 
                   boolean passed = test(puz, res, ans, 0, 1);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               @Test
@@ -412,7 +415,7 @@
                   boolean ans = true;
 
                   boolean passed = test(puz, res, ans, 1, 0);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               @Test
@@ -422,7 +425,7 @@
                   boolean ans = true;
 
                   boolean passed = test(puz, res, ans, 1, 1);
-                  assertTrue(passed);         
+                  assertTrue(passed);
               }
 
               @Test
@@ -432,7 +435,7 @@
                   boolean ans = false;
 
                   boolean passed = test(puz, res, ans, 2, 0);
-                  assertTrue(passed);          
+                  assertTrue(passed);
               }
 
               @Test
@@ -442,11 +445,11 @@
                   boolean ans = false;
 
                   boolean passed = test(puz, res, ans, 2, 1);
-                  assertTrue(passed);      
+                  assertTrue(passed);
               }
 
               private boolean test(int[][] puz, String res, boolean ans, int r, int c) {
-                  String desc = "Testing clearPair(" + r + ", " + c + ") on\n"+  toString(puz);
+                  String desc = "Testing clearPair(" + r + ", " + c + ") on\n" + toString(puz);
                   String expected = ans + "\n" + res;
                   String actual = "";
                   boolean passed = false;
@@ -463,15 +466,19 @@
                       actual = "Code caused an error";
                   }
 
-                  getResults(expected, actual, desc, passed);        
+                  getResults(expected, actual, desc, passed);
                   return passed;
               }
 
-              private String toString(int[][] puzzle)
-              {
-                  return Arrays.deepToString(puzzle).replaceAll("], ", "\n").replaceAll(",","").replaceAll("\\[","").replaceAll("]",""); //replaceAll("\\[","\\{").replaceAll("\\]","\\}");
+              private String toString(int[][] puzzle) {
+                  return Arrays.deepToString(puzzle)
+                          .replaceAll("], ", "\n")
+                          .replaceAll(",", "")
+                          .replaceAll("\\[", "")
+                          .replaceAll("]", ""); // replaceAll("\\[","\\{").replaceAll("\\]","\\}");
               }
           }
+
         </tests>
 
       </program>

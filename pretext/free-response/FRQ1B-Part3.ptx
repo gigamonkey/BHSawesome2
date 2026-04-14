@@ -86,14 +86,14 @@
 
       <code>
         /**
-         * Returns a version of the subject where every instance of flaggedWord 
+         * Returns a version of the subject where every instance of flaggedWord
          * is replaced by "[REDACTED]".
          * Precondition: subject and flaggedWord are not null.
          */
         public String sanitizeSubject(String subject, String flaggedWord) {
-    
+
             // TO BE IMPLEMENTED IN PART (B)
-    
+
         }
       </code>
 
@@ -158,10 +158,7 @@
         <code>
           public class EmailFilter {
 
-              public static String sanitizeSubject(String subject, String flaggedWord) {
-
-        
-              }
+              public static String sanitizeSubject(String subject, String flaggedWord) {}
 
               public static void main(String[] args) {
                   // Test 1: Standard case with one word
@@ -179,18 +176,28 @@
                   System.out.println(EmailFilter.sanitizeSubject("Hello World", "Secret"));
               }
           }
+
         </code>
 
         <tests>
           import static org.junit.Assert.*;
+
           import org.junit.*;
+
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              private String[] input1 = {"spam spam spam", "Danger Zone", "The end is near", "HiddenSecret", "banana"};
+          public class RunestoneTests extends CodeTestHelper {
+              private String[] input1 = {
+                  "spam spam spam", "Danger Zone", "The end is near", "HiddenSecret", "banana"
+              };
               private String[] input2 = {"spam", "Danger", "near", "Secret", "ana"};
-              private String[] expected = {"[REDACTED] [REDACTED] [REDACTED]", "[REDACTED] Zone", "The end is [REDACTED]", "Hidden[REDACTED]", "b[REDACTED]na"};
+              private String[] expected = {
+                  "[REDACTED] [REDACTED] [REDACTED]",
+                  "[REDACTED] Zone",
+                  "The end is [REDACTED]",
+                  "Hidden[REDACTED]",
+                  "b[REDACTED]na"
+              };
 
               @Test
               public void test0() {
@@ -232,8 +239,8 @@
                       actual = "The code caused an exception";
                   }
 
-                  boolean passed = getResults(expected[i],actual,desc);
-                  return passed;        
+                  boolean passed = getResults(expected[i], actual, desc);
+                  return passed;
               }
 
               private boolean stringMatch(String str1, String str2) {
@@ -243,6 +250,7 @@
                   return str1.contains(str2);
               }
           }
+
         </tests>
 
       </program>
@@ -276,16 +284,16 @@
         <![CDATA[
         public class SequenceAnalyzer {
             /**
-             * Counts doublets (two identical consecutive characters) that 
-             * appear AFTER the first occurrence of startMarker.
-             * Precondition: dna is not null, dna.length() >= 2.
+             * Counts doublets (two identical consecutive characters) that appear AFTER the first occurrence
+             * of startMarker. Precondition: dna is not null, dna.length() >= 2.
              */
             public static int countValidDoublets(String dna, String startMarker) {
-        
+
                 /* TO BE IMPLEMENTED */
-        
+
             }
         }
+
         ]]>
       </code>
 
@@ -313,45 +321,47 @@
           <![CDATA[
           public class SequenceAnalyzer {
               /**
-               * Counts doublets (two identical consecutive characters) that 
-               * appear AFTER the first occurrence of startMarker.
-               * Precondition: dna is not null, dna.length() >= 2.
+               * Counts doublets (two identical consecutive characters) that appear AFTER the first occurrence
+               * of startMarker. Precondition: dna is not null, dna.length() >= 2.
                */
-              public static int countValidDoublets(String dna, String startMarker) {
-        
-              }
-    
+              public static int countValidDoublets(String dna, String startMarker) {}
+
               public static void main(String[] args) {
                   // Test 1: Standard DNA sequence
                   // Marker 'T' is at index 1. Doublets after 'T': 'GG'
                   String dna1 = "ATGGC";
                   System.out.println("DNA: " + dna1 + " | Marker: T");
-                  System.out.println("Doublets found: " + SequenceAnalyzer.countValidDoublets(dna1, "T")); // Expected: 1
+                  System.out.println(
+                          "Doublets found: " + SequenceAnalyzer.countValidDoublets(dna1, "T")); // Expected: 1
                   System.out.println();
 
                   // Test 2: Marker at the very beginning
                   // Marker 'A' is at index 0. Doublets: 'CC' and 'CC' (for 'CCC')
                   String dna2 = "ACCCG";
                   System.out.println("DNA: " + dna2 + " | Marker: A");
-                  System.out.println("Doublets found: " + SequenceAnalyzer.countValidDoublets(dna2, "A")); // Expected: 2
+                  System.out.println(
+                          "Doublets found: " + SequenceAnalyzer.countValidDoublets(dna2, "A")); // Expected: 2
                   System.out.println();
 
                   // Test 3: Marker not found
                   String dna3 = "GATTACA";
                   System.out.println("DNA: " + dna3 + " | Marker: X");
-                  System.out.println("Doublets found: " + SequenceAnalyzer.countValidDoublets(dna3, "X")); // Expected: 0
+                  System.out.println(
+                          "Doublets found: " + SequenceAnalyzer.countValidDoublets(dna3, "X")); // Expected: 0
               }
           }
+
           ]]>
         </code>
 
         <tests>
           import static org.junit.Assert.*;
+
           import org.junit.*;
+
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               private String[] input1 = {"AATTAA", "GGGGG", "ATGCGG", "ATGC", "AABBAA"};
               private String[] input2 = {"T", "G", "GG", "C", "B"};
               private String[] expected = {"2", "4", "1", "0", "2"};
@@ -396,8 +406,8 @@
                       actual = "The code caused an exception";
                   }
 
-                  boolean passed = getResults(expected[i],actual,desc);
-                  return passed;        
+                  boolean passed = getResults(expected[i], actual, desc);
+                  return passed;
               }
 
               private boolean stringMatch(String str1, String str2) {
@@ -407,6 +417,7 @@
                   return str1.contains(str2);
               }
           }
+
         </tests>
 
       </program>
@@ -433,12 +444,12 @@
 
       <code>
         /**
-         * Returns a version of message where every instance of abbr 
+         * Returns a version of message where every instance of abbr
          * is replaced by fullWord.
          * Precondition: message, abbr, and fullWord are not null.
          */
         public String expandText(String message, String abbr, String fullWord) {
-    
+
             /* TO BE IMPLEMENTED BELOW */
         }
       </code>
@@ -481,17 +492,12 @@
       <program interactive="activecode" language="java">
 
         <code>
-          public class TextExpander
-          {
+          public class TextExpander {
               /**
-               * Returns a version of message where every instance of abbr 
-               * is replaced by fullWord.
+               * Returns a version of message where every instance of abbr is replaced by fullWord.
                * Precondition: message, abbr, and fullWord are not null.
                */
-              public static String expandText(String message, String abbr, String fullWord) 
-              {
-        
-              }
+              public static String expandText(String message, String abbr, String fullWord) {}
 
               public static void main(String[] args) {
                   // Test 1: Standard replacement
@@ -512,19 +518,27 @@
                   System.out.println("Result: " + expandText(m3, "bye", "goodbye"));
               }
           }
+
         </code>
 
         <tests>
           import static org.junit.Assert.*;
+
           import org.junit.*;
+
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               private String[] input1 = {"asap please", "Call me asap", "aaaaa", "JK...JK", "100%"};
               private String[] input2 = {"asap", "asap", "aa", "JK", "100"};
               private String[] input3 = {"as soon as possible", "soon", "b", "Just Kidding", "One Hundred"};
-              private String[] expected = {"as soon as possible please", "Call me soon", "bba", "Just Kidding...Just Kidding", "One Hundred%"};
+              private String[] expected = {
+                  "as soon as possible please",
+                  "Call me soon",
+                  "bba",
+                  "Just Kidding...Just Kidding",
+                  "One Hundred%"
+              };
 
               @Test
               public void test0() {
@@ -566,8 +580,8 @@
                       actual = "The code caused an exception";
                   }
 
-                  boolean passed = getResults(expected[i],actual,desc);
-                  return passed;        
+                  boolean passed = getResults(expected[i], actual, desc);
+                  return passed;
               }
 
               private boolean stringMatch(String str1, String str2) {
@@ -577,6 +591,7 @@
                   return str1.contains(str2);
               }
           }
+
         </tests>
 
       </program>

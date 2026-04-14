@@ -42,13 +42,11 @@
       <program interactive="activecode" language="java">
 
         <code>
-          class NumberGroup
-          {
+          class NumberGroup {
               /* Implementation not shown */
           }
 
-          public class Range extends NumberGroup
-          {
+          public class Range extends NumberGroup {
               // Write the instance variables for the Range class here
 
               // Write the Range constructor with 2 parameters
@@ -58,17 +56,15 @@
               // given number is in the range.
 
               // Main method to test the class
-              public static void main(String[] args)
-              {
+              public static void main(String[] args) {
                   System.out.println("This is testing the constructor");
                   Range test = new Range(5, 8);
                   // Test the contains method
-                  System.out.println(
-                          "Does the range contain 4 (should be false): " + test.contains(4));
-                  System.out.println(
-                          "Does the range contain 5 (should be true): " + test.contains(5));
+                  System.out.println("Does the range contain 4 (should be false): " + test.contains(4));
+                  System.out.println("Does the range contain 5 (should be true): " + test.contains(5));
               } // end of main
           } // end of class
+
         </code>
 
         <tests>
@@ -80,23 +76,20 @@
 
           // import java.util.ArrayList;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
                   super("Range");
                   // CodeTestHelper.sort = true;
               }
 
               @Test
-              public void testMain1()
-              {
+              public void testMain1() {
                   boolean passed = false;
 
                   String expect =
                           "This is testing the constructor\n"
-                              + "Does the range contain 4 (should be false): false\n"
-                              + "Does the range contain 5 (should be true): true";
+                                  + "Does the range contain 4 (should be false): false\n"
+                                  + "Does the range contain 5 (should be true): true";
 
                   String output = getMethodOutput("main");
 
@@ -105,8 +98,7 @@
               }
 
               @Test
-              public void testMain2()
-              {
+              public void testMain2() {
                   boolean passed = false;
 
                   Range test = new Range(5, 80);
@@ -119,8 +111,7 @@
               }
 
               @Test
-              public void testMain3()
-              {
+              public void testMain3() {
                   boolean passed = false;
 
                   Range test = new Range(5, 80);
@@ -132,6 +123,7 @@
                   assertTrue(passed);
               }
           }
+
         </tests>
 
       </program>

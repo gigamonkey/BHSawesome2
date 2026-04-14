@@ -116,15 +116,13 @@
           <![CDATA[
           public class StringProcessor {
               // Corrected method name and parameter type
-              public static int countVowels(String phrase) {
-        
-              }
+              public static int countVowels(String phrase) {}
 
               public static boolean isVowel(String letter) {
                   String vowels = "aeiouAEIOU";
                   return letter.length() == 1 && vowels.contains(letter);
               }
-    
+
               public static void main(String[] args) {
                   // Test 1: Standard sentence
                   String s1 = "Java Programming";
@@ -144,16 +142,18 @@
                   System.out.println("Vowels: " + StringProcessor.countVowels(s3)); // Expected: 0
               }
           }
+
           ]]>
         </code>
 
         <tests>
           import static org.junit.Assert.*;
+
           import org.junit.*;
+
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               private String[] input = {"Apple", "12345!", "", " ", "Queueing"};
               private String[] expected = {"2", "0", "0", "0", "5"};
 
@@ -197,8 +197,8 @@
                       actual = "The code caused an exception";
                   }
 
-                  boolean passed = getResults(expected[i],actual,desc);
-                  return passed;        
+                  boolean passed = getResults(expected[i], actual, desc);
+                  return passed;
               }
 
               private boolean stringMatch(String str1, String str2) {
@@ -208,6 +208,7 @@
                   return str1.contains(str2);
               }
           }
+
         </tests>
 
       </program>
@@ -242,28 +243,33 @@
               public static void main(String[] args) {
                   // Driver examples
                   System.out.println("Input: self contained underwater breathing apparatus");
-                  System.out.println("Result: " + makeAbbreviation("self contained underwater breathing apparatus"));
+                  System.out.println(
+                          "Result: " + makeAbbreviation("self contained underwater breathing apparatus"));
 
                   System.out.println("\nInput: North Atlantic Treaty Organization");
                   System.out.println("Result: " + makeAbbreviation("North Atlantic Treaty Organization"));
 
                   System.out.println("Input: 'z'");
-                  System.out.println("Result: " + Abbreviator.makeAbbreviation("z")); 
-        
+                  System.out.println("Result: " + Abbreviator.makeAbbreviation("z"));
+
                   System.out.println("Input: '3 blind mice'");
                   System.out.println("Result: " + Abbreviator.makeAbbreviation("3 blind mice"));
               }
           }
+
         </code>
 
         <tests>
           import static org.junit.Assert.*;
+
           import org.junit.*;
+
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              private String[] input = {"as soon as possible", "Java", "Frequently Asked Questions", "a b c", "object oriented"};
+          public class RunestoneTests extends CodeTestHelper {
+              private String[] input = {
+                  "as soon as possible", "Java", "Frequently Asked Questions", "a b c", "object oriented"
+              };
               private String[] expected = {"ASAP", "J", "FAQ", "ABC", "OO"};
 
               @Test
@@ -306,8 +312,8 @@
                       actual = "The code caused an exception";
                   }
 
-                  boolean passed = getResults(expected[i],actual,desc);
-                  return passed;        
+                  boolean passed = getResults(expected[i], actual, desc);
+                  return passed;
               }
 
               private boolean stringMatch(String str1, String str2) {
@@ -317,6 +323,7 @@
                   return str1.contains(str2);
               }
           }
+
         </tests>
 
       </program>
@@ -340,9 +347,7 @@
         <code>
           <![CDATA[
           public class WordTransformer {
-              public static String maskVowels(String word) {
-        
-              }
+              public static String maskVowels(String word) {}
 
               public static boolean isVowel(String letter) {
                   String vowels = "aeiouAEIOU";
@@ -368,16 +373,18 @@
                   System.out.println("Result: " + WordTransformer.maskVowels(w3)); // Expected: it
               }
           }
+
           ]]>
         </code>
 
         <tests>
           import static org.junit.Assert.*;
+
           import org.junit.*;
+
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               private String[] input = {"banana", "sky", "aeiou", "Cat", "Fly"};
               private String[] expected = {"b*n*n*", "sky", "*****", "C*t", "Fly"};
 
@@ -421,8 +428,8 @@
                       actual = "The code caused an exception";
                   }
 
-                  boolean passed = getResults(expected[i],actual,desc);
-                  return passed;        
+                  boolean passed = getResults(expected[i], actual, desc);
+                  return passed;
               }
 
               private boolean stringMatch(String str1, String str2) {
@@ -432,6 +439,7 @@
                   return str1.contains(str2);
               }
           }
+
         </tests>
 
       </program>
@@ -461,41 +469,44 @@
 
         <code>
           public class PhraseAnalyzer {
-              public static int countOccurrences(String text, String target) {
-        
-              }
+              public static int countOccurrences(String text, String target) {}
 
               public static void main(String[] args) {
                   // Test 1: Multiple occurrences
                   String text1 = "cat bat rat cat";
                   String target1 = "cat";
                   System.out.println("Text: " + text1 + " | Target: " + target1);
-                  System.out.println("Count: " + PhraseAnalyzer.countOccurrences(text1, target1)); // Expected: 2
+                  System.out.println(
+                          "Count: " + PhraseAnalyzer.countOccurrences(text1, target1)); // Expected: 2
                   System.out.println();
 
                   // Test 2: Target not in text
                   String text2 = "The quick brown fox";
                   String target2 = "dog";
                   System.out.println("Text: " + text2 + " | Target: " + target2);
-                  System.out.println("Count: " + PhraseAnalyzer.countOccurrences(text2, target2)); // Expected: 0
+                  System.out.println(
+                          "Count: " + PhraseAnalyzer.countOccurrences(text2, target2)); // Expected: 0
                   System.out.println();
 
                   // Test 3: Entire text is the target
                   String text3 = "Java";
                   String target3 = "Java";
                   System.out.println("Text: " + text3 + " | Target: " + target3);
-                  System.out.println("Count: " + PhraseAnalyzer.countOccurrences(text3, target3)); // Expected: 1
+                  System.out.println(
+                          "Count: " + PhraseAnalyzer.countOccurrences(text3, target3)); // Expected: 1
               }
           }
+
         </code>
 
         <tests>
           import static org.junit.Assert.*;
+
           import org.junit.*;
+
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               private String[] input1 = {"aaaaa", "HELLO hello", "Red Blue Red", "Empty", "abc"};
               private String[] input2 = {"aa", "hello", "Red", "a", "abcd"};
               private String[] expected = {"2", "1", "2", "0", "0"};
@@ -540,8 +551,8 @@
                       actual = "The code caused an exception";
                   }
 
-                  boolean passed = getResults(expected[i],actual,desc);
-                  return passed;        
+                  boolean passed = getResults(expected[i], actual, desc);
+                  return passed;
               }
 
               private boolean stringMatch(String str1, String str2) {
@@ -551,6 +562,7 @@
                   return str1.contains(str2);
               }
           }
+
         </tests>
 
       </program>

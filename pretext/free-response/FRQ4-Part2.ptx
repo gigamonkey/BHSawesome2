@@ -44,14 +44,14 @@
         {
             public static final int MAX = /* value not shown */;
             private int[][] grid;
-    
+
             /** Fills all elements of grid with randomly generated values, as described in part (a)
             * Precondition: grid is not null.
             * grid has at least one element.
             */
             public void repopulate()
             { /* to be implemented in part (a) */ }
-    
+
             /** Returns the number of columns in grid that are in increasing order, as described
             * in part (b)
             * Precondition: grid is not null.
@@ -59,7 +59,7 @@
             */
             public int countIncreasingCols()
             { /* to be implemented in part (b) */ }
-    
+
             // There may be instance variables, constructors, and methods that are not shown.
         }
       </code>
@@ -91,109 +91,105 @@
         <code>
           import java.util.Arrays;
 
-          public class Data
-          {
+          public class Data {
               public static int MAX;
               private int[][] grid;
 
-              /** Fills all elements of grid with randomly generated values, as described in part (a)
-               * Precondition: grid is not null.
-               * grid has at least one element.
+              /**
+               * Fills all elements of grid with randomly generated values, as described in part (a)
+               * Precondition: grid is not null. grid has at least one element.
                */
-              public void repopulate()
-              { 
-                  /* to be implemented in part (a) */ 
-        
+              public void repopulate() {
+                  /* to be implemented in part (a) */
+
               }
 
               // There may be instance variables, constructors, and methods that are not shown.
 
               public static void main(String[] args) {
                   Data d1 = new Data(100, 3, 3);
-        
+
                   System.out.println(d1);
                   System.out.println();
-        
+
                   d1.repopulate();
                   System.out.println(d1);
                   System.out.println();
-        
+
                   d1.repopulate();
                   System.out.println(d1);
                   System.out.println();
-        
+
                   d1 = new Data(500, 3, 5);
-        
+
                   System.out.println(d1);
                   System.out.println();
-        
+
                   d1.repopulate();
                   System.out.println(d1);
                   System.out.println();
-        
+
                   d1.repopulate();
                   System.out.println(d1);
               }
-    
+
               public Data(int max, int rows, int cols) {
                   MAX = max;
                   grid = new int[rows][cols];
               }
-    
-              public int[][] getGrid()
-              {
+
+              public int[][] getGrid() {
                   return grid;
               }
-    
+
               public void setGrid(int[][] g) {
                   grid = g;
               }
-    
-              public String toString()
-              {
+
+              public String toString() {
                   return Arrays.deepToString(grid).replaceAll("], ", "],\n");
               }
           }
+
         </code>
 
         <tests>
           <![CDATA[
           import static org.junit.Assert.*;
-          import org.junit.*;
-          import java.io.*;
-          import java.util.Arrays;
-          import java.util.ArrayList;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
               @Test
               public void test00() {
                   boolean passed = test(100, 3, 3);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               @Test
               public void test01() {
                   boolean passed = test(200, 3, 6);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               @Test
               public void test02() {
                   boolean passed = test(100, 3, 2);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               @Test
               public void test03() {
                   boolean passed = test(500, 2, 4);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               @Test
               public void test04() {
                   boolean passed = test(500, 2, 8);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               private boolean test(int max, int r, int c) {
@@ -214,7 +210,7 @@
                       actual = "Code caused an error";
                   }
 
-                  getResults(expected, actual, desc, passed);        
+                  getResults(expected, actual, desc, passed);
                   return passed;
               }
 
@@ -223,19 +219,15 @@
 
                   for (int r = 0; r < grid.length; r++) {
                       for (int c = 0; c < grid[r].length; c++) {
-                          if (grid[r][c] % 100 == 0)
-                              return "No multiples of 100";
+                          if (grid[r][c] % 100 == 0) return "No multiples of 100";
 
-                          if (grid[r][c] % 10 != 0)
-                              return "No non-multiples of 10";
+                          if (grid[r][c] % 10 != 0) return "No non-multiples of 10";
 
-                          if (grid[r][c] > max)
-                              return "No numbers greater than max";
+                          if (grid[r][c] > max) return "No numbers greater than max";
 
-                          if (c > 0 && grid[r][c] == grid[r][c-1])
-                              same++;
+                          if (c > 0 && grid[r][c] == grid[r][c - 1]) same++;
                       }
-                  }        
+                  }
 
                   if (same > grid.length * grid[0].length / 2)
                       return ": Too many the same value - seems not random";
@@ -249,8 +241,8 @@
 
                   return str1.contains(str2);
               }
-
           }
+
           ]]>
         </tests>
 
@@ -304,21 +296,17 @@
         <code>
           import java.util.Arrays;
 
-          public class Data
-          {
+          public class Data {
               public static int MAX;
               private int[][] grid;
 
-              /** Returns the number of columns in grid that are in increasing order, as described
-               * in part (b)
-               * Precondition: grid is not null.
-               * grid has at least one element.
+              /**
+               * Returns the number of columns in grid that are in increasing order, as described in part (b)
+               * Precondition: grid is not null. grid has at least one element.
                */
-              public int countIncreasingCols()
-              { 
-                  /* to be implemented in part (b) */ 
-        
-        
+              public int countIncreasingCols() {
+                  /* to be implemented in part (b) */
+
               }
 
               // There may be instance variables, constructors, and methods that are not shown.
@@ -328,47 +316,45 @@
                   Data d1 = new Data(grid1);
                   System.out.println(d1);
                   System.out.println(d1.countIncreasingCols());
-        
+
                   int[][] grid2 = {{10, 540, 440, 440}, {220, 450, 440, 190}};
-        
+
                   d1 = new Data(grid2);
                   System.out.println(d1);
                   System.out.println(d1.countIncreasingCols());
-        
               }
-    
+
               public Data(int[][] g) {
                   grid = g;
               }
-    
-              public int[][] getGrid()
-              {
+
+              public int[][] getGrid() {
                   return grid;
               }
-    
-              public String toString()
-              {
+
+              public String toString() {
                   return Arrays.deepToString(grid).replaceAll("], ", "],\n");
               }
           }
+
         </code>
 
         <tests>
           import static org.junit.Assert.*;
-          import org.junit.*;
-          import java.io.*;
-          import java.util.Arrays;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              int[] output = {0, 2, 0, 5, 2};    
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              int[] output = {0, 2, 0, 5, 2};
 
               @Test
               public void test00() {
                   int[][] grid = {{60, 70, 80}, {70, 10, 60}, {10, 90, 20}};
 
                   boolean passed = test(0, grid);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               @Test
@@ -376,37 +362,43 @@
                   int[][] grid = {{10, 50, 60}, {20, 70, 50}, {30, 80, 60}};
 
                   boolean passed = test(1, grid);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               @Test
               public void test02() {
-                  int[][] grid = {{90, 480, 90, 220, 290}, {320, 140, 70, 110, 30}, {110, 270, 460, 250, 480}};
+                  int[][] grid = {
+                      {90, 480, 90, 220, 290}, {320, 140, 70, 110, 30}, {110, 270, 460, 250, 480}
+                  };
 
                   boolean passed = test(2, grid);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               @Test
               public void test03() {
-                  int[][] grid = {{ 90, 140,  200, 140, 50}, 
-                                  {130, 480, 220, 260, 190}, 
-                                  {240, 700, 340, 500, 290}};
+                  int[][] grid = {
+                      {90, 140, 200, 140, 50},
+                      {130, 480, 220, 260, 190},
+                      {240, 700, 340, 500, 290}
+                  };
 
                   boolean passed = test(3, grid);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               @Test
               public void test04() {
-                  int[][] grid = {{320,  20, 240}, 
-                                  {200, 130, 240}, 
-                                  {120, 260, 240}, 
-                                  {80, 440, 240}, 
-                                  {40, 520, 240}};
+                  int[][] grid = {
+                      {320, 20, 240},
+                      {200, 130, 240},
+                      {120, 260, 240},
+                      {80, 440, 240},
+                      {40, 520, 240}
+                  };
 
                   boolean passed = test(4, grid);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               private boolean test(int i, int[][] grid) {
@@ -427,10 +419,11 @@
                       actual = "Code caused an error";
                   }
 
-                  getResults(expected, actual, desc, passed);        
+                  getResults(expected, actual, desc, passed);
                   return passed;
               }
           }
+
         </tests>
 
       </program>

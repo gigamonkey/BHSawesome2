@@ -99,15 +99,10 @@
       <program interactive="activecode" language="java">
 
         <code>
-          public class EmailParser
-          {
-              public static String getDomain(String email) {
-        
-        
-              }
-    
-              public static void main(String[] args)
-              {
+          public class EmailParser {
+              public static String getDomain(String email) {}
+
+              public static void main(String[] args) {
                   // Test Case 1: Standard email
                   String email1 = "student@school.edu";
                   System.out.println("Test 1: " + email1);
@@ -132,22 +127,32 @@
                   String email4 = "invalid-email";
                   System.out.println("Edge Case (No @): " + email4);
                   System.out.println("Expected: invalid-email");
-                  System.out.println("Actual: " + EmailParser.getDomain(email4)); 
+                  System.out.println("Actual: " + EmailParser.getDomain(email4));
               }
           }
+
         </code>
 
         <tests>
           <![CDATA[
           import static org.junit.Assert.*;
-          import org.junit.*;
-          import java.io.*;import java.util.Arrays;
-          import java.util.ArrayList;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              private String[] email = {"nina@gmail.com", "user@me.co", "boss@mail.uk.edu", "a@work.com", "@nameless.com", "bad-input.com"};
-              private String[] expected = {"gmail.com", "me.co", "mail.uk.edu", "work.com", "nameless.com", "bad-input.com"};
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              private String[] email = {
+                  "nina@gmail.com",
+                  "user@me.co",
+                  "boss@mail.uk.edu",
+                  "a@work.com",
+                  "@nameless.com",
+                  "bad-input.com"
+              };
+              private String[] expected = {
+                  "gmail.com", "me.co", "mail.uk.edu", "work.com", "nameless.com", "bad-input.com"
+              };
 
               @Test
               public void test0() {
@@ -184,16 +189,17 @@
                   String actual = "";
 
                   try {
-                      actual = "" + EmailParser.getDomain(email[i]);            
-                  }catch(Exception e) {
+                      actual = "" + EmailParser.getDomain(email[i]);
+                  } catch (Exception e) {
                       actual = "The code caused an exception";
                   }
 
                   boolean passed = expected[i].equals(actual) && !actual.contains("@");
                   getResults(expected[i], actual, desc, passed);
-                  return passed;        
+                  return passed;
               }
           }
+
           ]]>
         </tests>
 
@@ -217,10 +223,8 @@
 
         <code>
           public class PhoneProcessor {
-              public static String getAreaCode(String phoneNumber) {
-        
-              }
-    
+              public static String getAreaCode(String phoneNumber) {}
+
               public static void main(String[] args) {
                   // Example 1: Standard Format
                   String phone1 = "(800) 555-0100";
@@ -240,17 +244,21 @@
                   System.out.println("Area Code: " + getAreaCode(phone3));
               }
           }
+
         </code>
 
         <tests>
           <![CDATA[
           import static org.junit.Assert.*;
+
           import org.junit.*;
+
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              private String[] phones = {"(916) 555-1234", "(123)456-7890", "(000) 000-0000", "Phone: (510) 555-1212", "()"};
+          public class RunestoneTests extends CodeTestHelper {
+              private String[] phones = {
+                  "(916) 555-1234", "(123)456-7890", "(000) 000-0000", "Phone: (510) 555-1212", "()"
+              };
               private String[] expected = {"916", "123", "000", "510", ""};
 
               @Test
@@ -288,14 +296,15 @@
                   String actual = "";
 
                   try {
-                      actual = "" + PhoneProcessor.getAreaCode(phones[i]);            
-                  }catch(Exception e) {
+                      actual = "" + PhoneProcessor.getAreaCode(phones[i]);
+                  } catch (Exception e) {
                       actual = "The code caused an exception";
                   }
 
-                  boolean passed = expected[i].equals(actual) && !(actual.contains("(") || actual.contains(")"));
-                  getResults(expected[i],actual,desc, passed);
-                  return passed;        
+                  boolean passed =
+                          expected[i].equals(actual) && !(actual.contains("(") || actual.contains(")"));
+                  getResults(expected[i], actual, desc, passed);
+                  return passed;
               }
 
               private boolean stringMatch(String str1, String str2) {
@@ -305,6 +314,7 @@
                   return str1.contains(str2);
               }
           }
+
           ]]>
         </tests>
 
@@ -327,14 +337,11 @@
       <program interactive="activecode" language="java">
 
         <code>
-          public class LetterIdentifier
-          {
+          public class LetterIdentifier {
               private static String vowels = "aeiouAEIOU";
 
-              public static boolean isVowel(String letter) {
-        
-              }
-    
+              public static boolean isVowel(String letter) {}
+
               public static void main(String[] args) {
                   // Example 1: Lowercase vowel
                   System.out.println("Testing 'a': " + isVowel("a")); // Expected: true
@@ -352,15 +359,17 @@
                   System.out.println("Testing '!': " + isVowel("!")); // Expected: false
               }
           }
+
         </code>
 
         <tests>
           import static org.junit.Assert.*;
+
           import org.junit.*;
+
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               private String[] letters = {"i", "O", "X", "apple", ""};
               private String[] expected = {"true", "true", "false", "false", "false"};
 
@@ -399,15 +408,16 @@
                   String actual = "";
 
                   try {
-                      actual = "" + LetterIdentifier.isVowel(letters[i]);            
-                  }catch(Exception e) {
+                      actual = "" + LetterIdentifier.isVowel(letters[i]);
+                  } catch (Exception e) {
                       actual = "The code caused an exception";
                   }
 
-                  boolean passed = getResults(expected[i],actual,desc);
-                  return passed;        
+                  boolean passed = getResults(expected[i], actual, desc);
+                  return passed;
               }
           }
+
         </tests>
 
       </program>
@@ -431,10 +441,8 @@
 
         <code>
           public class UserProfile {
-              public static String createHandle(String firstName, String lastName) {
-        
-              }
-    
+              public static String createHandle(String firstName, String lastName) {}
+
               public static void main(String[] args) {
                   // Example 1: Standard names
                   System.out.println("Input: Charles, Babbage");
@@ -451,15 +459,17 @@
                   System.out.println("Handle: " + UserProfile.createHandle("Alan", "Tu"));
               }
           }
+
         </code>
 
         <tests>
           import static org.junit.Assert.*;
+
           import org.junit.*;
+
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               private String[] firstnames = {"Katherine", "Anita", "Guido", "Radia", "J"};
               private String[] lastnames = {"Johnson", "Borg", "Van", "Perlm", "Smith"};
               private String[] expected = {"KJohns", "ABorg", "GVan", "RPerlm", "JSmith"};
@@ -499,13 +509,13 @@
                   String actual = "";
 
                   try {
-                      actual = "" + UserProfile.createHandle(firstnames[i],lastnames[i]);            
-                  }catch(Exception e) {
+                      actual = "" + UserProfile.createHandle(firstnames[i], lastnames[i]);
+                  } catch (Exception e) {
                       actual = "The code caused an exception";
                   }
 
-                  boolean passed = getResults(expected[i],actual,desc);
-                  return passed; 
+                  boolean passed = getResults(expected[i], actual, desc);
+                  return passed;
               }
 
               private boolean stringMatch(String str1, String str2) {
@@ -515,6 +525,7 @@
                   return str1.contains(str2);
               }
           }
+
         </tests>
 
       </program>
@@ -539,10 +550,8 @@
         <code>
           <![CDATA[
           public class TagParser {
-              public static String getContent(String html) {
-        
-              }
-    
+              public static String getContent(String html) {}
+
               public static void main(String[] args) {
                   // Test 1: Standard case
                   String html1 = "<p>Hello World</p>";
@@ -562,18 +571,22 @@
                   System.out.println("Result: " + TagParser.getContent(html3));
               }
           }
+
           ]]>
         </code>
 
         <tests>
           <![CDATA[
           import static org.junit.Assert.*;
+
           import org.junit.*;
+
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              private String[] input = {"<p>Success</p>", "<p>No closing tag", "No opening tag</p>", "</p>Bad order<p>", "<p></p>"};
+          public class RunestoneTests extends CodeTestHelper {
+              private String[] input = {
+                  "<p>Success</p>", "<p>No closing tag", "No opening tag</p>", "</p>Bad order<p>", "<p></p>"
+              };
               private String[] expected = {"Success", "not found", "not found", "not found", ""};
 
               @Test
@@ -616,13 +629,12 @@
                       actual = "The code caused an exception";
                   }
 
-                  boolean passed = getResults(expected[i],replaceTags(actual),replaceTags(desc));
-                  return passed;        
+                  boolean passed = getResults(expected[i], replaceTags(actual), replaceTags(desc));
+                  return passed;
               }
 
-              private String replaceTags(String text)
-              {
-                  return text.replaceAll("<","&lt;").replaceAll(">","&gt;");
+              private String replaceTags(String text) {
+                  return text.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
               }
 
               private boolean stringMatch(String str1, String str2) {
@@ -632,6 +644,7 @@
                   return str1.contains(str2);
               }
           }
+
           ]]>
         </tests>
 
@@ -655,10 +668,7 @@
 
         <code>
           public class StringScrambler {
-              public static String swapTwoWords(String phrase) {
-
-              }
-    
+              public static String swapTwoWords(String phrase) {}
 
               public static void main(String[] args) {
                   // Test 1: Standard two-word phrase
@@ -679,17 +689,23 @@
                   System.out.println("Result: " + StringScrambler.swapTwoWords(p3));
               }
           }
+
         </code>
 
         <tests>
           import static org.junit.Assert.*;
+
           import org.junit.*;
+
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-              private String[] input = {"Apple Banana", "A B", "SpaceAtEnd ", "OneTwoThree", "Blue Red Green"};
-              private String[] expected = {"Banana Apple", "B A", "SpaceAtEnd ", "OneTwoThree", "Red Green Blue"};
+          public class RunestoneTests extends CodeTestHelper {
+              private String[] input = {
+                  "Apple Banana", "A B", "SpaceAtEnd ", "OneTwoThree", "Blue Red Green"
+              };
+              private String[] expected = {
+                  "Banana Apple", "B A", "SpaceAtEnd ", "OneTwoThree", "Red Green Blue"
+              };
 
               @Test
               public void test0() {
@@ -731,8 +747,8 @@
                       actual = "The code caused an exception";
                   }
 
-                  boolean passed = getResults(expected[i],actual,desc);
-                  return passed;        
+                  boolean passed = getResults(expected[i], actual, desc);
+                  return passed;
               }
 
               private boolean stringMatch(String str1, String str2) {
@@ -742,6 +758,7 @@
                   return str1.contains(str2);
               }
           }
+
         </tests>
 
       </program>

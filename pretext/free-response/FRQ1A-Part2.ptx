@@ -153,27 +153,26 @@
 
       <code>
         <![CDATA[
-        public class DogWalkCompany
-        {
-        /**
-        * Returns the number of dogs, always greater than 0, that are available
-        * for a walk during the time specified by hour
-        * Precondition: 0 <= hour <= 23
-        */
-        public int numAvailableDogs(int hour)
-        { /* implementation not shown */ }
+        public class DogWalkCompany {
+            /**
+             * Returns the number of dogs, always greater than 0, that are available for a walk during the
+             * time specified by hour Precondition: 0 <= hour <= 23
+             */
+            public int numAvailableDogs(int hour) {
+                /* implementation not shown */
+            }
 
-        /**
-        * Decreases, by numberDogsWalked, the number of dogs available for a walk
-        * during the time specified by hour
-        * Preconditions: 0 <= hour <= 23
-        * numberDogsWalked > 0
-        */
-        public void updateDogs(int hour, int numberDogsWalked)
-        { /* implementation not shown */ }
+            /**
+             * Decreases, by numberDogsWalked, the number of dogs available for a walk during the time
+             * specified by hour Preconditions: 0 <= hour <= 23 numberDogsWalked > 0
+             */
+            public void updateDogs(int hour, int numberDogsWalked) {
+                /* implementation not shown */
+            }
 
-        /* There may be instance variables, constructors, and methods that are not shown. */
+            /* There may be instance variables, constructors, and methods that are not shown. */
         }
+
         ]]>
       </code>
 
@@ -188,32 +187,29 @@
 
       <code>
         <![CDATA[
-        public class DogWalker
-        {
-        /** The maximum number of dogs this walker can walk simultaneously per hour */
-        private int maxDogs;
+        public class DogWalker {
+            /** The maximum number of dogs this walker can walk simultaneously per hour */
+            private int maxDogs;
 
-        /** The dog-walking company this dog walker is associated with */
-        private DogWalkCompany company;
+            /** The dog-walking company this dog walker is associated with */
+            private DogWalkCompany company;
 
-        /**
-        * Assigns max to maxDogs and comp to company
-        * Precondition: max > 0
-        */
-        public DogWalker(int max, DogWalkCompany comp)
-        { /* implementation not shown */ }
+            /** Assigns max to maxDogs and comp to company Precondition: max > 0 */
+            public DogWalker(int max, DogWalkCompany comp) {
+                /* implementation not shown */
+            }
 
-        /**
-        * Takes at least one dog for a walk during the time specified by
-        * hour, as described in part (a)
-        * Preconditions: 0 <= hour <= 23
-        * maxDogs > 0
-        */
-        public int walkDogs(int hour)
-        { /* to be implemented in part (a) */ }
+            /**
+             * Takes at least one dog for a walk during the time specified by hour, as described in part (a)
+             * Preconditions: 0 <= hour <= 23 maxDogs > 0
+             */
+            public int walkDogs(int hour) {
+                /* to be implemented in part (a) */
+            }
 
-        /* There may be instance variables, constructors, and methods that are not shown. */ 
+            /* There may be instance variables, constructors, and methods that are not shown. */
         }
+
         ]]>
       </code>
 
@@ -501,50 +497,41 @@
 
         <code>
           <![CDATA[
-          public class DogWalker
-          {
-              /** The maximum number of dogs this walker can walk simultaneously
-              per hour */
+          public class DogWalker {
+              /** The maximum number of dogs this walker can walk simultaneously per hour */
               private int maxDogs;
 
               /** The dog-walking company this dog walker is associated with */
               private DogWalkCompany company;
 
               /**
-                  * Takes at least one dog for a walk during the time specified by
-                  * hour, as described in part (a)
-                  * Preconditions: 0 <= hour <= 23
-                  * maxDogs > 0
-                  */
-              public int walkDogs(int hour)
-              { 
-                  /* to be implemented in part (a) */ 
+               * Takes at least one dog for a walk during the time specified by hour, as described in part (a)
+               * Preconditions: 0 <= hour <= 23 maxDogs > 0
+               */
+              public int walkDogs(int hour) {
+                  /* to be implemented in part (a) */
                   return -1;
               }
 
               /* Do not change anything below this comment */
 
-              /**
-                  * Assigns max to maxDogs and comp to company
-                  * Precondition: max > 0
-                  */
-              public DogWalker(int max, DogWalkCompany comp)
-              {
+              /** Assigns max to maxDogs and comp to company Precondition: max > 0 */
+              public DogWalker(int max, DogWalkCompany comp) {
                   maxDogs = max;
                   company = comp;
               }
 
               public static void main(String[] args) {
                   DogWalkCompany comp = new DogWalkCompany();
-        
+
                   DogWalker walker1 = new DogWalker(3, comp);
                   DogWalker walker2 = new DogWalker(4, comp);
                   DogWalker walker3 = new DogWalker(5, comp);
-        
+
                   int resultsA1 = walker1.walkDogs(1);
                   int resultsA2 = walker2.walkDogs(0);
                   int resultsA3 = walker3.walkDogs(2);
-        
+
                   System.out.println("Walker 1 (max of 3) should walk 3 dogs: " + resultsA1);
                   System.out.println("Company should now have 6 dogs: " + comp.numAvailableDogs(0));
                   System.out.println("Walker 2 (max of 4) should walk 4 dogs: " + resultsA2);
@@ -554,8 +541,7 @@
               }
           }
 
-          class DogWalkCompany
-          {
+          class DogWalkCompany {
               private int[] dogs;
 
               public DogWalkCompany() {
@@ -563,64 +549,65 @@
               }
 
               /**
-                  * Returns the number of dogs, always greater than 0, that are available
-                  * for a walk during the time specified by hour
-                  * Preconditions: 0 <= hour <= 23
-                  */
-              public int numAvailableDogs(int hour)
-              { return dogs[hour]; }
+               * Returns the number of dogs, always greater than 0, that are available for a walk during the
+               * time specified by hour Preconditions: 0 <= hour <= 23
+               */
+              public int numAvailableDogs(int hour) {
+                  return dogs[hour];
+              }
 
               /**
-                  * Decreases, by numberDogsWalked, the number of dogs available for a walk
-                  * during the time specified by hour
-                  * Preconditions: 0 <= hour <= 23
-                  * numberDogsWalked > 0
-                  */
-              public void updateDogs(int hour, int numberDogsWalked)
-              { dogs[hour] -= numberDogsWalked; }
+               * Decreases, by numberDogsWalked, the number of dogs available for a walk during the time
+               * specified by hour Preconditions: 0 <= hour <= 23 numberDogsWalked > 0
+               */
+              public void updateDogs(int hour, int numberDogsWalked) {
+                  dogs[hour] -= numberDogsWalked;
+              }
 
               /* There may be instance variables, constructors,
               and methods that are not shown. */
           }
+
           ]]>
         </code>
 
         <tests>
           <![CDATA[
           import static org.junit.Assert.*;
+
           import org.junit.*;
+
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
               public void test01() {
                   boolean passed = testPartA(4, 0, 4, 6);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               @Test
               public void test02() {
                   boolean passed = testPartA(2, 1, 2, 1);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               @Test
               public void test03() {
                   boolean passed = testPartA(5, 3, 2, 0);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               @Test
               public void test04() {
                   boolean passed = testPartA(1, 2, 1, 1);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               @Test
               public void test05() {
                   boolean passed = testPartA(0, 4, 0, 1);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               private boolean testPartA(int max, int hour, int exp, int remain) {
@@ -636,10 +623,11 @@
                   String desc = "Walker (max of " + max + ") should walk " + exp + " dogs\n";
                   desc += "Company should now have " + remain + " dogs: " + left;
 
-                  getResults(""+exp, ""+result, desc, passed);        
+                  getResults("" + exp, "" + result, desc, passed);
                   return passed;
               }
           }
+
           ]]>
         </tests>
 
@@ -698,18 +686,20 @@
     <program language="java">
 
       <code>
-        public class Level
-        {
+        public class Level {
             /** Returns true if the player reached the goal on this level and returns false otherwise */
-            public boolean goalReached()
-            { /* implementation not shown */ }
+            public boolean goalReached() {
+                /* implementation not shown */
+            }
 
             /** Returns the number of points (a positive integer) recorded for this level */
-            public int getPoints()
-            { /* implementation not shown */ }
-    
+            public int getPoints() {
+                /* implementation not shown */
+            }
+
             // There may be instance variables, constructors, and methods that are not shown.
         }
+
       </code>
 
     </program>
@@ -722,26 +712,29 @@
     <program language="java">
 
       <code>
-        public class Game
-        {
+        public class Game {
             private Level levelOne;
             private Level levelTwo;
             private Level levelThree;
-    
+
             /** Postcondition: All instance variables have been initialized. */
-            public Game()
-            { /* implementation not shown */ }
-    
+            public Game() {
+                /* implementation not shown */
+            }
+
             /** Returns true if this game is a bonus game and returns false otherwise */
-            public boolean isBonus()
-            { /* implementation not shown */ }
-    
+            public boolean isBonus() {
+                /* implementation not shown */
+            }
+
             /** Returns the score earned in the most recently played game, as described in part (a) */
-            public int getScore()
-            { /* to be implemented below */ }
+            public int getScore() {
+                /* to be implemented below */
+            }
 
             // There may be instance variables, constructors, and methods that are not shown.
         }
+
       </code>
 
     </program>
@@ -818,8 +811,7 @@
       <program interactive="activecode" language="java">
 
         <code>
-          public class Game
-          {
+          public class Game {
               /* the Level objects */
               private Level levelOne;
               private Level levelTwo;
@@ -827,123 +819,115 @@
               private boolean bonus;
 
               /* Complete the getScore() method below */
-              public int getScore()
-              {
+              public int getScore() {
                   int score = 0;
                   // Write your code here
-
-
 
                   return score;
               }
 
-
-              public Game( int p1, boolean g1, int p2, boolean g2, int p3, boolean g3, boolean b )
-              {
-                  levelOne = new Level( p1, g1 );
-                  levelTwo = new Level( p2, g2 );
-                  levelThree = new Level( p3, g3 );
+              public Game(int p1, boolean g1, int p2, boolean g2, int p3, boolean g3, boolean b) {
+                  levelOne = new Level(p1, g1);
+                  levelTwo = new Level(p2, g2);
+                  levelThree = new Level(p3, g3);
                   bonus = b;
               }
 
-              public boolean isBonus()
-              {
+              public boolean isBonus() {
                   return bonus;
               }
 
-              public static void main(String[] args)
-              {
+              public static void main(String[] args) {
                   // These are the AP test cases given in the problem description
-                  Game g1 = new Game(200,true,100,true,500,true,true);
+                  Game g1 = new Game(200, true, 100, true, 500, true, true);
                   // This should print out 2400
-                  System.out.println( g1.getScore() );
+                  System.out.println(g1.getScore());
 
-                  Game g2 = new Game(200,true,100,true,500,false,false);
+                  Game g2 = new Game(200, true, 100, true, 500, false, false);
                   // This should print out 300
-                  System.out.println( g2.getScore() );
+                  System.out.println(g2.getScore());
 
-                  Game g3 = new Game(200,true,100,false,500,true,true);
+                  Game g3 = new Game(200, true, 100, false, 500, true, true);
                   // This should print out 600
-                  System.out.println( g3.getScore() );
+                  System.out.println(g3.getScore());
 
-                  Game g4 = new Game(200,false,100,true,500,true,false);
+                  Game g4 = new Game(200, false, 100, true, 500, true, false);
                   // This should print out 0
-                  System.out.println( g4.getScore() );
-
-
+                  System.out.println(g4.getScore());
               }
-
           }
-          class Level
-          {
+
+          class Level {
               private int points;
               private boolean goal;
 
               /** Constructor for the Level class */
-              public Level(int p, boolean g)
-              {
+              public Level(int p, boolean g) {
                   points = p;
                   goal = g;
               }
 
               /** Returns true if the player reached the goal on this level and returns false otherwise */
-              public boolean goalReached()
-              { return goal; }
+              public boolean goalReached() {
+                  return goal;
+              }
 
               /** Returns the number of points recorded for this level */
-              public int getPoints()
-              { return points; }
+              public int getPoints() {
+                  return points;
+              }
           }
+
         </code>
 
         <tests>
           import static org.junit.Assert.*;
+
           import org.junit.*;
+
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
-             public RunestoneTests()
-             {
-                 super("Game");
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("Game");
                   // This sets default values for when objects are instantiated
-                 Object[] values = new Object[] {100, true, 100, true, 100, false, true};
-                 setDefaultValues(values);
-             }
-             @Test
-             public void testMain() throws IOException
-             {
-                 String output = getMethodOutput("main");
-                 String expect = "2400\n300\n600\n0\n";
+                  Object[] values = new Object[] {100, true, 100, true, 100, false, true};
+                  setDefaultValues(values);
+              }
 
-                 boolean passed = getResults(expect, output, "Output from main");
-                 assertTrue(passed);
-             }
-             @Test
-             public void checkCodeContains1()
-             {
-                 boolean passed = checkCodeContains(
-                  "call to levelThree.getPoints()", "levelThree.getPoints()");
-                 assertTrue(passed);
-             }
               @Test
-             public void checkCodeContains2()
-             {
-                 boolean passed = checkCodeContains(
-                  "call to levelThree.goalReached()", "levelThree.goalReached()");
-                 assertTrue(passed);
-             }
-              @Test
-             public void testCall() throws IOException
-             {
-                 int output = Integer.parseInt(
-                   getMethodOutput("getScore"));
-                 int expect = 600;
+              public void testMain() throws IOException {
+                  String output = getMethodOutput("main");
+                  String expect = "2400\n300\n600\n0\n";
 
-                 boolean passed = getResults(expect, output, "Checking another call to getScore()");
-                 assertTrue(passed);
-             }
+                  boolean passed = getResults(expect, output, "Output from main");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void checkCodeContains1() {
+                  boolean passed =
+                          checkCodeContains("call to levelThree.getPoints()", "levelThree.getPoints()");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void checkCodeContains2() {
+                  boolean passed =
+                          checkCodeContains("call to levelThree.goalReached()", "levelThree.goalReached()");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testCall() throws IOException {
+                  int output = Integer.parseInt(getMethodOutput("getScore"));
+                  int expect = 600;
+
+                  boolean passed = getResults(expect, output, "Checking another call to getScore()");
+                  assertTrue(passed);
+              }
           }
+
         </tests>
 
       </program>
@@ -1018,29 +1002,31 @@
 
       <code>
         <![CDATA[
-        public class Feeder
-        {
+        public class Feeder {
             /**
-            * The amount of food, in grams, currently in the bird feeder; initialized in the constructor and
-            * always greater than or equal to zero
-            */
+             * The amount of food, in grams, currently in the bird feeder; initialized in the constructor
+             * and always greater than or equal to zero
+             */
             private int currentFood;
+
             /**
-            * Simulates one day with numBirds birds or possibly a bear at the bird feeder,
-            * as described in part (a)
-            * Precondition: numBirds > 0
-            */
-            public void simulateOneDay(int numBirds)
-            { /* to be implemented in part (a) */ }
+             * Simulates one day with numBirds birds or possibly a bear at the bird feeder, as described in
+             * part (a) Precondition: numBirds > 0
+             */
+            public void simulateOneDay(int numBirds) {
+                /* to be implemented in part (a) */
+            }
+
             /**
-            * Returns the number of days birds or a bear found food to eat at the feeder in this simulation,
-            * as described in part (b)
-            * Preconditions: numBirds > 0, numDays > 0
-            */
-            public int simulateManyDays(int numBirds, int numDays)
-            { /* to be implemented in part (b) */ }
+             * Returns the number of days birds or a bear found food to eat at the feeder in this
+             * simulation, as described in part (b) Preconditions: numBirds > 0, numDays > 0
+             */
+            public int simulateManyDays(int numBirds, int numDays) {
+                /* to be implemented in part (b) */
+            }
             // There may be instance variables, constructors, or methods that are not shown.
         }
+
         ]]>
       </code>
 
@@ -1150,21 +1136,19 @@
 
         <code>
           <![CDATA[
-          public class Feeder
-          {
+          public class Feeder {
               /**
-               * The amount of food, in grams, currently in the bird feeder; initialized in the constructor and
-               * always greater than or equal to zero
+               * The amount of food, in grams, currently in the bird feeder; initialized in the constructor
+               * and always greater than or equal to zero
                */
               private int currentFood;
+
               /**
-               * Simulates one day with numBirds birds or possibly a bear at the bird feeder,
-               * as described in part (a)
-               * Precondition: numBirds > 0
+               * Simulates one day with numBirds birds or possibly a bear at the bird feeder, as described in
+               * part (a) Precondition: numBirds > 0
                */
-              public void simulateOneDay(int numBirds)
-              { 
-                  /* write your code here */ 
+              public void simulateOneDay(int numBirds) {
+                  /* write your code here */
 
               }
 
@@ -1173,35 +1157,40 @@
                   currentFood = curr;
               }
 
-              public int getCurrentFood(){
+              public int getCurrentFood() {
                   return currentFood;
               }
 
               public static void main(String[] args) {
                   Feeder example1 = new Feeder(500);
                   example1.simulateOneDay(12);
-                  System.out.println("Feeder contains 500 grams of food, 12 birds leave " + example1.getCurrentFood());
+                  System.out.println(
+                          "Feeder contains 500 grams of food, 12 birds leave " + example1.getCurrentFood());
 
-                  Feeder example2= new Feeder(1000);
+                  Feeder example2 = new Feeder(1000);
                   example2.simulateOneDay(22);
-                  System.out.println("Feeder contains 1000 grams of food, 22 birds leave " + example2.getCurrentFood());
+                  System.out.println(
+                          "Feeder contains 1000 grams of food, 22 birds leave " + example2.getCurrentFood());
 
                   Feeder example3 = new Feeder(100);
                   example3.simulateOneDay(5);
-                  System.out.println("Feeder contains 500 grams of food, 12 birds leave " + example3.getCurrentFood());
+                  System.out.println(
+                          "Feeder contains 500 grams of food, 12 birds leave " + example3.getCurrentFood());
               }
           }
+
           ]]>
         </code>
 
         <tests>
           <![CDATA[
           import static org.junit.Assert.*;
+
           import org.junit.*;
+
           import java.io.*;
 
-          public class RunestoneTests extends CodeTestHelper
-          {
+          public class RunestoneTests extends CodeTestHelper {
               @Test
               public void test00() {
                   int food = 500;
@@ -1209,7 +1198,7 @@
 
                   int remain = testPartA(food, birds);
 
-                  int i = 0; 
+                  int i = 0;
 
                   while (i < 100 && remain != 0) {
                       remain = testPartA(food, birds);
@@ -1218,9 +1207,10 @@
 
                   boolean passed = remain == 0;
 
-                  String desc = "Feeder contains "+ food + " grams of food, " + birds + " birds leave " + remain;
+                  String desc =
+                          "Feeder contains " + food + " grams of food, " + birds + " birds leave " + remain;
 
-                  getResults("0", ""+remain, desc, passed);        
+                  getResults("0", "" + remain, desc, passed);
                   assertTrue(passed);
               }
 
@@ -1231,7 +1221,7 @@
 
                   int remain = testPartA(food, birds);
 
-                  int i = 0; 
+                  int i = 0;
 
                   while (i < 100 && remain == 0) {
                       remain = testPartA(food, birds);
@@ -1240,9 +1230,10 @@
 
                   boolean passed = remain > 0;
 
-                  String desc = "Feeder contains "+ food + " grams of food, " + birds + " birds leave " + remain;
+                  String desc =
+                          "Feeder contains " + food + " grams of food, " + birds + " birds leave " + remain;
 
-                  getResults("> 0", ""+remain, desc, passed);        
+                  getResults("> 0", "" + remain, desc, passed);
                   assertTrue(passed);
               }
 
@@ -1267,11 +1258,15 @@
                       }
                   }
 
-                  boolean passed = stringMatch(actual, "<.05") || stringMatch(actual, ">.95") || stringMatch(actual, ">0.95") || stringMatch(actual, "<0.05");
+                  boolean passed =
+                          stringMatch(actual, "<.05")
+                                  || stringMatch(actual, ">.95")
+                                  || stringMatch(actual, ">0.95")
+                                  || stringMatch(actual, "<0.05");
                   String desc = "Math.random() used for 5% chance of bear";
 
                   getResults("< 0.05", actual, desc, passed);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               @Test
@@ -1292,13 +1287,13 @@
                   boolean add = stringMatch(actual, "+1");
                   boolean cast = stringMatch(actual, "(int)");
 
-                  String expect = "Range: " + range + "\nShift: "+add + "\nCast: " + cast;
+                  String expect = "Range: " + range + "\nShift: " + add + "\nCast: " + cast;
 
                   boolean passed = range && add && cast;
                   String desc = "Math.random() used for random food (10 to 50, inclusive)";
 
                   getResults(expect, actual, desc, passed);
-                  assertTrue(passed);        
+                  assertTrue(passed);
               }
 
               private boolean stringMatch(String str1, String str2) {
@@ -1316,14 +1311,14 @@
                   int level = 0;
 
                   for (int i = 0; i < searchStr.length(); i++) {
-                      if (searchStr.substring(i,i+1).equals("{")) {
+                      if (searchStr.substring(i, i + 1).equals("{")) {
                           level++;
-                      } else if (searchStr.substring(i,i+1).equals("}")) {
+                      } else if (searchStr.substring(i, i + 1).equals("}")) {
                           level--;
 
                           if (level == 0) {
-                              //System.out.println(searchStr.substring(0, i+1).trim());
-                              return searchStr.substring(0, i+1).trim();
+                              // System.out.println(searchStr.substring(0, i+1).trim());
+                              return searchStr.substring(0, i + 1).trim();
                           }
                       }
                   }
@@ -1331,6 +1326,7 @@
                   return searchStr.trim();
               }
           }
+
           ]]>
         </tests>
 
