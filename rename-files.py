@@ -14,6 +14,14 @@ mapping old file paths to new ones it will, for each mapping,
   4. rewrite every <xref ref="..."> (anywhere in the book) that pointed at the
      old xml:id.
 
+Beyond the files named in the config, it also enforces the id convention across
+the whole book: any section/subsection file whose root xml:id does not equal its
+base name, or chapter (toctree.ptx) whose root xml:id does not equal its
+directory name, is fixed in place -- the root xml:id is corrected and every
+<xref> to the old id is rewritten, without moving the file. This makes the book
+satisfy check-ids.py after a run. Pass --no-fix-ids to skip that pass and touch
+only the files in the config.
+
 Finally it runs format-ptx.py on every file it touched so the result stays in
 the canonical layout (rewriting a shorter/longer id can change line wrapping).
 
@@ -115,6 +123,18 @@ def root_id(path):
     """Return (root_tag, current_xml:id-or-None) for a .ptx file."""
     root = etree.parse(str(path)).getroot()
     return etree.QName(root).localname, root.get(XML_ID)
+
+
+# Root element kinds whose xml:id the book's naming convention pins down (the
+# rule check-ids.py enforces): a chapter's id is its directory name, a
+# section's/subsection's id is its file's base name. Other roots (pretext,
+# frontmatter, preface, ...) have no such rule and are left untouched.
+ENFORCED_ROOTS = {"section", "subsection", "chapter"}
+
+
+def expected_root_id(path, root_tag):
+    """The xml:id the convention dictates for the root element of `path`."""
+    return path.parent.name if root_tag == "chapter" else path.stem
 
 
 # ---------------------------------------------------------------------------
@@ -219,6 +239,10 @@ def main():
         help="Scan every tracked .ptx instead of only book-reachable files",
     )
     parser.add_argument(
+        "--no-fix-ids", action="store_true",
+        help="Don't normalize root xml:ids of files not named in the config",
+    )
+    parser.add_argument(
         "--no-git", action="store_true", help="Use plain rename instead of git mv"
     )
     parser.add_argument(
@@ -229,7 +253,8 @@ def main():
     book_dir = Path(args.book_dir).resolve()
     book_root = Path(args.root).resolve() if args.root else book_dir / "main.ptx"
 
-    # 1. Resolve every mapping into (old_abs, new_abs, root_tag, old_id, new_id).
+    # 1. Resolve every config mapping into a record
+    #    (old_abs, new_abs, root_tag, old_id, new_id).
     records = []
     for old_raw, new_raw in parse_config(args.config):
         old_abs = resolve_old(book_dir, old_raw)
@@ -237,16 +262,12 @@ def main():
         if new_abs.suffix != ".ptx":
             die(f"new name must end in .ptx: {new_raw}")
         root_tag, old_id = root_id(old_abs)
-        new_id = new_abs.stem
+        new_id = expected_root_id(new_abs, root_tag)
         records.append((old_abs, new_abs, root_tag, old_id, new_id))
 
-    move_map = {r[0]: r[1] for r in records}     # old_abs -> new_abs
-    id_map = {r[3]: r[4] for r in records if r[3] and r[3] != r[4]}  # old_id->new_id
-
-    # 2. Validate ids: legal, no internal duplicates, no clash with kept ids.
-    #    Scope the scan to the book (files reachable from main.ptx) unless the
-    #    caller asks for every tracked file, so dead/orphan trees can't block a
-    #    rename or be needlessly rewritten.
+    # Scope the scan to the book (files reachable from main.ptx) unless the
+    # caller asks for every tracked file, so dead/orphan trees can't block a
+    # rename or be needlessly rewritten.
     if args.all_files:
         scan_files = git_ptx_files(book_dir, args.no_git)
     else:
@@ -254,6 +275,28 @@ def main():
     all_text = {
         Path(p).resolve(): Path(p).read_text() for p in scan_files
     }
+
+    # 1b. Enforce the id convention on every other file too: a section's or
+    #     subsection's root xml:id must equal its base name and a chapter's must
+    #     equal its directory name. Any in-convention file whose root id is
+    #     missing or wrong is fixed in place (new_abs == old_abs, no move) and
+    #     its old id flows into id_map so xrefs to it are rewritten as well.
+    config_sources = {r[0] for r in records}
+    if not args.no_fix_ids:
+        for path in sorted(all_text):
+            if path in config_sources:
+                continue
+            root_tag, cur_id = root_id(path)
+            if root_tag not in ENFORCED_ROOTS:
+                continue
+            want = expected_root_id(path, root_tag)
+            if cur_id != want:
+                records.append((path, path, root_tag, cur_id, want))
+
+    move_map = {r[0]: r[1] for r in records if r[0] != r[1]}  # old_abs -> new_abs
+    id_map = {r[3]: r[4] for r in records if r[3] and r[3] != r[4]}  # old->new id
+
+    # 2. Validate ids: legal, no internal duplicates, no clash with kept ids.
     existing_ids = set()
     for text in all_text.values():
         existing_ids.update(m.group(2) for m in ID_RE.finditer(text))
@@ -281,19 +324,29 @@ def main():
             die(f"target already exists: {new_abs}")
 
     # 3. Report.
-    print("Renames:")
-    for old_abs, new_abs, _, old_id, new_id in records:
-        rel_o = os.path.relpath(old_abs)
-        rel_n = os.path.relpath(new_abs)
-        idnote = f"id {old_id!r} -> {new_id!r}" if old_id else f"add id {new_id!r}"
-        print(f"  {rel_o}\n    -> {rel_n}   ({idnote})")
+    renames = [r for r in records if r[0] != r[1]]
+    fixes = [r for r in records if r[0] == r[1]]
+    if renames:
+        print("Renames:")
+        for old_abs, new_abs, _, old_id, new_id in renames:
+            rel_o = os.path.relpath(old_abs)
+            rel_n = os.path.relpath(new_abs)
+            idnote = (f"id {old_id!r} -> {new_id!r}" if old_id
+                      else f"add id {new_id!r}")
+            print(f"  {rel_o}\n    -> {rel_n}   ({idnote})")
+    if fixes:
+        print("Root xml:id fixes (no move):")
+        for old_abs, _, _, old_id, new_id in fixes:
+            idnote = f"{old_id!r} -> {new_id!r}" if old_id else f"add {new_id!r}"
+            print(f"  {os.path.relpath(old_abs)}   ({idnote})")
 
     # 4. Apply.
     changed = set()       # paths (post-move) whose text we rewrote
 
     # 4a. Move files first so subsequent edits operate on final locations.
+    #     (id-fix records have new_abs == old_abs and are not moved.)
     for old_abs, new_abs, *_ in records:
-        if args.dry_run:
+        if args.dry_run or old_abs == new_abs:
             continue
         new_abs.parent.mkdir(parents=True, exist_ok=True)
         git_mv(old_abs, new_abs, args.no_git)
@@ -342,7 +395,8 @@ def main():
     if changed and not args.no_format:
         run_format([move_map.get(p, p) for p in changed])
 
-    print(f"\nDone: {len(records)} file(s) renamed, {len(changed)} file(s) edited.")
+    print(f"\nDone: {len(renames)} file(s) renamed, {len(fixes)} id(s) fixed, "
+          f"{len(changed)} file(s) edited.")
 
 
 # ---------------------------------------------------------------------------
