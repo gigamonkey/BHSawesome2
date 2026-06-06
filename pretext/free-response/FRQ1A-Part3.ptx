@@ -47,7 +47,7 @@
     </ul>
   </introduction>
 <!-- done -->
-  <subsection xml:id="for-loops">
+  <subsection xml:id="frq1a-for-loops">
     <title>For Loops</title>
 
     <p>The syntax of a for loop is like this:</p>
@@ -137,7 +137,6 @@
 
             // There may be instance variables, constructors, and other methods not shown.
         }
-
         ]]>
       </code>
 
@@ -197,7 +196,6 @@
                   return new GregorianCalendar().isLeapYear(year);
               }
           }
-
           ]]>
         </code>
 
@@ -240,7 +238,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
 
       </program>
@@ -297,7 +294,6 @@
 
             // There may be instance variables, constructors, and methods that are not shown.
         }
-
         ]]>
       </code>
 
@@ -395,7 +391,6 @@
                   return points;
               }
           }
-
           ]]>
         </code>
 
@@ -471,7 +466,6 @@
                   return passed;
               }
           }
-
         </tests>
 
       </program>
@@ -513,7 +507,6 @@
             /* There may be instance variables, constructors,
             and methods that are not shown. */
         }
-
         ]]>
       </code>
 
@@ -558,7 +551,6 @@
 
             /* There may be instance variables, constructors, and methods that are not shown. */
         }
-
         ]]>
       </code>
 
@@ -682,7 +674,6 @@
 
               /* There may be instance variables, constructors, and methods that are not shown. */
           }
-
           ]]>
         </code>
 
@@ -738,14 +729,13 @@
                   return passed;
               }
           }
-
         </tests>
 
       </program>
     </activity>
   </subsection>
 <!-- not done -->
-  <subsection xml:id="while-loops">
+  <subsection xml:id="frq1a-while-loops">
     <title>While Loops</title>
 
     <p>
@@ -796,7 +786,6 @@
 
             // There may be fields, constructors, and methods that are not shown.
         }
-
         ]]>
       </code>
 
@@ -919,7 +908,6 @@
                   System.out.println("102: " + isSelfDivisor(102));
               }
           }
-
           ]]>
         </code>
 
@@ -1004,7 +992,6 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
 
@@ -1079,7 +1066,6 @@
               private String[] wordsForTesting = {"the", "book", "on", "the", "table"};
               private int currentWordIndex = 0;
           }
-
           ]]>
         </code>
 
@@ -1118,7 +1104,6 @@
                   assertTrue(passed);
               }
           }
-
         </tests>
 
       </program>
