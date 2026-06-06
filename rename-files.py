@@ -17,6 +17,14 @@ mapping old file paths to new ones it will, for each mapping,
 Finally it runs format-ptx.py on every file it touched so the result stays in
 the canonical layout (rewriting a shorter/longer id can change line wrapping).
 
+The id-uniqueness check and the include/reference rewrite only consider files
+reachable from the book root (main.ptx) via <xi:include> -- the same set
+list-files.py and the full-main.ptx Make rule use (commented-out chapter
+includes in main.ptx are uncommented first, so not-yet-ready chapters still
+count). Dead/orphan .ptx files that the book never includes are ignored, so
+their ids never block a rename. Pass --all-files to fall back to scanning every
+git-tracked .ptx instead.
+
 Config file format -- one mapping per line, blank lines and #-comments ignored:
 
     # old path (or unambiguous bare name)   ->   new name
@@ -40,6 +48,9 @@ from pathlib import Path
 from lxml import etree
 
 XML_ID = "{http://www.w3.org/XML/1998/namespace}id"
+
+XI_NS = "http://www.w3.org/2001/XInclude"
+XI_INCLUDE = f"{{{XI_NS}}}include"
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 
@@ -200,6 +211,14 @@ def main():
         help="Print what would change without touching anything",
     )
     parser.add_argument(
+        "--root", default=None,
+        help="Book root to scope the id scan to (default: <book-dir>/main.ptx)",
+    )
+    parser.add_argument(
+        "--all-files", action="store_true",
+        help="Scan every tracked .ptx instead of only book-reachable files",
+    )
+    parser.add_argument(
         "--no-git", action="store_true", help="Use plain rename instead of git mv"
     )
     parser.add_argument(
@@ -208,6 +227,7 @@ def main():
     args = parser.parse_args()
 
     book_dir = Path(args.book_dir).resolve()
+    book_root = Path(args.root).resolve() if args.root else book_dir / "main.ptx"
 
     # 1. Resolve every mapping into (old_abs, new_abs, root_tag, old_id, new_id).
     records = []
@@ -224,9 +244,15 @@ def main():
     id_map = {r[3]: r[4] for r in records if r[3] and r[3] != r[4]}  # old_id->new_id
 
     # 2. Validate ids: legal, no internal duplicates, no clash with kept ids.
+    #    Scope the scan to the book (files reachable from main.ptx) unless the
+    #    caller asks for every tracked file, so dead/orphan trees can't block a
+    #    rename or be needlessly rewritten.
+    if args.all_files:
+        scan_files = git_ptx_files(book_dir, args.no_git)
+    else:
+        scan_files = book_ptx_files(book_root)
     all_text = {
-        Path(p).resolve(): Path(p).read_text()
-        for p in git_ptx_files(book_dir, args.no_git)
+        Path(p).resolve(): Path(p).read_text() for p in scan_files
     }
     existing_ids = set()
     for text in all_text.values():
@@ -243,7 +269,15 @@ def main():
         seen_new[new_id] = old_abs
         if new_id in kept_ids:
             die(f"id {new_id!r} (for {new_abs.name}) already exists elsewhere")
-        if new_abs.exists() and new_abs not in move_map:
+        # A case-only rename (Foo.ptx -> foo.ptx) looks like a pre-existing
+        # target on a case-insensitive filesystem because new_abs resolves to
+        # old_abs itself; that's fine, only a *different* existing file is not.
+        target_clash = (
+            new_abs.exists()
+            and new_abs not in move_map
+            and not (old_abs.exists() and os.path.samefile(old_abs, new_abs))
+        )
+        if target_clash:
             die(f"target already exists: {new_abs}")
 
     # 3. Report.
@@ -315,6 +349,45 @@ def main():
 # External commands / file discovery
 # ---------------------------------------------------------------------------
 
+def book_ptx_files(main_ptx):
+    """Resolved paths of every .ptx reachable from the book root via xi:include.
+
+    Mirrors list-files.py / the full-main.ptx Make rule: commented-out chapter
+    includes in main.ptx are uncommented first (perl -pe 's/<!-- (.*) -->/$1/')
+    so not-yet-ready chapters still count, then <xi:include> is followed
+    recursively. Dead/orphan .ptx files that nothing includes are excluded --
+    their ids are irrelevant to the published book and must not block a rename.
+    """
+    main_ptx = Path(main_ptx).resolve()
+    if not main_ptx.exists():
+        die(f"book root does not exist: {main_ptx}")
+    root_text = re.sub(r"<!-- (.*) -->", r"\1", main_ptx.read_text())
+
+    found = [main_ptx]
+    seen = {main_ptx}
+
+    def walk(xml_bytes, base_dir):
+        try:
+            root = etree.fromstring(xml_bytes)
+        except etree.XMLSyntaxError as e:
+            die(f"could not parse {base_dir} while scanning the book: {e}")
+        for inc in root.iter(XI_INCLUDE):
+            if inc.get("parse") == "text":
+                continue                       # raw code include, not a .ptx
+            href = inc.get("href")
+            if not href:
+                continue
+            target = (base_dir / href).resolve()
+            if target in seen or not target.exists():
+                continue
+            seen.add(target)
+            found.append(target)
+            walk(target.read_bytes(), target.parent)
+
+    walk(root_text.encode(), main_ptx.parent)
+    return [str(p) for p in found]
+
+
 def git_ptx_files(book_dir, no_git):
     if no_git:
         return [str(p) for p in book_dir.rglob("*.ptx")]
@@ -326,6 +399,24 @@ def git_ptx_files(book_dir, no_git):
 
 
 def git_mv(old_abs, new_abs, no_git):
+    # On a case-insensitive filesystem a case-only rename (Foo.ptx -> foo.ptx)
+    # has a "destination" that already refers to the same file, so a direct move
+    # is refused. Detect that and go through a temp name in two steps.
+    case_only = (
+        old_abs != new_abs
+        and old_abs.exists()
+        and new_abs.exists()
+        and os.path.samefile(old_abs, new_abs)
+    )
+    if case_only:
+        tmp = old_abs.with_name(old_abs.name + ".rename-tmp")
+        _do_mv(old_abs, tmp, no_git)
+        _do_mv(tmp, new_abs, no_git)
+    else:
+        _do_mv(old_abs, new_abs, no_git)
+
+
+def _do_mv(old_abs, new_abs, no_git):
     if no_git:
         os.replace(old_abs, new_abs)
         return
