@@ -126,15 +126,17 @@ def root_id(path):
 
 
 # Root element kinds whose xml:id the book's naming convention pins down (the
-# rule check-ids.py enforces): a chapter's id is its directory name, a
-# section's/subsection's id is its file's base name. Other roots (pretext,
-# frontmatter, preface, ...) have no such rule and are left untouched.
-ENFORCED_ROOTS = {"section", "subsection", "chapter"}
+# rule check-ids.py enforces). Two flavors: container roots (a chapter, or the
+# <frontmatter> in frontmatter/toctree.ptx) take their directory name; the rest
+# (section, subsection, and each <preface> file) take their file's base name.
+# Other roots (pretext, ...) have no such rule and are left untouched.
+DIR_NAMED_ROOTS = {"chapter", "frontmatter"}
+ENFORCED_ROOTS = {"section", "subsection", "chapter", "frontmatter", "preface"}
 
 
 def expected_root_id(path, root_tag):
     """The xml:id the convention dictates for the root element of `path`."""
-    return path.parent.name if root_tag == "chapter" else path.stem
+    return path.parent.name if root_tag in DIR_NAMED_ROOTS else path.stem
 
 
 # ---------------------------------------------------------------------------

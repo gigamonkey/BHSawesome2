@@ -24,6 +24,10 @@ def process_xml(filename, base_dir=None, parent_source=None):
 
 def walk(elem, source, base_dir):
     if elem.tag == XI_TAG:
+        # Skip raw text includes (e.g. <xi:include parse="text" .../> pulling in
+        # a .java file); they aren't XML and parsing them would crash.
+        if elem.get("parse") == "text":
+            return
         href = elem.get("href")
         if href:
             # Resolve included file
@@ -46,13 +50,18 @@ if __name__ == "__main__":
 
     filename = sys.argv[1]
 
+    # Container roots take their directory name; file-level roots take their
+    # base name. Keep these in sync with rename-files.py's ENFORCED_ROOTS.
+    FILE_NAMED_ROOTS = ('section', 'preface')
+    DIR_NAMED_ROOTS = ('chapter', 'frontmatter')
+
     for elem, source in process_xml(filename):
-        if elem.tag == 'section':
+        if elem.tag in FILE_NAMED_ROOTS:
             id = elem.get(XML_ID)
             base = os.path.basename(source)
             if f"{id}.ptx" != base:
                 print(os.path.realpath(source))
-        elif elem.tag == 'chapter':
+        elif elem.tag in DIR_NAMED_ROOTS:
             id = elem.get(XML_ID)
             base = os.path.basename(os.path.dirname(source))
             if id != base:
