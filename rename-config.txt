@@ -38,7 +38,7 @@ pretext/methods/topic-1-7-APIs-and-libraries.ptx             -> apis-and-librari
 pretext/methods/topic-1-11-Math.ptx                          -> math-class.ptx
 
 # ---- booleans-and-conditionals --------------------------------------------
-pretext/booleans-and-conditionals/topic-2-1-algorithms.ptx         -> algorithms-building-blocks.ptx
+pretext/booleans-and-conditionals/topic-2-1-algorithms.ptx         -> alogrithm-building-blocks.ptx
 pretext/booleans-and-conditionals/topic-2-3-ifs.ptx                -> if-statements.ptx
 pretext/booleans-and-conditionals/topic-2-2-booleans.ptx           -> boolean-expressions.ptx
 pretext/booleans-and-conditionals/topic-2-6-comparing-booleans.ptx -> boolean-manipulation.ptx
@@ -75,7 +75,7 @@ pretext/objects/topic-3-8-scope-access.ptx                  -> scope-and-access.
 # KEEP pretext/objects/turtles.ptx
 
 # ---- array-lists ----------------------------------------------------------
-pretext/array-lists/topic-4-8-arraylists.ptx                -> arraylists.ptx
+pretext/array-lists/topic-4-8-arraylists.ptx                -> arraylist-methods.ptx
 pretext/array-lists/topic-4-7-wrapper-classes.ptx           -> wrapper-classes.ptx
 pretext/array-lists/topic-4-9-arraylist-traversal.ptx       -> arraylist-traversal.ptx
 pretext/array-lists/topic-4-10-arraylist-algorithms.ptx     -> arraylist-algorithms.ptx
