@@ -119,6 +119,23 @@ def resolve_new(old_abs, raw):
     return (old_abs.parent / raw).resolve()
 
 
+def same_path_ci(a, b):
+    """True if a and b are the same path ignoring letter case.
+
+    Compared as lowercased strings rather than via os.path.samefile(): on some
+    case-insensitive mounts (e.g. a macOS volume bind-mounted into a Linux
+    container) stat reports a *different* inode for each spelling of the same
+    file, so samefile() wrongly returns False. True for a path against itself
+    (the in-place id-fix records) as well as for a case-only rename.
+    """
+    return str(a).lower() == str(b).lower()
+
+
+def is_case_only(old_abs, new_abs):
+    """True if old/new are the same file but with a different letter case."""
+    return old_abs != new_abs and same_path_ci(old_abs, new_abs)
+
+
 def root_id(path):
     """Return (root_tag, current_xml:id-or-None) for a .ptx file."""
     root = etree.parse(str(path)).getroot()
@@ -320,7 +337,7 @@ def main():
         target_clash = (
             new_abs.exists()
             and new_abs not in move_map
-            and not (old_abs.exists() and os.path.samefile(old_abs, new_abs))
+            and not same_path_ci(old_abs, new_abs)
         )
         if target_clash:
             die(f"target already exists: {new_abs}")
@@ -458,12 +475,7 @@ def git_mv(old_abs, new_abs, no_git):
     # On a case-insensitive filesystem a case-only rename (Foo.ptx -> foo.ptx)
     # has a "destination" that already refers to the same file, so a plain move
     # is refused ("destination exists"). Detect that and force it.
-    case_only = (
-        old_abs != new_abs
-        and old_abs.exists()
-        and new_abs.exists()
-        and os.path.samefile(old_abs, new_abs)
-    )
+    case_only = is_case_only(old_abs, new_abs)
     if case_only and not no_git:
         # `git mv -f` records the rename in the index with the new casing. The
         # working-tree filename may keep the old case until a fresh checkout,
