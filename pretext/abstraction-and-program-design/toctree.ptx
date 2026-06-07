@@ -43,10 +43,9 @@
       designing programs: how software affects society and some issues we need
       to think about when designing software to avoid harms it might cause.
     </p>
-
   </introduction>
 
-  <xi:include href="./topic-3-1-abstraction.ptx" />
-  <xi:include href="./topic-1-8-comments.ptx" />
-  <xi:include href="./topic-3-2-impacts.ptx" />
+  <xi:include href="./abstraction.ptx" />
+  <xi:include href="./documentation-and-invariants.ptx" />
+  <xi:include href="./impacts.ptx" />
 </chapter>

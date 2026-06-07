@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <section xml:lang="en-US" xml:id="search-sort-mcq" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Searching and sorting multiple-choice questions</title>
@@ -11,8 +11,7 @@
     </p>
   </introduction>
 
-  <xi:include href="./ssEasyMC.ptx" />
-  <xi:include href="./ssMedMC.ptx" />
-  <xi:include href="./ssHardMC.ptx" />
-
+  <xi:include href="./search-sort-easy-mc.ptx" />
+  <xi:include href="./search-sort-medium-mc.ptx" />
+  <xi:include href="./search-sort-hard-mc.ptx" />
 </section>

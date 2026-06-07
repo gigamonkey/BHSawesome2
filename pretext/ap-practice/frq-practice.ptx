@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<section xml:id="array-list-frq-practice" xmlns:xi="http://www.w3.org/2001/XInclude">
+<section xml:id="frq-practice" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>FRQ practice</title>
 
   <introduction>
@@ -23,33 +23,35 @@
     </p>
 
     <program language="java">
+
       <code>
-for (Type obj : list)
-{
-    if (obj ....)
-        ...
-}
+        <![CDATA[
+        for (Type obj : list)
+        {
+            if (obj ....)
+                ...
+        }
 
-for(int i=0; i &lt; list.size(); i++)
-{
-   if (list.get(i) ....)
-       ...
-}
+        for(int i=0; i < list.size(); i++)
+        {
+           if (list.get(i) ....)
+               ...
+        }
+        ]]>
       </code>
-    </program>
 
+    </program>
   </introduction>
 
-  <xi:include href="./FRQ3ArrayList.ptx" />
-  <xi:include href="./climbClubA.ptx" />
-  <xi:include href="./climbClubB.ptx" />
-  <xi:include href="./climbClubC.ptx" />
-  <xi:include href="./cookieOrderA.ptx" />
-  <xi:include href="./cookieOrderB.ptx" />
-  <xi:include href="./stringFormatterA.ptx" />
-  <xi:include href="./stringFormatterB.ptx" />
-  <xi:include href="./delimitersQ3a.ptx" />
-  <xi:include href="./delimitersQ3b.ptx" />
-  <xi:include href="./gridworldQ3A.ptx" />
-
+  <xi:include href="./frq3-arraylist.ptx" />
+  <xi:include href="./climb-club-a.ptx" />
+  <xi:include href="./climb-club-b.ptx" />
+  <xi:include href="./climb-club-c.ptx" />
+  <xi:include href="./cookie-order-a.ptx" />
+  <xi:include href="./cookie-order-b.ptx" />
+  <xi:include href="./string-formatter-a.ptx" />
+  <xi:include href="./string-formatter-b.ptx" />
+  <xi:include href="./delimiters-q3a.ptx" />
+  <xi:include href="./delimiters-q3b.ptx" />
+  <xi:include href="./gridworld-q3a.ptx" />
 </section>

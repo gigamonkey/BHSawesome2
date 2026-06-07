@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<section xml:id="anatomy-of-class">
+  <title>Anatomy of a class</title>
+
+  <introduction>
+    <p>
+      In <xref ref="apis-and-libraries" /> we saw how classes define new data
+      types whose values share a set of <term>attributes</term> and
+      <term>behaviors</term>. We also saw how different objects, while having
+      the same abstract attributes, each have their own values for those
+      attributes and how an object’s values can then affect their behavior in
+      some way. For instance all <c>Turtle</c> objects have a position but two
+      <c>Turtle</c> objects can be at different positions on the screen. And
+      both can be made to move forward from wherever they are with the
+      <c>forward()</c> method.
+    </p>
+
+    <p>
+      To review the vocabulary, a <term>class</term> defines the
+      <term>attributes</term> and <term>behaviors</term> that all objects of
+      that class will have. From a class we make many <term>objects</term> also
+      called <term>instances</term> of the class. Each instance has its own
+      values for the attributes defined in the class. <term>Attributes</term>
+      are the data or properties that an object knows about itself, for example,
+      a turtle object’s color and size. <term>Behaviors</term> are the things
+      that an object can do. For example, a turtle object can go forward, turn
+      left, or turn right. The attributes and behaviors of a class are defined
+      in the class, but each object has its own values for the attributes.
+    </p>
+
+    <figure align="center">
+      <caption>Using a cookie cutter (class) to make cookies (objects)</caption>
+
+      <image source="Unit1-Using-Objects-and-Methods/Figures/cookieCutterLabelled.png" width="89%" />
+    </figure>
+
+    <p>
+      The following picture has lots of cats (objects of the type cat). They are
+      all different, but they share the same attributes and behaviors that make
+      up a cat. They are all <term>instances</term> of cat with different values
+      for their attributes. Name some of the attributes and behaviors of the
+      cats below. For example, the color ( <em>attribute</em>) of the first cat
+      is black ( <em>attribute value</em>) and it is playing (
+      <em>behavior</em>).
+    </p>
+
+    <figure align="center">
+      <caption>Pictures of cats (cat objects)</caption>
+
+      <image source="Unit1-Using-Objects-and-Methods/Figures/catsLabelled.png" width="89%" />
+    </figure>
+
+    <p>
+      But thinking in terms of abstract attributes and behaviors is the outside
+      view of a class, for when we’re using an API. Now it’s time to open up the
+      black box and see how classes are structured on the inside. In this
+      section we’ll take a very quick tour through the main parts of a class.
+      Then we’ll go through each part in more detail in the following sections.
+    </p>
+  </introduction>
+
+  <subsection xml:id="parts-of-a-class">
+    <title>Quick tour: instance variables, constructors, and methods</title>
+
+    <p>
+      When we open up the black box, we find classes have three main parts:
+      instance variables, constructors, and methods. In order to have something
+      to talk about, let’s look at a simple but complete class, <c>Person</c>.
+    </p>
+
+    <p>
+      The purpose of this class is to model a person as someone who has two
+      attributes, a name and an age. A person also has two behaviors: they can
+      print out a greeting where they introduce themselves and they can answer
+      the <c>boolean</c> question of whether they can vote, which depends on
+      whether they are eighteen or older.
+    </p>
+
+    <p>For instance we should be able to write this code:</p>
+
+    <program>
+      Person person1 = new Person("Joe", 18);
+      Person person2 = new person("Sally", 17);
+      person.greet(person2);
+      System.out.println("Joe can vote: " + person1.canVote());
+      System.out.println("Sally can vote: " + person2.canVote());
+    </program>
+
+    <p>and when we run it get this output:</p>
+
+    <pre>
+      Hello Sally, I'm Joe.
+      Joe can vote: true
+      Sally can vote: false
+    </pre>
+
+    <p>
+      Here’s the code for a <c>Person</c> class that meets those requirements.
+    </p>
+
+    <program>
+      <![CDATA[
+      public class Person {
+
+        // Instance variables
+        private String name;
+        private int age;
+
+        // Constructor
+        public Person(String name, int age) {
+          this.name = name;
+          this.age = age;
+        }
+
+        // Methods
+        public void greet(Person other) {
+          System.out.println("Hello " + other.name + ", I'm " + name + ".");
+        }
+
+        public boolean canVote() {
+          return age >= 18;
+        }
+      }
+      ]]>
+    </program>
+
+    <p>Let’s take this in chunks, starting with the first line:</p>
+
+    <program>
+      public class Person {
+    </program>
+
+    <p>
+      Almost all the classes we write will start with the keyword <c>public</c>.
+      It just means the class can be used in other classes. We will occasionally
+      have to write classes without the <c>public</c> in exercises in this book
+      but only because of limitations of the platform this book runs on.
+      However, the really important word in this line is <c>class</c> which says
+      we’re defining a class.
+    </p>
+
+    <p>
+      Next is the name of the class, <c>Person</c>. Class names in Java are
+      always capitalized. It is not strictly required by the language but is as
+      universally followed a convention as just about anything in programming.
+      Consequently, Java code with uncapitalized class names can be extremely
+      confusing, especially to experienced Java programmers, so don’t write code
+      with uncapitalized class names!
+    </p>
+
+    <p>
+      After the name of the class comes the opening <c>{</c> of the <term>class
+      body</term> which, like the body of a method, is defined inside a pair of
+      <c>{}</c>s. Everything that makes up the definition of the class must be
+      inside that pair of <c>{}</c>.
+    </p>
+
+    <p>
+      The first thing in the body of this class are two variable declarations:
+    </p>
+
+    <program>
+      private String name;
+      private int age;
+    </program>
+
+    <p>
+      The only new thing here, compared to other variable declarations we’ve
+      seen, is the keyword <c>private</c>. After that, they look like regular
+      variable declarations with a type and a name. But because these variables
+      are defined at the top level of the class, meaning not inside a method,
+      they are called <term>instance variables</term> and they are what define
+      the attributes instances of this class have. So from these two lines we
+      can see that every <c>Person</c> object has two attributes, a name and an
+      age. Each instance of the class has its own set of instance variables that
+      aren’t shared with other instances so we can have two different
+      <c>Person</c> objects, each with their own <c>name</c>.
+    </p>
+
+    <p>
+      The next thing we define in a class are usually its
+      <term>constructors</term>. We’ll talk a lot more about constructors in a
+      future section but the short version is, a constructor’s job is to
+      initialize an object’s instance variables. Our <c>Person</c> class has one
+      constructor:
+    </p>
+
+    <program>
+      public Person(String name, int age) {
+          this.name = name;
+          this.age = age;
+      }
+    </program>
+
+    <p>
+      We’ll get into the details soon but for now, just know that this code runs
+      we write something like <c>new Person("Joe", 18)</c> and the arguments
+      <c>"Joe"</c> and <c>18</c> become the values of the parameters <c>name</c>
+      and <c>age</c>. Those values are then assigned to <c>this.name</c> and
+      <c>this.age</c> which are specifically the instance variables we defined
+      above. This constructor guarantees that whenever we make a <c>Person</c>
+      we have to supply a name and an age and those values are stored in the
+      object’s instance variables.
+    </p>
+
+    <p>
+      Finally the behaviors of this class, emitting a greeting, and answering
+      the question of whether a specific <c>Person</c> can vote, are provided by
+      the two methods:
+    </p>
+
+    <program>
+      <![CDATA[
+      public void greet(Person other) {
+        System.out.println("Hello " + other.name + ", I'm " + name + ".");
+      }
+
+      public boolean canVote() {
+        return age >= 18;
+      }
+      ]]>
+    </program>
+
+    <p>
+      You should be familiar with how methods work from <xref
+      ref="method-signatures" /> but there are two new things here. First, both
+      of these methods refer to a variable that is neither a parameter nor is
+      declared inside the method. The method <c>greet</c> has one parameter,
+      <c>to</c>, but the code in the method also refers to the variable
+      <c>name</c>. And <c>canVote</c> has no parameters but its code refers to
+      the variable <c>age</c>.
+    </p>
+
+    <p>
+      This works because of the second new thing that about these methods,
+      compared to the ones we’ve written before now: they do not have the
+      keyword <c>static</c> in their signature. That makes them <term>instance
+      methods</term> which means they have access to the instance variables
+      defined in the class.
+    </p>
+
+    <p>
+      Watch this short video to review some of the key vocabulary of
+      object-oriented programming and then we’ll move on to a more detailed
+      examination of these three parts of a class.
+    </p>
+
+    <video youtube="LfSaSANJPLg" label="video-classes" />
+    <p>
+      Watch the following <url
+      href="https://www.youtube.com/watch?v=64DOwDu5SVo&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
+      by Dr. Colleen Lewis about classes and objects:
+    </p>
+
+    <figure align="center">
+      <caption>Classes and Objects</caption>
+
+      <video youtube="64DOwDu5SVo" label="video-objects" />
+    </figure>
+
+    <activity label="vocab2_1">
+      <statement>
+        <p>
+          Drag the definition from the left and drop it on the correct concept
+          on the right. Click the "Check Me" button to see if you are correct.
+        </p>
+      </statement>
+
+      <feedback>
+        <p>Review the summaries above.</p>
+      </feedback>
+
+      <cardsort>
+        <match>
+          <premise order="1">
+            a specific instance of a class with defined attributes
+          </premise>
+
+          <response>object</response>
+        </match>
+
+        <match>
+          <premise order="2">
+            defines a new data type that is like a blueprint
+          </premise>
+
+          <response>class</response>
+        </match>
+
+        <match>
+          <premise order="3">define what the object knows about itself</premise>
+          <response>attributes or instance variables</response>
+        </match>
+
+        <match>
+          <premise order="4">define what an object can do</premise>
+          <response>behaviors or methods</response>
+        </match>
+      </cardsort>
+    </activity>
+
+    <activity label="howmanyobjects">
+      <statement>
+        <p>How many objects can you create from a class in Java?</p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>1</p>
+          </statement>
+
+          <feedback>
+            <p>
+              There is one definition of a class, but the class can create as
+              many objects as are needed.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>10</p>
+          </statement>
+
+          <feedback>
+            <p>
+              There is no limit on the number of objects you can create from a
+              class.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>1000</p>
+          </statement>
+
+          <feedback>
+            <p>
+              There is no limit on the number of objects you can create from a
+              class.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>As many as you need</p>
+          </statement>
+
+          <feedback>
+            <p>You can create as many objects as you need from one class.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="mcq_behaviors">
+      <statement>
+        <p>What specifies the behavior for objects of a class in Java?</p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>attributes</p>
+          </statement>
+
+          <feedback>
+            <p>attributes specify the data that an object keeps track of.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>methods</p>
+          </statement>
+
+          <feedback>
+            <p>Methods specify the behavior of all objects of a class.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>class</p>
+          </statement>
+
+          <feedback>
+            <p>
+              While the class does specify the behavior of all objects created
+              by that class, what part of a class specifies the behavior?
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>object</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The object behavior is specified by the methods in the class that
+              created the object.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="mcq_data">
+      <statement>
+        <p>What are the data or properties of an object called?</p>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement>
+            <p>attributes</p>
+          </statement>
+
+          <feedback>
+            <p>attributes specify the data that an object keeps track of.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>methods</p>
+          </statement>
+
+          <feedback>
+            <p>Methods specify the behavior of all objects of a class.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>class</p>
+          </statement>
+
+          <feedback>
+            <p>
+              While the class does specify the data that all objects of the
+              class keep track of, what part of the class stores the data?
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>object</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The object data is stored in the attributes of the object. The
+              attributes are defined in the class.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+  </subsection>
+</section>

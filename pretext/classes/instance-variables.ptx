@@ -94,8 +94,7 @@
       <c>other.name</c> means get the instance variable from the object
       referenced by <c>other</c>, in this case the argument that was passed to
       <c>greet</c>. The dot in <c>other.name</c> is called the <term>dot
-      operator</term> as we firs saw in <xref ref="topic-1-7-APIs-and-libraries"
-      />.
+      operator</term> as we firs saw in <xref ref="apis-and-libraries" />.
     </p>
 
     <p>
@@ -202,7 +201,6 @@
 
     <idx>reference</idx>
     <idx>null</idx>
-
     <p>
       When an object is created, the memory to hold its instance variables is
       allocated and initialized. We’ll see in the next section how we can write
@@ -225,7 +223,6 @@
     </p>
 
     <video youtube="5fpjgXAV2BU" label="video-null" />
-
   </subsection>
 
   <subsection>
@@ -279,13 +276,13 @@
       forgetting to initialize an instance variable which can later lead to a
       <c>NullPointerException</c> if we try to access an instance variable or
       invoke an instance method on that variable. We’ll see in more detail in
-      <xref ref="topic-3-4-constructors" /> how to make sure all our instance
-      variables are properly initialized.
+      <xref ref="constructors" /> how to make sure all our instance variables
+      are properly initialized.
     </p>
 
     <p>
       Another common source of null references is arrays. And as we saw in <xref
-      ref="topic-4-3-array-basics" /> if we make an array with an array creation
+      ref="array-basics" /> if we make an array with an array creation
       expression like <c>new String[10]</c> it makes an array with places to
       store ten <c>String</c> references but all those references start out
       <c>null</c>. So when we make arrays with elements of a reference type we
@@ -336,7 +333,7 @@
       might use <c>Person</c> to see if it references that variable. Making
       variables <c>private</c> is one of Java’s main mechanisms for <term>data
       encapsulation</term> or <term>data hiding</term>. In <xref
-      ref="topic-3-5-methods" /> we’ll look at a common pattern for using
+      ref="instance-methods" /> we’ll look at a common pattern for using
       <c>public</c> methods to give controlled access to <c>private</c> instance
       variables.
     </p>
@@ -516,6 +513,7 @@
       </statement>
 
       <program interactive="activecode">
+
         <code>
           public class          // Add your class name here!
           {
@@ -552,9 +550,9 @@
                   assertTrue(passed);
               }
           }
-
           ]]>
         </tests>
+
       </program>
     </project>
   </subsection>

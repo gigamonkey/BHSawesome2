@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<section xml:id="boolean-manipulation">
+  <title>Manipulating boolean expressions</title>
+
+  <idx>De Morgan's Laws</idx>
+  <idx>negation</idx>
+  <idx>truth table</idx>
+  <introduction>
+    <p>
+      Boolean expressions are at the heart of a lot of code controlling what
+      happens when. And sometimes they can get a bit complex. In order to keep
+      from getting overwhelmed, it’s useful to be able to manipulate and
+      simplify boolean expressions.
+    </p>
+
+    <p>
+      Also the AP exam almost always includes some questions that depend on your
+      ability to determine whether two boolean expressions are actually
+      equivalent, similar to being able to determine that two mathematical
+      expressions such as <m>a(b + c)</m> and <m>ab + ac</m> are equivalent.
+    </p>
+
+    <p>
+      In this section we will look at two ways of manipulating and analyzing
+      boolean expressions: <term>algebraically</term> and with <term>truth
+      tables</term>.
+    </p>
+  </introduction>
+
+  <subsection>
+    <title>Compound boolean expressions</title>
+
+    <p>
+      As with the arithmetic operators, the two logical operators
+      <c>&amp;&amp;</c> and <c>||</c> each apply to only two operands and
+      <c>!</c> only applies to one. But we can build compound expressions where
+      the operands are other expressions using either other logical operators or
+      comparison operators. We saw some examples of this in the previous
+      section.
+    </p>
+
+    <p>
+      Once we start writing compound expressions it’s important to know what the
+      precedence of the different operators are and our middle-school PEMDAS is
+      no help. In Java, <c>!</c> has higher precedence than <c>&amp;&amp;</c>,
+      and <c>&amp;&amp;</c> is higher than <c>||</c>. But parentheses still have
+      the highest precedence of all so we can use them to group things the way
+      we want them to be evaluated. For example <c>!a &amp;&amp; b</c> is
+      equivalent to <c>(!a) &amp;&amp; b</c>. If instead we want to negate the
+      value produced by the and expression we can write: <c>!(a &amp;&amp;
+      b)</c>.
+    </p>
+
+    <p>
+      Also all the logical operators are lower precedence than the comparison
+      operators which is why we can write <c>0 &lt;= x &amp;&amp; x &lt; 100</c>
+      rather than having to write: <c>(0 &lt;= x) &amp;&amp; (x &lt; 100)</c>.
+    </p>
+  </subsection>
+
+  <subsection xml:id="simplifying-boolean-expressions">
+    <title>Simplifying algebraically</title>
+
+    <p>
+      Once we start writing complex compund boolean expressions things can get
+      out of hand. Sometimes this happens organically as we write code because
+      we add subexpressions to an expression as we realize different cases. “I
+      want to run this code when the score is greater than one-hundred. No wait,
+      greater than one-hundred and bonus points are greater than ten. Well, that
+      but also when the player has at least one power up and more than ten bonus
+      points.” Next thing you know we’ve got this (with parentheses added for
+      clarity):
+    </p>
+
+    <program>
+      <![CDATA[
+      (score > 100 && bonusPoints > 10) || (powerUps > 1 && bonusPoints > 10)
+      ]]>
+    </program>
+
+    <p>
+      That’s maybe not terrible but it’s not trivial either. When we look at
+      that expression how sure are we that it’s capturing exactly the cases we
+      care about? Luckily there are some techniques for simplifying an
+      expression like that into something that might be easier to understand.
+    </p>
+
+    <p>
+      For instance, in this case we can notice that in both sides of the
+      <c>||</c> the condition is something <c>&amp;&amp; bonusPoints &gt;
+      10</c>. Since the whole compound expression can only be true if one side
+      or the other is true but whichever side it is, <c>bonusPoints &gt; 10</c>
+      will have to be true. So that means we can factor it out similar to how we
+      can factor <m>a</m> out of <m>ab + ac</m> to get <m>a(b + c)</m>. That
+      gives us this:
+    </p>
+
+    <program>
+      <![CDATA[
+      bonusPoints > 10 && (score > 100 || powerUps > 1)
+      ]]>
+    </program>
+
+    <p>
+      This trick also works when we have two <c>||</c> expressions combined with
+      <c>&amp;&amp;</c>. Consider for instance this expression:
+    </p>
+
+    <program>
+      <![CDATA[
+      (score > 100 || bonusPoints > 10) && (score < 100 || bonusPoints > 10)
+      ]]>
+    </program>
+
+    <p>
+      This time in order for the whole expression to be true both of the
+      operands to the &amp;&amp;, i.e. the two <c>||</c> expressions have to be
+      true. Since they both contain <c>bonusPoints &gt; 10</c>, if that
+      subexpression is true they will each be true and therefore the whole thing
+      will be true. So we can factor it out like this:
+    </p>
+
+    <program>
+      <![CDATA[
+      bonusPoints > 10 || (score > 100 && score < 100)
+      ]]>
+    </program>
+
+    <p>
+      But now there’s an even bigger payoff. Look carefully at the second
+      expression. It’s true when the score is both greater and less than one
+      hundred. Which can never happen so that subexpression will always be
+      <c>false</c>. So we can simplify the larger expression to:
+    </p>
+
+    <program>
+      <![CDATA[
+      bonusPoints > 10 || false
+      ]]>
+    </program>
+
+    <p>
+      And since the value of that now depends entirely on the left hand operand
+      of the <c>||</c> we’ve simplified the whole original expression down to
+      just:
+    </p>
+
+    <program>
+      <![CDATA[
+      bonusPoints > 10
+      ]]>
+    </program>
+  </subsection>
+
+  <subsection xml:id="de-morgan-s-laws">
+    <title>De Morgan’s Laws</title>
+
+    <p>
+      One of the most powerful tools for manipulating <c>boolean</c> expressions
+      are De Morgan’s Laws. Developed by Augustus De Morgan in the 1800s, they
+      show how to simplify the negation of <c>&amp;&amp;</c> and <c>||</c>
+      expressions, i.e. anything in either of these two forms: <c>!(a &amp;&amp;
+      b)</c> or <c>!(a || b)</c>
+    </p>
+
+    <p>
+      The rule is pretty simple: apply the <c>!</c> to each of the
+      subexpressions and then switch the other operator with <c>&amp;&amp;</c>
+      changing to <c>||</c> and <c>||</c> changing to <c>&amp;&amp;</c>.
+    </p>
+
+    <figure align="center">
+      <caption>De Morgan’s Laws to simplify complex expressions</caption>
+
+      <image source="Unit2-Selection-and-Iteration/Figures/demorgan.png" width="71%" />
+    </figure>
+
+    <p>In Java, De Morgan’s Laws are written with the following operators:</p>
+
+    <p>
+      <ul>
+        <li>
+          <p><c>!(a &amp;&amp; b)</c> is equivalent to <c>!a || !b</c></p>
+        </li>
+
+        <li>
+          <p><c>!(a || b)</c> is equivalent to <c>!a &amp;&amp; !b</c></p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can probably convince yourself that these are valid with an actual
+      example. Imagine, for instance, that you are trying to express whether you
+      want to go to the movies. You won’t go if you’re broke or if you’re too
+      tired but otherwise you will.
+    </p>
+
+    <p>
+      So one way to say whether you’ll go is to say, you’ll go if you’re not
+      broke or tired. Or in Java: <c>!(broke || tired)</c>. (In English we hear
+      “broke or tired” as grouped together and both affected by the “not”.)
+    </p>
+
+    <p>
+      But another way to say it is that you will go to the movies if you are not
+      broke and you’re not tired. Or in Java: <c>!broke &amp;&amp; !tired</c>.
+      Thus <c>!(broke || tired)</c> and <c>!broke &amp;&amp; !tired</c> are two
+      different ways of saying the same thing.
+    </p>
+
+    <p>
+      By themselves De Morgan’s laws don’t usually lead to big simplifications
+      but by giving us a way to flip <c>&amp;&amp;</c> to <c>||</c> and vice
+      versa, they can be a useful step toward rearranging a complex expression
+      into a form where we can apply other rules to simplify it.
+    </p>
+
+    <p>
+      And they’re really great for answering AP exam questions that give you one
+      <c>boolean</c> expression and ask you to pick out which of several others
+      is equivalent to it.
+    </p>
+
+    <p>
+      We can also simplify negated <c>boolean</c> expressions involving
+      comparison operators like <c>&lt;</c>, <c>&gt;</c>, and <c>==</c>. And we
+      can negate a comparison expression by flipping the comparison operator.
+      For instance <c>!(a == b)</c> is flipped to <c>a != b</c>. The relational
+      operators can be flipped either by swapping the operands (<c>a &lt; b</c>
+      becomes <c>b &lt; a</c>) or by flipping the operator. But we need to
+      remember which are the actual flipped operators. For <c>&lt;</c> it is not
+      <c>&gt;</c> but <c>&gt;=</c> and likewise for <c>&gt;</c> and
+      <c>&lt;=</c>. In other words, to flip a comparison operator change the
+      <c>&lt;</c> or <c>&gt;</c> to the other symbol and add an <c>=</c> if
+      there isn’t one or remove it if there is.
+    </p>
+
+    <table>
+      <title>Negation of comparison expressions</title>
+
+      <tabular halign="center">
+        <row header="yes" bottom="minor">
+          <cell>Operator</cell>
+          <cell>Flip operands</cell>
+          <cell>Flip operator</cell>
+        </row>
+
+        <row>
+          <cell><c>a == b</c></cell>
+          <cell>-</cell>
+          <cell><c>a != b</c></cell>
+        </row>
+
+        <row>
+          <cell><c>a != b</c></cell>
+          <cell>-</cell>
+          <cell><c>a == b</c></cell>
+        </row>
+
+        <row>
+          <cell><c>a &lt; b</c></cell>
+          <cell><c>b &lt; a</c></cell>
+          <cell><c>a &gt;= b</c></cell>
+        </row>
+
+        <row>
+          <cell><c>a &lt;= b</c></cell>
+          <cell><c>b &lt;= a</c></cell>
+          <cell><c>a &gt; b</c></cell>
+        </row>
+
+        <row>
+          <cell><c>a &gt; b</c></cell>
+          <cell><c>b &gt; a</c></cell>
+          <cell><c>a &lt;= b</c></cell>
+        </row>
+
+        <row>
+          <cell><c>a &gt;= b</c></cell>
+          <cell><c>b &gt;= a</c></cell>
+          <cell><c>a &gt; b</c></cell>
+        </row>
+      </tabular>
+    </table>
+  </subsection>
+
+  <subsection xml:id="truth-tables">
+    <title>Truth tables</title>
+
+    <p>
+      The other main technique for analyzing <c>boolean</c> expressions is
+      called a <term>truth table</term>. Truth tables are a systematic way of
+      analyzing the boolean expressions for all possible combinations values for
+      the subexpressions.
+    </p>
+
+    <p>
+      For simple expressions a truth table can be used to spell out exactly what
+      the values of that expression are. For instance, here are truth tables
+      that show, in case you forgot, how <c>&amp;&amp;</c>, <c>||</c>, and
+      <c>!</c> work.
+    </p>
+
+    <sidebyside valign="middle">
+      <table>
+        <title><c>a &amp;&amp; b</c> truth table</title>
+
+        <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
+          <row header="yes">
+            <cell>a</cell>
+            <cell>b</cell>
+            <cell>a &amp;&amp; b</cell>
+          </row>
+
+          <row>
+            <cell><c>false</c></cell>
+            <cell><c>false</c></cell>
+            <cell><c>false</c></cell>
+          </row>
+
+          <row>
+            <cell><c>false</c></cell>
+            <cell><c>true</c></cell>
+            <cell><c>false</c></cell>
+          </row>
+
+          <row>
+            <cell><c>true</c></cell>
+            <cell><c>false</c></cell>
+            <cell><c>false</c></cell>
+          </row>
+
+          <row>
+            <cell><c>true</c></cell>
+            <cell><c>true</c></cell>
+            <cell><c>true</c></cell>
+          </row>
+        </tabular>
+      </table>
+
+      <table>
+        <title><c>a || b</c> truth table</title>
+
+        <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
+          <row header="yes">
+            <cell>a</cell>
+            <cell>b</cell>
+            <cell>a || b</cell>
+          </row>
+
+          <row>
+            <cell><c>false</c></cell>
+            <cell><c>false</c></cell>
+            <cell><c>false</c></cell>
+          </row>
+
+          <row>
+            <cell><c>false</c></cell>
+            <cell><c>true</c></cell>
+            <cell><c>true</c></cell>
+          </row>
+
+          <row>
+            <cell><c>true</c></cell>
+            <cell><c>false</c></cell>
+            <cell><c>true</c></cell>
+          </row>
+
+          <row>
+            <cell><c>true</c></cell>
+            <cell><c>true</c></cell>
+            <cell><c>true</c></cell>
+          </row>
+        </tabular>
+      </table>
+
+      <table>
+        <title><c>!a</c> truth table</title>
+
+        <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
+          <row header="yes">
+            <cell>a</cell>
+            <cell>!a</cell>
+          </row>
+
+          <row>
+            <cell><c>false</c></cell>
+            <cell><c>true</c></cell>
+          </row>
+
+          <row>
+            <cell><c>true</c></cell>
+            <cell><c>false</c></cell>
+          </row>
+        </tabular>
+      </table>
+    </sidebyside>
+
+    <p>
+      But we can also build truth tables for more complex expressions and if we
+      build tables for two different expressions we can then compare the tables
+      to determine whether the expressions are equivalent.
+    </p>
+
+    <p>
+      Building truth tables is a brute force approach which can be more tedious
+      than doing a bit of Boolean algebra but doesn’t rely on any algebraic
+      insight to figure out which rules to apply in order to manipulate one
+      expression into the same form as the other. So if you are comfortable with
+      them, you can always use them to grind out an analysis.
+    </p>
+
+    <p>
+      To build a truth table for an expression make at table with, initially, a
+      column for each variable that occurs in the expression. Then add a column
+      to the right for each subexpression, working back up to the whole
+      expression. Each new column should be an expression that combines the
+      expressions we have already made columns for using just one operator.
+    </p>
+
+    <p>
+      For instance to make a truth table for the expression <c>!(a &amp;&amp;
+      b)</c> we’d make a table with these columns.
+    </p>
+
+    <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
+      <row header="yes">
+        <cell><c>a</c></cell>
+        <cell><c>b</c></cell>
+        <cell><c>a &amp;&amp; b</c></cell>
+        <cell><c>!(a &amp;&amp; b)</c></cell>
+      </row>
+    </tabular>
+
+    <p>
+      Then add as many rows as there are different combinations of values for
+      the variables. With two variables there are <m>2^2</m> or four
+      combinations.
+    </p>
+
+    <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
+      <row header="yes">
+        <cell><c>a</c></cell>
+        <cell><c>b</c></cell>
+        <cell><c>a &amp;&amp; b</c></cell>
+        <cell><c>!(a &amp;&amp; b)</c></cell>
+      </row>
+
+      <row>
+        <cell><c>false</c></cell>
+        <cell><c>false</c></cell>
+        <cell><c /></cell>
+        <cell><c /></cell>
+      </row>
+
+      <row>
+        <cell><c>false</c></cell>
+        <cell><c>true</c></cell>
+        <cell><c /></cell>
+        <cell><c /></cell>
+      </row>
+
+      <row>
+        <cell><c>true</c></cell>
+        <cell><c>false</c></cell>
+        <cell><c /></cell>
+        <cell><c /></cell>
+      </row>
+
+      <row>
+        <cell><c>true</c></cell>
+        <cell><c>true</c></cell>
+        <cell><c /></cell>
+        <cell><c /></cell>
+      </row>
+    </tabular>
+
+    <p>
+      After that, it’s just a matter of filling in the columns, moving from left
+      to right. Since each column is an expression in terms of one or two
+      subexpressions whose column has already been filled in that should be
+      easy.
+    </p>
+
+    <table xml:id="not-a-and-b">
+      <title>Truth table for <c>!(a &amp;&amp; b)</c></title>
+
+      <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
+        <row header="yes">
+          <cell><c>a</c></cell>
+          <cell><c>b</c></cell>
+          <cell><c>a &amp;&amp; b</c></cell>
+          <cell><c>!(a &amp;&amp; b)</c></cell>
+        </row>
+
+        <row>
+          <cell><c>false</c></cell>
+          <cell><c>false</c></cell>
+          <cell><c>false</c></cell>
+          <cell><c>true</c></cell>
+        </row>
+
+        <row>
+          <cell><c>false</c></cell>
+          <cell><c>true</c></cell>
+          <cell><c>false</c></cell>
+          <cell><c>true</c></cell>
+        </row>
+
+        <row>
+          <cell><c>true</c></cell>
+          <cell><c>false</c></cell>
+          <cell><c>false</c></cell>
+          <cell><c>true</c></cell>
+        </row>
+
+        <row>
+          <cell><c>true</c></cell>
+          <cell><c>true</c></cell>
+          <cell><c>true</c></cell>
+          <cell><c>false</c></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>
+      To determine if two expressions are equivalent, we can build truth tables
+      for both expressions and then use the tables to check if for each
+      combination of variable values the two expressions produce the same
+      result. For instance, we can now build a table for <c>!a || !b</c> in
+      order to show that De Morgan’s Law for <c>&amp;&amp;</c> is true.
+    </p>
+
+    <table xml:id="not-a-or-not-b">
+      <title>Truth table for <c>!a || !b</c></title>
+
+      <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
+        <row header="yes">
+          <cell><c>a</c></cell>
+          <cell><c>b</c></cell>
+          <cell><c>!a</c></cell>
+          <cell><c>!b</c></cell>
+          <cell><c>!a || !b</c></cell>
+        </row>
+
+        <row>
+          <cell><c>false</c></cell>
+          <cell><c>false</c></cell>
+          <cell><c>true</c></cell>
+          <cell><c>true</c></cell>
+          <cell><c>true</c></cell>
+        </row>
+
+        <row>
+          <cell><c>false</c></cell>
+          <cell><c>true</c></cell>
+          <cell><c>true</c></cell>
+          <cell><c>false</c></cell>
+          <cell><c>true</c></cell>
+        </row>
+
+        <row>
+          <cell><c>true</c></cell>
+          <cell><c>false</c></cell>
+          <cell><c>false</c></cell>
+          <cell><c>true</c></cell>
+          <cell><c>true</c></cell>
+        </row>
+
+        <row>
+          <cell><c>true</c></cell>
+          <cell><c>true</c></cell>
+          <cell><c>false</c></cell>
+          <cell><c>false</c></cell>
+          <cell><c>false</c></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>
+      To compare the two tables, just look at the rightmost column of each and
+      check that the values are the same for each now. (This assumes that you
+      filled in the variabel combinations in the same order.) If they are, then
+      the two expressions are equivalent. As you can see in those two tables the
+      last column in both reads <c>true</c>, <c>true</c>, <c>true</c>,
+      <c>false</c> so the expressions are equivalent.
+    </p>
+  </subsection>
+
+  <subsection xml:id="summary-23">
+    <title>Summary</title>
+
+    <p>
+      <ul>
+        <li>
+          <p>
+            (AP 2.6.A.1) Two Boolean expressions are equivalent if they evaluate
+            to the same value in all cases. Truth tables can be used to prove
+            Boolean expressions are equivalent.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 2.6.A.2) De Morgan’s Laws can be applied to Boolean expressions
+            to create equivalent ones:
+          </p>
+
+          <p>
+            <ul>
+              <li>
+                <p><c>!(a &amp;&amp; b)</c> is equivalent to <c>!a || !b</c></p>
+              </li>
+
+              <li>
+                <p><c>!(a || b)</c> is equivalent to <c>!a &amp;&amp; !b</c></p>
+              </li>
+            </ul>
+          </p>
+        </li>
+
+        <li>
+          <p>
+            A negated expression with a relational operator can be simplified by
+            flipping the relational operator to its opposite sign.
+          </p>
+
+          <p>
+            <ul>
+              <li>
+                <p><c>!(c == d)</c> is equivalent to <c>c != d</c></p>
+              </li>
+
+              <li>
+                <p><c>!(c != d)</c> is equivalent to <c>c == d</c></p>
+              </li>
+
+              <li>
+                <p><c>!(c &lt; d)</c> is equivalent to <c>c &gt;= d</c></p>
+              </li>
+
+              <li>
+                <p><c>!(c &gt; d)</c> is equivalent to <c>c &lt;= d</c></p>
+              </li>
+
+              <li>
+                <p><c>!(c &lt;= d)</c> is equivalent to <c>c &gt; d</c></p>
+              </li>
+
+              <li>
+                <p><c>!(c &gt;= d)</c> is equivalent to <c>c &lt; d</c></p>
+              </li>
+            </ul>
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 2.6.B.1) Two different variables can hold references to the same
+            object. Object references can be compared using <c>==</c> and
+            <c>!=</c>. (Two object references are considered
+            <term>aliases</term> when they both reference the same object.)
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 2.6.B.2) An object reference can be compared with <c>null</c>,
+            using <c>==</c> or <c>!=</c>, to determine if the reference actually
+            references an object.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 2.6.B.3) Classes often define their own equals method, which can
+            be used to specify the criteria for equivalency for two objects of
+            the class. The equivalency of two objects is most often determined
+            using attributes from the two objects.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+
+  <subsection xml:id="ap-practice-16">
+    <title>AP Practice</title>
+
+    <activity label="apcsa-sample5">
+      <statement>
+        <p>
+          Which of the following best describes the value of the Boolean
+          expression: <c>a &amp;&amp; !(b || a)</c>?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>The value is always true.</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Try simplifying !(b ||a) or consider what happens if a and b are
+              true.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>The value is always false.</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Yes, by applying De Morgan’s Law to <c>!(b || a)</c> we get that
+              <c>a &amp;&amp; !(b || a)</c> is equivalent to <c>a &amp;&amp; !b
+              &amp;&amp; !a</c>. Since <c>a &amp;&amp; !a</c> can never be true,
+              the result will always be false.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>
+              The value is true when a has the value false, and is false
+              otherwise.
+            </p>
+          </statement>
+
+          <feedback>
+            <p>Try the expression with a = false. Is the result true?</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>
+              The value is true when b has the value false, and is false
+              otherwise.
+            </p>
+          </statement>
+
+          <feedback>
+            <p>
+              Try the expression with b = false with a = true and then try it
+              with a = false. Is the result ever true?
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>
+              The value is true when either a or b has the value true, and is
+              false otherwise.
+            </p>
+          </statement>
+
+          <feedback>
+            <p>Try the expression with a = true. Is the result true?</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+  </subsection>
+</section>

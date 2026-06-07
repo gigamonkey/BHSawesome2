@@ -1,0 +1,1697 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<section xml:id="method-signatures">
+  <title>Writing methods</title>
+
+  <introduction>
+    <p>
+      Writing Java code consists of about equal parts writing methods and using
+      them but it is probably easier to understand how to use them if we
+      understand what they are so we’ll start by looking at how to write our own
+      methods. In the next lesson we’ll look at a bunch of methods that are part
+      of Java that we don’t have to write but which we can use.
+    </p>
+  </introduction>
+
+  <subsection>
+    <title>Methods signatures</title>
+
+    <idx>method signature</idx>
+    <idx>parameter</idx>
+    <idx>argument</idx>
+    <idx>return type</idx>
+    <idx>parameter list</idx>
+    <p>
+      As we learned in the previous unit, to create a variable we need to
+      declare it, specify its name and its type, and optionally provide an
+      initial value. Declaring methods is similar but there are more parts we
+      need to specify.
+    </p>
+
+    <p>
+      Like a variable, a method has a name which we will use to call it.
+      Additionally a method has a <term>return type</term> which specifies the
+      kind of value (if any) the method returns when called. And a method can
+      take any number of <term>arguments</term>, values it can use in its
+      computation. To specify what number and types of arguments it needs, a
+      method defines <term>parameters</term> which are variables that are
+      declared as part of the method and which hold the argument values when the
+      method is called. Together all these pieces—the name, the return type and
+      the parameters—make up the <term>method signature</term> or <term>method
+      header</term>.
+    </p>
+
+    <p>
+      A complete method signature for a method that adds two numbers and returns
+      the result might look something like this:
+    </p>
+
+    <program>
+      public static int add(int a, int b)
+    </program>
+
+    <p>
+      For now don't worry about the <c>public static</c>, just treat that as
+      boiler plate that all your methods will start with for now. (We’ll start
+      writing methods without <c>static</c> in <xref ref="classes" />.) The next
+      word, <c>int</c>, is the return type. It is the name of a type or the
+      special keyword <c>void</c> which means the method doesn't return any
+      value. Then comes the name of the method, in this case, <c>add</c>. And
+      finally, in parentheses, the method’s <term>parameter list</term>, a
+      comma-delimited list of variables which are the method's parameters.
+      Parameters are declared like other variables with a type and a name. In
+      this method there are two, named <c>a</c> and <c>b</c>, both of type
+      <c>int</c>.
+    </p>
+
+    <p>
+      The signature of method that doesn’t return a value but which has some
+      side effects such drawing a square on the screen might look like this:
+    </p>
+
+    <program>
+      public static void drawSquare(int x, int y, int width, int height)
+    </program>
+  </subsection>
+
+  <subsection>
+    <title>Method calls</title>
+
+    <p>
+      The point of a method signature is that it gives us all the information we
+      need to <term>call</term> the method. A <term>method call</term> consists
+      of the method name followed by an <term>argument list</term>, a list of
+      expressions separated by commas and enclosed in parentheses <c>()</c>.
+    </p>
+
+    <p>
+      The number of expressions in the argument list has to match the number of
+      parameters in the parameter list in the method signature. And each
+      expression must evaluate to a value of the correct data type for the
+      corresponding parameter. But the expressions can be anything: variables,
+      literals, or any other expressions that evaluate to the correct types. The
+      values of the expressions in the argument list become the values of the
+      method’s parameters when the method’s code runs.
+    </p>
+
+    <p>
+      If a method takes no arguments, i.e. has an empty parameter list, there
+      will be nothing between the parentheses but the parentheses are still
+      needed so Java knows we are calling a method and not referring to a
+      variable.
+    </p>
+
+    <p>
+      For instance, a call to the <c>add</c> method with the signature above
+      might look like this: <c>add(10, 20)</c>.
+    </p>
+
+    <p>
+      When a method, such as <c>add</c>, has a return type other than
+      <c>void</c> we can use the method call as an expression whose value will
+      be whatever value the method returns. In this case that means we can use a
+      call to <c>add</c> anywhere we need a value of type <c>int</c>. For
+      example, we can use it to provide the initial value in a variable
+      declaration:
+    </p>
+
+    <program>
+      int sum = add(10, 20);
+    </program>
+  </subsection>
+
+  <subsection>
+    <title>Method bodies</title>
+
+    <p>
+      Of course the signature does not tell us everything about the method. In
+      particular, it does not tell us what computation the method actually
+      performs or how it does it. For that we need to write a method body. The
+      body is enclosed in a pair of curly braces (<c>{}</c>) and contains code
+      that can use the variables from the parameter list. And at any point in
+      the method body we can use the keyword <c>return</c> followed by an
+      expression to cause the method to return the value of that expression as
+      the value of the method call.
+    </p>
+
+    <p>
+      For instance, adding the body to our <c>add</c> method to get a complete
+      method definition would look like this:
+    </p>
+
+    <program>
+      public static int add(int a, int b) {
+        return a + b;
+      }
+    </program>
+
+    <p>
+      Seeing the method body, we can actually understand exactly what happens in
+      a line like:
+    </p>
+
+    <program>
+      int sum = add(10, 20);
+    </program>
+
+    <p>
+      When Java hits the call to <c>add</c>, it first creates variables
+      corresponding to the parameters <c>a</c> and <c>b</c> and initializes them
+      with the argument values <c>10</c> and <c>20</c>. Then it executes the
+      body of the method until it hits a <c>return</c> at which point it
+      evaluates the expression after the <c>return</c> and makes that value the
+      value of the method call. In other words, roughly equivalent to this.
+    </p>
+
+    <program>
+      int a = 10;
+      int b = 20;
+      int sum = a + b;
+    </program>
+
+    <p>
+      The main difference is that when we call <c>add</c>, the variables
+      <c>a</c> and <c>b</c> only exist within the method. Outside of the body of
+      the method we can’t refer to them.
+    </p>
+
+    <activity>
+      <title>Trace call to add</title>
+
+      <statement>
+        <p>
+          To see how a method call works click on the next button below the code
+          to step through the code and watch the red arrow jump to the method
+          that is being run and watch how the arguments are passed into the
+          parameter variables and how the returned value comes back to where the
+          method was called.
+        </p>
+      </statement>
+
+      <program interactive="codelens" label="check-add" xml:id="check-add">
+        public class CheckAdd {
+
+          public static int add(int a, int b) {
+            return a + b;
+          }
+
+          public static void main(String[] args) {
+            int sum = add(10, 20);
+            System.out.println(sum);
+          }
+        }
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Making smaller methods</title>
+
+    <idx>method call</idx>
+    <idx>flow of control</idx>
+    <idx>tracing</idx>
+    <p>
+      The main purpose of methods is to break a program up into smaller chunks
+      that are easier to think about. That also often results in removing
+      duplicated code which also helps reduce the overall complexity of our
+      code. All other things being equal, less code is better than more code.
+    </p>
+
+    <p>
+      For example, the song “Old MacDonald Had a Farm”, like many children’s
+      songs, has a lot of repetition. If we wanted to write a program to print
+      out the song’s lyrics, we could write out a bunch of calls to
+      <c>println</c> as shown below. But then our code would have a lot of
+      duplicate code—the same lines of code occurring in multiple places. See if
+      you can identify the duplicate code in the following implementation of
+      such a program.
+    </p>
+
+    <activity>
+      <title>Finding duplicate code</title>
+
+      <statement>
+        <p>Click on all the lines that are exactly the same as another line.</p>
+      </statement>
+
+      <feedback>
+        <p>Look for lines that are completely identical.</p>
+      </feedback>
+
+      <areas>
+        <cline><area correct="no">public static void main(String args[]) {</area></cline>
+        <cline>    <area correct="yes">System.out.println("Old MacDonald had a farm,");</area></cline>
+        <cline>    <area correct="yes">System.out.println("E-I-E-I-O");</area></cline>
+        <cline>    <area correct="no">System.out.println("And on this farm, they had a cow.");</area></cline>
+        <cline>    <area correct="yes">System.out.println("E-I-E-I-O");</area></cline>
+        <cline>    <area correct="no">System.out.println("With a moo moo here and a moo moo there");</area></cline>
+        <cline>    <area correct="no">System.out.println("Here a moo, there a moo, everywhere a moo moo");</area></cline>
+        <cline>    <area correct="yes">System.out.println("Old MacDonald had a farm,");</area></cline>
+        <cline>    <area correct="yes">System.out.println("E-I-E-I-O");</area></cline>
+        <cline><area correct="no">}</area></cline>
+      </areas>
+    </activity>
+
+    <p>
+      Did you find some repeated lines? You may have noticed that the first two
+      lines are repeated. When you see repeated code, that is a signal to make a
+      new method!
+    </p>
+
+    <p>
+      The code tracing activity below shows how a song can be divided up into
+      methods. Click on the “Next” button below the code to step through the
+      code and watch the red arrow jump to the method that is being run.
+    </p>
+
+    <p>
+      Execution in Java always begins in the <c>main</c> method in the current
+      class. Then, the <term>flow of control</term> skips from method to method
+      as they are called. Notice that when a method ends, it returns to where
+      the method was called. The <c>main</c> method below calls the <c>intro</c>
+      method which prints a line and then calls the <c>chorus</c> method. The
+      code in <c>chorus</c> prints one line and then returns back to
+      <c>intro</c> which is then done so it returns to <c>main</c> which then
+      executes the next line.
+    </p>
+
+    <activity>
+      <title>Old MacDonald with methods</title>
+
+      <statement>
+        <p>
+          Click on the next button below the code to step through the code and
+          watch the red arrow jump to the method that is being run.
+        </p>
+      </statement>
+
+      <program interactive="codelens" label="codelensSong1" xml:id="codelensSong1">
+        public class OldMacDonaldSong {
+          public static void chorus() {
+            System.out.println("Old MacDonald had a farm");
+            eieio();
+          }
+
+          public static void eieio() {
+            System.out.println("E-I-E-I-O");
+          }
+
+          public static void main(String[] args) {
+            chorus();
+            System.out.println("And on that farm they had a cow.");
+            eieio();
+            System.out.println("With a moo moo here and a moo moo there");
+            System.out.println("Here a moo, there a moo, everywhere a moo moo");
+            chorus();
+          }
+        }
+      </program>
+    </activity>
+
+    <p>
+      Just like variable names, method names should be chosen to be meaningful
+      and to describe what the method does. Methods can be defined in any order,
+      but usually programmers put the <c>main</c> method at the end the class
+      after all the methods that it uses are defined.
+    </p>
+
+    <p>
+      Try writing your own method calls below to add another verse to the song.
+    </p>
+
+    <activity label="song-add-calls">
+      <title>Add an animal</title>
+
+      <statement>
+        <p>
+          Scroll down to the main method below and add lines of code to the main
+          method for the second verse of the Old MacDonald Song by calling the
+          intro() and chorus() methods and printing out lines about a duck or
+          another animal.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class OldMacDonaldSong {
+              public static void chorus() {
+                  System.out.println("Old MacDonald had a farm");
+                  eieio();
+              }
+
+              public static void eieio() {
+                  System.out.println("E-I-E-I-O");
+              }
+
+              public static void main(String[] args) {
+                  chorus();
+                  System.out.println("And on that farm they had a cow.");
+                  eieio();
+                  System.out.println("With a moo moo here and a moo moo there");
+                  System.out.println("Here a moo, there a moo, everywhere a moo moo");
+
+                  // TODO:
+                  // 1. Call the method chorus()
+
+                  // 2. Print out the line "And on that farm..."
+                  //    with a duck or another animal
+
+                  // 3. Call the method eieio
+
+                  // 4. Print out the lines with the appropriate animal sounds
+
+                  // 5. Call the method chorus again
+
+              }
+          }
+        </code>
+
+        <tests>
+          <![CDATA[
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test1()
+              {
+                  String code = getCode();
+                  int num = countOccurences(code, "chorus();");
+
+                  boolean passed = num >= 3;
+
+                  passed = getResults("3 or more", "" + num, "Calls to chorus()", passed);
+                  assertTrue(passed);
+              }
+              @Test
+              public void test2()
+              {
+                  String code = getCode();
+                  int num = countOccurences(code, "eieio();");
+
+                  boolean passed = num >= 3;
+
+                  passed = getResults("3 or more", "" + num, "Calls to eieio()", passed);
+                  assertTrue(passed);
+              }
+          }
+          ]]>
+        </tests>
+
+      </program>
+    </activity>
+
+    <activity label="songMethodsTrace">
+      <title>Mental execution</title>
+
+      <statement>
+        <p>
+          Figuring out what the code does is called <term>code tracing</term> or
+          <term>mental execution</term>. You can use a tool like <url
+          href="https://pythontutor.com/render.html#code=public%20class%20Song%20%7B%0A%20%20%0A%20%20%20%20%20%20%20%20public%20static%20void%20print%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.print%28%22I%20like%20to%20%22%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20fruit%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20fruit%28%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22apples%20and%20bananas!%22%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20public%20static%20void%20eat%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20System.out.print%28%22eat%20%22%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20print%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D&amp;cumulative=false&amp;curInstr=15&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">the
+          visualizer</url> we used above to step through code but it’s important
+          to develop the skill of mentally executing code to determine what it
+          does. Start at the <c>main</c> method and then follow each method call
+          to see what happens.
+        </p>
+
+        <program>
+          public class Song {
+              public static void print() {
+                  System.out.print("I like to ");
+                  eat();
+                  eat();
+                  eat();
+                  fruit();
+              }
+
+              public static void fruit() {
+                  System.out.println("apples and bananas!");
+              }
+
+              public static void eat() {
+                  System.out.print("eat ");
+              }
+
+              public static void main(String[] args) {
+                  print();
+              }
+          }
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>I like to eat eat eat.</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Try tracing through the print method and see what happens when it
+              calls the other methods.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>I like to eat eat eat fruit.</p>
+          </statement>
+
+          <feedback>
+            <p>
+              There is a fruit() method but it does not print out the word
+              fruit.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>I like to apples and bananas eat.</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The order things are printed out depends on the order in which
+              they are called from the print method.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>I like to eat eat eat apples and bananas!</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Yes, the print method calls the eat method 3 times and then the
+              fruit method to print this.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>Nothing, it does not compile.</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Try the code in an active code window to see that it does work.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Removing even more duplication</title>
+
+    <p>
+      Let’s take another look at the Old MacDonald Song and see if we can remove
+      even more duplication by writing a with that takes arguments. To start, do
+      this activity to find some lines of code that are not identical but are
+      quite similar.
+    </p>
+
+    <activity label="different-code-old-mcdonald">
+      <title>Duplication with small differences</title>
+
+      <statement>
+        <p>
+          Notice that the verses of the song are similar except that each is
+          about a different animal and the sound that animal makes. Find the
+          lines that are similar but not identical to another line and click on
+          the specific words that are different between the similar lines.
+        </p>
+      </statement>
+
+      <feedback>
+        <p>
+          Look for lines that are similar except for a single word and click on
+          that word.
+        </p>
+      </feedback>
+
+      <areas>
+        <cline><area correct="no">public class OldMacDonaldSong {</area></cline>
+        <cline>  <area correct="no">public static void chorus() {</area></cline>
+        <cline>    <area correct="no">System.out.println("Old MacDonald had a farm");</area></cline>
+        <cline>    <area correct="no">eieio();</area></cline>
+        <cline>  <area correct="no">}</area></cline>
+        <cline />
+        <cline>  <area correct="no">public static void eieio() {</area></cline>
+        <cline>    <area correct="no">System.out.println("E-I-E-I-O");</area></cline>
+        <cline>  <area correct="no">}</area></cline>
+        <cline />
+        <cline>  <area correct="no">public static void main(String[] args) {</area></cline>
+        <cline>    <area correct="no">chorus();</area></cline>
+        <cline>    <area correct="no">System.out.println("And on that farm they had a</area> <area correct="yes">cow</area><area correct="no">.");</area></cline>
+        <cline>    <area correct="no">eieio();</area></cline>
+        <cline>    <area correct="no">System.out.println("With a</area> <area correct="yes">moo moo</area> <area correct="no">here and a</area> <area correct="yes">moo moo</area> <area correct="no"> there");</area></cline>
+        <cline>    <area correct="no">System.out.println("Here a</area> <area correct="yes">moo</area><area correct="no">, there a</area> <area correct="yes">moo</area><area correct="no">, everywhere a</area> <area correct="yes">moo moo</area><area correct="no">");</area></cline>
+        <cline>    <area correct="no">chorus();</area></cline>
+        <cline>    <area correct="no">System.out.println("And on that farm they had a</area> <area correct="yes">duck</area><area correct="no">.");</area></cline>
+        <cline>    <area correct="no">eieio();</area></cline>
+        <cline>    <area correct="no">System.out.println("With a</area> <area correct="yes">quack quack</area> <area correct="no">here and a</area> <area correct="yes">quack quack</area> <area correct="no"> there");</area></cline>
+        <cline>    <area correct="no">System.out.println("Here a</area> <area correct="yes">quack</area><area correct="no">, there a</area> <area correct="yes">quack</area><area correct="no">, everywhere a</area> <area correct="yes">quack quack</area><area correct="no">");</area></cline>
+        <cline>    <area correct="no">chorus();</area></cline>
+        <cline>  <area correct="no">}</area></cline>
+        <cline><area correct="no">}</area></cline>
+      </areas>
+    </activity>
+
+    <p>
+      Did you find the lines that are identical except for the animal name and
+      the sound that they make? It would be nice if we could write a method to
+      print those lines that captures the common pattern but fills in the
+      specifics for each animal. That’s what method arguments are for.
+    </p>
+
+    <p>
+      Whereas the <c>chorus</c> and <c>eieio</c> methods always print exactly
+      the same thing, if we want to write a method <c>verse</c> that prints one
+      verse, we need to write a method that takes arguments and prints something
+      different based on those arguments. And the differences you identified
+      between the similar lines in the code above can point us to the arguments
+      we need to pass.
+    </p>
+
+    <p>
+      Here’s one way to write a <c>verse</c> method with two parameters,
+      <c>animal</c> and <c>sound</c>.
+    </p>
+
+    <program>
+      /* This method prints out a verse for any given animal and sound.
+         @param animal - the name of the animal
+         @param sound - the sound the animal makes
+      */
+      public static void verse(String animal, String sound) {
+          System.out.println("And on this farm, they had a " + animal);
+          eieio();
+          System.out.println("With a " + sound + " " + sound +
+                             " here and a " + sound + " " + sound + " there");
+          System.out.println("Here a " + sound + ", there a " + sound +
+                             ", everywhere a " + sound + " " + sound);
+      }
+    </program>
+
+    <p>
+      With this method, the <c>main</c> method can now just consist of calls to
+      the <c>chorus</c> and <c>verse</c> methods, showing clearly the structure
+      of the song in terms that might make sense to a musician. This is a common
+      effect of creating good abstractions: while the details—in this case of
+      what exactly is printed—are hidden, the higher-level structure is much
+      easier to see.
+    </p>
+
+    <program>
+      public static void main(String[] args) {
+          chorus();
+          verse("cow", "moo");
+          chorus();
+          verse("duck", "quack");
+          chorus();
+      }
+    </program>
+
+    <p>
+      When a method like <c>verse</c> is called, the method definition is found
+      by finding a method whose signature matches the call, meaning the name
+      matches and the number and declared type of the parameters are compatible
+      with the number and types of the argument expressions.
+    </p>
+
+    <p>
+      Here’s what that looks like for two calls to <c>verse</c> above. The
+      arguments <c>"cow"</c> and <c>"moo"</c> or <c>"duck"</c> and
+      <c>"quack"</c> are matched up with the parameters <c>animal</c> and
+      <c>sound</c>.
+    </p>
+
+    <figure align="center">
+      <caption>Matching Arguments to Parameters</caption>
+
+      <image source="Unit1-Using-Objects-and-Methods/Figures/args2paramsFarm.png" width="89%">
+        <shortdescription>Arguments to Parameters</shortdescription>
+      </image>
+    </figure>
+
+    <p>
+      Java uses <term>call by value</term> when it passes arguments to methods.
+      This means that a copy of the value in the argument is saved in the
+      parameter variable. Call by value initializes the parameters with copies
+      of the arguments. If the parameter variable changes its value inside the
+      method, the original value outside the method is not changed.
+    </p>
+
+    <activity>
+      <title>Trace verse calls</title>
+
+      <statement>
+        <p>
+          Click on the “Next” button below the code to step through the code.
+          This time in addition to watch the red arrow jump to the method that
+          is being run, pay attention to how the arguments in the calls to
+          <c>verse</c> become the values of the parameters.
+        </p>
+      </statement>
+
+      <program interactive="codelens" label="codelensSong2" xml:id="codelensSong2">
+        public class OldMacDonaldSong {
+          public static void chorus() {
+            System.out.println("Old MacDonald had a farm");
+            eieio();
+          }
+
+          public static void eieio() {
+            System.out.println("E-I-E-I-O");
+          }
+
+          public static void verse(String animal, String sound) {
+            System.out.println("And on this farm, they had a " + animal);
+            eieio();
+            System.out.println("With a " + sound + " " + sound +
+                               " here and a " + sound + " " + sound + " there");
+            System.out.println("Here a " + sound + ", there a " + sound +
+                               ", everywhere a " + sound + " " + sound);
+          }
+
+          public static void main(String[] args) {
+            chorus();
+            verse("cow", "moo");
+            chorus();
+            verse("duck", "quack");
+            chorus();
+          }
+        }
+      </program>
+    </activity>
+
+    <activity label="OldMacDonaldSong2">
+      <title>Add more animals</title>
+
+      <statement>
+        <p>
+          Let’s add more animals to the farm! Scroll down to the <c>main</c>
+          method, and add another verse with the animal “goose” and the sound
+          “honk” by calling the <c>verse</c> method with the appropriate
+          arguments. Then call <c>chorus</c> again. Then add another animal and
+          sound of your choice.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class OldMacDonaldSong {
+              public static void chorus() {
+                  System.out.println("Old MacDonald had a farm");
+                  eieio();
+              }
+
+              public static void eieio() {
+                  System.out.println("E-I-E-I-O");
+              }
+
+              public static void verse(String animal, String sound) {
+                  System.out.println("And on this farm, they had a " + animal);
+                  chorus();
+                  System.out.println("With a " + sound + " " + sound +
+                                     " here and a " + sound + " " + sound + " there");
+                  System.out.println("Here a " + sound + ", there a " + sound +
+                                     ", everywhere a " + sound + " " + sound);
+              }
+
+              public static void main(String[] args) {
+                  chorus();
+                  verse("cow","moo");
+                  chorus();
+                  verse("duck","quack");
+                  chorus();
+                  // TODO:
+                  // Call verse again with goose and honk
+                  // and then call chorus again
+
+
+                  // Call verse again with another animal and sound
+                  // and then call chorus again
+
+               }
+          }
+        </code>
+
+        <tests>
+          <![CDATA[
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testThree()
+              {
+                  boolean passed = checkCodeContains("verse with goose and honk", "verse(\"goose\", \"honk\");");
+                  assertTrue(passed);
+              }
+              @Test
+              public void test1()
+              {
+                  String code = getCode();
+                  int num = countOccurences(code, "chorus();");
+
+                  boolean passed = num >= 5;
+
+                  passed = getResults("5 or more", "" + num, "Calls to chorus", passed);
+                  assertTrue(passed);
+              }
+          }
+          ]]>
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Coding Challenge: Song with Parameters</title>
+
+    <p>
+      Here’s another song, <url href="https://youtu.be/QPwEZ8Vv2YQ">The Ants Go
+      Marching</url> with a repetitive structure. The verses below have a lot of
+      repeated words and phrases. Click on the words or phrases that are
+      different in each verse. These will be the arguments that you will pass to
+      the methods in your song code.
+    </p>
+
+    <activity label="clickDifferentAntSong">
+      <title>The Ants Go Marching</title>
+
+      <statement>
+        <p>Click on the phrases that are different in each verse.</p>
+      </statement>
+
+      <feedback>
+        <p>Look for words that are different in verse 1, 2, and 3.</p>
+      </feedback>
+
+      <areas>
+        <cline><area correct="no">The ants go marching </area> <area correct="yes"> one by one</area><area correct="no">, hurrah, hurrah</area></cline>
+        <cline><area correct="no">The ants go marching </area> <area correct="yes"> one by one</area><area correct="no">, hurrah, hurrah</area></cline>
+        <cline><area correct="no">The ants go marching </area> <area correct="yes"> one by one</area></cline>
+        <cline><area correct="no">The little one stops to </area> <area correct="yes"> suck a thumb</area></cline>
+        <cline><area correct="no">And they all go marching down to the ground</area></cline>
+        <cline><area correct="no">To get out of the rain, BOOM! BOOM! BOOM! BOOM!</area></cline>
+        <cline />
+        <cline><area correct="no">The ants go marching </area> <area correct="yes"> two by two</area><area correct="no">, hurrah, hurrah</area></cline>
+        <cline><area correct="no">The ants go marching </area> <area correct="yes"> two by two</area><area correct="no">, hurrah, hurrah</area></cline>
+        <cline><area correct="no">The ants go marching </area> <area correct="yes"> two by two</area></cline>
+        <cline><area correct="no">The little one stops to </area> <area correct="yes"> tie a shoe</area></cline>
+        <cline><area correct="no">And they all go marching down to the ground</area></cline>
+        <cline><area correct="no">To get out of the rain, BOOM! BOOM! BOOM! BOOM!</area></cline>
+        <cline />
+        <cline><area correct="no">The ants go marching </area> <area correct="yes"> three by three</area><area correct="no">, hurrah, hurrah</area></cline>
+        <cline><area correct="no">The ants go marching </area> <area correct="yes"> three by three</area><area correct="no">, hurrah, hurrah</area></cline>
+        <cline><area correct="no">The ants go marching </area> <area correct="yes"> three by three</area></cline>
+        <cline><area correct="no">The little one stops to </area> <area correct="yes"> climb a tree</area></cline>
+        <cline><area correct="no">And they all go marching down to the ground</area></cline>
+        <cline><area correct="no">To get out of the rain, BOOM! BOOM! BOOM! BOOM!</area></cline>
+      </areas>
+    </activity>
+
+    <project label="challenge-1-9-song">
+      <title>Implement ants song</title>
+
+      <statement>
+        <p>
+          Write code in the main method that calls the verse method to print out
+          all three verses for the Ants Go Marching song above.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class AntsSong
+          {
+              public static void chorus(String num)
+              {
+                  System.out.println("The ants go marching " + num
+                                   + " by " + num + " hurrah, hurrah");
+                  System.out.println("The ants go marching " + num
+                                   + " by " + num + " hurrah, hurrah");
+              }
+
+              public static void verse(String num, String action)
+              {
+                  System.out.println("The ants go marching " + num + " by " + num);
+                  System.out.println("The little one stops to " + action);
+                  System.out.println("And they all go marching down to the ground");
+                  System.out.println("To get out of the rain, BOOM! BOOM! BOOM! BOOM!\n");
+              }
+
+              public static void main(String args[])
+              {
+                  // Call the chorus and verse methods
+                  // with the correct arguments
+                  // to print out all three verses above.
+              }
+          }
+        </code>
+
+        <tests>
+          <![CDATA[
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void checkCodeContains1()
+              {
+                  String code = getCode();
+                  int actual = countOccurences(code, "chorus(");
+                  String expected = "3";
+
+                  boolean passed = actual >= 3;
+                  getResults(
+                          expected,
+                          "" + actual,
+                          "Checking that code contains 3 calls to  chorus",
+                          passed);
+                  assertTrue(passed);
+              }
+              @Test
+              public void checkCodeContains2()
+              {
+                  String code = getCode();
+                  int actual = countOccurences(code, "verse(");
+                  String expected = "3";
+
+                  boolean passed = actual >= 3;
+                  getResults(
+                          expected,
+                          "" + actual,
+                          "Checking that code contains three calls to verse method",
+                          passed);
+                  assertTrue(passed);
+              }
+              @Test
+               public void testMain() throws IOException
+               {
+                   String output = getMethodOutput("main");
+
+                   String expect =
+                      "The ants go marching one by one, hurrah, hurrah\n"
+                              + "The ants go marching one by one, hurrah, hurrah\n"
+                              + "The ants go marching one by one\n"
+                              + "The little one stops to suck a thumb\n"
+                              + "And they all go marching down to the ground\n"
+                              + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!\n"
+                              + "\n"
+                              + "The ants go marching two by two, hurrah, hurrah\n"
+                              + "The ants go marching two by two, hurrah, hurrah\n"
+                              + "The ants go marching two by two\n"
+                              + "The little one stops to tie a shoe\n"
+                              + "And they all go marching down to the ground\n"
+                              + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!\n"
+                              + "\n"
+                              + "The ants go marching three by three, hurrah, hurrah\n"
+                              + "The ants go marching three by three, hurrah, hurrah\n"
+                              + "The ants go marching three by three\n"
+                              + "The little one stops to climb a tree\n"
+                              + "And they all go marching down to the ground\n"
+                              + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!";
+
+                         boolean passed =
+                         getResults(expect, output, "Expected output from main");
+                         assertTrue(passed);
+                   }
+
+          }
+          ]]>
+        </tests>
+
+      </program>
+    </project>
+  </subsection>
+
+  <subsection>
+    <title>Non-void methods</title>
+
+    <idx>return value</idx>
+    <idx>void method</idx>
+    <idx>non-void method</idx>
+    <p>
+      Most of the methods we have written so far have been <term>void
+      methods</term> which do not return a value but are called for their side
+      effects. However, many methods act like mathematical functions that
+      calculate and return a value based on their arguments.
+    </p>
+
+    <p>
+      Since these methods all have some actual return type, not <c>void</c> they
+      are called <term>non-void methods</term>. You can imagine a non-void
+      method as a calculating machine that takes numbers as arguments and
+      returns a calculated result or like a toaster that takes bread as an input
+      and returns toast.
+    </p>
+
+    <figure align="center">
+      <caption>Method that takes arguments and returns a value</caption>
+
+      <image source="Unit1-Using-Objects-and-Methods/Figures/function.png" width="71%">
+        <shortdescription>function</shortdescription>
+      </image>
+    </figure>
+
+    <p>
+      The <c>add</c> method we used as an example was a non-void method. Here's
+      another one.
+    </p>
+
+    <figure align="center">
+      <caption>The Square Method</caption>
+
+      <image source="Unit1-Using-Objects-and-Methods/Figures/square-method.png" width="71%">
+        <shortdescription>Square Method</shortdescription>
+      </image>
+    </figure>
+
+    <p>
+      Here is a simple implementation of this method which takes an int number
+      as an argument, squares that number, and returns the result. Notice that
+      instead of <c>static void</c>, the header includes <c>static int</c> to
+      indicate that the method returns an integer value.
+    </p>
+
+    <program>
+      public static int square(int number) {
+          return number * number;
+      }
+    </program>
+
+    <p>
+      The <term>return</term> statement is used to return a value from the
+      method back to the calling code. The return value must be the same type as
+      the return type in the method header. The return statement also ends the
+      method execution, so any code after the return statement is not executed.
+      Let’s try this below. Click on the next button to step through the code in
+      the <url
+      href="https://pythontutor.com/render.html#code=public%20class%20SquareMethod%0A%7B%0A%20%20%20%20%20%20%20%20%20public%20static%20int%20square%28int%20number%29%20%0A%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20result%20%3D%20number%20*%20number%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20result%3B%0A%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%0A%20%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20x%20%3D%205%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20int%20y%20%3D%20square%28x%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22The%20square%20of%20%22%20%2B%20x%20%2B%20%22%20is%20%22%20%2B%20y%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20x%20%3D%204%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22The%20square%20of%20%22%20%2B%20x%20%2B%20%22%20is%20%22%20%2B%20square%28x%29%29%3B%0A%20%20%20%20%20%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=11&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
+      below and see the variables and the return values.
+    </p>
+
+    <activity label="codelensSquare">
+      <title>Trace square</title>
+
+      <statement>
+        <p>
+          Click on the next button below the code to step through the code and
+          watch the red arrow jump to the method that is being run and watch how
+          the argument is passed into the parameter variable and the return
+          value.
+        </p>
+      </statement>
+
+      <program interactive="codelens" label="codeLenssq" xml:id="codelensidsq">
+        public class SquareMethod {
+           public static int square(int number) {
+               return number * number;
+           }
+
+           public static void main(String[] args) {
+               int x = 5;
+               int y = square(x);
+               System.out.println("The square of " + x + " is " + y);
+               x = 4;
+               System.out.println("The square of " + x + " is " + square(x));
+           }
+        }
+      </program>
+    </activity>
+
+    <p>
+      When calling the <c>square</c> method, the return value can be stored in a
+      variable or used as part of an expression. In the main method above, the
+      variable <c>y</c> is assigned the return value of the first call to the
+      <c>square</c> method. When a call to <c>square</c> is used in an argument
+      list, such as in the second call to <c>System.out.println</c>, the return
+      value becomes the argument to the method being called.
+    </p>
+
+    <program>
+      // Saving the returned value of the square method in a variable
+      int y = square(5);
+      System.out.println(y); // prints 25
+      // Printing the returned value of the square method directly
+      System.out.println(square(4)); // prints 16
+    </program>
+
+    <activity label="squareMethod">
+      <title>Call square</title>
+
+      <statement>
+        <p>
+          Add another call to the square method in the main method that prints
+          out the square of 6.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class SquareMethod {
+               public static int square(int number) {
+                   int result = number * number;
+                   return result;
+               }
+
+               public static void main(String[] args) {
+                   System.out.println("5 squared is " + square(5));
+                   // TO DO: Call the square method to print out the square of 6
+               }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void containsCall()
+              {
+                  boolean passed = checkCodeContains("square(6)", "square(6)");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "36";
+                  boolean passed =
+                       getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+
+    <activity label="traceMethods1">
+      <title>Mental execution</title>
+
+      <statement>
+        <p>What does the following code print out?</p>
+
+        <program>
+          public class MethodTrace {
+              public static int square(int x) {
+                  return x * x;
+              }
+
+              public static int divide(int x, int y) {
+                  return x / y;
+              }
+
+              public static void main(String[] args) {
+                  System.out.println(square(3) + divide(5,2));
+              }
+          }
+        </program>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement>
+            <p>11</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Yes, the square(3) method is called first and returns 9. Then the
+              divide(5,2) method is called and returns 2 because it does int
+              division and leaves off the decimal part. The sum of 9 and 2 is
+              11.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>11.5</p>
+          </statement>
+
+          <feedback>
+            <p>The divide function does integer division.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>92</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The + here will be interpreted as addition since the methods
+              return ints.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>square(3)+divide(5,2)</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The square and divide methods are called and return values that
+              are added together.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>Nothing, it does not compile.</p>
+          </statement>
+
+          <feedback>
+            <p>Try the code in an active code window.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Common errors with non-void methods</title>
+
+    <p>
+      A common error with non-void methods is forgetting to do something with
+      the value returned from a method. When you call a method that returns a
+      value, you should do something with that value like assigning it to a
+      variable or printing it out. To use the return value when calling a non-
+      void method, it must be stored in a variable or used as part of an
+      expression.
+    </p>
+
+    <p>
+      Another common error is a mismatch in types or order for the arguments or
+      return values. For example, if a method returns a double value, you cannot
+      assign it to an int variable.
+    </p>
+
+    <activity label="fixMethodCalls">
+      <title>Fix type errors</title>
+
+      <statement>
+        <p>
+          Fix the method calls below in the main method. Make sure the number
+          and types of the arguments match what the methods expect. And check
+          that the variables the returned values are assigned to are of the
+          right types. Do not change the methods other than main.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class MathMethods {
+               /** Returns the square of a number. Do NOT change */
+               public static int square(int number) {
+                   return number * number;
+               }
+
+               /** Divides x by y. Do NOT change */
+               public static double divide(double x, double y) {
+                   return x / y;
+               }
+
+               public static void main(String[] args) {
+                   // TO DO: Fix the method calls and data types below
+                   // Make sure the type, how many, and order of the
+                   // arguments match what the methods expect.
+                   // Make sure they are saved in the right type of variables.
+                   // result1 should be 4 squared
+                   // result2 should be 5 divided by 2
+                   int result1 = square(4.0, 2);
+                   int result2 = divide(2, 5);
+                   System.out.println("4 squared is " + result1);
+                   System.out.println("5 divided by 2 is " + result2);
+               }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void containsType()
+              {
+                  boolean passed = checkCodeContains("correct double type for result2", "double result2");
+                  assertTrue(passed);
+              }
+              @Test
+              public void containsCall()
+              {
+                  boolean passed = checkCodeContains("call to square with int 4", "square(4)");
+                  assertTrue(passed);
+              }
+              @Test
+              public void containsCall2()
+              {
+                  boolean passed = checkCodeContains("call to divide with the correct argument order", "divide(5,2)");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "4 squared is 16\n5 divided by 2 is 2.5";
+                  boolean passed =
+                       getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+
+    <p>
+      <ul>
+        <li>
+          <p>
+            (AP 1.9.A.1) A <term>method</term> is a named block of code that
+            only runs when it is called. A block of code is any section of code
+            that is enclosed in braces.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.9.A.1) <term>Procedural abstraction</term> allows a programmer
+            to use a method by knowing what the method does even if they do not
+            know how the method was written.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.9.B.5) A method call interrupts the sequential execution of
+            statements, causing the program to first execute the statements in
+            the method before continuing. Once the last statement in the method
+            has been executed or a return statement is executed, the flow of
+            control is returned to the point immediately following where the
+            method was called.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.9.A.2) A <term>parameter</term> is a variable declared in the
+            header of a method or constructor and can be used inside the body of
+            the method. This allows values or arguments to be passed and used by
+            a method or constructor.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.9.A.2) A <term>method signature</term> for a method with
+            parameters consists of the method name and the ordered list of
+            parameter types. A method signature for a method without parameters
+            consists of the method name and an empty parameter list.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.9.B.3) An <term>argument</term> is a value that is passed into
+            a method when the method is called. The arguments passed to a method
+            must be compatible in number and order with the types identified in
+            the parameter list of the method signature. When calling methods,
+            arguments are passed using call by value.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.9.B.3) <term>Call by value</term> initializes the parameters
+            with copies of the arguments.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.9.B.4) Methods are said to be <term>overloaded</term> when
+            there are multiple methods with the same name but different
+            signatures.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.10.A.1) Class methods are associated with the class (not
+            instances of the class which we will see in later lessons).
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.10.A.2) Class methods include the keyword <term>static</term>
+            in the header before the method name.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.9.B.1) A void method does not have a return value and is
+            therefore not called as part of an expression.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.9.B.2) A <term>non-void method</term> returns a value that is
+            the same type as the <term>return type</term> in the header.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.9.B.2) To use the return value when calling a non-void method,
+            it must be stored in a variable or used as part of an expression.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Common errors with methods are mismatches in the order or type of
+            arguments, return values, and forgetting to do something with the
+            value returned from a method. When you call a method that returns a
+            value, you should do something with that value like assigning it to
+            a variable or printing it out.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>AP Practice</title>
+
+    <activity label="AP-trace-method-calls">
+      <title>Mental execution</title>
+
+      <statement>
+        <p>Consider the following class definition.</p>
+
+        <program>
+          public class Cat
+          {
+              public static void sound1()
+              {
+                  System.out.print("meow ");
+              }
+
+              public static void sound2()
+              {
+                  System.out.print("purr ");
+              }
+
+              public static void hello()
+              {
+                  sound2();
+                  sound1();
+              }
+          }
+        </program>
+
+        <p>
+          Which of the following code segments, if located in a method inside
+          the Cat class, will cause the message “purr meow purr” to be printed?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement id="AP-trace-method-calls_opt_a">
+            <program>
+              hello();
+            </program>
+          </statement>
+
+          <feedback id="AP-trace-method-calls_opt_a">
+            <p>This would print “purr meow “</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement id="AP-trace-method-calls_opt_b">
+            <program>
+              hello();
+              sound2();
+            </program>
+          </statement>
+
+          <feedback id="AP-trace-method-calls_opt_b">
+            <p>Correct!</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-trace-method-calls_opt_c">
+            <program>
+              sound1()
+              sound2();
+              sound1();
+            </program>
+          </statement>
+
+          <feedback id="AP-trace-method-calls_opt_c">
+            <p>
+              This would print out “meow purr meow” instead of “purr meow purr”.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-trace-method-calls_opt_d">
+            <program>
+              purr();
+              meow();
+              purr()
+            </program>
+          </statement>
+
+          <feedback id="AP-trace-method-calls_opt_d">
+            <p>
+              This would cause a syntax error since those are not the names of
+              the methods.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="AP1-10-static-method">
+      <title>Calculate pizza boxes</title>
+
+      <statement>
+        <p>Consider the following method.</p>
+
+        <program>
+          public static double calculatePizzaBoxes(int numOfPeople, double slicesPerBox)
+          { /*implementation not shown */}
+        </program>
+
+        <p>
+          Which of the following lines of code, if located in a method in the
+          same class as calculatePizzaBoxes, will compile without an error?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement id="AP1-10-static-method_opt_a">
+            <p>int result = calculatePizzaBoxes(45, 9.0);</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method_opt_a">
+            <p>
+              The method calculatePizzaBoxes returns a double value that cannot
+              be saved into an int variable.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP1-10-static-method_opt_b">
+            <p>double result = calculatePizzaBoxes(45.0, 9.0);</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method_opt_b">
+            <p>
+              The method calculatePizzaBoxes has an int parameter that cannot
+              hold a double value 45.0.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP1-10-static-method_opt_c">
+            <p>int result = calculatePizzaBoxes(45.0, 9);</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method_opt_c">
+            <p>
+              The method calculatePizzaBoxes has an int parameter that cannot
+              hold a double value 45.0. Note that the int 9 can be passed into a
+              double parameter.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement id="AP1-10-static-method_opt_d">
+            <p>double result = calculatePizzaBoxes(45, 9.0);</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method_opt_d">
+            <p>
+              The method calculatePizzaBoxes has an int and a double parameter
+              and returns a double result.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP1-10-static-method_opt_e">
+            <p>result = calculatePizzaBoxes(45, 9);</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method_opt_e">
+            <p>
+              The variable result has not been declared (with an appropriate
+              data type).
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="AP1-10-static-method2">
+      <title>Inches to centimeters</title>
+
+      <statement>
+        <p>Consider the following methods:</p>
+
+        <program>
+          <![CDATA[
+          public void static inchesToCentimeters(double i)
+          {
+              double c = i * 2.54;
+              printInCentimeters(i, c);
+          }
+
+          public void static printInCentimeters(double inches, double centimeters)
+          {
+              System.out.print(inches + "-->" + centimeters);
+          }
+          ]]>
+        </program>
+
+        <p>
+          Assume that the method call <c>inchesToCentimeters(10)</c> appears in
+          a static method in the same class. What is printed as a result of the
+          method call?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement id="AP1-10-static-method2_opt_a">
+            <p>inches –&gt; centimeters</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method2_opt_a">
+            <p>
+              The values of the variables inches and centimeters should be
+              printed out, not the words.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP1-10-static-method2_opt_b">
+            <p>10 –&gt; 25</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method2_opt_b">
+            <p>
+              Two doubles should be printed, not two ints, and the centimeters
+              should be 25.4
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP1-10-static-method2_opt_c">
+            <p>25.4 –&gt; 10</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method2_opt_c">
+            <p>Inches should be printed before centimeters.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP1-10-static-method2_opt_d">
+            <p>10 –&gt; 12.54</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method2_opt_d">
+            <p>c = 10 * 2.54 = 25.4, not 12.54.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement id="AP1-10-static-method2_opt_e">
+            <p>10.0 –&gt; 25.4</p>
+          </statement>
+
+          <feedback id="AP1-10-static-method2_opt_e">
+            <p>Correct! centimeters = 10 * 2.54 = 25.4.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+  </subsection>
+</section>

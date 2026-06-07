@@ -5,7 +5,7 @@
 
   <introduction>
     <p>
-      In <xref ref="topic-1-15-strings" /> we learned that we needed to use the
+      In <xref ref="string-manipulation" /> we learned that we needed to use the
       <c>equals</c> method to test whether two <c>String</c> values were the
       same if what we cared about was whether they contained the same text. Now
       that we understand object references we can dig a bit deeper into exactly
@@ -113,7 +113,6 @@
 
     <idx><h>String</h><h>equality</h></idx>
     <idx><h>String</h><h>equals</h></idx>
-
     <p>
       While <c>==</c> and <c>!=</c> have a clear meaning when comparing
       references, with object types we often care about a different notion of
@@ -156,7 +155,6 @@
 
       <image source="Unit2-Selection-and-Iteration/Figures/stringEquality.svg" width="54%" />
     </figure>
-
 
     <p>
       The following <url
@@ -496,7 +494,9 @@
     </p>
 
     <program>
-      if (s != null &amp;&amp; s.indexOf("x") != -1) { ...
+      <![CDATA[
+      if (s != null && s.indexOf("x") != -1) { ...
+      ]]>
     </program>
 
     <p>
@@ -597,5 +597,4 @@
 
     <video youtube="GPdoHm1K8HA" label="video-null-string" />
   </subsection>
-
 </section>

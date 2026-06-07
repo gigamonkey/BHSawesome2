@@ -76,9 +76,9 @@
     </p>
   </introduction>
 
-  <xi:include href="./topic-4-3-array-basics.ptx" />
-  <xi:include href="./topic-4-4-array-traversal.ptx" />
-  <xi:include href="./topic-4-5-array-algorithms.ptx" />
+  <xi:include href="./array-basics.ptx" />
+  <xi:include href="./array-traversal.ptx" />
+  <xi:include href="./array-algorithms.ptx" />
   <xi:include href="./two-dimensional-arrays.ptx" />
   <xi:include href="./two-dimensional-array-algorithms.ptx" />
 </chapter>

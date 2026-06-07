@@ -1,0 +1,1404 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<section xml:id="searching">
+  <title>Searching Algorithms</title>
+
+  <introduction>
+    <idx>sequential search</idx>
+    <idx>binary search</idx>
+    <idx>recursion</idx>
+    <idx><h>search</h><h>sequential</h></idx>
+    <idx><h>search</h><h>binary</h></idx>
+    <p>
+      Computers can store vast amounts of data. And lots of programs exist to
+      find things in that data. For instance, if we have a dictionary of the
+      million-plus words in English we might want to be able to check whether a
+      given word is in the dictionary. At a much smaller scale, if we manage or
+      our todo list with a computer program, that program might need to be able
+      to find the item that is due soonest.
+    </p>
+
+    <p>
+      Both of these are examples of <term>search</term> algorithms. In both
+      cases there is some set of data—all the words in our dictionary or the
+      items in or todo list—and we want the program to find a particular item or
+      tell us that it’s not present.
+    </p>
+
+    <p>
+      In this chapter we will cover two of the most important kinds of search
+      algorithms: <term>linear</term> (or <term>sequential</term>) and
+      <term>binary</term>. For the AP CSA exam you will need to be able to
+      implement linear searches (good news, we already learned how to do that
+      back in <xref ref="min-max-search-algorithms" />) and to analyze the
+      behavior of linear and binary searches.
+    </p>
+
+    <p>
+      The following video is also on YouTube at <url
+      href="https://youtu.be/DHLCXXX1OtE">https://youtu.be/DHLCXXX1OtE</url>. It
+      introduces the concept of searching including sequential search and binary
+      search.
+    </p>
+
+    <video youtube="DHLCXXX1OtE" label="video-search" />
+  </introduction>
+
+  <subsection xml:id="linear-search">
+    <title>Linear Search</title>
+
+    <idx>sequential search</idx>
+    <idx>linear search</idx>
+    <idx><h>search</h><h>sequential</h></idx>
+    <idx><h>search</h><h>linear</h></idx>
+    <p>
+      Linear or sequential search can be used to find a value in
+      <em>unsorted</em> data. It usually starts at the first element and walks
+      through the array or <c>ArrayList</c> until it finds the value it is
+      looking for and returns either the value itself or sometimes its index. If
+      it reaches the end of the array or list without finding the value, it
+      needs to somehow indicate that the item was not found, such as by
+      returning a distinguished value like <c>null</c> or <c>-1</c>. Click on
+      <em>Show CodeLens</em> below to see linear search in action.
+    </p>
+
+    <activity label="seqSearch">
+      <statement>
+        <p>
+          The code for <c>sequentialSearch</c> for arrays below is from a
+          previous AP CSA course description. Click on the Code Lens button to
+          see this code running in the Java visualizer.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          <![CDATA[
+          public class ArraySearcher {
+
+              /**
+               * Finds the index of a value in an array of integers.
+               *
+               * @param elements an array containing the items to be searched.
+               * @param target the item to be found in elements.
+               * @return an index of target in elements if found; -1 otherwise.
+               */
+              public static int sequentialSearch(int[] elements, int target) {
+                  for (int j = 0; j < elements.length; j++) {
+                      if (elements[j] == target) {
+                          return j;
+                      }
+                  }
+                  return -1;
+              }
+
+              public static void main(String[] args) {
+                  int[] numArray = {3, -2, 9, 38, -23};
+                  System.out.println("Tests of sequentialSearch");
+                  System.out.println(sequentialSearch(numArray, 3));
+                  System.out.println(sequentialSearch(numArray, 9));
+                  System.out.println(sequentialSearch(numArray, -23));
+                  System.out.println(sequentialSearch(numArray, 99));
+              }
+          }
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Tests of sequentialSearch\n0\n2\n4\n-1";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+
+    <p>
+      Here is the same search with an <c>ArrayList</c>. The same algorithms can
+      be used with arrays or <c>ArrayList</c>s, but notice that <c>size()</c>
+      and <c>get(i)</c> are used with <c>ArrayList</c>s instead of <c>length</c>
+      and <c>[i]</c> which are used in arrays. Many of our examples will use
+      arrays for simplicity since with arrays, we know how many items we have
+      and the size won’t change during run time. There are methods such as
+      <c>contains</c> that can be used with <c>ArrayList</c> instead of writing
+      your own algorithms. However, they are not in the AP CSA Java subset.
+    </p>
+
+    <activity label="seqSearchList">
+      <statement>
+        <p>
+          Here is a linear search using <c>ArrayList</c>s. Notice that
+          <c>size()</c> and <c>get(i)</c> is used with <c>ArrayList</c>s instead
+          of <c>length</c> and <c>[i]</c> which are used with arrays. Click on
+          the Code Lens button to step through this code in the visualizer.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          <![CDATA[
+          import java.util.*;
+
+          public class ArrayListSearcher
+          {
+
+              /**
+               * Finds the index of a value in an ArrayList of integers.
+               *
+               * @param elements an array containing the items to be searched.
+               * @param target the item to be found in elements.
+               * @return an index of target in elements if found; -1 otherwise.
+               */
+              public static int sequentialSearch(ArrayList<Integer> elements, int target) {
+                  for (int j = 0; j < elements.size(); j++) {
+                      if (elements.get(j) == target) {
+                          return j;
+                      }
+                  }
+                  return -1;
+              }
+
+              public static void main(String[] args) {
+                  ArrayList<Integer> numList = new ArrayList<Integer>();
+                  numList.add(3);
+                  numList.add(-2);
+                  numList.add(9);
+                  numList.add(38);
+                  numList.add(-23);
+                  System.out.println("Tests of sequentialSearch");
+                  System.out.println(sequentialSearch(numList, 3));
+                  System.out.println(sequentialSearch(numList, 9));
+                  System.out.println(sequentialSearch(numList, -23));
+                  System.out.println(sequentialSearch(numList, 99));
+              }
+          }
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Tests of sequentialSearch\n0\n2\n4\n-1";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+
+    <activity label="qss_1">
+      <statement>
+        <p>
+          Which will cause the <em>longest</em> execution of a sequential search
+          looking for a value in an array of integers?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>The value is the first one in the array</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This would be true for the shortest execution. This would only
+              take one execution of the loop.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>The value is in the middle of the array</p>
+          </statement>
+
+          <feedback>
+            <p>Why would this be the longest execution?</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>The value is the last one in the array</p>
+          </statement>
+
+          <feedback>
+            <p>There is one case that will take longer.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>The value isn't in the array</p>
+          </statement>
+
+          <feedback>
+            <p>
+              A sequential search loops through the elements of an array or list
+              starting with the first and ending with the last and returns from
+              the loop as soon as it finds the passed value. It has to check
+              every value in the array when the value it is looking for is not
+              in the array.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="qss_2">
+      <statement>
+        <p>
+          Which will cause the <em>shortest</em> execution of a sequential
+          search looking for a value in an array of integers?
+        </p>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement>
+            <p>The value is the first one in the array</p>
+          </statement>
+
+          <feedback>
+            <p>This would only take one execution of the loop.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>The value is in the middle of the array</p>
+          </statement>
+
+          <feedback>
+            <p>Are you thinking of binary search?</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>The value is the last one in the array</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This would be true if you were starting at the last element, but
+              the algorithm in the course description starts with the first
+              element.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>The value isn't in the array</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This is true for the longest execution time, but we are looking
+              for the shortest.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <p>
+      We can also look for a <c>String</c> in an array or list, but we need to
+      remember to use <c>equals</c> rather than <c>==</c>. Remember that
+      <c>==</c> is only true when the two references refer to the same
+      <c>String</c> object, while <c>equals</c> returns true if the characters
+      in the two <c>String</c> objects are the same.
+    </p>
+
+    <activity label="seqSearchStr">
+      <statement>
+        <p>
+          Demonstration of a linear search for a String. Click on the Code Lens
+          button or the link below to step through this code.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          <![CDATA[
+          public class SearchTest {
+
+              public static int sequentialSearch(String[] elements, String target) {
+                  for (int j = 0; j < elements.length; j++) {
+                      if (elements[j].equals(target))
+                      {
+                          return j;
+                      }
+                  }
+                  return -1;
+              }
+
+              public static void main(String[] args) {
+                  String[] arr1 = {"blue", "red", "purple", "green"};
+
+                  // test when the target is in the array
+                  int index = sequentialSearch(arr1, "red");
+                  System.out.println(index);
+
+                  // test when the target is not in the array
+                  index = sequentialSearch(arr1, "pink");
+                  System.out.println(index);
+              }
+          }
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "1\n-1";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="linear-search-with-2d-arrays">
+    <title>Linear search with 2D arrays</title>
+
+    <p>
+      We can also apply the linear search algorithm to data in a 2D array. There
+      are two ways to think about this, which makes sense since there are two
+      dimensions.
+    </p>
+
+    <p>
+      One way is if we think of the 2D array as a grid of individual values and
+      we are searching for one specific value. For instance, if the grid
+      represented a chess board and we were searching for the position of the
+      black queen, we could loop over all the row of the 2D array and and then
+      loop through the values in each row, checking each position to see if it
+      held black queen. We are essentially searching linearly through the rows
+      and then again within each row.
+    </p>
+
+    <p>
+      The code below demonstrates this with a 2D array of integers. Click on the
+      Code Lens button to step through this code. Then, change it to work with a
+      2D array of Strings. Remember to use the <c>equals</c> method to compare
+      Strings.
+    </p>
+
+    <activity label="linearSearch2DArrays">
+      <statement>
+        <p>
+          What will the following code print? Click on the Code Lens button to
+          step through this code. Can you change the code to work for a String
+          2D array instead of an int array? Note that the indices row and col
+          will still be ints. Remember to use the <c>equals</c> method to
+          compare Strings.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          <![CDATA[
+          public class Search {
+              public static boolean search(int[][] array, int value) {
+                  boolean found = false;
+                  for (int row = 0; row < array.length; row++) {
+                      for (int col = 0; col < array[0].length; col++) {
+                          if (array[row][col] == value) {
+                               found = true;
+                          }
+                      }
+                  }
+                  return found;
+              }
+
+              public static void main(String[] args) {
+                  int[][] matrix = { {3, 2, 3}, {4, 3, 6}, {8, 9, 3}, {10, 3, 3}};
+                  System.out.println(search(matrix, 10));
+                  System.out.println(search(matrix, 11));
+
+                  // Comment out the code above, and try these:
+                  // String[][] matrix2 = { {"a","b","c"},{"d","e","f"} };
+                  // System.out.println(search(matrix2, "b"));
+              }
+          }
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("Search");
+              }
+
+              @Test
+              public void test2()
+              {
+                  String[][] array = { {"a", "b", "c"}, {"d", "e", "f"}, {"g", "h", "i"}, {"j", "k", "l"}};
+                  String value = "b";
+                  Object[] args = {array, value};
+
+                  String output = getMethodOutput("search", args);
+                  String expect = "true";
+
+                  boolean passed =
+                          getResults(
+                                  expect,
+                                  output,
+                                  "Testing search({"
+                                      + " {\"a\",\"b\",\"c\"},{\"d\",\"e\",\"f\"},{\"g\",\"h\",\"i\"},{\"j\",\"k\",\"l\""
+                                      + " } }, \"b\")");
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+
+    <p>
+      The other way to think about searching a 2D array is to think of the array
+      as a table of data, such we might load from a CSV file as we discussed in
+      <xref ref="input-files" />. When we have that kind of date, often what
+      we’re searching for is a row within that table that matches some criteria.
+      In this case we’d loop over the rows of the 2D array and then for each row
+      test whether it matches our criteria. That could be as simple as checking
+      whether some value at a given position in the row is a particular value.
+      But it might also require us to do a linear search within the row such as
+      if we’re looking for a row that contains a particular value in any
+      position.
+    </p>
+  </subsection>
+
+  <subsection xml:id="binary-search">
+    <title>Binary search</title>
+
+    <idx>binary search</idx>
+    <idx><h>search</h><h>binary</h></idx>
+    <p>
+      If we need to search through a list that is not in any particular order
+      there’s nothing better to do than to look through the list one item at a
+      time. We might get lucky and find the thing we’re looking for early in the
+      list or it might be near the end. If we do a lot of linear searches for
+      different values, on average we’ll have to look through half the list
+      before we find what we’re looking for.
+    </p>
+
+    <p>
+      But things change if the list is sorted. If you’ve ever looked up a word
+      in a physical dictionary you probably didn’t start on the first page and
+      read all the words until you found the one you were looking for. Instead,
+      you probably opened the dictionary to about the middle and then looked to
+      see if the words on that page were before or after the word you were
+      looking for, alphabetically. That told you which half of the dictionary
+      your word was in.
+    </p>
+
+    <p>
+      You could then turn to the middle of that section (while keeping a finger
+      in the first place you opened the dictionary). That would let you narrow
+      down to which quarter of the dictionary the word is in. Then split that
+      quarter in half to get to the right eighth, and so on. Even with a massive
+      unabridged dictionary like the 2,662-page <pubtitle>Webster's Third New
+      International Dictionary</pubtitle>, this procedure will get us to the
+      correct page in just eleven steps.
+    </p>
+
+    <p>
+      This technique is the the idea behind the <term>binary search</term>
+      algorithm which we can use to search in an array or <c>ArrayList</c> whose
+      contents are sorted.
+    </p>
+
+    <p>
+      In code, binary search works by keeping track of a range we call the
+      <term>search space</term> which is a range somewhere in the whole array or
+      <c>ArrayList</c>. Initially the search space spans the whole array or
+      list. Binary search then repeatedly divides the search space in half by
+      comparing the value we are searching for to the value at the index in the
+      middle of a search space and then updates the search space to be one half
+      or the other of the current search space. Eventually it will either narrow
+      down the search space down to one element which is either the value we are
+      looking for, in which case we found it, or not, in which case it isn’t in
+      the array or <c>ArrayList</c> at all.
+    </p>
+
+    <p>
+      The animation below from <url
+      href="https://github.com/AlvaroIsrael/binary-search">https://github.com/AlvaroIsrael/binary-search</url>
+      demonstrates the procedure.
+    </p>
+
+    <figure align="center">
+      <image source="Unit4-Data-Collections/Figures/binary-search-small.gif" width="89%" />
+    </figure>
+
+    <p>
+      Binary search can be surprisingly hard to implement correctly. Stanford
+      computer science courses used to start by having everyone try to write a
+      binary search algorithm and according to Stanford professor Donald Knuth,
+      fewer than ten percent of students wrote a bug free implementation. Even
+      the version of binary search in the Java standard library contained a bug
+      for nine years before it was <url
+      href="https://research.google/blog/extra-extra-read-all-about-it-nearly-all-binary-searches-and-mergesorts-are-broken/">found
+      in 2006!</url>.
+    </p>
+
+    <p>
+      Luckily if you need to use a binary search you can probably use one that’s
+      already been written and debugged, even if it did take them nine years to
+      get out the last bug (we think). But if you do want to write one, the key
+      is to keep track of what the current search space is and make sure that at
+      every step the search space gets strictly smaller but also that you don’t
+      shrink it too much.
+    </p>
+
+    <activity label="binSearch">
+      <statement>
+        <p>
+          Here’s an implementation of binary search that keeps track of the
+          search space using a pair of variables <c>low</c> and <c>high</c>
+          which represent a half-open interval, meaning the range of indexes
+          from <c>low</c> (inclusive) to <c>high</c> (exclusive).
+        </p>
+
+        <p>Click on the Code Lens button to step through this code.</p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          <![CDATA[
+          public class BinarySearch {
+
+              public static int search(int[] nums, int n) {
+
+                  // Search space starts as [lo, hi)
+                  int low = 0;
+                  int high = nums.length;
+
+                  // Loop while the half open interval [lo, hi) is not empty.
+                  while (low < high) {
+                      // Compute the mid point without overflowing.
+                      // Note that mid is in [low, high) so it could
+                      // end up equal to low but must be less than high
+                      int mid = low + (high - low) / 2;
+
+                      if (nums[mid] < n) {
+                          // Add one to make sure the search space shrinks
+                          low = mid + 1;
+                      } else if (nums[mid] > n) {
+                          // Because mid is definitely less than high, this
+                          // also shrinks the search space
+                          high = mid;
+                      } else {
+                          // Found it.
+                          return mid;
+                      }
+                  }
+                  return -1;
+              }
+
+              public static void main(String[] args) {
+                  int[] arr1 = {-20, 3, 15, 81, 432};
+
+                  // test when the target is in the middle
+                  int index = search(arr1, 15);
+                  System.out.println(index);
+
+                  // test when the target is the first item in the array
+                  index = search(arr1, -20);
+                  System.out.println(index);
+
+                  // test when the target is in the array - last
+                  index = search(arr1, 432);
+                  System.out.println(index);
+
+                  // test when the target is not in the array
+                  index = search(arr1, 53);
+                  System.out.println(index);
+              }
+          }
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "2\n0\n4\n-1";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+
+    <p>
+      We can also use binary search with an array or <c>ArrayList</c> of other
+      element types, as long as they have some ordering and the elements are
+      sorted by it. For instance, we can use binary search on an array of
+      <c>String</c> values using the <c>compareTo</c> method to compare values.
+      Remember that the <c>compareTo</c> method compares to <c>String</c> values
+      and returns a negative value if the current string is less than the
+      <c>other</c> string, 0 if they are equivalent, and a positive value if the
+      current string is greater than the <c>other</c> string.
+    </p>
+
+    <activity label="binSearchStrings">
+      <statement>
+        <p>
+          Demonstration of binary search with strings using compareTo. Click on
+          the Code Lens button to step through the code.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          <![CDATA[
+          public class StringBinarySearch {
+
+              public static int search(String[] elements, String target) {
+                  int low = 0;
+                  int high = elements.length;
+
+                  while (low < high) {
+                      int mid = low + (high - low) / 2;
+                      if (elements[mid].compareTo(target) < 0) {
+                          low = mid + 1;
+                      } else if (elements[mid].compareTo(target) > 0) {
+                          high = mid;
+                      } else {
+                          return mid;
+                      }
+                  }
+                  return -1;
+              }
+
+              public static void main(String[] args) {
+                  String[] arr1 = {"apple", "banana", "cherry", "kiwi", "melon"};
+
+                  // test when the target is in the middle
+                  int index = search(arr1, "cherry");
+                  System.out.println(index);
+
+                  // test when the target is the first item in the array
+                  index = search(arr1, "apple");
+                  System.out.println(index);
+
+                  // test when the target is in the array - last
+                  index = search(arr1, "melon");
+                  System.out.println(index);
+
+                  // test when the target is not in the array
+                  index = search(arr1, "pear");
+                  System.out.println(index);
+              }
+          }
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "2\n0\n4\n-1";
+                  boolean passed = getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="runtimes">
+    <title>Algorithmic run time</title>
+
+    <p>
+      At a high level, linear search and binary search are two different
+      algorithms that solve the same problem. How do we choose between them?
+      Sometimes the choice is easy: if our array or list is not sorted we pretty
+      much have to use a linear search.
+    </p>
+
+    <p>
+      But suppose our data is sorted and we could use either. Should we always
+      use a binary search? What does it mean when we say binary search is faster
+      than linear search? Is that always true?
+    </p>
+
+    <p>
+      Computer scientists like to answer these questions by analyzing algorithms
+      in terms of their <term>run time</term> which isn’t measured by running a
+      program and timing it but rather by characterizing, slightly abstractly,
+      how many steps the algorithm will have to execute before it finishes. In
+      particular computer scientist think about the <term>worst case</term> run
+      times of algorithms, meaning how many steps will the algorithm take if
+      given the worst possible input.
+    </p>
+
+    <p>
+      With searching, the abstract step is something like, how many items does
+      the algorithm have to compare to the thing it is searching for and the
+      worst case is usually if the thing we are searching for isn’t there to be
+      found.
+    </p>
+
+    <p>
+      A linear search, searching an array would have to look at every item in
+      the array before it could say that the item wasn’t present. By contrast a
+      binary search would only have to look at a handful of items before the
+      search space would collapse and it could determine that the search had
+      failed.
+    </p>
+
+    <p>
+      Finally, the thing computer scientists most often care about is not even
+      how many steps an algorithm takes on any given input but how the worst
+      case run time changes as the size of the problem changes. For searching it
+      makes sense that it would take longer to search a bigger array or list.
+      And indeed both linear and binary searches take longer, the more things
+      they have to search. But we can actually compare how they change.
+    </p>
+
+    <p>
+      If we define run time of a search algorithm as the number of elements the
+      algorithm has to compare to the target and the worst case run time
+      occurring when the target isn’t present, then it’s easy to analyze linear
+      search: the worst case run time is the size of the array being searched,
+      because the algorithm has to look at every element of the array before it
+      can be sure the target isn’t present.
+    </p>
+
+    <p>
+      Binary search on the other hand, doesn’t always need to look at every
+      element. It only needs to look at the middle elements of ever-shrinking
+      search spaces until the search space is just one element. After comparing
+      the middle element of the array to the target, it will reduce the search
+      space by half which means half of the elements will never be looked at.
+      And half of the remaining half will be eliminated with one more
+      comparison.
+    </p>
+
+    <p>
+      The table below shows how both the linear and binary search run times
+      change. Notice how doubling the size of of the input <em>n</em> adds only
+      one more comparison with binary search. So even though for a two-element
+      array linear search and binary search take the same number of steps,
+      because the number of steps increases so much slower as the size of the
+      input grows we say that binary search is faster than linear search.
+    </p>
+
+    <table>
+      <tabular row-headers="yes">
+        <col top="minor" />
+        <col top="minor" />
+        <col top="minor" />
+        <row header="yes" left="minor">
+          <cell bottom="minor" right="minor">N</cell>
+          <cell bottom="minor" right="minor">Linear Search</cell>
+          <cell bottom="minor" right="minor">Binary Search</cell>
+        </row>
+
+        <row left="minor">
+          <cell bottom="minor" right="minor">2</cell>
+          <cell bottom="minor" right="minor">2 comparisons</cell>
+          <cell bottom="minor" right="minor">2 comparisons</cell>
+        </row>
+
+        <row left="minor">
+          <cell bottom="minor" right="minor">4</cell>
+          <cell bottom="minor" right="minor">4</cell>
+          <cell bottom="minor" right="minor">3</cell>
+        </row>
+
+        <row left="minor">
+          <cell bottom="minor" right="minor">8</cell>
+          <cell bottom="minor" right="minor">8</cell>
+          <cell bottom="minor" right="minor">4</cell>
+        </row>
+
+        <row left="minor">
+          <cell bottom="minor" right="minor">16</cell>
+          <cell bottom="minor" right="minor">16</cell>
+          <cell bottom="minor" right="minor">5</cell>
+        </row>
+
+        <row left="minor">
+          <cell bottom="minor" right="minor">100</cell>
+          <cell bottom="minor" right="minor">100</cell>
+          <cell bottom="minor" right="minor">7</cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>
+      Run times can be described with mathematical functions that describe the
+      rough mathematical relationship between the size of the input and the run
+      time of the algorithm. For instance, since linear search’s run time grows
+      by a constant amount with every increase in the input size, we can
+      describe it with the function <m>f(n) = n</m>. As <m>n</m> (the input
+      size) gets bigger, so does the run time. Because we are analyzing things
+      abstractly, we don’t worry about coefficients—if every additional element
+      we are searching actually adds two steps rather than one, that’s still a
+      linear function. Computer scientists notate algorithmic run times by
+      putting the function that describes the growth of an algorithm’s run time
+      in parentheses preceded by an <m>O</m>, which stands for “order of
+      approximation”. This is called <term>big-O notation</term>. Thus, the
+      big-O notation for linear search is <m>O(n)</m>.
+    </p>
+
+    <p>
+      Binary search’s run time grows logarithmically since the number of steps
+      is basically log base 2 of the size of the input, so <m>f(n) =
+      \log_{2}n</m>. But again, we don’t care about coefficients and the base of
+      the logarithm is really just a coefficient, so a computer scientist would
+      describe binary search’s run time as <m>O(\log n)</m>.
+    </p>
+
+    <p>
+      You won’t be asked about big-O notation on the AP exam, but you should be
+      able to calculate how many steps binary search takes for a given input
+      size. You can figure it out by counting how many times you can divide it
+      the size in half. Or you can start at 1 and keep a count of how many times
+      you can double it with the powers of two (1, 2, 4, 8, 16, 32, 64, 128,
+      256, 512, 1024, etc.) until you reach a number that is slightly above the
+      original size.
+    </p>
+
+    <activity label="qbs_1">
+      <statement>
+        <p>
+          Which will cause the <em>shortest</em> execution of a binary search
+          looking for a value in an array of integers?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>The value is the first one in the array</p>
+          </statement>
+
+          <feedback>
+            <p>This would be true for sequential search, not binary.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>The value is in the middle of the array</p>
+          </statement>
+
+          <feedback>
+            <p>
+              If the value is in the middle of the array the binary search will
+              return after one iteration of the loop.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>The value is the last one in the array</p>
+          </statement>
+
+          <feedback>
+            <p>How would that be the shortest in a binary search?</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>The value isn't in the array</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This is true for the longest execution time, but we are looking
+              for the shortest.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="qbs_2">
+      <statement>
+        <p>
+          Which of the following conditions must be true in order to search for
+          a value using binary search?
+        </p>
+
+        <program>
+          I. The values in the array must be integers.
+          II. The values in the array must be in sorted order.
+          III. The array must not contain duplicate values.
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>I only</p>
+          </statement>
+
+          <feedback>
+            <p>
+              You can use a binary search on any type of data that can be
+              compared, but the data must be in order.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>I and II</p>
+          </statement>
+
+          <feedback>
+            <p>
+              You can use a binary search on any type of data that can be
+              compared.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>II only</p>
+          </statement>
+
+          <feedback>
+            <p>
+              The only requirement for using a Binary Search is that the values
+              must be ordered.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>II and III</p>
+          </statement>
+
+          <feedback>
+            <p>The array can contain duplicate values.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="qbs_3">
+      <statement>
+        <p>
+          How many times would the loop in the binary search run for an array
+          int[] arr = {2, 10, 23, 31, 55, 86} with search(arr,55)?
+        </p>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement>
+            <p>2</p>
+          </statement>
+
+          <feedback>
+            <p>
+              It will first compare with the value at index 2 and then index 4
+              and then return 4.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>1</p>
+          </statement>
+
+          <feedback>
+            <p>This would be true if we were looking for 23.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>3</p>
+          </statement>
+
+          <feedback>
+            <p>This would be true if we were looking for 31.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="qbs_4">
+      <statement>
+        <p>
+          If you had an ordered array of size 500, what is the maximum number of
+          iterations required to find an element with binary search?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>approximately 15 times</p>
+          </statement>
+
+          <feedback>
+            <p>How many times can you divide 500 in half?</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>approximately 9 times</p>
+          </statement>
+
+          <feedback>
+            <p>
+              You can divide 500 in half, 9 times, or you can observe that 2^9 =
+              512 which is slightly bigger than 500.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>500 times</p>
+          </statement>
+
+          <feedback>
+            <p>How many times can you divide 500 in half?</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>2 times</p>
+          </statement>
+
+          <feedback>
+            <p>How many times can you divide 500 in half?</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="coding-challenge-search-runtimes">
+    <title>Coding Challenge: Search Run Times</title>
+
+    <p>
+      Let’s go back to the spellchecker that we created with arrays. Here is a
+      version of the spellchecker below that reads the dictionary file into an
+      <c>ArrayList</c>. The advantage of using an <c>ArrayList</c> instead of an
+      array for the dictionary is that we do not need to know or declare the
+      size of the dictionary in advance.
+    </p>
+
+    <p>
+      In the spellchecker challenge, we used linear search to find a word in the
+      dictionary. However, the dictionary file is actually in alphabetical
+      order. We could have used a much faster binary search algorithm! Let’s see
+      how much faster we can make it.
+    </p>
+
+    <p>
+      Write a linear search method and a binary search method to search for a
+      given word in the dictionary using the code in this lesson as a guide. You
+      will need to use <c>size</c> and <c>get(i)</c> instead of [] to get an
+      element in the <c>ArrayList</c> dictionary at index i. You will need to
+      use the <c>equals</c> and <c>compareTo</c> methods to compare Strings.
+      Have the methods return a count of how many words they had to check before
+      finding the word or returning.
+    </p>
+
+    <project label="challenge-search-coding">
+      <statement>
+        <p>
+          This spellchecker uses an ArrayList for the dictionary. Write a
+          <c>linearSearch(word)</c> and a <c>binarySearch(word)</c> method. Use
+          <c>get(i)</c>, <c>size()</c>, <c>equals</c>, and <c>compareTo</c>.
+          Return a count of the number of words checked.
+        </p>
+      </statement>
+
+      <program interactive="activecode" datafile="dictionary.txt">
+
+        <code>
+          <![CDATA[
+          import java.io.*;
+          import java.nio.file.*;
+          import java.util.*;
+
+          public class SpellChecker
+          {
+              private ArrayList<String> dictionary;
+
+              /* Constructor populates the dictionary ArrayList from the file dictionary.txt*/
+              public SpellChecker() throws IOException
+              {
+                  List<String> lines = Files.readAllLines(Path.of("dictionary.txt"));
+                  dictionary = new ArrayList<String>(lines);
+              }
+
+              /**
+               * Write a linearSearch(word) method that finds a word
+               * in the ArrayList dictionary. It should also keep
+               * a count of the number of words checked.
+               *
+               * @param String word to be found in elements.
+               * @return a count of how many words checked before returning.
+               */
+              public int linearSearch(String word)
+              {
+
+              }
+
+              /**
+               * Write a binarySearch(word) method that finds the word
+               * in the ArrayList dictionary. It should also keep
+               * a count of the number of words checked.
+               *
+               * @param String word to be found in elements.
+               * @return a count of how many words checked before returning.
+               */
+              public int binarySearch(String word)
+              {
+
+              }
+
+              public static void main(String[] args) throws IOException
+              {
+                  SpellChecker checker = new SpellChecker();
+                  String word = "catz";
+                  int i = checker.linearSearch(word);
+                  System.out.println("Linear search steps for " + word + " = " + i);
+                  int count = checker.binarySearch(word);
+                  System.out.println("Binary search steps for " + word + " = " + count);
+              }
+          }
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                 super("SpellChecker");
+              }
+
+
+             @Test
+             public void test1()
+             {
+                 Object[] args = {"medium"};
+                 String output = getMethodOutput("linearSearch", args);
+                 String expect = "5550";
+
+                 boolean passed =
+                         getResults(
+                                 expect,
+                                 output,
+                                 "linearSearch(\"medium\")"
+                                 );
+                 assertTrue(passed);
+             }
+
+             @Test
+             public void test2()
+             {
+                 Object[] args = {"medium"};
+                 String output = getMethodOutput("binarySearch", args);
+                 String expect = "13";
+
+                 boolean passed =
+                         getResults(
+                                 expect,
+                                 output,
+                                 "binarySearch(\"medium\")"
+                                 );
+                 assertTrue(passed);
+             }
+          }
+        </tests>
+
+      </program>
+    </project>
+
+    <p>
+      Run your code with the following test cases and record the run time for
+      each word in this <url
+      href="https://docs.google.com/document/d/1VrQf7wFIEIu7qfOg7FYUTeNWrdrRsPw4eJSdehhz4dM/edit?usp=sharing">Google
+      document</url> (do File/Make a Copy) also seen below to record your
+      answers.
+    </p>
+
+    <p>
+      What do you notice? Which one was faster in general? Were there some cases
+      where each was faster? How fast were they with misspelled words? Record
+      your answers in the window below.
+    </p>
+
+    <project label="challenge-binary-search">
+      <statement>
+        <p>
+          After you complete your code, write in your comparison of the linear
+          vs. binary search run times based on your test cases. Were there any
+          cases where one was faster than the other? How did each perform in the
+          worst case when a word is misspelled?
+        </p>
+      </statement>
+
+      <response />
+    </project>
+  </subsection>
+
+  <subsection xml:id="summary-40">
+    <title>Summary</title>
+
+    <p>
+      <ul>
+        <li>
+          <p>
+            (AP 4.14.A.1) <term>Linear search algorithms</term> are standard
+            algorithms that check each element in order until the desired value
+            is found or all elements in the array or <c>ArrayList</c> have been
+            checked. Linear search algorithms can begin the search process from
+            either end of the array or <c>ArrayList</c>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 4.14.A.2) When applying linear search algorithms to 2D arrays,
+            each row must be accessed then linear search applied to each row of
+            the 2D array.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            The <term>binary search</term> algorithm starts at the middle of a
+            sorted array or <c>ArrayList</c> and eliminates half of the array or
+            <c>ArrayList</c> in each iteration until the desired value is found
+            or all elements have been eliminated.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 4.17.B.1 preview) Data must be in sorted order to use the binary
+            search algorithm.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 4.17.B.2 preview) Binary search is typically more efficient than
+            linear search.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 4.17.B.3 preview) The binary search algorithm can be written
+            either iteratively or recursively. (The recursive solution will be
+            presented in lesson 4.17).
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Informal run-time comparisons of program code segments can be made
+            using statement execution counts.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+</section>

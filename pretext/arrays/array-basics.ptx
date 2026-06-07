@@ -1,0 +1,1516 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<section xml:id="array-basics">
+  <title>Creating and using arrays</title>
+
+  <introduction>
+    <idx>array</idx>
+    <idx>index</idx>
+    <idx><h>array</h><h>index</h></idx>
+    <p>
+      Suppose we were writing a program to deal with students’ exam scores. To
+      keep track of ten exam scores, we could declare ten separate variables:
+      <c>int score1</c>, <c>score2</c>, <c>score3</c>, … , <c>score10</c>. But
+      what if we had a hundred exam scores? That would be a lot of variables!
+      Worse yet, what if we didn’t know when we were writing the program how
+      many scores we would need to deal with?
+    </p>
+
+    <p>
+      What we would like is some way to declare, “I’m going to need to store
+      <em>n</em> <c>int</c> values” where <em>n</em> is a number that isn’t
+      necessarily known until the program runs. And we might also like to be
+      able to treat that collection of <em>n</em> values as a single value for
+      some purposes—being able to assign it to a variable or pass it as an
+      argument to a method—while still being able to access the individual
+      values. Even better would be if this new kind of value knew how many
+      values were in it so we could do things like write loops that access each
+      of the component values no matter how many there are.
+    </p>
+
+    <p>
+      In Java that’s what <term>arrays</term> are for. Most programming
+      languages have some similar kind of <term>data structure</term>, usually
+      called arrays or lists. The basic idea is that we have a single value that
+      stores a collection of values called the <term>elements</term> of the
+      array and then allows us to access the individual elements by a number,
+      rather than a name. So instead of a bunch of variables with names like
+      <c>score1</c> and <c>score2</c>, we can have one variable named
+      <c>scores</c> and access the elements like <c>scores[0]</c> and
+      <c>scores[1]</c>. Anything we can do with a regular variable, such as
+      using it in an expression or assigning it a value we can also do with an
+      array element.
+    </p>
+
+    <p>
+      An array is like a row of lockers, except that you can’t cram lots of
+      stuff into each locker; each locker only holds one thing.
+    </p>
+
+    <figure>
+      <caption>A row of lockers</caption>
+
+      <image source="Unit4-Data-Collections/Figures/rowLockers.jpg" width="71%" />
+    </figure>
+
+    <p>
+      We can access the elements of an array using an <term>index</term>, a
+      number that identifies a position in the array, similar to how the number
+      on a locker identifies it out of all the lockers in a hallway. We can use
+      an index to both access and assign the value at that position in an array.
+    </p>
+
+    <p>
+      In Java, the object data of arrays is stored in the computer’s memory as a
+      contiguous block and the index indicates how far each element is from the
+      front of the block. So the first index is <c>0</c>, not <c>1</c>. Most
+      programming languages these days use this kind of <term>zero-based
+      indices</term> but a few, including many block-based languages such as
+      Snap!, use <term>one-based indices</term> where the first item in a list
+      is at index <c>1</c>. One-based indices fit better with how English
+      speakers number things so if you are coming from Snap! or if Java is your
+      first programming langauge, it may take a little while to remember that
+      the first element of an array is at index <c>0</c>. (Sometimes programmers
+      will refer to the first element of an array as the “zeroth” element to be
+      super clear. Or maybe just because “zeroth” is kind of fun to say.)
+    </p>
+
+    <p>
+      Here’s a short <url href="https://youtu.be/G7aF-OuLfl4">video</url> that
+      introduces the concept of an array.
+    </p>
+
+    <video youtube="G7aF-OuLfl4" label="video-arrays" />
+    <activity label="arrayAnalogy">
+      <title>Other analogies?</title>
+
+      <statement>
+        <p>
+          Can you think of another example of something that is like an array
+          (like a row of lockers)?
+        </p>
+      </statement>
+
+      <response />
+    </activity>
+  </introduction>
+
+  <subsection xml:id="declaring-and-creating-an-array">
+    <title>Declaring array variables</title>
+
+    <p>
+      As we’ve already learned, when we declare a variable, we specify its type
+      and name. Declaring an array variable is no different except we need to
+      declare it with an array type. Array types are written with the element
+      type of the array, followed by square brackets. For example to make an
+      array of <c>int</c> values, we use the type <c>int[]</c> which is
+      pronounced “array of <c>int</c>” or “<c>int</c> array”.
+    </p>
+
+    <p>
+      We already know that if we want to declare an <c>int</c> variable we
+      write:
+    </p>
+
+    <program>
+      int score; // One int value
+    </program>
+
+    <p>To declare an array of <c>int</c>, we just write:</p>
+
+    <program>
+      int[] scores; // A reference to an array of any number of int values
+    </program>
+
+    <p>
+      Because arrays are reference types, when we declare an array variable, the
+      only memory that is allocated is a place to hold a reference to an array.
+      Declaring the variable doesn’t actually create the array object. But what
+      is stored in the variable if there’s no object to reference? Java has a
+      special value <c>null</c> which is the reference equivalent of <c>0</c>
+      for an <c>int</c> or <c>0.0</c> for a <c>double</c> which means, “no
+      object”. Any variable with a reference type that hasn’t been assigned an
+      actual reference value will have the value <c>null</c>.
+    </p>
+
+    <p>
+      So before we can use the array variable we need to actually create an
+      array.
+    </p>
+  </subsection>
+
+  <subsection xml:id="using-new-to-create-arrays">
+    <title>Creating arrays</title>
+
+    <p>
+      The main way to create an actual array object is with an <term>array
+      creation expression</term>. There are two flavors: one that makes an array
+      of a given size where all the elements are <c>0</c>, <c>0.0</c>,
+      <c>false</c>, or <c>null</c> depending on the element type and another
+      that lets us specify specific values that will be put into the new array.
+    </p>
+
+    <p>
+      To create an array of a specific size we use the keyword <c>new</c>
+      followed by what looks like an array type but with an <c>int</c>
+      expression (often a literal <c>int</c>) inside the square brackets that
+      says how big the array should be. The whole expression causes a new array
+      to be created and space allocated for it’s object data and then evaluates
+      to a reference to that new array. We then need to do something with that
+      reference like assign it to a variable or possibly pass it a method.
+    </p>
+
+    <p>
+      The following two lines consist of a variable declaration where we
+      immediately assign the variable a reference to a new array.
+    </p>
+
+    <program>
+      int[] nums = new int[10]; // a reference to a new array of ten ints
+      String[] strings = new String[1000000]; // a reference to a new array of a million Strings.
+    </program>
+
+    <p>
+      Note that the number only goes in the square brackets in the array
+      creation expression. The size of the array is not part of the type of the
+      variable; it’s just a fact about that particular object. We could later
+      assign a new values to those variables, replacing the original arrays,
+      potentially with new arrays of different sizes.
+    </p>
+
+    <program>
+      // clobber the old references
+      nums = new int[10]; // reference to new array of same size
+      strings = new String[10]; // reference to new array of different size
+    </program>
+
+    <p>
+      When we create an array like this all the values in the new array are
+      initialized to the “zero” value for the element type.
+    </p>
+
+    <p>
+      <ul>
+        <li><c>0</c> for elements of type <c>int</c></li>
+
+        <li><c>0.0</c> for elements of type <c>double</c></li>
+
+        <li><c>false</c> for elements of type <c>boolean</c></li>
+
+        <li><c>null</c> for all reference types</li>
+      </ul>
+    </p>
+
+    <figure align="center">
+      <caption>
+        Two five-element arrays with their values set to the default values for
+        integer and object arrays.
+      </caption>
+
+      <image source="Unit4-Data-Collections/Figures/arrayIndicies.png" width="36%" />
+    </figure>
+
+    <p>
+      The other way to make an array, is with specific values using an
+      <term>array initializer</term> sometimes called an <term>initializer
+      list</term>. We still use <c>new</c> but instead of specifying the size of
+      the array inside the square brackets, we place a list of initial values in
+      curly braces (<c>{}</c>) after the square brackets:
+    </p>
+
+    <program>
+      int[] highScores = new int[] { 99, 98, 98, 88, 68 };
+      String[] names = new String[] { "Jamal", "Emily", "Destiny", "Mateo", "Sofia" };
+    </program>
+
+    <p>
+      Notice that in this case we don’t need to specify the size of the arrays
+      because Java can figure it out from how many values are in the curly
+      braces.
+    </p>
+
+    <p>
+      When we create an array of a primitive type such as <c>int</c> with
+      initial values specified, space is allocated for the specified number of
+      items of that type and the values in the array are stored directly in the
+      array’s object data. When we create an array of an reference type such as
+      <c>String</c>, space is allocated to hold the <em>references</em> in the
+      array. The actual object data—<c>String</c> objects in this case—live
+      somewhere else in memory and only references are stored in the array.
+    </p>
+
+    <figure align="center">
+      <caption>A primitive array and an object array</caption>
+
+      <image source="Unit4-Data-Collections/Figures/intAndStringArrays.png" width="89%" />
+    </figure>
+
+    <p>
+      Finally there’s a shortcut for when we’re declaring a variable and
+      initializing it with specific values at the same time: we can write just
+      the initial values in curly braces without the <c>new</c> and the array
+      type since Java can infer the type from the variable declaration.
+    </p>
+
+    <program>
+      int[] highScores = { 99, 98, 98, 88, 68 };
+      String[] names = { "Jamal", "Emily", "Destiny", "Mateo", "Sofia" };
+    </program>
+
+    <p>
+      This is handy but it only works when it is part of a variable declaration.
+      In particular, we can’t use it if we want to pass a reference to a new
+      array as the argument to a method. In that case we need to use a full
+      array creation expression:
+    </p>
+
+    <program>
+      someMethod(new int[] { 1, 2, 3 });
+    </program>
+
+    <p>
+      Watch the following <url href="https://youtu.be/IbPFjw1FNkE">video</url>
+      which shows the two ways of creating an array with a physical model of
+      Java memory.
+    </p>
+
+    <video youtube="IbPFjw1FNkE" label="video-array-memory" />
+    <activity label="createarray">
+      <statement>
+        <p>
+          Which of the following creates an array of 10 doubles called prices?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>int[] prices = new int[10];</p>
+          </statement>
+
+          <feedback>
+            <p>We need double for money amounts in prices.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>double[] prices = new double[10];</p>
+          </statement>
+
+          <feedback>
+            <p>Yes correct!</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>double[] prices;</p>
+          </statement>
+
+          <feedback>
+            <p>This declares the array but does not create it with new.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>double[10] prices = new double[];</p>
+          </statement>
+
+          <feedback>
+            <p>This is not the correct syntax.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="arrayex1">
+      <statement>
+        <p>
+          In the following code, add two more array declarations, one that
+          creates an array of five <c>double</c> values called <c>prices</c> and
+          another of five <c>String</c> values called <c>names</c>. Then add
+          <c>System.out.println</c> calls to print their lengths.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class Test1
+          {
+              public static void main(String[] args)
+              {
+                  // Array example
+                  int[] highScores = new int[10];
+                  // Add an array of 5 doubles called prices.
+
+                  // Add an array of 5 Strings called names.
+
+                  System.out.println(
+                          "Array highScores declared with size " + highScores.length);
+                  // Print out the length of the new arrays
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("Test1");
+              }
+
+              @Test
+              public void testDouble() throws IOException
+              {
+                  String target = "new double[5];";
+                  boolean passed = checkCodeContains(target);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testString() throws IOException
+              {
+                  String target = "new String[5];";
+                  boolean passed = checkCodeContains(target);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+
+    <idx><h>array</h><h>initialization</h></idx>
+    <p>
+      Watch the following <url href="https://youtu.be/T-YZvVvPOac">video</url>
+      which shows an array of String objects with a physical model of Java
+      memory.
+    </p>
+
+    <video youtube="T-YZvVvPOac" label="video-string-array" />
+  </subsection>
+
+  <subsection xml:id="array-length-index-2">
+    <title>Array length</title>
+
+    <p>
+      The good news about Java arrays is that they know how many elements they
+      can store. The slightly bad news is that there is no way to change that
+      size after the array is created.
+    </p>
+
+    <p>
+      The size of each array is stored as part of its object data and is
+      accessible via an <term>instance variable</term> <c>length</c>. We’ll
+      learn more about instance variables in <xref ref="classes" /> but for now
+      all we need to know is that we can access the size of any array with the
+      <term>dot operator</term>, a dot <c>.</c> followed by the word
+      <c>length</c> immediately after any expression whose value is an array
+      reference. For example, <c>arrayName.length</c> accesses the length of the
+      array referenced by the variable <c>arrayName</c>.
+    </p>
+
+    <activity label="arrayex2">
+      <statement>
+        <p>
+          Try running the code below to see the length. Try adding another value
+          to the highScores initializer list and run again to see the length
+          value change.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class Test2 {
+              public static void main(String[] args) {
+                  int[] highScores = { 99, 98, 98, 88, 68 };
+                  System.out.println(highScores.length);
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("Test2");
+              }
+
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main").trim();
+                  String expect = "6";
+
+                  // boolean pass = !output.equals(expect.trim());
+
+                  boolean passed = getResults(expect, output, "Did you add another value?");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testChangedCode()
+              {
+                  String origCode =
+                          "public class Test2 { public static void main (String [] args) { int [] highScores"
+                              + " = {99,98,98,88,68}; System.out.println(highScores.length); } }";
+
+                  boolean changed = codeChanged(origCode);
+
+                  assertTrue(changed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="access-and-modify-array-values">
+    <title>Accessing and assigning array values</title>
+
+    <p>
+      To access the items in an array, we use an <term>array access
+      expression</term> which is a reference to an array (such as the name of an
+      array variable) followed by a pair of square brackets containing an
+      <c>int</c> expression that gives us the index of the element we want to
+      access. Remember that an <term>index</term> is a number that indicates the
+      position of an item in a list, starting at 0.
+    </p>
+
+    <p>
+      An array access expression like <c>arrayname[index]</c> can be used
+      anywhere a regular variable can be used. That is, not only can use it in
+      an expression to get the value of an element of the array, but we can also
+      use it on the left side of an assignment operator to change the value
+      stored at that position in the array.
+    </p>
+
+    <program>
+      System.out.println(highScores[0]); // Print the zeroth element of the array
+      highScores[0] = 99;                // Assign a new value to the zeroth element of the array
+      System.out.println(highScores[0]); // Print the zeroth element of the array, now 99
+      highScores[0] += 5;                // Add five to the value, raising it to 104
+      highScores[0]++;                   // Increment the value so it's now 105
+    </program>
+
+    <p>
+      When accessing array elements, either to get their value or to assign to
+      them, the index must be valid given the size of the array. If not Java
+      will crash your program with an <c>ArrayIndexOutOfBoundsException</c>.
+    </p>
+
+    <p>
+      Since the first element is at index 0 that means the last valid index is
+      one less than the length of the array. (An egg carton contains twelve eggs
+      but if you numbered the eggs, starting at 0 the last one would be number
+      11.)
+    </p>
+
+    <p>
+      Watch the following <url href="https://youtu.be/uagEJw6bTM4">video</url>
+      which shows a physical model of Java memory setting array values.
+    </p>
+
+    <video youtube="uagEJw6bTM4" label="video-array-values-memory" />
+    <activity label="qarrayLength">
+      <statement>
+        <p>
+          Which index is for the last element of an array called
+          <c>highScores</c>?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>highScores.length</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Remember that the first element in an array starts at index 0. If
+              the length (the number of elements) of the array is 5, at what
+              index would you find the last element?
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>highScores.length - 1</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Since the first element in an array is at index 0 the last element
+              is the length minus 1.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="array-access-mcq1">
+      <statement>
+        <p>
+          Which code below accesses "Honda" using the following array:
+          <c>String[] cars = {“Honda”, “Volvo”, “BMW”};</c>
+        </p>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement>
+            <p>cars[0]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Yes, this would access "Honda". Remember that the first element in
+              an array starts at index 0.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>cars[1]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              No, this would access "Volvo". Remember that the first element in
+              an array starts at index 0.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>cars[2]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              No, this would access "BMW". Remember that the first element in an
+              array starts at index 0.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>cars[3]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              No, this would result in an IndexOutOfBounds error. Remember that
+              the first element in an array starts at index 0.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="array-access-mcq2">
+      <statement>
+        <p>
+          Which code below accesses "BMW" in the array: <c>String[] cars =
+          {“Honda”, “Volvo”, “BMW”};</c>
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>cars[0]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              No, this would access "Honda". Remember that the first element in
+              an array starts at index 0.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>cars[1]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              No, this would access "Volvo". Remember that the first element in
+              an array starts at index 0.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>cars[2]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Yes, this would access "BMW". If there are n elements and you
+              start indexing at 0, the last element is at index n-1.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>cars[3]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              No, this would result in an IndexOutOfBounds error. Remember that
+              the first element in an array starts at index 0.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <p>
+      If you want to keep track of the top five highest scores in a game and the
+      names of the people with those scores, you could use two <term>parallel
+      arrays</term>. One array could keep track of the scores and the other the
+      names. You have to make sure you keep them in the same order so that the
+      same index can be used to get correponding names and scores.
+    </p>
+
+    <activity label="array-set">
+      <statement>
+        <p>
+          Try out the following code which has two parallel arrays, highScores
+          and names. Can you print out Mateo’s score? Can you change Sofia’s
+          score to 97 using an assignment statement in the code? Can you change
+          the arrays so that they have 6 elements and add your name and score
+          and print them out?
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class Test1
+          {
+              public static void main(String[] args)
+              {
+                  // declare, create, initialize arrays
+                  int[] highScores = {99, 98, 98, 88, 68};
+                  String[] names = {"Jamal", "Emily", "Destiny", "Mateo", "Sofia"};
+
+                  // Print corresponding names and scores
+                  System.out.println(names[0] + " has a score of " + highScores[0]);
+                  System.out.println(names[1] + " has a score of " + highScores[1]);
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("Test1");
+              }
+
+              @Test
+              public void test1() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Jamal has a score of 99\nEmily has a score of 98";
+
+                  boolean passed = !output.equals(expect);
+
+                  passed = getResults(expect, output, "Did you change the main?", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Mateo has a score of 88";
+
+                  boolean passed = output.contains("Mateo");
+
+                  passed = getResults(expect, output, "Did you print out Mateo?", passed);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+
+    <p>
+      What happens if you try to access an element that is not there? Try to
+      access a <c>highScore</c> or <c>name</c> at index 7 above to see what
+      happens. The index must be between 0 and the length of the array - 1 or it
+      will give an error message called <c>ArrayIndexOutOfBoundsException</c>.
+    </p>
+
+    <p>
+      Note also that the index can be any expression, not just a literal
+      <c>int</c>. In fact, it is somewhat unusual to use a literal index. More
+      likely we will use at least a variable or even a more complex arithmetic
+      expression. For instance given an array like <c>highScores</c>, the
+      expression <c>highScores.length - 1</c> gives us the index of the last
+      element of the array. Here are some examples, assuming <c>i</c> is an
+      <c>int</c> variable that is a legal index into <c>highScores</c>:
+    </p>
+
+    <program>
+      highScores[i];                                         // Score at index i
+      highScores[i + 1];                                     // Next score
+      highScores[highScores.length - 1];                     // Last score
+      highScores[(int (Math.random() * highScores.length)]); // Random score
+    </program>
+
+    <activity label="imageArray">
+      <title>Random images</title>
+
+      <statement>
+        <sidebyside widths="15% 100%" margins="-20% 0%">
+          <image source="Unit4-Data-Collections/array-images/cow.jpg" width="27%" />
+          <p>
+            This code contains an array of image filenames. Run the code and see
+            that it displays images[0] which is “cow.jpg”. Can you change the
+            index variable’s value so that it prints out the puppy image? Can
+            you print out the reindeer? Try all of them! What indices did you
+            need to use? Then try using a random number for the index instead.
+            Remember that <c>(int) (Math.random() * max)</c> will return a
+            number from <c>0</c> up to <c>max</c>. What’s the maximum number it
+            can be for this array?
+          </p>
+        </sidebyside>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          <![CDATA[
+          public class ImageEx {
+              public static void main(String[] args) {
+                  String[] images = {
+                      "cow.jpg", "kitten.jpg", "puppy.jpg", "pig.jpg", "reindeer.jpg"
+                  };
+
+                  // Change index to see different images in the array!
+                  // Can you have it pick out a random image?
+                  int index = 0;
+                  printHtmlImage(images[index]);
+              }
+
+              // This method will just work in Active Code which interprets html
+              public static void printHtmlImage(String filename) {
+                  String baseURL =
+                          "https://raw.githubusercontent.com/bhoffman0/CSAwesome/master/_sources/Unit6-Arrays/6-1-images/";
+                  System.out.print("<img src=" + baseURL + filename + " width=500px />");
+              }
+          }
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          // ActiveCode imageArray
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void testCode()
+              {
+                  String code = getCode();
+                  String expect = "int index = 0;";
+
+                  boolean passed = !code.contains(expect);
+
+                  getResults("index not 0", passed + "", "Changed index to another value", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testRandomAdded()
+              {
+                  boolean passed = checkCodeContains("Math.random to set index", "Math.random");
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="array-refs-as-args">
+    <title>Array references as arguments</title>
+
+    <p>
+      In <xref ref="method-signatures" /> we mentioned that Java uses <term>call
+      by value</term> when it passes arguments to methods. That means that when
+      pass arguments in a method call, the argument values are stored in the
+      parameters defined in the method. For primitive types that means a copy of
+      the actual value. But for reference types, like arrays, that means a copy
+      of the reference—the number that allows access to the actual object data
+      of the array. And through a reference it’s possible to change the actual
+      data in the array so the change is visible after the method returns.
+    </p>
+
+    <p>To see why this difference matters, consider these three listings.</p>
+
+    <listing>
+      <title>
+        Method that (uselessly) changes the value of its <c>int</c> parameter
+      </title>
+
+      <program>
+        public void changeIntParameter(int n) {
+          // changes the variable n
+          n = 20
+        }
+
+        int num = 10;
+        changeIntParameter(num); // pass copy of the value 10
+        System.out.println(num); // prints 10
+      </program>
+    </listing>
+
+    <p>
+      In this listing the method <c>changeIntParameter</c> accepts an <c>int</c>
+      argument which is stored in the parameter <c>n</c>. That parameter is a
+      variable that only exists until <c>changeIntParameter</c> returns. In this
+      method, <c>n</c> is assigned a new value but the code has no effect
+      because immediately after that the method returns and the variable
+      <c>n</c> doesn’t exist any more. The assignment to <c>n</c> has no effect
+      on wherever its argument value came from. In this case because the
+      argument came from the variable <c>num</c> some people expect the change
+      to <c>n</c> to also change <c>num</c>. But it’s the <em>value</em> of
+      <c>num</c> that was passed to <c>changeIntParameter</c>. This would
+      perhaps be more obvious if we had instead called
+      <c>changeIntParameter(10)</c>. Few people would expect the value of
+      <c>10</c> to suddenly be <c>20</c>!
+    </p>
+
+    <p>
+      Now consider this listing where the code works almost exactly like the
+      previous one:
+    </p>
+
+    <listing>
+      <title>
+        Method that (uselessly) changes the value of its <c>int[]</c> parameter
+      </title>
+
+      <program>
+        public void changeArrayParameter(int[] ns) {
+          // changes the variable ns
+          ns = new int[] { 20 };
+        }
+
+        int[] nums = new int[] { 10 };
+        changeArrayParameter(nums); // pass copy of reference to nums
+        System.out.println(nums[0]);  // prints 10
+      </program>
+    </listing>
+
+    <p>
+      In this code the variable <c>nums</c> is a reference to a newly created
+      <c>int[]</c> rather than just an <c>int</c>. But when
+      <c>changeArrayParameter</c> is called, a copy of that reference is passed
+      as the argument and stored in the method’s parameter <c>ns</c>. Then, like
+      the code in <c>changeIntParameter</c>, <c>changeArrayParameter</c>
+      immediately assigns a completely new value to its parameter, clobbering
+      the one that was there just like <c>changeIntParameter</c> clobbered the
+      value <c>10</c> with the new value <c>20</c>. Then the method returns and
+      the change to <c>ns</c> no longer matters because <c>ns</c> no longer
+      exists.
+    </p>
+
+    <p>
+      Now consider this final listing which works quite differently than the
+      first two:
+    </p>
+
+    <listing>
+      <title>
+        Method that changes the value of its an array element via argument
+        reference
+      </title>
+
+      <program>
+        public void changeArrayElement(int[] ns) {
+          // changes the referenced array
+          ns[0] = 20;
+        }
+
+        int[] nums = new int[] { 10 };
+        changeArrayElement(nums); // pass copy of reference to nums
+        System.out.println(nums[0]);  // prints 20
+      </program>
+    </listing>
+
+    <p>
+      As in the previous listing the variable <c>nums</c> is a reference to a
+      newly created array and a copy of that reference is passed to
+      <c>changeArrayElement</c> where it is stored in the parameter <c>ns</c>.
+      But <c>changeArrayElement</c> doesn’t assign a new value to <c>ns</c>.
+      Instead it uses an array access expression to assign a new value to the
+      zeroth element of the referenced array. Since <c>nums</c> and <c>ns</c>
+      are both references to the same underlying object data, this assignment
+      actually changes the array so the change is visible after
+      <c>changeArrayElement</c> returns.
+    </p>
+
+    <activity label="patdonsArraySubtract" numbered="yes" adaptive="yes" indentation="hide" language="python">
+      <statement>
+        <p>
+          The following method has the correct code to subtract amt from all the
+          values in the array values, but the code is mixed up. Drag the blocks
+          from the left into the correct order on the right. You will be told if
+          any of the blocks are in the wrong order.
+        </p>
+      </statement>
+
+      <blocks>
+        <block order="2">
+          <cline>public void subAll(int[] values, int amt)</cline>
+          <cline>{</cline>
+        </block>
+
+        <block order="1">
+          <cline>     for (int i = 0;</cline>
+        </block>
+
+        <block order="8">
+          <cline>        i &lt; values.length;</cline>
+        </block>
+
+        <block order="7">
+          <cline>        i++)</cline>
+        </block>
+
+        <block order="6">
+          <cline>     {</cline>
+        </block>
+
+        <block order="4">
+          <cline>        values[i] = values[i] - amt;</cline>
+        </block>
+
+        <block order="5">
+          <cline>     } // end for loop</cline>
+        </block>
+
+        <block order="3">
+          <cline>} // end method</cline>
+        </block>
+      </blocks>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="coding-challenge-countries-array">
+    <title>Coding Challenge: Countries Array</title>
+
+    <image source="Unit4-Data-Collections/array-images/US.jpg" width="36%" />
+    <p>
+      In this challenge, you will create a guide to different countries using
+      arrays.
+    </p>
+
+    <p>
+      <ol>
+        <li>
+          <p>
+            Use the Active Code window below to create four parallel arrays and
+            initialize them using initialization lists that represent the data
+            below. Remember that the order of these arrays has to match so that
+            you can use the same index and get corresponding values out.
+          </p>
+
+          <p>
+            <ul>
+              <li>
+                <p>
+                  <term>Countries:</term> China, Egypt, France, Germany, India,
+                  Japan, Kenya, Mexico, United Kingdom, United States
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  <term>Capitals:</term> Beijing, Cairo, Paris, Berlin, New
+                  Delhi, Tokyo, Nairobi, Mexico City, London, Washington D.C.
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  <term>Languages:</term> Chinese, Arabic, French, German,
+                  Hindi, Japanese, Swahili, Spanish, English, English
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  <term>Filenames for map images:</term> China.jpg, Egypt.jpg,
+                  France.jpg, Germany.jpg, India.jpg, Japan.jpg, Kenya.jpg,
+                  Mexico.jpg, UK.jpg, US.jpg
+                </p>
+              </li>
+            </ul>
+          </p>
+        </li>
+
+        <li>
+          <p>
+            You are encouraged to add additional country, capital, and language
+            names that match in position in the parallel arrays to represent
+            your family origins or places you would like to visit. Although we
+            do not have image files for each country in the CSAwesome map
+            images, we do have regional map images called south-america.png,
+            central-america.png, north-america.png, asia-pacific.png,
+            europe.png, africa.png, and middle-east.png which you can use. Note
+            that these are png files and not jpg. If you create more maps for
+            your project, you can have your teacher share it in the
+            teaching-csawesome google group to contribute to this map image
+            collection.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Choose a random number using <c>Math.random()</c> and the
+            <c>length</c> of one of the arrays and save it in a variable called
+            <c>index</c>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Print out the country name, its capital, and its language, and the
+            map image for that country using the random index to access the
+            corresponding item in each parallel array. For the images, the
+            <c>printHtmlImage</c> method has been given to get the image URL
+            online and print it out as an HTML image.
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <project label="challenge-countries">
+      <statement>
+        <p>
+          Create four parallel arrays to keep information about countries.
+          Randomly pick an index to show the information about the countries.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          <![CDATA[
+          public class Countries {
+              public static void main(String[] args) {
+                  // 1. Declare 4 arrays and initialize them to the given values.
+                  // Countries: China, Egypt, France, Germany, India, Japan, Kenya, Mexico,
+                  // United Kingdom, United States
+                  // Capitals: Beijing, Cairo, Paris, Berlin, New Delhi, Tokyo, Nairobi,
+                  // Mexico City, London, Washington D.C.
+                  // Languages: Chinese, Arabic, French, German, Hindi, Japanese, Swahili,
+                  // Spanish, English, English
+                  // Filenames for map images: China.jpg, Egypt.jpg, France.jpg, Germany.jpg,
+                  // India.jpg, Japan.jpg, Kenya.jpg, Mexico.jpg, UK.jpg, US.jpg
+
+                  // 2. Pick a random number up to the length of one of the arrays and save
+                  // in the variable index
+
+                  // 3. Print out the info in each array using the random index
+
+                  // Example of showing image files using an array called images (your array
+                  // name above may be different)
+                  // (this will only work in Active Code)
+                  // printHtmlImage(images[index]);
+
+              }
+
+              // This method will just work in Active Code which interprets html
+              public static void printHtmlImage(String filename) {
+                  String baseURL =
+                          "https://raw.githubusercontent.com/bhoffman0/CSAwesome/master/_sources/Unit6-Arrays/6-1-images/";
+                  System.out.print("<img src=" + baseURL + filename + " width=500px />");
+              }
+          }
+          ]]>
+        </code>
+
+        <tests>
+          <![CDATA[
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("Countries");
+              }
+
+              @Test
+              public void test1() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "Country Capital Language Image";
+
+                  int len = expect.split(" ").length;
+
+                  boolean passed = len == 4 && output.contains(".jpg");
+
+                  passed = getResults(expect, expect, "Did you print all the info?", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "<img src";
+
+                  boolean passed = output.contains(expect);
+
+                  // passed = getResults(expect + "...", output, "Did you uncomment the image code?", passed);
+                  passed = getResults("image", "image", "Did you uncomment the image code?", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test3() throws IOException
+              {
+                  String[] lines = new String[10];
+
+                  for (int i = 0; i < lines.length; i++)
+                  {
+                      lines[i] = getMethodOutput("main");
+                  }
+
+                  int difft = 10;
+
+                  for (int i = 0; i < lines.length - 1; i++)
+                  {
+                      if (lines[i].equals(lines[i + 1]))
+                      {
+                          difft--;
+                      }
+                  }
+
+                  boolean passed = difft > 3;
+
+                  passed =
+                          getResults(
+                                  "> 3 Countries",
+                                  difft + " countries",
+                                  "Can pick a random different country > 3 times?",
+                                  passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testArrays() throws IOException
+              {
+                  // System.out.println(program);
+                  String code = getCode();
+
+                  int arrays = countOccurences(code, "String[]");
+
+                  boolean passed =
+                          getResults(
+                                  "5 x String[]", arrays + " x String[]", "Did you declare 4 String arrays? (the 5th one is main's arg)");
+                  assertTrue(passed);
+              }
+          }
+          ]]>
+        </tests>
+
+      </program>
+    </project>
+  </subsection>
+
+  <subsection xml:id="summary-45">
+    <title>Summary</title>
+
+    <p>
+      <ul>
+        <li>
+          <p>
+            (AP 4.3.A.1) An <term>array</term> stores multiple values of the
+            same type. The values can be either primitive values or object
+            references.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 4.3.A.2) The length (size) of an array is established at the
+            time of creation and cannot be changed. The length of an array can
+            be accessed through the <c>length</c> attribute.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 4.3.A.3) When an array is created using the keyword <c>new</c>,
+            all of its elements are initialized to the default values for the
+            element data type. The default value for <c>int `` is ``0</c>, for
+            <c>double</c> is <c>0.0</c>, for <c>boolean</c> is <c>false</c>, and
+            for a reference type (like <c>String</c> or a class you have
+            created) is <c>null</c>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 4.3.A.4) Initializer lists can be used to create and initialize
+            arrays.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 4.3.A.5) Square brackets <c>[]</c> are used to access and modify
+            an element in a 1D (one dimensional) array using an index.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 4.3.A.6) The valid index values for an array are <c>0</c>
+            through one less than the length of the array, inclusive. Using an
+            index value outside of this range will result in an
+            <c>ArrayIndexOutOfBoundsException</c>.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+
+  <subsection xml:id="ap-practice-25">
+    <title>AP practice</title>
+
+    <p>
+      We will see in the next lesson that the index of an array is often a
+      variable named <c>i</c> that is used in loops to traverse an array. In
+      challenging AP problems, you will see mathematical expressions inside the
+      square brackets (<c>[]</c>). For example, <c>array[i-1]</c> refers to the
+      previous element right before the ith element in array, and
+      <c>array[i+1]</c> refers to the next element after the ith element. In the
+      problems below, note that arrays can be passed in as arguments to methods
+      and returned as values, just like any variable.
+    </p>
+
+    <activity label="AP-array1">
+      <statement>
+        <p>
+          Consider the following method. Given an <c>array</c> initialized to
+          <c>{4, 10, 15}</c>, which of the following represents the contents of
+          the array after a call to <c>mystery(array, 2)</c>?
+        </p>
+
+        <program>
+          public void mystery(int[] a, int i)
+          {
+             a[i] = a[i-1] * 2;
+          }
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>[8, 20, 30]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This would only be true if all elements were doubled by the
+              method.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>[4, 8, 15]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This would only be true if the call was ``mystery(array, 1)``.
+              Remember that array indexing starts at 0.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>[8, 10, 15]</p>
+          </statement>
+
+          <feedback>
+            <p>
+              This would only be true if the method body had ``a[i-1] = a[i-1] *
+              2;``
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>[4, 10, 20]</p>
+          </statement>
+
+          <feedback>
+            <p>Correct. array[2] = array[1] * 2 = 10 * 2 = 20.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>[4, 8, 30]</p>
+          </statement>
+
+          <feedback>
+            <p>Note that only 1 array element is changed.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="AP-array2">
+      <statement>
+        <p>
+          Consider the following method. Which of the following code segments,
+          appearing in the same class as the <c>mystery</c> method, will result
+          in <c>array2</c> having the contents <c>{5, 10, 20}</c>?
+        </p>
+
+        <program>
+          public int[] mystery(int[] a, int i, int value)
+          {
+             a[i + 1] = a[i] + value;
+             return a;
+          }
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement id="AP-array2_opt_a">
+            <program>
+              int[] array1 = {5, 10, 15};
+              int[] array2 = mystery(array1, 0, 10);
+            </program>
+          </statement>
+
+          <feedback id="AP-array2_opt_a">
+            <p>This would result in <c>{5, 15, 15}</c>.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-array2_opt_b">
+            <program>
+              int[] array1 = {5, 15, 20};
+              int[] array2 = mystery(array1, 0, 0);
+            </program>
+          </statement>
+
+          <feedback id="AP-array2_opt_b">
+            <p>This would result in <c>{5, 5, 20}</c>.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement id="AP-array2_opt_c">
+            <program>
+              int[] array1 = {5, 10, 15};
+              int[] array2 = mystery(array1, 1, 10);
+            </program>
+          </statement>
+
+          <feedback id="AP-array2_opt_c">
+            <p>
+              Correct! a[i+1] = a[2] = a[i] + value = a[1] + 10 = 10 + 10 = 20.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-array2_opt_d">
+            <program>
+              int[] array1 = {5, 15, 20};
+              int[] array2 = mystery(array1, 2, 0);
+            </program>
+          </statement>
+
+          <feedback id="AP-array2_opt_d">
+            <p>
+              This would result in an <c>ArrayIndexOutOfBoundsException</c>.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-array2_opt_e">
+            <program>
+              int[] array1 = {5, 10, 15};
+              int[] array2 = mystery(array1, 1, 20);
+            </program>
+          </statement>
+
+          <feedback id="AP-array2_opt_e">
+            <p>This would result in <c>{5, 10, 30}</c>.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+  </subsection>
+</section>

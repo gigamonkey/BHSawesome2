@@ -28,6 +28,6 @@
     </p>
   </introduction>
 
-  <xi:include href="./topic-1-15-strings.ptx" />
-  <xi:include href="./topic-2-10-strings-loops.ptx" />
+  <xi:include href="./string-manipulation.ptx" />
+  <xi:include href="./string-algorithms.ptx" />
 </chapter>

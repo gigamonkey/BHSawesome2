@@ -84,8 +84,8 @@
       novel, in a Java program, we would represent it as a <c>String</c>. As
       another data type, like <c>int</c> and <c>double</c>, we can declare
       <c>String</c> variables. We’ll learn a lot more about the <c>String</c>
-      data type in <xref ref="topic-1-15-strings" /> but for now we just need to
-      know we can write <term>string literals</term> by enclosing the text we
+      data type in <xref ref="string-manipulation" /> but for now we just need
+      to know we can write <term>string literals</term> by enclosing the text we
       want in quotation marks: <c>""</c>.
     </p>
 

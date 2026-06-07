@@ -56,8 +56,8 @@
     </p>
   </introduction>
 
-  <xi:include href="./topic-3-3-anatomy-of-class.ptx" />
+  <xi:include href="./anatomy-of-class.ptx" />
   <xi:include href="./instance-variables.ptx" />
-  <xi:include href="./topic-3-4-constructors.ptx" />
-  <xi:include href="./topic-3-5-methods.ptx" />
+  <xi:include href="./constructors.ptx" />
+  <xi:include href="./instance-methods.ptx" />
 </chapter>

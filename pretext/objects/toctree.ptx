@@ -27,15 +27,15 @@
       and make sure we understand some of the subtleties that come up when we
       pass objects around and hold references to them. We’ll also look at what
       it means to ask if two objects are “equal”, something we discussed briefly
-      in <xref ref="topic-1-15-strings" />. And finally we’ll wrap up with some
+      in <xref ref="string-manipulation" />. And finally we’ll wrap up with some
       odds and ends about different kinds of variables that we now know enough
       to understand including finally being able to answer the question, “What
       does <c>static</c> really mean?”
     </p>
   </introduction>
 
-  <xi:include href="./topic-3-6-methods-references.ptx" />
+  <xi:include href="./connecting-objects.ptx" />
   <xi:include href="./object-equality.ptx" />
-  <xi:include href="./topic-3-8-scope-access.ptx" />
+  <xi:include href="./scope-and-access.ptx" />
   <xi:include href="./turtles.ptx" />
 </chapter>

@@ -390,12 +390,12 @@
     <title>Applying 1D algorithms to 2D arrays</title>
 
     <p>
-      All of the array algorithms we discussed in <xref
-      ref="topic-4-5-array-algorithms" /> can also be applied to 2D arrays. The
-      only wrinkle is now we have two dimensions to play with. So we could, for
-      instance, write an algorithm to find the row in a 2D array whose values
-      add up to the largest total by applying the maximizing pattern to the
-      outer array and the summing pattern to each inner array.
+      All of the array algorithms we discussed in <xref ref="array-algorithms"
+      /> can also be applied to 2D arrays. The only wrinkle is now we have two
+      dimensions to play with. So we could, for instance, write an algorithm to
+      find the row in a 2D array whose values add up to the largest total by
+      applying the maximizing pattern to the outer array and the summing pattern
+      to each inner array.
     </p>
 
     <program>

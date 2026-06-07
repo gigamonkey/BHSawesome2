@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<section xml:id="frq2-class-design-signatures-part2">
+  <title>FRQ 2 - Class Design - Part 2</title>
+
+  <introduction>
+    <idx>apline</idx>
+    <idx>free response</idx>
+    <p>From the 2025 Course and Exam Description:</p>
+
+    <p>
+      <term>Free-Response Question 2: Class Design</term>. Students will be
+      instructed to design and implement a class based on provided
+      specifications and examples. A second class might also be included.
+      Students will be provided with a scenario and specifications in the form
+      of a table demonstrating ways to interact with the class and the results.
+      The class must include a class header, instance variables, a constructor,
+      a method, and implementation of the constructor and required method.
+    </p>
+
+    <p>FRQ 2 requires the following skills:</p>
+
+    <ul>
+      <li>Create a class header</li>
+
+      <li>Determine what private instance variables are needed by the class</li>
+
+      <li>Write a constructor with appropriate parameters</li>
+
+      <li>
+        Implement a method according to the behavior specified in the table
+      </li>
+    </ul>
+
+    <p>Teacher Insights</p>
+
+    <ul>
+      <li>
+        You do not need to include import statements. You can assume that any
+        standard Java class is already imported.
+      </li>
+
+      <li>
+        You will NEVER print. If you think you need to print, you probably need
+        to return something.
+      </li>
+
+      <li>
+        You will NOT need to write a main. In this question, they are giving you
+        the main.
+      </li>
+    </ul>
+  </introduction>
+
+  <subsection xml:id="frq2-2025-signedtext">
+    <title>2025 FRQ2 - Signed Text</title>
+
+    <p>
+      This question involves the SignedText class, which contains methods that
+      are used to include a signature as part of a string of text. You will
+      write the complete SignedText class, which contains a constructor and two
+      methods.
+    </p>
+
+    <p>
+      The SignedText constructor takes two String parameters. The first
+      parameter is a first name and the second parameter is a last name. The
+      length of the second parameter is always greater than or equal to 1.
+    </p>
+
+    <p>
+      The getSignature method takes no parameters and returns a formatted
+      signature string constructed from the first and last names according to
+      the following rules.
+    </p>
+
+    <ul>
+      <li>
+        <p>
+          If the first name is an empty string, the returned signature string
+          contains just the last name.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          If the first name is not an empty string, the returned signature
+          string is the first letter of the first name, a dash ("-"), and the
+          last name, in that order.
+        </p>
+      </li>
+    </ul>
+
+    <p>
+      The addSignature method returns a possibly revised copy of its String
+      parameter. The parameter will contain at most one occurrence of the
+      object’s signature, at either the beginning or the end of the parameter.
+      The returned string is created from the parameter according to the
+      following rules.
+    </p>
+
+    <ul>
+      <li>
+        <p>
+          If the object’s signature does not occur in the String parameter of
+          the method, the returned String is the value of the parameter with the
+          signature added to the end.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          If the object’s signature occurs at the end of the String parameter,
+          the returned String is the unchanged value of the parameter.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          If the object’s signature occurs at the beginning of the String
+          parameter, the returned String is the value of the original parameter
+          with the signature removed from the beginning and appended to the end
+          of the parameter.
+        </p>
+      </li>
+    </ul>
+
+    <p>
+      The following table contains a sample code execution sequence and the
+      corresponding results. The code execution sequence appears in a class
+      other than SignedText.
+    </p>
+
+    <figure align="center">
+      <image source="FreeResponse/Figures/frq2-signedtext-table1.png" width="100%" />
+      <caption>Part 1 of SignedText Table</caption>
+    </figure>
+
+    <figure align="center">
+      <image source="FreeResponse/Figures/frq2-signedtext-table2.png" width="100%" />
+      <caption>Part 2 of SignedText Table</caption>
+    </figure>
+
+    <activity label="FRQ2-2025-SignedText">
+      <statement>
+        <p>
+          Write the complete SignedText class. Your implementation must meet all
+          specifications and conform to the examples in the table.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+
+        <code>
+          // Make sure you make the class header public
+
+          {
+              // Private instance variables
+
+
+              // Constructor
+
+
+              // Methods
+
+
+
+              // Do not change any code below this point
+
+              public static void main(String[] args)
+              {
+                  SignedText st1 = new SignedText("", "Wong");
+                  String temp = st1.getSignature();
+                  System.out.println("Expecting Wong: " + temp);
+
+                  SignedText st2 = new SignedText("henri", "dubois");
+                  temp = st2.getSignature();
+                  System.out.println("Expecting h-dubois: " + temp);
+
+                  SignedText st3 = new SignedText("GRACE", "LOPEZ");
+                  temp = st3.getSignature();
+                  System.out.println("Expecting G-LOPEZ: " + temp);
+
+                  SignedText st4 = new SignedText("", "FOX");
+
+                  String text = "Dear";
+                  temp = st4.addSignature(text);
+                  System.out.println("Expecting DearFOX: " + temp);
+
+                  text = "Best wishesFOX";
+                  temp = st4.addSignature(text);
+                  System.out.println("Expecting Best wishesFOX: " + temp);
+
+                  text = "FOXThanks";
+                  temp = st4.addSignature(text);
+                  System.out.println("Expecting ThanksFOX: " + temp);
+
+                  text = "G-LOPEZHello";
+                  temp = st3.addSignature(text);
+                  System.out.println("Expecting HelloG-LOPEZ: " + temp);
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void test01() {
+                  String expected = "Wong";
+                  String actual = "";
+
+                  try {
+                      SignedText st = new SignedText("", "Wong");
+                      actual = st.getSignature();
+                  } catch (Exception e) {
+                      actual = "The code caused an exception";
+                  }
+
+                  boolean passed =
+                          getResults(
+                                  expected,
+                                  actual,
+                                  "SignedText st = new SignedText(\"\", \"Wong\");\nst.getSignature();");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test02() {
+                  String expected = "h-dubois";
+                  String actual = "";
+
+                  try {
+                      SignedText st = new SignedText("henri", "dubois");
+                      actual = st.getSignature();
+                  } catch (Exception e) {
+                      actual = "The code caused an exception";
+                  }
+
+                  boolean passed =
+                          getResults(
+                                  expected,
+                                  actual,
+                                  "SignedText st = new SignedText(\"henri\", \"dubois\");\n"
+                                      + "st.getSignature();");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test03() {
+                  String expected = "G-LOPEZ";
+                  String actual = "";
+
+                  try {
+                      SignedText st = new SignedText("GRACE", "LOPEZ");
+                      actual = st.getSignature();
+                  } catch (Exception e) {
+                      actual = "The code caused an exception";
+                  }
+
+                  boolean passed =
+                          getResults(
+                                  expected,
+                                  actual,
+                                  "SignedText st = new SignedText(\"GRACE\", \"LOPEZ\");\n"
+                                      + "st.getSignature();");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test04() {
+                  String expected = "DearFOX";
+                  String actual = "";
+
+                  try {
+                      SignedText st = new SignedText("", "FOX");
+                      actual = st.addSignature("Dear");
+                  } catch (Exception e) {
+                      actual = "The code caused an exception";
+                  }
+
+                  boolean passed =
+                          getResults(
+                                  expected,
+                                  actual,
+                                  "SignedText st = new SignedText(\"\", \"FOX\");\n"
+                                      + "st.addSignature(\"Dear\");");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test05() {
+                  String expected = "Best wishesFOX";
+                  String actual = "";
+
+                  try {
+                      SignedText st = new SignedText("", "FOX");
+                      actual = st.addSignature("Best wishesFOX");
+                  } catch (Exception e) {
+                      actual = "The code caused an exception";
+                  }
+
+                  boolean passed =
+                          getResults(
+                                  expected,
+                                  actual,
+                                  "SignedText st = new SignedText(\"\", \"FOX\");\n"
+                                      + "st.addSignature(\"Best wishesFOX\");");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test06() {
+                  String expected = "ThanksFOX";
+                  String actual = "";
+
+                  try {
+                      SignedText st = new SignedText("", "FOX");
+                      actual = st.addSignature("FOXThanks");
+                  } catch (Exception e) {
+                      actual = "The code caused an exception";
+                  }
+
+                  boolean passed =
+                          getResults(
+                                  expected,
+                                  actual,
+                                  "SignedText st = new SignedText(\"\", \"FOX\");\n"
+                                      + "st.addSignature(\"FOXThanks\");");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test07() {
+                  String expected = "HelloG-LOPEZ";
+                  String actual = "";
+
+                  try {
+                      SignedText st = new SignedText("GRACE", "LOPEZ");
+                      actual = st.addSignature("HelloG-LOPEZ");
+                  } catch (Exception e) {
+                      actual = "The code caused an exception";
+                  }
+
+                  boolean passed =
+                          getResults(
+                                  expected,
+                                  actual,
+                                  "SignedText st = new SignedText(\"GRACE\", \"LOPEZ\");\n"
+                                      + "st.addSignature(\"HelloG-LOPEZ\");");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test08() {
+                  String expected = "HelloG-LOPEZ";
+                  String actual = "";
+
+                  try {
+                      SignedText st = new SignedText("GRACE", "LOPEZ");
+                      actual = st.addSignature("G-LOPEZHello");
+                  } catch (Exception e) {
+                      actual = "The code caused an exception";
+                  }
+
+                  boolean passed =
+                          getResults(
+                                  expected,
+                                  actual,
+                                  "SignedText st = new SignedText(\"GRACE\", \"LOPEZ\");\n"
+                                      + "st.addSignature(\"G-LOPEZHello\");");
+                  assertTrue(passed);
+              }
+
+              private boolean stringMatch(String str1, String str2) {
+                  str1 = str1.replaceAll("\\s+", "");
+                  str2 = str2.replaceAll("\\s+", "");
+
+                  return str1.contains(str2);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="frq2-2023-sign">
+    <title>2023 FRQ 2 - Sign</title>
+
+    <p>
+      This question involves methods that distribute text across lines of an
+      electronic sign. The electronic sign and the text to be displayed on it
+      are represented by the Sign class. You will write the complete Sign class,
+      which contains a constructor and two methods.
+    </p>
+
+    <p>
+      The Sign class constructor has two parameters. The first parameter is a
+      String that contains the message to be displayed on the sign. The second
+      parameter is an int that contains the width of each line of the sign. The
+      width is the positive maximum number of characters that can be displayed
+      on a single line of the sign.
+    </p>
+
+    <p>
+      A sign contains as many lines as are necessary to display the entire
+      message. The message is split among the lines of the sign without regard
+      to spaces or punctuation. Only the last line of the sign may contain fewer
+      characters than the width indicated by the constructor parameter.
+    </p>
+
+    <p>
+      The following are examples of a message displayed on signs of different
+      widths. Assume that in each example, the sign is declared with the width
+      specified in the first column of the table and with the message
+      "Everything on sale, please come in", which contains 34 characters.
+    </p>
+
+    <p>
+      The following table contains a sample code execution sequence and the
+      corresponding results. The code execution sequence appears in a class
+      other than Sign.
+    </p>
+
+    <figure align="center">
+      <image source="FreeResponse/Figures/frq2-sign-table.png" width="100%" />
+    </figure>
+
+    <activity label="frq2-2023-sign">
+      <statement>
+        <p>
+          Write the complete Sign class. Your implementation must meet all
+          specifications and conform to the examples shown in the preceding
+          table.
+        </p>
+      </statement>
+
+      <program interactive="activecode" language="java">
+
+        <code>
+          // Make sure you make the class header public
+
+          {
+              // Private instance variables
+
+
+              // Constructor
+
+
+              // Methods
+
+
+
+              // Do not change any code below this point
+
+              public static void main(String[] args)
+              {
+                  String str;
+                  int x;
+
+                  Sign sign1 = new Sign("ABC222DE", 3);
+
+                  x = sign1.numberOfLines ();
+                  System.out.println(x);
+
+                  str = sign1.getLines ();
+                  System.out.println(str);
+                  str = sign1.getLines ();
+                  System.out.println(str);
+
+                  Sign sign2 = new Sign ("ABCD", 10);
+
+                  x = sign2.numberOfLines();
+                  System.out.println(x);
+
+                  str = sign2.getLines ();
+                  System.out.println(str);
+
+                  Sign sign3 = new Sign ("ABCDEF", 6);
+
+                  x = sign3.numberOfLines ();
+                  System.out.println(x);
+
+                  str = sign3.getLines ();
+                  System.out.println(str);
+
+                  Sign sign4 = new Sign ("", 4);
+
+                  x = sign4.numberOfLines();
+                  System.out.println(x);
+
+                  str = sign4.getLines();
+                  System.out.println(str);
+
+                  Sign sign5 = new Sign("AB_CD_EF", 2);
+
+                  x = sign5.numberOfLines();
+                  System.out.println(x);
+
+                  str = sign5.getLines ();
+                  System.out.println(str);
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              private String[] message = {"ABC222DE", "ABCD", "ABCDEF", "", "AB_CD_EF"};
+              private int[] width = {3, 10, 6, 4, 2};
+              private String[] output = {"ABC;222;DE", "ABCD", "ABCDEF", "null", "AB;_C;D_;EF"};
+              private int[] lines = {3, 1, 1, 0, 4};
+
+              @Test
+              public void test00A() {
+                  int i = 0;
+                  boolean passed = testA(i);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test00B() {
+                  int i = 0;
+                  boolean passed = testB(i);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test01A() {
+                  int i = 1;
+                  boolean passed = testA(i);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test01B() {
+                  int i = 1;
+                  boolean passed = testB(i);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test02A() {
+                  int i = 2;
+                  boolean passed = testA(i);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test02B() {
+                  int i = 2;
+                  boolean passed = testB(i);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test03A() {
+                  int i = 3;
+                  boolean passed = testA(i);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test03B() {
+                  int i = 3;
+                  boolean passed = testB(i);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test04A() {
+                  int i = 4;
+                  boolean passed = testA(i);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test04B() {
+                  int i = 4;
+                  boolean passed = testB(i);
+                  assertTrue(passed);
+              }
+
+              public boolean testA(int i) {
+                  String mess = message[i];
+                  int w = width[i];
+                  String num = "" + lines[i];
+                  // String expected = output[0];
+                  String actual = "";
+
+                  String desc = "Sign sign = new Sign(\"" + mess + "\", " + w + ");\nsign.numberOfLines()";
+
+                  try {
+                      Sign sign = new Sign(mess, w);
+                      actual = "" + sign.numberOfLines();
+                  } catch (Exception e) {
+                      actual = "The code caused an exception";
+                  }
+
+                  boolean passed = getResults(num, actual, desc);
+                  return passed;
+              }
+
+              public boolean testB(int i) {
+                  String mess = message[i];
+                  int w = width[i];
+                  // String num = "" + lines[i];
+                  String expected = output[i];
+                  String actual = "";
+
+                  String desc = "Sign sign = new Sign(\"" + mess + "\", " + w + ");\nsign.getLines()";
+
+                  try {
+                      Sign sign = new Sign(mess, w);
+                      actual = "" + sign.getLines();
+                  } catch (Exception e) {
+                      actual = "The code caused an exception";
+                  }
+
+                  boolean passed = getResults(expected, actual, desc);
+                  return passed;
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+</section>

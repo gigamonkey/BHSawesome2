@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<preface>
+<preface xml:id="preface">
   <title>Preface</title>
 
   <p>

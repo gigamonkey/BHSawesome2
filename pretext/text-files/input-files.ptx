@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<section xml:id="input-files">
+  <title>Files</title>
+
+  <idx>files</idx>
+  <idx>Scanner</idx>
+  <idx>IOException</idx>
+  <idx>FileNotFoundException</idx>
+  <idx>try</idx>
+  <idx>catch</idx>
+  <idx>throws</idx>
+  <idx>data files</idx>
+  <introduction>
+    <p>
+      A <term>file</term> contains data that persists when the program is not
+      running. Files are stored on our computers’ hard drives, have names, and
+      are organized into hierarchical folders. Our programs can open files and
+      read the data they contain into memory. For example in <xref
+      ref="array-traversal" />, we created a <c>SpellChecker</c> class that
+      reads a dictionary file into an array of words which the <c>spellcheck</c>
+      method could use to verify if a word is spelled correctly.
+    </p>
+
+    <p>
+      By separating the data the program needs (the dictionary) from the program
+      itself, we can use the same program with different data. For example, we
+      could use our spellchecker to spellcheck a different language if we ran it
+      with a file contain a list of words in that language.
+    </p>
+
+    <p>In this lesson, we will learn how to read data from a file in Java.</p>
+  </introduction>
+
+  <subsection xml:id="File-Scanner-IOException">
+    <title><c>File</c> and <c>Scanner</c></title>
+
+    <p>
+      These days there are two sets of classes for interacting with files from
+      Java. We’ll start with the more traditional classes which are part of the
+      AP curriculum. Then we’ll look at a more modern and convenient set of
+      classes that you might want to use in real programs.
+    </p>
+
+    <p>
+      On order to work with files, the first thing we need is an object to
+      represent a file. The traditional way—and the AP way—is with the class
+      <c>File</c> in the package <c>java.io</c>. The <c>io</c> in the package
+      name stands for <term>I/O</term> which is itself an abbreviation for
+      <term>Input/Output</term> since the classes in that package are all
+      related to moving data into a program (input) and back out (output).
+    </p>
+
+    <p>
+      A <c>File</c> object can be constructed with a constructor that takes a
+      <c>String</c> containing the name of the file. For example if we want to
+      use a file named <c>data.txt</c> we can construct a <c>File</c> object
+      like this:
+    </p>
+
+    <program>
+      import java.io.*;
+      ...
+      File dataFile = new File("data.txt");
+    </program>
+
+    <p>
+      The <c>File</c> object just gives us a way to refer to the file. To read
+      data from the file we need to <term>open</term> the file with some object
+      that knows how to read data from it. There are a number of classes in Java
+      for doing that depending on how we want to access the data. In the AP
+      curriculum we use the class <c>Scanner</c> which is in the package
+      <c>java.util</c>, the same package as <c>ArrayList</c>. If we construct a
+      <c>Scanner</c> with a <c>File</c> object as an argument we get a
+      <c>Scanner</c> that we can use to read data from the file. (We previously
+      used <c>Scanner</c> in <xref ref="scanner" /> to read input typed by the
+      user.)
+    </p>
+
+    <program>
+      import java.io.*;
+      import java.util.*;
+      ...
+      File dataFile = new File("data.txt");
+      Scanner data = new Scanner(dataFile);
+    </program>
+
+    <p>
+      Once we construct a <c>Scanner</c>, we can use it to repeatedly read from
+      the same file. It has a number of methods that will each read different
+      data from the underlying file and it keeps track of where it left off so
+      calling the same method multiple times will probably return different
+      things each time as the <c>Scanner</c> advances through the file.
+    </p>
+
+    <p>
+      The simplest of these methods to use is <c>nextLine</c> which reads the
+      next complete line from the file, up to either the next newline character
+      or the end of the file. It returns the line as a <c>String</c> with the
+      newline removed.
+    </p>
+
+    <p>
+      Often, as we’ll see in the next section, the easiest way to read data from
+      a file is to read it a line at a time and then use various methods on
+      <c>String</c> and the wrapper classes <c>Integer</c> and <c>Double</c> to
+      take apart the <c>String</c> and convert the parts to the data types we
+      actually want.
+    </p>
+
+    <p>
+      But <c>Scanner</c> does provide some other methods that are part of the AP
+      curriculum and are listed on the <url
+      href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf">Java
+      Quick Reference</url>.
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <c>nextInt</c> - reads the next bit of text and tries to parse it as
+          an <c>int</c> value.
+        </li>
+
+        <li>
+          <c>nextDouble</c> - reads the next bit of text and tries to parse it
+          as a <c>double</c> value.
+        </li>
+
+        <li>
+          <c>nextBoolean</c> - reads the next bit of text and tries to parse it
+          as a <c>boolean</c> value.
+        </li>
+
+        <li>
+          <c>next</c> - reads and return the next <term>token</term> as a
+          <c>String</c>
+        </li>
+
+        <li><c>hasNext</c> - returns true if there is another token to read</li>
+
+        <li>
+          <c>close</c> - closes the <c>Scanner</c> and the underlying file so no
+          more data can be read from it
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      In practice the methods other than <c>nextLine</c> are tricky to use
+      because of the way the <c>Scanner</c> decides whether there’s another
+      token. One method that is not part of the AP curriculum but which goes
+      very well with <c>nextLine</c> is <c>hasNextLine</c> which returns a
+      boolean indicating whether it is possible to get another line with
+      <c>nextLine</c>.
+    </p>
+
+    <p>
+      For instance if we wanted to load all the lines from a file into an
+      <c>ArrayList</c> we could do it fairly simply with this code:
+    </p>
+
+    <program>
+      <![CDATA[
+      import java.io.*;
+      import java.util.*;
+      ...
+      File dataFile = new File("data.txt");
+      Scanner data = new Scanner(dataFile);
+      ArrayList<String> lines = new ArrayList<>();
+
+      while (data.hasNextLine()) {
+        lines.add(data.nextLine());
+      }
+      // Now lines contains all the lines from data.txt
+      ]]>
+    </program>
+  </subsection>
+
+  <subsection>
+    <title><c>IOException</c></title>
+
+    <p>
+      In earlier chapters we saw that if we wrote code that tried to do
+      something impossible such as accessing an element of an array at an index
+      that didn’t exist or invoking a method on a <c>null</c> reference, Java
+      would throw an exception like an <c>ArrayIndexOutOfBoundsException</c> or
+      <c>NullPointerException</c>.
+    </p>
+
+    <p>
+      Exceptions are how Java handles situations where a bit of code just can’t
+      do what it’s supposed to do. For instance if we try to access an array
+      element that doesn’t exist, there’s no good way to continue—the program
+      was expecting a value and there's no value to be had. Which is why Java
+      throws an <c>ArrayIndexOutOfBoundsException</c> in that case.
+    </p>
+
+    <p>
+      To create a <c>Scanner</c> to read from a file, the file has to actually
+      exist—if it doesn’t, there’s obviously no way to read data from it. It
+      doesn’t really matter why the file doesn’t exist and it’s not necessarily
+      due to to a bug in the program. Maybe the user provided the wrong file
+      name or maybe they deleted the file before they ran the program.
+    </p>
+
+    <p>
+      Whatever the reason, if the file does not exist or is otherwise
+      inaccessible, the <c>Scanner</c> constructor will <term>throw</term> a
+      <c>FileNotFoundException</c> which is a kind of <c>IOException</c>. (In
+      real-world Java programs there are ways to handle exceptions so they don’t
+      crash our program and exceptions are organized into hierarchies so
+      programs can choose to handle different kinds of exceptions differently.
+      The different kinds of <c>IOException</c> represent all the things that
+      can go wrong when trying to read and write data. Not finding a needed file
+      is just one of those things.)
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Throwing exceptions</title>
+
+    <p>
+      Unlike <c>ArrayIndexOutOfBoundsException</c> and
+      <c>NullPointerException</c>, an <c>IOException</c> is a <term>checked
+      exception</term> which means that Java requires us to specify what our
+      code will do if one is thrown.
+    </p>
+
+    <p>
+      There are basically two choices. Our code can also throw the exception or
+      we can handle it. However the second option is not part of the AP
+      curriculum so for now the simplest thing to do is to have our code also
+      throw the exception which we achieve by simply adding <c>throws
+      IOException</c> clause to the signature of the method that constructs the
+      <c>Scanner</c>.
+    </p>
+
+    <p>
+      The throws clause goes after the argument list. By adding a throws clause
+      we are passing the buck, declaring that this this bad thing can happen in
+      the method and the method can’t recover if it does, so it is now the
+      responsibility of whatever other methods call it to deal with it. Those
+      methods can continue to pass the buck by adding <c>throws IOException</c>
+      to their own signatures or eventually some method could handle the
+      exception using a construct we’ll describe below. But within the bounds of
+      the AP curriculum, we should just add <c>throws IOException</c> to any
+      method that needs it. Here’s how we could add it to a <c>main</c> method.
+    </p>
+
+    <program>
+      import java.io.*;
+      import java.util.*;
+
+      public class FileIO {
+
+         // The throws IOException indicates that we are not handling the
+         // FileNotFoundException that could be thrown by the Scanner
+         // constructor and will just let it crash our program.
+
+         public static void main(String[] args) throws IOException {
+            File myFile = new File("data.txt");
+            Scanner scan = new Scanner(myFile);
+            ...
+
+            scan.close();
+         }
+      }
+    </program>
+
+    <activity label="throws-exception-exercise">
+      <statement>
+        <p>
+          Try the following exercise to practice reading in a file. Notice the
+          compiler error “unreported exception FileNotFoundException; must be
+          caught or declared to be thrown”. Add <term>throws IOException</term>
+          to the end of the <c>main</c> method header to fix the error.
+        </p>
+
+        <p>
+          Run the code below to see the error message. Add <term>throws</term>
+          and the correct exception to the end of the main method header to fix
+          the error.
+        </p>
+      </statement>
+
+      <program interactive="activecode" datafile="dictionary.txt">
+
+        <code>
+          import java.io.*;
+          import java.util.*;
+
+          public class FileIO {
+              public static void main(String[] args) {
+                  File myFile = new File("dictionary.txt");
+                  Scanner scan = new Scanner(myFile);
+                  System.out.println(
+                          "The first word in the dictionary file is: " + scan.nextLine());
+                  scan.close();
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("FileIO");
+              }
+
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "The first word in the dictionary file is: a";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void fixedCode()
+              {
+                  boolean passed = checkCodeContains("throws IOException", "throws IOException");
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Catching exceptions</title>
+
+    <p>
+      The other way to deal with exceptions, which is outside the AP curriculum,
+      is to use a construct called a <c>try</c>/<c>catch</c> block to handle the
+      exception somehow. It looks like this
+    </p>
+
+    <program>
+      try {
+          Scanner scan = new Scanner(myFile);
+          // Do stuff with the Scanner here. If the constructor throws an
+          // exception we will never get here and thus won't try to use scan.
+      } catch (IOException e) {
+          System.out.println("File not found!");
+      }
+    </program>
+
+    <p>
+      The code that may cause an exception goes in the <c>try</c> block, marked
+      by the curly braces after the word <c>try</c>. If the code in the
+      <c>try</c> block throws an exception of a type listed in the parentheses
+      after <c>catch</c>, then the code in the block marked by the curly braces
+      after the <c>catch</c> line will be executed to handle the exception. The
+      code then continues after the <c>catch</c> block.
+    </p>
+
+    <p>
+      The right thing to do depends on the context of the program. If the
+      program can’t do anything at all without the file, then the best we can do
+      is maybe print a useful error message as show above. But in some other
+      program it might be possible to ask the user to provide a different file
+      name or to use some default data if the file doesn’t exist.
+    </p>
+  </subsection>
+
+  <subsection xml:id="loop-read-file">
+    <title>Read all the lines in a file</title>
+
+    <p>
+      A <c>while</c> loop is usually used to read in a file with multiple lines
+      since we don’t know when we open the file how many lines it will contain.
+    </p>
+
+    <p>
+      The loop can use the method <c>hasNextLine</c> or <c>hasNext</c> as the
+      loop condition to detect if the file still contains lines to read. A loop
+      with this condition will terminate when there are no more lines to read in
+      the file. After the loop is finished reading the data, the <c>close</c>
+      method from Scanner should be called to close the file. (It’s a good idea
+      to <c>close</c> the <c>Scanner</c> when we’re done with it because there
+      is a limit on the number of files a program can have open at once. But
+      note that once we <c>close</c> a <c>Scanner</c> we can no longer read from
+      it.)
+    </p>
+
+    <program>
+      while (scan.hasNextLine()) {
+         String line = scan.nextLine();
+         ...
+      }
+      scan.close();
+    </program>
+
+    <activity label="loop-read-file">
+      <statement>
+        <p>
+          Complete the code below to count the number of lines in the dictionary
+          file using a <c>while</c> loop and then print how many lines are in
+          the file.
+        </p>
+      </statement>
+
+      <program interactive="activecode" datafile="dictionary.txt">
+
+        <code>
+          import java.io.*;
+          import java.util.*;
+
+          public class FileIOLoop {
+              public static void main(String[] args) throws IOException {
+                  File myFile = new File("dictionary.txt");
+                  Scanner scan = new Scanner(myFile);
+                  int count = 0;
+
+                  // 1. Add in the loop condition that checks if scan has another line of input
+                  while (         ) {
+                      // 2. Read in the next line of the file
+
+                      count++; // increment the line count
+                   }
+
+                  System.out.println("This file has " + count + " lines.");
+
+                  scan.close();
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("FileIOLoop");
+              }
+
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "This file has 10002 lines.";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testNextLine()
+              {
+                  boolean passed = checkCodeContains("nextLine()");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testHasNext()
+              {
+                  boolean passed = checkCodeContains("hasNextLine() or hasNext()", "hasNext$()");
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="file-data-array">
+    <title>Loading file data</title>
+
+    <p>
+      We can save a file line by line into a data structure such as an array or
+      an <c>ArrayList</c>. In the <c>SpellChecker</c> class in <xref
+      ref="array-traversal" />, code was provided that read all the words into a
+      array. But that code required us to hard-code the size of the array to
+      match the number of lines in our dictionary file. If we added or removed
+      words from the dictionary we’d have to change our code to fix the size of
+      the array. (Or we could write code like the previous example to count the
+      number of lines in the file and then make the array and then load the
+      lines into it but that would require reading through the file twice.)
+    </p>
+
+    <p>
+      <c>ArrayList</c>s, are a much better data structure to use to collect
+      lines from a file since we don’t need to know how many lines the file
+      contains in order to build up an <c>ArrayList</c> they way we would with
+      an array.
+    </p>
+
+    <p>
+      The following exercise reads in a data file about Pokémon and prints out
+      the first ten lines in the file. This file has the extension <em>csv</em>
+      which stands for <term>Comma Separated Values</term>. All spreadsheets can
+      be saved as CSV text files, and spreadsheet software can easily open CSV
+      files as spreadsheets. You can take a look at the <url
+      href="external/_static/datasets/pokemon.csv">pokemon.csv</url> file
+      contents below. For now we’ll just read the lines of the file into an
+      <c>ArrayList</c>; in the next section we’ll look at how to break each line
+      up into individual pieces of data about specific Pokémon.
+    </p>
+
+    <datafile label="pokemon" filename="pokemon.csv" editable="no" hide="no">
+      <pre source="_static/datasets/pokemon.csv" />
+    </datafile>
+
+    <activity label="read-pokemon-file">
+      <statement>
+        <p>
+          Complete the code in the main method below to read in the first ten
+          lines of the pokemon file using the <c>Scanner</c> class, printing
+          each line and save to the <c>lines</c> <c>ArrayList</c>.
+        </p>
+      </statement>
+
+      <program interactive="activecode" datafile="pokemon.csv">
+
+        <code>
+          <![CDATA[
+          import java.io.*;
+          import java.util.*;
+
+          public class ReadData {
+              public static void main(String[] args) throws IOException {
+                  File myFile = new File("pokemon.csv");
+                  Scanner scan = new Scanner(myFile);
+                  ArrayList<String> lines = new ArrayList<>();
+
+                  // 1. Add a loop condition will stop the loop if there are no more
+                  // lines or when we've read ten lines, whichever comes first.
+                  while (         ) {
+                      // 2. Read in the next line of the file
+
+                      // 3. Print the line
+
+                      // 4. Add the line to lines
+
+                   }
+                   scan.close();
+             }
+          }
+          ]]>
+        </code>
+
+        <tests>
+          <![CDATA[
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ReadData");
+              }
+
+              @Test
+              public void testMain() throws IOException
+              {
+                  String output = getMethodOutput("main");
+                  String[] lines = output.split("\n");
+                  boolean passed = lines.length == 10;
+
+                  passed =
+                          getResults(
+                                  "10 lines of output",
+                                  lines.length + " lines of output",
+                                  "Expected output",
+                                  passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void arrayCode()
+              {
+                  boolean passed = checkCodeContains("adding to lines", "lines.add(");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testHasNext()
+              {
+                  boolean passed = checkCodeContains("hasNextLine() or hasNext()", "hasNext$()");
+                  assertTrue(passed);
+              }
+              @Test
+              public void testHasLess10()
+              {
+                  boolean passed = checkCodeContains("lines.size() < 10");
+                  assertTrue(passed);
+              }
+          }
+          ]]>
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="reading-in-files-with-java-nio-file">
+    <title>Reading files with <c>java.nio.file</c></title>
+
+    <p>
+      Although not covered in the AP curriculum, the more modern way to read all
+      the lines from a file (and by <em>modern</em> we mean it was added to Java
+      in 2011) is using the classes <c>java.nio.file</c> package. The <c>nio</c>
+      stands for “new input/output” and was added in Java version 7. The two
+      important classes for our purposes in this package are <c>Files</c> (note
+      the plural) and <c>Path</c>.
+    </p>
+
+    <p>
+      <c>Path</c> serves basically the same purpose as <c>java.io.File</c>,
+      giving us a way to refer to file on the computer’s hard drive. And
+      <c>Files</c> contains a number of utility methods for interacting with
+      files.
+    </p>
+
+    <p>
+      The one we care about is <c>readAllLines</c> which takes a <c>Path</c> as
+      its argument and returns a <c>List</c> of <c>String</c> values, one
+      <c>String</c> per line. <c>List</c> is an <term>interface</term>, another
+      feature of Java that’s not part of the AP curriculum but which are a key
+      part of real Java programming. For now all we need to know is that a
+      <c>List</c> is effectively the same as an <c>ArrayList</c>.
+    </p>
+
+    <p>
+      Like the <c>Scanner</c> constructor, <c>readAllLines</c> method throws an
+      <c>IOException</c> if the file cannot be read. Which we can deal with the
+      same way as before, most likely by declaring that our method also throws
+      <c>IOException</c>.
+    </p>
+
+    <p>
+      The <c>Path</c> equivalent of <c>new File("filename.txt")</c> is
+      <c>Path.of("filename.txt")</c> so after importing <c>java.nio.file.*</c>
+      we can get all the lines in a file using one line:
+    </p>
+
+    <program>
+      <![CDATA[
+      List<String> lines = Files.readAllLines(Path.of("data.txt"));
+      ]]>
+    </program>
+
+    <p>
+      Under the covers <c>readAllLines</c> is almost certainly using an
+      <c>ArrayList</c> which is a kind of <c>List</c>. The advantage of storing
+      the lines in a dynamic data structure like an <c>ArrayList</c>, instead of
+      an array, is that we do not need to know how many lines we are going to
+      read when you create the <c>ArrayList</c> the way we do when we create an
+      array. The <c>ArrayList</c> can then grow in size as needed. (If we
+      absolutely need an array, we can convert the <c>List</c> to an array with
+      the <c>toArray</c> method on <c>List</c>:
+    </p>
+
+    <program>
+      String[] array = list.toArray(new String[0]);
+    </program>
+
+    <p>
+      The empty array passed as an argument to <c>toArray</c> tells Java what
+      kind of array to make; it then allocates a new array of the appropriate
+      size to hold all the elements of the list.
+    </p>
+
+    <activity label="read-pokemon-file-nio">
+      <statement>
+        <p>
+          Complete the code in the main method below to reads all lines of the
+          file using <c>Files.readAllLines</c> into a <c>List&lt;String&gt;</c>
+          named <c>lines</c>. Add a loop that prints out the first 10 pokemon.
+          You can use the same methods with <c>List</c> as with
+          <c>ArrayList</c>.
+        </p>
+      </statement>
+
+      <program interactive="activecode" datafile="pokemon.csv">
+
+        <code>
+          <![CDATA[
+          import java.io.*;
+          import java.nio.file.*;
+          import java.util.*;
+
+          public class ReadData {
+              public static void main(String[] args) throws IOException {
+                  List<String> lines = Files.readAllLines(Path.of("pokemon.csv"));
+                  // Add a loop that prints out the first 10 elements of the List lines.
+                  // You can use the get method with Lists just like ArrayLists
+
+              }
+          }
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              public RunestoneTests()
+              {
+                  super("ReadData");
+              }
+
+              @Test
+              public void testMain() throws IOException
+              {
+                   String output = getMethodOutput("main");
+                   String[] lines = output.split("\n");
+                   boolean passed = lines.length == 10;
+
+                   passed = getResults("10 lines of output", lines.length + " lines of output", "Expected output", passed);
+                   assertTrue(passed);
+              }
+              @Test
+              public void getMethodTest()
+              {
+                 boolean passed = checkCodeContains("call to get method with lines", "lines.get");
+                 assertTrue(passed);
+              }
+           }
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+</section>

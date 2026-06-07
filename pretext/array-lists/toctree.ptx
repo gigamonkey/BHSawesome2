@@ -37,13 +37,11 @@
       <c>ArrayList</c>s plus a few new algorithms that only apply to
       <c>ArrayList</c>s since they are resizable.
     </p>
-
   </introduction>
 
-  <xi:include href="./topic-4-8-arraylists.ptx" />
-  <xi:include href="./topic-4-7-wrapper-classes.ptx" />
-  <xi:include href="./topic-4-9-arraylist-traversal.ptx" />
-  <xi:include href="./topic-4-10-arraylist-algorithms.ptx" />
-  <xi:include href="./ArrayList-summary.ptx" />
-
+  <xi:include href="./arraylist-methods.ptx" />
+  <xi:include href="./wrapper-classes.ptx" />
+  <xi:include href="./arraylist-traversal.ptx" />
+  <xi:include href="./arraylist-algorithms.ptx" />
+  <xi:include href="./arraylist-summary.ptx" />
 </chapter>

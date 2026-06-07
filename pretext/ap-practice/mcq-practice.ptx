@@ -4,13 +4,10 @@
   <title>MCQ practice</title>
 
   <introduction>
-    <p>
-      MCQ stuff
-    </p>
+    <p>MCQ stuff</p>
   </introduction>
 
-  <xi:include href="./listEasyMC.ptx" />
-  <xi:include href="./listMedMC.ptx" />
-  <xi:include href="./listHardMC.ptx" />
-
+  <xi:include href="./list-easy-mc.ptx" />
+  <xi:include href="./list-medium-mc.ptx" />
+  <xi:include href="./list-hard-mc.ptx" />
 </section>

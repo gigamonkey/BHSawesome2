@@ -5,9 +5,9 @@
 
   <introduction>
     <p>
-      As we discussed in <xref ref="topic-2-1-algorithms" />, at the beginning
-      of the previous unit, the basic building blocks of algorithms are
-      sequencing, selection, and repetition. The rest of <xref
+      As we discussed in <xref ref="alogrithm-building-blocks" />, at the
+      beginning of the previous unit, the basic building blocks of algorithms
+      are sequencing, selection, and repetition. The rest of <xref
       ref="booleans-and-conditionals" /> covered Java’s main selection
       construct, the <c>if</c> statement. In this unit we turn to Java’s
       repetition, or looping, constructs.
@@ -21,9 +21,9 @@
     </p>
   </introduction>
 
-  <xi:include href="./topic-2-7-while-loops.ptx" />
-  <xi:include href="./topic-2-8-for-loops.ptx" />
-  <xi:include href="./topic-2-9-loop-algorithms.ptx" />
-  <xi:include href="./topic-2-11-nested-loops.ptx" />
-  <xi:include href="./topic-2-12-loop-analysis.ptx" />
+  <xi:include href="./while-loops.ptx" />
+  <xi:include href="./for-loops.ptx" />
+  <xi:include href="./loop-algorithms.ptx" />
+  <xi:include href="./nested-loops.ptx" />
+  <xi:include href="./loop-analysis.ptx" />
 </chapter>

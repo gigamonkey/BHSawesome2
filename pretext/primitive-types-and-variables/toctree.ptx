@@ -15,9 +15,9 @@
     </p>
   </introduction>
 
-  <xi:include href="./topic-1-2-variables.ptx" />
+  <xi:include href="./variables.ptx" />
   <xi:include href="./text-output.ptx" />
-  <xi:include href="./topic-1-3-expressions.ptx" />
-  <xi:include href="./topic-1-4-assignment.ptx" />
-  <xi:include href="./topic-1-5-casting.ptx" />
+  <xi:include href="./expressions.ptx" />
+  <xi:include href="./assignment-statements.ptx" />
+  <xi:include href="./type-casting.ptx" />
 </chapter>

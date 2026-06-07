@@ -13,17 +13,13 @@
       from?
     </p>
 
-    <p>
-      They might come from our code. If we make an array like:
-    </p>
+    <p>They might come from our code. If we make an array like:</p>
 
     <program>
       String[] foods = new String[] { "egg", "chicken", "fruit cup" };
     </program>
 
-    <p>
-      we are creating an array that holds those three <c>String</c> values.
-    </p>
+    <p>we are creating an array that holds those three <c>String</c> values.</p>
 
     <p>
       But initializing values in our code this way is only reasonable when we’re
@@ -51,10 +47,8 @@
       many instances of the same basic kind of data such as a list words in a
       dictionary, of students in a class, or books in a library.
     </p>
-
   </introduction>
 
-  <xi:include href="./topic-4-6-input-files.ptx" />
-  <xi:include href="./topic-4-2-data-sets.ptx" />
-
+  <xi:include href="./input-files.ptx" />
+  <xi:include href="./data-sets.ptx" />
 </chapter>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<chapter xml:id="unit-frq-practice" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+<chapter xml:id="free-response" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Free Response Practice</title>
 
   <introduction>
@@ -18,23 +18,23 @@
     </p>
   </introduction>
 
-  <xi:include href="./FRQ1A-Part1.ptx" />
-  <xi:include href="./FRQ1A-Part2.ptx" />
-  <xi:include href="./FRQ1A-Part3.ptx" />
-  <xi:include href="./FRQ1B-Part1.ptx" />
-  <xi:include href="./FRQ1B-Part2.ptx" />
-  <xi:include href="./FRQ1B-Part3.ptx" />
-  <xi:include href="./FRQ2-Part1.ptx" />
-  <xi:include href="./FRQ2-Part2.ptx" />
-  <xi:include href="./FRQ2-Part3.ptx" />
-  <xi:include href="./FRQ3-Part1.ptx" />
-  <xi:include href="./FRQ3-Part2.ptx" />
-  <xi:include href="./FRQ3-Part3.ptx" />
-  <xi:include href="./FRQ4-Part1.ptx" />
-  <xi:include href="./FRQ4-Part2.ptx" />
-  <xi:include href="./FRQ4-Part3.ptx" />
-  <xi:include href="./FRQ5-ArrayTesterA.ptx" />
-  <xi:include href="./FRQ5-ArrayTesterB.ptx" />
-  <xi:include href="./FRQ6-NumberGroupB.ptx" />
-  <xi:include href="./FRQ6-NumberGroupC.ptx" />
+  <xi:include href="./frq1a-methods-and-control-part1.ptx" />
+  <xi:include href="./frq1a-conditions-and-methods-part2.ptx" />
+  <xi:include href="./frq1a-loops-and-iteration-part3.ptx" />
+  <xi:include href="./frq1b-string-methods-part1.ptx" />
+  <xi:include href="./frq1b-string-algorithms-part2.ptx" />
+  <xi:include href="./frq1b-string-processing-part3.ptx" />
+  <xi:include href="./frq2-class-design-basics-part1.ptx" />
+  <xi:include href="./frq2-class-design-signatures-part2.ptx" />
+  <xi:include href="./frq2-class-design-hidden-word-part3.ptx" />
+  <xi:include href="./frq3-arraylist-student-scores-part1.ptx" />
+  <xi:include href="./frq3-arraylist-scramble-strings-part2.ptx" />
+  <xi:include href="./frq3-arraylist-string-decoder-part3.ptx" />
+  <xi:include href="./frq4-2d-array-telescope-scan-part1.ptx" />
+  <xi:include href="./frq4-2d-array-data-analysis-part2.ptx" />
+  <xi:include href="./frq4-2d-array-puzzle-game-part3.ptx" />
+  <xi:include href="./frq5-array-tester-a.ptx" />
+  <xi:include href="./frq5-array-tester-b.ptx" />
+  <xi:include href="./frq6-number-group-b.ptx" />
+  <xi:include href="./frq6-number-group-c.ptx" />
 </chapter>

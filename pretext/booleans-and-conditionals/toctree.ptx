@@ -21,9 +21,9 @@
     </p>
   </introduction>
 
-  <xi:include href="./topic-2-1-algorithms.ptx" />
-  <xi:include href="./topic-2-3-ifs.ptx" />
-  <xi:include href="./topic-2-2-booleans.ptx" />
-  <xi:include href="./topic-2-6-comparing-booleans.ptx" />
+  <xi:include href="./alogrithm-building-blocks.ptx" />
+  <xi:include href="./if-statements.ptx" />
+  <xi:include href="./boolean-expressions.ptx" />
+  <xi:include href="./boolean-manipulation.ptx" />
   <xi:include href="./if-traps.ptx" />
 </chapter>

@@ -1,0 +1,3296 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<section xml:id="instance-methods">
+  <title>Instance methods</title>
+
+  <introduction>
+    <idx>method</idx>
+    <idx>return</idx>
+    <idx>parameter</idx>
+    <idx>argument</idx>
+    <idx>abstraction</idx>
+    <idx><h>method</h><h>parameter</h></idx>
+    <idx><h>method</h><h>argument</h></idx>
+    <idx><h>method</h><h>return</h></idx>
+    <idx>non-void method</idx>
+    <idx>accessor method</idx>
+    <idx>getter</idx>
+    <idx>mutator method</idx>
+    <idx>setter</idx>
+    <p>
+      <term>Instance methods</term> define what we can actually do with an
+      object. Everything we covered in <xref ref="methods" /> about writing
+      method still applies. The only new thing about instance methods, compared
+      to the methods we’ve written previously, is that instance methods must be
+      called on some specific object because they need to be able to refer to
+      the object’s instance variables in their code.
+    </p>
+
+    <p>
+      This may seem like a small thing but is very powerful because the fact
+      that instance methods can use these variables under the covers allows us
+      to use objects without having to constantly think about how the underlying
+      data is represented.
+    </p>
+
+    <p>
+      To take a simple example, consider the method <c>canVote</c> in our
+      <c>Person</c> class from <xref ref="anatomy-of-class" />. We can call that
+      method on a <c>Person</c> object without having to know exactly what data
+      it uses to answer the question; the method itself gets the data it needs
+      from the object and returns the result.
+    </p>
+
+    <p>
+      In this case it’s pretty simple since it only uses one variable. But
+      imagine a more complex <c>Person</c> class that kept track not only of a
+      person’s age but also whether they are actually registered to vote. The
+      <c>canVote</c> method might change on the inside but from the outside we
+      would still call it like <c>p.canVote()</c>.
+    </p>
+
+    <p>
+      Instance methods can be void and non-void. In <c>Person</c> we had one of
+      each: <c>greet</c> is a void method that has the side effect of printing
+      to the screen while <c>canVote</c> is a non-void method that computes and
+      returns a boolean value.
+    </p>
+
+    <p>
+      Similarly, instance methods can take any number of arguments. They often
+      will require fewer arguments than <c>static</c> methods because they have
+      access to all the data in the object they are called on.
+    </p>
+
+    <p>
+      In this section we’ll take a closer look at the things we can do with
+      instance methods and some of the common kinds of instance methods that we
+      will write in many classes. But first let’s make extra sure we’re clear on
+      what it means to call a method on a particular object.
+    </p>
+  </introduction>
+
+  <subsection xml:id="method-calls">
+    <title>Calling instance methods requires an instance</title>
+
+    <p>
+      The reason we have to call an instance method on some particular object is
+      because these methods almost always depend on the values of instance
+      variables in the object. Without an object to provide those values the
+      method won’t be able to do its job. Calling an instance method without an
+      object is like trying to ask someone’s name without someone to ask—it just
+      doesn’t make sense.
+    </p>
+
+    <note>
+      <p>
+        It is possible to write an instance method that doesn’t actually depend
+        on any instance variables. But if it is not declared <c>static</c> it
+        still needs to be called on an instance. There are reasons why we might
+        write such methods to be instance methods but they are beyond the scope
+        of the AP curriculum.
+      </p>
+    </note>
+
+    <p>
+      However, there are two pretty different ways we can call a method on a
+      particular object. The normal one is using the same dot operator we used
+      to access instance variables. To access the method via a particular object
+      reference we follow the object reference with a <c>.</c> and then the name
+      of the method followed by the argument list. Most frequently the object
+      reference is stored in a variable so the method call looks like:
+      <c>someVariable.methodName()</c>. Note that there’s nothing special about
+      a variable as an expression; we’ll explore some other options in a moment.
+    </p>
+
+    <p>
+      But the other we can call a method is with just the method name:
+      <c>methodName()</c>. But—and this is an important “but”—that only works in
+      certain contexts, namely in the code of other instance methods and
+      constructors of the same class. In those contexts, as it does with
+      instance variables, Java will treat a bare name like <c>methodName</c> as
+      a shorthand for <c>this.methodName()</c>, calling the method on the
+      current object.
+    </p>
+
+    <p>
+      In other classes and in <c>static</c> methods in the same class, there is
+      no current object so trying to call a method without a specific object
+      reference and the dot operator is back to trying to ask nobody what their
+      name is.
+    </p>
+
+    <p>
+      This is why in a class’s <c>main</c> method we must either call only other
+      <c>static</c> methods or construct an instance of the class in order to
+      call instance methods on it.
+    </p>
+
+    <p>
+      Finally, when we call a method on a specific object reference, that object
+      reference can’t be <c>null</c>. Just like trying to access an instance
+      variable with the dot operator on a <c>null</c> reference results in a
+      <c>NullPointerException</c>, trying to invoke a method on a <c>null</c>
+      reference also produces a <c>NullPointerException</c>.
+    </p>
+
+    <activity label="nullPointerTest">
+      <statement>
+        <p>
+          Run the code below to see that it gets a <c>NullPointerException</c>.
+          Fix the code by initializing the variable <c>person</c> in <c>main</c>
+          to a reference an actual <c>Person</c> object.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <preamble>
+          <![CDATA[
+          public class Person {
+
+              private String name;
+              private int age;
+
+              public Person(String name, int age) {
+                  this.name = name;
+                  this.age = age;
+              }
+
+              public String getName() {
+                  return name;
+              }
+
+              public void greet(String to) {
+                  System.out.println("Hello " + to + ", I'm " + name + ".");
+              }
+
+              public boolean canVote() {
+                  return age >= 18;
+              }
+          ]]>
+        </preamble>
+
+        <code>
+              public static void main(String[] args) {
+                  Person person = null;
+                  System.out.println(person.getName() + " can vote: " + person.canVote());
+              }
+        </code>
+
+        <postamble>
+          }
+        </postamble>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void test1() {
+                  String code = "new Person(";
+                  boolean passed = checkCodeContains(code);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="accessors-getters">
+    <title>Getters and setters</title>
+
+    <p>
+      One simple but common kind of instance methods are <term>getters</term>
+      and <term>setters</term> or—if you want to be fancy—
+      <term>accessors</term> and <term>mutators</term>. These are methods that
+      exist in order to let code outside the class have at least some access to
+      the data stored in the class’s private instance variables. Here’s an
+      example of both a getter and a setter for the variable age from our
+      <c>Person</c> class.
+    </p>
+
+    <program>
+      private int age; // included for reference
+
+      public int getAge() {
+          return age;
+      }
+
+      public void setAge(int age) {
+          this.age = age;
+      }
+    </program>
+
+    <p>
+      The pattern is simple: A getter for a variable <c>x</c> is a <c>public</c>
+      method named <c>getX</c>, that takes no arguments, and whose return type
+      is the same as the type of the variable. And a setter is a <c>public</c>
+      method named <c>setX</c> that takes one argument of the same type is the
+      variable and has a <c>void</c> return type. All the getter does is return
+      the value of the variable and all the setter does is assign its argument
+      to the variable.
+    </p>
+
+    <p>
+      It might not be immediately obvious what the point of getters and setters
+      are. If we want code outside the class to be able to get and set the value
+      of one of our instance variables, why not just make it <c>public</c>?
+      There are a few advantages:
+    </p>
+
+    <p>
+      <dl>
+        <li>
+          <title>We don’t have to provide both a getter and a setter.</title>
+
+          <p>
+            If we just wrote <c>getAge</c> but didn’t write a <c>setAge</c> then
+            any code could access the age of a <c>Person</c> but only code
+            within the class could change it. Since getters don’t change
+            anything it’s almost impossible for a bug to be caused by someone
+            calling a getter. Setters are much more dangerous.
+          </p>
+        </li>
+
+        <li>
+          <title>Setters can validate values or do other work.</title>
+
+          <p>
+            Even if we do choose to provide a setter, it can still be better
+            than making the variable <c>public</c> because it gives us a place
+            to control how the variable is set. For instance <c>setAge</c> could
+            ensure that the value is positive and generate an error if it is not
+            rather than setting the variable to a nonsense value.
+          </p>
+        </li>
+
+        <li>
+          <title>
+            We can change things without breaking code in other classes.
+          </title>
+
+          <p>
+            While usually we write getters and setters to provide access to a
+            variable, from outside the class there’s no way of knowing for sure
+            that there <em>is</em> a variable. This provides a layer of
+            <term>indirection</term> that allows us to change how we represent
+            things inside the class without breaking code in other classes.
+          </p>
+
+          <p>
+            For instance, in <c>Person</c> we might realize that we want to
+            store the persons birth date and to compute their age based on that.
+            We can change the implementation of <c>getAge</c> and then get rid
+            of the <c>age</c> variable and code that uses <c>getAge</c> will
+            still work.
+          </p>
+        </li>
+      </dl>
+    </p>
+
+    <p>
+      It is quite common to write getters and setters and we should definitely
+      write them rather than making instance variables <c>public</c>. But we
+      shouldn’t write them reflexively. We should think about whether code
+      outside our class really needs to directly access the values of our
+      variables. And we should think even harder about whether want to let
+      outside code change the values of our variables.
+    </p>
+
+    <p>
+      Less is more when writing code. We can always add a getter or setter when
+      we discover a true need for it. In the meantime better to keep things as
+      simple as possible.
+    </p>
+
+    <activity label="StudentObjExample">
+      <statement>
+        <p>
+          Try the following code. Note that there are two classes! The
+          <c>main</c> method is in a separate <term>tester</term> or
+          <term>driver</term> class so that it does not have access to the
+          <c>private</c> instance variables in the <c>Student</c> class. (When
+          we write multiple classes in an IDE, we normally put each class in a
+          separate file named after the class it contains. But it is legal to
+          put two classes in one file, as we are here, as long as only one of
+          them is <c>public</c>. That's why <c>Student</c> is not public in this
+          code.)
+        </p>
+
+        <p>
+          Try the following code. Note that it has a bug! It tries to access the
+          <c>private</c> instance variable <c>email</c> from outside the class
+          <c>Student</c>. Change The <c>main</c> method in <c>Tester</c> so that
+          it instead uses the appropriate getter to access the value of
+          <c>email</c>.
+        </p>
+
+        <p>
+          You can also view the fixed code in the <url
+          href="http://www.pythontutor.com/visualize.html#code=public%20class%20TesterClass%20%0A%20%20%7B%0A%20%20%20%20%20//%20main%20method%20for%20testing%0A%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20Student%20s1%20%3D%20new%20Student%28%22Skyler%22,%20%22skyler%40sky.com%22,%20123456%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22Name%3A%22%20%2B%20%20s1.getName%28%29%20%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22Email%3A%22%20%2B%20%20s1.getEmail%28%29%20%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28%22ID%3A%20%22%20%2B%20s1.getId%28%29%20%29%3B%0A%20%20%20%20%20%7D%0A%20%20%20%7D%0A%20%20%0A%20%20class%20Student%20%0A%20%20%7B%0A%20%20%20%20%20private%20String%20name%3B%0A%20%20%20%20%20private%20String%20email%3B%0A%20%20%20%20%20private%20int%20id%3B%0A%20%20%20%20%20%0A%20%20%20%20%20public%20Student%28String%20initName,%20String%20initEmail,%20int%20initId%29%0A%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20name%20%3D%20initName%3B%0A%20%20%20%20%20%20%20%20email%20%3D%20initEmail%3B%0A%20%20%20%20%20%20%20%20id%20%3D%20initId%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20%0A%20%20%20%20%20//%20accessor%20methods%20-%20getters%20%0A%20%20%20%20%20/**%20getName%28%29%20%20%40return%20name%20*/%0A%20%20%20%20%20public%20String%20getName%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20return%20name%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20/**%20getEmail%28%29%20%20%40return%20email%20*/%0A%20%20%20%20%20public%20String%20getEmail%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20return%20email%3B%0A%20%20%20%20%20%7D%0A%20%20%20%20%20/**%20getName%28%29%20%20%40return%20id%20*/%0A%20%20%20%20%20public%20int%20getId%28%29%20%0A%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20return%20id%3B%0A%20%20%20%20%20%7D%0A%20%20%7D&amp;cumulative=false&amp;curInstr=26&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Java
+          visualizer</url>.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class TesterClass {
+              // main method for testing
+              public static void main(String[] args) {
+                  Student s1 = new Student("Skyler", "skyler@sky.com", 123456);
+                  System.out.println("Name:" + s1.getName());
+                  // Fix the bug here!
+                  System.out.println("Email:" + s1.email);
+                  System.out.println("ID: " + s1.getId());
+              }
+          }
+
+          /** Class Student keeps track of name, email, and id of a Student. */
+          class Student {
+              private String name;
+              private String email;
+              private int id;
+
+              public Student(String initName, String initEmail, int initId) {
+                  name = initName;
+                  email = initEmail;
+                  id = initId;
+              }
+
+              // accessor methods - getters
+              /** getName() @return name */
+              public String getName() {
+                  return name;
+              }
+
+              /** getEmail() @return email */
+              public String getEmail() {
+                  return email;
+              }
+
+              /** getName() @return id */
+              public int getId() {
+                  return id;
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void testMain() throws IOException {
+                  String output = getMethodOutput("main");
+                  String expect = "Name:Skyler\nEmail:skyler@sky.com\nID: 123456";
+                  boolean passed = getResults(expect, output, "Checking for expected output");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testMethodCall() throws IOException {
+                  String target = "s1.getEmail()";
+                  boolean passed = checkCodeContains("call to accessor method for email", target);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+
+    <activity label="StudentObjExample2">
+      <statement>
+        <p>
+          Try the <c>Student</c> class below which has had some setters added.
+          Notice that there is no <c>setId</c> method even though there is a
+          <c>getId</c>. This is presumably because in the system this class is
+          part of, while it makes sense for a student to change their name or
+          email, their id should never change.
+        </p>
+
+        <p>
+          You will need to fix one error. The <c>main</c> method is in a
+          separate class <c>TesterClass</c> and does not have access to the
+          <c>private</c> instance variables in the <c>Student</c> class. Change
+          the <c>main</c> method so that it uses a <c>public</c> setter to
+          change the value instead.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class TesterClass {
+              // main method for testing
+              public static void main(String[] args) {
+                  Student s1 = new Student("Skyler", "skyler@sky.com", 123456);
+                  System.out.println(s1);
+                  s1.setName("Skyler 2");
+                  // Main doesn't have access to email, use set method!
+                  s1.email = "skyler2@gmail.com";
+                  System.out.println(s1);
+              }
+          }
+
+          class Student {
+              private String name;
+              private String email;
+              private int id;
+
+              public Student(String initName, String initEmail, int initId) {
+                  name = initName;
+                  email = initEmail;
+                  id = initId;
+              }
+
+              // Setters
+
+              public void setName(String newName) {
+                  name = newName;
+              }
+
+              public void setEmail(String newEmail) {
+                  email = newEmail;
+              }
+
+              // Getters
+
+              public String getName() {
+                  return name;
+              }
+
+              public String getEmail() {
+                  return email;
+              }
+
+              public int getId() {
+                  return id;
+              }
+
+              public String toString() {
+                  return id + ": " + name + ", " + email;
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          // activeCode StudentObjExample2
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("TesterClass");
+              }
+
+              @Test
+              public void test1() {
+                  String target = "s1.setEmail(\"skyler2@gmail.com\");";
+                  boolean passed = checkCodeContains("call to setEmail()", target);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testMain() {
+                  String output = getMethodOutput("main");
+                  String expect = "123456: Skyler, skyler@sky.com\n123456: Skyler 2, skyler2@gmail.com";
+
+                  boolean passed = getResults(expect, output, "Checking main()", true);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+
+    <activity label="setSignature">
+      <statement>
+        <p>
+          Consider the class Party which keeps track of the number of people at
+          the party.
+        </p>
+
+        <program>
+          public class Party {
+              // number of people at the party
+              private int numOfPeople;
+
+              /* Missing header of set method */
+              {
+                  numOfPeople = people;
+              }
+          }
+        </program>
+
+        <p>
+          Which of the following method signatures could replace the missing
+          header for the set method in the code above so that the method will
+          work as intended?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement id="setSignature_opt_a">
+            <p>public int getNum(int people)</p>
+          </statement>
+
+          <feedback id="setSignature_opt_a">
+            <p>
+              The set method should not have a return value and is usually named
+              set, not get.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="setSignature_opt_b">
+            <p>public int setNum()</p>
+          </statement>
+
+          <feedback id="setSignature_opt_b">
+            <p>
+              The set method should have a <c>void</c> return value as the body
+              does not contain a <c>return</c> statement and it needs a
+              parameter.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="setSignature_opt_c">
+            <p>public int setNum(int people)</p>
+          </statement>
+
+          <feedback id="setSignature_opt_c">
+            <p>
+              The set method should have a <c>void</c> return value as the body
+              does not contain a <c>return</c> statement.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement id="setSignature_opt_d">
+            <p>public void setNum(int people)</p>
+          </statement>
+
+          <feedback id="setSignature_opt_d">
+            <p>
+              Yes, the set method should take a parameter called people and have
+              a <c>void</c> return type. The name of the set method is usually
+              set followed by the full instance variable name, but it does not
+              have to be an exact match.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="setSignature_opt_e">
+            <p>public int setNumOfPeople(int p)</p>
+          </statement>
+
+          <feedback id="setSignature_opt_e">
+            <p>
+              The parameter of this set method should be called people in order
+              to match the code in the method body. Also the method body does
+              not contain a <c>return</c> statement so the return type must be
+              <c>void</c>.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="AccessorMutator">
+      <statement>
+        <p>
+          Drag the definition from the left and drop it on the correct word on
+          the right. Click the "Check Me" button to see if you are correct.
+        </p>
+      </statement>
+
+      <feedback>
+        <p>Review the vocabulary.</p>
+      </feedback>
+
+      <cardsort>
+        <match>
+          <premise order="1">
+            gets and returns the value of an instance variable
+          </premise>
+
+          <response>accessor method</response>
+        </match>
+
+        <match>
+          <premise order="2">
+            sets the instance variable to a value in its parameter
+          </premise>
+
+          <response>mutator method</response>
+        </match>
+
+        <match>
+          <premise order="3">
+            initializes the instance variables to values
+          </premise>
+
+          <response>constructor</response>
+        </match>
+
+        <match>
+          <premise order="4">accessible from outside the class</premise>
+          <response>public</response>
+        </match>
+
+        <match>
+          <premise order="5">accessible only inside the class</premise>
+          <response>private</response>
+        </match>
+      </cardsort>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="tostring">
+    <title><c>toString</c></title>
+
+    <p>
+      Another important kind of method is one that returns some kind of
+      representation of the object. In particular there’s a special method in
+      Java with the signature <c>public String toString()</c>.
+    </p>
+
+    <p>
+      This method is called automatically in a number of situations when Java
+      needs to convert an arbitrary object to a <c>String</c>. In particular the
+      <c>print</c> and <c>println</c> methods on <c>System.out</c> use it to
+      convert a object argument into a <c>String</c> to be printed. And the
+      <c>String</c> concatenation operators, <c>+</c> and <c>+=</c>, use it to
+      get the <c>String</c> representation of object values.
+    </p>
+
+    <p>
+      The reason Java can be sure that it can call <c>toString</c> on any object
+      is because of a feature of Java called <term>inheritance</term> that is no
+      longer covered on AP exam. But the extremely short version is: classes in
+      Java can be related to other classes such that they <term>inherit</term>
+      certain methods from them. All objects in Java inherit methods from the
+      class <c>java.lang.Object</c>, among them <c>toString</c>. So if a class
+      doesn’t contain its own <c>toString</c>, it will have the one that it
+      inherits from <c>Object</c>. Unfortunately the strings it returns are not
+      all that useful for human beings. For instance our <c>Person</c> class’s
+      <c>toString</c>, inherited from <c>Object</c>, returns strings like
+      <c>"Person@6d4b1c02"</c>. If a class contains a <c>toString</c> method,
+      that method <term>overrides</term> the inherited one, allowing us to
+      return a more useful <c>String</c> representation.
+    </p>
+
+    <activity label="StudentToString">
+      <statement>
+        <p>
+          Here is the <c>Student</c> class again, but this time with a
+          <c>toString</c> method. Note that when we call
+          <c>System.out.println(s1)</c> it will automatically call the
+          <c>toString</c> method to get a <c>String</c> representation of the
+          <c>Student</c> object. The <c>toString</c> method will return a
+          <c>String</c> that is then printed out. Watch how the control moves to
+          the <c>toString</c> method and then comes back to <c>main</c> in the
+          Java visualizer by using the Show CodeLens button.
+        </p>
+
+        <p>
+          Add another <c>Student</c> object with a different name, email, and ID
+          and print it out.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class TesterClass {
+
+              public static void main(String[] args) {
+                  Student s1 = new Student("Skyler", "skyler@sky.com", 123456);
+                  System.out.println(s1);
+                  // TODO: add another Student s2 and print it out
+
+              }
+          }
+
+          class Student {
+              private String name;
+              private String email;
+              private int id;
+
+              public Student(String name, String email, int id) {
+                  this.name = name;
+                  this.email = email;
+                  this.id = id;
+              }
+
+              public String toString() {
+                  return id + ": " + name + ", " + email;
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void test1() throws IOException {
+                  String target = "System.out.println(s2)";
+                  boolean passed = checkCodeContains("System.out.println(s2)", target);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>A new kind of side effect</title>
+
+    <p>
+      In our earlier discussions of methods, we drew a distinction between
+      methods that compute and return values (non-void methods) and methods that
+      are called for their side effects, which usually have a <c>void</c> return
+      type to make it clear that they are called for the effect they have on the
+      world, such as printing output.
+    </p>
+
+    <p>
+      Instance methods can fall into both categories. For example, in
+      <c>Person</c> the <c>canVote</c> method computes a <c>boolean</c> value
+      but doesn’t have any side effects. And <c>greet</c> doesn’t return
+      anything but does print some output.
+    </p>
+
+    <p>
+      But there’s another way instance methods can have side effects that we
+      haven’t had to deal with before: they can change the value of the object’s
+      instance variables. This is a side effect because the effect of the change
+      is visible after the method has returned. In actual programs this kind of
+      side effect is much more common than things like printing or drawing on
+      the screen.
+    </p>
+
+    <p>
+      Side effects can be very powerful but they can also make programs harder
+      to understand. Changing the value of an instance variable in a way that
+      changes the behavior of methods on that object means that understanding
+      those methods requires us to understand not just what the method does but
+      how what it does can be affected by changes to the object. And then to
+      understand a whole program we may have to trace all the ways an object can
+      change state between method calls.
+    </p>
+
+    <p>
+      Which is not to say we should never write methods with side effects.
+      Ultimately our programs have to have some effect or there’d by no point to
+      running them. But it is a good idea to be clear about whether the point of
+      a method is to compute a value, based on some combination of its arguments
+      and the current values of the object’s instance variables, or to have a
+      side effect, either a human visible effect or the side effect of changing
+      the object’s state.
+    </p>
+
+    <p>
+      Methods that do both are occasionally useful, but they usually take the
+      form of methods that update a variable and then return its new value as a
+      convenience. For example this method is a non-void method that updates a
+      <c>counter</c> variable and then returns the new value, presumably because
+      the code that calls this method will frequently want to know that value.
+    </p>
+
+    <program>
+      public int updateCounter() {
+          counter++;
+          return counter;
+      }
+    </program>
+
+    <p>
+      Also note that non-void methods can do a lot more interesting things than
+      just return the value of a variable. Some methods take arguments and
+      return values that are computed using those arguments and the object’s
+      instance variables.
+    </p>
+
+    <activity label="StringFind">
+      <statement>
+        <p>
+          Run the following program which contains a method <c>letterPresent</c>
+          that takes a letter argument and uses a loop to check if the letter is
+          in the text and returning <c>true</c> if it is and <c>false</c>
+          otherwise.
+        </p>
+
+        <p>
+          Then change the call to <c>letterPresent</c> in <c>main</c> and run it
+          again to try finding a different letter. Try one that is not present
+          in the string <c>"Apples and Oranges"</c>. Or try passing a different
+          <c>String</c> to the constructor call in <c>main</c>.
+        </p>
+
+        <p>
+          After running the code, make the tests pass by adding a new method
+          <c>letterCount</c> that works in a similar way but instead keeps track
+          in a variable called <c>count</c> how many times the letter occurs in
+          the text and returns it. What will the return type need to be?
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          <![CDATA[
+          public class StringFinder {
+
+              private String text;
+
+              public StringFinder(String text) {
+                  this.text = text;
+              }
+
+              public String getText() {
+                  return text;
+              }
+
+              /**
+               * letterPresent Test whether letter is in the text
+               *
+               * @param String letter to look for
+               * @return true if letter is in text
+               */
+              public boolean letterPresent(String letter) {
+                  for (int i = 0; i < text.length(); i++) {
+                      if (text.substring(i, i + 1).equalsIgnoreCase(letter)) {
+                          return true;
+                      }
+                  }
+                  return false;
+              }
+
+              // TODO: implement letterCount
+
+              public static void main(String args[]) {
+                  String letter = "p";
+
+                  StringFinder test = new StringFinder("Apples and Oranges");
+                  System.out.println("Does " + test.getText() + " contain a " + letter + "?");
+                  System.out.println(test.letterPresent(letter));
+
+                  // Uncomment the next line after you implement letterCount
+                  // System.out.println(test.letterCount(letter));
+              }
+          }
+          ]]>
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void letterPresentTest() throws IOException {
+                  setDefaultValues(new Object[] {"Apples and Oranges"});
+                  String output = getMethodOutput("letterPresent", new Object[] {"p"});
+                  assertTrue(getResults("true", output, "letterPresent(\"p\")", output.equals("true")));
+              }
+
+              @Test
+              public void letterCountTest() throws IOException {
+                  setDefaultValues(new Object[] {"Apples and Oranges"});
+                  String output = getMethodOutput("letterCount", new Object[] {"p"});
+                  assertTrue(getResults("2", output, "letterCount(\"p\")", output.equals("2")));
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="overloaded-methods">
+    <title>Overloaded methods</title>
+
+    <p>
+      As with constructors, we can <term>overload</term> methods. While we
+      normally describe it as overloading a method, what we’re really
+      overloading is the <em>name</em>, writing multiple methods with the same
+      name but different parameter lists. Thus the one name is overloaded by
+      bearing the weight of more than one method.
+    </p>
+
+    <p>
+      The key thing to understand about overloading methods is that it doesn’t
+      actually let us do anything that we couldn’t do using methods with
+      different names; when Java sees code that calls a method it uses the name
+      and the types of the arguments to determine what method to call.
+    </p>
+
+    <p>
+      If we took some code containing overloaded methods and renamed them all to
+      have unique names, and then changed all the code that called those methods
+      to use the new names, it would work exactly the same.
+    </p>
+
+    <note>
+      <p>
+        While the return type of a method is sometimes considered part of the
+        method signature, it is not for purposes of overloading. That is, Java
+        will not let us write two methods with the same name and parameter lists
+        that differ only in their return type. Typically overloaded methods with
+        the same name will have the same return type except in cases like
+        <c>Math.abs</c> where each overloaded method returns the same type as it
+        accepts as an argument.
+      </p>
+    </note>
+
+    <p>
+      Overloading just gives us a way to indicate that two methods do “the same
+      thing” with slightly different arguments. It’s up to us what “the same
+      thing” means but typically the reasons for writing overloaded methods are
+      similar to the reasons for writing overloaded constructors: to make
+      versions of a method that provide useful default values for certain
+      arguments or to accept different types of arguments, either because one
+      type can meaningfully be converted to another or because we want to do
+      “the same thing” but with two different types, like <c>Math.abs</c> does.
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Practice</title>
+
+    <activity label="student_methods">
+      <statement>
+        <p>
+          Click on the method headers (signatures) in the following class. Do
+          not click on the constructors.
+        </p>
+      </statement>
+
+      <feedback>
+        <p>
+          Methods follow the constructors. The method header is the first line
+          of a method.
+        </p>
+      </feedback>
+
+      <areas>
+        <cline><area correct="no">public class Student {</area></cline>
+        <cline />
+        <cline>    <area correct="no">private String name;</area></cline>
+        <cline>    <area correct="no">private String email;</area></cline>
+        <cline />
+        <cline>    <area correct="no">public Student(String initName, String intEmail) </area></cline>
+        <cline>    <area correct="no">{</area></cline>
+        <cline>        <area correct="no">name = initName;</area></cline>
+        <cline>        <area correct="no">email = initEmail;</area></cline>
+        <cline>     <area correct="no">}</area></cline>
+        <cline />
+        <cline>     <area correct="yes">public String getName() </area></cline>
+        <cline>     <area correct="no">{</area></cline>
+        <cline>        <area correct="no">return name;</area></cline>
+        <cline>     <area correct="no">}</area></cline>
+        <cline />
+        <cline>     <area correct="yes">public void print() </area></cline>
+        <cline>     <area correct="no">{</area></cline>
+        <cline>        <area correct="no">System.out.println(name + ":" + email);</area></cline>
+        <cline>     <area correct="no">}</area></cline>
+        <cline><area correct="no">}</area></cline>
+      </areas>
+    </activity>
+
+    <activity label="methodVocab">
+      <statement>
+        <p>
+          Drag the definition from the left and drop it on the correct word on
+          the right. Click the "Check Me" button to see if you are correct.
+        </p>
+      </statement>
+
+      <feedback>
+        <p>Review the vocabulary above.</p>
+      </feedback>
+
+      <cardsort>
+        <match>
+          <premise order="1">
+            an object's behaviors or functions that can be used or called to do
+            its job
+          </premise>
+
+          <response>methods</response>
+        </match>
+
+        <match>
+          <premise order="2">
+            the values or data passed to an object's method
+          </premise>
+
+          <response>arguments</response>
+        </match>
+
+        <match>
+          <premise order="3">
+            the variables in a method's definition that hold the arguments
+          </premise>
+
+          <response>parameters</response>
+        </match>
+
+        <match>
+          <premise order="4">asking to run the method</premise>
+          <response>method call</response>
+        </match>
+      </cardsort>
+    </activity>
+
+    <activity label="traceCircleArea">
+      <statement>
+        <p>Consider the following class definition.</p>
+
+        <program>
+          public class Circle {
+              private double radius;
+
+              public Circle(double radius) {
+                  this.radius = radius;
+              }
+
+              public double getArea() {
+                  return 3.14159 * radius * radius;
+              }
+
+              public static void main(String[] args) {
+                  Circle c = new Circle(10);
+                  System.out.println(c.getArea());
+              }
+          }
+        </program>
+
+        <p>What is printed when this program is run?</p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>0</p>
+          </statement>
+
+          <feedback>
+            <p>First, call the constructor, then call getArea().</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>314.159</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Correct! getArea() returns 3.14159 * radius * radius, where radius
+              is set to 10 by the constructor.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>c.getArea()</p>
+          </statement>
+
+          <feedback>
+            <p>c.getArea() is a method call, not a value.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>The code will not compile.</p>
+          </statement>
+
+          <feedback>
+            <p>The code does compile.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>100.0</p>
+          </statement>
+
+          <feedback>
+            <p>Don't forget to multiply by 3.14159.</p>
+          </feedback>
+        </choice>
+      </choices>
+
+      <hint>
+        <p>
+          If you get stuck, try this <url
+          href="https://pythontutor.com/visualize.html#code=public%20class%20Circle%20%7B%0A%20%20%20%20private%20double%20radius%3B%0A%0A%20%20%20%20public%20Circle%28double%20radius%29%20%7B%0A%20%20%20%20%20%20%20%20this.radius%20%3D%20radius%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20double%20getArea%28%29%20%7B%0A%20%20%20%20%20%20%20%20return%203.14159%20%2A%20radius%20%2A%20radius%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20Circle%20c%20%3D%20new%20Circle%2810%29%3B%0A%20%20%20%20%20%20%20%20System.out.println%28c.getArea%28%29%29%3B%0A%20%20%20%20%7D%0A%7D%0A&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
+          to see this code in action.
+        </p>
+      </hint>
+    </activity>
+
+    <activity label="traceRectangleArea">
+      <statement>
+        <p>Consider the following class definition.</p>
+
+        <program>
+          public class Rectangle {
+              private int width;
+              private int height;
+
+              public Rectangle(int width, int height) {
+                  this.width = width;
+                  this.height = height;
+              }
+
+              public void resize(int amt) {
+                  width += amt;
+              }
+
+              public int getArea() {
+                  return width * height;
+              }
+
+              public static void main(String[] args) {
+                  Rectangle r = new Rectangle(10, 15);
+                  r.resize(5);
+                  System.out.println(r.getArea());
+              }
+          }
+        </program>
+
+        <p>What is printed when this program is run?</p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>150</p>
+          </statement>
+
+          <feedback>
+            <p>Note that the method resize() is called before getArea().</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>150.0</p>
+          </statement>
+
+          <feedback>
+            <p>Note that the method resize() is called before getArea().</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>225</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Correct! resize() increases the width by 5, so the area is 15 * 15
+              = 225.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>255.0</p>
+          </statement>
+
+          <feedback>
+            <p>Note that getArea() returns an int</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>0</p>
+          </statement>
+
+          <feedback>
+            <p>Note that the constructor initializes width and height.</p>
+          </feedback>
+        </choice>
+      </choices>
+
+      <hint>
+        <p>
+          If you get stuck, try this <url
+          href="https://pythontutor.com/visualize.html#code=%20public%20class%20Rectangle%20%7B%0A%20%20%20%20%20private%20int%20width%3B%0A%20%20%20%20%20private%20int%20height%3B%0A%0A%20%20%20%20%20public%20Rectangle%28int%20width%2C%20int%20height%29%20%7B%0A%20%20%20%20%20%20%20%20%20this.width%20%3D%20width%3B%0A%20%20%20%20%20%20%20%20%20this.height%20%3D%20height%3B%0A%20%20%20%20%20%7D%0A%0A%20%20%20%20%20public%20void%20resize%28int%20amt%29%20%7B%0A%20%20%20%20%20%20%20%20%20width%20%2B%3D%20amt%3B%0A%20%20%20%20%20%7D%0A%0A%20%20%20%20%20public%20int%20getArea%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20return%20width%20%2A%20height%3B%0A%20%20%20%20%20%7D%0A%0A%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20%20Rectangle%20r%20%3D%20new%20Rectangle%2810%2C%2015%29%3B%0A%20%20%20%20%20%20%20%20%20r.resize%285%29%3B%0A%20%20%20%20%20%20%20%20%20System.out.println%28r.getArea%28%29%29%3B%0A%20%20%20%20%20%7D%0A%7D%0A&amp;cumulative=false&amp;heapPrimitives=nevernest&amp;mode=edit&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
+          to see this code in action.
+        </p>
+      </hint>
+    </activity>
+
+    <p>
+      Let's try calling the constructor and methods of this Rectangle class in
+      an active code exercise below.
+    </p>
+
+    <activity label="rectangleMethods">
+      <statement>
+        <p>
+          Given the Rectangle class below, use its constructor to create a 5x10
+          rectangle, then call its resize method to add 10 to its width, and
+          then print out its area using its getArea method.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class Rectangle {
+              private int width;
+              private int height;
+
+              public Rectangle(int w, int h) {
+                  width = w;
+                  height = h;
+              }
+
+              public void resize(int amt) {
+                  width += amt;
+              }
+
+              public int getArea() {
+                  return width * height;
+              }
+
+              public static void main(String[] args) {
+                  // 1. Create a rectangle with width 5 and height 10
+
+                  // 2. Call the resize method to add 10 to its width
+
+                  // 3. Print out its area using its getArea method
+
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void testMain() throws IOException {
+                  String output = getMethodOutput("main");
+                  String expect = "150";
+                  boolean passed = getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test1() {
+                  String code = "new Rectangle(5,10)";
+                  boolean passed = checkCodeContains(code);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2() {
+                  String code = ".resize(10)";
+                  boolean passed = checkCodeContains(code);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test3() {
+                  String code = ".getArea()";
+                  boolean passed = checkCodeContains(code);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+
+    <activity label="traceReturnMethods">
+      <statement>
+        <p>
+          What does the following code print out? (If you get stuck, try this
+          <url
+          href="http://www.pythontutor.com/visualize.html#code=public%20class%20MethodTrace%20%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20public%20int%20square%28int%20x%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20x*x%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20int%20divide%28int%20x,%20int%20y%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20x/y%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20MethodTrace%20traceObj%20%3D%20new%20MethodTrace%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%20traceObj.square%282%29%20%2B%20traceObj.divide%286,2%29%20%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%7D&amp;cumulative=false&amp;curInstr=16&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
+          to see this code in action.)
+        </p>
+
+        <program>
+          public class MethodTrace {
+              public int square(int x) {
+                  return x * x;
+              }
+
+              public int divide(int x, int y) {
+                  return x / y;
+              }
+
+              public static void main(String[] args) {
+                  MethodTrace traceObj = new MethodTrace();
+                  System.out.println(traceObj.square(2) + traceObj.divide(6, 2));
+              }
+          }
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>5</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Make sure you call both methods and compute the square of 2 and
+              then add the results.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>7</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Yes, square(2) returns 4 which is added to divide(6,2) which
+              returns 3. The total of 4 + 3 is 7.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>4 3</p>
+          </statement>
+
+          <feedback>
+            <p>Make sure you add the results before printing it out.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>2 3</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Make sure you square(2) and add the results before printing it
+              out.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>Does not compile.</p>
+          </statement>
+
+          <feedback>
+            <p>Try the code in an active code window.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="TurtleDistance">
+      <statement>
+        <p>
+          The <c>Turtle</c> class has a method called <c>getDistance(x,y)</c>
+          which will return the turtle’s distance from a point (x,y). Can you
+          find yertle’s distance from the point (0,0)? In the exercise below,
+          add another turtle and make both turtles move. Then find the distance
+          between them. You must use the <c>getXPos</c> and <c>getYPos</c>
+          methods as well as the <c>getDistance</c> method.
+        </p>
+      </statement>
+
+      <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
+
+        <code>
+          import java.awt.*;
+          import java.util.*;
+
+          public class TurtleTestDistance {
+              public static void main(String[] args) {
+                  World world = new World(300, 300);
+                  Turtle yertle = new Turtle(world);
+
+                  // Can you find yertle's distance from the point (0,0)?
+
+                  // Can you find the distance between 2 turtles?
+
+                  world.show(true);
+              }
+          }
+        </code>
+
+        <tests>
+          <![CDATA[
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("TurtleTestDistance");
+              }
+
+              @Test
+              public void test2() {
+                  String code = getCode();
+                  int num = countOccurences(code, ".getXPos()");
+
+                  boolean passed = num > 0;
+                  getResults(">=1", "" + num, "Calls to getXPos()", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test3() {
+                  String code = getCode();
+                  int num = countOccurences(code, ".getYPos()");
+
+                  boolean passed = num > 0;
+                  getResults(">=1", "" + num, "Calls to getYPos()", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test4() {
+                  String code = getCode();
+                  int num = countOccurences(code, ".getDistance(");
+
+                  boolean passed = num >= 2;
+                  getResults(">=2", "" + num, "Calls to getDistance(...)", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test1() {
+                  String code = getCode();
+                  int num = countOccurences(code, ".getDistance(0,0)");
+
+                  boolean passed = num >= 1;
+                  getResults(">=1", "" + num, "Calls getDistance(0,0)", passed);
+                  assertTrue(passed);
+              }
+          }
+          ]]>
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection xml:id="coding-challenge-virtual-pet-class">
+    <title>Coding Challenge: Virtual Pet Class</title>
+
+    <sidebyside widths="15% 100%" margins="-20% 0%">
+      <image source="Unit3-Class-Creation/Figures/virtualpet.jpg" width="23%">
+        <shortdescription>Virtual Pet</shortdescription>
+      </image>
+
+      <stack>
+        <p>
+          In the late 1990s and early 2000s, digital pets like in the photo were
+          a huge hit! You had to feed, play, and interact with your virtual pet
+          in order to keep it healthy and happy. Let’s think about how they were
+          programmed.
+        </p>
+
+        <p>
+          <ol>
+            <li>
+              <p>
+                <term>Design:</term> In pairs, brainstorm about the
+                <term>object-oriented design</term> for the virtual pet. What
+                data or instance variables would you need to keep track of for a
+                virtual pet? What behaviors or methods would the virtual pet
+                have? (You could draw a Class Diagram for this class using <url
+                href="https://app.diagrams.net/">app.diagrams.net</url> or <url
+                href="https://creately.com">Creately.com</url>, although it is
+                not required). Then, using the <c>Person</c> class above as a
+                guide, write a <c>VirtualPet</c> class in the Active Code
+                template below with the following parts.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <term>Instance Variables</term>: Declare at least 3 instance
+                variables in the <c>VirtualPet</c> class below. Two of the
+                instance variables should be called <c>name</c> and
+                <c>health</c> where health is a number from 0 to 10. The rest
+                can be variables from your design above. Don’t forget to add in
+                their <c>private</c> access modifiers.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <term>Methods</term>: Complete the <c>print</c> method to print
+                out the instance variables of the <c>VirtualPet</c> object, and
+                complete the <c>feed</c> method to add 1 to the health instance
+                variable. Remember that the methods have direct access to the
+                instance variables. Create at least one more method that changes
+                one of the instance variables from your design. (The constructor
+                method and a get method is written for you below. You will learn
+                how to write constructors in detail in the next lesson.)
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Complete the <c>main</c> method to construct at least 2
+                <c>VirtualPet</c> objects that call the <c>VirtualPet</c>
+                constructor given to you with arguments for name and health.
+                Then, use at least one of the objects to call its <c>feed</c>
+                and <c>print</c> methods.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </stack>
+    </sidebyside>
+
+    <project label="challenge-VirtualPet-Class">
+      <statement>
+        <p>
+          Complete the VirtualPet class below. Add at least 3 instance
+          variables, a print method, a feed method, and at least 1 other method
+          that changes an instance variable. Then complete the main method to
+          construct at least 2 VirtualPet objects, call the feed and print
+          method with one of them.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class VirtualPet {
+              // write 3 instance variables for VirtualPet's name,
+              // health (as a number), and at least 1 other from your design
+              // Remember the pattern:  private type variableName;
+
+              // constructor written for you - do not change
+              public VirtualPet(String initName, int initHealth) {
+                  // the constructor sets the instance variables to the init parameter variables
+                  name = initName;
+                  health = initHealth;
+              }
+
+              // Print the VirtualPet's data (instance variables) with System.out.println
+              public void print() {
+                  // print the instance variables with spaces between them
+
+              }
+
+              // Complete the feed method below to add to the health instance variable
+              public void feed() {
+                  // add 1 to the health variable
+
+              }
+
+              // Create another public void method that changes one of the instance variables
+
+              // get method used for testing - do not change
+              public int getHealth() {
+                  return health;
+              }
+
+              // main method for testing
+              public static void main(String[] args) {
+                  VirtualPet p = new VirtualPet("Fluffy", 5);
+                  // call the VirtualPet constructor to create another new object with a different name and
+                  // health
+
+                  // call the pet object p's feed() method
+
+                  // call the other method that you created
+
+                  // call the pet object p's print() method
+
+              }
+          }
+        </code>
+
+        <tests>
+          <![CDATA[
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("VirtualPet"); // class name / location of main
+
+                  Object[] values = new Object[] {"Fluffy", 5};
+                  setDefaultValues(values);
+              }
+
+              @Test
+              public void countMethods() {
+                  String target = "public void";
+                  String code = getCode();
+
+                  int num = countOccurences(code, target);
+
+                  boolean passed = num >= 3;
+
+                  getResults("3+", "" + num, "public void methods", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testPrint() {
+                  String output = getMethodOutput("print");
+                  String expect = "Fluffy";
+
+                  boolean passed = getResults(expect, output, "Checking method print()");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testFeed() {
+                  VirtualPet p = new VirtualPet("Fluffy", 5);
+                  p.feed();
+                  String output = p.getHealth() + "";
+                  String expect = "6";
+                  boolean passed =
+                          getResults(
+                                  expect,
+                                  output,
+                                  "Expected health for pet Fluffy with initial health 5 after feed()");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testFeed2() {
+                  VirtualPet p1 = new VirtualPet("Pikachu", 1);
+                  p1.feed();
+                  String output = p1.getHealth() + "";
+                  String expect = "2";
+                  boolean passed =
+                          getResults(
+                                  expect,
+                                  output,
+                                  "Expected health for pet Pikachu with initial health 1 after feed()");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testCallConstructors() {
+                  String code = getCodeWithoutComments();
+                  String search = "= new VirtualPet(";
+
+                  int num = countOccurences(code, search);
+
+                  String expect = search + "...) x 2";
+                  String actual = search + "...) x " + num;
+
+                  boolean passed =
+                          getResults(expect, actual, "Checking that you created another VirtualPet object");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testVariableTypes() {
+                  String varTypes = "String int";
+                  String output = testInstanceVariableTypes(varTypes.split(" "));
+
+                  boolean passed = getResults(varTypes, output, "Checking Instance Variable Type(s)");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testPrivateVariables() {
+                  String expect = "3 Private";
+                  String output = testPrivateInstanceVariables();
+
+                  boolean passed = getResults(expect, output, "Checking Private Instance Variable(s)");
+                  assertTrue(passed);
+              }
+          }
+          ]]>
+        </tests>
+
+      </program>
+    </project>
+  </subsection>
+
+  <subsection xml:id="coding-challenge-class-pet">
+    <title>Coding Challenge: Class Pet</title>
+
+    <sidebyside widths="15% 100%" margins="-20% 0%">
+      <image source="Unit3-Class-Creation/Figures/animalclinic.png" width="27%">
+        <shortdescription>Animal Clinic</shortdescription>
+      </image>
+
+      <stack>
+        <p>
+          You’ve been hired to create a software system for the Awesome Animal
+          Clinic! They would like to keep track of their animal patients. Here
+          are some attributes of the pets that they would like to track:
+        </p>
+
+        <p>
+          <ul>
+            <li>
+              <p>Name</p>
+            </li>
+
+            <li>
+              <p>Age</p>
+            </li>
+
+            <li>
+              <p>Weight</p>
+            </li>
+
+            <li>
+              <p>Type (dog, cat, lizard, etc.)</p>
+            </li>
+
+            <li>
+              <p>Breed</p>
+            </li>
+          </ul>
+        </p>
+
+        <p>
+          <ol>
+            <li>
+              <p>
+                Create a class that keeps track of the attributes above for pet
+                records at the animal clinic. Decide what instance variables are
+                needed and their data types. Make sure you use <c>int</c>,
+                <c>double</c>, and <c>String</c> data types. Make the instance
+                variables <c>private</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Create a constructor with many parameters to initialize all the
+                instance variables.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Create accessor/getter methods for each of the instance
+                variables.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Create a <c>toString</c> method that returns all the information
+                in a <c>Pet</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Create mutator/setter methods for each of the instance
+                variables.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                In the <c>main</c> method below, create 2 <c>Pet</c> objects
+                with different values and call the constructor, accessor
+                methods, mutator methods, and <c>toString</c> methods to test
+                all your code.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </stack>
+    </sidebyside>
+
+    <project label="challenge-Pet-Class">
+      <statement>
+        <p>
+          Create a Pet class that keeps track of the name, age, weight, type of
+          animal, and breed for records at an animal clinic. Create a
+          constructor, getter, setter, and toString() methods. Create 2 Pet
+          objects in the main method and test all your methods.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          /**
+           * Pet class (complete comments)
+           *
+           * @author
+           * @since
+           */
+          class Pet {
+              // Instance Variables for the name, age, weight, type of animal, and breed of the pet
+
+              // Write a constructor, accessor (get) methods, mutator (set) methods)
+              // and a toString method. Use good commenting.
+
+              // Don't forget to complete the main method in the TesterClass below!
+          }
+
+          public class TesterClass {
+              // main method for testing
+              public static void main(String[] args) {
+                  // Create 2 Pet objects and test all your methods
+
+              }
+          }
+        </code>
+
+        <tests>
+          <![CDATA[
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              public RunestoneTests() {
+                  super("TesterClass");
+              }
+
+              @Test
+              public void testConstructors() {
+                  changeClass("Pet");
+                  int count = 0;
+
+                  for (int i = 0; i < 6; i++) {
+                      if (checkConstructor(i).equals("pass")) count++;
+                  }
+
+                  boolean passed = count >= 1;
+
+                  getResults("2+", "" + count, "Checking for constructor", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testPrivateVariables() {
+                  changeClass("Pet");
+                  String expect = "5 Private";
+                  String output = testPrivateInstanceVariables();
+
+                  boolean passed = getResults(expect, output, "Checking Private Instance Variables");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test1() {
+                  String code = getCode();
+                  String target = "public * get*()";
+
+                  int num = countOccurencesRegex(code, target);
+
+                  boolean passed = num >= 5;
+
+                  getResults("5", "" + num, "Checking accessor (get) methods for each variable", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test3() {
+                  String target = "public String toString()";
+                  boolean passed = checkCodeContains("toString() method", target);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testSet() {
+                  String code = getCode();
+                  String target = "public void set*(*)";
+
+                  int num = countOccurencesRegex(code, target);
+
+                  boolean passed = num >= 5;
+
+                  getResults("5", "" + num, "Checking mutator (set) methods for each variable", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test4() {
+                  String code = getCode();
+                  String target = "Pet * = new Pet(";
+
+                  int num = countOccurencesRegex(code, target);
+
+                  boolean passed = num >= 2;
+
+                  getResults("2", "" + num, "Checking main method creates 2 Pet objects", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testMain() {
+                  String output = getMethodOutput("main");
+
+                  String expect = "2+ line(s) of text";
+                  String actual = " line(s) of text";
+
+                  int len = output.split("\n").length;
+
+                  if (output.length() > 0) {
+                      actual = len + actual;
+                  } else {
+                      actual = output.length() + actual;
+                  }
+                  boolean passed = len >= 2;
+
+                  getResults(expect, actual, "Checking main method prints info for 2 Pet objects", passed);
+                  assertTrue(passed);
+              }
+          }
+          ]]>
+        </tests>
+
+      </program>
+    </project>
+  </subsection>
+
+  <subsection xml:id="design-a-class-for-your-community-part3">
+    <title>Design a Class for your Community</title>
+
+    <p>
+      In last lessons, you came up with a class of your own choice relevant to
+      your community.
+    </p>
+
+    <p>
+      <ol>
+        <li>
+          <p>
+            Copy your class with its three instance variables, constructor, and
+            its print() and main methods from <xref
+            ref="design-a-class-for-your-community-part2" /> into the active
+            code exercise below.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Create accessor (get) methods and mutator (set) methods for each of
+            the instance variables.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Create a <c>toString</c> method that returns all the information in
+            the instance variables.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Write an additional method for your class that takes a parameter.
+            For example, there could be a print method with arguments that
+            indicate how you want to print out the information, e.g.
+            <c>print(format)</c> could print the data according to an argument
+            that is “plain” or “table” where the data is printed in a table
+            drawn with dashes and lines (<c>|</c>). Or come up with another
+            creative method for your class.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Use these methods in the main method to test them. Make sure you use
+            good commenting.
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <project label="community-challenge3">
+      <statement>
+        <p>
+          Copy your class from <url
+          href="topic-3-4-constructors.html#groupwork-design-a-class-for-your-community">lesson
+          3.4</url>. Add get, set, toString, and a method that takes a
+          parameter. For example, there could be a print method with arguments
+          that indicate how you want to print out the information, print(format)
+          where format is “plain” or “table”.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class          // Add your class name here!
+          {
+              // 1. Copy your class instance variables, constructor, and print()
+
+              // 2. Create accessor (get) and mutator (set) methods for each of the instance variables.
+
+              // 3. Create a toString() method that returns all the information in the instance variables.
+              // 4.  Add a method for your class that takes a parameter.
+              // For example, there could be a print method with arguments that indicate
+              // how you want to print out the information, print(format) where format is "plain" or "table".
+
+              // 5. Test all the methods in the main method.
+              public static void main(String[] args) {
+                  // Construct an object of your class
+
+                  // call the object's methods
+              }
+          }
+        </code>
+
+        <tests>
+          <![CDATA[
+          import static org.junit.Assert.*;
+
+          import org.junit.*;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+              @Test
+              public void testPrivateVariables() {
+                  String expect = "3 Private";
+                  String output = testPrivateInstanceVariables();
+                  boolean passed = false;
+                  if (Integer.parseInt(expect.substring(0, 1)) <= Integer.parseInt(output.substring(0, 1)))
+                      passed = true;
+                  passed = getResults(expect, output, "Checking private instance variable(s)", passed);
+                  assertTrue(passed);
+              }
+
+              /*
+              @Test
+              public void testDefaultConstructor() {
+                  String output = checkDefaultConstructor();
+                  String expect = "pass";
+
+                  boolean passed = getResults(expect, output, "Checking default constructor");
+                  assertTrue(passed);
+              }
+              */
+
+              @Test
+              public void testConstructor3() {
+                  String output = checkConstructor(3);
+                  String expect = "pass";
+
+                  boolean passed = getResults(expect, output, "Checking constructor with 3 parameters");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testPrint() {
+                  String output = getMethodOutput("print");
+                  String expect = "More than 15 characters";
+                  String actual = " than 15 characters";
+
+                  if (output.length() < 15) {
+                      actual = "Less" + actual;
+                  } else {
+                      actual = "More" + actual;
+                  }
+                  boolean passed = getResults(expect, actual, "Checking print method");
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testMain() throws IOException {
+                  String output = getMethodOutput("main"); // .split("\n");
+                  String expect = "3+ line(s) of text";
+                  String actual = " line(s) of text";
+                  int len = output.split("\n").length;
+
+                  if (output.length() > 0) {
+                      actual = len + actual;
+                  } else {
+                      actual = output.length() + actual;
+                  }
+                  boolean passed = len >= 3;
+
+                  getResults(expect, actual, "Checking output", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test1() {
+                  String code = getCode();
+                  String target = "public * get*()";
+
+                  int num = countOccurencesRegex(code, target);
+
+                  boolean passed = num >= 3;
+
+                  getResults("3", "" + num, "Checking accessor (get) methods for each variable", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test2() {
+                  String code = getCode();
+                  String target = "public void set*(*)";
+
+                  int num = countOccurencesRegex(code, target);
+
+                  boolean passed = num >= 3;
+
+                  getResults("3", "" + num, "Checking mutator (set) methods for each variable", passed);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void test3() {
+                  String target = "public String toString()";
+                  boolean passed = checkCodeContains("toString() method", target);
+                  assertTrue(passed);
+              }
+
+              @Test
+              public void testPrintFormat() {
+                  String target = "public void print(String";
+                  boolean passed = checkCodeContains("print method with String argument", target);
+                  assertTrue(passed);
+              }
+          }
+          ]]>
+        </tests>
+
+      </program>
+    </project>
+  </subsection>
+
+  <subsection xml:id="summary-31">
+    <title>Summary</title>
+
+    <p>
+      <ul>
+        <li>
+          <p>
+            (AP 3.5.A.1) A <c>void</c> method does not return a value. Its
+            header contains the keyword <c>void</c> before the method name.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 3.5.A.2) A <term>non-void method</term> returns a single value.
+            Its header includes the return type in place of the keyword
+            <c>void</c>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 3.5.A.3) In non-void methods, a return expression compatible
+            with the return type is evaluated, and the value is returned. This
+            is referred to as <term>return by value</term>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 3.5.A.4) The <c>return</c> keyword is used to return the flow of
+            control to the point where the method or constructor was called. Any
+            code that is sequentially after a return statement will never be
+            executed. Executing a return statement inside a selection or
+            iteration statement will halt the statement and exit the method or
+            constructor.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 3.5.A.5) An <term>accessor method</term> (getter) allows objects
+            of other classes to obtain a copy of the value of instance variables
+            or class variables. An accessor method is a non-void method.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 3.5.A.6) A <term>mutator (modifier) method</term> (setter) is a
+            method that changes the values of the instance variables or class
+            variables. A mutator method is often a void method.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 3.5.A.7) Methods with parameters receive values through those
+            parameters and use those values in accomplishing the method’s task.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 3.5.A.8) When an argument is a primitive value, the parameter is
+            initialized with a copy of that value. Changes to the parameter have
+            no effect on the corresponding argument.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            The <c>toString</c> method is an overridden method that is included
+            in classes to provide a description of a specific object. It
+            generally includes what values are stored in the instance data of
+            the object. If <c>System.out.print</c> or <c>System.out.println</c>
+            is passed an object, that object’s <c>toString</c> method is called,
+            and the returned <c>String</c> is printed. An object’s
+            <c>toString</c> method is also used to get the <c>String</c>
+            representation when concatenating the object to a <c>String</c> with
+            the <c>+</c> operator.
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <p>
+            <term>Instance methods</term> define the behavior and actions that
+            an object can perform.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.14.A.1) <term>Instance methods</term> are called on objects of
+            the class.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.14.A.1) The dot operator is used along with the object name to
+            <term>call</term> instance methods, for example
+            <term>object.method();</term>
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.14.A.2) A method call on a <c>null</c> reference will result
+            in a <c>NullPointerException</c>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Some methods take <term>arguments</term> that are placed inside the
+            parentheses <term>object.method(arguments)</term>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            A <term>method signature</term> is the method name followed by the
+            parameter list which gives the type and name for each parameter.
+            Note that methods do not have to take any parameters, but you still
+            need the parentheses after the method name.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            The method call arguments must match the method signature in number,
+            order, and type.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            A <term>method</term> call interrupts the sequential execution of
+            statements, causing the program to first execute the statements in
+            the method or constructor before continuing. Once the last statement
+            in the method or constructor has executed or a <c>return</c>
+            statement is executed, the flow of control is returned to the point
+            immediately following the method or constructor call.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <term>Non-void methods</term> are methods that return values. You
+            should do something with the return value, such as assigning it to a
+            variable, using it in an expression, or printing it.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+
+  <subsection xml:id="ap-practice-2">
+    <title>AP Practice</title>
+
+    <p>
+      Try these AP practice questions that will help to prepare you for the AP
+      Classroom progress checks.
+    </p>
+
+    <activity label="AP-attributes">
+      <statement>
+        <p>
+          A student has created a <c>Dog</c> class. The class contains variables
+          to represent the following.
+        </p>
+
+        <p>
+          <ul>
+            <li>
+              <p>
+                A String variable called <c>breed</c> to represent the breed of
+                the dog
+              </p>
+            </li>
+
+            <li>
+              <p>
+                An int variable called <c>age</c> to represent the age of the
+                dog
+              </p>
+            </li>
+
+            <li>
+              <p>
+                A String variable called <c>name</c> to represent the name of
+                the dog
+              </p>
+            </li>
+          </ul>
+        </p>
+
+        <p>
+          The object <c>pet</c> is declared as type Dog. Which of the following
+          descriptions is accurate?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>An attribute of the name object is String.</p>
+          </statement>
+
+          <feedback>
+            <p>name is an attribute of the pet object or Dog class.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>An attribute of the pet object is name.</p>
+          </statement>
+
+          <feedback>
+            <p>name is an attribute of the pet object or Dog class.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>An instance of the pet class is Dog.</p>
+          </statement>
+
+          <feedback>
+            <p>An instance of the Dog class is pet.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>An attribute of the Dog instance is pet.</p>
+          </statement>
+
+          <feedback>
+            <p>An attribute of the Dog class is name.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>An instance of the Dog object is pet.</p>
+          </statement>
+
+          <feedback>
+            <p>An instance of the Dog class is pet.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="AP-objects">
+      <statement>
+        <p>
+          A student has created a <c>Party</c> class. The class contains
+          variables to represent the following.
+        </p>
+
+        <p>
+          <ul>
+            <li>
+              <p>
+                An int variable called <c>numOfPeople</c> to represent the
+                number of people at the party.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                A boolean variable called <c>discoLightsOn</c> to represent
+                whether the disco ball is on.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                A boolean variable called <c>partyStarted</c> to represent
+                whether the party has started.
+              </p>
+            </li>
+          </ul>
+        </p>
+
+        <p>
+          The object <c>myParty</c> is declared as type Party. Which of the
+          following descriptions is accurate?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>boolean is an attribute of the myParty object.</p>
+          </statement>
+
+          <feedback>
+            <p>boolean is the type of an attribute, but not an attribute.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>myParty is an attribute of the Party class.</p>
+          </statement>
+
+          <feedback>
+            <p>myParty is an instance of the Party class.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>myParty is an instance of the Party class.</p>
+          </statement>
+
+          <feedback>
+            <p>myParty is an object that is an instance of the Party class.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>myParty is an attribute of the Party instance.</p>
+          </statement>
+
+          <feedback>
+            <p>An attribute of the Party class is numOfPeople.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>numOfPeople is an instance of the Party object.</p>
+          </statement>
+
+          <feedback>
+            <p>An attribute of the Party class is numOfPeople.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="AP-get1">
+      <statement>
+        <p>
+          Consider the following Party class. The getNumOfPeople method is
+          intended to allow methods in other classes to access a Party object’s
+          numOfPeople instance variable value; however, it does not work as
+          intended. Which of the following best explains why the getNumOfPeople
+          method does NOT work as intended?
+        </p>
+
+        <program>
+          public class Party {
+              private int numOfPeople;
+
+              public Party(int num) {
+                  numOfPeople = num;
+              }
+
+              private int getNumOfPeople() {
+                  return numOfPeople;
+              }
+          }
+        </program>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement>
+            <p>The getNumOfPeople method should be declared as public.</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Correct, accessor methods should be public so they can be accessed
+              from outside the class.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>The return type of the getNumOfPeople method should be void.</p>
+          </statement>
+
+          <feedback>
+            <p>The method return type should stay as int.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>The getNumOfPeople method should have at least one parameter.</p>
+          </statement>
+
+          <feedback>
+            <p>This method should not have any parameters</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>
+              The variable numOfPeople is not declared inside the getNumOfPeople
+              method.
+            </p>
+          </statement>
+
+          <feedback>
+            <p>This is an instance variable and should be declared outside.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>
+              The instance variable num should be returned instead of
+              numOfPeople, which is local to the constructor.
+            </p>
+          </statement>
+
+          <feedback>
+            <p>The numOfPeople variable is correctly returned.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="AP-get2">
+      <statement>
+        <p>
+          Consider the following class definition. The class does not compile.
+        </p>
+
+        <program>
+          public class Student {
+              private int id;
+
+              public getId() {
+                  return id;
+              }
+              // Constructor not shown
+          }
+        </program>
+
+        <p>
+          The accessor method getId is intended to return the id of a Student
+          object. Which of the following best explains why the class does not
+          compile?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement id="AP-get2_opt_a">
+            <p>The id instance variable should be public.</p>
+          </statement>
+
+          <feedback id="AP-get2_opt_a">
+            <p>Instance variables should be private.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-get2_opt_b">
+            <p>The getId method should be declared as private.</p>
+          </statement>
+
+          <feedback id="AP-get2_opt_b">
+            <p>Accessor methods should be public methods.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-get2_opt_c">
+            <p>The getId method requires a parameter.</p>
+          </statement>
+
+          <feedback id="AP-get2_opt_c">
+            <p>Accessor methods usually do not require parameters.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-get2_opt_d">
+            <p>
+              The return type of the getId method needs to be defined as void.
+            </p>
+          </statement>
+
+          <feedback id="AP-get2_opt_d">
+            <p>void is not the correct return type.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement id="AP-get2_opt_e">
+            <p>
+              The return type of the getId method needs to be defined as int.
+            </p>
+          </statement>
+
+          <feedback id="AP-get2_opt_e">
+            <p>
+              Correct! Accessor methods have a return type of the instance
+              variable they are returning.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="AP-mutator1">
+      <statement>
+        <p>Consider the following class definition.</p>
+
+        <program>
+          public class Liquid {
+              private int currentTemp;
+
+              public Liquid(int temp) {
+                  currentTemp = temp;
+              }
+
+              public void resetTemp() {
+                  currentTemp = newTemp;
+              }
+          }
+        </program>
+
+        <p>
+          Which of the following best identifies the reason the class does not
+          compile?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement id="AP-mutator1_opt_a">
+            <p>The constructor header does not have a return type.</p>
+          </statement>
+
+          <feedback id="AP-mutator1_opt_a">
+            <p>The constructor should not have a return type.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-mutator1_opt_b">
+            <p>The resetTemp method is missing a return type.</p>
+          </statement>
+
+          <feedback id="AP-mutator1_opt_b">
+            <p>Mutator methods usually have a void return type.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-mutator1_opt_c">
+            <p>The constructor should not have a parameter.</p>
+          </statement>
+
+          <feedback id="AP-mutator1_opt_c">
+            <p>Constructors can have parameters.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement id="AP-mutator1_opt_d">
+            <p>The resetTemp method should have a parameter.</p>
+          </statement>
+
+          <feedback id="AP-mutator1_opt_d">
+            <p>
+              Correct! The resetTemp method should have a parameter for the
+              newTemp value to set the currentTemp.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-mutator1_opt_e">
+            <p>
+              The instance variable currentTemp should be public instead of
+              private.
+            </p>
+          </statement>
+
+          <feedback id="AP-mutator1_opt_e">
+            <p>Instance variables should be private variables.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="AP-mutator2">
+      <statement>
+        <p>
+          In the <c>Party</c> class below, the <c>addPeople</c> method is
+          intended to increase the value of the instance variable
+          <c>numOfPeople</c> by the value of the parameter
+          <c>additionalPeople</c>. The method does not work as intended.
+        </p>
+
+        <program>
+          public class Party {
+              private int numOfPeople;
+
+              public Party(int n) {
+                  numOfPeople = n;
+              }
+
+              public int addPeople(int additionalPeople) // Line 10
+                      {
+                  numOfPeople += additionalPeople; // Line 12
+              }
+          }
+        </program>
+
+        <p>
+          Which of the following changes should be made so that the class
+          definition compiles without error and the method <c>addPeople</c>
+          works as intended?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>Replace line 12 with numOfPeople = additionalPeople;</p>
+          </statement>
+
+          <feedback>
+            <p>This method should add additionalPeople to numOfPeople.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>Replace line 12 with return additionalPeople;</p>
+          </statement>
+
+          <feedback>
+            <p>This method should add additionalPeople to numOfPeople.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>Replace line 12 with additionalPeople += 3;</p>
+          </statement>
+
+          <feedback>
+            <p>This method should add additionalPeople to numOfPeople.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>Replace line 10 with public addPeople (int additionalPeople)</p>
+          </statement>
+
+          <feedback>
+            <p>Mutator methods should have a void return type.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>
+              Replace line 10 with public void addPeople(int additionalPeople)
+            </p>
+          </statement>
+
+          <feedback>
+            <p>Mutator methods should have a void return type.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="AP-Party-Methods">
+      <statement>
+        <p>Consider the following class definition.</p>
+
+        <program>
+          public class Party {
+              private int numInvited;
+              private boolean partyCancelled;
+
+              public Party() {
+                  numInvited = 1;
+                  partyCancelled = false;
+              }
+
+              public void inviteFriend() {
+                  numInvited++;
+              }
+
+              public void cancelParty() {
+                  partyCancelled = true;
+              }
+          }
+        </program>
+
+        <p>
+          Assume that a Party object called myParty has been properly declared
+          and initialized in a class other than Party. Which of the following
+          statements are valid?
+        </p>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement id="AP-Party-Methods_opt_a">
+            <p>myParty.cancelParty();</p>
+          </statement>
+
+          <feedback id="AP-Party-Methods_opt_a">
+            <p>Correct!</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-Party-Methods_opt_b">
+            <p>myParty.inviteFriend(2);</p>
+          </statement>
+
+          <feedback id="AP-Party-Methods_opt_b">
+            <p>The method inviteFriend() does not have any parameters.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-Party-Methods_opt_c">
+            <p>myParty.endParty();</p>
+          </statement>
+
+          <feedback id="AP-Party-Methods_opt_c">
+            <p>There is no endParty() method in the class Party.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-Party-Methods_opt_d">
+            <p>myParty.numInvited();</p>
+          </statement>
+
+          <feedback id="AP-Party-Methods_opt_d">
+            <p>
+              There is no numInvited() method in the class Party. It is an
+              instance variable.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-Party-Methods_opt_e">
+            <p>System.out.println( myParty.cancelParty() );</p>
+          </statement>
+
+          <feedback id="AP-Party-Methods_opt_e">
+            <p>
+              This would cause an error because the void method cancelParty()
+              does not return a String that could be printed.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="AP-Cat-trace">
+      <statement>
+        <p>Consider the following class definition.</p>
+
+        <program>
+          public class Cat {
+              public void meow() {
+                  System.out.print("Meow ");
+              }
+
+              public void purr() {
+                  System.out.print("purr");
+              }
+
+              public void welcomeHome() {
+                  purr();
+                  meow();
+              }
+              /* Constructors not shown */
+          }
+        </program>
+
+        <p>
+          Which of the following code segments, if located in a method in a
+          class other than Cat, will cause the message “Meow purr” to be
+          printed?
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement id="AP-Cat-trace_opt_a">
+            <program>
+              Cat a = new Cat();
+              Cat.meow();
+              Cat.purr();
+            </program>
+          </statement>
+
+          <feedback id="AP-Cat-trace_opt_a">
+            <p>
+              You must use the object a, not the class name Cat, to call these
+              methods.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-Cat-trace_opt_b">
+            <program>
+              Cat a = new Cat();
+              a.welcomeHome();
+            </program>
+          </statement>
+
+          <feedback id="AP-Cat-trace_opt_b">
+            <p>This would print “purrMeow “</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement id="AP-Cat-trace_opt_c">
+            <program>
+              Cat a = new Cat();
+              a.meow();
+              a.purr();
+            </program>
+          </statement>
+
+          <feedback id="AP-Cat-trace_opt_c">
+            <p>Correct!</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-Cat-trace_opt_d">
+            <program>
+              Cat a = new Cat().welcomeHome();
+            </program>
+          </statement>
+
+          <feedback id="AP-Cat-trace_opt_d">
+            <p>This would cause a syntax error.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-Cat-trace_opt_e">
+            <program>
+              Cat a = new Cat();
+              a.meow();
+            </program>
+          </statement>
+
+          <feedback id="AP-Cat-trace_opt_e">
+            <p>This would just print “Meow “.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="AP-Liquid-return">
+      <statement>
+        <p>Consider the following class definition.</p>
+
+        <program>
+          public class Liquid {
+              private double boilingPoint;
+              private double freezingPoint;
+              private double currentTemp;
+
+              public Liquid() {
+                  currentTemp = 50;
+              }
+
+              public void lowerTemp() {
+                  currentTemp -= 10;
+              }
+
+              public double getTemp() {
+                  return currentTemp;
+              }
+          }
+        </program>
+
+        <p>
+          Assume that the following code segment appears in a class other than
+          Liquid.
+        </p>
+
+        <program>
+          Liquid water = new Liquid();
+          water.lowerTemp();
+          System.out.println(water.getTemp());
+        </program>
+
+        <p>
+          What is printed as a result of executing the code segment? (If you get
+          stuck, try this <url
+          href="https://pythontutor.com/render.html#code=public%20class%20Liquid%20%7B%0A%20%20%0A%20%20%20%20private%20double%20boilingPoint%3B%0A%20%20%20%20private%20double%20freezingPoint%3B%0A%20%20%20%20private%20double%20currentTemp%3B%0A%0A%20%20%20%20public%20Liquid%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20currentTemp%20%3D%2050%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20void%20lowerTemp%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20currentTemp%20-%3D%2010%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20double%20getTemp%28%29%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20return%20currentTemp%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20Liquid%20water%20%3D%20new%20Liquid%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20water.lowerTemp%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20System.out.println%28water.getTemp%28%29%29%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=18&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualization</url>
+          to see this code in action.)
+        </p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement id="AP-Liquid-return_opt_a">
+            <p>-10</p>
+          </statement>
+
+          <feedback id="AP-Liquid-return_opt_a">
+            <p>
+              The Liquid() constructor sets the currentTemp instance variable to
+              50 and the lowerTemp() method subtracts 10 from it.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-Liquid-return_opt_b">
+            <p>50</p>
+          </statement>
+
+          <feedback id="AP-Liquid-return_opt_b">
+            <p>
+              The Liquid() constructor sets the currentTemp instance variable to
+              50 and the lowerTemp() method subtracts 10 from it.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-Liquid-return_opt_c">
+            <p>water.getTemp()</p>
+          </statement>
+
+          <feedback id="AP-Liquid-return_opt_c">
+            <p>
+              The System.out.println will print the value returned from
+              water.getTemp().
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-Liquid-return_opt_d">
+            <p>The code will not compile.</p>
+          </statement>
+
+          <feedback id="AP-Liquid-return_opt_d">
+            <p>This code should compile.</p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement id="AP-Liquid-return_opt_e">
+            <p>40.0</p>
+          </statement>
+
+          <feedback id="AP-Liquid-return_opt_e">
+            <p>
+              Correct, the Liquid() constructor sets the currentTemp instance
+              variable to 50, and the lowerTemp() method subtracts 10 from it,
+              and getTemp() returns the currentTemp value as a double.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="AP-Pizza-trace-args">
+      <statement>
+        <p>Consider the following methods, which appear in the same class.</p>
+
+        <program>
+          public void splitPizza(int numOfPeople) {
+              int slicesPerPerson = 8/numOfPeople;
+              /* INSERT CODE HERE */
+          }
+
+          public void printSlices(int slices) {
+              System.out.println("Each person gets " + slices + " slices each");
+          }
+        </program>
+
+        <p>
+          Which of the following lines would go into <c>/* INSERT CODE HERE
+          */</c> in the method splitPizza in order to call the
+          <c>printSlices</c> method to print the number of slices per person
+          correctly?
+        </p>
+      </statement>
+
+      <choices>
+        <choice correct="yes">
+          <statement id="AP-Pizza-trace-args_opt_a">
+            <p>printSlices(slicesPerPerson);</p>
+          </statement>
+
+          <feedback id="AP-Pizza-trace-args_opt_a">
+            <p>
+              Correct! If you had 4 people, slicesPerPerson would be 8/4=2 and
+              printSlices would print out “Each person gets 2 slices each”.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-Pizza-trace-args_opt_b">
+            <p>printSlices(numOfPeople);</p>
+          </statement>
+
+          <feedback id="AP-Pizza-trace-args_opt_b">
+            <p>
+              If you had 4 people, this would print out that they get 4 slices
+              each of an 8 slice pizza.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-Pizza-trace-args_opt_c">
+            <p>printSlices(8);</p>
+          </statement>
+
+          <feedback id="AP-Pizza-trace-args_opt_c">
+            <p>This would always print out 8 slices each.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-Pizza-trace-args_opt_d">
+            <p>splitPizza(8);</p>
+          </statement>
+
+          <feedback id="AP-Pizza-trace-args_opt_d">
+            <p>This would not call the printSlices method.</p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement id="AP-Pizza-trace-args_opt_e">
+            <p>splitPizza(slicesPerPerson);</p>
+          </statement>
+
+          <feedback id="AP-Pizza-trace-args_opt_e">
+            <p>This would not call the printSlices method.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+  </subsection>
+</section>

@@ -1,0 +1,1135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<section xml:id="assignment-statements">
+  <title>Assignment statements</title>
+
+  <introduction>
+    <p>
+      So far we’ve learned how to declare variables and also how to use them in
+      arithmetic expressions to compute new values. And we’ve seen how to use
+      <c>System.out.print()</c> and <c>System.out.println()</c> to output the
+      results of those computations to make programs that do things that the
+      human running the program can see.
+    </p>
+
+    <p>
+      That’s fine if the thing we want to compute is not too complicated. But if
+      the computation we want to our program to perform is involved enough, it
+      can be useful to break it down into smaller parts and save the results of
+      intermediate expressions in their own variables. And sometimes it’s useful
+      to update the value of an existing variable with a new value. That’s where
+      <term>assignment statements</term> come in.
+    </p>
+
+    <p>
+      Relatedly, if we want to take input from the user, for instance using the
+      <c>Scanner</c> class we discussed in <xref ref="scanner" />, we’ll often
+      assign the values we get from the user to variables that we then use in
+      our computations.
+    </p>
+  </introduction>
+
+  <subsection>
+    <title>Simple assignments</title>
+
+    <idx>assignment</idx>
+    <p>
+      Assignment statements are used both to initialize and change the value
+      stored in a variable using the <term>assignment operator</term> which is
+      written with a single equals sign: <c>=</c>. An assignment statement
+      always consists of a single variable on the left hand side of the <c>=</c>
+      and a single expression on the right hand side. The expression is
+      evaluated and then the resulting value is stored in the variable,
+      initializing it if this is the first time it has been assigned a value or
+      replacing its old value with a new value.
+    </p>
+
+    <p>
+      When we read code out loud, we usually read an assignment statement like
+      <c>x = 10</c> as “x gets 10” or “set x to 10”.
+    </p>
+
+    <p>
+      To take a simple example of initializing and then reassigning a variable,
+      suppose we are keeping track of the score in a game. We need to declare
+      and initialize the variable with something like this:
+    </p>
+
+    <program>
+      int score = 0;
+    </program>
+
+    <p>
+      That is an assignment as part of the variable declaration. It initializes
+      the variable <c>score</c> to the value <c>0</c>. Then as the game
+      progresses and the player scores points we need to update the value of
+      <c>score</c> with a line like this:
+    </p>
+
+    <program>
+      score = score + 1;
+    </program>
+
+    <p>
+      This <term>increments</term> the variable, setting its value to its
+      current value plus one. As a formula in math class it would look strange
+      since nothing plus one is equal to itself. But it makes sense in coding
+      because the <c>=</c> is an assignment operator. Java just evaluates the
+      expression on the right, <c>score + 1</c>, which produces some number and
+      then that number becomes the new value of the variable <c>score</c>.
+    </p>
+
+    <note>
+      <p>
+        Notice that in the second line, when we are assigning a new value to
+        <c>score</c>, we do not specify its type again. We only need to declare
+        a variable once. If we did write:
+      </p>
+
+      <program>
+        int score = score + 1;
+      </program>
+
+      <p>
+        it would be an error because this code would need to evaluate the right
+        hand side of the assignment in order to get <c>score</c>’s initial value
+        but that would require getting the value of <c>score</c> before it was
+        initialized.
+      </p>
+    </note>
+
+    <activity label="incrementScore">
+      <title>Incrementing score</title>
+
+      <statement>
+        <p>
+          Try the code below to see how score is incremented by 1. Try
+          substituting 2 instead of 1 to see what happens.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class Test1 {
+              public static void main(String[] args) {
+                  int score = 0;
+                  System.out.println(score);
+                  score = score + 1;
+                  System.out.println(score);
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.Test;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "0\n1\n";
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main", true);
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Data types in assignments</title>
+
+    <p>
+      Whenever we assign a value to a variable, the type of the value produced
+      by the expression must be compatible with the declared type of the
+      variable. Usually this means there are the same type, such as assigning an
+      <c>int</c> value to an <c>int</c> variable or a <c>double</c> value to a
+      <c>double</c> variable. But similar to the way we can use a mix of
+      <c>int</c> and <c>double</c> values in an arithmetic expression and get a
+      <c>double</c> result, we can also assign an <c>int</c> value to a
+      <c>double</c> variable and it will be automatically converted to the
+      equivalent <c>double</c>. In the next lesson, we will see how to
+      explicitly convert values to different types.
+    </p>
+
+    <activity label="assignmentTypes">
+      <title>Type mismatch</title>
+
+      <statement>
+        <p>
+          The code below looks okay at first glance, but if you run it, you will
+          see that there is an error of incompatible types. Change the data type
+          of one of the variables to fix the error.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class Asgn {
+              public static void main(String[] args) {
+                    int x = 1;
+                    double y = 2.2;
+                    x = 2 * y;
+                    System.out.println(x);
+              }
+          }
+        </code>
+
+        <tests>
+          import static org.junit.Assert.*;
+
+          import org.junit.Test;
+
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper
+          {
+              @Test
+              public void test1()
+              {
+                  String output = getMethodOutput("main");
+                  String expect = "4.4\n";
+                  boolean passed =
+                          getResults(expect, output, "Expected output from main");
+                  assertTrue(passed);
+              }
+          }
+        </tests>
+
+      </program>
+    </activity>
+
+    <activity label="codelensAsgn">
+      <title>Variable assignments</title>
+
+      <statement>
+        <p>
+          The following <url
+          href="https://www.youtube.com/watch?v=MZwIgM__5C8&amp;ab_channel=colleenlewis">video</url>
+          by Dr. Colleen Lewis shows how variables can change values in memory
+          using assignment statements.
+        </p>
+
+        <video youtube="MZwIgM__5C8" label="video-asgn-trace" />
+        <p>
+          As we saw in the video, we can set one variable’s value to a
+          <em>copy</em> of the value of another variable like <c>y = x;</c>.
+          This won’t change the value of the variable that you are copying from.
+        </p>
+
+        <p>
+          Let’s step through the following code in the Java visualizer to see
+          the values in memory (<url
+          href="http://www.pythontutor.com/visualize.html#code=public+class+Test2%0A%7B%0A+++public+static+void+main(String%5B%5D+args%29%0A+++%7B%0A+++++int+x+%3D+3%3B%0A+++++int+y+%3D+2%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++++x+%3D+y%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++++y+%3D+5%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++%7D%0A%7D&amp;mode=display&amp;origin=opt-
+          frontend.js&amp;cumulative=false&amp;heapPrimitives=false&amp;textReferences=false&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;curInstr=0">click
+          here if the code below does not generate</url>). Click on the Next
+          button at the bottom of the code to see how the values of the
+          variables change. You can run the visualizer on any Active Code in
+          this book by just clicking on the Code Lens button at the top of each
+          Active Code.
+        </p>
+
+        <p>
+          Keep clicking on the Next button at the bottom of the code to see how
+          the values of the variables change as you step through the running
+          program.
+        </p>
+      </statement>
+
+      <program interactive="codelens" label="codeLens1" xml:id="codelensid1">
+        public class Test2
+        {
+          public static void main(String[] args)
+          {
+            int x = 3;
+            int y = 2;
+            System.out.println(x);
+            System.out.println(y);
+            x = y;
+            System.out.println(x);
+            System.out.println(y);
+            y = 5;
+            System.out.println(x);
+            System.out.println(y);
+          }
+        }
+      </program>
+    </activity>
+
+    <activity label="qasgn1">
+      <title>Trace assignments</title>
+
+      <statement>
+        <p>
+          What are the values of x, y, and z after the following code executes?
+          You can step through this code by clicking on this <url
+          href="http://www.pythontutor.com/visualize.html#code=public+class+Test2%0A%7B%0A+++public+static+void+main(String%5B%5D+args%29%0A+++%7B%0A+++++int+x+%3D+0%3B%0A+++++int+y+%3D+1%3B%0A+++++int+z+%3D+2%3B%0A+++++x+%3D+y%3B%0A+++++y+%3D+y+*+2%3B%0A+++++z+%3D+3%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++++System.out.println(z%29%3B%0A+++%7D%0A%7D&amp;mode=display&amp;origin=opt-frontend.js&amp;cumulative=false&amp;heapPrimitives=false&amp;textReferences=false&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;curInstr=0">Java
+          visualizer</url> link.
+        </p>
+
+        <program>
+          int x = 0;
+          int y = 1;
+          int z = 2;
+          x = y;
+          y = y * 2;
+          z = 3;
+        </program>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>x = 0, y = 1, z = 2</p>
+          </statement>
+
+          <feedback>
+            <p>
+              These are the initial values in the variable, but the values are
+              changed.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>x = 1, y = 2, z = 3</p>
+          </statement>
+
+          <feedback>
+            <p>
+              x changes to y’s initial value, y’s value is doubled, and z is set
+              to 3
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>x = 2, y = 2, z = 3</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Remember that the equal sign doesn’t mean that the two sides are
+              equal. It sets the value for the variable on the left to the value
+              from evaluating the right side.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>x = 0, y = 0, z = 3</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Remember that the equal sign doesn’t mean that the two sides are
+              equal. It sets the value for the variable on the left to the value
+              from evaluating the right side.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+
+    <activity label="swapParsons" numbered="yes" adaptive="yes" indentation="hide" language="python">
+      <title>Swap values</title>
+
+      <statement>
+        <p>
+          The following has the correct code to ‘swap’ the values in x and y (so
+          that x ends up with y’s initial value and y ends up with x’s initial
+          value), but the code is mixed up and contains one extra block which is
+          not needed in a correct solution. Drag the needed blocks from the left
+          into the correct order on the right. Check your solution by clicking
+          on the Check button. You will be told if any of the blocks are in the
+          wrong order or if you need to remove one or more blocks. After three
+          incorrect attempts you will be able to use the Help Me button to make
+          the problem easier.
+        </p>
+      </statement>
+
+      <blocks>
+        <block order="1">
+          <cline>int x = 3;</cline>
+          <cline>int y = 5;</cline>
+          <cline>int temp = 0;</cline>
+        </block>
+
+        <block order="3">
+          <cline>temp = x;</cline>
+        </block>
+
+        <block order="4">
+          <cline>x = y;</cline>
+        </block>
+
+        <block order="2">
+          <cline>y = temp;</cline>
+        </block>
+
+        <block order="5" correct="no">
+          <cline>y = x;</cline>
+        </block>
+      </blocks>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <idx>compound operators</idx>
+    <title>Compound assignment operators</title>
+
+    <p>
+      Compound assignment operators <c>+=</c>, <c>-=</c>, <c>*=</c>, <c>/=</c>,
+      and <c>%=</c> are shortcuts that do a math operation and assignment in one
+      step. For example, <c>x += 1</c> adds 1 to the current value of <c>x</c>
+      and assigns the result back to <c>x</c>. It is the same as <c>x = x +
+      1</c>. This pattern is possible with any operator put in front of the
+      <c>=</c> sign, as seen below.
+    </p>
+
+    <p>
+      If you need a way to remember the order of the two characters in the
+      compound operators, think about the order things happen: first we use the
+      math operator, such as <c>+</c>, to get the new value and then the value
+      is assigned back to the variable with <c>=</c>. So it’s operator then
+      equals sign: <c>+=</c>.
+    </p>
+
+    <p>
+      Since changing the value of a variable by one is especially common, there
+      are two extra concise operators <c>++</c> and <c>--</c>, also called the
+      plus-plus or <term>increment</term> operator and minus-minus or
+      <term>decrement</term> operator that set a variable to one greater or less
+      than its current value.
+    </p>
+
+    <p>
+      Thus <c>x++</c> is even more concise way to write <c>x = x + 1</c> than
+      the compound operator <c>x += 1</c>. You’ll see this shortcut used a lot
+      in loops when we get to them. Similarly, <c>y--</c> is a more concise way
+      to write <c>y = y - 1</c>. These shortcuts only exist for <c>+</c> and
+      <c>-</c> as they don’t really make sense for other operators.
+    </p>
+
+    <note>
+      <p>
+        If you’ve heard of the programming language C++, the name is an inside
+        joke that C, an earlier language which C++ is based on, had been
+        incremented or improved to create C++.
+      </p>
+    </note>
+
+    <p>
+      Here’s a table of all the compound arithmetic operators and the extra
+      concise increment and decrement operators and how they relate to fully
+      written out assignment expressions. You can run the code below the table
+      to see these shortcut operators in action!
+    </p>
+
+    <table>
+      <title>Arithmetic compound assignment operators</title>
+
+      <tabular row-headers="yes" halign="center">
+        <col right="minor" />
+        <col right="minor" />
+        <col right="minor" />
+        <col right="minor" />
+        <col right="minor" />
+        <col />
+        <row header="yes" bottom="minor">
+          <cell>Operator</cell>
+          <cell><c>+</c></cell>
+          <cell><c>-</c></cell>
+          <cell><c>*</c></cell>
+          <cell><c>/</c></cell>
+          <cell><c>%</c></cell>
+        </row>
+
+        <row bottom="minor">
+          <cell>Written out</cell>
+          <cell><c>x = x + 1</c></cell>
+          <cell><c>x = x - 1</c></cell>
+          <cell><c>x = x * 2</c></cell>
+          <cell><c>x = x / 2</c></cell>
+          <cell><c>x = x % 2</c></cell>
+        </row>
+
+        <row bottom="minor">
+          <cell>Compound</cell>
+          <cell><c>x += 1</c></cell>
+          <cell><c>x -= 1</c></cell>
+          <cell><c>x *= 2</c></cell>
+          <cell><c>x /= 2</c></cell>
+          <cell><c>x %= 2</c></cell>
+        </row>
+
+        <row>
+          <cell>Extra concise</cell>
+          <cell><c>x++</c></cell>
+          <cell><c>x--</c></cell>
+          <cell><em>none</em></cell>
+          <cell><em>none</em></cell>
+          <cell><em>none</em></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <note>
+      <p>
+        If you look at real-world Java code, you may occasionally see the
+        <c>++</c> and <c>--</c> operators used before the name of the variable,
+        like <c>++x</c> rather than <c>x++</c>. That is legal but not something
+        that you will see on the AP exam.
+      </p>
+
+      <p>
+        If the operator is after the variable name (called the
+        <term>postfix</term> operator), the value of the variable is changed
+        <em>after</em> evaluating the variable to get its value. And if the
+        operator is before the variable (the <term>prefix</term> operator), the
+        value of the variable in incremented <em>before</em> the variable is
+        evaluated to get the value of the expression. For example, if <c>x</c>
+        is 10 and we write, <c>System.out.println(x++)</c> it will print 10 but
+        afterwards <c>x</c> will be 11. On the other hand if we write,
+        <c>System.out.println(++x)</c>, it will print 11 and afterwards the
+        value will be 11.
+      </p>
+
+      <p>
+        The AP exam will never use the prefix form of these operators nor will
+        it use the postfix operators in a context where the value of the
+        expression matters.
+      </p>
+    </note>
+  </subsection>
+
+  <activity label="compound-ops">
+    <statement>
+      <p>
+        Run the code below to see what the <c>++</c> and shortcut operators do.
+        Click on the Show Code Lens button to trace through the code and the
+        variable values change in the visualizer. Create more compound
+        assignment statements with shortcut operators as described below and
+        work with a partner to guess what they would print out before running
+        the code.
+      </p>
+    </statement>
+
+    <program interactive="activecode">
+
+      <code>
+        public class Test2
+        {
+            public static void main(String[] args)
+            {
+                int score = 0;
+                System.out.println(score);
+                score++;
+                System.out.println(score);
+                score *= 2;
+                System.out.println(score);
+                int penalty = 5;
+                score -= penalty / 2;
+                System.out.println(score);
+                // 1. Write a compound statement that adds 3 to score
+
+                // 2. Write a compound statement that divides score by 2
+            }
+        }
+      </code>
+
+      <tests>
+        import static org.junit.Assert.*;
+
+        import org.junit.*;
+
+        import java.io.*;
+
+        public class RunestoneTests extends CodeTestHelper
+        {
+            @Test
+            public void testMain() throws IOException
+            {
+                String output = getMethodOutput("main");
+                String expect = "0\n1\n2\n0";
+
+                boolean passed =
+                        getResults(expect, output, "Expected output from main", true);
+                assertTrue(passed);
+            }
+             @Test
+             public void containsOp1()
+             {
+                 boolean passed = checkCodeContains("+=", "+=");
+                 assertTrue(passed);
+             }
+             @Test
+             public void containsOp2()
+             {
+                 boolean passed = checkCodeContains("/=", "/=");
+                 assertTrue(passed);
+             }
+        }
+      </tests>
+
+    </program>
+  </activity>
+
+  <activity label="q_trace_increment">
+    <statement>
+      <p>
+        What are the values of x, y, and z after the following code executes?
+      </p>
+
+      <program>
+        int x = 0;
+        int y = 1;
+        int z = 2;
+        x--;
+        y++;
+        z+=y;
+      </program>
+    </statement>
+
+    <choices>
+      <choice>
+        <statement>
+          <p>x = -1, y = 1, z = 4</p>
+        </statement>
+
+        <feedback>
+          <p>
+            This code subtracts one from x, adds one to y, and then sets z to
+            the value in z plus the current value of y.
+          </p>
+        </feedback>
+      </choice>
+
+      <choice>
+        <statement>
+          <p>x = -1, y = 2, z = 3</p>
+        </statement>
+
+        <feedback>
+          <p>
+            This code subtracts one from x, adds one to y, and then sets z to
+            the value in z plus the current value of y.
+          </p>
+        </feedback>
+      </choice>
+
+      <choice>
+        <statement>
+          <p>x = -1, y = 2, z = 2</p>
+        </statement>
+
+        <feedback>
+          <p>
+            This code subtracts one from x, adds one to y, and then sets z to
+            the value in z plus the current value of y.
+          </p>
+        </feedback>
+      </choice>
+
+      <choice>
+        <statement>
+          <p>x = 0, y = 1, z = 2</p>
+        </statement>
+
+        <feedback>
+          <p>
+            This code subtracts one from x, adds one to y, and then sets z to
+            the value in z plus the current value of y.
+          </p>
+        </feedback>
+      </choice>
+
+      <choice correct="yes">
+        <statement>
+          <p>x = -1, y = 2, z = 4</p>
+        </statement>
+
+        <feedback>
+          <p>
+            This code subtracts one from x, adds one to y, and then sets z to
+            the value in z plus the current value of y.
+          </p>
+        </feedback>
+      </choice>
+    </choices>
+  </activity>
+
+  <activity label="q_trace_increment2">
+    <statement>
+      <p>
+        What are the values of x, y, and z after the following code executes?
+      </p>
+
+      <program>
+        int x = 3;
+        int y = 5;
+        int z = 2;
+        x = z * 2;
+        y = y / 2;
+        z++;
+      </program>
+    </statement>
+
+    <choices>
+      <choice>
+        <statement>
+          <p>x = 6, y = 2.5, z = 2</p>
+        </statement>
+
+        <feedback>
+          <p>
+            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2) and z
+            = to z + 1 (2 + 1 = 3).
+          </p>
+        </feedback>
+      </choice>
+
+      <choice>
+        <statement>
+          <p>x = 4, y = 2.5, z = 2</p>
+        </statement>
+
+        <feedback>
+          <p>
+            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2) and z
+            = to z + 1 (2 + 1 = 3).
+          </p>
+        </feedback>
+      </choice>
+
+      <choice>
+        <statement>
+          <p>x = 6, y = 2, z = 3</p>
+        </statement>
+
+        <feedback>
+          <p>
+            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2) and z
+            = to z + 1 (2 + 1 = 3).
+          </p>
+        </feedback>
+      </choice>
+
+      <choice>
+        <statement>
+          <p>x = 4, y = 2.5, z = 3</p>
+        </statement>
+
+        <feedback>
+          <p>
+            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2) and z
+            = to z + 1 (2 + 1 = 3).
+          </p>
+        </feedback>
+      </choice>
+
+      <choice correct="yes">
+        <statement>
+          <p>x = 4, y = 2, z = 3</p>
+        </statement>
+
+        <feedback>
+          <p>
+            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2) and z
+            = to z + 1 (2 + 1 = 3).
+          </p>
+        </feedback>
+      </choice>
+    </choices>
+  </activity>
+
+  <subsection xml:id="code-tracing-challenge-and-operators-maze">
+    <title>Code Tracing Challenge and Operators Maze</title>
+
+    <p>
+      Use paper and pencil or the question response area below to trace through
+      the following program to determine the values of the variables at the end.
+    </p>
+
+    <p>
+      <term>Code Tracing</term> is a technique used to simulate a dry run
+      through the code or pseudo code line by line by hand as if you are the
+      computer executing the code. Tracing can be used for debugging or proving
+      that your program runs correctly or for figuring out what the code
+      actually does.
+    </p>
+
+    <p>
+      Trace tables can be used to track the values of variables as they change
+      throughout a program. To trace through code, write down a variable in each
+      column or row in a table and keep track of its value throughout the
+      program. Some trace tables also keep track of the output and the line
+      number you are currently tracing.
+    </p>
+
+    <figure align="center">
+      <image source="Unit1-Using-Objects-and-Methods/Figures/traceTable.png" width="27%" />
+    </figure>
+
+    <p>or</p>
+
+    <figure align="center">
+      <image source="Unit1-Using-Objects-and-Methods/Figures/traceInline.png" width="39%" />
+    </figure>
+
+    <p>Trace through the following code:</p>
+
+    <program>
+      int x = 0;
+      int y = 5;
+      int z = 1;
+      x++;
+      y -= 3;
+      z = x + z;
+      x = y * z;
+      y %= 2;
+      z--;
+    </program>
+
+    <project label="challenge1-6">
+      <statement>
+        <p>
+          Write your trace table for x, y, and z here showing their results
+          after each line of code.
+        </p>
+      </statement>
+
+      <response />
+    </project>
+
+    <p>
+      After doing this challenge, play the <url
+      href="https://docs.google.com/document/d/1ZjA8oKeo8FYx2nXX4OOq5lUihopIQQ_HY-eoE5yZkk8/edit?usp=sharing">Operators
+      Maze game</url>. See if you and your partner can get the highest score!
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Coding Challenge: Dog Years</title>
+
+    <sidebyside widths="15% 100%" margins="-20% 0%">
+      <image source="Unit1-Using-Objects-and-Methods/Figures/dog-free.png" width="27%">
+        <shortdescription>dog</shortdescription>
+      </image>
+
+      <p>
+        In this coding challenge, you will calculate your age, and your pet’s
+        age from your birth dates, and your pet’s age in dog years. In the code
+        below, type in the current year, the year you were born, the year your
+        dog or cat was born (if you don’t have one, make one up!) in the
+        variables below. Then write formulas in assignment statements to
+        calculate how old you are, how old your dog or cat is, and how old they
+        are in dog years which is 7 times a human year. Finally, print it all
+        out. If you are pair programming, switch drivers (who has control of the
+        keyboard in pair programming) after every line of code.
+      </p>
+    </sidebyside>
+
+    <project label="challenge1-4">
+      <title>Dog Years</title>
+
+      <statement>
+        <p>
+          Calculate your age and your pet’s age from the birth dates, and then
+          your pet’s age in dog years.
+        </p>
+      </statement>
+
+      <program interactive="activecode">
+
+        <code>
+          public class Challenge1_4
+          {
+              public static void main(String[] args)
+              {
+                  // Fill in values for these variables
+                  int currentYear =
+                  int birthYear =
+                  int dogBirthYear =
+
+                  // Write a formula to calculate your age from the currentYear and
+                  // your birthYear variables
+                  int age =
+
+                  // Write a formula to calculate your dog's age from the currentYear
+                  // and dogBirthYear variables
+                  int dogAge =
+
+                  // Calculate the age of your dog in dogYears (7 times your dog's age
+                  // in human years)
+                  int dogYearsAge =
+
+                  // Print out your age, your dog's age, and your dog's age in dog
+                  // years. Make sure you print out text too so that the user knows what
+                  // is being printed out.
+
+             }
+          }
+        </code>
+
+        <tests>
+          <![CDATA[
+          import static org.junit.Assert.*;
+          import org.junit.*;
+          import java.io.*;
+
+          public class RunestoneTests extends CodeTestHelper {
+             @Test
+             public void checkVariables() throws IOException {
+                String code = removeSpaces(getCode());
+                code = code.replaceAll("\\(", "").replaceAll("\\)", "");
+
+                boolean passed1 = code.matches(".*intcurrentYear=[0-9]{2,4};.*");
+                boolean passed2 = code.matches(".*intbirthYear=[0-9]{2,4};.*");
+                boolean passed3 = code.matches(".*intbirthYear=[0-9]{1,4};.*");
+
+                boolean passed = passed1 && passed2 && passed3;
+
+                getResults("true", "" + passed, "Checking that you initialized the three variables");
+                assertTrue(passed);
+             }
+
+             @Test
+             public void checkOutput() throws IOException {
+                String output = getMethodOutput("main");
+                int num = output.length();
+                boolean passed = num >= 5;
+                getResults("1+ characters", "" + num, "Checking that you have some output", passed);
+                assertTrue(passed);
+             }
+
+             @Test
+             public void checkPrintlines() throws IOException {
+                String code = removeSpaces(getCode());
+                int num = countOccurences(code, "System.out.print");
+
+                boolean passed = num >= 1;
+                getResults("At least one", "" + num, "Checking that you have at least one print statement", passed);
+                assertTrue(passed);
+             }
+
+             @Test
+             public void testAsgn1() throws IOException {
+                /*
+                 * String target = "age = currentYear - birthYear"; boolean passed =
+                 * checkCodeContains("formula for age", target); assertTrue(passed);
+                 */
+                String target = removeSpaces("age = currentYear - birthYear");
+                String code = removeSpaces(getCode());
+                code = code.replaceAll("\\(", "").replaceAll("\\)", "");
+
+                boolean passed = code.contains(target);
+                getResults("true", "" + passed, "Checking that code contains formula for age", passed);
+                assertTrue(passed);
+             }
+
+             @Test
+             public void testAsgn2() throws IOException {
+                String target = removeSpaces("dogAge = currentYear - dogBirthYear");
+                String code = removeSpaces(getCode());
+                code = code.replaceAll("\\(", "").replaceAll("\\)", "");
+
+                boolean passed = code.contains(target);
+                getResults("true", "" + passed, "Checking that code contains formula for dogAge", passed);
+                assertTrue(passed);
+             }
+
+             @Test
+             public void testAsgn3() throws IOException {
+                String target1 = removeSpaces("dogYearsAge = dogAge * 7");
+                String target2 = removeSpaces("dogYearsAge = 7 * dogAge");
+                String code = removeSpaces(getCode());
+                code = code.replaceAll("\\(", "").replaceAll("\\)", "");
+
+                boolean passed1 = code.contains(target1);
+                boolean passed2 = code.contains(target2);
+                boolean passed = passed1 || passed2;
+                getResults("true", "" + passed, "Checking that code contains formula for dogYearsAge using dogAge", passed);
+                assertTrue(passed);
+             }
+          }
+          ]]>
+        </tests>
+
+      </program>
+    </project>
+
+    <p>
+      Your teacher may suggest that you use a Java IDE with interactive input
+      using the <url
+      href="https://www.w3schools.com/java/java_user_input.asp">Scanner
+      class</url> for this challenge, for example this <url
+      href="https://play.juicemind.com/dashboard/teams/Mk2wWMTqPkekcxTDWqRn/item/2e6655aa-a1b1-446e-9302-8ae43ab07e54#de42baff-8802-40d7-a3a5-74701999c5ba">JuiceMind
+      activity</url> or <url
+      href="https://replit.com/@BerylHoffman/Challenge1-4-Dog-Years-Template">repl
+      template</url> if you want to try the challenge with input.
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+
+    <p>
+      <ul>
+        <li>
+          <p>
+            (AP 1.4.A.2) The <term>assignment operator</term> (<c>=</c>) allows
+            a program to initialize or change the value stored in a variable.
+            The value of the expression on the right is stored in the variable
+            on the left.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.4.A.1) Every variable must be assigned a value before it can
+            be used in an expression. That value must be from a compatible data
+            type.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.4.A.1) A variable is <term>initialized</term> the first time
+            it is assigned a value.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.4.A.1) Reference types can be assigned a new object or
+            <c>null</c> if there is no object. The literal <c>null</c> is a
+            special value used to indicate that a reference is not associated
+            with any object.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.4.A.3) During execution, an expression is evaluated to produce
+            a single value. The value of an expression has a type based on the
+            types of the values and operators used in the expression.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.6.A.1) Compound assignment operators (<c>+=</c>, <c>-=</c>,
+            <c>*=</c>, <c>/=</c>, <c>%=</c>) can be used in place of the
+            assignment operator in numeric expressions. A compound assignment
+            operator performs the indicated arithmetic operation between the
+            current value of the variable on the left and the value on the right
+            and then assigns the resulting value to the variable on the left.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            (AP 1.6.A.2) The increment operator (<c>++</c>) and decrement
+            operator (<c>--</c>) are used to add 1 or subtract 1 from the stored
+            value of a numeric variable. The new value is assigned to the
+            variable.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>AP Practice</title>
+
+    <activity label="apcsa_sample1">
+      <title>Mental execution</title>
+
+      <statement>
+        <p>Consider the following code segment.</p>
+
+        <program>
+          int a = 5;
+          int b = a / 2;
+          double c = a / 2.0;
+          double d = 5 + a / b * c - 2;
+          System.out.println(d);
+        </program>
+
+        <p>What is printed when the code segment is executed?</p>
+      </statement>
+
+      <choices>
+        <choice>
+          <statement>
+            <p>8</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Don’t forget that the result will be a <c>double</c> since at
+              least one <c>double</c> value is involved.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <p>8.0</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Yes, <c>d</c> is computed as <c>(5 + ((5 / 2) * 2.5) - 2)</c>
+              where <c>5 / 2</c> is computed using <c>int</c> division which
+              gives us <c>2</c>. So <c>5 + 5.0 - 2</c>.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>10.5</p>
+          </statement>
+
+          <feedback>
+            <p>
+              Don’t forget that division and multiplication will be done first
+              due to operator precedence, and that an <c>int</c> divided by an
+              <c>int</c> gives a truncated <c>int</c> result where everything to
+              the right of the decimal point is dropped.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <p>An incompatible type error will occur.</p>
+          </statement>
+
+          <feedback>
+            <p>
+              No error will occur since the <c>double</c> result is saved in a
+              <c>double</c>.
+            </p>
+          </feedback>
+        </choice>
+      </choices>
+    </activity>
+  </subsection>
+</section>
