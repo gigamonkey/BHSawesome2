@@ -454,30 +454,40 @@ def git_ptx_files(book_dir, no_git):
 
 def git_mv(old_abs, new_abs, no_git):
     # On a case-insensitive filesystem a case-only rename (Foo.ptx -> foo.ptx)
-    # has a "destination" that already refers to the same file, so a direct move
-    # is refused. Detect that and go through a temp name in two steps.
+    # has a "destination" that already refers to the same file, so a plain move
+    # is refused ("destination exists"). Detect that and force it.
     case_only = (
         old_abs != new_abs
         and old_abs.exists()
         and new_abs.exists()
         and os.path.samefile(old_abs, new_abs)
     )
-    if case_only:
+    if case_only and not no_git:
+        # `git mv -f` records the rename in the index with the new casing. The
+        # working-tree filename may keep the old case until a fresh checkout,
+        # which is harmless on a case-insensitive filesystem. (A two-step move
+        # through a temp name does NOT work here -- the second `git mv` hits the
+        # same "destination exists" refusal and strands a *.rename-tmp file.)
+        _do_mv(old_abs, new_abs, no_git, force=True)
+    elif case_only:
+        # Without git, os.replace can't change only the case in place on such a
+        # filesystem, so bounce through a temp name.
         tmp = old_abs.with_name(old_abs.name + ".rename-tmp")
-        _do_mv(old_abs, tmp, no_git)
-        _do_mv(tmp, new_abs, no_git)
+        os.replace(old_abs, tmp)
+        os.replace(tmp, new_abs)
     else:
         _do_mv(old_abs, new_abs, no_git)
 
 
-def _do_mv(old_abs, new_abs, no_git):
+def _do_mv(old_abs, new_abs, no_git, force=False):
     if no_git:
         os.replace(old_abs, new_abs)
         return
-    subprocess.run(
-        ["git", "mv", str(old_abs), str(new_abs)],
-        cwd=SCRIPT_DIR, check=True,
-    )
+    cmd = ["git", "mv"]
+    if force:
+        cmd.append("-f")
+    cmd += [str(old_abs), str(new_abs)]
+    subprocess.run(cmd, cwd=SCRIPT_DIR, check=True)
 
 
 def run_format(paths):
